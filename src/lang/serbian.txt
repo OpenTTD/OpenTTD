@@ -521,7 +521,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Zamenjuje trake sa alatima
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Čuvanje scenaria, učitavanje scenarija, napuštanje editora, izlaz
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Čuvanje scenarija, učitavanje scenarija, napuštanje editora, izlaz
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenarija
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomeranje datuma početka za jednu godinu unazad
@@ -648,7 +648,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Uključi/isklju
 STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija veštačke inteligencije / skripte partije
 STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Čuva sliku skroz približenog terena
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Uobičajna udaljenost za sliku
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Podrazumevani nivo zuma za sliku ekrana
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Sačuvaj sliku celog terena
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O OpenTTD-u
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjavanje sprajta
@@ -956,7 +956,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLAC
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Cepelin se srušio kod {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Drumskom vozilo uništeno pri sudaru sa 'NLO'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplozija naftnte rafinerije blizu naselja {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplozija naftne rafinerije blizu naselja {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabrika uništena pri nepoznatim okolnostima blizu naselja {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'NLO' sleteo blizu naselja {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Urušavanje rudnika uglja uništilo je svoju okolinu blizu naselja {TOWN}!
@@ -982,7 +982,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problem sa zalihama je prouzrokovao da {STRING} objavi prestanak sa daljim radom!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Nedostatak obližnjeg drveća je prouzrokovao da {STRING} objavi prestanak sa daljim radom!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Evropska Monetarna Unija!{}{}Euro je uveden kao jedina valuta za uobičajne transakcije u vašoj zemlji!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Evropska Monetarna Unija!{}{}Euro je uveden kao jedina valuta za uobičajene transakcije u vašoj zemlji!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Svetska recesija!{}{}Finansijski eksperti se plaše najgoreg dok ekonomija slabi sve više!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Recesija završena!{}{}Preokret u trgovini pruža podršku industrijama dok ekonomija jača!
 
@@ -1129,7 +1129,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto ču
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izbor vremenskog intervala između dve automatski sačuvane pozicije
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Isključeno
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Svaki mesec
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Svakog meseca
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Svaka 3 meseca
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Svakih 6 meseci
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Svakih 12 meseci
@@ -1138,7 +1138,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Odaberite jezik koji će se koristiti
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ceo ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pritisnite ovde kako bi ste igrali OpenTTD na celom ekranu
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pritisnite ovde kako biste igrali OpenTTD na celom ekranu
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Veličina ekrana
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Odaberite željenu veličinu ekrana
@@ -1214,12 +1214,12 @@ STR_AI_SPEED_MEDIUM                                             :srednja
 STR_AI_SPEED_FAST                                               :brza
 STR_AI_SPEED_VERY_FAST                                          :jako brza
 
-STR_SEA_LEVEL_VERY_LOW                                          :Vrlo Niska
-STR_SEA_LEVEL_LOW                                               :Niska
-STR_SEA_LEVEL_MEDIUM                                            :Srednja
-STR_SEA_LEVEL_HIGH                                              :Visoka
-STR_SEA_LEVEL_CUSTOM                                            :Prilagođeno
-STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Prilagođeno ({NUM}%)
+STR_SEA_LEVEL_VERY_LOW                                          :Vrlo nizak
+STR_SEA_LEVEL_LOW                                               :Nizak
+STR_SEA_LEVEL_MEDIUM                                            :Srednji
+STR_SEA_LEVEL_HIGH                                              :Visok
+STR_SEA_LEVEL_CUSTOM                                            :Prilagođen
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Prilagođen ({NUM}%)
 
 STR_RIVERS_NONE                                                 :Nijedna
 STR_RIVERS_FEW                                                  :Nekoliko
@@ -1447,13 +1447,13 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Najveće rastoj
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivo snežnog pokrivača: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Vrste terena (samo za TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ravnomerna
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Malo Valovita
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Malo valovita
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Valovita
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Vrlo Valovita
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Vrlo valovita
 STR_CONFIG_SETTING_TREE_PLACER                                  :Posađivanje drveća: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakavo
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalano
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređeno
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakav
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalni
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređen
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Orijentacija elevacione karte: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nalevo
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Nadesno
@@ -1504,7 +1504,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dugačak (31st 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratak (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Uobičajna paleta za NewGRF: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Podrazumevana paleta za NewGRF: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paleta
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paleta
 
@@ -1743,7 +1743,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Baratanje teretom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatska zamena
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servsiranje
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiranje
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vozovi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Naselja
@@ -1872,7 +1872,7 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izaberit
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izaberite dodatnu boju za označenu kategoriju. Ctrl+klik će izabrati ovu boju za sve kategorije
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Označite kategoriju za izmenu boje, ili više njih koristeći Ctrl+Klik. Kliknite na kvadratić kako biste aktivirali korišćenje boje
 
-STR_LIVERY_DEFAULT                                              :Uobičajne Boje
+STR_LIVERY_DEFAULT                                              :Uobičajene Boje
 STR_LIVERY_STEAM                                                :Parna Lokomotiva
 STR_LIVERY_DIESEL                                               :Dizel Lokomotiva
 STR_LIVERY_ELECTRIC                                             :Električna Lokomotiva
@@ -2142,8 +2142,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite 
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Otkaži unetu lozinku
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Postavi preduzeću novu lozinku
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Lozinka za preduzeće
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Uobičajna lozinka za preduzeće
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Koristite ovu lozinku kao uobičajnu za nova preduzeća
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Uobičajena lozinka za preduzeće
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Koristite ovu lozinku kao uobičajenu za nova preduzeća
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pridružite se
@@ -2390,7 +2390,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Gradnja 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Izbor klase stanica za prikaz
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Odaberite vrstu stanice za gradnju
 
-STR_STATION_CLASS_DFLT                                          :Uobičajna stanica
+STR_STATION_CLASS_DFLT                                          :Podrazumevana stanica
 STR_STATION_CLASS_WAYP                                          :Putanje
 
 # Signal window
@@ -2572,11 +2572,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Veliko
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Slučajan
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Izbor veličine naselja
 STR_FOUND_TOWN_CITY                                             :{BLACK}Grad
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Gradovi se razvijaju brže nego uobičajna naselja{}U zavisnosti od podešavanja, veći su prilikom osnivanja
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Gradovi se razvijaju brže nego uobičajena naselja{}U zavisnosti od podešavanja, veći su prilikom osnivanja
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Mreža puteva u naselju:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Izbor plana mreže puteva u naselju
-STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalano
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalno
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Napredno
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 mreža
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 mreža
@@ -2736,7 +2736,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sačuvaj
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Učitaj scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitavanje Elevacione karte
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Sačuvaj Elevacionu kartu
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pritisnite ovde kako biste otišli u uobičajni direktorijum za čuvanje pozicije
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pritisnite ovde kako biste otišli u uobičajeni direktorijum za čuvanje pozicije
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} slobodno
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Spisak diskova, direktorijuma i datoteka sa sačuvanim pozicijama
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Ime sačuvane pozicije
@@ -2764,7 +2764,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fab
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivo snežnog pokrivača:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sužava snežni pokrivač naviše za jedan
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširuje snežni pojas naniže za jedan
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Klica Proizvoljnosti:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Klica proizvoljnosti:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Kliknite za unos klice proizvoljnosti
 STR_MAPGEN_RANDOM                                               :{BLACK}Proizvoljno
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Promena klice proizvoljnosti za Oblikovanje Reljefa
