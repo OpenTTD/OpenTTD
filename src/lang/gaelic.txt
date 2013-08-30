@@ -1281,7 +1281,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Roghainnean le 
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Roghainnean le luach diofraichte bho luach nan geamannan ùra agad
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach seòrsaichean sònraichte dhe roghainn
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Na h-uile roghainn
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Na h-uile seòrsa roghainn
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Roghainnean a' chliant (cha tèid an sàbhaladh le geamannan; buaidh air a h-uile geama)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
@@ -4545,6 +4545,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Cha ghab
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... chaidh an carbad a mhilleadh
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Cha bhi carbad sam bith ri làimh
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Atharraich an rèiteachadh NewGRF agad
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Chan eil carbad ri fhaighinn fhathast
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Tòisich geama ùr às dèidh {DATE_SHORT} no chleachd NewGRF a bheir carbadan tràtha dhut
 
