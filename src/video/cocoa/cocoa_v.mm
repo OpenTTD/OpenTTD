@@ -321,18 +321,12 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 	/* OSX 10.7 allows to toggle fullscreen mode differently */
 	if (MacOSVersionIsAtLeast(10, 7, 0)) {
 		ret = QZ_CreateWindowSubdriver(width, height, bpp);
+		if (ret != NULL && fullscreen) ret->ToggleFullscreen();
 	} else {
 		ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
 	}
 
-	if (ret != NULL) {
-			/* We cannot set any fullscreen mode on OSX 10.7 when not compiled against SDK 10.7 */
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7
-		if (fullscreen) { ret->ToggleFullscreen(); }
-#endif
-		return ret;
-	}
-
+	if (ret != NULL) return ret;
 	if (!fallback) return NULL;
 
 	/* Try again in 640x480 windowed */
