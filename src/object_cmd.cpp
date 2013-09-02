@@ -391,7 +391,7 @@ static void DrawTile_Object(TileInfo *ti)
 		DrawNewObjectTile(ti, spec);
 	}
 
-	if (spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) DrawBridgeMiddle(ti);
+	DrawBridgeMiddle(ti);
 }
 
 static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y)
