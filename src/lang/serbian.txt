@@ -873,6 +873,7 @@ STR_SMALLMAP_TYPE_OWNERS                                        :Vlasnici
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Prikazuje reljef na karti
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Prikazuje vozila na karti
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Prikazuje fabrike na karti
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Prikazuje protok tereta na karti
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Prikazuje putne rute na karti
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Prikazuje vegetaciju na karti
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Prikazuje vlasništva na karti
@@ -1412,6 +1413,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Dozvoljava da s
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Dozvoljeno više NewGRF kolekcija mašina: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena ovog podešavanja nije moguća dok postoje vozila
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje infrastrukture: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ako je omogućeno, infrastruktura će imati troškove održavanja. Trošak raste brže sa porastom veličine putne mreže i time više pogađa veća preduzeća od manjih
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Nezastarevanje aerodroma: {STRING}
 
@@ -1424,6 +1426,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :svih vozila
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozorenje ukoliko vozilo pravi gubitke: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ako je omogućeno, šalje vest kada vozilo u toku kalendarske godine nije ostvarilo zaradu
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikad ne zastarevaju: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ako je omogućeno, svi modeli vozila ostaju zauvek dostupni (posle njihovog predstavljanja)
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatska zamena kada vozilo ostari: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatska zamena kada je vozilo staro najviše {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Starost vozila pri kojoj postaje kandidat za automatsku zamenu
@@ -1432,6 +1435,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesec{P
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Najmanja potrebna količina novca za zamenu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Najmanji iznos novca koji mora ostati u banci pre automatskog obnavljanja vozila
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poruke o greški: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trajanje prikazivanja poruka o greškama u crvenom prozoru. Neke (kritične) poruke o greškama se ne zatvaraju automatski posle ovog vremena nego moraju da se zatvore ručno
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a e i}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaži poruke u balončićima: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Desni klik
@@ -1443,7 +1447,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Širina linije 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Oblikovanje reljefa: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalno
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Najveće rastojanje od ivice za Rafinerije Ulja: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Najveće rastojanje od ivice za Rafinerije Nafte: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivo snežnog pokrivača: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Vrste terena (samo za TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ravnomerna
@@ -1464,6 +1468,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedan il
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedan ili više sektora na jednoj od ivica nije voda
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatsko servisiranje helikoptera na heliodromima: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Servisiraj helikoptere posle svakog sletanja, čak i kada nema depoa na aerodromu
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Poveži traku alatki za reljef sa železničkim/drumskim/brodskim/avionskim trakama: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Boja tla na karti: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Boja terena na karti
@@ -1565,6 +1570,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Računar ne mo�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Omogućavanje ovog podešavanja znači da računar ne može da stvara brodove
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Podrazumevani profil podešavanja: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Odaberi koji profil podešavanja se koristi za proizvoljne VI ili za početne vrednosti kada se dodaje nova AI ili skript
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lak
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Srednji
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Težak
@@ -1643,6 +1649,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putna
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sva
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Plan gradnje novih puteva u naseljima: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Menja način izgradnje puteva u naseljima
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originalno
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :unapređeni putevi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreže
@@ -1650,8 +1657,11 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreže
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :proizvoljan plan
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Naseljima je dozvoljeno da grade kolovoze: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Naseljima je dozvoljeno da grade putne prelaze: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Omogućava naseljima da grade prelaz pruge preko puta
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ako je ovo podešavanje onemogućeno mogu postojati 2 aerodroma u svakom naselju. Ako je podešavanje omogućeno, broj aerodroma u gradu je ograničen dozvoljenim nivoom buke u gradu koji zavisi od populacije te veličine i udaljenosti aerodroma
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Osnivanje naselja u toku partije: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Dozvoljava igračima osnivanje novih naselja u toku igre
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozvoljeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, zaseban plan gradnje
@@ -1685,11 +1695,11 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalno
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Brzo
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Veoma brzo
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Odnos naselja koja će postati gradovi: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Broj naselja koja će postati gradovi i time počinju veći i brže rastu
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Broj naselja koja će postati gradovi i time počinju veća od ostalih i brže rastu
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 u {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nijedan
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Inicijalni množilac razvoja gradova: {STRING}
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Prosečna veličina naselja relativno u odnosu na gradove na poečtku partije
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Prosečna veličina naselja relativno u odnosu na gradove na početku partije
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Uklanjati besmislene kolovoze u naseljima: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ukloni slepe ulice tokom plaćene rekonstrukcije puteva
 
@@ -1734,6 +1744,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Izgradn
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomija
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribucija Tovara
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Prikazivanje
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcija
@@ -2337,7 +2348,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Uključe
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Isključi označavanje zahvaćenog područja
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Uključi označavanje zahvaćenog područja
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvata: {GOLD}{CARGO_LIST.aku}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Snadbeva: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Snabdeva: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Pridruži stanicu
@@ -2595,11 +2606,11 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansir
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Lanac snabdevanja - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Lanac proizvodnje - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Snadbevačke industrije
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Snabdevačke industrije
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Potrošačke industrije
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domaćinstva
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikom na industriju prikazuju se njegovi snadbevači i potrošači
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikom na tovar prikazuju se njegovi snadbevači i potrošači
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikom na industriju prikazuju se njegovi snabdevači i potrošači
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikom na tovar prikazuju se njegovi snabdevači i potrošači
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Lanac
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikazuje lanac snabdevanja industrija
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Obeleži na karti
