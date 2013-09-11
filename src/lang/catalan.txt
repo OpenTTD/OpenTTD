@@ -3937,10 +3937,10 @@ STR_AI_SETTINGS_START_DELAY                                     :Número de dies
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeixme del {STRING} de {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeix-me del {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeixme
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeix-me
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registre de canvis
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
 
