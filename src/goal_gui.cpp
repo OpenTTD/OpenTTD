@@ -42,6 +42,7 @@ struct GoalListWindow : public Window {
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GOAL_SCROLLBAR);
 		this->FinishInitNested(window_number);
+		this->owner = (Owner)this->window_number;
 		this->OnInvalidateData(0);
 	}
 
