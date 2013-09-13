@@ -326,7 +326,7 @@ protected:
 			case SPET_GOAL:
 			case SPET_LOCATION: {
 				Dimension sprite_dim = GetSpriteSize(GetPageElementSprite(pe));
-				int line_height = GetStringHeight(STR_JUST_NOTHING, INT_MAX);
+				int line_height = FONT_HEIGHT_NORMAL;
 				if (line_height == 0) return 1;
 				return max((uint)1, sprite_dim.height / (uint)line_height);
 				break;
@@ -498,7 +498,7 @@ public:
 		_cur_dpi = &tmp_dpi;
 
 		/* Draw content (now coordinates given to Draw** are local to the new clipping region). */
-		int line_height = GetStringHeight(STR_JUST_NOTHING, INT_MAX);
+		int line_height = FONT_HEIGHT_NORMAL;
 		int y_offset = - this->vscroll->GetPosition() * line_height;
 
 		/* Date */
@@ -549,7 +549,8 @@ public:
 	{
 		if (widget != WID_SB_SEL_PAGE && widget != WID_SB_PAGE_PANEL) return;
 
-		Dimension d = GetStringBoundingBox(STR_JUST_NOTHING);
+		Dimension d;
+		d.height= FONT_HEIGHT_NORMAL;
 		d.width = 0;
 
 		switch(widget) {
