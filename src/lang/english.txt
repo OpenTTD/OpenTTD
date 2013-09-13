@@ -3027,6 +3027,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Previous
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Go to previous page
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Next
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Go to next page
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Invalid goal reference
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Station names - click on name to centre main view on station. Ctrl+Click opens a new viewport on station location
