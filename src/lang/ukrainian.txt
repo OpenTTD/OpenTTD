@@ -357,7 +357,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закр
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок вікна - потягніть для переміщення вікна
 STR_TOOLTIP_SHADE                                               :{BLACK}Згорнути вікно - показувати тільки заголовок
 STR_TOOLTIP_DEBUG                                               :{BLACK}Показати інформацію для відлагодження NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Закріпити вікно - воно не буде закриватися командою "Закрити всі вікна"
+STR_TOOLTIP_STICKY                                              :{BLACK}Не закривати вікно кнопкою "Закрити всі вікна". Ctrl+клік зберігає налаштування як базове
 STR_TOOLTIP_RESIZE                                              :{BLACK}Натисніть і тягніть для зміни розміру вікна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Розмір вікна великий/малий
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуга прокрутки - прокручує список вверх/вниз
@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Налашту�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Налаштування, що відрізняються від налаштувань нової гри
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Обмежує перелік нижче визначеними типами налаштувань
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Всі налаштування
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Усі типи налаштувань
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Налаштування клієнта (не присутні в збережених іграх; впливають на всі ігри)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Налаштування гри (знаходяться в збережених іграх; впливають лише на нові ігри)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Налаштування гри (знаходяться в збережених іграх; впливають лише на поточну гру)
@@ -1548,7 +1548,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Показат�
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Прибуття першого транспорту на станцію конкурента: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показати газету коли перший транспортний засіб прибуває на нову станцію конкурента
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Нещасні випадки / стихійні лиха: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показати газету коли стається аварія або катастрофа
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показати газету при аварії або катастрофі
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Інформація щодо компанії: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показати газету коли відкривається нова компанія, або коли компанії ризикують збанкрутувати
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Відкриття підприємств: {STRING}
@@ -1671,13 +1671,19 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Прибрат�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Дозволяє видаляти тупіки на дорогах міста під час рекострукції доріг.
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СІ (м/с)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :СІ (кВт)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :СІ (кг)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :СІ (м³)
 
 
-
-
-
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Інтерфейс
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локалізація
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Будівництво
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станції
@@ -2084,6 +2090,7 @@ STR_NETWORK_CLIENT                                              :Клієнт
 STR_NETWORK_SPECTATORS                                          :Спостерігачі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введіть суму грошей, яку Ви хочете віддати
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Глядач
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не запам'ятовувати введений пароль
@@ -3043,6 +3050,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}Пер�
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисніть на субсидії, щоб показати підприємство/місто у центрі екрану. Утримання Ctrl відкриває нове вікно з видом на підприємство/місто
 
 # Story book window
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}На попередню сторінку
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Далі
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Назви станцій - натисніть на назву, щоб показати станцію в центрі екрану. Утримання Ctrl відкриває нове вікно з видом на станцію
@@ -3834,7 +3843,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Авто
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Очікується
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Призначено
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Переключити між очікуваним і запланованим
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Перемкнути очікуване на заплановане
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :В:
@@ -4299,6 +4308,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не м�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспорт знищено
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Недоступний жоден транспортний засіб
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Змінити налаштування встановленого NewGRF
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Неможливо проїхати сигнал - небезпечно...
@@ -4710,10 +4721,10 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Пасажир�
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Судно на повітряній подушці Bakewell 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Пасажирский пором Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Пасажирский пором Shivershake
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Вантажний корабель Yate
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Вантажний корабель Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Вантажний корабель Mightymover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Вантажний корабель Powernaut
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Вантажний корабель Яхта
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Вантажний корабель Бейквел
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Вантажний корабель Могутній
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Вантажний корабель Потужний
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -4829,6 +4840,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
