@@ -34,6 +34,8 @@
 #include "vehicle_func.h"
 #include "smallmap_gui.h"
 #include "game/game.hpp"
+#include "goal_base.h"
+#include "story_base.h"
 
 #include "table/strings.h"
 
@@ -934,6 +936,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			AI::BroadcastNewEvent(new ScriptEventCompanyBankrupt(c_index));
 			Game::NewEvent(new ScriptEventCompanyBankrupt(c_index));
 			CompanyAdminRemove(c_index, (CompanyRemoveReason)reason);
+
+			if (StoryPage::GetNumItems() == 0 || Goal::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 			break;
 		}
 

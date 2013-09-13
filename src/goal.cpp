@@ -85,6 +85,7 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		g->completed = false;
 
 		InvalidateWindowData(WC_GOALS_LIST, 0);
+		if (Goal::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 
 		_new_goal_id = g->index;
 	}
@@ -111,6 +112,7 @@ CommandCost CmdRemoveGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		delete g;
 
 		InvalidateWindowData(WC_GOALS_LIST, 0);
+		if (Goal::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 	}
 
 	return CommandCost();

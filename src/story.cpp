@@ -128,6 +128,7 @@ CommandCost CmdCreateStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
+		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 
 		_new_story_page_id = s->index;
 		_story_page_next_sort_value++;
@@ -300,6 +301,7 @@ CommandCost CmdRemoveStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		delete p;
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
+		if (StoryPage::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 	}
 
 	return CommandCost();

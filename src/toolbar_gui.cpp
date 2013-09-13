@@ -44,6 +44,8 @@
 #include "engine_base.h"
 #include "highscore.h"
 #include "game/game.hpp"
+#include "goal_base.h"
+#include "story_base.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -192,23 +194,36 @@ static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count
 static const int CTMN_CLIENT_LIST = -1; ///< Show the client list
 static const int CTMN_NEW_COMPANY = -2; ///< Create a new company
 static const int CTMN_SPECTATE    = -3; ///< Become spectator
+static const int CTMN_SPECTATOR   = -4; ///< Show a company window as spectator
 
 /**
  * Pop up a generic company list menu.
+ * @param w The toolbar window.
+ * @param widget The button widget id.
+ * @param grey A bitbask of which items to mark as disabled.
+ * @param include_spectator If true, a spectator option is included in the list.
  */
-static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
+static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0, bool include_spectator = false)
 {
 	DropDownList *list = new DropDownList();
 
 #ifdef ENABLE_NETWORK
-	if (widget == WID_TN_COMPANIES && _networking) {
-		/* Add the client list button for the companies menu */
-		list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, CTMN_CLIENT_LIST, false));
+	if (_networking) {
+		if (widget == WID_TN_COMPANIES) {
+			/* Add the client list button for the companies menu */
+			list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, CTMN_CLIENT_LIST, false));
+		}
 
-		if (_local_company == COMPANY_SPECTATOR) {
-			list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_NEW_COMPANY, CTMN_NEW_COMPANY, NetworkMaxCompaniesReached()));
-		} else {
-			list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_SPECTATE, CTMN_SPECTATE, NetworkMaxSpectatorsReached()));
+		if (include_spectator) {
+			if (widget == WID_TN_COMPANIES) {
+				if (_local_company == COMPANY_SPECTATOR) {
+					list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_NEW_COMPANY, CTMN_NEW_COMPANY, NetworkMaxCompaniesReached()));
+				} else {
+					list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_SPECTATE, CTMN_SPECTATE, NetworkMaxSpectatorsReached()));
+				}
+			} else {
+				list->push_back(new DropDownListStringItem(STR_NETWORK_TOOLBAR_LIST_SPECTATOR, CTMN_SPECTATOR, false));
+			}
 		}
 	}
 #endif /* ENABLE_NETWORK */
@@ -565,7 +580,7 @@ static CallBackFunction MenuClickFinances(int index)
 
 static CallBackFunction ToolbarCompaniesClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES);
+	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES, 0, true);
 	return CBF_NONE;
 }
 
@@ -611,7 +626,7 @@ static CallBackFunction MenuClickCompany(int index)
 
 static CallBackFunction ToolbarStoryClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_STORY);
+	PopupMainCompanyToolbMenu(w, WID_TN_STORY, 0, true);
 	return CBF_NONE;
 }
 
@@ -623,7 +638,7 @@ static CallBackFunction ToolbarStoryClick(Window *w)
  */
 static CallBackFunction MenuClickStory(int index)
 {
-	ShowStoryBook((CompanyID)index);
+	ShowStoryBook(index == CTMN_SPECTATOR ? INVALID_COMPANY : (CompanyID)index);
 	return CBF_NONE;
 }
 
@@ -631,7 +646,7 @@ static CallBackFunction MenuClickStory(int index)
 
 static CallBackFunction ToolbarGoalClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_GOAL);
+	PopupMainCompanyToolbMenu(w, WID_TN_GOAL, 0, true);
 	return CBF_NONE;
 }
 
@@ -643,7 +658,7 @@ static CallBackFunction ToolbarGoalClick(Window *w)
  */
 static CallBackFunction MenuClickGoal(int index)
 {
-	ShowGoalsList((CompanyID)index);
+	ShowGoalsList(index == CTMN_SPECTATOR ? INVALID_COMPANY : (CompanyID)index);
 	return CBF_NONE;
 }
 
@@ -1641,7 +1656,10 @@ struct MainToolbarWindow : Window {
 		 * Since enabled state is the default, just disable when needed */
 		this->SetWidgetsDisabledState(_local_company == COMPANY_SPECTATOR, WID_TN_RAILS, WID_TN_ROADS, WID_TN_WATER, WID_TN_AIR, WID_TN_LANDSCAPE, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
-		this->SetWidgetsDisabledState(Company::GetNumItems() == 0, WID_TN_STATIONS, WID_TN_FINANCES, WID_TN_TRAINS, WID_TN_ROADVEHS, WID_TN_SHIPS, WID_TN_AIRCRAFTS, WID_TN_STORY, WID_TN_GOAL, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(Company::GetNumItems() == 0, WID_TN_STATIONS, WID_TN_FINANCES, WID_TN_TRAINS, WID_TN_ROADVEHS, WID_TN_SHIPS, WID_TN_AIRCRAFTS, WIDGET_LIST_END);
+
+		this->SetWidgetDisabledState(WID_TN_GOAL, Goal::GetNumItems() == 0);
+		this->SetWidgetDisabledState(WID_TN_STORY, StoryPage::GetNumItems() == 0);
 
 		this->SetWidgetDisabledState(WID_TN_RAILS, !CanBuildVehicleInfrastructure(VEH_TRAIN));
 		this->SetWidgetDisabledState(WID_TN_AIR, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
