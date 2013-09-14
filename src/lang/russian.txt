@@ -3207,6 +3207,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Пред
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Предыдущая страница
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Следующая
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Следующая страница
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Неверная ссылка на достижение
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Список станций - щелчок по названию показывает станцию в основном окне. Ctrl+щелчок показывает в дополнительном окне.

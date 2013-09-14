@@ -2251,6 +2251,7 @@ STR_NETWORK_CLIENT                                              :Žaidėjas
 STR_NETWORK_SPECTATORS                                          :Stebėtojai
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Įveskite kiekį pinigų, kurį norite gauti
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Stebėtojas
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neišsaugotas įvestas slaptažodis
@@ -3235,6 +3236,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Buvęs
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Į ankstesnį puslapį
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Kitas
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Į kitą puslapį
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Klaidinga tikslo nuoroda
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stotelių pavadinimai - paspausk ant stotelės pavadinimo, kad pamatytum ją ekrano centre. Ctrl+Paspaudimas atidaro naują langą su stotelės vaizdu

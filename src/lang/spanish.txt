@@ -2043,6 +2043,7 @@ STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce la cantidad de dinero que deseas dar
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No guardar la contraseña introducida
@@ -3027,6 +3028,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir a la página anterior
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Siguiente
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir a la siguiente página
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referencia de metas inválida
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - Click sobre un nombre para centrar la vista principal en la estación. Ctrl+Click abre un punto de vista en dicha posición

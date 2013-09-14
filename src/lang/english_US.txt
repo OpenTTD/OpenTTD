@@ -2042,6 +2042,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectators
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password
@@ -3026,6 +3027,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Previous
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Go to previous page
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Next
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Go to next page
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Invalid goal reference
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Station names - click on name to center main view on station. Ctrl+Click opens a new viewport on station location

@@ -2042,6 +2042,7 @@ STR_NETWORK_CLIENT                                              :Pelaaja
 STR_NETWORK_SPECTATORS                                          :Katsojat
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Syötä rahamäärä, jonka haluat antaa
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Katsoja
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Älä tallenna syötettyä salasanaa
@@ -3026,6 +3027,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Edelline
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Siirry edelliselle sivulle
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Seuraava
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Siirry seuraavalle sivulle
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Virheellinen viittaus tavoitteeseen
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Asemien nimet - napsauta nimeä keskittääksesi päänäkymän asemaan. Ctrl+Klik avaa uuden näkymäikkunan aseman sijaintiin
