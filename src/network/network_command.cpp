@@ -235,7 +235,7 @@ void NetworkFreeLocalCommandQueue()
  * @param cp    The command that has to be distributed.
  * @param owner The client that owns the command,
  */
-static void DistributeCommandPacket(CommandPacket cp, const NetworkClientSocket *owner)
+static void DistributeCommandPacket(CommandPacket &cp, const NetworkClientSocket *owner)
 {
 	CommandCallback *callback = cp.callback;
 	cp.frame = _frame_counter_max + 1;
