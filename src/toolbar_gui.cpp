@@ -1448,7 +1448,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 	/* virtual */ const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const
 	{
 		static const uint SMALLEST_ARRANGEMENT = 14;
-		static const uint BIGGEST_ARRANGEMENT  = 19;
+		static const uint BIGGEST_ARRANGEMENT  = 20;
 		static const byte arrange14[] = {
 			0,  1, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 29,
 			2,  3,  4,  5,  6,  7,  8,  9, 12, 14, 26, 27, 28, 29,
@@ -1473,6 +1473,10 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			0,  1,  2,  4,  5,  6, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 19, 20, 29,
 			0,  1,  3,  4,  7,  8,  9, 12, 14, 27, 21, 22, 23, 24, 25, 28, 19, 20, 29,
 		};
+		static const byte arrange20[] = {
+			0,  1,  2,  4,  5,  6, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 11, 19, 20, 29,
+			0,  1,  3,  4,  7,  8,  9, 12, 14, 27, 21, 22, 23, 24, 25, 10, 28, 19, 20, 29,
+		};
 		static const byte arrange_all[] = {
 			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28
 		};
@@ -1486,7 +1490,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		}
 
 		/* Introduce the split toolbar */
-		static const byte * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19 };
+		static const byte * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19, arrange20 };
 
 		button_count = arrangable_count = full_buttons;
 		spacer_count = this->spacers;
