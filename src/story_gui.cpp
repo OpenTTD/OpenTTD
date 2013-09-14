@@ -479,6 +479,21 @@ public:
 		}
 	}
 
+	virtual void OnPaint()
+	{
+		/* Detect if content has changed height. This can happen if a
+		 * multi-line text contains eg. {COMPANY} and that company is
+		 * renamed.
+		 */
+		if (this->vscroll->GetCount() != this->GetContentHeight()) {
+			this->vscroll->SetCount(this->GetContentHeight());
+			this->SetWidgetDirty(WID_SB_SCROLLBAR);
+			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+		}
+
+		this->DrawWidgets();
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != WID_SB_PAGE_PANEL) return;
