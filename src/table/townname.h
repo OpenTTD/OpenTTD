@@ -3149,7 +3149,7 @@ static const char * const _name_italian_river2[] = {
 
 static const char * const _name_catalan_real[] = {
 	"Barcelona",
-	"Hospitalet",
+	"L'Hospitalet de Llobregat",
 	"Cerdanyola",
 	"Martorell",
 	"Badalona",
@@ -3161,7 +3161,7 @@ static const char * const _name_catalan_real[] = {
 	"Reus",
 	"Valls",
 	"Vic",
-	"Vielha",
+	"Vielha e Mijaran",
 	"Amposta",
 	"Tortosa",
 	"Berga",
@@ -3171,12 +3171,12 @@ static const char * const _name_catalan_real[] = {
 	"Figueres",
 	"Balaguer",
 	"Vilafranca del Pened\xC3\xA8s",
-	"La seu d'Urgell",
-	"Pont de Suert",
+	"La Seu d'Urgell",
+	"El Pont de Suert",
 	"Igualada",
 	"Manresa",
 	"Solsona",
-	"Les borges blanques",
+	"Les Borges Blanques",
 	"Tremp",
 	"Sort",
 	"Colera",
@@ -3194,21 +3194,21 @@ static const char * const _name_catalan_real[] = {
 	"Campdev\xC3\xA0nol",
 	"Cambrils",
 	"Begur",
-	"Set Cases",
+	"Setcases",
 	"Palafrugell",
 	"Begues",
 	"El Bruc",
 	"Cadaqu\xC3\xA9s",
 	"Collbat\xC3\xB3",
 	"Cervell\xC3\xB3",
-	"Esparraguera",
+	"Esparreguera",
 	"Abrera",
 	"Alp",
 	"Das",
 	"Cercs",
 	"Manlleu",
-	"Masnou",
-	"Molins de rei",
+	"El Masnou",
+	"Molins de Rei",
 	"Monistrol",
 	"Rocallaura",
 	"Rub\xC3\xAD",
@@ -3218,15 +3218,15 @@ static const char * const _name_catalan_real[] = {
 };
 
 static const char * const _name_catalan_pref[] = {
-	"Pont de ",
+	"El Pont de ",
 	"Parets de ",
 	"Canet de ",
 	"Castellar de ",
 	"Corbera de ",
 	"Arenys de ",
 	"Calella de ",
-	"La seu de ",
-	"La bisbal de ",
+	"La Seu de ",
+	"La Bisbal de ",
 	"Torroella de ",
 	"Port de ",
 	"Vilafranca de ",
@@ -3262,13 +3262,13 @@ static const char * const _name_catalan_1m[] = {
 };
 
 static const char * const _name_catalan_1f[] = {
-	"Aigua",
-	"Selva ",
+	"Pala",
+	"Selva",
 	"Vall",
 	"Serra",
 	"Torre",
 	"Riba",
-	"Vall",
+	"Cova",
 	"Terra",
 };
 
@@ -3280,7 +3280,7 @@ static const char * const _name_catalan_2m[] = {
 	"vent\xC3\xB3s",
 	"negre",
 	"roig",
-	"gris",
+	"gr\xC3\xADs",
 };
 
 static const char * const _name_catalan_2f[] = {
@@ -3295,16 +3295,16 @@ static const char * const _name_catalan_2f[] = {
 };
 
 static const char * const _name_catalan_3[] = {
-	" desp\xC3\xAD",
-	" desvern",
-	" del cam\xC3\xAD",
+	" Desp\xC3\xAD",
+	" Desvern",
+	" del Cam\xC3\xAD",
 	" de Mar",
 	" de Dalt",
 	" de Baix",
 	" del Vall\xC3\xA8s",
 	" de Bergued\xC3\xA0",
 	" de Conflent",
-	" de la plana",
+	" de la Plana",
 };
 
 static const char * const _name_catalan_river1[] = {
