@@ -2043,6 +2043,7 @@ STR_NETWORK_CLIENT                                              :Teilnehmer
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wieviel Geld soll übergeben werden?
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Zuschauer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Eingegebenes Passwort nicht speichern
@@ -3027,6 +3028,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Zurück
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Die vorherige Seite anzeigen
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Vor
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Die nächste Seite anzeigen
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ungültiger Verweis auf ein Spielziel
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - Klick auf den Namen zentriert Hauptansicht auf die Station. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Station

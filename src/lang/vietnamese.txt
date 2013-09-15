@@ -1079,7 +1079,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Thiết lập k
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :THiết lập giá trị mới khác với giá trị cho ván chơi mới
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Hạn chế danh mục sau đối với mỗi kiểu thiết lập
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tất cả thiết lập
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tất cả loại thiết lập
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Thiết lập máy trạm (không lưu trong save; tác động tới mọi ván chơi)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Thiết lập trò chơi (chứa trong save; chỉ có tác dụng với ván chơi mới)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Thiết lập trò chơi (chứa trong save; chỉ có tác dụng với ván chơi hiện tại)
@@ -2042,6 +2042,7 @@ STR_NETWORK_CLIENT                                              :Máy trạm
 STR_NETWORK_SPECTATORS                                          :Người xem
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nhập số tiền muốn cho đi
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Người xem
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Không được ghi mật khẩu đã nhập

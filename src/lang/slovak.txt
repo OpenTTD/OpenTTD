@@ -2110,6 +2110,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Pozorovatelia
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vložte čiastku ktorú chcete dať
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pozorovateľ
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukladať zadané heslo
@@ -3094,6 +3095,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Predchá
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ísť na predchádzajúcu stranu
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Ďalšia
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ísť na ďalšiu stranu
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Neplatný odkaz na cieľ
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Názvy staníc - klikni pre pohľad na polohu stanice. Ctrl+klik presunie pohľad na stanicu

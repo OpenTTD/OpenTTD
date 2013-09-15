@@ -3057,6 +3057,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Indietro
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Va alla pagina precedente
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Avanti
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Va alla pagina successiva
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Riferimento obiettivo non valido
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale principale sulla stazione. CTRL+clic la mostra in una mini visuale.
