@@ -2138,6 +2138,7 @@ STR_NETWORK_CLIENT                                              :Klijent
 STR_NETWORK_SPECTATORS                                          :Promatrači
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite iznos novca koji želite dati
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gledatelj
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nemoj spremiti upisanu zaporku
@@ -3122,6 +3123,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Prethodn
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Prethodna stranica
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Sljedeće
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Sljedeća stranica
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Neispravna referenca cilja
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena postaja - klikni na ime kako bi centrirao glavni pogled na postaju. Ctrl+klik otvara novi prozor sa lokacijom postaje
