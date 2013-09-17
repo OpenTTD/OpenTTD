@@ -1947,6 +1947,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdal
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe zaułki podczas sponsorowanych remontów dróg
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizuj wykres dystrybucji co {STRING} {P dzień dni dni}
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Przekalkulowanie wykresu dystrybucji zajmuje {STRING} {P dzień dni dni}
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manualnie
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetrycznie
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetrycznie
@@ -1977,6 +1978,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperialne (gal
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metryczne (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Jednostka siły pociągowej: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperialna (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metryczna (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
@@ -2403,6 +2405,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Widzowie
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowadź ilość pieniędzy, które chcesz przekazać
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Obserwator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nie zapisuj podanego hasła
@@ -3387,6 +3390,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Wstecz
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idź na poprzednią stronę
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Dalej
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Idź na następną stronę
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Niepoprawne odniesienie do celu
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwa stacji - kliknij na nazwie aby wyśrodkować główny widok na stacji. Ctrl+klik otwiera nowy podgląd na lokację stacji
@@ -3437,6 +3441,7 @@ STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_
 STR_STATION_VIEW_GROUP_S_V_D                                    :Źródło-Przez-Cel
 STR_STATION_VIEW_GROUP_S_D_V                                    :Źródło-Cel-Przez
 STR_STATION_VIEW_GROUP_V_S_D                                    :Przez-Źródło-Cel
+STR_STATION_VIEW_GROUP_V_D_S                                    :Przez-Cel-Źródło
 STR_STATION_VIEW_GROUP_D_S_V                                    :Cel-Źródło-Przez
 STR_STATION_VIEW_GROUP_D_V_S                                    :Cel-Przez-Źródło
 

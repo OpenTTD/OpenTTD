@@ -175,7 +175,7 @@ STR_CRATES                                                      :{COMMA} Këscht
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkelblo
 STR_COLOUR_PALE_GREEN                                           :Bleechgréng
-STR_COLOUR_PINK                                                 :Rosa
+STR_COLOUR_PINK                                                 :Donkelroud
 STR_COLOUR_YELLOW                                               :Giel
 STR_COLOUR_RED                                                  :Rout
 STR_COLOUR_LIGHT_BLUE                                           :Hellblo
@@ -2702,7 +2702,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fräifor
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Waasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zoufälleg
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Zoufall
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handbuch
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Héichtekaart rotatioun:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichtekaart Numm:
@@ -2772,7 +2772,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palette 
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Wiessel Palette vun den selectéierten NewGRF.{} Maach dat wann d'Grafiken vun deser NewGRF rosa am Spill ausgesin
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Ännerungen unhuelen
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Fann Inhalt den feelt online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Feelenden Inhalt online downloaden
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Check op den Inahlt den feelt online kann fonnt gin
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dateinumm: {SILVER}{STRING}
