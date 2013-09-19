@@ -476,9 +476,9 @@ DOS:
   website. Compilation is straight forward: use make, but do a './configure'
   before the first build. The build binary will need cwsdpmi.exe to be in
   the same directory as the openttd executable. cwsdpmi.exe can be found in
-  the os/dos subdirectory. If you compile with stripping turned on a binary
-  will be generated that does not need cwsdpmi.exe by adding the cswdstub.exe
-  to the created OpenTTD binary.
+  the os/dos/cwsdpmi subdirectory. If you compile with stripping turned on a
+  binary will be generated that does not need cwsdpmi.exe by adding the
+  cswdstub.exe to the created OpenTTD binary.
 
 7.1) Required/optional libraries
 ---- ---------------------------
