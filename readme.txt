@@ -26,6 +26,7 @@ Table of contents
  * 8.1) Translation
  * 8.2) Previewing
 9.0) Troubleshooting
+10.0) Licensing
 X.X) Credits
 
 
@@ -35,9 +36,9 @@ OpenTTD is a transport simulation game based upon the popular game Transport
 Tycoon Deluxe, written by Chris Sawyer. It attempts to mimic the original
 game as closely as possible while extending it with new features.
 
-OpenTTD is licensed under the GNU General Public License version 2.0. For
-more information, see the file 'COPYING'.
-
+OpenTTD is licensed under the GNU General Public License version 2.0,
+but includes some 3rd party software under different licenses. See the
+section "Licensing" below for details.
 
 2.0) Contacting
 ---- ----------
@@ -642,6 +643,29 @@ development section (http://www.tt-forums.net/viewforum.php?f=66) or GrfCrawler
 (see section 4.2 'OpenTTD directories') and rescan the list of available NewGRFs.
 Once you have all missing files, you are set to go.
 
+10.0) Licensing
+----- ---------
+OpenTTD is licensed under the GNU General Public License version 2.0. For
+the complete license text, see the file 'COPYING'. This license applies
+to all files in this distribution, except as noted below.
+
+The squirrel implementation in src/3rdparty/squirrel is licensed under
+the Zlib license. See src/3rdparty/squirrel/COPYRIGHT for the complete
+license text.
+
+The md5 implementation in src/3rdparty/md5 is licensed under the Zlib
+license. See the comments in the source files in src/3rdparty/md5 for
+the complete license text.
+
+The exe2coff implementation in os/dos/exe2coff is available under the
+GPL, with a number of additional terms. See os/dos/exe2coff/copying and
+os/dos/exe2coff/copying.dj for the exact licensing terms.
+
+The CWSDPMI implementation in os/dos/cwsdpmi is distributed under a
+custom binary-only license that prohibits modification. The exact
+licensing terms can be found in os/dos/cwsdpmi/cwsdpmi.txt. The sources
+for these files can be downloaded at it's author site, at:
+http://homer.rice.edu/~sandmann/cwsdpmi/csdpmi5s.zip
 
 X.X) Credits
 ---- -------
