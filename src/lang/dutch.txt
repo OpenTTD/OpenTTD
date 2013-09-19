@@ -1117,9 +1117,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeve
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer ingeschakeld kunnen recessies om de paar jaar optreden. Tijdens een recessie is alle productie aanzienlijk lager (Deze keert terug naar het vorige niveau als de recessie voorbij is)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer ingeschakeld kunnen recessies om de paar jaar optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, als er een kortere weg naar hun volgende bestemming is bij omkeren
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, zelfs als er een kortere weg naar hun volgende bestemming is bij omkeren
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Schakel rampen die af en toe voertuigen of infrastructuur kunnen blokkeren of vernietigen
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Gemeenteraad's houding ten opzichte van herstructurering gebied: {STRING}
@@ -1379,7 +1379,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Speel geluidsef
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Einde jaar: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Speel geluidseffecten bij de samenvatting van resultaten gedurende het jaar ten opzichte van het jaar ervoor aan het einde van het jaar
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Bouw: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel geluidseffecten van succesvolle constructies of andere acties
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel geluidseffecten bij succesvolle constructies of andere acties
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knop kliks: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piep bij het klikken op knoppen
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Rampen/ongelukken: {STRING}
@@ -2042,6 +2042,7 @@ STR_NETWORK_CLIENT                                              :Speler
 STR_NETWORK_SPECTATORS                                          :Toeschouwers
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Voer de hoeveelheid geld die je wilt geven in
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Toeschouwer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sla het ingegeven wachtwoord niet op
@@ -3026,6 +3027,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Vorige
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ga naar de vorige pagina
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Volgende
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ga naar de volgende pagina
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ongeldige doelreferentie
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+klik opent een nieuw venster op de locatie van het station
