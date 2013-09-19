@@ -1621,14 +1621,17 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (size >= TSZ_END) return CMD_ERROR;
 	if (layout >= NUM_TLS) return CMD_ERROR;
 
-	/* Some things are allowed only in the scenario editor */
-	if (_game_mode != GM_EDITOR) {
+	/* Some things are allowed only in the scenario editor and for game scripts. */
+	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) {
 		if (_settings_game.economy.found_town == TF_FORBIDDEN) return CMD_ERROR;
 		if (size == TSZ_LARGE) return CMD_ERROR;
 		if (random) return CMD_ERROR;
 		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && layout != _settings_game.economy.town_layout) {
 			return CMD_ERROR;
 		}
+	} else if (_current_company == OWNER_DEITY && random) {
+		/* Random parameter is not allowed for Game Scripts. */
+		return CMD_ERROR;
 	}
 
 	if (StrEmpty(text)) {

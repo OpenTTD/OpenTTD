@@ -22,6 +22,7 @@
  * API additions:
  * \li AIStation::HasCargoRating
  * \li AITile::GetTerrainType
+ * \li AITown::FoundTown
  *
  * Other changes:
  * \li AIStation::GetCargoRating does return -1 for cargo-station combinations that

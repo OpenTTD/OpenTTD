@@ -14,6 +14,7 @@
 #include "script_map.hpp"
 #include "script_error.hpp"
 #include "../../town.h"
+#include "../../townname_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../station_base.h"
@@ -36,6 +37,21 @@
 
 	::SetDParam(0, town_id);
 	return GetString(STR_TOWN_NAME);
+}
+
+/* static */ bool ScriptTown::SetName(TownID town_id, Text *name)
+{
+	CCountedPtr<Text> counter(name);
+
+	const char *text = NULL;
+	if (name != NULL) {
+		const char *text = name->GetDecodedText();
+		EnforcePreconditionEncodedText(false, text);
+		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	}
+	EnforcePrecondition(false, IsValidTown(town_id));
+
+	return ScriptObject::DoCommand(0, town_id, 0, CMD_RENAME_TOWN, text);
 }
 
 /* static */ bool ScriptTown::SetText(TownID town_id, Text *text)
@@ -236,6 +252,33 @@
 	EnforcePrecondition(false, houses > 0);
 
 	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, houses, CMD_EXPAND_TOWN);
+}
+
+/* static */ bool ScriptTown::FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, Text *name)
+{
+	CCountedPtr<Text> counter(name);
+
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY || _settings_game.economy.found_town != TF_FORBIDDEN);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE)
+	EnforcePrecondition(false, size != TOWN_SIZE_LARGE || ScriptObject::GetCompany() == OWNER_DEITY);
+	if (ScriptObject::GetCompany() == OWNER_DEITY || _settings_game.economy.found_town == TF_CUSTOM_LAYOUT) {
+		EnforcePrecondition(false, layout == ROAD_LAYOUT_ORIGINAL || layout == ROAD_LAYOUT_BETTER_ROADS || layout == ROAD_LAYOUT_2x2 || layout == ROAD_LAYOUT_3x3);
+	} else {
+		/* The layout parameter is ignored for AIs when custom layouts is disabled. */
+		layout = (RoadLayout) (byte)_settings_game.economy.town_layout;
+	}
+
+	const char *text = NULL;
+	if (name != NULL) {
+		text = name->GetDecodedText();
+		EnforcePreconditionEncodedText(false, text);
+		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	}
+	uint32 townnameparts;
+	GenerateTownName(&townnameparts);
+
+	return ScriptObject::DoCommand(tile, size | (city ? 1 << 2 : 0) | layout << 3, townnameparts, CMD_FOUND_TOWN, text);
 }
 
 /* static */ ScriptTown::TownRating ScriptTown::GetRating(TownID town_id, ScriptCompany::CompanyID company_id)

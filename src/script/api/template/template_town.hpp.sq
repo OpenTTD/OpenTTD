@@ -19,6 +19,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptTown::TownRating>(HSQUIRRELVM vm, ScriptTown::TownRating res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptTown::RoadLayout GetParam(ForceType<ScriptTown::RoadLayout>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTown::RoadLayout)tmp; }
 	template <> inline int Return<ScriptTown::RoadLayout>(HSQUIRRELVM vm, ScriptTown::RoadLayout res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTown::TownSize GetParam(ForceType<ScriptTown::TownSize>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTown::TownSize)tmp; }
+	template <> inline int Return<ScriptTown::TownSize>(HSQUIRRELVM vm, ScriptTown::TownSize res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow ScriptTown to be used as Squirrel parameter */
 	template <> inline ScriptTown *GetParam(ForceType<ScriptTown *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTown *)instance; }

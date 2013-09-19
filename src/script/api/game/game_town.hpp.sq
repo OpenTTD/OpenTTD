@@ -44,10 +44,15 @@ void SQGSTown_Register(Squirrel *engine)
 	SQGSTown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_2x2,              "ROAD_LAYOUT_2x2");
 	SQGSTown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_3x3,              "ROAD_LAYOUT_3x3");
 	SQGSTown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_INVALID,          "ROAD_LAYOUT_INVALID");
+	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_SIZE_SMALL,              "TOWN_SIZE_SMALL");
+	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_SIZE_MEDIUM,             "TOWN_SIZE_MEDIUM");
+	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_SIZE_LARGE,              "TOWN_SIZE_LARGE");
+	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_SIZE_INVALID,            "TOWN_SIZE_INVALID");
 
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetTownCount,                      "GetTownCount",                      1, ".");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::IsValidTown,                       "IsValidTown",                       2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetName,                           "GetName",                           2, ".i");
+	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::SetName,                           "SetName",                           3, ".i.");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::SetText,                           "SetText",                           3, ".i.");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetPopulation,                     "GetPopulation",                     2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetHouseCount,                     "GetHouseCount",                     2, ".i");
@@ -71,6 +76,7 @@ void SQGSTown_Register(Squirrel *engine)
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::IsActionAvailable,                 "IsActionAvailable",                 3, ".ii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::PerformTownAction,                 "PerformTownAction",                 3, ".ii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::ExpandTown,                        "ExpandTown",                        3, ".ii");
+	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::FoundTown,                         "FoundTown",                         6, ".iibi.");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetRating,                         "GetRating",                         3, ".ii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetAllowedNoise,                   "GetAllowedNoise",                   2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetRoadLayout,                     "GetRoadLayout",                     2, ".i");

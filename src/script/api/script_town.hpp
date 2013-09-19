@@ -106,6 +106,17 @@ public:
 	};
 
 	/**
+	 * Possible town construction sizes.
+	 */
+	enum TownSize {
+		TOWN_SIZE_SMALL   = ::TSZ_SMALL,  ///< Small town.
+		TOWN_SIZE_MEDIUM  = ::TSZ_MEDIUM, ///< Medium town.
+		TOWN_SIZE_LARGE   = ::TSZ_LARGE,  ///< Large town.
+
+		TOWN_SIZE_INVALID = -1,  ///< Invalid town size.
+	};
+
+	/**
 	 * Gets the number of towns.
 	 * @return The number of towns.
 	 */
@@ -125,6 +136,16 @@ public:
 	 * @return The name of the town.
 	 */
 	static char *GetName(TownID town_id);
+
+	/**
+	 * Rename a town.
+	 * @param town_id The town to rename
+	 * @param name The new name of the town. If NULL or an empty string is passed, the town name will be reset to the default name.
+	 * @pre IsValidTown(town_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetName(TownID town_id, Text *name);
 
 	/**
 	 * Set the custom text of a town, shown in the GUI.
@@ -354,6 +375,25 @@ public:
 	 * @api -ai
 	 */
 	static bool ExpandTown(TownID town_id, int houses);
+
+	/**
+	 * Found a new town.
+	 * @param tile The location of the new town.
+	 * @param size The town size of the new town.
+	 * @param city True if the new town should be a city.
+	 * @param layout The town layout of the new town.
+	 * @param name The name of the new town. Pass NULL to use a random town name.
+	 * @game @pre no company mode in scope || ScriptSettings.GetValue("economy.found_town") != 0.
+	 * @ai @pre ScriptSettings.GetValue("economy.found_town") != 0.
+	 * @game @pre no company mode in scope || size != TOWN_SIZE_LARGE.
+	 * @ai @pre size != TOWN_SIZE_LARGE.
+	 * @pre size != TOWN_SIZE_INVALID.
+	 * @pre layout != ROAD_LAYOUT_INVALID.
+	 * @return True if the action succeeded.
+	 * @game @note Companies are restricted by the advanced setting that controls if funding towns is allowed or not. If custom road layout is forbidden and there is a company mode in scope, the layout parameter will be ignored.
+	 * @ai @note AIs are restricted by the advanced setting that controls if funding towns is allowed or not. If custom road layout is forbidden, the layout parameter will be ignored.
+	 */
+	static bool FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, Text *name);
 
 	/**
 	 * Get the rating of a company within a town.

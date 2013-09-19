@@ -44,6 +44,10 @@ void SQAITown_Register(Squirrel *engine)
 	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_2x2,              "ROAD_LAYOUT_2x2");
 	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_3x3,              "ROAD_LAYOUT_3x3");
 	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_INVALID,          "ROAD_LAYOUT_INVALID");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_SMALL,              "TOWN_SIZE_SMALL");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_MEDIUM,             "TOWN_SIZE_MEDIUM");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_LARGE,              "TOWN_SIZE_LARGE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_INVALID,            "TOWN_SIZE_INVALID");
 
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetTownCount,                      "GetTownCount",                      1, ".");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsValidTown,                       "IsValidTown",                       2, ".i");
@@ -67,6 +71,7 @@ void SQAITown_Register(Squirrel *engine)
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetExclusiveRightsDuration,        "GetExclusiveRightsDuration",        2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsActionAvailable,                 "IsActionAvailable",                 3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::PerformTownAction,                 "PerformTownAction",                 3, ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::FoundTown,                         "FoundTown",                         6, ".iibi.");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetRating,                         "GetRating",                         3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetAllowedNoise,                   "GetAllowedNoise",                   2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetRoadLayout,                     "GetRoadLayout",                     2, ".i");

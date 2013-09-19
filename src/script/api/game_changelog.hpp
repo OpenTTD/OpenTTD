@@ -27,6 +27,8 @@
  * \li GSStation::HasCargoRating
  * \li GSStoryPage
  * \li GSTile::GetTerrainType
+ * \li GSTown::FoundTown
+ * \li GSTown::SetName
  *
  * Other changes:
  * \li GSGoal::New can now create up to 64000 concurrent goals. The old limit was 256 goals.
