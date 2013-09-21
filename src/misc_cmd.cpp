@@ -194,7 +194,7 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
  * Change the financial flow of your company.
  * @param tile unused
  * @param flags operation to perform
- * @param p1 the amount of money to receive (if negative), or spend (if positive)
+ * @param p1 the amount of money to receive (if positive), or spend (if negative)
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
