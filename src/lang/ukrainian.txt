@@ -330,15 +330,20 @@ STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}кг
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P а и ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} гал
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}л
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}м³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" и ів}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} літр{P "" а ів}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} фунт-сили
+STR_UNITS_FORCE_METRIC                                          :{COMMA} кгс
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фт
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} м
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
@@ -3362,14 +3367,14 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Міст
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Може бути переобладненим на: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
-STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_BUT                                       :Всі, крім {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальність: {GOLD}{COMMA} клітинок
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів - клікніть на поїзді для інформації
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список авто - натисніть на авто для інформації
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список вибору кораблів - натисніть на корабель для інформації
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список вибору літаків - натисніть на літак для інформації
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів - клацніть на поїзді для інформації
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список авто - клацніть на авто для інформації
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список вибору кораблів - клацніть на корабель для інформації
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список вибору літаків - клацніть на літак для інформації
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купити
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купити
@@ -3391,7 +3396,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Пере
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Перейменувати тип корабля
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Перейменувати тип літака
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Перейменувати тип поїзду
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Перейменувати тип поїзда
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Перейменувати тип авто
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Перейменувати тип корабля
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Перейменувати тип літака
