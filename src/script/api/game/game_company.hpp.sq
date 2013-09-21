@@ -21,15 +21,29 @@ void SQGSCompany_Register(Squirrel *engine)
 	SQGSCompany.PreRegister(engine);
 	SQGSCompany.AddConstructor<void (ScriptCompany::*)(), 1>(engine, "x");
 
-	SQGSCompany.DefSQConst(engine, ScriptCompany::CURRENT_QUARTER,  "CURRENT_QUARTER");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::EARLIEST_QUARTER, "EARLIEST_QUARTER");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_FIRST,    "COMPANY_FIRST");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_LAST,     "COMPANY_LAST");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_INVALID,  "COMPANY_INVALID");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_SELF,     "COMPANY_SELF");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_MALE,      "GENDER_MALE");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_FEMALE,    "GENDER_FEMALE");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_INVALID,   "GENDER_INVALID");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::CURRENT_QUARTER,       "CURRENT_QUARTER");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EARLIEST_QUARTER,      "EARLIEST_QUARTER");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_FIRST,         "COMPANY_FIRST");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_LAST,          "COMPANY_LAST");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_INVALID,       "COMPANY_INVALID");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_SELF,          "COMPANY_SELF");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_MALE,           "GENDER_MALE");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_FEMALE,         "GENDER_FEMALE");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_INVALID,        "GENDER_INVALID");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_CONSTRUCTION, "EXPENSES_CONSTRUCTION");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_NEW_VEHICLES, "EXPENSES_NEW_VEHICLES");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_TRAIN_RUN,    "EXPENSES_TRAIN_RUN");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_ROADVEH_RUN,  "EXPENSES_ROADVEH_RUN");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_AIRCRAFT_RUN, "EXPENSES_AIRCRAFT_RUN");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_SHIP_RUN,     "EXPENSES_SHIP_RUN");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_PROPERTY,     "EXPENSES_PROPERTY");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_TRAIN_INC,    "EXPENSES_TRAIN_INC");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_ROADVEH_INC,  "EXPENSES_ROADVEH_INC");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_AIRCRAFT_INC, "EXPENSES_AIRCRAFT_INC");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_SHIP_INC,     "EXPENSES_SHIP_INC");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_LOAN_INT,     "EXPENSES_LOAN_INT");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_OTHER,        "EXPENSES_OTHER");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::INVALID_EXPENSES,      "INVALID_EXPENSES");
 
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::ResolveCompanyID,              "ResolveCompanyID",              2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::SetName,                       "SetName",                       2, "..");
@@ -43,6 +57,7 @@ void SQGSCompany_Register(Squirrel *engine)
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetMaxLoanAmount,              "GetMaxLoanAmount",              1, ".");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetLoanInterval,               "GetLoanInterval",               1, ".");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetBankBalance,                "GetBankBalance",                2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::ChangeBankBalance,             "ChangeBankBalance",             4, ".iii");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyIncome,            "GetQuarterlyIncome",            3, ".ii");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyExpenses,          "GetQuarterlyExpenses",          3, ".ii");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyCargoDelivered,    "GetQuarterlyCargoDelivered",    3, ".ii");

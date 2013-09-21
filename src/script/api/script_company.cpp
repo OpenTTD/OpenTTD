@@ -12,6 +12,7 @@
 #include "../../stdafx.h"
 #include "script_company.hpp"
 #include "script_error.hpp"
+#include "script_companymode.hpp"
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../company_manager_face.h"
@@ -221,6 +222,17 @@
 	SetLoanAmount(loan);
 
 	return GetLoanAmount() == loan;
+}
+
+/* static */ bool ScriptCompany::ChangeBankBalance(CompanyID company, int32 delta, ExpensesType expenses_type)
+{
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforcePrecondition(false, expenses_type < ::EXPENSES_END);
+
+	company = ResolveCompanyID(company);
+	EnforcePrecondition(false, ResolveCompanyID(company) != COMPANY_INVALID);
+
+	return ScriptObject::DoCommand(0, (uint32)(delta), company | expenses_type << 8 , CMD_CHANGE_BANK_BALANCE);
 }
 
 /* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)

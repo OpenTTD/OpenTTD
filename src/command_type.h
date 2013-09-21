@@ -259,6 +259,7 @@ enum Commands {
 	CMD_CLEAR_AREA,                   ///< clear an area
 
 	CMD_MONEY_CHEAT,                  ///< do the money cheat
+	CMD_CHANGE_BANK_BALANCE,          ///< change bank balance to charge costs or give money from a GS
 	CMD_BUILD_CANAL,                  ///< build a canal
 
 	CMD_CREATE_SUBSIDY,               ///< create a new subsidy

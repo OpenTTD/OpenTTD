@@ -13,6 +13,7 @@
 #define SCRIPT_COMPANY_HPP
 
 #include "script_text.hpp"
+#include "../../economy_type.h"
 
 /**
  * Class that handles all company related functions.
@@ -42,6 +43,27 @@ public:
 		GENDER_MALE,         ///< A male person.
 		GENDER_FEMALE,       ///< A female person.
 		GENDER_INVALID = -1, ///< An invalid gender.
+	};
+
+	/**
+	 * Types of expenses.
+	 * @api -ai
+	 */
+	enum ExpensesType {
+		EXPENSES_CONSTRUCTION = ::EXPENSES_CONSTRUCTION, ///< Construction costs.
+		EXPENSES_NEW_VEHICLES = ::EXPENSES_NEW_VEHICLES, ///< New vehicles.
+		EXPENSES_TRAIN_RUN    = ::EXPENSES_TRAIN_RUN,    ///< Running costs trains.
+		EXPENSES_ROADVEH_RUN  = ::EXPENSES_ROADVEH_RUN,  ///< Running costs road vehicles.
+		EXPENSES_AIRCRAFT_RUN = ::EXPENSES_AIRCRAFT_RUN, ///< Running costs aircrafts.
+		EXPENSES_SHIP_RUN     = ::EXPENSES_SHIP_RUN,     ///< Running costs ships.
+		EXPENSES_PROPERTY     = ::EXPENSES_PROPERTY,     ///< Property costs.
+		EXPENSES_TRAIN_INC    = ::EXPENSES_TRAIN_INC,    ///< Income from trains.
+		EXPENSES_ROADVEH_INC  = ::EXPENSES_ROADVEH_INC,  ///< Income from road vehicles.
+		EXPENSES_AIRCRAFT_INC = ::EXPENSES_AIRCRAFT_INC, ///< Income from aircrafts.
+		EXPENSES_SHIP_INC     = ::EXPENSES_SHIP_INC,     ///< Income from ships.
+		EXPENSES_LOAN_INT     = ::EXPENSES_LOAN_INT,     ///< Interest payments over the loan.
+		EXPENSES_OTHER        = ::EXPENSES_OTHER,        ///< Other expenses.
+		INVALID_EXPENSES      = ::INVALID_EXPENSES,      ///< Invalid expense type.
 	};
 
 	/**
@@ -163,6 +185,19 @@ public:
 	 * @return The actual bank balance.
 	 */
 	static Money GetBankBalance(CompanyID company);
+
+	/**
+	 * Changes the bank balance by a delta value. This method does not affect the loan but instead
+	 * allows a GS to give or take money from a company.
+	 * @param company The company to change the bank balance of.
+	 * @param delta Amount of money to give or take from the bank balance. A positive value adds money to the bank balance.
+	 * @param expenses_type The account in the finances window that will register the cost.
+	 * @game @pre No ScriptCompanyMode active in scope.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @note You need to create your own news message to inform about costs/gifts that you create using this command.
+	 * @api -ai
+	 */
+	static bool ChangeBankBalance(CompanyID company, int32 delta, ExpensesType expenses_type);
 
 	/**
 	 * Get the income of the company in the given quarter.
