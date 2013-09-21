@@ -227,7 +227,7 @@
 /* static */ bool ScriptCompany::ChangeBankBalance(CompanyID company, int32 delta, ExpensesType expenses_type)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
-	EnforcePrecondition(false, expenses_type < ::EXPENSES_END);
+	EnforcePrecondition(false, expenses_type < (ExpensesType)::EXPENSES_END);
 
 	company = ResolveCompanyID(company);
 	EnforcePrecondition(false, ResolveCompanyID(company) != COMPANY_INVALID);
