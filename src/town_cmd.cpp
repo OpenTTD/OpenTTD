@@ -1667,7 +1667,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			return CommandCost(EXPENSES_OTHER);
 		}
 
-		_generating_world = true;
+		Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
 		UpdateNearestTownForRoadTiles(true);
 		Town *t;
 		if (random) {
@@ -1682,7 +1682,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			DoCreateTown(t, tile, townnameparts, size, city, layout, true);
 		}
 		UpdateNearestTownForRoadTiles(false);
-		_generating_world = false;
+		old_generating_world.Restore();
 
 		if (t != NULL && !StrEmpty(text)) {
 			t->name = strdup(text);
