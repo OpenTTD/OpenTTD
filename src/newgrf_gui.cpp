@@ -119,9 +119,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 
 		/* Draw the palette of the NewGRF */
 		if (c->palette & GRFP_BLT_32BPP) {
-			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows / 32 bpp" : "DOS / 32 bpp");
+			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Legacy (W) / 32 bpp" : "Default (D) / 32 bpp");
 		} else {
-			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows" : "DOS");
+			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Legacy (W)" : "Default (D)");
 		}
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
 	}
