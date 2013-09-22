@@ -1491,6 +1491,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Если в NewGRF не указана палитра, использовать: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Палитра по умолчанию для модулей NewGRF, в которых не указана требуемая палитра
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Палитра по умолчанию (DOS)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Устаревший формат палитры (Win)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Автопауза в начале игры: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Включение паузы при старте новой игры, чтобы лучше изучить карту

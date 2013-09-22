@@ -466,7 +466,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura de pant
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura de pantalla amb el zoom predeterminat
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pantalla de tot el mapa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador d'sprite
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador d'sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Commuta les caixes delimitadores
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta el colorejat dels blocs bruts
 ############ range ends here
@@ -646,7 +646,7 @@ STR_ERROR_NO_SONGS                                              :{WHITE}S'ha sel
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selecció del Programa de Música
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Index de Pista
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Índex de Pistes
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programa - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Esborra
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Esborra el programa actual (només Opcional 1 o Opcional 2)
@@ -1340,6 +1340,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta predeterminada pels NewGRFs que no n'especifiquin una: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta predeterminada a utilitzar als NewGRFs que no especifiquen quina necessiten
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta predeterminada (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta preexistent (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament en començar un nou joc: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es pausarà automàticament quan es comenci un joc nou, permetent a l'usuari estudiar el mapa més detalladament
@@ -2041,6 +2043,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdueix la quantitat de diners que vols donar
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No desis la contrasenya introduïda
@@ -3025,6 +3028,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ves a la pàgina anterior
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Següent
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ves a la pàgina següent
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referència d'objectius invàlida
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - clica sobre el nom per centrar la vista principal a l'estació. Ctrl+Clic obre una nova vista al lloc de l'estació

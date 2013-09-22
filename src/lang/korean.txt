@@ -1340,6 +1340,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :기본으로 설정할 NewGRF 색상표: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :어떤 색상표를 사용할지 지정하지 않은 NewGRF에 사용할 기본 색상표를 선택합니다.
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :기본(DOS) 색상표
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :구형 (Windows) 색상표
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :새 게임을 시작할 때 자동으로 일시 정지: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 옵션을 켜면, 새로은 게임을 시작할 때 지도를 더욱 살펴볼 수 있도록 게임을 자동으로 일시정시시킵니다.
@@ -2041,6 +2043,7 @@ STR_NETWORK_CLIENT                                              :접속자
 STR_NETWORK_SPECTATORS                                          :관전자
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}송금하고 싶은 양을 입력하세요.
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}관전자
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}입력한 비밀번호는 저장하지 않기
@@ -3025,6 +3028,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}이전
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}이전 쪽으로 이동합니다.
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}다음
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}다음 쪽으로 이동합니다.
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}잘못된 목표 참조
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}역 이름 - 이 역의 위치로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 역 위치를 기준으로 새로운 외부 화면을 엽니다.
