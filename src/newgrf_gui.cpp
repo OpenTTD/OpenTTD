@@ -1201,7 +1201,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == NULL || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == NULL || this->active_sel->num_valid_params == 0);
-		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE, disable_all);
+		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE, disable_all ||
+				(!(_settings_client.gui.newgrf_developer_tools || _settings_client.gui.scenario_developer) && ((c->palette & GRFP_GRF_MASK) != GRFP_GRF_UNSET)));
 
 		if (!disable_all) {
 			/* All widgets are now enabled, so disable widgets we can't use */
