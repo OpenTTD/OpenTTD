@@ -1233,8 +1233,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :நீளமா
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :சுருக்கமான (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :டாஸ் வண்ணத்தட்டு
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :விண்டோஸ் வண்ணத்தட்டு
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :புதிய ஆட்டத்தினை தொடங்கும்போது தானாக நிறுத்தவும்: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :ஆட்டம் நிருத்தபட்டிருக்கம்போது அனுமதிக்கவும்: {STRING}

@@ -1340,8 +1340,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta predeterminada pels NewGRFs que no n'especifiquin una: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta predeterminada a utilitzar als NewGRFs que no especifiquen quina necessiten
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament en començar un nou joc: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es pausarà automàticament quan es comenci un joc nou, permetent a l'usuari estudiar el mapa més detalladament

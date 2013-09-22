@@ -1452,8 +1452,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Стандартна палітра файлів NewGRF: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Налаштування палітри для файлів NewGRF, в яких вона не вказана.
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Палітра DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Палітра Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Пауза на початку нової гри: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :При включенні на початку гри автоматично вмикається пауза.

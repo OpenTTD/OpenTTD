@@ -1327,8 +1327,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palet rhagosodedig ar gyfer NewGRFau nad yw'n dynodi un: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palet rhagosodedig i'w ddefnyddio ar gyfer NewGRFau nad ydynt yn dynodi'r un y maent eu hangen
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Palet DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Palet Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Oedi'n awtomatig wrth gychwyn gêm newydd: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Pan y galluogir, bydd yn gêm yn oedi ar ddechrau gêm newydd, er mwyn astudio'r map

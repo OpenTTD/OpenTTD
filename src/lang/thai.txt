@@ -1339,8 +1339,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :มาตรฐ
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :เลือกใช้ Palette ของ NewGRFs ที่ไม่สามารถระบุประเภทได้ (Dos/Windows): {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :จะมี NewGRFs บางตัวที่ไม่สามารถระบุประเภทว่าใช้ Pelette ของ Dos หรือของ Windows การเลือกตัวเลือกนี้จะเป็นการเลือกค้าแรกเริ่มให้กับ NewGRFs เหล่านั้น
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :หยุดเกมอัตโนมัติเมื่อเริ่มเกมใหม่: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :เมื่อเปิดใช้งาน เกมจะหยุดอัตโนมัติเมื่อมีการเริ่มเกมใหม่

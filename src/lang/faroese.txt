@@ -1320,8 +1320,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Vanligt litaval at ganga út frá fyri NewGRFs uttan serstakt litaval: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Vanligt litaval at nýta fyri NewGRF ið ikki tilskila hvat litaval teimum tørvar
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS litaval
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows litaval
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sjálvirknan steðg tá nýtt spæl verður byrja: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Um gilda er spæli steðga tá ið tú byrjar eitt nýtt spæl, hetta loyvir tær at skoða korti í frið og náðum

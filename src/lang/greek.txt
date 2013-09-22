@@ -1410,8 +1410,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Η προεπιλεγμένη παλέτα για NewGRF δεν ορίζει ορθά παλέτα: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Η προκαθορισμένη παλέτα που θα χρησιμοποιείται για τα NewGRF που δεν έχουν ορίσει ποια χρειάζονται
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Παλέτα DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Παλέτα Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Όταν είναι ενεργοποιημένο, τα νέα παιχνίδια ξεκινούν σε παύση αυτόματα, επιτρέποντας καλύτερη μελέτη του χάρτη
