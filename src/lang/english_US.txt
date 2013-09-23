@@ -241,7 +241,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window t
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - only show the title bar
 STR_TOOLTIP_DEBUG                                               :{BLACK}Show NewGRF debug information
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Resize window to default size. Ctrl+Click to store current size as default
-STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable for the 'Close All Windows' key. Ctrl+Click to also save state as default
+STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable by the 'Close All Windows' key. Ctrl+Click to also save state as default
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click and drag to resize this window
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list up/down
@@ -306,7 +306,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause ga
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Fast forward the game
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save game, abandon game, quit
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map, extra viewport, or list of signs
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Display town directory
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Display subsidies
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Display list of company's stations
@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Display 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Display goal list
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Display graphs
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Display company league table
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fund construction of new industry
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fund construction of new industry or list all industries
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Display list of company's trains. Ctrl+Click toggles opening the group/vehicle list
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Display list of company's road vehicles. Ctrl+Click toggles opening the group/vehicle list
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Display list of company's ships. Ctrl+Click toggles opening the group/vehicle list
@@ -452,7 +452,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/music
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Last message/news report
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message History
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message history
 ############ range ends here
 
 ############ range for about menu starts
@@ -597,10 +597,10 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Number of vehicles that turned a profit last year. This includes road vehicles, trains, ships and aircraft
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-serviced stations. Train stations, bus stops, airports and so on are counted separately even if they belong to the same station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two years are considered)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the lowest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the highest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Units of cargo delivered in the past four quarters
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Number of types of cargo delivered in the past quarter
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the lowest profit of the last 12 quarters
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the highest profit of the last 12 quarters
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Units of cargo delivered in the last four quarters
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Number of types of cargo delivered in the last quarter
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Amount of money this company has in the bank
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}The amount of money this company has taken on loan
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total points out of possible points
@@ -738,7 +738,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Display 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Show last message or news report
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUSED  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSED  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAVE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAVING GAME  *  *
 
@@ -1113,7 +1113,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limit the amoun
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Vehicle breakdowns: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Control how often inadequately maintained vehicles may break down
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidy multiplier: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Set how much is paid for subsidised connections
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Set how much is paid for subsidized connections
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Construction costs: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set level of construction and purchase costs
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
@@ -1147,7 +1147,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steepness of a 
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Slope steepness for road vehicles: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steepness of a sloped tile for a road vehicle. Higher values make it more difficult to climb a hill
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbid trains and ships to make 90 deg turns: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbid trains and ships from making 90° turns: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 degree turns occur when a horizontal track is directly followed by a vertical track piece on the adjacent tile, thus making the train turn by 90 degree when traversing the tile edge instead of the usual 45 degrees for other track combinations. This also applies to the turning radius of ships
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Allow joining stations not directly adjacent: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Allow adding parts to a station without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :None
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Improved
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Heightmap rotation: {STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-clockwise
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter-clockwise
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :The height level a flat scenario map gets: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Enable terraforming the tiles at the map borders: {STRING}
@@ -1324,7 +1324,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Single click (i
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Right-click emulation: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Select the method to emulate right mouse-button clicks
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
@@ -1339,6 +1339,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Default palette to assume for NewGRFs not specifying a palette: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Default palette to use for NewGRFs that do not specify which one they need
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Default (D) palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatically pause when starting a new game: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :When enabled, the game will automatically pause when starting a new game, allowing for closer study of the map
@@ -1371,11 +1373,11 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Group expenses 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define the layout for the company expenses window
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :News ticker: {STRING}
-STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for summarised news messages
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for summarized news messages
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Newspaper: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Play sound upon display of newspapers
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :End of year: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound at the end of a year summarising the company's performance during the year compared to the previous year
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound at the end of a year summarizing the company's performance during the year compared to the previous year
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Play sound on successful constructions or other actions
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Button clicks: {STRING}
@@ -1474,7 +1476,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Full
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Colored news appears in: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Year that the newspaper announcements get printed in color. Before this year, it uses monochrome black/white
-STR_CONFIG_SETTING_STARTING_YEAR                                :Starting date: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Starting year: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Enable smooth economy (more, smaller changes): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :When enabled, industry production changes more often, and in smaller steps. This setting has usually no effect, if industry types are provided by a NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Allow buying shares from other companies: {STRING}
@@ -1741,8 +1743,8 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandon Game
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to abandon this game ?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Are you sure you want to abandon this scenario ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to abandon this game?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Are you sure you want to abandon this scenario?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
@@ -1905,24 +1907,24 @@ STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Search n
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Add server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adds a server to the list which will always be checked for running games
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start server
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start an own server
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start your own server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Enter your name
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Enter the IP address of the server
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start new game
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start new multiplayer game
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Game name:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set password
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect your game with a password if you don't want other people to join it
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
 
 STR_NETWORK_START_SERVER_UNADVERTISED                           :No
 STR_NETWORK_START_SERVER_ADVERTISED                             :Yes
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max clients:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choose a maximum number of clients. Not all slots need to be filled
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choose the maximum number of clients. Not all slots need to be filled
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compan{P y ies}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max companies:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limit the server to a certain number of companies
@@ -1978,7 +1980,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvian
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Multiplayer game lobby
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Preparing to join: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}A list of all companies currently in this game. You can either join one or start a
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}A list of all companies currently in this game. You can either join one or start a new one if there is a free company slot
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}COMPANY INFO
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Company name: {WHITE}{STRING}
@@ -1993,11 +1995,11 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Station
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Players: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}New company
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Open a new company
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Watch game
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Create a new company
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Spectate game
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Watch the game as a spectator
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Join company
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Help managing this company
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Help manage this company
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Connecting...
@@ -2013,7 +2015,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Fetching game info...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fetching company info...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} in front of us
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} in front of you
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} downloaded so far
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} downloaded so far
 
@@ -2023,7 +2025,7 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server i
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client List
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client list
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New company
 
@@ -2080,7 +2082,7 @@ STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Could no
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Could not start the server
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Could not connect
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connection #{NUM} timed out
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}We made a protocol-error and our connection is closed
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}A protocol error was detected and the connection was closed
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Wrong password
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}The server is full
@@ -2634,11 +2636,11 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aqueduct
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Transmitter
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Lighthouse
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Company Headquarters
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Company headquarters
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Company-owned land
 
 # About OpenTTD window
-STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
+STR_ABOUT_OPENTTD                                               :{WHITE}About OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2013 The OpenTTD team
@@ -2668,7 +2670,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}World Generation
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Map size:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Select the size of the map in tiles. The number of available tiles will be slightly smaller
 STR_MAPGEN_BY                                                   :{BLACK}*
@@ -2678,7 +2680,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snow line height:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Move the snow line height up one
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Move the snow line height down one
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Random Seed:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Random seed:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click to enter a random seed
 STR_MAPGEN_RANDOM                                               :{BLACK}Randomize
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Change the random seed used for Terrain Generation
@@ -2713,7 +2715,7 @@ STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Change s
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario type
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Flat land
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generate a flat land
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Random land
@@ -3191,7 +3193,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sell 25%
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Company Name
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :President's Name
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We are looking for a transport company to take-over our company{}{}Do you want to purchase {COMPANY} for {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We are looking for a transport company to take-over our company.{}{}Do you want to purchase {COMPANY} for {CURRENCY_LONG}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructure of {COMPANY}
@@ -3269,7 +3271,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Send to Depot
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Send to Hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Click to stop all vehicles in the list
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Click to start all listed vehicles
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Click to start all the vehicles in the list
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
 
@@ -3301,7 +3303,7 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :New Electric Ra
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :New Monorail Vehicles
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :New Maglev Vehicles
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Rail Vehicles
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :New Rail Vehicles
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :New Road Vehicles
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :New Ships
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :New Aircraft
@@ -3452,7 +3454,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cost: {C
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Train
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Road vehicle
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Road Vehicle
 STR_REPLACE_VEHICLE_SHIP                                        :Ship
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aircraft
 
@@ -3492,10 +3494,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Center m
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Center main view on ship's location. Ctrl+Click will follow ship in main view
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Center main view on aircraft's location. Ctrl+Click will follow aircraft in main view
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send train to depot
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send vehicle to depot
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send ship to depot
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send aircraft to hangar
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send train to depot. Ctrl+Click will only service
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send vehicle to depot. Ctrl+Click will only service
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send ship to depot. Ctrl+Click will only service
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send aircraft to hangar. Ctrl+Click will only service
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}This will buy a copy of the train including all cars. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}This will buy a copy of the road vehicle. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
@@ -3599,7 +3601,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Name air
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Value: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Total cargo (capacity) of this train:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Total cargo capacity of this train:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -4046,8 +4048,8 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Can't ra
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Can't lower land here...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Can't level land here...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Excavation would damage tunnel
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Already at sea-level
-STR_ERROR_TOO_HIGH                                              :{WHITE}Too high
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... already at sea level
+STR_ERROR_TOO_HIGH                                              :{WHITE}... too high
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... already flat
 
 # Company related errors
@@ -4069,7 +4071,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}This com
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Can't build any towns
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Can't rename town...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Can't build town here...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Can't found town here...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Can't expand town...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... too close to edge of map
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... too close to another town
@@ -4086,7 +4088,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Can't ge
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Can't build {STRING} here...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Can't construct this industry type here...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... too close to another industry
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... must build town first
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... must found town first
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... only one allowed per town
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... can only be built in towns with a population of at least 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... can only be built in rainforest areas
@@ -4232,7 +4234,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Can't pl
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Can't build bridge here...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Must demolish bridge first
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Cannot start and end on same position
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Can't start and end in the same spot
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bridge heads not at the same level
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bridge is too low for the terrain
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start and end must be in line
@@ -4287,7 +4289,7 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Can't st
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Can't stop/start aircraft...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Can't send train to depot...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Can't send vehicle to depot...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Can't send road vehicle to depot...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Can't send ship to depot...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Can't send aircraft to hangar...
 
@@ -4760,8 +4762,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Buoy #{C
 STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Group {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :Waypoint {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Waypoint
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Waypoint #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Train Depot
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Train Depot #{COMMA}

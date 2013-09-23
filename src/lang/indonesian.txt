@@ -1339,6 +1339,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palette standard digunakan untuk NewGRFs yang tidak punya setting: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palet standar digunakan untuk NewGRF yang tidak menentukan yang mana itu perlu
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Palet standar (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Palet warisan (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Selalu hentikan sementara permainan saat memulai : {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Jika diaktifkan, permainan akan berhenti sejenak secara otomatis ketika permainan baru dimulai, memungkinkan untuk lebih mempelajari peta
