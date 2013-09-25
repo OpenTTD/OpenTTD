@@ -1340,6 +1340,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standaard palet word aangeneem vir NewGRFs geen palet gespesifiseer: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Verstek kleurskema om te gebruik vir NewGRFs wat nie spesifeer watter kleurskema benodig word nie
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Verstek (D) kleur skakering
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Tradisionele (W) kleur skakering
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Outomaties pouse wanneer om te begin 'n nuwe speletjie: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :As hierdie opsie geaktiveer is, sal die spel gepousseer wees wanneer die spel begin.
@@ -2041,6 +2043,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Aanskouers
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sleutel die bedrag geld in wat u wil gee
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Toeskouer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie
@@ -3025,6 +3028,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Vorige
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Vorige bladsy
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Volgende
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Volgende bladsy
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ongeldige doelwit verwysing
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasiename - klik op 'n naam om skerm na stasie te skuif. Ctrl+klik maak 'n nuwe venster vir die stastie oop
