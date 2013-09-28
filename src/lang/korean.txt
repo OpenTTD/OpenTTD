@@ -1354,7 +1354,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :모든 행동
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :고급화된 차량 목록 사용: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :고급화된 차량 목록의 사용 여부를 설정합니다.
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :적재율 표시: {STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :적재나 하차하는 차량 위에 적재/하자 상태를 표시할지 말지를 선택합니다.
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :적재나 하차하는 차량 위에 적재/하차율을 표시할지 말지를 선택합니다.
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :열차 시간표의 1일을 74틱으로 바꿔 표시: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :열차 시간표에서 열차의 운행 시간을 '일'보다 자세한 '틱'으로 표시합니다. 1일은 74틱과 같습니다.
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :시간표에서 출발일과 도착일 표시: {STRING}
@@ -1440,7 +1440,7 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :이 옵션을 �
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :전기 철도를 사용하지 않음: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :이 옵션을 켜면 전기 기관차가 일반 철도에서도 달릴 수 있도록 요구사항을 제거합니다.
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :당신의 첫 차량 도착: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :내 회사의 첫 차량 도착: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :나의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다.
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :경쟁사의 첫 차량 도착: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :경쟁자의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다.
@@ -1454,13 +1454,13 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :산업시설의
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :산업시설이 폐쇄될 때 메시지로 알려줍니다.
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :경제 변화: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :거시적인 경제에 변화가 생기면 뉴스 메시지로 알려줍니다.
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :회사가 달성한 생산량 변동량: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :내 회사가 달성한 산업시설의 생산량 변동: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :내 회사가 수송하고 있는 산업 시설의 생산량이 변하면 메시지로 알려줍니다.
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :경쟁자에 의한 산업시설의 생산 변화: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :경쟁사가 수송하고 있는 산업 시설의 생산량이 변하면 메시지로 알려줍니다.
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :다른 산업 생산물 변화: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :내 회사나 경쟁사가 수송하고 있지 않은 산업 시설의 생산량이 변하면 메시지로 알려줍니다.
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :회사의 차량에 관한 권고/정보: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :내 회사의 차량에 관한 권고 / 정보: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :주의를 기울여야하는 차량에 대한 메시지를 표시합니다.
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :새 차량: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :새로운 차량 종류를 사용할 수 있게 되면 메시지로 알려줍니다.
@@ -2966,7 +2966,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} 더 �
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}도시 도로망 보수공사를 시행합니다. 앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} 당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}가격: {CURRENCY_LONG}
