@@ -1492,6 +1492,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Privzeti nabor za NewGRF-je brez izbranega nabora: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Privzeta paleta za uporabo z NewGRF-ji, kateri ne zahevajo specifične.
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Privzeta (D) paleta
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Avtomatsko pavziraj ob zagonu nove igre: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Če je omogočeno, se igra avtomatsko pavzira ob zagonu nove igre, za preučitev ozemlja.
