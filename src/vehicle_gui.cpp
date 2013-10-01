@@ -2490,6 +2490,10 @@ public:
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		switch (widget) {
+			case WID_VV_START_STOP:
+				size->height = max(size->height, max(GetSpriteSize(SPR_FLAG_VEH_STOPPED).height, GetSpriteSize(SPR_FLAG_VEH_RUNNING).height) + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
+				break;
+
 			case WID_VV_FORCE_PROCEED:
 				if (v->type != VEH_TRAIN) {
 					size->height = 0;
