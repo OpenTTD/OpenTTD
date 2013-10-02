@@ -43,7 +43,7 @@ void SQGSCompany_Register(Squirrel *engine)
 	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_SHIP_INC,     "EXPENSES_SHIP_INC");
 	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_LOAN_INT,     "EXPENSES_LOAN_INT");
 	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_OTHER,        "EXPENSES_OTHER");
-	SQGSCompany.DefSQConst(engine, ScriptCompany::INVALID_EXPENSES,      "INVALID_EXPENSES");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EXPENSES_INVALID,      "EXPENSES_INVALID");
 
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::ResolveCompanyID,              "ResolveCompanyID",              2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::SetName,                       "SetName",                       2, "..");
