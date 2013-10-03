@@ -244,6 +244,14 @@ char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, char *p)
 			/* Array */
 			sq_newarray(vm, 0);
 
+			/* Empty array? */
+			char *p2 = p+1;
+			SKIP_EMPTY(p2);
+			if (*p2 == ']') {
+				p = p2+1;
+				break;
+			}
+
 			while (*p++ != ']') {
 				p = this->ReadValue(vm, p);
 				if (p == NULL) {
