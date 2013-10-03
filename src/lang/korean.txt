@@ -1266,7 +1266,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :정유 공장의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장은 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :만년설의 높이: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :설선 고도: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도 ('천지창조' 전용): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
@@ -2678,9 +2678,9 @@ STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업시설 수:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}만년설 고도:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}만년설 높이를 1칸 높입니다
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}만년설 높이를 1칸 낮춥니다
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}설선 고도:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}설선 고도를 1칸 높입니다
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}설선 고도를 1칸 낮춥니다
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}무작위수치:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}무작위수치를 입력하세요
 STR_MAPGEN_RANDOM                                               :{BLACK}무작위화
@@ -2712,7 +2712,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}크기:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}임의 설정값 입력
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}만년설의 높이를 변경
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}설선 고도를 변경
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}시작 연도를 변경합니다.
 
 # SE Map generation
