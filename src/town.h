@@ -60,13 +60,9 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
-	char *name;
+	char *name;                    ///< Custom town name. If NULL, the town was not renamed and uses the generated name.
 
-	/* Makes sure we don't build certain house types twice.
-	 * bit 0 = Building funds received
-	 * bit 1 = CHURCH
-	 * bit 2 = STADIUM */
-	byte flags;
+	byte flags;                    ///< See #TownFlags.
 
 	uint16 noise_reached;          ///< level of noise that all the airports are generating
 
