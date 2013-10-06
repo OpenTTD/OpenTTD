@@ -1423,17 +1423,14 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 			/* Do not draw signs nor station names if they are set invisible */
 			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) continue;
 
-			/* if we didn't draw a rectangle, or if transperant building is on,
-			 * draw the text in the colour the rectangle would have */
 			if (IsTransparencySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) {
-				/* Real colours need the TC_IS_PALETTE_COLOUR flag
-				 * otherwise colours from _string_colourmap are assumed. */
+				/* Don't draw the rectangle.
+				 * Real colours need the TC_IS_PALETTE_COLOUR flag.
+				 * Otherwise colours from _string_colourmap are assumed. */
 				colour = (TextColour)_colour_gradient[ss->colour][6] | TC_IS_PALETTE_COLOUR;
-			}
-
-			/* Draw the rectangle if 'transparent station signs' is off,
-			 * or if we are drawing a general text sign (STR_WHITE_SIGN) */
-			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_WHITE_SIGN) {
+			} else {
+				/* Draw the rectangle if 'transparent station signs' is off,
+				 * or if we are drawing a general text sign (STR_WHITE_SIGN). */
 				DrawFrameRect(
 					x, y, x + w, y + h, ss->colour,
 					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
