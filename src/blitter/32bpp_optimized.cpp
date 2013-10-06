@@ -207,7 +207,7 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 	}
 }
 
-Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
+Sprite *Blitter_32bppOptimized::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
 	/* streams of pixels (a, r, g, b channels)
 	 *
