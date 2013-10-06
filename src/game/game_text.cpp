@@ -60,18 +60,11 @@ void NORETURN CDECL strgen_fatal(const char *s, ...)
 /**
  * Create a new container for language strings.
  * @param language The language name.
+ * @param end If not NULL, terminate \a language at this position.
  */
-LanguageStrings::LanguageStrings(const char *language)
+LanguageStrings::LanguageStrings(const char *language, const char *end)
 {
-	const char *p = strrchr(language, PATHSEPCHAR);
-	if (p == NULL) {
-		p = language;
-	} else {
-		p++;
-	}
-
-	const char *e = strchr(p, '.');
-	this->language = e == NULL ? strdup(p) : strndup(p, e - p);
+	this->language = end == NULL ? strdup(language) : strndup(language, end - language);
 }
 
 /** Free everything. */
@@ -95,7 +88,17 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 			return NULL;
 		}
 
-		ret = new LanguageStrings(file);
+		const char *langname = strrchr(file, PATHSEPCHAR);
+		if (langname == NULL) {
+			langname = file;
+		} else {
+			langname++;
+		}
+
+		/* Check for invalid empty filename */
+		if (*langname == '.' || *langname == 0) return NULL;
+
+		ret = new LanguageStrings(langname, strchr(langname, '.'));
 
 		char buffer[2048];
 		while (to_read != 0 && fgets(buffer, sizeof(buffer), fh) != NULL) {
