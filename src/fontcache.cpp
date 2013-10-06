@@ -458,9 +458,34 @@ const Sprite *FreeTypeFontCache::GetGlyph(GlyphID key)
 	if (key == 0) {
 		GlyphID question_glyph = this->MapCharToGlyph('?');
 		if (question_glyph == 0) {
-			/* The font misses the '?' character. Use sprite font. */
-			SpriteID sprite = this->GetUnicodeGlyph(key);
-			Sprite *spr = (Sprite*)GetRawSprite(sprite, ST_FONT, AllocateFont);
+			/* The font misses the '?' character. Use built-in sprite.
+			 * Note: We cannot use the baseset as this also has to work in the bootstrap GUI. */
+#define CPSET { 0, 0, 0, 0, 1 }
+#define CP___ { 0, 0, 0, 0, 0 }
+			static SpriteLoader::CommonPixel builtin_questionmark_data[10 * 8] = {
+				CP___, CP___, CPSET, CPSET, CPSET, CPSET, CP___, CP___,
+				CP___, CPSET, CPSET, CP___, CP___, CPSET, CPSET, CP___,
+				CP___, CP___, CP___, CP___, CP___, CPSET, CPSET, CP___,
+				CP___, CP___, CP___, CP___, CPSET, CPSET, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CP___, CP___, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+			};
+#undef CPSET
+#undef CP___
+			static const SpriteLoader::Sprite builtin_questionmark = {
+				10, // height
+				8,  // width
+				0,  // x_offs
+				0,  // y_offs
+				ST_FONT,
+				builtin_questionmark_data
+			};
+
+			Sprite *spr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&builtin_questionmark, AllocateFont);
 			assert(spr != NULL);
 			new_glyph.sprite = spr;
 			new_glyph.width  = spr->width + (this->fs != FS_NORMAL);
