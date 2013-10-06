@@ -1341,6 +1341,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Antatt palett for NewGRFer uten spesifisert palett: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalett å bruke for NewGRF filer som ikke angir hvilken palett de trenger
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) palett
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Tradisjonell (W) palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pause automatisk ved start av nytt spill: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktivert, vil spillet automatisk pause når du starter et nytt spill, for å tillate nærmere studie av kartet
