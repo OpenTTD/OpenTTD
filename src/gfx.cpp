@@ -535,9 +535,9 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
  * @param maxw maximum string width
  * @return height of pixels of string when it is drawn
  */
-static int GetStringHeight(const char *str, int maxw)
+int GetStringHeight(const char *str, int maxw, FontSize fontsize)
 {
-	Layouter layout(str, maxw);
+	Layouter layout(str, maxw, TC_FROMSTRING, fontsize);
 	return layout.GetBounds().height;
 }
 

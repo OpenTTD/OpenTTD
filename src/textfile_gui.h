@@ -22,12 +22,10 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 /** Window for displaying a textfile */
 struct TextfileWindow : public Window, MissingGlyphSearcher {
 	TextfileType file_type;              ///< Type of textfile to view.
-	int line_height;                     ///< Height of a line in the display widget.
 	Scrollbar *vscroll;                  ///< Vertical scrollbar.
 	Scrollbar *hscroll;                  ///< Horizontal scrollbar.
 	char *text;                          ///< Lines of text from the NewGRF's textfile.
 	SmallVector<const char *, 64> lines; ///< #text, split into lines in a table with lines.
-	uint max_length;                     ///< The longest line in the textfile (in pixels).
 	uint search_iterator;                ///< Iterator for the font check search.
 
 	static const int TOP_SPACING    = WD_FRAMETEXT_TOP;    ///< Additional spacing at the top of the #WID_TF_BACKGROUND widget.
@@ -36,6 +34,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	TextfileWindow(TextfileType file_type);
 	virtual ~TextfileWindow();
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize);
+	virtual void OnClick(Point pt, int widget, int click_count);
 	virtual void DrawWidget(const Rect &r, int widget) const;
 	virtual void OnResize();
 	virtual void Reset();
@@ -44,6 +43,9 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	virtual bool Monospace();
 	virtual void SetFontNames(FreeTypeSettings *settings, const char *font_name);
 	virtual void LoadTextfile(const char *textfile, Subdirectory dir);
+private:
+	uint GetContentHeight();
+	void SetupScrollbars();
 };
 
 #endif /* TEXTFILE_GUI_H */

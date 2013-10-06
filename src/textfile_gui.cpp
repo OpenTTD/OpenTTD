@@ -21,12 +21,12 @@
 
 #include "table/strings.h"
 
-
 /** Widgets for the textfile window. */
 static const NWidgetPart _nested_textfile_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_TF_CAPTION), SetDataTip(STR_NULL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_TEXTBTN, COLOUR_MAUVE, WID_TF_WRAPTEXT), SetDataTip(STR_TEXTFILE_WRAP_TEXT, STR_TEXTFILE_WRAP_TEXT_TOOLTIP),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -57,6 +57,9 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 	this->hscroll = this->GetScrollbar(WID_TF_HSCROLLBAR);
 	this->FinishInitNested();
 	this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_TEXTFILE_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+
+	this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
+	this->vscroll->SetStepSize(FONT_HEIGHT_MONO);
 }
 
 /* virtual */ TextfileWindow::~TextfileWindow()
@@ -64,15 +67,59 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 	free(this->text);
 }
 
+/**
+ * Get the total height of the content displayed in this window, if wrapping is disabled.
+ * @return the height in pixels
+ */
+uint TextfileWindow::GetContentHeight()
+{
+	int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
+
+	uint height = 0;
+	for (uint i = 0; i < this->lines.Length(); i++) {
+		height += GetStringHeight(this->lines[i], max_width, FS_MONO);
+	}
+
+	return height;
+}
+
 /* virtual */ void TextfileWindow::UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 {
 	switch (widget) {
 		case WID_TF_BACKGROUND:
-			this->line_height = FONT_HEIGHT_MONO + 2;
-			resize->height = this->line_height;
+			resize->height = 1;
 
 			size->height = 4 * resize->height + TOP_SPACING + BOTTOM_SPACING; // At least 4 lines are visible.
 			size->width = max(200u, size->width); // At least 200 pixels wide.
+			break;
+	}
+}
+
+/** Set scrollbars to the right lengths. */
+void TextfileWindow::SetupScrollbars()
+{
+	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
+		this->vscroll->SetCount(this->GetContentHeight());
+		this->hscroll->SetCount(0);
+	} else {
+		uint max_length = 0;
+		for (uint i = 0; i < this->lines.Length(); i++) {
+			max_length = max(max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
+		}
+		this->vscroll->SetCount(this->lines.Length() * FONT_HEIGHT_MONO);
+		this->hscroll->SetCount(max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+	}
+
+	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, IsWidgetLowered(WID_TF_WRAPTEXT));
+}
+
+/* virtual */ void TextfileWindow::OnClick(Point pt, int widget, int click_count)
+{
+	switch (widget) {
+		case WID_TF_WRAPTEXT:
+			this->ToggleWidgetLoweredState(WID_TF_WRAPTEXT);
+			this->SetupScrollbars();
+			this->InvalidateData();
 			break;
 	}
 }
@@ -81,25 +128,27 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 {
 	if (widget != WID_TF_BACKGROUND) return;
 
-	int width = r.right - r.left + 1 - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
-	int height = r.bottom - r.top + 1 - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
+	const int x = r.left + WD_FRAMETEXT_LEFT;
+	const int y = r.top + WD_FRAMETEXT_TOP;
+	const int right = r.right - WD_FRAMETEXT_RIGHT;
+	const int bottom = r.bottom - WD_FRAMETEXT_BOTTOM;
 
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, r.left + WD_BEVEL_LEFT, r.top, width, height)) return;
+	if (!FillDrawPixelInfo(&new_dpi, x, y, right - x + 1, r.bottom - y + 1)) return;
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &new_dpi;
 
-	int left, right;
-	if (_current_text_dir == TD_RTL) {
-		left = width + WD_BEVEL_RIGHT - WD_FRAMETEXT_RIGHT - this->hscroll->GetCount();
-		right = width + WD_BEVEL_RIGHT - WD_FRAMETEXT_RIGHT - 1 + this->hscroll->GetPosition();
-	} else {
-		left = WD_FRAMETEXT_LEFT - WD_BEVEL_LEFT - this->hscroll->GetPosition();
-		right = WD_FRAMETEXT_LEFT - WD_BEVEL_LEFT + this->hscroll->GetCount() - 1;
-	}
-	int top = TOP_SPACING;
-	for (uint i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->lines.Length(); i++) {
-		DrawString(left, right, top + i * this->line_height, this->lines[i + this->vscroll->GetPosition()], TC_WHITE, SA_LEFT, false, FS_MONO);
+	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
+	int line_height = FONT_HEIGHT_MONO;
+	int y_offset = -this->vscroll->GetPosition();
+
+	for (uint i = 0; i < this->lines.Length(); i++) {
+		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
+			y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, this->lines[i], TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+		} else {
+			DrawString(-this->hscroll->GetPosition(), right - x, y_offset, this->lines[i], TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			y_offset += line_height; // margin to previous element
+		}
 	}
 
 	_cur_dpi = old_dpi;
@@ -109,6 +158,8 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 {
 	this->vscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, TOP_SPACING + BOTTOM_SPACING);
 	this->hscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND);
+
+	this->SetupScrollbars();
 }
 
 /* virtual */ void TextfileWindow::Reset()
@@ -141,7 +192,7 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 }
 
 /**
- * Loads the textfile text from file, and setup #lines, #max_length, and both scrollbars.
+ * Loads the textfile text from file and setup #lines.
  */
 /* virtual */ void TextfileWindow::LoadTextfile(const char *textfile, Subdirectory dir)
 {
@@ -183,16 +234,6 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 	}
 
 	CheckForMissingGlyphs(true, this);
-
-	/* Initialize scrollbars */
-	this->vscroll->SetCount(this->lines.Length());
-
-	this->max_length = 0;
-	for (uint i = 0; i < this->lines.Length(); i++) {
-		this->max_length = max(this->max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
-	}
-	this->hscroll->SetCount(this->max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
-	this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
 }
 
 /**

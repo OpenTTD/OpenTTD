@@ -1558,6 +1558,7 @@ public:
 	/** Widgets of the #TextfileWindow class. */
 	enum TextfileWidgets {
 		WID_TF_CAPTION                               = ::WID_TF_CAPTION,                               ///< The caption of the window.
+		WID_TF_WRAPTEXT                              = ::WID_TF_WRAPTEXT,                              ///< Whether or not to wrap the text.
 		WID_TF_BACKGROUND                            = ::WID_TF_BACKGROUND,                            ///< Panel to draw the textfile on.
 		WID_TF_VSCROLLBAR                            = ::WID_TF_VSCROLLBAR,                            ///< Vertical scrollbar to scroll through the textfile up-and-down.
 		WID_TF_HSCROLLBAR                            = ::WID_TF_HSCROLLBAR,                            ///< Horizontal scrollbar to scroll through the textfile left-to-right.
