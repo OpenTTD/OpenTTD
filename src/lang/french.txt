@@ -1080,7 +1080,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paramètres ave
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paramètres avec une valeur différente des paramètres de nouvelle partie
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restreint la liste ci-dessous à certains types de paramètres
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tous les paramètres
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tous les types de paramètres
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paramètres du client (ne sont pas enregistrés dans les sauvegardes{NBSP}; affectent toutes les parties)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paramètres de jeu (enregistrés dans les sauvegardes{NBSP}; affectent uniquement les nouvelles parties)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paramètres de jeu (enregistrés dans les sauvegardes{NBSP}; affectent uniquement la partie actuelle)
@@ -1340,6 +1340,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palette utilisée par défaut si non spécifiée par les NewGRFs{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palette à utiliser par défaut pour les NewGRFs qui ne précisent pas laquelle il nécessite
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Palette par défaut (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Ancienne palette (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pause automatique en début de nouvelle partie{NBSP}: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Lorsqu'il est activé, la partie sera mise en pause automatiquement au démarrage, afin de permettre une étude approfondie de la carte
@@ -2041,6 +2043,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectateurs
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entrer le montant que vous voulez donner
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectateur
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne pas sauver le mot de passe entré
@@ -3025,6 +3028,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Précéd
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Aller à la page précédente
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Suivante
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Aller à la page suivante
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Référence d'objectif invalide
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nom des stations - Cliquer sur un nom pour centrer la vue principale sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station.
@@ -3938,6 +3942,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Nombre de jours
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Lisez-moi du module {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Journal des modifications pour le module {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licence du module {STRING} {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Retour à la ligne automatique
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Insérer des retours à la ligne dans le texte de la fenêtre afin qu'il s'affiche entièrement sans faire défiler
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Voir le Lisez-moi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Journal des modifications
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
@@ -4315,6 +4321,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossib
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... véhicule détruit
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Aucun véhicule ne sera disponible
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Modifier votre configuration NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Il n'y a pas encore de véhicules disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Commencer un nouvelle partie après {DATE_SHORT} ou utiliser un NewGRF qui propose des véhicules plus tôt
 

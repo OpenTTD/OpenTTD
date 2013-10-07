@@ -4037,6 +4037,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Broj dana za st
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "pročitaj me" datoteka od {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} zapis izmjena od {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Posloži tekst
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Posloži tekst u prozorima tako da cijeli stane bez potrebe za skrolanjem
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Pogledaj "pročitaj me" datoteku
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Zapis izmjena
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca

@@ -3942,6 +3942,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Número de dias
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leiame {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lista de alterações {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença {STRING} de {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Envolver o texto
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Envolve o texto da janela de forma que não é necessário deslizar listagem
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver leia-me
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista de alterações
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença

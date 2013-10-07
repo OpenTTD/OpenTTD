@@ -3971,6 +3971,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Giorni da atten
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}File leggimi del {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Changelog del {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licenza del {STRING} {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}A capo automatico
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Manda automaticamente a capo il testo della finestra in modo che sia visibile senza doverlo scorrere
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Visualizza file leggimi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenza

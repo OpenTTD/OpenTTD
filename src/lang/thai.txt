@@ -57,7 +57,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :ฟอง
 STR_CARGO_PLURAL_TOFFEE                                         :ลูกอม
 STR_CARGO_PLURAL_BATTERIES                                      :ถ่านไฟฉาย
 STR_CARGO_PLURAL_PLASTIC                                        :พลาสติก
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :น้ำอัดลมหรรษา
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :น้ำอัดลม
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -91,13 +91,13 @@ STR_CARGO_SINGULAR_BUBBLE                                       :ฟอง
 STR_CARGO_SINGULAR_TOFFEE                                       :ลูกอม
 STR_CARGO_SINGULAR_BATTERY                                      :ถ่านไฟฉาย
 STR_CARGO_SINGULAR_PLASTIC                                      :พลาสติก
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :น้ำอัดลมหรรษา
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :น้ำอัดลม
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :ผู้โดยสาร {COMMA} คน
 STR_QUANTITY_COAL                                               :ถ่านหิน {WEIGHT_LONG}
-STR_QUANTITY_MAIL                                               :ไปรษณียภัณฑ์ {COMMA} ถุง
+STR_QUANTITY_MAIL                                               :ไปรษณีย์ {COMMA} ถุง
 STR_QUANTITY_OIL                                                :น้ำมันดิบ {VOLUME_LONG}
 STR_QUANTITY_LIVESTOCK                                          :ปศุสัตว์ {COMMA} ตัว
 STR_QUANTITY_GOODS                                              :สินค้าแปรรูป {COMMA} ลัง
@@ -125,7 +125,7 @@ STR_QUANTITY_BUBBLES                                            :ฟอง {COMM
 STR_QUANTITY_TOFFEE                                             :ลูกอม {WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :ถ่านไฟฉาย {COMMA} ก้อน
 STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME_LONG}
-STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
+STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลม {COMMA} ชุด
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -134,13 +134,13 @@ STR_ABBREV_PASSENGERS                                           :{TINY_FONT}ค�
 STR_ABBREV_COAL                                                 :{TINY_FONT}ถ่าน
 STR_ABBREV_MAIL                                                 :{TINY_FONT}พัสดุ
 STR_ABBREV_OIL                                                  :{TINY_FONT}น้ำมัน
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}เนื้อ
-STR_ABBREV_GOODS                                                :{TINY_FONT}สินค้าแปรรูป
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}สัตว์
+STR_ABBREV_GOODS                                                :{TINY_FONT}สินค้า
 STR_ABBREV_GRAIN                                                :{TINY_FONT}ข้าวเปลือก
 STR_ABBREV_WOOD                                                 :{TINY_FONT}ไม้
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}แร่
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}เหล็ก
 STR_ABBREV_STEEL                                                :{TINY_FONT}เหล็กกล้า
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}เงิน
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}มีค่า
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}ทองแดง
 STR_ABBREV_MAIZE                                                :{TINY_FONT}ข้าวโพด
 STR_ABBREV_FRUIT                                                :{TINY_FONT}ผลไม้
@@ -273,7 +273,7 @@ STR_SORT_BY_PRODUCTION                                          :ผลผลิ
 STR_SORT_BY_TYPE                                                :ประเภท
 STR_SORT_BY_TRANSPORTED                                         :ขนส่งแล้ว
 STR_SORT_BY_NUMBER                                              :ลำดับการเข้าประจำการ
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีที่แล้ว
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีก่อน
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :กำไรปีนี้
 STR_SORT_BY_AGE                                                 :อายุการใช้งาน
 STR_SORT_BY_RELIABILITY                                         :ประสิทธิภาพ
@@ -295,8 +295,8 @@ STR_SORT_BY_POWER                                               :พลังข
 STR_SORT_BY_TRACTIVE_EFFORT                                     :กำลังลากจูง
 STR_SORT_BY_INTRO_DATE                                          :วันเปิดตัว
 STR_SORT_BY_RUNNING_COST                                        :ค่าใช้จ่าย
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :อัตตราส่วน กำลัง/ค่าใช้จ่าย
-STR_SORT_BY_CARGO_CAPACITY                                      :ความจุการบรรทุก
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :กำลังต่อค่าใช้จ่าย
+STR_SORT_BY_CARGO_CAPACITY                                      :ความจุบรรทุก
 STR_SORT_BY_RANGE                                               :ช่วง
 STR_SORT_BY_POPULATION                                          :ประชากร
 STR_SORT_BY_RATING                                              :ความพึงพอใจ
@@ -305,7 +305,7 @@ STR_SORT_BY_RATING                                              :ความพ
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}เร่งความเร็วเกม
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตัวเลือก
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและออกจากเกม
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและเลิกเกมนี้
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}แสดงจุดสังเกต, แผนที่และป้าย
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}แสดงทำเนียบชื่อเมือง
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}แสดงเงินสมทบ
@@ -321,8 +321,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แส�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}แสดงรายการอากาศยานของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ขยายภาพเข้าใกล้ขึ้น
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ย่อภาพให้ไกลขึ้น
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ขยายวิว
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ย่อวิว
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}เครื่องมือสร้างทางรถไฟ
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}สร้างถนน
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}สร้างท่าเรือ
@@ -852,10 +852,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}มุมมอง {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}คัดลองไปยังมุมมอง
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}คัดลอกไปยังมุมมอง
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}คัดลอกตำแหน่งของมุมมองหลังมายังมุมมองนี้
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}วางจากมุมมอง
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}วางต่ำแหน่งจากมุมมองนี้ไปยังมุมมองหลัก
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}วางตำแหน่งจากมุมมองนี้ไปยังมุมมองหลัก
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ตัวเลือกเกม
@@ -892,7 +892,7 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :โครูน
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :เรียล บราซิล (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :ครูนิ เอสโทเนีย (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :วอน เกาหลีใต้ (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :ระบุเอง...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
@@ -1003,7 +1003,7 @@ STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}จำ�
 
 STR_NONE                                                        :ไม่มี
 STR_FUNDING_ONLY                                                :ระดมทุนเท่านั้น
-STR_MINIMAL                                                     :ต่ำสุด
+STR_MINIMAL                                                     :ขั้นต่ำ
 STR_NUM_VERY_LOW                                                :ต่ำมาก
 STR_NUM_LOW                                                     :ต่ำ
 STR_NUM_NORMAL                                                  :ปกติ
@@ -1047,8 +1047,8 @@ STR_SUBSIDY_X4                                                  :4 เท่า
 
 STR_TERRAIN_TYPE_VERY_FLAT                                      :แบนราบมาก
 STR_TERRAIN_TYPE_FLAT                                           :แบนราบ
-STR_TERRAIN_TYPE_HILLY                                          :เป็นเนิน
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :แบบภูเขา
+STR_TERRAIN_TYPE_HILLY                                          :เนินเขา
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :ภูเขาสูง
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
 STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อนผันให้ได้
@@ -1091,7 +1091,7 @@ STR_CONFIG_SETTING_ON                                           :เปิด
 STR_CONFIG_SETTING_DISABLED                                     :ไม่ให้เรียกใช้งาน
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :ปิด
-STR_CONFIG_SETTING_COMPANIES_OWN                                :บริษัทที่เป็นเจ้าของ
+STR_CONFIG_SETTING_COMPANIES_OWN                                :บริษัทในเครือ
 STR_CONFIG_SETTING_COMPANIES_ALL                                :บริษัททั้งหมด
 
 STR_CONFIG_SETTING_NONE                                         :ไม่มี
@@ -1111,9 +1111,9 @@ STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :กำหนด
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :ควานเร็วในการก่อสร้าง: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :จำกัด จำนวนของการกระทำก่อสร้างสำหรับ AIs
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :ยานพาหนะขัดข้อง: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :ควบคุมความถี่ในการซ่่อมบำรุงยานพาหนะ หากได้รับการซ่อมบำรุงไม่เพียงพอยานพาหนะอาจเกิดอาการขัดข้องอยู่บ่อยครั้ง
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :ควบคุมความถี่ในการตรวจสภาพยานพาหนะ หากได้รับการตรวจสภาพไม่เพียงพออาจเกิดอาการขัดข้องบ่อยครั้งได้
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :อัตราของการให้เงินสนับสนุนโครงการ: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :ตั้งค่าการอุดหนุดสำหรับการเชื่อมต่อ
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :ตั้งค่าเงินสนับสนุนสำหรับการเชื่อมต่อ
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :ค่าใช้จ่ายในการก่อสร้า: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :การตั้งค่าระดับของค่าใช้จ่ายในการก่อสร้างและซื้อ
 STR_CONFIG_SETTING_RECESSIONS                                   :เศรษฐกิจถดถอย: {STRING}
@@ -1128,11 +1128,11 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :เลือก
 STR_CONFIG_SETTING_BUILDONSLOPES                                :อนุญาตให้สร้างบนทางลาดและตลิ่งชายฝั่ง: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :เมื่อเปิดใช้งาน จะทำให้สามารถสร้างเส้นทางหรือสถานีบนพื้นที่ลาดเอียงได้
 STR_CONFIG_SETTING_AUTOSLOPE                                    :อนุญาตให้เปลี่ยนสภาพพื้นผิวใต้สิ่งก่อสร้าง, ราง, ฯลฯ (ปรับความชันอัตโนมัติ): {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :อนุญาตให้ปรับสภาพพื้นที่ได้โดยไม่ต้องรือถอนสาธารณูประโภค
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :อนุญาตให้ปรับสภาพพื้นที่ได้โดยไม่ต้องรื้อถอนสาธารณูปโภค
 STR_CONFIG_SETTING_CATCHMENT                                    :อนุญาตให้มีขนาดของพื้นที่บริการของสถานีที่สมเหตุสมผลมากขึ้น: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :สร้างความแตกต่างของพื้นที่บริการสำหรับสถานีในประเภทที่แตกต่างกัน
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :อนุญาตให้ทำลายถนน, สะพาน, สิ่งก่อสร้างของเมืองได้มากขึ้น: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :ทำให้ง่ายขึ้นสำหรับการรื้อถอนสาธารณูประโภคและสิ่งปลูกสร้างของเมือง
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :ทำให้ง่ายขึ้นสำหรับการรื้อถอนสาธารณูปโภคและสิ่งปลูกสร้างของเมือง
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :ความยาวสูงสุดของขบวนรถไฟ: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :เลือกตั้งค่าความยาวสูงสุดของขบวนรถไฟ
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ช่อง
@@ -4006,7 +4006,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}สเ�
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}ไม่แนะนำให้ทำการลดขนาดภาพต้นฉบับ. แน่ใจหรือไม่ว่าต้องการทำต่อ?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}พบเฉพาะไฟล์เสียงสำรอง. หากต้องการฟังเสียงอื่นๆ โปรดดาวโหลดและติดตั้งจาก Content Download System
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}พบเฉพาะไฟล์เสียงสำรอง. หากต้องการฟังเสียงอื่นๆ โปรดดาวน์โหลดและติดตั้งจาก Content Download System
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}ภาพถ่ายขนาดใหญ่

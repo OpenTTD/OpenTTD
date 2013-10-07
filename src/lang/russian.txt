@@ -4131,6 +4131,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Запуска�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Инструкция к {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Список изменений к {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Лицензия к {STRING} {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Переносить текст
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Переносить текст так, чтобы он помещался в окне без необходимости прокрутки
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Посмотреть инструкцию
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Список изменений
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лицензия
