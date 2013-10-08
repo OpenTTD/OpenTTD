@@ -4206,6 +4206,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Dienų skaičiu
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} aprašymas {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} pasikeitimai {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencija {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Skaidyti tekstą
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Skaidyti tekstą taip, kad jis visas tilpų lange
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Peržiūrėti SKAITYKMANE
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Pasikeitimai
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencija
