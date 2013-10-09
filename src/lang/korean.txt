@@ -3942,6 +3942,8 @@ STR_AI_SETTINGS_START_DELAY                                     :새로운 인�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}의 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}의 저작권
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}자동 줄 바꿈
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}본문 내용에 자동 줄 바꿈을 설정하여 스크롤하지 않고도 본문의 모든 내용을 볼 수 있게 합니다.
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme 보기
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}변경기록
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}저작권

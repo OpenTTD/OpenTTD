@@ -3941,6 +3941,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Päiviä edelli
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}:n {STRING} readme-tiedosto
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}:n {STRING} muutosloki
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}:n {STRING} lisenssi
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Tekstin rivitys
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Rivitä teksti ikkunaan niin, että se näkyy kokonaan rullaamatta
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Näytä readme-tiedosto
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muutosloki
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisenssi
