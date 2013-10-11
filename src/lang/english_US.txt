@@ -3941,6 +3941,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Number of days 
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog of {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} license of {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Wrap text
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Wrap the text of the window so it all fits without having to scroll
 STR_TEXTFILE_VIEW_README                                        :{BLACK}View readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}License

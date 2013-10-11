@@ -293,10 +293,10 @@ STR_SORT_BY_ENGINE_ID                                           :ID Máy (sắp 
 STR_SORT_BY_COST                                                :Chi phí
 STR_SORT_BY_POWER                                               :Lực
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Lực kéo
-STR_SORT_BY_INTRO_DATE                                          :Ngày giới thiệu
+STR_SORT_BY_INTRO_DATE                                          :Ngày ra mắt
 STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Chi phí Năng lượng/Chạy
-STR_SORT_BY_CARGO_CAPACITY                                      :Khả năng chở hàng
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Năng lượng/Chi phí chạy
+STR_SORT_BY_CARGO_CAPACITY                                      :Tải trọng
 STR_SORT_BY_RANGE                                               :Tầm xa
 STR_SORT_BY_POPULATION                                          :Dân số
 STR_SORT_BY_RATING                                              :Đánh giá
@@ -1339,6 +1339,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Bảng màu mặc định cho những NewGRF chưa đặt sẵn bảng màu: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Bảng palette mặc định cho NewGRF với NewGRF không chỉ rõ palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Bảng màu (D) mặc định
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Bảng màu (W) hệ thống
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Tự động tạm dừng khi bắt đầu game mới: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Khi bật, ván chơi sẽ tự động tạm dừng khi bắt đầu ván chơi, cho phép xem xét trước bản đồ
@@ -2638,7 +2640,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Trụ sở côn
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Đất công ty sở hữu
 
 # About OpenTTD window
-STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
+STR_ABOUT_OPENTTD                                               :{WHITE}Về OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Nguyên tác bản quyền {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD phiên bản {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2013 Nhóm OpenTTD
@@ -3025,6 +3027,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Trước
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Chuyển về trang trước
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Sau
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Chuyển tới trang sau
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Tham chiếu mục tiêu không hợp lệ
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Các nhà ga, bến, cảng - nháy vào tên để xem vị trí nhà ga,bến, cảng. Ctrl+Click mở cửa sổ mới để xem
@@ -3938,6 +3941,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Số ngày cầ
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme của {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Giấy phép của {STRING} {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ép văn bản
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ép chữ cái vừa khung cửa sổ để khỏi phải cuộn chuột
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Xem readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lịch sử thay đổi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy phép
