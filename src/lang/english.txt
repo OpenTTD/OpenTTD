@@ -293,10 +293,10 @@ STR_SORT_BY_ENGINE_ID                                           :EngineID (class
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Power
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Tractive effort
-STR_SORT_BY_INTRO_DATE                                          :Introduction Date
-STR_SORT_BY_RUNNING_COST                                        :Running Cost
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost
-STR_SORT_BY_CARGO_CAPACITY                                      :Cargo Capacity
+STR_SORT_BY_INTRO_DATE                                          :Introduction date
+STR_SORT_BY_RUNNING_COST                                        :Running cost
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running cost
+STR_SORT_BY_CARGO_CAPACITY                                      :Cargo capacity
 STR_SORT_BY_RANGE                                               :Range
 STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_RATING                                              :Rating
