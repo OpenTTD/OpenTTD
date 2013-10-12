@@ -2977,14 +2977,14 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (indtid + numinfo > NUM_INDUSTRYTILES) {
-		grfmsg(1, "IndustryTilesChangeInfo: Too many industry tiles loaded (%u), max (%u). Ignoring.", indtid + numinfo, NUM_INDUSTRYTILES);
+	if (indtid + numinfo > NUM_INDUSTRYTILES_PER_GRF) {
+		grfmsg(1, "IndustryTilesChangeInfo: Too many industry tiles loaded (%u), max (%u). Ignoring.", indtid + numinfo, NUM_INDUSTRYTILES_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate industry tile specs if they haven't been allocated already. */
 	if (_cur.grffile->indtspec == NULL) {
-		_cur.grffile->indtspec = CallocT<IndustryTileSpec*>(NUM_INDUSTRYTILES);
+		_cur.grffile->indtspec = CallocT<IndustryTileSpec*>(NUM_INDUSTRYTILES_PER_GRF);
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -7866,7 +7866,7 @@ static void ResetCustomIndustries()
 		}
 
 		if (indtspec == NULL) continue;
-		for (uint i = 0; i < NUM_INDUSTRYTILES; i++) {
+		for (uint i = 0; i < NUM_INDUSTRYTILES_PER_GRF; i++) {
 			free(indtspec[i]);
 		}
 
@@ -8519,7 +8519,7 @@ static void FinaliseIndustriesArray()
 		}
 
 		if (indtspec != NULL) {
-			for (int i = 0; i < NUM_INDUSTRYTILES; i++) {
+			for (int i = 0; i < NUM_INDUSTRYTILES_PER_GRF; i++) {
 				IndustryTileSpec *indtsp = indtspec[i];
 				if (indtsp != NULL) {
 					_industile_mngr.SetEntitySpec(indtsp);
