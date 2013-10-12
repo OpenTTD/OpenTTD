@@ -956,8 +956,17 @@ static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields)
 	}
 }
 
-static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direction, bool north)
+/**
+ * Build farm field fence
+ * @param tile the tile to position the fence on
+ * @param size the size of the field being planted in tiles
+ * @param type type of fence to set
+ * @param side the side of the tile to attempt placement
+ */
+static void SetupFarmFieldFence(TileIndex tile, int size, byte type, DiagDirection side)
 {
+	TileIndexDiff diff = (DiagDirToAxis(side) == AXIS_Y ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+
 	do {
 		tile = TILE_MASK(tile);
 
@@ -966,22 +975,10 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 
 			if (or_ == 1 && Chance16(1, 7)) or_ = 2;
 
-			if (direction == AXIS_X) {
-				if (north) {
-					SetFence(tile, DIAGDIR_NW, or_);
-				} else {
-					SetFence(tile, DIAGDIR_SE, or_);
-				}
-			} else {
-				if (north) {
-					SetFence(tile, DIAGDIR_NE, or_);
-				} else {
-					SetFence(tile, DIAGDIR_SW, or_);
-				}
-			}
+			SetFence(tile, side, or_);
 		}
 
-		tile += (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		tile += diff;
 	} while (--size);
 }
 
@@ -1030,10 +1027,10 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
-	SetupFarmFieldFence(ta.tile, ta.h, type, AXIS_Y, true);
-	SetupFarmFieldFence(ta.tile, ta.w, type, AXIS_X, true);
-	SetupFarmFieldFence(ta.tile + TileDiffXY(ta.w - 1, 0), ta.h, type, AXIS_Y, false);
-	SetupFarmFieldFence(ta.tile + TileDiffXY(0, ta.h - 1), ta.w, type, AXIS_X, false);
+	SetupFarmFieldFence(ta.tile, ta.h, type, DIAGDIR_NE);
+	SetupFarmFieldFence(ta.tile, ta.w, type, DIAGDIR_NW);
+	SetupFarmFieldFence(ta.tile + TileDiffXY(ta.w - 1, 0), ta.h, type, DIAGDIR_SW);
+	SetupFarmFieldFence(ta.tile + TileDiffXY(0, ta.h - 1), ta.w, type, DIAGDIR_SE);
 }
 
 void PlantRandomFarmField(const Industry *i)
