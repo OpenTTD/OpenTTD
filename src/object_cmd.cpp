@@ -295,7 +295,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case OBJECT_OWNED_LAND:
 			if (IsTileType(tile, MP_OBJECT) &&
 					IsTileOwner(tile, _current_company) &&
-					IsOwnedLand(tile)) {
+					IsObjectType(tile, OBJECT_OWNED_LAND)) {
 				return_cmd_error(STR_ERROR_YOU_ALREADY_OWN_IT);
 			}
 			break;
@@ -396,7 +396,7 @@ static void DrawTile_Object(TileInfo *ti)
 
 static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y)
 {
-	if (IsOwnedLand(tile)) {
+	if (IsObjectType(tile, OBJECT_OWNED_LAND)) {
 		int z;
 		Slope tileh = GetTilePixelSlope(tile, &z);
 
@@ -408,7 +408,7 @@ static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y)
 
 static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
 {
-	return IsOwnedLand(tile) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
+	return IsObjectType(tile, OBJECT_OWNED_LAND) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
 }
 
 /**
@@ -525,7 +525,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 
 static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
 {
-	if (!IsCompanyHQ(tile)) return;
+	if (!IsObjectType(tile, OBJECT_HQ)) return;
 
 	/* HQ accepts passenger and mail; but we have to divide the values
 	 * between 4 tiles it occupies! */
@@ -570,7 +570,7 @@ static void TileLoop_Object(TileIndex tile)
 
 	if (IsTileOnWater(tile)) TileLoop_Water(tile);
 
-	if (!IsCompanyHQ(tile)) return;
+	if (!IsObjectType(tile, OBJECT_HQ)) return;
 
 	/* HQ accepts passenger and mail; but we have to divide the values
 	 * between 4 tiles it occupies! */
@@ -607,7 +607,7 @@ static TrackStatus GetTileTrackStatus_Object(TileIndex tile, TransportType mode,
 
 static bool ClickTile_Object(TileIndex tile)
 {
-	if (!IsCompanyHQ(tile)) return false;
+	if (!IsObjectType(tile, OBJECT_HQ)) return false;
 
 	ShowCompany(GetTileOwner(tile));
 	return true;
@@ -626,7 +626,7 @@ static void AnimateTile_Object(TileIndex tile)
  */
 static bool HasTransmitter(TileIndex tile, void *user)
 {
-	return IsTransmitterTile(tile);
+	return IsObjectTypeTile(tile, OBJECT_TRANSMITTER);
 }
 
 void GenerateObjects()
@@ -713,9 +713,9 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 {
 	if (!IsTileOwner(tile, old_owner)) return;
 
-	if (IsOwnedLand(tile) && new_owner != INVALID_OWNER) {
+	if (IsObjectType(tile, OBJECT_OWNED_LAND) && new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
-	} else if (IsStatueTile(tile)) {
+	} else if (IsObjectType(tile, OBJECT_STATUE)) {
 		Town *t = Object::GetByTile(tile)->town;
 		ClrBit(t->statues, old_owner);
 		if (new_owner != INVALID_OWNER && !HasBit(t->statues, new_owner)) {

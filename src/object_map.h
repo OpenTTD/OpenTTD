@@ -28,6 +28,29 @@ static inline ObjectType GetObjectType(TileIndex t)
 }
 
 /**
+ * Check whether the object on a tile is of a specific type.
+ * @param t Tile to test.
+ * @param type Type to test.
+ * @pre IsTileType(t, MP_OBJECT)
+ * @return True if type matches.
+ */
+static inline bool IsObjectType(TileIndex t, ObjectType type)
+{
+	return GetObjectType(t) == type;
+}
+
+/**
+ * Check whether a tile is a object tile of a specific type.
+ * @param t Tile to test.
+ * @param type Type to test.
+ * @return True if type matches.
+ */
+static inline bool IsObjectTypeTile(TileIndex t, ObjectType type)
+{
+	return IsTileType(t, MP_OBJECT) && GetObjectType(t) == type;
+}
+
+/**
  * Get the index of which object this tile is attached to.
  * @param t the tile
  * @pre IsTileType(t, MP_OBJECT)
@@ -37,72 +60,6 @@ static inline ObjectID GetObjectIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_OBJECT));
 	return _m[t].m2;
-}
-
-/**
- * Does the given tile have a transmitter?
- * @param t the tile to inspect.
- * @return true if and only if the tile has a transmitter.
- */
-static inline bool IsTransmitterTile(TileIndex t)
-{
-	return IsTileType(t, MP_OBJECT) && GetObjectType(t) == OBJECT_TRANSMITTER;
-}
-
-/**
- * Is this object tile an 'owned land' tile?
- * @param t the tile to inspect.
- * @pre IsTileType(t, MP_OBJECT)
- * @return true if and only if the tile is an 'owned land' tile.
- */
-static inline bool IsOwnedLand(TileIndex t)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	return GetObjectType(t) == OBJECT_OWNED_LAND;
-}
-
-/**
- * Is the given tile (pre-)owned by someone (the little flags)?
- * @param t the tile to inspect.
- * @return true if and only if the tile is an 'owned land' tile.
- */
-static inline bool IsOwnedLandTile(TileIndex t)
-{
-	return IsTileType(t, MP_OBJECT) && IsOwnedLand(t);
-}
-
-/**
- * Is this object tile a HQ tile?
- * @param t the tile to inspect.
- * @pre IsTileType(t, MP_OBJECT)
- * @return true if and only if the tile is a HQ tile.
- */
-static inline bool IsCompanyHQ(TileIndex t)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	return _m[t].m5 == OBJECT_HQ;
-}
-
-/**
- * Is this object tile a statue?
- * @param t the tile to inspect.
- * @pre IsTileType(t, MP_OBJECT)
- * @return true if and only if the tile is a statue.
- */
-static inline bool IsStatue(TileIndex t)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	return GetObjectType(t) == OBJECT_STATUE;
-}
-
-/**
- * Is the given tile a statue?
- * @param t the tile to inspect.
- * @return true if and only if the tile is a statue.
- */
-static inline bool IsStatueTile(TileIndex t)
-{
-	return IsTileType(t, MP_OBJECT) && IsStatue(t);
 }
 
 /**

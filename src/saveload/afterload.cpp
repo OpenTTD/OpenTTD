@@ -1444,7 +1444,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(52)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (IsStatueTile(t)) {
+			if (IsTileType(t, MP_OBJECT) && GetObjectType(t) == OBJECT_STATUE) {
 				_m[t].m2 = CalcClosestTownFromTile(t)->index;
 			}
 		}
