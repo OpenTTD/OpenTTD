@@ -22,7 +22,7 @@
 
 template <typename T>
 struct BuildingCounts {
-	T id_count[HOUSE_MAX];
+	T id_count[NUM_HOUSES];
 	T class_count[HOUSE_CLASS_MAX];
 };
 

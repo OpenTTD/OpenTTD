@@ -27,7 +27,7 @@
 static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
 
-HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
+HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, NUM_HOUSES, INVALID_HOUSE_ID);
 
 /**
  * Constructor of a house scope resolver.

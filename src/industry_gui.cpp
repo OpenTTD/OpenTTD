@@ -1996,7 +1996,7 @@ struct CargoesRow {
 		} else {
 			/* Houses only display what is demanded. */
 			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
-				for (uint h = 0; h < HOUSE_MAX; h++) {
+				for (uint h = 0; h < NUM_HOUSES; h++) {
 					HouseSpec *hs = HouseSpec::Get(h);
 					if (!hs->enabled) continue;
 
@@ -2188,7 +2188,7 @@ struct IndustryCargoesWindow : public Window {
 		for (uint i = 0; i < length; i++) {
 			if (cargoes[i] == INVALID_CARGO) continue;
 
-			for (uint h = 0; h < HOUSE_MAX; h++) {
+			for (uint h = 0; h < NUM_HOUSES; h++) {
 				HouseSpec *hs = HouseSpec::Get(h);
 				if (!hs->enabled || !(hs->building_availability & climate_mask)) continue;
 

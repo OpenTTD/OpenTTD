@@ -2183,14 +2183,14 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (hid + numinfo > HOUSE_MAX) {
-		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, HOUSE_MAX);
+	if (hid + numinfo > NUM_HOUSES) {
+		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, NUM_HOUSES);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate house specs if they haven't been allocated already. */
 	if (_cur.grffile->housespec == NULL) {
-		_cur.grffile->housespec = CallocT<HouseSpec*>(HOUSE_MAX);
+		_cur.grffile->housespec = CallocT<HouseSpec*>(NUM_HOUSES);
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -7789,7 +7789,7 @@ static void ResetCustomHouses()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		HouseSpec **&housespec = (*file)->housespec;
 		if (housespec == NULL) continue;
-		for (uint i = 0; i < HOUSE_MAX; i++) {
+		for (uint i = 0; i < NUM_HOUSES; i++) {
 			free(housespec[i]);
 		}
 
@@ -8380,7 +8380,7 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 {
 	Year min_year = MAX_YEAR;
 
-	for (int i = 0; i < HOUSE_MAX; i++) {
+	for (int i = 0; i < NUM_HOUSES; i++) {
 		HouseSpec *hs = HouseSpec::Get(i);
 		if (hs == NULL || !hs->enabled) continue;
 		if ((hs->building_availability & bitmask) != bitmask) continue;
@@ -8389,7 +8389,7 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 
 	if (min_year == 0) return;
 
-	for (int i = 0; i < HOUSE_MAX; i++) {
+	for (int i = 0; i < NUM_HOUSES; i++) {
 		HouseSpec *hs = HouseSpec::Get(i);
 		if (hs == NULL || !hs->enabled) continue;
 		if ((hs->building_availability & bitmask) != bitmask) continue;
@@ -8419,14 +8419,14 @@ static void FinaliseHouseArray()
 		HouseSpec **&housespec = (*file)->housespec;
 		if (housespec == NULL) continue;
 
-		for (int i = 0; i < HOUSE_MAX; i++) {
+		for (int i = 0; i < NUM_HOUSES; i++) {
 			HouseSpec *hs = housespec[i];
 
 			if (hs == NULL) continue;
 
-			const HouseSpec *next1 = (i + 1 < HOUSE_MAX ? housespec[i + 1] : NULL);
-			const HouseSpec *next2 = (i + 2 < HOUSE_MAX ? housespec[i + 2] : NULL);
-			const HouseSpec *next3 = (i + 3 < HOUSE_MAX ? housespec[i + 3] : NULL);
+			const HouseSpec *next1 = (i + 1 < NUM_HOUSES ? housespec[i + 1] : NULL);
+			const HouseSpec *next2 = (i + 2 < NUM_HOUSES ? housespec[i + 2] : NULL);
+			const HouseSpec *next3 = (i + 3 < NUM_HOUSES ? housespec[i + 3] : NULL);
 
 			if (!IsHouseSpecValid(hs, next1, next2, next3, (*file)->filename)) continue;
 
@@ -8434,11 +8434,11 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	for (int i = 0; i < HOUSE_MAX; i++) {
+	for (int i = 0; i < NUM_HOUSES; i++) {
 		HouseSpec *hs = HouseSpec::Get(i);
-		const HouseSpec *next1 = (i + 1 < HOUSE_MAX ? HouseSpec::Get(i + 1) : NULL);
-		const HouseSpec *next2 = (i + 2 < HOUSE_MAX ? HouseSpec::Get(i + 2) : NULL);
-		const HouseSpec *next3 = (i + 3 < HOUSE_MAX ? HouseSpec::Get(i + 3) : NULL);
+		const HouseSpec *next1 = (i + 1 < NUM_HOUSES ? HouseSpec::Get(i + 1) : NULL);
+		const HouseSpec *next2 = (i + 2 < NUM_HOUSES ? HouseSpec::Get(i + 2) : NULL);
+		const HouseSpec *next3 = (i + 3 < NUM_HOUSES ? HouseSpec::Get(i + 3) : NULL);
 
 		/* We need to check all houses again to we are sure that multitile houses
 		 * did get consecutive IDs and none of the parts are missing. */

@@ -2194,13 +2194,13 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	/* bits 0-4 are used
 	 * bits 11-15 are used
 	 * bits 5-10 are not used. */
-	HouseID houses[HOUSE_MAX];
+	HouseID houses[NUM_HOUSES];
 	uint num = 0;
-	uint probs[HOUSE_MAX];
+	uint probs[NUM_HOUSES];
 	uint probability_max = 0;
 
 	/* Generate a list of all possible houses that can be built. */
-	for (uint i = 0; i < HOUSE_MAX; i++) {
+	for (uint i = 0; i < NUM_HOUSES; i++) {
 		const HouseSpec *hs = HouseSpec::Get(i);
 
 		/* Verify that the candidate house spec matches the current tile status */
@@ -3378,7 +3378,7 @@ extern const TileTypeProcs _tile_type_town_procs = {
 };
 
 
-HouseSpec _house_specs[HOUSE_MAX];
+HouseSpec _house_specs[NUM_HOUSES];
 
 void ResetHouses()
 {
