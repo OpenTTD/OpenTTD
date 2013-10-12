@@ -205,7 +205,8 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	CommandCost cost(EXPENSES_PROPERTY);
 
-	ObjectType type = (ObjectType)GB(p1, 0, 8);
+	ObjectType type = (ObjectType)GB(p1, 0, 16);
+	if (type >= NUM_OBJECTS) return CMD_ERROR;
 	uint8 view = GB(p2, 0, 2);
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 	if (!spec->IsAvailable()) return CMD_ERROR;
