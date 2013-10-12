@@ -3773,14 +3773,14 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (id + numinfo > NUM_OBJECTS) {
-		grfmsg(1, "ObjectChangeInfo: Too many objects loaded (%u), max (%u). Ignoring.", id + numinfo, NUM_OBJECTS);
+	if (id + numinfo > NUM_OBJECTS_PER_GRF) {
+		grfmsg(1, "ObjectChangeInfo: Too many objects loaded (%u), max (%u). Ignoring.", id + numinfo, NUM_OBJECTS_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate object specs if they haven't been allocated already. */
 	if (_cur.grffile->objectspec == NULL) {
-		_cur.grffile->objectspec = CallocT<ObjectSpec*>(NUM_OBJECTS);
+		_cur.grffile->objectspec = CallocT<ObjectSpec*>(NUM_OBJECTS_PER_GRF);
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -7882,7 +7882,7 @@ static void ResetCustomObjects()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		ObjectSpec **&objectspec = (*file)->objectspec;
 		if (objectspec == NULL) continue;
-		for (uint i = 0; i < NUM_OBJECTS; i++) {
+		for (uint i = 0; i < NUM_OBJECTS_PER_GRF; i++) {
 			free(objectspec[i]);
 		}
 
@@ -8552,7 +8552,7 @@ static void FinaliseObjectsArray()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		ObjectSpec **&objectspec = (*file)->objectspec;
 		if (objectspec != NULL) {
-			for (int i = 0; i < NUM_OBJECTS; i++) {
+			for (int i = 0; i < NUM_OBJECTS_PER_GRF; i++) {
 				if (objectspec[i] != NULL && objectspec[i]->grf_prop.grffile != NULL && objectspec[i]->enabled) {
 					_object_mngr.SetEntitySpec(objectspec[i]);
 				}

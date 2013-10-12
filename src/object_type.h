@@ -21,8 +21,10 @@ static const ObjectType OBJECT_STATUE       =   2;    ///< Statue in towns
 static const ObjectType OBJECT_OWNED_LAND   =   3;    ///< Owned land 'flag'
 static const ObjectType OBJECT_HQ           =   4;    ///< HeadQuarter of a player
 
+static const ObjectType NUM_OBJECTS_PER_GRF = 255;    ///< Number of supported objects per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
+
 static const ObjectType NEW_OBJECT_OFFSET   =   5;    ///< Offset for new objects
-static const ObjectType NUM_OBJECTS         = 256;    ///< Number of supported objects
+static const ObjectType NUM_OBJECTS         = 256;    ///< Number of supported objects overall
 static const ObjectType INVALID_OBJECT_TYPE = 0xFFFF; ///< An invalid object
 
 /** Unique identifier for an object. */
