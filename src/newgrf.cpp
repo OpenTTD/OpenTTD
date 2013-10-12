@@ -2183,14 +2183,14 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (hid + numinfo > NUM_HOUSES) {
-		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, NUM_HOUSES);
+	if (hid + numinfo > NUM_HOUSES_PER_GRF) {
+		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, NUM_HOUSES_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate house specs if they haven't been allocated already. */
 	if (_cur.grffile->housespec == NULL) {
-		_cur.grffile->housespec = CallocT<HouseSpec*>(NUM_HOUSES);
+		_cur.grffile->housespec = CallocT<HouseSpec*>(NUM_HOUSES_PER_GRF);
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -7789,7 +7789,7 @@ static void ResetCustomHouses()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		HouseSpec **&housespec = (*file)->housespec;
 		if (housespec == NULL) continue;
-		for (uint i = 0; i < NUM_HOUSES; i++) {
+		for (uint i = 0; i < NUM_HOUSES_PER_GRF; i++) {
 			free(housespec[i]);
 		}
 
@@ -8419,14 +8419,14 @@ static void FinaliseHouseArray()
 		HouseSpec **&housespec = (*file)->housespec;
 		if (housespec == NULL) continue;
 
-		for (int i = 0; i < NUM_HOUSES; i++) {
+		for (int i = 0; i < NUM_HOUSES_PER_GRF; i++) {
 			HouseSpec *hs = housespec[i];
 
 			if (hs == NULL) continue;
 
-			const HouseSpec *next1 = (i + 1 < NUM_HOUSES ? housespec[i + 1] : NULL);
-			const HouseSpec *next2 = (i + 2 < NUM_HOUSES ? housespec[i + 2] : NULL);
-			const HouseSpec *next3 = (i + 3 < NUM_HOUSES ? housespec[i + 3] : NULL);
+			const HouseSpec *next1 = (i + 1 < NUM_HOUSES_PER_GRF ? housespec[i + 1] : NULL);
+			const HouseSpec *next2 = (i + 2 < NUM_HOUSES_PER_GRF ? housespec[i + 2] : NULL);
+			const HouseSpec *next3 = (i + 3 < NUM_HOUSES_PER_GRF ? housespec[i + 3] : NULL);
 
 			if (!IsHouseSpecValid(hs, next1, next2, next3, (*file)->filename)) continue;
 
