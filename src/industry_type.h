@@ -22,8 +22,10 @@ struct IndustryTileSpec;
 
 static const IndustryID INVALID_INDUSTRY = 0xFFFF;
 
-static const IndustryType NEW_INDUSTRYOFFSET     = 37;                ///< original number of industries
-static const IndustryType NUM_INDUSTRYTYPES      = 64;                ///< total number of industries, new and old
+static const IndustryType NUM_INDUSTRYTYPES_PER_GRF = 64;              ///< maximum number of industry types per NewGRF
+
+static const IndustryType NEW_INDUSTRYOFFSET     = 37;                ///< original number of industry types
+static const IndustryType NUM_INDUSTRYTYPES      = 64;                ///< total number of industry types, new and old
 static const IndustryType INVALID_INDUSTRYTYPE   = NUM_INDUSTRYTYPES; ///< one above amount is considered invalid
 
 static const IndustryGfx  INDUSTRYTILE_NOANIM    = 0xFF;              ///< flag to mark industry tiles as having no animation

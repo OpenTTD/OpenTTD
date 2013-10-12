@@ -3215,14 +3215,14 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (indid + numinfo > NUM_INDUSTRYTYPES) {
-		grfmsg(1, "IndustriesChangeInfo: Too many industries loaded (%u), max (%u). Ignoring.", indid + numinfo, NUM_INDUSTRYTYPES);
+	if (indid + numinfo > NUM_INDUSTRYTYPES_PER_GRF) {
+		grfmsg(1, "IndustriesChangeInfo: Too many industries loaded (%u), max (%u). Ignoring.", indid + numinfo, NUM_INDUSTRYTYPES_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate industry specs if they haven't been allocated already. */
 	if (_cur.grffile->industryspec == NULL) {
-		_cur.grffile->industryspec = CallocT<IndustrySpec*>(NUM_INDUSTRYTYPES);
+		_cur.grffile->industryspec = CallocT<IndustrySpec*>(NUM_INDUSTRYTYPES_PER_GRF);
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -7846,7 +7846,7 @@ static void ResetCustomIndustries()
 		/* We are verifiying both tiles and industries specs loaded from the grf file
 		 * First, let's deal with industryspec */
 		if (industryspec != NULL) {
-			for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
+			for (uint i = 0; i < NUM_INDUSTRYTYPES_PER_GRF; i++) {
 				IndustrySpec *ind = industryspec[i];
 				if (ind == NULL) continue;
 
@@ -8482,7 +8482,7 @@ static void FinaliseIndustriesArray()
 		IndustrySpec **&industryspec = (*file)->industryspec;
 		IndustryTileSpec **&indtspec = (*file)->indtspec;
 		if (industryspec != NULL) {
-			for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
+			for (int i = 0; i < NUM_INDUSTRYTYPES_PER_GRF; i++) {
 				IndustrySpec *indsp = industryspec[i];
 
 				if (indsp != NULL && indsp->enabled) {
