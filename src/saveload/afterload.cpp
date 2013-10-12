@@ -2695,11 +2695,11 @@ bool AfterLoadGame()
 			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) continue;
 			uint fence = GB(_m[t].m4, 5, 3);
 			if (fence != 0 && IsTileType(TILE_ADDXY(t, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(t, 1, 0), CLEAR_FIELDS)) {
-				SetFenceNE(TILE_ADDXY(t, 1, 0), fence);
+				SetFence(TILE_ADDXY(t, 1, 0), DIAGDIR_NE, fence);
 			}
 			fence = GB(_m[t].m4, 2, 3);
 			if (fence != 0 && IsTileType(TILE_ADDXY(t, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(t, 0, 1), CLEAR_FIELDS)) {
-				SetFenceNW(TILE_ADDXY(t, 0, 1), fence);
+				SetFence(TILE_ADDXY(t, 0, 1), DIAGDIR_NW, fence);
 			}
 			SB(_m[t].m4, 2, 3, 0);
 			SB(_m[t].m4, 5, 3, 0);

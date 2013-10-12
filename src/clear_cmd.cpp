@@ -65,22 +65,22 @@ static void DrawClearLandFence(const TileInfo *ti)
 
 	int maxz = GetSlopeMaxPixelZ(ti->tileh);
 
-	uint fence_nw = GetFenceNW(ti->tile);
+	uint fence_nw = GetFence(ti->tile, DIAGDIR_NW);
 	if (fence_nw != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_W);
 		SpriteID sprite = _clear_land_fence_sprites[fence_nw - 1] + _fence_mod_by_tileh_nw[ti->tileh];
 		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y - 15, 16, 31, maxz - z + 4, ti->z + z, false, 0, 15, -z);
 	}
 
-	uint fence_ne = GetFenceNE(ti->tile);
+	uint fence_ne = GetFence(ti->tile, DIAGDIR_NE);
 	if (fence_ne != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_E);
 		SpriteID sprite = _clear_land_fence_sprites[fence_ne - 1] + _fence_mod_by_tileh_ne[ti->tileh];
 		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x - 15, ti->y, 31, 16, maxz - z + 4, ti->z + z, false, 15, 0, -z);
 	}
 
-	uint fence_sw = GetFenceSW(ti->tile);
-	uint fence_se = GetFenceSE(ti->tile);
+	uint fence_sw = GetFence(ti->tile, DIAGDIR_SW);
+	uint fence_se = GetFence(ti->tile, DIAGDIR_SE);
 
 	if (fence_sw != 0 || fence_se != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
@@ -146,26 +146,26 @@ static void UpdateFences(TileIndex tile)
 	bool dirty = false;
 
 	bool neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CLEAR_FIELDS));
-	if (!neighbour && GetFenceSW(tile) == 0) {
-		SetFenceSW(tile, 3);
+	if (!neighbour && GetFence(tile, DIAGDIR_SW) == 0) {
+		SetFence(tile, DIAGDIR_SW, 3);
 		dirty = true;
 	}
 
 	neighbour = (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, 1), CLEAR_FIELDS));
-	if (!neighbour && GetFenceSE(tile) == 0) {
-		SetFenceSE(tile, 3);
+	if (!neighbour && GetFence(tile, DIAGDIR_SE) == 0) {
+		SetFence(tile, DIAGDIR_SE, 3);
 		dirty = true;
 	}
 
 	neighbour = (IsTileType(TILE_ADDXY(tile, -1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, -1, 0), CLEAR_FIELDS));
-	if (!neighbour && GetFenceNE(tile) == 0) {
-		SetFenceNE(tile, 3);
+	if (!neighbour && GetFence(tile, DIAGDIR_NE) == 0) {
+		SetFence(tile, DIAGDIR_NE, 3);
 		dirty = true;
 	}
 
 	neighbour = (IsTileType(TILE_ADDXY(tile, 0, -1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, -1), CLEAR_FIELDS));
-	if (!neighbour && GetFenceNW(tile) == 0) {
-		SetFenceNW(tile, 3);
+	if (!neighbour && GetFence(tile, DIAGDIR_NW) == 0) {
+		SetFence(tile, DIAGDIR_NW, 3);
 		dirty = true;
 	}
 

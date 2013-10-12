@@ -968,15 +968,15 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 
 			if (direction == AXIS_X) {
 				if (north) {
-					SetFenceNW(tile, or_);
+					SetFence(tile, DIAGDIR_NW, or_);
 				} else {
-					SetFenceSE(tile, or_);
+					SetFence(tile, DIAGDIR_SE, or_);
 				}
 			} else {
 				if (north) {
-					SetFenceNE(tile, or_);
+					SetFence(tile, DIAGDIR_NE, or_);
 				} else {
-					SetFenceSW(tile, or_);
+					SetFence(tile, DIAGDIR_SW, or_);
 				}
 			}
 		}

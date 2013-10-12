@@ -214,103 +214,41 @@ static inline void SetIndustryIndexOfField(TileIndex t, IndustryID i)
 
 
 /**
- * Is there a fence at the south eastern border?
+ * Is there a fence at the given border?
  * @param t the tile to check for fences
+ * @param side the border to check
  * @pre IsClearGround(t, CLEAR_FIELDS)
  * @return 0 if there is no fence, otherwise the fence type
  */
-static inline uint GetFenceSE(TileIndex t)
+static inline uint GetFence(TileIndex t, DiagDirection side)
 {
 	assert(IsClearGround(t, CLEAR_FIELDS));
-	return GB(_m[t].m4, 2, 3);
+	switch (side) {
+		default: NOT_REACHED();
+		case DIAGDIR_SE: return GB(_m[t].m4, 2, 3);
+		case DIAGDIR_SW: return GB(_m[t].m4, 5, 3);
+		case DIAGDIR_NE: return GB(_m[t].m3, 5, 3);
+		case DIAGDIR_NW: return GB(_m[t].m6, 2, 3);
+	}
 }
 
 /**
- * Sets the type of fence (and whether there is one) for the south
- * eastern border.
+ * Sets the type of fence (and whether there is one) for the given border.
  * @param t the tile to check for fences
+ * @param side the border to check
  * @param h 0 if there is no fence, otherwise the fence type
  * @pre IsClearGround(t, CLEAR_FIELDS)
  */
-static inline void SetFenceSE(TileIndex t, uint h)
+static inline void SetFence(TileIndex t, DiagDirection side, uint h)
 {
 	assert(IsClearGround(t, CLEAR_FIELDS));
-	SB(_m[t].m4, 2, 3, h);
-}
-
-/**
- * Is there a fence at the south western border?
- * @param t the tile to check for fences
- * @pre IsClearGround(t, CLEAR_FIELDS)
- * @return 0 if there is no fence, otherwise the fence type
- */
-static inline uint GetFenceSW(TileIndex t)
-{
-	assert(IsClearGround(t, CLEAR_FIELDS));
-	return GB(_m[t].m4, 5, 3);
-}
-
-/**
- * Sets the type of fence (and whether there is one) for the south
- * western border.
- * @param t the tile to check for fences
- * @param h 0 if there is no fence, otherwise the fence type
- * @pre IsClearGround(t, CLEAR_FIELDS)
- */
-static inline void SetFenceSW(TileIndex t, uint h)
-{
-	assert(IsClearGround(t, CLEAR_FIELDS));
-	SB(_m[t].m4, 5, 3, h);
-}
-
-/**
- * Is there a fence at the north eastern border?
- * @param t the tile to check for fences
- * @pre IsClearGround(t, CLEAR_FIELDS)
- * @return 0 if there is no fence, otherwise the fence type
- */
-static inline uint GetFenceNE(TileIndex t)
-{
-	assert(IsClearGround(t, CLEAR_FIELDS));
-	return GB(_m[t].m3, 5, 3);
-}
-
-/**
- * Sets the type of fence (and whether there is one) for the north
- * eastern border.
- * @param t the tile to check for fences
- * @param h 0 if there is no fence, otherwise the fence type
- * @pre IsClearGround(t, CLEAR_FIELDS)
- */
-static inline void SetFenceNE(TileIndex t, uint h)
-{
-	assert(IsClearGround(t, CLEAR_FIELDS));
-	SB(_m[t].m3, 5, 3, h);
-}
-
-/**
- * Is there a fence at the north western border?
- * @param t the tile to check for fences
- * @pre IsClearGround(t, CLEAR_FIELDS)
- * @return 0 if there is no fence, otherwise the fence type
- */
-static inline uint GetFenceNW(TileIndex t)
-{
-	assert(IsClearGround(t, CLEAR_FIELDS));
-	return GB(_m[t].m6, 2, 3);
-}
-
-/**
- * Sets the type of fence (and whether there is one) for the north
- * western border.
- * @param t the tile to check for fences
- * @param h 0 if there is no fence, otherwise the fence type
- * @pre IsClearGround(t, CLEAR_FIELDS)
- */
-static inline void SetFenceNW(TileIndex t, uint h)
-{
-	assert(IsClearGround(t, CLEAR_FIELDS));
-	SB(_m[t].m6, 2, 3, h);
+	switch (side) {
+		default: NOT_REACHED();
+		case DIAGDIR_SE: SB(_m[t].m4, 2, 3, h); break;
+		case DIAGDIR_SW: SB(_m[t].m4, 5, 3, h); break;
+		case DIAGDIR_NE: SB(_m[t].m3, 5, 3, h); break;
+		case DIAGDIR_NW: SB(_m[t].m6, 2, 3, h); break;
+	}
 }
 
 
