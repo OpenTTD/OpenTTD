@@ -48,7 +48,7 @@ bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint index) const
 
 INSTANTIATE_NEWGRF_CLASS_METHODS(StationClass, StationSpec, StationClassID, STAT_CLASS_MAX)
 
-static const uint MAX_SPECLIST = 255;
+static const uint NUM_STATIONSSPECS_PER_STATION = 255; ///< Maximum number of parts per station.
 
 enum TriggerArea {
 	TA_TILE,
@@ -697,17 +697,17 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 
 	if (statspec == NULL || st == NULL) return 0;
 
-	for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
+	for (i = 1; i < st->num_specs && i < NUM_STATIONSSPECS_PER_STATION; i++) {
 		if (st->speclist[i].spec == NULL && st->speclist[i].grfid == 0) break;
 	}
 
-	if (i == MAX_SPECLIST) {
+	if (i == NUM_STATIONSSPECS_PER_STATION) {
 		/* As final effort when the spec list is already full...
 		 * try to find the same spec and return that one. This might
 		 * result in slightly "wrong" (as per specs) looking stations,
 		 * but it's fairly unlikely that one reaches the limit anyways.
 		 */
-		for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
+		for (i = 1; i < st->num_specs && i < NUM_STATIONSSPECS_PER_STATION; i++) {
 			if (st->speclist[i].spec == statspec) return i;
 		}
 
