@@ -4118,14 +4118,14 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (airtid + numinfo > NUM_AIRPORTTILES) {
-		grfmsg(1, "AirportTileChangeInfo: Too many airport tiles loaded (%u), max (%u). Ignoring.", airtid + numinfo, NUM_AIRPORTTILES);
+	if (airtid + numinfo > NUM_AIRPORTTILES_PER_GRF) {
+		grfmsg(1, "AirportTileChangeInfo: Too many airport tiles loaded (%u), max (%u). Ignoring.", airtid + numinfo, NUM_AIRPORTTILES_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate airport tile specs if they haven't been allocated already. */
 	if (_cur.grffile->airtspec == NULL) {
-		_cur.grffile->airtspec = CallocT<AirportTileSpec*>(NUM_AIRPORTTILES);
+		_cur.grffile->airtspec = CallocT<AirportTileSpec*>(NUM_AIRPORTTILES_PER_GRF);
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -7826,7 +7826,7 @@ static void ResetCustomAirports()
 
 		AirportTileSpec **&airporttilespec = (*file)->airtspec;
 		if (airporttilespec != NULL) {
-			for (uint i = 0; i < NUM_AIRPORTTILES; i++) {
+			for (uint i = 0; i < NUM_AIRPORTTILES_PER_GRF; i++) {
 				free(airporttilespec[i]);
 			}
 			free(airporttilespec);
@@ -8581,7 +8581,7 @@ static void FinaliseAirportsArray()
 
 		AirportTileSpec **&airporttilespec = (*file)->airtspec;
 		if (airporttilespec != NULL) {
-			for (uint i = 0; i < NUM_AIRPORTTILES; i++) {
+			for (uint i = 0; i < NUM_AIRPORTTILES_PER_GRF; i++) {
 				if (airporttilespec[i] != NULL && airporttilespec[i]->enabled) {
 					_airporttile_mngr.SetEntitySpec(airporttilespec[i]);
 				}

@@ -20,7 +20,9 @@ static const uint MAX_TERMINALS =   8;                       ///< maximum number
 static const uint MAX_HELIPADS  =   3;                       ///< maximum number of helipads per airport
 static const uint MAX_ELEMENTS  = 255;                       ///< maximum number of aircraft positions at airport
 
-static const uint NUM_AIRPORTTILES       = 256;              ///< total number of airport tiles
+static const uint NUM_AIRPORTTILES_PER_GRF = 255;            ///< Number of airport tiles per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
+
+static const uint NUM_AIRPORTTILES       = 256;              ///< Total number of airport tiles.
 static const uint NEW_AIRPORTTILE_OFFSET = 74;               ///< offset of first newgrf airport tile
 static const uint INVALID_AIRPORTTILE    = NUM_AIRPORTTILES; ///< id for an invalid airport tile
 
