@@ -294,9 +294,9 @@ STR_SORT_BY_ENGINE_ID                                           :ID Motor (orden
 STR_SORT_BY_COST                                                :Coste
 STR_SORT_BY_POWER                                               :Potencia
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Fuerza de tracción
-STR_SORT_BY_INTRO_DATE                                          :Fecha Introducción
-STR_SORT_BY_RUNNING_COST                                        :Coste Operación
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia/Coste Operación
+STR_SORT_BY_INTRO_DATE                                          :Fecha introducción
+STR_SORT_BY_RUNNING_COST                                        :Coste operación
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia/coste operación
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidad de carga
 STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :Población
