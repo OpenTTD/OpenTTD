@@ -1411,7 +1411,7 @@ static bool GrowTown(Town *t)
 		tile = t->xy;
 		for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 			/* Only work with plain land that not already has a house */
-			if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile) == SLOPE_FLAT) {
+			if (!IsTileType(tile, MP_HOUSE) && IsTileFlat(tile)) {
 				if (DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR).Succeeded()) {
 					DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 					cur_company.Restore();
@@ -1574,7 +1574,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 	}
 
 	/* Can only build on clear flat areas, possibly with trees. */
-	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile) != SLOPE_FLAT) {
+	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || !IsTileFlat(tile)) {
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -1775,7 +1775,7 @@ static bool FindFurthestFromWater(TileIndex tile, void *user_data)
 	uint dist = GetClosestWaterDistance(tile, true);
 
 	if (IsTileType(tile, MP_CLEAR) &&
-			GetTileSlope(tile) == SLOPE_FLAT &&
+			IsTileFlat(tile) &&
 			IsTileAlignedToGrid(tile, sp->layout) &&
 			dist > sp->max_dist) {
 		sp->tile = tile;

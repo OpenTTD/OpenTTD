@@ -59,6 +59,30 @@ Slope GetTileSlope(TileIndex tile, int *h)
 }
 
 /**
+ * Check if a given tile is flat
+ * @param tile Tile to check
+ * @param h If not \c NULL, pointer to storage of z height (only if tile is flat)
+ * @return Whether the tile is flat
+ */
+bool IsTileFlat(TileIndex tile, int *h)
+{
+	assert(tile < MapSize());
+
+	if (!IsInnerTile(tile)) {
+		if (h != NULL) *h = TileHeight(tile);
+		return true;
+	}
+
+	uint z = TileHeight(tile);
+	if (TileHeight(tile + TileDiffXY(1, 0)) != z) return false;
+	if (TileHeight(tile + TileDiffXY(0, 1)) != z) return false;
+	if (TileHeight(tile + TileDiffXY(1, 1)) != z) return false;
+
+	if (h != NULL) *h = z;
+	return true;
+}
+
+/**
  * Get bottom height of the tile
  * @param tile Tile to compute height of
  * @return Minimum height of the tile

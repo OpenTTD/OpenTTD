@@ -249,8 +249,7 @@ static void TileLoop_Clear(TileIndex tile)
 	/* If the tile is at any edge flood it to prevent maps without water. */
 	if (_settings_game.construction.freeform_edges && DistanceFromEdge(tile) == 1) {
 		int z;
-		Slope slope = GetTileSlope(tile, &z);
-		if (z == 0 && slope == SLOPE_FLAT) {
+		if (IsTileFlat(tile, &z) && z == 0) {
 			DoFloodTile(tile);
 			MarkTileDirtyByTile(tile);
 			return;

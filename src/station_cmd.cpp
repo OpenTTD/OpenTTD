@@ -2471,7 +2471,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
-	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur) != SLOPE_FLAT) {
+	if (!IsTileType(tile_cur, MP_WATER) || !IsTileFlat(tile_cur)) {
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -2484,7 +2484,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (ret.Failed()) return ret;
 
 	tile_cur += TileOffsByDiagDir(direction);
-	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur) != SLOPE_FLAT) {
+	if (!IsTileType(tile_cur, MP_WATER) || !IsTileFlat(tile_cur)) {
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -3069,7 +3069,7 @@ static void TileLoop_Station(TileIndex tile)
 			break;
 
 		case STATION_DOCK:
-			if (GetTileSlope(tile) != SLOPE_FLAT) break; // only handle water part
+			if (!IsTileFlat(tile)) break; // only handle water part
 			/* FALL THROUGH */
 		case STATION_OILRIG: //(station part)
 		case STATION_BUOY:

@@ -247,6 +247,8 @@ Slope GetTileSlope(TileIndex tile, int *h = NULL);
 int GetTileZ(TileIndex tile);
 int GetTileMaxZ(TileIndex tile);
 
+bool IsTileFlat(TileIndex tile, int *h = NULL);
+
 /**
  * Return the slope of a given tile
  * @param tile Tile to compute slope of

@@ -110,7 +110,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
 		(MayHaveBridgeAbove(tile2) && IsBridgeAbove(tile2))) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (GetTileSlope(tile) != SLOPE_FLAT || GetTileSlope(tile2) != SLOPE_FLAT) {
+	if (!IsTileFlat(tile) || !IsTileFlat(tile2)) {
 		/* Prevent depots on rapids */
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
@@ -270,7 +270,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
 	}
-	if (GetTileSlope(tile - delta) != SLOPE_FLAT) {
+	if (!IsTileFlat(tile - delta)) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -283,7 +283,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
 	}
-	if (GetTileSlope(tile + delta) != SLOPE_FLAT) {
+	if (!IsTileFlat(tile + delta)) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -590,7 +590,7 @@ bool IsWateredTile(TileIndex tile, Direction from)
 
 				return IsTileOnWater(tile);
 			}
-			return (IsDock(tile) && GetTileSlope(tile) == SLOPE_FLAT) || IsBuoy(tile);
+			return (IsDock(tile) && IsTileFlat(tile)) || IsBuoy(tile);
 
 		case MP_INDUSTRY: {
 			/* Do not draw waterborders inside of industries.
@@ -1240,7 +1240,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 	if (mode != TRANSPORT_WATER) return 0;
 
 	switch (GetWaterTileType(tile)) {
-		case WATER_TILE_CLEAR: ts = (GetTileSlope(tile) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
+		case WATER_TILE_CLEAR: ts = IsTileFlat(tile) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
 		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile) & 0xF]; break;
 		case WATER_TILE_LOCK:  ts = DiagDirToDiagTrackBits(GetLockDirection(tile)); break;
 		case WATER_TILE_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;

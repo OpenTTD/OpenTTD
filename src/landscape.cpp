@@ -937,8 +937,7 @@ static void CreateDesertOrRainForest()
 static bool FindSpring(TileIndex tile, void *user_data)
 {
 	int referenceHeight;
-	Slope s = GetTileSlope(tile, &referenceHeight);
-	if (s != SLOPE_FLAT || IsWaterTile(tile)) return false;
+	if (!IsTileFlat(tile, &referenceHeight) || IsWaterTile(tile)) return false;
 
 	/* In the tropics rivers start in the rainforest. */
 	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) != TROPICZONE_RAINFOREST) return false;
@@ -974,7 +973,7 @@ static bool FindSpring(TileIndex tile, void *user_data)
 static bool MakeLake(TileIndex tile, void *user_data)
 {
 	uint height = *(uint*)user_data;
-	if (!IsValidTile(tile) || TileHeight(tile) != height || GetTileSlope(tile) != SLOPE_FLAT) return false;
+	if (!IsValidTile(tile) || TileHeight(tile) != height || !IsTileFlat(tile)) return false;
 	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
 
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
@@ -1123,7 +1122,7 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 		queue.pop_front();
 
 		uint height2 = TileHeight(end);
-		if (GetTileSlope(end) == SLOPE_FLAT && (height2 < height || (height2 == height && IsWaterTile(end)))) {
+		if (IsTileFlat(end) && (height2 < height || (height2 == height && IsWaterTile(end)))) {
 			found = true;
 			break;
 		}
@@ -1150,7 +1149,7 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 
 		if (IsValidTile(lakeCenter) &&
 				/* A river, or lake, can only be built on flat slopes. */
-				GetTileSlope(lakeCenter) == SLOPE_FLAT &&
+				IsTileFlat(lakeCenter) &&
 				/* We want the lake to be built at the height of the river. */
 				TileHeight(begin) == TileHeight(lakeCenter) &&
 				/* We don't want the lake at the entry of the valley. */

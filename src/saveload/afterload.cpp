@@ -74,7 +74,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
 {
 	/* If the slope is not flat, we always assume 'land' (if allowed). Also for one-corner-raised-shores.
 	 * Note: Wrt. autosloping under industry tiles this is the most fool-proof behaviour. */
-	if (GetTileSlope(t) != SLOPE_FLAT) {
+	if (!IsTileFlat(t)) {
 		if (include_invalid_water_class) {
 			SetWaterClass(t, WATER_CLASS_INVALID);
 			return;
@@ -1106,7 +1106,7 @@ bool AfterLoadGame()
 						if (GB(_m[t].m5, 3, 2) == 0) {
 							MakeClear(t, CLEAR_GRASS, 3);
 						} else {
-							if (GetTileSlope(t) != SLOPE_FLAT) {
+							if (!IsTileFlat(t)) {
 								MakeShore(t);
 							} else {
 								if (GetTileOwner(t) == OWNER_WATER) {
@@ -1712,7 +1712,7 @@ bool AfterLoadGame()
 		 * on its neighbouring tiles. Done after river and canal updates to
 		 * ensure neighbours are correct. */
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (GetTileSlope(t) != SLOPE_FLAT) continue;
+			if (!IsTileFlat(t)) continue;
 
 			if (IsTileType(t, MP_WATER) && IsLock(t)) SetWaterClassDependingOnSurroundings(t, false);
 			if (IsTileType(t, MP_STATION) && (IsDock(t) || IsBuoy(t))) SetWaterClassDependingOnSurroundings(t, false);
@@ -2390,7 +2390,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(149)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (!IsTileType(t, MP_STATION)) continue;
-			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && GetTileSlope(t) == SLOPE_FLAT)) {
+			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && IsTileFlat(t))) {
 				SetWaterClass(t, WATER_CLASS_INVALID);
 			}
 		}
