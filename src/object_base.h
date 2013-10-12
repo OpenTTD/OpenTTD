@@ -18,7 +18,7 @@
 #include "town_type.h"
 #include "date_type.h"
 
-typedef Pool<Object, ObjectID, 64, 64000> ObjectPool;
+typedef Pool<Object, ObjectID, 64, 0xFF0000> ObjectPool;
 extern ObjectPool _object_pool;
 
 /** An object, such as transmitter, on the map. */

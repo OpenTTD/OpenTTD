@@ -49,7 +49,7 @@ static inline bool IsObjectTypeTile(TileIndex t, ObjectType type)
 static inline ObjectID GetObjectIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_OBJECT));
-	return _m[t].m2;
+	return _m[t].m2 | _m[t].m5 << 16;
 }
 
 /**
@@ -81,7 +81,7 @@ static inline void MakeObject(TileIndex t, Owner o, ObjectID index, WaterClass w
 	_m[t].m2 = index;
 	_m[t].m3 = random;
 	_m[t].m4 = 0;
-	_m[t].m5 = 0;
+	_m[t].m5 = index >> 16;
 	SB(_m[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }

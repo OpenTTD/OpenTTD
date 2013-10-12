@@ -28,11 +28,11 @@ static const ObjectType NUM_OBJECTS         = 64000;  ///< Number of supported o
 static const ObjectType INVALID_OBJECT_TYPE = 0xFFFF; ///< An invalid object
 
 /** Unique identifier for an object. */
-typedef uint16 ObjectID;
+typedef uint32 ObjectID;
 
 struct Object;
 struct ObjectSpec;
 
-static const ObjectID INVALID_OBJECT = 0xFFFF; ///< An invalid object
+static const ObjectID INVALID_OBJECT = 0xFFFFFFFF; ///< An invalid object
 
 #endif /* OBJECT_TYPE_H */

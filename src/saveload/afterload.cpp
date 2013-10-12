@@ -2819,9 +2819,9 @@ bool AfterLoadGame()
 		/* Move ObjectType from map to pool */
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_OBJECT)) {
-				Object *o = Object::GetByTile(t);
+				Object *o = Object::Get(_m[t].m2);
 				o->type = _m[t].m5;
-				_m[t].m5 = 0; // cleanup for next usage
+				_m[t].m5 = 0; // zero upper bits of (now bigger) ObjectID
 			}
 		}
 	}
