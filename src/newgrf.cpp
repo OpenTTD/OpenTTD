@@ -280,7 +280,7 @@ public:
 
 typedef void (*SpecialSpriteHandler)(ByteReader *buf);
 
-static const uint MAX_STATIONS = 256;
+static const uint NUM_STATIONS_PER_GRF = 255; ///< Number of StationSpecs per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
 
 /** Temporary engine data used when loading only */
 struct GRFTempEngineData {
@@ -1726,13 +1726,13 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (stid + numinfo > MAX_STATIONS) {
-		grfmsg(1, "StationChangeInfo: Station %u is invalid, max %u, ignoring", stid + numinfo, MAX_STATIONS);
+	if (stid + numinfo > NUM_STATIONS_PER_GRF) {
+		grfmsg(1, "StationChangeInfo: Station %u is invalid, max %u, ignoring", stid + numinfo, NUM_STATIONS_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate station specs if necessary */
-	if (_cur.grffile->stations == NULL) _cur.grffile->stations = CallocT<StationSpec*>(MAX_STATIONS);
+	if (_cur.grffile->stations == NULL) _cur.grffile->stations = CallocT<StationSpec*>(NUM_STATIONS_PER_GRF);
 
 	for (int i = 0; i < numinfo; i++) {
 		StationSpec *statspec = _cur.grffile->stations[stid + i];
@@ -7754,7 +7754,7 @@ static void ResetCustomStations()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		StationSpec **&stations = (*file)->stations;
 		if (stations == NULL) continue;
-		for (uint i = 0; i < MAX_STATIONS; i++) {
+		for (uint i = 0; i < NUM_STATIONS_PER_GRF; i++) {
 			if (stations[i] == NULL) continue;
 			StationSpec *statspec = stations[i];
 
