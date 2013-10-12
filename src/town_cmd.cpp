@@ -2635,7 +2635,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				} else {
 					Object *o = Object::GetByTile(tile);
 					if (o->town == t) {
-						if (GetObjectType(tile) == OBJECT_STATUE) {
+						if (o->type == OBJECT_STATUE) {
 							/* Statue... always remove. */
 							try_clear = true;
 						} else {

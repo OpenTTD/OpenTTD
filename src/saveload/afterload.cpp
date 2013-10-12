@@ -248,6 +248,12 @@ static void InitializeWindowsAndCaches()
 		}
 	}
 
+	/* Count number of objects per type */
+	Object *o;
+	FOR_ALL_OBJECTS(o) {
+		Object::IncTypeCount(o->type);
+	}
+
 	RecomputePrices();
 
 	GroupStatistics::UpdateAfterLoad();
@@ -1444,7 +1450,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(52)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (IsTileType(t, MP_OBJECT) && GetObjectType(t) == OBJECT_STATUE) {
+			if (IsTileType(t, MP_OBJECT) && _m[t].m5 == OBJECT_STATUE) {
 				_m[t].m2 = CalcClosestTownFromTile(t)->index;
 			}
 		}
@@ -1940,7 +1946,7 @@ bool AfterLoadGame()
 			if (!IsTileType(t, MP_OBJECT)) continue;
 
 			/* Reordering/generalisation of the object bits. */
-			ObjectType type = GetObjectType(t);
+			ObjectType type = _m[t].m5;
 			SB(_m[t].m6, 2, 4, type == OBJECT_HQ ? GB(_m[t].m3, 2, 3) : 0);
 			_m[t].m3 = type == OBJECT_HQ ? GB(_m[t].m3, 1, 1) | GB(_m[t].m3, 0, 1) << 4 : 0;
 
@@ -1967,7 +1973,7 @@ bool AfterLoadGame()
 
 				if (offset == 0) {
 					/* No offset, so make the object. */
-					ObjectType type = GetObjectType(t);
+					ObjectType type = _m[t].m5;
 					int size = type == OBJECT_HQ ? 2 : 1;
 
 					if (!Object::CanAllocateItem()) {
@@ -2198,11 +2204,6 @@ bool AfterLoadGame()
 		while (_economy.inflation_prices < aimed_inflation) {
 			if (AddInflation(false)) break;
 		}
-	}
-
-	if (IsSavegameVersionBefore(127)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) UpdateStationAcceptance(st, false);
 	}
 
 	if (IsSavegameVersionBefore(128)) {
@@ -2812,6 +2813,25 @@ bool AfterLoadGame()
 		_settings_game.locale.units_volume   = Clamp(_old_units, 1, 2);
 		_settings_game.locale.units_force    = 2;
 		_settings_game.locale.units_height   = Clamp(_old_units, 0, 2);
+	}
+
+	if (IsSavegameVersionBefore(185)) {
+		/* Move ObjectType from map to pool */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_OBJECT)) {
+				Object *o = Object::GetByTile(t);
+				o->type = _m[t].m5;
+				_m[t].m5 = 0; // cleanup for next usage
+			}
+		}
+	}
+
+
+
+	/* Station acceptance is some kind of cache */
+	if (IsSavegameVersionBefore(127)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) UpdateStationAcceptance(st, false);
 	}
 
 	/* Road stops is 'only' updating some caches */

@@ -15,17 +15,7 @@
 #include "water_map.h"
 #include "object_type.h"
 
-/**
- * Gets the ObjectType of the given object tile
- * @param t the tile to get the type from.
- * @pre IsTileType(t, MP_OBJECT)
- * @return the type.
- */
-static inline ObjectType GetObjectType(TileIndex t)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	return (ObjectType)_m[t].m5;
-}
+ObjectType GetObjectType(TileIndex t);
 
 /**
  * Check whether the object on a tile is of a specific type.
@@ -77,15 +67,13 @@ static inline byte GetObjectRandomBits(TileIndex t)
 
 /**
  * Make an Object tile.
- * @note do not use this function directly. Use one of the other Make* functions.
  * @param t      The tile to make and object tile.
- * @param u      The object type of the tile.
  * @param o      The new owner of the tile.
  * @param index  Index to the object.
  * @param wc     Water class for this object.
  * @param random Random data to store on the tile
  */
-static inline void MakeObject(TileIndex t, ObjectType u, Owner o, ObjectID index, WaterClass wc, byte random)
+static inline void MakeObject(TileIndex t, Owner o, ObjectID index, WaterClass wc, byte random)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);
@@ -93,7 +81,7 @@ static inline void MakeObject(TileIndex t, ObjectType u, Owner o, ObjectID index
 	_m[t].m2 = index;
 	_m[t].m3 = random;
 	_m[t].m4 = 0;
-	_m[t].m5 = u;
+	_m[t].m5 = 0;
 	SB(_m[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }

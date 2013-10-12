@@ -52,6 +52,18 @@ uint16 Object::counts[NUM_OBJECTS];
 	return Object::Get(GetObjectIndex(tile));
 }
 
+/**
+ * Gets the ObjectType of the given object tile
+ * @param t the tile to get the type from.
+ * @pre IsTileType(t, MP_OBJECT)
+ * @return the type.
+ */
+ObjectType GetObjectType(TileIndex t)
+{
+	assert(IsTileType(t, MP_OBJECT));
+	return Object::GetByTile(t)->type;
+}
+
 /** Initialize/reset the objects. */
 void InitializeObjects()
 {
@@ -74,6 +86,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 
 	TileArea ta(tile, GB(spec->size, HasBit(view, 0) ? 4 : 0, 4), GB(spec->size, HasBit(view, 0) ? 0 : 4, 4));
 	Object *o = new Object();
+	o->type          = type;
 	o->location      = ta;
 	o->town          = town == NULL ? CalcClosestTownFromTile(tile) : town;
 	o->build_date    = _date;
@@ -108,7 +121,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 			Company::Get(owner)->infrastructure.water++;
 			DirtyCompanyInfrastructureWindows(owner);
 		}
-		MakeObject(t, type, owner, o->index, wc, Random());
+		MakeObject(t, owner, o->index, wc, Random());
 		MarkTileDirtyByTile(t);
 	}
 
@@ -417,7 +430,7 @@ static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
  */
 static void ReallyClearObjectTile(Object *o)
 {
-	Object::DecTypeCount(GetObjectType(o->location.tile));
+	Object::DecTypeCount(o->type);
 	TILE_AREA_LOOP(tile_cur, o->location) {
 		DeleteNewGRFInspectWindow(GSF_OBJECTS, tile_cur);
 
@@ -447,12 +460,12 @@ ClearedObjectArea *FindClearedObject(TileIndex tile)
 
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 {
-	ObjectType type = GetObjectType(tile);
-	const ObjectSpec *spec = ObjectSpec::Get(type);
-
 	/* Get to the northern most tile. */
 	Object *o = Object::GetByTile(tile);
 	TileArea ta = o->location;
+
+	ObjectType type = o->type;
+	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h / 5);
 	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!

@@ -23,6 +23,7 @@ extern ObjectPool _object_pool;
 
 /** An object, such as transmitter, on the map. */
 struct Object : ObjectPool::PoolItem<&_object_pool> {
+	ObjectType type;    ///< Type of the object
 	Town *town;         ///< Town the object is built in
 	TileArea location;  ///< Location of the object
 	Date build_date;    ///< Date of construction
