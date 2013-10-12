@@ -329,7 +329,7 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
 
 /**
  * Get slope of a tile on top of a (possible) foundation
- * If a tile does not have a foundation, the function returns the same as GetTilePixelSlope.
+ * If a tile does not have a foundation, the function returns the same as GetTileSlope.
  *
  * @param tile The tile of interest.
  * @param z returns the z of the foundation slope. (Can be NULL, if not needed)
