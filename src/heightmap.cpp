@@ -364,8 +364,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 				SetTileHeight(tile, map[img_row * img_width + img_col] / 16);
 			}
 			/* Only clear the tiles within the map area. */
-			if (TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY() &&
-					(!_settings_game.construction.freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0))) {
+			if (IsInnerTile(tile)) {
 				MakeClear(tile, CLEAR_GRASS, 3);
 			}
 		}

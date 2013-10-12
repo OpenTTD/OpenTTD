@@ -78,6 +78,23 @@ static inline TileType GetTileType(TileIndex tile)
 }
 
 /**
+ * Check if a tile is within the map (not a border)
+ *
+ * @param tile The tile to check
+ * @return Whether the tile is in the interior of the map
+ * @pre tile < MapSize()
+ */
+static inline bool IsInnerTile(TileIndex tile)
+{
+	assert(tile < MapSize());
+
+	uint x = TileX(tile);
+	uint y = TileY(tile);
+
+	return x < MapMaxX() && y < MapMaxY() && ((x > 0 && y > 0) || !_settings_game.construction.freeform_edges);
+}
+
+/**
  * Set the type of a tile
  *
  * This functions sets the type of a tile. If the type
@@ -95,7 +112,7 @@ static inline void SetTileType(TileIndex tile, TileType type)
 	/* VOID tiles (and no others) are exactly allowed at the lower left and right
 	 * edges of the map. If _settings_game.construction.freeform_edges is true,
 	 * the upper edges of the map are also VOID tiles. */
-	assert((TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY() || (_settings_game.construction.freeform_edges && (TileX(tile) == 0 || TileY(tile) == 0))) == (type == MP_VOID));
+	assert(IsInnerTile(tile) == (type != MP_VOID));
 	SB(_m[tile].type_height, 4, 4, type);
 }
 

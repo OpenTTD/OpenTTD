@@ -950,8 +950,7 @@ static void TgenSetTileHeight(TileIndex tile, int height)
 	SetTileHeight(tile, height);
 
 	/* Only clear the tiles within the map area. */
-	if (TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY() &&
-			(!_settings_game.construction.freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0))) {
+	if (IsInnerTile(tile)) {
 		MakeClear(tile, CLEAR_GRASS, 3);
 	}
 }
