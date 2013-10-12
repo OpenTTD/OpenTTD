@@ -65,33 +65,33 @@ static void DrawClearLandFence(const TileInfo *ti)
 
 	int maxz = GetSlopeMaxPixelZ(ti->tileh);
 
-	bool fence_nw = GetFenceNW(ti->tile) != 0;
-	if (fence_nw) {
+	uint fence_nw = GetFenceNW(ti->tile);
+	if (fence_nw != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_W);
-		SpriteID sprite = _clear_land_fence_sprites[GetFenceNW(ti->tile) - 1] + _fence_mod_by_tileh_nw[ti->tileh];
+		SpriteID sprite = _clear_land_fence_sprites[fence_nw - 1] + _fence_mod_by_tileh_nw[ti->tileh];
 		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y - 15, 16, 31, maxz - z + 4, ti->z + z, false, 0, 15, -z);
 	}
 
-	bool fence_ne = GetFenceNE(ti->tile) != 0;
-	if (fence_ne) {
+	uint fence_ne = GetFenceNE(ti->tile);
+	if (fence_ne != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_E);
-		SpriteID sprite = _clear_land_fence_sprites[GetFenceNE(ti->tile) - 1] + _fence_mod_by_tileh_ne[ti->tileh];
+		SpriteID sprite = _clear_land_fence_sprites[fence_ne - 1] + _fence_mod_by_tileh_ne[ti->tileh];
 		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x - 15, ti->y, 31, 16, maxz - z + 4, ti->z + z, false, 15, 0, -z);
 	}
 
-	bool fence_sw = GetFenceSW(ti->tile) != 0;
-	bool fence_se = GetFenceSE(ti->tile) != 0;
+	uint fence_sw = GetFenceSW(ti->tile);
+	uint fence_se = GetFenceSE(ti->tile);
 
-	if (fence_sw || fence_se) {
+	if (fence_sw != 0 || fence_se != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
 
-		if (fence_sw) {
-			SpriteID sprite = _clear_land_fence_sprites[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh_sw[ti->tileh];
+		if (fence_sw != 0) {
+			SpriteID sprite = _clear_land_fence_sprites[fence_sw - 1] + _fence_mod_by_tileh_sw[ti->tileh];
 			AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y, 16, 16, maxz - z + 4, ti->z + z, false, 0, 0, -z);
 		}
 
-		if (fence_se) {
-			SpriteID sprite = _clear_land_fence_sprites[GetFenceSE(ti->tile) - 1] + _fence_mod_by_tileh_se[ti->tileh];
+		if (fence_se != 0) {
+			SpriteID sprite = _clear_land_fence_sprites[fence_se - 1] + _fence_mod_by_tileh_se[ti->tileh];
 			AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y, 16, 16, maxz - z + 4, ti->z + z, false, 0, 0, -z);
 		}
 	}
