@@ -82,8 +82,8 @@ public:
 		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
 		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
 
+		this->SelectOtherClass(_selected_object_class);
 		if (this->CanRestoreSelectedObject()) {
-			this->SelectOtherClass(_selected_object_class),
 			this->SelectOtherObject(_selected_object_index);
 		} else {
 			this->SelectFirstAvailableObject(true);
