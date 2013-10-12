@@ -37,7 +37,8 @@ enum AirportTypes {
 	AT_HELISTATION     =   8, ///< Heli station airport.
 	AT_OILRIG          =   9, ///< Oilrig airport.
 	NEW_AIRPORT_OFFSET =  10, ///< Number of the first newgrf airport.
-	NUM_AIRPORTS       = 128, ///< Maximal number of airports.
+	NUM_AIRPORTS_PER_GRF = 128, ///< Maximal number of airports per NewGRF.
+	NUM_AIRPORTS       = 128, ///< Maximal number of airports in total.
 	AT_INVALID         = 254, ///< Invalid airport.
 	AT_DUMMY           = 255, ///< Dummy airport.
 };

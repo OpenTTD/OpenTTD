@@ -3554,14 +3554,14 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (airport + numinfo > NUM_AIRPORTS) {
-		grfmsg(1, "AirportChangeInfo: Too many airports, trying id (%u), max (%u). Ignoring.", airport + numinfo, NUM_AIRPORTS);
+	if (airport + numinfo > NUM_AIRPORTS_PER_GRF) {
+		grfmsg(1, "AirportChangeInfo: Too many airports, trying id (%u), max (%u). Ignoring.", airport + numinfo, NUM_AIRPORTS_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
 	/* Allocate industry specs if they haven't been allocated already. */
 	if (_cur.grffile->airportspec == NULL) {
-		_cur.grffile->airportspec = CallocT<AirportSpec*>(NUM_AIRPORTS);
+		_cur.grffile->airportspec = CallocT<AirportSpec*>(NUM_AIRPORTS_PER_GRF);
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -7805,7 +7805,7 @@ static void ResetCustomAirports()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		AirportSpec **aslist = (*file)->airportspec;
 		if (aslist != NULL) {
-			for (uint i = 0; i < NUM_AIRPORTS; i++) {
+			for (uint i = 0; i < NUM_AIRPORTS_PER_GRF; i++) {
 				AirportSpec *as = aslist[i];
 
 				if (as != NULL) {
@@ -8572,7 +8572,7 @@ static void FinaliseAirportsArray()
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		AirportSpec **&airportspec = (*file)->airportspec;
 		if (airportspec != NULL) {
-			for (int i = 0; i < NUM_AIRPORTS; i++) {
+			for (int i = 0; i < NUM_AIRPORTS_PER_GRF; i++) {
 				if (airportspec[i] != NULL && airportspec[i]->enabled) {
 					_airport_mngr.SetEntitySpec(airportspec[i]);
 				}
