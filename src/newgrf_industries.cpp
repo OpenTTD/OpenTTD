@@ -54,7 +54,7 @@ IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
  */
 uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32 cur_grfid)
 {
-	if (!IsTileType(tile, MP_INDUSTRY) || GetIndustryIndex(tile) != i->index) {
+	if (!i->TileBelongsToIndustry(tile)) {
 		/* No industry and/or the tile does not have the same industry as the one we match it with */
 		return 0xFFFF;
 	}
