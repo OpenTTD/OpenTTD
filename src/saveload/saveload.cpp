@@ -251,7 +251,7 @@
  *  183   25363
  *  184   25508
  *  185   25620
- *  186   TODO
+ *  186   25833
  */
 extern const uint16 SAVEGAME_VERSION = 186; ///< Current savegame version of OpenTTD.
 

@@ -2815,7 +2815,7 @@ bool AfterLoadGame()
 		_settings_game.locale.units_height   = Clamp(_old_units, 0, 2);
 	}
 
-	if (IsSavegameVersionBefore(185)) {
+	if (IsSavegameVersionBefore(186)) {
 		/* Move ObjectType from map to pool */
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_OBJECT)) {
