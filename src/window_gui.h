@@ -132,7 +132,7 @@ enum WidgetDrawDistances {
 	/* Dropdown widget. */
 	WD_DROPDOWN_HEIGHT     = 12, ///< Height of a drop down widget.
 	WD_DROPDOWNTEXT_LEFT   = 2,  ///< Left offset of the dropdown widget string.
-	WD_DROPDOWNTEXT_RIGHT  = 14, ///< Right offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_RIGHT  = 2,  ///< Right offset of the dropdown widget string.
 	WD_DROPDOWNTEXT_TOP    = 1,  ///< Top offset of the dropdown widget string.
 	WD_DROPDOWNTEXT_BOTTOM = 1,  ///< Bottom offset of the dropdown widget string.
 

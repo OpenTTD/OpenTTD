@@ -567,16 +567,18 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 {
 	int text_offset = max(0, ((int)(r.bottom - r.top + 1) - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
 
+	int dd_width = NWidgetLeaf::dropdown_dimension.width;
+
 	if (_current_text_dir == TD_LTR) {
-		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
-		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
-		DrawString(r.right - (clicked_dropdown ? 10 : 11), r.right, r.top + (clicked_dropdown ? 2 : 1), DOWNARROW, TC_BLACK, SA_HOR_CENTER);
-		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
+		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(r.right + 1 - dd_width, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
+		DrawString(r.right - dd_width + (clicked_dropdown ? 2 : 1), r.right, r.top + (clicked_dropdown ? 2 : 1), DOWNARROW, TC_BLACK, SA_HOR_CENTER);
+		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - dd_width - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
 	} else {
-		DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
-		DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
-		DrawString(r.left + clicked_dropdown, r.left + 11, r.top + (clicked_dropdown ? 2 : 1), DOWNARROW, TC_BLACK, SA_HOR_CENTER);
-		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_RIGHT + clicked_button, r.right - WD_DROPDOWNTEXT_LEFT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
+		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(r.left, r.top, r.left + dd_width - 1, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
+		DrawString(r.left + (clicked_dropdown ? 2 : 1), r.left + dd_width, r.top + (clicked_dropdown ? 2 : 1), DOWNARROW, TC_BLACK, SA_HOR_CENTER);
+		if (str != STR_NULL) DrawString(r.left + dd_width + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
 	}
 }
 
@@ -2066,6 +2068,7 @@ Dimension NWidgetScrollbar::horizontal_dimension = {0, 0};
 	stickybox_dimension.width = stickybox_dimension.height = 0;
 	resizebox_dimension.width = resizebox_dimension.height = 0;
 	closebox_dimension.width  = closebox_dimension.height  = 0;
+	dropdown_dimension.width  = dropdown_dimension.height  = 0;
 }
 
 Dimension NWidgetLeaf::shadebox_dimension  = {0, 0};
@@ -2074,6 +2077,7 @@ Dimension NWidgetLeaf::defsizebox_dimension = {0, 0};
 Dimension NWidgetLeaf::stickybox_dimension = {0, 0};
 Dimension NWidgetLeaf::resizebox_dimension = {0, 0};
 Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
+Dimension NWidgetLeaf::dropdown_dimension  = {0, 0};
 
 /**
  * Nested leaf widget.
@@ -2333,8 +2337,14 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_DROPDOWN:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN: {
-			static const Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
+			static Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
 			padding = &extra;
+			if (NWidgetLeaf::dropdown_dimension.width == 0) {
+				NWidgetLeaf::dropdown_dimension = GetSpriteSize(SPR_ARROW_DOWN);
+				NWidgetLeaf::dropdown_dimension.width += WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT;
+				NWidgetLeaf::dropdown_dimension.height += WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM;
+				extra.width = WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT + NWidgetLeaf::dropdown_dimension.width;
+			}
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			Dimension d2 = GetStringBoundingBox(this->widget_data);
 			d2.width += extra.width;

@@ -585,8 +585,8 @@ public:
 					}
 				}
 
-				d.width += padding.width + WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT;
-				d.height += padding.height + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM;
+				d.width += padding.width;
+				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;
 			}
