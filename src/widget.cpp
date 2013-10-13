@@ -1251,12 +1251,12 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	NWidgetBase *child_wid = this->head;
 	while (child_wid != NULL) {
 		uint child_width = child_wid->current_x;
-		uint child_x = x + position + (rtl ? -child_width - child_wid->padding_left : child_wid->padding_left);
+		uint child_x = x + (rtl ? position - child_width - child_wid->padding_left : position + child_wid->padding_left);
 		uint child_y = y + child_wid->padding_top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
 		uint padded_child_width = child_width + child_wid->padding_right + child_wid->padding_left;
-		position += rtl ? -padded_child_width : padded_child_width;
+		position = rtl ? position - padded_child_width : position + padded_child_width;
 
 		child_wid = child_wid->next;
 	}
