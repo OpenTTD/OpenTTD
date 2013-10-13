@@ -1275,7 +1275,15 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Goto();
 				} else {
-					ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, 0, WID_O_GOTO, 0, 0);
+					int sel;
+					switch (this->goto_type) {
+						case OPOS_NONE:        sel = -1; break;
+						case OPOS_GOTO:        sel =  0; break;
+						case OPOS_CONDITIONAL: sel =  2; break;
+						case OPOS_SHARE:       sel =  3; break;
+						default: NOT_REACHED();
+					}
+					ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, sel, WID_O_GOTO, 0, 0);
 				}
 				break;
 
