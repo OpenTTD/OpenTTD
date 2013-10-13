@@ -17,6 +17,7 @@
 #include "../date_func.h"
 #include "../viewport_func.h"
 #include "../smallmap_gui.h"
+#include "../core/geometry_func.hpp"
 #include "../widgets/link_graph_legend_widget.h"
 
 #include "table/strings.h"
@@ -309,12 +310,12 @@ NWidgetBase *MakeCompanyButtonRowsLinkGraphGUI(int *biggest_index)
 
 NWidgetBase *MakeSaturationLegendLinkGraphGUI(int *biggest_index)
 {
-	NWidgetVertical *panel = new NWidgetVertical();
+	NWidgetVertical *panel = new NWidgetVertical(NC_EQUALSIZE);
 	for (uint i = 0; i < lengthof(LinkGraphOverlay::LINK_COLOURS); ++i) {
 		NWidgetBackground * wid = new NWidgetBackground(WWT_PANEL, COLOUR_DARK_GREEN, i + WID_LGL_SATURATION_FIRST);
 		wid->SetMinimalSize(50, FONT_HEIGHT_SMALL);
-		wid->SetFill(0, 1);
-		wid->SetResize(0, 1);
+		wid->SetFill(1, 1);
+		wid->SetResize(0, 0);
 		panel->Add(wid);
 	}
 	*biggest_index = WID_LGL_SATURATION_LAST;
@@ -324,18 +325,25 @@ NWidgetBase *MakeSaturationLegendLinkGraphGUI(int *biggest_index)
 NWidgetBase *MakeCargoesLegendLinkGraphGUI(int *biggest_index)
 {
 	static const uint ENTRIES_PER_ROW = CeilDiv(NUM_CARGO, 5);
-	NWidgetVertical *panel = new NWidgetVertical();
+	NWidgetVertical *panel = new NWidgetVertical(NC_EQUALSIZE);
 	NWidgetHorizontal *row = NULL;
 	for (uint i = 0; i < NUM_CARGO; ++i) {
 		if (i % ENTRIES_PER_ROW == 0) {
 			if (row) panel->Add(row);
-			row = new NWidgetHorizontal();
+			row = new NWidgetHorizontal(NC_EQUALSIZE);
 		}
 		NWidgetBackground * wid = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, i + WID_LGL_CARGO_FIRST);
 		wid->SetMinimalSize(25, FONT_HEIGHT_SMALL);
-		wid->SetFill(0, 1);
-		wid->SetResize(0, 1);
+		wid->SetFill(1, 1);
+		wid->SetResize(0, 0);
 		row->Add(wid);
+	}
+	/* Fill up last row */
+	for (uint i = 0; i < 4 - (NUM_CARGO - 1) % 5; ++i) {
+		NWidgetSpacer *spc = new NWidgetSpacer(25, FONT_HEIGHT_SMALL);
+		spc->SetFill(1, 1);
+		spc->SetResize(0, 0);
+		row->Add(spc);
 	}
 	panel->Add(row);
 	*biggest_index = WID_LGL_CARGO_LAST;
@@ -354,13 +362,11 @@ static const NWidgetPart _nested_linkgraph_legend_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_SATURATION),
 				SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, WD_CAPTIONTEXT_LEFT),
-				SetMinimalSize(50, 100),
 				NWidgetFunction(MakeSaturationLegendLinkGraphGUI),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_COMPANIES),
 				SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, WD_CAPTIONTEXT_LEFT),
 				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
-					SetMinimalSize(100, 100),
 					NWidgetFunction(MakeCompanyButtonRowsLinkGraphGUI),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_COMPANIES_ALL), SetDataTip(STR_LINKGRAPH_LEGEND_ALL, STR_NULL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_COMPANIES_NONE), SetDataTip(STR_LINKGRAPH_LEGEND_NONE, STR_NULL),
@@ -369,7 +375,6 @@ static const NWidgetPart _nested_linkgraph_legend_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_CARGOES),
 				SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_CAPTIONTEXT_LEFT),
 				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
-					SetMinimalSize(150, 100),
 					NWidgetFunction(MakeCargoesLegendLinkGraphGUI),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_CARGOES_ALL), SetDataTip(STR_LINKGRAPH_LEGEND_ALL, STR_NULL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_CARGOES_NONE), SetDataTip(STR_LINKGRAPH_LEGEND_NONE, STR_NULL),
@@ -424,31 +429,60 @@ void LinkGraphLegendWindow::SetOverlay(LinkGraphOverlay *overlay) {
 	}
 }
 
+void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+{
+	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
+		StringID str = STR_NULL;
+		if (widget == WID_LGL_SATURATION_FIRST) {
+			str = STR_LINKGRAPH_LEGEND_UNUSED;
+		} else if (widget == WID_LGL_SATURATION_LAST) {
+			str = STR_LINKGRAPH_LEGEND_OVERLOADED;
+		} else if (widget == (WID_LGL_SATURATION_LAST + WID_LGL_SATURATION_FIRST) / 2) {
+			str = STR_LINKGRAPH_LEGEND_SATURATED;
+		}
+		if (str != STR_NULL) {
+			Dimension dim = GetStringBoundingBox(str);
+			dim.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+			dim.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+			*size = maxdim(*size, dim);
+		}
+	}
+	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
+		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
+		if (cargo->IsValid()) {
+			Dimension dim = GetStringBoundingBox(cargo->abbrev);
+			dim.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+			dim.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+			*size = maxdim(*size, dim);
+		}
+	}
+}
+
 void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 {
-	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(widget);
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
 		CompanyID cid = (CompanyID)(widget - WID_LGL_COMPANY_FIRST);
 		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, (r.left + r.right + 1 - sprite_size.width) / 2, (r.top + r.bottom - sprite_size.height) / 2);
-		return;
+		DrawCompanyIcon(cid, (r.left + r.right + 1 - sprite_size.width) / 2, (r.top + r.bottom + 1 - sprite_size.height) / 2);
 	}
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, LinkGraphOverlay::LINK_COLOURS[widget - WID_LGL_SATURATION_FIRST]);
+		StringID str = STR_NULL;
 		if (widget == WID_LGL_SATURATION_FIRST) {
-			DrawString(wid->pos_x, wid->current_x + wid->pos_x, wid->pos_y, STR_LINKGRAPH_LEGEND_UNUSED, TC_FROMSTRING, SA_HOR_CENTER);
+			str = STR_LINKGRAPH_LEGEND_UNUSED;
 		} else if (widget == WID_LGL_SATURATION_LAST) {
-			DrawString(wid->pos_x, wid->current_x + wid->pos_x, wid->pos_y, STR_LINKGRAPH_LEGEND_OVERLOADED, TC_FROMSTRING, SA_HOR_CENTER);
+			str = STR_LINKGRAPH_LEGEND_OVERLOADED;
 		} else if (widget == (WID_LGL_SATURATION_LAST + WID_LGL_SATURATION_FIRST) / 2) {
-			DrawString(wid->pos_x, wid->current_x + wid->pos_x, wid->pos_y, STR_LINKGRAPH_LEGEND_SATURATED, TC_FROMSTRING, SA_HOR_CENTER);
+			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
+		if (str != STR_NULL) DrawString(r.left, r.right, (r.top + r.bottom + 1 - FONT_HEIGHT_SMALL) / 2, str, TC_FROMSTRING, SA_HOR_CENTER);
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
 		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
 		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, cargo->legend_colour);
-		DrawString(wid->pos_x, wid->current_x + wid->pos_x, wid->pos_y + 2, cargo->abbrev, TC_BLACK, SA_HOR_CENTER);
+		DrawString(r.left, r.right, (r.top + r.bottom + 1 - FONT_HEIGHT_SMALL) / 2, cargo->abbrev, TC_BLACK, SA_HOR_CENTER);
 	}
 }
 

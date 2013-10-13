@@ -2842,7 +2842,7 @@ NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int wid
 
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
-		panel->SetFill(1, 0);
+		panel->SetFill(1, 1);
 		panel->SetResize(1, 0);
 		panel->SetDataTip(0x0, button_tooltip);
 		hor->Add(panel);
@@ -2854,7 +2854,7 @@ NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int wid
 	if (hor_length > 0 && hor_length < max_length) {
 		/* Last row is partial, add a spacer at the end to force all buttons to the left. */
 		NWidgetSpacer *spc = new NWidgetSpacer(sprite_size.width, sprite_size.height);
-		spc->SetFill(1, 0);
+		spc->SetFill(1, 1);
 		spc->SetResize(1, 0);
 		hor->Add(spc);
 	}
