@@ -76,13 +76,7 @@ CommandCost CmdRenameDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		SetWindowDirty(WC_VEHICLE_DEPOT, d->xy);
 
 		/* Update the depot list */
-		VehicleType vt;
-		switch (GetTileType(d->xy)) {
-			default: NOT_REACHED();
-			case MP_RAILWAY: vt = VEH_TRAIN; break;
-			case MP_ROAD:    vt = VEH_ROAD;  break;
-			case MP_WATER:   vt = VEH_SHIP;  break;
-		}
+		VehicleType vt = GetDepotVehicleType(d->xy);
 		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(d->xy), d->index).Pack());
 	}
 	return CommandCost();

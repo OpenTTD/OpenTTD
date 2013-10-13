@@ -55,4 +55,21 @@ static inline DepotID GetDepotIndex(TileIndex t)
 	return _m[t].m2;
 }
 
+/**
+ * Get the type of vehicles that can use a depot
+ * @param t The tile
+ * @pre IsRailDepotTile(t) || IsRoadDepotTile(t) || IsShipDepotTile(t) || IsTileType(t, MP_STATION)
+ * @return the type of vehicles that can use the depot
+ */
+static inline VehicleType GetDepotVehicleType(TileIndex t)
+{
+	switch (GetTileType(t)) {
+		default: NOT_REACHED();
+		case MP_RAILWAY: return VEH_TRAIN;
+		case MP_ROAD:    return VEH_ROAD;
+		case MP_WATER:   return VEH_SHIP;
+		case MP_STATION: return VEH_AIRCRAFT;
+	}
+}
+
 #endif /* DEPOT_MAP_H */
