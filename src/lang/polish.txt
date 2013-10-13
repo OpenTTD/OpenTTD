@@ -4318,6 +4318,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Liczba dni, kt�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}'CzytajTo' dla {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Zmiany w {STRING} dla {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencja dla {STRING} {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zawijaj tekst
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zawijjaj tekst w oknie, żeby był cały widoczny bez konieczności przewijania
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj plik readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja

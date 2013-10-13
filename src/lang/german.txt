@@ -3942,6 +3942,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Wartezeit in Ta
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}-Liesmich von {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Änderungen von {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-Lizenz von {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Text umbrechen
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Text des Fensters so umbrechen, dass es ohne Scrollen hineinpasst
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Liesmich anzeigen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Änderungen
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz

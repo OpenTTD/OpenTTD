@@ -222,7 +222,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK} اخت�
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} اختر طريقة الترتيب - تنازلي / تصاعدي
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK} اختر نوع الترتيب
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK} اختر معايير الفلترة
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACKحدد معايير المُرَشِح
 STR_BUTTON_SORT_BY                                              :{BLACK} رتب بـ
 STR_BUTTON_LOCATION                                             :{BLACK}الموقع
 STR_BUTTON_RENAME                                               :{BLACK}اعادة تسمية
@@ -345,10 +345,10 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :انهاء
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :خيارات اللعبة
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :إعدادات اللعبه
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعدادات متقدمة
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :الذكاء الصناعي/ اعدادات اللعبة
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :إعدادات جرافيك جديده
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :إعدادات اﻹضافات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :خيارات الشفافية
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :عرض اسماء المدن
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :عرض اسماء المحطات
@@ -621,7 +621,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}اختي
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}تشغيل / ايقاف العشوائي
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}اظهار اطار اختيار الموسيقى
 
-STR_ERROR_NO_SONGS                                              :{WHITE}لا تحتوي مجموعة الموسيقى المختارة على اغاني. لن تعزف اي موسيقى.
+STR_ERROR_NO_SONGS                                              :{WHITE}لا تحتوى قاعده الموسيقى المُختاره على اى اغانى. لن تُعزَف اى اغانى
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}برنامج اختيار الموسيقى
@@ -733,7 +733,7 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}المواطنون يحتفلون ... {}بوصول اول سفينة الى {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}الأهالي يحتفلون . . . {}بوصول أول طائرة الى {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}تحطم قطار! {}{COMMA} مات في حريق بعد الحادث
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}تحطم قطاراً!{}{COMMA} مات فى الحريق بعد الحادث
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}تحطم طائرة !{}{COMMA}ماتوا في الحريق بمطار {STATION}
@@ -831,7 +831,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}لصق �
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}لصق شاشة العرض هذة للشاشة الرئيسية
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}خيارات
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}إعدادات اللعبه
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}وحدة العملة
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختيار وحدة العملة
 
@@ -934,7 +934,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}قاعد
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}اختر الاصوات الاساسية للاستخدام
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}معلومات اضافية حول مجوعة الصوت
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}مجموعة الموسيقى الاساسية
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}قاعده الموسيقى الاساسيه
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}اختر الموسيقى الاساسية التي تود استخدامها
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ملف غير صالح{P ""}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}معلومات اضافية عن الموسيقى الاساسية
@@ -1025,8 +1025,12 @@ STR_CITY_APPROVAL_HOSTILE                                       :معاد
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايوجد ذكاء اصطناعي متاح ...{}تستطيع تجميل العديد من الذكاء الاصطناعي عن طريق اللانترنت
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}الاعدادات المتقدمة
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}إعدادات متقدمه
+STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :اظهر:
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :اﻹعدادات الاساسيه
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}احصر القائمة على انواع اعدادات محددة
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :كل الاعدادات
@@ -1089,7 +1093,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :عدد الطا
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :بدون
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :طبيعي
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات العبور خلال المواقف المملوكة داخل المدن {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات بالعبور خلال المواقف المملوكة داخل المدن: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :السماح ببناء محطات متلاصقة{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :السماح بتعدد محركات NewGFR {STRING}
@@ -1250,7 +1254,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :ممتلئ
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :الاخبار الملونة تظهر في: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :سنة البدايه: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :السماح بأقتصاد ثابت )تغيرات صغيرة اكثر): {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات المنافسة: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات الاخرى: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة استخدام الأشارات بالأعلام قبل :{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :السماح باستخدام اشارات واجهة المستخدم الرسومية: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :نوع الاشارة الذي يبنى قياسيا: {STRING}
@@ -1363,10 +1367,12 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}العب
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}محرر الخريطة
 STR_INTRO_MULTIPLAYER                                           :{BLACK}لعب جماعي
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}خيارات اللعبة
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}إعدادات اللعبه
+STR_INTRO_HIGHSCORE                                             :{BLACK}قائمه المتفوقين
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}الاعدادات المتقدمة
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK} اعدادات NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK} ابحث عن المحتوى على الانتر نت
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK} إبحث عن المحتوى عبر الشبكه العنكبوتيه
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}إعدادات الذكاء الصناعى
 STR_INTRO_QUIT                                                  :{BLACK}خروج
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}بدأ لعبة جديدة
@@ -1383,7 +1389,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}اختي
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}عرض خيارات اللعبة
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}عرض الاعدادات المتقدمة
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK} عرض اعدادات newGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}عرض إعدادات اﻹضافات
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} ابحث عن محتوى جديد او تحديث
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}اغلاق'OpenTTD'
 
@@ -1408,19 +1414,19 @@ STR_OSNAME_OS2                                                  :او اس/2
 STR_OSNAME_SUNOS                                                :صن
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}ترك اللعبة
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}هل انت متأكد انك تود ترك هذة اللعبة و اغلاقها؟
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}إغلاق اللعبه
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}أمتأكد من رغبتك فى إغلاق اللعبه؟
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}هل تريد الخروج من انشاء الخريطة
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}اسرار
 STR_CHEATS_TOOLTIP                                              :{BLACK}علامة صح اذا استخدمت هذا السرمن قبل
-STR_CHEATS_WARNING                                              :{BLACK}تحذير! أنت على وشك أن تخون منافسيك. هذا الخيانة ستبقى عار عليك الى الأبد.
+STR_CHEATS_WARNING                                              :{BLACK}تحذير! انت على وشك ان تغش منافسيك. إعلم انهم سيتذكرون عليك هذا العار للإبد
 STR_CHEAT_MONEY                                                 :{LTBLUE}زيادة السيولة بـ {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}العب كشركة{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع و الاجسام غير القابلة للازالة.{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}يمكن للانفاق ان تتقاطع: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}الطائرات النفاثة لن تتحطم كثيرا في المطارات الصغيرة {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}الطائرات النفاثه لا تتحطم (كثيراً) فى المطارات الصغيره: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :مناطق معتدلة
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :مناطق ثلجية
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :مناطق مدارية
@@ -1550,7 +1556,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}عمل�
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}اللغة:{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}مجموعة المربعات:{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}حجم الخريطة: {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}نسخة الخادم:{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}نسخه اللعبه لهذا الخادم: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}عنوان الخادم:{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}تاريخ البداية:{WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}التاريخ الحالي:{WHITE}{DATE_SHORT}
@@ -1564,7 +1570,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}أنضم
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}حدث الخادم
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}حدث معلومات الخادم
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}أبحث عن خادم
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}إبحث عن خوادم
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}أبحث في الشبكة عن خادم
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}اضف خادم - سيرفر
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}اضف خادم (سيرفر) و الذي سوف يفحص اذا كان هناك لعبة قيد التشغيل حاليا
@@ -1681,8 +1687,8 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}فصل
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخادم محمي، أدخل الرقم السر
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركة محمية ، أدخل الرقم السري
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخادم محمى. من فضلك ادخل كلمه المرور
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركه محميه. من فضلك ادخل كلمه المرور
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}قائمة العملاء
@@ -1701,7 +1707,7 @@ STR_NETWORK_SERVER                                              :خادم
 STR_NETWORK_CLIENT                                              :عميل
 STR_NETWORK_SPECTATORS                                          :المشاهدين
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}ادخل قدر المال الذي تود اعطائه
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}ادخل رقم المبلغ الذى تود إعطائه
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}لا تحفظ كلمة المرور المدخلة
@@ -1798,7 +1804,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}اقفل
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}يتم بدأ الخادم من جديد ... {} الرجاء الأنتظار
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}تحميل المحتوى
+STR_CONTENT_TITLE                                               :{WHITE}تنزيل المحتوى
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK} نوع
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK} نوع المحتوى
 STR_CONTENT_NAME_CAPTION                                        :{BLACK} الاسم
@@ -1810,7 +1816,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} اخت�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} ضع علامة على التحديثات للمحتويات الموجودة و التي سيتم تحميلها
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح الكل
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
-STR_CONTENT_FILTER_TITLE                                        :{BLACK} فلتر:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}مُرَشِح:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} تحميل
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK} ابدأ تحميل المحتويات المختارة
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER} حجم البيانات التي سيتم تحميلها: {WHITE}{BYTES}
@@ -2119,7 +2125,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}صغير
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}وسط
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}كبير
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK} عشوائي
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}اختر حجم المدينة
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}حدد حجم المدينه
 STR_FOUND_TOWN_CITY                                             :{BLACK}مدينة
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية. {} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
 
@@ -2358,7 +2364,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}غير �
 STR_GENERATION_WORLD                                            :{WHITE}توليد الخريطة
 STR_GENERATION_ABORT                                            :{BLACK}ألغي
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}ايقاف توليد الخريطة
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}هل انت متأكد بأنك ترغبب في ايقاف توليد الخريطة؟
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}هل انت متأكد بأنك ترغب في ايقاف توليد الخريطة؟
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% انتهى
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK} مولد الخريطة
@@ -2368,15 +2374,15 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}صانع
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}مولد المناطق الخشنة والصخرية
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}تجهيز لعبة
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK} تشغيل المتكررة
-STR_GENERATION_PREPARING_GAME                                   :{BLACK}يتك تجهيز اللعبة
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}يُجَهِز اللعبه
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}اعدادات NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}إعدادات اﻹضافات
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}تفاصيل الاضافات الجديدة
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}اضافة جديدة فعالة
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}ملفات غير فعالة لاضافات جديدة
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}اختر مجموعة الخواص المحددة مسبقا:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}نص المرشح
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}مُرَشِح:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}فتح مجموعة الاعدادات المسجلة
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}حفظ مجموعة الاعدادات
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}حفظ القائمة الحالية كمجموعة اعدادات
@@ -2474,7 +2480,7 @@ STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}تم 
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}تحذير!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}ان على وشك ان تحدث تغييرات في لعبة شغالة؛ قد يتسبب في توقف OpenTTD.{} هل انت متأكد تماما من هذا؟
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}انت على وشك ان تحدث تغييرات في لعبة مفتوحه. قد يتسبب هذا في حدوث إنهيار.{} امتأكد من رغبتك فى هذا؟
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}لا يمكن اضافة الملف: نسخة سابقة منه مضافة
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}الملف المطابق غير موجود (ملف متوافق من NewGRFحمل)
@@ -2552,10 +2558,10 @@ STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}حدود
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}وسط الشاشة الاساسية على موقع المدينة
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}بلدية المدينة
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}عرض معلومات البلدية
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}تغيير اسم المدينة
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}غير إسم المدينه
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}توسيع المدينة
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}زيادة حجم المدينة
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}ازد حجم المدينه
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}حذف
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}حذف المدينة كليا
 
@@ -3024,9 +3030,9 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}ارسل
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ارسل الطائرة الى حظيرة الصيانة - مفتاح التحكم (كنترول) + الضغط يرسلها للصيانة فقط
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}هذا سوف يشتري نسخة عن قطار بكل عرباته. مفتاح التحكم + الضغط سوف يشارك الاوامر.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}هذا سوف يشتري عربة مطابقة للمختارة. مفتاح التحكم كنترول + الضغط سوف يتشارك بالاوامر.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}هذا سوف يشتري عربة مُطابِقة للمُختاره. مفتاح كنترول+النقر بالفأره سيستنسخ نفس الاوامر الاوامر الى العربه الجديده. مفتاح شفت+النقر بالفأره سيحسب التكلفه المُقدره ويعرضها لك
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}هذا سوف يشتري سفينة مطابقة للمختارة. مفتاح التحكم كنترول + الضغط سوف يتشارك بالاوامر.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}هذا سوف يشتري طائرة مطابقة للمختارة. مفتاح التحكم كنترول + الضغط سوف يتشارك بالاوامر.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}هذا سوف يشتري طائرة مطابقة للمختارة. مفتاح كنترول+نقره بالفأره سينسخ نفس اوامر الطائره السابقه الى الطائره الجديده. مفتاح شفت+نقره بالفأره سيحسب التكلفه المُقَدره ويعرضها لك
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}اجبر القطار على التحرك بدون انتظار الاشارة الخضراء
 
@@ -3323,7 +3329,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}جدول
 
 STR_TIMETABLE_NO_TRAVEL                                         :لا رحيل
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادرة (ذاتي: بواسطة الامر اليدوي التالي)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (ليس هناك جدولة)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (غير مجدوله)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر بمعدل {2:VELOCITY} (بدون جدوله)
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {VELOCITY}
@@ -3333,23 +3339,23 @@ STR_TIMETABLE_DAYS                                              :{COMMA}يوم
 STR_TIMETABLE_TICKS                                             :{COMMA} علامة
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}جدولة الاوامر هذه ستأخذ {STRING} لنهاية
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}جدولة الاوامر هذه ستأخذ على الاقل {STRING} للاكمال (لايشمل كل الجدولة).
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}جدولة الاوامر هذه ستأخذ على الاقل {STRING} لتكتمل (لايشمل كل الجدولة)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}هذه العربة تعمل حسب الجدولة في الوقت المحدد
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}هذه العربة {STRING} متاخرة حاليا عن الجدولة
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}هذه العربة {STRING} متقدمة عن الجدولة
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}هذه العربة تعمل حسب الجدولة في الوقت المُحَدَد
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}هذه العربه {STRING} مُتاخِرة حاليا عن الجدوله
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}هذه العربه {STRING} مُتَقَدِمه عن الجدوله
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}جدولة الاعمال لم تبدأ بعد
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}جدولة الاعمال سوف تبدأ في {STRING}
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}جدولة الاعمال ستبدأ فى {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}تاريخ البدأ
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}غير الوقت
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}غير مقدار الزمن الذي يستغرقة الامر
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}غير مقدار الزمن الذي يستغرقه هذا الامر
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}مسح الوقت
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}مسح مقدار الوقت للامر
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}إمسح الوقت
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}إمسح مقدار الزمن لهذا الامر
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}غير تحديد السرعة
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}غير حدود السرعه
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}غير السرعة القصوى للامر المختار
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}ازل تحديد السرعة
@@ -3398,10 +3404,10 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض �
 
 STR_ERROR_AI_NO_AI_FOUND                                        :لا يوجد اضافات مناسبة للتحميل {} هذه اضافة غبية ولن تفعل شيئا لك {} تستطيع تحميل اضافات من الشبكة عن طريق نظام التحميل
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاشة اخطاء الذكاء الصناعي متوفرة فقط في الخادم
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاشة اخطاء الذكاء الصناعي متوفرة فقط للخادم
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}اعداد الذكاء الصناعي
+STR_AI_CONFIG_CAPTION                                           :{WHITE}إعدادات الذكاء الصناعي
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
 
@@ -3468,7 +3474,7 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}فشل �
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}لا يمكن حذف الملف
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}فشل فتح اللعبة {}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :خطأ داخلي: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :لعبة محفوطة غير صالحة{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :لعبه محفوظه غير صالحه - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :اللعبة حفظت بنسخة أحدث
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :لا يمكن قراءة الملف
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :لايمكن قراءة الملف
@@ -3525,7 +3531,7 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}غير مسموح في حين توقفت
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}بلدية المدينة ترفض السماح بهذا
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} السلطات المحليه ترفض المساح بهذا
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}البلدية ترفض بناء مطار آخر في هذه المدينة
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}بلدية {TOWN}{} ترفض السماح بمطار هنا بسبب تتعلق بالضوضاء العالية منه .
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}محاولتك لرشوة السلطات اكتشفت بواسطة مراقب محلي
@@ -3557,7 +3563,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}هذه �
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}لا يمكن انشاء اي مدينة
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}لايمكن اعادة تسمية المدينة ...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}تعذر إعاده تسميه المدينه...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}لا يمكن انشاء مدينة هنا
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}لا يمكن توسيع المدينة ...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... قريبة جدا من حافة الخريطة
@@ -3572,7 +3578,7 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... لا
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... المصانع كثيرة جدا
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}لا يمكن انشاء مصانع ...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}لايمكن انشاء {STRING} هنا...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}تعذر بناء {STRING} هنا...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}لا بمكن بناء المصنع هنا ...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}قريب جدا من مصنع آخر
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... يجب بناء مدينة اولا
@@ -3589,136 +3595,136 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}يمكن
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}لا يمكن بناء محطة سكة حديد هنا ...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}لا يمكن بناء محطة باصات هنا ...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}لا يمكن بناء محطة تحميل عربات هنا ...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}تعذر بناء محطه الحافلات...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}تعذر بناء محطات الشاحنات...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}لا يمكن بناء محطة ركاب هنا ...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}لا يمكن بناء محطة ترام هنا ...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}لا يمكن بناء مرفء هنا ...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}لا يمكن بناء مطار هنا ...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}تعذر بناء المطار هنا...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}جاور اكثر من محطة موجودة مسبقا
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... المحطة واسعة جدا
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}الكثير من المحطات واماكن التحميل
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}قطاعات المحطة كثيرة جدا
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}محطات توقف الباصات كثيرة جدا
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}محطات تحميل العربات كثيرة جدا
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}قريب جدا من محطة موجودة
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}قريب جدا من مرفء آخر
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}قريب جدا من مطار آخر
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}لا يمكن اعادة التسمية
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}هذا طريق مملوك للمدينه
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... اتجاة الطريق خاطئ
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... القيادة عبر اشارات التوقف لا يمكن ان تحتوي على اركان
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... القيادة عبر اشارات التوقف لا يمكن ان تحتوي على تقاطعات
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}جاور اكثر من محطه موجوده مسبقاً
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... المحطه ممتده للخارج للغايه
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}يوجد الكثير من المحطات
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}يوجد الكثير من قطاعات محطه السكه الحديديه
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}يوجد الكثير من محطات الحافلات
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}يوجد الكثير من محطات الشاحنات
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}قريب للغايه من محطه اخرى
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}قريب للغايه من مَرسَى اخر
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}قريب للغايه من مطار اخر
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}تعذر إعاده تسميه المحطه...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... هذا الطريق ملك المدينه
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... اتجاه الطريق خاطئ
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... القيادة عبر إشارات التوقف لا يمكن ان تحتوي على زوايا
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... القيادة عبر إشارات التوقف لا يمكن ان تحتوي على تقاطعات
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}لا يمكن حذف جزء من المحطة ...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}يجب ازالة محطة القطار اولا
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}لا يمكن حذف محطة الركاب ...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}لا يمكن ازالة محطة البضائع من هنا ...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}لا يمكن ازالة محطة الترام للركاب
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}لا يمكن ازالة محطة الترام للشحن
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}يجب حذف محطة التوقف اولا
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... لا توجد محطة هنا
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}تعذر حذف هذا الجزء من المحطه...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}يجب ازالة محطة القطار اولاً
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}تعذر إزاله محطه الحافلات...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}تعذر إزاله محطه الشاحنات...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}تعذر إزاله محطه ركاب الترام...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}تعذر إزاله محطه شحن الترام...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}يجب إزاله محطة التوقف اولاً
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... لايوجد اى محطه هنا
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}يجب ازالة محطة القطار اولا
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}يجب هدم محطة الباصات اولا
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}يجب هدم محطة التحميل اولا
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}يجب هدم محطة ركاب الترام
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}يجب هدم محطة شحن الترام اولا
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}يجب هدم المرفء اولا
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}يجب هدم المطار اولا
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}يجب ازالة محطة القطار اولاً
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}يجب إزاله محطه الحافلات اولاً
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}يجب إزاله محطه الشاحنات اولاً
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}يجب إزاله محطه ركاب الترام اولاً
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}يجب إزاله محطه شحن الترام اولاً
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}يجب إزاله المَرسَى اولاً
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}يجب إزاله المطار اولاً
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}اربط اكثر من نقاط العبور المتواجدة
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}قريبة جدا من نقطة عبور اخرى
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}جاور اكثر من نقطه عبور متواجده
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}قريب للغايه من نقطه عبور اخرى
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}لا يمكن بناء نقطة عبور هنا ...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}لا يمكن وضع عوامة هنا
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}لا يمكن تعديل نقطة العبور
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}تعذر بناء نقطه العبور هنا...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}تعذر وضع العوامه هنا...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}تعذر إعاده تسميه نقطه العبور
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}لا يمكن ازالة نقطة العبور من هنا ...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}يجب ازالة سكة الحديد اولا
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... عوامة في المسار
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... العوامة مستخدمة بواسطة شركة اخرى!
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}لا يمكن ازالة نقطة عبور القطار من هنا...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}يجب إزالة السكه الحديديه اولاً
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... توجد عوامه فى المسار
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... العوامه مُستخدمه من قِبَل شركه اخرى!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}لا يمكن بناء ورشة صيانة هنا...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}لا يمكن بناء الورشة هنا ...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}لا يمكن بناء ورشة ترام هنا ...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}لا يمكن بناء حوض صيانة هنا ...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}تعذر بناء مستودع القطارات هنا...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}تعذر بناء مستودع العربات البريه هذا هنا...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}تعذر بناء مستوع الترام هنا...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}تعذر بناء مستودع السفن هنا..
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}لا يمكن تسمية الورشة
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}تعذر إعاده تسميه المستودع...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}يجب ان يتوقف القطار بالكامل داخل مستودع الصيانة
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... يجب ان يوقف داخل ورشة الصيانة.
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}يجب ان تكون السفينة متوقفة في حوض الصيانة
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}يجب ان تكون الطائرة متوقفة في الحظيرة
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... يجب ان يكون متوقفاً بالكامل داخل المستودع
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... يجب ان تكون متوقفه بالكامل داخل المستودع
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... يجب ان تكون متوقفه بالكامل داخل المستودع
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... يجب ان تكون متوقفه بالكامل في الحظيره
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}يمكن تعديل القطارعندما يكون متوقف في ورشة الصيانة
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}القطار طويل جدا
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}لا يمكن تغيير اتجاة العربة ...
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}يمكن تعديل القطارات فقط عند وجودها داخل المستودع
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}القطار طويل للغايه
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}تعذر تغيير إتجاه العربه...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}تتكون من اكثر من وحدة ...
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :نوع سكة حديد متعارض
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :نوع السكه الحديديه غير متوافق
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}لا يمكن تحريك العربة ...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}المحرك الخلفي دائما سيتبع الامامي
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}لا يمكن ايجاد طريق للورشة
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}لم يتم العثور على ورشة قريبة من العربة
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}تعذر تحريك العربه...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}المُحرك الخلفى سيتبع نظيره الامامى دائماً
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}تعذر إيجاد الطريق المؤدى للمستودع
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}تعذر إيجاد مستوع محلى
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :ورشةمن نوع خاطئ
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :مستودع خطأ
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} طويل جدا بعد الاستبدال
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} طويل للغايه بعد اﻹستبدال
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}لا يوجد نظام مطبق للتبديل/ التجديد
-STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :- حدود التكلفة للتبديل -
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(حدود التكلفة للتبديل)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}تركيبة سكك غير صالحة
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}يجب حذف الاشارة اولا
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}يجب إزاله اﻹشاره اولاً
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}... مسار السكة الحديدية غير مناسب
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب ازالة السكة اولا
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}طريق بإتجاه واحد أو مغلق
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب إزاله السكه الحديديه اولاً
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}الطريق باتجاه واحد او ربما يكون مسدوداً
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}التقاطع المتعدد غير متاح لهذا النوع من السكك
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}لا يمكن بناء اشارة توقف هنا ...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}لا يمكن بناء سكة قطار هنا ...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}لا يمكن ازالة سكة القطار من هنا ...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}لا يمكن ازالة الإشارة من هتا ...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}تعذر بناء اﻹشارات هنا...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}تعذر بناء السكه الحديديه هنا...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}تعذر إزاله السكه الحديديه من هنا...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}تعذر إزاله اﻹشاره من هنا...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}لا يمكن تحويل الاشارة هنا ...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... لا يوجد سكة قطار هنا
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... لا يوجد سكه حديديه
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... لا توجد اشارات هنا
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}لا يمكن تحويل سكة القطار هنا ...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}يجب ازالة الطريق اولا
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... الطريق موحد الأتجاة لا يمكن ان يحتوي على تقاطع
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}لايمكن وضع طريق هنا ...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}لا يمكن بناء سكة ترام هنا ...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}لايمكن ازالة الطريق من هنا ...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}لا يمكن ازالة سكة الترام من هنا ...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... لا يوجد طريق هنا
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... لا يوجد خط ترام هنا
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}يجب إزاله الطريق اولاً
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... الطريق موحد اﻹتجاه لا يمكن ان يحتوى على تقطاعات
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}تعذر بناء الطريق هنا...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}تعذر بناء سكه الترام هنا...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}تعذر إزاله الطريق من هنا...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}تعذر إزاله سكه الترام من هنا...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... لا يوجد طريق
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... لا يوجد سكه ترام هنا
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}لا يمكن بناء قناة مياة هنا ...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}لا يمكن بناء حاجز هنا
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}لا يمكن وضع نهر هنا ...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}يجب ان يبنى في الماء
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}تعذر بناء القناه هنا...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}تعذر بناء الحاجز هنا...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}تعذر وضع النهر هنا...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... يجب بناءه على الماء
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... لا يمكن بنائة على الماء
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}لا يمكن بناءة في البحر المفتوح
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}لا يمكن بناءة على القناة
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... لا يمكن بناءه فى البحر المفتوح
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... لا يمكن بناءه على القناه
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}لا يمكن بنائة على النهر
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}يجب هدم القتاة اولا
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}لا يمكن بناء قناة مياة هنا ...
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}يجب إزاله القناه اولاً
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}لا يمكن بناء قناه مياه هنا...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... الاشجار موجودة هنا مسبقا
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... الشجره موجوده هنا مسبقاً
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... البيئة غير مناسبة لنوع الشجر
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}... لا يمكن زراعة اشجار هنا
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}لا يمكن بناء جسر هنا ...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}تعذر بناء الجسر هنا...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}يجب هدم الجسر اولا
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}لا يمكن ان يبدء وينتهي في نفس المكان
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}نهايات الجسر ليست على استقامة واحدة
@@ -3729,7 +3735,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ال
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}قد ينتهي الجسر خارج الخريطة
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}لا يمكن بناء نفق هنا ...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}تعذر بناء النفق هنا...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}الموقع غير صالح لمدخل النفق
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}يجب هدم النفق اولا
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}نفق آخر في مسار هذا النفق
@@ -3804,6 +3810,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}لا ي�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... العربة تحطمت
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}لن تتوافر اى وسائل نقل على اﻹطلاق
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :لا تتوافر اى آليه نقل بعد
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
@@ -4304,6 +4312,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

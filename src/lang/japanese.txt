@@ -294,7 +294,7 @@ STR_SORT_BY_COST                                                :価格
 STR_SORT_BY_POWER                                               :出力
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牽引力
 STR_SORT_BY_INTRO_DATE                                          :設計年
-STR_SORT_BY_RUNNING_COST                                        :運転費用
+STR_SORT_BY_RUNNING_COST                                        :運用費
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :運転費当たりの出力
 STR_SORT_BY_CARGO_CAPACITY                                      :積載容量
 STR_SORT_BY_RANGE                                               :航続距離
@@ -3941,6 +3941,8 @@ STR_AI_SETTINGS_START_DELAY                                     :AI企業の設�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}のReadme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}の変更履歴
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}のライセンス
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}テキストのラップ
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}ウィンドウ内のテキストをラップするだけでスクロールなしで領域に合うようになります
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readmeを見る
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}変更履歴を見る
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}ライセンス
