@@ -75,7 +75,7 @@ public:
 	virtual SpriteID GetUnicodeGlyph(WChar key);
 	virtual void SetUnicodeGlyph(WChar key, SpriteID sprite);
 	virtual void InitializeUnicodeGlyphMap();
-	virtual void ClearFontCache() {}
+	virtual void ClearFontCache();
 	virtual const Sprite *GetGlyph(GlyphID key);
 	virtual uint GetGlyphWidth(GlyphID key);
 	virtual bool GetDrawGlyphShadow();
@@ -160,6 +160,11 @@ void SpriteFontCache::ClearGlyphToSpriteMap()
 	}
 	free(this->glyph_to_spriteid_map);
 	this->glyph_to_spriteid_map = NULL;
+}
+
+void SpriteFontCache::ClearFontCache()
+{
+	Layouter::ResetFontCache(this->fs);
 }
 
 const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
@@ -392,6 +397,8 @@ void FreeTypeFontCache::ClearFontCache()
 
 	free(this->glyph_to_sprite);
 	this->glyph_to_sprite = NULL;
+
+	Layouter::ResetFontCache(this->fs);
 }
 
 FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(GlyphID key)
