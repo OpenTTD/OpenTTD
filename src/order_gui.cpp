@@ -644,7 +644,6 @@ private:
 	 */
 	void OrderClick_Conditional()
 	{
-		this->LowerWidget(WID_O_GOTO);
 		this->SetWidgetDirty(WID_O_GOTO);
 		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_NONE, this);
 		this->goto_type = OPOS_CONDITIONAL;
@@ -655,7 +654,6 @@ private:
 	 */
 	void OrderClick_Share()
 	{
-		this->LowerWidget(WID_O_GOTO);
 		this->SetWidgetDirty(WID_O_GOTO);
 		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_VEHICLE, this);
 		this->goto_type = OPOS_SHARE;
@@ -1111,7 +1109,11 @@ public:
 
 	virtual void OnPaint()
 	{
-		if (this->vehicle->owner != _local_company) this->selected_order = -1; // Disable selection any selected row at a competitor order window.
+		if (this->vehicle->owner != _local_company) {
+			this->selected_order = -1; // Disable selection any selected row at a competitor order window.
+		} else {
+			this->SetWidgetLoweredState(WID_O_GOTO, this->goto_type != OPOS_NONE);
+		}
 		this->DrawWidgets();
 	}
 
@@ -1501,7 +1503,6 @@ public:
 	virtual void OnPlaceObjectAbort()
 	{
 		this->goto_type = OPOS_NONE;
-		this->RaiseWidget(WID_O_GOTO);
 		this->SetWidgetDirty(WID_O_GOTO);
 
 		/* Remove drag highlighting if it exists. */
