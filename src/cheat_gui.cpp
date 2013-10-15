@@ -24,8 +24,7 @@
 #include "rail_gui.h"
 #include "settings_gui.h"
 #include "company_gui.h"
-#include "linkgraph/linkgraph.h"
-#include "linkgraph/linkgraphjob.h"
+#include "linkgraph/linkgraphschedule.h"
 
 #include "widgets/cheat_widget.h"
 
@@ -103,10 +102,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	if (p1 == _cur_year) return _cur_year;
 
 	Date new_date = ConvertYMDToDate(p1, ymd.month, ymd.day);
-	LinkGraph *lg;
-	FOR_ALL_LINK_GRAPHS(lg) lg->ShiftDates(new_date - _date);
-	LinkGraphJob *lgj;
-	FOR_ALL_LINK_GRAPH_JOBS(lgj) lgj->ShiftJoinDate(new_date - _date);
+	LinkGraphSchedule::Instance()->ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
 	EnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);

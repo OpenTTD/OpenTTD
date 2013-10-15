@@ -1111,6 +1111,19 @@ void ToggleDirtyBlocks()
 }
 
 /**
+ * Set the starting year for a scenario.
+ * @param year New starting year.
+ */
+void SetStartingYear(Year year)
+{
+	_settings_game.game_creation.starting_year = Clamp(year, MIN_YEAR, MAX_YEAR);
+	Date new_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	/* If you open a savegame as scenario there may already be link graphs.*/
+	LinkGraphSchedule::Instance()->ShiftDates(new_date - _date);
+	SetDate(new_date, 0);
+}
+
+/**
  * Choose the proper callback function for the main toolbar's help menu.
  * @param index The menu index which was selected.
  * @return CBF_NONE
@@ -1169,8 +1182,7 @@ static CallBackFunction ToolbarScenDateBackward(Window *w)
 		w->HandleButtonClick(WID_TE_DATE_BACKWARD);
 		w->SetDirty();
 
-		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year - 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		SetStartingYear(_settings_game.game_creation.starting_year - 1);
 	}
 	_left_button_clicked = false;
 	return CBF_NONE;
@@ -1183,8 +1195,7 @@ static CallBackFunction ToolbarScenDateForward(Window *w)
 		w->HandleButtonClick(WID_TE_DATE_FORWARD);
 		w->SetDirty();
 
-		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year + 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		SetStartingYear(_settings_game.game_creation.starting_year + 1);
 	}
 	_left_button_clicked = false;
 	return CBF_NONE;
@@ -2119,8 +2130,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			/* An empty string means revert to the default */
 			value = DEF_START_YEAR;
 		}
-		_settings_game.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		SetStartingYear(value);
 
 		this->SetDirty();
 	}

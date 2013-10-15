@@ -62,6 +62,7 @@ public:
 	void SpawnNext();
 	void JoinNext();
 	void SpawnAll();
+	void ShiftDates(int interval);
 
 	/**
 	 * Queue a link graph for execution.
