@@ -139,7 +139,7 @@ private:
 	TownScopeResolver *GetTown();
 };
 
-/** Struct containing information relating to station classes. */
+/** Struct containing information relating to object classes. */
 typedef NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX> ObjectClass;
 
 /** Mapping of purchase for objects. */
