@@ -643,6 +643,24 @@ static bool HasTransmitter(TileIndex tile, void *user)
 	return IsObjectTypeTile(tile, OBJECT_TRANSMITTER);
 }
 
+/**
+ * Try to build a transmitter.
+ * @return True iff a transmitter was built.
+ */
+static bool TryBuildTransmitter()
+{
+	TileIndex tile = RandomTile();
+	int h;
+	if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
+		TileIndex t = tile;
+		if (CircularTileSearch(&t, 9, HasTransmitter, NULL)) return false;
+
+		BuildObject(OBJECT_TRANSMITTER, tile);
+		return true;
+	}
+	return false;
+}
+
 void GenerateObjects()
 {
 	if (_settings_game.game_creation.landscape == LT_TOYLAND) return;
@@ -670,17 +688,9 @@ void GenerateObjects()
 	SetGeneratingWorldProgress(GWP_OBJECT, radiotower_to_build + lighthouses_to_build);
 
 	for (uint i = ScaleByMapSize(1000); i != 0 && Object::CanAllocateItem(); i--) {
-		TileIndex tile = RandomTile();
-
-		int h;
-		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
-			TileIndex t = tile;
-			if (CircularTileSearch(&t, 9, HasTransmitter, NULL)) continue;
-
-			BuildObject(OBJECT_TRANSMITTER, tile);
-			IncreaseGeneratingWorldProgress(GWP_OBJECT);
-			if (--radiotower_to_build == 0) break;
-		}
+		if (!TryBuildTransmitter()) continue;
+		IncreaseGeneratingWorldProgress(GWP_OBJECT);
+		if (--radiotower_to_build == 0) break;
 	}
 
 	/* add lighthouses */
