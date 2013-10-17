@@ -415,7 +415,7 @@ STR_SORT_BY_ENGINE_ID                                           :за ID (кла
 STR_SORT_BY_COST                                                :за ціною
 STR_SORT_BY_POWER                                               :за потужністю
 STR_SORT_BY_TRACTIVE_EFFORT                                     :за силою тяги
-STR_SORT_BY_INTRO_DATE                                          :за датою випуску
+STR_SORT_BY_INTRO_DATE                                          :Дата випуску
 STR_SORT_BY_RUNNING_COST                                        :за вартістю експлуатації
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потужністю/вартістю експ.
 STR_SORT_BY_CARGO_CAPACITY                                      :за місткістю
