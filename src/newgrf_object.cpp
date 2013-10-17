@@ -13,6 +13,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "debug.h"
+#include "genworld.h"
 #include "newgrf_class_func.h"
 #include "newgrf_object.h"
 #include "newgrf_sound.h"
@@ -58,7 +59,16 @@ ObjectSpec _object_specs[NUM_OBJECTS];
 bool ObjectSpec::IsEverAvailable() const
 {
 	return this->enabled && HasBit(this->climate, _settings_game.game_creation.landscape) &&
-			(this->flags & (_game_mode != GM_EDITOR ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
+			(this->flags & ((_game_mode != GM_EDITOR && !_generating_world) ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
+}
+
+/**
+ * Check whether the object was available at some point in the past or present in this game with the current game mode.
+ * @return true if it was ever or is available.
+ */
+bool ObjectSpec::WasEverAvailable() const
+{
+	return this->IsEverAvailable() && _date > this->introduction_date;
 }
 
 /**
@@ -67,7 +77,7 @@ bool ObjectSpec::IsEverAvailable() const
  */
 bool ObjectSpec::IsAvailable() const
 {
-	return this->IsEverAvailable() && _date > this->introduction_date &&
+	return this->WasEverAvailable() &&
 			(_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365);
 }
 

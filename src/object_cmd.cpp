@@ -209,7 +209,8 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (type >= NUM_OBJECTS) return CMD_ERROR;
 	uint8 view = GB(p2, 0, 2);
 	const ObjectSpec *spec = ObjectSpec::Get(type);
-	if (!spec->IsAvailable()) return CMD_ERROR;
+	if (_game_mode == GM_NORMAL && !spec->IsAvailable()) return CMD_ERROR;
+	if (_game_mode == GM_EDITOR && !spec->WasEverAvailable()) return CMD_ERROR;
 
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && (_game_mode != GM_EDITOR || _current_company != OWNER_NONE)) return CMD_ERROR;
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_GAME && (_game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
