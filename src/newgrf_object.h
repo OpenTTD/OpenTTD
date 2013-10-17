@@ -73,6 +73,7 @@ struct ObjectSpec {
 	uint16 callback_mask;         ///< Bitmask of requested/allowed callbacks.
 	uint8 height;                 ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
 	uint8 views;                  ///< The number of views.
+	uint8 generate_amount;        ///< Number of objects which are attempted to be generated per 256^2 map during world generation.
 	bool enabled;                 ///< Is this spec enabled?
 
 	/**
