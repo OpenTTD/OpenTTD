@@ -486,8 +486,8 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 		} else if (_game_mode == GM_EDITOR) {
 			/* No further limitations for the editor. */
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
-			/* Owned by nobody, so we can only remove it with brute force! */
-			if (!_cheats.magic_bulldozer.value) return CMD_ERROR;
+			/* Owned by nobody and unremovable, so we can only remove it with brute force! */
+			if (!_cheats.magic_bulldozer.value && (spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0) return CMD_ERROR;
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return_cmd_error(STR_ERROR_OWNED_BY);
