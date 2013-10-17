@@ -706,15 +706,12 @@ static bool TryBuildTransmitter()
 
 void GenerateObjects()
 {
-	if (_settings_game.game_creation.landscape == LT_TOYLAND) return;
+	/* Set a guestimate on how much we progress */
+	SetGeneratingWorldProgress(GWP_OBJECT, NUM_OBJECTS);
 
-	/* add radio tower */
-	int radiotower_to_build = ScaleByMapSize(15); // maximum number of radio towers on the map
-	int lighthouses_to_build = _settings_game.game_creation.landscape == LT_TROPIC ? 0 : ScaleByMapSize1D((Random() & 3) + 7);
-
-	/* Scale the amount of lighthouses with the amount of land at the borders. */
-	if (_settings_game.construction.freeform_edges && lighthouses_to_build != 0) {
-		uint num_water_tiles = 0;
+	/* Determine number of water tiles at map border needed for freeform_edges */
+	uint num_water_tiles = 0;
+	if (_settings_game.construction.freeform_edges) {
 		for (uint x = 0; x < MapMaxX(); x++) {
 			if (IsTileType(TileXY(x, 1), MP_WATER)) num_water_tiles++;
 			if (IsTileType(TileXY(x, MapMaxY() - 1), MP_WATER)) num_water_tiles++;
@@ -723,24 +720,47 @@ void GenerateObjects()
 			if (IsTileType(TileXY(1, y), MP_WATER)) num_water_tiles++;
 			if (IsTileType(TileXY(MapMaxX() - 1, y), MP_WATER)) num_water_tiles++;
 		}
-		/* The -6 is because the top borders are MP_VOID (-2) and all corners
-		 * are counted twice (-4). */
-		lighthouses_to_build = lighthouses_to_build * num_water_tiles / (2 * MapMaxY() + 2 * MapMaxX() - 6);
 	}
 
-	SetGeneratingWorldProgress(GWP_OBJECT, radiotower_to_build + lighthouses_to_build);
+	/* Iterate over all possible object types */
+	for (uint i = 0; i < NUM_OBJECTS; i++) {
+		const ObjectSpec *spec = ObjectSpec::Get(i);
 
-	for (uint i = ScaleByMapSize(1000); i != 0 && Object::CanAllocateItem(); i--) {
-		if (!TryBuildTransmitter()) continue;
-		IncreaseGeneratingWorldProgress(GWP_OBJECT);
-		if (--radiotower_to_build == 0) break;
-	}
+		/* Continue, if the object was never available till now or shall not be placed */
+		if (!spec->WasEverAvailable() || spec->generate_amount == 0) continue;
 
-	/* add lighthouses */
-	for (int loop_count = 0; loop_count < 1000 && lighthouses_to_build != 0 && Object::CanAllocateItem(); loop_count++) {
-		if (!TryBuildLightHouse()) continue;
+		uint16 amount = spec->generate_amount;
+
+		/* Scale by map size */
+		if ((spec->flags & OBJECT_FLAG_SCALE_BY_WATER) && _settings_game.construction.freeform_edges) {
+			/* Scale the amount of lighthouses with the amount of land at the borders.
+			 * The -6 is because the top borders are MP_VOID (-2) and all corners
+			 * are counted twice (-4). */
+			amount = ScaleByMapSize1D(amount * num_water_tiles) / (2 * MapMaxY() + 2 * MapMaxX() - 6);
+		} else if (spec->flags & OBJECT_FLAG_SCALE_BY_WATER) {
+			amount = ScaleByMapSize1D(amount);
+		} else {
+			amount = ScaleByMapSize(amount);
+		}
+
+		/* Now try to place the requested amount of this object */
+		for (uint j = ScaleByMapSize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
+			switch (i) {
+				case OBJECT_LIGHTHOUSE:
+					if (TryBuildTransmitter()) amount--;
+					break;
+
+				case OBJECT_TRANSMITTER:
+					if (TryBuildLightHouse()) amount--;
+					break;
+
+				default:
+					uint8 view = RandomRange(spec->views);
+					if (CmdBuildObject(RandomTile(), DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, i, view, NULL).Succeeded()) amount--;
+					break;
+			}
+		}
 		IncreaseGeneratingWorldProgress(GWP_OBJECT);
-		lighthouses_to_build--;
 	}
 }
 
