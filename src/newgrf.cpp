@@ -3882,6 +3882,10 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 				}
 				break;
 
+			case 0x18: // Amount placed on 256^2 map on map creation
+				spec->generate_amount = buf->ReadByte();
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
