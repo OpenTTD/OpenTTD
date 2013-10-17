@@ -644,6 +644,48 @@ static bool HasTransmitter(TileIndex tile, void *user)
 }
 
 /**
+ * Try to build a lighthouse.
+ * @return True iff building a lighthouse succeeded.
+ */
+static bool TryBuildLightHouse()
+{
+	uint maxx = MapMaxX();
+	uint maxy = MapMaxY();
+	uint r = Random();
+
+	/* Scatter the lighthouses more evenly around the perimeter */
+	int perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
+	DiagDirection dir;
+	for (dir = DIAGDIR_NE; perimeter > 0; dir++) {
+		perimeter -= (DiagDirToAxis(dir) == AXIS_X) ? maxx : maxy;
+	}
+
+	TileIndex tile;
+	switch (dir) {
+		default:
+		case DIAGDIR_NE: tile = TileXY(maxx - 1, r % maxy); break;
+		case DIAGDIR_SE: tile = TileXY(r % maxx, 1); break;
+		case DIAGDIR_SW: tile = TileXY(1,        r % maxy); break;
+		case DIAGDIR_NW: tile = TileXY(r % maxx, maxy - 1); break;
+	}
+
+	/* Only build lighthouses at tiles where the border is sea. */
+	if (!IsTileType(tile, MP_WATER)) return false;
+
+	for (int j = 0; j < 19; j++) {
+		int h;
+		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
+			BuildObject(OBJECT_LIGHTHOUSE, tile);
+			assert(tile < MapSize());
+			return true;
+		}
+		tile += TileOffsByDiagDir(dir);
+		if (!IsValidTile(tile)) return false;
+	}
+	return false;
+}
+
+/**
  * Try to build a transmitter.
  * @return True iff a transmitter was built.
  */
@@ -694,42 +736,10 @@ void GenerateObjects()
 	}
 
 	/* add lighthouses */
-	uint maxx = MapMaxX();
-	uint maxy = MapMaxY();
 	for (int loop_count = 0; loop_count < 1000 && lighthouses_to_build != 0 && Object::CanAllocateItem(); loop_count++) {
-		uint r = Random();
-
-		/* Scatter the lighthouses more evenly around the perimeter */
-		int perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
-		DiagDirection dir;
-		for (dir = DIAGDIR_NE; perimeter > 0; dir++) {
-			perimeter -= (DiagDirToAxis(dir) == AXIS_X) ? maxx : maxy;
-		}
-
-		TileIndex tile;
-		switch (dir) {
-			default:
-			case DIAGDIR_NE: tile = TileXY(maxx - 1, r % maxy); break;
-			case DIAGDIR_SE: tile = TileXY(r % maxx, 1); break;
-			case DIAGDIR_SW: tile = TileXY(1,        r % maxy); break;
-			case DIAGDIR_NW: tile = TileXY(r % maxx, maxy - 1); break;
-		}
-
-		/* Only build lighthouses at tiles where the border is sea. */
-		if (!IsTileType(tile, MP_WATER)) continue;
-
-		for (int j = 0; j < 19; j++) {
-			int h;
-			if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
-				BuildObject(OBJECT_LIGHTHOUSE, tile);
-				IncreaseGeneratingWorldProgress(GWP_OBJECT);
-				lighthouses_to_build--;
-				assert(tile < MapSize());
-				break;
-			}
-			tile += TileOffsByDiagDir(dir);
-			if (!IsValidTile(tile)) break;
-		}
+		if (!TryBuildLightHouse()) continue;
+		IncreaseGeneratingWorldProgress(GWP_OBJECT);
+		lighthouses_to_build--;
 	}
 }
 
