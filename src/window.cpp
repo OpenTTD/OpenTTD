@@ -1741,7 +1741,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 	int16 default_width  = max(desc->GetDefaultWidth(),  sm_width);
 	int16 default_height = max(desc->GetDefaultHeight(), sm_height);
 
-	if (desc->parent_cls != 0 /* WC_MAIN_WINDOW */ && (w = FindWindowById(desc->parent_cls, window_number)) != NULL) {
+	if (desc->parent_cls != WC_NONE && (w = FindWindowById(desc->parent_cls, window_number)) != NULL) {
 		bool rtl = _current_text_dir == TD_RTL;
 		if (desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) {
 			pt.x = w->left + (rtl ? w->width - default_width : 0);
