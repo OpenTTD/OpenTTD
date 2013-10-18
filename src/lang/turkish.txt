@@ -294,10 +294,10 @@ STR_SORT_BY_ENGINE_ID                                           :LokoAdı (klasi
 STR_SORT_BY_COST                                                :Fiyat
 STR_SORT_BY_POWER                                               :Güç
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Tork
-STR_SORT_BY_INTRO_DATE                                          :Piyasaya Girişi
-STR_SORT_BY_RUNNING_COST                                        :Bakım Gideri
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Güç/Bakım Gideri
-STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
+STR_SORT_BY_INTRO_DATE                                          :Giriş tarihi
+STR_SORT_BY_RUNNING_COST                                        :Bakım gideri
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Güç/Bakım gideri
+STR_SORT_BY_CARGO_CAPACITY                                      :Kargo kapasitesi
 STR_SORT_BY_RANGE                                               :Menzil
 STR_SORT_BY_POPULATION                                          :Nüfus
 STR_SORT_BY_RATING                                              :Değerlendirme
