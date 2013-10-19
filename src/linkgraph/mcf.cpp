@@ -351,7 +351,17 @@ void MCF1stPass::EliminateCycle(PathVector &path, Path *cycle_begin, uint flow)
 	do {
 		NodeID prev = cycle_begin->GetNode();
 		cycle_begin->ReduceFlow(flow);
-		cycle_begin = path[cycle_begin->GetNode()];
+		if (cycle_begin->GetFlow() == 0) {
+			PathList &node_paths = this->job[cycle_begin->GetParent()->GetNode()].Paths();
+			for (PathList::iterator i = node_paths.begin(); i != node_paths.end(); ++i) {
+				if (*i == cycle_begin) {
+					node_paths.erase(i);
+					node_paths.push_back(cycle_begin);
+					break;
+				}
+			}
+		}
+		cycle_begin = path[prev];
 		Edge edge = this->job[prev][cycle_begin->GetNode()];
 		edge.RemoveFlow(flow);
 	} while (cycle_begin != cycle_end);
@@ -379,18 +389,28 @@ bool MCF1stPass::EliminateCycles(PathVector &path, NodeID origin_id, NodeID next
 		 * in one path each. */
 		PathList &paths = this->job[next_id].Paths();
 		PathViaMap next_hops;
-		for (PathList::iterator i = paths.begin(); i != paths.end(); ++i) {
+		for (PathList::iterator i = paths.begin(); i != paths.end();) {
 			Path *new_child = *i;
+			uint new_flow = new_child->GetFlow();
+			if (new_flow == 0) break;
 			if (new_child->GetOrigin() == origin_id) {
 				PathViaMap::iterator via_it = next_hops.find(new_child->GetNode());
 				if (via_it == next_hops.end()) {
 					next_hops[new_child->GetNode()] = new_child;
+					++i;
 				} else {
 					Path *child = via_it->second;
-					uint new_flow = new_child->GetFlow();
 					child->AddFlow(new_flow);
 					new_child->ReduceFlow(new_flow);
+
+					/* We might hit end() with with the ++ here and skip the
+					 * newly push_back'ed path. That's good as the flow of that
+					 * path is 0 anyway. */
+					paths.erase(i++);
+					paths.push_back(new_child);
 				}
+			} else {
+				++i;
 			}
 		}
 		bool found = false;

@@ -28,7 +28,7 @@ void FlowMapper::Run(LinkGraphJob &job) const
 		for (PathList::iterator i = paths.begin(); i != paths.end(); ++i) {
 			Path *path = *i;
 			uint flow = path->GetFlow();
-			if (flow == 0) continue;
+			if (flow == 0) break;
 			/* compress to monthly value */
 			flow = max(1U, flow * 30 / runtime);
 			Node node = job[path->GetNode()];

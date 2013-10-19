@@ -45,7 +45,7 @@ private:
 	 */
 	struct NodeAnnotation {
 		uint undelivered_supply; ///< Amount of supply that hasn't been distributed yet.
-		PathList paths;          ///< Paths through this node.
+		PathList paths;          ///< Paths through this node, sorted so that those with flow == 0 are in the back.
 		FlowStatMap flows;       ///< Planned flows to other nodes.
 		void Init(uint supply);
 	};
@@ -234,7 +234,8 @@ public:
 		const FlowStatMap &Flows() const { return this->node_anno.flows; }
 
 		/**
-		 * Get the paths this node is part of.
+		 * Get the paths this node is part of. Paths are always expected to be
+		 * sorted so that those with flow == 0 are in the back of the list.
 		 * @return Paths.
 		 */
 		PathList &Paths() { return this->node_anno.paths; }
