@@ -3378,19 +3378,10 @@ void RelocateAllWindows(int neww, int newh)
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		int left, top;
-
-		if (w->window_class == WC_MAIN_WINDOW) {
-			ViewPort *vp = w->viewport;
-			vp->width = w->width = neww;
-			vp->height = w->height = newh;
-			vp->virtual_width = ScaleByZoom(neww, vp->zoom);
-			vp->virtual_height = ScaleByZoom(newh, vp->zoom);
-			continue; // don't modify top,left
-		}
-
 		/* XXX - this probably needs something more sane. For example specifying
 		 * in a 'backup'-desc that the window should always be centered. */
 		switch (w->window_class) {
+			case WC_MAIN_WINDOW:
 			case WC_BOOTSTRAP:
 				ResizeWindow(w, neww, newh);
 				continue;
