@@ -150,7 +150,7 @@ private:
 	Vehicle *next_shared;               ///< pointer to the next vehicle that shares the order
 	Vehicle *previous_shared;           ///< NOSAVE: pointer to the previous vehicle in the shared order chain
 
-	void RefreshNextHopsStats(CapacitiesMap &capacities,
+	uint RefreshNextHopsStats(CapacitiesMap &capacities,
 			RefitList &refit_capacities, const Order *first, const Order *cur,
 			const Order *next, uint hops, bool was_refit, bool has_cargo);
 public:

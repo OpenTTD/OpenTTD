@@ -2141,8 +2141,9 @@ void Vehicle::ResetRefitCaps()
  * @param has_cargo If the consist could leave the last stop where it could
  *        interact with cargo carrying cargo
  *        (i.e. not an "unload all" + "no loading" order).
+ * @return Total number of hops used.
  */
-void Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
+uint Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
 			RefitList &refit_capacities, const Order *first, const Order *cur,
 			const Order *next, uint hops, bool was_refit, bool has_cargo)
 {
@@ -2211,20 +2212,13 @@ void Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
 
 		/* Resolve conditionals by recursion. */
 		do {
+			const Order *skip_to = NULL;
 			if (next->IsType(OT_CONDITIONAL)) {
-				const Order *skip_to = this->orders.list->GetNextDecisionNode(
+				skip_to = this->orders.list->GetNextDecisionNode(
 						this->orders.list->GetOrderAt(next->GetConditionSkipToOrder()),
 						hops / 2);
-
-				if (skip_to != NULL) {
-					/* Make copies of capacity tracking lists. */
-					CapacitiesMap skip_capacities = capacities;
-					RefitList skip_refit_capacities = refit_capacities;
-					this->RefreshNextHopsStats(skip_capacities,
-							skip_refit_capacities, first, cur, skip_to, hops + 1,
-							was_refit, has_cargo);
-				}
 			}
+
 			if (skip_first_inc) {
 				/* First incrementation has to be skipped if a "real" next hop,
 				 * different from cur, was given. */
@@ -2236,6 +2230,19 @@ void Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
 				 * reassign "first" below without afterwards terminating early here. */
 				next = this->orders.list->GetNextDecisionNode(
 						this->orders.list->GetNext(next), hops / 2);
+			}
+
+			if (skip_to != NULL) {
+				/* Process the linear succession first. Skip_to is likely to
+				 * point back to already seen orders. */
+
+				/* Make copies of capacity tracking lists. */
+				CapacitiesMap next_capacities = capacities;
+				RefitList next_refit_capacities = refit_capacities;
+				hops = this->RefreshNextHopsStats(next_capacities,
+						next_refit_capacities, first, cur, next, hops + 1,
+						was_refit, has_cargo);
+				next = skip_to;
 			}
 		} while (next != NULL && next->IsType(OT_CONDITIONAL));
 		if (next == NULL) break;
@@ -2278,6 +2285,7 @@ void Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
 			}
 		}
 	}
+	return hops;
 }
 
 /**
