@@ -33,6 +33,10 @@
 StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
 
+typedef StationIDStack::SmallStackPool StationIDStackPool;
+template<> StationIDStackPool StationIDStack::_pool("StationIDStack");
+INSTANTIATE_POOL_METHODS(StationIDStack)
+
 BaseStation::~BaseStation()
 {
 	free(this->name);

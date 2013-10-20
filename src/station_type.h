@@ -13,6 +13,7 @@
 #define STATION_TYPE_H
 
 #include "core/smallvec_type.hpp"
+#include "core/smallstack_type.hpp"
 #include "tilearea_type.h"
 #include <list>
 
@@ -27,6 +28,8 @@ struct Waypoint;
 
 static const StationID NEW_STATION = 0xFFFE;
 static const StationID INVALID_STATION = 0xFFFF;
+
+typedef SmallStack<StationID, StationID, INVALID_STATION, 8, 0xFFFD> StationIDStack;
 
 /** Station types */
 enum StationType {
