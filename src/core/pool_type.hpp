@@ -161,6 +161,7 @@ struct Pool : PoolBase {
 		 */
 		inline void operator delete(void *p)
 		{
+			if (p == NULL) return;
 			Titem *pn = (Titem *)p;
 			assert(pn == Tpool->Get(pn->index));
 			Tpool->FreeItem(pn->index);
