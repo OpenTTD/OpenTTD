@@ -25,7 +25,7 @@ struct Randomizer {
 	uint32 state[2];
 
 	uint32 Next();
-	uint32 Next(uint32 max);
+	uint32 Next(uint32 limit);
 	void SetSeed(uint32 seed);
 };
 extern Randomizer _random; ///< Random used in the game state calculations
@@ -65,17 +65,24 @@ void SetRandomSeed(uint32 seed);
 		#define Random() DoRandom(__LINE__, __FILE__)
 	#endif
 	uint32 DoRandom(int line, const char *file);
-	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
-	uint32 DoRandomRange(uint32 max, int line, const char *file);
+	#define RandomRange(limit) DoRandomRange(limit, __LINE__, __FILE__)
+	uint32 DoRandomRange(uint32 limit, int line, const char *file);
 #else
 	static inline uint32 Random()
 	{
 		return _random.Next();
 	}
 
-	static inline uint32 RandomRange(uint32 max)
+	/**
+	 * Pick a random number between 0 and \a limit - 1, inclusive. That means 0
+	 * can be returned and \a limit - 1 can be returned, but \a limit can not be
+	 * returned.
+	 * @param limit Limit for the range to be picked from.
+	 * @return A random number in [0,\a limit).
+	 */
+	static inline uint32 RandomRange(uint32 limit)
 	{
-		return _random.Next(max);
+		return _random.Next(limit);
 	}
 #endif
 
@@ -84,9 +91,9 @@ static inline uint32 InteractiveRandom()
 	return _interactive_random.Next();
 }
 
-static inline uint32 InteractiveRandomRange(uint32 max)
+static inline uint32 InteractiveRandomRange(uint32 limit)
 {
-	return _interactive_random.Next(max);
+	return _interactive_random.Next(limit);
 }
 
 /**

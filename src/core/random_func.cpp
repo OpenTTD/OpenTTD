@@ -29,13 +29,14 @@ uint32 Randomizer::Next()
 }
 
 /**
- * Generate the next pseudo random number scaled to max
- * @param max the maximum value of the returned random number
- * @return the random number
+ * Generate the next pseudo random number scaled to \a limit, excluding \a limit
+ * itself.
+ * @param limit Limit of the range to be generated from.
+ * @return Random number in [0,\a limit)
  */
-uint32 Randomizer::Next(uint32 max)
+uint32 Randomizer::Next(uint32 limit)
 {
-	return ((uint64)this->Next() * (uint64)max) >> 32;
+	return ((uint64)this->Next() * (uint64)limit) >> 32;
 }
 
 /**
@@ -75,8 +76,8 @@ uint32 DoRandom(int line, const char *file)
 	return _random.Next();
 }
 
-uint32 DoRandomRange(uint32 max, int line, const char *file)
+uint32 DoRandomRange(uint32 limit, int line, const char *file)
 {
-	return ((uint64)DoRandom(line, file) * (uint64)max) >> 32;
+	return ((uint64)DoRandom(line, file) * (uint64)limit) >> 32;
 }
 #endif /* RANDOM_DEBUG */
