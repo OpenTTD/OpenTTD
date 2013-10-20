@@ -96,7 +96,7 @@ public:
 	inline StationID GetVia() const
 	{
 		assert(!this->shares.empty());
-		return this->shares.upper_bound(RandomRange((--this->shares.end())->first - 1))->second;
+		return this->shares.upper_bound(RandomRange((--this->shares.end())->first))->second;
 	}
 
 	StationID GetVia(StationID excluded, StationID excluded2 = INVALID_STATION) const;
