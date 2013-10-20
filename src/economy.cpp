@@ -1232,7 +1232,7 @@ void PrepareUnload(Vehicle *front_v)
 	assert(CargoPayment::CanAllocateItem());
 	front_v->cargo_payment = new CargoPayment(front_v);
 
-	StationID next_station = front_v->GetNextStoppingStation();
+	StationIDStack next_station = front_v->GetNextStoppingStation();
 	if (front_v->orders.list == NULL || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 		Station *st = Station::Get(front_v->last_station_visited);
 		for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
@@ -1295,9 +1295,9 @@ static uint GetLoadAmount(Vehicle *v)
  * @param st Station where the consist is loading at the moment.
  * @param u Front of the loading vehicle consist.
  * @param consist_capleft If given, save free capacities after reserving there.
- * @param next_station Station the vehicle will stop at next.
+ * @param next_station Station(s) the vehicle will stop at next.
  */
-static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft, StationID next_station)
+static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft, StationIDStack next_station)
 {
 	Vehicle *next_cargo = u;
 	uint32 seen_cargos = 0;
@@ -1363,7 +1363,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	StationID last_visited = front->last_station_visited;
 	Station *st = Station::Get(last_visited);
 
-	StationID next_station = front->GetNextStoppingStation();
+	StationIDStack next_station = front->GetNextStoppingStation();
 	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CT_AUTO_REFIT;
 	CargoArray consist_capleft;
 	if (_settings_game.order.improved_load &&
@@ -1497,8 +1497,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 				CargoID cid;
 				new_cid = v_start->cargo_type;
 				FOR_EACH_SET_CARGO_ID(cid, refit_mask) {
-					if (st->goods[cid].cargo.HasCargoFor(next_station) ||
-							st->goods[cid].cargo.HasCargoFor(INVALID_STATION)) {
+					if (st->goods[cid].cargo.HasCargoFor(next_station)) {
 						/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 						 * the returned refit capacity will be greater than zero. */
 						DoCommand(v_start->tile, v_start->index, cid | 1U << 6 | 0xFF << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.

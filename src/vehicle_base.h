@@ -628,7 +628,7 @@ public:
 	 * Get the next station the vehicle will stop at.
 	 * @return ID of the next station the vehicle will stop at or INVALID_STATION.
 	 */
-	inline StationID GetNextStoppingStation() const
+	inline StationIDStack GetNextStoppingStation() const
 	{
 		return (this->orders.list == NULL) ? INVALID_STATION : this->orders.list->GetNextStoppingStation(this);
 	}

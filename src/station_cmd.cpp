@@ -4057,8 +4057,9 @@ uint FlowStat::GetShare(StationID st) const
 }
 
 /**
- * Get a station a package can be routed to, but exclude the given one.
+ * Get a station a package can be routed to, but exclude the given ones.
  * @param excluded StationID not to be selected.
+ * @param excluded2 Another StationID not to be selected.
  * @return A station ID from the shares map.
  */
 StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const

@@ -351,44 +351,6 @@ Order *OrderList::GetOrderAt(int index) const
 }
 
 /**
- * Choose between the two possible next orders so that the given consist can
- * load most cargo.
- * @param v Head of the consist.
- * @param o1 First order to choose from.
- * @param o2 Second order to choose from.
- * @return The best option of o1 and o2 and (recursively) possibly other conditionals.
- */
-StationID OrderList::GetBestLoadableNext(const Vehicle *v, const Order *o2, const Order *o1) const
-{
-	SmallMap<CargoID, uint> capacities;
-	v->GetConsistFreeCapacities(capacities);
-	uint loadable1 = 0;
-	uint loadable2 = 0;
-	StationID st1 = this->GetNextStoppingStation(v, o1);
-	StationID st2 = this->GetNextStoppingStation(v, o2);
-	const Station *cur_station = Station::Get(v->last_station_visited);
-	for (SmallPair<CargoID, uint> *i = capacities.Begin(); i != capacities.End(); ++i) {
-		const StationCargoPacketMap *loadable_packets = cur_station->goods[i->first].cargo.Packets();
-		uint loadable_cargo = 0;
-		std::pair<StationCargoPacketMap::const_iterator, StationCargoPacketMap::const_iterator> p =
-				loadable_packets->equal_range(st1);
-		for (StationCargoPacketMap::const_iterator j = p.first; j != p.second; ++j) {
-			loadable_cargo = (*j)->Count();
-		}
-		loadable1 += min(i->second, loadable_cargo);
-
-		loadable_cargo = 0;
-		p = loadable_packets->equal_range(st2);
-		for (StationCargoPacketMap::const_iterator j = p.first; j != p.second; ++j) {
-			loadable_cargo = (*j)->Count();
-		}
-		loadable2 += min(i->second, loadable_cargo);
-	}
-	if (loadable1 == loadable2) return RandomRange(2) == 0 ? st1 : st2;
-	return loadable1 > loadable2 ? st1 : st2;
-}
-
-/**
  * Get the next order which will make the given vehicle stop at a station
  * or refit at a depot or evaluate a non-trivial condition.
  * @param next The order to start looking at.
@@ -432,9 +394,8 @@ const Order *OrderList::GetNextDecisionNode(const Order *next, uint hops) const
  * @return Next stoppping station or INVALID_STATION.
  * @pre The vehicle is currently loading and v->last_station_visited is meaningful.
  * @note This function may draw a random number. Don't use it from the GUI.
- * @see OrderList::GetBestLoadableNext
  */
-StationID OrderList::GetNextStoppingStation(const Vehicle *v, const Order *first) const
+StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, const Order *first) const
 {
 
 	const Order *next = first;
@@ -472,7 +433,10 @@ StationID OrderList::GetNextStoppingStation(const Vehicle *v, const Order *first
 				} else if (skip_to == NULL) {
 					next = advance;
 				} else {
-					return this->GetBestLoadableNext(v, skip_to, advance);
+					StationIDStack st1 = this->GetNextStoppingStation(v, skip_to);
+					StationIDStack st2 = this->GetNextStoppingStation(v, advance);
+					while (!st2.IsEmpty()) st1.Push(st2.Pop());
+					return st1;
 				}
 			} else {
 				/* Otherwise we're optimistic and expect that the
