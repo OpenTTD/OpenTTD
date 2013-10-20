@@ -500,6 +500,7 @@ private:
 		OPOS_GOTO,
 		OPOS_CONDITIONAL,
 		OPOS_SHARE,
+		OPOS_END,
 	};
 
 	/** Displayed planes of the #NWID_SELECTION widgets. */
@@ -572,16 +573,18 @@ private:
 	/**
 	 * Handle the click on the goto button.
 	 */
-	void OrderClick_Goto()
+	void OrderClick_Goto(OrderPlaceObjectState type)
 	{
+		assert(type > OPOS_NONE && type < OPOS_END);
+
+		static const HighLightStyle goto_place_style[OPOS_END - 1] = {
+			HT_RECT | HT_VEHICLE, // OPOS_GOTO
+			HT_NONE,              // OPOS_CONDITIONAL
+			HT_VEHICLE,           // OPOS_SHARE
+		};
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, goto_place_style[type - 1], this);
+		this->goto_type = type;
 		this->SetWidgetDirty(WID_O_GOTO);
-		this->ToggleWidgetLoweredState(WID_O_GOTO);
-		if (this->IsWidgetLowered(WID_O_GOTO)) {
-			SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT | HT_VEHICLE, this);
-			this->goto_type = OPOS_GOTO;
-		} else {
-			ResetObjectToPlace();
-		}
 	}
 
 	/**
@@ -637,26 +640,6 @@ private:
 		order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
 
 		DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 20), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));
-	}
-
-	/**
-	 * Handle the click on the conditional order button.
-	 */
-	void OrderClick_Conditional()
-	{
-		this->SetWidgetDirty(WID_O_GOTO);
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_NONE, this);
-		this->goto_type = OPOS_CONDITIONAL;
-	}
-
-	/**
-	 * Handle the click on the share button.
-	 */
-	void OrderClick_Share()
-	{
-		this->SetWidgetDirty(WID_O_GOTO);
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_VEHICLE, this);
-		this->goto_type = OPOS_SHARE;
 	}
 
 	/**
@@ -830,7 +813,7 @@ public:
 				if (order->IsType(OT_GOTO_STATION)) station_orders++;
 			}
 
-			if (station_orders < 2) this->OrderClick_Goto();
+			if (station_orders < 2) this->OrderClick_Goto(OPOS_GOTO);
 		}
 		this->OnInvalidateData(VIWD_MODIFY_ORDERS);
 	}
@@ -1273,7 +1256,11 @@ public:
 
 			case WID_O_GOTO:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Goto();
+					if (this->goto_type != OPOS_NONE) {
+						ResetObjectToPlace();
+					} else {
+						this->OrderClick_Goto(OPOS_GOTO);
+					}
 				} else {
 					int sel;
 					switch (this->goto_type) {
@@ -1397,10 +1384,10 @@ public:
 
 			case WID_O_GOTO:
 				switch (index) {
-					case 0: this->OrderClick_Goto(); break;
+					case 0: this->OrderClick_Goto(OPOS_GOTO); break;
 					case 1: this->OrderClick_NearestDepot(); break;
-					case 2: this->OrderClick_Conditional(); break;
-					case 3: this->OrderClick_Share(); break;
+					case 2: this->OrderClick_Goto(OPOS_CONDITIONAL); break;
+					case 3: this->OrderClick_Goto(OPOS_SHARE); break;
 					default: NOT_REACHED();
 				}
 				break;
@@ -1461,17 +1448,17 @@ public:
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
 		switch (hotkey) {
-			case OHK_SKIP:           this->OrderClick_Skip();         break;
-			case OHK_DELETE:         this->OrderClick_Delete();       break;
-			case OHK_GOTO:           this->OrderClick_Goto();         break;
-			case OHK_NONSTOP:        this->OrderClick_Nonstop(-1);    break;
-			case OHK_FULLLOAD:       this->OrderClick_FullLoad(-1);   break;
-			case OHK_UNLOAD:         this->OrderClick_Unload(-1);     break;
-			case OHK_NEAREST_DEPOT:  this->OrderClick_NearestDepot(); break;
-			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(-1);    break;
-			case OHK_TRANSFER:       this->OrderHotkey_Transfer();    break;
-			case OHK_NO_UNLOAD:      this->OrderHotkey_NoUnload();    break;
-			case OHK_NO_LOAD:        this->OrderHotkey_NoLoad();      break;
+			case OHK_SKIP:           this->OrderClick_Skip();          break;
+			case OHK_DELETE:         this->OrderClick_Delete();        break;
+			case OHK_GOTO:           this->OrderClick_Goto(OPOS_GOTO); break;
+			case OHK_NONSTOP:        this->OrderClick_Nonstop(-1);     break;
+			case OHK_FULLLOAD:       this->OrderClick_FullLoad(-1);    break;
+			case OHK_UNLOAD:         this->OrderClick_Unload(-1);      break;
+			case OHK_NEAREST_DEPOT:  this->OrderClick_NearestDepot();  break;
+			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(-1);     break;
+			case OHK_TRANSFER:       this->OrderHotkey_Transfer();     break;
+			case OHK_NO_UNLOAD:      this->OrderHotkey_NoUnload();     break;
+			case OHK_NO_LOAD:        this->OrderHotkey_NoLoad();       break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
