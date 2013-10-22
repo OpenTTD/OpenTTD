@@ -624,6 +624,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\linkgraph\refresh.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\map.cpp"
 				>
 			</File>
@@ -1233,6 +1237,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\linkgraph\mcf.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\linkgraph\refresh.h"
 				>
 			</File>
 			<File

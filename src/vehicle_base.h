@@ -150,9 +150,6 @@ private:
 	Vehicle *next_shared;               ///< pointer to the next vehicle that shares the order
 	Vehicle *previous_shared;           ///< NOSAVE: pointer to the previous vehicle in the shared order chain
 
-	uint RefreshNextHopsStats(CapacitiesMap &capacities,
-			RefitList &refit_capacities, const Order *first, const Order *cur,
-			const Order *next, uint hops, bool was_refit, bool has_cargo);
 public:
 	friend const SaveLoad *GetVehicleDescription(VehicleType vt); ///< So we can use private/protected variables in the saveload code
 	friend void FixOldVehicles();
@@ -634,8 +631,6 @@ public:
 	}
 
 	void ResetRefitCaps();
-
-	void RefreshNextHopsStats();
 
 	/**
 	 * Copy certain configurations and statistics of a vehicle after successful autoreplace/renew

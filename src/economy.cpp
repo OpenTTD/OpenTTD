@@ -48,6 +48,7 @@
 #include "cargomonitor.h"
 #include "goal_base.h"
 #include "story_base.h"
+#include "linkgraph/refresh.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -1657,7 +1658,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			 * along them. Otherwise the vehicle could wait for cargo
 			 * indefinitely if it hasn't visited the other links yet, or if the
 			 * links die while it's loading. */
-			if (!finished_loading) front->RefreshNextHopsStats();
+			if (!finished_loading) LinkRefresher::Run(front);
 		}
 		unloading_time = 20;
 

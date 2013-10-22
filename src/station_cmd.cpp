@@ -51,6 +51,7 @@
 #include "newgrf_house.h"
 #include "company_gui.h"
 #include "linkgraph/linkgraph_base.h"
+#include "linkgraph/refresh.h"
 #include "widgets/station_widget.h"
 
 #include "table/strings.h"
@@ -3446,7 +3447,7 @@ void DeleteStaleLinks(Station *from)
 						 * - We could try to figure out if we've seen a consist with the same cargo on the
 						 *   same list already and if the consist can actually carry the cargo we're looking
 						 *   for. With conditional and refit orders this is not quite trivial, though. */
-						v->RefreshNextHopsStats();
+						LinkRefresher::Run(v);
 						if (edge.LastUpdate() == _date) updated = true;
 					}
 					if (updated) break;
