@@ -60,7 +60,19 @@ protected:
 		OrderID from;  ///< Last order where vehicle could interact with cargo or absolute first order.
 		OrderID to;    ///< Next order to be processed.
 		CargoID cargo; ///< Cargo the consist is probably carrying or CT_INVALID if unknown.
+
+		/**
+		 * Default constructor should not be called but has to be visible for
+		 * usage in std::set.
+		 */
 		Hop() {NOT_REACHED();}
+
+		/**
+		 * Real constructor, only use this one.
+		 * @param from First order of the hop.
+		 * @param to Second order of the hop.
+		 * @param cargo Cargo the consist is probably carrying when passing the hop.
+		 */
 		Hop(OrderID from, OrderID to, CargoID cargo) : from(from), to(to), cargo(cargo) {}
 		bool operator<(const Hop &other) const;
 	};
