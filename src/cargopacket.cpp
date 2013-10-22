@@ -409,6 +409,29 @@ void VehicleCargoList::SetTransferLoadPlace(TileIndex xy)
 }
 
 /**
+ * Choose action to be performed with the given cargo packet.
+ * @param cp The packet.
+ * @param cargo_next Next hop the cargo wants to pass.
+ * @param current_station Current station of the vehicle carrying the cargo.
+ * @param accepted If the cargo is accepted at the current station.
+ * @param next_station Next station(s) the vehicle may stop at.
+ * @return MoveToAction to be performed.
+ */
+/* static */ VehicleCargoList::MoveToAction VehicleCargoList::ChooseAction(const CargoPacket *cp, StationID cargo_next,
+		StationID current_station, bool accepted, StationIDStack next_station)
+{
+	if (cargo_next == INVALID_STATION) {
+		return (accepted && cp->source != current_station) ? MTA_DELIVER : MTA_KEEP;
+	} else if (cargo_next == current_station) {
+		return MTA_DELIVER;
+	} else if (next_station.Contains(cargo_next)) {
+		return MTA_KEEP;
+	} else {
+		return MTA_TRANSFER;
+	}
+}
+
+/**
  * Stages cargo for unloading. The cargo is sorted so that packets to be
  * transferred, delivered or kept are in consecutive chunks in the list. At the
  * same time the designation_counts are updated to reflect the size of those
@@ -470,15 +493,19 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 			if (cp->source == INVALID_STATION && !ge->flows.empty()) {
 				cp->source = ge->flows.begin()->first;
 			}
-			cargo_next = ge->GetVia(cp->source);
-			if (cargo_next == INVALID_STATION) {
-				action = (accepted && cp->source != current_station) ? MTA_DELIVER : MTA_KEEP;
-			} else if (cargo_next == current_station) {
-				action = MTA_DELIVER;
-			} else if (next_station.Contains(cargo_next)) {
-				action = MTA_KEEP;
+			bool restricted = false;
+			FlowStatMap::const_iterator flow_it(ge->flows.find(cp->source));
+			if (flow_it == ge->flows.end()) {
+				cargo_next = INVALID_STATION;
 			} else {
-				action = MTA_TRANSFER;
+				cargo_next = flow_it->second.GetViaWithRestricted(restricted);
+			}
+			action = VehicleCargoList::ChooseAction(cp, cargo_next, current_station, accepted, next_station);
+			if (restricted && action == MTA_TRANSFER) {
+				/* If the flow is restricted we can't transfer to it. Choose an
+				 * unrestricted one instead. */
+				cargo_next = flow_it->second.GetVia();
+				action = VehicleCargoList::ChooseAction(cp, cargo_next, current_station, accepted, next_station);
 			}
 		}
 		Money share;

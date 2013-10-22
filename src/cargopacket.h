@@ -311,6 +311,9 @@ protected:
 	void AddToMeta(const CargoPacket *cp, MoveToAction action);
 	void RemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count);
 
+	static MoveToAction ChooseAction(const CargoPacket *cp, StationID cargo_next,
+			StationID current_station, bool accepted, StationIDStack next_station);
+
 public:
 	/** The station cargo list needs to control the unloading. */
 	friend class StationCargoList;
