@@ -31,7 +31,6 @@ protected:
 	 * an influence on the next one.
 	 */
 	enum RefreshFlags {
-		USE_NEXT,   ///< There has been a previous link. Try to use the given next order.
 		HAS_CARGO,  ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
 		WAS_REFIT,  ///< Consist was refit since the last stop where it could interact with cargo.
 		RESET_REFIT ///< Consist had a chance to load since the last refit and the refit capacities can be reset.

@@ -146,33 +146,27 @@ void LinkRefresher::ResetRefit()
 const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8 flags)
 {
 	int num_hops = 0; // Count hops to catch infinite loops without station or implicit orders.
-	do {
-		if (HasBit(flags, USE_NEXT)) {
-			/* First incrementation has to be skipped if a "real" next hop,
-			 * different from cur, was given. */
-			ClrBit(flags, USE_NEXT);
-		} else {
-			const Order *skip_to = NULL;
-			if (next->IsType(OT_CONDITIONAL)) {
-				skip_to = this->vehicle->orders.list->GetNextDecisionNode(
-						this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()), num_hops++);
-			}
-
-			/* Reassign next with the following stop. This can be a station or a
-			 * depot.*/
-			next = this->vehicle->orders.list->GetNextDecisionNode(
-					this->vehicle->orders.list->GetNext(next), num_hops++);
-
+	while (next != NULL && (next->IsType(OT_CONDITIONAL) || cur == next)) {
+		if (next->IsType(OT_CONDITIONAL)) {
+			const Order *skip_to = this->vehicle->orders.list->GetNextDecisionNode(
+					this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()), num_hops++);
 			if (skip_to != NULL) {
 				/* Make copies of capacity tracking lists. There is potential
 				 * for optimization here. If the vehicle never refits we don't
 				 * need to copy anything. Also, if we've seen the branched link
 				 * before we don't need to branch at all. */
 				LinkRefresher branch(*this);
-				branch.RefreshLinks(cur, skip_to, flags | (cur != skip_to ? 1 << USE_NEXT : 0));
+				/* If skip_to points back to the original order, use the next one.
+				 * Otherwise do use it. */
+				branch.RefreshLinks(cur, skip_to, flags);
 			}
 		}
-	} while (next != NULL && next->IsType(OT_CONDITIONAL));
+
+		/* Reassign next with the following stop. This can be a station or a
+		 * depot.*/
+		next = this->vehicle->orders.list->GetNextDecisionNode(
+				this->vehicle->orders.list->GetNext(next), num_hops++);
+	}
 	return next;
 }
 
