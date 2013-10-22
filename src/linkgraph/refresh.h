@@ -16,6 +16,7 @@
 #include "../vehicle_base.h"
 #include <list>
 #include <map>
+#include <set>
 
 /**
  * Utility to refresh links a consist will visit.
@@ -47,15 +48,35 @@ protected:
 				cargo(cargo), capacity(capacity), remaining(remaining) {}
 	};
 
+	/**
+	 * A hop the refresh algorithm might evaluate. If the same hop is seen again
+	 * the evaluation is stopped. This of course is a fairly simple heuristic.
+	 * Sequences of refit orders can produce vehicles with all kinds of
+	 * different cargoes and remembering only one can lead to early termination
+	 * of the algorithm. However, as the order language is Turing complete, we
+	 * are facing the halting problem here. At some point we have to draw the
+	 * line.
+	 */
+	struct Hop {
+		OrderID from;  ///< Last order where vehicle could interact with cargo or absolute first order.
+		OrderID to;    ///< Next order to be processed.
+		CargoID cargo; ///< Cargo the consist is probably carrying or CT_INVALID if unknown.
+		Hop() {NOT_REACHED();}
+		Hop(OrderID from, OrderID to, CargoID cargo) : from(from), to(to), cargo(cargo) {}
+		bool operator<(const Hop &other) const;
+	};
+
 	typedef std::list<RefitDesc> RefitList;
 	typedef std::map<CargoID, uint> CapacitiesMap;
+	typedef std::set<Hop> HopSet;
 
 	Vehicle *vehicle;           ///< Vehicle for which the links should be refreshed.
-	const Order *first;         ///< Order to be checked first. If this is encountered again the refreshing is considered finished.
 	CapacitiesMap capacities;   ///< Current added capacities per cargo ID in the consist.
 	RefitList refit_capacities; ///< Current state of capacity remaining from previous refits versus overall capacity per vehicle in the consist.
-	uint hops;                  ///< Number of hops already used up. If more than two times the number of orders in the list have been checked refreshing is stopped.
-	LinkRefresher(Vehicle *v);
+	HopSet *seen_hops;          ///< Hops already seen. If the same hop is seen twice we stop the algorithm. This is shared between all Refreshers of the same run.
+	CargoID cargo;              ///< Cargo given in last refit order.
+
+	LinkRefresher(Vehicle *v, HopSet *seen_hops);
 
 	void HandleRefit(const Order *next);
 	void ResetRefit();

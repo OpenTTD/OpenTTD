@@ -26,28 +26,48 @@
 	/* If there are no orders we can't predict anything.*/
 	if (v->orders.list == NULL) return;
 
-	LinkRefresher refresher(v);
+	/* Make sure the first order is a useful order. */
+	const Order *first = v->orders.list->GetNextDecisionNode(v->GetOrder(v->cur_implicit_order_index), 0);
+	if (first == NULL) return;
 
-	if (refresher.first == NULL) return;
-	refresher.RefreshLinks(refresher.first, refresher.first, v->last_loading_station != INVALID_STATION ? 1 << HAS_CARGO : 0);
+	HopSet seen_hops;
+	LinkRefresher refresher(v, &seen_hops);
+
+	refresher.RefreshLinks(first, first, v->last_loading_station != INVALID_STATION ? 1 << HAS_CARGO : 0);
+}
+
+/**
+ * Comparison operator to allow hops to be used in a std::set.
+ * @param other Other hop to be compared with.
+ * @return If this hop is "smaller" than the other (defined by from, to and cargo in this order).
+ */
+bool LinkRefresher::Hop::operator<(const Hop &other) const
+{
+	if (this->from < other.from) {
+		return true;
+	} else if (this->from > other.from) {
+		return false;
+	}
+	if (this->to < other.to) {
+		return true;
+	} else if (this->to > other.to) {
+		return false;
+	}
+	return this->cargo < other.cargo;
 }
 
 /**
  * Constructor for link refreshing algorithm.
  * @param vehicle Vehicle to refresh links for.
  */
-LinkRefresher::LinkRefresher(Vehicle *vehicle) : vehicle(vehicle), hops(0)
+LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops) :
+		vehicle(vehicle), seen_hops(seen_hops), cargo(CT_INVALID)
 {
 	/* Assemble list of capacities and set last loading stations to 0. */
 	for (Vehicle *v = this->vehicle; v != NULL; v = v->Next()) {
 		this->refit_capacities.push_back(RefitDesc(v->cargo_type, v->cargo_cap, v->refit_cap));
 		if (v->refit_cap > 0) this->capacities[v->cargo_type] += v->refit_cap;
 	}
-
-	this->first = this->vehicle->GetOrder(this->vehicle->cur_implicit_order_index);
-
-	/* Make sure the first order is a useful order. */
-	this->first = this->vehicle->orders.list->GetNextDecisionNode(this->first, 0);
 }
 
 /**
@@ -56,11 +76,11 @@ LinkRefresher::LinkRefresher(Vehicle *vehicle) : vehicle(vehicle), hops(0)
  */
 void LinkRefresher::HandleRefit(const Order *next)
 {
-	CargoID new_cid = next->GetRefitCargo();
+	this->cargo = next->GetRefitCargo();
 	RefitList::iterator refit_it = this->refit_capacities.begin();
 	for (Vehicle *v = this->vehicle; v != NULL; v = v->Next()) {
 		const Engine *e = Engine::Get(v->engine_type);
-		if (!HasBit(e->info.refit_mask, new_cid)) {
+		if (!HasBit(e->info.refit_mask, this->cargo)) {
 			++refit_it;
 			continue;
 		}
@@ -68,8 +88,8 @@ void LinkRefresher::HandleRefit(const Order *next)
 		/* Back up the vehicle's cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;
-		v->cargo_type = new_cid;
-		v->cargo_subtype = GetBestFittingSubType(v, v, new_cid);
+		v->cargo_type = this->cargo;
+		v->cargo_subtype = GetBestFittingSubType(v, v, this->cargo);
 
 		uint16 mail_capacity = 0;
 		uint amount = e->DetermineCapacity(v, &mail_capacity);
@@ -79,7 +99,7 @@ void LinkRefresher::HandleRefit(const Order *next)
 		v->cargo_subtype = temp_subtype;
 
 		/* Skip on next refit. */
-		if (new_cid != refit_it->cargo && refit_it->remaining > 0) {
+		if (this->cargo != refit_it->cargo && refit_it->remaining > 0) {
 			this->capacities[refit_it->cargo] -= refit_it->remaining;
 			refit_it->remaining = 0;
 		} else if (amount < refit_it->remaining) {
@@ -87,7 +107,7 @@ void LinkRefresher::HandleRefit(const Order *next)
 			refit_it->remaining = amount;
 		}
 		refit_it->capacity = amount;
-		refit_it->cargo = new_cid;
+		refit_it->cargo = this->cargo;
 
 		++refit_it;
 
@@ -125,6 +145,7 @@ void LinkRefresher::ResetRefit()
  */
 const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8 flags)
 {
+	int num_hops = 0; // Count hops to catch infinite loops without station or implicit orders.
 	do {
 		if (HasBit(flags, USE_NEXT)) {
 			/* First incrementation has to be skipped if a "real" next hop,
@@ -134,25 +155,21 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
 			const Order *skip_to = NULL;
 			if (next->IsType(OT_CONDITIONAL)) {
 				skip_to = this->vehicle->orders.list->GetNextDecisionNode(
-						this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()),
-						this->hops / 2);
+						this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()), num_hops++);
 			}
 
 			/* Reassign next with the following stop. This can be a station or a
-			 * depot. Allow the order list to be walked twice so that we can
-			 * reassign "first" below without afterwards terminating early here. */
+			 * depot.*/
 			next = this->vehicle->orders.list->GetNextDecisionNode(
-					this->vehicle->orders.list->GetNext(next), ++this->hops / 2);
+					this->vehicle->orders.list->GetNext(next), num_hops++);
 
 			if (skip_to != NULL) {
 				/* Make copies of capacity tracking lists. There is potential
 				 * for optimization here. If the vehicle never refits we don't
 				 * need to copy anything. Also, if we've seen the branched link
 				 * before we don't need to branch at all. */
-				++this->hops;
 				LinkRefresher branch(*this);
 				branch.RefreshLinks(cur, skip_to, flags | (cur != skip_to ? 1 << USE_NEXT : 0));
-				this->hops = branch.hops;
 			}
 		}
 	} while (next != NULL && next->IsType(OT_CONDITIONAL));
@@ -216,6 +233,12 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flag
 
 		next = this->PredictNextOrder(cur, next, flags);
 		if (next == NULL) break;
+		Hop hop(cur->index, next->index, this->cargo);
+		if (this->seen_hops->find(hop) != this->seen_hops->end()) {
+			break;
+		} else {
+			this->seen_hops->insert(hop);
+		}
 
 		/* Skip resetting and link refreshing if next order won't do anything with cargo. */
 		if (!next->IsType(OT_GOTO_STATION) && !next->IsType(OT_IMPLICIT)) continue;
@@ -236,14 +259,7 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flag
 		}
 
 		/* "cur" is only assigned here if the stop is a station so that
-		 * whenever stats are to be increased two stations can be found.
-		 * However, "first" can be a depot stop. If that is the case
-		 * reassign it to make sure we end up with a station for the last
-		 * link. */
+		 * whenever stats are to be increased two stations can be found. */
 		cur = next;
-		if (cur == this->first) break;
-		if (!this->first->IsType(OT_GOTO_STATION) && !this->first->IsType(OT_IMPLICIT)) {
-			this->first = cur;
-		}
 	}
 }
