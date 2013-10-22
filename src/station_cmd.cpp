@@ -3417,13 +3417,18 @@ void DeleteStaleLinks(Station *from)
 			Edge edge = it->second;
 			Station *to = Station::Get((*lg)[it->first].Station());
 			assert(to->goods[c].node == it->first);
-			++it; // Do that before removing the node. Anything else may crash.
+			++it; // Do that before removing the edge. Anything else may crash.
 			assert(_date >= edge.LastUpdate());
-			if ((uint)(_date - edge.LastUpdate()) > LinkGraph::MIN_TIMEOUT_DISTANCE +
-					(DistanceManhattan(from->xy, to->xy) >> 2)) {
+			uint timeout = LinkGraph::MIN_TIMEOUT_DISTANCE + (DistanceManhattan(from->xy, to->xy) >> 2);
+			if ((uint)(_date - edge.LastUpdate()) > timeout) {
 				node.RemoveEdge(to->goods[c].node);
 				ge.flows.DeleteFlows(to->index);
 				RerouteCargo(from, c, to->index, from->index);
+			} else if (edge.LastUnrestrictedUpdate() != INVALID_DATE && (uint)(_date - edge.LastUnrestrictedUpdate()) > timeout) {
+				edge.Restrict();
+				RerouteCargo(from, c, to->index, from->index);
+			} else if (edge.LastRestrictedUpdate() != INVALID_DATE && (uint)(_date - edge.LastRestrictedUpdate()) > timeout) {
+				edge.Release();
 			}
 		}
 		assert(_date >= lg->LastCompression());

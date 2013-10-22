@@ -39,7 +39,8 @@ inline void LinkGraph::BaseEdge::Init(uint distance)
 	this->distance = distance;
 	this->capacity = 0;
 	this->usage = 0;
-	this->last_update = INVALID_DATE;
+	this->last_unrestricted_update = INVALID_DATE;
+	this->last_restricted_update = INVALID_DATE;
 	this->next_edge = INVALID_NODE;
 }
 
@@ -56,7 +57,8 @@ void LinkGraph::ShiftDates(int interval)
 		if (source.last_update != INVALID_DATE) source.last_update += interval;
 		for (NodeID node2 = 0; node2 < this->Size(); ++node2) {
 			BaseEdge &edge = this->edges[node1][node2];
-			if (edge.last_update != INVALID_DATE) edge.last_update += interval;
+			if (edge.last_unrestricted_update != INVALID_DATE) edge.last_unrestricted_update += interval;
+			if (edge.last_restricted_update != INVALID_DATE) edge.last_restricted_update += interval;
 		}
 	}
 }
@@ -178,9 +180,11 @@ NodeID LinkGraph::AddNode(const Station *st)
 }
 
 /**
- * Fill an edge with values from a link.
+ * Fill an edge with values from a link. If usage < capacity set the usage,
+ * otherwise set the restricted or unrestricted update timestamp.
  * @param to Destination node of the link.
  * @param capacity Capacity of the link.
+ * @param usage Usage to be added or REFRESH_UNRESTRICTED or REFRESH_RESTRICTED.
  */
 void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage)
 {
@@ -188,17 +192,32 @@ void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage)
 	BaseEdge &edge = this->edges[to];
 	BaseEdge &first = this->edges[this->index];
 	edge.capacity = capacity;
-	edge.usage = usage == UINT_MAX ? 0 : usage;
 	edge.next_edge = first.next_edge;
 	first.next_edge = to;
-	edge.last_update = _date;
+	switch (usage) {
+		case REFRESH_UNRESTRICTED:
+			edge.last_unrestricted_update = _date;
+			break;
+		case REFRESH_RESTRICTED:
+			edge.last_restricted_update = _date;
+			break;
+		default:
+			edge.usage = usage;
+			break;
+	}
 }
 
+/**
+ * Creates an edge if none exists yet or updates an existing edge.
+ * @param to Target node.
+ * @param capacity Capacity of the link.
+ * @param usage Usage to be added or REFRESH_UNRESTRICTED or REFRESH_RESTRICTED.
+ */
 void LinkGraph::Node::UpdateEdge(NodeID to, uint capacity, uint usage)
 {
 	assert(capacity > 0);
-	assert(usage <= capacity || usage == UINT_MAX);
-	if (this->edges[to].last_update == INVALID_DATE) {
+	assert(usage <= capacity || usage == REFRESH_RESTRICTED || usage == REFRESH_UNRESTRICTED);
+	if (this->edges[to].capacity == 0) {
 		this->AddEdge(to, capacity, usage);
 	} else {
 		(*this)[to].Update(capacity, usage);
@@ -214,7 +233,8 @@ void LinkGraph::Node::RemoveEdge(NodeID to)
 	if (this->index == to) return;
 	BaseEdge &edge = this->edges[to];
 	edge.capacity = 0;
-	edge.last_update = INVALID_DATE;
+	edge.last_unrestricted_update = INVALID_DATE;
+	edge.last_restricted_update = INVALID_DATE;
 	edge.usage = 0;
 
 	NodeID prev = this->index;
@@ -233,24 +253,34 @@ void LinkGraph::Node::RemoveEdge(NodeID to)
 }
 
 /**
- * Create a new edge or update an existing one. If usage is UINT_MAX refresh
- * the edge to have at least the given capacity, otherwise add the capacity.
+ * Create a new edge or update an existing one. If usage is REFRESH_UNRESTRICTED
+ * or REFRESH_RESTRICTED refresh the edge to have at least the given capacity
+ * and also update the respective update timestamp, otherwise add the capacity.
  * @param from Start node of the edge.
  * @param to End node of the edge.
  * @param capacity Capacity to be added/updated.
- * @param usage Usage to be added or UINT_MAX.
+ * @param usage Usage to be added or REFRESH_UNRESTRICTED or REFRESH_RESTRICTED.
  */
 void LinkGraph::Edge::Update(uint capacity, uint usage)
 {
 	assert(this->edge.capacity > 0);
-	if (usage == UINT_MAX) {
+	if (usage > capacity) {
 		this->edge.capacity = max(this->edge.capacity, capacity);
+		switch (usage) {
+			case REFRESH_UNRESTRICTED:
+				this->edge.last_unrestricted_update = _date;
+				break;
+			case REFRESH_RESTRICTED:
+				this->edge.last_restricted_update = _date;
+				break;
+			default:
+				NOT_REACHED();
+				break;
+		}
 	} else {
-		assert(capacity >= usage);
 		this->edge.capacity += capacity;
 		this->edge.usage += usage;
 	}
-	this->edge.last_update = _date;
 }
 
 /**

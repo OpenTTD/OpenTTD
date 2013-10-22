@@ -50,6 +50,7 @@
 #include "tunnel_map.h"
 #include "depot_map.h"
 #include "gamelog.h"
+#include "linkgraph/linkgraph.h"
 
 #include "table/strings.h"
 
@@ -2267,7 +2268,12 @@ uint Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
 					if (st != NULL && next_station != INVALID_STATION && next_station != st->index) {
 						for (CapacitiesMap::const_iterator i = capacities.begin(); i != capacities.end(); ++i) {
 							/* Refresh the link and give it a minimum capacity. */
-							if (i->second > 0) IncreaseStats(st, i->first, next_station, i->second, UINT_MAX);
+							if (i->second > 0) {
+								/* A link is at least partly restricted if a
+								 * vehicle can't load at its source. */
+								IncreaseStats(st, i->first, next_station, i->second,
+										(cur->GetLoadType() & OLFB_NO_LOAD) == 0 ? LinkGraph::REFRESH_UNRESTRICTED : LinkGraph::REFRESH_RESTRICTED);
+							}
 						}
 					}
 				}
