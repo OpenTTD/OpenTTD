@@ -245,13 +245,15 @@ struct FlowSaveLoad {
 	StationID source;
 	StationID via;
 	uint32 share;
+	bool restricted;
 };
 
 static const SaveLoad _flow_desc[] = {
-	SLE_VAR(FlowSaveLoad, source, SLE_UINT16),
-	SLE_VAR(FlowSaveLoad, via,    SLE_UINT16),
-	SLE_VAR(FlowSaveLoad, share,  SLE_UINT32),
-	SLE_END()
+	    SLE_VAR(FlowSaveLoad, source,     SLE_UINT16),
+	    SLE_VAR(FlowSaveLoad, via,        SLE_UINT16),
+	    SLE_VAR(FlowSaveLoad, share,      SLE_UINT32),
+	SLE_CONDVAR(FlowSaveLoad, restricted, SLE_BOOL, 187, SL_MAX_VERSION),
+	    SLE_END()
 };
 
 /**
@@ -481,6 +483,7 @@ static void RealSave_STNN(BaseStation *bst)
 				for (FlowStat::SharesMap::const_iterator inner_it(shares->begin()); inner_it != shares->end(); ++inner_it) {
 					flow.via = inner_it->second;
 					flow.share = inner_it->first - sum_shares;
+					flow.restricted = inner_it->first > outer_it->second.GetUnrestricted();
 					sum_shares = inner_it->first;
 					assert(flow.share > 0);
 					SlObject(&flow, _flow_desc);
@@ -538,7 +541,7 @@ static void Load_STNN()
 					if (fs == NULL || prev_source != flow.source) {
 						fs = &(st->goods[i].flows.insert(std::make_pair(flow.source, FlowStat(flow.via, flow.share))).first->second);
 					} else {
-						fs->AppendShare(flow.via, flow.share);
+						fs->AppendShare(flow.via, flow.share, flow.restricted);
 					}
 					prev_source = flow.source;
 				}

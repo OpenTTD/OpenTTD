@@ -3426,6 +3426,7 @@ void DeleteStaleLinks(Station *from)
 				RerouteCargo(from, c, to->index, from->index);
 			} else if (edge.LastUnrestrictedUpdate() != INVALID_DATE && (uint)(_date - edge.LastUnrestrictedUpdate()) > timeout) {
 				edge.Restrict();
+				ge.flows.RestrictFlows(to->index);
 				RerouteCargo(from, c, to->index, from->index);
 			} else if (edge.LastRestrictedUpdate() != INVALID_DATE && (uint)(_date - edge.LastRestrictedUpdate()) > timeout) {
 				edge.Release();
@@ -4069,10 +4070,10 @@ uint FlowStat::GetShare(StationID st) const
  */
 StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
 {
+	if (this->unrestricted == 0) return INVALID_STATION;
 	assert(!this->shares.empty());
-	uint max = (--this->shares.end())->first;
-	SharesMap::const_iterator it = this->shares.upper_bound(RandomRange(max));
-	assert(it != this->shares.end());
+	SharesMap::const_iterator it = this->shares.upper_bound(RandomRange(this->unrestricted));
+	assert(it != this->shares.end() && it->first <= this->unrestricted);
 	if (it->second != excluded && it->second != excluded2) return it->second;
 
 	/* We've hit one of the excluded stations.
@@ -4081,12 +4082,12 @@ StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
 	uint end = it->first;
 	uint begin = (it == this->shares.begin() ? 0 : (--it)->first);
 	uint interval = end - begin;
-	if (interval >= max) return INVALID_STATION; // Only one station in the map.
-	uint new_max = max - interval;
+	if (interval >= this->unrestricted) return INVALID_STATION; // Only one station in the map.
+	uint new_max = this->unrestricted - interval;
 	uint rand = RandomRange(new_max);
 	SharesMap::const_iterator it2 = (rand < begin) ? this->shares.upper_bound(rand) :
 			this->shares.upper_bound(rand + interval);
-	assert(it2 != this->shares.end());
+	assert(it2 != this->shares.end() && it2->first <= this->unrestricted);
 	if (it2->second != excluded && it2->second != excluded2) return it2->second;
 
 	/* We've hit the second excluded station.
@@ -4103,7 +4104,7 @@ StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
 		Swap(interval, interval2);
 	}
 	rand = RandomRange(new_max);
-	SharesMap::const_iterator it3 = this->shares.end();
+	SharesMap::const_iterator it3 = this->shares.upper_bound(this->unrestricted);
 	if (rand < begin) {
 		it3 = this->shares.upper_bound(rand);
 	} else if (rand < begin2 - interval) {
@@ -4111,7 +4112,7 @@ StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
 	} else {
 		it3 = this->shares.upper_bound(rand + interval + interval2);
 	}
-	assert(it3 != this->shares.end());
+	assert(it3 != this->shares.end() && it3->first <= this->unrestricted);
 	return it3->second;
 }
 
@@ -4125,8 +4126,11 @@ void FlowStat::Invalidate()
 	assert(!this->shares.empty());
 	SharesMap new_shares;
 	uint i = 0;
+	uint orig = 0;
 	for (SharesMap::iterator it(this->shares.begin()); it != this->shares.end(); ++it) {
 		new_shares[++i] = it->second;
+		orig += it->first;
+		if (orig == this->unrestricted) this->unrestricted = orig;
 	}
 	this->shares.swap(new_shares);
 	assert(!this->shares.empty());
@@ -4134,7 +4138,7 @@ void FlowStat::Invalidate()
 
 /**
  * Change share for specified station. By specifing INT_MIN as parameter you
- * can erase a share.
+ * can erase a share. Newly added flows will be unrestricted.
  * @param st Next Hop to be removed.
  * @param flow Share to be added or removed.
  */
@@ -4154,6 +4158,7 @@ void FlowStat::ChangeShare(StationID st, int flow)
 				uint share = it->first - last_share;
 				if (flow == INT_MIN || (uint)(-flow) >= share) {
 					removed_shares += share;
+					if (it->first <= this->unrestricted) this->unrestricted -= share;
 					if (flow != INT_MIN) flow += share;
 					last_share = it->first;
 					continue; // remove the whole share
@@ -4162,6 +4167,7 @@ void FlowStat::ChangeShare(StationID st, int flow)
 			} else {
 				added_shares += (uint)(flow);
 			}
+			if (it->first <= this->unrestricted) this->unrestricted += flow;
 
 			/* If we don't continue above the whole flow has been added or
 			 * removed. */
@@ -4170,7 +4176,78 @@ void FlowStat::ChangeShare(StationID st, int flow)
 		new_shares[it->first + added_shares - removed_shares] = it->second;
 		last_share = it->first;
 	}
-	if (flow > 0) new_shares[last_share + (uint)flow] = st;
+	if (flow > 0) {
+		new_shares[last_share + (uint)flow] = st;
+		if (this->unrestricted < last_share) {
+			this->ReleaseShare(st);
+		} else {
+			this->unrestricted += flow;
+		}
+	}
+	this->shares.swap(new_shares);
+}
+
+/**
+ * Restrict a flow by moving it to the end of the map and decreasing the amount
+ * of unrestricted flow.
+ * @param st Station of flow to be restricted.
+ */
+void FlowStat::RestrictShare(StationID st)
+{
+	uint flow = 0;
+	uint last_share = 0;
+	SharesMap new_shares;
+	for (SharesMap::iterator it(this->shares.begin()); it != this->shares.end(); ++it) {
+		if (flow == 0) {
+			if (it->first > this->unrestricted) return; // Not present or already restricted.
+			if (it->second == st) {
+				flow = it->first - last_share;
+				this->unrestricted -= flow;
+			} else {
+				new_shares[it->first] = it->second;
+			}
+		} else {
+			new_shares[it->first - flow] = it->second;
+		}
+		last_share = it->first;
+	}
+	if (flow == 0) return;
+	new_shares[last_share + flow] = st;
+	this->shares.swap(new_shares);
+}
+
+/**
+ * Release ("unrestrict") a flow by moving it to the begin of the map and
+ * increasing the amount of unrestricted flow.
+ * @param st Station of flow to be released.
+ */
+void FlowStat::ReleaseShare(StationID st)
+{
+	uint flow = 0;
+	uint next_share = 0;
+	bool found = false;
+	for (SharesMap::reverse_iterator it(this->shares.rbegin()); it != this->shares.rend(); ++it) {
+		if (it->first < this->unrestricted) return; // Note: not <= as the share may hit the limit.
+		if (found) {
+			flow = next_share - it->first;
+			this->unrestricted += flow;
+			break;
+		} else {
+			if (it->first == this->unrestricted) return; // !found -> Limit not hit.
+			if (it->second == st) found = true;
+		}
+		next_share = it->first;
+	}
+	if (flow == 0) return;
+	SharesMap new_shares;
+	new_shares[flow] = st;
+	for (SharesMap::iterator it(this->shares.begin()); it != this->shares.end(); ++it) {
+		if (it->second != st) {
+			new_shares[flow + it->first] = it->second;
+		} else {
+			flow = 0;
+		}
+	}
 	this->shares.swap(new_shares);
 }
 
@@ -4250,6 +4327,28 @@ void FlowStatMap::DeleteFlows(StationID via)
 		} else {
 			++f_it;
 		}
+	}
+}
+
+/**
+ * Restrict all flows at a station for specific cargo and destination.
+ * @param via Remote station of flows to be restricted.
+ */
+void FlowStatMap::RestrictFlows(StationID via)
+{
+	for (FlowStatMap::iterator it = this->begin(); it != this->end(); ++it) {
+		it->second.RestrictShare(via);
+	}
+}
+
+/**
+ * Release all flows at a station for specific cargo and destination.
+ * @param via Remote station of flows to be released.
+ */
+void FlowStatMap::ReleaseFlows(StationID via)
+{
+	for (FlowStatMap::iterator it = this->begin(); it != this->end(); ++it) {
+		it->second.ReleaseShare(via);
 	}
 }
 

@@ -69,6 +69,9 @@ LinkGraphJob::~LinkGraphJob()
 					(*lg)[node_id][it->first].LastUpdate() == INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
 				flows.DeleteFlows(to);
+			} else if ((*lg)[node_id][it->first].LastUnrestrictedUpdate() == INVALID_DATE) {
+				/* Edge is fully restricted. */
+				flows.RestrictFlows(to);
 			}
 		}
 
