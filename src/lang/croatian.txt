@@ -389,9 +389,9 @@ STR_SORT_BY_ENGINE_ID                                           :MotorID (standa
 STR_SORT_BY_COST                                                :Cijena
 STR_SORT_BY_POWER                                               :Snaga
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Vučna sila
-STR_SORT_BY_INTRO_DATE                                          :Datum početka
-STR_SORT_BY_RUNNING_COST                                        :Trošak uporabe
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snaga/trošak uporabe
+STR_SORT_BY_INTRO_DATE                                          :Datum uvođenja
+STR_SORT_BY_RUNNING_COST                                        :Tekući trošak
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snaga/Tekući trošak
 STR_SORT_BY_CARGO_CAPACITY                                      :Nosivost tereta
 STR_SORT_BY_RANGE                                               :Domet
 STR_SORT_BY_POPULATION                                          :Stanovništvo
