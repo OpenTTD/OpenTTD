@@ -446,7 +446,7 @@ public:
 	typedef SmallMatrix<BaseEdge> EdgeMatrix;
 
 	/** Minimum effective distance for timeout calculation. */
-	static const uint MIN_TIMEOUT_DISTANCE = 48;
+	static const uint MIN_TIMEOUT_DISTANCE = 32;
 
 	/** Minimum number of days between subsequent compressions of a LG. */
 	static const uint COMPRESSION_INTERVAL = 256;
