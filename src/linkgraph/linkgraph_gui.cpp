@@ -58,8 +58,6 @@ void LinkGraphOverlay::RebuildCache()
 
 	const Station *sta;
 	FOR_ALL_STATIONS(sta) {
-		/* Show links between stations of selected companies or "neutral" ones like oilrigs. */
-		if (sta->owner != OWNER_NONE && !HasBit(this->company_mask, sta->owner)) continue;
 		if (sta->rect.IsEmpty()) continue;
 
 		Point pta = this->GetStationMiddle(sta);
@@ -84,7 +82,9 @@ void LinkGraphOverlay::RebuildCache()
 				}
 				const Station *stb = Station::Get(to);
 				assert(sta != stb);
-				if (stb->owner != OWNER_NONE && !HasBit(this->company_mask, stb->owner)) continue;
+
+				/* Show links between stations of selected companies or "neutral" ones like oilrigs. */
+				if (stb->owner != OWNER_NONE && sta->owner != OWNER_NONE && !HasBit(this->company_mask, stb->owner)) continue;
 				if (stb->rect.IsEmpty()) continue;
 
 				if (!this->IsLinkVisible(pta, this->GetStationMiddle(stb), &dpi)) continue;
@@ -150,18 +150,23 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 		ConstEdge edge = lg[ge.node][to->goods[c].node];
 		if (edge.Capacity() > 0) {
 			this->AddStats(lg.Monthly(edge.Capacity()), lg.Monthly(edge.Usage()),
-					ge.GetSumFlowVia(to->index), this->cached_links[from->index][to->index]);
+					ge.GetSumFlowVia(to->index), from->owner == OWNER_NONE || to->owner == OWNER_NONE,
+					this->cached_links[from->index][to->index]);
 		}
 	}
 }
 
 /**
- * Add information from a given pair of link stat and flow stat to the given link properties.
- * @param orig_link Link stat to read the information from.
- * @param new_plan Planned flow for the link.
+ * Add information from a given pair of link stat and flow stat to the given
+ * link properties. The shown usage or plan is always the maximum of all link
+ * stats involved.
+ * @param new_cap Capacity of the new link.
+ * @param new_usg Usage of the new link.
+ * @param new_plan Planned flow for the new link.
+ * @param new_shared If the new link is shared.
  * @param cargo LinkProperties to write the information to.
  */
-/* static */ void LinkGraphOverlay::AddStats(uint new_cap, uint new_usg, uint new_plan, LinkProperties &cargo)
+/* static */ void LinkGraphOverlay::AddStats(uint new_cap, uint new_usg, uint new_plan, bool new_shared, LinkProperties &cargo)
 {
 	/* multiply the numbers by 32 in order to avoid comparing to 0 too often. */
 	if (cargo.capacity == 0 ||
@@ -170,6 +175,7 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 		cargo.usage = new_usg;
 		cargo.planned = new_plan;
 	}
+	if (new_shared) cargo.shared = true;
 }
 
 /**
@@ -208,14 +214,19 @@ void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
  */
 void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &cargo) const
 {
-	int offset_y = (pta.x < ptb.x ? 1 : -1) * this->scale;
-	int offset_x = (pta.y > ptb.y ? 1 : -1) * this->scale;
-
 	uint usage_or_plan = min(cargo.capacity * 2 + 1, max(cargo.usage, cargo.planned));
 	int colour = LinkGraphOverlay::LINK_COLOURS[usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS) / (cargo.capacity * 2 + 2)];
+	int dash = cargo.shared ? this->scale * 4 : 0;
 
-	GfxDrawLine(pta.x + offset_x, pta.y, ptb.x + offset_x, ptb.y, colour, scale);
-	GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, scale);
+	/* Move line a bit 90° against its dominant direction to prevent it from
+	 * being hidden below the grey line. */
+	if (abs(pta.x - ptb.x) < abs(pta.y - ptb.y)) {
+		int offset_x = (pta.y > ptb.y ? 1 : -1) * this->scale;
+		GfxDrawLine(pta.x + offset_x, pta.y, ptb.x + offset_x, ptb.y, colour, this->scale, dash);
+	} else {
+		int offset_y = (pta.x < ptb.x ? 1 : -1) * this->scale;
+		GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, this->scale, dash);
+	}
 
 	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, _colour_gradient[COLOUR_GREY][1], this->scale);
 }
