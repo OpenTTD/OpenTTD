@@ -13,7 +13,7 @@
 #include "base.hpp"
 #include "../core/math_func.hpp"
 
-void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width)
+void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash)
 {
 	int dy;
 	int dx;
@@ -59,6 +59,9 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 		}
 	}
 
+	int gap = dash;
+	if (dash == 0) dash = 1;
+	int dash_count = 0;
 	if (dx > dy) {
 		int y_low     = y;
 		int y_high    = y;
@@ -76,7 +79,7 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 		x2 += stepx;
 
 		while (x != x2) {
-			if (x >= 0 && x < screen_width) {
+			if (dash_count < dash && x >= 0 && x < screen_width) {
 				for (int y = y_low; y != y_high; y += stepy) {
 					if (y >= 0 && y < screen_height) this->SetPixel(video, x, y, colour);
 				}
@@ -92,6 +95,7 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 			x += stepx;
 			frac_low += dy;
 			frac_high += dy;
+			if (++dash_count >= dash + gap) dash_count = 0;
 		}
 	} else {
 		int x_low     = x;
@@ -110,7 +114,7 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 		y2 += stepy;
 
 		while (y != y2) {
-			if (y >= 0 && y < screen_height) {
+			if (dash_count < dash && y >= 0 && y < screen_height) {
 				for (int x = x_low; x != x_high; x += stepx) {
 					if (x >= 0 && x < screen_width) this->SetPixel(video, x, y, colour);
 				}
@@ -126,6 +130,7 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 			y += stepy;
 			frac_low += dx;
 			frac_high += dx;
+			if (++dash_count >= dash + gap) dash_count = 0;
 		}
 	}
 }

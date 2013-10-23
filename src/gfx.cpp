@@ -162,8 +162,9 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
  * @param screen_height Height of the screen to check clipping against.
  * @param colour Colour of the line.
  * @param width Width of the line.
+ * @param dash Length of dashes for dashed lines. 0 means solid line.
  */
-static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width)
+static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash = 0)
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 
@@ -174,7 +175,7 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 		blitter->DrawLine(video,
 				Clamp(x, 0, screen_width), y,
 				Clamp(x2, 0, screen_width), y2,
-				screen_width, screen_height, colour, width);
+				screen_width, screen_height, colour, width, dash);
 		return;
 	}
 	if (x2 == x) {
@@ -182,7 +183,7 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 		blitter->DrawLine(video,
 				x, Clamp(y, 0, screen_height),
 				x2, Clamp(y2, 0, screen_height),
-				screen_width, screen_height, colour, width);
+				screen_width, screen_height, colour, width, dash);
 		return;
 	}
 
@@ -212,7 +213,7 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 	 * of rounding errors so much additional code has to be run here that in
 	 * the general case the effect is not noticable. */
 
-	blitter->DrawLine(video, x, y, x2, y2, screen_width, screen_height, colour, width);
+	blitter->DrawLine(video, x, y, x2, y2, screen_width, screen_height, colour, width, dash);
 }
 
 /**
@@ -241,11 +242,11 @@ static inline bool GfxPreprocessLine(DrawPixelInfo *dpi, int &x, int &y, int &x2
 	return true;
 }
 
-void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width)
+void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width, int dash)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	if (GfxPreprocessLine(dpi, x, y, x2, y2, width)) {
-		GfxDoDrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, colour, width);
+		GfxDoDrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, colour, width, dash);
 	}
 }
 
