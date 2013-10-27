@@ -4160,14 +4160,12 @@ void FlowStat::Invalidate()
 	assert(!this->shares.empty());
 	SharesMap new_shares;
 	uint i = 0;
-	uint orig = 0;
 	for (SharesMap::iterator it(this->shares.begin()); it != this->shares.end(); ++it) {
 		new_shares[++i] = it->second;
-		orig += it->first;
-		if (orig == this->unrestricted) this->unrestricted = orig;
+		if (it->first == this->unrestricted) this->unrestricted = i;
 	}
 	this->shares.swap(new_shares);
-	assert(!this->shares.empty());
+	assert(!this->shares.empty() && this->unrestricted <= (--this->shares.end())->first);
 }
 
 /**
