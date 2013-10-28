@@ -508,7 +508,7 @@ public:
 
 		/* Set up a clipping region for the panel. */
 		DrawPixelInfo tmp_dpi;
-		if (!FillDrawPixelInfo(&tmp_dpi, x, y, right - x + 1, r.bottom - y + 1)) return;
+		if (!FillDrawPixelInfo(&tmp_dpi, x, y, right - x + 1, bottom - y + 1)) return;
 
 		DrawPixelInfo *old_dpi = _cur_dpi;
 		_cur_dpi = &tmp_dpi;
