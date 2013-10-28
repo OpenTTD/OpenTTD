@@ -164,10 +164,21 @@ class ReplaceVehicleWindow : public Window {
 				this->engines[1].Clear();
 				this->sel_engine[1] = INVALID_ENGINE;
 			} else {
+				if (this->reset_sel_engine && this->sel_engine[0] != INVALID_ENGINE) {
+					/* Select the current replacement for sel_engine[0]. */
+					const Company *c = Company::Get(_local_company);
+					this->sel_engine[1] = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group);
+				}
+				/* Regenerate the list on the right. Note: This resets sel_engine[1] to INVALID_ENGINE, if it is no longer available. */
 				this->GenerateReplaceVehList(false);
 				this->vscroll[1]->SetCount(this->engines[1].Length());
-				if (this->reset_sel_engine && this->sel_engine[1] == INVALID_ENGINE && this->engines[1].Length() != 0) {
-					this->sel_engine[1] = this->engines[1][0];
+				if (this->reset_sel_engine && this->sel_engine[1] != INVALID_ENGINE) {
+					int position = 0;
+					for (EngineID *it = this->engines[1].Begin(); it != this->engines[1].End(); ++it) {
+						if (*it == this->sel_engine[1]) break;
+						++position;
+					}
+					this->vscroll[1]->ScrollTowards(position);
 				}
 			}
 		}
