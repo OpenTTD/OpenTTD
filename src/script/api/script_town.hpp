@@ -262,7 +262,7 @@ public:
 	 * Get the amount of days between town growth.
 	 * @param town_id The index of the town.
 	 * @pre IsValidTown(town_id).
-	 * @return True if the action succeeded.
+	 * @return Amount of days between town growth.
 	 * @note This function does not indicate when it will grow next. It only tells you the time between growths.
 	 */
 	static int32 GetGrowthRate(TownID town_id);

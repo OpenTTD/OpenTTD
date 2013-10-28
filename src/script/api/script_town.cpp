@@ -166,7 +166,7 @@
 
 /* static */ int32 ScriptTown::GetGrowthRate(TownID town_id)
 {
-	if (!IsValidTown(town_id)) return false;
+	if (!IsValidTown(town_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
