@@ -134,7 +134,7 @@ void TextfileWindow::SetupScrollbars()
 	const int bottom = r.bottom - WD_FRAMETEXT_BOTTOM;
 
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, x, y, right - x + 1, r.bottom - y + 1)) return;
+	if (!FillDrawPixelInfo(&new_dpi, x, y, right - x + 1, bottom - y + 1)) return;
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &new_dpi;
 
