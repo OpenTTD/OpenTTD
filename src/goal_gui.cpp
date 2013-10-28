@@ -219,8 +219,8 @@ struct GoalListWindow : public Window {
 			}
 		}
 
-		if (column == GC_GOAL && num == 0) {
-			if (IsInsideMM(pos, 0, cap)) {
+		if (num == 0) {
+			if (column == GC_GOAL && IsInsideMM(pos, 0, cap)) {
 				StringID str = !global_section && this->window_number == INVALID_COMPANY ? STR_GOALS_SPECTATOR_NONE : STR_GOALS_NONE;
 				DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, str);
 			}
