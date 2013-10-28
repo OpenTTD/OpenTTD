@@ -1452,6 +1452,8 @@ static void ShowStationBuilder(Window *parent)
 
 struct BuildSignalWindow : public PickerWindowBase {
 private:
+	Dimension sig_sprite_size;  ///< Maximum size of signal GUI sprites.
+
 	/**
 	 * Draw dynamic a signal-sprite in a button in the signal GUI
 	 * Draw the sprite +1px to the right and down if the button is lowered
@@ -1493,6 +1495,29 @@ public:
 	~BuildSignalWindow()
 	{
 		_convert_signal_button = false;
+	}
+
+	virtual void OnInit()
+	{
+		/* Calculate maximum signal sprite size. */
+		this->sig_sprite_size.width = 0;
+		this->sig_sprite_size.height = 0;
+		const RailtypeInfo *rti = GetRailTypeInfo(_cur_railtype);
+		for (uint type = SIGTYPE_NORMAL; type < SIGTYPE_END; type++) {
+			for (uint variant = SIG_ELECTRIC; variant <= SIG_SEMAPHORE; variant++) {
+				for (uint lowered = 0; lowered < 2; lowered++) {
+					this->sig_sprite_size = maxdim(this->sig_sprite_size, GetSpriteSize(rti->gui_sprites.signals[type][variant][lowered]));
+				}
+			}
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
+			size->width = max(size->width, this->sig_sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT);
+			size->height = max(size->height, this->sig_sprite_size.height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
+		}
 	}
 
 	virtual void SetStringParameters(int widget) const
