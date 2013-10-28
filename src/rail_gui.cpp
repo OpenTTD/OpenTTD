@@ -1514,7 +1514,10 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
+		if (widget == WID_BS_DRAG_SIGNALS_DENSITY_LABEL) {
+			/* Two digits for signals density. */
+			size->width = max(size->width, 2 * GetDigitWidth() + padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT);
+		} else if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
 			size->width = max(size->width, this->sig_sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT);
 			size->height = max(size->height, this->sig_sprite_size.height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
 		}
