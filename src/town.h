@@ -161,7 +161,7 @@ enum TownRatingCheckType {
  * And there are 5 more bits available on flags...
  */
 enum TownFlags {
-	TOWN_IS_FUNDED      = 0,   ///< Town has received some funds for
+	TOWN_IS_GROWING     = 0,   ///< Conditions for town growth are met. Grow according to Town::growth_rate.
 	TOWN_HAS_CHURCH     = 1,   ///< There can be only one church by town.
 	TOWN_HAS_STADIUM    = 2,   ///< There can be only one stadium by town.
 };
