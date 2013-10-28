@@ -1452,7 +1452,8 @@ static void ShowStationBuilder(Window *parent)
 
 struct BuildSignalWindow : public PickerWindowBase {
 private:
-	Dimension sig_sprite_size;  ///< Maximum size of signal GUI sprites.
+	Dimension sig_sprite_size;     ///< Maximum size of signal GUI sprites.
+	int sig_sprite_bottom_offset;  ///< Maximum extent of signal GUI sprite from reference point towards bottom.
 
 	/**
 	 * Draw dynamic a signal-sprite in a button in the signal GUI
@@ -1463,26 +1464,17 @@ private:
 	 */
 	void DrawSignalSprite(byte widget_index, SpriteID image) const
 	{
-		/* Next get the actual sprite so we can calculate the right offsets. */
-		const Sprite *sprite = GetSprite(image, ST_NORMAL);
-
-		/* For the x offset we want the sprite to be centered, so undo the offset
-		 * for sprite drawing and add half of the sprite's width. For the y offset
-		 * we want the sprite to be aligned on the bottom, so again we undo the
-		 * offset for sprite drawing and assume it is the bottom of the sprite. */
-		int sprite_center_x_offset = UnScaleByZoom(sprite->x_offs + sprite->width / 2, ZOOM_LVL_GUI);
-		int sprite_bottom_y_offset = UnScaleByZoom(sprite->height + sprite->y_offs, ZOOM_LVL_GUI);
-
-		/* Next we want to know where on the window to draw. Calculate the center
-		 * and the bottom of the area to draw. */
+		Point offset;
+		Dimension sprite_size = GetSpriteSize(image, &offset);
 		const NWidgetBase *widget = this->GetWidget<NWidgetBase>(widget_index);
-		int widget_center_x = widget->pos_x + widget->current_x / 2;
-		int widget_bottom_y = widget->pos_y + widget->current_y - 2;
+		int x = widget->pos_x - offset.x +
+				(widget->current_x - sprite_size.width + offset.x) / 2;  // centered
+		int y = widget->pos_y - sig_sprite_bottom_offset + WD_IMGBTN_TOP +
+				(widget->current_y - WD_IMGBTN_TOP - WD_IMGBTN_BOTTOM + sig_sprite_size.height) / 2; // aligned to bottom
 
-		/* Finally we draw the signal. */
 		DrawSprite(image, PAL_NONE,
-				widget_center_x - sprite_center_x_offset + this->IsWidgetLowered(widget_index),
-				widget_bottom_y - sprite_bottom_y_offset + this->IsWidgetLowered(widget_index));
+				x + this->IsWidgetLowered(widget_index),
+				y + this->IsWidgetLowered(widget_index));
 	}
 
 public:
@@ -1502,11 +1494,16 @@ public:
 		/* Calculate maximum signal sprite size. */
 		this->sig_sprite_size.width = 0;
 		this->sig_sprite_size.height = 0;
+		this->sig_sprite_bottom_offset = 0;
 		const RailtypeInfo *rti = GetRailTypeInfo(_cur_railtype);
 		for (uint type = SIGTYPE_NORMAL; type < SIGTYPE_END; type++) {
 			for (uint variant = SIG_ELECTRIC; variant <= SIG_SEMAPHORE; variant++) {
 				for (uint lowered = 0; lowered < 2; lowered++) {
-					this->sig_sprite_size = maxdim(this->sig_sprite_size, GetSpriteSize(rti->gui_sprites.signals[type][variant][lowered]));
+					Point offset;
+					Dimension sprite_size = GetSpriteSize(rti->gui_sprites.signals[type][variant][lowered], &offset);
+					this->sig_sprite_bottom_offset = max<int>(this->sig_sprite_bottom_offset, sprite_size.height);
+					this->sig_sprite_size.width = max<int>(this->sig_sprite_size.width, sprite_size.width - offset.x);
+					this->sig_sprite_size.height = max<int>(this->sig_sprite_size.height, sprite_size.height - offset.y);
 				}
 			}
 		}
