@@ -41,6 +41,10 @@ LinkGraphJob::~LinkGraphJob()
 {
 	assert(this->thread == NULL);
 
+	/* Don't update stuff from other pools, when everything is being removed.
+	 * Accessing other pools may be invalid. */
+	if (CleaningPool()) return;
+
 	/* Link graph has been merged into another one. */
 	if (!LinkGraph::IsValidID(this->link_graph.index)) return;
 
