@@ -203,6 +203,7 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
@@ -210,9 +211,12 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
@@ -1561,12 +1565,17 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders ge
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ta bort återvändsgränder vid bekostad vägombyggnad
 
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetriskt
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av passagerare sker.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionssätt för post: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetriskt" innebär att ungefär samma mängd post skickas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd post kan skickas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av post sker.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionssätt för den BEPANSRADE godsklassen: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE godsklassen innehåller värdesaker i det tempererade, diamanter i det subtropiska eller guld i det subarktiska klimatet. NewGRFer kan ändra detta. "symmetriskt" innebär att ungefär samma mängd av detta gods skickas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd av detta gods kan skickas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av denna godstyp sker. Det är rekommenderat att välja "asymmetriskt" eller "manuellt" vid subarktiskt klimat, då banker inte skickar tillbaka guld till guldgruvor. Vid tempererat och subtropiskt klimat kan även "symmetriskt" väljas, då banker kan skicka tillbaka värdesaker till den bank en viss last av värdesaker kom ifrån.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionssätt för övriga godsklasser: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetriskt" innebär att ungefär samma mängd gods skickas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av dessa godstyper sker. Det är troligtvis önskvärt att välja "asymmetriskt" eller "manuellt".
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnoggrannhet: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Avståndets påverkan på efterfrågan: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta ruter innan längre rutter används: {STRING}
@@ -1574,9 +1583,12 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Närhelst en hastighet visas i användargränssnittet, visa den i den valda enheten
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Brittisk (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Enhet för fordons motoreffekt: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Närhelst ett fordons motoreffekt visas i användargränssnittet, visa den i den valda enheten
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Brittisk (hk)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisk (hk)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
