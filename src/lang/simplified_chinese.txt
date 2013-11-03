@@ -293,7 +293,7 @@ STR_SORT_BY_ENGINE_ID                                           :引擎ID （默
 STR_SORT_BY_COST                                                :售价
 STR_SORT_BY_POWER                                               :功率
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牵引力
-STR_SORT_BY_INTRO_DATE                                          :设计日期
+STR_SORT_BY_INTRO_DATE                                          :面世日期
 STR_SORT_BY_RUNNING_COST                                        :运行费用
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用 比值
 STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
@@ -3941,6 +3941,8 @@ STR_AI_SETTINGS_START_DELAY                                     :当前AI在前�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} 的说明
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} 的更新日志
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} 的版权信息
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}強迫文字换行
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫宽于窗格的內文自动换行
 STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息

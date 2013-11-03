@@ -475,7 +475,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματο�
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Κατασκευή σιδηρόδρομου
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Κατασκευή ηλεκτροδοτουμένου σιδηρόδρομου
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονόγραμμου
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονοτρόχιου
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή Maglev
 ############ range ends here
 
@@ -1789,14 +1789,14 @@ STR_LIVERY_DEFAULT                                              :Πρότυπο 
 STR_LIVERY_STEAM                                                :Ατμοκίνητη Μηχανή
 STR_LIVERY_DIESEL                                               :Πετρελαιοκίνητη Μηχανή
 STR_LIVERY_ELECTRIC                                             :Ηλεκτροκίνητη Μηχανή
-STR_LIVERY_MONORAIL                                             :Μηχανή Monorail
+STR_LIVERY_MONORAIL                                             :Μηχανή Μονοτρόχιου
 STR_LIVERY_MAGLEV                                               :Μηχανή Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Επιβατικό Βαγόνι (Ατμού)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Επιβατικό Βαγόνι (Πετρελαίου)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Επιβατικό Βαγόνι (Ηλεκτρικό)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατικό Βαγόνι (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατικό Βαγόνι (Μονοτρόχιο)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Επιβατικό Βαγόνι (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Εμπορικό Βαγόνι
 STR_LIVERY_BUS                                                  :Λεωφορείο
@@ -2261,7 +2261,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Κτί�
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Κατασκευή Σιδηρόδρομου
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Κατασκευή Ηλεκτροδοτημένου Σιδηρόδρομου
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Σιδηρόδρομου Monorail
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Μονοτρόχιου Σιδηρόδρομου
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Κατασκευή Σιδηροδρόμου Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
@@ -2277,7 +2277,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετα
 
 STR_RAIL_NAME_RAILROAD                                          :Σιδηρόδρομος
 STR_RAIL_NAME_ELRAIL                                            :Ηλεκτροδοτημένη σιδηροτροχιά
-STR_RAIL_NAME_MONORAIL                                          :Monorail
+STR_RAIL_NAME_MONORAIL                                          :Μονοτρόχιος
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
@@ -3258,7 +3258,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετο
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Νέα Οχήματα Σιδηρόδρομου
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήματα Ηλεκτροδοτουμένου Σιδηρόδρομου
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Monorail
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Μονοτρόχιου
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήματα Maglev
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
@@ -3403,7 +3403,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσ
 STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :{G=n}αεροπλάνου
 STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
 STR_ENGINE_PREVIEW_SHIP.geniki                                  :{G=n}πλοιού
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανής monorail
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανής μονοτρόχιου
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.geniki                   :{G=f}μηχανής monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανής maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :{G=f}μηχανής maglev
@@ -3444,8 +3444,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Επιλ
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Εμφανίζει ποια μηχανή στα αριστερά θα αντικατασταθεί, εάν υπάρχει
 STR_REPLACE_RAIL_VEHICLES                                       :Οχήματα Σιδηροδρόμου
 STR_REPLACE_ELRAIL_VEHICLES                                     :Οχήματα Ηλεκτρικού Σιδηροδρόμου
-STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Monorail
-STR_REPLACE_MAGLEV_VEHICLES                                     :Βαγόνια Maglev
+STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Μονοτρόχιου
+STR_REPLACE_MAGLEV_VEHICLES                                     :Οχήματα Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
