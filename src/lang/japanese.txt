@@ -1587,7 +1587,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距離効果: {
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :0より大きい値に設定すると、ある貨物の生産先Aと受取可能先Bとの距離がAからBへ送られる貨物量に影響を及ぼすようになります。高い値を設定すればするほど、遠い施設に送られる貨物量は少なくなり、近場の施設に送られる量が大きくなります
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :対称分配での戻り量: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :この値を100%未満に設定すると、対称分配の挙動が非対称分配に近くなります。値が小さいほど受け入れ量に対する送り返し量が小さくなります。0%に設定した場合、対称分配と非対称分配の挙動に違いはなくなります
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :最短経路を高収容力経路より優先: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :高収容力経路より速達経路を優先飽和: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :二つの停留施設間を結ぶ経路が複数存在することが往々にしてあります。そのような場合、貨物分配アルゴリズムは最初に最短となる経路を飽和するまで使用し、次いで2番目の最短経路を使用するというように埋めていきます。飽和したかどうかは、推定収容力、輸送計画によって判断されます。すべての経路を飽和してもまだ需要を満たせない場合、高容量な経路を優先しつつ、すべての経路に負荷を掛けます。しかしほとんどの場合、アルゴリズムは経路の輸送力を正確に見積もることができません。この設定では、高収容力の路線を使用し始める前にどの程度最短経路を飽和するかを設定します。収容力より需要が上回ると推定される時には、停留施設が混み合うのを避けるために100%未満に設定して下さい。
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度単位: {STRING}

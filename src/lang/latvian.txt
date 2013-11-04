@@ -1528,17 +1528,27 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Finansētās ce
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetriska
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Ātruma mērvienības: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :impērijas, britu (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :metriskās (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI, starptautiskās (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Transportlīdzekļu jaudas mērvienības: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :impērijas, britu (ZS)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :metriskās (ZS)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI, starptautiskās (kW)
 
 
 
 
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Saskarne
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizēšana
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Būvniecība
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transportlīdzekļi
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacijas
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Kravu sadale
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Ekrāna opcijas
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Mijiedarbība
@@ -1944,6 +1954,7 @@ STR_NETWORK_CLIENT                                              :Spēlētājs
 STR_NETWORK_SPECTATORS                                          :Novērotāji
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ievadiet cik daudz naudas vēlaties dot
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Novērotājs
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nesaglabāt ievadīto paroli
@@ -2040,7 +2051,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :aizeju
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ir pievienojies spēlei
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ir pievienojies spēlei (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ir pievienojies uzņēmumam #{2:NUM}
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir pievienojis skatītājus
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir pievienojies novērotājiem
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ir nodibinājis jaunu uzņēmumu (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ir pametis spēli ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ir nomainījis savu nosaukumu uz {STRING}
@@ -3809,6 +3820,7 @@ STR_AI_SETTINGS_START_DELAY                                     :Aptuvenais dien
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} kopas {STRING} fails Lasi_mani
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} kopas {STRING} izmaiņu žurnāls
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} kopas {STRING} licence
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Aplauzt tekstu
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
@@ -4630,7 +4642,7 @@ STR_DEFAULT_SIGN_NAME                                           :Zīme
 STR_COMPANY_SOMEONE                                             :kāds
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Skatītājs, {1:STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Novērotājs, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -4675,6 +4687,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
