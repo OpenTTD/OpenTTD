@@ -746,11 +746,11 @@ void GenerateObjects()
 		/* Now try to place the requested amount of this object */
 		for (uint j = ScaleByMapSize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
 			switch (i) {
-				case OBJECT_LIGHTHOUSE:
+				case OBJECT_TRANSMITTER:
 					if (TryBuildTransmitter()) amount--;
 					break;
 
-				case OBJECT_TRANSMITTER:
+				case OBJECT_LIGHTHOUSE:
 					if (TryBuildLightHouse()) amount--;
 					break;
 
