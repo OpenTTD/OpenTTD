@@ -193,7 +193,7 @@ STR_COLOUR_GREY                                                 :Pelēka
 STR_COLOUR_WHITE                                                :Balta
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} jūdzes/h
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} jūdzes stundā
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
@@ -201,6 +201,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ZS
 STR_UNITS_POWER_METRIC                                          :{COMMA} ZS
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
@@ -1307,6 +1308,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF noklusējuma palete, kuriem tā nav norādīta: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Noklusējuma palete NewGRF failiem, ja nav norādīta nepieciešamā
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :noklusējuma (D) palete
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :mantota (W) palete
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automātiski pauzēt sākot jaunu spēli: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ja ir ieslēgts, sākot jaunu spēli, tā tiek automātiski pauzēta. Tas ļauj rūpīgāk izpētīt karti
@@ -1529,7 +1532,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetriska
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Ātruma mērvienības: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :impērijas, britu (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :impērijas, britu (jūdzes stundā)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :metriskās (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI, starptautiskās (m/s)
 
@@ -1538,9 +1541,27 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :impērijas, bri
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :metriskās (ZS)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI, starptautiskās (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Svara mērvienības: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :impērijas, britu (t/tonna)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :metriskās (t/tonna)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI, starptautiskās (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Tilpuma mērvienības: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :impērijas, britu (galons)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :metriskās (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI, starptautiskās (m³)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI.kas             :SI, starptautiskās (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Vilces spēka mērvienības: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE.kas                 :Vilces spēka mērvienības: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :impērijas, britu (mārciņa)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :metriskās (spēka kilograms)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI, starptautiskās (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Augstuma mērvienības: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :impērijas, britu (pēda)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriskās (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI, starptautiskās (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Saskarne
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizēšana
@@ -1772,6 +1793,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Izsludināt
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nē
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jā
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
@@ -2673,7 +2695,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalē
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Iestatīt parametrus
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Rādīt parametrus
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Iespējot paleti
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Pārslēgt paleti
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Mainīt atlasītā New GRF paleti.{}Tas jādara ja NewGRF grafika izskatās sārta
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Lietot izmaiņas
 
