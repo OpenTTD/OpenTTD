@@ -217,6 +217,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pēdas
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1307,7 +1308,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īsu (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF noklusējuma palete, kuriem tā nav norādīta: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Noklusējuma palete NewGRF failiem, ja nav norādīta nepieciešamā
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Noklusējuma palete NewGRF failiem, ja nepieciešamā nav norādīta
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :noklusējuma (D) palete
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :mantota (W) palete
 
@@ -1612,11 +1613,12 @@ STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nav drošs stat
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistēmas NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nav savietojams ar šo OpenTTD versiju
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nezināms
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... saspiešanas līmenis '{STRING}' nav derīgs
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... saspiešanas līmenis '{STRING}' ir nederīgs
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... spēles saglabāšanas formāts '{STRING}' nav pieejams. Atkāpjas uz '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorē pamata grafikas kopu '{STRING}': nav atrasta
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorē pamata skaņas kopu '{STRING}': nav atrasta
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorē pamata mūzikas kopu '{STRING}': nav atrasta
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Nepietiek atmiņas
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2953,6 +2955,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Iepriek�
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Doties uz iepriekšējo lapu
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nākamā
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Doties uz nākamo lapu
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Mērķa norāde ir nederīga
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Staciju nosaukumi - klikšķināt uz nosaukuma, lai centrētu galveno skatu uz staciju. Ctrl+klikšķis atvērs jaunu skatvietu pie stacijas

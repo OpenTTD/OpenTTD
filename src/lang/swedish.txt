@@ -1565,6 +1565,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders ge
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ta bort återvändsgränder vid bekostad vägombyggnad
 
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Avsätt {STRING} dag{P 0:2 "" ar} för omberäkning av distributionsgraf
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetriskt
@@ -1578,6 +1579,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionss�
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetriskt" innebär att ungefär samma mängd gods skickas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av dessa godstyper sker. Det är troligtvis önskvärt att välja "asymmetriskt" eller "manuellt".
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnoggrannhet: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Avståndets påverkan på efterfrågan: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Om du sätter denna till ett värde högre än 0 kommer avståndet mellan ursprungsstationen A för en viss last och en möjlig destination B påverka mängden last som skickas från A till B. Ju längre B är ifrån A, desto mindre last kommer att skickas. Ju högre du sätter den, desto mindre last kommer att skickas till avlägsna stationer och desto mer last kommer att skickas till närbelägna stationer.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta ruter innan längre rutter används: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
 
