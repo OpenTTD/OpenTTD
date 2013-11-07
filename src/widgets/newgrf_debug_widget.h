@@ -16,6 +16,9 @@
 enum NewGRFInspectWidgets {
 	WID_NGRFI_CAPTION,   ///< The caption bar of course.
 	WID_NGRFI_PARENT,    ///< Inspect the parent.
+	WID_NGRFI_VEH_PREV,  ///< Go to previous vehicle in chain.
+	WID_NGRFI_VEH_NEXT,  ///< Go to next vehicle in chain.
+	WID_NGRFI_VEH_CHAIN, ///< Display for vehicle chain.
 	WID_NGRFI_MAINPANEL, ///< Panel widget containing the actual data.
 	WID_NGRFI_SCROLLBAR, ///< Scrollbar.
 };

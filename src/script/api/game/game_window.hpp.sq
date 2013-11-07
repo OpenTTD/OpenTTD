@@ -615,6 +615,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_Q_NO,                                  "WID_Q_NO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_Q_YES,                                 "WID_Q_YES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_CAPTION,                            "WID_TF_CAPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_WRAPTEXT,                           "WID_TF_WRAPTEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_BACKGROUND,                         "WID_TF_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_VSCROLLBAR,                         "WID_TF_VSCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_HSCROLLBAR,                         "WID_TF_HSCROLLBAR");
@@ -752,6 +753,9 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCP_OK,                                "WID_NCP_OK");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_CAPTION,                         "WID_NGRFI_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_PARENT,                          "WID_NGRFI_PARENT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_VEH_PREV,                        "WID_NGRFI_VEH_PREV");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_VEH_NEXT,                        "WID_NGRFI_VEH_NEXT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_VEH_CHAIN,                       "WID_NGRFI_VEH_CHAIN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_MAINPANEL,                       "WID_NGRFI_MAINPANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_SCROLLBAR,                       "WID_NGRFI_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_CAPTION,                            "WID_SA_CAPTION");

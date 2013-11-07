@@ -34,6 +34,7 @@
 #include "newgrf.h"
 #include "order_backup.h"
 #include "zoom_func.h"
+#include "newgrf_debug.h"
 
 #include "table/strings.h"
 #include "table/train_cmd.h"
@@ -242,6 +243,7 @@ void Train::ConsistChanged(bool same_length)
 		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 		InvalidateWindowData(WC_VEHICLE_REFIT, this->index, VIWD_CONSIST_CHANGED);
 		InvalidateWindowData(WC_VEHICLE_ORDERS, this->index, VIWD_CONSIST_CHANGED);
+		InvalidateNewGRFInspectWindow(GSF_TRAINS, this->index);
 	}
 }
 
@@ -1271,6 +1273,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			DeleteWindowById(WC_VEHICLE_REFIT, src->index);
 			DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
 			DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
+			DeleteNewGRFInspectWindow(GSF_TRAINS, src->index);
 			SetWindowDirty(WC_COMPANY, _current_company);
 
 			/* Delete orders, group stuff and the unit number as we're not the

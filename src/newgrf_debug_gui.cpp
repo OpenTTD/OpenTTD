@@ -18,6 +18,7 @@
 #include "string_func.h"
 #include "strings_func.h"
 #include "textbuf_gui.h"
+#include "vehicle_gui.h"
 
 #include "engine_base.h"
 #include "industry.h"
@@ -25,6 +26,8 @@
 #include "station_base.h"
 #include "town.h"
 #include "vehicle_base.h"
+#include "train.h"
+#include "roadveh.h"
 
 #include "newgrf_airporttiles.h"
 #include "newgrf_debug.h"
@@ -278,6 +281,9 @@ struct NewGRFInspectWindow : Window {
 	/** GRFID of the caller of this window, 0 if it has no caller. */
 	uint32 caller_grfid;
 
+	/** For ground vehicles: Index in vehicle chain. */
+	uint chain_index;
+
 	/** The currently edited parameter, to update the right one. */
 	byte current_edit_param;
 
@@ -304,13 +310,42 @@ struct NewGRFInspectWindow : Window {
 	}
 
 	/**
+	 * Check whether this feature has chain index, i.e. refers to ground vehicles.
+	 */
+	bool HasChainIndex() const
+	{
+		GrfSpecFeature f = GetFeatureNum(this->window_number);
+		return f == GSF_TRAINS || f == GSF_ROADVEHICLES;
+	}
+
+	/**
 	 * Get the feature index.
 	 * @return the feature index
 	 */
 	uint GetFeatureIndex() const
 	{
 		uint index = ::GetFeatureIndex(this->window_number);
+		if (this->chain_index > 0) {
+			assert(this->HasChainIndex());
+			const Vehicle *v = Vehicle::Get(index);
+			v = v->Move(this->chain_index);
+			if (v != NULL) index = v->index;
+		}
 		return index;
+	}
+
+	/**
+	 * Ensure that this->chain_index is in range.
+	 */
+	void ValidateChainIndex()
+	{
+		if (this->chain_index == 0) return;
+
+		assert(this->HasChainIndex());
+
+		const Vehicle *v = Vehicle::Get(::GetFeatureIndex(this->window_number));
+		v = v->Move(this->chain_index);
+		if (v == NULL) this->chain_index = 0;
 	}
 
 	NewGRFInspectWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
@@ -321,6 +356,8 @@ struct NewGRFInspectWindow : Window {
 
 		this->vscroll->SetCount(0);
 		this->SetWidgetDisabledState(WID_NGRFI_PARENT, GetFeatureHelper(this->window_number)->GetParent(this->GetFeatureIndex()) == UINT32_MAX);
+
+		this->OnInvalidateData(0, true);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -332,12 +369,21 @@ struct NewGRFInspectWindow : Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != WID_NGRFI_MAINPANEL) return;
+		switch (widget) {
+			case WID_NGRFI_VEH_CHAIN: {
+				assert(this->HasChainIndex());
+				GrfSpecFeature f = GetFeatureNum(this->window_number);
+				size->height = max(size->height, GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WD_BEVEL_TOP + WD_BEVEL_BOTTOM);
+				break;
+			}
 
-		resize->height = max(11, FONT_HEIGHT_NORMAL + 1);
-		resize->width  = 1;
+			case WID_NGRFI_MAINPANEL:
+				resize->height = max(11, FONT_HEIGHT_NORMAL + 1);
+				resize->width  = 1;
 
-		size->height = 5 * resize->height + TOP_OFFSET + BOTTOM_OFFSET;
+				size->height = 5 * resize->height + TOP_OFFSET + BOTTOM_OFFSET;
+				break;
+		}
 	}
 
 	/**
@@ -363,6 +409,44 @@ struct NewGRFInspectWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
+		switch (widget) {
+			case WID_NGRFI_VEH_CHAIN: {
+				const Vehicle *v = Vehicle::Get(this->GetFeatureIndex());
+				int total_width = 0;
+				int sel_start = 0;
+				int sel_end = 0;
+				for (const Vehicle *u = v->First(); u != NULL; u = u->Next()) {
+					if (u == v) sel_start = total_width;
+					switch (u->type) {
+						case VEH_TRAIN: total_width += Train      ::From(u)->GetDisplayImageWidth(); break;
+						case VEH_ROAD:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
+						default: NOT_REACHED();
+					}
+					if (u == v) sel_end = total_width;
+				}
+
+				int width = r.right + 1 - r.left - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
+				int skip = 0;
+				if (total_width > width) {
+					int sel_center = (sel_start + sel_end) / 2;
+					if (sel_center > width / 2) skip = min(total_width - width, sel_center - width / 2);
+				}
+
+				GrfSpecFeature f = GetFeatureNum(this->window_number);
+				int h = GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
+				int y = (r.top + r.bottom - h) / 2;
+				DrawVehicleImage(v->First(), r.left + WD_BEVEL_LEFT, r.right - WD_BEVEL_RIGHT, y + 1, INVALID_VEHICLE, EIT_IN_DETAILS, skip);
+
+				/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
+				if (_current_text_dir == TD_RTL) {
+					DrawFrameRect(r.right - sel_end   + skip, y, r.right - sel_start + skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
+				} else {
+					DrawFrameRect(r.left  + sel_start - skip, y, r.left  + sel_end   - skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
+				}
+				break;
+			}
+		}
+
 		if (widget != WID_NGRFI_MAINPANEL) return;
 
 		uint index = this->GetFeatureIndex();
@@ -469,9 +553,27 @@ struct NewGRFInspectWindow : Window {
 			case WID_NGRFI_PARENT: {
 				const NIHelper *nih   = GetFeatureHelper(this->window_number);
 				uint index = nih->GetParent(this->GetFeatureIndex());
-				::ShowNewGRFInspectWindow((GrfSpecFeature)GB(index, 24, 8), ::GetFeatureIndex(index), nih->GetGRFID(this->GetFeatureIndex()));
+				::ShowNewGRFInspectWindow(GetFeatureNum(index), ::GetFeatureIndex(index), nih->GetGRFID(this->GetFeatureIndex()));
 				break;
 			}
+
+			case WID_NGRFI_VEH_PREV:
+				if (this->chain_index > 0) {
+					this->chain_index--;
+					this->InvalidateData();
+				}
+				break;
+
+			case WID_NGRFI_VEH_NEXT:
+				if (this->HasChainIndex()) {
+					uint index = this->GetFeatureIndex();
+					Vehicle *v = Vehicle::Get(index);
+					if (v != NULL && v->Next() != NULL) {
+						this->chain_index++;
+						this->InvalidateData();
+					}
+				}
+				break;
 
 			case WID_NGRFI_MAINPANEL: {
 				/* Does this feature have variables? */
@@ -507,9 +609,49 @@ struct NewGRFInspectWindow : Window {
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_NGRFI_MAINPANEL, TOP_OFFSET + BOTTOM_OFFSET);
 	}
+
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	{
+		if (!gui_scope) return;
+		if (this->HasChainIndex()) {
+			this->ValidateChainIndex();
+			this->SetWidgetDisabledState(WID_NGRFI_VEH_PREV, this->chain_index == 0);
+			Vehicle *v = Vehicle::Get(this->GetFeatureIndex());
+			this->SetWidgetDisabledState(WID_NGRFI_VEH_NEXT, v == NULL || v->Next() == NULL);
+		}
+	}
 };
 
 /* static */ uint32 NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
+
+static const NWidgetPart _nested_newgrf_inspect_chain_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_NGRFI_CAPTION), SetDataTip(STR_NEWGRF_INSPECT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_GREY),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_NGRFI_VEH_PREV), SetDataTip(AWV_DECREASE, STR_NULL),
+			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_NGRFI_VEH_NEXT), SetDataTip(AWV_INCREASE, STR_NULL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_NGRFI_VEH_CHAIN), SetFill(1, 0), SetResize(1, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_NGRFI_MAINPANEL), SetMinimalSize(300, 0), SetScrollbar(WID_NGRFI_SCROLLBAR), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_NGRFI_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+		EndContainer(),
+	EndContainer(),
+};
 
 static const NWidgetPart _nested_newgrf_inspect_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -528,6 +670,13 @@ static const NWidgetPart _nested_newgrf_inspect_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+
+static WindowDesc _newgrf_inspect_chain_desc(
+	WDP_AUTO, "newgrf_inspect_chain", 400, 300,
+	WC_NEWGRF_INSPECT, WC_NONE,
+	0,
+	_nested_newgrf_inspect_chain_widgets, lengthof(_nested_newgrf_inspect_chain_widgets)
+);
 
 static WindowDesc _newgrf_inspect_desc(
 	WDP_AUTO, "newgrf_inspect", 400, 300,
@@ -550,9 +699,25 @@ void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32 gr
 	if (!IsNewGRFInspectable(feature, index)) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow>(&_newgrf_inspect_desc, wno);
+	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow>(feature == GSF_TRAINS || feature == GSF_ROADVEHICLES ? &_newgrf_inspect_chain_desc : &_newgrf_inspect_desc, wno);
 	if (w == NULL) w = (NewGRFInspectWindow *)FindWindowById(WC_NEWGRF_INSPECT, wno);
 	w->SetCallerGRFID(grfid);
+}
+
+/**
+ * Invalidate the inspect window for a given feature and index.
+ * The index is normally an in-game location/identifier, such
+ * as a TileIndex or an IndustryID depending on the feature
+ * we want to inspect.
+ * @param feature The feature we want to invalidate the window for.
+ * @param index   The index/identifier of the feature to invalidate.
+ */
+void InvalidateNewGRFInspectWindow(GrfSpecFeature feature, uint index)
+{
+	if (feature == GSF_INVALID) return;
+
+	WindowNumber wno = GetInspectWindowNumber(feature, index);
+	InvalidateWindowData(WC_NEWGRF_INSPECT, wno);
 }
 
 /**
