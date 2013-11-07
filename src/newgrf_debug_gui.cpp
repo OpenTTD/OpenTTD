@@ -303,6 +303,16 @@ struct NewGRFInspectWindow : Window {
 		this->SetDirty();
 	}
 
+	/**
+	 * Get the feature index.
+	 * @return the feature index
+	 */
+	uint GetFeatureIndex() const
+	{
+		uint index = ::GetFeatureIndex(this->window_number);
+		return index;
+	}
+
 	NewGRFInspectWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
 	{
 		this->CreateNestedTree();
@@ -310,14 +320,14 @@ struct NewGRFInspectWindow : Window {
 		this->FinishInitNested(wno);
 
 		this->vscroll->SetCount(0);
-		this->SetWidgetDisabledState(WID_NGRFI_PARENT, GetFeatureHelper(this->window_number)->GetParent(GetFeatureIndex(this->window_number)) == UINT32_MAX);
+		this->SetWidgetDisabledState(WID_NGRFI_PARENT, GetFeatureHelper(this->window_number)->GetParent(this->GetFeatureIndex()) == UINT32_MAX);
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget != WID_NGRFI_CAPTION) return;
 
-		GetFeatureHelper(this->window_number)->SetStringParameters(GetFeatureIndex(this->window_number));
+		GetFeatureHelper(this->window_number)->SetStringParameters(this->GetFeatureIndex());
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -355,7 +365,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		if (widget != WID_NGRFI_MAINPANEL) return;
 
-		uint index = GetFeatureIndex(this->window_number);
+		uint index = this->GetFeatureIndex();
 		const NIFeature *nif  = GetFeature(this->window_number);
 		const NIHelper *nih   = nif->helper;
 		const void *base      = nih->GetInstance(index);
@@ -458,8 +468,8 @@ struct NewGRFInspectWindow : Window {
 		switch (widget) {
 			case WID_NGRFI_PARENT: {
 				const NIHelper *nih   = GetFeatureHelper(this->window_number);
-				uint index = nih->GetParent(GetFeatureIndex(this->window_number));
-				::ShowNewGRFInspectWindow((GrfSpecFeature)GB(index, 24, 8), GetFeatureIndex(index), nih->GetGRFID(GetFeatureIndex(this->window_number)));
+				uint index = nih->GetParent(this->GetFeatureIndex());
+				::ShowNewGRFInspectWindow((GrfSpecFeature)GB(index, 24, 8), ::GetFeatureIndex(index), nih->GetGRFID(this->GetFeatureIndex()));
 				break;
 			}
 
