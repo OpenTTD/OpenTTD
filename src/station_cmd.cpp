@@ -3447,7 +3447,7 @@ void DeleteStaleLinks(Station *from)
 						 * - We could try to figure out if we've seen a consist with the same cargo on the
 						 *   same list already and if the consist can actually carry the cargo we're looking
 						 *   for. With conditional and refit orders this is not quite trivial, though. */
-						LinkRefresher::Run(v);
+						LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
 						if (edge.LastUpdate() == _date) updated = true;
 					}
 					if (updated) break;

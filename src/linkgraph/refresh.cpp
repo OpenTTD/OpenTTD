@@ -20,8 +20,9 @@
 /**
  * Refresh all links the given vehicle will visit.
  * @param v Vehicle to refresh links for.
+ * @param allow_merge If the refresher is allowed to merge or extend link graphs.
  */
-/* static */ void LinkRefresher::Run(Vehicle *v)
+/* static */ void LinkRefresher::Run(Vehicle *v, bool allow_merge)
 {
 	/* If there are no orders we can't predict anything.*/
 	if (v->orders.list == NULL) return;
@@ -31,7 +32,7 @@
 	if (first == NULL) return;
 
 	HopSet seen_hops;
-	LinkRefresher refresher(v, &seen_hops);
+	LinkRefresher refresher(v, &seen_hops, allow_merge);
 
 	refresher.RefreshLinks(first, first, v->last_loading_station != INVALID_STATION ? 1 << HAS_CARGO : 0);
 }
@@ -59,9 +60,12 @@ bool LinkRefresher::Hop::operator<(const Hop &other) const
 /**
  * Constructor for link refreshing algorithm.
  * @param vehicle Vehicle to refresh links for.
+ * @param seen_hops Set of hops already seen. This is shared between this
+ *                  refresher and all its children.
+ * @param allow_merge If the refresher is allowed to merge or extend link graphs.
  */
-LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops) :
-		vehicle(vehicle), seen_hops(seen_hops), cargo(CT_INVALID)
+LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_merge) :
+		vehicle(vehicle), seen_hops(seen_hops), cargo(CT_INVALID), allow_merge(allow_merge)
 {
 	/* Assemble list of capacities and set last loading stations to 0. */
 	for (Vehicle *v = this->vehicle; v != NULL; v = v->Next()) {
@@ -190,10 +194,19 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 	if (st != NULL && next_station != INVALID_STATION && next_station != st->index) {
 		for (CapacitiesMap::const_iterator i = this->capacities.begin(); i != this->capacities.end(); ++i) {
 			/* Refresh the link and give it a minimum capacity. */
+
 			if (i->second == 0) continue;
+			CargoID c = i->first;
+
+			/* If not allowed to merge link graphs, make sure the stations are
+			 * already in the same link graph. */
+			if (!this->allow_merge && st->goods[c].link_graph != Station::Get(next_station)->goods[c].link_graph) {
+				continue;
+			}
+
 			/* A link is at least partly restricted if a
 			 * vehicle can't load at its source. */
-			IncreaseStats(st, i->first, next_station, i->second,
+			IncreaseStats(st, c, next_station, i->second,
 					(cur->GetLoadType() & OLFB_NO_LOAD) == 0 ? LinkGraph::REFRESH_UNRESTRICTED : LinkGraph::REFRESH_RESTRICTED);
 		}
 	}
