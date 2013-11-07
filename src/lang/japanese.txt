@@ -1563,7 +1563,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}分の1
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :変化なし
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の都市サイズ乗数: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始時に都市が普通の町に比べて平均して何倍の人口規模になるかを設定します
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :街路補修時に道路整理: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :街路補修時に道路を整理: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :街路補修に出資した際に、先が建物に塞がれた交差点などを整理撤去するようなります
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :分配グラフの更新頻度: {STRING}日
@@ -3413,7 +3413,7 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}船舶�
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}航空機を複製します。このボタンを押してから格納庫内/外の航空機をクリックして下さい。Ctrl+クリックすると、複製相手は元航空機と指令を共有します。Shift+クリックで金額の概算が出ます
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を列車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}メイン画面を車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
 

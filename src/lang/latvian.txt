@@ -1064,7 +1064,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Iestatījumi ar
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Iestatījumi ar atšķirīgu vērtību nekā jūsu jaunajai spēlei
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ierobežo zemāk esošo sarakstu ar noteiktiem iestatījumu veidiem
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Visi iestatījumi
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Visi iestatījumu veidi
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klienta programmas iestatījumi (netiek iekļauti saglabājumos, ietekmē visas spēles)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spēles iestatījumi (tiek iekļauti saglabājumos, ietekmē tikai jaunās spēles)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spēles iestatījumi (tiek iekļauti saglabājumā, ietekmē tikai pašreizējo spēli)
@@ -1194,7 +1194,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ļauj būvēt c
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturvietas uz sāncenšu ceļiem: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Ļauj būvēt caurbraucamas pieturvietas uz citiem uzņēmumiem piederošiem ceļiem
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Atļaut būvēt vienu otrai piekļautas stacijas: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Atļauj atšķirīgas stacijas piekļaut vienu otrai
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Ļauj atšķirīgas stacijas piekļaut vienu otrai
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Atļaut vairākus NewGRF transportlīdzekļu komplektus: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Saderības izvēle veciem NewGRF failiem. Neatspējojiet šo, izņemot ja jūs zinat ko darat!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iestatījumu nav iespējams mainīt, kad tur ir transportlīdzekļi
@@ -1204,7 +1204,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lidostas darbos
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ieslēdzot šo iestatījumu, katrs lidostas veids pēc tā ieviešanas vienmēr ir pieejams
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Brīdināt, ja transportlīdzeklis ir noklīdis: {STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ieslēgt ziņojumus par transportlīdzekļiem kas nespēj atrast ceļu uz norīkoto galamērķi
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ieslēdz ziņojumus par transportlīdzekļiem, kas nespēj atrast ceļu uz norīkoto galamērķi
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Pārbaudīt transportlīdzekļu rīkojumus: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Ja ieslēgts, tad transportlīdzekļu rīkojumus pastāvīgi pārbauda, un par dažām atklātajām problēmām tiek saņemti ziņojumi
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Atskaņot skaņ
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Gada beigas: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Atskaņot skaņas efektu gada beigās, apkopojot uzņēmuma darbības sasniegumus gada laikā salīdzinājumā ar iepriekšējo gadu
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Būvniecība: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Atskaņot skaņas efektu pēc sekmīgas būvēšanas vai citām darbībām
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Atskaņot skaņu pēc sekmīgas būvēšanas vai citām darbībām
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Pogu klikšķi: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Skan signāls, kad noklikšķina uz pogas
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofas/negadījumi: {STRING}
@@ -1356,7 +1356,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Atskaņot negad
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Transportlīdzekļi: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Atskaņot transportlīdzekļu skaņu efektus
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Apkārtne: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Atskaņot ainavas, ražotņu un pilsētu apkārtējo skaņu efektus
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Atskaņot ainavas, ražotņu un pilsētu apkārtējās skaņas
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ja ieslēgts, infrastruktūra ir pieejama tikai tad, ja tur ir pieejami arī transportlīdzekļi, novēršot laika un naudas izšķiešanu par nelietojamu infrastruktūru
@@ -1410,13 +1410,13 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Rādīt avīzi 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Sāncenša stacijā ierodas pirmais transportlīdzeklis: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rādīt avīzi kad sāncenša jaunajā stacijā ierodas pirmais transportlīdzeklis
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Negadījumi / katastrofas: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Rādīt avīzi kad notiek nelaimes gadījumi vai katastrofas
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Rādīt avīzi, kad notiek nelaimes gadījumi vai katastrofas
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Uzņēmuma informācija: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rādīt avīzi kad darbību sāk jauns uzņēmums, vai kad uzņēmumi riskē bankrotēt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ražotņu atklāšana: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Rādīt avīzi kad tiek atklāti jauni uzņēmumi
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Rādīt avīzi, kad tiek atklāti jauni uzņēmumi
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Ražotņu slēgšana: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Rādīt avīzi kad uzņēmumi tiek slēgti
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Rādīt avīzi, kad uzņēmumi tiek slēgti
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikas izmaiņas: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Rādīt avīzi par globālām izmaiņām ekonomikā
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs: {STRING}
@@ -2878,7 +2878,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} p
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transporta uzņēmumu vērtējumi:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Pieejamās darbības:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Šajā pilsētā atļauto darbību saraksts - uzklikšķināt uz darbības, lai uzzinātu vairāk
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Šajā pilsētā atļauto darbību saraksts - klikšķināt uz atsevišķa priekšmeta, lai uzzinātu vairāk
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Darīt
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Veikt iezīmēto darbību no augstāk esošā saraksta
 
@@ -3153,10 +3153,10 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} kuģ{P is i u}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} lidaparāt{P s i u}
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vilcieni - uzklikšķināt uz vilciena, lai uzzinātu vairāk
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotransporta līdzekļi - klikšķināt uz transportlīdzekļa, lai iegūtu informāciju
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kuģi - klikšķināt uz kuģa, lai iegūtu informāciju
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lidaparāts - klikšķināt uz lidaparāta, lai iegūtu informāciju
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vilcieni - klikšķināt uz vilciena, lai uzzinātu vairāk
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotransporta līdzekļi - klikšķināt uz transportlīdzekļa, lai uzzinātu vairāk
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kuģi - klikšķināt uz kuģa, lai uzzinātu vairāk
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lidaparāts - klikšķināt uz lidaparāta, lai uzzinātu vairāk
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Peļņa šogad: {CURRENCY_LONG} (pērn: {CURRENCY_LONG})
 
@@ -3176,8 +3176,8 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Sūtīt uz depo
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Sūtīt uz depo
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Sūtīt uz angāru
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klik, lai apstādinātu visas mašīnas, kas ir sarakstā
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klik, lai iedarbinātu visas mašīnas, kas ir sarakstā
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klikšķināt, lai apstādinātu visas mašīnas, kas ir sarakstā
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klikšķināt, lai iedarbinātu visas mašīnas, kas ir saraks
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Koplietojamie rīkojumi {COMMA} transportlīdzek{P lim ļiem ļiem}
 
@@ -3192,7 +3192,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupēti auto
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupēti kuģi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupēti lidaparāti
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupas - uzklikšķināt uz grupas, lai iegūtu tās transportlīdzekļu sarakstu
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupas - klikšķināt uz grupas, lai iegūtu tās transportlīdzekļu sarakstu
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikšķināt, lai izveidotu grupu
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dzēst izvēlēto grupu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Pārdēvēt izvēlēto grupu
@@ -3277,9 +3277,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} tr
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vilcieni - villkt sastāva daļu, lai pievienotu/atvienotu no vilciena. Klikšķināt uz vilciena, lai iegūtu informāciju. Turēt piespiestu Ctrl, lai attiecinātu abas funkcijas sekojošajai ķēdei
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Transportlīdzekļi - uzklikšķināt uz transportlīdzekļa, lai uzzinātu vairāk
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kuģi - uzklikšķināt uz kuģa, lai uzzinātu vairāk
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lidaparāti - uzklikšķināt uz lidaparāta, lai uzzinātu vairāk
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Transportlīdzekļi - labais klikšķis uz transportlīdzekļa, lai uzzinātu vairāk
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kuģi - labais klikšķis uz kuģa, lai uzzinātu vairāk
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lidaparāti - labais klikšķis uz lidaparāta, lai uzzinātu vairāk
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Pārvilkt vilciena vagonu uz šejieni, lai to pārdotu
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Pārvilkt autotransporta līdzekli uz šejieni, lai to pārdotu
@@ -3405,19 +3405,19 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Sūtīt 
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Sūtīt kuģi uz depo. Ctrl+klikšķis - izvēlēties tikai apkopi
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sūtīt lidaparātu uz angāru. Ctrl+klikšķis - izvēlēties tikai apkopi
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tas nopirks vilciena kopiju ar visiem vagoniem. Izmantojot Ctrl+klikšķis, vilcieni lietos kopīgus rīkojumus. Shift+klikšķis rāda izmaksu vērtību, neveicot pirkumu
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Tas pirks autotransporta kopiju. Izmantojot Ctrl+klikšķis, autotransporti lietos kopīgus rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tas nopirks kuģa kopiju. Izmantojot CTRL+klikšķis, kuģi kopīgi lietos rīkojumu. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tas nopirks lidaparāta kopiju. Izmantojot CTRL+klik, lidaparāti kopīgi lietos rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tas nopirks vilciena kopiju ar visiem vagoniem. Izmantojot Ctrl+klikšķis, vilcieni rīkojumus lietos kopīgi. Shift+klikšķis rāda izmaksu vērtību, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Tas nopirks autotransporta līdzekļa kopiju. Izmantojot Ctrl+klikšķis, autotransporta līdzekļi rīkojumus lietos kopīgi. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tas nopirks kuģa kopiju. Izmantojot Ctrl+klikšķis, kuģi rīkojumus lietos kopīgi. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tas nopirks lidaparāta kopiju. Izmantojot Ctrl+klikšķis, lidaparāti rīkojumus lietos kopīgi. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Piespiest vilcienu doties tālāk neievērojot signālu
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Piespiest vilcienu doties tālāk, neievērojot signālu
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Pielāgot vilcienu citam kravas veidam
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Pielāgot autotransporta līdzekli citam kravas veidam
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Pielāgot kuģi citam kravas veidam
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Pielāgot lidaparātu citam kravas veidam
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Apgriezt vilcienu
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Apgriezt vilcienu pretējā virzienā
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Piespiest transportlīdzekli apgriezties
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Rādīt vilcienu rīkojumus. Ctrl+klikšķis, lai rādītu vilcienu kustības sarakstu
@@ -3820,7 +3820,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigur
 STR_AI_LIST_CAPTION                                             :{WHITE}Pieejamie {STRING}
 STR_AI_LIST_CAPTION_AI                                          :MI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spēles skripti
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Uzklikšķināt, lai izvēlētos skriptu
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikšķināt, lai izvēlētos skriptu
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autors: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Versija: {ORANGE}{NUM}
