@@ -225,6 +225,80 @@ static void setupApplication()
 	[ NSApp setDelegate:_ottd_main ];
 }
 
+
+static int CDECL ModeSorter(const OTTD_Point *p1, const OTTD_Point *p2)
+{
+	if (p1->x < p2->x) return -1;
+	if (p1->x > p2->x) return +1;
+	if (p1->y < p2->y) return -1;
+	if (p1->y > p2->y) return +1;
+	return 0;
+}
+
+uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int device_depth)
+{
+	CFArrayRef mode_list  = CGDisplayAvailableModes(display_id);
+	CFIndex    num_modes = CFArrayGetCount(mode_list);
+
+	/* Build list of modes with the requested bpp */
+	uint count = 0;
+	for (CFIndex i = 0; i < num_modes && count < max_modes; i++) {
+		int intvalue, bpp;
+		uint16 width, height;
+
+		CFDictionaryRef onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(mode_list, i);
+		CFNumberRef number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
+		CFNumberGetValue(number, kCFNumberSInt32Type, &bpp);
+
+		if (bpp != device_depth) continue;
+
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayWidth);
+		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
+		width = (uint16)intvalue;
+
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayHeight);
+		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
+		height = (uint16)intvalue;
+
+		/* Check if mode is already in the list */
+		bool hasMode = false;
+		for (uint i = 0; i < count; i++) {
+			if (modes[i].x == width &&  modes[i].y == height) {
+				hasMode = true;
+				break;
+			}
+		}
+
+		if (hasMode) continue;
+
+		/* Add mode to the list */
+		modes[count].x = width;
+		modes[count].y = height;
+		count++;
+	}
+
+	/* Sort list smallest to largest */
+	QSortT(modes, count, &ModeSorter);
+
+	return count;
+}
+
+/** Small function to test if the main display can display 8 bpp in fullscreen */
+bool QZ_CanDisplay8bpp()
+{
+	/* 8bpp modes are deprecated starting in 10.5. CoreGraphics will return them
+	 * as available in the display list, but many features (e.g. palette animation)
+	 * will be broken. */
+	if (MacOSVersionIsAtLeast(10, 5, 0)) return false;
+
+	OTTD_Point p;
+
+	/* We want to know if 8 bpp is possible in fullscreen and not anything about
+	 * resolutions. Because of this we want to fill a list of 1 resolution of 8 bpp
+	 * on display 0 (main) and return if we found one. */
+	return QZ_ListModes(&p, 1, 0, 8);
+}
+
 /**
  * Update the video modus.
  *
