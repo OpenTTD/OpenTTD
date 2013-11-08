@@ -396,9 +396,12 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 	if (MacOSVersionIsAtLeast(10, 7, 0)) {
 		ret = QZ_CreateWindowSubdriver(width, height, bpp);
 		if (ret != NULL && fullscreen) ret->ToggleFullscreen();
-	} else {
+	}
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_9
+	else {
 		ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
 	}
+#endif /* MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_9 */
 
 	if (ret != NULL) return ret;
 	if (!fallback) return NULL;
@@ -408,7 +411,7 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 	ret = QZ_CreateWindowSubdriver(640, 480, bpp);
 	if (ret != NULL) return ret;
 
-#ifdef _DEBUG
+#if defined(_DEBUG) && (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_9)
 	/* This Fullscreen mode crashes on OSX 10.7 */
 	if (!MacOSVersionIsAtLeast(10, 7, 0)) {
 		/* Try fullscreen too when in debug mode */
@@ -416,7 +419,7 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 		ret = QZ_CreateFullscreenSubdriver(640, 480, bpp);
 		if (ret != NULL) return ret;
 	}
-#endif
+#endif /* defined(_DEBUG) && (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_9) */
 
 	return NULL;
 }
