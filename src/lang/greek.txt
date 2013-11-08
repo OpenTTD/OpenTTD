@@ -255,8 +255,8 @@ STR_COLOUR_WHITE                                                :Λευκό
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} χλμ/ώρα
-STR_UNITS_VELOCITY_SI                                           :{COMMA} μ/δ
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} χλμ/ω
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
@@ -277,7 +277,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} πόδια
-STR_UNITS_HEIGHT_SI                                             :{COMMA} μ
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Φιλτράρισμα λίστας:
@@ -473,13 +473,13 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματο�
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Κατασκευή σιδηρόδρομου
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Κατασκευή ηλεκτροδοτουμένου σιδηρόδρομου
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονόγραμμου
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονοτρόχιου
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή Maglev
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Κατασκευή δρόμου
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Κατασκευή τροχιόδρομου (τραμ)
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Κατασκευή τροχιόδρομου
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -828,7 +828,7 @@ STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο τρένο φτάνει στον στάθμο {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο φορτηγό φτάνει στον σταθμό {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν . . .{}Το πρώτο επιβάτικο τραμ φτάνει στη στάση {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν . . .{}Το πρώτο επιβατικό τραμ φτάνει στη στάση {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο εμπορευματικό τραμ φτάνει στον σταθμό {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν . . .{}Το πρώτο πλοίο φτάνει στο λιμάνι {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν . . .{}Το πρώτο αεροσκάφος φτάνει στο {STATION}!
@@ -1414,8 +1414,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Η προεπιλεγμένη παλέτα για NewGRF δεν ορίζει ορθά παλέτα: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Η προκαθορισμένη παλέτα που θα χρησιμοποιείται για τα NewGRF που δεν έχουν ορίσει ποια χρειάζονται
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Παλέτα DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Παλέτα Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Όταν είναι ενεργοποιημένο, τα νέα παιχνίδια ξεκινούν σε παύση αυτόματα, επιτρέποντας καλύτερη μελέτη του χάρτη
@@ -1778,14 +1776,14 @@ STR_LIVERY_DEFAULT                                              :Πρότυπο 
 STR_LIVERY_STEAM                                                :Ατμοκίνητη Μηχανή
 STR_LIVERY_DIESEL                                               :Πετρελαιοκίνητη Μηχανή
 STR_LIVERY_ELECTRIC                                             :Ηλεκτροκίνητη Μηχανή
-STR_LIVERY_MONORAIL                                             :Μηχανή Monorail
+STR_LIVERY_MONORAIL                                             :Μηχανή Μονοτρόχιου
 STR_LIVERY_MAGLEV                                               :Μηχανή Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Επιβατικό Βαγόνι (Ατμού)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Επιβατικό Βαγόνι (Πετρελαίου)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Επιβατικό Βαγόνι (Ηλεκτρικό)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατικό Βαγόνι (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατικό Βαγόνι (Μονοτρόχιο)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Επιβατικό Βαγόνι (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Εμπορικό Βαγόνι
 STR_LIVERY_BUS                                                  :Λεωφορείο
@@ -2255,7 +2253,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Κτί�
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Κατασκευή Σιδηρόδρομου
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Κατασκευή Ηλεκτροδοτημένου Σιδηρόδρομου
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Σιδηρόδρομου Monorail
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Μονοτρόχιου Σιδηρόδρομου
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Κατασκευή Σιδηροδρόμου Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
@@ -2271,7 +2269,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετα
 
 STR_RAIL_NAME_RAILROAD                                          :Σιδηρόδρομος
 STR_RAIL_NAME_ELRAIL                                            :Ηλεκτροδοτημένη σιδηροτροχιά
-STR_RAIL_NAME_MONORAIL                                          :Monorail
+STR_RAIL_NAME_MONORAIL                                          :Μονοτρόχιος
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
@@ -2336,11 +2334,11 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Σιλικόν�
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Δρόμου
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Τροχιόδρομου (τραμ)
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Τροχιόδρομου
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση δρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομου (τραμ). Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιοδρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου με χρήση της λειτουργίας Αυτόματου Δρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση δρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ με χρήση της λειτουργίας Αυτόματης Γραμμής. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή τροχιοδρόμου με χρήση της λειτουργίας Αυτόματης Γραμμής. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Το Ctrl ενεργοποιεί συνένωση σταθμών. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
@@ -2349,27 +2347,27 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατα
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Το Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ενεργοποίηση/Απενεργοποίηση μονόδρομων
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομου (τραμ). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιοδρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομου (τραμ). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιοδρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Προσανατολισμός Σταθμού Οχημάτων
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου οχημάτων
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Προσανατολισμός Αμαξοστασίου Τροχιόδρομου (τραμ)
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου τροχιόδρομου (τραμ)
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Προσανατολισμός Αμαξοστασίου Τραμ
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου τραμ
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Προσανατολισμός Στάσης Λεωφορείου
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Επιλέξτε τον προσανατολισμό της στάσης των λεωφορείων
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Προσανατολισμός Σταθμού Φόρτωσης Φορτηγών
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Επιλέξτε τον προσανατολισμό του σταθμού φόρτωσης φορτηγών
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Προσανατολισμός Επιβατικού Σταθμού Τροχιόδρομου (τραμ)
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Επιλέξτε τον προσανατολισμό του επιβατικού σταθμού τροχιόδρομου (τραμ)
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Προσανατολισμός Εμπορευματικού Σταθμού Τροχιόδρομου
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλέξτε τον προσανατολισμό του εμπορευματικού σταθμού τροχιόδρομου (τραμ)
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Προσανατολισμός Επιβατικού Σταθμού Τραμ
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Επιλέξτε τον προσανατολισμό του επιβατικού σταθμού τραμ
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Προσανατολισμός Εμπορευματικού Σταθμού Τραμ
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλέξτε τον προσανατολισμό του εμπορευματικού σταθμού τραμ
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Κατασκευή Καναλιού Νερού
@@ -2577,7 +2575,7 @@ STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Δρόμος μ
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Δρόμος με δέντρα
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Αμαξοστάσιο οχημάτων
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Διασταύρωση δρόμου/σιδηροτροχιάς
-STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Τροχιόδρομος (τραμ)
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Τροχιόδρομος
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (υπό κατασκευή)
@@ -2699,7 +2697,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειρ
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περιστροφή χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Μέγεθος:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Δώστε έναν σπόρο τυχαίας παραγωγής
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
@@ -3253,7 +3251,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετο
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Νέα Οχήματα Σιδηρόδρομου
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήματα Ηλεκτροδοτουμένου Σιδηρόδρομου
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Monorail
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Μονοτρόχιου
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήματα Maglev
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
@@ -3398,7 +3396,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσ
 STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :{G=n}αεροπλάνου
 STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
 STR_ENGINE_PREVIEW_SHIP.geniki                                  :{G=n}πλοιού
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανής monorail
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανής μονοτρόχιου
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.geniki                   :{G=f}μηχανής monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανής maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :{G=f}μηχανής maglev
@@ -3439,8 +3437,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Επιλ
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Εμφανίζει ποια μηχανή στα αριστερά θα αντικατασταθεί, εάν υπάρχει
 STR_REPLACE_RAIL_VEHICLES                                       :Οχήματα Σιδηροδρόμου
 STR_REPLACE_ELRAIL_VEHICLES                                     :Οχήματα Ηλεκτρικού Σιδηροδρόμου
-STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Monorail
-STR_REPLACE_MAGLEV_VEHICLES                                     :Βαγόνια Maglev
+STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Μονοτρόχιου
+STR_REPLACE_MAGLEV_VEHICLES                                     :Οχήματα Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
@@ -3939,7 +3937,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Το αρχεί
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Το αρχείο δεν είναι εγγράψιμο
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Έλεγχος ακεραιότητας δεδομένων απέτυχε
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<μη διαθέσιμο>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χωρίς υποστήριξη τροχιόδρομου. Όλα τα τραμ έχουν αφαιρεθεί
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει αποθηκευτεί σε έκδοση χωρίς υποστήριξη για τραμ. Όλα τα τραμ έχουν αφαιρεθεί
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλείφτηκε...{}... δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
@@ -4163,7 +4161,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Δε γ�
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Πρέπει πρώτα να αφαιρεθεί ο δρόμος
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... οι μονόδρομοι δεν μπορούν να έχουν διασταυρώσεις
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Αδύνατο να κτιστεί δρόμος εδώ...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να κτιστεί γραμμή τραμ εδώ...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να κτιστεί τροχιοδρόμος εδώ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Δεν μπορεί να αφαιρεθεί τροχιόδρομος από εδώ...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... δεν υπάρχει δρόμος
@@ -4451,7 +4449,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Πετρελαίου)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Πετρελαίου
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Πετρελαίου
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Ατμοκίνητο)
@@ -4660,7 +4658,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Επιβατη�
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Επιβατηγό Πλοίο Shivershake
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Πλοίο Εμπορευμάτων Yate
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Πλοίο Εμπορευμάτων Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Πλοίο Εμπορευμάτων Mightymover
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Πλοίο Εμπορευμάτων MightyMover
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Πλοίο Εμπορευμάτων Powernaut
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

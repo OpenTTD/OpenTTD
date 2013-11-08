@@ -195,8 +195,8 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mil/j
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/jam
 STR_UNITS_VELOCITY_SI                                           :{COMMA} meter/detik
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}dk
+STR_UNITS_POWER_METRIC                                          :{COMMA}dk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -359,7 +359,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tanda ditampilk
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Tampilan penanda dan nama pesaing
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animasi penuh
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detail penuh
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Bangunan tembus pandang
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparankan bangunan
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparankan tanda-tanda
 ############ range ends here
 
@@ -397,7 +397,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Daftar biaya ka
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabel Perusahaan
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating kemampuan secara rinci
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Penilaian terperinci kinerja
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabel Skor
 ############ range ends here
 
@@ -515,7 +515,7 @@ STR_MONTH_JUL                                                   :Juli
 STR_MONTH_AUG                                                   :Agustus
 STR_MONTH_SEP                                                   :September
 STR_MONTH_OCT                                                   :Oktober
-STR_MONTH_NOV                                                   :November
+STR_MONTH_NOV                                                   :Nopember
 STR_MONTH_DEC                                                   :Desember
 ############ range for months ends
 
@@ -530,7 +530,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik keuntungan operasional
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik Pendapatan
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Jumlah kargo terkirim
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Peringkat rating perusahaan (rating maksimal=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Peringkat kinerja perusahaan (peringkat maksimal=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Nilai Perusahaan
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Daftar tarif kargo
@@ -543,7 +543,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}menampil
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Pilih jenis kargo yang akan ditampilkan
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Perlihatkan detil rating kekuatan
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Tampilkan rincian penilaian kinerja
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Grafik item perusahaan
@@ -563,7 +563,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presiden
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Rating kemampuan secara rinci
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Penilaian terperinci kinerja
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -739,14 +739,14 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Pesawat pertama tiba di {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Kecelakaan Kereta!{}{COMMA} mati dalam ledakan setelah kecelakaan
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Kecelakaan Kereta!{}{COMMA} tewas dalam ledakan setelah kecelakaan
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}Seorang sopir tewas dalam ledakan setelah ditabrak kereta
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}{COMMA} orang mati dalam kebakaran di {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}{COMMA} orang tewas dalam kebakaran di {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang tewas dalam lautan api!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Bencana Zeppelin di {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Kendaraan hancur pada kecelakaan 'UFO'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Kendaraan hancur dalam kecelakaan 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Kilang minyak meledak didekat {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Pabrik hancur akibat hubungan pendek arus listik di dekat {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' mendarat di dekat {TOWN}!
@@ -1105,7 +1105,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika dinyalakan
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Melarang pemutaran kereta di stasiun: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diaktifkan, kereta tidak akan berputar selain di stasiun ujung, termasuk jika ada jalan yang lebih pendek kalau berbalik
 STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :mengaktifkan bencana yang mungkin memblok atau menghancurkan kendaraan atau infrastruktur
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Mengaktifkan bencana yang mungkin dapat menghalangi atau menghancurkan kendaraan / infrastruktur
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap pemerintah kota terhadap restrukturasi area: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih seberapa banyak dampak kebisingan dan lingkungan oleh perusahaan terhadap peringkat kota karena pembangunan di daerah
 
@@ -1133,7 +1133,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Kemiringan untu
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kemiringan untuk kendaraan. Nilai yang lebih tinggi membuat lebih sulit menaiki bukit
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Kereta dan kapal dilarang belok 90 derajat: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Belokan 90 derajat terjadi ketika rel horizontal diikuti langsung oleh rel vertikal di ubin berikutnya, jadi membuatnya berputar balik di ujung ubin daripada memutar 45 derajat di kombinasi rel lain. Ini juga berlaku pada radius belokan kapal.
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ijinkan menggabung stasiun meski tdk menempel: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ijinkan menggabung stasiun meski tidak menempel: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Ijinkan penambahan bagian dari stasiun tanpa menyentuh bagian yang sudah ada. Perlu Ctrl+Klik ketika menambahkan bagian baru.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gunakan algoritma pengangkutan terbaru : {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Jika diaktifkan, beberapa kendaraan di stasiun dimuat secara berurutan. Pemuatan kendaraan berikutnya hanya dimulai ketika ada kargo cukup menunggu untuk benar-benar mengisi kendaraan pertama
@@ -1204,7 +1204,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ijinkan termina
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Membolehkan konstruksi halte di jalan yang dimiliki perusahaan lain
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Ijinkan membangun stasiun berdampingan: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Membolehkan stasiun berbeda untuk berhubungan satu sama lain
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktifkan beberapa pengaturan mesin NewGRF : {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktifkan beberapa pengaturan mesin NewGRF: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Pilihan kompatibilitas untuk NewGRF lama. Jangan mematikan ini, sampai anda tahu apa yang anda lakukan!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak diijinkan mengubah setting ini karena kendaraan sudah ada
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Perawaran Infrastruktur: {STRING}
@@ -1232,7 +1232,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} bulan s
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} bulan sesudahnya
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimal dana tersedia untuk perbaruan otomatis: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Jumlah uang minimal yang harus ada di bank sebelum mamperbarui otomatis kendaraan
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durasi dari pesan kesalahan: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durasi pesan kesalahan: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durasi penampilan pesan kesalahan di jendela merah. Beberapa pesan kesalahan tidak ditutup secara otomatis setelah ini, tapi harus ditutup secara manual
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} detik
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Tampilkan tooltips: {STRING}
@@ -1291,6 +1291,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Tidak ada
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Perusahaan milik sendiri
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Semua Perusahaan
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Lebih suka Tim Chat dengan <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Ubah ikatan obrolan internal dan awam dari perusahaan ke <ENTER> resp. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Fungsi tombol scroll mouse: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Membolehkan menggeser dengan ban mouse 2 dimensi
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Perbesar Peta
@@ -1299,6 +1300,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Non-aktifkan
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Kecepatan pergeseran Peta: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Mengatur sensitif nya penggeseran dengan mouse
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Keyboard di layar: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Pilih metoda membuka keyboard di layar untuk memasukkan teks ke dalam editbox menggunakan perangkat berujung. Berguna untuk perangkat-perangkat kecil tak ber-keyboard.
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Non-aktifkan
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Klik ganda
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik sekali (saat tersorot)
@@ -1311,57 +1313,99 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrol-klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Geser dgn klik-kiri: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Aktifkan penggeseran peta dengan menyeret menggunakan tombol kiri mouse. Hal ini sangat berguna apabila menggunakan layar sentuh.
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gunakan format tanggal {STRING} untuk berkas simpanan
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format tanggal di nama berkas permainan tersimpan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :panjang (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :pendek (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palette standard digunakan untuk NewGRFs yang tidak punya setting: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palet standar digunakan untuk NewGRF yang tidak menentukan yang mana itu perlu
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Palet standar (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Palet warisan (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Selalu hentikan sementara permainan saat memulai : {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Jika diaktifkan, permainan akan berhenti sejenak secara otomatis ketika permainan baru dimulai, memungkinkan untuk lebih mempelajari peta
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Saat berhenti, ijinkan: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Pilih tindakan yang mungkin dilakukan saat permainan berhenti sejenak
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Tidak ada tindakan
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Semua tindakan kecuali pembangunan
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Semua kecuali mengubah dataran
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Semua tindakan
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gunakan daftar kendaraan tingkat lanjut: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Mengaktifkan penggunaan daftar kendaraan lebih lanjut dalam pengelompokkan kendaraan
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Tampilkan indikator pengangkutan: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Pilih apakah petunjuk beban ditayangkan di atas kendaran yang sedang mengisi atau menurunkan beban
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Penjadwalan menggunakan satuan titik , bukan satuan hari: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Menunjukan waktu perjalanan dalam titik permainan daripada dalam hari
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Tampilkan keberangkatan dan kedatangan pada jadwal: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tampilkan waktu diantisipasi kedatangan dan keberangkatan di jadwal
 STR_CONFIG_SETTING_QUICKGOTO                                    :Buat pemberhentian kendaraan secara cepat: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pra-pilih kursor 'pergi ke' ketika jendela perintah dibuka
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Jenis rel saat baru bermain/memuat permainan: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jenis rel yang dipilih setelah memulai atau pemuatan permainan. 'tersedia pertama' pilihkan jenis rel paling tua, 'tersedia terakhir' pilihkan jenis rel paling baru, dan 'sering dipakai' pilihkan jenis yang sekarang paling sering dipakai
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Tersedia pertama
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sorot rel yang akan terpakai: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Beri warna yang berbeda untuk jalur-jalur yang dicadangkan untuk menolong ketika terdapat kereta yang menolak masuk ke blok menurut jalurnya
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Toolbar tetap aktif setelah dipakai: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menjagakan alat pembangunan untuk jembatan, terowongan, etc. buka setelah dipakai
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kelompokkan pengeluaran perusahaan dalam neraca: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Mendefinisikan tata ruang untuk tetingkap biaya perusahaan
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Ticker berita: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Mainkan suara untuk pesanan berita yang diringkas
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Koran: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Mainkan suara saat penampilan koran
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Akhir tahun: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Mainkan suara di akhir tahun ringkaskan prestasi perusahaan selama tahun dibandingkan tahun terakhir
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembangunan: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Mainkan suara waktu pembangunan yang berhasil atau aksi lain
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Klik tombol: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Berbunyi waktu mengklik tombol
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Bencana/kecelakaan: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Mainkan efek suara kecelakaan dan bencana
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Kendaraan: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Mainkan efek suara kendaraan
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambien: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Mainkan suara ambien pemandangan, industri dan kota
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Matikan infrastruktur bangunan saat tak ada kendaraan yang tersedia: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Jika diaktifkan, infrastruktur cuma tersedia jika ada kendaraan tersedia, mencegah buang waktu dan uang di infrastruktur yang tidak bisa digunakan
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. kereta tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Batas jumlah kereta yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. kendaraan jalan raya tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Batas jumlah kendaraan jalan raya yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks. pesawat tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Batas jumlah pesawat yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks. kapal tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Jumlah maximum kapal yang boleh dimilki sebuah perusahaan
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Non-aktifkan kereta bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun kereta
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Non-aktifkan kendaraan jalan raya bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun kendaraan jalan raya
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Non-aktifkan pesawat bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun pesawat
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Non-aktifkan kapal bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun kapal
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Profil pengaturan standar: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Pilih profil yang digunakan untuk pengaturan AI acak atau nilai awal saat menambahkan AI atau Game Script baru
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Gampang
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Sedang
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Susah
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ijinkan kecerdasan pada modus banyak pemain: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Bolehkan pemain komputer AI untuk ikut permainan multiplayer
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum scripts di-tahan: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Batas maksimal langkah perhitungan yang boleh ambil oleh skript dalam satu putaran
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Jangka waktu perbaikan dalam persen: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih apakah servis kendaraan dipicu oleh waktu terlewat sejak servis terakhir atau dari kehandalan menjatuh beberapa persentase dari kehandalan maximum
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval dasar untuk kereta: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setel interval dasar untuk kereta, jika tidak ada interval tetap
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} hari/%
@@ -1544,21 +1588,22 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti ni
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Kesalahan pada file konfigurasi...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... kesalahan pada array '{STRING}'
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nilai '{STRING}' tdk sah untuk '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nilai '{STRING}' tidak sah untuk '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... karakter pengisi di akhir setelan '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... mengabaikan NewGRF '{STRING}': GRF ID kembar sama '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... mengabaikan NewGRF tidak valid '{STRING}': {STRING}
-STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :tdk ditemukan
-STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :tdk aman untuk pemakaian statis
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :tidak ditemukan
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :tidak aman untuk pemakaian statis
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistem NewGRF
-STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :tdk kompatibel dengan OpenTTD versi ini
-STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tdk diketahui
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :tidak kompatibel dengan OpenTTD versi ini
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tidak diketahui
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... tingkat kompresi '{STRING}' tidak sah
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format savegame '{STRING}' tidak tersedia. Kembali ke '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... mengabaikan set grafis dasar '{STRING}': tak ditemukan
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... mengabaikan set suara dasar '{STRING}': tidak ditemukan
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... mengabaikan set musik dasar '{STRING}': tidak ditemukan
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Kehabisan memori
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Mengalokasikan {BYTES} 'spritecache' gagal. 'Spritecache' dikurangi ke {BYTES}. Ini akan kurangi kinerja OpenTTD. Untuk kurangi kebutuhan memori anda bisa coba matikan grafik 32bpp dan/atau tingkat pembesaran
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1620,7 +1665,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Batalkan Permainan
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah anda yakin untuk membatalkan permainan saat ini?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah anda yakin untuk meninggalkan permainan?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apa anda yakin mau keluar dari skenario ini ?
 
 # Cheat window
@@ -1632,7 +1677,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat tak akan (sering) celaka di bandara kecil: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap 'Temperata'
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap 'Sedang'
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lansekap 'Sub Arktik'
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Lansekap 'Sub Tropis'
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Lansekap 'Taman Bermain'
@@ -2040,6 +2085,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Tandai s
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cari di website luar
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cari konten yang tidak tersedia dalam server konten OpenTTD di website yang tidak berhubungan dengan OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Anda keluar dari OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Syarat dan ketentuan untuk menguduh konten dari situs web luar berbeda-beda.{}Anda harus merujuk ke situs web luar tersebut untuk petunjuk pemasangan kontennya ke OpenTTD.{} Apakah anda ingin melanjutkan?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tanda/nama filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Kunjungi laman
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Kunjungi laman untuk konten ini
@@ -2087,7 +2133,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tak dapat tersambung ke server
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Gagal mengunduh...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... hubungan terputus
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... koneksi terputus
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... berkas tak dapat ditulisi
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tak dapat mengembangkan file terunduh
 
@@ -2220,7 +2266,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bangun j
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bangun jalur trem menggunakan mode Autotram. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan kendaraan). Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan trem). Shift untuk menampilkan perkiraan biaya
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bangun stasiun bus. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bangun terminal bus. Ctrl untuk mengaktifkan penggabungan terminal. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bangun stasion trem penumpang. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bangun terminal bongkar muat. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bangun stasiun trem. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
@@ -2239,7 +2285,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Arah ben
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tentukan arah bengkel trem menghadap
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi stasiun Bus
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi Terminal Bus
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah terminal bus
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientasi stasiun truk
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Pilih arah terminal bongkar muat truk
@@ -2530,7 +2576,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Simpan
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Simpan permainan saat ini, gunakan nama yang terpilih
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Muat
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Membuka permainan yang telah dipilih
-STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detil Permainan
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Rincian Permainan
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tidak ada informasi yang tersedia
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
@@ -2612,7 +2658,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Menyiapk
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Pengaturan NewGRF
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informasi detail NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Rincian Informasi NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}File NewGRF aktif
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}File NewGRF tidak aktif
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Pilih preset:
@@ -2760,7 +2806,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industri tidak
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Memindai NewGRFs
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Memindai NewGRFs. Tergantung banyaknya cukup memakan waktu...
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Memindai berkas NewGRF. Lamanya waktu tergantung dari jumlah berkas...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF dipindai dari kira2 {NUM} NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :Memindai arsip
 
@@ -3401,7 +3447,7 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Kecepata
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan thn ini: {LTBLUE}{CURRENCY_LONG} (thn lalu: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY_LONG} (tahun lalu: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Mogok sejak perbaikan terakhir : {LTBLUE}{COMMA} kali
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
@@ -3417,6 +3463,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka w
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah jarak waktu perbaikan dengan 10. Ctrl+Click menambah jarak waktu perbaikan dengan 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangi jarak waktu perbaikan dengan 10. Ctrl+Click mengurangi jarak waktu perbaikan dengan 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ubah jenis interval perbaikan
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standar
+STR_VEHICLE_DETAILS_DAYS                                        :Hari
 STR_VEHICLE_DETAILS_PERCENT                                     :Persentase
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama kereta
@@ -3721,7 +3770,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrip Pe
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yg akan dijalankan pada permainan berikutnya
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
-STR_AI_CONFIG_NONE                                              :(tdk ada)
+STR_AI_CONFIG_NONE                                              :(tidak ada)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Naikkan
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan AI terpilih dalam daftar
@@ -3816,7 +3865,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... disa
 STR_ERROR_PNGMAP                                                :{WHITE}Tidak dapat memuat lansekap dari PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... berkas tidak ada
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi. Diperlukan PNG 8 atau 24-bit
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... sepertinya ada yang salah. Maaf. (mungkin berkasnya rusak)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... maaf, terjadi kesalahan (mungkin berkasnya rusak)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Tidak dapat memuat lansekap dari BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi jenis gambar
@@ -3869,7 +3918,7 @@ STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sogokan 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tidak dapat menaikkan tanah disini
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tidak dapat menurunkan tanah disini
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nggak bisa rata...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Dataran tak bisa diratakan...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Penggalian akan merusak terowongan
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Telah sama dengan ketinggian laut
 STR_ERROR_TOO_HIGH                                              :{WHITE}Terlalu tinggi
@@ -3926,9 +3975,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... hany
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Tidak dapat membangun stasiun kereta disini
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Tidak dapat membangunstasiun bus...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Tidak dapat membangun gerbong stasiun...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Tidak dapat membangun stasiun trem disini...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Tidak dapat membangun terminal bus...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Tidak dapat membangun stasiun bongkar-muat...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Tidak dapat membangun halte trem disini...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Tidak dapat membangun stasiun kargo trem...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tidak dapat membuat pelabuhan disini...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tidak dapat membangun bandara disini...
@@ -3951,15 +4000,15 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... term
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Tidak dapat menghapus bagian dari stasiun...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Harus menghapus stasiun dulu
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Tidak dapat membongkar stasiun Bus...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tidak dapat membongkar stasiun truk...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Tidak dapat membongkar stasiun trem...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Tidak dapat membongkar terminal Bus...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tidak dapat membongkar stasiun bongkar-muat...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Tidak dapat membongkar halte trem...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Tidak dapat membongkar stasiun kargo trem...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Terminal harus di hancurkan dulu.
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...tidak ada stasiun di sini
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Harus menghancurkan jalur rel stasiun terlebih dahul
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Harus menghancurkan stasiun bis terlebih dahulu
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Harus menghancurkan terminal bus terlebih dahulu
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Harus menghancurkan stasiun truk terlebih dahulu
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Harus menghancurkan terminal penumpang trem terlebih dahulu
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Harus menghancurkan terminal kargo trem terlebih dahulu
@@ -4011,7 +4060,7 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Tidak ad
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(batas min. uang)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Kombinasi rel yang tidak mungkin
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Kombinasi rel yang mustahil
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Sinyal harus dihancurkan dulu
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tidak tersedia rel yang sesuai
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Harus membongkar rel terlebih dahulu
@@ -4044,8 +4093,8 @@ STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tidak da
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... harus dibangun di atas air
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... tidak dapat membangun di atas air
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... tidak dapat membangun di laut terbuka
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... tdk dapat membangun di atas kanal
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... tdk dapat membangun diatas sungai
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... tidak dapat membangun di atas kanal
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... tidak dapat membangun di atas sungai
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Harus menghancurkan kanal terlebih dahulu
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tidak dapat membangun jembatan air disini...
 
@@ -4137,14 +4186,17 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Kapal ti
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Pesawat tidak tersedia
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kendaraan dalam permainan
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak dapat mengubah jarak waktu perbaikan...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak dapat mengubah waktu perbaikan...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kendaraan hancur
+
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Belum ada kendaraan yang tersedia saat ini
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Mulai permainan baru setelah {DATE_SHORT} atau gunakan NewGRF yang menyediakan kendaraan awal
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tidak dapat memutar balik arah kereta...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Kereta tdk bertenaga
+STR_ERROR_TRAIN_START_NO_POWER                                  :Kereta tidak bertenaga
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tidak dapat memutar kendaraan...
 
@@ -4315,7 +4367,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS '250' (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Uap)
@@ -4641,6 +4693,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

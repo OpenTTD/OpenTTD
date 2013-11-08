@@ -1167,8 +1167,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :fada (31 Noll 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :gearr (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailéad DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailéad Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Cuir cluiche ar sos go huathoibríoch agus cluiche nua á thosú: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Agus an cluiche ar sos, ceadaigh: {STRING}
@@ -3871,7 +3869,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Díosal)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Choo-Choo Ploddyphut
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Choo-Choo Powernaut
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Choo-Choo Mightymover
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Choo-Choo MightyMover
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Díosail
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Díosail
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Gal)
@@ -4080,7 +4078,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Bád Farantóir
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Bád Farantóireachta Shivershake
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Lastlong Yate
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Lastlong Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Lastlong Mightymover
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Lastlong MightyMover
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Lastlong Powernaut
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

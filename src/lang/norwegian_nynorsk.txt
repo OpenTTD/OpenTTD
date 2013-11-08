@@ -1233,8 +1233,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Anteke standardpalett for NewGRFer utan spesifisert palett: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-palett
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatisk pause når ein startar nytt spel: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Når spelet er pausa, tillet: {STRING}
@@ -4209,7 +4207,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (damp)
@@ -4418,7 +4416,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug-pa
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake-passasjerferje
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate-konteinarskip
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell-konteinarskip
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover-konteinarskip
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover-konteinarskip
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut-konteinarskip
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

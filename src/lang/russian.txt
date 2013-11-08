@@ -1475,8 +1475,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Если в NewGRF не указана палитра, использовать: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Палитра по умолчанию для модулей NewGRF, в которых не указана требуемая палитра
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :палитру DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :палитру Windows
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Палитра по умолчанию (DOS)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Устаревший формат палитры (Win)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Автопауза в начале игры: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Включение паузы при старте новой игры, чтобы лучше изучить карту
@@ -4594,7 +4594,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Паровоз 
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :Тепловоз MJS 250
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Паровоз Ploddyphut «Чу-Чу»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Паровоз Powernaut «Чу-Чу»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Паровоз Mightymover «Чу-Чу»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Паровоз MightyMover «Чу-Чу»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Тепловоз Ploddyphut
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Тепловоз Powernaut
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Паровоз Wills 2-8-0
@@ -4803,7 +4803,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Пассажи�
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Пассажир. судно Shivershake
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Сухогруз Yate
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Сухогруз Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Сухогруз Mightymover
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Сухогруз MightyMover
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Сухогруз Powernaut
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

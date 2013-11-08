@@ -1337,8 +1337,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :לוח צבעים ברירת מחדל שיש להניח עבור NewGRF-ים אשר אינם מפרטים לוח צבעים: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :לוח צבעים ברירת מחדל לשימוש עבור NewGRF-ים אשר אינם מפרטים איזה לוח צבעים הם צריכים
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :לוח צבעים DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :לוח צבעים Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :עצור משחק אוטומטית אחרי התחלת משחק חדש: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :כאשר מאופשר, המשחק יושהה אוטומטית בעת התחלת משחק חדש, דבר המאפשר בחינה מדוקדקת יותר של המפה

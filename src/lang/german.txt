@@ -585,10 +585,10 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Anzahl der Fahrzeuge (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Hubschrauber), die im letzten Jahr Gewinn gemacht haben
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Anzahl vor kurzem genutzter Stationen (wenn Stationen verschiedener Typen verbunden sind, werden sie trotzdem einzeln gezählt)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Geringster Gewinn der Fahrzeuge, die älter als zwei Jahre sind
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Geringste Monatseinnahmen in den letzten 12 Quartalen
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Höchste Monatseinnahmen in den letzten 12 Quartalen
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}In den letzten 4 Quartalen gelieferte Frachteinheiten
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Im letzten Quartal gelieferte Frachttypen
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Geringste Quartalseinnahmen in den letzten 3 Jahren
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Höchste Quartalseinnahmen in den letzten 3 Jahren
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Im letzten Jahr gelieferte Frachteinheiten
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Anzahl der transportierten Frachttypen im letzten Quartal
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Kontostand dieser Firma
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Der von dieser Firma in Anspruch genommene Kredit
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
@@ -1324,8 +1324,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-25
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard-Palette für NewGRFs, die keine Paletteninformationen angeben: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalette für NewGRFs, die keine Palette definieren
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-Palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-Palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standardfarbpalette (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Veraltete Farbpalette (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatische Pause bei Spielstart: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Starte ein Spiel im Pausenmodus; dies erlaubt vor Spielstart, die Karte ausführlich zu betrachten.
@@ -1394,8 +1394,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Verbiete Comput
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schiffe für den Computer abschalten: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Verbiete Computerspielern, Schiffe zu kaufen
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Standard-Einstellungen: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wählen, welches Einstellungs-Profil für zufällige KIs oder anfängliche Werte von KIs oder Spielscripten genommen werden soll
+STR_CONFIG_SETTING_AI_PROFILE                                   :Standardeinstellungen: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Auswählen, welcher Schwierigkeitsgrad in den KI-Optionen von zufällig startenden Computerspielern eingestellt werden soll. Wird auch als Standardwert für einzeln ausgewählte KIs oder für Spielskripte verwendet
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Leicht
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mittel
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Schwierig
@@ -3045,13 +3045,13 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Keine
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Firmensitz bauen
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Firmensitz bauen
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Firmensitz an einer freien Stelle errichten
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Firmensitz
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Firmensitz anzeigen
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verlegen
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu. Shift+Klick zeigt einen Kostenvoranschlag
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
-STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaillierte Infrastrukturinformationen anzeigen
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaillierte Informationen zur Infrastruktur dieser Firma anzeigen
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Neues Gesicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Neues Gesicht für Manager aussuchen
@@ -3073,7 +3073,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Name des Manage
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wir suchen eine Transportfirma, die unsere Firma übernimmt.{}{}Besteht Interesse daran, {COMPANY} für {CURRENCY_LONG} zu übernehmen?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur von{COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur von {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Schienenfelder:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signale
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Straßenfelder:
@@ -3771,7 +3771,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das Skri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die KIs, die im nächsten Spiel geladen werden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :menschlicher Spieler
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
-STR_AI_CONFIG_NONE                                              :(keine)
+STR_AI_CONFIG_NONE                                              :-
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Nach oben bewegen
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Die ausgewählte KI in der Liste nach oben bewegen
@@ -4191,6 +4191,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Das Wart
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Fahrzeug ist zerstört
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Noch keine Fahrzeuge verfügbar
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Ein neues Spiel nach {DATE_SHORT} beginnen oder ein NewGRF-Fahrzeugset mit früher verfügbaren Fahrzeugen verwenden
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Der Zug kann das Signal nicht gefahrlos passieren...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Die Zugbewegung kann nicht umgekehrt werden...
@@ -4365,7 +4368,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Dampf)
@@ -4574,7 +4577,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Pa
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passagierschiff
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Frachter
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Frachter
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Frachter
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover Frachter
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Frachter
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

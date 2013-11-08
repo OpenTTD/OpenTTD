@@ -33,11 +33,11 @@ STR_CARGO_PLURAL_MAIL                                           :พัสดุ
 STR_CARGO_PLURAL_OIL                                            :น้ำมันดิบ
 STR_CARGO_PLURAL_LIVESTOCK                                      :ปศุสัตว์
 STR_CARGO_PLURAL_GOODS                                          :สินค้าแปรรูป
-STR_CARGO_PLURAL_GRAIN                                          :ข้าวสาลี
-STR_CARGO_PLURAL_WOOD                                           :ไม้
+STR_CARGO_PLURAL_GRAIN                                          :ข้าวเปลือก
+STR_CARGO_PLURAL_WOOD                                           :ท่อนซุง
 STR_CARGO_PLURAL_IRON_ORE                                       :แร่เหล็ก
 STR_CARGO_PLURAL_STEEL                                          :เหล็กกล้า
-STR_CARGO_PLURAL_VALUABLES                                      :ทรัพย์สินมีมูลค่าสูง
+STR_CARGO_PLURAL_VALUABLES                                      :สินค้ามูลค่าสูง
 STR_CARGO_PLURAL_COPPER_ORE                                     :แร่ทองแดง
 STR_CARGO_PLURAL_MAIZE                                          :ข้าวโพด
 STR_CARGO_PLURAL_FRUIT                                          :ผลไม้
@@ -51,13 +51,13 @@ STR_CARGO_PLURAL_RUBBER                                         :ยางพา
 STR_CARGO_PLURAL_SUGAR                                          :น้ำตาล
 STR_CARGO_PLURAL_TOYS                                           :ของเล่น
 STR_CARGO_PLURAL_CANDY                                          :ขนมสายไหม
-STR_CARGO_PLURAL_COLA                                           :น้ำโคล่า
+STR_CARGO_PLURAL_COLA                                           :โคล่า
 STR_CARGO_PLURAL_COTTON_CANDY                                   :ขนมสายไหม
 STR_CARGO_PLURAL_BUBBLES                                        :ฟอง
 STR_CARGO_PLURAL_TOFFEE                                         :ลูกอม
 STR_CARGO_PLURAL_BATTERIES                                      :ถ่านไฟฉาย
 STR_CARGO_PLURAL_PLASTIC                                        :พลาสติก
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :น้ำอัดลมหรรษา
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :น้ำอัดลม
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -71,7 +71,7 @@ STR_CARGO_SINGULAR_GRAIN                                        :ข้าวส
 STR_CARGO_SINGULAR_WOOD                                         :ท่อนซุง
 STR_CARGO_SINGULAR_IRON_ORE                                     :แร่เหล็ก
 STR_CARGO_SINGULAR_STEEL                                        :เหล็กกล้า
-STR_CARGO_SINGULAR_VALUABLES                                    :ทรัพย์สินมีมูลค่าสูง
+STR_CARGO_SINGULAR_VALUABLES                                    :สินค้ามูลค่าสูง
 STR_CARGO_SINGULAR_COPPER_ORE                                   :แร่ทองแดง
 STR_CARGO_SINGULAR_MAIZE                                        :ข้าวโพด
 STR_CARGO_SINGULAR_FRUIT                                        :ผลไม้
@@ -79,25 +79,25 @@ STR_CARGO_SINGULAR_DIAMOND                                      :เพชร
 STR_CARGO_SINGULAR_FOOD                                         :อาหาร
 STR_CARGO_SINGULAR_PAPER                                        :กระดาษ
 STR_CARGO_SINGULAR_GOLD                                         :ทองคำ
-STR_CARGO_SINGULAR_WATER                                        :น้ำดื่ม
+STR_CARGO_SINGULAR_WATER                                        :น้ำ
 STR_CARGO_SINGULAR_WHEAT                                        :ข้าวสาลี
 STR_CARGO_SINGULAR_RUBBER                                       :ยางพารา
 STR_CARGO_SINGULAR_SUGAR                                        :น้ำตาล
 STR_CARGO_SINGULAR_TOY                                          :ของเล่น
 STR_CARGO_SINGULAR_CANDY                                        :ขนมสายไหม
-STR_CARGO_SINGULAR_COLA                                         :น้ำโคล่า
+STR_CARGO_SINGULAR_COLA                                         :โคล่า
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :ขนมสายไหม
 STR_CARGO_SINGULAR_BUBBLE                                       :ฟอง
 STR_CARGO_SINGULAR_TOFFEE                                       :ลูกอม
 STR_CARGO_SINGULAR_BATTERY                                      :ถ่านไฟฉาย
 STR_CARGO_SINGULAR_PLASTIC                                      :พลาสติก
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :น้ำอัดลมหรรษา
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :น้ำอัดลม
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :ผู้โดยสาร {COMMA} คน
 STR_QUANTITY_COAL                                               :ถ่านหิน {WEIGHT_LONG}
-STR_QUANTITY_MAIL                                               :ไปรษณียภัณฑ์ {COMMA} ถุง
+STR_QUANTITY_MAIL                                               :ไปรษณีย์ {COMMA} ถุง
 STR_QUANTITY_OIL                                                :น้ำมันดิบ {VOLUME_LONG}
 STR_QUANTITY_LIVESTOCK                                          :ปศุสัตว์ {COMMA} ตัว
 STR_QUANTITY_GOODS                                              :สินค้าแปรรูป {COMMA} ลัง
@@ -105,7 +105,7 @@ STR_QUANTITY_GRAIN                                              :ข้าวส
 STR_QUANTITY_WOOD                                               :ท่อนซุง {WEIGHT_LONG}
 STR_QUANTITY_IRON_ORE                                           :แร่เหล็ก {WEIGHT_LONG}
 STR_QUANTITY_STEEL                                              :เหล็กกล้า {WEIGHT_LONG}
-STR_QUANTITY_VALUABLES                                          :ของมีค่า {COMMA} ถุง
+STR_QUANTITY_VALUABLES                                          :สินค้ามูลค่าสูง {COMMA} ถุง
 STR_QUANTITY_COPPER_ORE                                         :แร่ทองแดง {WEIGHT_LONG}
 STR_QUANTITY_MAIZE                                              :ข้าวโพด {WEIGHT_LONG}
 STR_QUANTITY_FRUIT                                              :ผลไม้ {WEIGHT_LONG}
@@ -119,13 +119,13 @@ STR_QUANTITY_RUBBER                                             :ยางพา
 STR_QUANTITY_SUGAR                                              :น้ำตาล {WEIGHT_LONG}
 STR_QUANTITY_TOYS                                               :ของเล่น {COMMA} ชิ้น
 STR_QUANTITY_SWEETS                                             :ขนมหวาน {COMMA} ถุง
-STR_QUANTITY_COLA                                               :น้ำโคล่า {VOLUME_LONG} สิตร
+STR_QUANTITY_COLA                                               :โคล่า {VOLUME_LONG} ลิตร
 STR_QUANTITY_CANDYFLOSS                                         :ขนมสายไหม {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :ฟอง {COMMA} ลูก
 STR_QUANTITY_TOFFEE                                             :ลูกอม {WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :ถ่านไฟฉาย {COMMA} ก้อน
 STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME_LONG}
-STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
+STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลม {COMMA} ชุด
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -134,13 +134,13 @@ STR_ABBREV_PASSENGERS                                           :{TINY_FONT}ค�
 STR_ABBREV_COAL                                                 :{TINY_FONT}ถ่าน
 STR_ABBREV_MAIL                                                 :{TINY_FONT}พัสดุ
 STR_ABBREV_OIL                                                  :{TINY_FONT}น้ำมัน
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}เนื้อ
-STR_ABBREV_GOODS                                                :{TINY_FONT}สินค้าแปรรูป
-STR_ABBREV_GRAIN                                                :{TINY_FONT}ข้าวสาลี
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}สัตว์
+STR_ABBREV_GOODS                                                :{TINY_FONT}สินค้า
+STR_ABBREV_GRAIN                                                :{TINY_FONT}ข้าวเปลือก
 STR_ABBREV_WOOD                                                 :{TINY_FONT}ไม้
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}แร่
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}เหล็ก
 STR_ABBREV_STEEL                                                :{TINY_FONT}เหล็กกล้า
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}เงิน
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}มีค่า
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}ทองแดง
 STR_ABBREV_MAIZE                                                :{TINY_FONT}ข้าวโพด
 STR_ABBREV_FRUIT                                                :{TINY_FONT}ผลไม้
@@ -202,7 +202,7 @@ STR_UNITS_POWER_SI                                              :{COMMA} กิ�
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} ตัน
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} กิโลกรัม
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ตัน
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} กิโลกรัม
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} ลิตร
@@ -265,7 +265,7 @@ STR_SORT_BY_PRODUCTION                                          :ผลผลิ
 STR_SORT_BY_TYPE                                                :ประเภท
 STR_SORT_BY_TRANSPORTED                                         :ขนส่งแล้ว
 STR_SORT_BY_NUMBER                                              :ลำดับการเข้าประจำการ
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีที่แล้ว
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีก่อน
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :กำไรปีนี้
 STR_SORT_BY_AGE                                                 :อายุการใช้งาน
 STR_SORT_BY_RELIABILITY                                         :ประสิทธิภาพ
@@ -286,15 +286,15 @@ STR_SORT_BY_POWER                                               :พลังข
 STR_SORT_BY_TRACTIVE_EFFORT                                     :กำลังลากจูง
 STR_SORT_BY_INTRO_DATE                                          :วันเปิดตัว
 STR_SORT_BY_RUNNING_COST                                        :ค่าใช้จ่าย
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :อัตตราส่วน กำลัง/ค่าใช้จ่าย
-STR_SORT_BY_CARGO_CAPACITY                                      :ความจุการบรรทุก
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :กำลังต่อค่าใช้จ่าย
+STR_SORT_BY_CARGO_CAPACITY                                      :ความจุบรรทุก
 STR_SORT_BY_RANGE                                               :ช่วง
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}เร่งความเร็วเกม
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตัวเลือก
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและออกจากเกม
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและเลิกเกมนี้
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}แสดงจุดสังเกต, แผนที่และป้าย
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}แสดงทำเนียบชื่อเมือง
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}แสดงเงินสมทบ
@@ -308,8 +308,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แส�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}แสดงรายการอากาศยานของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ขยายภาพเข้าใกล้ขึ้น
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ย่อภาพให้ไกลขึ้น
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ขยายวิว
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ย่อวิว
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}เครื่องมือสร้างทางรถไฟ
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}สร้างถนน
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}สร้างท่าเรือ
@@ -786,7 +786,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}เกิดแมลงศัตรูพืชอย่างหนักที่ {INDUSTRY}!ผลผลิต{}ลงลง 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} ผลผลิตของ {INDUSTRY} ลดลง {COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} กำลังรอในโรงซ่อมบำรุง
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} กำลังรอในอู่
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} กำลังรออยู่ในโรงซ่อม
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} กำลังรออยู่ในอู่
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} กำลังรออยู่ในโรงจอด
@@ -833,10 +833,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}มุมมอง {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}คัดลองไปยังมุมมอง
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}คัดลอกไปยังมุมมอง
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}คัดลอกตำแหน่งของมุมมองหลังมายังมุมมองนี้
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}วางจากมุมมอง
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}วางต่ำแหน่งจากมุมมองนี้ไปยังมุมมองหลัก
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}วางตำแหน่งจากมุมมองนี้ไปยังมุมมองหลัก
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ตัวเลือกเกม
@@ -873,7 +873,7 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :โครูน
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :เรียล บราซิล (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :ครูนิ เอสโทเนีย (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :วอน เกาหลีใต้ (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :ระบุเอง...
 ############ end of currency region
@@ -987,7 +987,7 @@ STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}จำ�
 
 STR_NONE                                                        :ไม่มี
 STR_FUNDING_ONLY                                                :ระดมทุนเท่านั้น
-STR_MINIMAL                                                     :ต่ำสุด
+STR_MINIMAL                                                     :ขั้นต่ำ
 STR_NUM_VERY_LOW                                                :ต่ำมาก
 STR_NUM_LOW                                                     :ต่ำ
 STR_NUM_NORMAL                                                  :ปกติ
@@ -1031,8 +1031,8 @@ STR_SUBSIDY_X4                                                  :4 เท่า
 
 STR_TERRAIN_TYPE_VERY_FLAT                                      :แบนราบมาก
 STR_TERRAIN_TYPE_FLAT                                           :แบนราบ
-STR_TERRAIN_TYPE_HILLY                                          :เป็นเนิน
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :แบบภูเขา
+STR_TERRAIN_TYPE_HILLY                                          :เนินเขา
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :ภูเขาสูง
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
 STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อนผันให้ได้
@@ -1075,7 +1075,7 @@ STR_CONFIG_SETTING_ON                                           :เปิด
 STR_CONFIG_SETTING_DISABLED                                     :ไม่ให้เรียกใช้งาน
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :ปิด
-STR_CONFIG_SETTING_COMPANIES_OWN                                :บริษัทที่เป็นเจ้าของ
+STR_CONFIG_SETTING_COMPANIES_OWN                                :บริษัทในเครือ
 STR_CONFIG_SETTING_COMPANIES_ALL                                :บริษัททั้งหมด
 
 STR_CONFIG_SETTING_NONE                                         :ไม่มี
@@ -1095,9 +1095,9 @@ STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :กำหนด
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :ควานเร็วในการก่อสร้าง: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :จำกัด จำนวนของการกระทำก่อสร้างสำหรับ AIs
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :ยานพาหนะขัดข้อง: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :ควบคุมความถี่ในการซ่่อมบำรุงยานพาหนะ หากได้รับการซ่อมบำรุงไม่เพียงพอยานพาหนะอาจเกิดอาการขัดข้องอยู่บ่อยครั้ง
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :ควบคุมความถี่ในการตรวจสภาพยานพาหนะ หากได้รับการตรวจสภาพไม่เพียงพออาจเกิดอาการขัดข้องบ่อยครั้งได้
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :อัตราของการให้เงินสนับสนุนโครงการ: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :ตั้งค่าการอุดหนุดสำหรับการเชื่อมต่อ
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :ตั้งค่าเงินสนับสนุนสำหรับการเชื่อมต่อ
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :ค่าใช้จ่ายในการก่อสร้า: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :การตั้งค่าระดับของค่าใช้จ่ายในการก่อสร้างและซื้อ
 STR_CONFIG_SETTING_RECESSIONS                                   :เศรษฐกิจถดถอย: {STRING}
@@ -1112,11 +1112,11 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :เลือก
 STR_CONFIG_SETTING_BUILDONSLOPES                                :อนุญาตให้สร้างบนทางลาดและตลิ่งชายฝั่ง: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :เมื่อเปิดใช้งาน จะทำให้สามารถสร้างเส้นทางหรือสถานีบนพื้นที่ลาดเอียงได้
 STR_CONFIG_SETTING_AUTOSLOPE                                    :อนุญาตให้เปลี่ยนสภาพพื้นผิวใต้สิ่งก่อสร้าง, ราง, ฯลฯ (ปรับความชันอัตโนมัติ): {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :อนุญาตให้ปรับสภาพพื้นที่ได้โดยไม่ต้องรือถอนสาธารณูประโภค
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :อนุญาตให้ปรับสภาพพื้นที่ได้โดยไม่ต้องรื้อถอนสาธารณูปโภค
 STR_CONFIG_SETTING_CATCHMENT                                    :อนุญาตให้มีขนาดของพื้นที่บริการของสถานีที่สมเหตุสมผลมากขึ้น: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :สร้างความแตกต่างของพื้นที่บริการสำหรับสถานีในประเภทที่แตกต่างกัน
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :อนุญาตให้ทำลายถนน, สะพาน, สิ่งก่อสร้างของเมืองได้มากขึ้น: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :ทำให้ง่ายขึ้นสำหรับการรื้อถอนสาธารณูประโภคและสิ่งปลูกสร้างของเมือง
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :ทำให้ง่ายขึ้นสำหรับการรื้อถอนสาธารณูปโภคและสิ่งปลูกสร้างของเมือง
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :ความยาวสูงสุดของขบวนรถไฟ: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :เลือกตั้งค่าความยาวสูงสุดของขบวนรถไฟ
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ช่อง
@@ -1323,8 +1323,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :มาตรฐ
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :เลือกใช้ Palette ของ NewGRFs ที่ไม่สามารถระบุประเภทได้ (Dos/Windows): {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :จะมี NewGRFs บางตัวที่ไม่สามารถระบุประเภทว่าใช้ Pelette ของ Dos หรือของ Windows การเลือกตัวเลือกนี้จะเป็นการเลือกค้าแรกเริ่มให้กับ NewGRFs เหล่านั้น
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :มาตรฐาน (D) ชุดสี
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :เลกาซี่ (W) ชุดสี
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :หยุดเกมอัตโนมัติเมื่อเริ่มเกมใหม่: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :เมื่อเปิดใช้งาน เกมจะหยุดอัตโนมัติเมื่อมีการเริ่มเกมใหม่
@@ -1361,7 +1361,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :เล่นเ
 STR_CONFIG_SETTING_SOUND_NEWS                                   :หนังสือพิมพ์: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :เล่นเสียงเมื่อแสดงหน้าหนังสือพิมพ์
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :เสียงเตือนเมื่อถึงสิ้นปี: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :เล่นเสียงเมื่อแสดงรายงานผลประกอบการสิ้นปี
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :เล่นเสียงเมื่อแสดงรายงานผลประกอบการเปรียบเทียบกับปีที่แล้ว
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :การก่อสร้าง: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :เล่นเสียงเมื่อการก่อสร้างเสร็จหรือการกระทำอื่นๆ
 STR_CONFIG_SETTING_SOUND_CLICK                                  :เมื่อคลิ๊กเมาส์: {STRING}
@@ -1991,7 +1991,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[ทีม] ถ
 STR_NETWORK_CHAT_CLIENT                                         :[ส่วนตัว] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[ส่วนตัว] ถึง {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[ทั้งหมด] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}พิมพ์ข้อความสำหรับการพูดคุณในเน็ทเวิร์ก
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}พิมพ์ข้อความสำหรับการคุยในเครือข่าย
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}ไม่พบอุปกรณ์เน็ทเวิร์กหรือได้ผ่านการคอมไพล์โดยไม่ได้ตัวเลือกนี้ ENABLE_NETWORK
@@ -2220,7 +2220,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร�
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}เลือกชนิดของสถานีที่จะแสดง
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}เลือกชนิดของสถานีที่จะสร้าง
 
-STR_STATION_CLASS_DFLT                                          :Default station
+STR_STATION_CLASS_DFLT                                          :สถานีมาตรฐาน
 STR_STATION_CLASS_WAYP                                          :จุดตรวจ
 
 # Signal window
@@ -3203,7 +3203,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}มู�
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}ความจุ: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}รถเสริมกำลัง: {GOLD}+{POWER}{BLACK} น้ำหนัก: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}ดัดแปลงเป็น: {GOLD}{STRING}
-STR_PURCHASE_INFO_ALL_TYPES                                     :ได้ทุกประเภทสินค้า
+STR_PURCHASE_INFO_ALL_TYPES                                     :สินค้าทุกประเภท
 STR_PURCHASE_INFO_ALL_BUT                                       :ทั้งหมด ยกเว้น {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}กำลังลากจูงสูงสุด: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}พิสัยทำการ: {GOLD}{COMMA} ช่อง
@@ -3878,7 +3878,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}สเ�
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}ไม่แนะนำให้ทำการลดขนาดภาพต้นฉบับ. แน่ใจหรือไม่ว่าต้องการทำต่อ?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}ค้นพบเฉพาะำไฟล์เสียงบางไฟล์. หากต้องการฟังเสียงอื่นๆ ทำการดาวโหลดและติดตั้งจาก Content Download System
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}พบเฉพาะไฟล์เสียงสำรอง. หากต้องการฟังเสียงอื่นๆ โปรดดาวน์โหลดและติดตั้งจาก Content Download System
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}ภาพถ่ายขนาดใหญ่
@@ -3938,8 +3938,8 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}ไม�
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}ไม่สามารถส่งเงินได้ นี่คือเงินกู้ที่มาจากธนาคาร...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}ไม่สามารถซื้อกิจการได้...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}ไม่สามารถสร้างสำนักงานได้...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}ไม่สามารถซื้อหุ้น 25% จากริษัทนี้ได้...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}ไม่สามารถขายหุ้น 25% จากริษัทนี้ได้...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}ไม่สามารถซื้อหุ้น 25% จากบริษัทนี้ได้...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}ไม่สามารถขายหุ้น 25% จากบริษัทนี้ได้...
 STR_ERROR_PROTECTED                                             :{WHITE}บริษัทนี้ยังไม่เก่าแก่พอที่จะซื้อหุ้นหรือซื้อกิจการได้...
 
 # Town related errors
@@ -3959,12 +3959,12 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ท�
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... มีอุตสาหกรรมมากเกินไป
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}ไม่สามารถสร้างอุตสาหกรรมได้...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}ไม่สามารถสร้าง {STRING} ได้ที่นี่...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}บริเวณนี้ไม่สามารถสร้าง {STRING} ได้...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}ไม่สามารถสร้างอุตสาหกรรมประเภทนี้่ได้ที่นี่...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... ใกล้กับอุตสาหกรรมอื่นมากเกินไป
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... ต้องสร้างเมืองก่อน
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... อนุญาตให้สร้างได้แค่หนึ่งเดียวต่อเมืองหนึ่งเมือง
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... จะสามารถสร้างได้ต่อเมื่อเมืองมีประชากรอย่างต่ำ 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... จะสามารถสร้างได้ต่อเมื่อเมืองมีประชากรอย่างน้อย 1200 คน
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... สามารถสร้างได้เฉพาะพื้นที่ป่าฝนเขตร้อน
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... สามารถสร้างได้เฉพาะในทะเลทราย
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... สามารถสร้างได้เฉพาะในเมืองเท่านั้น (แทนที่บ้าน)
@@ -3976,7 +3976,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... ส�
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... สามารถสร้างได้ที่ระดับต่ำกว่าระดับหิมะเท่านั้น
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}ตรงนี้ไม่สามารถสร้างสถานีรถไฟได้
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}บริเวณนี้ไม่สามารถสร้างสถานีรถไฟได้
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}ไม่สามารถสร้าง ป้ายหยุดรถ/สถานีขนส่ง
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}ไม่สามารถสร้างสถานีรถบรรทุกได้
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}ไม่สามารถสร้างสถานีผู้โดยสารรถรางได้
@@ -4031,19 +4031,19 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... ม�
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... เป็นทุ่นของบริษัทอื่น
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}ไม่สามารถสร้างโรงซ่อมบำรุงรถไฟได้
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}ตรงนี้ไม่สามารถสร้างโรงซ่อมบำรุงรถได้
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}ไม่สามารถสร้างอู่รถไฟได้
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}บริเวณนี้ไม่สามารถสร้างอู่รถได้
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}ไม่สามารถสร้างโรงซ่อมบำรุงรถรางได้...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}ไม่สามารถสร้างอู่เรือได้...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}บริเวณนี้ไม่สามารถสร้างอู่เรือได้...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}ไม่สามารถเปลี่ยนชื่อโรงซ่อมบำรุงได้..
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}ไม่สามารถเปลี่ยนชื่ออู่ได้..
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... ต้องหยุดในโรงซ่อมบำรุง
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... ต้องทำการจอดสมบูรณ์ในโรงซ่อมบำรุง
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... ต้องหยุดในโรงซ่อมบำรุง
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... ต้องจอดสนิทอยู่ในอู่
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... ต้องจอดสนิทอยู่ในอู่
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... ต้องจอดสนิทอยู่ในอู่
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... ต้องหยุดในโรงเก็บ
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}สามารถปรับเปลี่ยนเกี่ยวกับรถไฟได้เมื่อจอดสมบูรณ์ในโรงซ่อมบำรุง
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}สามารถปรับเปลี่ยนรถไฟได้ต่อเมื่อจอดสนิทในอู่เท่านั้น
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}ขบวนรถยาวเกินไป
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}ไม่สามารถกลับขบวนรถได้
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... ไม่สามารถกลับข้างของรถที่พ่วงพหุกันอยู่ได้
@@ -4051,10 +4051,10 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :ไม่สา
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}ไม่สามารถลบยานพาหนะได้...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}รถจักรตามหลังจะตามรถจักรคันหน้าแบบกลับข้างกันเสมอ
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}ไม่สามารถค้นหาเส้นทางที่จะไปยังโรงซ่อมบำรุงใกล้เคียงได้
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}ไม่สามารถค้นหาโรงซ่อมบำรุงใกล้เคียงได้
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}ไม่สามารถหาทางที่จะไปยังอู่ในละแวกได้
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}ไม่สามารถค้นหาอู่ในละแวกได้
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :โรงซ่อมบำรุงผิดประเภท
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :อู่ผิดประเภท
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} จะยาวเกินไปหลังจากแทนที่ใหม่
@@ -4069,7 +4069,7 @@ STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}ต้�
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}ถนนเป็นทางเดียวหรือถูกปิดกั้น
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}ทางตัดเสมอระดับทางไม่อนุญาตให้ตัดผ่านทางประเภทนี้
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}ไม่สามารถสร้างเสาอาณัติสัญญาณได้...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}ตรงนี้ไม่สามารถสร้างรางรถไฟได้...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}บริเวณนี้ไม่สามารถสร้างรางรถไฟได้...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}ตรงนี้ไม่สามารถลบรางรถไฟออกไปได้
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}ไม่สามารถลบเสาอาณัติสัญญาณได้...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}ไม่สามารถแปลงเสาอาณัติสัญญาณได้...
@@ -4162,7 +4162,7 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}ไม�
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}ไม่สามารถ หยุด/เริ่ม เรือ...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}ไม่สามารถ หยุด/เริ่ม อากาศยาน...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}ไม่สามารถส่่งรถไฟไปยังโรงซ่อมบำรุง...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}ไม่สามารถส่่งรถไฟไปยังอู่
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}ไม่สามารถส่่งรถไปยังโรงซ่อมบำรุง...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}ไม่สามารถส่่งเรือไปยังโรงซ่อมบำรุง...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}ไม่สามารถส่่งอากาศยานไปยังโรงซ่อมบำรุง...
@@ -4192,7 +4192,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ยานพาหนะถูกทำลาย
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}ไม่มียานพาหานะให้เลือก
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}ยังไม่มียานพาหานะให้เลือก
 STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}เริ่มเกมหลังจาก {DATE_SHORT} หรือเลือกใช้งาน NewGRF ของยานพาหนะที่จัดเตรียมไว้ก่อนหน้านี้
 
 # Specific vehicle errors
@@ -4243,9 +4243,9 @@ STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :กราฟฟ
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :กราฟฟิกต้ำตำหรับของ Transport Tycoon Deluxe Windows edition
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :เสียงต้นตำหรับของ Transport Tycoon Deluxe DOS edition
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :เสียงต้นตำหรับของ Transport Tycoon Deluxe Windows edition
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :A sound pack without any sounds.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :ชุดเสียงแบบไร้เสียง
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :เพลงต้นตำหรับชอง Transport Tycoon Deluxe Windows edition
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :A music pack without actual music.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :ชุดเพลงประกอบแบบไม่มีเสียงเพลง
 
 ##id 0x2000
 # Town building names
@@ -4369,7 +4369,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Steam)
@@ -4394,28 +4394,28 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elect
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Electric)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Passenger Carriage
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Mail Van
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Coal Truck
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :รถบรรทุกถ่านหิน
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Oil Tanker
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Livestock Van
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Goods Van
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Grain Hopper
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Wood Truck
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :รถบรรทุกซุง
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Iron Ore Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :รถบรรทุกเหล็กกล้า
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Armoured Van
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Food Van
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Paper Truck
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :รถบรรทุกกระดาษ
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Copper Ore Hopper
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Water Tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Fruit Truck
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Rubber Truck
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Sugar Truck
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :ถังเก็บน้ำ
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :รถบรรทุกผลไม้
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :รถบรรทุกยางพารา
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :รถบรรทุกน้ำตาล
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Candyfloss Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Toffee Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Bubble Van
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cola Tanker
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Sweet Van
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Toy Van
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :ถังเก็บโคล่า
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :รถขนส่งขนม
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :รถขนส่งของเล่น
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Battery Truck
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Fizzy Drink Truck
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastic Truck
@@ -4423,7 +4423,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Electr
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Electric)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Passenger Carriage
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Mail Van
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :รถขนส่งไปรษณีย์
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Coal Truck
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Oil Tanker
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Livestock Van
@@ -4432,8 +4432,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Grain Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Wood Truck
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Iron Ore Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :รถบรรทุกเหล็กกล้า
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Armoured Van
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Food Van
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :รถขนส่งหุ้มเกราะ
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :รถขนส่งอาหาร
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Paper Truck
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Copper Ore Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Water Tanker
@@ -4442,7 +4442,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Rubber Truck
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Sugar Truck
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Candyfloss Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Toffee Hopper
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Bubble Van
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :รถขนส่งฟอง
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Cola Tanker
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Sweet Van
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Toy Van
@@ -4578,7 +4578,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Pa
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passenger Ferry
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Cargo ship
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Cargo ship
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Cargo ship
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover Cargo ship
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Cargo ship
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

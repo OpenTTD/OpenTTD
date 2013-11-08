@@ -1264,7 +1264,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Roghainnean le 
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Roghainnean le luach diofraichte bho luach nan geamannan ùra agad
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach seòrsaichean sònraichte dhe roghainn
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Na h-uile roghainn
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Na h-uile seòrsa roghainn
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Roghainnean a' chliant (cha tèid an sàbhaladh le geamannan; buaidh air a h-uile geama)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
@@ -1524,8 +1524,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Pailead bunaiteach airson NewGRFan gun phailead aca fhèin: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Pailead dhathan bunasach a thèid a chleachdadh le NewGRFan nach sònraich dè am fear a tha a dhìth
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailead DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailead Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Cuir geamannan air ùr-thòiseachadh nan stad gu fèin-obrachail: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Nuair a bhios seo air, stadaidh an geama gu fèin-obrachail nuair a thòisicheas tu geama ùr. Bheir seo cothrom dhut gus am mapa a sgrùdadh air do shocair

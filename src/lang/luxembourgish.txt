@@ -175,7 +175,7 @@ STR_CRATES                                                      :{COMMA} Këscht
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkelblo
 STR_COLOUR_PALE_GREEN                                           :Bleechgréng
-STR_COLOUR_PINK                                                 :Rosa
+STR_COLOUR_PINK                                                 :Donkelroud
 STR_COLOUR_YELLOW                                               :Giel
 STR_COLOUR_RED                                                  :Rout
 STR_COLOUR_LIGHT_BLUE                                           :Hellblo
@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Stroosse
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Schëffhafen bauen
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Fluchhafen bauen
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschafts-Toolbar opman fir Land ze erhéijen/senken, Beem planzen, etc.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound/Musék Fënster
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound/Musik Fënster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Weis déi lescht Meldung/Neiegkeet, oder d'Astellungen
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatiounen zum Land, Konsole, Script debug, Screenshots, iwwer OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Wiessel Toolbars
@@ -434,7 +434,7 @@ STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Schëld opstell
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musék
+STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 ############ range ends here
 
 ############ range for message menu starts
@@ -600,7 +600,7 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Benotzerdéf. 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Benotzerdéf. 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musék Lautstärkt
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musik Lautstärkt
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lautstärkt vun den Effekter
 STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
 STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
@@ -615,22 +615,22 @@ STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLA
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programm
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sprang op d'Stéck firdrun vun der Selektioun
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sprang op dat nächst Stéck vun der Selektioun
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stop d'Musék
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Start d'Musék
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Zéi den Regler fir d'Lautstärkt vun der Musék an den Effekter anzestellen
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stop d'Musik
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Start d'Musik
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Zéi den Regler fir d'Lautstärkt vun der Musik an den Effekter anzestellen
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selectionéier 'all Lidder' Programm
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selectionéier 'aalen Style' Programm
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selectionéier 'neien Style' Programm
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wielt 'Ezy Street Musék' Programm
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wielt 'Ezy Street Musik' Programm
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selectionéier 'Benotzerdéf. 1' Programm
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selectionéier 'Benotzerdéf. 2' Programm
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Schalt den "shuffle" un/aus
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Weis Musékselektioneier-Fënster
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Weis d'Fënster fir Musik ze wielen
 
 STR_ERROR_NO_SONGS                                              :{WHITE}E Music Set ouni Lidder gouf gewielt. Et wärten keng Lidder gespillt gin
 
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musékprogramm Selectioun
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikprogramm Selectioun
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lidder Index
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
@@ -1323,8 +1323,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard Palette fir NewGRFen déi keng spezifësch Palette hunn: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalette fir NewGRFen déi net definéiert hunn wéi eng se brauchen
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS Palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows Palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) Palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Aal (W) Palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatesch Pausen beim Start vun enger neier Partie: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wann ugeschalt, pauséiert d'Spill automatesch wann en neit Spill gestart gëtt, wat erlaabt d'Kaart besser ze studéieren
@@ -1677,7 +1677,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Fir
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien ofrappen, onzerstéierbar Objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnellen kënnen sech kräizen: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet'en maachen net regelméisseg en Accident op klengen Fluchhäfen: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperéiert Landschaft
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gemässegt Klima Landschaft
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-Arktësch Landschaft
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-Tropësch Landschaft
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Spillland Landschaft
@@ -2617,7 +2617,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fräifor
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Waasser
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Zoufälleg
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Zoufall
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handbuch
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Héichtekaart rotatioun:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichtekaart Numm:
@@ -2687,7 +2687,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palette 
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Wiessel Palette vun den selectéierten NewGRF.{} Maach dat wann d'Grafiken vun deser NewGRF rosa am Spill ausgesin
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Ännerungen unhuelen
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Fann Inhalt den feelt online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Feelenden Inhalt online downloaden
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Check op den Inahlt den feelt online kann fonnt gin
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dateinumm: {SILVER}{STRING}
@@ -3321,7 +3321,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Magnéitbunnlokomotiv
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betriibskäschten {CURRENCY_LONG}/joër{}Kapazitéit: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraaft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betriibskäschten {CURRENCY_LONG}/Joer
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betriibskäschten: {CURRENCY_LONG}/Joer
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
@@ -4190,6 +4190,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Den Serv
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Gefiert ass zerstéiert
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Nach keng Gefierer verfügbar
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}En neit Spill no {DATE_SHORT} ufenken oder benotz en NewGRF den aal Gefierer erlabt
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann den Zuch net bei Gefohr lanscht d'Signal schecken...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kann d'Richtung vum Zuch net änneren...
@@ -4233,6 +4236,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann d'S
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Eng Simulatioun déi op Transport Tycoon Deluxe baséiert
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Original Transport Tycoon Deluxe DOS Editioun Grafik.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Original Transport Tycoon Deluxe DOS (Däitsch) Editioun Grafik.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Original Transport Tycoon Deluxe Windows Editioun Grafik.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Original Transport Tycoon Deluxe DOS Editioun Sound.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Original Transport Tycoon Deluxe Windows Editioun Sound.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :En Soundpack mat all den Sounds.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original Transport Tycoon Deluxe Windows Editioun Music.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :E Musikpack ouni aktuell Musik.
 
 ##id 0x2000
 # Town building names
@@ -4273,7 +4284,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Spuerschwäin-B
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :Kuelenstollen
-STR_INDUSTRY_NAME_POWER_STATION                                 :Kraftwierk
+STR_INDUSTRY_NAME_POWER_STATION                                 :Kraaftwierk
 STR_INDUSTRY_NAME_SAWMILL                                       :Seeërei
 STR_INDUSTRY_NAME_FOREST                                        :Bësch
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Uelegraffinerie
@@ -4356,7 +4367,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Collet Pannier 
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Chu-Chu
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Chu-Chu
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Chu-Chu
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Chu-Chu
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Damp)
@@ -4565,7 +4576,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Pa
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passagéierfähr
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Frachtschëff
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Frachtschëff
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Frachtschëff
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover Frachtschëff
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Frachtschëff
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
@@ -4682,6 +4693,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

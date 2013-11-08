@@ -125,7 +125,7 @@ STR_QUANTITY_BUBBLES                                            :泡{COMMA}個
 STR_QUANTITY_TOFFEE                                             :タフィー{WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :電池{COMMA}本
 STR_QUANTITY_PLASTIC                                            :プラスチック{VOLUME_LONG}
-STR_QUANTITY_FIZZY_DRINKS                                       :炭酸飲料{COMMA}
+STR_QUANTITY_FIZZY_DRINKS                                       :炭酸飲料{COMMA}本
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -284,7 +284,7 @@ STR_SORT_BY_COST                                                :価格
 STR_SORT_BY_POWER                                               :出力
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牽引力
 STR_SORT_BY_INTRO_DATE                                          :設計年
-STR_SORT_BY_RUNNING_COST                                        :運転費用
+STR_SORT_BY_RUNNING_COST                                        :運用費
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :運転費当たりの出力
 STR_SORT_BY_CARGO_CAPACITY                                      :積載容量
 STR_SORT_BY_RANGE                                               :航続距離
@@ -621,7 +621,7 @@ STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}プレ�
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}プレイリスト'旧スタイル'を選択します
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}プレイリスト'新スタイル'を選択します
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}プレイリスト'Ezyストリート'を選択します
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}プレイリスト’カスタム1'を選択します
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}プレイリスト'カスタム1'を選択します
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}プレイリスト'カスタム2'を選択します
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}プレイリストのシャッフルの有効/無効を切り替えます
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}曲選択のウィンドウを表示します
@@ -1116,7 +1116,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :現実的な受
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :駅や空港の種類の違いによって受入範囲が変動するようになります
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :街有道路・橋・トンネルの撤去容認: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :街有の交通インフラや建物の撤去をより容易にします
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :列車の最大長:{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :列車の最大長: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :列車の最大長を設定します
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}タイル
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :煙・火花の量{STRING}
@@ -1322,8 +1322,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO標準 (2008
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :パレット指定のないNewGRFのデフォルトパレット: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :NewGRFに指定されていない場合、使用するデフォルトパレットを設定します
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOSパレット
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windowsパレット
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS版既定パレット
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows版既定パレット
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :新規ゲーム開始時に自動ポーズ: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :有効にすると、新規ゲーム開始時に自動的に一時停止状態になります。事業を始める前にマップを精査するのに便利です
@@ -1419,7 +1419,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :故障切なら
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :有効にすると、故障が起こらない設定の時には点検も行わなくなります
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の上限速度: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :有効にすると、上限速度が設定されている貨車を使用した場合、列車はその速度以上出せなくなります
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を無効化:{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を無効化: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :この設定を有効にすると電気鉄道を建設できなくなります。ただし電気機関車・電車でも架線のない非電化の線路を走ることができるようになります
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :停留施設の開業(自社): {STRING}
@@ -1546,7 +1546,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}分の1
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :変化なし
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の都市サイズ乗数: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始時に都市が普通の町に比べて平均して何倍の人口規模になるかを設定します
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :街路補修時に道路整理: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :街路補修時に道路を整理: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :街路補修に出資した際に、先が建物に塞がれた交差点などを整理撤去するようなります
 
 
@@ -1683,10 +1683,10 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社:
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルの平面交差を許容: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ジェット機の小型空港での墜落率を減少: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :地域を温帯に変更
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :地域を亜寒帯に変更
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :地域を亜熱帯に変更
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :地域をおもちゃの国に変更
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :温帯
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :亜寒帯
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亜熱帯
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :おもちゃの国
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在日時を変更
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
@@ -1857,7 +1857,7 @@ STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}会社�
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}最大会社数:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}このサーバーでの最大会社数を指定します
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}観覧者数: {NUM}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}最高傍観者数:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}最高観覧者数:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}このサーバーでの最大観覧者数を指定します
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}言語:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}このサーバーで使われる主言語を表示します
@@ -2241,7 +2241,7 @@ STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口�
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号 (色灯式){}動作は普通の閉塞信号と同様ですが、入口/コンボ信号を使用する場合に必要になります。ホームの入り口に良く使われます
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}コンボ信号 (色灯式){}コンボ信号は入口信号と出口信号の機能を併せ持つ信号です。この信号を使うと多数の分岐のあるような場内信号網を作ることができます
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}パス信号 (色灯式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。汎用性は高いですが、一方向式しか使えず信号の背面から進行してくる列車を防護することができません。この信号で列車が停車中に正面から対向列車が来ると問答無用で衝突事故を起こします!
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (色灯式) {}一方通行パス信号 (腕木式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (色灯式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号交換{}既存の信号を今選択している信号に交換します。Ctrl+クリックで種類は替えずに腕木/色灯の形式のみ切り替えます。Shift+クリックで費用を見積もります
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}ドラッグ時の信号設置間隔を指定します
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置間隔を減らします
@@ -3047,7 +3047,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}インフ
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}　線路 {COMMA}タイル
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}　道路 {COMMA}タイル
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}　水運 {COMMA}タイル
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}　駅 {COMMA}タイル
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}　停留施設 {COMMA}タイル
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}　空港 {COMMA}箇所
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}　なし
 
@@ -3088,8 +3088,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}道路
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}軌道
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}水運長:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}運河
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}駅数:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}駅(タイル数)
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}停留施設数:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}停留施設(タイル数)
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
 STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/年 ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/年
@@ -3297,7 +3297,7 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}船舶�
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}航空機を複製します。このボタンを押してから格納庫内/外の航空機をクリックして下さい。Ctrl+クリックすると、複製相手は元航空機と指令を共有します。Shift+クリックで金額の概算が出ます
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を列車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}メイン画面を車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
 
@@ -3445,7 +3445,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}車両�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶に名前を付ける
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}航空機に名前を付ける
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　維持費：一年間{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}　維持費: 一年間{LTBLUE}{CURRENCY_LONG}
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA}年({COMMA}年)
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年({COMMA}年)
@@ -3542,8 +3542,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指�
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}直通運転
-STR_ORDER_GO_TO                                                 :各停運転し停車
-STR_ORDER_GO_NON_STOP_TO                                        :直通運転し停車
+STR_ORDER_GO_TO                                                 :各停運転
+STR_ORDER_GO_NON_STOP_TO                                        :直通運転
 STR_ORDER_GO_VIA                                                :各停運転し通過
 STR_ORDER_GO_NON_STOP_VIA                                       :直通運転し通過
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}選択した指令先にどのように向かうかを設定します
@@ -3621,8 +3621,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}この�
 STR_ORDER_GO_TO_WAYPOINT                                        :{WAYPOINT}を経由する
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :直通運転で{WAYPOINT}を経由する
 
-STR_ORDER_SERVICE_AT                                            :に保守回送
-STR_ORDER_SERVICE_NON_STOP_AT                                   :に保守回送(直行)
+STR_ORDER_SERVICE_AT                                            :保守回送
+STR_ORDER_SERVICE_NON_STOP_AT                                   :保守回送(直行)
 
 STR_ORDER_NEAREST_DEPOT                                         :最寄りの
 STR_ORDER_NEAREST_HANGAR                                        :最寄りの格納庫
@@ -3630,13 +3630,13 @@ STR_ORDER_TRAIN_DEPOT                                           :列車庫
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :造船所
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{1:STRING}{2:STRING}{0:STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{1:DEPOT}{0:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{1:DEPOT}へ{0:STRING}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING}に改造)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改造して、運用停止)
 STR_ORDER_STOP_ORDER                                            :(運用停止)
 
-STR_ORDER_GO_TO_STATION                                         :{1:STATION}へ向かい{0:STRING} {2:STRING}
+STR_ORDER_GO_TO_STATION                                         :{1:STATION}へ{0:STRING} {2:STRING}
 
 STR_ORDER_IMPLICIT                                              :(自動)
 

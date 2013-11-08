@@ -1161,7 +1161,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Vel á hvørjar
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Á vinstru síðu
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Á førara síðuni
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Á høgru síðu
-STR_CONFIG_SETTING_SHOWFINANCES                                 :Vís fíggjar vindeyga tá ári endar: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Vís fíggjarglugga, tá árið endar: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Um gilda, kemur fíggjar vindeyga fram við árslok hvørt ár so tað er lætt at fáa fíggjarligt innlit í fyritøkuni
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nýggj boð eru vanligani 'non-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Vanligani støðgar eitt flutningstól við allar støðir ta kemur framvi. Um henda áseting er gilda, koyra flutningstól gjøgnum støðir á veg til síni endamál uttan at steðga. Legg til merkis, henda ásetingin lýsir einans eitt vanligt virði fyri nýggj boð. Einstøk boð kunnu kortini skilligani ásetast báðar atburðir
@@ -1170,7 +1170,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Áset hvar við
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :nær endanum
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :miðjuni
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fjart endanum
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Akfars bíðirað (við kvantum ávirkan): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Akfar í bíðirøð (við kvantum ávirkan): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Akfør bíða frammanfyri upptiknar veg steðgir til teir eru tómir
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Skotra vindeyga tá músin er við eggina: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Um gilda, byrja sýnisgluggar at skrulla tá músin er nær við egginar á vindeyganum
@@ -1323,8 +1323,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Vanligt litaval at ganga út frá fyri NewGRFs uttan serstakt litaval: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Vanligt litaval at nýta fyri NewGRF ið ikki tilskila hvat litaval teimum tørvar
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS litaval
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows litaval
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sjálvirknan steðg tá nýtt spæl verður byrja: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Um gilda er spæli steðga tá ið tú byrjar eitt nýtt spæl, hetta loyvir tær at skoða korti í frið og náðum
@@ -4106,7 +4104,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Guv)
@@ -4315,7 +4313,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Fe
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Ferðafólka Ferga
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Farma skip
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Farma skip
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Farma skip
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover Farma skip
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Farma skip
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

@@ -1101,9 +1101,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeve
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer ingeschakeld kunnen recessies om de paar jaar optreden. Tijdens een recessie is alle productie aanzienlijk lager (Deze keert terug naar het vorige niveau als de recessie voorbij is)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer ingeschakeld kunnen recessies om de paar jaar optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, als er een kortere weg naar hun volgende bestemming is bij omkeren
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, zelfs als er een kortere weg naar hun volgende bestemming is bij omkeren
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Schakel rampen die af en toe voertuigen of infrastructuur kunnen blokkeren of vernietigen
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Gemeenteraad's houding ten opzichte van herstructurering gebied: {STRING}
@@ -1323,8 +1323,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standaard palette voor NewGRFs zonder specifiek palette: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standaard palet te gebruiken voor NewGRFs die niet aangeven welke ze nodig hebben
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatisch pauzeren als je een nieuw spel start: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wanneer ingeschakeld, het spel zal automatisch pauzeren bij het starten van een nieuw spel, waardoor nadere bestudering van de kaart mogelijk is
@@ -1363,7 +1361,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Speel geluidsef
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Einde jaar: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Speel geluidseffecten bij de samenvatting van resultaten gedurende het jaar ten opzichte van het jaar ervoor aan het einde van het jaar
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Bouw: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel geluidseffecten van succesvolle constructies of andere acties
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel geluidseffecten bij succesvolle constructies of andere acties
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knop kliks: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piep bij het klikken op knoppen
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Rampen/ongelukken: {STRING}
@@ -4367,7 +4365,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Stoom)
@@ -4576,7 +4574,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Ve
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Veerboot
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Goederenschip
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Goederenschip
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Goederenschip
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover Goederenschip
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Goederenschip
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count

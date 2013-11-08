@@ -1201,10 +1201,22 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skrči v
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ni razpoložljive razlage)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Privzeta vrednost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta nastavitve: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavitve gosta (ni shranjeno v igrah; vpliva na vse igre)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavitve igre (shranjeno v igrah; vpliva samo na nove igre)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavitve igre (shranjeno v igrah; vpliva samo na tekočo igro)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavitve podjetja (shranjeno v igrah, vpliva samo na nove igre)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavitve podjetja (shranjeno v igrah, vpliva samo na trenutno podjetje)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omeji seznam na prikaz le spremenjenih nastavitev
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne nastavitve
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne nastavitve
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Strokovne nastavitve / vse nastavitve
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Nastavitve z neprivzeto vrednostjo
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavitve drugačne od privzetih za novo igro
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Omeji spodnji seznam na le določene tipe nastavitev
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Vse nastavitve
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Vse vrste nastavitev
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavitve gostov (se ne zapiše ob shranjevanju; vpliva na vse igre)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavitve igre (zapisane ob shranjevanju; vplivajo le na nove igre)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavitve igre (zapisane ob shranjevanju; vplivajo le na trenutno igro)
@@ -1227,6 +1239,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Najvišje začetno posojilo: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Najvišji znesek, ki si ga podjetje lahko izposodi (ni vključen izračun inflacije)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Obrestna mera: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Obrestna mera; kontrolira tudi inflacijo, če je omogočena.
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Stroški delovanja: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nastavitev vzdrževanja in stroškov delovanja vozil in zgradb
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Hitrost gradnje: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Nastavitev hitrosti gradnje za UI
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Okvare vozil: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Nastavitev, kako pogosto se nevzdrževana vozila lahko pokvarijo
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Faktor subvencij: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nastavitev faktorja subvencij
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cene gradnje: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastavitev cene gradnje in nakupa
+STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Če je omogočeno, se recesije lahko pojavijo vsakih nekaj let. Med recesijo je proizvodnja znatno nižja, povrne se v tek po recesiji.
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prepovej obračanje vlakov na postajah: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Če je omogočeno, se vlaki ne obračajo na vmesnih postajah
+STR_CONFIG_SETTING_DISASTERS                                    :Nesreče: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Preklop med pojavljanjem nesreč
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Odnos mestnega sveta do prestrukturiranja površine: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nastavitev nivoja hrupa in posameznih posegov podjetja na oceno v mestu in nadaljnjo gradnjo
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dovoli gradnjo hiš na nagibih ali obali: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Če je omogočeno, so lahko tračnice in postaje zgradjene na večini pobočij. Če je onemogočeno, so dovoljene le na pobočjih, ki ustrezajo smeri tračnic in zato ne zahtevajo temelje.
@@ -1292,9 +1326,15 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :koncu
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cestna vozila v vrsti (s quantum efekti): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Cestno vozila naj čaka pred zasedenim postankom/oviro dokler ni odstranjena.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Premakni okno, ko je miška na robu: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Če je omogočeno, bo miška na robu slike sama premikala pogled naprej
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Onemogočeno
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Glavni pogled, samo cel zaslon
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Glavni pogled
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Vsi pogledi
 STR_CONFIG_SETTING_BRIBE                                        :Dovoli podkupovanje mestnih oblasti: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Dovoli družbam poskus podkupovanja mestne oblasti. Če bo inšpektor odkril podkupovanje, bo družba mirovala v tistem mestu za 6 mesecev.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dovoli nakup ekskluzivnih prevoznih dovoljenj: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Če podjetje odkupi ekskluzivne transportne pravice v mestu, tekmečeve postaje ne bodo prejemale tovora za 1 leto
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dovoli naložbe v zgradbe: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Dovoli družbam vlaganje denarja v mesta za gradnjo novih hiš.
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Dovoli financiranje obnove lokalnih cest: {STRING}
@@ -1377,6 +1417,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nasprotno urini
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Urina smer
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Višina, do katere sega raven tip terena: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Omogoči oblikovanje terena na robovih ozemlja: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Če je onemogočeno, bodo na robu ozemlja vedno oceani
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Eno ali več polj na severnem robu ni praznih
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eno ali več polj na robu ni vodnatih
 
@@ -1411,6 +1452,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Premikaj zemlje
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Izklopljeno
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Hitrost premika s kolescem miške: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrola občutljivosti miške med pomikom pogleda
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tipkovnica na zaslonu: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Izberi način odpiranja tipkovnice na zaslonu za vpis teksta z miško
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Onemogočeno
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojni klik
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enojni klik (ko je izostreno)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enojni klik (takojšnje)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacija desnega gumba miške: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Izberi način emulacije klika desnega bumba miške
@@ -1429,8 +1476,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Privzeti nabor za NewGRF-je brez izbranega nabora: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Privzeta paleta za uporabo z NewGRF-ji, kateri ne zahevajo specifične.
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS nabor
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows nabor
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Privzeta (D) paleta
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Avtomatsko pavziraj ob zagonu nove igre: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Če je omogočeno, se igra avtomatsko pavzira ob zagonu nove igre, za preučitev ozemlja.
@@ -1499,6 +1545,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Če je omogoče
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Onemogoči ladje za računalnik: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Če je omogočeno, računalniški tekmec ne more graditi ladij.
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Profil privzetih nastavitev: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Izberi profil nastavitev za naključne UI ali za začetne vrednosti ob dodajanju UI ali skripta
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lahko
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Srednje težko
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Težko
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dovoli UI v večigralskem načinu: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dovoli UI računalniškim tekmecem sodelovanje v večigralskem načinu.
@@ -1525,12 +1576,19 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Onemogoči elek
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Če je omogočeno, ni potrebna elektrifikacija železnice za električni pogon.
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Prihod prvega vozila na igralčevo postajo: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Prikaži novice, ko prvo vozilo prispe na novo igralčevo postajo
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Prihod prvega vozila na nasprotnikovo postajo: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikaz časopisa, ko pride prvo vozilo na postajo novega tekmeca.
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreče / katastrofe: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikaži novice ko se zgodi nesreča
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacije o podjetju: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikaz časopisa, ko se ustanovi novo podjetje ali ko se pripravlja na bankrot
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Odpiranje industrij: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Prikaz časopisa ob odprtju industrij
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zapiranje industrij: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Prikaz časopisa ob zaprtju industrij
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomske spremembe: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Prikaz časopisa ob globalnih ekonomskih spremembah
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Sprememba proizvodnje industrij v oskrbi podjetja: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Prikaži časopis ob spremembi proizvajalne ravni industrij, ki jih servisira podjetje ali tekmeci
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Proizvodne spremembe industrij v oskrbi tekmecev: {STRING}
@@ -1565,7 +1623,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Med vlečenjem 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Razdalja postavitve signalov do naslednjega signala/prepreke pri načinu z vlečenjem.
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} plošč{P 0 o i e ""}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Med vlečenjem drži trajni razmak med signali: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Izbira ozadja postavitve signalov s Ctrl+vleko signalov. Če je omogočeno, se signali postavijo vsakih Št. polj, onemogočeno - signali se postavijo ob mostovih, predorih, da ni velikih razdalj brez signalov.
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Izbira ozadja postavitve signalov s Ctrl+vleko signalov. Če je onemogočeno, se signali postavijo ob predorih in mostih, da se preprečijo dolgi odseki brez signalov. Če je omogočeno, se postavijo signali vsakih Št. polj.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Samodejno postavi semaforje pred: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Nastavitev leta, kdaj se prične uporaba električnih signalov. Pred tem so mehanski.
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Omogoči vmesnik signalov: {STRING}
@@ -1693,6 +1751,11 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nezdružljivo s
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznano
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivo stiskanja '{STRING}' ni veljaven
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format shranjevanja igre '{STRING}' ni na voljo. Vračanje na '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoriran osnovni grafični set '{STRING}': ni najden
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoriran osnovni zvočni set '{STRING}': ni najden
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriran osnovni glasbeni set '{STRING}': ni najden
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Premalo pomnilnika
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Priprava {BYTES} za predpomnilnik sličic ni uspela. Pomnilnik je bil zmanjšan na {BYTES}. To bo zmanjšalo zmogljivost OpenTTD. Za zmanjšanje potrebe po spominu onemogoči podporo za 32 bitne sličice
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1705,6 +1768,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Urejeval
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Več igralcev
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljših rezultatov
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne nastavitve
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine
@@ -1724,6 +1788,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izberi s
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izberi ozemlje v svetu igrač
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži možnosti igre
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tabelo najboljših rezultatov
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaz naprednih nastavitev
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži nastavitve NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
@@ -2169,6 +2234,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izberi n
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označi vse nadgradne vsebine za obstoječe vsebine prenosa
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nobena
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi vse, da ne bo prenešeno
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Poišči zunanje spletne strani
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Vsebina iskanja ni na voljo v OpenTTD-jevem servisu
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Zapuščaš OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Izjave in pogoji za prenos vsebin iz zunanjih strežnikov se spreminjajo.{}Sklicuj je na zunanje strani za navodila o instalaciji vsebin v OpenTTD.{}Želiš nadaljevati?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Oznaka/ime filtra:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Obišči spletno stran
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Obišči spletno mesto za to vsebino
@@ -2516,6 +2585,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikaži oskrbo s tovorom in pripadajoče industrije
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveži z zemljevidom
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Izberi prikazane industrije tudi na zemljevidu
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Izberi tovor
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Izberi tovor za prikaz
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Izberi industrijo
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Izberi industrijo za prikaz
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacije o zemljišču
@@ -2665,6 +2738,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Vpiši i
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Ustvarjanje sveta
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Velikost ozemlja:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Izberi velikost zemljevida v ploščah. Število plošč na voljo bo nekoliko nižje.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Število mest:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
@@ -2840,6 +2914,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje več Ukaz 8 vnosov (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Prebrana datoteka preko meje za sličice (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Trenutni set osnovnih grafik ne vsebuje določenih sličic. Posodobi osnovni set.{}Odkar igraš {YELLOW} razvojni pogled OpenTTD{WHITE}, nogoče potrebuješ tudi {YELLOW}razvojni pogled osnovnih grafik{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Zahtevani viri GRF niso na voljo (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je bil izklopljen zaradi {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neveljaven/neznan format zapisa sličic (sprite {3:NUM})
@@ -2850,6 +2925,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Priprav
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne morem dodati datoteke: podvojen GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ustrezna datoteka ni najdena (naložen je kompatibilni GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nemogoče dodati datoteko: Meja NewGRF datoteke je dosežena
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilni GRF-ji so naloženi namesto manjkajočih datotek
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manjkajoče GRF datoteke so bile onemogočene
@@ -3539,6 +3615,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Obdobje 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Podaljšaj čas med servisi za 10. Ctrl+Klik podaljša za 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skrajšaj čas med servisi za 10. Ctrl+Klik skrajša za 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Spremeni presledek tipa servisiranja
+STR_VEHICLE_DETAILS_DEFAULT                                     :Privzeto
+STR_VEHICLE_DETAILS_DAYS                                        :Dni
+STR_VEHICLE_DETAILS_PERCENT                                     :Odstotek
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Poimenuj vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Poimenuj cestno vozilo
@@ -4262,6 +4342,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogo�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uničeno
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Ni še vozil na razpolago.
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Začni novo igro po {DATE_SHORT} ali uporabi NewGRF, ki vsebuje zgodnja vozila
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ni mogoče spremeniti smeri vlaka...
@@ -4481,7 +4564,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Parna)
@@ -4690,7 +4773,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug po
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake potniški trajekt
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate tovorna ladja
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell tovorna ladja
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover tovorna ladja
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover tovorna ladja
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut tovorna ladja
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
@@ -4807,6 +4890,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

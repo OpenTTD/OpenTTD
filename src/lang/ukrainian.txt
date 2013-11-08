@@ -630,7 +630,10 @@ STR_MONTH_ABBREV_OCT                                            :Жов
 STR_MONTH_ABBREV_NOV                                            :Лис
 STR_MONTH_ABBREV_DEC                                            :Гру
 
-STR_MONTH_JAN                                                   :Січень
+STR_MONTH_JAN                                                   :cічень
+STR_MONTH_JAN.r                                                 :січня
+STR_MONTH_JAN.d                                                 :січневі
+STR_MONTH_JAN.z                                                 :січень
 STR_MONTH_FEB                                                   :Лютий
 STR_MONTH_MAR                                                   :Березень
 STR_MONTH_APR                                                   :Квітень
@@ -1188,7 +1191,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Налашту�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Налаштування, що відрізняються від налаштувань нової гри
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Обмежує перелік нижче визначеними типами налаштувань
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Всі налаштування
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Усі типи налаштувань
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Налаштування клієнта (не присутні в збережених іграх; впливають на всі ігри)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Налаштування гри (знаходяться в збережених іграх; впливають лише на нові ігри)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Налаштування гри (знаходяться в збережених іграх; впливають лише на поточну гру)
@@ -1214,7 +1217,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :правору�
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальна сума позики: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальна сума позики для компанії (без урахування інфляції)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентна ставка: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентна ставка за позиками; також контролює інфляцію, якщо увімкнена
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентна ставка за позиками; також контролює інфляцію, якщо вона увімкнена
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Експлуатаційні витрати: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Встановіть вартість обслуговування та експлуатаційні витрати на транспорт та інфраструктуру
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Швидкість будівництва: {STRING}
@@ -1226,9 +1229,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Встанов�
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Вартість будівництва: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Встановити рівень витрат на будівництво та придбання
 STR_CONFIG_SETTING_RECESSIONS                                   :Рецесії: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Якщо увімкнено, рецесії можуть відбуватися кожні декілька років. Під час рецессії обсяг всіх виробництв значно знижений (він повертається на попередній рівень, коли рецесія закінчується)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Якщо увімкнено, рецесії можуть відбуватися кожні декілька років. Під час рецессії обсяг виробництва на всіх підприємствах значно знижений (він повертається на попередній рівень, коли рецесія закінчується)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Заборонити поїздам розвертатися на станціях: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Якщо увімкнено, поїзди не будуть розвертатися у не кінцевих зупинках, якщо є коротший шлях до їх наступного пункту призначення при русі заднім ходом
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Якщо увімкнено, поїзди не будуть розвертатися на некінцевих станціях, навіть якщо є коротший шлях до їх наступного пункту призначення, який вимагає розвороту
 STR_CONFIG_SETTING_DISASTERS                                    :Стихійні лиха: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Перемкнути стихійні лиха, які можуть випадково зруйнувати транспорт або інфраструктуру
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Ставлення ради міста до реструктуризації його території: {STRING}
@@ -1448,8 +1451,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Стандартна палітра файлів NewGRF: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Налаштування палітри для файлів NewGRF, в яких вона не вказана.
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Палітра DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Палітра Windows
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Визначена палітра (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Стара палітра (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Пауза на початку нової гри: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :При включенні на початку гри автоматично вмикається пауза.
@@ -1486,9 +1489,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Відтвор�
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Газета: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Відтворювати звуковий ефект при відображенні газет
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Кінець року: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Грати звуковий ефект в кінці року при підведенні результатів діяльності компанії протягом року в порівнянні з попереднім роком
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Грати звуковий ефект у кінці року при підбитті результатів річної діяльності компанії порівняно з попереднім роком
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Будівництво: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Відтворювати звуковий ефект при успішному будівництві споруд або інших дій
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Відтворювати звуковий ефект при успішному будівництві споруд або інших діях
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Натискання кнопок: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Звуковий сигнал при натисканні кнопок
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Катастрофи/аварії: {STRING}
@@ -1496,7 +1499,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Відтвор�
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Транспортні засоби: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Відтворювати звукові ефекти транспортних засобів
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Навколишнє середовище: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Відтворювати звуки навколишнього середовища ландшафту, промисловості та міст
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Відтворювати звуки довкілля: ландшафту, промисловості та міст
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Заборонити будівництво інфраструктури, для якої немає відповідного транспорту: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :При включенні будівництво тої чи іншої інфраструктури можливе тільки при доступності відповідних транспортних засобів. Це запобігає марним витратам часу та коштів на інфраструктуру, що не використовується.
@@ -1553,7 +1556,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Показат�
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Прибуття першого транспорту на станцію конкурента: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показати газету коли перший транспортний засіб прибуває на нову станцію конкурента
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Нещасні випадки / стихійні лиха: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показати газету коли стається аварія або катастрофа
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показати газету при аварії або катастрофі
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Інформація щодо компанії: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показати газету коли відкривається нова компанія, або коли компанії ризикують збанкрутувати
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Відкриття підприємств: {STRING}
@@ -1573,7 +1576,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Показат�
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новий транспорт: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Показати газету, коли стає доступним новий засіб пересування
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Зміни в списку грузів, що приймаються: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Показати повідомлення про зміну прийняття деяких вантажів станціями
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Показати повідомлення, якщо станція змінює приймані типи вантажів
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидії: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Показати газети про події, пов'язані з субсидіями
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Загальна інформація: {STRING}
@@ -1596,7 +1599,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При прот
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Налаштування відстані між сигналами при будівництві сигналів протягуванням.
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} клітин{P ку ки ок}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :При протягуванні дотримуватись фіксованої дистанціі між сигналами: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Налаштування способу встановлення сигналів при протягуванні з утриманням Ctrl. Якщо опція відключена, то сигнали обов'язково встановлюються на кінцях мостів та тунелів. При включенні опції заданий інтервал встановлювання сигналів витримується більш строго (з метою вирівнювання сигналів на паралельних коліях).
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Вибрати спосіб встановлення сигналів при протягуванні з утриманням Ctrl. Якщо опція відключена, то сигнали встановлюються на кінцях мостів та тунелів. При включенні опції заданий інтервал встановлювання сигналів витримується більш строго (з метою вирівнювання сигналів на паралельних коліях).
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Автоматично будувати семафори до {STRING} року
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Налаштування року впровадження світлофорів замість семафорів. До цього року будуть встановлюватись лише семафори.
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Використовувати меню сигналів: {STRING}
@@ -2206,6 +2209,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Вибр
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Позначити весь вміст, що є оновленням існуючого, для завантаження
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Зняти позначки
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Не завантажувати нічого
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Ви виходите з OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фільтр за назвою:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Відвідати вебсайт
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Відвітати вебсайт цього контенту
@@ -3321,14 +3325,14 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Міст
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Може бути переобладненим на: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
-STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_BUT                                       :Всі, крім {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальність: {GOLD}{COMMA} клітинок
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів - клікніть на поїзді для інформації
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список авто - натисніть на авто для інформації
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список вибору кораблів - натисніть на корабель для інформації
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список вибору літаків - натисніть на літак для інформації
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів - клацніть на поїзді для інформації
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список авто - клацніть на авто для інформації
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список вибору кораблів - клацніть на корабель для інформації
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список вибору літаків - клацніть на літак для інформації
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купити
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купити
@@ -3350,7 +3354,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Пере
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Перейменувати тип корабля
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Перейменувати тип літака
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Перейменувати тип поїзду
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Перейменувати тип поїзда
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Перейменувати тип авто
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Перейменувати тип корабля
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Перейменувати тип літака
@@ -3583,6 +3587,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інте
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Збільшити інтервал техогляду на 10. Ctrl+клік збільшує інтервал техогляду на 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зменшити період техогляду на 10. Ctrl+клік зменшує інтервал техогляду на 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :Відлік інтервалу між техоглядами
+STR_VEHICLE_DETAILS_DAYS                                        :Дні
+STR_VEHICLE_DETAILS_PERCENT                                     :Проценти
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назвати поїзд
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Назвати авто
@@ -3841,7 +3848,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Авто
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Очікується
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Призначено
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Переключити між очікуваним і запланованим
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Перемкнути очікуване на заплановане
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :В:
@@ -4306,6 +4313,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не м�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспорт знищено
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Жоден вид транспорту ще не став доступним
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Починайте нову гру після {DATE_SHORT} або використовуйте NewGRF, в якому транспорт з’являється раніше
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Неможливо проїхати сигнал - небезпечно...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Неможливо розвернути поїзд...
@@ -4331,8 +4341,8 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... тр
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Неможливо розділити список завдань...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Неможливо відмінити спільні накази...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Неможливо скопіювати список завдань...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... дуже далеко від попереднього пункту призначення
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... літак не літає так далеко
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... занадто далеко від попереднього пункту призначення
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... літак не може летіти так далеко
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не можна встановити розклад для транспорту...
@@ -4349,6 +4359,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не м�
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Гра-симулятор, заснована на Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Оригінальна графіка з Transport Tycoon Deluxe DOS edition.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Оригінальна графіка з Transport Tycoon Deluxe DOS edition (німецького).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Оригінальна графіка з Transport Tycoon Deluxe Windows edition.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Оригінальний набір звуків з Transport Tycoon Deluxe DOS edition.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Оригінальний набір звуків з Transport Tycoon Deluxe Windows edition.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Порожній набір звуків.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Оригінальна музика з Transport Tycoon Deluxe Windows edition.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Порожній набір музики.
 
 ##id 0x2000
 # Town building names
@@ -4509,7 +4527,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (тепловоз)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (тепловоз)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (тепловоз)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паровоз)
@@ -4716,10 +4734,10 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Пасажир�
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Судно на повітряній подушці Bakewell 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Пасажирский пором Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Пасажирский пором Shivershake
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Вантажний корабель Yate
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Вантажний корабель Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Вантажний корабель Mightymover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Вантажний корабель Powernaut
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Вантажний корабель Яхта
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Вантажний корабель Бейквел
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Вантажний корабель MightyMover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Вантажний корабель Потужний
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -4835,6 +4853,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

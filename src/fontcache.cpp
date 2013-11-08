@@ -80,7 +80,7 @@ public:
 	virtual uint GetGlyphWidth(GlyphID key);
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key) { assert(IsPrintable(key)); return SPRITE_GLYPH | key; }
-	virtual const void *GetFontTable(uint32 tag, size_t &length) { length = 0; return NULL; }
+	virtual const void *GetFontTable(uint32 tag, size_t &length) { printf("%p\n", &length); length = 0; return NULL; }
 };
 
 /**
