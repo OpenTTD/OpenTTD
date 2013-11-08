@@ -1225,11 +1225,15 @@ bool AfterLoadGame()
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
 					if (HasSignals(t)) {
+						/* Original signal type/variant was stored in m4 but since saveload
+						 * version 48 they are in m2. The bits has been already moved to m2
+						 * (see the code somewhere above) so don't use m4, use m2 instead. */
+
 						/* convert PBS signals to combo-signals */
-						if (HasBit(_m[t].m2, 2)) SetSignalType(t, TRACK_X, SIGTYPE_COMBO);
+						if (HasBit(_m[t].m2, 2)) SB(_m[t].m2, 0, 2, SIGTYPE_COMBO);
 
 						/* move the signal variant back */
-						SetSignalVariant(t, TRACK_X, HasBit(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+						SB(_m[t].m2, 2, 1, HasBit(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 						ClrBit(_m[t].m2, 3);
 					}
 
