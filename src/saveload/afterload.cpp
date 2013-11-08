@@ -1509,13 +1509,15 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(64)) {
-		/* copy the signal type/variant and move signal states bits */
+		/* Since now we allow different signal types and variants on a single tile.
+		 * Move signal states to m4 to make room and clone the signal type/variant. */
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_RAILWAY) && HasSignals(t)) {
+				/* move signal states */
 				SetSignalStates(t, GB(_m[t].m2, 4, 4));
-				SetSignalVariant(t, INVALID_TRACK, GetSignalVariant(t, TRACK_X));
-				SetSignalType(t, INVALID_TRACK, GetSignalType(t, TRACK_X));
-				ClrBit(_m[t].m2, 7);
+				SB(_m[t].m2, 4, 4, 0);
+				/* clone signal type and variant */
+				SB(_m[t].m2, 4, 3, GB(_m[t].m2, 0, 3));
 			}
 		}
 	}
