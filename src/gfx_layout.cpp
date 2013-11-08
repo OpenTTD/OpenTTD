@@ -481,6 +481,12 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 				} else if (c == SCC_BIGFONT) {
 					state.SetFontSize(FS_LARGE);
 				} else {
+#ifndef WITH_ICU
+					/* Filter out text direction characters that shouldn't be drawn, and
+					 * will not be handled in the fallback non ICU case because they are
+					 * mostly needed for RTL languages which need more ICU support. */
+					if (IsTextDirectionChar(c)) continue;
+#endif
 					buff += AppendToBuffer(buff, buffer_last, c);
 					continue;
 				}
