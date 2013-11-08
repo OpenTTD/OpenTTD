@@ -3149,8 +3149,9 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						 * this to one, then if we reach the next signal it is
 						 * decreased to zero and we won't pass that new signal. */
 						Trackdir dir = FindFirstTrackdir(trackdirbits);
-						if (GetSignalType(gp.new_tile, TrackdirToTrack(dir)) != SIGTYPE_PBS ||
-								!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(dir))) {
+						if (HasSignalOnTrackdir(gp.new_tile, dir) ||
+								(HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(dir)) &&
+								GetSignalType(gp.new_tile, TrackdirToTrack(dir)) != SIGTYPE_PBS)) {
 							/* However, we do not want to be stopped by PBS signals
 							 * entered via the back. */
 							v->force_proceed = (v->force_proceed == TFP_SIGNAL) ? TFP_STUCK : TFP_NONE;
