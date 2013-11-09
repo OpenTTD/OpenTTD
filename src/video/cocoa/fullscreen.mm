@@ -17,7 +17,7 @@
 
 #include "../../stdafx.h"
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_9
+#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9)
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
@@ -520,5 +520,5 @@ CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp)
 	return ret;
 }
 
-#endif /* MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_9 */
+#endif /* (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9) */
 #endif /* WITH_COCOA */
