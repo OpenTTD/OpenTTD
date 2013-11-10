@@ -4352,18 +4352,23 @@ void FlowStatMap::FinalizeLocalConsumption(StationID self)
 /**
  * Delete all flows at a station for specific cargo and destination.
  * @param via Remote station of flows to be deleted.
+ * @return IDs of source stations for which the complete FlowStat, not only a
+ *         share, has been erased.
  */
-void FlowStatMap::DeleteFlows(StationID via)
+StationIDStack FlowStatMap::DeleteFlows(StationID via)
 {
+	StationIDStack ret;
 	for (FlowStatMap::iterator f_it = this->begin(); f_it != this->end();) {
 		FlowStat &s_flows = f_it->second;
 		s_flows.ChangeShare(via, INT_MIN);
 		if (s_flows.GetShares()->empty()) {
+			ret.Push(f_it->first);
 			this->erase(f_it++);
 		} else {
 			++f_it;
 		}
 	}
+	return ret;
 }
 
 /**

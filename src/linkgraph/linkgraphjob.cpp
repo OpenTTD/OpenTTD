@@ -72,7 +72,11 @@ LinkGraphJob::~LinkGraphJob()
 					st2->goods[this->Cargo()].node != it->first ||
 					(*lg)[node_id][it->first].LastUpdate() == INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
-				flows.DeleteFlows(to);
+				StationIDStack erased = flows.DeleteFlows(to);
+				/* Delete old flows for source stations which have been deleted
+				 * from the new flows. This avoids flow cycles between old and
+				 * new flows. */
+				while (!erased.IsEmpty()) ge.flows.erase(erased.Pop());
 			} else if ((*lg)[node_id][it->first].LastUnrestrictedUpdate() == INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);
