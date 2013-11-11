@@ -1708,7 +1708,7 @@ static WindowDesc _vehicle_list_train_desc(
 	_nested_vehicle_list, lengthof(_nested_vehicle_list)
 );
 
-static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, VehicleType vehicle_type, uint16 unique_number)
+static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, VehicleType vehicle_type, uint32 unique_number)
 {
 	if (!Company::IsValidID(company) && company != OWNER_NONE) return;
 
