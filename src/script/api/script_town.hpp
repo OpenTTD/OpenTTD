@@ -251,12 +251,13 @@ public:
 	 * @param town_id The index of the town.
 	 * @param days_between_town_growth The amount of days between town growth.
 	 * @pre IsValidTown(town_id).
+	 * @pre days_between_town_growth <= 30000.
 	 * @return True if the action succeeded.
 	 * @note Even when setting a growth rate, towns only grow when the conditions for growth (SetCargoCoal) are met,
 	 *       and the game settings (economy.town_growth_rate) allow town growth at all.
 	 * @api -ai
 	 */
-	static bool SetGrowthRate(TownID town_id, uint16 days_between_town_growth);
+	static bool SetGrowthRate(TownID town_id, uint32 days_between_town_growth);
 
 	/**
 	 * Get the amount of days between town growth.

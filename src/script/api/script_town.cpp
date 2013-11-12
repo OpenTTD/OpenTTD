@@ -154,12 +154,12 @@
 	}
 }
 
-/* static */ bool ScriptTown::SetGrowthRate(TownID town_id, uint16 days_between_town_growth)
+/* static */ bool ScriptTown::SetGrowthRate(TownID town_id, uint32 days_between_town_growth)
 {
 	days_between_town_growth = days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS;
 
 	EnforcePrecondition(false, IsValidTown(town_id));
-	EnforcePrecondition(false, (days_between_town_growth & TOWN_GROW_RATE_CUSTOM) == 0);
+	EnforcePrecondition(false, days_between_town_growth < TOWN_GROW_RATE_CUSTOM);
 
 	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, days_between_town_growth, CMD_TOWN_GROWTH_RATE);
 }
