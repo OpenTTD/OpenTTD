@@ -73,6 +73,7 @@ void SQGSTown_Register(Squirrel *engine)
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::HasStatue,                         "HasStatue",                         2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::IsCity,                            "IsCity",                            2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetRoadReworkDuration,             "GetRoadReworkDuration",             2, ".i");
+	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetFundBuildingsDuration,          "GetFundBuildingsDuration",          2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetExclusiveRightsCompany,         "GetExclusiveRightsCompany",         2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetExclusiveRightsDuration,        "GetExclusiveRightsDuration",        2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::IsActionAvailable,                 "IsActionAvailable",                 3, ".ii");

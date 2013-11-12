@@ -69,6 +69,7 @@ void SQAITown_Register(Squirrel *engine)
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::HasStatue,                         "HasStatue",                         2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsCity,                            "IsCity",                            2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetRoadReworkDuration,             "GetRoadReworkDuration",             2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetFundBuildingsDuration,          "GetFundBuildingsDuration",          2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetExclusiveRightsCompany,         "GetExclusiveRightsCompany",         2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetExclusiveRightsDuration,        "GetExclusiveRightsDuration",        2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsActionAvailable,                 "IsActionAvailable",                 3, ".ii");

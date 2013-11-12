@@ -228,6 +228,13 @@
 	return ::Town::Get(town_id)->road_build_months;
 }
 
+/* static */ int ScriptTown::GetFundBuildingsDuration(TownID town_id)
+{
+	if (!IsValidTown(town_id)) return -1;
+
+	return ::Town::Get(town_id)->fund_buildings_months;
+}
+
 /* static */ ScriptCompany::CompanyID ScriptTown::GetExclusiveRightsCompany(TownID town_id)
 {
 	if (ScriptObject::GetCompany() == OWNER_DEITY) return ScriptCompany::COMPANY_INVALID;

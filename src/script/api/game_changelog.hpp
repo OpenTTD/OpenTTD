@@ -29,6 +29,7 @@
  * \li GSStoryPage
  * \li GSTile::GetTerrainType
  * \li GSTown::FoundTown
+ * \li GSTown::GetFundBuildingsDuration
  * \li GSTown::SetName
  * \li GSTown::TOWN_GROWTH_NONE
  * \li GSTown::TOWN_GROWTH_NORMAL

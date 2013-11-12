@@ -23,6 +23,7 @@
  * \li AIStation::HasCargoRating
  * \li AITile::GetTerrainType
  * \li AITown::FoundTown
+ * \li AITown::GetFundBuildingsDuration
  * \li AITown::TOWN_GROWTH_NONE
  *
  * Other changes:

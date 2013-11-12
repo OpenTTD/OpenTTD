@@ -334,6 +334,15 @@ public:
 	static int GetRoadReworkDuration(TownID town_id);
 
 	/**
+	 * Find out how long new buildings are still being funded in a town.
+	 * @param town_id The town to check.
+	 * @pre IsValidTown(town_id).
+	 * @return The number of months building construction is still funded.
+	 *         The value 0 means that there is currently no funding.
+	 */
+	static int GetFundBuildingsDuration(TownID town_id);
+
+	/**
 	 * Find out which company currently has the exclusive rights of this town.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
