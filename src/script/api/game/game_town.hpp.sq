@@ -48,6 +48,7 @@ void SQGSTown_Register(Squirrel *engine)
 	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_SIZE_MEDIUM,             "TOWN_SIZE_MEDIUM");
 	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_SIZE_LARGE,              "TOWN_SIZE_LARGE");
 	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_SIZE_INVALID,            "TOWN_SIZE_INVALID");
+	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_GROWTH_NONE,             "TOWN_GROWTH_NONE");
 	SQGSTown.DefSQConst(engine, ScriptTown::TOWN_GROWTH_NORMAL,           "TOWN_GROWTH_NORMAL");
 
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetTownCount,                      "GetTownCount",                      1, ".");

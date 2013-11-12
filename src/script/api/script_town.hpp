@@ -120,6 +120,7 @@ public:
 	 * Special values for SetGrowthRate.
 	 */
 	enum TownGrowth {
+		TOWN_GROWTH_NONE   = 0xFFFF,  ///< Town does not grow at all.
 		TOWN_GROWTH_NORMAL = 0x10000, ///< Use default town growth algorithm instead of custom growth rate.
 	};
 
@@ -256,9 +257,9 @@ public:
 	/**
 	 * Set the amount of days between town growth.
 	 * @param town_id The index of the town.
-	 * @param days_between_town_growth The amount of days between town growth, or TOWN_GROWTH_NORMAL.
+	 * @param days_between_town_growth The amount of days between town growth, TOWN_GROWTH_NONE or TOWN_GROWTH_NORMAL.
 	 * @pre IsValidTown(town_id).
-	 * @pre days_between_town_growth <= 30000 || days_between_town_growth == TOWN_GROWTH_NORMAL.
+	 * @pre days_between_town_growth <= 30000 || days_between_town_growth == TOWN_GROWTH_NONE || days_between_town_growth == TOWN_GROWTH_NORMAL.
 	 * @return True if the action succeeded.
 	 * @note Even when setting a growth rate, towns only grow when the conditions for growth (SetCargoCoal) are met,
 	 *       and the game settings (economy.town_growth_rate) allow town growth at all.
@@ -270,7 +271,7 @@ public:
 	 * Get the amount of days between town growth.
 	 * @param town_id The index of the town.
 	 * @pre IsValidTown(town_id).
-	 * @return Amount of days between town growth.
+	 * @return Amount of days between town growth, or TOWN_GROWTH_NONE.
 	 * @note This function does not indicate when it will grow next. It only tells you the time between growths.
 	 */
 	static int32 GetGrowthRate(TownID town_id);

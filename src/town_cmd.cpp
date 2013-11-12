@@ -2513,14 +2513,14 @@ CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @param tile Unused.
  * @param flags Type of operation.
  * @param p1 Town ID to cargo game of.
- * @param p2 Amount of days between growth.
+ * @param p2 Amount of days between growth, or TOWN_GROW_RATE_CUSTOM_NONE, or 0 to reset custom growth rate.
  * @param text Unused.
  * @return Empty cost or an error.
  */
 CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if ((p2 & TOWN_GROW_RATE_CUSTOM) != 0) return CMD_ERROR;
+	if ((p2 & TOWN_GROW_RATE_CUSTOM) != 0 && p2 != TOWN_GROW_RATE_CUSTOM_NONE) return CMD_ERROR;
 	if (GB(p2, 16, 16) != 0) return CMD_ERROR;
 
 	Town *t = Town::GetIfValid(p1);
@@ -2826,10 +2826,11 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 	if (flags & DC_EXEC) {
 		/* Build next tick */
 		t->grow_counter = 1;
-		/* If we were not already growing */
-		SetBit(t->flags, TOWN_IS_GROWING);
 		/* And grow for 3 months */
 		t->fund_buildings_months = 3;
+
+		/* Enable growth (also checking GameScript's opinion) */
+		UpdateTownGrowRate(t);
 
 		SetWindowDirty(WC_TOWN_VIEW, t->index);
 	}
@@ -3048,7 +3049,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	if ((t->growth_rate & TOWN_GROW_RATE_CUSTOM) != 0) {
-		SetBit(t->flags, TOWN_IS_GROWING);
+		if (t->growth_rate != TOWN_GROW_RATE_CUSTOM_NONE) SetBit(t->flags, TOWN_IS_GROWING);
 		SetWindowDirty(WC_TOWN_VIEW, t->index);
 		return;
 	}

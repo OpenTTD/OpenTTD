@@ -30,6 +30,7 @@
  * \li GSTile::GetTerrainType
  * \li GSTown::FoundTown
  * \li GSTown::SetName
+ * \li GSTown::TOWN_GROWTH_NONE
  * \li GSTown::TOWN_GROWTH_NORMAL
  *
  * Other changes:

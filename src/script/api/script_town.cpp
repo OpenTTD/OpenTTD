@@ -163,6 +163,10 @@
 			days_between_town_growth = 0;
 			break;
 
+		case TOWN_GROWTH_NONE:
+			days_between_town_growth = TOWN_GROW_RATE_CUSTOM_NONE;
+			break;
+
 		default:
 			days_between_town_growth = days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS;
 			EnforcePrecondition(false, days_between_town_growth < TOWN_GROW_RATE_CUSTOM);
@@ -178,6 +182,8 @@
 	if (!IsValidTown(town_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
+
+	if (t->growth_rate == TOWN_GROW_RATE_CUSTOM_NONE) return TOWN_GROWTH_NONE;
 
 	return ((t->growth_rate & ~TOWN_GROW_RATE_CUSTOM) * TOWN_GROWTH_TICKS + DAY_TICKS) / DAY_TICKS;
 }
