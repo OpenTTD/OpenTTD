@@ -156,10 +156,19 @@
 
 /* static */ bool ScriptTown::SetGrowthRate(TownID town_id, uint32 days_between_town_growth)
 {
-	days_between_town_growth = days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS;
-
 	EnforcePrecondition(false, IsValidTown(town_id));
-	EnforcePrecondition(false, days_between_town_growth < TOWN_GROW_RATE_CUSTOM);
+
+	switch (days_between_town_growth) {
+		case TOWN_GROWTH_NORMAL:
+			days_between_town_growth = 0;
+			break;
+
+		default:
+			days_between_town_growth = days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS;
+			EnforcePrecondition(false, days_between_town_growth < TOWN_GROW_RATE_CUSTOM);
+			if (days_between_town_growth == 0) days_between_town_growth = 1; // as fast as possible
+			break;
+	}
 
 	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, days_between_town_growth, CMD_TOWN_GROWTH_RATE);
 }

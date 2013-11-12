@@ -30,6 +30,7 @@
  * \li GSTile::GetTerrainType
  * \li GSTown::FoundTown
  * \li GSTown::SetName
+ * \li GSTown::TOWN_GROWTH_NORMAL
  *
  * Other changes:
  * \li GSGoal::New can now create up to 64000 concurrent goals. The old limit was 256 goals.
