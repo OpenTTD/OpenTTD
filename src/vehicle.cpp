@@ -87,14 +87,24 @@ bool Vehicle::NeedsAutorenewing(const Company *c, bool use_renew_setting) const
 	return true;
 }
 
+/**
+ * Service a vehicle and all subsequent vehicles in the consist
+ *
+ * @param *v The vehicle or vehicle chain being serviced
+ */
 void VehicleServiceInDepot(Vehicle *v)
 {
-	v->date_of_last_service = _date;
-	v->breakdowns_since_last_service = 0;
-	v->reliability = v->GetEngine()->reliability;
-	/* Prevent vehicles from breaking down directly after exiting the depot. */
-	v->breakdown_chance /= 4;
+	assert(v != NULL);
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
+
+	do {
+		v->date_of_last_service = _date;
+		v->breakdowns_since_last_service = 0;
+		v->reliability = v->GetEngine()->reliability;
+		/* Prevent vehicles from breaking down directly after exiting the depot. */
+		v->breakdown_chance /= 4;
+		v = v->Next();
+	} while (v != NULL && v->HasEngineType());
 }
 
 /**

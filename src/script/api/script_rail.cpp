@@ -186,10 +186,11 @@
 		if (spec == NULL) {
 			DEBUG(grf, 1, "%s returned an invalid station ID for 'AI construction/purchase selection (18)' callback", file->filename);
 		} else {
-			p2 |= spec->cls_id | index << 8;
+			/* We might have gotten an usable station spec. Try to build it, but if it fails we'll fall back to the original station. */
+			if (ScriptObject::DoCommand(tile, p1, p2 | spec->cls_id | index << 8, CMD_BUILD_RAIL_STATION)) return true;
 		}
-
 	}
+
 	return ScriptObject::DoCommand(tile, p1, p2, CMD_BUILD_RAIL_STATION);
 }
 

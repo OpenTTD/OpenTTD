@@ -72,10 +72,10 @@
  * \li AIOrder::SetOrderRefit
  * \li AIRail::GetMaintenanceCostFactor
  * \li AIRoad::GetMaintenanceCostFactor
+ * \li AITile::GetTownAuthority
  * \li AITown::GetCargoGoal
  * \li AITown::GetGrowthRate
  * \li AITown::GetLastMonthReceived
- * \li AITown::GetTownAuthority
  * \li AITownEffectList (to walk over all available town effects)
  * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached
  * \li AIVehicle::GetMaximumOrderDistance
@@ -95,7 +95,7 @@
  * Other changes:
  * \li AITown::GetLastMonthProduction no longer has prerequisites based on town
  *     effects.
- * \li AITown::GetLastMonthTransported no longer has prerequisites based on
+ * \li AITown::GetLastMonthTransported resp. AITown::GetLastMonthSupplied no longer has prerequisites based on
  *     town effects.
  * \li AITown::GetLastMonthTransportedPercentage no longer has prerequisites
  *     based on town effects.
