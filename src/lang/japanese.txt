@@ -4198,8 +4198,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}点検�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}輸送機器が破壊されます
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}利用可能な輸送機器がありません
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}{DATE_SHORT}年以降に開始するか、これより早い時期に輸送機器が開発されるNewGRFを利用して下さい
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}利用できる輸送機器が全くなくなります
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRFの設定を変更してください
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}利用可能な輸送機器がありません
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}年以降に開始するか、これより早い時期に輸送機器が開発されるNewGRFを利用して下さい
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}赤信号を無視させることができません

@@ -4192,8 +4192,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}...{NBSP}kjøretøy er ødelagt
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Ingen kjøretøyer er tilgjengelig enda
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Starte et nytt spill etter {DATE_SHORT}, eller bruke en NewGRF som inneholder tidlige kjøretøy
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen kjøretøyer vil være tilgjengelig i det hele tatt
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Endre din NewGRF konfigurasjon
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen kjøretøyer er tilgjengelig enda
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starte et nytt spill etter {DATE_SHORT}, eller bruke en NewGRF som inneholder tidlige kjøretøy
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke tvinge tog til å passere signal ved fare...

@@ -4252,8 +4252,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nem vál
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... jármű megsemmisült
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Még nincsenek elérhető járművek
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Indíts új játékot {DATE_SHORT} után, vagy használj olyan NewGRF-et, ami tartalmaz megfelelően korai járműveket!
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Egyáltalán nincsenek elérhető járművek
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF konfigurációd megváltoztatása
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Még nincsenek elérhető járművek
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Indíts új játékot {DATE_SHORT} után, vagy használj olyan NewGRF-et, ami tartalmaz megfelelően korai járműveket!
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nem haladhatja meg a vonat a megállj jelzést...

@@ -4190,8 +4190,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Không t
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... xe đã bị phá hủy
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Chưa có phương tiện nào có sẵn
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Bắt đầu một màn chơi mới sau {DATE_SHORT} hoặc sử dụng một NewGRF cung cấp sớm phương tiện
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Không có phương tiện nào sẵn sàng cả
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Thay đổi tham số NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Chưa có phương tiện nào có sẵn
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Bắt đầu một màn chơi mới sau {DATE_SHORT} hoặc sử dụng một NewGRF cung cấp sớm phương tiện
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Không thể để tàu hoả qua tín hiệu đèn khi nguy hiểm...

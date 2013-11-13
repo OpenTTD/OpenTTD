@@ -4342,8 +4342,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogo�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uničeno
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Ni še vozil na razpolago.
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Začni novo igro po {DATE_SHORT} ali uporabi NewGRF, ki vsebuje zgodnja vozila
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Sploh ni razpoložljivih vozil
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zamenjaj svojo NewGRF konfiguracijo
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ni še vozil na razpolago.
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začni novo igro po {DATE_SHORT} ali uporabi NewGRF, ki vsebuje zgodnja vozila
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...

@@ -4258,8 +4258,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie je m
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozidlo je zničené
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Zatiaľ nie sú dostupné žiadne vozidlá
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Začnite novú hru po {DATE_SHORT} alebo použite NewGRF, ktoré zabezpečí vozidlá v skoršom čase
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Žiadne vozidlá nebudú k dispozícii
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zmena vašej konfigurácie NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Zatiaľ nie sú dostupné žiadne vozidlá
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začnite novú hru po {DATE_SHORT} alebo použite NewGRF, ktoré zabezpečí vozidlá v skoršom čase
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemôžeš pustiť vlak na červenú keď hrozí nebezpečenstvo...

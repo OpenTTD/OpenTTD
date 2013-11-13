@@ -1323,6 +1323,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standaard palette voor NewGRFs zonder specifiek palette: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standaard palet te gebruiken voor NewGRFs die niet aangeven welke ze nodig hebben
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standaard (D) palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatisch pauzeren als je een nieuw spel start: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wanneer ingeschakeld, het spel zal automatisch pauzeren bij het starten van een nieuw spel, waardoor nadere bestudering van de kaart mogelijk is
@@ -4188,8 +4190,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan onde
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... voertuig is vernietigd
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Nog geen voertuigen beschikbaar
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE} Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF dat in vroege voertuigen voorziet
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Geen enkel voertuig zal beschikbaar zijn
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pas je NewGRF configuratie aan
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nog geen voertuigen beschikbaar
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE} Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF dat in vroege voertuigen voorziet
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan trein niet het signaal laten passeren bij gevaar...

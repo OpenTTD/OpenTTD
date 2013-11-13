@@ -4345,8 +4345,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servisni
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uništeno
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Nijedno vozilo još uvek nije dostupno
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Pokrenite novu igru koja počinje posle {DATE_SHORT} ili koristite NewGRF koji omogućava ranija vozila
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nijedno vozilo neće biti dostupno
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Promenite konfiguraciju za NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nijedno vozilo još uvek nije dostupno
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pokrenite novu igru koja počinje posle {DATE_SHORT} ili koristite NewGRF koji omogućava ranija vozila
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemoguć je prolaz voza na signal opasnosti...

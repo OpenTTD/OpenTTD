@@ -4271,6 +4271,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν �
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... το όχημα καταστράφηκε
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Αλλάξτε τις ρύθμισεις NewGRF σας
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν μπορεί το τρένο να περάσει σήμα με κίνδυνο...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του τρένου...

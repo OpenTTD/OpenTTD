@@ -4190,8 +4190,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak da
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kendaraan hancur
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Belum ada kendaraan yang tersedia saat ini
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Mulai permainan baru setelah {DATE_SHORT} atau gunakan NewGRF yang menyediakan kendaraan awal
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Tak satupun kendaraan tersedia
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Tukarkan konfigurasi NewGRF anda
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Belum ada kendaraan yang tersedia saat ini
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Mulai permainan baru setelah {DATE_SHORT} atau gunakan NewGRF yang menyediakan kendaraan awal
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
