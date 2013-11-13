@@ -681,7 +681,10 @@ private:
 	/** Sort by population */
 	static int CDECL TownPopulationSorter(const Town * const *a, const Town * const *b)
 	{
-		return (*a)->cache.population - (*b)->cache.population;
+		uint32 a_population = (*a)->cache.population;
+		uint32 b_population = (*b)->cache.population;
+		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b);
+		return (a_population < b_population) ? -1 : 1;
 	}
 
 public:
