@@ -67,7 +67,7 @@ const char *FioTarFirstDir(const char *tarname, Subdirectory subdir);
 void FioTarAddLink(const char *src, const char *dest, Subdirectory subdir);
 bool ExtractTar(const char *tar_filename, Subdirectory subdir);
 
-extern char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
+extern const char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 
 /** Helper for scanning for files with a given name */
 class FileScanner {

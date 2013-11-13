@@ -1143,7 +1143,7 @@ extern void cocoaSetApplicationBundleDir();
 }
 #endif /* defined(WIN32) || defined(WINCE) */
 
-char *_personal_dir;
+const char *_personal_dir;
 
 /**
  * Acquire the base paths (personal dir and game data dir),
@@ -1162,13 +1162,14 @@ void DeterminePaths(const char *exe)
 	}
 
 	if (_config_file != NULL) {
-		_personal_dir = strdup(_config_file);
-		char *end = strrchr(_personal_dir, PATHSEPCHAR);
+		char *dir = strdup(_config_file);
+		char *end = strrchr(dir, PATHSEPCHAR);
 		if (end == NULL) {
-			_personal_dir[0] = '\0';
+			dir[0] = '\0';
 		} else {
 			end[1] = '\0';
 		}
+		_personal_dir = dir;
 	} else {
 		char personal_dir[MAX_PATH];
 		if (FioFindFullPath(personal_dir, lengthof(personal_dir), BASE_DIR, "openttd.cfg") != NULL) {
@@ -1195,9 +1196,9 @@ void DeterminePaths(const char *exe)
 
 	_highscore_file = str_fmt("%shs.dat", _personal_dir);
 	extern char *_hotkeys_file;
-	_hotkeys_file = str_fmt("%shotkeys.cfg",  _personal_dir);
+	_hotkeys_file = str_fmt("%shotkeys.cfg", _personal_dir);
 	extern char *_windows_file;
-	_windows_file = str_fmt("%swindows.cfg",  _personal_dir);
+	_windows_file = str_fmt("%swindows.cfg", _personal_dir);
 
 	/* Make the necessary folders */
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && defined(WITH_PERSONAL_DIR)
