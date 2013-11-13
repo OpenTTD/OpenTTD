@@ -159,7 +159,8 @@ static inline void InitializeUnicodeGlyphMap()
 	}
 }
 
-static inline void ClearFontCache() {
+static inline void ClearFontCache()
+{
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		FontCache::Get(fs)->ClearFontCache();
 	}

@@ -77,7 +77,7 @@ public:
 	/**
 	 * Convert a sprite from the loader to our own format.
 	 */
-	virtual Sprite *Encode(SpriteLoader::Sprite *sprite, AllocatorProc *allocator) = 0;
+	virtual Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) = 0;
 
 	/**
 	 * Move the destination pointer the requested amount x and y, keeping in mind

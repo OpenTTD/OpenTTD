@@ -118,9 +118,10 @@ bool SkipSpriteData(byte type, uint16 num)
 /* Check if the given Sprite ID exists */
 bool SpriteExists(SpriteID id)
 {
+	if (id >= _spritecache_items) return false;
+
 	/* Special case for Sprite ID zero -- its position is also 0... */
 	if (id == 0) return true;
-	if (id >= _spritecache_items) return false;
 	return !(GetSpriteCache(id)->file_pos == 0 && GetSpriteCache(id)->file_slot == 0);
 }
 
