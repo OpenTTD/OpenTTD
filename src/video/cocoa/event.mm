@@ -542,6 +542,15 @@ static bool QZ_PollEvent()
 			_cursor.v_wheel -= (int)([ event deltaY ] * 5 * _settings_client.gui.scrollwheel_multiplier);
 			break;
 
+		case NSCursorUpdate:
+		case NSMouseEntered:
+		case NSMouseExited:
+			/* Catch these events if the cursor is dragging. During dragging, we reset
+			 * the mouse position programmatically, which would trigger OS X to show
+			 * the default arrow cursor if the events are propagated. */
+			if (_cursor.fix_at) break;
+			/* FALL THROUGH */
+
 		default:
 			[ NSApp sendEvent:event ];
 	}
