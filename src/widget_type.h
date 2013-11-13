@@ -775,6 +775,8 @@ public:
 	bool ButtonHit(const Point &pt);
 
 	static void InvalidateDimensionCache();
+
+	static Dimension dropdown_dimension;  ///< Cached size of a dropdown widget.
 private:
 	static Dimension shadebox_dimension;  ///< Cached size of a shadebox widget.
 	static Dimension debugbox_dimension;  ///< Cached size of a debugbox widget.
