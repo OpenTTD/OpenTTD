@@ -119,9 +119,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 
 		/* Draw the palette of the NewGRF */
 		if (c->palette & GRFP_BLT_32BPP) {
-			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows / 32 bpp" : "DOS / 32 bpp");
+			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Legacy (W) / 32 bpp" : "Default (D) / 32 bpp");
 		} else {
-			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows" : "DOS");
+			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Legacy (W)" : "Default (D)");
 		}
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
 	}
@@ -1200,7 +1200,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == NULL || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == NULL || this->active_sel->num_valid_params == 0);
-		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE, disable_all);
+		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE, disable_all ||
+				(!(_settings_client.gui.newgrf_developer_tools || _settings_client.gui.scenario_developer) && ((c->palette & GRFP_GRF_MASK) != GRFP_GRF_UNSET)));
 
 		if (!disable_all) {
 			/* All widgets are now enabled, so disable widgets we can't use */

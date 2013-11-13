@@ -2523,9 +2523,16 @@ public:
 			}
 		}
 
-		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP);
-		DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
+		/* Draw the flag plus orders. */
+		bool rtl = (_current_text_dir == TD_RTL);
+		uint text_offset = max(GetSpriteSize(SPR_FLAG_VEH_STOPPED).width, GetSpriteSize(SPR_FLAG_VEH_RUNNING).width) + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT;
+		int text_left = r.left + (rtl ? (uint)WD_FRAMERECT_LEFT : text_offset);
+		int text_right = r.right - (rtl ? text_offset : (uint)WD_FRAMERECT_RIGHT);
+		int image_left = (rtl ? text_right + 1 : r.left) + WD_IMGBTN_LEFT;
+		int image = ((v->vehstatus & VS_STOPPED) != 0) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING;
+		int lowered = this->IsWidgetLowered(WID_VV_START_STOP) ? 1 : 0;
+		DrawSprite(image, PAL_NONE, image_left + lowered, r.top + WD_IMGBTN_TOP + lowered);
+		DrawString(text_left + lowered, text_right + lowered, r.top + WD_FRAMERECT_TOP + lowered, str, TC_FROMSTRING, SA_HOR_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
