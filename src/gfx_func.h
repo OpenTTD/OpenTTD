@@ -44,6 +44,7 @@
 
 #include "gfx_type.h"
 #include "strings_type.h"
+#include "string_type.h"
 
 void GameLoop();
 
@@ -69,7 +70,7 @@ extern Dimension _resolutions[32];
 extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
-void HandleKeypress(uint32 key);
+void HandleKeypress(uint keycode, WChar key);
 void HandleCtrlChanged();
 void HandleMouseEvents();
 void CSleep(int milliseconds);

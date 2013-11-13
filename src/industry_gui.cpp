@@ -378,24 +378,37 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case WID_DPI_MATRIX_WIDGET:
+			case WID_DPI_MATRIX_WIDGET: {
+				uint text_left, text_right, icon_left, icon_right;
+				if (_current_text_dir == TD_RTL) {
+					icon_right = r.right    - WD_MATRIX_RIGHT;
+					icon_left  = icon_right - 10;
+					text_right = icon_right - BuildIndustryWindow::MATRIX_TEXT_OFFSET;
+					text_left  = r.left     + WD_MATRIX_LEFT;
+				} else {
+					icon_left  = r.left     + WD_MATRIX_LEFT;
+					icon_right = icon_left  + 10;
+					text_left  = icon_left  + BuildIndustryWindow::MATRIX_TEXT_OFFSET;
+					text_right = r.right    - WD_MATRIX_RIGHT;
+				}
+
 				for (byte i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->count; i++) {
-					int x = r.left + WD_MATRIX_LEFT;
 					int y = r.top + WD_MATRIX_TOP + i * this->resize.step_height;
 					bool selected = this->selected_index == i + this->vscroll->GetPosition();
 
 					if (this->index[i + this->vscroll->GetPosition()] == INVALID_INDUSTRYTYPE) {
-						DrawString(x + MATRIX_TEXT_OFFSET, r.right - WD_MATRIX_RIGHT, y, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
+						DrawString(text_left, text_right, y, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
 						continue;
 					}
 					const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll->GetPosition()]);
 
 					/* Draw the name of the industry in white is selected, otherwise, in orange */
-					DrawString(x + MATRIX_TEXT_OFFSET, r.right - WD_MATRIX_RIGHT, y, indsp->name, selected ? TC_WHITE : TC_ORANGE);
-					GfxFillRect(x,     y + 1,  x + 10, y + 7, selected ? PC_WHITE : PC_BLACK);
-					GfxFillRect(x + 1, y + 2,  x +  9, y + 6, indsp->map_colour);
+					DrawString(text_left, text_right, y, indsp->name, selected ? TC_WHITE : TC_ORANGE);
+					GfxFillRect(icon_left,     y + 1, icon_right,     y + 7, selected ? PC_WHITE : PC_BLACK);
+					GfxFillRect(icon_left + 1, y + 2, icon_right - 1, y + 6, indsp->map_colour);
 				}
 				break;
+			}
 
 			case WID_DPI_INFOPANEL: {
 				int y      = r.top    + WD_FRAMERECT_TOP;

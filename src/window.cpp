@@ -2313,17 +2313,14 @@ EventState Window::HandleEditBoxKey(int wid, WChar key, uint16 keycode)
 
 /**
  * Handle keyboard input.
- * @param raw_key Lower 8 bits contain the ASCII character, the higher 16 bits the keycode
+ * @param keycode Virtual keycode of the key.
+ * @param key Unicode character of the key.
  */
-void HandleKeypress(uint32 raw_key)
+void HandleKeypress(uint keycode, WChar key)
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
 	assert(HasModalProgress() || IsLocalCompany());
-
-	/* Setup event */
-	uint16 key     = GB(raw_key,  0, 16);
-	uint16 keycode = GB(raw_key, 16, 16);
 
 	/*
 	 * The Unicode standard defines an area called the private use area. Code points in this

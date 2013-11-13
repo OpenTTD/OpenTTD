@@ -304,7 +304,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(KEY_TILDE,   WKC_BACKQUOTE),
 };
 
-static uint32 ConvertAllegroKeyIntoMy()
+static uint32 ConvertAllegroKeyIntoMy(WChar *character)
 {
 	int scancode;
 	int unicode = ureadkey(&scancode);
@@ -326,7 +326,9 @@ static uint32 ConvertAllegroKeyIntoMy()
 	DEBUG(driver, 0, "Scancode character pressed %u", scancode);
 	DEBUG(driver, 0, "Unicode character pressed %u", unicode);
 #endif
-	return (key << 16) + unicode;
+
+	*character = unicode;
+	return key;
 }
 
 static const uint LEFT_BUTTON  = 0;
@@ -414,7 +416,9 @@ static void PollEvent()
 	if ((key_shifts & KB_ALT_FLAG) && (key[KEY_ENTER] || key[KEY_F])) {
 		ToggleFullScreen(!_fullscreen);
 	} else if (keypressed()) {
-		HandleKeypress(ConvertAllegroKeyIntoMy());
+		WChar character;
+		uint keycode = ConvertAllegroKeyIntoMy(&character);
+		HandleKeypress(keycode, character);
 	}
 }
 
