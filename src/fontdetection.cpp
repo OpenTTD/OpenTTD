@@ -42,26 +42,19 @@ extern FT_Library _library;
  * filename into something that isn't UTF-8 but represents the Unicode file
  * name. This is the short DOS 8.3 format. This does not contain any
  * characters that fopen doesn't support.
- * @param long_path the path in UTF-8.
+ * @param long_path the path in system encoding.
  * @return the short path in ANSI (ASCII).
  */
-char *GetShortPath(const char *long_path)
+const char *GetShortPath(const TCHAR *long_path)
 {
 	static char short_path[MAX_PATH];
 #ifdef UNICODE
-	/* The non-unicode GetShortPath doesn't support UTF-8...,
-	 * so convert the path to wide chars, then get the short
-	 * path and convert it back again. */
-	wchar_t long_path_w[MAX_PATH];
-	MultiByteToWideChar(CP_UTF8, 0, long_path, -1, long_path_w, MAX_PATH);
-
-	wchar_t short_path_w[MAX_PATH];
-	GetShortPathNameW(long_path_w, short_path_w, MAX_PATH);
-
-	WideCharToMultiByte(CP_ACP, 0, short_path_w, -1, short_path, MAX_PATH, NULL, NULL);
+	WCHAR short_path_w[MAX_PATH];
+	GetShortPathName(long_path, short_path_w, lengthof(short_path_w));
+	WideCharToMultiByte(CP_ACP, 0, short_path_w, -1, short_path, lengthof(short_path), NULL, NULL);
 #else
 	/* Technically not needed, but do it for consistency. */
-	GetShortPathNameA(long_path, short_path, MAX_PATH);
+	GetShortPathName(long_path, short_path, lengthof(short_path));
 #endif
 	return short_path;
 }
@@ -82,9 +75,10 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	HKEY hKey;
 	LONG ret;
 	TCHAR vbuffer[MAX_PATH], dbuffer[256];
-	TCHAR *font_namep;
-	char *font_path;
+	TCHAR *pathbuf;
+	const char *font_path;
 	uint index;
+	size_t path_len;
 
 	/* On windows NT (2000, NT3.5, XP, etc.) the fonts are stored in the
 	 * "Windows NT" key, on Windows 9x in the Windows key. To save us having
@@ -97,15 +91,8 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		return err;
 	}
 
-	/* For Unicode we need some conversion between widechar and
-	 * normal char to match the data returned by RegEnumValue,
-	 * otherwise just use parameter */
-#if defined(UNICODE)
-	font_namep = MallocT<TCHAR>(MAX_PATH);
-	MB_TO_WIDE_BUFFER(font_name, font_namep, MAX_PATH * sizeof(TCHAR));
-#else
-	font_namep = const_cast<char *>(font_name); // only cast because in unicode pointer is not const
-#endif
+	/* Convert font name to file system encoding. */
+	TCHAR *font_namep = _tcsdup(OTTD2FS(font_name));
 
 	for (index = 0;; index++) {
 		TCHAR *s;
@@ -142,23 +129,13 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	/* Some fonts are contained in .ttc files, TrueType Collection fonts. These
 	 * contain multiple fonts inside this single file. GetFontData however
 	 * returns the whole file, so we need to check each font inside to get the
-	 * proper font.
-	 * Also note that FreeType does not support UNICODE filenames! */
-#if defined(UNICODE)
-	/* We need a cast here back from wide because FreeType doesn't support
-	 * widechar filenames. Just use the buffer we allocated before for the
-	 * font_name search */
-	font_path = (char*)font_namep;
-	WIDE_TO_MB_BUFFER(vbuffer, font_path, MAX_PATH * sizeof(TCHAR));
-#else
-	font_path = vbuffer;
-#endif
+	 * proper font. */
+	path_len = _tcslen(vbuffer) + _tcslen(dbuffer) + 2; // '\' and terminating nul.
+	pathbuf = AllocaM(TCHAR, path_len);
+	_sntprintf(pathbuf, path_len, _T("%s\\%s"), vbuffer, dbuffer);
 
-	ttd_strlcat(font_path, "\\", MAX_PATH * sizeof(TCHAR));
-	ttd_strlcat(font_path, WIDE_TO_MB(dbuffer), MAX_PATH * sizeof(TCHAR));
-
-	/* Convert the path into something that FreeType understands */
-	font_path = GetShortPath(font_path);
+	/* Convert the path into something that FreeType understands. */
+	font_path = GetShortPath(pathbuf);
 
 	index = 0;
 	do {
@@ -175,9 +152,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 folder_error:
 registry_no_font_found:
-#if defined(UNICODE)
 	free(font_namep);
-#endif
 	RegCloseKey(hKey);
 	return err;
 }
@@ -338,11 +313,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	}
 
 	char font_name[MAX_PATH];
-#if defined(UNICODE)
-	WIDE_TO_MB_BUFFER((const TCHAR*)logfont->elfFullName, font_name, lengthof(font_name));
-#else
-	strecpy(font_name, (const TCHAR*)logfont->elfFullName, lastof(font_name));
-#endif
+	convert_from_fs((const TCHAR *)logfont->elfFullName, font_name, lengthof(font_name));
 
 	/* Add english name after font name */
 	const char *english_name = GetEnglishFontName(logfont);

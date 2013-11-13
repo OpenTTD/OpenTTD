@@ -249,7 +249,7 @@ public:
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		const uint8 i = keycode - '1';
 		if (i < 9 && i < this->bridges->Length()) {

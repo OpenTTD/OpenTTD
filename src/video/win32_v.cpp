@@ -50,9 +50,6 @@ bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
 static Dimension _bck_resolution;
-#if !defined(UNICODE)
-uint _codepage;
-#endif
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
@@ -439,12 +436,61 @@ static void PaintWindowThread(void *)
 }
 
 /** Forward key presses to the window system. */
-static LRESULT HandleCharMsg(uint keycode, uint charcode)
+static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 {
 #if !defined(UNICODE)
-	wchar_t w;
-	int len = MultiByteToWideChar(_codepage, 0, (char*)&charcode, 1, &w, 1);
-	charcode = len == 1 ? w : 0;
+	static char prev_char = 0;
+
+	char input[2] = {(char)charcode, 0};
+	int input_len = 1;
+
+	if (prev_char != 0) {
+		/* We stored a lead byte previously, combine it with this byte. */
+		input[0] = prev_char;
+		input[1] = (char)charcode;
+		input_len = 2;
+	} else if (IsDBCSLeadByte(charcode)) {
+		/* We got a lead byte, store and exit. */
+		prev_char = charcode;
+		return 0;
+	}
+	prev_char = 0;
+
+	wchar_t w[2]; // Can get up to two code points as a result.
+	int len = MultiByteToWideChar(CP_ACP, 0, input, input_len, w, 2);
+	switch (len) {
+		case 1: // Normal unicode character.
+			charcode = w[0];
+			break;
+
+		case 2: // Got an UTF-16 surrogate pair back.
+			charcode = Utf16DecodeSurrogate(w[0], w[1]);
+			break;
+
+		default: // Some kind of error.
+			DEBUG(driver, 1, "Invalid DBCS character sequence encountered, dropping input");
+			charcode = 0;
+			break;
+	}
+#else
+	static WChar prev_char = 0;
+
+	/* Did we get a lead surrogate? If yes, store and exit. */
+	if (Utf16IsLeadSurrogate(charcode)) {
+		if (prev_char != 0) DEBUG(driver, 1, "Got two UTF-16 lead surrogates, dropping the first one");
+		prev_char = charcode;
+		return 0;
+	}
+
+	/* Stored lead surrogate and incoming trail surrogate? Combine and forward to input handling. */
+	if (prev_char != 0) {
+		if (Utf16IsTrailSurrogate(charcode)) {
+			charcode = Utf16DecodeSurrogate(prev_char, charcode);
+		} else {
+			DEBUG(driver, 1, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
+		}
+	}
+	prev_char = 0;
 #endif /* UNICODE */
 
 	HandleKeypress(GB(charcode, 0, 16) | (keycode << 16));
@@ -586,16 +632,17 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0;
 		}
 
+#if !defined(WINCE) || _WIN32_WCE >= 0x400
 #if !defined(UNICODE)
-		case WM_INPUTLANGCHANGE: {
-			TCHAR locale[6];
-			LCID lcid = GB(lParam, 0, 16);
-
-			int len = GetLocaleInfo(lcid, LOCALE_IDEFAULTANSICODEPAGE, locale, lengthof(locale));
-			if (len != 0) _codepage = _ttoi(locale);
-			return 1;
-		}
-#endif /* UNICODE */
+		case WM_IME_CHAR:
+			if (GB(wParam, 8, 8) != 0) {
+				/* DBCS character, send lead byte first. */
+				HandleCharMsg(0, GB(wParam, 8, 8));
+			}
+			HandleCharMsg(0, GB(wParam, 0, 8));
+			return 0;
+#endif
+#endif
 
 		case WM_DEADCHAR:
 			console = GB(lParam, 16, 8) == 41;

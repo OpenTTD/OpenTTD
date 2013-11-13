@@ -19,6 +19,7 @@
 #include "widget_type.h"
 #include "core/smallvec_type.hpp"
 #include "core/smallmap_type.hpp"
+#include "string_type.h"
 
 /** State of handling an event. */
 enum EventState {
@@ -465,7 +466,7 @@ public:
 	void UnfocusFocusedWidget();
 	bool SetFocusedWidget(int widget_index);
 
-	EventState HandleEditBoxKey(int wid, uint16 key, uint16 keycode);
+	EventState HandleEditBoxKey(int wid, WChar key, uint16 keycode);
 
 	void HandleButtonClick(byte widget);
 	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height = -1) const;
@@ -570,7 +571,7 @@ public:
 	 * @return #ES_HANDLED if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode) { return ES_NOT_HANDLED; }
+	virtual EventState OnKeyPress(WChar key, uint16 keycode) { return ES_NOT_HANDLED; }
 
 	/**
 	 * The state of the control key has changed

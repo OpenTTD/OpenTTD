@@ -157,6 +157,7 @@ ParagraphLayout::VisualRun::VisualRun(Font *font, const WChar *chars, int char_c
 		font(font), glyph_count(char_count)
 {
 	this->glyphs = MallocT<GlyphID>(this->glyph_count);
+	this->glyph_to_char = MallocT<int>(this->glyph_count);
 
 	/* Positions contains the location of the begin of each of the glyphs, and the end of the last one. */
 	this->positions = MallocT<float>(this->glyph_count * 2 + 2);
@@ -167,6 +168,7 @@ ParagraphLayout::VisualRun::VisualRun(Font *font, const WChar *chars, int char_c
 		this->glyphs[i] = font->fc->MapCharToGlyph(chars[i]);
 		this->positions[2 * i + 2] = this->positions[2 * i] + font->fc->GetGlyphWidth(this->glyphs[i]);
 		this->positions[2 * i + 3] = 0;
+		this->glyph_to_char[i] = i;
 	}
 }
 
@@ -174,6 +176,7 @@ ParagraphLayout::VisualRun::VisualRun(Font *font, const WChar *chars, int char_c
 ParagraphLayout::VisualRun::~VisualRun()
 {
 	free(this->positions);
+	free(this->glyph_to_char);
 	free(this->glyphs);
 }
 
@@ -211,6 +214,15 @@ const GlyphID *ParagraphLayout::VisualRun::getGlyphs() const
 float *ParagraphLayout::VisualRun::getPositions() const
 {
 	return this->positions;
+}
+
+/**
+ * Get the glyph-to-character map for this visual run.
+ * @return The glyph-to-character map.
+ */
+const int *ParagraphLayout::VisualRun::getGlyphToCharMap() const
+{
+	return this->glyph_to_char;
 }
 
 /**
@@ -554,7 +566,7 @@ Point Layouter::GetCharPosition(const char *ch) const
 			for (int i = 0; i < run->getGlyphCount(); i++) {
 				/* Matching glyph? Return position. */
 				if ((size_t)run->getGlyphToCharMap()[i] == index) {
-					Point p = { run->getPositions()[i * 2], run->getPositions()[i * 2 + 1] };
+					Point p = { (int)run->getPositions()[i * 2], (int)run->getPositions()[i * 2 + 1] };
 					return p;
 				}
 			}

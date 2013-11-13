@@ -14,6 +14,7 @@
 
 #include "core/smallvec_type.hpp"
 #include "gfx_type.h"
+#include "string_type.h"
 
 /**
  * All data for a single hotkey. The name (for saving/loading a configfile),
@@ -130,6 +131,6 @@ void LoadHotkeysFromConfig();
 void SaveHotkeysToConfig();
 
 
-void HandleGlobalHotkeys(uint16 key, uint16 keycode);
+void HandleGlobalHotkeys(WChar key, uint16 keycode);
 
 #endif /* HOTKEYS_H */

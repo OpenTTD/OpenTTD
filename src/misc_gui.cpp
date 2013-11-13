@@ -1016,7 +1016,7 @@ struct QueryWindow : public Window {
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		/* ESC closes the window, Enter confirms the action */
 		switch (keycode) {

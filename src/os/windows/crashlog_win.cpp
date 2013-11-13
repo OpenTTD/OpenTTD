@@ -10,12 +10,6 @@
 /** @file crashlog_win.cpp Implementation of a crashlogger for Windows */
 
 #include "../../stdafx.h"
-#if defined(_MSC_VER) && defined(_M_AMD64)
-/* Redefine WinNT version to get RtlCaptureContext prototype. */
-#undef _WIN32_WINNT
-#undef NTDDI_VERSION
-#define _WIN32_WINNT _WIN32_WINNT_WINXP
-#endif /* defined(_MSC_VER) && defined(_M_AMD64) */
 #include "../../crashlog.h"
 #include "win32.h"
 #include "../../core/alloc_func.hpp"
@@ -197,7 +191,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
 	output += seprintf(output, last, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\n",
-		WIDE_TO_MB(buffer),
+		FS2OTTD(buffer),
 		mod,
 		dfi.size,
 		dfi.crc32,
@@ -621,11 +615,9 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
-#if defined(UNICODE)
 			/* We need to put the crash-log in a separate buffer because the default
 			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
-			wchar_t crash_msgW[lengthof(CrashLogWindows::current->crashlog)];
-#endif
+			TCHAR crash_msgW[lengthof(CrashLogWindows::current->crashlog)];
 			/* Convert unix -> dos newlines because the edit box only supports that properly :( */
 			const char *unix_nl = CrashLogWindows::current->crashlog;
 			char dos_nl[lengthof(CrashLogWindows::current->crashlog)];
@@ -655,7 +647,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			}
 
 			SetDlgItemText(wnd, 10, text);
-			SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(dos_nl, crash_msgW, lengthof(crash_msgW)));
+			SetDlgItemText(wnd, 11, convert_to_fs(dos_nl, crash_msgW, lengthof(crash_msgW)));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 			SetWndSize(wnd, -1);
 		} return TRUE;

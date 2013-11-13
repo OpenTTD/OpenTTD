@@ -324,7 +324,7 @@ GlobalHotkeyHandler *_global_hotkey_handlers_editor[] = {
 };
 
 
-void HandleGlobalHotkeys(uint16 key, uint16 keycode)
+void HandleGlobalHotkeys(WChar key, uint16 keycode)
 {
 	if (_game_mode == GM_NORMAL) {
 		for (uint i = 0; i < lengthof(_global_hotkey_handlers); i++) {

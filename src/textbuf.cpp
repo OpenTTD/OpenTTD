@@ -362,7 +362,7 @@ bool Textbuf::HandleCaret()
 	return false;
 }
 
-HandleKeyPressResult Textbuf::HandleKeyPress(uint16 key, uint16 keycode)
+HandleKeyPressResult Textbuf::HandleKeyPress(WChar key, uint16 keycode)
 {
 	bool edited = false;
 

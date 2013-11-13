@@ -131,13 +131,14 @@ static void debug_print(const char *dbg, const char *buf)
 		fflush(f);
 #endif
 	} else {
+		char buffer[512];
+		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
 #if defined(WINCE)
-		/* We need to do OTTD2FS twice, but as it uses a static buffer, we need to store one temporary */
-		TCHAR tbuf[512];
-		_sntprintf(tbuf, sizeof(tbuf), _T("%s"), OTTD2FS(dbg));
-		NKDbgPrintfW(_T("dbg: [%s] %s\n"), tbuf, OTTD2FS(buf));
+		NKDbgPrintfW(OTTD2FS(buffer));
+#elif defined(WIN32) || defined(WIN64)
+		_fputts(OTTD2FS(buffer, true), stderr);
 #else
-		fprintf(stderr, "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
+		fputs(buffer, stderr);
 #endif
 #ifdef ENABLE_NETWORK
 		NetworkAdminConsole(dbg, buf);

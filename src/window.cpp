@@ -2248,7 +2248,7 @@ static bool MaybeBringWindowToFront(Window *w)
  * @return #ES_HANDLED if the key press has been handled and no other
  *         window should receive the event.
  */
-EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
+EventState Window::HandleEditBoxKey(int wid, WChar key, uint16 keycode)
 {
 	QueryString *query = this->GetQueryString(wid);
 	if (query == NULL) return ES_NOT_HANDLED;
