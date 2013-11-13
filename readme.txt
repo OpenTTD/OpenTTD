@@ -282,7 +282,8 @@ your operating system:
 		         C:\Documents and Settings\<username>\My Documents\OpenTTD (2000, XP)
 		         C:\Users\<username>\Documents\OpenTTD (Vista, 7)
 		Mac OSX: ~/Documents/OpenTTD
-		Linux:   ~/.openttd
+		Linux:   $XDG_DATA_HOME/openttd which is usually ~/.local/share/openttd when
+		         built with XDG base directory support, otherwise ~/.openttd
 	3. The shared directory
 		Windows: C:\Documents and Settings\All Users\Shared Documents\OpenTTD (2000, XP)
 		         C:\Users\Public\Documents\OpenTTD (Vista, 7)
@@ -322,10 +323,13 @@ Notes:
 	  others.
 	- The previous search order is also used for NewGRFs and openttd.cfg.
 	- If openttd.cfg is not found, then it will be created using the 2, 4, 1, 3,
-	  5 order.
+	  5 order. When built with XDG base directory support, openttd.cfg will be
+	  created in $XDG_CONFIG_HOME/openttd which is usually ~/.config/openttd.
 	- Savegames will be relative to the config file only if there is no save/
 	  directory in paths with higher priority than the config file path, but
 	  autosaves and screenshots will always be relative to the config file.
+	  Unless the configuration file is in $XDG_CONFIG_HOME/openttd, then all
+	  other files will be saved under $XDG_DATA_HOME/openttd.
 
 The preferred setup:
 Place 3rd party files in shared directory (or in personal directory if you do

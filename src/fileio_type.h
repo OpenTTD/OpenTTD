@@ -43,6 +43,9 @@ enum Subdirectory {
 enum Searchpath {
 	SP_FIRST_DIR,
 	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
+#if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
+	SP_PERSONAL_DIR_XDG,           ///< Search in the personal directory from the XDG specification
+#endif
 	SP_PERSONAL_DIR,               ///< Search in the personal directory
 	SP_SHARED_DIR,                 ///< Search in the shared directory, like 'Shared Files' under Windows
 	SP_BINARY_DIR,                 ///< Search in the directory where the binary resides

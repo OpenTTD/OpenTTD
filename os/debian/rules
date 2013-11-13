@@ -17,7 +17,7 @@ endif
 # to be explicit about the dependencies, in case we're not running in a
 # clean build root.
 override_dh_auto_configure:
-	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu --with-liblzo2 --with-lzma --without-iconv --disable-strip CFLAGS="$(CFLAGS) -g" LDFLAGS="$(LDFLAGS) -Wl,-as-needed"
+	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu --with-liblzo2 --with-lzma --with-xdg-basedir --without-iconv --disable-strip CFLAGS="$(CFLAGS) -g" LDFLAGS="$(LDFLAGS) -Wl,-as-needed"
 
 # Do some extra installation
 override_dh_auto_install:

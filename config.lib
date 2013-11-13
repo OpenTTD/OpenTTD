@@ -72,6 +72,7 @@ set_default() {
 	with_zlib="1"
 	with_lzma="1"
 	with_lzo2="1"
+	with_xdg_basedir="1"
 	with_png="1"
 	enable_builtin_depend="1"
 	with_makedepend="0"
@@ -145,6 +146,7 @@ set_default() {
 		with_zlib
 		with_lzma
 		with_lzo2
+		with_xdg_basedir
 		with_png
 		enable_builtin_depend
 		with_makedepend
@@ -346,6 +348,13 @@ detect_params() {
 			--with-liblzo2)               with_lzo2="2";;
 			--without-liblzo2)            with_lzo2="0";;
 			--with-liblzo2=*)             with_lzo2="$optarg";;
+
+			--with-xdg-basedir)           with_xdg_basedir="2";;
+			--without-xdg-basedir)        with_xdg_basedir="0";;
+			--with-xdg-basedir=*)         with_xdg_basedir="$optarg";;
+			--with-libxdg-basedir)        with_xdg_basedir="2";;
+			--without-libxdg-basedir)     with_xdg_basedir="0";;
+			--with-libxdg-basedir=*)      with_xdg_basedir="$optarg";;
 
 			--with-png)                   with_png="2";;
 			--without-png)                with_png="0";;
@@ -818,6 +827,7 @@ check_params() {
 		fi
 	fi
 
+	detect_xdg_basedir
 	detect_png
 	detect_freetype
 	detect_fontconfig
@@ -1659,6 +1669,17 @@ make_cflags_and_ldflags() {
 			LIBS="$LIBS -llzo2"
 		fi
 		CFLAGS="$CFLAGS -DWITH_LZO"
+	fi
+
+	if [ -n "$xdg_basedir_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_XDG_BASEDIR"
+		CFLAGS="$CFLAGS `$xdg_basedir_config --cflags | tr '\n\r' '  '`"
+
+		if [ "$enable_static" != "0" ]; then
+			LIBS="$LIBS `$xdg_basedir_config --libs --static | tr '\n\r' '  '`"
+		else
+			LIBS="$LIBS `$xdg_basedir_config --libs | tr '\n\r' '  '`"
+		fi
 	fi
 
 	# 64bit machines need -D_SQ64
@@ -2722,6 +2743,44 @@ detect_lzma() {
 	log 1 "checking liblzma... found"
 }
 
+detect_xdg_basedir() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_xdg_basedir" = "0" ]; then
+		log 1 "checking libxdg_basedir... disabled"
+
+		xdg_basedir_config=""
+		return 0
+	fi
+
+	if [ "$with_xdg_basedir" = "1" ] || [ "$with_xdg_basedir" = "" ] || [ "$with_xdg_basedir" = "2" ]; then
+		xdg_basedir_config="pkg-config libxdg-basedir"
+	else
+		xdg_basedir_config="$with_xdg_basedir"
+	fi
+
+	version=`$xdg_basedir_config --modversion 2>/dev/null`
+	ret=$?
+	log 2 "executing $xdg_basedir_config --modversion"
+	log 2 "  returned $version"
+	log 2 "  exit code $ret"
+
+	if [ -z "$version" ] || [ "$ret" != "0" ]; then
+		log 1 "checking libxdg_basedir... not found"
+
+		# It was forced, so it should be found.
+		if [ "$with_xdg_basedir" != "1" ]; then
+			log 1 "configure: error: pkg-config libxdg_basedir couldn't be found"
+			log 1 "configure: error: you supplied '$with_xdg_basedir', but it seems invalid"
+			exit 1
+		fi
+
+		xdg_basedir_config=""
+		return 0
+	fi
+
+	log 1 "checking libxdg_basedir... found"
+}
+
 detect_png() {
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$with_png" = "0" ]; then
@@ -3641,6 +3700,8 @@ showhelp() {
 	echo "  --with-freetype[=freetype-config]"
 	echo "                                 enables libfreetype support"
 	echo "  --with-fontconfig[=pkg-config fontconfig]"
+	echo "                                 enables fontconfig support"
+	echo "  --with-xdg-basedir[=pkg-config libxdg-basedir]"
 	echo "                                 enables fontconfig support"
 	echo "  --with-icu[=icu-config]        enables icu (used for right-to-left support)"
 	echo "  --static-icu                   try to link statically (libsicu instead of"

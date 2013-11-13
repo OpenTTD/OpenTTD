@@ -28,6 +28,10 @@
 #include <sys/stat.h>
 #include <algorithm>
 
+#ifdef WITH_XDG_BASEDIR
+#include "basedir.h"
+#endif
+
 /** Size of the #Fio data buffer. */
 #define FIO_BUFFER_SIZE 512
 
@@ -1071,6 +1075,12 @@ bool DoScanWorkingDirectory()
 void DetermineBasePaths(const char *exe)
 {
 	char tmp[MAX_PATH];
+#if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
+	snprintf(tmp, MAX_PATH, "%s" PATHSEP "%s", xdgDataHome(NULL),
+			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_PERSONAL_DIR_XDG] = strdup(tmp);
+#endif
 #if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || defined(OS2) || !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR] = NULL;
 #else
@@ -1155,55 +1165,82 @@ void DeterminePaths(const char *exe)
 {
 	DetermineBasePaths(exe);
 
+#if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
+	char config_home[MAX_PATH];
+	snprintf(config_home, MAX_PATH, "%s" PATHSEP "%s", xdgConfigHome(NULL),
+			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
+	AppendPathSeparator(config_home, MAX_PATH);
+#endif
+
 	Searchpath sp;
 	FOR_ALL_SEARCHPATHS(sp) {
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 		DEBUG(misc, 4, "%s added as search path", _searchpaths[sp]);
 	}
 
+	char *config_dir;
 	if (_config_file != NULL) {
-		char *dir = strdup(_config_file);
-		char *end = strrchr(dir, PATHSEPCHAR);
+		config_dir = strdup(_config_file);
+		char *end = strrchr(config_dir, PATHSEPCHAR);
 		if (end == NULL) {
-			dir[0] = '\0';
+			config_dir[0] = '\0';
 		} else {
 			end[1] = '\0';
 		}
-		_personal_dir = dir;
 	} else {
 		char personal_dir[MAX_PATH];
 		if (FioFindFullPath(personal_dir, lengthof(personal_dir), BASE_DIR, "openttd.cfg") != NULL) {
 			char *end = strrchr(personal_dir, PATHSEPCHAR);
 			if (end != NULL) end[1] = '\0';
-			_personal_dir = strdup(personal_dir);
-			_config_file = str_fmt("%sopenttd.cfg", _personal_dir);
+			config_dir = strdup(personal_dir);
+			_config_file = str_fmt("%sopenttd.cfg", config_dir);
 		} else {
+#if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
+			/* No previous configuration file found. Use the configuration folder from XDG. */
+			config_dir = config_home;
+#else
 			static const Searchpath new_openttd_cfg_order[] = {
 					SP_PERSONAL_DIR, SP_BINARY_DIR, SP_WORKING_DIR, SP_SHARED_DIR, SP_INSTALLATION_DIR
 				};
 
 			for (uint i = 0; i < lengthof(new_openttd_cfg_order); i++) {
 				if (IsValidSearchPath(new_openttd_cfg_order[i])) {
-					_personal_dir = strdup(_searchpaths[new_openttd_cfg_order[i]]);
-					_config_file = str_fmt("%sopenttd.cfg", _personal_dir);
+					config_dir = strdup(_searchpaths[new_openttd_cfg_order[i]]);
 					break;
 				}
 			}
+#endif
+			_config_file = str_fmt("%sopenttd.cfg", config_dir);
 		}
 	}
 
-	DEBUG(misc, 3, "%s found as personal directory", _personal_dir);
+	DEBUG(misc, 3, "%s found as config directory", config_dir);
 
-	_highscore_file = str_fmt("%shs.dat", _personal_dir);
+	_highscore_file = str_fmt("%shs.dat", config_dir);
 	extern char *_hotkeys_file;
-	_hotkeys_file = str_fmt("%shotkeys.cfg", _personal_dir);
+	_hotkeys_file = str_fmt("%shotkeys.cfg", config_dir);
 	extern char *_windows_file;
-	_windows_file = str_fmt("%swindows.cfg", _personal_dir);
+	_windows_file = str_fmt("%swindows.cfg", config_dir);
+
+#if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
+	if (config_dir == config_home) {
+		/* We are using the XDG configuration home for the config file,
+		 * then store the rest in the XDG data home folder. */
+		_personal_dir = _searchpaths[SP_PERSONAL_DIR_XDG];
+		FioCreateDirectory(_personal_dir);
+	} else
+#endif
+	{
+		_personal_dir = config_dir;
+	}
 
 	/* Make the necessary folders */
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && defined(WITH_PERSONAL_DIR)
-	FioCreateDirectory(_personal_dir);
+	FioCreateDirectory(config_dir);
+	if (config_dir != _personal_dir) FioCreateDirectory(_personal_dir);
 #endif
+
+	DEBUG(misc, 3, "%s found as personal directory", _personal_dir);
 
 	static const Subdirectory default_subdirs[] = {
 		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR
