@@ -84,7 +84,7 @@ struct PersistentStorageArray : BaseStorageArray {
 		if (this->storage[pos] == value) return;
 
 		/* We do not have made a backup; lets do so */
-		if (this->prev_storage != NULL) {
+		if (this->prev_storage == NULL) {
 			this->prev_storage = MallocT<TYPE>(SIZE);
 			memcpy(this->prev_storage, this->storage, sizeof(this->storage));
 
@@ -121,6 +121,7 @@ struct PersistentStorageArray : BaseStorageArray {
 			memcpy(this->storage, this->prev_storage, sizeof(this->storage));
 		}
 		free(this->prev_storage);
+		this->prev_storage = NULL;
 	}
 };
 
