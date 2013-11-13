@@ -3965,8 +3965,8 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 					RailType rt = GetRailTypeByLabel(BSWAP32(label), false);
 					if (rt != INVALID_RAILTYPE) {
 						switch (prop) {
+							case 0x0F: SetBit(rti->powered_railtypes, rt); // Powered implies compatible.
 							case 0x0E: SetBit(rti->compatible_railtypes, rt);            break;
-							case 0x0F: SetBit(rti->powered_railtypes, rt);               break;
 							case 0x18: SetBit(rti->introduction_required_railtypes, rt); break;
 							case 0x19: SetBit(rti->introduces_railtypes, rt);            break;
 						}

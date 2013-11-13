@@ -53,7 +53,7 @@
 
 /* Some gcc versions include assert.h via this header. As this would interfere
  * with our own assert redefinition, include this header first. */
-#if defined(__GNUC__) && (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 3))
+#if !defined(__clang__) && defined(__GNUC__) && (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 3))
 #	include <debug/debug.h>
 #endif
 
