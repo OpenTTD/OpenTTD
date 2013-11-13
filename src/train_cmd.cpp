@@ -419,7 +419,7 @@ int Train::GetCurrentMaxSpeed() const
 /** Update acceleration of the train from the cached power and weight. */
 void Train::UpdateAcceleration()
 {
-	assert(this->IsFrontEngine());
+	assert(this->IsFrontEngine() || this->IsFreeWagon());
 
 	uint power = this->gcache.cached_power;
 	uint weight = this->gcache.cached_weight;

@@ -434,11 +434,12 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (ret.Failed()) return ret;
 
 	bool auto_refit = HasBit(p2, 6);
+	bool free_wagon = v->type == VEH_TRAIN && Train::From(front)->IsFreeWagon(); // used by autoreplace/renew
 
 	/* Don't allow shadows and such to be refitted. */
 	if (v != front && (v->type == VEH_SHIP || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
 	/* Allow auto-refitting only during loading and normal refitting only in a depot. */
-	if ((!auto_refit || !front->current_order.IsType(OT_LOADING)) && !front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
+	if (!free_wagon && (!auto_refit || !front->current_order.IsType(OT_LOADING)) && !front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 	if (front->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	/* Check cargo */
@@ -478,9 +479,11 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			default: NOT_REACHED();
 		}
 
-		InvalidateWindowData(WC_VEHICLE_DETAILS, front->index);
+		if (!free_wagon) {
+			InvalidateWindowData(WC_VEHICLE_DETAILS, front->index);
+			InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 0);
+		}
 		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
-		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 0);
 	} else {
 		/* Always invalidate the cache; querycost might have filled it. */
 		v->InvalidateNewGRFCacheOfChain();

@@ -176,7 +176,7 @@ public:
 					if (objclass->GetUISpecCount() == 0) continue;
 					if (!this->vscroll->IsVisible(pos++)) continue;
 					SetDParam(0, objclass->name);
-					DrawString(r.left + WD_MATRIX_LEFT, r.right + WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, STR_JUST_STRING,
+					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, STR_JUST_STRING,
 							((int)i == _selected_object_class) ? TC_WHITE : TC_BLACK);
 					y += this->line_height;
 				}
