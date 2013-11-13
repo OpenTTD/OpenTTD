@@ -14,6 +14,19 @@
 
 #include "string_type.h"
 #include "strings_type.h"
+#include "string_base.h"
+
+/**
+ * Return values for Textbuf::HandleKeypress
+ */
+enum HandleKeyPressResult
+{
+	HKPR_EDITING,     ///< Textbuf content changed.
+	HKPR_CURSOR,      ///< Non-text change, e.g. cursor position.
+	HKPR_CONFIRM,     ///< Return or enter key pressed.
+	HKPR_CANCEL,      ///< Escape key pressed.
+	HKPR_NOT_HANDLED, ///< Key does not affect editboxes.
+};
 
 /** Helper/buffer for input fields. */
 struct Textbuf {
@@ -36,23 +49,26 @@ struct Textbuf {
 	void CDECL Print(const char *format, ...) WARN_FORMAT(2, 3);
 
 	void DeleteAll();
-	bool DeleteChar(int delmode);
-	bool InsertChar(uint32 key);
 	bool InsertClipboard();
-	bool MovePos(int navmode);
+
+	bool InsertChar(uint32 key);
+
+	bool DeleteChar(uint16 keycode);
+	bool MovePos(uint16 keycode);
+
+	HandleKeyPressResult HandleKeyPress(uint16 key, uint16 keycode);
 
 	bool HandleCaret();
 	void UpdateSize();
 
 private:
-	bool CanDelChar(bool backspace);
-	WChar GetNextDelChar(bool backspace);
-	void DelChar(bool backspace);
-	bool CanMoveCaretLeft();
-	WChar MoveCaretLeft();
-	bool CanMoveCaretRight();
-	WChar MoveCaretRight();
+	StringIterator *char_iter;
 
+	bool CanDelChar(bool backspace);
+
+	void UpdateStringIter();
+	void UpdateWidth();
+	void UpdateCaretPosition();
 };
 
 #endif /* TEXTBUF_TYPE_H */

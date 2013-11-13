@@ -290,16 +290,15 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 			const int NSWindowCollectionBehaviorFullScreenPrimary = 1 << 7;
 			const int NSWindowFullScreenButton = 7;
 
-			NSWindowCollectionBehavior behavior = [this->window collectionBehavior];
+			NSWindowCollectionBehavior behavior = [ this->window collectionBehavior ];
 			behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
-			[window setCollectionBehavior:behavior];
+			[ this->window setCollectionBehavior:behavior ];
 
-			NSButton* fullscreenButton =
-			[this->window standardWindowButton:NSWindowFullScreenButton];
-			[fullscreenButton setAction:@selector(toggleFullScreen:)];
-			[fullscreenButton setTarget:this->window];
+			NSButton* fullscreenButton = [ this->window standardWindowButton:NSWindowFullScreenButton ];
+			[ fullscreenButton setAction:@selector(toggleFullScreen:) ];
+			[ fullscreenButton setTarget:this->window ];
 
-			[this->window setCollectionBehavior: NSWindowCollectionBehaviorFullScreenPrimary];
+			[ this->window setCollectionBehavior: NSWindowCollectionBehaviorFullScreenPrimary ];
 		}
 #endif
 

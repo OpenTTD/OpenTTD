@@ -2250,26 +2250,24 @@ static bool MaybeBringWindowToFront(Window *w)
  */
 EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 {
-	EventState state = ES_NOT_HANDLED;
-
 	QueryString *query = this->GetQueryString(wid);
-	if (query == NULL) return state;
+	if (query == NULL) return ES_NOT_HANDLED;
 
 	int action = QueryString::ACTION_NOTHING;
 
-	switch (query->HandleEditBoxKey(this, wid, key, keycode, state)) {
-		case HEBR_EDITING:
+	switch (query->text.HandleKeyPress(key, keycode)) {
+		case HKPR_EDITING:
 			this->SetWidgetDirty(wid);
 			this->OnEditboxChanged(wid);
 			break;
 
-		case HEBR_CURSOR:
+		case HKPR_CURSOR:
 			this->SetWidgetDirty(wid);
 			/* For the OSK also invalidate the parent window */
 			if (this->window_class == WC_OSK) this->InvalidateData();
 			break;
 
-		case HEBR_CONFIRM:
+		case HKPR_CONFIRM:
 			if (this->window_class == WC_OSK) {
 				this->OnClick(Point(), WID_OSK_OK, 1);
 			} else if (query->ok_button >= 0) {
@@ -2279,7 +2277,7 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 			}
 			break;
 
-		case HEBR_CANCEL:
+		case HKPR_CANCEL:
 			if (this->window_class == WC_OSK) {
 				this->OnClick(Point(), WID_OSK_CANCEL, 1);
 			} else if (query->cancel_button >= 0) {
@@ -2288,6 +2286,9 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 				action = query->cancel_button;
 			}
 			break;
+
+		case HKPR_NOT_HANDLED:
+			return ES_NOT_HANDLED;
 
 		default: break;
 	}
@@ -2307,7 +2308,7 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 			break;
 	}
 
-	return state;
+	return ES_HANDLED;
 }
 
 /**

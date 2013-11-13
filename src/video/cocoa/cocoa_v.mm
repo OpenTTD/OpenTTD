@@ -776,6 +776,14 @@ void cocoaReleaseAutoreleasePool()
 {
 	driver->active = false;
 }
+/** Window entered fullscreen mode (10.7). */
+- (void)windowDidEnterFullScreen:(NSNotification *)aNotification
+{
+	NSPoint loc = [ driver->cocoaview convertPoint:[ [ aNotification object ] mouseLocationOutsideOfEventStream ] fromView:nil ];
+	BOOL inside = ([ driver->cocoaview hitTest:loc ] == driver->cocoaview);
+
+	if (inside) [ driver->cocoaview mouseEntered:NULL ];
+}
 
 @end
 

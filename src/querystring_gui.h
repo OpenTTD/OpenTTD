@@ -17,18 +17,6 @@
 #include "window_gui.h"
 
 /**
- * Return values for HandleEditBoxKey
- */
-enum HandleEditBoxResult
-{
-	HEBR_EDITING,     ///< Editbox content changed.
-	HEBR_CURSOR,      ///< Non-text change, e.g. cursor position.
-	HEBR_CONFIRM,     ///< Return or enter key pressed.
-	HEBR_CANCEL,      ///< Escape key pressed.
-	HEBR_NOT_FOCUSED, ///< Edit box widget not focused.
-};
-
-/**
  * Data stored about a string that can be modified in the GUI
  */
 struct QueryString {
@@ -65,7 +53,6 @@ public:
 	void DrawEditBox(const Window *w, int wid) const;
 	void ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed);
 	void HandleEditBox(Window *w, int wid);
-	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state);
 };
 
 void ShowOnScreenKeyboard(Window *parent, int button);

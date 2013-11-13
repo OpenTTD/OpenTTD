@@ -90,7 +90,6 @@ static inline WChar Utf8Consume(const char **s)
 	return c;
 }
 
-
 /**
  * Return the length of a UTF-8 encoded character.
  * @param c Unicode character.
@@ -147,7 +146,59 @@ static inline char *Utf8PrevChar(char *s)
 	return ret;
 }
 
+static inline const char *Utf8PrevChar(const char *s)
+{
+	const char *ret = s;
+	while (IsUtf8Part(*--ret)) {}
+	return ret;
+}
+
 size_t Utf8StringLength(const char *s);
+
+/**
+ * Is the given character a lead surrogate code point?
+ * @param c The character to test.
+ * @return True if the character is a lead surrogate code point.
+ */
+static inline bool Utf16IsLeadSurrogate(uint c)
+{
+	return c >= 0xD800 && c <= 0xDBFF;
+}
+
+/**
+ * Is the given character a lead surrogate code point?
+ * @param c The character to test.
+ * @return True if the character is a lead surrogate code point.
+ */
+static inline bool Utf16IsTrailSurrogate(uint c)
+{
+	return c >= 0xDC00 && c <= 0xDFFF;
+}
+
+/**
+ * Convert an UTF-16 surrogate pair to the corresponding Unicode character.
+ * @param lead Lead surrogate code point.
+ * @param trail Trail surrogate code point.
+ * @return Decoded Unicode character.
+ */
+static inline WChar Utf16DecodeSurrogate(uint lead, uint trail)
+{
+	return 0x10000 + (((lead - 0xD800) << 10) | (trail - 0xDC00));
+}
+
+/**
+ * Decode an UTF-16 character.
+ * @param c Pointer to one or two UTF-16 code points.
+ * @return Decoded Unicode character.
+ */
+static inline WChar Utf16DecodeChar(const uint16 *c)
+{
+	if (Utf16IsLeadSurrogate(c[0])) {
+		return Utf16DecodeSurrogate(c[0], c[1]);
+	} else {
+		return *c;
+	}
+}
 
 /**
  * Is the given character a text direction character.
