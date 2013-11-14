@@ -579,6 +579,8 @@ void VideoDriver_Cocoa::EditBoxLostFocus()
 			[ [ NSInputManager currentInputManager ] markedTextAbandoned:_cocoa_subdriver->cocoaview ];
 		}
 	}
+	/* Clear any marked string from the current edit box. */
+	HandleTextInput(NULL, true);
 }
 
 /**

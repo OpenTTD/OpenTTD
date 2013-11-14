@@ -185,6 +185,7 @@ struct IConsoleWindow : Window
 	~IConsoleWindow()
 	{
 		_iconsole_mode = ICONSOLE_CLOSED;
+		_video_driver->EditBoxLostFocus();
 	}
 
 	/**
