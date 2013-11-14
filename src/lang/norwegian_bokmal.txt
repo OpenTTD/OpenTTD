@@ -752,7 +752,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Borgerne jubler . . .{}Første tog ankommer {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Innbyggerne jubler . . .{}Første tog ankommer {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Innbyggerne jubler . . .{}Første buss ankommer {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Innbyggerne jubler . . .{}Første lastebil ankommer {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Innbyggerne jubler . . .{}Første passasjertrikk ankommer {STATION}!
@@ -3943,6 +3943,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Antall dager de
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} hjelpefil til {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} endringslogg til {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisens til {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Bryt teksten
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Bryt teksten i vinduet så alt passer uten å måtte skrolle
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se på hjelpefilen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Endringslogg
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisens
