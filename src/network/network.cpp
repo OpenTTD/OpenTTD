@@ -713,12 +713,17 @@ bool NetworkServerStart()
 
 	NetworkDisconnect(false, false);
 	NetworkInitialize(false);
+	DEBUG(net, 1, "starting listeners for clients");
 	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
 
 	/* Only listen for admins when the password isn't empty. */
-	if (!StrEmpty(_settings_client.network.admin_password) && !ServerNetworkAdminSocketHandler::Listen(_settings_client.network.server_admin_port)) return false;
+	if (!StrEmpty(_settings_client.network.admin_password)) {
+		DEBUG(net, 1, "starting listeners for admins");
+		if (!ServerNetworkAdminSocketHandler::Listen(_settings_client.network.server_admin_port)) return false;
+	}
 
 	/* Try to start UDP-server */
+	DEBUG(net, 1, "starting listeners for incoming server queries");
 	_network_udp_server = _udp_server_socket->Listen();
 
 	_network_company_states = CallocT<NetworkCompanyState>(MAX_COMPANIES);
