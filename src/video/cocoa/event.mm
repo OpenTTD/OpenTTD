@@ -272,8 +272,10 @@ static uint32 QZ_MapKey(unsigned short sym)
 	return key;
 }
 
-static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL down)
+static bool QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL down)
 {
+	bool interpret_keys = true;
+
 	switch (keycode) {
 		case QZ_UP:    SB(_dirkeys, 1, 1, down); break;
 		case QZ_DOWN:  SB(_dirkeys, 3, 1, down); break;
@@ -292,6 +294,21 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 
 	if (down) {
 		uint32 pressed_key = QZ_MapKey(keycode);
+
+		static bool console = false;
+
+		if (pressed_key == WKC_BACKQUOTE && unicode == 0) {
+			if (!console) {
+				/* Backquote is a dead key, require a double press for hotkey behaviour (i.e. console). */
+				console = true;
+				return true;
+			} else {
+				/* Second backquote, don't interpret as text input. */
+				interpret_keys = false;
+			}
+		}
+		console = false;
+
 		/* Don't handle normal characters if an edit box has the focus. */
 		if (!EditBoxInGlobalFocus() || (!IsInsideMM(pressed_key, 'A', 'Z' + 1) && !IsInsideMM(pressed_key, '0', '9' + 1))) {
 			HandleKeypress(pressed_key, unicode);
@@ -300,6 +317,8 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 	} else {
 		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
 	}
+
+	return interpret_keys;
 }
 
 static void QZ_DoUnsidedModifiers(unsigned int newMods)
@@ -521,8 +540,9 @@ static bool QZ_PollEvent()
 			}
 
 			if (EditBoxInGlobalFocus()) {
-				[ _cocoa_subdriver->cocoaview interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
-				QZ_KeyEvent([ event keyCode ], 0, YES);
+				if (QZ_KeyEvent([ event keyCode ], 0, YES)) {
+					[ _cocoa_subdriver->cocoaview interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
+				}
 			} else {
 				chars = [ event characters ];
 				if ([ chars length ] == 0) {
