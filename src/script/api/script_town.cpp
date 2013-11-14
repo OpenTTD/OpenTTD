@@ -45,7 +45,7 @@
 
 	const char *text = NULL;
 	if (name != NULL) {
-		const char *text = name->GetDecodedText();
+		text = name->GetDecodedText();
 		EnforcePreconditionEncodedText(false, text);
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 	}
