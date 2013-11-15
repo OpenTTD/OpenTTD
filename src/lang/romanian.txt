@@ -299,6 +299,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Putere/Cost exp
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacitate încărcătură
 STR_SORT_BY_RANGE                                               :Raza de acțiune
 STR_SORT_BY_POPULATION                                          :Populaţia
+STR_SORT_BY_RATING                                              :Cotaţie
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauză joc
@@ -720,6 +721,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Comutator pentru afișarea numele oraşelor pe hartă
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrează harta mică la poziţia actuală
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dezactivează toate
@@ -893,6 +895,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituanian
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won sud-corean (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sud-african (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizată...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgian (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranian (IRR)
 ############ end of currency region
 
 
@@ -1419,6 +1423,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Alege dacă întreținerea vehiculelor este activată de trecerea unei anumite perioade de timp, sau scăzând un anumit procent din gradul de rezistență al vehiculului
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalul de întreținere implicit al trenurilor: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Alege perioada de întreținere implicită pentru noi vehicule feroviare, dacă nu există un interval de întreținere stabilit pentru vehicul
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} zi{P 0 "" le}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalul de întreținere implicit al vehiculelor rutiere: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Alege perioada de întreținere implicită pentru noi vehicule rutiere, dacă nu există un interval de întreținere stabilit pentru vehicul
@@ -1475,6 +1480,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Economie cu sch
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Dacă este activată, nivelul de producție al industriilor se schimbă mai des și în pași mai mici. Această opțiune de regulă nu are efect dacă tipul industriei este furnizat printr-un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite cumpărarea de acţiuni de la alte companii: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Dacă este activată, se permite cumpărarea și vânzarea de acțiuni ale companiilor. Acțiunile devin disponibile doar când compania depășește o anumită vârstă
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} pătrăţel{P 0 "" e}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai multor semale, păstrează distanţa fixă între acestea: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din care se vor folosi semnale electrice pe calea feroviară. Înainte de acest an, se vor folosi semnale non-electrice care au aceeasi funcționalitate dar arată diferit
@@ -1518,6 +1524,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Poziţia barei 
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" i}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Dezactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Numărul maxim de ferestre nefixate: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :dezactivat
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivelul maxim de apropiere imagine: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivelul maxim de îndepărtare imagine: {STRING}
@@ -1543,6 +1550,16 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea med
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimină elementele de drum absurde pe durata construcţiei drumului: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimină capatul drumurilor înfundate în timpul reconstrucţiei finanţată a drumurilor
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetric
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalitatea de distribuire a pasagerilor: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modalitatea de distribuire a poştei: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modalitatea de distribuire pentru clasa de cargo BLINDAT: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modalitatea de distribuire pentru alte clase de cargo: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Acurateţea distribuţiei: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efectul distanţei asupra cererii: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantitatea de cargo la întoarcere pentru modul simetric: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitate viteză: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Afişează viteza în interfaţă folosind unităţile selectate
@@ -1812,6 +1829,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Publicat
 STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Alege între un joc publicat (prin Internet) și unul privat (reț) game
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nu
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
@@ -2930,6 +2948,8 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Ţinte g
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nici unul -
 STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nu este aplicabil -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ţintele companiei:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click pe ţintă pentru a centra ecranul principal pe industrie/oraş/zonă. Ctrl+Click deschide o fereastră nouă de vizualizare a industriei/oraşului/zonei
 
@@ -2969,7 +2989,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRI
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe serviciu pentru a centra imaginea pe industrie/oraş. Ctrl+Click deshide o fereastră cu locaţia industriei/oraşului
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Carte de poveste
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Cartea de poveste globală
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Sari la o pagină specifică selectând-o din lista derulantă
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Mergi la pagina anterioară
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Următor
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Mergi la pagina următoare
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referinţă invalidă pentru scop
 
 # Station list window
@@ -2999,6 +3027,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluări
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afişează evaluările staţiei
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupare după
 STR_STATION_VIEW_WAITING_STATION                                :Staţie: Aşteptare
@@ -3164,6 +3193,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producţ
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrează imaginea pe locaţia industriei. Ctrl+Click deshide o fereastra cu locaţia industriei
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivelul producţiei: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industria a anunţat închiderea iminentă!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Are nevoie de: {YELLOW}{STRING}{STRING}
