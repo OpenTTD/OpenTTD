@@ -852,7 +852,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case WM_KEYDOWN: {
 			/* No matter the keyboard layout, we will map the '~' to the console. */
 			uint scancode = GB(lParam, 16, 8);
-			keycode = scancode == 41 ? WKC_BACKQUOTE : MapWindowsKey(wParam);
+			keycode = scancode == 41 ? (uint)WKC_BACKQUOTE : MapWindowsKey(wParam);
 
 			/* Silently drop all messages handled by WM_CHAR. */
 			MSG msg;
