@@ -1203,12 +1203,14 @@ void DeterminePaths(const char *exe)
 					SP_PERSONAL_DIR, SP_BINARY_DIR, SP_WORKING_DIR, SP_SHARED_DIR, SP_INSTALLATION_DIR
 				};
 
+			config_dir = NULL;
 			for (uint i = 0; i < lengthof(new_openttd_cfg_order); i++) {
 				if (IsValidSearchPath(new_openttd_cfg_order[i])) {
 					config_dir = strdup(_searchpaths[new_openttd_cfg_order[i]]);
 					break;
 				}
 			}
+			assert(config_dir != NULL);
 #endif
 			_config_file = str_fmt("%sopenttd.cfg", config_dir);
 		}
