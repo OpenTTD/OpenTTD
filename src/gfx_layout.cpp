@@ -153,7 +153,7 @@ ParagraphLayout *Layouter::GetParagraphLayout(UChar *buff, UChar *buff_end, Font
  * @param char_count The number of characters in this run.
  * @param x          The initial x position for this run.
  */
-ParagraphLayout::VisualRun::VisualRun(Font *font, const WChar *chars, int char_count, int x) :
+FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const WChar *chars, int char_count, int x) :
 		font(font), glyph_count(char_count)
 {
 	this->glyphs = MallocT<GlyphID>(this->glyph_count);
@@ -173,7 +173,7 @@ ParagraphLayout::VisualRun::VisualRun(Font *font, const WChar *chars, int char_c
 }
 
 /** Free all data. */
-ParagraphLayout::VisualRun::~VisualRun()
+FallbackParagraphLayout::FallbackVisualRun::~FallbackVisualRun()
 {
 	free(this->positions);
 	free(this->glyph_to_char);
@@ -184,7 +184,7 @@ ParagraphLayout::VisualRun::~VisualRun()
  * Get the font associated with this run.
  * @return The font.
  */
-const Font *ParagraphLayout::VisualRun::getFont() const
+const Font *FallbackParagraphLayout::FallbackVisualRun::getFont() const
 {
 	return this->font;
 }
@@ -193,7 +193,7 @@ const Font *ParagraphLayout::VisualRun::getFont() const
  * Get the number of glyphs in this run.
  * @return The number of glyphs.
  */
-int ParagraphLayout::VisualRun::getGlyphCount() const
+int FallbackParagraphLayout::FallbackVisualRun::getGlyphCount() const
 {
 	return this->glyph_count;
 }
@@ -202,7 +202,7 @@ int ParagraphLayout::VisualRun::getGlyphCount() const
  * Get the glyphs of this run.
  * @return The glyphs.
  */
-const GlyphID *ParagraphLayout::VisualRun::getGlyphs() const
+const GlyphID *FallbackParagraphLayout::FallbackVisualRun::getGlyphs() const
 {
 	return this->glyphs;
 }
@@ -211,7 +211,7 @@ const GlyphID *ParagraphLayout::VisualRun::getGlyphs() const
  * Get the positions of this run.
  * @return The positions.
  */
-const float *ParagraphLayout::VisualRun::getPositions() const
+const float *FallbackParagraphLayout::FallbackVisualRun::getPositions() const
 {
 	return this->positions;
 }
@@ -220,7 +220,7 @@ const float *ParagraphLayout::VisualRun::getPositions() const
  * Get the glyph-to-character map for this visual run.
  * @return The glyph-to-character map.
  */
-const int *ParagraphLayout::VisualRun::getGlyphToCharMap() const
+const int *FallbackParagraphLayout::FallbackVisualRun::getGlyphToCharMap() const
 {
 	return this->glyph_to_char;
 }
@@ -229,7 +229,7 @@ const int *ParagraphLayout::VisualRun::getGlyphToCharMap() const
  * Get the height of this font.
  * @return The height of the font.
  */
-int ParagraphLayout::VisualRun::getLeading() const
+int FallbackParagraphLayout::FallbackVisualRun::getLeading() const
 {
 	return this->getFont()->fc->GetHeight();
 }
@@ -238,10 +238,10 @@ int ParagraphLayout::VisualRun::getLeading() const
  * Get the height of the line.
  * @return The maximum height of the line.
  */
-int ParagraphLayout::Line::getLeading() const
+int FallbackParagraphLayout::FallbackLine::getLeading() const
 {
 	int leading = 0;
-	for (const VisualRun * const *run = this->Begin(); run != this->End(); run++) {
+	for (const FallbackVisualRun * const *run = this->Begin(); run != this->End(); run++) {
 		leading = max(leading, (*run)->getLeading());
 	}
 
@@ -252,7 +252,7 @@ int ParagraphLayout::Line::getLeading() const
  * Get the width of this line.
  * @return The width of the line.
  */
-int ParagraphLayout::Line::getWidth() const
+int FallbackParagraphLayout::FallbackLine::getWidth() const
 {
 	if (this->Length() == 0) return 0;
 
@@ -261,7 +261,7 @@ int ParagraphLayout::Line::getWidth() const
 	 * Since there is no left-to-right support, taking this value of
 	 * the last run gives us the end of the line and thus the width.
 	 */
-	const VisualRun *run = this->getVisualRun(this->countRuns() - 1);
+	const FallbackVisualRun *run = this->getVisualRun(this->countRuns() - 1);
 	return (int)run->getPositions()[run->getGlyphCount() * 2];
 }
 
@@ -269,7 +269,7 @@ int ParagraphLayout::Line::getWidth() const
  * Get the number of runs in this line.
  * @return The number of runs.
  */
-int ParagraphLayout::Line::countRuns() const
+int FallbackParagraphLayout::FallbackLine::countRuns() const
 {
 	return this->Length();
 }
@@ -278,7 +278,7 @@ int ParagraphLayout::Line::countRuns() const
  * Get a specific visual run.
  * @return The visual run.
  */
-const ParagraphLayout::VisualRun *ParagraphLayout::Line::getVisualRun(int run) const
+const ParagraphLayouter::VisualRun *FallbackParagraphLayout::FallbackLine::getVisualRun(int run) const
 {
 	return *this->Get(run);
 }
@@ -289,7 +289,7 @@ const ParagraphLayout::VisualRun *ParagraphLayout::Line::getVisualRun(int run) c
  * @param length The length of the paragraph.
  * @param runs   The font mapping of this paragraph.
  */
-ParagraphLayout::ParagraphLayout(WChar *buffer, int length, FontMap &runs) : buffer_begin(buffer), buffer(buffer), runs(runs)
+FallbackParagraphLayout::FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs) : buffer_begin(buffer), buffer(buffer), runs(runs)
 {
 	assert(runs.End()[-1].first == length);
 }
@@ -297,7 +297,7 @@ ParagraphLayout::ParagraphLayout(WChar *buffer, int length, FontMap &runs) : buf
 /**
  * Reset the position to the start of the paragraph.
  */
-void ParagraphLayout::reflow()
+void FallbackParagraphLayout::reflow()
 {
 	this->buffer = this->buffer_begin;
 }
@@ -307,7 +307,7 @@ void ParagraphLayout::reflow()
  * @param max_width The maximum width of the string.
  * @return A Line, or NULL when at the end of the paragraph.
  */
-const ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
+const ParagraphLayouter::Line *FallbackParagraphLayout::nextLine(int max_width)
 {
 	/* Simple idea:
 	 *  - split a line at a newline character, or at a space where we can break a line.
@@ -315,12 +315,12 @@ const ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	 */
 	if (this->buffer == NULL) return NULL;
 
-	Line *l = new Line();
+	FallbackLine *l = new FallbackLine();
 
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
 		this->buffer = NULL;
-		*l->Append() = new VisualRun(this->runs.Begin()->second, this->buffer, 0, 0);
+		*l->Append() = new FallbackVisualRun(this->runs.Begin()->second, this->buffer, 0, 0);
 		return l;
 	}
 
@@ -350,7 +350,7 @@ const ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 
 		if (this->buffer == next_run) {
 			int w = l->getWidth();
-			*l->Append() = new VisualRun(iter->second, begin, this->buffer - begin, w);
+			*l->Append() = new FallbackVisualRun(iter->second, begin, this->buffer - begin, w);
 			iter++;
 			assert(iter != this->runs.End());
 
@@ -397,7 +397,7 @@ const ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 
 	if (l->Length() == 0 || last_char - begin != 0) {
 		int w = l->getWidth();
-		*l->Append() = new VisualRun(iter->second, begin, last_char - begin, w);
+		*l->Append() = new FallbackVisualRun(iter->second, begin, last_char - begin, w);
 	}
 	return l;
 }
@@ -422,9 +422,9 @@ size_t Layouter::AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
  * @param fontMapping THe mapping of the fonts.
  * @return The ParagraphLayout instance.
  */
-ParagraphLayout *Layouter::GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
+ParagraphLayouter *Layouter::GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
 {
-	return new ParagraphLayout(buff, buff_end - buff, fontMapping);
+	return new FallbackParagraphLayout(buff, buff_end - buff, fontMapping);
 }
 #endif /* !WITH_ICU */
 
@@ -508,7 +508,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		}
 
 		/* Copy all lines into a local cache so we can reuse them later on more easily. */
-		const ParagraphLayout::Line *l;
+		const ParagraphLayouter::Line *l;
 		while ((l = line.layout->nextLine(maxw)) != NULL) {
 			*this->Append() = l;
 		}
@@ -523,7 +523,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 Dimension Layouter::GetBounds()
 {
 	Dimension d = { 0, 0 };
-	for (const ParagraphLayout::Line **l = this->Begin(); l != this->End(); l++) {
+	for (const ParagraphLayouter::Line **l = this->Begin(); l != this->End(); l++) {
 		d.width = max<uint>(d.width, (*l)->getWidth());
 		d.height += (*l)->getLeading();
 	}
@@ -557,7 +557,7 @@ Point Layouter::GetCharPosition(const char *ch) const
 
 	if (str == ch) {
 		/* Valid character. */
-		const ParagraphLayout::Line *line = *this->Begin();
+		const ParagraphLayouter::Line *line = *this->Begin();
 
 		/* Pointer to the end-of-string/line marker? Return total line width. */
 		if (*ch == '\0' || *ch == '\n') {
@@ -567,7 +567,7 @@ Point Layouter::GetCharPosition(const char *ch) const
 
 		/* Scan all runs until we've found our code point index. */
 		for (int run_index = 0; run_index < line->countRuns(); run_index++) {
-			const ParagraphLayout::VisualRun *run = line->getVisualRun(run_index);
+			const ParagraphLayouter::VisualRun *run = line->getVisualRun(run_index);
 
 			for (int i = 0; i < run->getGlyphCount(); i++) {
 				/* Matching glyph? Return position. */
@@ -590,10 +590,10 @@ Point Layouter::GetCharPosition(const char *ch) const
  */
 const char *Layouter::GetCharAtPosition(int x) const
 {
-	const ParagraphLayout::Line *line = *this->Begin();;
+	const ParagraphLayouter::Line *line = *this->Begin();;
 
 	for (int run_index = 0; run_index < line->countRuns(); run_index++) {
-		const ParagraphLayout::VisualRun *run = line->getVisualRun(run_index);
+		const ParagraphLayouter::VisualRun *run = line->getVisualRun(run_index);
 
 		for (int i = 0; i < run->getGlyphCount(); i++) {
 			/* Not a valid glyph (empty). */

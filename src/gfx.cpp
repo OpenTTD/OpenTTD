@@ -339,7 +339,7 @@ static void SetColourRemap(TextColour colour)
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawLayoutLine(const ParagraphLayout::Line *line, int y, int left, int right, StringAlignment align, bool underline, bool truncation)
+static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, int right, StringAlignment align, bool underline, bool truncation)
 {
 	if (line->countRuns() == 0) return 0;
 
@@ -419,7 +419,7 @@ static int DrawLayoutLine(const ParagraphLayout::Line *line, int y, int left, in
 	}
 
 	for (int run_index = 0; run_index < line->countRuns(); run_index++) {
-		const ParagraphLayout::VisualRun *run = line->getVisualRun(run_index);
+		const ParagraphLayouter::VisualRun *run = line->getVisualRun(run_index);
 		const Font *f = (const Font*)run->getFont();
 
 		FontCache *fc = f->fc;
@@ -640,8 +640,8 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
 	int last_line = top;
 	int first_line = bottom;
 
-	for (const ParagraphLayout::Line **iter = layout.Begin(); iter != layout.End(); iter++) {
-		const ParagraphLayout::Line *line = *iter;
+	for (const ParagraphLayouter::Line **iter = layout.Begin(); iter != layout.End(); iter++) {
+		const ParagraphLayouter::Line *line = *iter;
 
 		int line_height = line->getLeading();
 		if (y >= top && y < bottom) {
