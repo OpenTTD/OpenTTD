@@ -127,7 +127,8 @@ public:
 
 	/**
 	 * Import a library.
-	 * @param library The name of the library to import.
+	 * @param library The name of the library to import. The name should be composed as ScriptInfo::GetCategory() + "." +
+	 * ScriptInfo::CreateInstance().
 	 * @param class_name Under which name you want it to be available (or "" if you just want the returning object).
 	 * @param version Which version you want specifically.
 	 * @return The loaded library object. If class_name is set, it is also available (under the scope of the import) under that name.

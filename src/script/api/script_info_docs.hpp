@@ -18,9 +18,10 @@
  *       Scripts must or can implemented to provide information to OpenTTD to
  *       base configuring/starting/loading the Script on.
  *
- * @note The required functions are also needed for Script Libraries. As such
- *       the information here can be used for libraries, but the information
- *       will not be shown in the GUI except for error/debug messages.
+ * @note The required functions are also needed for Script Libraries, but in
+ *       that case you extend ScriptLibrary. As such the information here can
+ *       be used for libraries, but the information will not be shown in the
+ *       GUI except for error/debug messages.
  *
  * @api ai game
  */
@@ -43,6 +44,8 @@ public:
 	 *
 	 * @return The name of the Script.
 	 * @note This function is required.
+	 * @note This name is not used as library name by ScriptController::Import,
+	 * instead the name returned by #CreateInstance is used.
 	 */
 	string GetName();
 
@@ -144,7 +147,8 @@ public:
 
 	/**
 	 * Gets the name of main class of the Script so OpenTTD knows
-	 * what class to instantiate.
+	 * what class to instantiate. For libraries, this name is also
+	 * used when other scripts import it using @ScriptController::Import.
 	 *
 	 * @return The class name of the Script.
 	 * @note This function is required.
