@@ -184,7 +184,7 @@ ParagraphLayout::VisualRun::~VisualRun()
  * Get the font associated with this run.
  * @return The font.
  */
-Font *ParagraphLayout::VisualRun::getFont() const
+const Font *ParagraphLayout::VisualRun::getFont() const
 {
 	return this->font;
 }
@@ -211,7 +211,7 @@ const GlyphID *ParagraphLayout::VisualRun::getGlyphs() const
  * Get the positions of this run.
  * @return The positions.
  */
-float *ParagraphLayout::VisualRun::getPositions() const
+const float *ParagraphLayout::VisualRun::getPositions() const
 {
 	return this->positions;
 }
@@ -278,7 +278,7 @@ int ParagraphLayout::Line::countRuns() const
  * Get a specific visual run.
  * @return The visual run.
  */
-ParagraphLayout::VisualRun *ParagraphLayout::Line::getVisualRun(int run) const
+const ParagraphLayout::VisualRun *ParagraphLayout::Line::getVisualRun(int run) const
 {
 	return *this->Get(run);
 }
@@ -307,7 +307,7 @@ void ParagraphLayout::reflow()
  * @param max_width The maximum width of the string.
  * @return A Line, or NULL when at the end of the paragraph.
  */
-ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
+const ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 {
 	/* Simple idea:
 	 *  - split a line at a newline character, or at a space where we can break a line.
@@ -508,7 +508,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		}
 
 		/* Copy all lines into a local cache so we can reuse them later on more easily. */
-		ParagraphLayout::Line *l;
+		const ParagraphLayout::Line *l;
 		while ((l = line.layout->nextLine(maxw)) != NULL) {
 			*this->Append() = l;
 		}
@@ -523,7 +523,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 Dimension Layouter::GetBounds()
 {
 	Dimension d = { 0, 0 };
-	for (ParagraphLayout::Line **l = this->Begin(); l != this->End(); l++) {
+	for (const ParagraphLayout::Line **l = this->Begin(); l != this->End(); l++) {
 		d.width = max<uint>(d.width, (*l)->getWidth());
 		d.height += (*l)->getLeading();
 	}

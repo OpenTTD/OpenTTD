@@ -131,10 +131,10 @@ public:
 	public:
 		VisualRun(Font *font, const WChar *chars, int glyph_count, int x);
 		~VisualRun();
-		Font *getFont() const;
+		const Font *getFont() const;
 		int getGlyphCount() const;
 		const GlyphID *getGlyphs() const;
-		float *getPositions() const;
+		const float *getPositions() const;
 		int getLeading() const;
 		const int *getGlyphToCharMap() const;
 	};
@@ -145,7 +145,7 @@ public:
 		int getLeading() const;
 		int getWidth() const;
 		int countRuns() const;
-		VisualRun *getVisualRun(int run) const;
+		const VisualRun *getVisualRun(int run) const;
 	};
 
 	const WChar *buffer_begin; ///< Begin of the buffer.
@@ -154,7 +154,7 @@ public:
 
 	ParagraphLayout(WChar *buffer, int length, FontMap &runs);
 	void reflow();
-	Line *nextLine(int max_width);
+	const Line *nextLine(int max_width);
 };
 #endif /* !WITH_ICU */
 
@@ -163,7 +163,7 @@ public:
  *
  * It also accounts for the memory allocations and frees.
  */
-class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
+class Layouter : public AutoDeleteSmallVector<const ParagraphLayout::Line *, 4> {
 #ifdef WITH_ICU
 	typedef UChar CharType; ///< The type of character used within the layouter.
 #else /* WITH_ICU */
