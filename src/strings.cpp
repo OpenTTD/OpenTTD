@@ -1489,7 +1489,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 					StringID str;
 					switch (v->type) {
-						default: NOT_REACHED();
+						default:           str = STR_INVALID_VEHICLE; break;
 						case VEH_TRAIN:    str = STR_SV_TRAIN_NAME; break;
 						case VEH_ROAD:     str = STR_SV_ROAD_VEHICLE_NAME; break;
 						case VEH_SHIP:     str = STR_SV_SHIP_NAME; break;
