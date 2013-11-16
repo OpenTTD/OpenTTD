@@ -3703,7 +3703,7 @@ showhelp() {
 	echo "  --with-fontconfig[=\"pkg-config fontconfig\"]"
 	echo "                                 enables fontconfig support"
 	echo "  --with-xdg-basedir[=\"pkg-config libxdg-basedir\"]"
-	echo "                                 enables fontconfig support"
+	echo "                                 enables XDG base directory support"
 	echo "  --with-icu[=icu-config]        enables icu (used for right-to-left support)"
 	echo "  --static-icu                   try to link statically (libsicu instead of"
 	echo "                                 libicu; can fail as the new name is guessed)"
