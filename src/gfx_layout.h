@@ -108,26 +108,26 @@ public:
 	class VisualRun {
 	public:
 		virtual ~VisualRun() {}
-		virtual const Font *getFont() const = 0;
-		virtual int getGlyphCount() const = 0;
-		virtual const GlyphID *getGlyphs() const = 0;
-		virtual const float *getPositions() const = 0;
-		virtual int getLeading() const = 0;
-		virtual const int *getGlyphToCharMap() const = 0;
+		virtual const Font *GetFont() const = 0;
+		virtual int GetGlyphCount() const = 0;
+		virtual const GlyphID *GetGlyphs() const = 0;
+		virtual const float *GetPositions() const = 0;
+		virtual int GetLeading() const = 0;
+		virtual const int *GetGlyphToCharMap() const = 0;
 	};
 
 	/** A single line worth of VisualRuns. */
 	class Line {
 	public:
 		virtual ~Line() {}
-		virtual int getLeading() const = 0;
-		virtual int getWidth() const = 0;
-		virtual int countRuns() const = 0;
-		virtual const VisualRun *getVisualRun(int run) const = 0;
+		virtual int GetLeading() const = 0;
+		virtual int GetWidth() const = 0;
+		virtual int CountRuns() const = 0;
+		virtual const VisualRun *GetVisualRun(int run) const = 0;
 	};
 
-	virtual void reflow() = 0;
-	virtual const Line *nextLine(int max_width) = 0;
+	virtual void Reflow() = 0;
+	virtual const Line *NextLine(int max_width) = 0;
 };
 
 /**

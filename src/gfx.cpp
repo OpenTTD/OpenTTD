@@ -341,10 +341,10 @@ static void SetColourRemap(TextColour colour)
  */
 static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, int right, StringAlignment align, bool underline, bool truncation)
 {
-	if (line->countRuns() == 0) return 0;
+	if (line->CountRuns() == 0) return 0;
 
-	int w = line->getWidth();
-	int h = line->getLeading();
+	int w = line->GetWidth();
+	int h = line->GetLeading();
 
 	/*
 	 * The following is needed for truncation.
@@ -375,7 +375,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		FontCache *fc = ((const Font*)line->getVisualRun(0)->getFont())->fc;
+		FontCache *fc = ((const Font*)line->GetVisualRun(0)->GetFont())->fc;
 		GlyphID dot_glyph = fc->MapCharToGlyph('.');
 		dot_width = fc->GetGlyphWidth(dot_glyph);
 		dot_sprite = fc->GetGlyph(dot_glyph);
@@ -418,9 +418,9 @@ static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, 
 			NOT_REACHED();
 	}
 
-	for (int run_index = 0; run_index < line->countRuns(); run_index++) {
-		const ParagraphLayouter::VisualRun *run = line->getVisualRun(run_index);
-		const Font *f = (const Font*)run->getFont();
+	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
+		const ParagraphLayouter::VisualRun *run = line->GetVisualRun(run_index);
+		const Font *f = (const Font*)run->GetFont();
 
 		FontCache *fc = f->fc;
 		TextColour colour = f->colour;
@@ -432,15 +432,15 @@ static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, 
 
 		bool draw_shadow = fc->GetDrawGlyphShadow() && colour != TC_BLACK;
 
-		for (int i = 0; i < run->getGlyphCount(); i++) {
-			GlyphID glyph = run->getGlyphs()[i];
+		for (int i = 0; i < run->GetGlyphCount(); i++) {
+			GlyphID glyph = run->GetGlyphs()[i];
 
 			/* Not a valid glyph (empty) */
 			if (glyph == 0xFFFF) continue;
 
-			int begin_x = (int)run->getPositions()[i * 2]     + left - offset_x;
-			int end_x   = (int)run->getPositions()[i * 2 + 2] + left - offset_x  - 1;
-			int top     = (int)run->getPositions()[i * 2 + 1] + y;
+			int begin_x = (int)run->GetPositions()[i * 2]     + left - offset_x;
+			int end_x   = (int)run->GetPositions()[i * 2 + 2] + left - offset_x  - 1;
+			int top     = (int)run->GetPositions()[i * 2 + 1] + y;
 
 			/* Truncated away. */
 			if (truncation && (begin_x < min_x || end_x > max_x)) continue;
@@ -643,7 +643,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
 	for (const ParagraphLayouter::Line **iter = layout.Begin(); iter != layout.End(); iter++) {
 		const ParagraphLayouter::Line *line = *iter;
 
-		int line_height = line->getLeading();
+		int line_height = line->GetLeading();
 		if (y >= top && y < bottom) {
 			last_line = y + line_height;
 			if (first_line > y) first_line = y;
