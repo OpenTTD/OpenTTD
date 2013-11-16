@@ -434,3 +434,13 @@ Inconsistent catchment areas [FS#5661]:
 	search from a station could be changed to use the actual tiles, but
 	that would require considering checking 10 by 10 tiles for each of
 	the tiles of a station, instead of just once.
+
+Trains might not stop at platforms that are currently being changed [FS#5553]:
+	If you add tiles to or remove tiles from a platform while a train is
+	approaching to stop at the same platform, that train can miss the place
+	where it's supposed to stop and pass the station without stopping. This
+	is caused by the fact that the train is considered to already have stopped
+	if it's beyond its assigned stopping location. We can't let the train stop
+	just anywhere in the station because then it would never leave the station
+	if you have the same station in the order list multiple times in a row or
+	if there is only one station in the order list (see FS#5684).
