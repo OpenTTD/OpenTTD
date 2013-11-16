@@ -13,6 +13,7 @@
 #include "gfx_layout.h"
 #include "string_func.h"
 #include "strings_func.h"
+#include "debug.h"
 
 #include "table/control_codes.h"
 
@@ -110,7 +111,7 @@ le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &poin
 	return FALSE;
 }
 
-size_t Layouter::AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
+static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
 {
 	/* Transform from UTF-32 to internal ICU format of UTF-16. */
 	int32 length = 0;
@@ -119,7 +120,63 @@ size_t Layouter::AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
 	return length;
 }
 
-ParagraphLayout *Layouter::GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping)
+/**
+ * Wrapper for doing layouts with ICU.
+ */
+class ICUParagraphLayout : public AutoDeleteSmallVector<ParagraphLayouter::Line *, 4>, public ParagraphLayouter {
+	ParagraphLayout *p; ///< The actual ICU paragraph layout.
+public:
+	/** Helper for GetLayouter, to get the right type. */
+	typedef UChar CharType;
+	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
+	static const bool SUPPORTS_RTL = true;
+
+	/** Visual run contains data about the bit of text with the same font. */
+	class ICUVisualRun : public ParagraphLayouter::VisualRun {
+		const ParagraphLayout::VisualRun *vr; ///< The actual ICU vr.
+
+	public:
+		ICUVisualRun(const ParagraphLayout::VisualRun *vr) : vr(vr) { }
+
+		const Font *getFont() const          { return (const Font*)vr->getFont(); }
+		int getGlyphCount() const            { return vr->getGlyphCount(); }
+		const GlyphID *getGlyphs() const     { return vr->getGlyphs(); }
+		const float *getPositions() const    { return vr->getPositions(); }
+		int getLeading() const               { return vr->getLeading(); }
+		const int *getGlyphToCharMap() const { return vr->getGlyphToCharMap(); }
+	};
+
+	/** A single line worth of VisualRuns. */
+	class ICULine : public AutoDeleteSmallVector<ICUVisualRun *, 4>, public ParagraphLayouter::Line {
+		ParagraphLayout::Line *l; ///< The actual ICU line.
+
+	public:
+		ICULine(ParagraphLayout::Line *l) : l(l)
+		{
+			for (int i = 0; i < l->countRuns(); i++) {
+				*this->Append() = new ICUVisualRun(l->getVisualRun(i));
+			}
+		}
+		~ICULine() { delete l; }
+
+		int getLeading() const { return l->getLeading(); }
+		int getWidth() const   { return l->getWidth(); }
+		int countRuns() const  { return l->countRuns(); }
+		const ParagraphLayouter::VisualRun *getVisualRun(int run) const { return *this->Get(run); }
+	};
+
+	ICUParagraphLayout(ParagraphLayout *p) : p(p) { }
+	~ICUParagraphLayout() { delete p; }
+	void reflow() { p->reflow(); }
+
+	ParagraphLayouter::Line *nextLine(int max_width)
+	{
+		ParagraphLayout::Line *l = p->nextLine(max_width);
+		return l == NULL ? NULL : new ICULine(l);
+	}
+};
+
+static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping)
 {
 	int32 length = buff_end - buff;
 
@@ -139,12 +196,79 @@ ParagraphLayout *Layouter::GetParagraphLayout(UChar *buff, UChar *buff_end, Font
 	LEErrorCode status = LE_NO_ERROR;
 	/* ParagraphLayout does not copy "buff", so it must stay valid.
 	 * "runs" is copied according to the ICU source, but the documentation does not specify anything, so this might break somewhen. */
-	return new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+	ParagraphLayout *p = new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+	if (status != LE_NO_ERROR) {
+		delete p;
+		return NULL;
+	}
+
+	return new ICUParagraphLayout(p);
 }
 
-#else /* WITH_ICU */
+#endif /* WITH_ICU */
 
 /*** Paragraph layout ***/
+/**
+ * Class handling the splitting of a paragraph of text into lines and
+ * visual runs.
+ *
+ * One constructs this class with the text that needs to be split into
+ * lines. Then nextLine is called with the maximum width until NULL is
+ * returned. Each nextLine call creates VisualRuns which contain the
+ * length of text that are to be drawn with the same font. In other
+ * words, the result of this class is a list of sub strings with their
+ * font. The sub strings are then already fully laid out, and only
+ * need actual drawing.
+ *
+ * The positions in a visual run are sequential pairs of X,Y of the
+ * begin of each of the glyphs plus an extra pair to mark the end.
+ *
+ * @note This variant does not handle left-to-right properly. This
+ *       is supported in the one ParagraphLayout coming from ICU.
+ */
+class FallbackParagraphLayout : public ParagraphLayouter {
+public:
+	/** Helper for GetLayouter, to get the right type. */
+	typedef WChar CharType;
+	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
+	static const bool SUPPORTS_RTL = false;
+
+	/** Visual run contains data about the bit of text with the same font. */
+	class FallbackVisualRun : public ParagraphLayouter::VisualRun {
+		Font *font;       ///< The font used to layout these.
+		GlyphID *glyphs;  ///< The glyphs we're drawing.
+		float *positions; ///< The positions of the glyphs.
+		int *glyph_to_char; ///< The char index of the glyphs.
+		int glyph_count;  ///< The number of glyphs.
+
+	public:
+		FallbackVisualRun(Font *font, const WChar *chars, int glyph_count, int x);
+		~FallbackVisualRun();
+		const Font *getFont() const;
+		int getGlyphCount() const;
+		const GlyphID *getGlyphs() const;
+		const float *getPositions() const;
+		int getLeading() const;
+		const int *getGlyphToCharMap() const;
+	};
+
+	/** A single line worth of VisualRuns. */
+	class FallbackLine : public AutoDeleteSmallVector<FallbackVisualRun *, 4>, public ParagraphLayouter::Line {
+	public:
+		int getLeading() const;
+		int getWidth() const;
+		int countRuns() const;
+		const ParagraphLayouter::VisualRun *getVisualRun(int run) const;
+	};
+
+	const WChar *buffer_begin; ///< Begin of the buffer.
+	const WChar *buffer;       ///< The current location in the buffer.
+	FontMap &runs;             ///< The fonts we have to use for this paragraph.
+
+	FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs);
+	void reflow();
+	const ParagraphLayouter::Line *nextLine(int max_width);
+};
 
 /**
  * Create the visual run.
@@ -261,7 +385,7 @@ int FallbackParagraphLayout::FallbackLine::getWidth() const
 	 * Since there is no left-to-right support, taking this value of
 	 * the last run gives us the end of the line and thus the width.
 	 */
-	const FallbackVisualRun *run = this->getVisualRun(this->countRuns() - 1);
+	const ParagraphLayouter::VisualRun *run = this->getVisualRun(this->countRuns() - 1);
 	return (int)run->getPositions()[run->getGlyphCount() * 2];
 }
 
@@ -409,7 +533,7 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::nextLine(int max_width)
  * @param c           The character to add.
  * @return The number of buffer spaces that were used.
  */
-size_t Layouter::AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
+static size_t AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
 {
 	*buff = c;
 	return 1;
@@ -422,11 +546,74 @@ size_t Layouter::AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
  * @param fontMapping THe mapping of the fonts.
  * @return The ParagraphLayout instance.
  */
-ParagraphLayouter *Layouter::GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
+static FallbackParagraphLayout *GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
 {
 	return new FallbackParagraphLayout(buff, buff_end - buff, fontMapping);
 }
-#endif /* !WITH_ICU */
+
+/**
+ * Helper for getting a ParagraphLayouter of the given type.
+ *
+ * @note In case no ParagraphLayouter could be constructed, line.layout will be NULL.
+ * @param line The cache item to store our layouter in.
+ * @param str The string to create a layouter for.
+ * @param state The state of the font and color.
+ * @tparam T The type of layouter we want.
+ */
+template <typename T>
+static inline void GetLayouter(Layouter::LineCacheItem &line, const char *str, FontState state)
+{
+	if (line.buffer != NULL) free(line.buffer);
+
+	typename T::CharType *buff_begin = MallocT<typename T::CharType>(DRAW_STRING_BUFFER);
+	const typename T::CharType *buffer_last = buff_begin + DRAW_STRING_BUFFER;
+	typename T::CharType *buff = buff_begin;
+	FontMap &fontMapping = line.runs;
+	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
+
+	line.buffer = buff_begin;
+
+	/*
+	 * Go through the whole string while adding Font instances to the font map
+	 * whenever the font changes, and convert the wide characters into a format
+	 * usable by ParagraphLayout.
+	 */
+	for (; buff < buffer_last;) {
+		WChar c = Utf8Consume(const_cast<const char **>(&str));
+		if (c == '\0' || c == '\n') {
+			break;
+		} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
+			state.SetColour((TextColour)(c - SCC_BLUE));
+		} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
+			state.SetPreviousColour();
+		} else if (c == SCC_TINYFONT) {
+			state.SetFontSize(FS_SMALL);
+		} else if (c == SCC_BIGFONT) {
+			state.SetFontSize(FS_LARGE);
+		} else {
+			/* Filter out text direction characters that shouldn't be drawn, and
+			 * will not be handled in the fallback non ICU case because they are
+			 * mostly needed for RTL languages which need more ICU support. */
+			if (!T::SUPPORTS_RTL && IsTextDirectionChar(c)) continue;
+			buff += AppendToBuffer(buff, buffer_last, c);
+			continue;
+		}
+
+		if (!fontMapping.Contains(buff - buff_begin)) {
+			fontMapping.Insert(buff - buff_begin, f);
+		}
+		f = Layouter::GetFont(state.fontsize, state.cur_colour);
+	}
+
+	/* Better safe than sorry. */
+	*buff = '\0';
+
+	if (!fontMapping.Contains(buff - buff_begin)) {
+		fontMapping.Insert(buff - buff_begin, f);
+	}
+	line.layout = GetParagraphLayout(buff_begin, buff, fontMapping);
+	line.state_after = state;
+}
 
 /**
  * Create a new layouter.
@@ -457,54 +644,19 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			line.layout->reflow();
 		} else {
 			/* Line is new, layout it */
-			const CharType *buffer_last = lastof(line.buffer);
-			CharType *buff_begin = line.buffer;
-			CharType *buff = buff_begin;
-			FontMap &fontMapping = line.runs;
-			Font *f = GetFont(state.fontsize, state.cur_colour);
-
-			/*
-			 * Go through the whole string while adding Font instances to the font map
-			 * whenever the font changes, and convert the wide characters into a format
-			 * usable by ParagraphLayout.
-			 */
-			for (; buff < buffer_last;) {
-				c = Utf8Consume(const_cast<const char **>(&str));
-				if (c == '\0' || c == '\n') {
-					break;
-				} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
-					state.SetColour((TextColour)(c - SCC_BLUE));
-				} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
-					state.SetPreviousColour();
-				} else if (c == SCC_TINYFONT) {
-					state.SetFontSize(FS_SMALL);
-				} else if (c == SCC_BIGFONT) {
-					state.SetFontSize(FS_LARGE);
-				} else {
-#ifndef WITH_ICU
-					/* Filter out text direction characters that shouldn't be drawn, and
-					 * will not be handled in the fallback non ICU case because they are
-					 * mostly needed for RTL languages which need more ICU support. */
-					if (IsTextDirectionChar(c)) continue;
+#ifdef WITH_ICU
+			GetLayouter<ICUParagraphLayout>(line, str, state);
+			if (line.layout == NULL) {
+				static bool warned = false;
+				if (!warned) {
+					DEBUG(misc, 0, "ICU layouter bailed on the font. Falling back to the fallback layouter");
+					warned = true;
+				}
+				GetLayouter<FallbackParagraphLayout>(line, str, state);
+			}
+#else
+			GetLayouter<FallbackParagraphLayout>(line, str, state);
 #endif
-					buff += AppendToBuffer(buff, buffer_last, c);
-					continue;
-				}
-
-				if (!fontMapping.Contains(buff - buff_begin)) {
-					fontMapping.Insert(buff - buff_begin, f);
-				}
-				f = GetFont(state.fontsize, state.cur_colour);
-			}
-
-			/* Better safe than sorry. */
-			*buff = '\0';
-
-			if (!fontMapping.Contains(buff - buff_begin)) {
-				fontMapping.Insert(buff - buff_begin, f);
-			}
-			line.layout = GetParagraphLayout(buff_begin, buff, fontMapping);
-			line.state_after = state;
 		}
 
 		/* Copy all lines into a local cache so we can reuse them later on more easily. */

@@ -24,11 +24,7 @@
 #define ICU_FONTINSTANCE : public LEFontInstance
 #else /* WITH_ICU */
 #define ICU_FONTINSTANCE
-#define FallbackParagraphLayout ParagraphLayout
-#define FallbackVisualRun VisualRun
-#define FallbackLine Line
 #endif /* WITH_ICU */
-#define ParagraphLayouter ParagraphLayout
 
 /**
  * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
@@ -101,66 +97,38 @@ public:
 /** Mapping from index to font. */
 typedef SmallMap<int, Font *> FontMap;
 
-#ifndef WITH_ICU
 /**
- * Class handling the splitting of a paragraph of text into lines and
- * visual runs.
- *
- * One constructs this class with the text that needs to be split into
- * lines. Then nextLine is called with the maximum width until NULL is
- * returned. Each nextLine call creates VisualRuns which contain the
- * length of text that are to be drawn with the same font. In other
- * words, the result of this class is a list of sub strings with their
- * font. The sub strings are then already fully laid out, and only
- * need actual drawing.
- *
- * The positions in a visual run are sequential pairs of X,Y of the
- * begin of each of the glyphs plus an extra pair to mark the end.
- *
- * @note This variant does not handle left-to-right properly. This
- *       is supported in the one ParagraphLayout coming from ICU.
- * @note Does not conform to function naming style as it provides a
- *       fallback for the ICU class.
+ * Interface to glue fallback and normal layouter into one.
  */
-class FallbackParagraphLayout {
+class ParagraphLayouter {
 public:
-	/** Visual run contains data about the bit of text with the same font. */
-	class FallbackVisualRun {
-		Font *font;       ///< The font used to layout these.
-		GlyphID *glyphs;  ///< The glyphs we're drawing.
-		float *positions; ///< The positions of the glyphs.
-		int *glyph_to_char; ///< The char index of the glyphs.
-		int glyph_count;  ///< The number of glyphs.
+	virtual ~ParagraphLayouter() {}
 
+	/** Visual run contains data about the bit of text with the same font. */
+	class VisualRun {
 	public:
-		FallbackVisualRun(Font *font, const WChar *chars, int glyph_count, int x);
-		~FallbackVisualRun();
-		const Font *getFont() const;
-		int getGlyphCount() const;
-		const GlyphID *getGlyphs() const;
-		const float *getPositions() const;
-		int getLeading() const;
-		const int *getGlyphToCharMap() const;
+		virtual ~VisualRun() {}
+		virtual const Font *getFont() const = 0;
+		virtual int getGlyphCount() const = 0;
+		virtual const GlyphID *getGlyphs() const = 0;
+		virtual const float *getPositions() const = 0;
+		virtual int getLeading() const = 0;
+		virtual const int *getGlyphToCharMap() const = 0;
 	};
 
 	/** A single line worth of VisualRuns. */
-	class FallbackLine : public AutoDeleteSmallVector<FallbackVisualRun *, 4> {
+	class Line {
 	public:
-		int getLeading() const;
-		int getWidth() const;
-		int countRuns() const;
-		const FallbackVisualRun *getVisualRun(int run) const;
+		virtual ~Line() {}
+		virtual int getLeading() const = 0;
+		virtual int getWidth() const = 0;
+		virtual int countRuns() const = 0;
+		virtual const VisualRun *getVisualRun(int run) const = 0;
 	};
 
-	const WChar *buffer_begin; ///< Begin of the buffer.
-	const WChar *buffer;       ///< The current location in the buffer.
-	FontMap &runs;             ///< The fonts we have to use for this paragraph.
-
-	FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs);
-	void reflow();
-	const Line *nextLine(int max_width);
+	virtual void reflow() = 0;
+	virtual const Line *nextLine(int max_width) = 0;
 };
-#endif /* !WITH_ICU */
 
 /**
  * The layouter performs all the layout work.
@@ -168,16 +136,7 @@ public:
  * It also accounts for the memory allocations and frees.
  */
 class Layouter : public AutoDeleteSmallVector<const ParagraphLayouter::Line *, 4> {
-#ifdef WITH_ICU
-	typedef UChar CharType; ///< The type of character used within the layouter.
-#else /* WITH_ICU */
-	typedef WChar CharType; ///< The type of character used within the layouter.
-#endif /* WITH_ICU */
-
 	const char *string; ///< Pointer to the original string.
-
-	size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c);
-	ParagraphLayouter *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
 
 	/** Key into the linecache */
 	struct LineCacheKey {
@@ -193,18 +152,20 @@ class Layouter : public AutoDeleteSmallVector<const ParagraphLayouter::Line *, 4
 			return this->str < other.str;
 		}
 	};
+public:
 	/** Item in the linecache */
 	struct LineCacheItem {
 		/* Stuff that cannot be freed until the ParagraphLayout is freed */
-		CharType buffer[DRAW_STRING_BUFFER]; ///< Accessed by both ICU's and our ParagraphLayout::nextLine.
-		FontMap runs;                        ///< Accessed by our ParagraphLayout::nextLine.
+		void *buffer;              ///< Accessed by both ICU's and our ParagraphLayout::nextLine.
+		FontMap runs;              ///< Accessed by our ParagraphLayout::nextLine.
 
 		FontState state_after;     ///< Font state after the line.
 		ParagraphLayouter *layout; ///< Layout of the line.
 
-		LineCacheItem() : layout(NULL) {}
-		~LineCacheItem() { delete layout; }
+		LineCacheItem() : buffer(NULL), layout(NULL) {}
+		~LineCacheItem() { delete layout; free(buffer); }
 	};
+private:
 	typedef std::map<LineCacheKey, LineCacheItem> LineCache;
 	static LineCache *linecache;
 
@@ -212,9 +173,9 @@ class Layouter : public AutoDeleteSmallVector<const ParagraphLayouter::Line *, 4
 
 	typedef SmallMap<TextColour, Font *> FontColourMap;
 	static FontColourMap fonts[FS_END];
+public:
 	static Font *GetFont(FontSize size, TextColour colour);
 
-public:
 	Layouter(const char *str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
 	Point GetCharPosition(const char *ch) const;
