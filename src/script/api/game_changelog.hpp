@@ -21,6 +21,7 @@
  *
  * API additions:
  * \li GSCompany::ChangeBankBalance
+ * \li GSGoal::GT_STORY_PAGE
  * \li GSGoal::IsCompleted
  * \li GSGoal::SetCompleted
  * \li GSGoal::SetProgress

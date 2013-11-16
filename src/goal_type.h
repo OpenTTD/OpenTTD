@@ -24,6 +24,7 @@ enum GoalType {
 	GT_INDUSTRY,     ///< Destination is an industry
 	GT_TOWN,         ///< Destination is a town
 	GT_COMPANY,      ///< Destination is a company
+	GT_STORY_PAGE,   ///< Destination is a story page
 };
 typedef SimpleTinyEnumT<GoalType, byte> GoalTypeByte; ///< The GoalType packed into a byte for savegame purposes.
 

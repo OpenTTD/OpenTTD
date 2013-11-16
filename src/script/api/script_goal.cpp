@@ -15,6 +15,7 @@
 #include "script_industry.hpp"
 #include "script_map.hpp"
 #include "script_town.hpp"
+#include "script_story_page.hpp"
 #include "../script_instance.hpp"
 #include "../../goal_base.h"
 #include "../../string_func.h"
@@ -33,10 +34,18 @@
 	const char *text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(GOAL_INVALID, text);
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
-	EnforcePrecondition(GOAL_INVALID, (type == GT_NONE && destination == 0) || (type == GT_TILE && ScriptMap::IsValidTile(destination)) || (type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(destination)) || (type == GT_TOWN && ScriptTown::IsValidTown(destination)) || (type == GT_COMPANY && ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)destination) != ScriptCompany::COMPANY_INVALID));
 
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
+	StoryPage *story_page = NULL;
+	if (type == GT_STORY_PAGE && ScriptStoryPage::IsValidStoryPage((ScriptStoryPage::StoryPageID)destination)) story_page = ::StoryPage::Get((ScriptStoryPage::StoryPageID)destination);
+
+	EnforcePrecondition(GOAL_INVALID, (type == GT_NONE && destination == 0) ||
+			(type == GT_TILE && ScriptMap::IsValidTile(destination)) ||
+			(type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(destination)) ||
+			(type == GT_TOWN && ScriptTown::IsValidTown(destination)) ||
+			(type == GT_COMPANY && ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)destination) != ScriptCompany::COMPANY_INVALID) ||
+			(type == GT_STORY_PAGE && story_page != NULL && (c == INVALID_COMPANY ? story_page->company == INVALID_COMPANY : story_page->company == INVALID_COMPANY || story_page->company == c)));
 
 	if (!ScriptObject::DoCommand(0, type | (c << 8), destination, CMD_CREATE_GOAL, text, &ScriptInstance::DoCommandReturnGoalID)) return GOAL_INVALID;
 

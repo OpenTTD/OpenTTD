@@ -27,6 +27,7 @@ void SQGSGoal_Register(Squirrel *engine)
 	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_INDUSTRY,      "GT_INDUSTRY");
 	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_TOWN,          "GT_TOWN");
 	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_COMPANY,       "GT_COMPANY");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_STORY_PAGE,    "GT_STORY_PAGE");
 	SQGSGoal.DefSQConst(engine, ScriptGoal::QT_QUESTION,      "QT_QUESTION");
 	SQGSGoal.DefSQConst(engine, ScriptGoal::QT_INFORMATION,   "QT_INFORMATION");
 	SQGSGoal.DefSQConst(engine, ScriptGoal::QT_WARNING,       "QT_WARNING");

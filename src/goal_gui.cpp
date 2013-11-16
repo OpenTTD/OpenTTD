@@ -21,6 +21,7 @@
 #include "core/geometry_func.hpp"
 #include "company_func.h"
 #include "company_base.h"
+#include "story_base.h"
 #include "command_func.h"
 
 #include "widgets/goal_widget.h"
@@ -121,6 +122,21 @@ struct GoalListWindow : public Window {
 				if (!Town::IsValidID(s->dst)) return;
 				xy = Town::Get(s->dst)->xy;
 				break;
+
+			case GT_STORY_PAGE: {
+				if (!StoryPage::IsValidID(s->dst)) return;
+
+				/* Verify that:
+				 * - if global goal: story page must be global.
+				 * - if company goal: story page must be global or of the same company.
+				 */
+				CompanyID goal_company = s->company;
+				CompanyID story_company = StoryPage::Get(s->dst)->company;
+				if (goal_company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != goal_company) return;
+
+				ShowStoryBook((CompanyID)this->window_number, s->dst);
+				return;
+			}
 
 			default: NOT_REACHED();
 		}

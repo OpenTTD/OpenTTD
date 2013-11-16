@@ -44,6 +44,7 @@ public:
 		GT_INDUSTRY = ::GT_INDUSTRY, ///< Destination is an industry.
 		GT_TOWN     = ::GT_TOWN,     ///< Destination is a town.
 		GT_COMPANY  = ::GT_COMPANY,  ///< Destination is a company.
+		GT_STORY_PAGE = ::GT_STORY_PAGE ///< Destination is a story page.
 	};
 
 	/**
@@ -99,6 +100,9 @@ public:
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre goal != NULL && len(goal) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre if type is GT_STORY_PAGE, the company of the goal and the company of the story page need to match:
+	 *       \li Global goals can only reference global story pages.
+	 *       \li Company specific goals can reference global story pages and story pages of the same company.
 	 */
 	static GoalID New(ScriptCompany::CompanyID company, Text *goal, GoalType type, uint32 destination);
 
