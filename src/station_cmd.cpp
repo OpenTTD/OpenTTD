@@ -3131,11 +3131,13 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 			if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
 			stop &= TILE_SIZE - 1;
 
-			if (x >= stop) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); // enter station
-
-			v->vehstatus |= VS_TRAIN_SLOWING;
-			uint16 spd = max(0, (stop - x) * 20 - 15);
-			if (spd < v->cur_speed) v->cur_speed = spd;
+			if (x == stop) {
+				return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); // enter station
+			} else if (x < stop) {
+				v->vehstatus |= VS_TRAIN_SLOWING;
+				uint16 spd = max(0, (stop - x) * 20 - 15);
+				if (spd < v->cur_speed) v->cur_speed = spd;
+			}
 		}
 	} else if (v->type == VEH_ROAD) {
 		RoadVehicle *rv = RoadVehicle::From(v);
