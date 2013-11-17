@@ -2943,6 +2943,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nevaž
 STR_NEWGRF_INVALID_ENGINE                                       :<nevažeći model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Pregledanje NewGRF-ova
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Pregledanje NewGRF-ova. U zavisnosti od količine ovo može i da potraje...

@@ -727,6 +727,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_INVALID_ENGINE                                       :<magna invalida>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija invalida>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 
 # Sign list window

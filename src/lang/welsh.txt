@@ -2802,6 +2802,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} o <garg
 STR_NEWGRF_INVALID_ENGINE                                       :<model cerbyd annilys>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<diwydiant annilys>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Yn sganio NewGRFau
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Yn sganio NewGRFau. Gall gymeryd peth amser yn ddibynnol ar eu nifer...

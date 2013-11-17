@@ -2866,6 +2866,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <ér
 STR_NEWGRF_INVALID_ENGINE                                       :<érvénytelen jármű modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen gazdasági épület>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ek beolvasása
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF-ek beolvasása. Mennyiségtől függően eltarthat egy ideig...

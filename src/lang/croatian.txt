@@ -2900,6 +2900,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <pog
 STR_NEWGRF_INVALID_ENGINE                                       :<pogrešan model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna industrija>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tražim NewGRFove
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Tražim NewGRFove. Ovisno o količini ovo može malo potrajati...

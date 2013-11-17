@@ -2804,6 +2804,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} / <無�
 STR_NEWGRF_INVALID_ENGINE                                       :<無效的運輸工具型號>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無效工業>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}正在掃描 NewGRF 套件
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}正在掃描 NewGRF 套件。如 NewGRF 套件較多，可能需要較長時間完成...

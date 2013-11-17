@@ -2810,6 +2810,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <geçer
 STR_NEWGRF_INVALID_ENGINE                                       :<geçersiz araç modeli>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<geçersiz fabrika>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF'ler taranıyor
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF'ler taranıyor. Sayıya bağlı olarak bu işlem biraz zaman alabilir...

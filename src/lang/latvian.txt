@@ -2783,6 +2783,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <neder�
 STR_NEWGRF_INVALID_ENGINE                                       :<nederīgs transportlīdzekļa modelis>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nederīga ražotne>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skenē NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skenē NewGRF. Atkarībā no apjoma, tas var aizņemt kādu brīdi...

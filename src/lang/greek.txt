@@ -2879,6 +2879,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <μη �
 STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυρο μοντέλο μηχανής>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυρη βιομηχανία>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Σαρώνονται ΝewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Σαρώνονται τα NewGRF. Ανάλογα με το μέγεθος, αυτό μπορεί να απαιτήσει κάποιο χρόνο...

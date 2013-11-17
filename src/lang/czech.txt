@@ -2892,6 +2892,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{
 STR_NEWGRF_INVALID_ENGINE                                       :<neplatný druh vozidla>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný průmysl>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Prohledávání grafik
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Prohledávám grafiky. Toto může chvíli trvat...

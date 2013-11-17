@@ -2805,6 +2805,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<알 수 없는
 STR_NEWGRF_INVALID_ENGINE                                       :<알 수 없는 차량 모델>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<알 수 없는 산업시설>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF 검색
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF을 검색하는 중입니다. 파일 개수에 따라 시간이 조금 걸릴 수 있습니다...

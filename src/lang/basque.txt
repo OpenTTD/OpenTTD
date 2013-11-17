@@ -2754,6 +2754,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <bal
 STR_NEWGRF_INVALID_ENGINE                                       :<garraio modelo baliogabea>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria baliogabea>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE} NewGRF berriak bilatzen.
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK} NewGRFak bilatzen. Zenbatekoaren arabera tartetxo baterako luza litzateke...

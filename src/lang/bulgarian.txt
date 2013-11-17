@@ -2809,6 +2809,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <�
 STR_NEWGRF_INVALID_ENGINE                                       :<невалидна машина>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невалдна индустрия>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Търси NewGRF-и
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Търси NewGRF-и. Може да отнеме време, в зависимост от количеството...

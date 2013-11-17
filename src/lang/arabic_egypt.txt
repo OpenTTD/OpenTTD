@@ -2520,6 +2520,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} لـ<ح
 STR_NEWGRF_INVALID_ENGINE                                       :<موديل العربة غير صالح>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<المصنع غير صالح>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}بحث اضافات جديدة
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}تحديث الاضافات. وقت البحث يعتمدعلى عدد الاضافات. من الممكن ان يستغرق وقتا اطول...

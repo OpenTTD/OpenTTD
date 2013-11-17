@@ -2810,6 +2810,9 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<無効な貨�
 STR_NEWGRF_INVALID_ENGINE                                       :<無効な輸送機器モデル>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無効な産業>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<無効な輸送機器>
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFをスキャンしています
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFをスキャンしています。NewGRFの数によっては時間がかかります
@@ -2936,7 +2939,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}指定�
 # Story book window
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします.Ctrl+Ｃｌｉｃｋクリック で 新規ビューポートに表示します
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の施設を選択するにはCtrlを押しながら選択します
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}箇所の停留施設
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3106,7 +3109,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}産業�
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}生産量(前月):
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK}({COMMA}%搬送済)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}この産業の場所にメイン画面を移動します。Ctrl+クリックでこの産業の場所を新たなビューポートに表示します
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}メイン画面をこの産業の場所に移動します。Ctrl+クリックでこの産業の場所を新たなビューポートに表示します
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生産量: {YELLOW}{COMMA}%
 
 ############ range for requires starts

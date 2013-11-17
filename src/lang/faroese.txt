@@ -2636,6 +2636,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} av <óg
 STR_NEWGRF_INVALID_ENGINE                                       :<ógilda flutningstól modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ógildigur ídnaður>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannar NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannar NewGRFs. Treytað av nøgdini kann hetta taka eina løtu...

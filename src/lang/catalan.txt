@@ -2805,6 +2805,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cà
 STR_NEWGRF_INVALID_ENGINE                                       :<model de vehicle invàlid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria invàlida>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escanejant NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Escanejant NewGRFs. Depenent de la quantitat pot trigar una estona...

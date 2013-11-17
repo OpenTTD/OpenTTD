@@ -2805,6 +2805,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} ขอ�
 STR_NEWGRF_INVALID_ENGINE                                       :<ตัวยานพาหนะไม่ถูกต้อง>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<อุตสาหกรรมไม่ถูกต้อง>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}ตรวจสอบ NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}ตรวจสอบ NewGRFs. ขึ้นอยู่กับจำนวนที่มี อาจใช้เวลาสักครู่...

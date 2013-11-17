@@ -3184,6 +3184,9 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nie
 STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy model pojazdu>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy przemysł>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<nieprawidłowy pojazd>
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanowanie NewGRFów
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanuje NewGRFy. Może to zająć chwilę w zależności od ilości...

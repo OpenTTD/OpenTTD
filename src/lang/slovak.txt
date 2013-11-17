@@ -349,8 +349,8 @@ STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Výkon
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Trakčná sila
 STR_SORT_BY_INTRO_DATE                                          :Uvedenie na trh
-STR_SORT_BY_RUNNING_COST                                        :Náklady na prevádzku
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Výkon/Náklady na prevádzku
+STR_SORT_BY_RUNNING_COST                                        :Prevádzkové náklady
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Výkon/Prevádzkové náklady
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapacita nákladu
 STR_SORT_BY_RANGE                                               :Rozsah
 
@@ -2871,6 +2871,9 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky iek} <neplatného nákladu>
 STR_NEWGRF_INVALID_ENGINE                                       :<chybný model rušňa>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný priemysel>
+
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<neplatné vozidlo>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skenovanie NewGRFov
