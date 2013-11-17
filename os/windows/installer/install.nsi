@@ -545,15 +545,22 @@ FunctionEnd
 ;-------------------------------------------------------------------------------
 ; Determine windows version, returns "win9x" if Win9x/Me/2000/XP SP2- or "winnt" for the rest on the stack
 Function GetWindowsVersion
+	GetVersion::WindowsPlatformArchitecture
+	Pop $R0
+	IntCmp $R0 64 WinNT 0
 	ClearErrors
 	StrCpy $R0 "win9x"
 	${If} ${IsNT}
 		${If} ${IsWinXP}
 		${AndIf} ${AtLeastServicePack} 3
 		${OrIf} ${AtLeastWin2003}
-			StrCpy $R0 "winnt"
+			GoTo WinNT
 		${EndIf}
 	${EndIf}
+	GoTo Done
+WinNT:
+	StrCpy $R0 "winnt"
+Done:
 	Push $R0
 FunctionEnd
 
