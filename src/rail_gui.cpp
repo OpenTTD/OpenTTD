@@ -597,7 +597,7 @@ struct BuildRailToolbarWindow : Window {
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		int num = CheckHotkeyMatch(railtoolbar_hotkeys, keycode, this);
 		if (num == -1) return ES_NOT_HANDLED;
@@ -847,7 +847,7 @@ Window *ShowBuildRailToolbar(RailType railtype)
 	return new BuildRailToolbarWindow(&_build_rail_desc, railtype);
 }
 
-EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
+EventState RailToolbarGlobalHotkeys(WChar key, uint16 keycode)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_TRAIN)) return ES_NOT_HANDLED;
 	extern RailType _last_built_railtype;

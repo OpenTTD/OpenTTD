@@ -281,7 +281,7 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
 		if (CheckHotkeyMatch(signlist_hotkeys, keycode, this) == SLHK_FOCUS_FILTER_BOX) {
@@ -386,7 +386,7 @@ Window *ShowSignList()
 	return AllocateWindowDescFront<SignListWindow>(&_sign_list_desc, 0);
 }
 
-EventState SignListGlobalHotkeys(uint16 key, uint16 keycode)
+EventState SignListGlobalHotkeys(WChar key, uint16 keycode)
 {
 	int num = CheckHotkeyMatch<SignListWindow>(_signlist_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;

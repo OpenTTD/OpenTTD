@@ -473,7 +473,7 @@ struct BuildRoadToolbarWindow : Window {
 		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		int num = CheckHotkeyMatch(roadtoolbar_hotkeys, keycode, this);
 		if (num == -1 || this->GetWidget<NWidgetBase>(num) == NULL) return ES_NOT_HANDLED;
@@ -775,7 +775,7 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc, TRANSPORT_ROAD);
 }
 
-EventState RoadToolbarGlobalHotkeys(uint16 key, uint16 keycode)
+EventState RoadToolbarGlobalHotkeys(WChar key, uint16 keycode)
 {
 	extern RoadType _last_built_roadtype;
 	int num = CheckHotkeyMatch<BuildRoadToolbarWindow>(_roadtoolbar_hotkeys, keycode, NULL, true);
@@ -829,7 +829,7 @@ Window *ShowBuildRoadScenToolbar()
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(&_build_road_scen_desc, TRANSPORT_ROAD);
 }
 
-EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
+EventState RoadToolbarEditorGlobalHotkeys(WChar key, uint16 keycode)
 {
 	int num = CheckHotkeyMatch<BuildRoadToolbarWindow>(_roadtoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;

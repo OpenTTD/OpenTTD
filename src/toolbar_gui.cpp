@@ -1587,7 +1587,7 @@ struct MainToolbarWindow : Window {
 		if (cbf != CBF_NONE) this->last_started_action = cbf;
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		switch (CheckHotkeyMatch(maintoolbar_hotkeys, keycode, this)) {
 			case MTHK_PAUSE: ToolbarPauseClick(this); break;
@@ -1925,7 +1925,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		CallBackFunction cbf = CBF_NONE;
 		switch (CheckHotkeyMatch(scenedit_maintoolbar_hotkeys, keycode, this)) {

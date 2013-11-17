@@ -163,7 +163,7 @@ struct BuildDocksToolbarWindow : Window {
 		this->last_clicked_widget = (DockToolbarWidgets)widget;
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		int num = CheckHotkeyMatch(dockstoolbar_hotkeys, keycode, this);
 		if (num == -1) return ES_NOT_HANDLED;
@@ -335,7 +335,7 @@ Window *ShowBuildDocksToolbar()
 	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
-EventState DockToolbarGlobalHotkeys(uint16 key, uint16 keycode)
+EventState DockToolbarGlobalHotkeys(WChar key, uint16 keycode)
 {
 	int num = CheckHotkeyMatch<BuildDocksToolbarWindow>(_dockstoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;

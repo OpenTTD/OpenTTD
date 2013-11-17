@@ -269,7 +269,7 @@ struct MainWindow : Window
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		int num = CheckHotkeyMatch(global_hotkeys, keycode, this);
 		if (num == GHK_QUIT) {

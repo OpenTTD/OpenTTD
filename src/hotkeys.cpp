@@ -294,7 +294,7 @@ void SaveHotkeysToConfig()
 	SaveLoadHotkeys(true);
 }
 
-typedef EventState GlobalHotkeyHandler(uint16, uint16);
+typedef EventState GlobalHotkeyHandler(WChar, uint16);
 
 GlobalHotkeyHandler RailToolbarGlobalHotkeys;
 GlobalHotkeyHandler DockToolbarGlobalHotkeys;

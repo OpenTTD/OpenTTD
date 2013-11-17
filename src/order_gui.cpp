@@ -1440,7 +1440,7 @@ public:
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
