@@ -2799,6 +2799,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} af <ikk
 STR_NEWGRF_INVALID_ENGINE                                       :<ugyldig køretøjsmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ikke gyldig industri type>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanner NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scanner NewGRFs. Afhængig af mængden, vil dette tage noget tid...

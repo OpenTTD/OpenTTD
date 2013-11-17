@@ -2560,6 +2560,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <ச
 STR_NEWGRF_INVALID_ENGINE                                       :<செல்லுபடியாகாத வாகன வகை>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<தவறான தொழிற்சாலை>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF பதிவுகள் ஆராயப்படுகின்றன
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF பதிவுகள் ஆராயப்படுகின்றன. அவற்றின் எண்ணிக்கையை பொறுத்து காலதாமதம் ஆகலாம்...

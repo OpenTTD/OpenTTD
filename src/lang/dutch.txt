@@ -2890,6 +2890,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <on
 STR_NEWGRF_INVALID_ENGINE                                       :<ongeldig treinmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen van NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scannen van NewGRFs. Afhankelijk van het aantal, kan dit even duren...

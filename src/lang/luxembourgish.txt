@@ -2890,6 +2890,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vun <in
 STR_NEWGRF_INVALID_ENGINE                                       :<invaliden Gefier-Modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid Industrie>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen NewGRFen
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scannen NewGRFen. Dëst kann eng Weil dauern, je no Emfang ...

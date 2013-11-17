@@ -3116,6 +3116,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} dhe <ch
 STR_NEWGRF_INVALID_ENGINE                                       :<modail carbaid mì-dhligheach>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<gnìomhachas mì-dhligheach>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}A' sganadh NewGRFan
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}A' sganadh NewGRFan. A' crochaidh air na tha dhiubh ann, dh'fhaoidte gun toir seo greis...

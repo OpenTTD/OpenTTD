@@ -3099,6 +3099,9 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vnt. <n
 STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas variklis>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama industrija>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<neteisinga transporto priemonė>
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tikrinami NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Nuskaitomi NewGRF. Tai gali užtrukti, priklausomai nuo kiekio...

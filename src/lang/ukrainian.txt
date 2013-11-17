@@ -3009,6 +3009,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <нев
 STR_NEWGRF_INVALID_ENGINE                                       :<невірна модель транспорту>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невірне виробництво>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Шукаю NewGRF'и
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Шукаю NewGRF'и. Якщо їх багато, це може зайняти деякий час...

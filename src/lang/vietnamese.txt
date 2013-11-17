@@ -2890,6 +2890,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng h
 STR_NEWGRF_INVALID_ENGINE                                       :<sai mẫu xe>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Đang Quét NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Đang quét các NewGRF. Thời gian hoàn tất phụ thuộc vào số lượng hiện có...

@@ -1276,6 +1276,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <�
 STR_NEWGRF_INVALID_ENGINE                                       :<валиден возило модел>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<валиден индустрија>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 
 # Sign list window

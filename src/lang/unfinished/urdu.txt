@@ -2192,6 +2192,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<غلط سام�
 STR_NEWGRF_INVALID_ENGINE                                       :<غلط انجن ماڈل>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<غلط صنعت>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 
 # Sign list window

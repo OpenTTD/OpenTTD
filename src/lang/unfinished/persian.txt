@@ -2570,6 +2570,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} از «
 STR_NEWGRF_INVALID_ENGINE                                       :«مدل وسیله نقلیه نامعتبر»
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :«صنایع نامعتبر»
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}چک کردن برای فایل های NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}چک کردن فایل های NewGRF. زمان انجام، به تعداد فایلها بسته است...

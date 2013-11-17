@@ -2920,6 +2920,9 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} di <car
 STR_NEWGRF_INVALID_ENGINE                                       :<modello di veicolo non valido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria non valida>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<veicolo non valido>
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scansione NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scansione dei NewGRF in corso. A seconda della quantità, questa operazione può richiedere molto tempo...

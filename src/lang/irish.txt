@@ -2433,6 +2433,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <las
 STR_NEWGRF_INVALID_ENGINE                                       :<samhail feithicle neamhbhailí>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tionscal neamhbhailí>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 
 # Sign list window

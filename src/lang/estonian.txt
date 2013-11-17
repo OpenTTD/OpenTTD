@@ -2947,6 +2947,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <kõlbm
 STR_NEWGRF_INVALID_ENGINE                                       :<kõlbmatu sõiduki mudel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<kõlbmatu tööstus>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ide skanneerimine
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF-de skanneerimine. Olenevalt failide arvust võib selleks kuluda mõni aeg...

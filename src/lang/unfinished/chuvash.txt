@@ -1011,6 +1011,8 @@ STR_NEWGRF_LIST_NONE                                            :Ҫук
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 
 # Sign list window

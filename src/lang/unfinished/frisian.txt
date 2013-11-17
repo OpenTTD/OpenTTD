@@ -1995,6 +1995,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_ENGINE                                       :<unjildiche wein>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<unjildiche yndustry>
 
+# Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+
 # NewGRF scanning window
 
 # Sign list window
