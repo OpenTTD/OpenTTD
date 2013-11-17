@@ -163,6 +163,12 @@ public:
 		int GetWidth() const   { return l->getWidth(); }
 		int CountRuns() const  { return l->countRuns(); }
 		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const { return *this->Get(run); }
+
+		int GetInternalCharLength(WChar c) const
+		{
+			/* ICU uses UTF-16 internally which means we need to account for surrogate pairs. */
+			return Utf8CharLen(c) < 4 ? 1 : 2;
+		}
 	};
 
 	ICUParagraphLayout(ParagraphLayout *p) : p(p) { }
@@ -259,6 +265,8 @@ public:
 		int GetWidth() const;
 		int CountRuns() const;
 		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const;
+
+		int GetInternalCharLength(WChar c) const { return 1; }
 	};
 
 	const WChar *buffer_begin; ///< Begin of the buffer.
@@ -699,12 +707,7 @@ Point Layouter::GetCharPosition(const char *ch) const
 		size_t len = Utf8Decode(&c, str);
 		if (c == '\0' || c == '\n') break;
 		str += len;
-#ifdef WITH_ICU
-		/* ICU uses UTF-16 internally which means we need to account for surrogate pairs. */
-		index += len < 4 ? 1 : 2;
-#else
-		index++;
-#endif
+		index += (*this->Begin())->GetInternalCharLength(c);
 	}
 
 	if (str == ch) {
@@ -762,15 +765,8 @@ const char *Layouter::GetCharAtPosition(int x) const
 				for (const char *str = this->string; *str != '\0'; ) {
 					if (cur_idx == index) return str;
 
-					WChar c;
-					size_t len = Utf8Decode(&c, str);
-#ifdef WITH_ICU
-					/* ICU uses UTF-16 internally which means we need to account for surrogate pairs. */
-					cur_idx += len < 4 ? 1 : 2;
-#else
-					cur_idx++;
-#endif
-					str += len;
+					WChar c = Utf8Consume(&str);
+					cur_idx += line->GetInternalCharLength(c);
 				}
 			}
 		}
