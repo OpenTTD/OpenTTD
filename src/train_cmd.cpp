@@ -166,6 +166,9 @@ void Train::ConsistChanged(bool same_length)
 		/* Cache wagon override sprite group. NULL is returned if there is none */
 		u->tcache.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->gcache.first_engine);
 
+		/* Reset colour map */
+		u->colourmap = PAL_NONE;
+
 		/* Update powered-wagon-status and visual effect */
 		u->UpdateVisualEffect(true);
 
