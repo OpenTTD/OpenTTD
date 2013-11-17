@@ -73,6 +73,11 @@ public:
 	{
 		return true;
 	}
+
+	/**
+	 * An edit box lost the input focus. Abort character compositing if necessary.
+	 */
+	virtual void EditBoxLostFocus() {}
 };
 
 /** Base of the factory for the video drivers. */

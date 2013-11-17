@@ -323,6 +323,13 @@ public:
 	const QueryString *GetQueryString(uint widnum) const;
 	QueryString *GetQueryString(uint widnum);
 
+	virtual const char *GetFocusedText() const;
+	virtual const char *GetCaret() const;
+	virtual const char *GetMarkedText(size_t *length) const;
+	virtual Point GetCaretPosition() const;
+	virtual Rect GetTextBoundingRect(const char *from, const char *to) const;
+	virtual const char *GetTextCharacterAtPosition(const Point &pt) const;
+
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
 	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);
 	void FinishInitNested(const WindowDesc *desc, WindowNumber window_number = 0);
@@ -467,6 +474,7 @@ public:
 	bool SetFocusedWidget(int widget_index);
 
 	EventState HandleEditBoxKey(int wid, WChar key, uint16 keycode);
+	virtual void InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end);
 
 	void HandleButtonClick(byte widget);
 	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height = -1) const;
@@ -559,10 +567,7 @@ public:
 	 */
 	virtual void OnFocus() {}
 
-	/**
-	 * Called when window looses focus
-	 */
-	virtual void OnFocusLost() {}
+	virtual void OnFocusLost();
 
 	/**
 	 * A key has been pressed.

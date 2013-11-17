@@ -2588,7 +2588,7 @@ struct IndustryCargoesWindow : public Window {
 					delete lst;
 					break;
 				}
-				int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? this->ind_cargo - NUM_INDUSTRYTYPES : -1;
+				int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
 				ShowDropDownList(this, lst, selected, WID_IC_CARGO_DROPDOWN, 0, true);
 				break;
 			}
@@ -2605,7 +2605,7 @@ struct IndustryCargoesWindow : public Window {
 					delete lst;
 					break;
 				}
-				int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? this->ind_cargo : -1;
+				int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
 				ShowDropDownList(this, lst, selected, WID_IC_IND_DROPDOWN, 0, true);
 				break;
 			}

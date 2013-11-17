@@ -71,6 +71,7 @@ extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
 void HandleKeypress(uint keycode, WChar key);
+void HandleTextInput(const char *str, bool marked = false, const char *caret = NULL, const char *insert_location = NULL, const char *replacement_end = NULL);
 void HandleCtrlChanged();
 void HandleMouseEvents();
 void CSleep(int milliseconds);
@@ -128,6 +129,7 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
 Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &suggestion);
 void LoadStringWidthTable(bool monospace = false);
 Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsize = FS_NORMAL);
+const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize = FS_NORMAL);
 
 void DrawDirtyBlocks();
 void SetDirtyBlocks(int left, int top, int right, int bottom);

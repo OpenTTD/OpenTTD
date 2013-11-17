@@ -736,6 +736,50 @@ Point Layouter::GetCharPosition(const char *ch) const
 }
 
 /**
+ * Get the character that is at a position.
+ * @param x Position in the string.
+ * @return Pointer to the character at the position or NULL if no character is at the position.
+ */
+const char *Layouter::GetCharAtPosition(int x) const
+{
+	const ParagraphLayouter::Line *line = *this->Begin();;
+
+	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
+		const ParagraphLayouter::VisualRun *run = line->GetVisualRun(run_index);
+
+		for (int i = 0; i < run->GetGlyphCount(); i++) {
+			/* Not a valid glyph (empty). */
+			if (run->GetGlyphs()[i] == 0xFFFF) continue;
+
+			int begin_x = (int)run->GetPositions()[i * 2];
+			int end_x   = (int)run->GetPositions()[i * 2 + 2];
+
+			if (IsInsideMM(x, begin_x, end_x)) {
+				/* Found our glyph, now convert to UTF-8 string index. */
+				size_t index = run->GetGlyphToCharMap()[i];
+
+				size_t cur_idx = 0;
+				for (const char *str = this->string; *str != '\0'; ) {
+					if (cur_idx == index) return str;
+
+					WChar c;
+					size_t len = Utf8Decode(&c, str);
+#ifdef WITH_ICU
+					/* ICU uses UTF-16 internally which means we need to account for surrogate pairs. */
+					cur_idx += len < 4 ? 1 : 2;
+#else
+					cur_idx++;
+#endif
+					str += len;
+				}
+			}
+		}
+	}
+
+	return NULL;
+}
+
+/**
  * Get a static font instance.
  */
 Font *Layouter::GetFont(FontSize size, TextColour colour)

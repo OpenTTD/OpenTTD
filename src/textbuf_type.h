@@ -40,6 +40,10 @@ struct Textbuf {
 	bool caret;               ///< is the caret ("_") visible or not
 	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
 	uint16 caretxoffs;        ///< the current position of the caret in pixels
+	uint16 markpos;           ///< the start position of the marked area in the buffer, in bytes
+	uint16 markend;           ///< the end position of the marked area in the buffer, in bytes
+	uint16 markxoffs;         ///< the start position of the marked area in pixels
+	uint16 marklength;        ///< the length of the marked area in pixels
 
 	explicit Textbuf(uint16 max_bytes, uint16 max_chars = UINT16_MAX);
 	~Textbuf();
@@ -52,6 +56,7 @@ struct Textbuf {
 	bool InsertClipboard();
 
 	bool InsertChar(uint32 key);
+	bool InsertString(const char *str, bool marked, const char *caret = NULL, const char *insert_location = NULL, const char *replacement_end = NULL);
 
 	bool DeleteChar(uint16 keycode);
 	bool MovePos(uint16 keycode);
@@ -61,14 +66,19 @@ struct Textbuf {
 	bool HandleCaret();
 	void UpdateSize();
 
+	void DiscardMarkedText(bool update = true);
+
 private:
 	StringIterator *char_iter;
 
 	bool CanDelChar(bool backspace);
 
+	void DeleteText(uint16 from, uint16 to, bool update);
+
 	void UpdateStringIter();
 	void UpdateWidth();
 	void UpdateCaretPosition();
+	void UpdateMarkedText();
 };
 
 #endif /* TEXTBUF_TYPE_H */

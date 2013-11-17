@@ -34,6 +34,13 @@
 #include "../../core/math_func.hpp"
 #include "../../gfx_func.h"
 
+/* On some old versions of MAC OS this may not be defined.
+ * Those versions generally only produce code for PPC. So it should be safe to
+ * set this to 0. */
+#ifndef kCGBitmapByteOrder32Host
+#define kCGBitmapByteOrder32Host 0
+#endif
+
 /**
  * Important notice regarding all modifications!!!!!!!
  * There are certain limitations because the file is objective C++.
@@ -144,7 +151,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	/* Calculate total area we are blitting */
 	uint32 blitArea = 0;
 	for (int n = 0; n < dirtyRectCount; n++) {
-		blitArea += dirtyRects[n].size.width * dirtyRects[n].size.height;
+		blitArea += (uint32)(dirtyRects[n].size.width * dirtyRects[n].size.height);
 	}
 
 	/*
@@ -240,12 +247,12 @@ void WindowQuartzSubdriver::GetDeviceInfo()
  */
 bool WindowQuartzSubdriver::ToggleFullscreen()
 {
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
-	[this->window toggleFullScreen:this->window];
-	return true;
-#else
+	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
+		[ this->window performSelector:@selector(toggleFullScreen:) withObject:this->window ];
+		return true;
+	}
+
 	return false;
-#endif
 }
 
 bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
@@ -280,15 +287,17 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 			return false;
 		}
 
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
 		/* Add built in full-screen support when available (OS X 10.7 and higher)
 		 * This code actually compiles for 10.5 and later, but only makes sense in conjunction
 		 * with the quartz fullscreen support as found only in 10.7 and later
 		 */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
 		if ([this->window respondsToSelector:@selector(toggleFullScreen:)]) {
-			/* Constants needed to build on pre-10.7 systems. Source: NSWindow documentation. */
+#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_7
+			/* Constants needed to build on pre-10.7 SDKs. Source: NSWindow documentation. */
 			const int NSWindowCollectionBehaviorFullScreenPrimary = 1 << 7;
 			const int NSWindowFullScreenButton = 7;
+#endif
 
 			NSWindowCollectionBehavior behavior = [ this->window collectionBehavior ];
 			behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
@@ -326,10 +335,10 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 		[ this->window setContentSize:contentRect.size ];
 
 		/* Ensure frame height - title bar height >= view height */
-		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
+		contentRect.size.height = Clamp(height, 0, (int)[ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
 
 		if (this->cocoaview != nil) {
-			height = contentRect.size.height;
+			height = (int)contentRect.size.height;
 			[ this->cocoaview setFrameSize:contentRect.size ];
 		}
 	}
@@ -514,7 +523,7 @@ NSPoint WindowQuartzSubdriver::GetMouseLocation(NSEvent *event)
 {
 	NSPoint pt;
 
-	if (event.window == nil) {
+	if ( [ event window ] == nil) {
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7
 		if ([ this->cocoaview respondsToSelector:@selector(convertRectFromScreen:) ]) {
 			pt = [ this->cocoaview convertPoint:[ [ this->cocoaview window ] convertRectFromScreen:NSMakeRect([ event locationInWindow ].x, [ event locationInWindow ].y, 0, 0) ].origin fromView:nil ];
@@ -560,8 +569,8 @@ bool WindowQuartzSubdriver::WindowResized()
 
 	NSRect newframe = [ this->cocoaview frame ];
 
-	this->window_width = newframe.size.width;
-	this->window_height = newframe.size.height;
+	this->window_width = (int)newframe.size.width;
+	this->window_height = (int)newframe.size.height;
 
 	/* Create Core Graphics Context */
 	free(this->window_buffer);

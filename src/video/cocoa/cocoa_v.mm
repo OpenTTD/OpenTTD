@@ -34,6 +34,8 @@
 #include "../../blitter/factory.hpp"
 #include "../../fileio_func.h"
 #include "../../gfx_func.h"
+#include "../../window_func.h"
+#include "../../window_gui.h"
 
 #import <sys/param.h> /* for MAXPATHLEN */
 
@@ -57,7 +59,7 @@ static bool _cocoa_video_dialog = false;
 
 CocoaSubdriver *_cocoa_subdriver = NULL;
 
-static const NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
+static NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
 
 
 /**
@@ -394,21 +396,12 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 	/* OSX 10.7 allows to toggle fullscreen mode differently */
 	if (MacOSVersionIsAtLeast(10, 7, 0)) {
 		ret = QZ_CreateWindowSubdriver(width, height, bpp);
-	}
-#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9)
-	else {
+		if (ret != NULL && fullscreen) ret->ToggleFullscreen();
+	} else {
 		ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
 	}
-#endif /* (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9) */
 
-	if (ret != NULL) {
-			/* We cannot set any fullscreen mode on OSX 10.7 when not compiled against SDK 10.7 */
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7
-		if (fullscreen) { ret->ToggleFullscreen(); }
-#endif
-		return ret;
-	}
-
+	if (ret != NULL) return ret;
 	if (!fallback) return NULL;
 
 	/* Try again in 640x480 windowed */
@@ -570,6 +563,22 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 bool VideoDriver_Cocoa::AfterBlitterChange()
 {
 	return this->ChangeResolution(_screen.width, _screen.height);
+}
+
+/**
+ * An edit box lost the input focus. Abort character compositing if necessary.
+ */
+void VideoDriver_Cocoa::EditBoxLostFocus()
+{
+	if (_cocoa_subdriver != NULL) {
+		if ([ _cocoa_subdriver->cocoaview respondsToSelector:@selector(inputContext) ] && [ [ _cocoa_subdriver->cocoaview performSelector:@selector(inputContext) ] respondsToSelector:@selector(discardMarkedText) ]) {
+			[ [ _cocoa_subdriver->cocoaview performSelector:@selector(inputContext) ] performSelector:@selector(discardMarkedText) ];
+		} else {
+			[ [ NSInputManager currentInputManager ] markedTextAbandoned:_cocoa_subdriver->cocoaview ];
+		}
+	}
+	/* Clear any marked string from the current edit box. */
+	HandleTextInput(NULL, true);
 }
 
 /**
@@ -757,6 +766,43 @@ void cocoaReleaseAutoreleasePool()
 
 
 
+/**
+ * Count the number of UTF-16 code points in a range of an UTF-8 string.
+ * @param from Start of the range.
+ * @param to End of the range.
+ * @return Number of UTF-16 code points in the range.
+ */
+static NSUInteger CountUtf16Units(const char *from, const char *to)
+{
+	NSUInteger i = 0;
+
+	while (from < to) {
+		WChar c;
+		size_t len = Utf8Decode(&c, from);
+		i += len < 4 ? 1 : 2; // Watch for surrogate pairs.
+		from += len;
+	}
+
+	return i;
+}
+
+/**
+ * Advance an UTF-8 string by a number of equivalent UTF-16 code points.
+ * @param str UTF-8 string.
+ * @param count Number of UTF-16 code points to advance the string by.
+ * @return Advanced string pointer.
+ */
+static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
+{
+	for (NSUInteger i = 0; i < count && *str != '\0'; ) {
+		WChar c;
+		size_t len = Utf8Decode(&c, str);
+		i += len < 4 ? 1 : 2; // Watch for surrogates.
+		str += len;
+	}
+
+	return str;
+}
 
 @implementation OTTD_CocoaView
 /**
@@ -852,6 +898,200 @@ void cocoaReleaseAutoreleasePool()
 	if (_cocoa_subdriver != NULL) UndrawMouseCursor();
 	_cursor.in_window = false;
 }
+
+
+/** Insert the given text at the given range. */
+- (void)insertText:(id)aString replacementRange:(NSRange)replacementRange
+{
+	if (!EditBoxInGlobalFocus()) return;
+
+	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
+
+	const char *insert_point = NULL;
+	const char *replace_range = NULL;
+	if (replacementRange.location != NSNotFound) {
+		/* Calculate the part to be replaced. */
+		insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), replacementRange.location);
+		replace_range = Utf8AdvanceByUtf16Units(insert_point, replacementRange.length);
+	}
+
+	HandleTextInput(NULL, true);
+	HandleTextInput([ s UTF8String ], false, NULL, insert_point, replace_range);
+}
+
+/** Insert the given text at the caret. */
+- (void)insertText:(id)aString
+{
+	[ self insertText:aString replacementRange:NSMakeRange(NSNotFound, 0) ];
+}
+
+/** Set a new marked text and reposition the caret. */
+- (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange replacementRange:(NSRange)replacementRange
+{
+	if (!EditBoxInGlobalFocus()) return;
+
+	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
+
+	const char *utf8 = [ s UTF8String ];
+	if (utf8 != NULL) {
+		const char *insert_point = NULL;
+		const char *replace_range = NULL;
+		if (replacementRange.location != NSNotFound) {
+			/* Calculate the part to be replaced. */
+			NSRange marked = [ self markedRange ];
+			insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), replacementRange.location + (marked.location != NSNotFound ? marked.location : 0u));
+			replace_range = Utf8AdvanceByUtf16Units(insert_point, replacementRange.length);
+		}
+
+		/* Convert caret index into a pointer in the UTF-8 string. */
+		const char *selection = Utf8AdvanceByUtf16Units(utf8, selRange.location);
+
+		HandleTextInput(utf8, true, selection, insert_point, replace_range);
+	}
+}
+
+/** Set a new marked text and reposition the caret. */
+- (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange
+{
+	[ self setMarkedText:aString selectedRange:selRange replacementRange:NSMakeRange(NSNotFound, 0) ];
+}
+
+/** Unmark the current marked text. */
+- (void)unmarkText
+{
+	HandleTextInput(NULL, true);
+}
+
+/** Get the caret position. */
+- (NSRange)selectedRange
+{
+	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
+
+	NSUInteger start = CountUtf16Units(_focused_window->GetFocusedText(), _focused_window->GetCaret());
+	return NSMakeRange(start, 0);
+}
+
+/** Get the currently marked range. */
+- (NSRange)markedRange
+{
+	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
+
+	size_t mark_len;
+	const char *mark = _focused_window->GetMarkedText(&mark_len);
+	if (mark != NULL) {
+		NSUInteger start = CountUtf16Units(_focused_window->GetFocusedText(), mark);
+		NSUInteger len = CountUtf16Units(mark, mark + mark_len);
+
+		return NSMakeRange(start, len);
+	}
+
+	return NSMakeRange(NSNotFound, 0);
+}
+
+/** Is any text marked? */
+- (BOOL)hasMarkedText
+{
+	if (!EditBoxInGlobalFocus()) return NO;
+
+	size_t len;
+	return _focused_window->GetMarkedText(&len) != NULL;
+}
+
+/** Get a string corresponding to the given range. */
+- (NSAttributedString *)attributedSubstringForProposedRange:(NSRange)theRange actualRange:(NSRangePointer)actualRange
+{
+	if (!EditBoxInGlobalFocus()) return nil;
+
+	NSString *s = [ NSString stringWithUTF8String:_focused_window->GetFocusedText() ];
+	NSRange valid_range = NSIntersectionRange(NSMakeRange(0, [ s length ]), theRange);
+
+	if (actualRange != NULL) *actualRange = valid_range;
+	if (valid_range.length == 0) return nil;
+
+	return [ [ [ NSAttributedString alloc ] initWithString:[ s substringWithRange:valid_range ] ] autorelease ];
+}
+
+/** Get a string corresponding to the given range. */
+- (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange
+{
+	return [ self attributedSubstringForProposedRange:theRange actualRange:NULL ];
+}
+
+/** Get the current edit box string. */
+- (NSAttributedString *)attributedString
+{
+	if (!EditBoxInGlobalFocus()) return [ [ [ NSAttributedString alloc ] initWithString:@"" ] autorelease ];
+
+	return [ [ [ NSAttributedString alloc ] initWithString:[ NSString stringWithUTF8String:_focused_window->GetFocusedText() ] ] autorelease ];
+}
+
+/** Get the character that is rendered at the given point. */
+- (NSUInteger)characterIndexForPoint:(NSPoint)thePoint
+{
+	if (!EditBoxInGlobalFocus()) return NSNotFound;
+
+	NSPoint view_pt = [ self convertPoint:[ [ self window ] convertScreenToBase:thePoint ] fromView:nil ];
+
+	Point pt = { (int)view_pt.x, (int)[ self frame ].size.height - (int)view_pt.y };
+
+	const char *ch = _focused_window->GetTextCharacterAtPosition(pt);
+	if (ch == NULL) return NSNotFound;
+
+	return CountUtf16Units(_focused_window->GetFocusedText(), ch);
+}
+
+/** Get the bounding rect for the given range. */
+- (NSRect)firstRectForCharacterRange:(NSRange)aRange
+{
+	if (!EditBoxInGlobalFocus()) return NSMakeRect(0, 0, 0, 0);
+
+	/* Convert range to UTF-8 string pointers. */
+	const char *start = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), aRange.location);
+	const char *end = aRange.length != 0 ? Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), aRange.location + aRange.length) : start;
+
+	/* Get the bounding rect for the text range.*/
+	Rect r = _focused_window->GetTextBoundingRect(start, end);
+	NSRect view_rect = NSMakeRect(_focused_window->left + r.left, [ self frame ].size.height - _focused_window->top - r.bottom, r.right - r.left, r.bottom - r.top);
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7
+	if ([ [ self window ] respondsToSelector:@selector(convertRectToScreen:) ]) {
+		return [ [ self window ] convertRectToScreen:[ self convertRect:view_rect toView:nil ] ];
+	}
+#endif
+
+	NSRect window_rect = [ self convertRect:view_rect toView:nil ];
+	NSPoint origin = [ [ self window ] convertBaseToScreen:window_rect.origin ];
+	return NSMakeRect(origin.x, origin.y, window_rect.size.width, window_rect.size.height);
+}
+
+/** Get the bounding rect for the given range. */
+- (NSRect)firstRectForCharacterRange:(NSRange)aRange actualRange:(NSRangePointer)actualRange
+{
+	return [ self firstRectForCharacterRange:aRange ];
+}
+
+/** Get all string attributes that we can process for marked text. */
+- (NSArray*)validAttributesForMarkedText
+{
+	return [ NSArray array ];
+}
+
+/** Identifier for this text input instance. */
+#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_5
+- (long)conversationIdentifier
+#else
+- (NSInteger)conversationIdentifier
+#endif
+{
+	return 0;
+}
+
+/** Invoke the selector if we implement it. */
+- (void)doCommandBySelector:(SEL)aSelector
+{
+	if ([ self respondsToSelector:aSelector ]) [ self performSelector:aSelector ];
+}
+
 @end
 
 

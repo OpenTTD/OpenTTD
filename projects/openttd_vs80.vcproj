@@ -87,7 +87,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib imm32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames=""
@@ -184,7 +184,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib imm32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="0"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames="LIBCMT.lib"
@@ -292,7 +292,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib imm32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames=""
@@ -392,7 +392,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib imm32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="0"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames="LIBCMT.lib"

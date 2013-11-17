@@ -16,6 +16,7 @@
 #include "window_func.h"
 #include "gfx_func.h"
 #include "querystring_gui.h"
+#include "video/video_driver.hpp"
 
 #include "widgets/osk_widget.h"
 
@@ -205,6 +206,7 @@ struct OskWindow : public Window {
 
 	virtual void OnFocusLost()
 	{
+		_video_driver->EditBoxLostFocus();
 		delete this;
 	}
 };

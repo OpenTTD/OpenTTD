@@ -50,6 +50,11 @@ public:
 	 */
 	/* virtual */ bool AfterBlitterChange();
 
+	/**
+	 * An edit box lost the input focus. Abort character compositing if necessary.
+	 */
+	/* virtual */ void EditBoxLostFocus();
+
 	/** Return driver name
 	 * @return driver name
 	 */
@@ -227,7 +232,17 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 @end
 
 /** Subclass of NSView to fix Quartz rendering and mouse awareness */
-@interface OTTD_CocoaView : NSView {
+@interface OTTD_CocoaView : NSView
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
+#	if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4
+		<NSTextInputClient, NSTextInput>
+#	else
+		<NSTextInputClient>
+#	endif /* MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4 */
+#else
+	<NSTextInput>
+#endif /* MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5 */
+{
 	CocoaSubdriver *driver;
 	NSTrackingRectTag trackingtag;
 }
