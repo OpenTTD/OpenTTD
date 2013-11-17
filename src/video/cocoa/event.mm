@@ -275,7 +275,7 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 	if (down) {
 		uint32 pressed_key = QZ_MapKey(keycode);
 		/* Don't handle normal characters if an edit box has the focus. */
-		if (!EditBoxInGlobalFocus() || (!IsInsideMM(pressed_key, 'A', 'Z' + 1) && !IsInsideMM(pressed_key, '0', '9' + 1))) {
+		if (!EditBoxInGlobalFocus() || ((pressed_key & ~WKC_SPECIAL_KEYS) <= WKC_TAB) || IsInsideMM(pressed_key & ~WKC_SPECIAL_KEYS, WKC_F1, WKC_PAUSE + 1)) {
 			HandleKeypress(pressed_key, unicode);
 		}
 		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);

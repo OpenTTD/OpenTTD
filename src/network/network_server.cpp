@@ -57,30 +57,90 @@ struct PacketWriter : SaveFilter {
 	ServerNetworkGameSocketHandler *cs; ///< Socket we are associated with.
 	Packet *current;                    ///< The packet we're currently writing to.
 	size_t total_size;                  ///< Total size of the compressed savegame.
+	Packet *packets;                    ///< Packet queue of the savegame; send these "slowly" to the client.
+	ThreadMutex *mutex;                 ///< Mutex for making threaded saving safe.
 
 	/**
 	 * Create the packet writer.
 	 * @param cs The socket handler we're making the packets for.
 	 */
-	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(NULL), cs(cs), current(NULL), total_size(0)
+	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(NULL), cs(cs), current(NULL), total_size(0), packets(NULL)
 	{
-		this->cs->savegame_mutex = ThreadMutex::New();
+		this->mutex = ThreadMutex::New();
 	}
 
 	/** Make sure everything is cleaned up. */
 	~PacketWriter()
 	{
-		/* Prevent double frees. */
-		if (this->cs != NULL) {
-			if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
-			this->cs->savegame = NULL;
-			if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->EndCritical();
+		if (this->mutex != NULL) this->mutex->BeginCritical();
 
-			delete this->cs->savegame_mutex;
-			this->cs->savegame_mutex = NULL;
+		if (this->cs != NULL && this->mutex != NULL) {
+			this->mutex->WaitForSignal();
+		}
+
+		/* This must all wait until the Destroy function is called. */
+
+		while (this->packets != NULL) {
+			Packet *p = this->packets->next;
+			delete this->packets;
+			this->packets = p;
 		}
 
 		delete this->current;
+
+		if (this->mutex != NULL) this->mutex->EndCritical();
+
+		delete this->mutex;
+		this->mutex = NULL;
+	}
+
+	/**
+	 * Begin the destruction of this packet writer. It can happen in two ways:
+	 * in the first case the client disconnected while saving the map. In this
+	 * case the saving has not finished and killed this PacketWriter. In that
+	 * case we simply set cs to NULL, triggering the appending to fail due to
+	 * the connection problem and eventually triggering the destructor. In the
+	 * second case the destructor is already called, and it is waiting for our
+	 * signal which we will send. Only then the packets will be removed by the
+	 * destructor.
+	 */
+	void Destroy()
+	{
+		if (this->mutex != NULL) this->mutex->BeginCritical();
+
+		this->cs = NULL;
+
+		if (this->mutex != NULL) this->mutex->SendSignal();
+
+		if (this->mutex != NULL) this->mutex->EndCritical();
+	}
+
+	/**
+	 * Checks whether there are packets.
+	 * It's not 100% threading safe, but this is only asked for when checking
+	 * whether there still is something to send. Then another call will be made
+	 * to actually get the Packet, which will be the only one popping packets
+	 * and thus eventually setting this on false.
+	 */
+	bool HasPackets()
+	{
+		return this->packets != NULL;
+	}
+
+	/**
+	 * Pop a single created packet from the queue with packets.
+	 */
+	Packet *PopPacket()
+	{
+		if (this->mutex != NULL) this->mutex->BeginCritical();
+
+		Packet *p = this->packets;
+		this->packets = p->next;
+		p->next = NULL;
+
+		if (this->mutex != NULL) this->mutex->EndCritical();
+
+		return p;
 	}
 
 	/** Append the current packet to the queue. */
@@ -88,7 +148,7 @@ struct PacketWriter : SaveFilter {
 	{
 		if (this->current == NULL) return;
 
-		Packet **p = &this->cs->savegame_packets;
+		Packet **p = &this->packets;
 		while (*p != NULL) {
 			p = &(*p)->next;
 		}
@@ -104,7 +164,7 @@ struct PacketWriter : SaveFilter {
 
 		if (this->current == NULL) this->current = new Packet(PACKET_SERVER_MAP_DATA);
 
-		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
+		if (this->mutex != NULL) this->mutex->BeginCritical();
 
 		byte *bufe = buf + size;
 		while (buf != bufe) {
@@ -119,7 +179,7 @@ struct PacketWriter : SaveFilter {
 			}
 		}
 
-		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->EndCritical();
+		if (this->mutex != NULL) this->mutex->EndCritical();
 
 		this->total_size += size;
 	}
@@ -129,7 +189,7 @@ struct PacketWriter : SaveFilter {
 		/* We want to abort the saving when the socket is closed. */
 		if (this->cs == NULL) SlError(STR_NETWORK_ERROR_LOSTCONNECTION);
 
-		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
+		if (this->mutex != NULL) this->mutex->BeginCritical();
 
 		/* Make sure the last packet is flushed. */
 		this->AppendQueue();
@@ -143,7 +203,7 @@ struct PacketWriter : SaveFilter {
 		p->Send_uint32((uint32)this->total_size);
 		this->cs->NetworkTCPSocketHandler::SendPacket(p);
 
-		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->EndCritical();
+		if (this->mutex != NULL) this->mutex->EndCritical();
 	}
 };
 
@@ -172,9 +232,10 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
 	OrderBackup::ResetUser(this->client_id);
 
-	if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
-	if (this->savegame != NULL) this->savegame->cs = NULL;
-	if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
+	if (this->savegame != NULL) {
+		this->savegame->Destroy();
+		this->savegame = NULL;
+	}
 
 	/* Make sure the saving is completely cancelled.
 	 * Yes, we need to handle the save finish as well
@@ -182,14 +243,6 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 	 * just be requesting the map and such. */
 	WaitTillSaved();
 	ProcessAsyncSaveFinish();
-
-	while (this->savegame_packets != NULL) {
-		Packet *p = this->savegame_packets->next;
-		delete this->savegame_packets;
-		this->savegame_packets = p;
-	}
-
-	delete this->savegame_mutex;
 }
 
 Packet *ServerNetworkGameSocketHandler::ReceivePacket()
@@ -203,13 +256,6 @@ Packet *ServerNetworkGameSocketHandler::ReceivePacket()
 	Packet *p = this->NetworkTCPSocketHandler::ReceivePacket();
 	if (p != NULL) this->receive_limit -= p->size;
 	return p;
-}
-
-void ServerNetworkGameSocketHandler::SendPacket(Packet *packet)
-{
-	if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
-	this->NetworkTCPSocketHandler::SendPacket(packet);
-	if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
@@ -556,18 +602,14 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 	}
 
 	if (this->status == STATUS_MAP) {
-		if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
-
 		bool last_packet = false;
+		bool has_packets = false;
 
-		for (uint i = 0; i < sent_packets && this->savegame_packets != NULL; i++) {
-			Packet *p = this->savegame_packets;
+		for (uint i = 0; (has_packets = this->savegame->HasPackets()) && i < sent_packets; i++) {
+			Packet *p = this->savegame->PopPacket();
 			last_packet = p->buffer[2] == PACKET_SERVER_MAP_DONE;
 
-			/* Remove the packet from the savegame queue and put it in the real queue. */
-			this->savegame_packets = p->next;
-			p->next = NULL;
-			this->NetworkTCPSocketHandler::SendPacket(p);
+			this->SendPacket(p);
 
 			if (last_packet) {
 				/* There is no more data, so break the for */
@@ -575,10 +617,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			}
 		}
 
-		if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
-
 		if (last_packet) {
 			/* Done reading, make sure saving is done as well */
+			this->savegame->Destroy();
+			this->savegame = NULL;
+
 			WaitTillSaved();
 
 			/* Set the status to DONE_MAP, no we will wait for the client
@@ -615,7 +658,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 
 			case SPS_ALL_SENT:
 				/* All are sent, increase the sent_packets */
-				if (this->savegame_packets != NULL) sent_packets *= 2;
+				if (has_packets) sent_packets *= 2;
 				break;
 
 			case SPS_PARTLY_SENT:

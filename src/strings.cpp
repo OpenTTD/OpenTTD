@@ -233,7 +233,10 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 
 		case 15:
 			/* Old table for custom names. This is no longer used */
-			error("Incorrect conversion of custom name string.");
+			if (!game_script) {
+				error("Incorrect conversion of custom name string.");
+			}
+			break;
 
 		case GAME_TEXT_TAB:
 			return FormatString(buffr, GetGameStringPtr(index), args, last, case_index, true);
@@ -254,9 +257,6 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 
 		case 30:
 			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), args, last, case_index);
-
-		case 31:
-			NOT_REACHED();
 	}
 
 	if (index >= _langtab_num[tab]) {
@@ -1478,7 +1478,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 					StringID str;
 					switch (v->type) {
-						default: NOT_REACHED();
+						default:           str = STR_INVALID_VEHICLE; break;
 						case VEH_TRAIN:    str = STR_SV_TRAIN_NAME; break;
 						case VEH_ROAD:     str = STR_SV_ROAD_VEHICLE_NAME; break;
 						case VEH_SHIP:     str = STR_SV_SHIP_NAME; break;
