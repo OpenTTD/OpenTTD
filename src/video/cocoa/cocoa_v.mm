@@ -29,6 +29,7 @@
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "../../core/geometry_type.hpp"
+#include "../../core/sort_func.hpp"
 #include "cocoa_v.h"
 #include "../../blitter/factory.hpp"
 #include "../../fileio_func.h"

@@ -36,6 +36,7 @@
 #include "../../core/random_func.hpp"
 #include "../../core/math_func.hpp"
 #include "../../texteff.hpp"
+#include "../../window_func.h"
 
 #import <sys/time.h> /* gettimeofday */
 
