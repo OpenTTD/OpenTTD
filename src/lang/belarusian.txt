@@ -545,7 +545,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закр
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Загаловак вакна — цягніце яго для перамяшчэньня вакна
 STR_TOOLTIP_SHADE                                               :{BLACK}Згарнуць вакно, пакінуўшы загаловак
 STR_TOOLTIP_DEBUG                                               :{BLACK}Паказаць наладачную iнфармацыю NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Іґнараваць націск клявішы «Закрыць усе вокны»
+STR_TOOLTIP_STICKY                                              :{BLACK}Пазначыць гэтае вакно як незачыняльнае па клявішы «Закрыць усе вокны». Ctrl+пстрычка захоўвае гэты стан па змаўчанні.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Націсьніце ды цягніце для зьмяненьня памеру вакна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вялікае/маленькае вакно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка ўверх/уніз

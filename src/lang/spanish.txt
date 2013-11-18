@@ -2892,6 +2892,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veh�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria incorrecta>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<vehículo inválido>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Comprobando NewGRFs
@@ -3945,6 +3946,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leeme de
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de cambios del {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencia del {STRING} {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Unir texto
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Unir el texto de la ventana para que quepa sin tener que usar el scroll
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver leeme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registro de cambios
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia

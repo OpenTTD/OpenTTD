@@ -1440,35 +1440,35 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Lorsqu'il est a
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Désactiver les rails électriques{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activer ce paramètre désactive le besoin d'avoir des voies électrifiées pour faire rouler des engins électriques
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivée du premier véhicule dans la station du joueur: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivée du premier véhicule dans la station du joueur{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Afficher un journal quand le premier véhicule arrive à une nouvelle station de la compagnie
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Afficher un journal quand le premier véhicule arrive à une nouvelle station d'un concurrent
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afficher un journal quand des accidents ou des catastrophes se produisent
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afficher un journal quand une nouvelle compagnie débute, ou quand des compagnies risquent la banqueroute
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Afficher un journal quand une industrie ouvre
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Afficher un journal quand une industrie ferme
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Afficher un journal au sujet des changements globaux de l'économie
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Changements de production des industries desservies par la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Changements de production des industries desservies par la compagnie{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Afficher un journal lors du changement du niveau de production des industries desservies par la compagnie
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Changements de production des industries desservies par les concurrents: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Changements de production des industries desservies par les concurrents{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Afficher un journal lors du changement du niveau de production des industries desservies par les concurrents
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Changements de production des industries non desservies: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Changements de production des industries non desservies{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Afficher un journal lors du changement du niveau de production des industries qui ne sont desservies ni par la compagnie, ni par les concurrents
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conseils / Informations sur les véhicules de la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conseils / Informations sur les véhicules de la compagnie{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Afficher les messages au sujet des véhicules requérant une attention
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nouveaux véhicules: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nouveaux véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Afficher un journal quand un nouveau type de véhicule devient disponible
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changements d'acceptation de marchandises: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changements d'acceptation de marchandises{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Afficher les messages au sujet des stations changeant l'acceptation de certaines marchandises
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventions: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventions{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Afficher un journal au sujet des événements relatifs aux subventions
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informations générales: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informations générales{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Afficher le journal au sujet des événements généraux, comme l'achat de droits exclusifs ou le financement de la reconstruction des routes
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aucun
@@ -1574,21 +1574,21 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Durée maximale
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymétrique
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symétrique
-STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symétrique" signifie qu'autant de passagers iront d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'un nombre arbitraire de passagers peut être envoyé dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour les passagers.
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Type de distribution pour le courrier: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Type de distribution pour le courrier{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symétrique" signifie qu'autant de courrier ira d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de courrier peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour le courrier.
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Type de distribution pour les cargaisons de classe ARMOURED: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Type de distribution pour les cargaisons de classe ARMOURED{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de cargaison ARMOURED contient des biens de valeur dans les climats tempéré, des diamants dans le climat subtropical, et de l'or dans le climat subarctique. Les NewGRFs peuvent changer ça. "symétrique" signifie qu'autant de ces cargaisons iront d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de ces cargaisons peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour ces cargaisons. Il est conseillé de choisir "asymétrique" ou "manuel" dans le climat subarctique, car les banques n'enverront pas d'or en retour vers les mines d'or. Dans les climats tempéré et subtropical, on peut choisir aussi "symétrique", car les banques peuvent renvoyer en retour des biens de valeurs aux banques qui en envoient à l'origine.
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Type de distribution pour les autres classes de cargaison: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Type de distribution pour les autres classes de cargaison{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symétrique" signifie qu'autant de cargaison ira d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de cargaison peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour la cargaison. Le mieux ici est logiquement de choisir "asymétrique" ou "manuel".
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Précision de la distribution: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Précision de la distribution{NBSP}: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Plus ce réglage est élevé, plus la réactualisation du graphique de distribution occupe de temps CPU. S'il est trop élevé, cela peut produire de la latence ("lag"). Au contraire, plus la valeur est basse, plus la distribution sera imprécise et l'on risque de voir des cargaisons ne pas aller vers la destination attendue.
-STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effet de la distance sur la demande: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effet de la distance sur la demande{NBSP}: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si cette valeur est supérieure à 0, la distance entre la station d'origine A d'une cargaison et une possible destination B a un impact sur la quantité de cargaison envoyée de A vers B. Plus la distance est grande entre les deux, moins de cargaison sera envoyée. Plus cette valeur est élevée, moins de cargaison sera envoyée vers des stations lointaines, et plus vers les stations plus proches.
-STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantité de cargaison renvoyée en mode symétrique: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantité de cargaison renvoyée en mode symétrique{NBSP}: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Définir ici une valeur inférieure à 100% rapproche le comportement de la distribution symétrique de celui d'une distribution asymétrique. Moins de cargaison sera envoyée en retour de celle envoyée par une autre. Si cette valeur est réglée à 0% la distribution devient totalement asymétrique.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation des chemins courts avant utilisation des chemins à forte capacité: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation des chemins courts avant utilisation des chemins à forte capacité{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Il y a souvent plusieurs routes possibles entre deux stations. Cargodist s'efforce d'utiliser d'abord le chemin le plus court jusqu'à saturation, ensuite les chemins un peu moins courts, et ainsi de suite. La saturation est déterminée par une estimation de la capacité et de la fréquentation prévue. Une fois que tous les chemins sont saturés, s'il y a encore une demande, il va surcharger tous les chemins, en privilégiant ceux à plus haute capacité. Mais la plupart du temps, la capacité n'est pas évaluée précisément. Ce réglage permets de spécifier jusqu'à quel pourcentage un chemin court doit être initialement saturé avant de passer au prochain chemin moins court. Il vaut mieux le régler à moins de 100% pour éviter que les stations soient surchargées en cas de surestimation de la capacité.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unité de vitesse{NBSP}: {STRING}
@@ -2892,6 +2892,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<véhicule inva
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrie invalide>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<véhicule invalide>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Analyse des NewGRFs
@@ -3063,10 +3064,10 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Cargaiso
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Regrouper par
-STR_STATION_VIEW_WAITING_STATION                                :Station: En attente
-STR_STATION_VIEW_WAITING_AMOUNT                                 :Quantité: En attente
-STR_STATION_VIEW_PLANNED_STATION                                :Station: Prévu
-STR_STATION_VIEW_PLANNED_AMOUNT                                 :Quantité: Prévu
+STR_STATION_VIEW_WAITING_STATION                                :Station{NBSP}: En attente
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Quantité{NBSP}: En attente
+STR_STATION_VIEW_PLANNED_STATION                                :Station{NBSP}: Prévu
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Quantité{NBSP}: Prévu
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} depuis {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} par {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} vers {STATION}
