@@ -148,7 +148,7 @@ public:
 	/**
 	 * Gets the name of main class of the Script so OpenTTD knows
 	 * what class to instantiate. For libraries, this name is also
-	 * used when other scripts import it using @ScriptController::Import.
+	 * used when other scripts import it using ScriptController::Import.
 	 *
 	 * @return The class name of the Script.
 	 * @note This function is required.
