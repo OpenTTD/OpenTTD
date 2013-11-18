@@ -569,7 +569,7 @@ static FallbackParagraphLayout *GetParagraphLayout(WChar *buff, WChar *buff_end,
  * @tparam T The type of layouter we want.
  */
 template <typename T>
-static inline void GetLayouter(Layouter::LineCacheItem &line, const char *str, FontState state)
+static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, FontState &state)
 {
 	if (line.buffer != NULL) free(line.buffer);
 
