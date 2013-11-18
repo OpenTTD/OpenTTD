@@ -653,6 +653,9 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		} else {
 			/* Line is new, layout it */
 #ifdef WITH_ICU
+			FontState old_state = state;
+			const char *old_str = str;
+
 			GetLayouter<ICUParagraphLayout>(line, str, state);
 			if (line.layout == NULL) {
 				static bool warned = false;
@@ -660,6 +663,9 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 					DEBUG(misc, 0, "ICU layouter bailed on the font. Falling back to the fallback layouter");
 					warned = true;
 				}
+
+				state = old_state;
+				str = old_str;
 				GetLayouter<FallbackParagraphLayout>(line, str, state);
 			}
 #else
