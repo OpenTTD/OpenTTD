@@ -332,6 +332,7 @@ protected:
 			default:
 				NOT_REACHED();
 		}
+		return 0;
 	}
 
 	/**
