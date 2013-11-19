@@ -1341,7 +1341,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :기본으로 설정할 NewGRF 색상표: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :어떤 색상표를 사용할지 지정하지 않은 NewGRF에 사용할 기본 색상표를 선택합니다.
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :기본(DOS) 색상표
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :구형 (Windows) 색상표
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :기존 (Windows) 색상표
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :새 게임을 시작할 때 자동으로 일시 정지: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 옵션을 켜면, 새로은 게임을 시작할 때 지도를 더욱 살펴볼 수 있도록 게임을 자동으로 일시정시시킵니다.
@@ -2892,6 +2892,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<알 수 없는
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<알 수 없는 산업시설>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<알 수 없는 차량>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF 검색

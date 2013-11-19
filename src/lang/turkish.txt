@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yol
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Binaları ve yolları kaldırmaksızın altlarında yeryüzü şekillendirmesi yapılmasına izin ver
 STR_CONFIG_SETTING_CATCHMENT                                    :İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Farklı istasyon ve hava limanları için farklı büyüklükte alanlar gerekir
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını arttır: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Belediyelerin sahip olduğu altyapı ve binaların yıkımını kolaylaştır
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :En yüksek tren uzunluğu: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :En yüksek tren uzunluğunu belirleyin
@@ -1340,6 +1340,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palet belirtmeyen NewGRF'ler için varsayılan palet: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Hangi paleti kullandığını belirtmeyen NewGRF dosyaları için kullanılacak varsayılan palet.
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Öntanımlı (D) palet
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Eski (W) palet
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Yeni bir oyun başlatırken zamanı duraklat: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Etkinleştirildiğinde, haritaya ayrıntılı bir bakış atabilmek için yeni oyuna başlarken otomatik olarak oyun durdurulur (pause).
@@ -1540,7 +1542,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Yeni pencereler
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :etkisiz
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Azami yaklaşma seviyesi: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için azami yaklaştırma (zoom-in) seviyesi. Daha yüksek yaklaştırma ayarları oyunun bellek gereksinimini artırır.
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için azami yaklaştırma (zoom-in) seviyesi. Daha yüksek yaklaştırma ayarları oyunun bellek gereksinimini arttırır.
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Azami uzaklaşma seviyesi: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için azami uzaklaştırma (zoom-out) seviyesi. Daha yüksek uzaklaştırma ayarları oyunda gecikmelere sebep olabilir
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1586,12 +1588,12 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Mesafenin talep
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Eğer buraya 0'dan büyük bir değer girerseniz bir kargonun yola çıktığı A durağı ve olası bir B istikameti arasındaki mesafe, A'dan B'ye gönderilen kargo miktarını etkiler. B A'dan ne kadar uzaksa o kadar az kargo gönderilir. Daha yüksek değerler girdikçe uzak duraklara daha az kargo, yakın duraklara ise daha fazla kargo gönderilir.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Simetrik mod için geri gönderilen kargo miktarı: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Buraya %100'den küçük bir değer girmek simetrik dağılımın asimetrik bir dağılıma benzer şekilde davranmasına sebep olur. Eğer bir durağa belli miktar kargo gönderilmişse, daha az kargo zorla geri gönderilir. Eğer %0 olarak ayarlarsanız simetrik dağılım aynen asimetrik dağılım gibi davranmaya başlar.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Kapasitesi daha yüksek güzergahları kullanmadan önce daha kısa güzergahların ulaşması gereken doygunluk: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sıklıkla iki durak arasında birden fazla güzergah bulunur. Cargodist önce en kısa güzergahı doygunluğa ulaşana kadar kullanır, ardından ikinci en kısa güzergahı doygunluğa ulaşana kadar kullanır ve böyle devam eder. Doygunluk kapasite tahmini ve planlanan kullanım miktarına göre hesaplanır. Tüm güzergahlar doygunluğa ulaştığında eğer hala talep varsa, yüksek kapasiteli olan güzergahları tercih ederek tüm güzergahları aşırı yükler. Fakat çoğu zaman algoritma kapasiteyi isabetli olarak hesaplayamaz. Bu değer, daha kısa bir güzergahın yüzde kaç oranında doygunluğa ulaştığı zaman bir sonraki güzergahın seçileceğini ayarlamanızı sağlar. Yanlış (büyük) kapasite tahmini ihtimaline karşı aşırı dolu durakları önlemek için %100'den daha düşük bir değer seçin.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Yüksek kapasiteli güzergahları kullanmadan önce daha kısa güzergah doygunluğu: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sıklıkla iki durak arasında birden fazla güzergah bulunur. Cargodist önce en kısa güzergahı doygunluğa ulaştırır, ardından ikinci en kısa güzergahı doygunluğa ulaşana kadar kullanır ve böyle devam eder. Doygunluk, kapasite tahmini ve planlanan kullanım miktarına göre hesaplanır. Tüm güzergahlar doygunluğa ulaştığında eğer hala talep varsa, yüksek kapasiteli olan güzergahları tercih ederek tüm güzergahları aşırı yükler. Fakat çoğu zaman algoritma kapasiteyi isabetli olarak hesaplayamaz. Bu değer, daha kısa bir güzergahın yüzde kaç oranında doygunluğa ulaştığı zaman bir sonraki güzergahın seçileceğini ayarlamanızı sağlar. Yanlış (büyük) kapasite tahmini ihtimaline karşı aşırı dolu durakları önlemek için %100'den daha düşük bir değer seçin.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hız ölçü birimi: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kullanıcı arayüzünde hız görüntülendiğinde, bunu seçili ölçü biriminde göster.
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (Ingiliz ölçü birimleri) (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hız birimi: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kullanıcı arayüzünde hız görüntülendiğinde, bunu seçili birimde göster.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (İngiliz ölçü birimleri) (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrik (km/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (Uluslararası Ölçüm Sistemi) (m/s)
 
@@ -2041,6 +2043,7 @@ STR_NETWORK_CLIENT                                              :İstemci
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vermek istediğiniz para miktarını girin
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}İzleyici
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Girilen parolayı kaydetme
@@ -2889,6 +2892,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<geçersiz ara�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<geçersiz fabrika>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<geçersiz araç>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF'ler taranıyor
@@ -3027,6 +3031,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Bir önc
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Bir önceki sayfaya git
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Bir sonraki
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Bir sonraki sayfaya git
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Geçersiz amaç referansı
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}İstasyon isimleri - gitmek için istasyon ismini tıklayın. Ctrl ile tıklama istasyonun konumunu gösteren yeni bir pencere açar
@@ -3583,7 +3588,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Aktarma 
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bakım zamanı: {LTBLUE}{COMMA}günde bir{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bakım zamanı: {LTBLUE}%{COMMA}{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 artır. Ctrl-tık bakım periyodunu 5 artırır.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 arttır. Ctrl-tıklama bakım periyodunu 5 arttırır.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 azalt. Ctrl+tık bakım periyodunu 5 azaltır
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Bakım aralığı tipini değiştir
@@ -3940,6 +3945,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Bu YZ bir önce
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} adlı {STRING}'nin benioku dosyası
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} adlı {STRING}'nin değişiklik kaydı
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} adlı {STRING}'nin lisansı
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Metni kaydır
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Metni, okumak için gezinmeyi önlemek üzere kaydır
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Benioku dosyasını göster
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Değişiklik kayıtları
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisans

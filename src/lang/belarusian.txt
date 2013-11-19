@@ -512,21 +512,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} к.с.
 STR_UNITS_POWER_METRIC                                          :{COMMA} к.с.
 STR_UNITS_POWER_SI                                              :{COMMA} кВт
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} т
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} кг
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P а ы ""}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P а ы ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} гал.
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} л
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} м³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" а аў}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лiтр{P "" ы аў}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} фунт{P "" а аў}-сілы
+STR_UNITS_FORCE_METRIC                                          :{COMMA} кгс
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{P "" ы аў}
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} м
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
@@ -534,6 +541,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Філь
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі сьпісу
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Выбар парадку групоўкі
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьмена напрамку сартаваньня (зьмяньшэньне / ўзрастаньне)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Зьмена крытэрыю сартаваньня
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберыце фiльтр
@@ -545,6 +553,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закр
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Загаловак вакна — цягніце яго для перамяшчэньня вакна
 STR_TOOLTIP_SHADE                                               :{BLACK}Згарнуць вакно, пакінуўшы загаловак
 STR_TOOLTIP_DEBUG                                               :{BLACK}Паказаць наладачную iнфармацыю NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Змяніць памеры вакна на значэньні па змаўчаньні. Ctrl+пстрычка захавае бягучы памер як значэньне па змаўчаньні.
 STR_TOOLTIP_STICKY                                              :{BLACK}Пазначыць гэтае вакно як незачыняльнае па клявішы «Закрыць усе вокны». Ctrl+пстрычка захоўвае гэты стан па змаўчанні.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Націсьніце ды цягніце для зьмяненьня памеру вакна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вялікае/маленькае вакно
@@ -589,6 +598,8 @@ STR_SORT_BY_LENGTH                                              :Даўжыня
 STR_SORT_BY_LIFE_TIME                                           :Рэшткавы тэрмін службы
 STR_SORT_BY_TIMETABLE_DELAY                                     :Адставаньне ад ґрафіку
 STR_SORT_BY_FACILITY                                            :Тып станцыі
+STR_SORT_BY_WAITING_TOTAL                                       :Агульны аб'ём грузу
+STR_SORT_BY_WAITING_AVAILABLE                                   :Аб'ём даступнага грузу
 STR_SORT_BY_RATING_MAX                                          :Найвышэйшы рэйтынґ
 STR_SORT_BY_RATING_MIN                                          :Ніжэйшы рэйтынґ
 STR_SORT_BY_ENGINE_ID                                           :Назва, серыя
@@ -614,6 +625,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Пака
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Сьпiс станцыяў
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Паказаць фінансавую інфармацыю кампаніі
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Паказаць агульную інфармацыю аб кампаніі
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Паказаць гісторыю кампаніі
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Паказаць спіс задач
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Паказаць ґрафiкi
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Паказаць рэйтынґі кампаніяў
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Сьпіс існуючых прадпрыемстваў; заснаваньне новых
@@ -687,6 +700,7 @@ STR_FILE_MENU_EXIT                                              :Выхад
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа сусьвету
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Дадатковае вакно прагляду
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Легенда грузаперавозак
 STR_MAP_MENU_SIGN_LIST                                          :Сьпіс таблічак
 
 ############ range for town menu starts
@@ -973,17 +987,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Мапа
 STR_SMALLMAP_TYPE_CONTOURS                                      :Рэльеф
 STR_SMALLMAP_TYPE_VEHICLES                                      :Транспарт
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Прамысловасьць
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Грузавыя плыні
 STR_SMALLMAP_TYPE_ROUTES                                        :Маршруты
 STR_SMALLMAP_TYPE_VEGETATION                                    :Расьліннасьць
 STR_SMALLMAP_TYPE_OWNERS                                        :Уладальнікі
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Паказаць на мапе контуры зямлі
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Паказаць на мапе транспарт
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Паказаць на мапе прамысловасьць
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Паказаць на карце грузавыя плыні
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Паказаць на мапе маршруты
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Паказаць на мапе расьліннасьць
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Паказаць на мапе уладальнікаў зямлі
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Клiк па тыпе прадпрыемства пераключае яго паказ на мапе. Ctrl+клiк адключае ўсе тыпы, акрамя аднаго выбранага. Паўторны Ctrl+клiк уключае ўсе тыпы прадпрыемстваў.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Клiк па назьве кампанii пераключае паказ яе маёмасьцi на мапе. Ctrl+клiк адключае ўсе кампанii, акрамя адной выбранай.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Пстрычка па назве грузу пераключае бачнасць гэтага грузу. Ctrl+пстрычка хавае ўсе грузы акрамя выбранага. Паўторная Ctrl+пстрычка адлюстроўвае ўсе грузы.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Дарогі
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Чыгункі
@@ -1017,6 +1034,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Паказаць/схаваць назвы гарадоў на мапе
 STR_SMALLMAP_CENTER                                             :{BLACK}Цэнтраваць мінімапу па гэтай пазыцыі
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Выключыць усё
@@ -1027,6 +1045,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Пака
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Адлюстроўваць рэльеф на мапе
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Паказаць маёмасьць, якая не належыць кампанii
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Паказаць усю маёмасьць кампанii на мапе
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Не адлюстроўваць грузы на мапе
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Адлюстроўваць усе віды грузаў на мапе
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Паказаць апошняе паведамленьне ці навіну
@@ -1632,6 +1652,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-01-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Калі ў NewGRF ня вызначана палітра, выкарыстоўваць: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Палітра ґрафічных набораў (NewGRF), якая ўжываецца па змоўчаньні, калі ня вызначана ў самім наборы.
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Палітра па змаўчаньні (DOS)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Састарэлы фармат палітры (Win)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Аўтаматычнае ўключэньне паўзы напачатку гульні: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Калі ўключана, распачатая гульня будзе аўтаматычна стаяць на паўзе, дазваляючы блізкае вывучэньне мапы.
@@ -1857,18 +1879,73 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Адносна�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Выдаляць абсурдныя элемэнты падчас дарожнага будаўніцтва: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Выдаляць "мёртвыя" канцы дарогаў, якія ўтварыліся пасля рэканструкцыі вуліц.
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Абнаўляць граф размеркаваньня раз у {STRING} д{P 0:2 зень ні зён}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Перыяд пераразліку графаў размеркаваньня. У кожным цыкле разлічваецца не граф цалкам, а толькі адзін з яго кампанентаў. Чым менш гэта значэньне, тым больш будзе нагрузка на працэсар. Чым больш значэньне, тым больш часу пройдзе перад пачаткам разліку графаў для новых маршрутаў.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Пералічваць граф размеркавання раз у {STRING} д{P 0:2 зень ні зён}
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Час, адведзены для пераразліку кампанентаў графа. Разлік запускаецца асобным струменем і працягваецца на працягу паказанай колькасці гульнявых дзён. Калі значэньне будзе занадта маленькім, то, магчыма, разлік не паспее завяршыцца, і гульня будзе чакаць завяршэнні (гэта прывядзе да затрымак). Пры вялікіх значэньнях графы размеркаваньня будуць павольней абнаўляцца пры зменах маршрутаў.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :уручную
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :несіметрычнае
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :сіметрычнае
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Размеркаваньне пасажыраў: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :«Сіметрычнае» азначае, што прыкладна аднолькавая колькасць пасажыраў будзе накіроўвацца па прамым і зваротным маршрутам.{}«Несіметрычнае» азначае, што пасажыраплыні ў любых кірунках не будуць залежаць адзін ад аднаго.{}«Уручную» - не выкарыстоўваць аўтаматычнае размеркаваньне для пасажыраў.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Размеркаваньне пошты: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :«Сіметрычнае» азначае, што прыкладна аднолькавая колькасць пошты будзе накіроўвацца па прамым і зваротным маршрутам.{}«Несіметрычнае» азначае, што аб'ёмы пошты ў любых кірунках не будуць залежаць адзін ад аднаго.{}«Уручную» - не выкарыстоўваць аўтаматычнае размеркаваньне для пошты.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Размеркаваньне каштоўных грузаў: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Каштоўныя грузы - гэта каштоўнасці, алмазы і золата. Модулі NewGRF могуць змяніць вызначэньні грузаў.{}«Сіметрычнае» азначае, што прыкладна аднолькавая колькасць грузу будзе накіроўвацца па прамым і зваротным маршрутам.{}«Несіметрычнае» азначае, што аб'ёмы грузаў у любых кірунках не будуць залежаць адзін ад аднаго.{}«Уручную» - не выкарыстоўваць аўтаматычнае размеркаваньне грузаў.{}На субарктычных мапах рэкамендуецца ўсталяваць несіметрычнае ці ручное размеркаваньне, бо банкі не вяртаюць золата ў шахты. Ва ўмераным ці субтрапічным клімаце можна ўсталяваць сіметрычнае размеркаваньне, бо банкі абменьваюцца каштоўнасцямі паміж сабой.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Размеркаваньне іншых грузаў: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :«Сіметрычнае» азначае, што прыкладна аднолькавая колькасць грузу будзе накіроўвацца па прамым і зваротным маршрутам.{}«Несіметрычнае» азначае, што аб'ёмы грузаў у любых кірунках не будуць залежаць адзін ад аднаго.{}«Уручную» - не выкарыстоўваць аўтаматычнае размеркаваньне грузаў.{}Вам, хутчэй за ўсё, запатрабуецца несіметрычнае ці ручное размеркаваньне.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Дакладнасць размеркаваньня: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Чым вышэй дадзенае значэньне, тым больш працэсарнага часу выкарыстоўваецца для разліку графа грузаперавозак. Пры высокіх значэньнях магчымы затрымкі ў гульні. Аднак пры нізкіх значэньнях разлікі грузаплыняў будуць недакладнымі, і грузы, магчыма, будуць адпраўляцца не туды, куды трэба.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Залежнасць попыту ад адлегласці: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Калі гэта значэньне больш 0, тая колькасць грузу, які адпраўляецца з адной станцыі на іншую, будзе залежаць ад адлегласці паміж станцыямі. Чым вышэй гэта значэньне, тым больш грузу будзе адпраўляцца да блізкіх станцый і менш{NBSP}- да далёкіх.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Колькасць грузу, які вяртаецца, пры сіметрычным размеркаваньні: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Усталёўка гэтага значэньня ніжэй 100% прымусіць размеркаваньне быць меней «сіметрычным»: колькасць грузу, які вяртаецца, зможа быць менш, чым колькасць адпраўленага. Усталёўка ў 0% зробіць размеркаваньне цалкам несіметрычным.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Мяжа загрузкі кароткіх маршрутаў перад выкарыстаньнем ёмістых: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Пры наяўнасці некалькіх маршрутаў паміж станцыямі алгарытм размеркаваньня грузаў будзе выкарыстоўваць найкароткі маршрут да яго загрузкі, потым наступны па даўжыні і г.{NBSP}д. Пры лішку грузу маршруты будуць перагружацца пачынальна з самых прадукцыйных. Загрузка разлічваецца зыходзячы з адзнакі прапускной здольнасці (якая можа быць недакладнай) і інтэнсіўнасці выкарыстаньня. Гэта наладка вызначае, наколькі загружаць маршрут перад тым, як пачаць выкарыстоўваць наступны. Усталюйце значэньне ніжэй 100% для таго, каб пазбегнуць затрымкі грузу, калі прапускная здольнасць маршруту будзе пераацэнена алгарытмам.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Сістэма адзінак для хуткасці: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Паказваць значэнні хуткасці ў выбранай сістэме адзінак
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :англійская (міль/г)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :метрычная (км/г)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СІ (м/с)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Сістэма адзінак для магутнасці: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Паказваць магутнасць рухавікоў транспартных сродкаў у выбранай сістэме адзінак
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :англійская (к. с.)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :метрычная (к. с.)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :СІ (кВт)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Сістэма адзінак для масы: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Паказваць велічыні масы ў абранай сістэме адзінак
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :англійская (малая тона)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :метрычная (т)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :СІ (кг)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Сістэма адзінак для аб'ёму: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Паказваць значэньні аб'ёму ў выбранай сістэме адзінак
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :англійская (галон)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :метрычная (л)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :СІ (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Сістэма адзінак для цягавага намаганьня: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Паказваць значэнні цягавага намаганьня ў выбранай сістэме адзінак
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :ангельская (фунт-сіла)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :метрычная (кгс)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :СІ (кН)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Сістэма адзінак для вышыні: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Паказваць значэнні вышыні ў выбранай сістэме адзінак
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :англійская (фут)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :метрычная (м)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Інтэрфэйс
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Лакалізацыя
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Будаўніцтва
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспарт
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станцыі
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Эканоміка
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Размеркаваньне грузаў
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Канкурэнты
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Наладкі відарысу
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Узаемадзеяньне
@@ -2094,6 +2171,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Зьмя
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сеткавая гульня
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Інтэрнэт
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Выберыце паміж гульнёй праз Інтэрнэт, або ў лакальнай сетцы
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Не
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Так
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Імя гульца:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Гэта ваша імя, якое будзе бачна іншым гульцам
 
@@ -2152,6 +2233,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Усталяваць пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Абараніце вашу гульню паролем, калі ня хочаце рабіць яе публічна даступнай
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Не
+STR_NETWORK_START_SERVER_ADVERTISED                             :Так
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клiент{P "" ы аў}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. клiентаў:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбар максымальнай колькасьці кліентаў. Ня ўсе месцы павінны быць занятыя
@@ -2272,6 +2355,7 @@ STR_NETWORK_CLIENT                                              :Кліент
 STR_NETWORK_SPECTATORS                                          :Назіральнікі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Увядзіце суму грошай, якую вы хочаце перадаць
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Назіральнік
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не захоўваць уведзены пароль
@@ -2480,8 +2564,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Пера
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зрабіць аб'екты не празрыстымі, а цалкам нябачнымі
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Схема грузаплыняў
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Усе
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Няма
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Выберыце кампаніі для адлюстраваньня
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}нявыкарыст.
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}загруж.
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}перагруз
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Падсьветка зоны пакрыцьця
@@ -3133,6 +3224,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<няправі
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядомае прадпрыемства>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<недапушчальны ТС>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканаваньне NewGRF
@@ -3215,9 +3307,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Куп�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Даць хабар гарадзкой адміністрацыі для павышэньня рэйтынґу. Існуе рызыка санкцыяў, калі факт хабару раскрыецца.{}Кошт: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Задачы кампаніі «{COMPANY}»
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глабальныя задачы
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Агульныя задачы:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Няма -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Непрыстасоўна -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Задачы кампаніі:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Пстрыкніце па задачы, каб паказаць прадпрыемства/горад/клетку. Ctrl+пстрычка паказвае ў новым вакне.
 
@@ -3257,6 +3354,16 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Націсьніце на маршрут для адлюстраваньня прадпрыемства/горада. Ctrl+пстрычка паказвае ў дадатковым вакне.
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Гісторыя кампаніі «{COMPANY}»
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Сусветная гісторыя
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Стар. {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Перайсьці на патрэбную старонку, выбраўшы яе ў выпадаючым спісе.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Папярэдняя
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Папярэдняя старонка
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Наступная
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Наступная старонка
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Няправільная спасылка на дасягненьне
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Сьпіс станцыяў: пстрычка па назьве паказвае станцыю ў асноўным вакне. Ctrl+клiк паказвае ў дадатковым вакне.
@@ -3285,8 +3392,31 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рэйтынґ
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Паказаць рэйтынґ станцыі
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Месячны аб'ём паставак і мясцовы рэйтынг:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Групаваць
+STR_STATION_VIEW_WAITING_STATION                                :па станцыі (якія чакаюць)
+STR_STATION_VIEW_WAITING_AMOUNT                                 :па колькасці (якія чакаюць)
+STR_STATION_VIEW_PLANNED_STATION                                :па станцыі (планаваныя)
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :па колькасці (планаваныя)
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} з {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} праз {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} у {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} з невядомай станцыі
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} на любую станцыю
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} праз любую станцыю
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} з гэтай станцыі
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} праз гэту станцыю
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} на гэту станцыю
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} без перасадак
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Адкуль - Праз - Куды
+STR_STATION_VIEW_GROUP_S_D_V                                    :Адкуль - Куды - Праз
+STR_STATION_VIEW_GROUP_V_S_D                                    :Праз - Адкуль - Куды
+STR_STATION_VIEW_GROUP_V_D_S                                    :Праз - Куды - Адкуль
+STR_STATION_VIEW_GROUP_D_S_V                                    :Куды - Адкуль - Праз
+STR_STATION_VIEW_GROUP_D_V_S                                    :Куды - Праз - Адкуль
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Жудасны
@@ -3429,6 +3559,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Выра
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% перавезена)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Паказаць прадпрыемства ў асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Прадукцыйнасьць: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Прадпрыемства хутка закрываецца!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Патрабуецца: {YELLOW}{STRING}{STRING}
@@ -4052,6 +4183,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ґраф
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Адлік часу пачнецца з {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Пачатковая дата
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Выберыце пачатковую дату для гэтага графіка. Ctrl+пстрычка ўсталюе пачатковую дату і раўнамерна размяркуе ўсе транспартныя сродкі, якія рухаюцца па гэтым маршруце, калі час руху па ім цалкам разлічаны.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Зьмяніць час
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмяніць час для вылучанага заданьня
@@ -4165,6 +4297,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Колькас�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} iнструкцыя {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} сьпiс зьменаў {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} ліцэнзія {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Пераносіць тэкст
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Пераносіць тэкст так, каб ён змяшчаўся ў акне без неабходнасці прагорткі
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прагледзець iнструкцыю
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Журнал зьменаў
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцэнзія
@@ -4542,6 +4676,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не а�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспартны сродак зьнішчаны
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Усе транспартныя сродкі будуць недаступныя
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Змяніце канфігурацыю модуля NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма даступных транспартных сродкаў
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Пачніце гульню не раней {DATE_SHORT} або падключыце NewGRF, дадаючы транспартныя сродкі, якія выкарыстоўваліся тым часам.
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма іґнараваць сыґнал. Небясьпечна...
@@ -5163,6 +5301,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
