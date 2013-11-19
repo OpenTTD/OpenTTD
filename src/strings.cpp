@@ -801,7 +801,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 		/* We have to restore the original offset here to to read the correct values. */
 		args->offset = orig_offset;
 	}
-	WChar b;
+	WChar b = '\0';
 	uint next_substr_case_index = 0;
 	char *buf_start = buff;
 	std::stack<const char *> str_stack;
