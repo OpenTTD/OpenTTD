@@ -2915,7 +2915,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}標識�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}街一覧
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- なし-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}町名 - メイン画面を町の場所に移動するには町名をクリックします
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}町名 - メイン画面を町の場所に移動するには町名をクリックします。Ctrl+クリックで新しいビューポートに表示します
 STR_TOWN_POPULATION                                             :{BLACK}地域人口: {COMMA}人
 
 # Town view window
@@ -2934,7 +2934,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}街は {
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}街は {ORANGE}{COMMA}{BLACK} 日毎に成長しています(資金提供)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}街は{RED}成長を止めています{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}騒音量: {ORANGE}{COMMA}{BLACK} (現状) / {ORANGE}{COMMA}{BLACK} (最大)
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面を街の場所に移動します
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面を街の場所に移動します。Ctrl+クリックで新しいビューポートに表示します。
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方自治体
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}地方自治体の情報を表示します
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}街名を変更します
@@ -3033,7 +3033,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}次の�
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}無効な目標参照
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします.Ctrl+Ｃｌｉｃｋクリック で 新規ビューポートに表示します
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします.Ctrl+クリック で 新しいビューポートに表示します
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の施設を選択するにはCtrlを押しながら選択します
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}箇所の停留施設
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
