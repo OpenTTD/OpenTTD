@@ -835,7 +835,7 @@ public:
 					/* jump to end */
 					this->list_pos = this->servers.Length() - 1;
 					break;
-				default: break;
+				default: NOT_REACHED();
 			}
 
 			this->server = this->servers[this->list_pos];
