@@ -404,6 +404,8 @@ static bool GunzipFile(const ContentInfo *ci)
 #if defined(WITH_ZLIB)
 	bool ret = true;
 	FILE *ftmp = fopen(GetFullFilename(ci, true), "rb");
+	if (ftmp == NULL) return false;
+
 	gzFile fin = gzdopen(fileno(ftmp), "rb");
 	FILE *fout = fopen(GetFullFilename(ci, false), "wb");
 
