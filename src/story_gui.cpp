@@ -252,7 +252,7 @@ protected:
 
 		/* Check if list is empty. */
 		if (list->size() == 0) {
-			free(list);
+			delete list;
 			list = NULL;
 		}
 
