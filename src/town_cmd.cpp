@@ -2465,7 +2465,7 @@ CommandCost CmdTownCargoGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
 	TownEffect te = (TownEffect)GB(p1, 16, 8);
-	if (te < TE_BEGIN || te > TE_END) return CMD_ERROR;
+	if (te < TE_BEGIN || te >= TE_END) return CMD_ERROR;
 
 	uint16 index = GB(p1, 0, 16);
 	Town *t = Town::GetIfValid(index);
