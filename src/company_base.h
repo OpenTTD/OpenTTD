@@ -100,7 +100,7 @@ struct CompanyProperties {
 
 	CompanyProperties() : name(NULL), president_name(NULL) {}
 
-	~CompanyProperties()
+	virtual ~CompanyProperties()
 	{
 		free(this->name);
 		free(this->president_name);
