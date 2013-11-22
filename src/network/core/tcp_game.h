@@ -137,7 +137,7 @@ class CommandQueue {
 
 public:
 	/** Initialise the command queue. */
-	CommandQueue() : first(NULL), last(NULL) {}
+	CommandQueue() : first(NULL), last(NULL), count(0) {}
 	/** Clear the command queue. */
 	~CommandQueue() { this->Free(); }
 	void Append(CommandPacket *p);

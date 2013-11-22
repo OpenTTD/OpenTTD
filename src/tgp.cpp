@@ -560,11 +560,12 @@ static const control_point_list_t _curve_maps[] = {
 static void HeightMapCurves(uint level)
 {
 	height_t ht[lengthof(_curve_maps)];
+	MemSetT(ht, 0, lengthof(ht));
 
 	/* Set up a grid to choose curve maps based on location */
 	uint sx = Clamp(1 << level, 2, 32);
 	uint sy = Clamp(1 << level, 2, 32);
-	byte *c = (byte *)alloca(sx * sy);
+	byte *c = AllocaM(byte, sx * sy);
 
 	for (uint i = 0; i < sx * sy; i++) {
 		c[i] = Random() % lengthof(_curve_maps);

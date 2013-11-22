@@ -705,7 +705,8 @@ ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	http_response_index(-2),
 	curFile(NULL),
 	curInfo(NULL),
-	isConnecting(false)
+	isConnecting(false),
+	lastActivity(_realtime_tick)
 {
 }
 

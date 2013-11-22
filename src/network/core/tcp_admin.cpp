@@ -29,9 +29,11 @@ assert_compile((int)CRR_END       == (int)ADMIN_CRR_END);
  * Create the admin handler for the given socket.
  * @param s The socket to communicate over.
  */
-NetworkAdminSocketHandler::NetworkAdminSocketHandler(SOCKET s)
+NetworkAdminSocketHandler::NetworkAdminSocketHandler(SOCKET s) : status(ADMIN_STATUS_INACTIVE)
 {
 	this->sock = s;
+	this->admin_name[0] = '\0';
+	this->admin_version[0] = '\0';
 }
 
 NetworkAdminSocketHandler::~NetworkAdminSocketHandler()
