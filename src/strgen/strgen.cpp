@@ -290,6 +290,12 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		fprintf(this->fh, "#define TABLE_STRINGS_H\n");
 	}
 
+	/** Free the filename. */
+	~HeaderFileWriter()
+	{
+		free(real_filename);
+	}
+
 	void WriteStringID(const char *name, int stringid)
 	{
 		if (prev + 1 != stringid) fprintf(this->fh, "\n");
