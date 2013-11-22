@@ -991,6 +991,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					if (newsel == NULL && c->next == this->active_sel) newsel = c;
 
 					if (c == this->active_sel) {
+						if (newsel == c) newsel = NULL;
+
 						*pc = c->next;
 						delete c;
 						break;
