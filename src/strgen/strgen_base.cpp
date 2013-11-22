@@ -387,14 +387,15 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 {
 	int argidx = _cur_argidx;
 	int offset = 0;
-	const char *words[5];
+	int expected = _plural_forms[_lang.plural_form].plural_count;
+	const char **words = AllocaM(const char *, max(expected, MAX_PLURALS));
 	int nw = 0;
 
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
 	if (!ParseRelNum(&buf, &argidx, &offset)) argidx--;
 
 	/* Parse each string */
-	for (nw = 0; nw < 5; nw++) {
+	for (nw = 0; nw < MAX_PLURALS; nw++) {
 		words[nw] = ParseWord(&buf);
 		if (words[nw] == NULL) break;
 	}
@@ -403,16 +404,16 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 		strgen_fatal("%s: No plural words", _cur_ident);
 	}
 
-	if (_plural_forms[_lang.plural_form].plural_count != nw) {
+	if (expected != nw) {
 		if (_translated) {
 			strgen_fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
-				_plural_forms[_lang.plural_form].plural_count, nw);
+				expected, nw);
 		} else {
 			if ((_show_todo & 2) != 0) strgen_warning("'%s' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
-			if (nw > _plural_forms[_lang.plural_form].plural_count) {
-				nw = _plural_forms[_lang.plural_form].plural_count;
+			if (nw > expected) {
+				nw = expected;
 			} else {
-				for (; nw < _plural_forms[_lang.plural_form].plural_count; nw++) {
+				for (; nw < expected; nw++) {
 					words[nw] = words[nw - 1];
 				}
 			}

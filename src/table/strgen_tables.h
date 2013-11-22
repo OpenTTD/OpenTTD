@@ -154,6 +154,9 @@ struct PluralForm {
 	const char *names;       ///< Plural names
 };
 
+/** The maximum number of plurals. */
+static const int MAX_PLURALS = 5;
+
 /** All plural forms used */
 static const PluralForm _plural_forms[] = {
 	{ 2, "Two forms: special case for 1.", "\"1\" \"other\"" },
