@@ -64,7 +64,9 @@ public:
 
 					DEBUG(net, 1, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), *iter);
 
-					send(s, (const char*)p.buffer, p.size, 0);
+					if (send(s, (const char*)p.buffer, p.size, 0) < 0) {
+						DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
+					}
 					closesocket(s);
 					break;
 				}
@@ -79,7 +81,9 @@ public:
 				Packet p(Tfull_packet);
 				p.PrepareToSend();
 
-				send(s, (const char*)p.buffer, p.size, 0);
+				if (send(s, (const char*)p.buffer, p.size, 0) < 0) {
+					DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
+				}
 				closesocket(s);
 
 				continue;
@@ -115,9 +119,9 @@ public:
 
 		tv.tv_sec = tv.tv_usec = 0; // don't block at all.
 #if !defined(__MORPHOS__) && !defined(__AMIGA__)
-		select(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv);
+		if (select(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv) < 0) return false;
 #else
-		WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
+		if (WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL) < 0) return false;
 #endif
 
 		/* accept clients.. */
