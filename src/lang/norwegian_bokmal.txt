@@ -1121,7 +1121,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Still kostnadsn
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjoner: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktivert, resesjoner kan forekomme med noen års mellomrom. Under en lavkonjunktur vil all produksjon være betydelig lavere (den returnerer til tidligere nivå når resesjonen er over)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forby reversering av tog i stasjoner: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktivert, tåg vil ikke rygge i ikke-terminus stationer, selv om det er en kortere vei til deres neste stasjon ved å rygge
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktivert, vil ikke toget rygge i ikke-terminus stationer, selv om det er en kortere vei til deres neste stasjon ved å rygge
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Aktiver/inaktiver katastrofer som tidvis kan blokkere eller ødelegge kjøretøy og infrastruktur
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til restrukturering i nærområdet: {STRING}
@@ -1206,7 +1206,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillat finansie
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tillat selskaper å gi penger til byer for omlegging av veinettet for å sabotere veibaserte tjenester i byen
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillat pengeoverføring til andre firmaer: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillat firmaer å overføre penger til andre firmaer i flerspillermodus
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Vektmultiplikator for last til å simulere tunge tog: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Vektmultiplikator for last for å simulere tunge tog: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Still virkningen av å frakte gods i tog. En høyere verdi gjør det mer krevende for tog å frakte gods, spesielt i bakker
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Flyfart faktor: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Still den relative hastigheten til fly sammenlignet med andre kjøretøy, for å redusere inntekter ved luftfrakt
