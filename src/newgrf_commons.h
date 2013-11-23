@@ -324,13 +324,11 @@ struct GRFFilePropsBase {
 /** Data related to the handling of grf files. */
 struct GRFFileProps : GRFFilePropsBase<1> {
 	/** Set all default data constructor for the props. */
-	GRFFileProps(uint16 subst_id) :
+	GRFFileProps(uint16 subst_id = 0) :
 			GRFFilePropsBase<1>(), subst_id(subst_id), override(subst_id)
 	{
 	}
 
-	/** Simple constructor for the props. */
-	GRFFileProps() : GRFFilePropsBase<1>() {}
 	uint16 subst_id;
 	uint16 override;                      ///< id of the entity been replaced by
 };
