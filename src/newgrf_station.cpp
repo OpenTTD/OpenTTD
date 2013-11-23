@@ -847,7 +847,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	SpriteID image = sprites->ground.sprite;
 	PaletteID pal = sprites->ground.pal;
 	RailTrackOffset overlay_offset;
-	if (rti != NULL && rti->UsesOverlay() && SplitGroundSpriteForOverlay(NULL, &image, &overlay_offset)) {
+	if (rti->UsesOverlay() && SplitGroundSpriteForOverlay(NULL, &image, &overlay_offset)) {
 		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
 		DrawSprite(image, PAL_NONE, x, y);
 		DrawSprite(ground + overlay_offset, PAL_NONE, x, y);
