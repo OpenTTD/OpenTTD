@@ -88,7 +88,9 @@ void FioSeekTo(size_t pos, int mode)
 	if (mode == SEEK_CUR) pos += FioGetPos();
 	_fio.buffer = _fio.buffer_end = _fio.buffer_start + FIO_BUFFER_SIZE;
 	_fio.pos = pos;
-	fseek(_fio.cur_fh, _fio.pos, SEEK_SET);
+	if (fseek(_fio.cur_fh, _fio.pos, SEEK_SET) < 0) {
+		DEBUG(misc, 0, "Seeking in %s failed", _fio.filename);
+	}
 }
 
 #if defined(LIMITED_FDS)
@@ -450,7 +452,11 @@ FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
 	FILE *f = fopen(entry->tar_filename, "rb");
 	if (f == NULL) return f;
 
-	fseek(f, entry->position, SEEK_SET);
+	if (fseek(f, entry->position, SEEK_SET) < 0) {
+		fclose(f);
+		return NULL;
+	}
+
 	if (filesize != NULL) *filesize = entry->size;
 	return f;
 }
@@ -533,6 +539,8 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
  */
 static void FioCreateDirectory(const char *name)
 {
+	/* Ignore directory creation errors; they'll surface later on, and most
+	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(WIN32) || defined(WINCE)
 	CreateDirectory(OTTD2FS(name), NULL);
 #elif defined(OS2) && !defined(__INNOTEK_LIBC__)
@@ -897,7 +905,11 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 		/* Skip to the next block.. */
 		skip = Align(skip, 512);
-		fseek(f, skip, SEEK_CUR);
+		if (fseek(f, skip, SEEK_CUR) < 0) {
+			DEBUG(misc, 0, "The file '%s' can't be read as a valid tar-file", filename);
+			fclose(f);
+			return false;
+		}
 		pos += skip;
 	}
 

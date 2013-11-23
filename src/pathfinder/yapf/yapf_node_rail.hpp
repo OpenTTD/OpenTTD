@@ -196,7 +196,7 @@ struct CYapfRailNodeT
 		while (cur != GetLastTile() || cur_td != GetLastTrackdir()) {
 			if (!((obj.*func)(cur, cur_td))) return false;
 
-			ft.Follow(cur, cur_td);
+			if (!ft.Follow(cur, cur_td)) break;
 			cur = ft.m_new_tile;
 			assert(KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE);
 			cur_td = FindFirstTrackdir(ft.m_new_td_bits);

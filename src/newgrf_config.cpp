@@ -362,7 +362,11 @@ static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
 
 	size_t start = ftell(f);
 	size = min(size, GRFGetSizeOfDataSection(f));
-	fseek(f, start, SEEK_SET);
+
+	if (fseek(f, start, SEEK_SET) < 0) {
+		FioFCloseFile(f);
+		return false;
+	}
 
 	/* calculate md5sum */
 	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {

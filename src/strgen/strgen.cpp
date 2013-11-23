@@ -353,7 +353,9 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 
 	void Finalise()
 	{
-		fputc(0, this->fh);
+		if (fputc(0, this->fh) == EOF) {
+			error("Could not write to %s", this->filename);
+		}
 		this->FileWriter::Finalise();
 	}
 
@@ -368,10 +370,12 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 /** Multi-OS mkdirectory function */
 static inline void ottd_mkdir(const char *directory)
 {
+	/* Ignore directory creation errors; they'll surface later on, and most
+	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(WIN32) || defined(__WATCOMC__)
-		mkdir(directory);
+	mkdir(directory);
 #else
-		mkdir(directory, 0755);
+	mkdir(directory, 0755);
 #endif
 }
 

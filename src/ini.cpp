@@ -106,7 +106,9 @@ bool IniFile::SaveToDisk(const char *filename)
 	shfopt.pTo    = tfilename;
 	SHFileOperation(&shfopt);
 #else
-	rename(file_new, filename);
+	if (rename(file_new, filename) < 0) {
+		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new, filename);
+	}
 #endif
 
 	return true;

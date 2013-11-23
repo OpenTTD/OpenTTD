@@ -1848,7 +1848,9 @@ struct FileReader : LoadFilter {
 	/* virtual */ void Reset()
 	{
 		clearerr(this->file);
-		fseek(this->file, this->begin, SEEK_SET);
+		if (fseek(this->file, this->begin, SEEK_SET)) {
+			DEBUG(sl, 1, "Could not reset the file reading");
+		}
 	}
 };
 

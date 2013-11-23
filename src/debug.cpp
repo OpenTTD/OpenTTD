@@ -112,6 +112,8 @@ static void debug_print(const char *dbg, const char *buf)
 		char buf2[1024 + 32];
 
 		snprintf(buf2, lengthof(buf2), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
+		/* Sending out an error when this fails would be nice, however... the error
+		 * would have to be send over this failing socket which won't work. */
 		send(_debug_socket, buf2, (int)strlen(buf2), 0);
 		return;
 	}

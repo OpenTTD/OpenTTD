@@ -250,10 +250,9 @@ static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *l
 
 	/* Can't fseek to 0 as in tar files that is not correct */
 	long pos = ftell(f);
-	if (!CheckOldSavegameType(f, temp, lastof(temp), TTO_HEADER_SIZE)) {
+	if (pos >= 0 && !CheckOldSavegameType(f, temp, lastof(temp), TTO_HEADER_SIZE)) {
 		type = SGT_TTD;
-		fseek(f, pos, SEEK_SET);
-		if (!CheckOldSavegameType(f, temp, lastof(temp), TTD_HEADER_SIZE)) {
+		if (fseek(f, pos, SEEK_SET) < 0 || !CheckOldSavegameType(f, temp, lastof(temp), TTD_HEADER_SIZE)) {
 			type = SGT_INVALID;
 		}
 	}

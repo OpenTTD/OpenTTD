@@ -493,7 +493,12 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 				}
 				func = _io_file_lexfeed_UTF8;
 				break;
-			default: func = _io_file_lexfeed_ASCII; fseek(file, -2, SEEK_CUR); break; // ASCII
+			default: // ASCII
+				func = _io_file_lexfeed_ASCII;
+				if (fseek(file, -2, SEEK_CUR) < 0) {
+					return sq_throwerror(vm, _SC("cannot read the file"));
+				}
+				break;
 		}
 
 		if (SQ_SUCCEEDED(sq_compile(vm, func, &f, OTTD2SQ(filename), printerror))) {
