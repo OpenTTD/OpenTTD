@@ -296,7 +296,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 		}
 
 		char *d = old_d;
-		if (lm == NULL && this->type != SCC_PLURAL_LIST) {
+		if (lm == NULL) {
 			/* In case there is no mapping, just ignore everything but the default.
 			 * A probable cause for this happening is when the language file has
 			 * been removed by the user and as such no mapping could be made. */
