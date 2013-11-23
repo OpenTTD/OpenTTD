@@ -1765,8 +1765,8 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	for (uint i = 0; i < TAB_COUNT; i++) {
 		uint16 num = lang_pack->offsets[i];
 		if (num > TAB_SIZE) {
-				free(lang_pack);
-				return false;
+			free(lang_pack);
+			return false;
 		}
 
 		_langtab_start[i] = count;
