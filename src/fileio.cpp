@@ -761,7 +761,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 	TarHeader th;
 	char buf[sizeof(th.name) + 1], *end;
-	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
+	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1] = "";
 	char link[sizeof(th.linkname) + 1];
 	char dest[sizeof(th.prefix) + 1 + sizeof(th.name) + 1 + 1 + sizeof(th.linkname) + 1];
 	size_t num = 0, pos = 0;
@@ -784,25 +784,17 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 			return false;
 		}
 
-		name[0] = '\0';
-		size_t len = 0;
-
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
-			memcpy(name, th.prefix, sizeof(th.prefix));
-			name[sizeof(th.prefix)] = '\0';
-			len = strlen(name);
-			name[len] = PATHSEPCHAR;
-			len++;
+			ttd_strlcpy(name, th.prefix, lengthof(name));
+			ttd_strlcat(name, PATHSEP, lengthof(name));
 		}
 
 		/* Copy the name of the file in a safe way at the end of 'name' */
-		memcpy(&name[len], th.name, sizeof(th.name));
-		name[len + sizeof(th.name)] = '\0';
+		ttd_strlcat(name, th.name, lengthof(name));
 
 		/* Calculate the size of the file.. for some strange reason this is stored as a string */
-		memcpy(buf, th.size, sizeof(th.size));
-		buf[sizeof(th.size)] = '\0';
+		ttd_strlcpy(buf, th.size, lengthof(buf));
 		size_t skip = strtoul(buf, &end, 8);
 
 		switch (th.typeflag) {
@@ -831,8 +823,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 			case '1': // hard links
 			case '2': { // symbolic links
 				/* Copy the destination of the link in a safe way at the end of 'linkname' */
-				memcpy(link, th.linkname, sizeof(th.linkname));
-				link[sizeof(th.linkname)] = '\0';
+				ttd_strlcpy(link, th.linkname, lengthof(link));
 
 				if (strlen(name) == 0 || strlen(link) == 0) break;
 
@@ -848,7 +839,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 				/* Process relative path.
 				 * Note: The destination of links must not contain any directory-links. */
-				strecpy(dest, name, lastof(dest));
+				ttd_strlcpy(dest, name, lengthof(dest));
 				char *destpos = strrchr(dest, PATHSEPCHAR);
 				if (destpos == NULL) destpos = dest;
 				*destpos = '\0';
