@@ -125,7 +125,7 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 		}
 
 		/* Then find the warning message when the file's missing */
-		item = filename == NULL ? NULL : origin->GetItem(filename, false);
+		item = origin->GetItem(filename, false);
 		if (item == NULL) item = origin->GetItem("default", false);
 		if (item == NULL) {
 			DEBUG(grf, 1, "No origin warning message specified for: %s", filename);
