@@ -2892,6 +2892,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige voer
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<ongeldige voertuig>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skandeer NewGRFs
@@ -3944,6 +3945,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Aantal Dae om d
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme van {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} veranderinge-log van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisensie van {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Teksomvouing
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Omvou die teks in die venster sodat alles pas en dit nie nodig is om te rol nie
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Besigtig readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Veranderinge-log
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensie
