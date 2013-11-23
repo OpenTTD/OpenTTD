@@ -35,6 +35,9 @@ DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		first_free(0),
 		first_unused(0),
 		items(0),
+#ifdef OTTD_ASSERT
+		checked(0),
+#endif /* OTTD_ASSERT */
 		cleaning(false),
 		data(NULL),
 		alloc_cache(NULL)

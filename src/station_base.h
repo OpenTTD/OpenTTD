@@ -206,6 +206,7 @@ struct GoodsEntry {
 		rating(INITIAL_STATION_RATING),
 		last_speed(0),
 		last_age(255),
+		amount_fract(0),
 		link_graph(INVALID_LINK_GRAPH),
 		node(INVALID_NODE),
 		max_waiting_cargo(0)

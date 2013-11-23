@@ -32,6 +32,7 @@ static const int MAX_GET_SETTING_OPS    = 100000;
 class ScriptInfo : public SimpleCountedObject {
 public:
 	ScriptInfo() :
+		engine(NULL),
 		SQ_instance(NULL),
 		main_script(NULL),
 		tar_file(NULL),

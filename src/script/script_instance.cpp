@@ -49,6 +49,7 @@ static void PrintFunc(bool error_msg, const SQChar *message)
 
 ScriptInstance::ScriptInstance(const char *APIName) :
 	engine(NULL),
+	versionAPI(NULL),
 	controller(NULL),
 	storage(NULL),
 	instance(NULL),

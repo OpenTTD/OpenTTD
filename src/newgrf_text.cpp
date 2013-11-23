@@ -882,7 +882,7 @@ struct TextRefStack {
 	byte position;
 	bool used;
 
-	TextRefStack() : used(false) {}
+	TextRefStack() : position(0), used(false) {}
 
 	TextRefStack(const TextRefStack &stack) :
 		position(stack.position),

@@ -241,7 +241,7 @@ std::list<CargoPacket *> _packets;
 uint32 _num_dests;
 
 struct FlowSaveLoad {
-	FlowSaveLoad() : via(0), share(0) {}
+	FlowSaveLoad() : source(0), via(0), share(0), restricted(false) {}
 	StationID source;
 	StationID via;
 	uint32 share;

@@ -226,7 +226,8 @@ GRFParameterInfo::GRFParameterInfo(uint nr) :
 	def_value(0),
 	param_nr(nr),
 	first_bit(0),
-	num_bit(32)
+	num_bit(32),
+	complete_labels(false)
 {}
 
 /**

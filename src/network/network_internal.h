@@ -155,9 +155,9 @@ bool IsNetworkCompatibleVersion(const char *version);
  */
 struct CommandPacket : CommandContainer {
 	/** Make sure the pointer is NULL. */
-	CommandPacket() : next(NULL) {}
+	CommandPacket() : next(NULL), company(INVALID_COMPANY), frame(0), my_cmd(false) {}
 	CommandPacket *next; ///< the next command packet (if in queue)
-	CompanyByte company; ///< company that is executing the command
+	CompanyID company;   ///< company that is executing the command
 	uint32 frame;        ///< the frame in which this packet is executed
 	bool my_cmd;         ///< did the command originate from "me"
 };

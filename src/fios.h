@@ -41,7 +41,8 @@ struct LoadCheckData {
 	struct LoggedAction *gamelog_action;          ///< Gamelog actions
 	uint gamelog_actions;                         ///< Number of gamelog actions
 
-	LoadCheckData() : error_data(NULL), grfconfig(NULL), gamelog_action(NULL)
+	LoadCheckData() : error_data(NULL), grfconfig(NULL),
+			grf_compatibility(GLC_NOT_FOUND), gamelog_action(NULL), gamelog_actions(0)
 	{
 		this->Clear();
 	}

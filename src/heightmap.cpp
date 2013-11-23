@@ -46,9 +46,11 @@ static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop 
 	uint x, y;
 	byte gray_palette[256];
 	png_bytep *row_pointers = NULL;
+	bool has_palette = png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_PALETTE;
+	uint channels = png_get_channels(png_ptr, info_ptr);
 
 	/* Get palette and convert it to grayscale */
-	if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_PALETTE) {
+	if (has_palette) {
 		int i;
 		int palette_size;
 		png_color *palette;
@@ -79,11 +81,11 @@ static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop 
 	for (x = 0; x < png_get_image_width(png_ptr, info_ptr); x++) {
 		for (y = 0; y < png_get_image_height(png_ptr, info_ptr); y++) {
 			byte *pixel = &map[y * png_get_image_width(png_ptr, info_ptr) + x];
-			uint x_offset = x * png_get_channels(png_ptr, info_ptr);
+			uint x_offset = x * channels;
 
-			if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_PALETTE) {
+			if (has_palette) {
 				*pixel = gray_palette[row_pointers[y][x_offset]];
-			} else if (png_get_channels(png_ptr, info_ptr) == 3) {
+			} else if (channels == 3) {
 				*pixel = RGBToGrayscale(row_pointers[y][x_offset + 0],
 						row_pointers[y][x_offset + 1], row_pointers[y][x_offset + 2]);
 			} else {

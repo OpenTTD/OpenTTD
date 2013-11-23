@@ -76,6 +76,9 @@ public:
 		new_vehicle_id    (0),
 		new_sign_id       (0),
 		new_group_id      (0),
+		new_goal_id       (0),
+		new_story_page_id (0),
+		new_story_page_element_id(0),
 		/* calback_value (can't be set) */
 		road_type         (INVALID_ROADTYPE),
 		rail_type         (INVALID_RAILTYPE),
