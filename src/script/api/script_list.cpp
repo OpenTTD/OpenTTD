@@ -520,9 +520,7 @@ void ScriptList::Sort(SorterType sorter, bool ascending)
 			}
 			break;
 
-		default:
-			this->Sort(SORT_BY_ITEM, false);
-			return;
+		default: NOT_REACHED();
 	}
 	this->sorter_type    = sorter;
 	this->sort_ascending = ascending;
@@ -641,6 +639,7 @@ void ScriptList::RemoveBottom(int32 count)
 					if (--size == 0) break;
 				}
 			}
+			break;
 
 		case SORT_BY_ITEM:
 			for (ScriptListMap::reverse_iterator iter = this->items.rbegin(); iter != this->items.rend(); iter = this->items.rbegin()) {

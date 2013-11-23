@@ -680,7 +680,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	switch (transport_type) {
 		case TRANSPORT_ROAD: cost.AddCost((tiles + 2) * _price[PR_BUILD_ROAD] * 2); break;
 		case TRANSPORT_RAIL: cost.AddCost((tiles + 2) * RailBuildCost(railtype)); break;
-		default: break;
+		default: NOT_REACHED();
 	}
 
 	if (flags & DC_EXEC) {
