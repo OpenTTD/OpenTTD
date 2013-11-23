@@ -6578,7 +6578,7 @@ static void ParamSet(ByteReader *buf)
 				/* Disable the read GRF if it is a static NewGRF. */
 				DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
 				src1 = 0;
-			} else if (file == NULL || (c != NULL && c->status == GCS_DISABLED)) {
+			} else if (file == NULL || c == NULL || c->status == GCS_DISABLED) {
 				src1 = 0;
 			} else if (src1 == 0xFE) {
 				src1 = c->version;
