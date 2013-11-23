@@ -1418,10 +1418,12 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 		case WID_SM_LEGEND: // Legend
 			if (this->map_type == SMT_INDUSTRY || this->map_type == SMT_LINKSTATS || this->map_type == SMT_OWNER) {
 				int click_pos = this->GetPositionOnLegend(pt);
+				if (click_pos < 0) break;
+
 				/* If industry type small map*/
 				if (this->map_type == SMT_INDUSTRY) {
 					/* If click on industries label, find right industry type and enable/disable it. */
-					if (click_pos >= 0 && click_pos < _smallmap_industry_count) {
+					if (click_pos < _smallmap_industry_count) {
 						this->SelectLegendItem(click_pos, _legend_from_industries, _smallmap_industry_count);
 					}
 				} else if (this->map_type == SMT_LINKSTATS) {

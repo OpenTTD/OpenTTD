@@ -360,10 +360,10 @@ static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
 	f = FioFOpenFile(config->filename, "rb", subdir, &size);
 	if (f == NULL) return false;
 
-	size_t start = ftell(f);
+	long start = ftell(f);
 	size = min(size, GRFGetSizeOfDataSection(f));
 
-	if (fseek(f, start, SEEK_SET) < 0) {
+	if (start < 0 || fseek(f, start, SEEK_SET) < 0) {
 		FioFCloseFile(f);
 		return false;
 	}

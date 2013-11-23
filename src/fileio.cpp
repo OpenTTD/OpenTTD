@@ -254,7 +254,8 @@ void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 #endif /* LIMITED_FDS */
 	f = FioFOpenFile(filename, "rb", subdir);
 	if (f == NULL) usererror("Cannot open file '%s'", filename);
-	uint32 pos = ftell(f);
+	long pos = ftell(f);
+	if (pos < 0) usererror("Cannot read file '%s'", filename);
 
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
@@ -271,7 +272,7 @@ void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 	_fio.usage_count[slot] = 0;
 	_fio.open_handles++;
 #endif /* LIMITED_FDS */
-	FioSeekToFile(slot, pos);
+	FioSeekToFile(slot, (uint32)pos);
 }
 
 static const char * const _subdirs[] = {
