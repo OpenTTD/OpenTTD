@@ -447,13 +447,15 @@ TownScopeResolver *IndustriesResolverObject::GetTown()
 {
 	if (this->town_scope == NULL) {
 		Town *t = NULL;
+		bool readonly = true;
 		if (this->industries_scope.industry != NULL) {
 			t = this->industries_scope.industry->town;
+			readonly = this->industries_scope.industry->index == INVALID_INDUSTRY;
 		} else if (this->industries_scope.tile != INVALID_TILE) {
 			t = ClosestTownFromTile(this->industries_scope.tile, UINT_MAX);
 		}
 		if (t == NULL) return NULL;
-		this->town_scope = new TownScopeResolver(this, t, this->industries_scope.industry->index == INVALID_INDUSTRY);
+		this->town_scope = new TownScopeResolver(this, t, readonly);
 	}
 	return this->town_scope;
 }
