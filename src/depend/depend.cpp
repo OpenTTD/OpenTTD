@@ -29,6 +29,83 @@
 #include <map>
 #include <set>
 #include <stack>
+#include <cassert>
+
+/**
+ * Return the length of an fixed size array.
+ * Unlike sizeof this function returns the number of elements
+ * of the given type.
+ *
+ * @param x The pointer to the first element of the array
+ * @return The number of elements
+ */
+#define lengthof(x) (sizeof(x) / sizeof(x[0]))
+
+/**
+ * Get the last element of an fixed size array.
+ *
+ * @param x The pointer to the first element of the array
+ * @return The pointer to the last element of the array
+ */
+#define lastof(x) (&x[lengthof(x) - 1])
+
+/**
+ * Copies characters from one buffer to another.
+ *
+ * Copies the source string to the destination buffer with respect of the
+ * terminating null-character and the last pointer to the last element in
+ * the destination buffer. If the last pointer is set to NULL no boundary
+ * check is performed.
+ *
+ * @note usage: strecpy(dst, src, lastof(dst));
+ * @note lastof() applies only to fixed size arrays
+ *
+ * @param dst The destination buffer
+ * @param src The buffer containing the string to copy
+ * @param last The pointer to the last element of the destination buffer
+ * @return The pointer to the terminating null-character in the destination buffer
+ */
+char *strecpy(char *dst, const char *src, const char *last)
+{
+	assert(dst <= last);
+	while (dst != last && *src != '\0') {
+		*dst++ = *src++;
+	}
+	*dst = '\0';
+
+	if (dst == last && *src != '\0') {
+		fprintf(stderr, "String too long for destination buffer\n");
+		exit(-3);
+	}
+	return dst;
+}
+
+/**
+ * Appends characters from one string to another.
+ *
+ * Appends the source string to the destination string with respect of the
+ * terminating null-character and and the last pointer to the last element
+ * in the destination buffer. If the last pointer is set to NULL no
+ * boundary check is performed.
+ *
+ * @note usage: strecat(dst, src, lastof(dst));
+ * @note lastof() applies only to fixed size arrays
+ *
+ * @param dst The buffer containing the target string
+ * @param src The buffer containing the string to append
+ * @param last The pointer to the last element of the destination buffer
+ * @return The pointer to the terminating null-character in the destination buffer
+ */
+static char *strecat(char *dst, const char *src, const char *last)
+{
+	assert(dst <= last);
+	while (*dst != '\0') {
+		if (dst == last) return dst;
+		dst++;
+	}
+
+	return strecpy(dst, src, last);
+}
 
 /**
  * Version of the standard free that accepts const pointers.
@@ -434,7 +511,7 @@ const char *GeneratePath(const char *dirname, const char *filename, bool local)
 		if (access(filename, R_OK) == 0) return strdup(filename);
 
 		char path[PATH_MAX];
-		strcpy(path, dirname);
+		strecpy(path, dirname, lastof(path));
 		const char *p = filename;
 		/* Remove '..' from the begin of the filename. */
 		while (*p == '.') {
@@ -444,15 +521,15 @@ const char *GeneratePath(const char *dirname, const char *filename, bool local)
 				p += 2;
 			}
 		}
-		strcat(path, "/");
-		strcat(path, p);
+		strecat(path, "/", lastof(path));
+		strecat(path, p, lastof(path));
 
 		if (access(path, R_OK) == 0) return strdup(path);
 	}
 
 	for (StringSet::iterator it = _include_dirs.begin(); it != _include_dirs.end(); it++) {
 		char path[PATH_MAX];
-		strcpy(path, *it);
+		strecpy(path, *it, lastof(path));
 		const char *p = filename;
 		/* Remove '..' from the begin of the filename. */
 		while (*p == '.') {
@@ -462,8 +539,8 @@ const char *GeneratePath(const char *dirname, const char *filename, bool local)
 				p += 2;
 			}
 		}
-		strcat(path, "/");
-		strcat(path, p);
+		strecat(path, "/", lastof(path));
+		strecat(path, p, lastof(path));
 
 		if (access(path, R_OK) == 0) return strdup(path);
 	}
@@ -666,9 +743,9 @@ void ScanFile(const char *filename, const char *ext, bool header, bool verbose)
 									} else {
 										/* Replace the extension with the provided extension of '.o'. */
 										char path[PATH_MAX];
-										strcpy(path, filename);
+										strecpy(path, filename, lastof(path));
 										*(strrchr(path, '.')) = '\0';
-										strcat(path, ext != NULL ? ext : ".o");
+										strecat(path, ext != NULL ? ext : ".o", lastof(path));
 										curfile = _files.find(path);
 										if (curfile == _files.end()) {
 											curfile = (_files.insert(StringMapItem(strdup(path), new StringSet()))).first;
@@ -895,8 +972,8 @@ int main(int argc, char *argv[])
 	if (delimiter == NULL) delimiter = strdup("# DO NOT DELETE");
 
 	char backup[PATH_MAX];
-	strcpy(backup, filename);
-	strcat(backup, ".bak");
+	strecpy(backup, filename, lastof(backup));
+	strecat(backup, ".bak", lastof(backup));
 
 	char *content = NULL;
 	long size = 0;
@@ -906,7 +983,10 @@ int main(int argc, char *argv[])
 	FILE *src = fopen(filename, "rb");
 	if (src != NULL) {
 		fseek(src, 0, SEEK_END);
-		size = ftell(src);
+		if ((size = ftell(src)) < 0) {
+			fprintf(stderr, "Could not read %s\n", filename);
+			exit(-2);
+		}
 		rewind(src);
 		content = (char*)malloc(size * sizeof(*content));
 		if (fread(content, 1, size, src) != (size_t)size) {
