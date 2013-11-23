@@ -164,10 +164,10 @@ void LoadFromHighScore()
 		for (i = 0; i < SP_SAVED_HIGHSCORE_END; i++) {
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				byte length;
-				if (fread(&length, sizeof(length), 1, fp)       !=  1 ||
-						fread(hs->company, length, 1, fp)           >   1 || // Yes... could be 0 bytes too
-						fread(&hs->score, sizeof(hs->score), 1, fp) !=  1 ||
-						fseek(fp, 2, SEEK_CUR)                      == -1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
+				if (fread(&length, sizeof(length), 1, fp)                              !=  1 ||
+						fread(hs->company, min<int>(lengthof(hs->company), length), 1, fp) >   1 || // Yes... could be 0 bytes too
+						fread(&hs->score, sizeof(hs->score), 1, fp)                        !=  1 ||
+						fseek(fp, 2, SEEK_CUR)                                             == -1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
 					DEBUG(misc, 1, "Highscore corrupted");
 					i = SP_SAVED_HIGHSCORE_END;
 					break;
