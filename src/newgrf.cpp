@@ -2847,6 +2847,7 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 					case 0x0B: cs->town_effect = TE_FOOD; break;
 					default:
 						grfmsg(1, "CargoChangeInfo: Unknown town growth substitute value %d, setting to none.", substitute_type);
+						/* FALL THROUGH */
 					case 0xFF: cs->town_effect = TE_NONE; break;
 				}
 				break;
@@ -3737,6 +3738,7 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
 		case 0x16:
 		case 0x17:
 			buf->ReadByte();
+			break;
 
 		case 0x09:
 		case 0x0A:
