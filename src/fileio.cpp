@@ -721,7 +721,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 	assert(tar_filename == NULL);
 
 	/* The TAR-header, repeated for every file */
-	typedef struct TarHeader {
+	struct TarHeader {
 		char name[100];      ///< Name of the file
 		char mode[8];
 		char uid[8];
@@ -740,7 +740,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 		char prefix[155];    ///< Path of the file
 
 		char unused[12];
-	} TarHeader;
+	};
 
 	/* Check if we already seen this file */
 	TarList::iterator it = _tar_list[this->subdir].find(filename);
