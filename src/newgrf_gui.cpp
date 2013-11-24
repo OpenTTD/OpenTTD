@@ -1058,7 +1058,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			}
 
 			case WID_NS_TOGGLE_PALETTE:
-				if (this->active_sel != NULL || !this->editable) {
+				if (this->active_sel != NULL && this->editable) {
 					this->active_sel->palette ^= GRFP_USE_MASK;
 					this->SetDirty();
 				}
