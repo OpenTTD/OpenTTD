@@ -1424,35 +1424,35 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Lorsqu'il est a
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Désactiver les rails électriques{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activer ce paramètre désactive le besoin d'avoir des voies électrifiées pour faire rouler des engins électriques
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivée du premier véhicule dans la station du joueur: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivée du premier véhicule dans la station du joueur{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Afficher un journal quand le premier véhicule arrive à une nouvelle station de la compagnie
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Afficher un journal quand le premier véhicule arrive à une nouvelle station d'un concurrent
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afficher un journal quand des accidents ou des catastrophes se produisent
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afficher un journal quand une nouvelle compagnie débute, ou quand des compagnies risquent la banqueroute
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Afficher un journal quand une industrie ouvre
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Afficher un journal quand une industrie ferme
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Afficher un journal au sujet des changements globaux de l'économie
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Changements de production des industries desservies par la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Changements de production des industries desservies par la compagnie{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Afficher un journal lors du changement du niveau de production des industries desservies par la compagnie
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Changements de production des industries desservies par les concurrents: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Changements de production des industries desservies par les concurrents{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Afficher un journal lors du changement du niveau de production des industries desservies par les concurrents
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Changements de production des industries non desservies: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Changements de production des industries non desservies{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Afficher un journal lors du changement du niveau de production des industries qui ne sont desservies ni par la compagnie, ni par les concurrents
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conseils / Informations sur les véhicules de la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conseils / Informations sur les véhicules de la compagnie{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Afficher les messages au sujet des véhicules requérant une attention
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nouveaux véhicules: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nouveaux véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Afficher un journal quand un nouveau type de véhicule devient disponible
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changements d'acceptation de marchandises: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changements d'acceptation de marchandises{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Afficher les messages au sujet des stations changeant l'acceptation de certaines marchandises
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventions: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventions{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Afficher un journal au sujet des événements relatifs aux subventions
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informations générales: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informations générales{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Afficher le journal au sujet des événements généraux, comme l'achat de droits exclusifs ou le financement de la reconstruction des routes
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aucun
@@ -2806,6 +2806,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<véhicule inva
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrie invalide>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<véhicule invalide>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Analyse des NewGRFs

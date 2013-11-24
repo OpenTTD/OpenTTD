@@ -1769,8 +1769,8 @@ STR_FACE_MOUSTACHE                                              :Mustasch:
 STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Ändra läppar eller mustasch
 STR_FACE_CHIN                                                   :Haka:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Ändra haka
-STR_FACE_JACKET                                                 :Jacka:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Ändra jacka
+STR_FACE_JACKET                                                 :Kavaj:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Ändra kavaj
 STR_FACE_COLLAR                                                 :Krage:
 STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Ändra krage
 STR_FACE_TIE                                                    :Slips:
@@ -2804,6 +2804,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<icke giltig fo
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<icke giltig industri>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<ogiltigt fordon>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannar NewGRFer

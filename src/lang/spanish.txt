@@ -2806,6 +2806,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veh�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria incorrecta>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<vehículo inválido>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Comprobando NewGRFs

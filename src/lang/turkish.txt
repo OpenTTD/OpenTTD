@@ -1116,7 +1116,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yol
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Binaları ve yolları kaldırmaksızın altlarında yeryüzü şekillendirmesi yapılmasına izin ver
 STR_CONFIG_SETTING_CATCHMENT                                    :İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Farklı istasyon ve hava limanları için farklı büyüklükte alanlar gerekir
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını arttır: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Belediyelerin sahip olduğu altyapı ve binaların yıkımını kolaylaştır
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :En yüksek tren uzunluğu: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :En yüksek tren uzunluğunu belirleyin
@@ -1324,6 +1324,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palet belirtmeyen NewGRF'ler için varsayılan palet: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Hangi paleti kullandığını belirtmeyen NewGRF dosyaları için kullanılacak varsayılan palet.
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Öntanımlı (D) palet
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Eski (W) palet
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Yeni bir oyun başlatırken zamanı duraklat: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Etkinleştirildiğinde, haritaya ayrıntılı bir bakış atabilmek için yeni oyuna başlarken otomatik olarak oyun durdurulur (pause).
@@ -1524,7 +1526,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Yeni pencereler
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :etkisiz
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Azami yaklaşma seviyesi: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için azami yaklaştırma (zoom-in) seviyesi. Daha yüksek yaklaştırma ayarları oyunun bellek gereksinimini artırır.
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için azami yaklaştırma (zoom-in) seviyesi. Daha yüksek yaklaştırma ayarları oyunun bellek gereksinimini arttırır.
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Azami uzaklaşma seviyesi: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için azami uzaklaştırma (zoom-out) seviyesi. Daha yüksek uzaklaştırma ayarları oyunda gecikmelere sebep olabilir
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -2811,6 +2813,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<geçersiz ara�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<geçersiz fabrika>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<geçersiz araç>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF'ler taranıyor
@@ -3470,7 +3473,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Aktarma 
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bakım zamanı: {LTBLUE}{COMMA}günde bir{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bakım zamanı: {LTBLUE}%{COMMA}{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 artır. Ctrl-tık bakım periyodunu 5 artırır.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 arttır. Ctrl-tıklama bakım periyodunu 5 arttırır.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 azalt. Ctrl+tık bakım periyodunu 5 azaltır
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Bakım aralığı tipini değiştir

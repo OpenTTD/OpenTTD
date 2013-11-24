@@ -2901,6 +2901,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<pogrešan mode
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna industrija>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<nepostojeće vozilo>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tražim NewGRFove

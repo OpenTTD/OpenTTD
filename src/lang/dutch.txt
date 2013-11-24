@@ -2805,6 +2805,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<ongeldig trein
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<ongeldig voertuig>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen van NewGRFs

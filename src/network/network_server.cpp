@@ -113,6 +113,12 @@ struct PacketWriter : SaveFilter {
 		if (this->mutex != NULL) this->mutex->SendSignal();
 
 		if (this->mutex != NULL) this->mutex->EndCritical();
+
+		/* Make sure the saving is completely cancelled. Yes,
+		 * we need to handle the save finish as well as the
+		 * next connection might just be requesting a map. */
+		WaitTillSaved();
+		ProcessAsyncSaveFinish();
 	}
 
 	/**
@@ -236,13 +242,6 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 		this->savegame->Destroy();
 		this->savegame = NULL;
 	}
-
-	/* Make sure the saving is completely cancelled.
-	 * Yes, we need to handle the save finish as well
-	 * as the next connection in this "loop" might
-	 * just be requesting the map and such. */
-	WaitTillSaved();
-	ProcessAsyncSaveFinish();
 }
 
 Packet *ServerNetworkGameSocketHandler::ReceivePacket()
@@ -621,8 +620,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			/* Done reading, make sure saving is done as well */
 			this->savegame->Destroy();
 			this->savegame = NULL;
-
-			WaitTillSaved();
 
 			/* Set the status to DONE_MAP, no we will wait for the client
 			 *  to send it is ready (maybe that happens like never ;)) */

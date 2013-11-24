@@ -2805,6 +2805,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<invaliden Gefi
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid Industrie>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<ongültegt Gefier>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen NewGRFen

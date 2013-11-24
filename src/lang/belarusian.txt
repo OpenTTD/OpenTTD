@@ -1636,6 +1636,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-01-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Калі ў NewGRF ня вызначана палітра, выкарыстоўваць: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Палітра ґрафічных набораў (NewGRF), якая ўжываецца па змоўчаньні, калі ня вызначана ў самім наборы.
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Палітра па змаўчаньні (DOS)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Састарэлы фармат палітры (Win)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Аўтаматычнае ўключэньне паўзы напачатку гульні: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Калі ўключана, распачатая гульня будзе аўтаматычна стаяць на паўзе, дазваляючы блізкае вывучэньне мапы.
@@ -3136,6 +3138,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<няправі
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядомае прадпрыемства>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<недапушчальны ТС>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканаваньне NewGRF
@@ -4543,6 +4546,11 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не а�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспартны сродак зьнішчаны
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Усе транспартныя сродкі будуць недаступныя
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Змяніце канфігурацыю модуля NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма даступных транспартных сродкаў
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Пачніце гульню не раней {DATE_SHORT} або падключыце NewGRF, дадаючы транспартныя сродкі, якія выкарыстоўваліся тым часам.
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма іґнараваць сыґнал. Небясьпечна...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не атрымалася завярнуць цягнік...
@@ -5163,6 +5171,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
