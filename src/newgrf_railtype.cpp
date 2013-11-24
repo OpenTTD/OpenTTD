@@ -71,7 +71,7 @@
  * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
  * @param context Are we resolving sprites for the upper halftile, or on a bridge?
  */
-RailTypeScopeResolver::RailTypeScopeResolver(ResolverObject *ro, TileIndex tile, TileContext context) : ScopeResolver(ro)
+RailTypeScopeResolver::RailTypeScopeResolver(ResolverObject &ro, TileIndex tile, TileContext context) : ScopeResolver(ro)
 {
 	this->tile = tile;
 	this->context = context;
@@ -86,7 +86,7 @@ RailTypeScopeResolver::RailTypeScopeResolver(ResolverObject *ro, TileIndex tile,
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
 RailTypeResolverObject::RailTypeResolverObject(TileIndex tile, TileContext context, const GRFFile *grffile, uint32 param1, uint32 param2)
-	: ResolverObject(grffile, CBID_NO_CALLBACK, param1, param2), railtype_scope(this, tile, context)
+	: ResolverObject(grffile, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, tile, context)
 {
 }
 
@@ -105,7 +105,7 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 	if (rti->group[rtsg] == NULL) return 0;
 
 	RailTypeResolverObject object(tile, context, rti->grffile[rtsg]);
-	const SpriteGroup *group = SpriteGroup::Resolve(rti->group[rtsg], &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(rti->group[rtsg], object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult();
@@ -129,7 +129,7 @@ SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalTy
 	uint32 param2 = (type << 16) | (var << 8) | state;
 	RailTypeResolverObject object(tile, TCX_NORMAL, rti->grffile[RTSG_SIGNALS], param1, param2);
 
-	const SpriteGroup *group = SpriteGroup::Resolve(rti->group[RTSG_SIGNALS], &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(rti->group[RTSG_SIGNALS], object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult();

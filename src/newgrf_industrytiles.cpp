@@ -78,7 +78,7 @@ uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 
 		/* Land info of nearby tiles */
 		case 0x60: return GetNearbyIndustryTileInformation(parameter, this->tile,
-				this->industry == NULL ? (IndustryID)INVALID_INDUSTRY : this->industry->index, true, this->ro->grffile->grf_version >= 8);
+				this->industry == NULL ? (IndustryID)INVALID_INDUSTRY : this->industry->index, true, this->ro.grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x61: {
@@ -90,7 +90,7 @@ uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 		}
 
 		/* Get industry tile ID at offset */
-		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->tile), this->industry, this->ro->grffile->grfid);
+		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->tile), this->industry, this->ro.grffile->grfid);
 	}
 
 	DEBUG(grf, 1, "Unhandled industry tile variable 0x%X", variable);
@@ -144,8 +144,8 @@ static const GRFFile *GetIndTileGrffile(IndustryGfx gfx)
 IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
 			CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject(GetIndTileGrffile(gfx), callback, callback_param1, callback_param2),
-	indtile_scope(this, indus, tile),
-	ind_scope(this, tile, indus, indus->type)
+	indtile_scope(*this, indus, tile),
+	ind_scope(*this, tile, indus, indus->type)
 {
 }
 
@@ -155,7 +155,7 @@ IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileInde
  * @param industry %Industry owning the tile.
  * @param tile %Tile of the industry.
  */
-IndustryTileScopeResolver::IndustryTileScopeResolver(ResolverObject *ro, Industry *industry, TileIndex tile) : ScopeResolver(ro)
+IndustryTileScopeResolver::IndustryTileScopeResolver(ResolverObject &ro, Industry *industry, TileIndex tile) : ScopeResolver(ro)
 {
 	this->industry = industry;
 	this->tile = tile;
@@ -190,7 +190,7 @@ uint16 GetIndustryTileCallback(CallbackID callback, uint32 param1, uint32 param2
 	assert(industry->index == INVALID_INDUSTRY || IsTileType(tile, MP_INDUSTRY));
 
 	IndustryTileResolverObject object(gfx_id, tile, industry, callback, param1, param2);
-	const SpriteGroup *group = SpriteGroup::Resolve(GetIndustryTileSpec(gfx_id)->grf_prop.spritegroup[0], &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(GetIndustryTileSpec(gfx_id)->grf_prop.spritegroup[0], object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -211,7 +211,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 	IndustryTileResolverObject object(gfx, ti->tile, i);
 
-	const SpriteGroup *group = SpriteGroup::Resolve(inds->grf_prop.spritegroup[0], &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(inds->grf_prop.spritegroup[0], object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) return false;
 
 	/* Limit the building stage to the number of stages supplied. */
@@ -328,7 +328,7 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 	IndustryTileResolverObject object(gfx, tile, ind, CBID_RANDOM_TRIGGER);
 	object.trigger = trigger;
 
-	const SpriteGroup *group = SpriteGroup::Resolve(itspec->grf_prop.spritegroup[0], &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(itspec->grf_prop.spritegroup[0], object);
 	if (group == NULL) return;
 
 	byte new_random_bits = Random();

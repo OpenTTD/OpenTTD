@@ -26,7 +26,7 @@ struct VehicleScopeResolver : public ScopeResolver {
 	EngineID self_type;      ///< Type of the vehicle.
 	bool info_view;          ///< Indicates if the item is being drawn in an info window.
 
-	VehicleScopeResolver(ResolverObject *ro, EngineID engine_type, const Vehicle *v, bool info_view);
+	VehicleScopeResolver(ResolverObject &ro, EngineID engine_type, const Vehicle *v, bool info_view);
 
 	void SetVehicle(const Vehicle *v) { this->v = v; }
 

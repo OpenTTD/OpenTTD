@@ -104,7 +104,7 @@ struct ObjectScopeResolver : public ScopeResolver {
 	TileIndex tile;     ///< The tile related to the object.
 	uint8 view;         ///< The view of the object.
 
-	ObjectScopeResolver(ResolverObject *ro, Object *obj, TileIndex tile, uint8 view = 0);
+	ObjectScopeResolver(ResolverObject &ro, Object *obj, TileIndex tile, uint8 view = 0);
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;

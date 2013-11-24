@@ -37,35 +37,35 @@ RandomizedSpriteGroup::~RandomizedSpriteGroup()
 TemporaryStorageArray<int32, 0x110> _temp_store;
 
 
-static inline uint32 GetVariable(const ResolverObject *object, ScopeResolver *scope, byte variable, uint32 parameter, bool *available)
+static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *scope, byte variable, uint32 parameter, bool *available)
 {
 	/* First handle variables common with Action7/9/D */
 	uint32 value;
-	if (GetGlobalVariable(variable, &value, object->grffile)) return value;
+	if (GetGlobalVariable(variable, &value, object.grffile)) return value;
 
 	/* Non-common variable */
 	switch (variable) {
-		case 0x0C: return object->callback;
-		case 0x10: return object->callback_param1;
-		case 0x18: return object->callback_param2;
-		case 0x1C: return object->last_value;
+		case 0x0C: return object.callback;
+		case 0x10: return object.callback_param1;
+		case 0x18: return object.callback_param2;
+		case 0x1C: return object.last_value;
 
 		case 0x5F: return (scope->GetRandomBits() << 8) | scope->GetTriggers();
 
 		case 0x7D: return _temp_store.GetValue(parameter);
 
 		case 0x7F:
-			if (object == NULL || object->grffile == NULL) return 0;
-			return object->grffile->GetParam(parameter);
+			if (object.grffile == NULL) return 0;
+			return object.grffile->GetParam(parameter);
 
 		/* Not a common variable, so evaluate the feature specific variables */
 		default: return scope->GetVariable(variable, parameter, available);
 	}
 }
 
-ScopeResolver::ScopeResolver(ResolverObject *ro)
+ScopeResolver::ScopeResolver(ResolverObject &ro)
+		: ro(ro)
 {
-	this->ro = ro;
 }
 
 ScopeResolver::~ScopeResolver() {}
@@ -123,7 +123,7 @@ ScopeResolver::~ScopeResolver() {}
  * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).
  */
 ResolverObject::ResolverObject(const GRFFile *grffile, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: default_scope(this)
+		: default_scope(*this)
 {
 	this->callback = callback;
 	this->callback_param1 = callback_param1;
@@ -216,13 +216,13 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ScopeResolver
 }
 
 
-const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) const
+const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) const
 {
 	uint32 last_value = 0;
 	uint32 value = 0;
 	uint i;
 
-	ScopeResolver *scope = object->GetScope(this->var_scope);
+	ScopeResolver *scope = object.GetScope(this->var_scope);
 
 	for (i = 0; i < this->num_adjusts; i++) {
 		DeterministicSpriteGroupAdjust *adjust = &this->adjusts[i];
@@ -259,7 +259,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 		last_value = value;
 	}
 
-	object->last_value = last_value;
+	object.last_value = last_value;
 
 	if (this->num_ranges == 0) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
@@ -279,21 +279,21 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 }
 
 
-const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject *object) const
+const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 {
-	ScopeResolver *scope = object->GetScope(this->var_scope, this->count);
-	if (object->trigger != 0) {
+	ScopeResolver *scope = object.GetScope(this->var_scope, this->count);
+	if (object.trigger != 0) {
 		/* Handle triggers */
 		/* Magic code that may or may not do the right things... */
 		byte waiting_triggers = scope->GetTriggers();
-		byte match = this->triggers & (waiting_triggers | object->trigger);
+		byte match = this->triggers & (waiting_triggers | object.trigger);
 		bool res = (this->cmp_mode == RSG_CMP_ANY) ? (match != 0) : (match == this->triggers);
 
 		if (res) {
 			waiting_triggers &= ~match;
-			object->reseed[this->var_scope] |= (this->num_groups - 1) << this->lowest_randbit;
+			object.reseed[this->var_scope] |= (this->num_groups - 1) << this->lowest_randbit;
 		} else {
-			waiting_triggers |= object->trigger;
+			waiting_triggers |= object.trigger;
 		}
 
 		scope->SetTriggers(waiting_triggers);
@@ -306,9 +306,9 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject *object) const
 }
 
 
-const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject *object) const
+const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
 {
-	return object->ResolveReal(this);
+	return object.ResolveReal(this);
 }
 
 /**

@@ -29,7 +29,7 @@ struct GenericScopeResolver : public ScopeResolver {
 	uint8 count;
 	uint8 station_size;
 
-	GenericScopeResolver(ResolverObject *ro, bool ai_callback);
+	GenericScopeResolver(ResolverObject &ro, bool ai_callback);
 
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
 
@@ -104,7 +104,7 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
 {
 	if (this->ai_callback) {
 		switch (variable) {
-			case 0x40: return this->ro->grffile->cargo_map[this->cargo_type];
+			case 0x40: return this->ro.grffile->cargo_map[this->cargo_type];
 
 			case 0x80: return this->cargo_type;
 			case 0x81: return CargoSpec::Get(this->cargo_type)->bitnum;
@@ -139,7 +139,7 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
  * @param ai_callback Callback comes from the AI.
  * @param callback Callback ID.
  */
-GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(NULL, callback), generic_scope(this, ai_callback)
+GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(NULL, callback), generic_scope(*this, ai_callback)
 {
 }
 
@@ -148,7 +148,7 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  * @param ro Surrounding resolver.
  * @param ai_callback Callback comes from the AI.
  */
-GenericScopeResolver::GenericScopeResolver(ResolverObject *ro, bool ai_callback) : ScopeResolver(ro)
+GenericScopeResolver::GenericScopeResolver(ResolverObject &ro, bool ai_callback) : ScopeResolver(ro)
 {
 	this->cargo_type = 0;
 	this->default_selection = 0;
@@ -173,16 +173,16 @@ GenericScopeResolver::GenericScopeResolver(ResolverObject *ro, bool ai_callback)
  *                   May be NULL if not required.
  * @return callback value if successful or CALLBACK_FAILED
  */
-static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, uint32 param1_grfv7, uint32 param1_grfv8, const GRFFile **file)
+static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject &object, uint32 param1_grfv7, uint32 param1_grfv8, const GRFFile **file)
 {
 	assert(feature < lengthof(_gcl));
 
 	/* Test each feature callback sprite group. */
 	for (GenericCallbackList::const_iterator it = _gcl[feature].begin(); it != _gcl[feature].end(); ++it) {
 		const SpriteGroup *group = it->group;
-		object->grffile = it->file;
+		object.grffile = it->file;
 		/* Set callback param based on GRF version. */
-		object->callback_param1 = it->file->grf_version >= 8 ? param1_grfv8 : param1_grfv7;
+		object.callback_param1 = it->file->grf_version >= 8 ? param1_grfv8 : param1_grfv7;
 		group = SpriteGroup::Resolve(group, object);
 		if (group == NULL || group->GetCallbackResult() == CALLBACK_FAILED) continue;
 
@@ -238,7 +238,7 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 	object.generic_scope.count             = count;
 	object.generic_scope.station_size      = station_size;
 
-	uint16 callback = GetGenericCallbackResult(feature, &object, 0, 0, file);
+	uint16 callback = GetGenericCallbackResult(feature, object, 0, 0, file);
 	if (callback != CALLBACK_FAILED) callback = GB(callback, 0, 8);
 	return callback;
 }
@@ -264,7 +264,7 @@ void AmbientSoundEffectCallback(TileIndex tile)
 
 	/* Run callback. */
 	const GRFFile *grf_file;
-	uint16 callback = GetGenericCallbackResult(GSF_SOUNDFX, &object, param1_v7, param1_v8, &grf_file);
+	uint16 callback = GetGenericCallbackResult(GSF_SOUNDFX, object, param1_v7, param1_v8, &grf_file);
 
 	if (callback != CALLBACK_FAILED) PlayTileSound(grf_file, callback, tile);
 }

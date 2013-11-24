@@ -23,7 +23,7 @@ WaterFeature _water_feature[CF_END];
 struct CanalScopeResolver : public ScopeResolver {
 	TileIndex tile; ///< Tile containing the canal.
 
-	CanalScopeResolver(ResolverObject *ro, TileIndex tile);
+	CanalScopeResolver(ResolverObject &ro, TileIndex tile);
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
@@ -108,7 +108,7 @@ struct CanalResolverObject : public ResolverObject {
 	return group->loaded[0];
 }
 
-CanalScopeResolver::CanalScopeResolver(ResolverObject *ro, TileIndex tile) : ScopeResolver(ro)
+CanalScopeResolver::CanalScopeResolver(ResolverObject &ro, TileIndex tile) : ScopeResolver(ro)
 {
 	this->tile = tile;
 }
@@ -123,7 +123,7 @@ CanalScopeResolver::CanalScopeResolver(ResolverObject *ro, TileIndex tile) : Sco
  */
 CanalResolverObject::CanalResolverObject(const GRFFile *grffile, TileIndex tile,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: ResolverObject(grffile, callback, callback_param1, callback_param2), canal_scope(this, tile)
+		: ResolverObject(grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile)
 {
 }
 
@@ -136,7 +136,7 @@ CanalResolverObject::CanalResolverObject(const GRFFile *grffile, TileIndex tile,
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 {
 	CanalResolverObject object(_water_feature[feature].grffile, tile);
-	const SpriteGroup *group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(_water_feature[feature].group, object);
 	if (group == NULL) return 0;
 
 	return group->GetResult();
@@ -154,7 +154,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 static uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile)
 {
 	CanalResolverObject object(_water_feature[feature].grffile, tile, callback, param1, param2);
-	const SpriteGroup *group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(_water_feature[feature].group, object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();

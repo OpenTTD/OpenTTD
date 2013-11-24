@@ -20,7 +20,7 @@
  * @param t %Town of the scope.
  * @param readonly Scope may change persistent storage of the town.
  */
-TownScopeResolver::TownScopeResolver(ResolverObject *ro, Town *t, bool readonly) : ScopeResolver(ro)
+TownScopeResolver::TownScopeResolver(ResolverObject &ro, Town *t, bool readonly) : ScopeResolver(ro)
 {
 	this->t = t;
 	this->readonly = readonly;
@@ -43,8 +43,8 @@ TownScopeResolver::TownScopeResolver(ResolverObject *ro, Town *t, bool readonly)
 			/* Check the persistent storage for the GrfID stored in register 100h. */
 			uint32 grfid = GetRegister(0x100);
 			if (grfid == 0xFFFFFFFF) {
-				if (this->ro->grffile == NULL) return 0;
-				grfid = this->ro->grffile->grfid;
+				if (this->ro.grffile == NULL) return 0;
+				grfid = this->ro.grffile->grfid;
 			}
 
 			std::list<PersistentStorage *>::iterator iter;
@@ -135,14 +135,14 @@ TownScopeResolver::TownScopeResolver(ResolverObject *ro, Town *t, bool readonly)
 
 	assert(this->t != NULL);
 	/* We can't store anything if the caller has no #GRFFile. */
-	if (this->ro->grffile == NULL) return;
+	if (this->ro.grffile == NULL) return;
 
 	/* Check the persistent storage for the GrfID stored in register 100h. */
 	uint32 grfid = GetRegister(0x100);
 
 	/* A NewGRF can only write in the persistent storage associated to its own GRFID. */
-	if (grfid == 0xFFFFFFFF) grfid = this->ro->grffile->grfid;
-	if (grfid != this->ro->grffile->grfid) return;
+	if (grfid == 0xFFFFFFFF) grfid = this->ro.grffile->grfid;
+	if (grfid != this->ro.grffile->grfid) return;
 
 	/* Check if the storage exists. */
 	std::list<PersistentStorage *>::iterator iter;
@@ -167,7 +167,7 @@ TownScopeResolver::TownScopeResolver(ResolverObject *ro, Town *t, bool readonly)
  * @param readonly Scope may change persistent storage of the town.
  */
 TownResolverObject::TownResolverObject(const struct GRFFile *grffile, Town *t, bool readonly)
-		: ResolverObject(grffile), town_scope(this, t, readonly)
+		: ResolverObject(grffile), town_scope(*this, t, readonly)
 {
 }
 
