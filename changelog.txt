@@ -1,3 +1,10 @@
+1.3.3-RC2 (2013-11-24)
+------------------------------------------------------------------------
+- Fix: [Script] Prevent scripts from crashing OpenTTD when they send text with command codes to user editable texts such as sign and station names [FS#5818] (r26093, r26092)
+- Fix: Occasional hanging when client joins [FS#5811] (r26043)
+- Fix: Multi line text was handled incorrectly causing glitches [FS#5809] (r26037, r26036)
+
+
 1.3.3-RC1 (2013-11-17)
 ------------------------------------------------------------------------
 - Fix: Crash when the ICU layouter thinks a font is corrupted [FS#5711] (r26029, r26018, r26017, r26016, r26015)
