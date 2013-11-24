@@ -1961,7 +1961,7 @@ struct CargoesRow {
 		assert(cargo_fld->type == CFT_CARGO && label_fld->type == CFT_EMPTY);
 		for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
 			int col = cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], !accepting);
-			cargoes[col] = cargo_fld->u.cargo.vertical_cargoes[i];
+			if (col >= 0) cargoes[col] = cargo_fld->u.cargo.vertical_cargoes[i];
 		}
 		label_fld->MakeCargoLabel(cargoes, lengthof(cargoes), accepting);
 	}
