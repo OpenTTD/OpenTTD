@@ -287,7 +287,11 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 		return false;
 	}
 
-	assert(StrEmpty(text) || (GetCommandFlags(cmd) & CMD_STR_CTRL) != 0 || StrValid(text, text + strlen(text)));
+	if (!StrEmpty(text) && (GetCommandFlags(cmd) & CMD_STR_CTRL) == 0) {
+		/* The string must be valid, i.e. not contain special codes. Since some
+		 * can be made with GSText, make sure the control codes are removed. */
+		str_validate(text, text + strlen(text)), SVS_NONE);
+	}
 
 	/* Set the default callback to return a true/false result of the DoCommand */
 	if (callback == NULL) callback = &ScriptInstance::DoCommandReturn;
