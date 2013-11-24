@@ -2234,7 +2234,7 @@ struct SelectStationWindow : Window {
 	TileArea area; ///< Location of new station
 	Scrollbar *vscroll;
 
-	SelectStationWindow(WindowDesc *desc, CommandContainer cmd, TileArea ta) :
+	SelectStationWindow(WindowDesc *desc, const CommandContainer &cmd, TileArea ta) :
 		Window(desc),
 		select_station_cmd(cmd),
 		area(ta)
@@ -2351,7 +2351,7 @@ static WindowDesc _select_station_desc(
  * @return whether we need to show the station selection window.
  */
 template <class T>
-static bool StationJoinerNeeded(CommandContainer cmd, TileArea ta)
+static bool StationJoinerNeeded(const CommandContainer &cmd, TileArea ta)
 {
 	/* Only show selection if distant join is enabled in the settings */
 	if (!_settings_game.station.distant_join_stations) return false;
@@ -2385,7 +2385,7 @@ static bool StationJoinerNeeded(CommandContainer cmd, TileArea ta)
  * @tparam the class to find stations for
  */
 template <class T>
-void ShowSelectBaseStationIfNeeded(CommandContainer cmd, TileArea ta)
+void ShowSelectBaseStationIfNeeded(const CommandContainer &cmd, TileArea ta)
 {
 	if (StationJoinerNeeded<T>(cmd, ta)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
@@ -2400,7 +2400,7 @@ void ShowSelectBaseStationIfNeeded(CommandContainer cmd, TileArea ta)
  * @param cmd Command to build the station.
  * @param ta Area to build the station in
  */
-void ShowSelectStationIfNeeded(CommandContainer cmd, TileArea ta)
+void ShowSelectStationIfNeeded(const CommandContainer &cmd, TileArea ta)
 {
 	ShowSelectBaseStationIfNeeded<Station>(cmd, ta);
 }
@@ -2410,7 +2410,7 @@ void ShowSelectStationIfNeeded(CommandContainer cmd, TileArea ta)
  * @param cmd Command to build the waypoint.
  * @param ta Area to build the waypoint in
  */
-void ShowSelectWaypointIfNeeded(CommandContainer cmd, TileArea ta)
+void ShowSelectWaypointIfNeeded(const CommandContainer &cmd, TileArea ta)
 {
 	ShowSelectBaseStationIfNeeded<Waypoint>(cmd, ta);
 }

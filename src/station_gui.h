@@ -27,7 +27,7 @@ enum StationCoverageType {
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies);
 void CheckRedrawStationCoverage(const Window *w);
 
-void ShowSelectStationIfNeeded(CommandContainer cmd, TileArea ta);
-void ShowSelectWaypointIfNeeded(CommandContainer cmd, TileArea ta);
+void ShowSelectStationIfNeeded(const CommandContainer &cmd, TileArea ta);
+void ShowSelectWaypointIfNeeded(const CommandContainer &cmd, TileArea ta);
 
 #endif /* STATION_GUI_H */
