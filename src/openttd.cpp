@@ -557,6 +557,7 @@ int openttd_main(int argc, char *argv[])
 	_config_file = NULL;
 
 	GetOptData mgo(argc - 1, argv + 1, _options);
+	int ret = 0;
 
 	int i;
 	while ((i = mgo.GetOpt()) != -1) {
@@ -637,8 +638,14 @@ int openttd_main(int argc, char *argv[])
 			}
 			break;
 		case 'q': {
+			delete scanner;
+
 			DeterminePaths(argv[0]);
-			if (StrEmpty(mgo.opt)) return 1;
+			if (StrEmpty(mgo.opt)) {
+				ret = 1;
+				goto exit_noshutdown;
+			}
+
 			char title[80];
 			title[0] = '\0';
 			FiosGetSavegameListCallback(SLD_LOAD_GAME, mgo.opt, strrchr(mgo.opt, '.'), title, lastof(title));
@@ -653,12 +660,12 @@ int openttd_main(int argc, char *argv[])
 					GetString(buf, _load_check_data.error, lastof(buf));
 					fprintf(stderr, "%s\n", buf);
 				}
-				return 1;
+				goto exit_noshutdown;
 			}
 
 			WriteSavegameInfo(title);
 
-			return 0;
+			goto exit_noshutdown;
 		}
 		case 'G': scanner->generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
@@ -683,7 +690,8 @@ int openttd_main(int argc, char *argv[])
 		BaseMusic::FindSets();
 		ShowHelp();
 		delete scanner;
-		return 0;
+
+		goto exit_noshutdown;
 	}
 
 #if defined(WINCE) && defined(_DEBUG)
@@ -870,15 +878,26 @@ exit:
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
 
+exit_noshutdown:
 	free(BaseGraphics::ini_set);
 	free(BaseSounds::ini_set);
 	free(BaseMusic::ini_set);
+
+	free(graphics_set);
+	free(sounds_set);
+	free(music_set);
+
 	free(_ini_musicdriver);
 	free(_ini_sounddriver);
 	free(_ini_videodriver);
 	free(_ini_blitter);
 
-	return 0;
+	free(musicdriver);
+	free(sounddriver);
+	free(videodriver);
+	free(blitter);
+
+	return ret;
 }
 
 void HandleExitGameRequest()

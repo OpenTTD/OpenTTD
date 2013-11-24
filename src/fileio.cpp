@@ -1083,8 +1083,11 @@ void DetermineBasePaths(const char *exe)
 {
 	char tmp[MAX_PATH];
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
-	snprintf(tmp, MAX_PATH, "%s" PATHSEP "%s", xdgDataHome(NULL),
+	const char *xdg_data_home = xdgDataHome(NULL);
+	snprintf(tmp, MAX_PATH, "%s" PATHSEP "%s", xdg_data_home,
 			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
+	free(xdg_data_home);
+
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_PERSONAL_DIR_XDG] = strdup(tmp);
 #endif
@@ -1174,8 +1177,12 @@ void DeterminePaths(const char *exe)
 
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
 	char config_home[MAX_PATH];
-	snprintf(config_home, MAX_PATH, "%s" PATHSEP "%s", xdgConfigHome(NULL),
+
+	const char *xdg_config_home = xdgConfigHome(NULL);
+	snprintf(config_home, MAX_PATH, "%s" PATHSEP "%s", xdg_config_home,
 			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
+	free(xdg_config_home);
+
 	AppendPathSeparator(config_home, MAX_PATH);
 #endif
 
