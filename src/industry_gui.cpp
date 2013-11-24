@@ -2590,9 +2590,9 @@ struct IndustryCargoesWindow : public Window {
 				DropDownList *lst = new DropDownList;
 				const CargoSpec *cs;
 				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
-					lst->push_back(new DropDownListStringItem(cs->name, cs->Index(), false));
+					*lst->Append() = new DropDownListStringItem(cs->name, cs->Index(), false);
 				}
-				if (lst->size() == 0) {
+				if (lst->Length() == 0) {
 					delete lst;
 					break;
 				}
@@ -2607,9 +2607,9 @@ struct IndustryCargoesWindow : public Window {
 					IndustryType ind = _sorted_industry_types[i];
 					const IndustrySpec *indsp = GetIndustrySpec(ind);
 					if (!indsp->enabled) continue;
-					lst->push_back(new DropDownListStringItem(indsp->name, ind, false));
+					*lst->Append() = new DropDownListStringItem(indsp->name, ind, false);
 				}
-				if (lst->size() == 0) {
+				if (lst->Length() == 0) {
 					delete lst;
 					break;
 				}

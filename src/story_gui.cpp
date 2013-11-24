@@ -246,12 +246,12 @@ protected:
 				item = str_item;
 			}
 
-			list->push_back(item);
+			*list->Append() = item;
 			page_num++;
 		}
 
 		/* Check if list is empty. */
-		if (list->size() == 0) {
+		if (list->Length() == 0) {
 			delete list;
 			list = NULL;
 		}

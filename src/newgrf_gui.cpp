@@ -378,7 +378,7 @@ struct NewGRFParametersWindow : public Window {
 
 							DropDownList *list = new DropDownList();
 							for (uint32 i = par_info->min_value; i <= par_info->max_value; i++) {
-								list->push_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false));
+								*list->Append() = new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false);
 							}
 
 							ShowDropDownListAt(this, list, old_val, -1, wi_rect, COLOUR_ORANGE, true);
@@ -884,11 +884,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				DropDownList *list = new DropDownList();
 
 				/* Add 'None' option for clearing list */
-				list->push_back(new DropDownListStringItem(STR_NONE, -1, false));
+				*list->Append() = new DropDownListStringItem(STR_NONE, -1, false);
 
 				for (uint i = 0; i < _grf_preset_list.Length(); i++) {
 					if (_grf_preset_list[i] != NULL) {
-						list->push_back(new DropDownListPresetItem(i));
+						*list->Append() = new DropDownListPresetItem(i);
 					}
 				}
 

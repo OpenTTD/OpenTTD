@@ -109,7 +109,7 @@ static DropDownList *BuiltSetDropDownList(int *selected_index)
 
 	DropDownList *list = new DropDownList();
 	for (int i = 0; i < n; i++) {
-		list->push_back(new DropDownListCharStringItem(T::GetSet(i)->name, i, (_game_mode == GM_MENU) ? false : (*selected_index != i)));
+		*list->Append() = new DropDownListCharStringItem(T::GetSet(i)->name, i, (_game_mode == GM_MENU) ? false : (*selected_index != i));
 	}
 
 	return list;
@@ -187,13 +187,13 @@ struct GameOptionsWindow : Window {
 				/* Add non-custom currencies; sorted naturally */
 				for (uint i = 0; i < CURRENCY_END; items++, i++) {
 					if (i == CURRENCY_CUSTOM) continue;
-					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
+					*list->Append() = new DropDownListStringItem(*items, i, HasBit(disabled, i));
 				}
-				list->sort(DropDownListStringItem::NatSortFunc);
+				QSortT(list->Begin(), list->Length(), DropDownListStringItem::NatSortFunc);
 
 				/* Append custom currency at the end */
-				list->push_back(new DropDownListItem(-1, false)); // separator line
-				list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
+				*list->Append() = new DropDownListItem(-1, false); // separator line
+				*list->Append() = new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM));
 				break;
 			}
 
@@ -211,7 +211,7 @@ struct GameOptionsWindow : Window {
 				}
 
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
+					*list->Append() = new DropDownListStringItem(*items, i, HasBit(disabled, i));
 				}
 				break;
 			}
@@ -222,25 +222,25 @@ struct GameOptionsWindow : Window {
 
 				int enabled_item = (_game_mode == GM_MENU || Town::GetNumItems() == 0) ? -1 : *selected_index;
 
-				/* Add and sort original townnames generators */
-				for (int i = 0; i < _nb_orig_names; i++) {
-					list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0));
-				}
-				list->sort(DropDownListStringItem::NatSortFunc);
-
 				/* Add and sort newgrf townnames generators */
-				DropDownList newgrf_names;
 				for (int i = 0; i < _nb_grf_names; i++) {
 					int result = _nb_orig_names + i;
-					newgrf_names.push_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
+					*list->Append() = new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0);
 				}
-				newgrf_names.sort(DropDownListStringItem::NatSortFunc);
+				QSortT(list->Begin(), list->Length(), DropDownListStringItem::NatSortFunc);
 
+				int newgrf_size = list->Length();
 				/* Insert newgrf_names at the top of the list */
-				if (newgrf_names.size() > 0) {
-					newgrf_names.push_back(new DropDownListItem(-1, false)); // separator line
-					list->splice(list->begin(), newgrf_names);
+				if (newgrf_size > 0) {
+					*list->Append() = new DropDownListItem(-1, false); // separator line
+					newgrf_size++;
 				}
+
+				/* Add and sort original townnames generators */
+				for (int i = 0; i < _nb_orig_names; i++) {
+					*list->Append() = new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0);
+				}
+				QSortT(list->Begin() + newgrf_size, list->Length() - newgrf_size, DropDownListStringItem::NatSortFunc);
 				break;
 			}
 
@@ -249,7 +249,7 @@ struct GameOptionsWindow : Window {
 				*selected_index = _settings_client.gui.autosave;
 				const StringID *items = _autosave_dropdown;
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list->push_back(new DropDownListStringItem(*items, i, false));
+					*list->Append() = new DropDownListStringItem(*items, i, false);
 				}
 				break;
 			}
@@ -258,9 +258,9 @@ struct GameOptionsWindow : Window {
 				list = new DropDownList();
 				for (uint i = 0; i < _languages.Length(); i++) {
 					if (&_languages[i] == _current_language) *selected_index = i;
-					list->push_back(new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false));
+					*list->Append() = new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false);
 				}
-				list->sort(DropDownListStringItem::NatSortFunc);
+				QSortT(list->Begin(), list->Length(), DropDownListStringItem::NatSortFunc);
 				break;
 			}
 
@@ -268,7 +268,7 @@ struct GameOptionsWindow : Window {
 				list = new DropDownList();
 				*selected_index = GetCurRes();
 				for (int i = 0; i < _num_resolutions; i++) {
-					list->push_back(new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false));
+					*list->Append() = new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false);
 				}
 				break;
 
@@ -277,7 +277,7 @@ struct GameOptionsWindow : Window {
 				*selected_index = _cur_screenshot_format;
 				for (uint i = 0; i < _num_screenshot_formats; i++) {
 					if (!GetScreenshotFormatSupports_32bpp(i) && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) continue;
-					list->push_back(new DropDownListStringItem(SPECSTR_SCREENSHOT_START + i, i, false));
+					*list->Append() = new DropDownListStringItem(SPECSTR_SCREENSHOT_START + i, i, false);
 				}
 				break;
 
@@ -392,13 +392,12 @@ struct GameOptionsWindow : Window {
 				DropDownList *list = this->BuildDropDownList(widget, &selected);
 				if (list != NULL) {
 					/* Find the biggest item for the default size. */
-					for (DropDownList::iterator it = list->begin(); it != list->end(); it++) {
+					for (const DropDownListItem * const *it = list->Begin(); it != list->End(); it++) {
 						Dimension string_dim;
 						int width = (*it)->Width();
 						string_dim.width = width + padding.width;
 						string_dim.height = (*it)->Height(width) + padding.height;
 						*size = maxdim(*size, string_dim);
-						delete *it;
 					}
 					delete list;
 				}
@@ -1839,16 +1838,16 @@ struct GameSettingsWindow : Window {
 					 * we don't want to allow comparing with new game's settings. */
 					bool disabled = mode == RM_CHANGED_AGAINST_NEW && settings_ptr == &_settings_newgame;
 
-					list->push_back(new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
+					*list->Append() = new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled);
 				}
 				break;
 
 			case WID_GS_TYPE_DROPDOWN:
 				list = new DropDownList();
-				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false));
-				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false));
-				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false));
-				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false));
+				*list->Append() = new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false);
+				*list->Append() = new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false);
+				*list->Append() = new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false);
+				*list->Append() = new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false);
 				break;
 		}
 		return list;
@@ -1998,7 +1997,7 @@ struct GameSettingsWindow : Window {
 
 					DropDownList *list = new DropDownList();
 					for (int i = sdb->min; i <= (int)sdb->max; i++) {
-						list->push_back(new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false));
+						*list->Append() = new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false);
 					}
 
 					ShowDropDownListAt(this, list, value, -1, wi_rect, COLOUR_ORANGE, true);

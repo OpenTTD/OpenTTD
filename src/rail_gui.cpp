@@ -1941,9 +1941,9 @@ void InitializeRailGUI()
  * @param second The railtype to compare.
  * @return True iff the first should be sorted before the second.
  */
-static bool CompareRailTypes(const DropDownListItem *first, const DropDownListItem *second)
+static CDECL int CompareRailTypes(const DropDownListItem * const *first, const DropDownListItem * const *second)
 {
-	return GetRailTypeInfo((RailType)first->result)->sorting_order < GetRailTypeInfo((RailType)second->result)->sorting_order;
+	return GetRailTypeInfo((RailType)(*first)->result)->sorting_order - GetRailTypeInfo((RailType)(*second)->result)->sorting_order;
 }
 
 /**
@@ -1980,8 +1980,8 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement)
 		DropDownListParamStringItem *item = new DropDownListParamStringItem(str, rt, !HasBit(c->avail_railtypes, rt));
 		item->SetParam(0, rti->strings.menu_text);
 		item->SetParam(1, rti->max_speed);
-		list->push_back(item);
+		*list->Append() = item;
 	}
-	list->sort(CompareRailTypes);
+	QSortT(list->Begin(), list->Length(), CompareRailTypes);
 	return list;
 }

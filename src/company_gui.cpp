@@ -574,7 +574,7 @@ private:
 
 		DropDownList *list = new DropDownList();
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
-			list->push_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
+			*list->Append() = new DropDownListColourItem(i, HasBit(used_colours, i));
 		}
 
 		ShowDropDownList(this, list, widget == WID_SCL_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);

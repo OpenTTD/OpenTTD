@@ -73,14 +73,14 @@ struct SetDateWindow : Window {
 
 			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
-					list->push_back(new DropDownListStringItem(STR_ORDINAL_NUMBER_1ST + i, i + 1, false));
+					*list->Append() = new DropDownListStringItem(STR_ORDINAL_NUMBER_1ST + i, i + 1, false);
 				}
 				selected = this->date.day;
 				break;
 
 			case WID_SD_MONTH:
 				for (uint i = 0; i < 12; i++) {
-					list->push_back(new DropDownListStringItem(STR_MONTH_JAN + i, i, false));
+					*list->Append() = new DropDownListStringItem(STR_MONTH_JAN + i, i, false);
 				}
 				selected = this->date.month;
 				break;
@@ -89,7 +89,7 @@ struct SetDateWindow : Window {
 				for (Year i = this->min_year; i <= this->max_year; i++) {
 					DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
 					item->SetParam(0, i);
-					list->push_back(item);
+					*list->Append() = item;
 				}
 				selected = this->date.year;
 				break;

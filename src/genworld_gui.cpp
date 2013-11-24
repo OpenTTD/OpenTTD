@@ -284,7 +284,7 @@ static DropDownList *BuildMapsizeDropDown()
 	for (uint i = MIN_MAP_SIZE_BITS; i <= MAX_MAP_SIZE_BITS; i++) {
 		DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
 		item->SetParam(0, 1 << i);
-		list->push_back(item);
+		*list->Append() = item;
 	}
 
 	return list;

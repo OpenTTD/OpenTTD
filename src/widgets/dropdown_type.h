@@ -14,8 +14,8 @@
 
 #include "../window_type.h"
 #include "../gfx_func.h"
+#include "../core/smallvec_type.hpp"
 #include "table/strings.h"
-#include <list>
 
 /**
  * Base list item class from which others are derived. If placed in a list it
@@ -50,7 +50,7 @@ public:
 	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
 	virtual StringID String() const { return this->string; }
 
-	static bool NatSortFunc(const DropDownListItem *first, const DropDownListItem *second);
+	static CDECL int NatSortFunc(const DropDownListItem * const *first, const DropDownListItem * const *second);
 };
 
 /**
@@ -83,10 +83,10 @@ public:
 /**
  * A drop down list is a collection of drop down list items.
  */
-typedef std::list<DropDownListItem *> DropDownList;
+typedef AutoDeleteSmallVector<const DropDownListItem *, 4> DropDownList;
 
-void ShowDropDownListAt(Window *w, DropDownList *list, int selected, int button, Rect wi_rect, Colours wi_colour, bool auto_width = false, bool instant_close = false);
+void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int button, Rect wi_rect, Colours wi_colour, bool auto_width = false, bool instant_close = false);
 
-void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width = 0, bool auto_width = false, bool instant_close = false);
+void ShowDropDownList(Window *w, const DropDownList *list, int selected, int button, uint width = 0, bool auto_width = false, bool instant_close = false);
 
 #endif /* WIDGETS_DROPDOWN_TYPE_H */
