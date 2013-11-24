@@ -781,6 +781,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 			if (memcmp(&th, &empty[0], 512) == 0) continue;
 
 			DEBUG(misc, 0, "The file '%s' isn't a valid tar-file", filename);
+			fclose(f);
 			return false;
 		}
 
