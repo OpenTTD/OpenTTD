@@ -761,7 +761,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 	TarHeader th;
 	char buf[sizeof(th.name) + 1], *end;
-	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1] = "";
+	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
 	char link[sizeof(th.linkname) + 1];
 	char dest[sizeof(th.prefix) + 1 + sizeof(th.name) + 1 + 1 + sizeof(th.linkname) + 1];
 	size_t num = 0, pos = 0;
@@ -783,6 +783,8 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 			DEBUG(misc, 0, "The file '%s' isn't a valid tar-file", filename);
 			return false;
 		}
+
+		name[0] = '\0';
 
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
