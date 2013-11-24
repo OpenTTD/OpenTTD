@@ -81,9 +81,10 @@ LanguageStrings::~LanguageStrings()
 LanguageStrings *ReadRawLanguageStrings(const char *file)
 {
 	LanguageStrings *ret = NULL;
+	FILE *fh = NULL;
 	try {
 		size_t to_read;
-		FILE *fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
+		fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
 		if (fh == NULL) {
 			return NULL;
 		}
@@ -96,7 +97,10 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 		}
 
 		/* Check for invalid empty filename */
-		if (*langname == '.' || *langname == 0) return NULL;
+		if (*langname == '.' || *langname == 0) {
+			fclose(fh);
+			return NULL;
+		}
 
 		ret = new LanguageStrings(langname, strchr(langname, '.'));
 
@@ -118,8 +122,10 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 			}
 		}
 
+		fclose(fh);
 		return ret;
 	} catch (...) {
+		if (fh != NULL) fclose(fh);
 		delete ret;
 		return NULL;
 	}
