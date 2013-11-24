@@ -1941,7 +1941,7 @@ void InitializeRailGUI()
  * @param second The railtype to compare.
  * @return True iff the first should be sorted before the second.
  */
-static CDECL int CompareRailTypes(const DropDownListItem * const *first, const DropDownListItem * const *second)
+static int CDECL CompareRailTypes(const DropDownListItem * const *first, const DropDownListItem * const *second)
 {
 	return GetRailTypeInfo((RailType)(*first)->result)->sorting_order - GetRailTypeInfo((RailType)(*second)->result)->sorting_order;
 }

@@ -50,7 +50,7 @@ public:
 	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
 	virtual StringID String() const { return this->string; }
 
-	static CDECL int NatSortFunc(const DropDownListItem * const *first, const DropDownListItem * const *second);
+	static int CDECL NatSortFunc(const DropDownListItem * const *first, const DropDownListItem * const *second);
 };
 
 /**
