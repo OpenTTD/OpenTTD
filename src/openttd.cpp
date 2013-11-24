@@ -798,7 +798,10 @@ int openttd_main(int argc, char *argv[])
 	}
 #endif /* ENABLE_NETWORK */
 
-	if (!HandleBootstrap()) goto exit;
+	if (!HandleBootstrap()) {
+		ShutdownGame();
+		goto exit_bootstrap;
+	}
 
 	_video_driver->ClaimMousePointer();
 
@@ -874,28 +877,32 @@ int openttd_main(int argc, char *argv[])
 		SaveToHighScore();
 	}
 
-exit:
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
+	goto exit_normal;
 
 exit_noshutdown:
+	/* These three are normally freed before bootstrap. */
+	free(graphics_set);
+	free(videodriver);
+	free(blitter);
+
+exit_bootstrap:
+	/* These are normally freed before exit, but after bootstrap. */
+	free(sounds_set);
+	free(music_set);
+	free(musicdriver);
+	free(sounddriver);
+
+exit_normal:
 	free(BaseGraphics::ini_set);
 	free(BaseSounds::ini_set);
 	free(BaseMusic::ini_set);
-
-	free(graphics_set);
-	free(sounds_set);
-	free(music_set);
 
 	free(_ini_musicdriver);
 	free(_ini_sounddriver);
 	free(_ini_videodriver);
 	free(_ini_blitter);
-
-	free(musicdriver);
-	free(sounddriver);
-	free(videodriver);
-	free(blitter);
 
 	return ret;
 }
