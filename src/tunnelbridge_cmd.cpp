@@ -1223,10 +1223,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* HACK Wizardry to convert the bridge ramp direction into a sprite offset */
 		base_offset += (6 - tunnelbridge_direction) % 4;
 
-		if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
-
 		/* Table number BRIDGE_PIECE_HEAD always refers to the bridge heads for any bridge type */
 		if (transport_type != TRANSPORT_WATER) {
+			if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 			psid = &GetBridgeSpriteTable(GetBridgeType(ti->tile), BRIDGE_PIECE_HEAD)[base_offset];
 		} else {
 			psid = _aqueduct_sprites + base_offset;
