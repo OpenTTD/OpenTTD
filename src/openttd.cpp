@@ -638,8 +638,6 @@ int openttd_main(int argc, char *argv[])
 			}
 			break;
 		case 'q': {
-			delete scanner;
-
 			DeterminePaths(argv[0]);
 			if (StrEmpty(mgo.opt)) {
 				ret = 1;
@@ -689,7 +687,6 @@ int openttd_main(int argc, char *argv[])
 		BaseSounds::FindSets();
 		BaseMusic::FindSets();
 		ShowHelp();
-		delete scanner;
 
 		goto exit_noshutdown;
 	}
@@ -799,7 +796,6 @@ int openttd_main(int argc, char *argv[])
 #endif /* ENABLE_NETWORK */
 
 	if (!HandleBootstrap()) {
-		delete scanner;
 		ShutdownGame();
 
 		goto exit_bootstrap;
@@ -867,6 +863,7 @@ int openttd_main(int argc, char *argv[])
 
 	/* ScanNewGRFFiles now has control over the scanner. */
 	ScanNewGRFFiles(scanner);
+	scanner = NULL;
 
 	_video_driver->MainLoop();
 
@@ -906,6 +903,8 @@ exit_normal:
 	free(_ini_sounddriver);
 	free(_ini_videodriver);
 	free(_ini_blitter);
+
+	delete scanner;
 
 #ifdef ENABLE_NETWORK
 	extern FILE *_log_fd;
