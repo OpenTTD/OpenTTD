@@ -2720,36 +2720,36 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	}
 	WaitTillSaved();
 
-	/* Load a TTDLX or TTDPatch game */
-	if (mode == SL_OLD_LOAD) {
-		InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
-
-		/* TTD/TTO savegames have no NewGRFs, TTDP savegame have them
-		 * and if so a new NewGRF list will be made in LoadOldSaveGame.
-		 * Note: this is done here because AfterLoadGame is also called
-		 * for OTTD savegames which have their own NewGRF logic. */
-		ClearGRFConfigList(&_grfconfig);
-		GamelogReset();
-		if (!LoadOldSaveGame(filename)) return SL_REINIT;
-		_sl_version = 0;
-		_sl_minor_version = 0;
-		GamelogStartAction(GLAT_LOAD);
-		if (!AfterLoadGame()) {
-			GamelogStopAction();
-			return SL_REINIT;
-		}
-		GamelogStopAction();
-		return SL_OK;
-	}
-
-	switch (mode) {
-		case SL_LOAD_CHECK: _sl.action = SLA_LOAD_CHECK; break;
-		case SL_LOAD: _sl.action = SLA_LOAD; break;
-		case SL_SAVE: _sl.action = SLA_SAVE; break;
-		default: NOT_REACHED();
-	}
-
 	try {
+		/* Load a TTDLX or TTDPatch game */
+		if (mode == SL_OLD_LOAD) {
+			InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
+
+			/* TTD/TTO savegames have no NewGRFs, TTDP savegame have them
+			* and if so a new NewGRF list will be made in LoadOldSaveGame.
+			* Note: this is done here because AfterLoadGame is also called
+			* for OTTD savegames which have their own NewGRF logic. */
+			ClearGRFConfigList(&_grfconfig);
+			GamelogReset();
+			if (!LoadOldSaveGame(filename)) return SL_REINIT;
+			_sl_version = 0;
+			_sl_minor_version = 0;
+			GamelogStartAction(GLAT_LOAD);
+			if (!AfterLoadGame()) {
+				GamelogStopAction();
+				return SL_REINIT;
+			}
+			GamelogStopAction();
+			return SL_OK;
+		}
+
+		switch (mode) {
+			case SL_LOAD_CHECK: _sl.action = SLA_LOAD_CHECK; break;
+			case SL_LOAD: _sl.action = SLA_LOAD; break;
+			case SL_SAVE: _sl.action = SLA_SAVE; break;
+			default: NOT_REACHED();
+		}
+
 		FILE *fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
 		/* Make it a little easier to load savegames from the console */
@@ -2779,7 +2779,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		if (mode != SL_LOAD_CHECK) DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
-		return (mode == SL_LOAD) ? SL_REINIT : SL_ERROR;
+		return (mode == SL_LOAD || mode == SL_OLD_LOAD) ? SL_REINIT : SL_ERROR;
 	}
 }
 
