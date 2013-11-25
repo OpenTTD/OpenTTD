@@ -2012,8 +2012,7 @@ void Vehicle::BeginLoading()
 						}
 					}
 				} else if (!suppress_implicit_orders &&
-						((this->orders.list == NULL && OrderList::CanAllocateItem()) ||
-						this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID) &&
+						((this->orders.list == NULL ? OrderList::CanAllocateItem() : this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID)) &&
 						Order::CanAllocateItem()) {
 					/* Insert new implicit order */
 					Order *implicit_order = new Order();
