@@ -21,7 +21,6 @@
 #include <stdarg.h>
 
 static const uint ICON_TOKEN_COUNT = 20;     ///< Maximum number of tokens in one command
-static const uint ICON_MAX_ALIAS_LINES = 40; ///< Maximum number of commands executed by one alias
 
 /* console parser */
 IConsoleCmd   *_iconsole_cmds;    ///< list of registered commands
@@ -316,17 +315,6 @@ IConsoleAlias *IConsoleAliasGet(const char *name)
 
 	return NULL;
 }
-
-/** copy in an argument into the aliasstream */
-static inline int IConsoleCopyInParams(char *dst, const char *src, uint bufpos)
-{
-	/* len is the amount of bytes to add excluding the '\0'-termination */
-	int len = min(ICON_MAX_STREAMSIZE - bufpos - 1, (uint)strlen(src));
-	strecpy(dst, src, dst + len);
-
-	return len;
-}
-
 /**
  * An alias is just another name for a command, or for more commands
  * Execute it as well.
@@ -336,28 +324,23 @@ static inline int IConsoleCopyInParams(char *dst, const char *src, uint bufpos)
  */
 static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[ICON_TOKEN_COUNT])
 {
-	const char *cmdptr;
-	char *aliases[ICON_MAX_ALIAS_LINES], aliasstream[ICON_MAX_STREAMSIZE];
-	uint i;
-	uint a_index, astream_i;
-
-	memset(&aliases, 0, sizeof(aliases));
-	memset(&aliasstream, 0, sizeof(aliasstream));
+	char  alias_buffer[ICON_MAX_STREAMSIZE] = { '\0' };
+	char *alias_stream = alias_buffer;
 
 	DEBUG(console, 6, "Requested command is an alias; parsing...");
 
-	aliases[0] = aliasstream;
-	for (cmdptr = alias->cmdline, a_index = 0, astream_i = 0; *cmdptr != '\0'; cmdptr++) {
-		if (a_index >= lengthof(aliases) || astream_i >= lengthof(aliasstream)) break;
-
+	for (const char *cmdptr = alias->cmdline; *cmdptr != '\0'; cmdptr++) {
 		switch (*cmdptr) {
 			case '\'': // ' will double for ""
-				aliasstream[astream_i++] = '"';
+				alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
 				break;
 
-			case ';': // Cmd separator, start new command
-				aliasstream[astream_i] = '\0';
-				aliases[++a_index] = &aliasstream[++astream_i];
+			case ';': // Cmd separator; execute previous and start new command
+				IConsoleCmdExec(alias_buffer);
+
+				alias_stream = alias_buffer;
+				*alias_stream = '\0'; // Make sure the new command is terminated.
+
 				cmdptr++;
 				break;
 
@@ -365,22 +348,22 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 				cmdptr++;
 				switch (*cmdptr) {
 					case '+': { // All parameters separated: "[param 1]" "[param 2]"
-						for (i = 0; i != tokencount; i++) {
-							aliasstream[astream_i++] = '"';
-							astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
-							aliasstream[astream_i++] = '"';
-							aliasstream[astream_i++] = ' ';
+						for (uint i = 0; i != tokencount; i++) {
+							if (i != 0) alias_stream = strecpy(alias_stream, " ", lastof(alias_buffer));
+							alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+							alias_stream = strecpy(alias_stream, tokens[i], lastof(alias_buffer));
+							alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
 						}
 						break;
 					}
 
 					case '!': { // Merge the parameters to one: "[param 1] [param 2] [param 3...]"
-						aliasstream[astream_i++] = '"';
-						for (i = 0; i != tokencount; i++) {
-							astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
-							aliasstream[astream_i++] = ' ';
+						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+						for (uint i = 0; i != tokencount; i++) {
+							if (i != 0) alias_stream = strecpy(alias_stream, " ", lastof(alias_buffer));
+							alias_stream = strecpy(alias_stream, tokens[i], lastof(alias_buffer));
 						}
-						aliasstream[astream_i++] = '"';
+						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
 						break;
 					}
 
@@ -393,21 +376,27 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 							return;
 						}
 
-						aliasstream[astream_i++] = '"';
-						astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[param], astream_i);
-						aliasstream[astream_i++] = '"';
+						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+						alias_stream = strecpy(alias_stream, tokens[param], lastof(alias_buffer));
+						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
 						break;
 					}
 				}
 				break;
 
 			default:
-				aliasstream[astream_i++] = *cmdptr;
+				*alias_stream++ = *cmdptr;
+				*alias_stream = '\0';
 				break;
+		}
+
+		if (alias_stream >= lastof(alias_buffer) - 1) {
+			IConsoleError("Requested alias execution would overflow execution buffer");
+			return;
 		}
 	}
 
-	for (i = 0; i <= a_index; i++) IConsoleCmdExec(aliases[i]); // execute each alias in turn
+	IConsoleCmdExec(alias_buffer);
 }
 
 /**
