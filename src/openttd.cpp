@@ -799,7 +799,9 @@ int openttd_main(int argc, char *argv[])
 #endif /* ENABLE_NETWORK */
 
 	if (!HandleBootstrap()) {
+		delete scanner;
 		ShutdownGame();
+
 		goto exit_bootstrap;
 	}
 
@@ -863,6 +865,7 @@ int openttd_main(int argc, char *argv[])
 
 	CheckForMissingGlyphs();
 
+	/* ScanNewGRFFiles now has control over the scanner. */
 	ScanNewGRFFiles(scanner);
 
 	_video_driver->MainLoop();
