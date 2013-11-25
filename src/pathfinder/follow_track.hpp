@@ -77,6 +77,8 @@ struct CFollowTrackT
 		m_veh_owner = o;
 		m_pPerf = pPerf;
 		/* don't worry, all is inlined so compiler should remove unnecessary initializations */
+		m_old_tile = INVALID_TILE;
+		m_old_td = INVALID_TRACKDIR;
 		m_new_tile = INVALID_TILE;
 		m_new_td_bits = TRACKDIR_BIT_NONE;
 		m_exitdir = INVALID_DIAGDIR;
