@@ -38,6 +38,16 @@ static inline bool IsValidRoadType(RoadType rt)
 }
 
 /**
+ * Whether the given roadtype is valid.
+ * @param rt the roadtype to check for validness
+ * @return true if and only if valid
+ */
+static inline bool IsValidRoadBits(RoadBits r)
+{
+	return r < ROAD_END;
+}
+
+/**
  * Maps a RoadType to the corresponding RoadTypes value
  *
  * @param rt the roadtype to get the roadtypes from
@@ -45,6 +55,7 @@ static inline bool IsValidRoadType(RoadType rt)
  */
 static inline RoadTypes RoadTypeToRoadTypes(RoadType rt)
 {
+	assert(IsValidRoadType(rt));
 	return (RoadTypes)(1 << rt);
 }
 
@@ -73,6 +84,7 @@ static inline RoadTypes ComplementRoadTypes(RoadTypes r)
  */
 static inline RoadBits ComplementRoadBits(RoadBits r)
 {
+	assert(IsValidRoadBits(r));
 	return (RoadBits)(ROAD_ALL ^ r);
 }
 
@@ -86,6 +98,7 @@ static inline RoadBits ComplementRoadBits(RoadBits r)
  */
 static inline RoadBits MirrorRoadBits(RoadBits r)
 {
+	assert(IsValidRoadBits(r));
 	return (RoadBits)(GB(r, 0, 2) << 2 | GB(r, 2, 2));
 }
 
@@ -100,6 +113,7 @@ static inline RoadBits MirrorRoadBits(RoadBits r)
  */
 static inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
 {
+	assert(IsValidRoadBits(r));
 	for (; rot > (DiagDirDiff)0; rot--) {
 		r = (RoadBits)(GB(r, 0, 1) << 3 | GB(r, 1, 3));
 	}
@@ -114,6 +128,7 @@ static inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
  */
 static inline bool IsStraightRoad(RoadBits r)
 {
+	assert(IsValidRoadBits(r));
 	return (r == ROAD_X || r == ROAD_Y);
 }
 
@@ -128,6 +143,7 @@ static inline bool IsStraightRoad(RoadBits r)
  */
 static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 {
+	assert(IsValidDiagDirection(d));
 	return (RoadBits)(ROAD_NW << (3 ^ d));
 }
 
@@ -142,6 +158,7 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
  */
 static inline RoadBits AxisToRoadBits(Axis a)
 {
+	assert(IsValidAxis(a));
 	return a == AXIS_X ? ROAD_X : ROAD_Y;
 }
 
@@ -154,7 +171,7 @@ static inline RoadBits AxisToRoadBits(Axis a)
  */
 static inline Money RoadMaintenanceCost(RoadType roadtype, uint32 num)
 {
-	assert(roadtype < ROADTYPE_END);
+	assert(IsValidRoadType(roadtype));
 	return (_price[PR_INFRASTRUCTURE_ROAD] * (roadtype == ROADTYPE_TRAM ? 3 : 2) * num * (1 + IntSqrt(num))) >> 9; // 2 bits fraction for the multiplier and 7 bits scaling.
 }
 

@@ -15,6 +15,39 @@
 #include "direction_type.h"
 
 /**
+ * Checks if an integer value is a valid DiagDirection
+ *
+ * @param d The value to check
+ * @return True if the value belongs to a DiagDirection, else false
+ */
+static inline bool IsValidDiagDirection(DiagDirection d)
+{
+	return d < DIAGDIR_END;
+}
+
+/**
+ * Checks if an integer value is a valid Direction
+ *
+ * @param d The value to check
+ * @return True if the value belongs to a Direction, else false
+ */
+static inline bool IsValidDirection(Direction d)
+{
+	return d < DIR_END;
+}
+
+/**
+ * Checks if an integer value is a valid Axis
+ *
+ * @param d The value to check
+ * @return True if the value belongs to an Axis, else false
+ */
+static inline bool IsValidAxis(Axis d)
+{
+	return d < AXIS_END;
+}
+
+/**
  * Return the reverse of a direction
  *
  * @param d The direction to get the reverse from
@@ -22,6 +55,7 @@
  */
 static inline Direction ReverseDir(Direction d)
 {
+	assert(IsValidDirection(d));
 	return (Direction)(4 ^ d);
 }
 
@@ -35,6 +69,8 @@ static inline Direction ReverseDir(Direction d)
  */
 static inline DirDiff DirDifference(Direction d0, Direction d1)
 {
+	assert(IsValidDirection(d0));
+	assert(IsValidDirection(d1));
 	/* Cast to uint so compiler can use bitmask. If the difference is negative
 	 * and we used int instead of uint, further "+ 8" would have to be added. */
 	return (DirDiff)((uint)(d0 - d1) % 8);
@@ -69,6 +105,7 @@ static inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
  */
 static inline Direction ChangeDir(Direction d, DirDiff delta)
 {
+	assert(IsValidDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
 	return (Direction)((uint)(d + delta) % 8);
 }
@@ -82,6 +119,7 @@ static inline Direction ChangeDir(Direction d, DirDiff delta)
  */
 static inline DiagDirection ReverseDiagDir(DiagDirection d)
 {
+	assert(IsValidDiagDirection(d));
 	return (DiagDirection)(2 ^ d);
 }
 
@@ -98,6 +136,7 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
  */
 static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 {
+	assert(IsValidDiagDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
 	return (DiagDirection)((uint)(d + delta) % 4);
 }
@@ -114,6 +153,7 @@ static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
  */
 static inline DiagDirection DirToDiagDir(Direction dir)
 {
+	assert(IsValidDirection(dir));
 	return (DiagDirection)(dir >> 1);
 }
 
@@ -129,6 +169,7 @@ static inline DiagDirection DirToDiagDir(Direction dir)
  */
 static inline Direction DiagDirToDir(DiagDirection dir)
 {
+	assert(IsValidDiagDirection(dir));
 	return (Direction)(dir * 2 + 1);
 }
 
@@ -143,6 +184,7 @@ static inline Direction DiagDirToDir(DiagDirection dir)
  */
 static inline Axis OtherAxis(Axis a)
 {
+	assert(IsValidAxis(a));
 	return (Axis)(a ^ 1);
 }
 
@@ -159,6 +201,7 @@ static inline Axis OtherAxis(Axis a)
  */
 static inline Axis DiagDirToAxis(DiagDirection d)
 {
+	assert(IsValidDiagDirection(d));
 	return (Axis)(d & 1);
 }
 
@@ -176,6 +219,7 @@ static inline Axis DiagDirToAxis(DiagDirection d)
  */
 static inline DiagDirection AxisToDiagDir(Axis a)
 {
+	assert(IsValidAxis(a));
 	return (DiagDirection)(2 - a);
 }
 
@@ -192,6 +236,7 @@ static inline DiagDirection AxisToDiagDir(Axis a)
  */
 static inline Direction AxisToDirection(Axis a)
 {
+	assert(IsValidAxis(a));
 	return (Direction)(5 - 2 * a);
 }
 
@@ -203,40 +248,8 @@ static inline Direction AxisToDirection(Axis a)
  */
 static inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
 {
+	assert(IsValidAxis(xy));
 	return (DiagDirection)(xy * 3 ^ ns * 2);
-}
-
-/**
- * Checks if an integer value is a valid DiagDirection
- *
- * @param d The value to check
- * @return True if the value belongs to a DiagDirection, else false
- */
-static inline bool IsValidDiagDirection(DiagDirection d)
-{
-	return d < DIAGDIR_END;
-}
-
-/**
- * Checks if an integer value is a valid Direction
- *
- * @param d The value to check
- * @return True if the value belongs to a Direction, else false
- */
-static inline bool IsValidDirection(Direction d)
-{
-	return d < DIR_END;
-}
-
-/**
- * Checks if an integer value is a valid Axis
- *
- * @param d The value to check
- * @return True if the value belongs to an Axis, else false
- */
-static inline bool IsValidAxis(Axis d)
-{
-	return d < AXIS_END;
 }
 
 /**
@@ -247,6 +260,7 @@ static inline bool IsValidAxis(Axis d)
  */
 static inline bool IsDiagonalDirection(Direction dir)
 {
+	assert(IsValidDirection(dir));
 	return (dir & 1) != 0;
 }
 
