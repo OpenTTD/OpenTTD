@@ -466,7 +466,10 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 
 		switch (us) {
 			case SQ_BYTECODE_STREAM_TAG: { // BYTECODE
-				fseek(file, -2, SEEK_CUR);
+				if (fseek(file, -2, SEEK_CUR) < 0) {
+					FioFCloseFile(file);
+					return sq_throwerror(vm, _SC("cannot seek the file"));
+				}
 				if (SQ_SUCCEEDED(sq_readclosure(vm, _io_file_read, &f))) {
 					FioFCloseFile(file);
 					return SQ_OK;
@@ -496,7 +499,8 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 			default: // ASCII
 				func = _io_file_lexfeed_ASCII;
 				if (fseek(file, -2, SEEK_CUR) < 0) {
-					return sq_throwerror(vm, _SC("cannot read the file"));
+					FioFCloseFile(file);
+					return sq_throwerror(vm, _SC("cannot seek the file"));
 				}
 				break;
 		}
