@@ -47,10 +47,7 @@ struct VehicleListIdentifier {
 	VehicleListIdentifier(VehicleListType type, VehicleType vtype, CompanyID company, uint index = 0) :
 		type(type), vtype(vtype), company(company), index(index) {}
 
-	VehicleListIdentifier(uint32 data);
-
-	/** Simple empty constructor. In this case you must set everything! */
-	VehicleListIdentifier() {}
+	VehicleListIdentifier(uint32 data = 0);
 };
 
 /** A list of vehicles. */
