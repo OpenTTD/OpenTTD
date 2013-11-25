@@ -32,20 +32,18 @@ public:
 };
 
 /** Factory for allegro's music player. */
-class FMusicDriver_Allegro: public MusicDriverFactory<FMusicDriver_Allegro> {
+class FMusicDriver_Allegro : public DriverFactoryBase {
 public:
 #if !defined(WITH_SDL) && defined(WITH_ALLEGRO)
 	/* If SDL is not compiled in but Allegro is, chances are quite big
 	 * that Allegro is going to be used. Then favour this sound driver
 	 * over extmidi because with extmidi we get crashes. */
-	static const int priority = 9;
+	static const int PRIORITY = 9;
 #else
-	static const int priority = 2;
+	static const int PRIORITY = 2;
 #endif
-
-	/* virtual */ const char *GetName() { return "allegro"; }
-	/* virtual */ const char *GetDescription() { return "Allegro MIDI Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Allegro(); }
+	FMusicDriver_Allegro() : DriverFactoryBase(Driver::DT_MUSIC, PRIORITY, "allegro", "Allegro MIDI Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_Allegro(); }
 };
 
 #endif /* MUSIC_ALLEGRO_H */

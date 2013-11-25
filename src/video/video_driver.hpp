@@ -80,25 +80,6 @@ public:
 	virtual void EditBoxLostFocus() {}
 };
 
-/** Base of the factory for the video drivers. */
-class VideoDriverFactoryBase: public DriverFactoryBase {
-};
-
-/**
- * Factory for the video drivers.
- * @tparam T The type of the video factory to register.
- */
-template <class T>
-class VideoDriverFactory: public VideoDriverFactoryBase {
-public:
-	VideoDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_VIDEO, ((T *)this)->priority); }
-
-	/**
-	 * Get the long, human readable, name for the Driver-class.
-	 */
-	const char *GetName();
-};
-
 extern VideoDriver *_video_driver;
 extern char *_ini_videodriver;
 extern int _num_resolutions;

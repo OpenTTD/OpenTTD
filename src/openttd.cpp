@@ -190,7 +190,7 @@ static void ShowHelp()
 	p = BaseMusic::GetSetsList(p, lastof(buf));
 
 	/* List the drivers */
-	p = VideoDriverFactoryBase::GetDriversInfo(p, lastof(buf));
+	p = DriverFactoryBase::GetDriversInfo(p, lastof(buf));
 
 	/* List the blitters */
 	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
@@ -767,7 +767,7 @@ int openttd_main(int argc, char *argv[])
 	free(blitter);
 
 	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = strdup(_ini_videodriver);
-	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
+	_video_driver = (VideoDriver*)DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	if (_video_driver == NULL) {
 		StrEmpty(videodriver) ?
 			usererror("Failed to autoprobe video driver") :
@@ -833,7 +833,7 @@ int openttd_main(int argc, char *argv[])
 	free(music_set);
 
 	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = strdup(_ini_sounddriver);
-	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
+	_sound_driver = (SoundDriver*)DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
 	if (_sound_driver == NULL) {
 		StrEmpty(sounddriver) ?
 			usererror("Failed to autoprobe sound driver") :
@@ -842,7 +842,7 @@ int openttd_main(int argc, char *argv[])
 	free(sounddriver);
 
 	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
-	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
+	_music_driver = (MusicDriver*)DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
 	if (_music_driver == NULL) {
 		StrEmpty(musicdriver) ?
 			usererror("Failed to autoprobe music driver") :

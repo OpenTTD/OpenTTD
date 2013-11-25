@@ -34,12 +34,10 @@ public:
 };
 
 /** Factory for the DirectX music player. */
-class FMusicDriver_DMusic: public MusicDriverFactory<FMusicDriver_DMusic> {
+class FMusicDriver_DMusic : public DriverFactoryBase {
 public:
-	static const int priority = 10;
-	/* virtual */ const char *GetName() { return "dmusic"; }
-	/* virtual */ const char *GetDescription() { return "DirectMusic MIDI Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_DMusic(); }
+	FMusicDriver_DMusic() : DriverFactoryBase(Driver::DT_MUSIC, 10, "dmusic", "DirectMusic MIDI Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_DMusic(); }
 };
 
 #endif /* MUSIC_DMUSIC_H */

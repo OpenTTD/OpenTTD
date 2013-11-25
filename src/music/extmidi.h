@@ -38,12 +38,10 @@ public:
 	/* virtual */ const char *GetName() const { return "extmidi"; }
 };
 
-class FMusicDriver_ExtMidi: public MusicDriverFactory<FMusicDriver_ExtMidi> {
+class FMusicDriver_ExtMidi : public DriverFactoryBase {
 public:
-	static const int priority = 3;
-	/* virtual */ const char *GetName() { return "extmidi"; }
-	/* virtual */ const char *GetDescription() { return "External MIDI Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_ExtMidi(); }
+	FMusicDriver_ExtMidi() : DriverFactoryBase(Driver::DT_MUSIC, 3, "extmidi", "External MIDI Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_ExtMidi(); }
 };
 
 #endif /* MUSIC_EXTERNAL_H */

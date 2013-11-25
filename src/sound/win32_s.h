@@ -24,12 +24,10 @@ public:
 };
 
 /** Factory for the sound driver for Windows. */
-class FSoundDriver_Win32: public SoundDriverFactory<FSoundDriver_Win32> {
+class FSoundDriver_Win32 : public DriverFactoryBase {
 public:
-	static const int priority = 10;
-	/* virtual */ const char *GetName() { return "win32"; }
-	/* virtual */ const char *GetDescription() { return "Win32 WaveOut Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Win32(); }
+	FSoundDriver_Win32() : DriverFactoryBase(Driver::DT_SOUND, 10, "win32", "Win32 WaveOut Sound Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_Win32(); }
 };
 
 #endif /* SOUND_WIN32_H */

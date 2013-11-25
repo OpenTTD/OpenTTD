@@ -36,12 +36,10 @@ public:
 };
 
 /** Factory the null video driver. */
-class FVideoDriver_Null: public VideoDriverFactory<FVideoDriver_Null> {
+class FVideoDriver_Null : public DriverFactoryBase {
 public:
-	static const int priority = 0;
-	/* virtual */ const char *GetName() { return "null"; }
-	/* virtual */ const char *GetDescription() { return "Null Video Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Null(); }
+	FVideoDriver_Null() : DriverFactoryBase(Driver::DT_VIDEO, 0, "null", "Null Video Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Null(); }
 };
 
 #endif /* VIDEO_NULL_H */

@@ -165,33 +165,6 @@ Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
 }
 
 /**
- * Register a driver internally, based on its name.
- * @param name the name of the driver.
- * @param type the type of driver to register
- * @param priority the priority; how badly do we want this as default?
- * @note an assert() will be trigger if 2 driver with the same name try to register.
- */
-void DriverFactoryBase::RegisterDriver(const char *name, Driver::Type type, int priority)
-{
-	/* Don't register nameless Drivers */
-	if (name == NULL) return;
-
-	this->name = strdup(name);
-	this->type = type;
-	this->priority = priority;
-
-	/* Prefix the name with driver type to make it unique */
-	char buf[32];
-	strecpy(buf, GetDriverTypeName(type), lastof(buf));
-	strecpy(buf + 5, name, lastof(buf));
-
-	const char *longname = strdup(buf);
-
-	std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(longname, this));
-	assert(P.second);
-}
-
-/**
  * Build a human readable list of available drivers, grouped by type.
  * @param p The buffer to write to.
  * @param last The last element in the buffer.
@@ -219,12 +192,31 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 }
 
 /**
+ * Construct a new DriverFactory.
+ * @param type        The type of driver.
+ * @param priority    The priority within the driver class.
+ * @param name        The name of the driver.
+ * @param description A long-ish description of the driver.
+ */
+DriverFactoryBase::DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description) :
+	type(type), priority(priority), name(name), description(description)
+{
+	/* Prefix the name with driver type to make it unique */
+	char buf[32];
+	strecpy(buf, GetDriverTypeName(type), lastof(buf));
+	strecpy(buf + 5, name, lastof(buf));
+
+	const char *longname = strdup(buf);
+
+	std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(longname, this));
+	assert(P.second);
+}
+
+/**
  * Frees memory used for this->name
  */
 DriverFactoryBase::~DriverFactoryBase()
 {
-	if (this->name == NULL) return;
-
 	/* Prefix the name with driver type to make it unique */
 	char buf[32];
 	strecpy(buf, GetDriverTypeName(type), lastof(buf));
@@ -239,5 +231,4 @@ DriverFactoryBase::~DriverFactoryBase()
 	free(longname);
 
 	if (GetDrivers().empty()) delete &GetDrivers();
-	free(this->name);
 }

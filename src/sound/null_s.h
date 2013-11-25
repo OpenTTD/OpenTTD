@@ -24,12 +24,10 @@ public:
 };
 
 /** Factory for the null sound driver. */
-class FSoundDriver_Null: public SoundDriverFactory<FSoundDriver_Null> {
+class FSoundDriver_Null : public DriverFactoryBase {
 public:
-	static const int priority = 1;
-	/* virtual */ const char *GetName() { return "null"; }
-	/* virtual */ const char *GetDescription() { return "Null Sound Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Null(); }
+	FSoundDriver_Null() : DriverFactoryBase(Driver::DT_SOUND, 1, "null", "Null Sound Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_Null(); }
 };
 
 #endif /* SOUND_NULL_H */

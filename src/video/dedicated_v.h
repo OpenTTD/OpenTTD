@@ -33,18 +33,17 @@ public:
 };
 
 /** Factory for the dedicated server video driver. */
-class FVideoDriver_Dedicated: public VideoDriverFactory<FVideoDriver_Dedicated> {
+class FVideoDriver_Dedicated : public DriverFactoryBase {
 public:
 #ifdef DEDICATED
 	/* Automatically select this dedicated driver when making a dedicated
 	 * server build. */
-	static const int priority = 10;
+	static const int PRIORITY = 10;
 #else
-	static const int priority = 0;
+	static const int PRIORITY = 0;
 #endif
-	/* virtual */ const char *GetName() { return "dedicated"; }
-	/* virtual */ const char *GetDescription() { return "Dedicated Video Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Dedicated(); }
+	FVideoDriver_Dedicated() : DriverFactoryBase(Driver::DT_VIDEO, PRIORITY, "dedicated", "Dedicated Video Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Dedicated(); }
 };
 
 #endif /* VIDEO_DEDICATED_H */

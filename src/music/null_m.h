@@ -32,12 +32,10 @@ public:
 };
 
 /** Factory for the null music player. */
-class FMusicDriver_Null: public MusicDriverFactory<FMusicDriver_Null> {
+class FMusicDriver_Null : public DriverFactoryBase {
 public:
-	static const int priority = 1;
-	/* virtual */ const char *GetName() { return "null"; }
-	/* virtual */ const char *GetDescription() { return "Null Music Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Null(); }
+	FMusicDriver_Null() : DriverFactoryBase(Driver::DT_MUSIC, 1, "null", "Null Music Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_Null(); }
 };
 
 #endif /* MUSIC_NULL_H */

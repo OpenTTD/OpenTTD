@@ -30,12 +30,10 @@ public:
 	/* virtual */ const char *GetName() const { return "qt"; }
 };
 
-class FMusicDriver_QtMidi: public MusicDriverFactory<FMusicDriver_QtMidi> {
+class FMusicDriver_QtMidi : public DriverFactoryBase {
 public:
-	static const int priority = 5;
-	/* virtual */ const char *GetName() { return "qt"; }
-	/* virtual */ const char *GetDescription() { return "QuickTime MIDI Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_QtMidi(); }
+	FMusicDriver_QtMidi() : DriverFactoryBase(Driver::DT_MUSIC, 5, "qt", "QuickTime MIDI Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_QtMidi(); }
 };
 
 #endif /* MUSIC_MACOSX_QUICKTIME_H */

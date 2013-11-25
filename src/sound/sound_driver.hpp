@@ -21,25 +21,6 @@ public:
 	virtual void MainLoop() {}
 };
 
-/** Base of the factory for the sound drivers. */
-class SoundDriverFactoryBase: public DriverFactoryBase {
-};
-
-/**
- * Factory for the sound drivers.
- * @tparam T The type of the sound factory to register.
- */
-template <class T>
-class SoundDriverFactory: public SoundDriverFactoryBase {
-public:
-	SoundDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_SOUND, ((T *)this)->priority); }
-
-	/**
-	 * Get the long, human readable, name for the Driver-class.
-	 */
-	const char *GetName();
-};
-
 extern SoundDriver *_sound_driver;
 extern char *_ini_sounddriver;
 

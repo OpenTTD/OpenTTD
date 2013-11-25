@@ -32,12 +32,10 @@ public:
 };
 
 /** Factory for Windows' music player. */
-class FMusicDriver_Win32: public MusicDriverFactory<FMusicDriver_Win32> {
+class FMusicDriver_Win32 : public DriverFactoryBase {
 public:
-	static const int priority = 5;
-	/* virtual */ const char *GetName() { return "win32"; }
-	/* virtual */ const char *GetDescription() { return "Win32 Music Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Win32(); }
+	FMusicDriver_Win32() : DriverFactoryBase(Driver::DT_MUSIC, 5, "win32", "Win32 Music Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_Win32(); }
 };
 
 #endif /* MUSIC_WIN32_H */

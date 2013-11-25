@@ -32,12 +32,10 @@ public:
 };
 
 /** Factory for the BeOS midi player. */
-class FMusicDriver_BeMidi: public MusicDriverFactory<FMusicDriver_BeMidi> {
+class FMusicDriver_BeMidi : public DriverFactoryBase {
 public:
-	static const int priority = 10;
-	/* virtual */ const char *GetName() { return "bemidi"; }
-	/* virtual */ const char *GetDescription() { return "BeOS MIDI Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_BeMidi(); }
+	FMusicDriver_BeMidi() : DriverFactoryBase(Driver::DT_MUSIC, 10, "bemidi", "BeOS MIDI Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_BeMidi(); }
 };
 
 #endif /* MUSIC_BEMIDI_H */

@@ -41,12 +41,10 @@ private:
 };
 
 /** Factory for the SDL video driver. */
-class FVideoDriver_SDL: public VideoDriverFactory<FVideoDriver_SDL> {
+class FVideoDriver_SDL : public DriverFactoryBase {
 public:
-	static const int priority = 5;
-	/* virtual */ const char *GetName() { return "sdl"; }
-	/* virtual */ const char *GetDescription() { return "SDL Video Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new VideoDriver_SDL(); }
+	FVideoDriver_SDL() : DriverFactoryBase(Driver::DT_VIDEO, 5, "sdl", "SDL Video Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_SDL(); }
 };
 
 #endif /* VIDEO_SDL_H */

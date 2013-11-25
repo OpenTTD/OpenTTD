@@ -26,12 +26,10 @@ public:
 };
 
 /** Factory for the allegro sound driver. */
-class FSoundDriver_Allegro: public SoundDriverFactory<FSoundDriver_Allegro> {
+class FSoundDriver_Allegro : public DriverFactoryBase {
 public:
-	static const int priority = 4;
-	/* virtual */ const char *GetName() { return "allegro"; }
-	/* virtual */ const char *GetDescription() { return "Allegro Sound Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Allegro(); }
+	FSoundDriver_Allegro() : DriverFactoryBase(Driver::DT_SOUND, 4, "allegro", "Allegro Sound Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_Allegro(); }
 };
 
 #endif /* SOUND_ALLEGRO_H */

@@ -61,12 +61,10 @@ public:
 	/* virtual */ const char *GetName() const { return "cocoa"; }
 };
 
-class FVideoDriver_Cocoa: public VideoDriverFactory<FVideoDriver_Cocoa> {
+class FVideoDriver_Cocoa : public DriverFactoryBase {
 public:
-	static const int priority = 10;
-	/* virtual */ const char *GetName() { return "cocoa"; }
-	/* virtual */ const char *GetDescription() { return "Cocoa Video Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Cocoa(); }
+	FVideoDriver_Cocoa() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Cocoa(); }
 };
 
 

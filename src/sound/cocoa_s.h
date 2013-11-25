@@ -22,12 +22,10 @@ public:
 	/* virtual */ const char *GetName() const { return "cocoa"; }
 };
 
-class FSoundDriver_Cocoa: public SoundDriverFactory<FSoundDriver_Cocoa> {
+class FSoundDriver_Cocoa : public DriverFactoryBase {
 public:
-	static const int priority = 10;
-	/* virtual */ const char *GetName() { return "cocoa"; }
-	/* virtual */ const char *GetDescription() { return "Cocoa Sound Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Cocoa(); }
+	FSoundDriver_Cocoa() : DriverFactoryBase(Driver::DT_SOUND, 10, "cocoa", "Cocoa Sound Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_Cocoa(); }
 };
 
 #endif /* SOUND_COCOA_H */

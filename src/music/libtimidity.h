@@ -32,12 +32,10 @@ public:
 };
 
 /** Factory for the libtimidity driver. */
-class FMusicDriver_LibTimidity: public MusicDriverFactory<FMusicDriver_LibTimidity> {
+class FMusicDriver_LibTimidity : public DriverFactoryBase {
 public:
-	static const int priority = 5;
-	/* virtual */ const char *GetName() { return "libtimidity"; }
-	/* virtual */ const char *GetDescription() { return "LibTimidity MIDI Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_LibTimidity(); }
+	FMusicDriver_LibTimidity() : DriverFactoryBase(Driver::DT_MUSIC, 5, "libtimidity", "LibTimidity MIDI Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_LibTimidity(); }
 };
 
 #endif /* MUSIC_LIBTIMIDITY_H */

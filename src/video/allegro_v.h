@@ -37,12 +37,10 @@ public:
 };
 
 /** Factory for the allegro video driver. */
-class FVideoDriver_Allegro: public VideoDriverFactory<FVideoDriver_Allegro> {
+class FVideoDriver_Allegro : public DriverFactoryBase {
 public:
-	static const int priority = 4;
-	/* virtual */ const char *GetName() { return "allegro"; }
-	/* virtual */ const char *GetDescription() { return "Allegro Video Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Allegro(); }
+	FVideoDriver_Allegro() : DriverFactoryBase(Driver::DT_VIDEO, 4, "allegro", "Allegro Video Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Allegro(); }
 };
 
 #endif /* VIDEO_ALLEGRO_H */

@@ -32,12 +32,10 @@ public:
 };
 
 /** Factory for OS/2's music player. */
-class FMusicDriver_OS2: public MusicDriverFactory<FMusicDriver_OS2> {
+class FMusicDriver_OS2 : public DriverFactoryBase {
 public:
-	static const int priority = 10;
-	/* virtual */ const char *GetName() { return "os2"; }
-	/* virtual */ const char *GetDescription() { return "OS/2 Music Driver"; }
-	/* virtual */ Driver *CreateInstance() { return new MusicDriver_OS2(); }
+	FMusicDriver_OS2() : DriverFactoryBase(Driver::DT_MUSIC, 10, "os2", "OS/2 Music Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_OS2(); }
 };
 
 #endif /* MUSIC_OS2_H */
