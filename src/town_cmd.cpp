@@ -1317,7 +1317,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 		/* Exclude the source position from the bitmask
 		 * and return if no more road blocks available */
-		cur_rb &= ~DiagDirToRoadBits(ReverseDiagDir(target_dir));
+		if (IsValidDiagDirection(target_dir)) cur_rb &= ~DiagDirToRoadBits(ReverseDiagDir(target_dir));
 		if (cur_rb == ROAD_NONE) {
 			return _grow_town_result;
 		}
