@@ -56,7 +56,7 @@ public:
 };
 
 /** Factory for the 32bpp blitter with animation. */
-class FBlitter_32bppAnim: public BlitterFactory<FBlitter_32bppAnim> {
+class FBlitter_32bppAnim : public BlitterFactory<FBlitter_32bppAnim> {
 public:
 	/* virtual */ const char *GetName() { return "32bpp-anim"; }
 	/* virtual */ const char *GetDescription() { return "32bpp Animation Blitter (palette animation)"; }

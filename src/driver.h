@@ -59,9 +59,9 @@ DECLARE_POSTFIX_INCREMENT(Driver::Type)
 /** Base for all driver factories. */
 class DriverFactoryBase {
 private:
-	Driver::Type type; ///< The type of driver.
+	Driver::Type type;       ///< The type of driver.
 	int priority;            ///< The priority of this factory.
-	const char *name;  ///< The name of the drivers of this factory.
+	const char *name;        ///< The name of the drivers of this factory.
 	const char *description; ///< The description of this driver.
 
 	typedef std::map<const char *, DriverFactoryBase *, StringCompare> Drivers; ///< Type for a map of drivers.

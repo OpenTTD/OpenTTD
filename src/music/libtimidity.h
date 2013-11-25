@@ -15,7 +15,7 @@
 #include "music_driver.hpp"
 
 /** Music driver making use of libtimidity. */
-class MusicDriver_LibTimidity: public MusicDriver {
+class MusicDriver_LibTimidity : public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

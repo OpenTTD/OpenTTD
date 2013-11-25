@@ -45,7 +45,7 @@
 class WindowQuickdrawSubdriver;
 
 
-class WindowQuickdrawSubdriver: public CocoaSubdriver {
+class WindowQuickdrawSubdriver : public CocoaSubdriver {
 private:
 	/**
 	 * This function copies 32bpp pixels from the screen buffer in 16bpp windowed mode.

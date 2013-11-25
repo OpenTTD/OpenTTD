@@ -57,7 +57,7 @@ class WindowQuartzSubdriver;
 - (void)drawRect:(NSRect)invalidRect;
 @end
 
-class WindowQuartzSubdriver: public CocoaSubdriver {
+class WindowQuartzSubdriver : public CocoaSubdriver {
 private:
 	/**
 	 * This function copies 8bpp pixels from the screen buffer in 32bpp windowed mode.

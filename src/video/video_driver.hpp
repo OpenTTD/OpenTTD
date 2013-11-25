@@ -16,7 +16,7 @@
 #include "../core/geometry_type.hpp"
 
 /** The base of all video drivers. */
-class VideoDriver: public Driver {
+class VideoDriver : public Driver {
 public:
 	/**
 	 * Mark a particular area dirty.

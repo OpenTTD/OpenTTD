@@ -15,7 +15,7 @@
 #include "video_driver.hpp"
 
 /** The dedicated server video driver. */
-class VideoDriver_Dedicated: public VideoDriver {
+class VideoDriver_Dedicated : public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

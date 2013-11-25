@@ -76,7 +76,7 @@ struct OTTD_QuartzGammaTable {
 }
 @end
 
-class FullscreenSubdriver: public CocoaSubdriver {
+class FullscreenSubdriver : public CocoaSubdriver {
 	CGDirectDisplayID  display_id;         ///< 0 == main display (only support single display)
 	CFDictionaryRef    cur_mode;           ///< current mode of the display
 	CFDictionaryRef    save_mode;          ///< original mode of the display

@@ -15,7 +15,7 @@
 #include "sound_driver.hpp"
 
 /** Implementation of the SDL sound driver. */
-class SoundDriver_SDL: public SoundDriver {
+class SoundDriver_SDL : public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

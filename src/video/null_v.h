@@ -15,7 +15,7 @@
 #include "video_driver.hpp"
 
 /** The null video driver. */
-class VideoDriver_Null: public VideoDriver {
+class VideoDriver_Null : public VideoDriver {
 private:
 	uint ticks; ///< Amount of ticks to run.
 

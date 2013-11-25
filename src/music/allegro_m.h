@@ -15,7 +15,7 @@
 #include "music_driver.hpp"
 
 /** Allegro's music player. */
-class MusicDriver_Allegro: public MusicDriver {
+class MusicDriver_Allegro : public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

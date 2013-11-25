@@ -15,7 +15,7 @@
 #include "music_driver.hpp"
 
 /** The midi player for BeOS. */
-class MusicDriver_BeMidi: public MusicDriver {
+class MusicDriver_BeMidi : public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

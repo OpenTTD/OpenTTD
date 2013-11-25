@@ -14,7 +14,7 @@
 
 #include "music_driver.hpp"
 
-class MusicDriver_ExtMidi: public MusicDriver {
+class MusicDriver_ExtMidi : public MusicDriver {
 private:
 	char *command;
 	char song[MAX_PATH];

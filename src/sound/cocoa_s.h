@@ -14,7 +14,7 @@
 
 #include "sound_driver.hpp"
 
-class SoundDriver_Cocoa: public SoundDriver {
+class SoundDriver_Cocoa : public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

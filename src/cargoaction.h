@@ -88,7 +88,7 @@ public:
 };
 
 /** Action of reserving cargo from a station to be loaded onto a vehicle. */
-class CargoReservation: public CargoLoad {
+class CargoReservation : public CargoLoad {
 public:
 	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex load_place) :
 			CargoLoad(source, destination, max_move, load_place) {}
@@ -96,7 +96,7 @@ public:
 };
 
 /** Action of returning previously reserved cargo from the vehicle to the station. */
-class CargoReturn: public CargoMovement<VehicleCargoList, StationCargoList> {
+class CargoReturn : public CargoMovement<VehicleCargoList, StationCargoList> {
 	StationID next;
 public:
 	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move, StationID next) :

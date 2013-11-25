@@ -14,7 +14,7 @@
 
 #include "music_driver.hpp"
 
-class MusicDriver_Cocoa: public MusicDriver {
+class MusicDriver_Cocoa : public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

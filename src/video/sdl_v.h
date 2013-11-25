@@ -15,7 +15,7 @@
 #include "video_driver.hpp"
 
 /** The SDL video driver. */
-class VideoDriver_SDL: public VideoDriver {
+class VideoDriver_SDL : public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

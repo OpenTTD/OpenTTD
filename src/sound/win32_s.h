@@ -15,7 +15,7 @@
 #include "sound_driver.hpp"
 
 /** Implementation of the sound driver for Windows. */
-class SoundDriver_Win32: public SoundDriver {
+class SoundDriver_Win32 : public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

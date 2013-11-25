@@ -15,7 +15,7 @@
 #include "video_driver.hpp"
 
 /** The allegro video driver. */
-class VideoDriver_Allegro: public VideoDriver {
+class VideoDriver_Allegro : public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

@@ -14,7 +14,7 @@
 
 #include "../video_driver.hpp"
 
-class VideoDriver_Cocoa: public VideoDriver {
+class VideoDriver_Cocoa : public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

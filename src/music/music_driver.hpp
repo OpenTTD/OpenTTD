@@ -15,7 +15,7 @@
 #include "../driver.h"
 
 /** Driver for all music playback. */
-class MusicDriver: public Driver {
+class MusicDriver : public Driver {
 public:
 	/**
 	 * Play a particular song.

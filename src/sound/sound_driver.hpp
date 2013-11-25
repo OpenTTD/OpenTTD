@@ -15,7 +15,7 @@
 #include "../driver.h"
 
 /** Base for all sound drivers. */
-class SoundDriver: public Driver {
+class SoundDriver : public Driver {
 public:
 	/** Called once every tick */
 	virtual void MainLoop() {}

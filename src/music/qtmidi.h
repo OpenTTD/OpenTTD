@@ -14,7 +14,7 @@
 
 #include "music_driver.hpp"
 
-class MusicDriver_QtMidi: public MusicDriver {
+class MusicDriver_QtMidi : public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

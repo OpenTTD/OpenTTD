@@ -15,7 +15,7 @@
 #include "music_driver.hpp"
 
 /** Music player making use of DirectX. */
-class MusicDriver_DMusic: public MusicDriver {
+class MusicDriver_DMusic : public MusicDriver {
 public:
 	virtual ~MusicDriver_DMusic();
 

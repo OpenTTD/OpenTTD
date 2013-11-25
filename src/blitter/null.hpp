@@ -38,7 +38,7 @@ public:
 };
 
 /** Factory for the blitter that does nothing. */
-class FBlitter_Null: public BlitterFactory<FBlitter_Null> {
+class FBlitter_Null : public BlitterFactory<FBlitter_Null> {
 public:
 	/* virtual */ const char *GetName() { return "null"; }
 	/* virtual */ const char *GetDescription() { return "Null Blitter (does nothing)"; }

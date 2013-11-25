@@ -15,7 +15,7 @@
 #include "music_driver.hpp"
 
 /** OS/2's music player. */
-class MusicDriver_OS2: public MusicDriver {
+class MusicDriver_OS2 : public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

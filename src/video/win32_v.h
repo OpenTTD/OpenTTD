@@ -15,7 +15,7 @@
 #include "video_driver.hpp"
 
 /** The video driver for windows. */
-class VideoDriver_Win32: public VideoDriver {
+class VideoDriver_Win32 : public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

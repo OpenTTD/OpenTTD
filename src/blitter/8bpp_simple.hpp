@@ -25,7 +25,7 @@ public:
 };
 
 /** Factory for the most trivial 8bpp blitter. */
-class FBlitter_8bppSimple: public BlitterFactory<FBlitter_8bppSimple> {
+class FBlitter_8bppSimple : public BlitterFactory<FBlitter_8bppSimple> {
 public:
 	/* virtual */ const char *GetName() { return "8bpp-simple"; }
 	/* virtual */ const char *GetDescription() { return "8bpp Simple Blitter (relative slow, but never wrong)"; }

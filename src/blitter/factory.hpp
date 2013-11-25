@@ -163,7 +163,7 @@ public:
  * A template factory, so ->GetName() works correctly. This because else some compiler will complain.
  */
 template <class T>
-class BlitterFactory: public BlitterFactoryBase {
+class BlitterFactory : public BlitterFactoryBase {
 public:
 	BlitterFactory() { this->RegisterBlitter(((T *)this)->GetName()); }
 

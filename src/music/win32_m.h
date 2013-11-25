@@ -15,7 +15,7 @@
 #include "music_driver.hpp"
 
 /** The Windows music player. */
-class MusicDriver_Win32: public MusicDriver {
+class MusicDriver_Win32 : public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

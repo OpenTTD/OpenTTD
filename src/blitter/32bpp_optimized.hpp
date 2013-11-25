@@ -32,7 +32,7 @@ public:
 };
 
 /** Factory for the optimised 32 bpp blitter (without palette animation). */
-class FBlitter_32bppOptimized: public BlitterFactory<FBlitter_32bppOptimized> {
+class FBlitter_32bppOptimized : public BlitterFactory<FBlitter_32bppOptimized> {
 public:
 	/* virtual */ const char *GetName() { return "32bpp-optimized"; }
 	/* virtual */ const char *GetDescription() { return "32bpp Optimized Blitter (no palette animation)"; }
