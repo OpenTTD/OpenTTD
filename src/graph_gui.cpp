@@ -200,6 +200,8 @@ protected:
 	 */
 	ValuesInterval GetValuesInterval(int num_hori_lines) const
 	{
+		assert(num_hori_lines > 0);
+
 		ValuesInterval current_interval;
 		current_interval.highest = INT64_MIN;
 		current_interval.lowest  = INT64_MAX;
