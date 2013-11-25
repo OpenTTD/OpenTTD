@@ -907,6 +907,13 @@ exit_normal:
 	free(_ini_videodriver);
 	free(_ini_blitter);
 
+#ifdef ENABLE_NETWORK
+	extern FILE *_log_fd;
+	if (_log_fd != NULL) {
+		fclose(_log_fd);
+	}
+#endif /* ENABLE_NETWORK */
+
 	return ret;
 }
 
