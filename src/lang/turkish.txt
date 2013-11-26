@@ -288,8 +288,8 @@ STR_SORT_BY_TIMETABLE_DELAY                                     :Zaman çizelges
 STR_SORT_BY_FACILITY                                            :İstasyon türü
 STR_SORT_BY_WAITING_TOTAL                                       :Toplam bekleyen kargo
 STR_SORT_BY_WAITING_AVAILABLE                                   :Kullanılabilir bekleyen kargo
-STR_SORT_BY_RATING_MAX                                          :En yüksek kargo puanı
-STR_SORT_BY_RATING_MIN                                          :En düşük kargo puanı
+STR_SORT_BY_RATING_MAX                                          :En yüksek kargo değerlendirmesi
+STR_SORT_BY_RATING_MIN                                          :En düşük kargo değerlendirmesi
 STR_SORT_BY_ENGINE_ID                                           :LokoAdı (klasik sıra)
 STR_SORT_BY_COST                                                :Fiyat
 STR_SORT_BY_POWER                                               :Güç
@@ -411,7 +411,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kargo ödeme ta
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Şirketler ligi tablosu
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı performans seviyesi
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı performans değerlendirmesi
 STR_GRAPH_MENU_HIGHSCORE                                        :Puan tablosu
 ############ range ends here
 
@@ -544,7 +544,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Faaliyet Kâr Grafiği
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gelir Grafiği
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Taşınan kargo
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Performans seviyesi (azami=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Şirket performans değerlendirmeleri (azami=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Şirket Değerleri
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kargo Ödeme Seviyeleri
@@ -577,7 +577,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Genel Müdür
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Kodaman
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Ayrıntılı performans oranı
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Ayrıntılı performans değerlendirmesi
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detay
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -913,7 +913,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Şehir i
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Şehir isimleri için bir tür seçin
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :İngiliz (Orjinal)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :İngiliz (Özgün)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Fransız
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alman
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :İngiliz (İlave)
@@ -1506,7 +1506,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Hepsi
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Yeni kasabalar için yol yerleşimi: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Şehirlerin karayolu ağlarını gösteren şema
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Orjinal
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Özgün
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Daha iyi yollar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
@@ -1649,7 +1649,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenler
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Şehirler
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Endüstri
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orjinal
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Özgün
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Önerilen)
 
@@ -1709,10 +1709,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Özel bi
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyanı/senaryonu yarat
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Çok oyunculu oyun başlat
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'ılıman' yer stilini seç
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}'soğuk' yer stilini seç
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'tropik' yer stilini seç
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'oyuncak' yer stilini seç
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'Ilıman' yer stilini seç
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}'Soğuk' yer stilini seç
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'Tropik' yer stilini seç
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'Oyuncak' yer stilini seç
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seçenekleri göster
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tablosunu göster
@@ -2972,7 +2972,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Yol ta
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Şirket sahibinin heykelini dik.{}Fiyatı: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Şehirde ticari binaların yapımı için bağış yap.{}Fiyatı: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al. Belediye şehirde sadece senin şirketine yolcu ve kargo taşıma izni verir.{} Fiyat: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{} Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{}Fiyat: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Hedefler
