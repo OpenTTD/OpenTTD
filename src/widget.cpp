@@ -147,7 +147,9 @@ void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y)
 		mi = nw->pos_y;
 		ma = nw->pos_y + nw->current_y;
 	}
-	ScrollbarClickPositioning(w, dynamic_cast<NWidgetScrollbar*>(nw), x, y, mi, ma);
+	NWidgetScrollbar *scrollbar = dynamic_cast<NWidgetScrollbar*>(nw);
+	assert(scrollbar != NULL);
+	ScrollbarClickPositioning(w, scrollbar, x, y, mi, ma);
 }
 
 /**
@@ -1526,7 +1528,9 @@ void NWidgetMatrix::SetupSmallestSize(Window *w, bool init_array)
 	}
 
 	/* Reset the widget number. */
-	SB(dynamic_cast<NWidgetCore *>(this->head)->index, 16, 16, 0);
+	NWidgetCore *nw = dynamic_cast<NWidgetCore *>(this->head);
+	assert(nw != NULL);
+	SB(nw->index, 16, 16, 0);
 	this->head->SetupSmallestSize(w, init_array);
 
 	Dimension padding = {this->pip_pre + this->pip_post, this->pip_pre + this->pip_post};
@@ -1595,6 +1599,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	if (sub_wid >= this->count) return NULL;
 
 	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
+	assert(child != NULL);
 	child->AssignSizePosition(ST_RESIZE,
 			this->pos_x + (rtl ? this->pip_post - widget_col * this->widget_w : this->pip_pre + widget_col * this->widget_w) + base_offs_x,
 			this->pos_y + this->pip_pre + widget_row * this->widget_h + base_offs_y,
@@ -1619,6 +1624,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 
 	/* Get the appropriate offsets so we can draw the right widgets. */
 	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
+	assert(child != NULL);
 	int start_x, start_y, base_offs_x, base_offs_y;
 	this->GetScrollOffsets(start_x, start_y, base_offs_x, base_offs_y);
 
