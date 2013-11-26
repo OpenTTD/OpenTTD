@@ -805,7 +805,7 @@ class DefaultStringIterator : public StringIterator
 	size_t cur_pos;     ///< Current iteration position.
 
 public:
-	DefaultStringIterator() : string(NULL)
+	DefaultStringIterator() : string(NULL), len(0), cur_pos(0)
 	{
 	}
 
