@@ -99,6 +99,12 @@ static const SpriteID _aircraft_sprite[] = {
 	0x0EBD, 0x0EC5
 };
 
+template <>
+bool IsValidImageIndex<VEH_AIRCRAFT>(uint8 image_index)
+{
+	return image_index < lengthof(_aircraft_sprite);
+}
+
 /** Helicopter rotor animation states */
 enum HelicopterRotorStates {
 	HRS_ROTOR_STOPPED,
@@ -160,6 +166,7 @@ SpriteID Aircraft::GetImage(Direction direction, EngineImageType image_type) con
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
+	assert(IsValidImageIndex<VEH_AIRCRAFT>(spritenum));
 	return direction + _aircraft_sprite[spritenum];
 }
 
@@ -189,6 +196,7 @@ static SpriteID GetAircraftIcon(EngineID engine, EngineImageType image_type)
 		spritenum = e->original_image_index;
 	}
 
+	assert(IsValidImageIndex<VEH_AIRCRAFT>(spritenum));
 	return DIR_W + _aircraft_sprite[spritenum];
 }
 

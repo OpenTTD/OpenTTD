@@ -38,7 +38,7 @@
 
 #include "table/strings.h"
 
-static const uint16 _roadveh_images[63] = {
+static const uint16 _roadveh_images[] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,
 	0xD24, 0xD1C, 0xD2C, 0xD04, 0xD1C, 0xD24, 0xD6C, 0xD74,
 	0xD7C, 0xC14, 0xC1C, 0xC24, 0xC2C, 0xC34, 0xC3C, 0xC4C,
@@ -49,7 +49,7 @@ static const uint16 _roadveh_images[63] = {
 	0xC5C, 0xC64, 0xC6C, 0xC74, 0xC84, 0xC94, 0xCA4
 };
 
-static const uint16 _roadveh_full_adder[63] = {
+static const uint16 _roadveh_full_adder[] = {
 	 0,  88,   0,   0,   0,   0,  48,  48,
 	48,  48,   0,   0,  64,  64,   0,  16,
 	16,   0,  88,   0,   0,   0,   0,  48,
@@ -59,6 +59,13 @@ static const uint16 _roadveh_full_adder[63] = {
 	 0,  16,  16,   0,   8,   8,   8,   8,
 	 0,   0,   0,   8,   8,   8,   8
 };
+assert_compile(lengthof(_roadveh_images) == lengthof(_roadveh_full_adder));
+
+template <>
+bool IsValidImageIndex<VEH_ROAD>(uint8 image_index)
+{
+	return image_index < lengthof(_roadveh_images);
+}
 
 /** 'Convert' the DiagDirection where a road vehicle enters to the trackdirs it can drive onto */
 static const TrackdirBits _road_enter_dir_to_reachable_trackdirs[DIAGDIR_END] = {
@@ -116,6 +123,7 @@ static SpriteID GetRoadVehIcon(EngineID engine, EngineImageType image_type)
 		spritenum = e->original_image_index;
 	}
 
+	assert(IsValidImageIndex<VEH_ROAD>(spritenum));
 	return DIR_W + _roadveh_images[spritenum];
 }
 
@@ -131,6 +139,7 @@ SpriteID RoadVehicle::GetImage(Direction direction, EngineImageType image_type) 
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
+	assert(IsValidImageIndex<VEH_ROAD>(spritenum));
 	sprite = direction + _roadveh_images[spritenum];
 
 	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _roadveh_full_adder[spritenum];

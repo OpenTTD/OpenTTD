@@ -189,6 +189,18 @@ public:
 static GrfProcessingState _cur;
 
 
+/**
+ * Helper to check whether an image index is valid for a particular NewGRF vehicle.
+ * @param <T> The type of vehicle.
+ * @param image_index The image index to check.
+ * @return True iff the image index is valid, or 0xFD (use new graphics).
+ */
+template <VehicleType T>
+static inline bool IsValidNewGRFImageIndex(uint8 image_index)
+{
+	return image_index == 0xFD || IsValidImageIndex<T>(image_index);
+}
+
 class OTTDByteReaderSignal { };
 
 /** Class to read from a NewGRF file */
@@ -1006,12 +1018,18 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x12: { // Sprite ID
 				uint8 spriteid = buf->ReadByte();
+				uint8 orig_spriteid = spriteid;
 
 				/* TTD sprite IDs point to a location in a 16bit array, but we use it
 				 * as an array index, so we need it to be half the original value. */
 				if (spriteid < 0xFD) spriteid >>= 1;
 
-				rvi->image_index = spriteid;
+				if (IsValidNewGRFImageIndex<VEH_TRAIN>(spriteid)) {
+					rvi->image_index = spriteid;
+				} else {
+					grfmsg(1, "RailVehicleChangeInfo: Invalid Sprite %d specified, ignoring", orig_spriteid);
+					rvi->image_index = 0;
+				}
 				break;
 			}
 
@@ -1252,13 +1270,19 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x0E: { // Sprite ID
 				uint8 spriteid = buf->ReadByte();
+				uint8 orig_spriteid = spriteid;
 
 				/* cars have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
 
 				if (spriteid < 0xFD) spriteid >>= 1;
 
-				rvi->image_index = spriteid;
+				if (IsValidNewGRFImageIndex<VEH_ROAD>(spriteid)) {
+					rvi->image_index = spriteid;
+				} else {
+					grfmsg(1, "RoadVehicleChangeInfo: Invalid Sprite %d specified, ignoring", orig_spriteid);
+					rvi->image_index = 0;
+				}
 				break;
 			}
 
@@ -1422,13 +1446,19 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 		switch (prop) {
 			case 0x08: { // Sprite ID
 				uint8 spriteid = buf->ReadByte();
+				uint8 orig_spriteid = spriteid;
 
 				/* ships have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
 
 				if (spriteid < 0xFD) spriteid >>= 1;
 
-				svi->image_index = spriteid;
+				if (IsValidNewGRFImageIndex<VEH_SHIP>(spriteid)) {
+					svi->image_index = spriteid;
+				} else {
+					grfmsg(1, "ShipVehicleChangeInfo: Invalid Sprite %d specified, ignoring", orig_spriteid);
+					svi->image_index = 0;
+				}
 				break;
 			}
 
@@ -1588,13 +1618,19 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 		switch (prop) {
 			case 0x08: { // Sprite ID
 				uint8 spriteid = buf->ReadByte();
+				uint8 orig_spriteid = spriteid;
 
 				/* aircraft have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
 
 				if (spriteid < 0xFD) spriteid >>= 1;
 
-				avi->image_index = spriteid;
+				if (IsValidNewGRFImageIndex<VEH_AIRCRAFT>(spriteid)) {
+					avi->image_index = spriteid;
+				} else {
+					grfmsg(1, "AircraftVehicleChangeInfo: Invalid Sprite %d specified, ignoring", orig_spriteid);
+					avi->image_index = 0;
+				}
 				break;
 			}
 

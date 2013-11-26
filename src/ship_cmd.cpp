@@ -57,6 +57,12 @@ WaterClass GetEffectiveWaterClass(TileIndex tile)
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
+template <>
+bool IsValidImageIndex<VEH_SHIP>(uint8 image_index)
+{
+	return image_index < lengthof(_ship_sprites);
+}
+
 static inline TrackBits GetTileShipTrackStatus(TileIndex tile)
 {
 	return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
@@ -74,6 +80,7 @@ static SpriteID GetShipIcon(EngineID engine, EngineImageType image_type)
 		spritenum = e->original_image_index;
 	}
 
+	assert(IsValidImageIndex<VEH_SHIP>(spritenum));
 	return DIR_W + _ship_sprites[spritenum];
 }
 
@@ -115,6 +122,7 @@ SpriteID Ship::GetImage(Direction direction, EngineImageType image_type) const
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
+	assert(IsValidImageIndex<VEH_SHIP>(spritenum));
 	return _ship_sprites[spritenum] + direction;
 }
 
