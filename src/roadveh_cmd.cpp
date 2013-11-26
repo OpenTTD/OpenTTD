@@ -1407,14 +1407,6 @@ again:
 	if (new_dir != old_dir) {
 		v->direction = new_dir;
 		if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
-		if (old_dir != v->state) {
-			/* The vehicle is in a road stop */
-			v->UpdateInclination(false, true);
-			/* Note, return here means that the frame counter is not incremented
-			 * for vehicles changing direction in a road stop. This causes frames to
-			 * be repeated. (XXX) Is this intended? */
-			return true;
-		}
 	}
 
 	/* If the vehicle is in a normal road stop and the frame equals the stop frame OR
