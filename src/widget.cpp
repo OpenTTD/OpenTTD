@@ -2835,6 +2835,7 @@ NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *parts, int count, int
  */
 NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, int max_length, StringID button_tooltip)
 {
+	assert(max_length >= 1);
 	NWidgetVertical *vert = NULL; // Storage for all rows.
 	NWidgetHorizontal *hor = NULL; // Storage for buttons in one row.
 	int hor_length = 0;
