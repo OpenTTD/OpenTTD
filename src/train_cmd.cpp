@@ -1336,9 +1336,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint32 user)
 {
-	/* Check if we deleted a vehicle window */
-	Window *w = NULL;
-
 	/* Sell a chain of vehicles or not? */
 	bool sell_chain = HasBit(data, 0);
 
@@ -1389,9 +1386,6 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 			/* Copy other important data from the front engine */
 			new_head->CopyVehicleConfigAndStatistics(first);
 			GroupStatistics::CountVehicle(new_head, 1); // after copying over the profit
-
-			/* If we deleted a window then open a new one for the 'new' train */
-			if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_head);
 		} else if (v->IsPrimaryVehicle() && data & (MAKE_ORDER_BACKUP_FLAG >> 20)) {
 			OrderBackup::Backup(v, user);
 		}
