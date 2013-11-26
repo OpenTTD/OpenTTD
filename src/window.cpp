@@ -268,13 +268,9 @@ void Window::OnDropdownClose(Point pt, int widget, int index, bool instant_close
 	}
 
 	/* Raise the dropdown button */
-	if (this->nested_array != NULL) {
-		NWidgetCore *nwi2 = this->GetWidget<NWidgetCore>(widget);
-		if ((nwi2->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
-			nwi2->disp_flags &= ~ND_DROPDOWN_ACTIVE;
-		} else {
-			this->RaiseWidget(widget);
-		}
+	NWidgetCore *nwi2 = this->GetWidget<NWidgetCore>(widget);
+	if ((nwi2->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
+		nwi2->disp_flags &= ~ND_DROPDOWN_ACTIVE;
 	} else {
 		this->RaiseWidget(widget);
 	}
