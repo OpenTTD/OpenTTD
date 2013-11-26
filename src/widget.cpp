@@ -2420,6 +2420,7 @@ void NWidgetLeaf::Draw(const Window *w)
 				default: NOT_REACHED();
 			}
 			DrawImageButtons(r, WWT_PUSHIMGBTN, this->colour, clicked, sprite);
+			break;
 		}
 
 		case WWT_LABEL:
