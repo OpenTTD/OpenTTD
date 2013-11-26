@@ -230,7 +230,7 @@
 	EnforcePrecondition(false, expenses_type < (ExpensesType)::EXPENSES_END);
 
 	company = ResolveCompanyID(company);
-	EnforcePrecondition(false, ResolveCompanyID(company) != COMPANY_INVALID);
+	EnforcePrecondition(false, company != COMPANY_INVALID);
 
 	return ScriptObject::DoCommand(0, (uint32)(delta), company | expenses_type << 8 , CMD_CHANGE_BANK_BALANCE);
 }
