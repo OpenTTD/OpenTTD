@@ -235,6 +235,11 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 	sprite[zoom_lvl].x_offs = FioReadWord();
 	sprite[zoom_lvl].y_offs = FioReadWord();
 
+	if (sprite[zoom_lvl].width > INT16_MAX) {
+		WarnCorruptSprite(file_slot, file_pos, __LINE__);
+		return 0;
+	}
+
 	/* 0x02 indicates it is a compressed sprite, so we can't rely on 'num' to be valid.
 	 * In case it is uncompressed, the size is 'num' - 8 (header-size). */
 	num = (type & 0x02) ? sprite[zoom_lvl].width * sprite[zoom_lvl].height : num - 8;
@@ -282,6 +287,11 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 			sprite[zoom_lvl].width  = FioReadWord();
 			sprite[zoom_lvl].x_offs = FioReadWord();
 			sprite[zoom_lvl].y_offs = FioReadWord();
+
+			if (sprite[zoom_lvl].width > INT16_MAX || sprite[zoom_lvl].height > INT16_MAX) {
+				WarnCorruptSprite(file_slot, file_pos, __LINE__);
+				return 0;
+			}
 
 			/* Mask out colour information. */
 			type = type & ~SCC_MASK;
