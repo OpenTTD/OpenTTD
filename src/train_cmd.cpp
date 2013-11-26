@@ -1219,8 +1219,10 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	Train *original_src_head = src_head;
 	Train *original_dst_head = (dst_head == src_head ? NULL : dst_head);
 
-	/* We want this information from before the rearrangement, but execute this after the validation. */
-	bool original_src_head_front_engine = original_src_head != NULL && original_src_head->IsFrontEngine();
+	/* We want this information from before the rearrangement, but execute this after the validation.
+	 * original_src_head can't be NULL; src is by definition != NULL, so src_head can't be NULL as
+	 * src->GetFirst() always yields non-NULL, so eventually original_src_head != NULL as well. */
+	bool original_src_head_front_engine = original_src_head->IsFrontEngine();
 	bool original_dst_head_front_engine = original_dst_head != NULL && original_dst_head->IsFrontEngine();
 
 	/* (Re)arrange the trains in the wanted arrangement. */
