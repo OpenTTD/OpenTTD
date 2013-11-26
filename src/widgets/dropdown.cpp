@@ -215,7 +215,7 @@ struct DropdownWindow : Window {
 	{
 		if (widget != WID_DM_ITEMS) return;
 
-		TextColour colour = (TextColour)this->GetWidget<NWidgetCore>(widget)->colour;
+		Colours colour = this->GetWidget<NWidgetCore>(widget)->colour;
 
 		int y = r.top + 2;
 		int pos = this->vscroll->GetPosition();
