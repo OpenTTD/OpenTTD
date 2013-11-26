@@ -20,16 +20,13 @@ struct TileArea {
 	uint16 w;       ///< The width of the area
 	uint16 h;       ///< The height of the area
 
-	/** Just construct this tile area */
-	TileArea() {}
-
 	/**
 	 * Construct this tile area with some set values
 	 * @param tile the base tile
 	 * @param w the width
 	 * @param h the height
 	 */
-	TileArea(TileIndex tile, uint8 w, uint8 h) : tile(tile), w(w), h(h) {}
+	TileArea(TileIndex tile = INVALID_TILE, uint8 w = 0, uint8 h = 0) : tile(tile), w(w), h(h) {}
 
 	TileArea(TileIndex start, TileIndex end);
 
