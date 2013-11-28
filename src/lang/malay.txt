@@ -50,7 +50,7 @@ STR_CARGO_PLURAL_WHEAT                                          :Gandum
 STR_CARGO_PLURAL_RUBBER                                         :Getah
 STR_CARGO_PLURAL_SUGAR                                          :Gula
 STR_CARGO_PLURAL_TOYS                                           :Mainan
-STR_CARGO_PLURAL_CANDY                                          :Manisan
+STR_CARGO_PLURAL_CANDY                                          :Gula-gula
 STR_CARGO_PLURAL_COLA                                           :Minuman cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Gula kapas
 STR_CARGO_PLURAL_BUBBLES                                        :Buih
@@ -232,7 +232,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup te
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tajuk tetingkap - seret untuk menggerakkan tetingkap
 STR_TOOLTIP_SHADE                                               :{BLACK}Teduhkan tetingkap - paparkan palang tajuk sahaja
 STR_TOOLTIP_DEBUG                                               :{BLACK}Tunjukkan maklumat nyahpepijat NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK} Tandakan tetingkap ini sebagai tidak boleh ditutup dengan menggunakan kunci 'Tutupkan Semua Tetingkap'
+STR_TOOLTIP_STICKY                                              :{BLACK} Tandakan tetingkap ini sebagai tidak boleh ditutup dengan menggunakan kunci 'Tutupkan Semua Tetingkap'. Ctrl+Click untuk menyimpan keadaan sebagai praset
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan seret untuk mengubah saiz tetingkap
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tukar di antara tetingkap bersaiz besar/kecil
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Palang Skrol - gerakkan senarai ke atas/bawah
@@ -1075,7 +1075,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum pinjaman permulaan: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Rantaian industri
 STR_CONFIG_SETTING_INTEREST_RATE                                :Kadar faedah: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Kadar faedah pinjaman; juga mengawal inflasi jika diupayakan
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Kadar faedah pinjaman; juga mengawal inflasi, jika dibolehkan
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Kos penyelenggaraan: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Tetapkan tahap penyelenggaraan dan kos perjalanan kenderaan dan infrastuktur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Kelajuan pembinaan: {STRING}

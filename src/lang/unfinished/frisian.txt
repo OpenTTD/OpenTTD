@@ -1236,7 +1236,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tastean, oanpas
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bouen fan beamen yn it spul: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :gjin {RED}(brekt houtseachmûne)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :allinech in reinwâld
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :oerol
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Oerol
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Plak fan de haad wurkbalk: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posysje fan statusbar: {STRING}
