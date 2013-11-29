@@ -236,7 +236,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Aizvērt
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Loga virsraksts - vilkt to, lai pārvietotu logu
 STR_TOOLTIP_SHADE                                               :{BLACK}Aizēnot logu - rādīt tikai virsrakstu
 STR_TOOLTIP_DEBUG                                               :{BLACK}Rādīt NewGRF atkļūdošanas informāciju
-STR_TOOLTIP_STICKY                                              :{BLACK}Atzīmēt šo logu kā neaizveramu ar "Aizvērt visus logus" taustiņu
+STR_TOOLTIP_STICKY                                              :{BLACK}Atzīmēt šo logu kā neaizveramu ar "Aizvērt visus logus" taustiņu. Ctrl+klikšķis, lai saglabātu stāvokli kā noklusējumu
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikšķināt un vilkt, lai mainītu šī loga lielumu
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pārslēgties starp lielu/mazu loga izmēru
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla - ritina sarakstu augšup/lejup
@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Atskaņot apkop
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Avīze: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Atskaņot skaņu kad tiek rādītas avīzes
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Gada beigas: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Atskaņot skaņas efektu gada beigās, apkopojot uzņēmuma darbības sasniegumus gada laikā salīdzinājumā ar iepriekšējo gadu
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Atskaņot skaņu gada beigās, apkopojot uzņēmuma darbības sasniegumus gada laikā salīdzinājumā ar iepriekšējo gadu
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Būvniecība: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Atskaņot skaņu pēc sekmīgas būvēšanas vai citām darbībām
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Pogu klikšķi: {STRING}
@@ -1452,7 +1452,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīcei, dzelzceļa mezglam) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Signālierīču izvietošanas uzvedības izvēle, kad to veic ar Ctrl+velkot. Ja izslēgts, signālierīces tiek novietotas pie tuneļiem un tiltiem, lai izvairītos no gariem posmiem bez signālierīcēm. Ja ieslēgts, signālierīces tiek izvietotas uz katra N lauciņa, atvieglojot to izkārtošanu gar paralēliem sliežu ceļiem
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Signālierīču izvietošanas uzvedības izvēle, kad to veic ar Ctrl+velkot. Ja izslēgts, signālierīces tiek novietotas pie tuneļiem un tiltiem, lai izvairītos no gariem posmiem bez signālierīcēm. Ja ieslēgts, signālierīces tiek izvietotas uz katra N lauciņa, atvieglojot to izkārtošanu uz paralēliem sliežu ceļiem
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Izvēlēties gadu, kad ceļiem sāks izmantot elektriskās signālierīces. Pirms šā gada tiks izmantotas neelektriskās signālierīces (kam ir tieši tāda pati funkcija, bet ar atšķirīgu izskatu)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālierīču grafisko lietotāja saskarni: {STRING}

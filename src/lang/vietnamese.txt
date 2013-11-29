@@ -2886,11 +2886,12 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Hàm cal
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<sai kiểu hàng>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng hoá bất hợp lệ
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <hàng hóa bất hợp lệ>
 STR_NEWGRF_INVALID_ENGINE                                       :<sai mẫu xe>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<p.tiện bất hợp lệ>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Đang Quét NewGRF
