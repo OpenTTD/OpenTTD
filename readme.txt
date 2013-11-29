@@ -1,5 +1,5 @@
-Last updated:    2013-06-01
-Release version: 1.3.1
+Last updated:    2013-11-29
+Release version: 1.3.3
 ------------------------------------------------------------------------
 
 
@@ -668,7 +668,7 @@ os/dos/exe2coff/copying.dj for the exact licensing terms.
 The CWSDPMI implementation in os/dos/cwsdpmi is distributed under a
 custom binary-only license that prohibits modification. The exact
 licensing terms can be found in os/dos/cwsdpmi/cwsdpmi.txt. The sources
-for these files can be downloaded at it's author site, at:
+for these files can be downloaded at its author site, at:
 http://homer.rice.edu/~sandmann/cwsdpmi/csdpmi5s.zip
 
 X.X) Credits

@@ -40,6 +40,19 @@
  * \li GSStation::GetCargoRating does return -1 for cargo-station combinations that
  *     do not have a rating yet instead of returning 69.
  *
+ * \b 1.3.3
+ *
+ * No changes
+ *
+ * \b 1.3.2
+ *
+ * No changes
+ *
+ * \b 1.3.1
+ *
+ * API additions:
+ * \li GSTile::GetTerrainType
+ *
  * \b 1.3.0
  *
  * API additions:
