@@ -1,3 +1,8 @@
+1.3.3 (2013-11-29)
+------------------------------------------------------------------------
+- Fix: Aircraft crashing near the map's border due to a lack of airports could trigger a crash [CVE-2013-6411] [FS#5820] (r26134)
+
+
 1.3.3-RC2 (2013-11-24)
 ------------------------------------------------------------------------
 - Fix: [Script] Prevent scripts from crashing OpenTTD when they send text with command codes to user editable texts such as sign and station names [FS#5818] (r26093, r26092)
