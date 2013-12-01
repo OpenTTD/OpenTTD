@@ -374,7 +374,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rakip tabela ve
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Tüm animasyonlar
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Tüm detaylar
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Şeffaf binalar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Şeffaf Tabelalar
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Şeffaf tabelalar
 ############ range ends here
 
 ############ range for file menu starts
@@ -798,13 +798,13 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi güçlendikçe ticaretin artması sanayicilere güven veriyor!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} üretimi arttırdi!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY}nde yeni kömür rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY}nda yeni petrol rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}ndeki yeni tarım tekniklerinin üretimi ikiye katlaması bekleniyor!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY} endüstrisinde yeni kömür rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY} endüstrisinde yeni petrol rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} endüstrisindeki yeni tarım tekniklerinin üretimi ikiye katlaması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} arttı!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} üretimi %50 düşürdü
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} bölgesine böcek sürüsü girdi !{} Üretim %50 düştü
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{1:INDUSTRY} {BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} tren garajda bekliyor
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
@@ -832,7 +832,7 @@ STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Otomatik
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} artık kullanılabilir!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} artık kullanılabilir :  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Yeni {STRING} artık kullanılabilir! - {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} artık {STRING} kabul etmiyor
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} artık {STRING} veya {STRING} kabul etmiyor
@@ -972,7 +972,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kullanı
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} adet bozuk dosya var
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Temel müzik hakkında daha fazla bilgi
 
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Tam ekran modu başarısız
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Tam ekran kipi başarısız
 
 # Custom currency window
 
@@ -1096,7 +1096,7 @@ STR_CONFIG_SETTING_COMPANIES_OWN                                :Kendi şirketim
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Tüm şirketler
 
 STR_CONFIG_SETTING_NONE                                         :Yok
-STR_CONFIG_SETTING_ORIGINAL                                     :Orijinal
+STR_CONFIG_SETTING_ORIGINAL                                     :Özgün
 STR_CONFIG_SETTING_REALISTIC                                    :Gerçekçi
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sol
@@ -1140,9 +1140,9 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} kare
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Araçlardan çıkan duman veya kıvılcım miktarı: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Araçlardan ne kadar duman ya da kıvılcım çakacağını ayarla
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Tren ivme modeli: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Tren hızlanmaları için fizik modelini belirle. "Orijinal" model eğimlerde tüm araçlar için eşit şekilde güçlük yaratır. “Gerçekçi” model eğimlerde ve kıvrımlarda, uzunluk ve çekiş gücü gibi çeşitli ölçütlere dayalı olarak güçlük yaratır.
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Tren hızlanmaları için fizik modelini belirle. "Özgün" model eğimlerde tüm araçlar için eşit şekilde güçlük yaratır. "Gerçekçi" model eğimlerde ve kıvrımlarda, uzunluk ve çekiş gücü gibi çeşitli ölçütlere dayalı olarak güçlük yaratır.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kara taşıtı ivme modeli: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Kara yolu araçlarının hızlanmaları için fizik modelini belirle. "Orijinal" model eğimlerde tüm araçlar için eşit şekilde güçlük yaratır. “Gerçekçi” model eğimlerde, motorun çeşitli özelliklerine, örneğin “çekiş gücüne” göre güçlük yaratır
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Karayolu araçlarının hızlanmaları için fizik modelini belirle. "Özgün" model eğimlerde tüm araçlar için eşit şekilde güçlük yaratır. “Gerçekçi” model eğimlerde, motorun çeşitli özelliklerine, örneğin 'çekiş gücüne' göre güçlük yaratır
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Trenler için eğim dikliği: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Bir tren için eğimli bir karenin dikliği. Yüksek değerler tepeye tırmanmayı güçleştirir
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -1202,7 +1202,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Şayet bir şir
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Binaları finanse etmeye izin ver: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Şirketlerin yeni binalar yapılması için kasabalara para aktarmalarına izin ver
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Yerel yol tamiratlarına izin ver: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Şirketlerin kara yolu hizmetlerini sabote etmek için kasabaya yol tamiri yardımı yapmasına izin ver
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Şirketlerin karayolu hizmetlerini sabote etmek için kasabaya yol tamiri yardımı yapmasına izin ver
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Diğer şirketlere para gönderme izinli: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Çok oyunculu oyunlarda şirketler arası para transferine izin ver
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Ağır yük trenleri için ağırlık çarpanı: {STRING}
@@ -1574,19 +1574,19 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Bağlantı graf
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :el ile (manual)
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrik
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetrik
-STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Yolcular için dağıtım modu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Yolcular için dağıtım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetrik" seçildiğinde A durağından B durağına taşınan ile B'den A'ya taşınan yolcu miktarı kabaca eşit olur. "asimetrik" seçildiğinde iki yönde de rastgele miktarda yolcu gönderilebilir. "el ile" seçildiğinde yolcular için otomatik dağıtım yapılmaz.
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Posta için dağıtım modu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Posta için dağıtım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetrik" seçildiğinde A durağından B durağına gönderilen ile B'den A'ya gönderilen posta miktarı kabaca eşit olur. "asimetrik" seçildiğinde iki yönde de rastgele miktarda posta gönderilebilir. "el ile" seçildiğinde posta için otomatik dağıtım yapılmaz.
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :ZIRHLI kargo sınıfı için dağıtım modu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :ZIRHLI kargo sınıfı için dağıtım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :ZIRHLI kargo sınıfı ılımlı iklimde değerli mallar, yarı-tropik iklimde elmaslar, veya yarı-arktik iklimde altın içerir. NewGRF dosyaları bunu değiştirebilir. "simetrik" olarak ayarlandığında a durağından B durağına gönderilen kargo miktarı, B'den A'ya gönderilene kabaca eşit olur. "asimetrik" ise herhangi bir yönde rsatgele miktarda kargo gönderilebileceğini gösterir. "el ile" seçildiğinde o kargo için otomatik dağıtım yapılmaz. Yarı-arktik iklimde oynarken bu değeri "asimetrik" veya "el ile" olarak ayarlamanız tavsiye edilir, çünkü bankalar altınları altın madenine geri göndermez. Ilımlı ve yarı-tropik iklim için aynı zamanda "simetrik" seçebilirsiniz, zira bankalar değerli malların bir kısmını malların geldiği kaynak bankaya geri gönderir.
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Diğer kargo sınıfları için dağılım modu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Diğer kargo sınıfları için dağılım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simetrik", A durağından B durağına gönderilen kargo miktarının B'den A'ya gönderilene kabaca eşit olacağını gösterir. "asimetrik" ise iki yönde de rastgele miktarda kargo gönderileceğini gösterir. "el ile" seçildiği takdirde o kargolar için otomatik dağılım yapılmaz. Bu seçeneği muhtemelen "asimetrik" veya "el ile" olarak ayarlamak istersiniz.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dağılım isabetliliği: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Buraya daha yüksek değerler girildikçe bağlantı grafiğinin hesaplanmasına daha fazla işlemci zamanı harcanır. Eğer hesaplama çok uzun sürerse gecikmeler olabilir. Fakat düşük bir değer girerseniz dağılım isabetli olmayacaktır ve kargonun beklediğiniz yerlere gönderilmediğini fark edebilirsiniz.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Mesafenin talep üzerindeki etkisi: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Eğer buraya 0'dan büyük bir değer girerseniz bir kargonun yola çıktığı A durağı ve olası bir B istikameti arasındaki mesafe, A'dan B'ye gönderilen kargo miktarını etkiler. B A'dan ne kadar uzaksa o kadar az kargo gönderilir. Daha yüksek değerler girdikçe uzak duraklara daha az kargo, yakın duraklara ise daha fazla kargo gönderilir.
-STR_CONFIG_SETTING_DEMAND_SIZE                                  :Simetrik mod için geri gönderilen kargo miktarı: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Simetrik kip için geri gönderilen kargo miktarı: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Buraya %100'den küçük bir değer girmek simetrik dağılımın asimetrik bir dağılıma benzer şekilde davranmasına sebep olur. Eğer bir durağa belli miktar kargo gönderilmişse, daha az kargo zorla geri gönderilir. Eğer %0 olarak ayarlarsanız simetrik dağılım aynen asimetrik dağılım gibi davranmaya başlar.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Yüksek kapasiteli güzergahları kullanmadan önce daha kısa güzergah doygunluğu: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sıklıkla iki durak arasında birden fazla güzergah bulunur. Cargodist önce en kısa güzergahı doygunluğa ulaştırır, ardından ikinci en kısa güzergahı doygunluğa ulaşana kadar kullanır ve böyle devam eder. Doygunluk, kapasite tahmini ve planlanan kullanım miktarına göre hesaplanır. Tüm güzergahlar doygunluğa ulaştığında eğer hala talep varsa, yüksek kapasiteli olan güzergahları tercih ederek tüm güzergahları aşırı yükler. Fakat çoğu zaman algoritma kapasiteyi isabetli olarak hesaplayamaz. Bu değer, daha kısa bir güzergahın yüzde kaç oranında doygunluğa ulaştığı zaman bir sonraki güzergahın seçileceğini ayarlamanızı sağlar. Yanlış (büyük) kapasite tahmini ihtimaline karşı aşırı dolu durakları önlemek için %100'den daha düşük bir değer seçin.
@@ -2073,7 +2073,7 @@ STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRIN
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohbeti için yazı girin
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Network aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ağ aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Network oyunu bulunamadı
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Sunucu isteğe cevap vermedi
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF uyuşmazlığı yüzünden bağlanılamadı
@@ -2269,8 +2269,8 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monoray Yapım�
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Yapımı
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Demiryolu yap. Ctrl demiryolu inşa ederken silmeyi açar/kapatır. Shift ile tıklama maliyet tahminini gösterir
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap. Ctrl ray yap/kaldır seçimini değiştirir. Shift ile tıklama maliyet tahminini gösterir
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren deposu yap (tren yapımı ve bakımı için). Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray kipinde ray yap. Ctrl ray yap/kaldır seçimini değiştirir. Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren garajı yap (tren yapımı ve bakımı için). ÜstKarakter ile tıklama maliyet tahminini gösterir
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rayı yerimine çevir. Ctrl yerimlerini birleştirmeyi mümkün kılar. Shift ile tıklama maliyet tahminini gösterir
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tren istasyonu yap. Ctrl istasyonları birleştirmeyi mümkün kılar. Shift ile tıklama maliyet tahminini gösterir
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Demiryolu sinyali yap. Ctrl semafor/ışıklı işaret seçimi yapar{}Sürükleme düz bir ray boyunca işaretleri koyar. Ctrl sonraki kavşağa kadar işaretleri koyar{}Ctrl+tık işaret seçim penceresini açar/kapatır. Shift ile tıklama maliyet tahminini gösterir
@@ -2285,8 +2285,8 @@ STR_RAIL_NAME_MONORAIL                                          :Monoray
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Tren Garı Yönü
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tren garı yönünü seçin
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Tren Garajı Yönü
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tren garajı yönünü seçin
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Yerimi
@@ -2349,8 +2349,8 @@ STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Yol Yap�
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvay Yapımı
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Yol bölmesi yap. Ctrl yol için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvay yolu yap. Ctrl tramvay yolu için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Otoyol modunu kullanarak yol yap. Ctrl yol yapımı için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Otoray modunu kullanarak tramvay yolu yap. Ctrl ile tıklamak ray inşası için ekle/çıkar modunu değiştirir. Shift ile tıklamak inşa etmek/tahmini maliyeti göstermek modunu değiştirir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Otomatik yol kipini kullanarak yol yap. Ctrl yol yapımı için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Otoray kipini kullanarak tramvay yolu yap. Ctrl ile tıklamak ray inşası için ekle/çıkar modunu değiştirir. Shift ile tıklamak inşa etmek/tahmini maliyeti göstermek modunu değiştirir
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garaj inşa et (araç alımı ve bakımı için). Shift ile tıklama satın alma/tahmini maliyeti gösterme arasında geçiş yapar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramvay garı inşa et (araç alımı ve bakımı için). Shift ile tıklamak satın alma/tahmini maliyeti gösterme arasında geçiş yapar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Otobüs durağı inşa et. Ctrl ile tıklamak istasyonları birleştirmeyi aktif eder. Shift ile tıklamak inşa etmek/tahmini maliyeti göstermek arasında geçiş yapar.
@@ -2492,7 +2492,7 @@ STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Şehirle
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kasaba yol yerleşimi:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Bu kasaba için kullanılacak yol yerleşimini seç
-STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Orijinal
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Özgün
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Daha iyi yollar
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 şebeke
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 şebeke
@@ -2580,7 +2580,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} çık�
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} karışık ve tek yön yol sinyalli ray
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} karışık ve tek yön yol sinyalli ray
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} yol ve tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} tren deposu
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} tren garajı
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Yol
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Sokak lambalı yol
@@ -2684,7 +2684,7 @@ STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Kar yük
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Rastgele Sayı:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Rastgele bir sayı girmek için tıklayın
 STR_MAPGEN_RANDOM                                               :{BLACK}Rastgele
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Harita yapımı için kullanilan rastgele sayıyi değiştir
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Harita yapımı için kullanılan rastgele sayıyı değiştir
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Harita üretici:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ağaç algoritmasi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
@@ -3321,7 +3321,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Bakım: 
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(modifiyeli)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Yapım yılı: {GOLD}{NUM}{BLACK} Ömür: {GOLD}{COMMA} sene
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Mak. Güvenilirlik: {GOLD}%{COMMA}
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Aza. Güvenilirlik: {GOLD}%{COMMA}
 STR_PURCHASE_INFO_COST                                          :{BLACK}Fiyat: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Ağırlık: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY_LONG}{BLACK} Hız: {GOLD}{VELOCITY}
@@ -3330,7 +3330,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Ve
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Dönüştürülebildiği kargolar: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo türleri
 STR_PURCHASE_INFO_ALL_BUT                                       :Şunlar hariç tümü: {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Mak. Çekim Gücü: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Aza. Çekim Gücü: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Menzil: {GOLD}{COMMA} kare
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tıklayın
@@ -3439,8 +3439,8 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Hangarda
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajdaki bütün araçları satmak üzeresiniz. Emin misiniz?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Araç yapimcisindan mesaj
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Yeni bir araç dizayn ettik: {STRING} - bizim için bunu bir yıl denemeyi kabul ediyor musunuz?
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Araç üreticisinden mesaj
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Yeni bir {STRING} tasarladık - bizim için bunu bir yıl denemeyi kabul ediyor musunuz?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotif
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :karayolu aracı
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :uçak
@@ -3547,7 +3547,7 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Bir son
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION} durağına gidiyor, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Talimat yok, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Gidilen -> {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}'na doğru hareket ediyor, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT} istikametine gidiyor, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}'nda bakıma gir, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3746,7 +3746,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Durmaksızın b
 
 STR_ORDER_NEAREST_DEPOT                                         :en yakın
 STR_ORDER_NEAREST_HANGAR                                        :en yakın Hangar
-STR_ORDER_TRAIN_DEPOT                                           :Tren Garı
+STR_ORDER_TRAIN_DEPOT                                           :Tren Garajı
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Karayolu Garajı
 STR_ORDER_SHIP_DEPOT                                            :Tersane
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
@@ -4027,7 +4027,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mesaj (
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Harita kenarında
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Sınıra çok yakın
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Para yetersiz - gerekli miktar: {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Zeminin düzleştirilmesi lazım
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Zeminin düzleştirilmesi gerekli
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Arazi yanlış yöne doğru meyilli
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Bu yapılamaz...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Önce bina yıkılmalı
@@ -4372,13 +4372,13 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Tabelay�
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe'ü temel alan bir simülasyon oyunu
 
 # Translatable descriptions in media/baseset/*.ob* files
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Orijinal Transport Tycoon Deluxe DOS sürümü grafikleri.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Orijinal Transport Tycoon Deluxe DOS (Almanca) sürümü grafikleri.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Orijinal Transport Tycoon Deluxe Windows sürümü grafikleri.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Orijinal Transport Tycoon Deluxe DOS sürümü sesleri.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Orijinal Transport Tycoon Deluxe Windows sürümü sesleri.
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Özgün Transport Tycoon Deluxe DOS sürümü grafikleri.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Özgün Transport Tycoon Deluxe DOS (Almanca) sürümü grafikleri.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Özgün Transport Tycoon Deluxe Windows sürümü grafikleri.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Özgün Transport Tycoon Deluxe DOS sürümü sesleri.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Özgün Transport Tycoon Deluxe Windows sürümü sesleri.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ses içermeyen boş bir ses kümesi.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Orijinal Transport Tycoon Deluxe Windows sürümü müzikleri.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Özgün Transport Tycoon Deluxe Windows sürümü müzikleri.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Müzik içermeyen boş bir müzik paketi.
 
 ##id 0x2000
@@ -4781,8 +4781,8 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING.
 STR_FORMAT_WAYPOINT_NAME                                        :Yerimi {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Yerimi {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tren Deposu
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tren Deposu #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tren Garajı
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tren Garajı #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Karayolu Taşıtı Garajı
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Karayolu Taşıtı Garajı #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Tersanesi
