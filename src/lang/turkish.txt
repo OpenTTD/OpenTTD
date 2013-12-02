@@ -466,7 +466,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran görünt�
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Varsayılan yakınlıkta ekran görüntüsü
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tüm harita ekran görüntüsü
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite hizalayıcı
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Nesne hizalayıcı
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Çerçeveleri aç/kapa
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Kirli blokları renklendir/renklendirme
 ############ range ends here
@@ -1065,11 +1065,11 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tümün�
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(açıklama bulunmamaktadır)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Varsayılan değer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Ayar tipi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kullanıcı ayarları (kayıtlı dosyada saklanmadı; tüm oyunları etkilemektedir)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Kullanıcı ayarları (kayıtlı dosyada saklandı; sadece yeni oyunları etkilemektedir)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Oyun ayarları (kayıtlı dosyada saklandı; sadece mevcut oyuna etkilemektedir)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Şirket ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarları (kayıtlı dosyada saklandı; sadece mevcut şirketi etkilemektedir)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kullanıcı ayarları (kayıtlı dosyada saklanmaz; tüm oyunları etkilemektedir)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Kullanıcı ayarları (kayıtlı dosyada saklanır; sadece yeni oyunları etkilemektedir)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Oyun ayarları (kayıtlı dosyada saklanır; sadece mevcut oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarları (kayıtlı dosyada saklanır; sadece mevcut şirketi etkilemektedir)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Göster:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi yalnızca değişen ayarları göstererek sınırlandırır
@@ -1081,11 +1081,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Yeni oyun ayarl
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Aşağıdaki liste belirli bir ayar türüne göre kısıtlanır
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tüm ayar türleri
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kullanıcı Ayarları (kayıtlı dosyada saklanmadı; tüm oyunları etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Oyun ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Oyun ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Şirket ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kullanıcı ayarları (kayıtlı dosyada saklanmaz; tüm oyunları etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Oyun ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Oyun ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
 
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
@@ -1190,7 +1190,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :uzak uç
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Kara taşıtlarını meşgul olan duraklar boşalana kadar önlerinde bekleyecek şekilde ayarlayın
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Fare kenardayken pencere etkin: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Etkinleştirilirse mouse pencerenin kenarına yaklaştığında görüş alanı kaymaya başlayacaktır
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Etkinleştirilirse fare pencerenin kenarına yaklaştığında görüş alanı kaymaya başlayacaktır
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Kapalı
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Asıl görüş alanı, sadece tam ekran
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Ana görüş alanı
@@ -1311,7 +1311,7 @@ STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :<ENTER> tuşu t
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Şirket-içi ve halka açık mesajlaşmanın tuş atamasını değiştir <ENTER> resp. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Fare tekerleğinin fonksiyonu: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :İki-boyutlu fare tekerleri ile ekran kaydırma özelliğini etkinleştir.
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Haritayı yakınaştır
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Haritayı yakınlaştır
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Haritayı kaydır
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Kapalı
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Tekerlek hızı: {STRING}
@@ -1367,7 +1367,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :En eskisi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :En yenisi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :En çok kullanılan
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Ayrılan rayları göster: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Trenlerin güzergah-tabanlı bloklara girmeyi reddetmesine dair problemleri engellemek için ayrılmış (rezerve) raylar için farklı bir renk kullan.
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Trenlerin güzergah tabanlı bloklara girmeyi reddetmesine dair sorunları engellemek için ayrılmış (rezerve) raylar için farklı bir renk kullan.
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Yapı araçlarını kullanımdan sonra aktif tut: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Köprü, tünel vb. için kullanılan inşa araçlarını kullanımdan sonra da açık tut
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Şirket mali tablosunda grup harcamaları: {STRING}
@@ -1579,7 +1579,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetrik" seç
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Posta için dağıtım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetrik" seçildiğinde A durağından B durağına gönderilen ile B'den A'ya gönderilen posta miktarı kabaca eşit olur. "asimetrik" seçildiğinde iki yönde de rastgele miktarda posta gönderilebilir. "el ile" seçildiğinde posta için otomatik dağıtım yapılmaz.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :ZIRHLI kargo sınıfı için dağıtım kipi: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :ZIRHLI kargo sınıfı ılımlı iklimde değerli mallar, yarı-tropik iklimde elmaslar, veya yarı-arktik iklimde altın içerir. NewGRF dosyaları bunu değiştirebilir. "simetrik" olarak ayarlandığında a durağından B durağına gönderilen kargo miktarı, B'den A'ya gönderilene kabaca eşit olur. "asimetrik" ise herhangi bir yönde rsatgele miktarda kargo gönderilebileceğini gösterir. "el ile" seçildiğinde o kargo için otomatik dağıtım yapılmaz. Yarı-arktik iklimde oynarken bu değeri "asimetrik" veya "el ile" olarak ayarlamanız tavsiye edilir, çünkü bankalar altınları altın madenine geri göndermez. Ilımlı ve yarı-tropik iklim için aynı zamanda "simetrik" seçebilirsiniz, zira bankalar değerli malların bir kısmını malların geldiği kaynak bankaya geri gönderir.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :ZIRHLI kargo sınıfı ılıman iklimde değerli mallar, yarı-tropik iklimde elmaslar, veya yarı-soğuk iklimde altın içerir. NewGRF dosyaları bunu değiştirebilir. "Simetrik" olarak ayarlandığında A durağından B durağına gönderilen kargo miktarı, B'den A'ya gönderilene kabaca eşit olur. "Asimetrik" ise herhangi bir yönde rastgele miktarda kargo gönderilebileceğini gösterir. "El ile" seçildiğinde o kargo için otomatik dağıtım yapılmaz. Yarı-soğuk iklimde oynarken bu değeri "asimetrik" veya "el ile" olarak ayarlamanız tavsiye edilir, çünkü bankalar altınları altın madenine geri göndermez. Ilıman ve yarı-tropik iklim için aynı zamanda "simetrik" seçebilirsiniz, zira bankalar değerli malların bir kısmını malların geldiği kaynak bankaya geri gönderir.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Diğer kargo sınıfları için dağılım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simetrik", A durağından B durağına gönderilen kargo miktarının B'den A'ya gönderilene kabaca eşit olacağını gösterir. "asimetrik" ise iki yönde de rastgele miktarda kargo gönderileceğini gösterir. "el ile" seçildiği takdirde o kargolar için otomatik dağılım yapılmaz. Bu seçeneği muhtemelen "asimetrik" veya "el ile" olarak ayarlamak istersiniz.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dağılım isabetliliği: {STRING}
@@ -2461,7 +2461,7 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Yükselt
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Rastgele harita yarat
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Yeni senaryo oluştur
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Haritayı sıfırla
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Haritada şirkete ait olan herşeyi sil
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Haritada şirkete ait olan her şeyi sil
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Haritayı Sıfırla
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Şirkete ait olan her şeyi silmek istediğinize emin misiniz?
@@ -2811,20 +2811,20 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Ray tipi
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF değişkeni 60+x parametresi (onaltılı)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Sprayt hizalanıyor {COMMA} ({STRING})
-STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sonraki sprayt
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Tüm sahte/yeniden renklendirme/font spraytlarını ve sondaki sargıyı atlayarak bir sonraki normal sprayta geç
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Sprayta git
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Verilen sprayta git. Eğer normal bir spray değilse, bir sonraki normal sprayta geç
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Önceki sprayt
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Tüm sahte/yeniden renklendirme/font spraytlarını ve baştaki sargıyı atlayarak bir önceki normal sprayta geç
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Seçili spraytın mevcut gösterimi. Bu spraytı çizerken hizalama ihmal edilir
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Spraytı X ve Y ofsetlerini değiştirerek gezdir
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Nesne hizalanıyor {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sonraki nesne
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve sondaki sargıyı atlayarak bir sonraki normal nesneye geç
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Nesneye git
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Verilen nesneye git. Eğer normal bir nesne değilse, bir sonraki normal nesneye geç
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Önceki nesne
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve baştaki sargıyı atlayarak bir önceki normal nesneye geç
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Seçili nesnenin mevcut gösterimi. Bu nesneyi çizerken hizalama ihmal edilir
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nesneyi X ve Y ofsetlerini değiştirerek gezdir
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X ofseti: {NUM}, Y ofseti: {NUM}
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Sprayt seç
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Ekrandaki herhangi bir yerden bir sprayt seçin
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Nesne seç
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Ekrandaki herhangi bir yerden bir nesne seçin
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Sprayta git
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Nesneye git
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2842,17 +2842,17 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} Open
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} adlı NewGRF'yi {STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmedik sprayt (sprayt {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği {4:HEX} (sprayt {3:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanım girişimi (sprayt {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (sprayt {3:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprayt bitiminden sonrasını okudu (sprayt {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Kullanımdaki temel grafik seti bazı spraytları içermiyor.{}Lütfen temel grafik setinizi güncelleyin .{}{YELLOW}OpenTTD'nin geliştirme kopyasını {WHITE}kullandığınız için, {YELLOW}temel grafiklerin de{WHITE} geliştirme kopyasını kullanmalısınız.
-STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (sprayt {3:NUM})
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmedik nesne (nesne {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği {4:HEX} (nesne {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanım girişimi (nesne {3:NUM})
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir nesne içeriyor. Tüm bozuk nesneler kırmızı bir soru işareti (?) olarak görünecektir
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (nesne {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-nesne bitiminden sonrasını okudu (nesne {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı nesneleri içermiyor.{}Lütfen temel grafik kümesini güncelleyin
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Kullanımdaki temel grafik seti bazı nesneleri içermiyor.{}Lütfen temel grafik setinizi güncelleyin .{}{YELLOW}OpenTTD'nin geliştirme kopyasını {WHITE}kullandığınız için, {YELLOW}temel grafiklerin de{WHITE} geliştirme kopyasını kullanmalısınız.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (nesne {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz bilinmeyen sprayt yerleşim biçimi (sprayt {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz/bilinmeyen nesne yerleşim biçimi (nesne {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
@@ -4260,7 +4260,7 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tün
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... çok fazla nesne var
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nesne inşa edilemiyor...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Yolda birsey var
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Yolda nesne var
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yolda şirket binası var
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Burası satın alınamaz...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... zaten senin!
