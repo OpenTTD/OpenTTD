@@ -201,7 +201,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ZS
 STR_UNITS_POWER_METRIC                                          :{COMMA} ZS
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 

@@ -293,10 +293,10 @@ STR_SORT_BY_ENGINE_ID                                           :EngineID (class
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Power
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Tractive effort
-STR_SORT_BY_INTRO_DATE                                          :Introduction Date
-STR_SORT_BY_RUNNING_COST                                        :Running Cost
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost
-STR_SORT_BY_CARGO_CAPACITY                                      :Cargo Capacity
+STR_SORT_BY_INTRO_DATE                                          :Introduction date
+STR_SORT_BY_RUNNING_COST                                        :Running cost
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running cost
+STR_SORT_BY_CARGO_CAPACITY                                      :Cargo capacity
 STR_SORT_BY_RANGE                                               :Range
 STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_RATING                                              :Rating
@@ -1587,7 +1587,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect of dista
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :If you set this to a value higher than 0, the distance between the origin station A of some cargo and a possible destination B will have an effect on the amount of cargo sent from A to B. The further away B is from A the less cargo will be sent. The higher you set it, the less cargo will be sent to far away stations and the more cargo will be sent to near stations.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Amount of returning cargo for symmetric mode: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Setting this to less than 100% makes the symmetric distribution behave more like the asymmetric one. Less cargo will be forcibly sent back if a certain amount is sent to a station. If you set it to 0% the symmetric distribution behaves just like the asymmetric one.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation of short paths before using capacious paths: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation of short paths before using high-capacity paths: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequently there are multiple paths between two given stations. Cargodist will saturate the shortest path first, then use the second shortest path until that is saturated and so on. Saturation is determined by an estimation of capacity and planned usage. Once it has saturated all paths, if there is still demand left, it will overload all paths, prefering the ones with high capacity. Most of the time the algorithm will not estimate the capacity accurately, though. This setting allows you to specify up to which percentage a shorter path must be saturated in the first pass before choosing the next longer one. Set it to less than 100% to avoid overcrowded stations in case of overestimated capacity.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Speed units: {STRING}
@@ -2891,6 +2891,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicl
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<invalid vehicle>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanning NewGRFs
@@ -3943,6 +3944,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Number of days 
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog of {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} license of {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Wrap text
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Wrap the text of the window so it all fits without having to scroll
 STR_TEXTFILE_VIEW_README                                        :{BLACK}View readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}License

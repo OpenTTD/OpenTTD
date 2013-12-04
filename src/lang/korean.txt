@@ -3822,7 +3822,7 @@ STR_TIMETABLE_DAYS                                              :{COMMA}일
 STR_TIMETABLE_TICKS                                             :{COMMA}틱
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이 걸릴 것입니다.
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표는 완주하는데 최소 {STRING}이 필요합니다 (일부만 시간지정됨)
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표를 완주하는데 최소 {STRING}이 필요합니다 (시간표가 일부만 지정됨)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차량은 지금 정시운행 중입니다.
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}이 차량은 현재 {STRING} 늦게 운행하고 있습니다
@@ -3938,7 +3938,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :게임 스크�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :새로운 인공지능이 나타나기 위해 기다려야 하는 날짜 수 (오차는 있을 수 있음): {ORANGE}{STRING}일
+STR_AI_SETTINGS_START_DELAY                                     :이전 인공지능 이후 이 인공지능이 나타나기 위한 날짜수: {ORANGE}약 {STRING}일
 
 
 # Textfile window
