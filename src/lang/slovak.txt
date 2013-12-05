@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zbaliť 
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nie je potrebné vysvetlenie)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Pôvodná hodnota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Nastavenie typu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavenia klienta (neuložia sa; ovplyvní všetky hry)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavenia klienta (neuchovávané v uložených hrách; ovplyvní všetky hry)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavenia hry (uložia sa; ovplyvní iba nové hry)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavenia hry (uložia sa; ovplyvní iba aktuálnu hru)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavenia spoločnosti (uložia sa; ovplyvní iba nové hry)
