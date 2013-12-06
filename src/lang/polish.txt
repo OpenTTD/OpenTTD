@@ -3275,7 +3275,7 @@ STR_INVALID_VEHICLE                                             :<nieprawidłowy
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanowanie NewGRFów
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanuje NewGRFy. Może to zająć chwilę w zależności od ilości...
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanuję NewGRFy. Może to zająć chwilę w zależności od ich ilości...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Przeskanowano {NUM} NewGRF{P "" y ów} z około {NUM} NewGRFów
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skanowanie w poszukiwaniu archiwum
 
