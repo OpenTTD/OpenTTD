@@ -290,7 +290,7 @@ STR_SORT_BY_WAITING_TOTAL                                       :Toplam bekleyen
 STR_SORT_BY_WAITING_AVAILABLE                                   :Kullanılabilir bekleyen kargo
 STR_SORT_BY_RATING_MAX                                          :En yüksek kargo değerlendirmesi
 STR_SORT_BY_RATING_MIN                                          :En düşük kargo değerlendirmesi
-STR_SORT_BY_ENGINE_ID                                           :LokoAdı (klasik sıra)
+STR_SORT_BY_ENGINE_ID                                           :Motor No. (klasik sıra)
 STR_SORT_BY_COST                                                :Fiyat
 STR_SORT_BY_POWER                                               :Güç
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Tork
@@ -368,7 +368,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ayarlar�
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Şehir isimlerini göster
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :İstasyon isimlerini göster
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Yolimlerini göster
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ara nokta isimlerini göster
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tabelaları göster
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rakip tabela ve isimlerini göster
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Tüm animasyonlar
@@ -387,8 +387,8 @@ STR_FILE_MENU_EXIT                                              :Çıkış
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Dünya haritası
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra görünüm
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kargo Akış Lejantı
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ek görünüm
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kargo Akış Göstergesi
 STR_MAP_MENU_SIGN_LIST                                          :Tabela listesi
 
 ############ range for town menu starts
@@ -452,8 +452,8 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ses/müzik
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Son mesaj/haber
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj Geçmişi
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Son mesaj/haber raporu
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj geçmişi
 ############ range ends here
 
 ############ range for about menu starts
@@ -461,7 +461,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolu aç/kapa
 STR_ABOUT_MENU_AI_DEBUG                                         :YZ/Oyun betik hata ayıklama
-STR_ABOUT_MENU_SCREENSHOT                                       :Ekran Görüntüsü
+STR_ABOUT_MENU_SCREENSHOT                                       :Ekran görüntüsü
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran görüntüsüne tamamen yaklaşıldı
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Varsayılan yakınlıkta ekran görüntüsü
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tüm harita ekran görüntüsü
@@ -609,8 +609,8 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Toplam p
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Caz Müzik Kutusu
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Hepsi
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Eski Stil
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Yeni Stil
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Eski Biçem
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Yeni Biçem
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Sokağı
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Özel 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Özel 2
@@ -633,9 +633,9 @@ STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Müziği
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Müziği başlat
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Efekt ve müzik sesini ayarlamak için sürükleyin
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'Tüm şarkılar' programını seç
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'Eski stil' programını seç
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'Yeni stil' programını seç
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Sokağı stili müzik' programını seç
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'Eski biçem müzik' programını seç
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'Yeni biçem' programını seç
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Sokağı biçemi müzik' programını seç
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'Özel 1' (kullanıcı-tanımlı) programı seç
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Özel 2' (kullanıcı-tanımlı) programı seç
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Rastgele programı aç/kapa
@@ -677,7 +677,7 @@ STR_SMALLMAP_TYPE_VEHICLES                                      :Araçlar
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Fabrikalar
 STR_SMALLMAP_TYPE_ROUTEMAP                                      :Kargo Akışı
 STR_SMALLMAP_TYPE_ROUTES                                        :Güzergahlar
-STR_SMALLMAP_TYPE_VEGETATION                                    :Nebatat
+STR_SMALLMAP_TYPE_VEGETATION                                    :Bitkiler
 STR_SMALLMAP_TYPE_OWNERS                                        :Sahipler
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Harita üzerinde eşyükselti eğrilerini göster
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Harita üzerinde araçları göster
@@ -958,8 +958,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekran görüntüsü biçimi
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Kullanılacak ekran görüntüsü biçimini seçin
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik seti
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik setini seçin
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} kayıp/bozuk dosya
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
 
@@ -1151,7 +1151,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Bir kara taşı
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Tren ve gemilerin 90 derece dönmesini yasakla: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 derece dönüşler yatay bir rayı bitişik karede dikey bir ray parçası takip ettiği zaman gerçekleşir, böylelikle trenin diğer ray kombinasyonlarındaki alışılagelmiş 45 derecelik dönüşü yerine karenin kenarından geçerken 90 derecelik dönüş yapmasını sağlar. Bu aynı zamanda gemilerin dönme açısına da uygulanır
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Doğrudan bitişik olmayan istasyonları birleştirme izni: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Mevcut parçalarına doğrudan temas etmeksizin bir istasyona parçalar eklenmesine müsaade et. Yeni parçalar eklenirken Ctrl+Click basılması gerekir
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Mevcut parçalarına doğrudan temas etmeksizin bir istasyona parçalar eklenmesine müsaade et. Yeni parçalar eklenirken Ctrl+Tıklama gerekir
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Geliştirilmiş yükleme algoritması kullan: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Etkinleştirilirse istasyonda bekleyen araçlar sırayla yüklenecektir. Bir sonraki aracın yüklenmesi ancak istasyonda bekleyen ilk aracı tamamen doldurmaya yetecek kadar kargo olduğunda başlar
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Araçlar yavaş yavaş dolsun: {STRING}
@@ -1221,14 +1221,14 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Rakiplerin yolu
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Başka şirketlerin sahip olduğu yollarda yol üstü durakların inşasına izin verir
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bitişik istasyonlar izinli: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Farklı istasyonların birbirine değmesine izin verir
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Birden çok NewGRF lokomotif setini aktifleştir: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Birden çok NewGRF lokomotif setini etkinleştir: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Eski NewGRF'ler için uyumluluk seçeneği. Ne yaptığınızı kesin olarak bilmiyorsanız, bu seçeneği kapatmayın!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Altyapı bakımları: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Etkinleştirildiğinde; altyapı, bakım giderine neden olur. Maliyet ağ büyüklüğüne göre daha hızlı yükselir, dolayısıyla büyük şirketleri küçüklere göre daha çok etkiler
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Havalimanlarının süresi asla dolmasın: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bu ayar tüm havalimanı türlerini aktif hale geldikten sonra sürekli kılar
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bu ayarı etkinleştirmek her havaalanı türünün, tanıtımından sonra sürekli olarak kullanılabilir kalmasını sağlar.
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Araç yolunu kaybederse uyar: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Komut verilen noktaya giden yolu bulamayan araçlar için mesajlar göster.
@@ -1272,7 +1272,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Dümdüz
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Düzgün
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Çok Engebeli
-STR_CONFIG_SETTING_TREE_PLACER                                  :Ağaç üretme algoritmasi: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Ağaç üretme algoritması: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Hiçbiri
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Özgün
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Gelişmiş
@@ -1419,7 +1419,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Zor
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Çok oyunculuda yapay zekâ olsun: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :YZ (yapay zeka) bilgisayar oyuncularının çok oyunculu oyunlara katılmasına izin ver
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Betikler duraklatılıncaya kadar çalıştırılacak opkod sayısı: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Bir komut dosyasının (script) bir elde kullanabileceği azami hesaplama adımı sayısı
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Bir betiğin bir elde kullanabileceği azami hesaplama adımı sayısı
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servis gecikmeleri yüzde ile: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Araçlara bakım yapılmasına bir önceki bakımın üzerinden geçen zamana göre mi, yoksa aracın güvenilirlik değerinin azami güvenilirliğe kıyasla belli bir yüzde oranında düşmesine bağlı olarak mı karar verileceğini seçin
@@ -1589,7 +1589,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Eğer buraya 0'
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Simetrik kip için geri gönderilen kargo miktarı: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Buraya %100'den küçük bir değer girmek simetrik dağılımın asimetrik bir dağılıma benzer şekilde davranmasına sebep olur. Eğer bir durağa belli miktar kargo gönderilmişse, daha az kargo zorla geri gönderilir. Eğer %0 olarak ayarlarsanız simetrik dağılım aynen asimetrik dağılım gibi davranmaya başlar.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Yüksek kapasiteli güzergahları kullanmadan önce daha kısa güzergah doygunluğu: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sıklıkla iki durak arasında birden fazla güzergah bulunur. Cargodist önce en kısa güzergahı doygunluğa ulaştırır, ardından ikinci en kısa güzergahı doygunluğa ulaşana kadar kullanır ve böyle devam eder. Doygunluk, kapasite tahmini ve planlanan kullanım miktarına göre hesaplanır. Tüm güzergahlar doygunluğa ulaştığında eğer hala talep varsa, yüksek kapasiteli olan güzergahları tercih ederek tüm güzergahları aşırı yükler. Fakat çoğu zaman algoritma kapasiteyi isabetli olarak hesaplayamaz. Bu değer, daha kısa bir güzergahın yüzde kaç oranında doygunluğa ulaştığı zaman bir sonraki güzergahın seçileceğini ayarlamanızı sağlar. Yanlış (büyük) kapasite tahmini ihtimaline karşı aşırı dolu durakları önlemek için %100'den daha düşük bir değer seçin.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sıklıkla iki durak arasında birden fazla güzergah bulunur. Kargo dağıtımı önce en kısa güzergahı doygunluğa ulaştırır, ardından ikinci en kısa güzergahı doygunluğa ulaşana kadar kullanır ve böyle devam eder. Doygunluk, kapasite tahmini ve planlanan kullanım miktarına göre hesaplanır. Tüm güzergahlar doygunluğa ulaştığında eğer hala talep varsa, yüksek kapasiteli olan güzergahları tercih ederek tüm güzergahları aşırı yükler. Fakat çoğu zaman algoritma kapasiteyi isabetli olarak hesaplayamaz. Bu değer, daha kısa bir güzergahın yüzde kaç oranında doygunluğa ulaştığı zaman bir sonraki güzergahın seçileceğini ayarlamanızı sağlar. Yanlış (büyük) kapasite tahmini ihtimaline karşı aşırı dolu durakları önlemek için %100'den daha düşük bir değer seçin.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hız birimi: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kullanıcı arayüzünde hız görüntülendiğinde, bunu seçili birimde göster.
@@ -1678,9 +1678,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :OpenTTD'nin bu 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :bilinmiyor
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... sıkıştırma seviyesi '{STRING}' geçerli değil
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... kaydedilmiş oyun formatı olarak '{STRING}' mevcut değil. '{STRING}' formatına çevriliyor
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... Temel Grafik seti görmezden geliniyor '{STRING}': bulunamadı
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... Temel Ses seti görmezden geliniyor '{STRING}': bulunamadı
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... Temel Müzik seti görmezden geliniyor '{STRING}': bulunamadı
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... Temel Grafik kümesi görmezden geliniyor '{STRING}': bulunamadı
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... Temel Ses kümesi görmezden geliniyor '{STRING}': bulunamadı
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... Temel Müzik kümesi görmezden geliniyor '{STRING}': bulunamadı
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Bellek yetersiz
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} sprite-önbelleği ayırma işlemi başarısız. Sprite-önbelleği {BYTES}'a düşürüldü. Bu OpenTTD'nin performansını azaltacak. Bellek gereksinimini azaltmak için 32bpp grafikleri ve/veya yakınlaştırma seviyelerini kapatmayı deneyebilirsiniz
 
@@ -1702,17 +1702,17 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimi
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}YZ/Oyun Betik Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Click harita ayarlamasını atlar.
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Tıklama harita ayarlamasını atlar.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Oyun yükle
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Yükseklik haritasını kullanarak yeni oyun başlat
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Özel bir senaryo kullanarak yeni oyun başlat
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyanı/senaryonu yarat
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Çok oyunculu oyun başlat
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'Ilıman' yer stilini seç
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}'Soğuk' yer stilini seç
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'Tropik' yer stilini seç
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'Oyuncak' yer stilini seç
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'Ilıman' yer biçemini seç
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}'Soğuk' yer biçemini seç
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'Tropik' yer biçemini seç
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'Oyuncak' yer biçemini seç
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seçenekleri göster
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tablosunu göster
@@ -1872,8 +1872,8 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Oyuncular
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Bağlı oyuncular / en fazla oyuncu
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Harita ebadı
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Oyunun harita ebadı{}Alana göre sıralamak için tıklayın
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Harita boyutu
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Oyunun harita boyutu{}Alana göre sıralamak için tıklayın
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tarih
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Güncel tarih
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Yıl
@@ -1881,7 +1881,7 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Oyunda g
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Dil, sunucu sürümü, vb.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Seçmek için listeden bir oyun tıklayın
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Geçen sefer katıldığınız sunucu:
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}En son katıldığınız sunucu:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Son oynadığınız sunucuya katılmak için tıklayın
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}OYUN BİLGİSİ
@@ -1911,7 +1911,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sunucu b
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Kendi sunucunu başlat
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}İsminizi girin
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Sunucunun ip'sini ve portunu girin
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Sunucunun adresini girin
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Yeni çok oyunculu oyun başlat
@@ -2243,7 +2243,7 @@ STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Gösteri
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}kullanılmayan
-STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}satüre
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}doygun
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}aşırı dolu
 
 # Base for station construction window(s)
@@ -2643,7 +2643,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Satın alınmı
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD Hakkında
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Telif hakkı {COPYRIGHT} 1995 Chris Sawyer, Her hakkı saklıdır
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD {REV} versiyonu
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD sürüm {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2013 OpenTTD ekibi
 
 # Save/load game/scenario
@@ -2681,12 +2681,12 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fabrika 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Kar yüksekliği:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Kar yüksekliğini bir arttır
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Kar yüksekliğini bir azalt
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Rastgele Sayı:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Rastgele sayı:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Rastgele bir sayı girmek için tıklayın
 STR_MAPGEN_RANDOM                                               :{BLACK}Rastgele
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Harita yapımı için kullanılan rastgele sayıyı değiştir
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Harita üretici:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ağaç algoritmasi:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ağaç algoritması:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Deniz seviyesi:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nehirler:
@@ -2750,12 +2750,12 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktif Ne
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Aktif olmayan NewGRF dosyaları
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Önceden belirlenmiş ayar seçin:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Süzgeç metni:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Seçili seçkiyi yükle
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Seçkiyi kaydet
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Şimdiki listeyi seçki olarak kaydet
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Seçki için isim girin
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Seçkiyi sil
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Seçili olan seçkiyi sil
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Seçili önayarı yükle
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Önayarı kaydet
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Şimdiki listeyi önayar olarak kaydet
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Önayar için isim girin
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Önayarı sil
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Seçili önayarı sil
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Ekle
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}seçili NewGRF'i ayarlarıma ekle
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Dosyaları tekrar tara
@@ -2849,7 +2849,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (nesne {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-nesne bitiminden sonrasını okudu (nesne {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı nesneleri içermiyor.{}Lütfen temel grafik kümesini güncelleyin
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Kullanımdaki temel grafik seti bazı nesneleri içermiyor.{}Lütfen temel grafik setinizi güncelleyin .{}{YELLOW}OpenTTD'nin geliştirme kopyasını {WHITE}kullandığınız için, {YELLOW}temel grafiklerin de{WHITE} geliştirme kopyasını kullanmalısınız.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Kullanımdaki temel grafik kümesi bazı nesneleri içermiyor.{}Lütfen temel grafik setinizi güncelleyin .{}{YELLOW}OpenTTD'nin geliştirme kopyasını {WHITE}kullandığınız için, {YELLOW}temel grafiklerin de{WHITE} geliştirme kopyasını kullanmalısınız.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (nesne {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz/bilinmeyen nesne yerleşim biçimi (nesne {3:NUM})
@@ -3113,7 +3113,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uçağı
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ana görünümü güzegaha ortala. Ctrl ile tıklama güzegahın konumunu gösteren yeni bir pencere açar
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Yolimi adını değiştir
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ara nokta adını değiştir
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görünümü şamandıra konumuna ortala. Ctrl ile tıklama şamandıranın konumunu gösteren yeni bir pencere açar
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Şamandıra adını değiştir
 
@@ -3871,9 +3871,9 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Yılı s
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Komut dosyası (script) adı
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Betik adı
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}YZ Ayarları
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Komut dosyası (script) ayarlarını değiştir
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Betik ayarlarını değiştir
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}YZ log iletisi durma metni ile eşleştiğinde duraklatmayı aç/kapa
@@ -3889,12 +3889,12 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Oyun Bet
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Oyun Betiği günlüğünü kontrol edin
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan betiklerden (script) biri çöktü. Lütfen bu durumu YZ Hata Ayıklama Penceresi görüntüsüyle birlikte dosyanın yazarına bildirin
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan betiklerden biri çöktü. Lütfen bu durumu YZ Hata Ayıklama Penceresi görüntüsüyle birlikte dosyanın yazarına bildirin
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}YZ Yapılandırması
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek Oyun Betiği (script)
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek Oyun Betiği
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Bir sonraki oyunda yüklenecek YZ'ler
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
 STR_AI_CONFIG_RANDOM_AI                                         :Rastgele YZ
@@ -3908,33 +3908,33 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Seçilen
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Oyun Betiği
 STR_AI_CONFIG_AI                                                :{SILVER}YZ'ler
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Seç {STRING}
+STR_AI_CONFIG_CHANGE                                            :{BLACK}{STRING} Seç
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :YZ
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Oyun Betiği
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Başka bir betik yükle
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Yapılandır
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Komut dosyası (script) parametrelerini yapılandır
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Betik parametrelerini yapılandır
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Mevcut {STRING}
 STR_AI_LIST_CAPTION_AI                                          :YZ'ler
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Oyun Betikleri (script)
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Komut dosyası (script) seçmek için bir tuşa basın
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Oyun Betikleri
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Bir betik seçmek için tıklayın
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Yazar: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Sürüm: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Kabul et
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulanan komut dosyasını (script) seç
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulanan betiği seç
 STR_AI_LIST_CANCEL                                              :{BLACK}İptal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Komut dosyası (script) değişmesin
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Betiği değiştirme
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametreler
 STR_AI_SETTINGS_CAPTION_AI                                      :YZ
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği (script)
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

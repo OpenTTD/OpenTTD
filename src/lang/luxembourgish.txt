@@ -42,7 +42,7 @@ STR_CARGO_PLURAL_COPPER_ORE                                     :Koffererz
 STR_CARGO_PLURAL_MAIZE                                          :Mais
 STR_CARGO_PLURAL_FRUIT                                          :Friichten
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamanten
-STR_CARGO_PLURAL_FOOD                                           :Iessen
+STR_CARGO_PLURAL_FOOD                                           :Iesswueren
 STR_CARGO_PLURAL_PAPER                                          :Pabeier
 STR_CARGO_PLURAL_GOLD                                           :Gold
 STR_CARGO_PLURAL_WATER                                          :Waasser
@@ -65,8 +65,8 @@ STR_CARGO_SINGULAR_PASSENGER                                    :Passagéier
 STR_CARGO_SINGULAR_COAL                                         :Kuelen
 STR_CARGO_SINGULAR_MAIL                                         :Post
 STR_CARGO_SINGULAR_OIL                                          :Ueleg
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Béischt
-STR_CARGO_SINGULAR_GOODS                                        :Wuer
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Véi
+STR_CARGO_SINGULAR_GOODS                                        :Wueren
 STR_CARGO_SINGULAR_GRAIN                                        :Kaar
 STR_CARGO_SINGULAR_WOOD                                         :Holz
 STR_CARGO_SINGULAR_IRON_ORE                                     :Eisenerz
@@ -88,7 +88,7 @@ STR_CARGO_SINGULAR_CANDY                                        :Séissegkeet
 STR_CARGO_SINGULAR_COLA                                         :Cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Zockerwatt
 STR_CARGO_SINGULAR_BUBBLE                                       :Blos
-STR_CARGO_SINGULAR_TOFFEE                                       :Karmell
+STR_CARGO_SINGULAR_TOFFEE                                       :Karamell
 STR_CARGO_SINGULAR_BATTERY                                      :Batterie
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Spruddel-Gedrénks
@@ -110,7 +110,7 @@ STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} K
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} Mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} Friichten
 STR_QUANTITY_DIAMONDS                                           :{COMMA} S{P aak äck} mat Diamanten
-STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} Iessen
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} Iesswueren
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} Pabeier
 STR_QUANTITY_GOLD                                               :{COMMA} S{P aak äck} mat Gold
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} Waasser
@@ -1434,7 +1434,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard Revisi
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definéiert den Standardrevisiounsintervall fir nei Schëffer, wann keen expliziten Revisiounsintervall uginn ass
 STR_CONFIG_SETTING_NOSERVICE                                    :Revisiounen ausschalten wann Pannen op "Keng" gestallt sinn: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Wann ugeschalt, ginn Gefierer net an d'Revisioun geschéckt, wann se keng Pann kënnen kréien
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Geschwindegkeetsbegrenzungen fir Wagongen: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Geschwindegkeetsbegrenzungen fir Waggonen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wann ugeschalt, benotz och Geschwindegkeetslimitatiounen fir Wagonen fir d'maximal Geschwindegkeet vun engem Zuch ze definéiren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elecktreschschinnen ausschalten: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, ginn keng elektresch Schinnen gebrauch fir mat elektreschen Zich ze fueren
@@ -1783,12 +1783,12 @@ STR_LIVERY_MONORAIL                                             :Monorail Lok
 STR_LIVERY_MAGLEV                                               :Magnéitbunnlok
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagéierwagon (Damp)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagéierwagon (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagéierwagon (Elektrësch)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagéierwagon (Monorail)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagéierwagon (Magnéitbahn)
-STR_LIVERY_FREIGHT_WAGON                                        :Wuerenwagon
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagéierwaggon (Damp)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagéierwaggon (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagéierwaggon (Elektrësch)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagéierwaggon (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagéierwaggon (Magnéitbahn)
+STR_LIVERY_FREIGHT_WAGON                                        :Gidderwaggon
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Camion
 STR_LIVERY_PASSENGER_SHIP                                       :Passagéierfähr
@@ -3325,7 +3325,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Käschte
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewiicht: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazitéit: {GOLD}{CARGO_LONG}, {CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ugedriwwen Wagonen: {GOLD}+{POWER}{BLACK} Gewiicht: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ugedriwwen Waggonen: {GOLD}+{POWER}{BLACK} Gewiicht: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Embaubaur zu: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All Typ Wueren
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles ausser {CARGO_LIST}
@@ -3475,7 +3475,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gef
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken fir den Austosch ze stoppen
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Tauschen aus: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Wagonaustosch. Fënster
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Waggonaustosch-Fënster
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagonen
 
@@ -3486,8 +3486,8 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Schi
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Gefierer
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnéitbunn Gefierer
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon raushuelen: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mëscht dass d'automatescht Austauschen d'Längt vum Zuch behält, an dem en Wagonen (vun lénks un) wechhëllt, wann d'Lok den Zuch ze laang mëscht
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon raushuelen: {ORANGE}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mëscht dass d'automatescht Austauschen d'Längt vum Zuch behält, an dem en Waggonen (vun lénks un) wechhëllt, wann d'Lok den Zuch ze laang mëscht
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4453,7 +4453,7 @@ STR_INDUSTRY_NAME_TOY_FACTORY                                   :Spillsaachen Fa
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastikpëtz
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Spruddelgedrenks Fabrik
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Blosengenerator
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karmelbroch
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamellbroch
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Zockerminn
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -4525,29 +4525,29 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :BR '30' (Elektr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :BR '40' (Elektrësch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.G.V.' (Elektrësch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'EuroStar' (Elektrësch)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Passagéierwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Postwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kuelenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Uelegwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Liewnsmëttelwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Güterwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Kaarwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Holzwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Eisenerzwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Stolwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Gepanzerten Wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Iessenswagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Pabeierwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Koffererzwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Waasserwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Friichtenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Kautschuckwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Zockerwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Zockerwatt Wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Karmelwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Blosenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Colawagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Séissegkeetenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Passagéierwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Postwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kuelewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Uelegwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Véiwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Wuerewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Kaarwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Holzwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Eisenerzwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Stolwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Gepanzerten Waggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Iesswuerenwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Pabeierwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Koffererzwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Waasserwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Friichtewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Kautschuckwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Zockerwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Zockerwattwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Karamellwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Blosenwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Colawaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Séissegkeetenwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Spillsaachenwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Batterienwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Spruddelgedrénks Wagon
