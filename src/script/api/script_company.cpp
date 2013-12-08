@@ -246,7 +246,7 @@
 /* static */ TileIndex ScriptCompany::GetCompanyHQ(CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	EnforcePrecondition(INVALID_TILE, company != COMPANY_INVALID);
+	if (company == COMPANY_INVALID) return INVALID_TILE;
 
 	TileIndex loc = ::Company::Get((CompanyID)company)->location_of_HQ;
 	return (loc == 0) ? INVALID_TILE : loc;
