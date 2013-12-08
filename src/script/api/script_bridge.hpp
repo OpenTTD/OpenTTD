@@ -133,7 +133,8 @@ public:
 	 * @pre 'start' and 'end' are in a straight line, i.e.
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
-	 * @pre vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_WATER ||
+	 * @pre vehicle_type == ScriptVehicle::VT_WATER ||
+	 *   (vehicle_type == ScriptVehicle::VT_ROAD && ScriptRoad::IsRoadTypeAvailable(ScriptRoad::GetCurrentRoadType())) ||
 	 *   (vehicle_type == ScriptVehicle::VT_RAIL && ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType())).
 	 * @game @pre Outside CompanyMode: vehicle_type == ScriptVehicle::VT_ROAD.
 	 * @exception ScriptError::ERR_ALREADY_BUILT

@@ -93,6 +93,7 @@ public:
 	 * Checks whether the given tile is actually a tile with a road depot.
 	 * @param tile The tile to check.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @return True if and only if the tile has a road depot.
 	 */
 	static bool IsRoadDepotTile(TileIndex tile);
@@ -101,6 +102,7 @@ public:
 	 * Checks whether the given tile is actually a tile with a road station.
 	 * @param tile The tile to check.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @return True if and only if the tile has a road station.
 	 */
 	static bool IsRoadStationTile(TileIndex tile);
@@ -110,6 +112,7 @@ public:
 	 *  road station.
 	 * @param tile The tile to check.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @return True if and only if the tile has a drive through road station.
 	 */
 	static bool IsDriveThroughRoadStationTile(TileIndex tile);
