@@ -81,7 +81,7 @@ public:
 	 * Create a new story page.
 	 * @param company The company to create the story page for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).
-	 * @return The new StoryPageID, or STORY_INVALID if it failed.
+	 * @return The new StoryPageID, or STORY_PAGE_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 */
@@ -93,7 +93,7 @@ public:
 	 * @param type Which page element type to create.
 	 * @param reference A reference value to the object that is refered to by some page element types. When type is SPET_GOAL, this is the goal ID. When type is SPET_LOCATION, this is the TileIndex.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
-	 * @return The new StoryPageID, or STORY_INVALID if it failed.
+	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidStoryPage(story_page).
 	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != NULL && len(text) != 0).
@@ -108,7 +108,7 @@ public:
 	 * @param story_page_element_id The page id of the story page which the page element should be appended to.
 	 * @param reference A reference value to the object that is refered to by some page element types. See also NewElement.
 	 * @param text The body text of page elements that allow custom text. See also NewElement.
-	 * @return The new StoryPageID, or STORY_INVALID if it failed.
+	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidStoryPage(story_page).
 	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != NULL && len(text) != 0).
