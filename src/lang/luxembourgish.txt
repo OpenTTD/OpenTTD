@@ -31,7 +31,7 @@ STR_CARGO_PLURAL_PASSENGERS                                     :Passagéier
 STR_CARGO_PLURAL_COAL                                           :Kuelen
 STR_CARGO_PLURAL_MAIL                                           :Post
 STR_CARGO_PLURAL_OIL                                            :Ueleg
-STR_CARGO_PLURAL_LIVESTOCK                                      :Béischten
+STR_CARGO_PLURAL_LIVESTOCK                                      :Véi
 STR_CARGO_PLURAL_GOODS                                          :Wueren
 STR_CARGO_PLURAL_GRAIN                                          :Kaar
 STR_CARGO_PLURAL_WOOD                                           :Holz
@@ -99,7 +99,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} Passag�
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} Kuel
 STR_QUANTITY_MAIL                                               :{COMMA} Posts{P aak äck}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} Ueleg
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} Béischt{P "" en}
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} Eenheet{P "" en} Véi
 STR_QUANTITY_GOODS                                              :{COMMA} Wuerenkëscht{P "" en}
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} Kaar
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} Holz
@@ -1435,7 +1435,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definéiert den
 STR_CONFIG_SETTING_NOSERVICE                                    :Revisiounen ausschalten wann Pannen op "Keng" gestallt sinn: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Wann ugeschalt, ginn Gefierer net an d'Revisioun geschéckt, wann se keng Pann kënnen kréien
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Geschwindegkeetsbegrenzungen fir Waggonen: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wann ugeschalt, benotz och Geschwindegkeetslimitatiounen fir Wagonen fir d'maximal Geschwindegkeet vun engem Zuch ze definéiren
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wann ugeschalt, benotz och Geschwindegkeetslimitatiounen fir Waggonen fir d'maximal Geschwindegkeet vun engem Zuch ze definéiren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elecktreschschinnen ausschalten: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, ginn keng elektresch Schinnen gebrauch fir mat elektreschen Zich ze fueren
 
@@ -3410,7 +3410,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gefiert 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schëff klonen
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Fliger klonen
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. Klick op dësen Knäppchen an dann op en Zuch am Depot oder baussen. Ctrl+Klick fir Opträg ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Waggonen. Klick op dësen Knäppchen an dann op en Zuch am Depot oder baussen. Ctrl+Klick fir Opträg ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Keeft eng Kopie vum Stroossengefier. Klick dësen Kneppchen an dann op en Stroossengefier am oder baussent dem Depot. Ctrl+Klick deelt och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dëst baut eng Kopie vum Schëff. Klick op dësen Knäppchen an dann op en Schëff am Depot oder baussen.Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klick op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen. Ctrl+Klick fir Uerder ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
@@ -3477,7 +3477,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Tauschen aus: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Waggonaustosch-Fënster
 STR_REPLACE_ENGINES                                             :Motoren
-STR_REPLACE_WAGONS                                              :Wagonen
+STR_REPLACE_WAGONS                                              :Waggonen
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt den Schinnentyp fir den Maschinen ausgetosch ginn
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Weist un wellech Maschin vun der lénks selectéierter Maschin ausgetosch soll ginn, wann et zoutrëfft
@@ -3502,7 +3502,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéck d'Schëff an den Depot. CTRL+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Schéckt den Fliger an den Hangar. CTRL+Klick mëscht nëmmen Revisioun
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Waggonen. Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Baut eng Kopie vum Stroossengefiert. Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dëst baut eng Kopie vum Schëff. Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dëst baut eng Kopie vum Fliger. Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
@@ -3615,9 +3615,9 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Luedung
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Weist d'Detailer vun der Luedung
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informatioun
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Weist d'Detailer vun den Wagongen
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Weist d'Detailer vun den Waggonen
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapazitéiten
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Weist d'Kapazitéiten vun den Wagongen
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Weist d'Kapazitéiten vun den Waggonen
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Total Luedung
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Weist d'Total Kapazitéit vum Zuch, opgedeelt op d'Wuerentypen
 
@@ -4591,29 +4591,29 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passagéierwagg
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Postwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kuelewaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Uelegwaggon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Béischtenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Güterwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Kaarwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Holzwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Eisenerzwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Stolwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Gepanzerten Wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Iessenswagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Pabeierwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Koffererzwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Waasserwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Friichtenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Kautschuckwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Zockerwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Zockerwatt Wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Karmelwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Blosenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Colawagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Séissegkeetenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Spillsaachenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batteriewagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Spruddelgedrénks Wagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastikwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Véiwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Wuerewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Kaarwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Holzwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Eisenerzwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Stolwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Gepanzerten Waggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Iesswuerewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Pabeierwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Koffererzwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Waasserwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Friichtewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Kautschuckwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Zockerwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Zockerwattwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Karamellwaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Blosewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Colawaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Séissegkeetewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Spillsaachewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batteriewaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Spruddelgedrénkswaggon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastikwaggon
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Bus
@@ -4633,9 +4633,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Postca
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Uelegcamion
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Uelegcamion
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Uelegcamion
-STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Béischtencamion
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Béischtencamion
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Béischtencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Véitransporter
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Véitransporter
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Véitransporter
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Gütercamion
 STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Gütercamion
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Gütercamion
