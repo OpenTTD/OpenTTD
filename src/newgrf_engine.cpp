@@ -627,6 +627,17 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			if (!v->IsPrimaryVehicle()) return 0;
 			return v->GetCurrentMaxSpeed();
 
+		case 0x4D: // Position within articulated vehicle
+			if (!HasBit(v->grf_cache.cache_valid, NCVV_POSITION_IN_VEHICLE)) {
+				byte artic_before = 0;
+				for (const Vehicle *u = v; u->IsArticulatedPart(); u = u->Previous()) artic_before++;
+				byte artic_after = 0;
+				for (const Vehicle *u = v; u->HasArticulatedPart(); u = u->Next()) artic_after++;
+				v->grf_cache.position_in_vehicle = artic_before | artic_after << 8;
+				SetBit(v->grf_cache.cache_valid, NCVV_POSITION_IN_VEHICLE);
+			}
+			return v->grf_cache.position_in_vehicle;
+
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurrence
 			if (v->type != VEH_TRAIN) return v->GetEngine()->grf_prop.local_id == parameter ? 1 : 0;
@@ -1293,6 +1304,7 @@ void FillNewGRFVehicleCache(const Vehicle *v)
 		{ 0x41, NCVV_POSITION_SAME_ID_LENGTH },
 		{ 0x42, NCVV_CONSIST_CARGO_INFORMATION },
 		{ 0x43, NCVV_COMPANY_INFORMATION },
+		{ 0x4D, NCVV_POSITION_IN_VEHICLE },
 	};
 	assert_compile(NCVV_END == lengthof(cache_entries));
 

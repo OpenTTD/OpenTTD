@@ -58,6 +58,7 @@ enum NewGRFCacheValidValues {
 	NCVV_POSITION_SAME_ID_LENGTH   = 1, ///< This bit will be set if the NewGRF var 41 currently stored is valid.
 	NCVV_CONSIST_CARGO_INFORMATION = 2, ///< This bit will be set if the NewGRF var 42 currently stored is valid.
 	NCVV_COMPANY_INFORMATION       = 3, ///< This bit will be set if the NewGRF var 43 currently stored is valid.
+	NCVV_POSITION_IN_VEHICLE       = 4, ///< This bit will be set if the NewGRF var 4D currently stored is valid.
 	NCVV_END,                           ///< End of the bits.
 };
 
@@ -68,6 +69,7 @@ struct NewGRFCache {
 	uint32 position_same_id_length;   ///< Cache for NewGRF var 41.
 	uint32 consist_cargo_information; ///< Cache for NewGRF var 42. (Note: The cargotype is untranslated in the cache because the accessing GRF is yet unknown.)
 	uint32 company_information;       ///< Cache for NewGRF var 43.
+	uint32 position_in_vehicle;       ///< Cache for NewGRF var 4D.
 	uint8  cache_valid;               ///< Bitset that indicates which cache values are valid.
 };
 
