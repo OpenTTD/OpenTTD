@@ -59,7 +59,12 @@ static const NIVariable _niv_vehicles[] = {
 	NIV(0x48, "vehicle type info"),
 	NIV(0x49, "year of construction"),
 	NIV(0x4A, "current rail type info"),
+	NIV(0x4B, "long date of last service"),
+	NIV(0x4C, "current max speed"),
+	NIV(0x4A, "position in articulated vehicle"),
 	NIV(0x60, "count vehicle id occurrences"),
+	// 0x61 not useful, since it requires register 0x10F
+	NIV(0x62, "Curvature/position difference to other vehicle"),
 	NIV_END()
 };
 
@@ -407,6 +412,8 @@ static const NIVariable _niv_railtypes[] = {
 	NIV(0x40, "terrain type"),
 	NIV(0x41, "enhanced tunnels"),
 	NIV(0x42, "level crossing status"),
+	NIV(0x43, "construction date"),
+	NIV(0x44, "town zone"),
 	NIV_END()
 };
 
