@@ -1541,6 +1541,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Pailead bunaiteach airson NewGRFan gun phailead aca fhèin: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Pailead dhathan bunasach a thèid a chleachdadh le NewGRFan nach sònraich dè am fear a tha a dhìth
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailead tùsail (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailead dìleabach (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Cuir geamannan air ùr-thòiseachadh nan stad gu fèin-obrachail: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Nuair a bhios seo air, stadaidh an geama gu fèin-obrachail nuair a thòisicheas tu geama ùr. Bheir seo cothrom dhut gus am mapa a sgrùdadh air do shocair
@@ -2242,6 +2244,7 @@ STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Amharcaichean
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Cuir a-steach na tha thu airson toirt seachad
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Amharc
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbhail am facal-faire air a chur a-steach
@@ -3117,6 +3120,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<modail carbaid
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<gnìomhachas mì-dhligheach>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<carbad mì-dhligheach>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}A' sganadh NewGRFan
@@ -3255,6 +3259,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Air ais
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Rach dhan duilleag roimhpe
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Air adhart
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Rach dhan ath-dhuilleag
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Iomradh cinn-uidhe mì-dhligheach
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ainmean nan stéiseanan - briog air ainm gus am prìomh-shealladh a mheadhanachadh air an stèisean. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an stèisein
@@ -4168,6 +4173,8 @@ STR_AI_SETTINGS_START_DELAY                                     :An àireamh dhe
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}“Leugh mi” {STRING} aig {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Loga atharraichean {STRING} aig {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ceadachas {STRING} aig {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Paisg teacsa
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Paisg teacsa ach am freagair e dhan uinneag gun fheum air sgroladh
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Seall “Leugh mi”
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Loga nan atharraichean
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ceadachas
