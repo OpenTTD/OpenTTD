@@ -198,14 +198,6 @@ struct PersistentStorage : PersistentStorageArray<int32, 16>, PersistentStorageP
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	PersistentStorage(const uint32 new_grfid) : grfid(new_grfid)
 	{
-		this->prev_storage = NULL;
-		memset(this->storage, 0, sizeof(this->storage));
-	}
-
-	/** Free the memory used by the persistent storage. */
-	~PersistentStorage()
-	{
-		free(this->prev_storage);
 	}
 };
 
