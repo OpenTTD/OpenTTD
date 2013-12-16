@@ -2891,6 +2891,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<ตัวย�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<อุตสาหกรรมไม่ถูกต้อง>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<ตัวยานพาหนะไม่ถูกต้อง>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}ตรวจสอบ NewGRFs
