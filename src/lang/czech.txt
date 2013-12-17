@@ -2979,6 +2979,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<neplatný druh
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný průmysl>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<neplatné vozidlo>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Prohledávání grafik
@@ -4037,8 +4038,10 @@ STR_AI_SETTINGS_START_DELAY                                     :Počet dní kdy
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} změny ve verzi {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licence {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zalomit text
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zalomit text v okně tak, aby ho nebylo nutné posouvat
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobrazit readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK} Novinky ve verzi
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Novinky ve verzi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
 
 

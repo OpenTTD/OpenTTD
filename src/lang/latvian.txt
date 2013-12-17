@@ -2994,6 +2994,9 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt 
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} no {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} uz {STATION}
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} uz jebkuru staciju
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} no šīs stacijas
 
 
 ############ range for rating starts
@@ -3501,6 +3504,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Apkopes 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielināt apkopes starplaiku par 10. Ctrl+klikšķis palielina apkopes starplaiku par 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes starplaiku par 10. Ctrl+klikšķis samazina apkopes starplaiku par 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Mainīt apkopes starplaiku veidu
 STR_VEHICLE_DETAILS_DEFAULT                                     :Noklusējuma
 STR_VEHICLE_DETAILS_DAYS                                        :Dienas
 STR_VEHICLE_DETAILS_PERCENT                                     :Procenti
@@ -4273,6 +4277,8 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nevar dz
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Uz 'Transport Tycoon Deluxe' balstīta simulācijas spēle
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Oriģinālā Transport Tycoon Deluxe Windows izdevuma mūzika.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Mūzikas kopa bez mūzikas
 
 ##id 0x2000
 # Town building names
