@@ -146,9 +146,9 @@ LinkGraphSchedule::LinkGraphSchedule()
 	this->handlers[0] = new InitHandler;
 	this->handlers[1] = new DemandHandler;
 	this->handlers[2] = new MCFHandler<MCF1stPass>;
-	this->handlers[3] = new FlowMapper;
+	this->handlers[3] = new FlowMapper(false);
 	this->handlers[4] = new MCFHandler<MCF2ndPass>;
-	this->handlers[5] = new FlowMapper;
+	this->handlers[5] = new FlowMapper(true);
 }
 
 /**

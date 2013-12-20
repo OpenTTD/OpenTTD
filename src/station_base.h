@@ -79,6 +79,8 @@ public:
 
 	void ReleaseShare(StationID st);
 
+	void ScaleToMonthly(uint runtime);
+
 	/**
 	 * Get the actual shares as a const pointer so that they can be iterated
 	 * over.

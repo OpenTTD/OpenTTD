@@ -18,9 +18,6 @@
  */
 void FlowMapper::Run(LinkGraphJob &job) const
 {
-	/* Time the graph has been running without being compressed. */
-	uint runtime = job.JoinDate() - job.Settings().recalc_time - job.LastCompression();
-
 	for (NodeID node_id = 0; node_id < job.Size(); ++node_id) {
 		Node prev_node = job[node_id];
 		StationID prev = prev_node.Station();
@@ -29,8 +26,6 @@ void FlowMapper::Run(LinkGraphJob &job) const
 			Path *path = *i;
 			uint flow = path->GetFlow();
 			if (flow == 0) break;
-			/* compress to monthly value */
-			flow = max(1U, flow * 30 / runtime);
 			Node node = job[path->GetNode()];
 			StationID via = node.Station();
 			StationID origin = job[path->GetOrigin()].Station();
@@ -51,7 +46,15 @@ void FlowMapper::Run(LinkGraphJob &job) const
 	for (NodeID node_id = 0; node_id < job.Size(); ++node_id) {
 		/* Remove local consumption shares marked as invalid. */
 		Node node = job[node_id];
-		node.Flows().FinalizeLocalConsumption(node.Station());
+		FlowStatMap &flows = node.Flows();
+		flows.FinalizeLocalConsumption(node.Station());
+		if (this->scale) {
+			/* Scale by time the graph has been running without being compressed. */
+			uint runtime = job.JoinDate() - job.Settings().recalc_time - job.LastCompression();
+			for (FlowStatMap::iterator i = flows.begin(); i != flows.end(); ++i) {
+				i->second.ScaleToMonthly(runtime);
+			}
+		}
 		/* Clear paths. */
 		PathList &paths = node.Paths();
 		for (PathList::iterator i = paths.begin(); i != paths.end(); ++i) {

@@ -23,12 +23,25 @@
  */
 class FlowMapper : public ComponentHandler {
 public:
+
+	/**
+	 * Create a flow mapper.
+	 * @param scale Whether the flow mapper should scale all flows to monthly
+	 *              values. Only do that on the very last flow mapping.
+	 */
+	FlowMapper(bool scale) : scale(scale) {}
 	virtual void Run(LinkGraphJob &job) const;
 
 	/**
 	 * Virtual destructor has to be defined because of virtual Run().
 	 */
 	virtual ~FlowMapper() {}
+private:
+
+	/**
+	 * Whether the flow mapper should scale all flows to monthly values.
+	 */
+	const bool scale;
 };
 
 #endif /* FLOWMAPPER_H_ */

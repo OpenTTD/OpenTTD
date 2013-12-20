@@ -4290,6 +4290,22 @@ void FlowStat::ReleaseShare(StationID st)
 }
 
 /**
+ * Scale all shares from link graph's runtime to monthly values.
+ * @param runtime Time the link graph has been running without compression.
+ */
+void FlowStat::ScaleToMonthly(uint runtime)
+{
+	SharesMap new_shares;
+	uint share = 0;
+	for (SharesMap::iterator i = this->shares.begin(); i != this->shares.end(); ++i) {
+		share = max(share + 1, i->first * 30 / runtime);
+		new_shares[share] = i->second;
+		if (this->unrestricted == i->first) this->unrestricted = share;
+	}
+	this->shares.swap(new_shares);
+}
+
+/**
  * Add some flow from "origin", going via "via".
  * @param origin Origin of the flow.
  * @param via Next hop.
