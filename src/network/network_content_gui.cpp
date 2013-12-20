@@ -750,7 +750,7 @@ public:
 			case WID_NCL_NAME:
 				if (this->content.SortType() == widget - WID_NCL_CHECKBOX) {
 					this->content.ToggleSortOrder();
-					this->list_pos = this->content.Length() - this->list_pos - 1;
+					if (this->content.Length() > 0) this->list_pos = this->content.Length() - this->list_pos - 1;
 				} else {
 					this->content.SetSortType(widget - WID_NCL_CHECKBOX);
 					this->content.ForceResort();
@@ -844,7 +844,10 @@ public:
 				return ES_NOT_HANDLED;
 		}
 
-		if (_network_content_client.Length() == 0) return ES_HANDLED;
+		if (this->content.Length() == 0) {
+			this->list_pos = 0; // above stuff may result in "-1".
+			return ES_HANDLED;
+		}
 
 		this->selected = *this->content.Get(this->list_pos);
 
