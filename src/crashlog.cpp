@@ -26,6 +26,7 @@
 #include "gfx_func.h"
 #include "network/network.h"
 #include "language.h"
+#include "fontcache.h"
 
 #include "ai/ai_info.hpp"
 #include "game/game.hpp"
@@ -145,6 +146,18 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			BaseSounds::GetUsedSet() == NULL ? "none" : BaseSounds::GetUsedSet()->name,
 			BaseSounds::GetUsedSet() == NULL ? UINT32_MAX : BaseSounds::GetUsedSet()->version,
 			_video_driver == NULL ? "none" : _video_driver->GetName()
+	);
+
+	buffer += seprintf(buffer, last,
+			"Fonts:\n"
+			" Small:  %s\n"
+			" Medium: %s\n"
+			" Large:  %s\n"
+			" Mono:   %s\n\n",
+			FontCache::Get(FS_SMALL)->GetFontName(),
+			FontCache::Get(FS_NORMAL)->GetFontName(),
+			FontCache::Get(FS_LARGE)->GetFontName(),
+			FontCache::Get(FS_MONO)->GetFontName()
 	);
 
 	buffer += seprintf(buffer, last, "AI Configuration (local: %i):\n", (int)_local_company);

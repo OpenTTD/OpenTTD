@@ -81,6 +81,7 @@ public:
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key) { assert(IsPrintable(key)); return SPRITE_GLYPH | key; }
 	virtual const void *GetFontTable(uint32 tag, size_t &length) { length = 0; return NULL; }
+	virtual const char *GetFontName() { return "sprite"; }
 };
 
 /**
@@ -239,6 +240,7 @@ public:
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key);
 	virtual const void *GetFontTable(uint32 tag, size_t &length);
+	virtual const char *GetFontName() { return face->family_name; }
 };
 
 FT_Library _library = NULL;

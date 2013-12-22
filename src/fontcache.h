@@ -120,6 +120,12 @@ public:
 	virtual const void *GetFontTable(uint32 tag, size_t &length) = 0;
 
 	/**
+	 * Get the name of this font.
+	 * @return The name of the font.
+	 */
+	virtual const char *GetFontName() = 0;
+
+	/**
 	 * Get the font cache of a given font size.
 	 * @param fs The font size to look up.
 	 * @return The font cache.
