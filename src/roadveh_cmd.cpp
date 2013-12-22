@@ -1107,7 +1107,7 @@ static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadBits r)
 	return ret.Succeeded();
 }
 
-static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
+bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 {
 	if (v->overtaking != 0)  {
 		if (IsTileType(v->tile, MP_STATION)) {
@@ -1417,17 +1417,12 @@ again:
 		v->direction = new_dir;
 		if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
 
-		/* Delay the vehicle in curves by making it require one or two additional frames per curve.
+		/* Delay the vehicle in curves by making it require one additional frame per turning direction (two in total).
 		 * A vehicle has to spend at least 9 frames on a tile, so the following articulated part can follow.
 		 * (The following part may only be one tile behind, and the front part is moved before the following ones.)
-		 * The short (inner) curve has 8 frames, this elongates it to 9 or 10.
-		 *
-		 * The difference between 9 and 10 is arbitrary, and completely bollocks (i.e. a bug).
-		 * Unifying this requires a complicated savegame conversion. */
-		if (old_dir != v->state) {
-			v->UpdateInclination(false, true);
-			return true;
-		}
+		 * The short (inner) curve has 8 frames, this elongates it to 10. */
+		v->UpdateInclination(false, true);
+		return true;
 	}
 
 	/* If the vehicle is in a normal road stop and the frame equals the stop frame OR

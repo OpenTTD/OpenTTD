@@ -2832,6 +2832,64 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(188)) {
+		/* Fix articulated road vehicles.
+		 * Some curves were shorter than other curves.
+		 * Now they have the same length, but that means that trailing articulated parts will
+		 * take longer to go through the curve than the parts in front which already left the courve.
+		 * So, make articulated parts catch up. */
+		RoadVehicle *v;
+		bool roadside = _settings_game.vehicle.road_side == 1;
+		SmallVector<uint, 16> skip_frames;
+		FOR_ALL_ROADVEHICLES(v) {
+			if (!v->IsFrontEngine()) continue;
+			skip_frames.Clear();
+			TileIndex prev_tile = v->tile;
+			uint prev_tile_skip = 0;
+			uint cur_skip = 0;
+			for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
+				if (u->tile != prev_tile) {
+					prev_tile_skip = cur_skip;
+					prev_tile = u->tile;
+				} else {
+					cur_skip = prev_tile_skip;
+				}
+
+				uint *this_skip = skip_frames.Append();
+				*this_skip = prev_tile_skip;
+
+				/* The following 3 curves now take longer than before */
+				switch (u->state) {
+					case 2:
+						cur_skip++;
+						if (u->frame <= (roadside ? 9 : 5)) *this_skip = cur_skip;
+						break;
+
+					case 4:
+						cur_skip++;
+						if (u->frame <= (roadside ? 5 : 9)) *this_skip = cur_skip;
+						break;
+
+					case 5:
+						cur_skip++;
+						if (u->frame <= (roadside ? 4 : 2)) *this_skip = cur_skip;
+						break;
+
+					default:
+						break;
+				}
+			}
+			while (cur_skip > skip_frames[0]) {
+				RoadVehicle *u = v;
+				RoadVehicle *prev = NULL;
+				for (uint *it = skip_frames.Begin(); it != skip_frames.End(); ++it, prev = u, u = u->Next()) {
+					extern bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev);
+					if (*it >= cur_skip) IndividualRoadVehicleController(u, prev);
+				}
+				cur_skip--;
+			}
+		}
+	}
 
 
 	/* Station acceptance is some kind of cache */
