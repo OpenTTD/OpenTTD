@@ -33,6 +33,9 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 /* static */ const SpriteGroup *SpriteGroup::Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level)
 {
 	if (group == NULL) return NULL;
+	if (top_level) {
+		_temp_store.ClearChanges();
+	}
 	return group->Resolve(object);
 }
 

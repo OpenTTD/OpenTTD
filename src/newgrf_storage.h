@@ -29,13 +29,6 @@ struct BaseStorageArray {
 	 * @param keep_changes do we save or revert the changes since the last #ClearChanges?
 	 */
 	virtual void ClearChanges(bool keep_changes) = 0;
-
-	/**
-	 * Stores some value at a given position.
-	 * @param pos   the position to write at
-	 * @param value the value to write
-	 */
-	virtual void StoreValue(uint pos, int32 value) = 0;
 };
 
 /**
@@ -133,7 +126,7 @@ struct PersistentStorageArray : BaseStorageArray {
  * @tparam SIZE the size of the array.
  */
 template <typename TYPE, uint SIZE>
-struct TemporaryStorageArray : BaseStorageArray {
+struct TemporaryStorageArray {
 	TYPE storage[SIZE]; ///< Memory to for the storage array
 	uint16 init[SIZE];  ///< Storage has been assigned, if this equals 'init_key'.
 	uint16 init_key;    ///< Magic key to 'init'.
@@ -158,7 +151,6 @@ struct TemporaryStorageArray : BaseStorageArray {
 
 		this->storage[pos] = value;
 		this->init[pos] = this->init_key;
-		AddChangedStorage(this);
 	}
 
 	/**
@@ -179,7 +171,7 @@ struct TemporaryStorageArray : BaseStorageArray {
 		return this->storage[pos];
 	}
 
-	void ClearChanges(bool keep_changes)
+	void ClearChanges()
 	{
 		/* Increment init_key to invalidate all storage */
 		this->init_key++;
