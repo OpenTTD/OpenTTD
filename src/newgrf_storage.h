@@ -135,11 +135,15 @@ struct PersistentStorageArray : BaseStorageArray {
 template <typename TYPE, uint SIZE>
 struct TemporaryStorageArray : BaseStorageArray {
 	TYPE storage[SIZE]; ///< Memory to for the storage array
+	uint16 init[SIZE];  ///< Storage has been assigned, if this equals 'init_key'.
+	uint16 init_key;    ///< Magic key to 'init'.
 
 	/** Simply construct the array */
 	TemporaryStorageArray()
 	{
-		memset(this->storage, 0, sizeof(this->storage));
+		memset(this->storage, 0, sizeof(this->storage)); // not exactly needed, but makes code analysers happy
+		memset(this->init, 0, sizeof(this->init));
+		this->init_key = 1;
 	}
 
 	/**
@@ -153,6 +157,7 @@ struct TemporaryStorageArray : BaseStorageArray {
 		if (pos >= SIZE) return;
 
 		this->storage[pos] = value;
+		this->init[pos] = this->init_key;
 		AddChangedStorage(this);
 	}
 
@@ -166,12 +171,23 @@ struct TemporaryStorageArray : BaseStorageArray {
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return 0;
 
+		if (this->init[pos] != this->init_key) {
+			/* Unassigned since last call to ClearChanges */
+			return 0;
+		}
+
 		return this->storage[pos];
 	}
 
 	void ClearChanges(bool keep_changes)
 	{
-		memset(this->storage, 0, sizeof(this->storage));
+		/* Increment init_key to invalidate all storage */
+		this->init_key++;
+		if (this->init_key == 0) {
+			/* When init_key wraps around, we need to reset everything */
+			memset(this->init, 0, sizeof(this->init));
+			this->init_key = 1;
+		}
 	}
 };
 
