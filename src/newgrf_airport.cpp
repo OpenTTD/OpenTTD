@@ -218,7 +218,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 		/* Create storage on first modification. */
 		uint32 grfid = (this->ro.grffile != NULL) ? this->ro.grffile->grfid : 0;
 		assert(PersistentStorage::CanAllocateItem());
-		this->st->airport.psa = new PersistentStorage(grfid);
+		this->st->airport.psa = new PersistentStorage(grfid, GSF_AIRPORTS, this->st->airport.tile);
 	}
 	this->st->airport.psa->StoreValue(pos, value);
 }

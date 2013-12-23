@@ -155,7 +155,7 @@ TownScopeResolver::TownScopeResolver(ResolverObject &ro, Town *t, bool readonly)
 
 	/* Create a new storage. */
 	assert(PersistentStorage::CanAllocateItem());
-	PersistentStorage *psa = new PersistentStorage(grfid);
+	PersistentStorage *psa = new PersistentStorage(grfid, GSF_FAKE_TOWNS, this->t->xy);
 	psa->StoreValue(pos, value);
 	t->psa_list.push_back(psa);
 }

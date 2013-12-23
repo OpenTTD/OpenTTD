@@ -254,6 +254,29 @@ static void InitializeWindowsAndCaches()
 		Object::IncTypeCount(o->type);
 	}
 
+	/* Identify owners of persistent storage arrays */
+	Industry *i;
+	FOR_ALL_INDUSTRIES(i) {
+		if (i->psa != NULL) {
+			i->psa->feature = GSF_INDUSTRIES;
+			i->psa->tile = i->location.tile;
+		}
+	}
+	Station *s;
+	FOR_ALL_STATIONS(s) {
+		if (s->airport.psa != NULL) {
+			s->airport.psa->feature = GSF_AIRPORTS;
+			s->airport.psa->tile = s->airport.tile;
+		}
+	}
+	Town *t;
+	FOR_ALL_TOWNS(t) {
+		for (std::list<PersistentStorage *>::iterator it = t->psa_list.begin(); it != t->psa_list.end(); ++it) {
+			(*it)->feature = GSF_FAKE_TOWNS;
+			(*it)->tile = t->xy;
+		}
+	}
+
 	RecomputePrices();
 
 	GroupStatistics::UpdateAfterLoad();

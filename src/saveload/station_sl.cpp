@@ -527,7 +527,7 @@ static void Load_STNN()
 			if (IsSavegameVersionBefore(161) && !IsSavegameVersionBefore(145) && st->facilities & FACIL_AIRPORT) {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
-				st->airport.psa = new PersistentStorage(0);
+				st->airport.psa = new PersistentStorage(0, 0, 0);
 				memcpy(st->airport.psa->storage, _old_st_persistent_storage.storage, sizeof(st->airport.psa->storage));
 			}
 

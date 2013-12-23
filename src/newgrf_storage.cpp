@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "newgrf_storage.h"
 #include "core/pool_func.hpp"
+#include "core/endian_func.hpp"
+#include "debug.h"
 #include <set>
 
 PersistentStoragePool _persistent_storage_pool("PersistentStorage");
@@ -53,6 +55,9 @@ void ClearPersistentStorageChanges(bool keep_changes)
 {
 	/* Loop over all changes arrays */
 	for (std::set<BasePersistentStorageArray*>::iterator it = _changed_storage_arrays->begin(); it != _changed_storage_arrays->end(); it++) {
+		if (!keep_changes) {
+			DEBUG(desync, 1, "Discarding persistent storage changes: Feature %d, GrfID %08X, Tile %d", (*it)->feature, BSWAP32((*it)->grfid), (*it)->tile);
+		}
 		(*it)->ClearChanges(keep_changes);
 	}
 

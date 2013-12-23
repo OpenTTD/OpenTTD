@@ -399,7 +399,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		const IndustrySpec *indsp = GetIndustrySpec(this->industry->type);
 		uint32 grfid = (indsp->grf_prop.grffile != NULL) ? indsp->grf_prop.grffile->grfid : 0;
 		assert(PersistentStorage::CanAllocateItem());
-		this->industry->psa = new PersistentStorage(grfid);
+		this->industry->psa = new PersistentStorage(grfid, GSF_INDUSTRIES, this->industry->location.tile);
 	}
 
 	this->industry->psa->StoreValue(pos, value);
