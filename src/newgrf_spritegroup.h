@@ -81,19 +81,7 @@ public:
 	virtual byte GetNumResults() const { return 0; }
 	virtual uint16 GetCallbackResult() const { return CALLBACK_FAILED; }
 
-	/**
-	 * ResolverObject (re)entry point.
-	 * This cannot be made a call to a virtual function because virtual functions
-	 * do not like NULL and checking for NULL *everywhere* is more cumbersome than
-	 * this little helper function.
-	 * @param group the group to resolve for
-	 * @param object information needed to resolve the group
-	 * @return the resolved group
-	 */
-	static const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject &object)
-	{
-		return group == NULL ? NULL : group->Resolve(object);
-	}
+	static const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
 };
 
 
