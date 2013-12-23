@@ -18,12 +18,12 @@ PersistentStoragePool _persistent_storage_pool("PersistentStorage");
 INSTANTIATE_POOL_METHODS(PersistentStorage)
 
 /** The changed storage arrays */
-static std::set<BaseStorageArray*> *_changed_storage_arrays = new std::set<BaseStorageArray*>;
+static std::set<BasePersistentStorageArray*> *_changed_storage_arrays = new std::set<BasePersistentStorageArray*>;
 
 /**
  * Remove references to use.
  */
-BaseStorageArray::~BaseStorageArray()
+BasePersistentStorageArray::~BasePersistentStorageArray()
 {
 	_changed_storage_arrays->erase(this);
 }
@@ -34,7 +34,7 @@ BaseStorageArray::~BaseStorageArray()
  * arrays, which saves quite a few clears, etc. after callbacks.
  * @param storage the array that has changed
  */
-void AddChangedStorage(BaseStorageArray *storage)
+void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 {
 	_changed_storage_arrays->insert(storage);
 }
@@ -49,10 +49,10 @@ void AddChangedStorage(BaseStorageArray *storage)
  *  - reverting to the previous version
  * @param keep_changes do we save or revert the changes since the last #ClearChanges?
  */
-void ClearStorageChanges(bool keep_changes)
+void ClearPersistentStorageChanges(bool keep_changes)
 {
 	/* Loop over all changes arrays */
-	for (std::set<BaseStorageArray*>::iterator it = _changed_storage_arrays->begin(); it != _changed_storage_arrays->end(); it++) {
+	for (std::set<BasePersistentStorageArray*>::iterator it = _changed_storage_arrays->begin(); it != _changed_storage_arrays->end(); it++) {
 		(*it)->ClearChanges(keep_changes);
 	}
 

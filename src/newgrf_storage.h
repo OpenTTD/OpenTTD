@@ -15,11 +15,11 @@
 #include "core/pool_type.hpp"
 
 /**
- * Base class for all NewGRF storage arrays. Nothing fancy, only here
- * so we have a generalised class to use.
+ * Base class for all persistent NewGRF storage arrays. Nothing fancy, only here
+ * so we have a generalised access to the virtual methods.
  */
-struct BaseStorageArray {
-	virtual ~BaseStorageArray();
+struct BasePersistentStorageArray {
+	virtual ~BasePersistentStorageArray();
 
 	/**
 	 * Clear the changes made since the last #ClearChanges.
@@ -38,7 +38,7 @@ struct BaseStorageArray {
  * @tparam SIZE the size of the array.
  */
 template <typename TYPE, uint SIZE>
-struct PersistentStorageArray : BaseStorageArray {
+struct PersistentStorageArray : BasePersistentStorageArray {
 	TYPE storage[SIZE]; ///< Memory to for the storage array
 	TYPE *prev_storage; ///< Memory to store "old" states so we can revert them on the performance of test cases for commands etc.
 
@@ -83,7 +83,7 @@ struct PersistentStorageArray : BaseStorageArray {
 
 			/* We only need to register ourselves when we made the backup
 			 * as that is the only time something will have changed */
-			AddChangedStorage(this);
+			AddChangedPersistentStorage(this);
 		}
 
 		this->storage[pos] = value;
@@ -183,8 +183,8 @@ struct TemporaryStorageArray {
 	}
 };
 
-void AddChangedStorage(BaseStorageArray *storage);
-void ClearStorageChanges(bool keep_changes);
+void AddChangedPersistentStorage(BasePersistentStorageArray *storage);
+void ClearPersistentStorageChanges(bool keep_changes);
 
 
 typedef PersistentStorageArray<int32, 16> OldPersistentStorage;

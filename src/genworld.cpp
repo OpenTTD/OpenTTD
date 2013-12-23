@@ -141,7 +141,7 @@ static void _GenerateWorld(void *)
 			}
 		}
 
-		ClearStorageChanges(true);
+		ClearPersistentStorageChanges(true);
 
 		/* These are probably pointless when inside the scenario editor. */
 		SetGeneratingWorldProgress(GWP_GAME_INIT, 3);

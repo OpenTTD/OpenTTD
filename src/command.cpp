@@ -597,7 +597,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
  * @param cmd   the command cost to return.
  * @param clear whether to keep the storage changes or not.
  */
-#define return_dcpi(cmd, clear) { _docommand_recursive = 0; ClearStorageChanges(clear); return cmd; }
+#define return_dcpi(cmd, clear) { _docommand_recursive = 0; ClearPersistentStorageChanges(clear); return cmd; }
 
 /*!
  * Helper function for the toplevel network safe docommand function for the current company.
@@ -661,7 +661,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	/* Test the command. */
 	_cleared_object_areas.Clear();
 	SetTownRatingTestMode(true);
-	ClearStorageChanges(false);
+	ClearPersistentStorageChanges(false);
 	CommandCost res = proc(tile, flags, p1, p2, text);
 	SetTownRatingTestMode(false);
 
@@ -705,7 +705,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
 	_cleared_object_areas.Clear();
-	ClearStorageChanges(false);
+	ClearPersistentStorageChanges(false);
 	CommandCost res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
 
 	if (cmd_id == CMD_COMPANY_CTRL) {
