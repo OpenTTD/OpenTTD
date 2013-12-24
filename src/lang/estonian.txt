@@ -350,9 +350,9 @@ STR_SORT_BY_ENGINE_ID                                           :MootoriID (algn
 STR_SORT_BY_COST                                                :Hind
 STR_SORT_BY_POWER                                               :Võimsus
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Veojõud
-STR_SORT_BY_INTRO_DATE                                          :Esitluskuupäev
+STR_SORT_BY_INTRO_DATE                                          :Esmaesitluse kuupäev
 STR_SORT_BY_RUNNING_COST                                        :Käituskulud
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Võimsus- ja käituskulud
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kasutegur
 STR_SORT_BY_CARGO_CAPACITY                                      :Kandevõime
 STR_SORT_BY_RANGE                                               :Vahekaugus
 STR_SORT_BY_POPULATION                                          :Rahvaarv
@@ -1644,7 +1644,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Kauguse mõju n
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Juhul kui väärtus on suurem kui 0, siis jaama A ja B vaheline kaugus mõjutab jaamast A jaama B saadetava kauba hulka. Mida kaugeb jaam B on jaamast A, seda vähem kaupa saadetakse. Mida suurem väärtus, seda vähem kaupa saadetakse kaugel asuvatesse jaamadesse, ning rohkem kaupa saadetakse lähedal asuvatesse jaamadesse.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Tagasitulevat kaupa, kui jaotus on sümeetriline: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Kui väärtus on alla 100%, siis sümeetriline jaotus sarnaneb asümeetrilisele jaotusele, sest tagasi saadetakse vähem kaupa, kui tuli. Sümeetriline ja asümeetriline jaotusviis on samad, kui väärtus on 0%.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Liikluskoormus, kui otsitakse kõrgema läbilaskevõimega rada: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Liikluskoormus, et otsida kõrgema läbilaskevõimega rada: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kauba vedamisel ühest jaamast teise saab kasutada mitu rada. Kaubajaotusel arvestatakse läbilaskevõimet ja liikluskoormust. Kui liikluskoormus on suurem kui läbilaskevõime, suunatakse kaup kõigepealt kõrgema läbilaskevõimega radadele. Läbilaskevõime arvutamine ei ole täpne; antud seaded määravad liikluskoormuse millal kaup suunatakse järgmisele rajale. Ülekoormuse vältimiseks on soovitatav liikluskoormus alla 100%.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Kiirusühikud: {STRING}
@@ -2948,6 +2948,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<kõlbmatu sõi
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<kõlbmatu tööstus>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<kõlbmatu sõiduk>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ide skanneerimine
@@ -4000,6 +4001,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Päevade arv ee
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} abi.
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} muudatuste logi {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} litsents {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Tekstiridade murdmine
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Murrab tekstirida, et lugeda vaadet liigutamata
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vaata abi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muudatuste logi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Litsents
