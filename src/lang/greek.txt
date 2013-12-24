@@ -270,12 +270,16 @@ STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} τόν�
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} τόνο{P ς ι}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}γαλ
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}λ
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} γαλόν{P "ι" "ια"}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} λίτρ{P ο α}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} πόδια
@@ -298,7 +302,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Κλεί
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε το για να το μετακινήσετε
 STR_TOOLTIP_SHADE                                               :{BLACK}Σκίαση παραθύρου - Εμφάνιση μόνο της μπάρας τιτλου
 STR_TOOLTIP_DEBUG                                               :{BLACK}Εμφάνιση πληροφοριών αποσφαλμάτωσης για NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Σημείωση αυτού του παραθύρου να μην κλείνει από το πλήκτρο 'Κλείσιμο Όλων των Παραθύρων'
+STR_TOOLTIP_STICKY                                              :{BLACK}Σημειώστε αυτό το παραθύρο ωστέ να μην κλείνει από το πλήκτρο «Κλείσιμο Όλων των Παραθύρων». Πατήστε Ctrl+Κλικ για να αποθηκεύσετε την κατάσταση απο επιλογή
 STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντε κλίκ και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
@@ -348,10 +352,10 @@ STR_SORT_BY_ENGINE_ID                                           :EngineID (κλ�
 STR_SORT_BY_COST                                                :Κόστος
 STR_SORT_BY_POWER                                               :Δύναμη
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Δύναμη έλξης
-STR_SORT_BY_INTRO_DATE                                          :Ημερομηνία Παρουσιάσης
-STR_SORT_BY_RUNNING_COST                                        :Λειτουργικό Κόστος
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ισχύς/Λειτουργικό Κόστος
-STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
+STR_SORT_BY_INTRO_DATE                                          :Ημερομηνία παρουσιάσης
+STR_SORT_BY_RUNNING_COST                                        :Λειτουργικό κόστος
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ισχύς/Λειτουργικό κόστος
+STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα φορτίου
 STR_SORT_BY_RANGE                                               :Εύρος
 STR_SORT_BY_POPULATION                                          :Πληθυσμός
 STR_SORT_BY_RATING                                              :Εκτίμηση
@@ -801,6 +805,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Εναλλαγή ονομάτων πόλεων στον χάρτη
 STR_SMALLMAP_CENTER                                             :{BLACK}Κεντράρισμα του μικρού χάρτη στη τρέχουσα θέση
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Απενεργοποίηση όλων
@@ -1156,7 +1161,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ρυθμίσε�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Μειώνει την παρακάτω λίστα σε συγκεκριμένους τύπους ρυθμίσεων
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Όλες οι ρυθμίσεις
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Όλοι οι τύποι ρυθμίσεων
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Ρυθμίσεις πελάτη (δεν διατηρούνται στις αποθηκεύσεις· επηρεάζουν όλα τα παιχνίδια)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ρυθμίσεις παιχνιδιού (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο τα νέα παιχνίδια)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ρυθμίσεις παιχνιδιού (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο το τρέχον παιχνίδι)
@@ -1448,7 +1453,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Παίζει ή
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Εφημερίδα: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Παίζει ήχο όταν εμφανίζονται εφημερίδες
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Στο τέλος του χρόνου: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει ηχητικό εφέ στο τέλος του χρόνου συνοψίζοντας την επίδοση της εταιρείας κατά την διάρκεια αυτού του χρόνου σε σχέση με τον προηγούμενο χρόνο
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει ηχητικό εφέ στο τέλος του χρόνου που συνοψίζει την επίδοση της εταιρείας κατά την διάρκεια αυτού του χρόνου σε σχέση με τον προηγούμενο χρόνο
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Παίζει ήχο όταν γίνεται κλικ σε κουμπιά
@@ -1456,7 +1461,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Παίζει ή
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Οχήματα: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Παίζει τα ηχητικά εφέ των οχημάτων
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Περιβαλλοντικά: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Παίζει τους περιβαλλοντικούς ήχους των βιομηχανιών των πόλεων, και του τοπίου γενικότερα
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Παίζει τους περιβαλλοντικούς ήχους των βιομηχανιών, των πόλεων, και του τοπίου γενικότερα
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποίηση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποδομές είναι διαθέσιμες μόνο όταν υπάρχουν διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
@@ -1546,7 +1551,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Όταν σύρ
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ορισμός απόστασης στην οποία θα τοποθετούνται σήματα σε μια γραμμή και μέχρι το επόμενο εμπόδιο (σήμα, διακλάδωση), αν σύρονται τα σήματα
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} τετραγωνίδι{P 0 ο α}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Όταν σύρετε, διατηρείται σταθερή απόσταση μεταξύ των σημάτων: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτε τη συμπεριφορά της τοποθέτησης σημάτων όταν πατάτε Ctrl και σύρετε. Όταν είναι απενεργοποιημένο, τα σήματα τοποθετούνται γύρω από σήραγγες και γέφυρες για να αποφεύγονται μεγάλα τμήματα χωρίς σήματα. Όταν είναι ενεργοποιημένο, τα σήματα τοποθετούνται κάθε n τετραγωνίδια, κάνοντας την ευθυγράμμιση των σημάτων σε παράλληλες γραμμές ευκολότερη
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτε τη συμπεριφορά της τοποθέτησης σημάτων όταν πατάτε Ctrl και σύρετε. Όταν είναι απενεργοποιημένο, τα σήματα τοποθετούνται γύρω από σήραγγες και γέφυρες για να αποφεύγονται μεγάλα τμήματα χωρίς σήματα. Όταν είναι ενεργοποιημένο, τα σήματα τοποθετούνται κάθε n τετραγωνίδια, κάνοντας ευκολότερη την ευθυγράμμιση των σημάτων σε παράλληλες γραμμές
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο κτίσιμο σηματοφόρων πριν από το: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
@@ -1564,7 +1569,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλοι
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Σχέδιο δρόμων για νέες πόλεις: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Μορφή οδικών δικτύων για τις πόλεις
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :αρχική
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Αρχική
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Καλύτεροι δρόμοι
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :πλέγμα 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :πλέγμα 3x3
@@ -1625,14 +1630,24 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Μέσο μέγ
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Αφαίρεση αδιέξοδων άκρων κατά την χρηματοδοτούμενη ανακατασκευή δρόμων
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :χειροκίνητη
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :μη συμμετρική
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :συμμετρική
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Μονάδες μέτρησης βάρους: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Μονάδες μέτρησης όγκου: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Μετρικό (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Μετρικό (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Μονάδες μέτρησης ύψους: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικές (m)
@@ -1868,6 +1883,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλα
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Όχι
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ναι
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Αυτό είναι το όνομα με το οποίο θα σας αναγνωρίζουν οι άλλοι παίκτες
 
@@ -1926,6 +1943,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Το ό�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Θέση κωδικού
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Προστατέψτε το παιχνίδι με έναν κωδικό εάν δε θέλετε να είναι δημοσίως προσβάσιμο
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Όχι
+STR_NETWORK_START_SERVER_ADVERTISED                             :Ναι
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις
@@ -2092,7 +2111,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Λανθ
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Ο διακομιστής είναι γεμάτος
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει απαγορευτεί η είσοδος σας από τον διακομιστή
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχθεί από το παιχνίδι
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτόν τον διακομιστή
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Αποστείλατε πάρα πολλές εντολές στον διακομιστή
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Χρειαστήκατε πολύ χρόνο για να συμπληρώσετε τον κωδικό
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ο υπολογιστής σας είναι πολύ αργός για να διατηρήσει συγχρόνιση με τον διακομιστή
@@ -2239,6 +2258,8 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Εναλ
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα που θα είναι αόρατα αντί για διάφανα
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Όλες
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Καμία
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
@@ -2888,6 +2909,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυ�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυρη βιομηχανία>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<μη έγκυρο όχημα>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Σαρώνονται ΝewGRF
@@ -2973,6 +2995,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωρ�
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Καθολικοί στόχοι:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Εταιρικοί στόχοι:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Κάνετε κλικ στον στόχο για να επικεντρωθεί η οθόνη στη βιομηχανία/πόλη/τετραγωνίδιο. Με Ctrl+Κλικ ανοίγει το παράθυρο θέασης στην τοποθεσία της βιομηχανίας/πόλης/τετραγωνίδιου
 
@@ -3012,6 +3036,12 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάνετε κλικ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Σελίδα {NUM}
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Προηγούμενη
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Μεταβαίνει στη προηγούμενη σελίδα
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Επόμενη
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Μεταβαίνει στην επόμενη σελίδα
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - κάνετε κλικ στο όνομα για κεντράρισμα στο σταθμό. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του σταθμού
@@ -3040,7 +3070,11 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} από {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} μέσω {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} προς {STATION}
 
 
 ############ range for rating starts
@@ -4249,7 +4283,7 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Δεν �
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Δεν μπορεί να ονομαστεί το αεροσκάφος...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το τρένο...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το όχημα...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Το όχημα δεν μπορεί να ξεκινήσει ή σταματήσει...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το πλοίο...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το αεροσκάφος...
 
@@ -4543,10 +4577,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Βαγόνι Π
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Βαγόνι Μπαταριών
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Βαγόνι Αναψυκτικών
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Βαγόνι Πλαστικού
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 «Leviathan» (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 «Cyclops» (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 «Pegasus» (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Chimaera» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 «Leviathan» (Ηλεκτρική)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 «Cyclops» (Ηλεκτρική)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 «Pegasus» (Ηλεκτρική)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Chimaera» (Ηλεκτρική)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Επιβατικό Βαγόνι
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Βαγόνι Αλληλογραφίας
@@ -4789,6 +4823,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

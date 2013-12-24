@@ -3069,8 +3069,8 @@ STR_STATION_VIEW_WAITING_AMOUNT                                 :양: 대기
 STR_STATION_VIEW_PLANNED_STATION                                :역: 계획
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :양: 계획
 STR_STATION_VIEW_FROM                                           :{YELLOW}{1:STATION}에서 출발한 {0:CARGO_SHORT}
-STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION} 역을 경유하는 {0:CARGO_SHORT}
-STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION} 역으로 가는 {0:CARGO_SHORT}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION}(을)를 경유하는 {0:CARGO_SHORT}
+STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION}(으)로 가는 {0:CARGO_SHORT}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}알 수 없는 역에서 출발한 {CARGO_SHORT}
 STR_STATION_VIEW_TO_ANY                                         :{RED}아무 역에나 도착하는 {CARGO_SHORT}
 STR_STATION_VIEW_VIA_ANY                                        :{RED}어디든 경유하는 {CARGO_SHORT}

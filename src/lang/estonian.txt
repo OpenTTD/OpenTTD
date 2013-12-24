@@ -1237,9 +1237,9 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Paremal
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Aasta lõpul näidatakse rahavoogude aruannet: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Sisse lülitamisel ilmub iga aasta lõpus rahavoogude aruanne, mis annab hea ülevaate ettevõtte rahalisest olukorrast
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ülesanded on esialgselt «Peatusteta»: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt peatub sõiduk igas peatuses, mida ta läbib. Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduse esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt peatub sõiduk igas peatuses, mida ta läbib. Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduste esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
 STR_CONFIG_SETTING_STOP_LOCATION                                :Esialgne platvormi peatumisosa uute rongide ülesannetes: {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Esialgne peatumiskoht rongiplatvormil. «Lõpu lähedal» tähendab sisenemispunkti lähistel. «Keskel» tähendab keset platvormi. «Kaugel lõpus» tähendab kaugel sisenemispunktist. NB! Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduse esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Esialgne peatumiskoht rongiplatvormil. «Lõpu lähedal» tähendab sisenemispunkti lähistel. «Keskel» tähendab keset platvormi. «Kaugel lõpus» tähendab kaugel sisenemispunktist. NB! Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduste esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :lõpu lähedal
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
@@ -1252,13 +1252,13 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Peamine vaateak
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Peamine vaateaken
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Kõik vaateaknad
 STR_CONFIG_SETTING_BRIBE                                        :Altkäemaksud kohalikele omavalitsustele: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Luba anda altkäemaksu kohalikule linnavõimule. Kui altkäemaks on inspektori poolt avastatud, siis ei saa ettevõte 6 kuu jooksul linnas mitte midagi ette võtta
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Võimaldab linna omavalitsusele altkäemaksu pakkuda. Vahele jäämise korral võetakse ettevõttelt kuueks kuuks ära õigus tegutseda linnas
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ainuveoõiguste ostmine: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kui ettevõte ostab linnalt ainuõiguse kaupu transportida, siis vastase jaamadesse (reisijad ja last) ei ilmu kaupu terve aasta
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kui ettevõte ostab linnalt kaubaveo ainuõiguse, siis teised ettevõtted ei saa üks aasta uusi kaupu ega reisijaid
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Luba ehitiste rahastamine: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Luba ettevõtetel rahastada uute hoonete ehitamist linnas
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Võimaldab ettevõttel linna kinnisvaraehitust rahastada
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Kohaliku omavalitsuse teede rekonstrueerimise rahastamine: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Luba ettevõtetel rahastada teede parandust, et saboteerida maantee põhist transporti selles linnas
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Võimaldab ettevõtetel linna tee-ehitustöid rahastada, šaboteerides sellega autode kaubavedu
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Raha saatmine teistele ettevõtetele: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Luba mitmikmängus kanda raha erinevate ettevõtete vahel
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Raskete rongide simuleerimiseks kasutatav raskustegur: {STRING}
@@ -1532,7 +1532,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Lühike
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täielik
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värvilised uudised ilmuvad aastast {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Aasta millest alates hakkavad ilmuma värvilised ajalehed. Ennem seda aastat kasutatakse must-valget trükki
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Värviliste uudiste ilmumise algusaasta. Varasematel aastatel ilmuvad uudised must-valgelt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Alustamise aeg: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Sujuv majandus (rohkem, kuid väikesed muutused): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kui on aktiveeritud siis muutuvad tööstuste toodangute mahud tihemini ja väiksemate sammudega. Sellel seadel ei ole tavaliselt mingit effekti kui tööstuse tüübid on määratud NewGRF-is
@@ -2228,7 +2228,7 @@ STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Külasta
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Laadi alla
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Alusta valitud aineste allalaadimist
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Allalaadimiste kogusuurus: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}SISU TEAVE
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}AINESE KIRJELDUS
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Sa pole seda allalaaditavaks märkinud
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Te olete valinud selle allalaadimiseks
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}See sõltuvus on valitud allalaadimiseks
@@ -2237,7 +2237,7 @@ STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}See ei 
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}See on asendus olemasolevale {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nimi: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Osa: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Kirjeldus: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Seletus: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}Aadress: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tüüp: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Faili maht: {WHITE}{BYTES}
