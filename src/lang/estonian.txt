@@ -1056,7 +1056,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaad
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 naela (£) sinu valuutas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastaste arvu ülemmäär: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastaseid kuni: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Pole
 STR_FUNDING_ONLY                                                :Ainult rahastatud
@@ -1164,21 +1164,21 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurim summa, m
 STR_CONFIG_SETTING_INTEREST_RATE                                :Intressimäär: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Laenu intressimäär; ühtlasi juhib inflatsiooni, kui inflatsioon on aktiveeritud
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Käituskulud: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määra sõidukite ja taristu hoolduse ja töös hoidmise maksumuse tase
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määrab sõidukite ja taristu hooldus- ja käituskulude hinnataseme
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ehitustempo: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Piira tehisintellekti ehitustoimingute arvu
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Piirab arvuti ehitustoimingute arvu
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Sõidukirikkeid: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Muudab hooldamata sõidukite rikkesagedust
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Toetuse kordaja: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määra ära kui palju makstakse toetatud liinide eest
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Ehituse hinnad: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määra ehituse ja maa ostu hinna tase
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määrab ehitus- ja ostukulude hinnataseme
 STR_CONFIG_SETTING_RECESSIONS                                   :Majanduslangused: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kui on aktiveeritud siis võib majanduslangus toimuda iga paari aasta tagant. Majanduslanguse ajal on kõik tootmismahud tunduvalt madalamad (majanduslanguse lõppedes taastuvad endised tootmismahud)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Keela rongide ümberpöörd jaamades: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Kui on aktiveeritud, siis ei pööra rongid vahejaamades ringi isegi siis kui ringi pööramisel oleks teekond järgmisse sihtpunkti lühem
 STR_CONFIG_SETTING_DISASTERS                                    :Katastroofid: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/välja katastroofid mis võivad aeg-ajalt hävitada sõidukeid või taristut
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/välja katastroofid, mis aeg-ajalt hävitavad sõidukeid ja taristut
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Linnavalitusese suhtumine pinnase restruktureerimisse: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vali kui suurt mõju tekitavad müra ning keskkonna muudatused ettevõtte mainele ja edasistele ehitustoimingutele antud piirkonnas
 
@@ -1213,18 +1213,18 @@ STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Kui lubatud, la
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Veovahendite järkjärguline laadimine: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Järk-järgult laetud sõidukitel kasutatakse sõiduki kindlalt laadimis aega, selle asemel et pealelaadida kõik korraga kindlaks määratud ajaga, mis oleneb ainult laetud lasti summast
 STR_CONFIG_SETTING_INFLATION                                    :Inflatsioon: {STRING}
-STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Võimaldada inflatsioon majanduses, kui kulud suurenevad veidi kiiremini kui maksed
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Tekitab majandusinflatsiooni, kus hinnad tõusevad pisut kiiremini kui maksed
 STR_CONFIG_SETTING_SELECTGOODS                                  :Kauba toimetamine jaama ainult nõudluse korral: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Jaama tuleb ainult kaup mis on nõutud vastava sõiduki poolt. See välistab halvad reitingud teistele kaupadele mida sellest jaamast ei transpordita
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimaalne silla pikkus: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud sildadele
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimaalne tunneli pikkus: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud tunnelitele
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Põhitööstuse rajamismeetod: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Peamise tootmisharu rahastamise meetod. 'ei ole' tähendab ei ole võimalik rahastada, 'geoloogiliste' tähendab rahastamine on võimalik, kuid ehitis kaardil tekib suvalise kohapeal või võib üldse ebaõnnestuda. 'nagu muid tööstusharud,' tähendab toorest tööstusharu saab ehitada nagu töötleva tööstuse harusid
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Toorainetööstuse rajamise viis: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Toorainetööstuse rajamise viis. Valides 'pole' ei saa üldse toorainetööstuseid rajada, 'uuringutega' rajatakse tööstus suvalisse kohta, ning 'nagu kõik tööstused' ehitatakse toorainetööstuseid nagu töötlevat tööstust
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Pole
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Nagu muud tööstused
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Eeluuringutega
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Nagu kõik tööstused
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Uuringutega
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Tasane ala ümber tehaste: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Summa kui palju tasast maad on ümber tehase. See tagab et ruumi jääb saadavale ehitiste jaoks
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Samalaadsed tööstused ühes linnas: {STRING}
@@ -1281,7 +1281,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Mitme NewGRF s�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Ühilduvuse suvand vanadele NewGRF'le. Ärge keelake seda, juhul kui Sa tead täpselt mida sa teed!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Taristu hooldamine: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kui on aktiveeritud, siis taristu tekitab halduskulusid. Maksumus kasvab ebaproportsionaalselt taristu kasvuga, seega mõjutab suuri ettevõtteid rohkem kui väikeseid
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Taristuga kaasnevad halduskulud. Kulud kasvavad taristu hulga suhtes ebaproportsionaalselt, ning mõjutavad pigem suurettevõtteid
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aegumatud lennuväljad: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Selle seade sisse lülitamine jätab kõik lennujaamade tüübid avatuks lõpmata ajaks peale nende avanemist
@@ -1473,7 +1473,7 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Keskmine
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Keeruline
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tehismõistus mitmikmängus: {STRING}
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Luba kõikidel TI mängijatel ühineda mitmikmängudesse
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Võimaldab arvutil osaleda mitmikmängudes
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode-d ennem skripte on peatatud: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimaalne arv arvutamise käike mida skript võib teha ühel sammul
 
@@ -1535,7 +1535,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värvilised uud
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Värviliste uudiste ilmumise algusaasta. Varasematel aastatel ilmuvad uudised must-valgelt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Alustamise aeg: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Sujuv majandus (rohkem, kuid väikesed muutused): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kui on aktiveeritud siis muutuvad tööstuste toodangute mahud tihemini ja väiksemate sammudega. Sellel seadel ei ole tavaliselt mingit effekti kui tööstuse tüübid on määratud NewGRF-is
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Toodangumahtude muutused on väiksemad ja sagedasemad. Juhul kui tööstused tulevad NewGRF-ist ei oma see seade tavaliselt mõju
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Aktsiatehingud teiste ettevõtetega: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kui on aktiveeritud siis on ettevõtte aktsiate ostmine ja müümine lubatud. Aktsiad on saadaval ainult ettevõtetel mille vanus on üle teatud piiri
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Protsent tuludest mis läheb 'kanna edasi' süsteemis alumistesse lülidesse: {STRING}
@@ -1574,7 +1574,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Selle seade sis
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Lennujaamade mürapiirangud linnades: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui ei ole aktiveeritud, siis on igas linnas lubatud kuni kaks lennujaama. Kui see seade on aktiveeritud, siis on lubatud igas linnas lennujaamu ehitada vastavalt linna müra vastuvõrlikkuse tasemele, mis sõltub otseselt linna elanike arvust ja lennujaama suurusest ja kaugusest kesklinnast
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Linnade rajamine keset mängu: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Selle seade aktiveerimisel on lubatud mängijalt rahastada uute linnade rajamist mängus
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Võimaldab ettevõttel uusi linnu rajada
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Keelatud
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Lubatud
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Lubatud, koos linnaskeemi valimisega
@@ -1697,7 +1697,7 @@ STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Heliefe
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Uudised ja sõnumid
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kauba käsitlemine
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvutimängijad
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvuti
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Uuendamine
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Hooldus
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruutimine
@@ -2207,7 +2207,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server r
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Aineste allalaadimine
-STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tüüp
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Liik
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Ainese liik
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nimi
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Ainese nimi
@@ -2239,7 +2239,7 @@ STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nimi: {
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Osa: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Seletus: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}Aadress: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tüüp: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Liik: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Faili maht: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valitud kuna: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Sõltuvused: {WHITE}{STRING}
@@ -2546,8 +2546,8 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vali lin
 STR_FOUND_TOWN_CITY                                             :{BLACK}Linn
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Suuremad linnad kasvavad kiiremini kui väikesed{}Sõltuvalt seadetest on need ka alguses suuremad
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Aleviku teeplaneering
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vali alevikus kasutatav teeplaneering
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Linna teeplaneering
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vali linnas kasutatav teeplaneering
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Algne
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Paremad teed
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 ruudustik
@@ -2558,7 +2558,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Suvaline
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Uue tööstuse rahastamine
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Vali siit nimistust sobiv tööstus
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Palju suvalisi tööstusi
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Kata kaart suvaliselt paigutatud tööstustega
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Katab kaardi suvaliselt paigutatud tööstustega
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Hind: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Rahasta
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Ehita
