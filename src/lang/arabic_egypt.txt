@@ -22,7 +22,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :وصلة غير معرفة
-STR_JUST_NOTHING                                                :فارغ
+STR_JUST_NOTHING                                                :لا شيئ
 
 # Cargo related strings
 # Plural cargo name
@@ -31,13 +31,13 @@ STR_CARGO_PLURAL_PASSENGERS                                     :ركاب
 STR_CARGO_PLURAL_COAL                                           :فحم
 STR_CARGO_PLURAL_MAIL                                           :بريد
 STR_CARGO_PLURAL_OIL                                            :نفط
-STR_CARGO_PLURAL_LIVESTOCK                                      :مواشي
+STR_CARGO_PLURAL_LIVESTOCK                                      :ماشيه
 STR_CARGO_PLURAL_GOODS                                          :بضائع
 STR_CARGO_PLURAL_GRAIN                                          :حبوب
 STR_CARGO_PLURAL_WOOD                                           :خشب
 STR_CARGO_PLURAL_IRON_ORE                                       :خام حديد
-STR_CARGO_PLURAL_STEEL                                          :حديد
-STR_CARGO_PLURAL_VALUABLES                                      :مدخرات
+STR_CARGO_PLURAL_STEEL                                          :صلب
+STR_CARGO_PLURAL_VALUABLES                                      :مقتنيات ثمينه
 STR_CARGO_PLURAL_COPPER_ORE                                     :منجم نحاس
 STR_CARGO_PLURAL_MAIZE                                          :ذرة
 STR_CARGO_PLURAL_FRUIT                                          :فواكة
@@ -49,53 +49,53 @@ STR_CARGO_PLURAL_WATER                                          :ماء
 STR_CARGO_PLURAL_WHEAT                                          :قمح
 STR_CARGO_PLURAL_RUBBER                                         :مطاط
 STR_CARGO_PLURAL_SUGAR                                          :سكر
-STR_CARGO_PLURAL_TOYS                                           :العاب
+STR_CARGO_PLURAL_TOYS                                           :دُمَي
 STR_CARGO_PLURAL_CANDY                                          :حلويات
 STR_CARGO_PLURAL_COLA                                           :كولا
-STR_CARGO_PLURAL_COTTON_CANDY                                   :الحلاوة القطنية
+STR_CARGO_PLURAL_COTTON_CANDY                                   :سكر نبات
 STR_CARGO_PLURAL_BUBBLES                                        :فقاعات
 STR_CARGO_PLURAL_TOFFEE                                         :توفي
 STR_CARGO_PLURAL_BATTERIES                                      :بطاريات
 STR_CARGO_PLURAL_PLASTIC                                        :بلاستيك
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :شراب مخفوق
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :مشروبات غازيه
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :ركاب
+STR_CARGO_SINGULAR_PASSENGER                                    :راكب
 STR_CARGO_SINGULAR_COAL                                         :فحم
 STR_CARGO_SINGULAR_MAIL                                         :بريد
 STR_CARGO_SINGULAR_OIL                                          :نفط
-STR_CARGO_SINGULAR_LIVESTOCK                                    :ماشية
+STR_CARGO_SINGULAR_LIVESTOCK                                    :ماشيه
 STR_CARGO_SINGULAR_GOODS                                        :بضائع
 STR_CARGO_SINGULAR_GRAIN                                        :حبوب
 STR_CARGO_SINGULAR_WOOD                                         :خشب
 STR_CARGO_SINGULAR_IRON_ORE                                     :خام الحديد
-STR_CARGO_SINGULAR_STEEL                                        :حديد
+STR_CARGO_SINGULAR_STEEL                                        :صلب
 STR_CARGO_SINGULAR_VALUABLES                                    :مقتنيات ثمينة
 STR_CARGO_SINGULAR_COPPER_ORE                                   :خام نحاس
 STR_CARGO_SINGULAR_MAIZE                                        :ذرة
 STR_CARGO_SINGULAR_FRUIT                                        :فواكة
 STR_CARGO_SINGULAR_DIAMOND                                      :جواهر
 STR_CARGO_SINGULAR_FOOD                                         :طعام
-STR_CARGO_SINGULAR_PAPER                                        :اوراق
+STR_CARGO_SINGULAR_PAPER                                        :ورق
 STR_CARGO_SINGULAR_GOLD                                         :ذهب
 STR_CARGO_SINGULAR_WATER                                        :ماء
 STR_CARGO_SINGULAR_WHEAT                                        :قمح
 STR_CARGO_SINGULAR_RUBBER                                       :مطاط
 STR_CARGO_SINGULAR_SUGAR                                        :سكر
-STR_CARGO_SINGULAR_TOY                                          :لعبة
+STR_CARGO_SINGULAR_TOY                                          :دُمِيه
 STR_CARGO_SINGULAR_CANDY                                        :حلويات
 STR_CARGO_SINGULAR_COLA                                         :كولا
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :حلاوة قطنية
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :سكر نبات
 STR_CARGO_SINGULAR_BUBBLE                                       :فقاعات
 STR_CARGO_SINGULAR_TOFFEE                                       :توفي
 STR_CARGO_SINGULAR_BATTERY                                      :بطاريات
 STR_CARGO_SINGULAR_PLASTIC                                      :بلاستيك
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :مشروب مخفوق
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :مشروب غازى
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA}راكب
+STR_QUANTITY_PASSENGERS                                         :{COMMA} راكب
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} من الفحم
 STR_QUANTITY_MAIL                                               :{COMMA} صندوق من البريد
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} من النفط
