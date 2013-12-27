@@ -2042,7 +2042,7 @@ STR_NETWORK_CLIENT                                              :Klien
 STR_NETWORK_SPECTATORS                                          :Penonton
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah uang yang akan diberikan
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Penonton
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pengamat
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata sandi yang telah dimasukkan
@@ -2891,6 +2891,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<model kendaraa
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industri tidak valid>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<kendaraan tidak berlaku>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Memindai NewGRFs
@@ -3943,6 +3944,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Jalankan AI set
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}keterangan {STRING} dari {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Catatan perubahan {STRING} dari {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Lisensi {STRING} dari {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Mengebatkan teks
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Mengebatkan teks dari jendela sehingga akan muat tanpa menggulir
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Catatan Perubahan
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensi

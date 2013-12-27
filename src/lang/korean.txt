@@ -319,7 +319,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}그래�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위를 표시합니다.
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자하거나 산업시설의 목록을 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}각 회사의 열차 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}각 회사의 자동차 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}각 회사의 차량 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}각 회사의 선박 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}각 회사의 항공기 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}화면을 확대합니다.
@@ -595,7 +595,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}재정:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 수익을 낸 차량의 수를 나타냅니다. 자동차, 열차, 선박, 항공기를 포함합니다.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 수익을 낸 차량의 수를 나타냅니다. 자동차/전차, 열차, 선박, 항공기를 포함합니다.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 차량만 계산)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최소 이익을 달성한 차량이 번 돈의 양입니다.
@@ -696,7 +696,7 @@ STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}건물/산업시설
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}차량
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}열차
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}자동차
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}자동차/전차
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}선박
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}항공기
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}운송 경로
@@ -760,13 +760,13 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 항공기가 도착했습니다!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}차량 충돌!{}열차와의 충돌로 인해 운전자가 사망했습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}차량 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}{STATION}에서 체펠린이 추락했습니다!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}UFO의 폭격으로 자동차가 파괴되었습니다!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}'UFO'의 폭격으로 차량이 파괴되었습니다!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} 근처의 정유 공장에서 폭발 사고가 발생하였습니다!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}{TOWN} 근처의 공장이 의심스러운 정황으로 인해 파괴되었습니다!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO가 {TOWN} 근처에 착륙했습니다!
@@ -1141,13 +1141,13 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :차량의 매�
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :차량에서 연기나 전기 스파크가 얼마나 많이 일어나는지 설정합니다.
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :열차 가속 모델: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :열차 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 열차의 길이나 기관차의 견인력 등의 구성 속성에 따라 언덕과 커브에서 속력이 감소합니다.
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :자동차 가속 모델: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :자동차 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 차량의 견인력 등 차량의 다양한 속성에 따라 언덕을 오를 때 속력이 감소합니다.
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :자동차/전차 가속 모델: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :자동차/전차의 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 차량의 견인력 등 차량의 다양한 속성에 따라 언덕을 오를 때 속력이 감소합니다.
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :경사도 설정 (열차용): {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :열차에 적용시킬 경사도를 설정합니다. 값이 높을수록 열차가 언덕을 올라가는데 더 힘이 듭니다.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 설정 (자동차용): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :자동차에 적용시킬 경사도를 설정합니다. 값이 높을수록 자동차가 언덕을 오를 때 더 힘이 듭니다.
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 설정 (자동차/전차용): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :자동차/전차에 적용시킬 경사도를 설정합니다. 값이 높을수록 차량이 언덕을 오를 때 더 힘이 듭니다.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :열차/선박의 90도 회전을 금지함: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 옵션을 켜면 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 옵션은 선박의 회전 반경에도 적용됩니다.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
@@ -1187,8 +1187,8 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :정거장이 빌 때까지 그 앞에서 자동차를 대기시킴: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :자동차가 차량 정거장이 빌 때까지 그 앞쪽에서 기다리도록 합니다.
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :정류장/적치장이 빌 때까지 앞에서 차량을 대기시킴: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :자동차가 정류장이나 적치장이 빌 때까지 그 앞쪽에서 기다리도록 합니다.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :가장자리에 마우스를 가져가면 화면 움직이기: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :이 옵션을 켜면, 마우스를 게임 및 외부 화면 창의 가장자리에 가까이 가져가면 화면을 이동시킵니다.
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :사용 안 함
@@ -1208,7 +1208,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :멀티 플레�
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :화물 무게가중치 (무거운 열차를 구현할 때 사용): {STRING}배
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :열차가 싣고 있는 화물이 열차 속력에 미치는 영향에 대해 설정합니다. 값을 높게 설정하면 화물을 수송하는데 더 큰 힘이 필요합니다. (특히 언덕을 오를 때 심해집니다)
 STR_CONFIG_SETTING_PLANE_SPEED                                  :항공기 속력 조절: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 제한하기 위해, 자동차/철도/선박의 속력에 대한 항공기의 속력 비율을 설정합니다.
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 제한하기 위해, 다른 운송 수단의 속력을 1로 보았을 때의 항공기의 속력 비율을 설정합니다.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :(실제 속력) x {COMMA}분의 1
 STR_CONFIG_SETTING_PLANE_CRASHES                                :항공기 추락 빈도수: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :항공기 충돌 사고가 일어날 수 있는지 여부를 설정합니다.
@@ -1394,8 +1394,8 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :사용 가능�
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :이 옵션을 켜면, 불필요하게 시간과 돈을 낭비하지 않도록 차량이 존재하지 않는 기반시설을 설치할 수 없게 됩니다.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :최대 열차 수: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :한 회사가 소유할 수 있는 열차의 최대 수를 제한합니다.
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :최대 자동차 수: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :한 회사가 소유할 수 있는 자동차의 최대 수를 제한합니다.
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :최대 자동차/전차 수: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :한 회사가 소유할 수 있는 자동차/전차의 최대 수를 제한합니다.
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :최대 항공기 수: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :한 회사가 소유할 수 있는 항공기의 최대 수를 제한합니다.
 STR_CONFIG_SETTING_MAX_SHIPS                                    :최대 선박 수: {STRING}
@@ -1403,8 +1403,8 @@ STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :한 회사가 �
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :컴퓨터의 철도 사용을 허가하지 않음: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :이 옵션을 켜면 컴퓨터 플레이어가 철도를 사용할 수 없게 됩니다.
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :컴퓨터의 자동차 사용을 허가하지 않음: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :이 옵션을 켜면 컴퓨터 플레이어가 자동차를 사용할 수 없게 됩니다.
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :컴퓨터의 자동차/전차 사용을 허가하지 않음: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :이 옵션을 켜면 컴퓨터 플레이어가 자동차나 전차를 사용할 수 없게 됩니다.
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :컴퓨터의 항공기 사용을 허가하지 않음: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :이 옵션을 켜면 컴퓨터 플레이어가 항공기를 사용할 수 없게 됩니다.
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :컴퓨터의 선박 사용을 허가하지 않음: {STRING}
@@ -1427,8 +1427,8 @@ STR_CONFIG_SETTING_SERVINT_TRAINS                               :열차에 대�
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :열차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 일/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :자동차에 대한 기본 점검 기준: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :자동차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :차량에 대한 기본 점검 기준: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :자동차/전차에 따로 점검 기간을 설정하지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :항공기에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :항공기에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대한 기본 점검 기준: {STRING}
@@ -1655,8 +1655,8 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(추
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :열차에 사용할 경로 탐색법: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :열차에 사용할 경로 탐색 방법을 선택합니다.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :자동차에 사용할 경로 탐색법: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :자동차에 사용할 경로 탐색 방법을 선택합니다.
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :자동차/전차에 사용할 경로 탐색법: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :자동차/전차에 사용할 경로 탐색 방법을 선택합니다.
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :선박에 사용할 경로 탐색법: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :선박에 사용할 경로 탐색 방법을 선택합니다.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :신호기 앞에서 회차: {STRING}
@@ -1767,14 +1767,14 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업�
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}새 색상
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}일반 색상 선택
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}기본 색상 선택
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}열차 색상 선택
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}자동차 색상 선택
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}자동차/전차 색상 선택
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}선박 색상 선택
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}항공기 색상 선택
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}선택한 색상을 1차 색상으로 선택합니다. Ctrl+클릭하면 모든 항목에 적용됩니다.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}선택한 색상을 2차 색상으로 선택합니다. Ctrl+클릭하면 모든 항목에 적용됩니다.
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}색상 스키마 변경을 원하시면 선택하세요. (2개 이상 선택시 CTRL+클릭). 박스를 클릭하여 스키마를 전환합니다.
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}색상 조합을 바꾸려면 선택하세요. 2개 이상 선택하려면 CTRL+클릭하세요. 네모를 클릭하여 체크하면 해당 색상 조합을 사용하게 됩니다.
 
 STR_LIVERY_DEFAULT                                              :기본 색상
 STR_LIVERY_STEAM                                                :{G=f}증기 기관차
@@ -1806,15 +1806,15 @@ STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}새 얼�
 STR_FACE_OK_TOOLTIP                                             :{BLACK}이 얼굴을 선택합니다.
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}남성
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}남성의 얼굴을 선택합니다.
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}남성 얼굴 선택
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}여성
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}여성의 얼굴을 선택합니다.
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}여성 얼굴 선택
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}새 얼굴
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}얼굴을 만듭니다.
 STR_FACE_ADVANCED                                               :{BLACK}고급
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}고급 얼굴 선택
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}고급 얼굴 선택 모드로 전환
 STR_FACE_SIMPLE                                                 :{BLACK}간단
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}간단한 얼굴 선택
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}간편 얼굴 선택 모드로 전환
 STR_FACE_LOAD                                                   :{BLACK}불러오기
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}즐겨찾는 얼굴 불러오기
 STR_FACE_LOAD_DONE                                              :{WHITE}당신이 즐겨찾는 얼굴을 OpenTTD 설정 파일로부터 불러왔습니다.
@@ -2903,7 +2903,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :자료 검색
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}대소문자 구분
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}팻말의 이름을 비교할 때 검색 문자열의 대소문자 구분 여부를 선택합니다
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}팻말의 이름을 비교할 때 검색 문자열의 대소문자 구분할지 여부를 선택합니다.
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}팻말 내용 고치기
@@ -2938,7 +2938,7 @@ STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}현재 �
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}지역 당국
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}지역 당국의 정보를 보여줍니다.
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}도시 이름을 변경합니다.
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}이 도시 이름을 변경합니다.
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}도시의 크기를 키웁니다.
@@ -3098,14 +3098,14 @@ STR_CARGO_RATING_OUTSTANDING                                    :매우 훌륭�
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}이 역의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 역 위치를 기준으로 새로운 외부 화면을 엽니다.
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}역 이름 변경
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}이 역의 이름을 변경합니다.
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}이 역을 거쳐가는 모든 열차를 표시합니다
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}이 역을 거쳐가는 모든 자동차를 표시합니다
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}이 역을 거쳐가는 모든 자동차/전차를 보여줍니다.
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}이 역을 거쳐가는 모든 항공기를 표시합니다
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}이 역을 거쳐가는 모든 선박을 표시합니다
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :역 이름 변경
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :이 역의 이름을 변경합니다.
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}공항 폐쇄
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}이 공항에 항공기가 착륙하는 것을 금지합니다.
@@ -3113,7 +3113,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}이 공�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}이 경유지의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 경유지 위치를 기준으로 새로운 외부 화면을 엽니다.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}경유지 이름 변경
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}이 경유지의 이름을 변경합니다.
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 부표의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 부표 위치를 기준으로 새로운 외부화면을 엽니다.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}부표 이름 바꾸기
 
@@ -3126,12 +3126,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}건설
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}신규 차량 구입
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}열차 유지비
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}자동차 유지비
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}자동차/전차 유지비
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}항공기 유지비
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}선박 유지비
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}유지보수비
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}열차 수익
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}자동차 수익
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}차량 수익
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}항공기 수익
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}선박 수익
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}이자
@@ -3157,7 +3157,7 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}설립: {
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}차량:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}열차 {COMMA}대
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}자동차 {COMMA}대
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}차량 {COMMA}대
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}항공기 {COMMA}대
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}선박 {COMMA}대
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
@@ -3247,19 +3247,19 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}생산 �
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA}대의 열차
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA}대의 자동차
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA}대의 차량
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA}대의 선박
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA}대의 항공기
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}열차 - 열차 정보를 보려면 클릭
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}자동차 - 자세히 보려면 클릭
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}차량 - 자세히 보려면 클릭
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요.
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요.
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}올해 수입: {CURRENCY_LONG} (작년: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :사용 가능 열차
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :사용 가능 자동차
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :사용 가능한 차량
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :사용 가능 선박
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :사용 가능 항공기
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}이 차량 타입에 사용할 수 있는 기관차의 목록 보기
@@ -3308,7 +3308,7 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :새 모노레�
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :새 자기부상열차
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :새 열차
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :새 자동차
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :새 차량
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :새 선박
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 
@@ -3334,7 +3334,7 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 �
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}열차 선택 목록 - 차량 정보를 보려면 클릭
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}차량 목록 - 차량 정보를 보려면 클릭
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
 
@@ -3344,7 +3344,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}선박 �
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}항공기 구입
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}선택된 차량을 구입합니다. SHIFT+클릭으로 예상 구입 가격을 볼 수 있습니다.
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}선택한 자동차를 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}선택한 차량을 구입합니다. Shift+클릭하면 예상 구입 비용을 볼 수 있습니다.
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}선택한 선박을 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}선택한 항공기를 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.
 
@@ -3354,12 +3354,12 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}이름 �
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}이름 지정
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}열차의 차량 이름을 변경합니다.
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}자동차의 차량 이름을 변경합니다.
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}차량의 차종명을 변경합니다.
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박의 차량 이름을 변경합니다.
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기의 차량 이름을 변경합니다.
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차의 차량 이름을 변경합니다.
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차의 차량 이름을 변경합니다.
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}차종명을 변경합니다.
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박의 차량 이름을 변경합니다.
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기의 차량 이름을 변경합니다.
 
@@ -3375,24 +3375,24 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} �
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하십시오. 두 기능을 해당 차량 뒤에 딸려오는 차량에 적용하고 싶다면 Ctrl키를 누르고 계십시오.
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}자동차 - 자동차의 정보를 보려면 오른쪽 클릭하세요.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량을 오른쪽 클릭하면 해당 차량의 간단한 정보를 볼 수 있습니다.
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 오른쪽 클릭하세요.
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기의 정보를 보려면 오른쪽 클릭하세요.
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}기관차/객차/화물차 한량만 제거하려면 여기로 드래그하세요
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}자동차를 팔려면 여기로 드래그하세요.
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}차량을 팔려면 여기로 드래그하세요.
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}선박을 팔려면 여기로 드래그하세요.
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}항공기를 팔려면 여기로 드래그하세요.
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}열차 전체를 팔려면 기관차를 여기로 드래그하세요
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}이 차량기지에 있는 모든 열차를 팝니다.
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}이 차량기지에 있는 모든 자동차를 팝니다.
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}이 차량기지에 있는 모든 선박을 팝니다.
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}이 차량기지에 있는 모든 항공기를 팝니다.
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}이 차고지에 있는 모든 차량을 팝니다.
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}이 정박소에 있는 모든 선박을 팝니다.
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}이 격납고에 있는 모든 항공기를 팝니다.
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}이 차량기지에 있는 모든 열차를 자동으로 교체합니다.
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}이 차고지에 있는 모든 자동차를 자동으로 교체합니다.
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}이 차고지에 있는 모든 차량을 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}이 정박소에 있는 모든 선박을 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}이 격납고에 있는 모든 항공기를 자동으로 교체합니다.
 
@@ -3401,10 +3401,10 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}새 차�
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}새 선박
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}새 항공기
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}새 열차 구입
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}새 자동차 구입
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}새 선박 구입
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}새 항공기 구입
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}새 열차를 구입합니다.
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}새 차량을 구입합니다.
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}새 선박을 구입합니다.
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}새 항공기를 구입합니다.
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}열차 복제
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}차량 복제
@@ -3412,7 +3412,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}선박 �
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}항공기 복제
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}화물칸을 포함한 열차 전체를 복제합니다. 이 버튼을 클릭하고 차량기지 안이나 밖에 있는 열차를 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}자동차를 복제합니다. 이 버튼을 클릭하고 차고지 안이나 밖에 있는 차량을 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}차량을 복제합니다. 이 버튼을 클릭하고 차고지 안이나 밖에 있는 차량을 클릭하십시오. Ctrl+클릭하면 경로도 함께 공유합니다.
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}이 선박을 복제합니다. 이 버튼을 누르고 정류소의 안이나 밖에 있는 선박을 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}이 항공기를 복제합니다. 격납고 안이나 밖에 있는 항공기를 선택하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
 
@@ -3422,17 +3422,17 @@ STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}이 정�
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}이 격납고의 위치로 시점을 이동합니다. Ctrl+클릭하면 이 격납고의 위치를 기준으로 새로운 외부 화면을 엽니다.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}이 차량기지를 거쳐가는 모든 열차의 목록을 보여줍니다.
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}이 차고지를 거쳐가는 모든 자동차의 목록을 보여줍니다.
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}이 차고지를 거쳐가는 모든 차량의 목록을 보여줍니다.
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}이 정박소를 거쳐가는 모든 선박의 목록을 보여줍니다.
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}이 격납고를 거쳐가는 모든 항공기의 목록을 보여줍니다.
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 중지시킵니다.
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}이 차고지 안에 있는 모든 자동차의 운행을 중지시킵니다.
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}이 차고지 안에 있는 모든 차량의 운행을 중지시키려면 클릭하세요.
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 중지시킵니다.
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 중지시킵니다.
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 시작합니다.
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}이 차고지 안에 있는 모든 자동차의 운행을 시작합니다.
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}이 차고지 안에 있는 모든 차량의 운행을 시작하려면 클릭하세요.
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 시작합니다.
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 시작합니다.
 
@@ -3442,7 +3442,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 개발자로부터의 메시지
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 새로운 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}철도 기관차
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=f}자동차
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :자동차/전차
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}항공기
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}선박
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}모노레일 기관차
@@ -3458,7 +3458,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체 - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :{G=f}열차
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :자동차/전차
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=f}항공기
 
@@ -3503,17 +3503,17 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량�
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검만 합니다.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검만 합니다
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}모든 차량을 포함한 열차 전체를 복제합니다. Ctrl+클릭하면 경로도 같이 공유됩니다.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}이 버튼은 이 자동차의 복제를 구입할 것입니다. Ctrl+클릭하면 경로도 같이 공유됩니다.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}이 선박을 복제합니다. Ctrl+클릭하면 경로를 공유합니다.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}이 항공기를 복제합니다. Ctrl+클릭하면 경로를 같이 공유합니다.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}객차/화차를 포함한 열차 전체를 복제합니다. Ctrl+클릭하면 경로도 함께 공유됩니다.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}차량을 복제합니다. Ctrl+클릭하면 경로도 함께 공유됩니다.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}선박을 복제합니다. Ctrl+클릭하면 경로도 함께 공유됩니다.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}항공기를 복제합니다. Ctrl+클릭하면 경로도 함께 공유됩니다.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}신호를 무시하고 열차를 진행시킵니다.
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}다른 종류의 화물을 실을 수 있도록 열차를 개조
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}자동차가 다른 종류의 화물을 싣도록 개조
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}이 선박이 다른 종류의 화물을 싣도록 개조
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}이 항공기가 다른 종류의 화물을 싣도록 개조
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}차량이 다른 종류의 화물을 싣을 수 있도록 개조합니다.
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}이 선박이 다른 종류의 화물을 실을 수 있도록 개조합니다.
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}이 항공기가 다른 종류의 화물을 실을 수 있도록 개조합니다.
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}열차를 회차시킵니다.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}차량을 U턴시킵니다.
@@ -3523,8 +3523,8 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량�
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로를 보여줍니다. Ctrl+클릭하면 선박의 시간표를 보여줍니다.
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기의 경로를 보여줍니다. Ctrl+클릭하면 항공기의 시간표를 보여줍니다.
 
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차 상세정보 보기
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}자동차 상세정보 보이기
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차의 상세정보를 보여줍니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}차량 상세정보 보기
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}선박 상세정보 보기
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}항공기 상세정보 보기
 
@@ -3561,7 +3561,7 @@ STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}이름
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}열차 이름 지정
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동차 이름 지정
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}차량 이름 지정
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
 
@@ -3597,7 +3597,7 @@ STR_VEHICLE_DETAILS_DAYS                                        :날짜
 STR_VEHICLE_DETAILS_PERCENT                                     :신뢰도
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 이름 지정
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}자동차 이름 지정
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}차량 이름 지정
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}선박 이름 지정
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공기 이름 지정
 
@@ -3634,17 +3634,17 @@ STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}변경 �
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하십시오. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하시면 전체 차량을 선택 가능합니다.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요.
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}자동차가 수송할 화물의 종류를 선택하십시오.
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량이 수송할 화물의 종류를 선택하세요.
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박이 운반할 화물의 종류를 선택하십시오
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}이 항공기가 수송할 화물의 종류를 선택하십시오
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}열차 개조
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}자동차 개조
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}차량 개조
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}선박 개조
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}항공기 개조
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}선택된 화물을 수송하도록 열차를 개조
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}선택한 화물을 싣도록 자동차를 개조
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}선택한 화물을 싣도록 차량을 개조합니다.
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}선택한 화물을 운반하도록 선박을 개조
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}선택한 화물을 싣도록 항공기를 개조합니다
 
@@ -3669,7 +3669,7 @@ STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}선택한 목적지에서의 정차 방식을 변경합니다
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}아무 화물이나 가득 싣기
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :가능한것만 적재
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :가능한 것만 적재
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :아무 화물이나 가득 싣기
 STR_ORDER_DROP_NO_LOADING                                       :싣지 않기
@@ -4275,22 +4275,22 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}이 그�
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}중간에 열차가 있습니다
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 자동차가 있습니다.
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 차량이 있습니다.
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}중간에 선박이 있습니다
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}중간에 항공기가 있습니다
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}열차를 개조할 수 없습니다...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}자동차를 개조할 수 없습니다...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}차량을 개조할 수 없습니다...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}선박을 개조할 수 없습니다...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}항공기를 개조할 수 없습니다...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}열차 이름을 지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}자동차의 이름을 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}차량의 이름을 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}선박의 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}항공기의 이름을 지정할 수 없습니다...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}열차를 운행/정지시킬 수 없습니다...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}자동차를 운행/정지시킬 수 없습니다...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}차량을 운행/정지시킬 수 없습니다...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}선박을 운행/중지시킬 수 없습니다...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 
@@ -4300,17 +4300,17 @@ STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}선박�
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공기를 격납고로 보낼 수 없습니다...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}열차를 구입할 수 없습니다...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}자동차를 구입할 수 없습니다...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}차량을 구입할 수 없습니다...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}선박을 구입할 수 없습니다...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}항공기를 구입 할 수 없습니다...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}열차의 차량 이름을 다시 지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차의 차량 이름을 다시 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}차종명을 다시 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}선박의 차량 이름을 다시 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기의 차량 이름을 다시 지정할 수 없습니다...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}열차를 팔 수 없습니다...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동차를 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}차량을 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박을 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
 
@@ -4334,7 +4334,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 �
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}열차를 회차시킬 수 없습니다...
 STR_ERROR_TRAIN_START_NO_POWER                                  :동력차가 없습니다
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}자동차를 U턴시킬 수 없습니다...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}차량을 U턴시킬 수 없습니다...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}항공기가 운항중입니다
 
@@ -4463,7 +4463,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}설탕 광
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :{G=m}이름 없음
 STR_SV_TRAIN_NAME                                               :열차 {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :자동차 {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :차량 {COMMA}
 STR_SV_SHIP_NAME                                                :선박 {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :항공기 {COMMA}
 
