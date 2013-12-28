@@ -199,21 +199,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tunell
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tunnell
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galwyn
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} tr
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -221,6 +228,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Llinyn h
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Rhowch linyn hidlo
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Rhowch allweddair er mwyn ei ddefnyddio i hidlo'r rhestr
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Dewis trefn grwpio
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Dewiswch drefn trefnu (disgynnol/esgynnol)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Dewiswch drefn trefnu
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Dewis criteria hidlydd
@@ -277,16 +285,18 @@ STR_SORT_BY_LENGTH                                              :Hyd
 STR_SORT_BY_LIFE_TIME                                           :Oes yn weddill
 STR_SORT_BY_TIMETABLE_DELAY                                     :Oediad amserlen
 STR_SORT_BY_FACILITY                                            :Math Gorsaf
+STR_SORT_BY_WAITING_TOTAL                                       :Cyfanswm llwythi sy'n aros
+STR_SORT_BY_WAITING_AVAILABLE                                   :Llwythi sy'n aros ar gael
 STR_SORT_BY_RATING_MAX                                          :Safon cludiant uchaf
 STR_SORT_BY_RATING_MIN                                          :Safon cludiant isaf
 STR_SORT_BY_ENGINE_ID                                           :ID Injan (math clasurol)
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Pŵer
-STR_SORT_BY_TRACTIVE_EFFORT                                     :Grym tyniadol
-STR_SORT_BY_INTRO_DATE                                          :Dyddiad Cyflwyno
-STR_SORT_BY_RUNNING_COST                                        :Cost Rhedeg
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Pŵer/Cost Rhedeg
-STR_SORT_BY_CARGO_CAPACITY                                      :Gallu cludo Llwyth
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Grym tynnu
+STR_SORT_BY_INTRO_DATE                                          :Dyddiad cyflwyno
+STR_SORT_BY_RUNNING_COST                                        :Cost rhedeg
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Pŵer/Cost rhedeg
+STR_SORT_BY_CARGO_CAPACITY                                      :Gallu cludo llwyth
 STR_SORT_BY_RANGE                                               :Maes teithio
 STR_SORT_BY_POPULATION                                          :Poblogaeth
 STR_SORT_BY_RATING                                              :Gradd
@@ -302,6 +312,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Dangos C
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Dangos rhestr o orsafoedd y cwmni
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Dangos gwybodaeth cyllid y cwmni
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Dangos gwybodaeth gyffredinol y cwmni
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Dangos llyfr hanes
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Dangos rhestr amcanion
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Dangos graffiau
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Dangos tabl cynghrair cwmnïau
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ariannu adeiladu diwydiant newydd
@@ -966,7 +978,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd 
 STR_CURRENCY_WINDOW                                             :{WHITE}Arian cyfaddas
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cyfradd gyfnewid: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Llehad yr swm o eich arian cyfred am un Punt (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}amlhau yr swm o eich arian cyfred am un Punt (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Amlhau yr swm o eich arian cyfred am un Punt (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}newid y raddfa gyfnewid o eich arian cyfred i un Punt (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Gwahanydd: {ORANGE}{STRING}
@@ -1067,7 +1079,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Gosodiadau sy'n
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Gosodiadau gyda gwerth gwahanol i'ch gosodiadau gêm newydd chi
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Yn cyfyngu'r rhestr isod at mathau gosodiad penodol
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Pob gosodiad
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Pob math o osodiad
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gosodiadau gwestai (cedwir yn y ffeiliau cadw; yn effeithio ar pob gêm)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Gosodiadau gêm (cedwir yn y ffeiliau cadw, gan effeithio ar gemau newydd yn unig)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Gosodiadau gêm (cedwir yn y ffeil cadw, gan effeithio ar y gêm bresennol yn unig)
@@ -1327,6 +1339,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palet rhagosodedig ar gyfer NewGRFau nad yw'n dynodi un: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palet rhagosodedig i'w ddefnyddio ar gyfer NewGRFau nad ydynt yn dynodi'r un y maent eu hangen
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Palet rhagosodedig (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Palet hanesyddol (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Oedi'n awtomatig wrth gychwyn gêm newydd: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Pan y galluogir, bydd yn gêm yn oedi ar ddechrau gêm newydd, er mwyn astudio'r map
@@ -1552,18 +1566,73 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Maint cymhedrol
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Dileu ffyrdd disynnwyr wrth adeiladu ffyrdd: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Tynnu pytiau ffyrdd diddefnydd yn ystod ailadeiladu ffyrdd noddedig
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Diweddaru'r graff dosraniad bob {STRING} diwrnod
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Amser rhwng pob ailgifrifiad o'r graff cyswllt. Bydd pob ailgyfrifiad yn cyfrifio'r cynllun ar gyfer un cydran o'r graff. O ganlyn ni fydd dwis gwerth o X yn golygu y bydd y graff cyfan yn cael ei ddiweddaru bob X diwrnod, ond y bydd rhai cydrannau. Bydd ystod byr yn defnyddio mwy o amser y prosesydd yn ailgyfrio graffiau. Bydd ystor hir yn cynyddu'r amser cyn y daw'r dosraniad i ryn ar lwybrau newydd.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Cymryd {STRING} diwrnod ar gyfer ar gyfer ailgyfrifo graff dosraniad
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Yr amser ar gyfer ailgyfrifo pob cydran o raff cyswllt. Pan y dechreuir ailgyfrifo, fe grëir llinyn gwaith a gaiff redeg am nifer penodol o ddiwrnodau. Bydd gosodiad byr yn ei gwneud yn fwy tebygol na fydd y llinyn wedi gorffen mewn pryd. Yna bydd y gêm yn oedi new y bydd yn barod. Bydd gosodiad hir yn cynyddu'r amser y cymerir i'r dosranaid gael ei ddiweddaru pan fo llwybrau'n newid.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :â llaw
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :anghymesur
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :cymesur
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Dull dosrannu ar gyfer teithwyr: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Mae "cymesur" yn golygu y bydd tua'r un faint o deithwyr yn mynd o orsaf A i orsaf B ac yr aiff o B i A. Mae "anghymesur" yn golygu y gall niferoedd mympwyol fynd yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer teithwyr.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Dull dosrannu ar gyfer post: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Mae "cymesur" yn golygu y bydd tua'r un faint o bost yn cael ei yrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer post.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Dull dosrannu ar gyfer llwythi ARGOF: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARFOG yn cynnwys trysorau mewn ardaloedd tymherus, diemwntau yn y trofannau, ac aur yn yr is-arctig. Mae modd y bydd NewGRFau yn newid hyn, Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Fe argymhellir eich bod yn dewis anghymesur neu â llaw pan yn chwarae mewn ardal is-arctig, gan na fydd banciau'n gyrru aur yn ôl i gloddfeydd aur. Ar gyfer ardaloedd tymherus neu trofannol gallwch hefyd ddewis cymesur gan y bydd banciau'n gyrru trysorau'n ôl i'r banciau tardd.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Dull dosrannu ar gyfer llwythi eraill: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Mae'n debyg y byddwch eisiau dewis "anghymesur" neu "â llaw".
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Manylder dosrannu: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mae'r gosodiad yma'n pennu faint o amser prosesydd y bydd cyfrifo'r graff cyswllt yn ei gymeryd. Os yw'n cymryd gormod o amser efallai bydd peth oedi ar y gêm. Os ydych yn gosod gwerth isel, fodd bynnag, ni fyddy dosraniad yn fanwl gywir, a gallwch nodi nad yw llwythi'n cael ei yrru i'r mannau y bydddech y disgwyl.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effaith pellter ar y galw am lwythi: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Os ydych yn gosod at werth yn uwch na 0, bydd y pellter rhwng gorsaf tardd rhyw gargo a cyrchfan posibl B yn dylanwadu ar faint o llwythi a yrrir o A i B. Y pellaf y mae B o A, y lleiaf o gargo a yrrir. Gyda gosodiad uwch, bydd llai o gargo yn cael ei yrru i orsafoedd pell a mwy'n cael ei yrru at orsafoedd agos.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cyfanswm y llwythi'n dychwelyd ar gyfer modd cymesur: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Bydd gosod hwn at llai na 100% yn gwneud y dosraniad cymesur yn fwy fel yr un anghymesur. Caiff llai o llwythi eu gyrru'n ôl yn orfodol os y bydd peth penodol yn cael ei yrru i orsaf. Gyda gosodiad o 0% bydd y dosraniad cymesur yn ymddwyn fel yr un anghymesur.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Llenwi llwybrau byr cyn troi at rhai uwch eu cynhwysedd: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Yn aml mae mwy nag un llwybr rhwng dwy orsaf. Bydd Cargodist yn llenwi'r llwybr byrraf yn gyntaf, yna'n symyd at yr ail fyrraf nes ei fod yn llawn, ayyb. Fe ystyrir llwybr yn llawn yn ôl amcangyfrif o gynhwysedd y llwybr a'r defnydd a gynllunwyd. Gyda fod pob llwybr wedi ei lenwi, os oes galw o hyd, bydd yn gorlwytho pob llwybr, gan ffafrio'r rhai gyda chynhwysedd uchel. Ni fydd yr algorithm yn amcangyfrif y cynhwysedd yn fanwl gywir. Mae'r gosodiad yma'n eich galluogi i nodi pa mor llawn y dylai llwybr byrrach fod (fel canran) cyn dewis y llwybr nesaf. Gosodwch at llai na 100% i osgoi tagfeydd mewn gorsafoedd oherwydd goramcangyfrif cynhwysedd.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unedau cyflymder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Pan y dangosir cyflymder yn y rhyngwyneb defnyddiwr, ei ddangos yn yr unedau a ddewiswyd
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrig (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unedau pŵer cerbyd: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Pan y dangosir pŵer yn y rhyngwyneb defnyddiwr, ei ddangos yn yr unedau a ddewiswyd
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrig (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unedau pwysau: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Pan y dangosir pwysau yn y rhyngwyneb defnyddiwr, eu dangos yn yr unedau a ddewiswyd
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (t/tunnell byr)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrig (t/tunell)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unedau cyfaint: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Pan y dangosir cyfaint yn y rhyngwyneb defnyddiwr, ei ddangos yn yr unedau a ddewiswyd
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrig (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unedau grym tynnu: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Pan y dangosir grym tynnu yn y rhyngwyneb defnyddiwr, ei ddangos yn yr unedau a ddewiswyd
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrig (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unedau uchder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Pan y dangosir uchder yn y rhyngwyneb defnyddiwr, ei ddangos yn yr unedau a ddewiswyd
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrig (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rhyngwyneb
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Unedau Lleol
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Adeiladu
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Cerbydau
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Gorsafoedd
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economi
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Dosraniad Cargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Cystadleuwyr
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Dewisiadau dangos
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Rhyngweithio
@@ -1688,7 +1757,7 @@ STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Caiff t
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Ni fydd awyrennau jet yn crashio (yn aml) ar feysydd awyr bychain: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tirwedd Tymherus
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Tirwedd Is-arctig
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tirwedd Is-drofannol
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tirwedd trofannol
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Tirwedd Teganau
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Newid dyddiad: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Newid y flwyddyn bresennol
@@ -1973,6 +2042,7 @@ STR_NETWORK_CLIENT                                              :Gwestai
 STR_NETWORK_SPECTATORS                                          :Gwylwyr
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nodwch faint o arian yr hoffech chi ei roi
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gwyliwr
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Peidio cadw'r cyfrinair a roddwyd
@@ -2821,6 +2891,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<model cerbyd a
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<diwydiant annilys>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<cerbyd annilys>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Yn sganio NewGRFau
@@ -2903,13 +2974,16 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Prynu'r
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Nodau bydol:
+STR_GOALS_CAPTION                                               :{WHITE}Amcanion {COMPANY}
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Amcanion Bydol
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Amcanion bydol:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Dim -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Amherthnasol -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Nodau cwmni:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar nod i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Amcanion cwmni:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar amcan i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Cwestiwn
@@ -2947,6 +3021,16 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliciwch ar y gwasanaeth i ganoli'r olygfa ar y diwydiant/tref. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant/tref
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Llyfr Hanes
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Llyfr Hanes Bydol
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Tudalen {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Neidio i dudalen benodol dwy ei ddewis o'r cwymplen yma.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Blaenorol
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Mynd i'r dudalen blaenorol
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nesaf
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Mynd i'r dudalen nesaf
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Cyfeiriad amcan annilys
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Enwau gorsafoedd - cliciwch ar enw i ganoli'r brif olygfa ar yr orsaf. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad yr orsaf
@@ -2978,7 +3062,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Dangos g
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Graddio lleol a cyflenwi misol:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Grwpio yn ôl
+STR_STATION_VIEW_WAITING_STATION                                :Gorsaf: Yn aros
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Cyfanswn: Yn aros
+STR_STATION_VIEW_PLANNED_STATION                                :Gorsaf: Cynllunwyd
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Cyfanswm: Cynllunwyd
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} o {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} drwy {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} i {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} o orsaf anhysbys
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} i unrhyw orsaf
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} drwy unrhyw orsaf
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} o'r orsaf yma
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} yn galw yn yr orsaf yma
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} i'r orsaf yma
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} heb stop
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Tardd-Trwy-Cyrchfan
+STR_STATION_VIEW_GROUP_S_D_V                                    :Tardd-Cyrchfan-Trwy
+STR_STATION_VIEW_GROUP_V_S_D                                    :Trwy-Tardd-Cyrchfan
+STR_STATION_VIEW_GROUP_V_D_S                                    :Trwy-Cyrchfan-Tardd
+STR_STATION_VIEW_GROUP_D_S_V                                    :Cyrchfan-Tardd-Trwy
+STR_STATION_VIEW_GROUP_D_V_S                                    :Cyrchfan-Trwy-Tardd
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Erchyll
@@ -3224,7 +3329,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wageni P
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modd ei ailffitio i: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Pob math o lwyth
 STR_PURCHASE_INFO_ALL_BUT                                       :Popeth ond{CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Grym Tynnol Uchaf: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Grym Tynnu Uchaf: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Pellter cyrhaeddiad: {GOLD}{COMMA} teil
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Rhestr dewis trenau - cliciwch ar cerbyd am wybodaeth
@@ -3370,7 +3475,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Gorffen 
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Gwasgwch i atal disodli'r math injan sydd wedi'i ddewis ar y chwith
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Disodli: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Newid rhwng y sgrin ddisodli wagenni a'r un injans.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Newid rhwng y ffenest disodli wagenni a'r un injanau
 STR_REPLACE_ENGINES                                             :Injanau
 STR_REPLACE_WAGONS                                              :Wagenni
 
@@ -3725,6 +3830,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Nid yw'r
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bydd yr amserlen yma'n dechrau ar {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dyddiad dechrau
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Dewis dyddiad fel pwynt dechrau ar gyfer yr amserlen yma. Mae Ctrl+Clic yn gosod pwynt dechrau yr amselen yma ac yn dosbarthu'r holl gerbydau sy'n rhannu'r gorchymyn yma yn gyson yn ôl eu trefn cymharol, os yw'r gorchymyn wedi ei amserlennu'n llwyr
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Newid Amser
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Newid faint o amser y dylai'r gorchymyn a amlygwyd ei gymryd
@@ -3838,6 +3944,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Nifer o ddiwrno
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Dogfenyddiaeth {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Log newidiadau {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Trwydded {STRING} {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Amlapio testun
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Amlapio testun y ffenestr fel ei fod i'w weld heb sgrolio
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Gweld dogfenyddiaeth
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log Newidiadau
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Trwydded
@@ -4215,6 +4323,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Methu ne
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... cerbyd wedi ei ddinistrio
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ni fydd cerbydau ar gael o gwbl
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Newid eich ffurfweddiad NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Dim cerbydau ar gael eto
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Dechreuwch gêm newydd wedi {DATE_SHORT} neu defnyddiwch NewGRF sy'n darparu cerbydau cynnar
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Does dim modd gwneud i drên basio signal pan fo perygl...
@@ -4716,6 +4828,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
