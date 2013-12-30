@@ -2173,9 +2173,9 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운�
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다.
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}다운로드 할 파일의 총 용량: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}콘텐츠 정보
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}이 콘텐츠를 선택하지 않았습니다. (다운로드 안 함)
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}이 콘텐츠를 선택하였습니다. (다운로드함)
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}이 콘텐츠를 선택하지 않았습니다.
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}이 콘텐츠를 다운로드하기 위해 선택하였습니다.
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이 콘텐츠는 다른 콘텐츠에서 필요하므로 자동 선택되었습니다.
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}이미 가지고 있는 콘텐츠입니다.
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 콘텐츠는 알려지지 않은 콘텐츠이고 OpenTTD 게임 상에서 받을 수 없는 것입니다
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이 콘텐츠는 기존에 존재하던 {STRING}{G 0 "을" "를"} 업데이트합니다.
@@ -2185,8 +2185,8 @@ STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명:
 STR_CONTENT_DETAIL_URL                                          :{SILVER}주소: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}종류: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}파일 크기: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}다음에 종속됨: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}종속: {WHITE}{STRING}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{WHITE}{STRING}{SILVER} 때문에 선택됨
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}필요한 요소: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}태그: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD가 "zlib" 지원 기능을 포함하지 않고 만들어졌습니다...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
