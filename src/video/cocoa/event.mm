@@ -71,7 +71,7 @@ static uint32 _tEvent;
 /* Support for touch gestures is only available starting with the
  * 10.6 SDK, even if it says that support starts in fact with 10.5.2.
  * Replicate the needed stuff for older SDKs. */
-#if MAC_OS_X_VERSION_MAX_ALLOWED == MAC_OS_X_VERSION_10_5
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5 && MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_6)
 static const NSUInteger NSEventTypeMagnify    = 30;
 static const NSUInteger NSEventTypeEndGesture = 20;
 
