@@ -1347,7 +1347,7 @@ static bool IsArticulatedVehicleEmpty(Vehicle *v)
 	v = v->GetFirstEnginePart();
 
 	for (; v != NULL; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL) {
-		if (v->cargo.TotalCount() != 0) return false;
+		if (v->cargo.StoredCount() != 0) return false;
 	}
 
 	return true;
@@ -1471,15 +1471,19 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 		/* This order has a refit, if this is the first vehicle part carrying cargo and the whole vehicle is empty, try refitting. */
 		if (front->current_order.IsRefit() && artic_part == 1 && IsArticulatedVehicleEmpty(v) &&
-				(v->type != VEH_AIRCRAFT || (Aircraft::From(v)->IsNormalAircraft() && v->Next()->cargo.TotalCount() == 0))) {
+				(v->type != VEH_AIRCRAFT || (Aircraft::From(v)->IsNormalAircraft() && v->Next()->cargo.StoredCount() == 0))) {
+			bool is_normal_aircraft = (v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft());
 			Vehicle *v_start = v->GetFirstEnginePart();
 			CargoID new_cid = front->current_order.GetRefitCargo();
 
 			/* Remove old capacity from consist capacity */
-			consist_capleft[v_start->cargo_type] -= v_start->cargo_cap;
+			consist_capleft[v_start->cargo_type] -= (v_start->cargo_cap - v_start->cargo.ReservedCount());
 			for (Vehicle *w = v_start; w->HasArticulatedPart(); ) {
 				w = w->GetNextArticulatedPart();
-				consist_capleft[w->cargo_type] -= w->cargo_cap;
+				consist_capleft[w->cargo_type] -= (w->cargo_cap - w->cargo.ReservedCount());
+			}
+			if (is_normal_aircraft) {
+				consist_capleft[v->Next()->cargo_type] -= (v->Next()->cargo_cap - v->Next()->cargo.ReservedCount());
 			}
 
 			Backup<CompanyByte> cur_company(_current_company, front->owner, FILE_LINE);
@@ -1489,7 +1493,6 @@ static void LoadUnloadVehicle(Vehicle *front)
 			Vehicle *w = v_start;
 			while (w->HasArticulatedPart()) {
 				w = w->GetNextArticulatedPart();
-				if (w->cargo.TotalCount() > 0) new_cid = CT_NO_REFIT;
 				refit_mask |= EngInfo(w->engine_type)->refit_mask;
 			}
 
@@ -1514,6 +1517,15 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 			/* Refit if given a valid cargo. */
 			if (new_cid < NUM_CARGO && new_cid != v_start->cargo_type) {
+				StationID next_one = StationIDStack(next_station).Pop();
+				v_start->cargo.Return(UINT_MAX, &st->goods[v_start->cargo_type].cargo, next_one);
+				for (w = v_start; w->HasArticulatedPart();) {
+					w = w->GetNextArticulatedPart();
+					w->cargo.Return(UINT_MAX, &st->goods[w->cargo_type].cargo, next_one);
+				}
+				if (is_normal_aircraft) {
+					v->Next()->cargo.Return(UINT_MAX, &st->goods[v->Next()->cargo_type].cargo, next_one);
+				}
 				CommandCost cost = DoCommand(v_start->tile, v_start->index, new_cid | 1U << 6 | 0xFF << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 				if (cost.Succeeded()) front->profit_this_year -= cost.GetCost() << 8;
 				ge = &st->goods[v->cargo_type];
@@ -1526,6 +1538,9 @@ static void LoadUnloadVehicle(Vehicle *front)
 				consist_capleft[w->cargo_type] += w->cargo_cap - w->cargo.RemainingCount();
 				w = w->HasArticulatedPart() ? w->GetNextArticulatedPart() : NULL;
 			} while (w != NULL);
+			if (is_normal_aircraft) {
+				consist_capleft[v->Next()->cargo_type] += v->Next()->cargo_cap - v->Next()->cargo.RemainingCount();
+			}
 
 			cur_company.Restore();
 		}
