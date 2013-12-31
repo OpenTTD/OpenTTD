@@ -64,7 +64,7 @@
 - Change: Allow to remove unowned objects unless they have the 'unremovable' flag (r25879)
 - Change: In scenario editor allow to build all objects which were available at any point in the past to support building scenarios with historic items (r25875)
 - Change: Display the cost to upgrade a bridge at the end of bridge that was clicked and not the other end, which could be outside of the screen in some cases (r25854)
-- Change: [NewGRF] Lower the limit of airport tile types, house types, indurstry tile types and object types per NewGRF from 256 to 255 to prevent usage of ID 0xFF in Action3, and thus allowing it to become an extended byte somewhen (r25841, r25839, r25837, r25834)
+- Change: [NewGRF] Lower the limit of airport tile types, house types, industry tile types and object types per NewGRF from 256 to 255 to prevent usage of ID 0xFF in Action3, and thus allowing it to become an extended byte somewhen (r25841, r25839, r25837, r25834)
 - Change: Clarify the relevance of the permissible palettes (r25792)
 - Change: [NewGRF] Invalidate vehicle recolour palette during (un)loading [FS#5669] (r25648)
 - Change: If an editbox is configured to be cleared with ESC, but the editbox is already empty, unselect the editbox instead (r25647)
