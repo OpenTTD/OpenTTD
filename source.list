@@ -907,6 +907,10 @@ blitter/32bpp_optimized.cpp
 blitter/32bpp_optimized.hpp
 blitter/32bpp_simple.cpp
 blitter/32bpp_simple.hpp
+#if WITH_SSE
+blitter/32bpp_sse2.cpp
+blitter/32bpp_sse2.hpp
+#end
 blitter/8bpp_base.cpp
 blitter/8bpp_base.hpp
 blitter/8bpp_optimized.cpp
