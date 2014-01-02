@@ -484,6 +484,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\cpu.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\crashlog.cpp"
 				>
 			</File>
@@ -681,10 +685,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\order_backup.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\os_timer.cpp"
 				>
 			</File>
 			<File
@@ -957,6 +957,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\console_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\cpu.h"
 				>
 			</File>
 			<File

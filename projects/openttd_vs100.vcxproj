@@ -304,6 +304,7 @@
     <ClCompile Include="..\src\command.cpp" />
     <ClCompile Include="..\src\console.cpp" />
     <ClCompile Include="..\src\console_cmds.cpp" />
+    <ClCompile Include="..\src\cpu.cpp" />
     <ClCompile Include="..\src\crashlog.cpp" />
     <ClCompile Include="..\src\currency.cpp" />
     <ClCompile Include="..\src\date.cpp" />
@@ -354,7 +355,6 @@
     <ClCompile Include="..\src\network\network_udp.cpp" />
     <ClCompile Include="..\src\openttd.cpp" />
     <ClCompile Include="..\src\order_backup.cpp" />
-    <ClCompile Include="..\src\os_timer.cpp" />
     <ClCompile Include="..\src\pbs.cpp" />
     <ClCompile Include="..\src\progress.cpp" />
     <ClCompile Include="..\src\rail.cpp" />
@@ -422,6 +422,7 @@
     <ClInclude Include="..\src\console_gui.h" />
     <ClInclude Include="..\src\console_internal.h" />
     <ClInclude Include="..\src\console_type.h" />
+    <ClInclude Include="..\src\cpu.h" />
     <ClInclude Include="..\src\crashlog.h" />
     <ClInclude Include="..\src\currency.h" />
     <ClInclude Include="..\src\date_func.h" />
