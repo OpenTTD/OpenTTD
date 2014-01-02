@@ -48,10 +48,10 @@
 class Blitter_32bppSSE4 : public Blitter_32bppSSSE3 {
 public:
 	Colour AdjustBrightness(Colour colour, uint8 brightness);
-	Colour ReallyAdjustBrightness(Colour colour, uint8 brightness);
+	static Colour ReallyAdjustBrightness(Colour colour, uint8 brightness);
 
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	template <BlitterMode mode, ReadMode read_mode, BlockType bt_last>
+	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 	/* virtual */ const char *GetName() { return "32bpp-sse4"; }
 };

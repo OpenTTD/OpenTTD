@@ -901,6 +901,10 @@ script/api/script_window.cpp
 #else
 blitter/32bpp_anim.cpp
 blitter/32bpp_anim.hpp
+#if WITH_SSE
+blitter/32bpp_anim_sse4.cpp
+blitter/32bpp_anim_sse4.hpp
+#end
 blitter/32bpp_base.cpp
 blitter/32bpp_base.hpp
 blitter/32bpp_optimized.cpp

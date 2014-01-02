@@ -73,9 +73,11 @@ typedef union ALIGN(16) um128i {
 	srcABCD = _mm_packus_epi16(srcAB, srcAB);     /* PACKUSWB, pack 2 colours (with saturation) */ \
 }
 
-/** The SSE2 32 bpp blitter (without palette animation). */
-class Blitter_32bppSSE2 : public Blitter_32bppSimple {
+/** Base methods for 32bpp SSE blitters. */
+class Blitter_32bppSSE_Base {
 public:
+	virtual ~Blitter_32bppSSE_Base() {}
+
 	struct MapValue {
 		uint8 m;
 		uint8 v;
@@ -108,12 +110,23 @@ public:
 		byte data[]; ///< Data, all zoomlevels.
 	};
 
+	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
+	virtual Colour AdjustBrightness(Colour colour, uint8 brightness) = 0;
+};
+
+/** The SSE2 32 bpp blitter (without palette animation). */
+class Blitter_32bppSSE2 : public Blitter_32bppSimple, public Blitter_32bppSSE_Base {
+public:
 	virtual Colour AdjustBrightness(Colour colour, uint8 brightness);
-	Colour ReallyAdjustBrightness(Colour colour, uint8 brightness);
+	static Colour ReallyAdjustBrightness(Colour colour, uint8 brightness);
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	template <BlitterMode mode, ReadMode read_mode, BlockType bt_last>
+	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
-	/* virtual */ Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
+
+	/* virtual */ Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) {
+		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
+	}
+
 	/* virtual */ const char *GetName() { return "32bpp-sse2"; }
 };
 

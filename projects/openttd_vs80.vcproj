@@ -3803,6 +3803,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\blitter\32bpp_anim_sse4.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\32bpp_anim_sse4.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\blitter\32bpp_base.cpp"
 				>
 			</File>
