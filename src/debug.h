@@ -12,6 +12,8 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
+#include "cpu.h"
+
 /* Debugging messages policy:
  * These should be the severities used for direct DEBUG() calls
  * maximum debugging level should be 10 if really deep, deep
@@ -64,12 +66,6 @@ const char *GetDebugString();
 
 /* Shorter form for passing filename and linenumber */
 #define FILE_LINE __FILE__, __LINE__
-
-/**
- * Get the tick counter from the CPU (high precision timing).
- * @return The count.
- */
-uint64 ottd_rdtsc();
 
 /* Used for profiling
  *

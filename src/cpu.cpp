@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file os_timer.cpp OS/compiler dependant real time tick sampling. */
+/** @file cpu.cpp OS/CPU/compiler dependant real time tick sampling. */
 
 #include "stdafx.h"
 

@@ -12,6 +12,7 @@ cheat.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
+cpu.cpp
 crashlog.cpp
 currency.cpp
 date.cpp
@@ -62,7 +63,6 @@ network/network_server.cpp
 network/network_udp.cpp
 openttd.cpp
 order_backup.cpp
-os_timer.cpp
 pbs.cpp
 progress.cpp
 rail.cpp
@@ -155,6 +155,7 @@ console_func.h
 console_gui.h
 console_internal.h
 console_type.h
+cpu.h
 crashlog.h
 currency.h
 date_func.h
