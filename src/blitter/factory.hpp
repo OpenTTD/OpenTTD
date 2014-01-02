@@ -57,15 +57,25 @@ protected:
 	 * Construct the blitter, and register it.
 	 * @param name        The name of the blitter.
 	 * @param description A longer description for the blitter.
+	 * @param usable      Whether the blitter is usable (on the current computer). For example for disabling SSE blitters when the CPU can't handle them.
 	 * @pre name != NULL.
 	 * @pre description != NULL.
 	 * @pre There is no blitter registered with this name.
 	 */
-	BlitterFactory(const char *name, const char *description) :
+	BlitterFactory(const char *name, const char *description, bool usable = true) :
 			name(strdup(name)), description(strdup(description))
 	{
-		std::pair<Blitters::iterator, bool> P = GetBlitters().insert(Blitters::value_type(this->name, this));
-		assert(P.second);
+		if (usable) {
+			/*
+			 * Only add when the blitter is usable. Do not bail out or
+			 * do more special things since the blitters are always
+			 * instantiated upon start anyhow and freed upon shutdown.
+			 */
+			std::pair<Blitters::iterator, bool> P = GetBlitters().insert(Blitters::value_type(this->name, this));
+			assert(P.second);
+		} else {
+			DEBUG(driver, 1, "Not registering blitter %s as it is not usable", name);
+		}
 	}
 
 public:
