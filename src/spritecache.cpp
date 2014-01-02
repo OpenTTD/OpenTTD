@@ -162,7 +162,7 @@ uint GetMaxSpriteID()
 
 static bool ResizeSpriteIn(SpriteLoader::Sprite *sprite, ZoomLevel src, ZoomLevel tgt)
 {
-	uint8 scaled_1 = UnScaleByZoom(1, (ZoomLevel)(tgt - src));
+	uint8 scaled_1 = ScaleByZoom(1, (ZoomLevel)(src - tgt));
 
 	/* Check for possible memory overflow. */
 	if (sprite[src].width * scaled_1 > UINT16_MAX || sprite[src].height * scaled_1 > UINT16_MAX) return false;
