@@ -811,6 +811,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\viewport_sprite_sorter_sse4.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\waypoint.cpp"
 				>
 			</File>
@@ -1836,6 +1840,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\viewport_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\viewport_sprite_sorter.h"
 				>
 			</File>
 			<File

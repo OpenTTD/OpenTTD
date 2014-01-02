@@ -46,6 +46,7 @@
 #include "tilehighlight_func.h"
 #include "window_gui.h"
 #include "linkgraph/linkgraph_gui.h"
+#include "viewport_sprite_sorter.h"
 
 #include "table/strings.h"
 #include "table/palettes.h"
@@ -78,29 +79,6 @@ struct ChildScreenSpriteToDraw {
 	int next;                       ///< next child to draw (-1 at the end)
 };
 
-/** Parent sprite that should be drawn */
-struct ParentSpriteToDraw {
-	SpriteID image;                 ///< sprite to draw
-	PaletteID pal;                  ///< palette to use
-	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
-
-	int32 x;                        ///< screen X coordinate of sprite
-	int32 y;                        ///< screen Y coordinate of sprite
-
-	int32 left;                     ///< minimal screen X coordinate of sprite (= x + sprite->x_offs), reference point for child sprites
-	int32 top;                      ///< minimal screen Y coordinate of sprite (= y + sprite->y_offs), reference point for child sprites
-
-	int32 xmin;                     ///< minimal world X coordinate of bounding box
-	int32 xmax;                     ///< maximal world X coordinate of bounding box
-	int32 ymin;                     ///< minimal world Y coordinate of bounding box
-	int32 ymax;                     ///< maximal world Y coordinate of bounding box
-	int zmin;                       ///< minimal world Z coordinate of bounding box
-	int zmax;                       ///< maximal world Z coordinate of bounding box
-
-	int first_child;                ///< the first child to draw.
-	bool comparison_done;           ///< Used during sprite sorting: true if sprite has been compared with all other sprites
-};
-
 /** Enumeration of multi-part foundations */
 enum FoundationPart {
 	FOUNDATION_PART_NONE     = 0xFF,  ///< Neither foundation nor groundsprite drawn yet.
@@ -122,7 +100,6 @@ enum SpriteCombineMode {
 typedef SmallVector<TileSpriteToDraw, 64> TileSpriteToDrawVector;
 typedef SmallVector<StringSpriteToDraw, 4> StringSpriteToDrawVector;
 typedef SmallVector<ParentSpriteToDraw, 64> ParentSpriteToDrawVector;
-typedef SmallVector<ParentSpriteToDraw*, 64> ParentSpriteToSortVector;
 typedef SmallVector<ChildScreenSpriteToDraw, 16> ChildScreenSpriteToDrawVector;
 
 /** Data structure storing rendering information */
@@ -154,6 +131,7 @@ static TileInfo *_cur_ti;
 bool _draw_bounding_boxes = false;
 bool _draw_dirty_blocks = false;
 uint _dirty_block_colour = 0;
+static VpSpriteSorter _vp_sprite_sorter = NULL;
 
 static Point MapXYZToViewport(const ViewPort *vp, int x, int y, int z)
 {
@@ -1288,6 +1266,12 @@ static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 	}
 }
 
+/** This fallback sprite checker always exists. */
+static bool ViewportSortParentSpritesChecker()
+{
+	return true;
+}
+
 /** Sort parent sprites pointer array */
 static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 {
@@ -1480,7 +1464,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 		*_vd.parent_sprites_to_sort.Append() = it;
 	}
 
-	ViewportSortParentSprites(&_vd.parent_sprites_to_sort);
+	_vp_sprite_sorter(&_vd.parent_sprites_to_sort);
 	ViewportDrawParentSprites(&_vd.parent_sprites_to_sort, &_vd.child_screen_sprites_to_draw);
 
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(&_vd.parent_sprites_to_sort);
@@ -2997,4 +2981,30 @@ Point GetViewportStationMiddle(const ViewPort *vp, const Station *st)
 	p.x = UnScaleByZoom(p.x - vp->virtual_left, vp->zoom) + vp->left;
 	p.y = UnScaleByZoom(p.y - vp->virtual_top, vp->zoom) + vp->top;
 	return p;
+}
+
+/** Helper class for getting the best sprite sorter. */
+struct ViewportSSCSS {
+	VpSorterChecker fct_checker; ///< The check function.
+	VpSpriteSorter fct_sorter;   ///< The sorting function.
+};
+
+/** List of sorters ordered from best to worst. */
+static ViewportSSCSS _vp_sprite_sorters[] = {
+#ifdef WITH_SSE
+	{ &ViewportSortParentSpritesSSE41Checker, &ViewportSortParentSpritesSSE41 },
+#endif
+	{ &ViewportSortParentSpritesChecker, &ViewportSortParentSprites }
+};
+
+/** Choose the "best" sprite sorter and set _vp_sprite_sorter. */
+void InitializeSpriteSorter()
+{
+	for (uint i = 0; i < lengthof(_vp_sprite_sorters); i++) {
+		if (_vp_sprite_sorters[i].fct_checker()) {
+			_vp_sprite_sorter = _vp_sprite_sorters[i].fct_sorter;
+			break;
+		}
+	}
+	assert(_vp_sprite_sorter != NULL);
 }

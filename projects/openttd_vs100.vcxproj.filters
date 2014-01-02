@@ -384,6 +384,9 @@
     <ClCompile Include="..\src\viewport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\viewport_sprite_sorter_sse4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\waypoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1150,6 +1153,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\viewport_func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\viewport_sprite_sorter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\viewport_type.h">

@@ -62,12 +62,11 @@
 #include "town.h"
 #include "subsidy_func.h"
 #include "gfx_layout.h"
-
+#include "viewport_sprite_sorter.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
 #include <stdarg.h>
-
 
 void CallLandscapeTick();
 void IncreaseDate();
@@ -774,6 +773,8 @@ int openttd_main(int argc, char *argv[])
 			usererror("Failed to select requested video driver '%s'", videodriver);
 	}
 	free(videodriver);
+
+	InitializeSpriteSorter();
 
 	/* Initialize the zoom level of the screen to normal */
 	_screen.zoom = ZOOM_LVL_NORMAL;

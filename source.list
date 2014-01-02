@@ -111,6 +111,9 @@ townname.cpp
 vehicle.cpp
 vehiclelist.cpp
 viewport.cpp
+#if SSE
+viewport_sprite_sorter_sse4.cpp
+#end
 waypoint.cpp
 widget.cpp
 window.cpp
@@ -374,6 +377,7 @@ vehicle_gui_base.h
 vehicle_type.h
 vehiclelist.h
 viewport_func.h
+viewport_sprite_sorter.h
 viewport_type.h
 water.h
 waypoint_base.h
