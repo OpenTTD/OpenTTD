@@ -18,4 +18,11 @@
  */
 uint64 ottd_rdtsc();
 
+/**
+ * Get the CPUID information from the CPU.
+ * @param info The retrieved info. All zeros on architectures without CPUID.
+ * @param type The information this instruction should retrieve.
+ */
+void ottd_cpuid(int info[4], int type);
+
 #endif /* CPU_H */

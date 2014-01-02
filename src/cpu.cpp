@@ -74,3 +74,35 @@ uint64 ottd_rdtsc()
 # endif
 uint64 ottd_rdtsc() {return 0;}
 #endif
+
+
+/**
+ * Definitions for CPU detection:
+ *
+ * MSVC offers cpu information while gcc only implements in gcc 4.8
+ * __builtin_cpu_supports and friends
+ * http://msdn.microsoft.com/library/vstudio/hskdteyh%28v=vs.100%29.aspx
+ * http://gcc.gnu.org/onlinedocs/gcc/X86-Built-in-Functions.html
+ *
+ * Other platforms/architectures don't have CPUID, so zero the info and then
+ * most (if not all) of the features are set as if they do not exist.
+ */
+#if defined(_MSC_VER)
+void ottd_cpuid(int info[4], int type)
+	__cpuiid(info, type);
+}
+#elif defined(__x86_64__) || defined(__i386)
+void ottd_cpuid(int info[4], int type)
+{
+	__asm__ __volatile__ (
+			"cpuid"
+			: "=a" (info[0]), "=b" (info[1]), "=c" (info[2]), "=d" (info[3])
+			: "a" (type)
+	);
+}
+#else
+void ottd_cpuid(int info[4], int type)
+{
+	info[0] = info[1] = info[2] = info[3] = 0;
+}
+#endif
