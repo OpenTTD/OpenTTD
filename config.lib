@@ -92,6 +92,7 @@ set_default() {
 	with_ccache="1"
 	with_nforenum="1"
 	with_grfcodec="1"
+	with_sse="1"
 
 	save_params_array="
 		build
@@ -166,6 +167,7 @@ set_default() {
 		with_ccache
 		with_grfcodec
 		with_nforenum
+		with_sse
 	CC CXX CFLAGS CXXFLAGS LDFLAGS CFLAGS_BUILD CXXFLAGS_BUILD LDFLAGS_BUILD"
 }
 
@@ -447,6 +449,10 @@ detect_params() {
 			--with-threads)               with_threads="1";;
 			--with-threads=*)             with_threads="$optarg";;
 
+			--without-sse)                with_sse="0";;
+			--with-sse)                   with_sse="1";;
+			--with-sse=*)                 with_sse="$optarg";;
+
 			CC=* | --CC=*)                CC="$optarg";;
 			CXX=* | --CXX=*)              CXX="$optarg";;
 			CFLAGS=* | --CFLAGS=*)        CFLAGS="$optarg";;
@@ -587,6 +593,7 @@ check_params() {
 
 	check_makedepend
 	detect_cputype
+	detect_sse_capable_architecture
 
 	if [ "$enable_static" = "1" ]; then
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "MORPHOS" ] || [ "$os" = "DOS" ]; then
@@ -1493,6 +1500,9 @@ make_cflags_and_ldflags() {
 
 	if [ "$with_threads" = "0" ]; then
 		CFLAGS="$CFLAGS -DNO_THREADS"
+	fi
+	if [ "$with_sse" = "1" ]; then
+		CFLAGS="$CFLAGS -DWITH_SSE"
 	fi
 
 	if [ "`echo $1 | cut -c 1-3`" != "icc" ]; then
@@ -3324,6 +3334,40 @@ detect_cputype() {
 	rm -f tmp.64bit tmp.64bit.cpp
 }
 
+detect_sse_capable_architecture() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_sse" = "0" ]; then
+		log 1 "checking SSE... disabled"
+		return
+	fi
+
+	echo "#define _SQ64 1" > tmp.sse.cpp
+	echo "#include <xmmintrin.h>" >> tmp.sse.cpp
+	echo "#include <smmintrin.h>" >> tmp.sse.cpp
+	echo "#include <tmmintrin.h>" >> tmp.sse.cpp
+	echo "int main() { return 0; }" >> tmp.sse.cpp
+	execute="$cxx_host -msse4.1 $CFLAGS tmp.sse.cpp -o tmp.sse 2>&1"
+	sse="`eval $execute 2>/dev/null`"
+	ret=$?
+	log 2 "executing $execute"
+	log 2 "  returned $sse"
+	log 2 "  exit code $ret"
+	if [ "$ret" = "0" ]; then
+		log 1 "detecting SSE... found"
+	else
+		# It was forced, so it should be found.
+		if [ "$with_sse" != "1" ]; then
+			log 1 "configure: error: SSE couln't be found"
+			log 1 "configure: error: you force enabled SSE, but it seems unavailable"
+			exit 1
+		fi
+
+		log 1 "detecting SSE... not found"
+		with_sse="0"
+	fi
+	rm -f tmp.sse tmp.sse.cpp
+}
+
 make_sed() {
 	T_CFLAGS="$CFLAGS"
 	T_CXXFLAGS="$CXXFLAGS"
@@ -3714,6 +3758,8 @@ showhelp() {
 	echo "  --with-ccache                  enables ccache support"
 	echo "  --with-distcc                  enables distcc support"
 	echo "  --without-grfcodec             disable usage of grfcodec and re-generation of base sets"
+	echo "  --without-threads              disable threading support"
+	echo "  --without-sse                  disable SSE support (x86/x86_64 only)"
 	echo ""
 	echo "Some influential environment variables:"
 	echo "  CC                             C compiler command"
