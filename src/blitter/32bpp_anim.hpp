@@ -56,10 +56,9 @@ public:
 };
 
 /** Factory for the 32bpp blitter with animation. */
-class FBlitter_32bppAnim : public BlitterFactory<FBlitter_32bppAnim> {
+class FBlitter_32bppAnim : public BlitterFactory {
 public:
-	/* virtual */ const char *GetName() { return "32bpp-anim"; }
-	/* virtual */ const char *GetDescription() { return "32bpp Animation Blitter (palette animation)"; }
+	FBlitter_32bppAnim() : BlitterFactory("32bpp-anim", "32bpp Animation Blitter (palette animation)") {}
 	/* virtual */ Blitter *CreateInstance() { return new Blitter_32bppAnim(); }
 };
 

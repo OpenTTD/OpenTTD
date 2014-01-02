@@ -25,11 +25,12 @@ bool QZ_CanDisplay8bpp();
 /**
  * The base factory, keeping track of all blitters.
  */
-class BlitterFactoryBase {
+class BlitterFactory {
 private:
-	const char *name; ///< The name of the blitter factory.
+	const char *name;        ///< The name of the blitter factory.
+	const char *description; ///< The description of the blitter.
 
-	typedef std::map<const char *, BlitterFactoryBase *, StringCompare> Blitters; ///< Map of blitter factories.
+	typedef std::map<const char *, BlitterFactory *, StringCompare> Blitters; ///< Map of blitter factories.
 
 	/**
 	 * Get the map with currently known blitters.
@@ -53,32 +54,28 @@ private:
 
 protected:
 	/**
-	 * Register a blitter internally, based on his name.
-	 * @param name the name of the blitter.
-	 * @note an assert() will be trigger if 2 blitters with the same name try to register.
+	 * Construct the blitter, and register it.
+	 * @param name        The name of the blitter.
+	 * @param description A longer description for the blitter.
+	 * @pre name != NULL.
+	 * @pre description != NULL.
+	 * @pre There is no blitter registered with this name.
 	 */
-	void RegisterBlitter(const char *name)
+	BlitterFactory(const char *name, const char *description) :
+			name(strdup(name)), description(strdup(description))
 	{
-		/* Don't register nameless Blitters */
-		if (name == NULL) return;
-
-		this->name = strdup(name);
-
-		std::pair<Blitters::iterator, bool> P = GetBlitters().insert(Blitters::value_type(name, this));
+		std::pair<Blitters::iterator, bool> P = GetBlitters().insert(Blitters::value_type(this->name, this));
 		assert(P.second);
 	}
 
 public:
-	BlitterFactoryBase() :
-		name(NULL)
-	{}
-
-	virtual ~BlitterFactoryBase()
+	virtual ~BlitterFactory()
 	{
-		if (this->name == NULL) return;
 		GetBlitters().erase(this->name);
 		if (GetBlitters().empty()) delete &GetBlitters();
+
 		free(this->name);
+		free(this->description);
 	}
 
 	/**
@@ -108,7 +105,7 @@ public:
 
 		Blitters::iterator it = GetBlitters().begin();
 		for (; it != GetBlitters().end(); it++) {
-			BlitterFactoryBase *b = (*it).second;
+			BlitterFactory *b = (*it).second;
 			if (strcasecmp(bname, b->name) == 0) {
 				Blitter *newb = b->CreateInstance();
 				delete *GetActiveBlitter();
@@ -140,7 +137,7 @@ public:
 		p += seprintf(p, last, "List of blitters:\n");
 		Blitters::iterator it = GetBlitters().begin();
 		for (; it != GetBlitters().end(); it++) {
-			BlitterFactoryBase *b = (*it).second;
+			BlitterFactory *b = (*it).second;
 			p += seprintf(p, last, "%18s: %s\n", b->name, b->GetDescription());
 		}
 		p += seprintf(p, last, "\n");
@@ -149,28 +146,25 @@ public:
 	}
 
 	/**
+	 * Get the long, human readable, name for the Blitter-class.
+	 */
+	const char *GetName() const
+	{
+		return this->name;
+	}
+
+	/**
 	 * Get a nice description of the blitter-class.
 	 */
-	virtual const char *GetDescription() = 0;
+	const char *GetDescription() const
+	{
+		return this->description;
+	}
 
 	/**
 	 * Create an instance of this Blitter-class.
 	 */
 	virtual Blitter *CreateInstance() = 0;
-};
-
-/**
- * A template factory, so ->GetName() works correctly. This because else some compiler will complain.
- */
-template <class T>
-class BlitterFactory : public BlitterFactoryBase {
-public:
-	BlitterFactory() { this->RegisterBlitter(((T *)this)->GetName()); }
-
-	/**
-	 * Get the long, human readable, name for the Blitter-class.
-	 */
-	const char *GetName();
 };
 
 extern char *_ini_blitter;

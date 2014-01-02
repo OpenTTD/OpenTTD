@@ -190,7 +190,7 @@ static void ClientSizeChanged(int w, int h)
 		_cur_palette.count_dirty = 256;
 		_local_palette = _cur_palette;
 
-		BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+		BlitterFactory::GetCurrentBlitter()->PostResize();
 
 		GameSizeChanged();
 
@@ -279,7 +279,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		DEVMODE settings;
 
 		/* Make sure we are always at least the screen-depth of the blitter */
-		if (_fullscreen_bpp < BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth()) _fullscreen_bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+		if (_fullscreen_bpp < BlitterFactory::GetCurrentBlitter()->GetScreenDepth()) _fullscreen_bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 		memset(&settings, 0, sizeof(settings));
 		settings.dmSize = sizeof(settings);
@@ -360,7 +360,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		}
 	}
 
-	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+	BlitterFactory::GetCurrentBlitter()->PostResize();
 
 	GameSizeChanged(); // invalidate all windows, force redraw
 	return true; // the request succeeded
@@ -374,7 +374,7 @@ static void PaintWindow(HDC dc)
 	HPALETTE old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 
 	if (_cur_palette.count_dirty != 0) {
-		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
@@ -1060,7 +1060,7 @@ static bool AllocateDibSection(int w, int h, bool force)
 {
 	BITMAPINFO *bi;
 	HDC dc;
-	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	w = max(w, 64);
 	h = max(h, 64);
@@ -1080,7 +1080,7 @@ static bool AllocateDibSection(int w, int h, bool force)
 	bi->bmiHeader.biHeight = -(_wnd.height = h);
 
 	bi->bmiHeader.biPlanes = 1;
-	bi->bmiHeader.biBitCount = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+	bi->bmiHeader.biBitCount = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	bi->bmiHeader.biCompression = BI_RGB;
 
 	if (_wnd.dib_sect) DeleteObject(_wnd.dib_sect);
@@ -1121,7 +1121,7 @@ static void FindResolutions()
 	 * Doesn't really matter since we don't pass a string anyways, but still
 	 * a letdown */
 	for (i = 0; EnumDisplaySettingsA(NULL, i, &dm) != 0; i++) {
-		if (dm.dmBitsPerPel == BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() &&
+		if (dm.dmBitsPerPel == BlitterFactory::GetCurrentBlitter()->GetScreenDepth() &&
 				dm.dmPelsWidth >= 640 && dm.dmPelsHeight >= 480) {
 			uint j;
 

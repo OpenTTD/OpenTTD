@@ -239,12 +239,12 @@ static void SwitchNewGRFBlitter()
 	}
 
 	/* A GRF would like a 32 bpp blitter, switch blitter if needed. Never switch if the blitter was specified by the user. */
-	if (_blitter_autodetected && is_32bpp && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 0 && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() < 16) {
-		const char *cur_blitter = BlitterFactoryBase::GetCurrentBlitter()->GetName();
-		if (BlitterFactoryBase::SelectBlitter("32bpp-anim") != NULL) {
+	if (_blitter_autodetected && is_32bpp && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0 && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() < 16) {
+		const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
+		if (BlitterFactory::SelectBlitter("32bpp-anim") != NULL) {
 			if (!_video_driver->AfterBlitterChange()) {
 				/* Failed to switch blitter, let's hope we can return to the old one. */
-				if (BlitterFactoryBase::SelectBlitter(cur_blitter) == NULL || !_video_driver->AfterBlitterChange()) usererror("Failed to reinitialize video driver for 32 bpp blitter. Specify a fixed blitter in the config");
+				if (BlitterFactory::SelectBlitter(cur_blitter) == NULL || !_video_driver->AfterBlitterChange()) usererror("Failed to reinitialize video driver for 32 bpp blitter. Specify a fixed blitter in the config");
 			}
 		}
 	}

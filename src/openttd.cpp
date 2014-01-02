@@ -192,7 +192,7 @@ static void ShowHelp()
 	p = DriverFactoryBase::GetDriversInfo(p, lastof(buf));
 
 	/* List the blitters */
-	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
+	p = BlitterFactory::GetBlittersInfo(p, lastof(buf));
 
 	/* List the debug facilities. */
 	p = DumpDebugFacilityNames(p, lastof(buf));
@@ -756,8 +756,8 @@ int openttd_main(int argc, char *argv[])
 	if (blitter == NULL && _ini_blitter != NULL) blitter = strdup(_ini_blitter);
 	_blitter_autodetected = StrEmpty(blitter);
 	/* If we have a 32 bpp base set, try to select the 32 bpp blitter first, but only if we autoprobe the blitter. */
-	if (!_blitter_autodetected || BaseGraphics::GetUsedSet() == NULL || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP || BlitterFactoryBase::SelectBlitter("32bpp-anim") == NULL) {
-		if (BlitterFactoryBase::SelectBlitter(blitter) == NULL) {
+	if (!_blitter_autodetected || BaseGraphics::GetUsedSet() == NULL || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP || BlitterFactory::SelectBlitter("32bpp-anim") == NULL) {
+		if (BlitterFactory::SelectBlitter(blitter) == NULL) {
 			StrEmpty(blitter) ?
 				usererror("Failed to autoprobe blitter") :
 				usererror("Failed to select requested blitter '%s'; does it exist?", blitter);
