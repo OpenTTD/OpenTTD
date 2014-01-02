@@ -1123,6 +1123,8 @@
     <ClInclude Include="..\src\blitter\32bpp_simple.hpp" />
     <ClCompile Include="..\src\blitter\32bpp_sse2.cpp" />
     <ClInclude Include="..\src\blitter\32bpp_sse2.hpp" />
+    <ClCompile Include="..\src\blitter\32bpp_ssse3.cpp" />
+    <ClInclude Include="..\src\blitter\32bpp_ssse3.hpp" />
     <ClCompile Include="..\src\blitter\8bpp_base.cpp" />
     <ClInclude Include="..\src\blitter\8bpp_base.hpp" />
     <ClCompile Include="..\src\blitter\8bpp_optimized.cpp" />
