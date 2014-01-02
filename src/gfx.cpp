@@ -834,15 +834,6 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	const DrawPixelInfo *dpi = _cur_dpi;
 	Blitter::BlitterParams bp;
 
-	/* Amount of pixels to clip from the source sprite */
-	int clip_left   = (sub != NULL ? max(0,                   -sprite->x_offs + sub->left * ZOOM_BASE         ) : 0);
-	int clip_top    = (sub != NULL ? max(0,                   -sprite->y_offs + sub->top  * ZOOM_BASE         ) : 0);
-	int clip_right  = (sub != NULL ? max(0, sprite->width  - (-sprite->x_offs + (sub->right + 1)  * ZOOM_BASE)) : 0);
-	int clip_bottom = (sub != NULL ? max(0, sprite->height - (-sprite->y_offs + (sub->bottom + 1) * ZOOM_BASE)) : 0);
-
-	if (clip_left + clip_right >= sprite->width) return;
-	if (clip_top + clip_bottom >= sprite->height) return;
-
 	if (SCALED_XY) {
 		/* Scale it */
 		x = ScaleByZoom(x, zoom);
@@ -853,19 +844,37 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	x += sprite->x_offs;
 	y += sprite->y_offs;
 
+	if (sub == NULL) {
+		/* No clipping. */
+		bp.skip_left = 0;
+		bp.skip_top = 0;
+		bp.width = UnScaleByZoom(sprite->width, zoom);
+		bp.height = UnScaleByZoom(sprite->height, zoom);
+	} else {
+		/* Amount of pixels to clip from the source sprite */
+		int clip_left   = max(0,                   -sprite->x_offs +  sub->left        * ZOOM_BASE );
+		int clip_top    = max(0,                   -sprite->y_offs +  sub->top         * ZOOM_BASE );
+		int clip_right  = max(0, sprite->width  - (-sprite->x_offs + (sub->right + 1)  * ZOOM_BASE));
+		int clip_bottom = max(0, sprite->height - (-sprite->y_offs + (sub->bottom + 1) * ZOOM_BASE));
+
+		if (clip_left + clip_right >= sprite->width) return;
+		if (clip_top + clip_bottom >= sprite->height) return;
+
+		bp.skip_left = UnScaleByZoomLower(clip_left, zoom);
+		bp.skip_top = UnScaleByZoomLower(clip_top, zoom);
+		bp.width = UnScaleByZoom(sprite->width - clip_left - clip_right, zoom);
+		bp.height = UnScaleByZoom(sprite->height - clip_top - clip_bottom, zoom);
+
+		x += ScaleByZoom(bp.skip_left, zoom);
+		y += ScaleByZoom(bp.skip_top, zoom);
+	}
+
 	/* Copy the main data directly from the sprite */
 	bp.sprite = sprite->data;
 	bp.sprite_width = sprite->width;
 	bp.sprite_height = sprite->height;
-	bp.width = UnScaleByZoom(sprite->width - clip_left - clip_right, zoom);
-	bp.height = UnScaleByZoom(sprite->height - clip_top - clip_bottom, zoom);
 	bp.top = 0;
 	bp.left = 0;
-	bp.skip_left = UnScaleByZoomLower(clip_left, zoom);
-	bp.skip_top = UnScaleByZoomLower(clip_top, zoom);
-
-	x += ScaleByZoom(bp.skip_left, zoom);
-	y += ScaleByZoom(bp.skip_top, zoom);
 
 	bp.dst = dpi->dst_ptr;
 	bp.pitch = dpi->pitch;
@@ -878,14 +887,15 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	if (bp.height <= 0) return;
 
 	y -= SCALED_XY ? ScaleByZoom(dpi->top, zoom) : dpi->top;
+	int y_unscaled = UnScaleByZoom(y, zoom);
 	/* Check for top overflow */
 	if (y < 0) {
-		bp.height -= -UnScaleByZoom(y, zoom);
+		bp.height -= -y_unscaled;
 		if (bp.height <= 0) return;
-		bp.skip_top += -UnScaleByZoom(y, zoom);
+		bp.skip_top += -y_unscaled;
 		y = 0;
 	} else {
-		bp.top = UnScaleByZoom(y, zoom);
+		bp.top = y_unscaled;
 	}
 
 	/* Check for bottom overflow */
@@ -896,14 +906,15 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	}
 
 	x -= SCALED_XY ? ScaleByZoom(dpi->left, zoom) : dpi->left;
+	int x_unscaled = UnScaleByZoom(x, zoom);
 	/* Check for left overflow */
 	if (x < 0) {
-		bp.width -= -UnScaleByZoom(x, zoom);
+		bp.width -= -x_unscaled;
 		if (bp.width <= 0) return;
-		bp.skip_left += -UnScaleByZoom(x, zoom);
+		bp.skip_left += -x_unscaled;
 		x = 0;
 	} else {
-		bp.left = UnScaleByZoom(x, zoom);
+		bp.left = x_unscaled;
 	}
 
 	/* Check for right overflow */
