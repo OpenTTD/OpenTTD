@@ -89,6 +89,7 @@ uint64 ottd_rdtsc() {return 0;}
  */
 #if defined(_MSC_VER)
 void ottd_cpuid(int info[4], int type)
+{
 	__cpuid(info, type);
 }
 #elif defined(__x86_64__) || defined(__i386)
