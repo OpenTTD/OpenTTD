@@ -97,13 +97,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
  */
 bool ViewportSortParentSpritesSSE41Checker()
 {
-	int cpu_info[4] = {-1};
-	ottd_cpuid(cpu_info, 0);
-	unsigned int max_info_type = cpu_info[0];
-	if (max_info_type < 1) return false;
-
-	ottd_cpuid(cpu_info, 1);
-	return (cpu_info[2] & (1 << 19)) != 0;
+	return HasCPUIDFlag(1, 2, 19);
 }
 
 #endif /* WITH_SSE */

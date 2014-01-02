@@ -7,9 +7,10 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file cpu.cpp OS/CPU/compiler dependant real time tick sampling. */
+/** @file cpu.cpp OS/CPU/compiler dependant CPU specific calls. */
 
 #include "stdafx.h"
+#include "core/bitmath_func.hpp"
 
 #undef RDTSC_AVAILABLE
 
@@ -107,3 +108,14 @@ void ottd_cpuid(int info[4], int type)
 	info[0] = info[1] = info[2] = info[3] = 0;
 }
 #endif
+
+bool HasCPUIDFlag(uint type, uint index, uint bit)
+{
+	int cpu_info[4] = {-1};
+	ottd_cpuid(cpu_info, 0);
+	uint max_info_type = cpu_info[0];
+	if (max_info_type < type) return false;
+
+	ottd_cpuid(cpu_info, type);
+	return HasBit(cpu_info[index], bit);
+}

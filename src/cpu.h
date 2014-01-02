@@ -25,4 +25,13 @@ uint64 ottd_rdtsc();
  */
 void ottd_cpuid(int info[4], int type);
 
+/**
+ * Check whether the current CPU has the given flag.
+ * @param type  The type to be passing to cpuid (usually 1).
+ * @param index The index in the returned info array.
+ * @param bit   The bit index that needs to be set.
+ * @return The value of the bit, or false when there is no CPUID or the type is not available.
+ */
+bool HasCPUIDFlag(uint type, uint index, uint bit);
+
 #endif /* CPU_H */
