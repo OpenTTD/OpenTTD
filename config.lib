@@ -3365,7 +3365,7 @@ detect_sse_capable_architecture() {
 		log 1 "detecting SSE... not found"
 		with_sse="0"
 	fi
-	rm -f tmp.sse tmp.sse.cpp
+	rm -f tmp.sse tmp.exe tmp.sse.cpp
 }
 
 make_sed() {
