@@ -26,6 +26,8 @@ IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), v
 	if (len == 0) len = strlen(name);
 
 	this->name = strndup(name, len);
+	if (this->name != NULL) str_validate(this->name, this->name + len);
+
 	*parent->last_item = this;
 	parent->last_item = &this->next;
 }
@@ -61,6 +63,8 @@ IniGroup::IniGroup(IniLoadFile *parent, const char *name, size_t len) : next(NUL
 	if (len == 0) len = strlen(name);
 
 	this->name = strndup(name, len);
+	if (this->name != NULL) str_validate(this->name, this->name + len);
+
 	this->last_item = &this->item;
 	*parent->last_group = this;
 	parent->last_group = &this->next;
@@ -305,6 +309,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 
 			/* If the value was not quoted and empty, it must be NULL */
 			item->value = (!quoted && e == t) ? NULL : strndup(t, e - t);
+			if (item->value != NULL) str_validate(item->value, item->value + strlen(item->value));
 		} else {
 			/* it's an orphan item */
 			this->ReportFileError("ini: '", buffer, "' outside of group");
