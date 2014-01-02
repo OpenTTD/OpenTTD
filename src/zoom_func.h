@@ -23,9 +23,8 @@
  */
 static inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
-	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = zoom - ZOOM_LVL_NORMAL;
-	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : (value + (1 << -izoom) - 1) >> -izoom;
+	assert(zoom >= 0);
+	return value << zoom;
 }
 
 /**
@@ -37,9 +36,8 @@ static inline int ScaleByZoom(int value, ZoomLevel zoom)
  */
 static inline int UnScaleByZoom(int value, ZoomLevel zoom)
 {
-	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = zoom - ZOOM_LVL_NORMAL;
-	return (zoom > ZOOM_LVL_NORMAL) ? (value + (1 << izoom) - 1) >> izoom : value << -izoom;
+	assert(zoom >= 0);
+	return (value + (1 << zoom) - 1) >> zoom;
 }
 
 /**
@@ -50,9 +48,8 @@ static inline int UnScaleByZoom(int value, ZoomLevel zoom)
  */
 static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = zoom - ZOOM_LVL_NORMAL;
-	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : value >> -izoom;
+	assert(zoom >= 0);
+	return value << zoom;
 }
 
 /**
@@ -63,9 +60,8 @@ static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
  */
 static inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = zoom - ZOOM_LVL_NORMAL;
-	return (zoom > ZOOM_LVL_NORMAL) ? value >> izoom : value << -izoom;
+	assert(zoom >= 0);
+	return value >> zoom;
 }
 
 #endif /* ZOOM_FUNC_H */
