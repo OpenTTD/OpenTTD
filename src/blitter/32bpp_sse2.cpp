@@ -44,7 +44,8 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	}
 
 	/* Load these variables into register before loop. */
-	const __m128i clear_hi = CLEAR_HIGH_BYTE_MASK;
+	const __m128i clear_hi    = CLEAR_HIGH_BYTE_MASK;
+	const __m128i tr_nom_base = TRANSPARENT_NOM_BASE;
 
 	for (int y = bp->height; y != 0; y--) {
 		Colour *dst = dst_line;
@@ -143,18 +144,44 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 				src_mv_line += si->sprite_width;
 				break;
 			}
-			case BM_TRANSPARENT:
-				/* Make the current colour a bit more black, so it looks like this image is transparent */
-				for (int x = bp->width; x != 0; x--) {
-					if (src->a == 255) {
-						*dst = MakeTransparent(*dst, 3, 4);
-					} else {
-						*dst = MakeTransparent(*dst, (256 * 4 - src->a), 256 * 4);
-					}
-					dst++;
-					src++;
+			case BM_TRANSPARENT: {
+				/* Make the current colour a bit more black, so it looks like this image is transparent.
+				 * rgb = rgb * ((256/4) * 4 - (alpha/4)) / ((256/4) * 4)
+				 */
+				__m128i srcABCD = _mm_loadu_si128((const __m128i*) src);
+				__m128i dstABCD = _mm_loadu_si128((__m128i*) dst);
+				for (uint x = (uint) bp->width / 2; x > 0; x--) {
+					__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128());
+					__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128());
+					__m128i dstCD = _mm_unpackhi_epi8(dstABCD, _mm_setzero_si128());
+					__m128i alphaAB = _mm_shufflelo_epi16(srcAB, 0x3F);
+					alphaAB = _mm_shufflehi_epi16(alphaAB, 0x3F);
+					alphaAB = _mm_srli_epi16(alphaAB, 2); // Reduce to 64 levels of shades so the max value fits in 16 bits.
+					__m128i nom = _mm_sub_epi16(tr_nom_base, alphaAB);
+					dstAB = _mm_mullo_epi16(dstAB, nom);
+					dstAB = _mm_srli_epi16(dstAB, 8);
+					dstAB = _mm_packus_epi16(dstAB, dstCD);
+					Colour *old_dst = dst;
+					src += 2;
+					dst += 2;
+					dstABCD = _mm_loadu_si128((__m128i*) dst);
+					_mm_storeu_si128((__m128i *) old_dst, dstAB);
+					srcABCD = _mm_loadu_si128((const __m128i*) src);
+				}
+				if (bp->width & 1) {
+					__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128());
+					__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128());
+					__m128i alphaAB = _mm_shufflelo_epi16(srcAB, 0x3F);
+					alphaAB = _mm_shufflehi_epi16(alphaAB, 0x3F);
+					alphaAB = _mm_srli_epi16(alphaAB, 2);
+					__m128i nom = _mm_sub_epi16(tr_nom_base, alphaAB);
+					dstAB = _mm_mullo_epi16(dstAB, nom);
+					dstAB = _mm_srli_epi16(dstAB, 8);
+					dstAB = _mm_packus_epi16(dstAB, dstAB);
+					(*dst).data = EXTR32(dstAB, 0);
 				}
 				break;
+			}
 		}
 
 		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
