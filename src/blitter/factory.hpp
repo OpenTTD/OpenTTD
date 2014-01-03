@@ -95,6 +95,24 @@ public:
 	 */
 	static Blitter *SelectBlitter(const char *name)
 	{
+		BlitterFactory *b = GetBlitterFactory(name);
+		if (b == NULL) return NULL;
+
+		Blitter *newb = b->CreateInstance();
+		delete *GetActiveBlitter();
+		*GetActiveBlitter() = newb;
+
+		DEBUG(driver, 1, "Successfully %s blitter '%s'", StrEmpty(name) ? "probed" : "loaded", newb->GetName());
+		return newb;
+	}
+
+	/**
+	 * Get the blitter factory with the given name.
+	 * @param name the blitter factory to select.
+	 * @return The blitter factory, or NULL when there isn't one with the wanted name.
+	 */
+	static BlitterFactory *GetBlitterFactory(const char *name)
+	{
 #if defined(DEDICATED)
 		const char *default_blitter = "null";
 #else
@@ -117,12 +135,7 @@ public:
 		for (; it != GetBlitters().end(); it++) {
 			BlitterFactory *b = (*it).second;
 			if (strcasecmp(bname, b->name) == 0) {
-				Blitter *newb = b->CreateInstance();
-				delete *GetActiveBlitter();
-				*GetActiveBlitter() = newb;
-
-				DEBUG(driver, 1, "Successfully %s blitter '%s'", StrEmpty(name) ? "probed" : "loaded", bname);
-				return newb;
+				return b;
 			}
 		}
 		return NULL;
