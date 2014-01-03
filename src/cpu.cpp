@@ -98,20 +98,11 @@ void ottd_cpuid(int info[4], int type)
 {
 	/* The easy variant would be just cpuid, however... ebx gets clobbered by PIC. */
 	__asm__ __volatile__ (
-#if defined(__x86_64__)
-			"pushq %%rbx    \n\t" // save %rbx
-#else
-			"pushl %%ebx    \n\t" // save %ebx
-#endif
-			"cpuid          \n\t"
-			"movl %%ebx, %1 \n\t" // write the result into output var
-#if defined(__x86_64__)
-			"popq %%rbx     \n\t" // restore %rbx
-#else
-			"popl %%ebx     \n\t" // restore %ebc
-#endif
+			"xchgl %%ebx, %1 \n\t"
+			"cpuid           \n\t"
+			"xchgl %%ebx, %1 \n\t"
 			: "=a" (info[0]), "=r" (info[1]), "=c" (info[2]), "=d" (info[3])
-			: "a" (type)
+			: "0" (type)
 	);
 }
 #else
