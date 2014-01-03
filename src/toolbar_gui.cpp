@@ -351,7 +351,7 @@ static CallBackFunction MenuClickSettings(int index)
 			ToggleBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
 			InvalidateWindowClassesData(WC_SIGN_LIST, -1);
 			break;
-		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION);      break;
+		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION); CheckBlitter(); break;
 		case OME_FULL_DETAILS:         ToggleBit(_display_opt, DO_FULL_DETAIL);         break;
 		case OME_TRANSPARENTBUILDINGS: ToggleTransparency(TO_HOUSES);                   break;
 		case OME_SHOW_STATIONSIGNS:    ToggleTransparency(TO_SIGNS);                    break;

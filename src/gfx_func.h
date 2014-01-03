@@ -137,6 +137,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();
 
 void GfxInitPalettes();
+void CheckBlitter();
 
 bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height);
 

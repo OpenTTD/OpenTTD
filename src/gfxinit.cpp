@@ -15,6 +15,7 @@
 #include "3rdparty/md5/md5.h"
 #include "fontcache.h"
 #include "gfx_func.h"
+#include "transparency.h"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
 
@@ -225,14 +226,15 @@ static void LoadSpriteTables()
 
 /**
  * Check blitter needed by NewGRF config and switch if needed.
+ * @return False when nothing changed, true otherwise.
  */
-static void SwitchNewGRFBlitter()
+static bool SwitchNewGRFBlitter()
 {
 	/* Never switch if the blitter was specified by the user. */
-	if (!_blitter_autodetected) return;
+	if (!_blitter_autodetected) return false;
 
 	/* Null driver => dedicated server => do nothing. */
-	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return;
+	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return false;
 
 	/* Get preferred depth. */
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
@@ -245,23 +247,32 @@ static void SwitchNewGRFBlitter()
 	/* Search the best blitter. */
 	struct {
 		const char *name;
+		uint animation; ///< 0: no support, 1: do support, 2: both
 		uint min_base_depth, max_base_depth, min_grf_depth, max_grf_depth;
 	} replacement_blitters[] = {
 #ifdef WITH_SSE
-		{ "32bpp-sse4-anim", 32, 32,  8, 32 },
+		{ "32bpp-sse4",      0, 32, 32,  8, 32 },
+		{ "32bpp-ssse3",     0, 32, 32,  8, 32 },
+		{ "32bpp-sse2",      0, 32, 32,  8, 32 },
+		{ "32bpp-sse4-anim", 1, 32, 32,  8, 32 },
 #endif
-		{ "8bpp-optimized",   8,  8,  8,  8 },
-		{ "32bpp-anim",       8, 32,  8, 32 },
+		{ "8bpp-optimized",  2,  8,  8,  8,  8 },
+		{ "32bpp-optimized", 0,  8, 32,  8, 32 },
+		{ "32bpp-anim",      1,  8, 32,  8, 32 },
 	};
 
+	const bool animation_wanted = HasBit(_display_opt, DO_FULL_ANIMATION);
 	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 
 	for (uint i = 0; i < lengthof(replacement_blitters); i++) {
+		if (animation_wanted && (replacement_blitters[i].animation == 0)) continue;
+		if (!animation_wanted && (replacement_blitters[i].animation == 1)) continue;
+
 		if (!IsInsideMM(depth_wanted_by_base, replacement_blitters[i].min_base_depth, replacement_blitters[i].max_base_depth + 1)) continue;
 		if (!IsInsideMM(depth_wanted_by_grf, replacement_blitters[i].min_grf_depth, replacement_blitters[i].max_grf_depth + 1)) continue;
 		const char *repl_blitter = replacement_blitters[i].name;
 
-		if (strcmp(repl_blitter, cur_blitter) == 0) return;
+		if (strcmp(repl_blitter, cur_blitter) == 0) return false;
 		if (BlitterFactory::GetBlitterFactory(repl_blitter) == NULL) continue;
 
 		DEBUG(misc, 1, "Switching blitter from '%s' to '%s'... ", cur_blitter, repl_blitter);
@@ -275,6 +286,17 @@ static void SwitchNewGRFBlitter()
 		/* Failed to switch blitter, let's hope we can return to the old one. */
 		if (BlitterFactory::SelectBlitter(cur_blitter) == NULL || !_video_driver->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
 	}
+
+	return true;
+}
+
+/** Check whether we still use the right blitter, or use another (better) one. */
+void CheckBlitter()
+{
+	if (!SwitchNewGRFBlitter()) return;
+
+	ClearFontCache();
+	GfxClearSpriteCache();
 }
 
 /** Initialise and load all the sprites. */
