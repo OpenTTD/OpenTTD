@@ -372,7 +372,7 @@ void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 	switch (mode) {
 		case BM_NORMAL: {
 			const BlockType bt_last = (BlockType) (bp->width & 1);
-			if (bp->skip_left != 0 || bp->width <= MARGIN_THRESHOLD) {
+			if (bp->skip_left != 0 || bp->width <= MARGIN_NORMAL_THRESHOLD) {
 				switch (bt_last) {
 					case BT_EVEN: Draw<BM_NORMAL, RM_WITH_SKIP, BT_EVEN>(bp, zoom); return;
 					case BT_ODD:  Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD>(bp, zoom); return;
@@ -388,7 +388,7 @@ void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 			break;
 		}
 		case BM_COLOUR_REMAP:
-			if (bp->skip_left != 0 || bp->width <= MARGIN_THRESHOLD) {
+			if (bp->skip_left != 0 || bp->width <= MARGIN_REMAP_THRESHOLD) {
 				Draw<BM_COLOUR_REMAP, RM_WITH_SKIP, BT_NONE>(bp, zoom); return;
 			} else {
 				Draw<BM_COLOUR_REMAP, RM_WITH_MARGIN, BT_NONE>(bp, zoom); return;

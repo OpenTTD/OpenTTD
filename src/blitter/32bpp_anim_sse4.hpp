@@ -17,8 +17,8 @@
 #include "32bpp_anim.hpp"
 #include "32bpp_sse4.hpp"
 
-#undef MARGIN_THRESHOLD
-#define MARGIN_THRESHOLD 4
+#undef MARGIN_NORMAL_THRESHOLD
+#define MARGIN_NORMAL_THRESHOLD 4
 
 /** The SSE4 32 bpp blitter with palette animation. */
 class Blitter_32bppSSE4_Anim FINAL : public Blitter_32bppAnim, public Blitter_32bppSSE_Base {
