@@ -96,14 +96,22 @@ void ottd_cpuid(int info[4], int type)
 #elif defined(__x86_64__) || defined(__i386)
 void ottd_cpuid(int info[4], int type)
 {
+#if defined(__i386) && defined(__PIC__)
 	/* The easy variant would be just cpuid, however... ebx gets clobbered by PIC. */
 	__asm__ __volatile__ (
 			"xchgl %%ebx, %1 \n\t"
 			"cpuid           \n\t"
 			"xchgl %%ebx, %1 \n\t"
 			: "=a" (info[0]), "=r" (info[1]), "=c" (info[2]), "=d" (info[3])
-			: "0" (type)
+			: "a" (type)
 	);
+#else
+	__asm__ __volatile__ (
+			"cpuid           \n\t"
+			: "=a" (info[0]), "=b" (info[1]), "=c" (info[2]), "=d" (info[3])
+			: "a" (type)
+	);
+#endif /* i386 PIC */
 }
 #else
 void ottd_cpuid(int info[4], int type)
