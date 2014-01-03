@@ -1588,7 +1588,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efeito da dist�
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se você definir esse valor para maior que 0, a distância entre a estação de origem A para alguma carga e um possível destino B terá um efeito na quantidade de carga levada de A até B. Quanto mais distante B for da A, menos carga será enviada. Quanto mais alto você definir esse valor, menos carga será levada para estações distantes, e mais carga será levada para estações próximas.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantidade de carga retornada no modo simétrico: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definir isso para menos de 100% faz com que a distribuição simétrica comporte-se mais como a assimétrica. Menos carga será devolvida forçosamente se uma certa quantidade for mandada a uma estação. Se você definir a 0%, a distribuição se comportará exatamente como a assimétrica.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturação de caminhos curtos antes de usar outros caminhos: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturação de caminhos curtos antes de usar caminhos de alta capacidade: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente há múltiplos caminhos entre duas estações. Cargodist irá saturar o caminho mais curto primeiro, depois usar o segundo caminho mais curto até saturá-lo, e assim por diante. Saturação é determinada pela estimação da capacidade de do uso planejado. Ao saturar todos os caminhos, se ainda houver demanda, irá sobrecarregar todos os caminhos, com preferência aos de maior capacidade. No entanto, na maior parte do tempo o algorítimo não irá estimar a capacidade corretamente. Essa configuração permite você definir até que porcentagem um caminho mais curto deverá ser saturado na primeira passada antes do algorítimo proceder ao próxido. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade superestimada.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidade de velocidade: {STRING}
@@ -2892,6 +2892,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veí
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inválida>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<veículo inválido>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escaneando NewGRFs
@@ -3944,6 +3945,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Número de dias
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} Leiame de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log de mudanças de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licença de {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Quebra de linha
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :[BLACK}Quebra linhas automaticamente para que o texto caiba na janela
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ler o Leiame
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log de mudanças
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
