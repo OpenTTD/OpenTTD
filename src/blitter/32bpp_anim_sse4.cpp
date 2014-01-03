@@ -19,10 +19,6 @@
 /** Instantiation of the SSE4 32bpp blitter factory. */
 static FBlitter_32bppSSE4_Anim iFBlitter_32bppSSE4_Anim;
 
-#if defined(__GNUC__)
-	#pragma GCC diagnostic push
-	#pragma GCC diagnostic ignored "-Wunused-variable"
-#endif
 /**
  * Draws a sprite to a (screen) buffer. It is templated to allow faster operation.
  *
@@ -30,6 +26,7 @@ static FBlitter_32bppSSE4_Anim iFBlitter_32bppSSE4_Anim;
  * @param bp further blitting parameters
  * @param zoom zoom level at which we are drawing
  */
+IGNORE_UNINITIALIZED_WARNING_START
 template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last>
 inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 {
@@ -356,9 +353,7 @@ bmcr_alpha_blend_single:
 		anim_line += this->anim_buf_width;
 	}
 }
-#if defined(__GNUC__)
-	#pragma GCC diagnostic pop
-#endif
+IGNORE_UNINITIALIZED_WARNING_STOP
 
 /**
  * Draws a sprite to a (screen) buffer. Calls adequate templated function.

@@ -22,11 +22,7 @@
 #undef INSR32
 #define INSR32(val, into, rank) (*(um128i*) &into).m128i = _mm_insert_epi32((*(um128i*) &into).m128i, val, rank)
 
-#if defined(__GNUC__)
-	#pragma GCC diagnostic push
-	#pragma GCC diagnostic ignored "-Wuninitialized"
-	#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-#endif
+IGNORE_UNINITIALIZED_WARNING_START
 #ifdef _SQ64
 	#undef INSR64
 	#define INSR64(val, into, rank) (*(um128i*) &into).m128i = _mm_insert_epi64((*(um128i*) &into).m128i, val, rank)
@@ -40,9 +36,7 @@
 		(*(um128i*) &into).m128i = _mm_insert_epi32((*(um128i*) &into).m128i, v.u32.high, (rank)*2 + 1); \
 	}
 #endif
-#if defined(__GNUC__)
-	#pragma GCC diagnostic pop
-#endif
+IGNORE_UNINITIALIZED_WARNING_STOP
 
 /** The SSE4 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSE4 : public Blitter_32bppSSSE3 {
