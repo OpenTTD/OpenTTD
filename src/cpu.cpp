@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file cpu.cpp OS/CPU/compiler dependant CPU specific calls. */
+/** @file cpu.cpp OS/CPU/compiler dependent CPU specific calls. */
 
 #include "stdafx.h"
 #include "core/bitmath_func.hpp"
@@ -97,12 +97,20 @@ void ottd_cpuid(int info[4], int type)
 void ottd_cpuid(int info[4], int type)
 {
 #if defined(__i386) && defined(__PIC__)
-	/* The easy variant would be just cpuid, however... ebx gets clobbered by PIC. */
+	/* The easy variant would be just cpuid, however... ebx is being used by the GOT (Global Offset Table)
+	 * in case of PIC;
+	 * clobbering ebx is no alternative: some compiler versions don't like this
+	 * and will issue an error message like
+	 *   "can't find a register in class 'BREG' while reloading 'asm'"
+	 */
 	__asm__ __volatile__ (
 			"xchgl %%ebx, %1 \n\t"
 			"cpuid           \n\t"
 			"xchgl %%ebx, %1 \n\t"
 			: "=a" (info[0]), "=r" (info[1]), "=c" (info[2]), "=d" (info[3])
+			/* It is safe to write "=r" for (info[1]) as in case that PIC is enabled for i386,
+			 * the compiler will not choose EBX as target register (but something else).
+			 */
 			: "a" (type)
 	);
 #else
