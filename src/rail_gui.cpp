@@ -73,7 +73,7 @@ static StationPickerSelection _station_gui; ///< Settings of the station picker.
 
 
 static void HandleStationPlacement(TileIndex start, TileIndex end);
-static void ShowBuildTrainDepotPicker(Window *parent);
+static void ShowBuildTrainDepotPicker(Window *parent, bool extended_depot);
 static void ShowBuildWaypointPicker(Window *parent);
 static Window *ShowStationBuilder(Window *parent);
 static void ShowSignalBuilder(Window *parent);
@@ -616,7 +616,7 @@ struct BuildRailToolbarWindow : Window {
 			case WID_RAT_BUILD_DEPOT:
 			case WID_RAT_BUILD_EXTENDED_DEPOT:
 				if (HandlePlacePushButton(this, widget, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT)) {
-					ShowBuildTrainDepotPicker(this);
+					ShowBuildTrainDepotPicker(this, widget == WID_RAT_BUILD_EXTENDED_DEPOT);
 					this->last_user_action = widget;
 				}
 				break;
@@ -1768,9 +1768,24 @@ static void ShowSignalBuilder(Window *parent)
 }
 
 struct BuildRailDepotWindow : public PickerWindowBase {
-	BuildRailDepotWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
+
+	BuildRailDepotWindow(WindowDesc &desc, Window *parent, bool extended_depot) : PickerWindowBase(desc, parent)
 	{
 		this->InitNested(TRANSPORT_RAIL);
+
+		/* Fix direction for extended depots. */
+		if (extended_depot) {
+			switch ((BuildRailDepotWidgets)_build_depot_direction) {
+				case WID_BRAD_DEPOT_NE:
+					_build_depot_direction++;
+					break;
+				case WID_BRAD_DEPOT_NW:
+					_build_depot_direction--;
+					break;
+				default: break;
+			}
+		}
+
 		this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
 	}
 
@@ -1852,9 +1867,30 @@ static WindowDesc _build_depot_desc(
 	_nested_build_depot_widgets
 );
 
-static void ShowBuildTrainDepotPicker(Window *parent)
+/** Nested widget definition of the build extended rail depot window */
+static const NWidgetPart _nested_build_extended_depot_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(NWID_HORIZONTAL_LTR), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0), SetPIPRatio(1, 0, 1), SetPadding(WidgetDimensions::unscaled.picker),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAD_DEPOT_SW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAD_DEPOT_SE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _build_extended_depot_desc(
+	WDP_AUTO, nullptr, 0, 0,
+	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
+	WDF_CONSTRUCTION,
+	_nested_build_extended_depot_widgets
+);
+
+static void ShowBuildTrainDepotPicker(Window *parent, bool extended_depot)
 {
-	new BuildRailDepotWindow(_build_depot_desc, parent);
+	new BuildRailDepotWindow(extended_depot ? _build_extended_depot_desc : _build_depot_desc, parent, extended_depot);
 }
 
 class WaypointPickerCallbacks : public PickerCallbacksNewGRFClass<StationClass> {
