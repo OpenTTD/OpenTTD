@@ -2117,7 +2117,12 @@ static inline void DrawTrackSprite(SpriteID sprite, PaletteID pal, const TileInf
 static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeInfo *rti)
 {
 	RailGroundType rgt = GetRailGroundType(ti->tile);
-	Foundation f = GetRailFoundation(ti->tileh, track);
+	Foundation f = FOUNDATION_NONE;
+	if (IsRailDepot(ti->tile)) {
+		if (ti->tileh != SLOPE_FLAT) f = FOUNDATION_LEVELED;
+	} else {
+		f = GetRailFoundation(ti->tileh, track);
+	}
 	Corner halftile_corner = CORNER_INVALID;
 
 	if (IsNonContinuousFoundation(f)) {
@@ -2157,7 +2162,18 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 	bool no_combine = ti->tileh == SLOPE_FLAT && HasBit(rti->flags, RTF_NO_SPRITE_COMBINE);
 	SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
 	SpriteID ground = GetCustomRailSprite(rti, ti->tile, no_combine ? RTSG_GROUND_COMPLETE : RTSG_GROUND);
-	TrackBits pbs = _settings_client.gui.show_track_reservation ? GetRailReservationTrackBits(ti->tile) : TRACK_BIT_NONE;
+
+	TrackBits pbs = TRACK_BIT_NONE;
+	if (_settings_client.gui.show_track_reservation) {
+		if (IsPlainRail(ti->tile)) {
+			pbs = GetRailReservationTrackBits(ti->tile);
+		} else {
+			assert(IsRailDepot(ti->tile));
+			if (HasDepotReservation(ti->tile)) {
+				pbs = track;
+			}
+		}
+	}
 
 	if (track == TRACK_BIT_NONE) {
 		/* Half-tile foundation, no track here? */
@@ -2387,7 +2403,14 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	/* PBS debugging, draw reserved tracks darker */
 	if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation) {
 		/* Get reservation, but mask track on halftile slope */
-		TrackBits pbs = GetRailReservationTrackBits(ti->tile) & track;
+		TrackBits pbs = TRACK_BIT_NONE;
+		if (IsPlainRail(ti->tile)) {
+			pbs = GetRailReservationTrackBits(ti->tile) & track;
+		} else {
+			assert(IsRailDepot(ti->tile));
+			if (HasDepotReservation(ti->tile)) pbs = track;
+		}
+
 		if (pbs & TRACK_BIT_X) {
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
 				DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
@@ -2470,124 +2493,40 @@ static void DrawTile_Track(TileInfo *ti)
 
 	_drawtile_track_palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
+	TrackBits rails = TRACK_BIT_NONE;
 	if (IsPlainRail(ti->tile)) {
-		TrackBits rails = GetTrackBits(ti->tile);
-
-		DrawTrackBits(ti, rails);
-
-		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti, rti);
-
-		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
-
-		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails, rti);
+		rails = GetTrackBits(ti->tile);
 	} else {
+		assert(IsRailDepot(ti->tile));
+		DiagDirection dir = GetRailDepotDirection(ti->tile);
+		if (IsDiagDirFacingSouth(dir) || IsTransparencySet(TO_BUILDINGS)) {
+			rails = TrackToTrackBits(GetRailDepotTrack(ti->tile));
+		}
+	}
+
+	DrawTrackBits(ti, rails);
+
+	if (IsPlainRail(ti->tile) && HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti, rti);
+
+	if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
+
+	if (IsRailDepot(ti->tile) && !IsInvisibilitySet(TO_BUILDINGS)) {
 		/* draw depot */
-		const DrawTileSprites *dts;
-		PaletteID pal = PAL_NONE;
-		SpriteID relocation;
-
-		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
-
-		if (IsInvisibilitySet(TO_BUILDINGS)) {
-			/* Draw rail instead of depot */
-			dts = &_depot_invisible_gfx_table[GetRailDepotDirection(ti->tile)];
-		} else {
-			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
-		}
-
-		SpriteID image;
-		if (rti->UsesOverlay()) {
-			image = SPR_FLAT_GRASS_TILE;
-		} else {
-			image = dts->ground.sprite;
-			if (image != SPR_FLAT_GRASS_TILE) image += rti->GetRailtypeSpriteOffset();
-		}
-
-		/* Adjust ground tile for desert and snow. */
-		if (IsSnowRailGround(ti->tile)) {
-			if (image != SPR_FLAT_GRASS_TILE) {
-				image += rti->snow_offset; // tile with tracks
-			} else {
-				image = SPR_FLAT_SNOW_DESERT_TILE; // flat ground
-			}
-		}
-
-		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, _drawtile_track_palette));
-
-		if (rti->UsesOverlay()) {
-			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND);
-
-			switch (GetRailDepotDirection(ti->tile)) {
-				case DIAGDIR_NE:
-					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-					[[fallthrough]];
-				case DIAGDIR_SW:
-					DrawGroundSprite(ground + RTO_X, PAL_NONE);
-					break;
-				case DIAGDIR_NW:
-					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-					[[fallthrough]];
-				case DIAGDIR_SE:
-					DrawGroundSprite(ground + RTO_Y, PAL_NONE);
-					break;
-				default:
-					break;
-			}
-
-			if (_settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
-				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
-
-				switch (GetRailDepotDirection(ti->tile)) {
-					case DIAGDIR_NE:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SW:
-						DrawGroundSprite(overlay + RTO_X, PALETTE_CRASH);
-						break;
-					case DIAGDIR_NW:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SE:
-						DrawGroundSprite(overlay + RTO_Y, PALETTE_CRASH);
-						break;
-					default:
-						break;
-				}
-			}
-		} else {
-			/* PBS debugging, draw reserved tracks darker */
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
-				switch (GetRailDepotDirection(ti->tile)) {
-					case DIAGDIR_NE:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SW:
-						DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
-						break;
-					case DIAGDIR_NW:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SE:
-						DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
-						break;
-					default:
-						break;
-				}
-			}
-		}
+		const DrawTileSprites *dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
 		int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
-		relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
-
-		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
+		SpriteID relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
 
 		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, _drawtile_track_palette);
 	}
+
+	if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails, rti);
+
 	DrawBridgeMiddle(ti);
 }
 
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
-	const DrawTileSprites *dts = &_depot_gfx_table[dir];
+	const DrawTileSprites *dts = &_depot_gfx_gui_table[dir];
 	const RailTypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID image = rti->UsesOverlay() ? SPR_FLAT_GRASS_TILE : dts->ground.sprite;
 	uint32_t offset = rti->GetRailtypeSpriteOffset();
