@@ -173,6 +173,7 @@ Function load_main_data(filename, ByRef vcxproj, ByRef filters, ByRef files)
 						line = "MSVC" Or _
 						line = "DIRECTMUSIC" Or _
 						line = "AI" Or _
+						line = "SSE" Or _
 						line = "HAVE_THREAD" _
 					) Then skip = skip + 1
 					deep = deep + 1
