@@ -715,6 +715,7 @@ void SmallMapWindow::SetZoomLevel(ZoomLevelChange change, const Point *zoom_pt)
 		case ZLC_INITIALIZE:
 			cur_index = - 1; // Definitely different from new_index.
 			new_index = MIN_ZOOM_INDEX;
+			tile.x = tile.y = 0;
 			break;
 
 		case ZLC_ZOOM_IN:
