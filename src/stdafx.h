@@ -215,6 +215,11 @@
 	#pragma warning(disable: 6255)   // code analyzer: _alloca indicates failure by raising a stack overflow exception. Consider using _malloca instead
 	#pragma warning(disable: 6246)   // code analyzer: Local declaration of 'statspec' hides declaration of the same name in outer scope. For additional information, see previous declaration at ...
 
+	#if (_MSC_VER == 1500)           // Addresses item #13 on http://blogs.msdn.com/b/vcblog/archive/2008/08/11/tr1-fixes-in-vc9-sp1.aspx, for Visual Studio 2008
+		#define _DO_NOT_DECLARE_INTERLOCKED_INTRINSICS_IN_MEMORY
+		#include <intrin.h>
+	#endif
+
 	#include <malloc.h> // alloca()
 	#define NORETURN __declspec(noreturn)
 	#define inline __forceinline
