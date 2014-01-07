@@ -1,5 +1,5 @@
-Last updated:    2013-12-24
-Release version: 1.4.0-beta1
+Last updated:    2014-01-07
+Release version: 1.4.0-beta2
 ------------------------------------------------------------------------
 
 

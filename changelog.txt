@@ -1,3 +1,13 @@
+1.4.0-beta2 (2014-01-07)
+------------------------------------------------------------------------
+- Feature: Blitter autoselection is now based on full animation state, so a non-animated specialised blitter will generally be chosen when animation is turned off (r26217)
+- Feature: Specialised animated SSE4 blitter, and non-animated SSE4.1, SSSE3 and SSE2 blitters, improving the blitting significantly in many situations (r26214, r26213, r26212, r26211)
+- Feature: Specialised SSE 4.1 sprite sorter, improving the sorting performance significantly (r26205)
+- Fix: Validate everything from ini, obg, obs, obs, ... files [FS#5829] (r26206)
+- Fix: Allow refitting at station if cargo has already been reserved (r26187)
+- Fix: Visual effects did not work for articulated RV parts (r26180)
+
+
 1.4.0-beta1 (2013-12-24)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Vehicle variable 4D for determining the position within an articulated vehicle (r26157)
