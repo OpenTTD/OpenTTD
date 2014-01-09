@@ -1079,7 +1079,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Inställningar 
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Inställningar med annat värde än dina inställningar för nytt spel
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Begränsar listan till vissa typer av inställningar
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alla inställningar
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alla typer av inställningar
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klientinställningar (sparas ej i spel-filer och påverkar alla spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinställningar (sparas i spel-fil och påverkar enbart nya spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spelinställningar (sparas i spel-fil och påverkar enbart nuvarande spel)
@@ -1584,7 +1584,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Avståndets på
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Om du sätter denna till ett värde högre än 0 kommer avståndet mellan ursprungsstationen A för en viss last och en möjlig destination B påverka mängden last som skickas från A till B. Ju längre B är ifrån A, desto mindre last kommer att skickas. Ju högre du sätter den, desto mindre last kommer att skickas till avlägsna stationer och desto mer last kommer att skickas till närbelägna stationer.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Mängd återsänd last i symmetriskt läge: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätta denna till mindre än 100% får man den symmetriska distributionen att bete sig mer som den asymmetriska. En mindre andel än vanligt av den last som skickas till en station kommer att skickas tillbaka. Sätter du den till 0% beter sig den symmetriska distributionen precis som den asymmetriska.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta ruter innan längre rutter används: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta rutter innan rutter med hög kapacitet används: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet: {STRING}
