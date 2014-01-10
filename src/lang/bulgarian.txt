@@ -201,21 +201,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} к.с.
 STR_UNITS_POWER_METRIC                                          :{COMMA} к.с.
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} т.
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} кг.
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P "" а}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P "" а}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}гал
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} л.
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} м³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" и}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лит{P ър ри}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} куб. м.
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} м
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
@@ -234,7 +241,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затв
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заглавие на прозорец - преместване на прозореца с мишката
 STR_TOOLTIP_SHADE                                               :{BLACK}Прибиране на прозореца - показва само заглавната лента
 STR_TOOLTIP_DEBUG                                               :{BLACK}Покажи debug информация за новите графики (NewGRF)
-STR_TOOLTIP_STICKY                                              :{BLACK}Маркиране прозореца за незатваряне от клавиша 'Затваряне всички прозороци'
+STR_TOOLTIP_STICKY                                              :{BLACK}Маркиране прозореца като незатворяем от клавиша 'Затваряне всички прозороци'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Преместете за оразмеряване прозореца
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Активирай голям/малък размер на прозореца
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лента за позициониране - превърта списъка нагоре/надолу
@@ -278,6 +285,8 @@ STR_SORT_BY_LENGTH                                              :Дължина
 STR_SORT_BY_LIFE_TIME                                           :Оставащо време за експлоатация
 STR_SORT_BY_TIMETABLE_DELAY                                     :Закъснение
 STR_SORT_BY_FACILITY                                            :Вид на гарата
+STR_SORT_BY_WAITING_TOTAL                                       :Целия чакащ товар
+STR_SORT_BY_WAITING_AVAILABLE                                   :Наличен чакащ товар
 STR_SORT_BY_RATING_MAX                                          :Най-голяма оценка на товари
 STR_SORT_BY_RATING_MIN                                          :Най-ниска оценка на товари
 STR_SORT_BY_ENGINE_ID                                           :Двигател № (класическо сортиране)
@@ -290,6 +299,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощност/
 STR_SORT_BY_CARGO_CAPACITY                                      :Товарен капацитет
 STR_SORT_BY_RANGE                                               :Обхват
 STR_SORT_BY_POPULATION                                          :Население
+STR_SORT_BY_RATING                                              :Рейтинг
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -302,6 +312,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Списък със станциите на компанията
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Показване на финансова информация за компанията
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Покажи обща информация за компанията
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Покази списък с целите
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Покажи графиките
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Покажи класирането на компаниите
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Инвестирай в нова индустрия
@@ -876,6 +887,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Литовск�
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Южнокорейски Вон (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Южноафрикански Ранд (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :друга...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинско лари (ГЕЛ)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ирански Риал (ИРР)
 ############ end of currency region
 
 
@@ -1104,9 +1117,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Задава к
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Цени на конструкции: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Задава ниво то на конструиране и цени за закупуване
 STR_CONFIG_SETTING_RECESSIONS                                   :Рецесии: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ако е разрешено рецесии могат да се появяват на всеки няколко години. По време на рецесия цялото производство е значително намалено (връща се на предишно ниво след края на рецесията)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ако е разрешено, рецесии могат да се появяват на всеки няколко години. По време на рецесия цялото производство е значително намалено (връща се на предишно ниво след края на рецесията)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забрани обръщане на посоката на влакове в гарите: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ако е избрано влаковете няма да обръщат на не-терминални гари, ако има по-кратък път до целта им при обръщане.
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ако е избрано, влаковете няма да обръщат на не-терминални гари, ако има по-кратък път до целта им при обръщане.
 STR_CONFIG_SETTING_DISASTERS                                    :Бедствия: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включване/Изключване на бедствия които могат от време на време да блокират или разрушат превозни средства или инфраструктура
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Отношението на градския съвет към реструктурирането на района: {STRING}
@@ -1326,6 +1339,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Палитра по подразбиране за NewGRF, които не са задали палитра: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Палитра по подразбиране за NewGRF, за които е зададена от коя се нуждаят
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Игрите започват в пауза: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ако тази опция бъде активирана, играта автоматично ще бъде паузирана, когато започнете нова игра, това ще ви позволи да изучите по-подробно картата
@@ -1362,7 +1376,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Звуков с
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Вестник: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Звуков сигнал при показването на новини
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Край на година: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Звуков сигнал при проказване на баланса в края на годината
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Звуков сигнал при проказване на баланса в края на годината сравнен с края на предишната година
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Конструкция: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Изпълнявай звуков ефект при успешно конструиране или други действия
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Вутона натиска: {STRING}
@@ -1552,13 +1566,44 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Премахв�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Премахва краищата на пътища при финансиране на ремонт на пътя
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Единици за скорост: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Всеки път при показване на скорости, да бъдат изписвани в избраните мерни единици
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Единици на мощност на превозното средство: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Всеки път при показване на мощност, да бъде изписвана в избраните мерни единици
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metric (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Единици за тежина: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Всеки път при показване на тежести, да бъдат изписвани в избраните мерни единици
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metric (t/tonne)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Мерни единици на обем: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Всеки път при показване на обеми, да се изписват в избраните мерни единици
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metric (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Мерни единици на теглителната сила: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Всеки път при показване на теглителна сила, да бъде изписване в избраните мерни единици
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metric (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Височинна мерна единица: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Всеки път при показване на височините, да се изписват в избраните мерни единици
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Позициониране
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строене
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станции
@@ -1610,6 +1655,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... save
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... пропуска набора от основната графика '{STRING}': не е открит
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... пропуска набора от основни звуци '{STRING}': не е открит
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... пропруска набора от основни песни '{STRING}': не е открит
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Отвъд паметта
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1786,6 +1832,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмен�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Онлайн играчи
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Рекламирана
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Избери игра измежду рекламирана през интернет или нерекламирана през Локален интернет хост или ЛАН
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Не
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Да
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Име на играч:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Чрез това име другите играчи ще ви идентифицират
 
@@ -1844,6 +1894,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Имет
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Поставяне на парола
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитаване на вашата игра с парола за да не е публично достъпна
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Не
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. брой играчи:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
@@ -1964,6 +2015,7 @@ STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Въведете количеството пари, което искате да дадете
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Зрител
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Незапазвай паролата
@@ -2804,6 +2856,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<невалид
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невалдна индустрия>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<невалидно превозно средство>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Търси NewGRF-и
@@ -2886,9 +2939,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Пок�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Подкупването на местната власт за да увеличи рейтинга носи огромен риск ако бъдете хванати.{} Цена: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобални цели
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Основни цели:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Неприложимо-
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цели на компанията:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликни на задачата за да центрирате камерата на фабрика/град/плочка. Ctrl+Click отваря нов прозорец центриран на фабрика/град/плочка
 
@@ -2928,6 +2983,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисни върху услугата за да се фокусира върху индустрията/града. Ctrl отваря нов изглед към индустрията/града
 
 # Story book window
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невалидна цел
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Имена на станции - натиснете върху името, за да фиксирате главния прозорец върху станцията
@@ -2958,6 +3014,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейт
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
 
 
+STR_STATION_VIEW_GROUP_D_V_S                                    :Посока-през-Източника
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Плачевно
@@ -3100,6 +3157,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Прои
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% превозено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Фокусиране на основният изглед върху индустрията. Ctrl+Click отваря прозорец на нов изглед върху индустрията.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ниво на производство: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Индустрията обяви незабавна ликвидация!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Нуждае се от: {YELLOW}{STRING}{STRING}
@@ -3816,6 +3874,8 @@ STR_AI_SETTINGS_START_DELAY                                     :Броят дн
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Дневник на промените на {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценз на {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Реорганизирай текста
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Реорганизирай текста така, че изцяло да се помести в прозореца
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Отвори readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Дневник на промените
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценз
@@ -4193,6 +4253,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Инте
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... машината е унищожена
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Никакви превозни средства няма да бъдат налични
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Промени своята NewGRF конфигурация
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма налични превозни средства все още
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Започни нова игра след {DATE_SHORT} или използвай NewGRF , който показва ранни превозни средства
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...
@@ -4694,6 +4758,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
