@@ -3,9 +3,9 @@
 ##isocode ko_KR
 ##plural 11
 ##textdir ltr
-##digitsep .
-##digitsepcur .
-##decimalsep ,
+##digitsep ,
+##digitsepcur ,
+##decimalsep .
 ##winlangid 0x0412
 ##grflangid 0x3a
 ##gender m f
