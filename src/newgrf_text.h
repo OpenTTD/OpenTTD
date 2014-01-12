@@ -43,8 +43,6 @@ struct TextRefStack *CreateTextRefStackBackup();
 void RestoreTextRefStackBackup(struct TextRefStack *backup);
 uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, uint argv_size, bool modify_argv);
 
-StringID TTDPStringIDToOTTDStringIDMapping(StringID string);
-
 /** Mapping of language data between a NewGRF and OpenTTD. */
 struct LanguageMap {
 	/** Mapping between NewGRF and OpenTTD IDs. */
