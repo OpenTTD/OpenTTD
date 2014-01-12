@@ -225,6 +225,7 @@ public:
 	inline void SetMaxSpeed(uint16_t speed) { this->max_speed = speed; }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
+	bool ShouldStopAtDepot(DepotID depot) const;
 	bool CanLoadOrUnload() const;
 	bool CanLeaveWithCargo(bool has_cargo) const;
 
