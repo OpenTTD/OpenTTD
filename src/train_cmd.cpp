@@ -2149,12 +2149,10 @@ static bool CheckTrainStayInDepot(Train *v)
 		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	}
 
-	/* We are leaving a depot, but have to go to the exact same one; re-enter */
+	/* We are leaving a depot, but have to go to the exact same one; re-enter. */
 	if (v->current_order.IsType(OT_GOTO_DEPOT) && v->tile == v->dest_tile) {
-		/* We need to have a reservation for this to work. */
-		if (HasDepotReservation(v->tile)) return true;
-		SetDepotReservation(v->tile, true);
-		VehicleEnterDepot(v);
+		/* Service when depot has no reservation. */
+		if (!HasDepotReservation(v->tile)) VehicleEnterDepot(v);
 		return true;
 	}
 
