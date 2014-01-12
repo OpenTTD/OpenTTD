@@ -1022,11 +1022,44 @@ void RewindTextRefStack()
  * @param buff  the buffer we're writing to
  * @param str   the string that we need to write
  * @param argv  the OpenTTD stack of values
+ * @param argv_size space on the stack \a argv
  * @param modify_argv When true, modify the OpenTTD stack.
  * @return the string control code to "execute" now
  */
-uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, bool modify_argv)
+uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, uint argv_size, bool modify_argv)
 {
+	switch (scc) {
+		default: break;
+
+		case SCC_NEWGRF_PRINT_DWORD_SIGNED:
+		case SCC_NEWGRF_PRINT_WORD_SIGNED:
+		case SCC_NEWGRF_PRINT_BYTE_SIGNED:
+		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:
+		case SCC_NEWGRF_PRINT_BYTE_HEX:
+		case SCC_NEWGRF_PRINT_WORD_HEX:
+		case SCC_NEWGRF_PRINT_DWORD_HEX:
+		case SCC_NEWGRF_PRINT_QWORD_HEX:
+		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
+		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
+		case SCC_NEWGRF_PRINT_WORD_STRING_ID:
+		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
+		case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
+		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:
+		case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
+		case SCC_NEWGRF_PRINT_WORD_SPEED:
+		case SCC_NEWGRF_PRINT_WORD_VOLUME_LONG:
+		case SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT:
+		case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
+		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
+		case SCC_NEWGRF_PRINT_WORD_POWER:
+		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
+			if (argv_size < 1) {
+				DEBUG(misc, 0, "Too many NewGRF string parameters.");
+				return 0;
+			}
+			break;
+	}
+
 	if (_newgrf_textrefstack.used && modify_argv) {
 		switch (scc) {
 			default: NOT_REACHED();
