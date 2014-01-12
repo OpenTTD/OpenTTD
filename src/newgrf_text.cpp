@@ -56,8 +56,8 @@ StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
 		STR_TONS,       STR_ITEMS,      STR_LITERS,     STR_ITEMS
 	};
 
-	/* A string straight from a NewGRF; no need to remap this as it's already mapped. */
-	if (IsInsideMM(str, 0xD000, 0xD7FF)) return str;
+	/* A string straight from a NewGRF; this was already translated by MapGRFStringID(). */
+	assert(!IsInsideMM(str, 0xD000, 0xD7FF));
 
 #define TEXTID_TO_STRINGID(begin, end, stringid, stringend) \
 	assert_compile(stringend - stringid == end - begin); \
@@ -754,20 +754,12 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	return (GRFTAB << TABSIZE) + id;
 }
 
-/* Used to remember the grfid that the last retrieved string came from */
-static uint32 _last_grfid = 0;
-
 /**
  * Returns the index for this stringid associated with its grfID
  */
 StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 {
-	uint id;
-
-	/* grfid is zero when we're being called via an include */
-	if (grfid == 0) grfid = _last_grfid;
-
-	for (id = 0; id < _num_grf_texts; id++) {
+	for (uint id = 0; id < _num_grf_texts; id++) {
 		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
 			return (GRFTAB << TABSIZE) + id;
 		}
@@ -808,9 +800,6 @@ const char *GetGRFStringFromGRFText(const GRFText *text)
 const char *GetGRFStringPtr(uint16 stringid)
 {
 	assert(_grf_text[stringid].grfid != 0);
-
-	/* Remember this grfid in case the string has included text */
-	_last_grfid = _grf_text[stringid].grfid;
 
 	const char *str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
 	if (str != NULL) return str;
@@ -1108,7 +1097,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_UNPRINT:                *buff = max(*buff - Utf8Consume(str), buf_start); break;
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID:
-				*argv = TTDPStringIDToOTTDStringIDMapping(_newgrf_textrefstack.PopUnsignedWord());
+				*argv = MapGRFStringID(_newgrf_textrefstack.grffile->grfid, _newgrf_textrefstack.PopUnsignedWord());
 				break;
 		}
 	}

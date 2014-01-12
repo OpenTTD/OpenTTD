@@ -192,8 +192,8 @@ const char *GetStringPtr(StringID string)
 {
 	switch (GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS)) {
 		case GAME_TEXT_TAB: return GetGameStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS));
-		/* GetGRFStringPtr doesn't handle 0xD4xx ids, we need to convert those to 0xD0xx. */
-		case 26: return GetStringPtr(GetGRFStringID(0, 0xD000 + GB(string, TAB_SIZE_OFFSET, 10)));
+		/* 0xD0xx and 0xD4xx IDs have been converted earlier. */
+		case 26: NOT_REACHED();
 		case 28: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS));
 		case 29: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS) + 0x0800);
 		case 30: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS) + 0x1000);
@@ -242,12 +242,7 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 			return FormatString(buffr, GetGameStringPtr(index), args, last, case_index, true);
 
 		case 26:
-			/* Include string within newgrf text (format code 81) */
-			if (HasBit(index, 10)) {
-				StringID string = GetGRFStringID(0, 0xD000 + GB(index, 0, 10));
-				return GetStringWithArgs(buffr, string, args, last, case_index);
-			}
-			break;
+			NOT_REACHED();
 
 		case 28:
 			return FormatString(buffr, GetGRFStringPtr(index), args, last, case_index);
