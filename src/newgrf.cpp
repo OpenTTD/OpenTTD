@@ -450,9 +450,30 @@ static GRFError *DisableGrf(StringID message = STR_NULL, GRFConfig *config = NUL
 	return config->error;
 }
 
+/**
+ * Information for mapping static StringIDs.
+ */
+struct StringIDMapping {
+	uint32 grfid;     ///< Source NewGRF.
+	StringID source;  ///< Source StringID (GRF local).
+	StringID *target; ///< Destination for mapping result.
+};
+typedef SmallVector<StringIDMapping, 16> StringIDMappingVector;
+static StringIDMappingVector _string_to_grf_mapping;
 
-typedef std::map<StringID *, uint32> StringIDToGRFIDMapping;
-static StringIDToGRFIDMapping _string_to_grf_mapping;
+/**
+ * Record a static StringID for getting translated later.
+ * @param source Source StringID (GRF local).
+ * @param target Destination for the mapping result.
+ */
+static void AddStringForMapping(StringID source, StringID *target)
+{
+	*target = STR_UNDEFINED;
+	StringIDMapping *item = _string_to_grf_mapping.Append();
+	item->grfid = _cur.grffile->grfid;
+	item->source = source;
+	item->target = target;
+}
 
 /**
  * Perform a mapping from TTDPatch's string IDs to OpenTTD's
@@ -2396,8 +2417,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				break;
 
 			case 0x12: // Building name ID
-				housespec->building_name = buf->ReadWord();
-				_string_to_grf_mapping[&housespec->building_name] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &housespec->building_name);
 				break;
 
 			case 0x13: // Building availability mask
@@ -2863,13 +2883,11 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				break;
 
 			case 0x09: // String ID for cargo type name
-				cs->name = buf->ReadWord();
-				_string_to_grf_mapping[&cs->name] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &cs->name);
 				break;
 
 			case 0x0A: // String for 1 unit of cargo
-				cs->name_single = buf->ReadWord();
-				_string_to_grf_mapping[&cs->name_single] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &cs->name_single);
 				break;
 
 			case 0x0B: // String for singular quantity of cargo (e.g. 1 tonne of coal)
@@ -2877,8 +2895,7 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				/* String for units of cargo. This is different in OpenTTD
 				 * (e.g. tonnes) to TTDPatch (e.g. {COMMA} tonne of coal).
 				 * Property 1B is used to set OpenTTD's behaviour. */
-				cs->units_volume = buf->ReadWord();
-				_string_to_grf_mapping[&cs->units_volume] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &cs->units_volume);
 				break;
 
 			case 0x0C: // String for plural quantity of cargo (e.g. 10 tonnes of coal)
@@ -2886,13 +2903,11 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				/* Strings for an amount of cargo. This is different in OpenTTD
 				 * (e.g. {WEIGHT} of coal) to TTDPatch (e.g. {COMMA} tonnes of coal).
 				 * Property 1C is used to set OpenTTD's behaviour. */
-				cs->quantifier = buf->ReadWord();
-				_string_to_grf_mapping[&cs->quantifier] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &cs->quantifier);
 				break;
 
 			case 0x0D: // String for two letter cargo abbreviation
-				cs->abbrev = buf->ReadWord();
-				_string_to_grf_mapping[&cs->abbrev] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &cs->abbrev);
 				break;
 
 			case 0x0E: // Sprite ID for cargo icon
@@ -3491,18 +3506,15 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				break;
 
 			case 0x0C: // Industry closure message
-				indsp->closure_text = buf->ReadWord();
-				_string_to_grf_mapping[&indsp->closure_text] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &indsp->closure_text);
 				break;
 
 			case 0x0D: // Production increase message
-				indsp->production_up_text = buf->ReadWord();
-				_string_to_grf_mapping[&indsp->production_up_text] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &indsp->production_up_text);
 				break;
 
 			case 0x0E: // Production decrease message
-				indsp->production_down_text = buf->ReadWord();
-				_string_to_grf_mapping[&indsp->production_down_text] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &indsp->production_down_text);
 				break;
 
 			case 0x0F: // Fund cost multiplier
@@ -3573,8 +3585,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				break;
 
 			case 0x1B: // New industry text ID
-				indsp->new_industry_text = buf->ReadWord();
-				_string_to_grf_mapping[&indsp->new_industry_text] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &indsp->new_industry_text);
 				break;
 
 			case 0x1C: // Input cargo multipliers for the three input cargo types
@@ -3587,8 +3598,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				}
 
 			case 0x1F: // Industry name
-				indsp->name = buf->ReadWord();
-				_string_to_grf_mapping[&indsp->name] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &indsp->name);
 				break;
 
 			case 0x20: // Prospecting success chance
@@ -3606,10 +3616,15 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				indsp->removal_cost_multiplier = buf->ReadDWord();
 				break;
 
-			case 0x24: // name for nearby station
-				indsp->station_name = buf->ReadWord();
-				if (indsp->station_name != STR_NULL) _string_to_grf_mapping[&indsp->station_name] = _cur.grffile->grfid;
+			case 0x24: { // name for nearby station
+				uint16 str = buf->ReadWord();
+				if (str == 0) {
+					indsp->station_name = STR_NULL;
+				} else {
+					AddStringForMapping(str, &indsp->station_name);
+				}
 				break;
+			}
 
 			default:
 				ret = CIR_UNKNOWN;
@@ -3802,8 +3817,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 				break;
 
 			case 0x10:
-				as->name = buf->ReadWord();
-				_string_to_grf_mapping[&as->name] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &as->name);
 				break;
 
 			case 0x11: // Maintenance cost factor
@@ -3913,16 +3927,13 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 			}
 
 			case 0x09: { // Class name
-				StringID class_name = buf->ReadWord();
 				ObjectClass *objclass = ObjectClass::Get(spec->cls_id);
-				objclass->name = class_name;
-				_string_to_grf_mapping[&objclass->name] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &objclass->name);
 				break;
 			}
 
 			case 0x0A: // Object name
-				spec->name = buf->ReadWord();
-				_string_to_grf_mapping[&spec->name] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &spec->name);
 				break;
 
 			case 0x0B: // Climate mask
@@ -4028,33 +4039,29 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				buf->ReadDWord();
 				break;
 
-			case 0x09: // Toolbar caption of railtype (sets name as well for backwards compatibility for grf ver < 8)
-				rti->strings.toolbar_caption = buf->ReadWord();
-				_string_to_grf_mapping[&rti->strings.toolbar_caption] = _cur.grffile->grfid;
+			case 0x09: { // Toolbar caption of railtype (sets name as well for backwards compatibility for grf ver < 8)
+				uint16 str = buf->ReadWord();
+				AddStringForMapping(str, &rti->strings.toolbar_caption);
 				if (_cur.grffile->grf_version < 8) {
-					rti->strings.name = rti->strings.toolbar_caption;
-					_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
+					AddStringForMapping(str, &rti->strings.name);
 				}
 				break;
+			}
 
 			case 0x0A: // Menu text of railtype
-				rti->strings.menu_text = buf->ReadWord();
-				_string_to_grf_mapping[&rti->strings.menu_text] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &rti->strings.menu_text);
 				break;
 
 			case 0x0B: // Build window caption
-				rti->strings.build_caption = buf->ReadWord();
-				_string_to_grf_mapping[&rti->strings.build_caption] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &rti->strings.build_caption);
 				break;
 
 			case 0x0C: // Autoreplace text
-				rti->strings.replace_text = buf->ReadWord();
-				_string_to_grf_mapping[&rti->strings.replace_text] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &rti->strings.replace_text);
 				break;
 
 			case 0x0D: // New locomotive text
-				rti->strings.new_loco = buf->ReadWord();
-				_string_to_grf_mapping[&rti->strings.new_loco] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &rti->strings.new_loco);
 				break;
 
 			case 0x0E: // Compatible railtype list
@@ -4118,8 +4125,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x1B: // Name of railtype (overridden by prop 09 for grf ver < 8)
-				rti->strings.name = buf->ReadWord();
-				_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
+				AddStringForMapping(buf->ReadWord(), &rti->strings.name);
 				break;
 
 			case 0x1C: // Maintenance cost factor
@@ -9090,10 +9096,10 @@ extern void InitGRFTownGeneratorNames();
 /** Finish loading NewGRFs and execute needed post-processing */
 static void AfterLoadGRFs()
 {
-	for (StringIDToGRFIDMapping::iterator it = _string_to_grf_mapping.begin(); it != _string_to_grf_mapping.end(); it++) {
-		*((*it).first) = MapGRFStringID((*it).second, *((*it).first));
+	for (StringIDMapping *it = _string_to_grf_mapping.Begin(); it != _string_to_grf_mapping.End(); it++) {
+		*it->target = MapGRFStringID(it->grfid, it->source);
 	}
-	_string_to_grf_mapping.clear();
+	_string_to_grf_mapping.Clear();
 
 	/* Free the action 6 override sprites. */
 	for (GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.begin(); it != _grf_line_to_action6_sprite_override.end(); it++) {
