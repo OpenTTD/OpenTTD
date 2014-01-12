@@ -22,6 +22,7 @@
 #include "strings_func.h"
 #include "newgrf_storage.h"
 #include "newgrf_text.h"
+#include "newgrf_cargo.h"
 #include "string_func.h"
 #include "date_type.h"
 #include "debug.h"
@@ -520,7 +521,12 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 					case 0x17:
 					case 0x18:
 					case 0x19:
-					case 0x1A: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16); break;
+					case 0x1A:
+					case 0x1B:
+					case 0x1C:
+					case 0x1D:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
+						break;
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
@@ -993,6 +999,15 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 				return 0;
 			}
 			break;
+
+		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
+		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
+		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
+			if (argv_size < 2) {
+				DEBUG(misc, 0, "Too many NewGRF string parameters.");
+				return 0;
+			}
+			break;
 	}
 
 	if (_newgrf_textrefstack.used && modify_argv) {
@@ -1031,6 +1046,13 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     _newgrf_textrefstack.RotateTop4Words(); break;
 			case SCC_NEWGRF_PUSH_WORD:              _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
 			case SCC_NEWGRF_UNPRINT:                *buff = max(*buff - Utf8Consume(str), buf_start); break;
+
+			case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
+			case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
+			case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
+				argv[0] = GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile);
+				argv[1] = _newgrf_textrefstack.PopUnsignedWord();
+				break;
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID:
 				*argv = MapGRFStringID(_newgrf_textrefstack.grffile->grfid, _newgrf_textrefstack.PopUnsignedWord());
@@ -1084,6 +1106,15 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 		case SCC_NEWGRF_PRINT_WORD_POWER:
 			return SCC_POWER;
+
+		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
+			return SCC_CARGO_LONG;
+
+		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
+			return SCC_CARGO_SHORT;
+
+		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
+			return SCC_CARGO_TINY;
 
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			return SCC_STATION_NAME;

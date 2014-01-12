@@ -140,6 +140,9 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_WORD_POWER,                      ///< Read 2 bytes from the stack as unsigned power
 	SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT,               ///< Read 2 bytes from the stack as short signed volume
 	SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT,               ///< Read 2 bytes from the stack as short unsigned weight
+	SCC_NEWGRF_PRINT_WORD_CARGO_LONG,                 ///< Read 2 + 2 bytes from the stack as cargo type (translated) and unsigned cargo amount
+	SCC_NEWGRF_PRINT_WORD_CARGO_SHORT,                ///< Read 2 + 2 bytes from the stack as cargo type (translated) and unsigned cargo amount
+	SCC_NEWGRF_PRINT_WORD_CARGO_TINY,                 ///< Read 2 + 2 bytes from the stack as cargo type (translated) and unsigned cargo amount
 	SCC_NEWGRF_PUSH_WORD,                             ///< Pushes 2 bytes onto the stack
 	SCC_NEWGRF_UNPRINT,                               ///< "Unprints" the given number of bytes from the string
 	SCC_NEWGRF_DISCARD_WORD,                          ///< Discard the next two bytes
