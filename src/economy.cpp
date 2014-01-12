@@ -1427,12 +1427,14 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	/* Add new capacity to consist capacity and reserve cargo */
 	w = v_start;
 	do {
-		st->goods[w->cargo_type].cargo.Reserve(w->cargo_cap, &w->cargo, st->xy, next_station);
+		st->goods[w->cargo_type].cargo.Reserve(w->cargo_cap - w->cargo.RemainingCount(), &w->cargo, st->xy, next_station);
 		consist_capleft[w->cargo_type] += w->cargo_cap - w->cargo.RemainingCount();
 		w = w->HasArticulatedPart() ? w->GetNextArticulatedPart() : NULL;
 	} while (w != NULL);
 	if (is_normal_aircraft) {
-		consist_capleft[v->Next()->cargo_type] += v->Next()->cargo_cap - v->Next()->cargo.RemainingCount();
+		w = v->Next();
+		st->goods[w->cargo_type].cargo.Reserve(w->cargo_cap - w->cargo.RemainingCount(), &w->cargo, st->xy, next_station);
+		consist_capleft[w->cargo_type] += w->cargo_cap - w->cargo.RemainingCount();
 	}
 
 	cur_company.Restore();
