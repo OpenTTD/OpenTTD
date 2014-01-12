@@ -531,7 +531,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	uint16 result = group->GetCallbackResult();
 	if (result == CALLBACK_FAILED) return CommandCost();
 
-	return GetErrorMessageFromLocationCallbackResult(result, indspec->grf_prop.grffile->grfid, STR_ERROR_SITE_UNSUITABLE);
+	return GetErrorMessageFromLocationCallbackResult(result, indspec->grf_prop.grffile, STR_ERROR_SITE_UNSUITABLE);
 }
 
 /**

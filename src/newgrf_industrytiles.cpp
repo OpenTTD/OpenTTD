@@ -256,7 +256,7 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	return GetErrorMessageFromLocationCallbackResult(callback_res, its->grf_prop.grffile->grfid, STR_ERROR_SITE_UNSUITABLE);
+	return GetErrorMessageFromLocationCallbackResult(callback_res, its->grf_prop.grffile, STR_ERROR_SITE_UNSUITABLE);
 }
 
 /* Simple wrapper for GetHouseCallback to keep the animation unified. */

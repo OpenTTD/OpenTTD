@@ -680,7 +680,7 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 
 	/* The meaning of bit 10 is inverted for a grf version < 8. */
 	if (statspec->grf_prop.grffile->grf_version < 8) ToggleBit(cb_res, 10);
-	return GetErrorMessageFromLocationCallbackResult(cb_res, statspec->grf_prop.grffile->grfid, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+	return GetErrorMessageFromLocationCallbackResult(cb_res, statspec->grf_prop.grffile, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 }
 
 
