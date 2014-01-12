@@ -277,14 +277,6 @@ char *GetString(char *buffr, StringID string, const char *last)
 }
 
 
-char *InlineString(char *buf, StringID string)
-{
-	buf += Utf8Encode(buf, SCC_STRING_ID);
-	buf += Utf8Encode(buf, string);
-	return buf;
-}
-
-
 /**
  * This function is used to "bind" a C string to a OpenTTD dparam slot.
  * @param n slot of the string
@@ -1015,11 +1007,6 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_REVISION: // {REV}
 				buff = strecpy(buff, _openttd_revision, last);
-				break;
-
-			case SCC_STRING_ID: // {STRINL}
-				if (game_script) break;
-				buff = GetStringWithArgs(buff, Utf8Consume(&str), args, last);
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
