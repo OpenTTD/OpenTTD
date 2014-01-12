@@ -1022,7 +1022,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				/* WARNING. It's prohibited for the included string to consume any arguments.
 				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
 				 * To debug stuff you can set argv to NULL and it will tell you */
-				StringParameters tmp_params(args->GetDataPointer(), args->num_param - args->offset, NULL);
+				StringParameters tmp_params(args->GetDataPointer(), args->GetDataLeft(), NULL);
 				buff = GetStringWithArgs(buff, str, &tmp_params, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
@@ -1039,7 +1039,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				StringID str = args->GetInt32(b);
 				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
 				uint size = b - SCC_STRING1 + 1;
-				if (game_script && size > args->num_param - args->offset) {
+				if (game_script && size > args->GetDataLeft()) {
 					buff = strecat(buff, "(too many parameters)", last);
 				} else {
 					StringParameters sub_args(*args, size);
