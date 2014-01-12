@@ -22,8 +22,6 @@
 #include "direction_type.h"
 #include "company_type.h"
 
-struct GRFFile;
-
 /** Context for tile accesses */
 enum TileContext {
 	TCX_NORMAL,         ///< Nothing special.

@@ -35,7 +35,7 @@ void CleanUpGRFText(struct GRFText *grftext);
 
 bool CheckGrfLangID(byte lang_id, byte grf_version);
 
-void StartTextRefStackUsage(byte numEntries, const uint32 *values = NULL);
+void StartTextRefStackUsage(const GRFFile *grffile, byte numEntries, const uint32 *values = NULL);
 void StopTextRefStackUsage();
 void RewindTextRefStack();
 bool UsingNewGRFTextStack();

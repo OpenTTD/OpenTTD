@@ -16,6 +16,8 @@
 #include "company_type.h"
 #include "core/geometry_type.hpp"
 
+struct GRFFile;
+
 /** Message severity/type */
 enum WarningLevel {
 	WL_INFO,     ///< Used for DoCommand-like (and some non-fatal AI GUI) errors/information
@@ -30,6 +32,7 @@ protected:
 	uint duration;                  ///< Length of display of the message. 0 means forever,
 	uint64 decode_params[20];       ///< Parameters of the message strings.
 	const char *strings[20];        ///< Copies of raw strings that were used.
+	const GRFFile *textref_stack_grffile; ///< NewGRF that filled the #TextRefStack for the error message.
 	uint textref_stack_size;        ///< Number of uint32 values to put on the #TextRefStack for the error message.
 	uint32 textref_stack[16];       ///< Values to put on the #TextRefStack for the error message.
 	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
@@ -40,7 +43,7 @@ protected:
 public:
 	ErrorMessageData(const ErrorMessageData &data);
 	~ErrorMessageData();
-	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration = 0, int x = 0, int y = 0, uint textref_stack_size = 0, const uint32 *textref_stack = NULL);
+	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration = 0, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = NULL, uint textref_stack_size = 0, const uint32 *textref_stack = NULL);
 
 	/** Check whether error window shall display a company manager face */
 	bool HasFace() const { return face != INVALID_COMPANY; }
@@ -53,7 +56,7 @@ public:
 
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, uint textref_stack_size = 0, const uint32 *textref_stack = NULL);
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = NULL, uint textref_stack_size = 0, const uint32 *textref_stack = NULL);
 void ClearErrorMessages();
 void ShowFirstError();
 void UnshowCriticalError();

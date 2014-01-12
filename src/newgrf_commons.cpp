@@ -501,7 +501,7 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, const GRFFi
 	}
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
-	res.UseTextRefStack(4);
+	res.UseTextRefStack(grffile, 4);
 
 	return res;
 }

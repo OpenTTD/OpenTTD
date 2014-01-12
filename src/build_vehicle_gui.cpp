@@ -772,13 +772,14 @@ static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
 	if (callback == CALLBACK_FAILED || callback == 0x400) return y;
+	const GRFFile *grffile = Engine::Get(engine)->GetGRF();
 	if (callback > 0x400) {
-		ErrorUnknownCallbackResult(Engine::Get(engine)->GetGRFID(), CBID_VEHICLE_ADDITIONAL_TEXT, callback);
+		ErrorUnknownCallbackResult(grffile->grfid, CBID_VEHICLE_ADDITIONAL_TEXT, callback);
 		return y;
 	}
 
-	StartTextRefStackUsage(6);
-	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, GetGRFStringID(Engine::Get(engine)->GetGRFID(), 0xD000 + callback), TC_BLACK);
+	StartTextRefStackUsage(grffile, 6);
+	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, GetGRFStringID(grffile->grfid, 0xD000 + callback), TC_BLACK);
 	StopTextRefStackUsage();
 	return result;
 }

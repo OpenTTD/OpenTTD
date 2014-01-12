@@ -880,12 +880,14 @@ void CleanUpStrings()
 struct TextRefStack {
 	byte stack[0x30];
 	byte position;
+	const GRFFile *grffile;
 	bool used;
 
-	TextRefStack() : position(0), used(false) {}
+	TextRefStack() : position(0), grffile(NULL), used(false) {}
 
 	TextRefStack(const TextRefStack &stack) :
 		position(stack.position),
+		grffile(stack.grffile),
 		used(stack.used)
 	{
 		memcpy(this->stack, stack.stack, sizeof(this->stack));
@@ -937,7 +939,14 @@ struct TextRefStack {
 		this->stack[this->position + 1] = GB(word, 8, 8);
 	}
 
-	void ResetStack()  { this->position = 0; this->used = true; }
+	void ResetStack(const GRFFile *grffile)
+	{
+		assert(grffile != NULL);
+		this->position = 0;
+		this->grffile = grffile;
+		this->used = true;
+	}
+
 	void RewindStack() { this->position = 0; }
 };
 
@@ -986,14 +995,15 @@ void RestoreTextRefStackBackup(struct TextRefStack *backup)
  * by calling #StopTextRefStackUsage(), so NewGRF string codes operate on the
  * normal string parameters again.
  *
+ * @param grffile the NewGRF providing the stack data
  * @param numEntries number of entries to copy from the registers
  * @param values values to copy onto the stack; if NULL the temporary NewGRF registers will be used instead
  */
-void StartTextRefStackUsage(byte numEntries, const uint32 *values)
+void StartTextRefStackUsage(const GRFFile *grffile, byte numEntries, const uint32 *values)
 {
 	extern TemporaryStorageArray<int32, 0x110> _temp_store;
 
-	_newgrf_textrefstack.ResetStack();
+	_newgrf_textrefstack.ResetStack(grffile);
 
 	byte *p = _newgrf_textrefstack.stack;
 	for (uint i = 0; i < numEntries; i++) {

@@ -16,6 +16,8 @@
 #include "strings_type.h"
 #include "tile_type.h"
 
+struct GRFFile;
+
 /**
  * Common return value for all commands. Wraps the cost and
  * a possible error message/state together.
@@ -25,6 +27,7 @@ class CommandCost {
 	Money cost;       ///< The cost of this action
 	StringID message; ///< Warning message for when success is unset
 	bool success;     ///< Whether the comment went fine up to this moment
+	const GRFFile *textref_stack_grffile; ///< NewGRF providing the #TextRefStack content.
 	uint textref_stack_size;   ///< Number of uint32 values to put on the #TextRefStack for the error message.
 
 	static uint32 textref_stack[16];
@@ -33,25 +36,25 @@ public:
 	/**
 	 * Creates a command cost return with no cost and no error
 	 */
-	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_size(0) {}
+	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_grffile(NULL), textref_stack_size(0) {}
 
 	/**
 	 * Creates a command return value the is failed with the given message
 	 */
-	explicit CommandCost(StringID msg) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_size(0) {}
+	explicit CommandCost(StringID msg) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_grffile(NULL), textref_stack_size(0) {}
 
 	/**
 	 * Creates a command cost with given expense type and start cost of 0
 	 * @param ex_t the expense type
 	 */
-	explicit CommandCost(ExpensesType ex_t) : expense_type(ex_t), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_size(0) {}
+	explicit CommandCost(ExpensesType ex_t) : expense_type(ex_t), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_grffile(NULL), textref_stack_size(0) {}
 
 	/**
 	 * Creates a command return value with the given start cost and expense type
 	 * @param ex_t the expense type
 	 * @param cst the initial cost of this command
 	 */
-	CommandCost(ExpensesType ex_t, const Money &cst) : expense_type(ex_t), cost(cst), message(INVALID_STRING_ID), success(true), textref_stack_size(0) {}
+	CommandCost(ExpensesType ex_t, const Money &cst) : expense_type(ex_t), cost(cst), message(INVALID_STRING_ID), success(true), textref_stack_grffile(NULL), textref_stack_size(0) {}
 
 
 	/**
@@ -103,7 +106,16 @@ public:
 		this->message = message;
 	}
 
-	void UseTextRefStack(uint num_registers);
+	void UseTextRefStack(const GRFFile *grffile, uint num_registers);
+
+	/**
+	 * Returns the NewGRF providing the #TextRefStack of the error message.
+	 * @return the NewGRF.
+	 */
+	const GRFFile *GetTextRefStackGRF() const
+	{
+		return this->textref_stack_grffile;
+	}
 
 	/**
 	 * Returns the number of uint32 values for the #TextRefStack of the error message.

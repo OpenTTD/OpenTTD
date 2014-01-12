@@ -94,11 +94,13 @@ ErrorMessageData::~ErrorMessageData()
  * @param duration     The amount of time to show this error message.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param textref_stack_grffile NewGRF that provides the #TextRefStack for the error message.
  * @param textref_stack_size Number of uint32 values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
  * @param textref_stack Values to put on the #TextRefStack.
  */
-ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration, int x, int y, uint textref_stack_size, const uint32 *textref_stack) :
+ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32 *textref_stack) :
 	duration(duration),
+	textref_stack_grffile(textref_stack_grffile),
 	textref_stack_size(textref_stack_size),
 	summary_msg(summary_msg),
 	detailed_msg(detailed_msg),
@@ -126,7 +128,7 @@ void ErrorMessageData::CopyOutDParams()
 	memset(this->strings, 0, sizeof(this->strings));
 
 	/* Get parameters using type information */
-	if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
+	if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 	CopyOutDParam(this->decode_params, this->strings, this->detailed_msg == INVALID_STRING_ID ? this->summary_msg : this->detailed_msg, lengthof(this->decode_params));
 	if (this->textref_stack_size > 0) StopTextRefStackUsage();
 
@@ -181,7 +183,7 @@ public:
 		if (widget != WID_EM_MESSAGE) return;
 
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
-		if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
+		if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
 		int text_width = max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
 		this->height_summary  = GetStringHeight(this->summary_msg, text_width);
@@ -253,7 +255,7 @@ public:
 
 			case WID_EM_MESSAGE:
 				CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
-				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
+				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
 				if (this->detailed_msg == INVALID_STRING_ID) {
 					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
@@ -358,19 +360,20 @@ void UnshowCriticalError()
  * @param wl           Message severity.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param textref_stack_grffile NewGRF providing the #TextRefStack for the error message.
  * @param textref_stack_size Number of uint32 values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
  * @param textref_stack Values to put on the #TextRefStack.
  */
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x, int y, uint textref_stack_size, const uint32 *textref_stack)
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32 *textref_stack)
 {
-	assert(textref_stack_size == 0 || textref_stack != NULL);
+	assert(textref_stack_size == 0 || (textref_stack_grffile != NULL && textref_stack != NULL));
 	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
 
 	if (wl != WL_INFO) {
 		/* Print message to console */
 		char buf[DRAW_STRING_BUFFER];
 
-		if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_size, textref_stack);
+		if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_grffile, textref_stack_size, textref_stack);
 
 		char *b = GetString(buf, summary_msg, lastof(buf));
 		if (detailed_msg != INVALID_STRING_ID) {
@@ -390,7 +393,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
-	ErrorMessageData data(summary_msg, detailed_msg, no_timeout ? 0 : _settings_client.gui.errmsg_duration, x, y, textref_stack_size, textref_stack);
+	ErrorMessageData data(summary_msg, detailed_msg, no_timeout ? 0 : _settings_client.gui.errmsg_duration, x, y, textref_stack_grffile, textref_stack_size, textref_stack);
 	data.CopyOutDParams();
 
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
