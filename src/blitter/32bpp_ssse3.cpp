@@ -19,10 +19,6 @@
 /** Instantiation of the SSSE3 32bpp blitter factory. */
 static FBlitter_32bppSSSE3 iFBlitter_32bppSSSE3;
 
-#if defined(__GNUC__)
-	#pragma GCC diagnostic push
-	#pragma GCC diagnostic ignored "-Wunused-variable"
-#endif
 /**
  * Draws a sprite to a (screen) buffer. It is templated to allow faster operation.
  *
@@ -30,6 +26,7 @@ static FBlitter_32bppSSSE3 iFBlitter_32bppSSSE3;
  * @param bp further blitting parameters
  * @param zoom zoom level at which we are drawing
  */
+IGNORE_UNINITIALIZED_WARNING_START
 template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last>
 inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 {
@@ -37,7 +34,7 @@ inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel
 	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
 	int effective_width = bp->width;
 
-	/* Find where to start reading in the source sprite */
+	/* Find where to start reading in the source sprite. */
 	const SpriteData * const sd = (const SpriteData *) bp->sprite;
 	const SpriteInfo * const si = &sd->infos[zoom];
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
@@ -100,6 +97,7 @@ inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel
 				}
 				break;
 			}
+
 			case BM_COLOUR_REMAP: {
 				switch (read_mode) {
 					case RM_WITH_MARGIN: {
@@ -229,9 +227,7 @@ bmcr_alpha_blend_single:
 		dst_line += bp->pitch;
 	}
 }
-#if defined(__GNUC__)
-	#pragma GCC diagnostic pop
-#endif
+IGNORE_UNINITIALIZED_WARNING_STOP
 
 /**
  * Draws a sprite to a (screen) buffer. Calls adequate templated function.
