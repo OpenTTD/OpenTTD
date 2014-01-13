@@ -57,8 +57,8 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	const __m128i tr_nom_base = TRANSPARENT_NOM_BASE;
 
 	for (int y = bp->height; y != 0; y--) {
-		const Colour *src = src_rgba_line + META_LENGTH;
 		Colour *dst = dst_line;
+		const Colour *src = src_rgba_line + META_LENGTH;
 		if (mode == BM_COLOUR_REMAP) src_mv = src_mv_line;
 
 		if (read_mode == RM_WITH_MARGIN) {
@@ -109,7 +109,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 						Colour c0 = 0; // Use alpha of 0 to keep dst as is.
 						c0 = r0 == 0 ? c0 : c0map;
 						c0 = m0 != 0 ? c0 : src0;
-						INSR32(c0.data, srcABCD, 0);
+						srcABCD = _mm_cvtsi32_si128(c0.data);
 
 						const Colour src1 = src[1];
 						const uint m1 = (byte) (mvX2 >> 16);

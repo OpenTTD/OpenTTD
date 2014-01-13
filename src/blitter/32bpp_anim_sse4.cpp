@@ -173,7 +173,7 @@ bmno_full_transparency:
 						Colour c0 = dst[0];
 						c0 = r0 == 0 ? c0 : c0map;
 						c0 = m0 != 0 ? c0 : src0;
-						INSR32(c0.data, srcABCD, 0);
+						srcABCD = _mm_cvtsi32_si128(c0.data);
 
 						const Colour src1 = src[1];
 						const Colour c1map = (this->LookupColourInPalette(r1).data & 0x00FFFFFF) | (src1.data & 0xFF000000);
