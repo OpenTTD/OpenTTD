@@ -64,6 +64,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 		uint16 *anim = anim_line;
 
 		if (read_mode == RM_WITH_MARGIN) {
+			assert(bt_last == BT_NONE); // or you must ensure block type is preserved
 			anim += src_rgba_line[0].data;
 			src += src_rgba_line[0].data;
 			dst += src_rgba_line[0].data;

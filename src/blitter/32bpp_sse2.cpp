@@ -56,6 +56,7 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		if (mode == BM_COLOUR_REMAP) src_mv = src_mv_line;
 
 		if (read_mode == RM_WITH_MARGIN) {
+			assert(bt_last == BT_NONE); // or you must ensure block type is preserved
 			src += src_rgba_line[0].data;
 			dst += src_rgba_line[0].data;
 			if (mode == BM_COLOUR_REMAP) src_mv += src_rgba_line[0].data;
@@ -181,7 +182,7 @@ void Blitter_32bppSSE2::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
-	/* First uint32 of a line = ~1 & the number of transparent pixels from the left.
+	/* First uint32 of a line = the number of transparent pixels from the left.
 	 * Second uint32 of a line = the number of transparent pixels from the right.
 	 * Then all RGBA then all MV.
 	 */
@@ -261,7 +262,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 				else break;
 				dst_rgba++;
 			}
-			(*dst_rgba_line).data = nb_pix_transp & ~1; // "& ~1" to preserve the last block type
+			(*dst_rgba_line).data = nb_pix_transp;
 
 			Colour *nb_right = dst_rgba_line + 1;
 			dst_rgba_line = (Colour*) ((byte*) dst_rgba_line + sd.infos[z].sprite_line_size);
@@ -274,7 +275,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 				else break;
 				dst_rgba--;
 			}
-			(*nb_right).data = nb_pix_transp; // no "& ~1" here, must be done when we know bp->width
+			(*nb_right).data = nb_pix_transp;
 		}
 	}
 

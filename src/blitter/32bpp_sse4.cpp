@@ -62,6 +62,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		if (mode == BM_COLOUR_REMAP) src_mv = src_mv_line;
 
 		if (read_mode == RM_WITH_MARGIN) {
+			assert(bt_last == BT_NONE); // or you must ensure block type is preserved
 			src += src_rgba_line[0].data;
 			dst += src_rgba_line[0].data;
 			if (mode == BM_COLOUR_REMAP) src_mv += src_rgba_line[0].data;
