@@ -232,7 +232,7 @@ inline Colour Blitter_32bppSSE4::AdjustBrightness(Colour colour, uint8 brightnes
 }
 
 IGNORE_UNINITIALIZED_WARNING_START
-/* static */ Colour Blitter_32bppSSE4::ReallyAdjustBrightness(Colour colour, uint8 brightness)
+Colour Blitter_32bppSSE4::ReallyAdjustBrightness(Colour colour, uint8 brightness)
 {
 	uint64 c16 = colour.b | (uint64) colour.g << 16 | (uint64) colour.r << 32;
 	c16 *= brightness;
@@ -242,16 +242,14 @@ IGNORE_UNINITIALIZED_WARNING_START
 
 	/* Sum overbright (maximum for each rgb is 508, 9 bits, -255 is changed in -256 so we just have to take the 8 lower bits into account). */
 	c16_ob = (((c16_ob >> (8 + 7)) & 0x0100010001) * 0xFF) & c16;
-	uint64 ob = (uint16) c16_ob + (uint16) (c16_ob >> 16) + (uint16) (c16_ob >> 32);
+	const uint ob = ((uint16) c16_ob + (uint16) (c16_ob >> 16) + (uint16) (c16_ob >> 32)) / 2;
 
 	const uint32 alpha32 = colour.data & 0xFF000000;
 	__m128i ret;
-	INSR64(c16, ret, 0);
+	LOAD64(c16, ret);
 	if (ob != 0) {
-		/* Reduce overbright strength. */
-		ob /= 2;
-		__m128i ob128;
-		INSR64(ob | ob << 16 | ob << 32, ob128, 0);
+		__m128i ob128 = _mm_cvtsi32_si128(ob);
+		ob128 = _mm_shufflelo_epi16(ob128, 0xC0);
 		__m128i white = OVERBRIGHT_VALUE_MASK;
 		__m128i c128 = ret;
 		ret = _mm_subs_epu16(white, c128); /* PSUBUSW,   (255 - rgb) */

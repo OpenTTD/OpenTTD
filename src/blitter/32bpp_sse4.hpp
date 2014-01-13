@@ -35,6 +35,11 @@ IGNORE_UNINITIALIZED_WARNING_START
 		(*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, v.u32.low, (m_rank)*2); \
 		(*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, v.u32.high, (m_rank)*2 + 1); \
 	}
+
+	#undef LOAD64
+	#define LOAD64(m_val, m_into) \
+		m_into = _mm_cvtsi32_si128(m_val); \
+		INSR32((m_val) >> 32, m_into, 1);
 #endif
 IGNORE_UNINITIALIZED_WARNING_STOP
 

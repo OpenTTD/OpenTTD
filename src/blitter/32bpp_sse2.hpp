@@ -54,6 +54,12 @@ typedef union ALIGN(16) um128i {
 }
 #define INSR64(m_val, m_into, m_rank) (*(um128i*) &m_into).m128i_u64[m_rank] = (m_val)
 
+#ifdef _SQ64
+	#define LOAD64(m_val, m_into) m_into = _mm_cvtsi64_si128(m_val);
+#else
+	#define LOAD64(m_val, m_into) INSR64(m_val, m_into, 0)
+#endif
+
 /* PUT_ALPHA_IN_FRONT_OF_RGB is redefined in 32bpp_ssse3.hpp. */
 #define PUT_ALPHA_IN_FRONT_OF_RGB(m_from, m_into) \
 	m_into = _mm_shufflelo_epi16(m_from, 0x3F); /* PSHUFLW, put alpha1 in front of each rgb1 */ \
