@@ -81,6 +81,19 @@ typedef union ALIGN(16) um128i {
 	PACK_AB_WITHOUT_SATURATION(srcAB, srcABCD); \
 }
 
+/* Darken 2 pixels.
+ * rgb = rgb * ((256/4) * 4 - (alpha/4)) / ((256/4) * 4)
+ */
+#define DARKEN_2() \
+	__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128()); \
+	__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128()); \
+	__m128i PUT_ALPHA_IN_FRONT_OF_RGB(srcAB, alphaAB); \
+	alphaAB = _mm_srli_epi16(alphaAB, 2); /* Reduce to 64 levels of shades so the max value fits in 16 bits. */ \
+	__m128i nom = _mm_sub_epi16(tr_nom_base, alphaAB); \
+	dstAB = _mm_mullo_epi16(dstAB, nom); \
+	dstAB = _mm_srli_epi16(dstAB, 8); \
+	dstAB = _mm_packus_epi16(dstAB, dstAB);
+
 /** Base methods for 32bpp SSE blitters. */
 class Blitter_32bppSSE_Base {
 public:
