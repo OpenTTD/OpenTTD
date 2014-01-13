@@ -15,6 +15,7 @@
 #include "../video/video_driver.hpp"
 #include "../table/sprites.h"
 #include "32bpp_anim_sse4.hpp"
+#include "32bpp_sse_func.hpp"
 
 /** Instantiation of the SSE4 32bpp blitter factory. */
 static FBlitter_32bppSSE4_Anim iFBlitter_32bppSSE4_Anim;

@@ -913,6 +913,7 @@ blitter/32bpp_simple.cpp
 blitter/32bpp_simple.hpp
 #if SSE
 blitter/32bpp_sse_func.hpp
+blitter/32bpp_sse_type.h
 blitter/32bpp_sse2.cpp
 blitter/32bpp_sse2.hpp
 blitter/32bpp_sse4.cpp

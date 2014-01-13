@@ -17,7 +17,12 @@
 #ifndef SSE_VERSION
 #define SSE_VERSION 2
 #endif
-#include "32bpp_sse_func.hpp"
+
+#ifndef FULL_ANIMATION
+#define FULL_ANIMATION 0
+#endif
+
+#include "32bpp_sse_type.h"
 
 /** Base methods for 32bpp SSE blitters. */
 class Blitter_32bppSSE_Base {

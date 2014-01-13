@@ -3836,6 +3836,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\blitter\32bpp_sse_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\blitter\32bpp_sse2.cpp"
 				>
 			</File>
