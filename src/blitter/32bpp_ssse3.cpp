@@ -49,11 +49,6 @@ inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel
 	/* Load these variables into register before loop. */
 	const __m128i a_cm        = ALPHA_CONTROL_MASK;
 	const __m128i pack_low_cm = PACK_LOW_CONTROL_MASK;
-	const __m128i briAB_cm    = BRIGHTNESS_LOW_CONTROL_MASK;
-	const __m128i div_cleaner = BRIGHTNESS_DIV_CLEANER;
-	const __m128i ob_check    = OVERBRIGHT_PRESENCE_MASK;
-	const __m128i ob_mask     = OVERBRIGHT_VALUE_MASK;
-	const __m128i ob_cm       = OVERBRIGHT_CONTROL_MASK;
 	const __m128i tr_nom_base = TRANSPARENT_NOM_BASE;
 
 	for (int y = bp->height; y != 0; y--) {
