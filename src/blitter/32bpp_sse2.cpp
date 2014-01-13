@@ -77,7 +77,7 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							src += 2;
 							dst += 2;
 						}
-						if (bt_last == BT_ODD) {
+						if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
 							__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 							__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 							ALPHA_BLEND_2();
@@ -153,7 +153,7 @@ bmcr_alpha_blend_single:
 					src += 2;
 					dst += 2;
 				}
-				if (bp->width & 1) {
+				if ((bt_last == BT_NONE && bp->width & 1) || bt_last == BT_ODD) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 					DARKEN_2();

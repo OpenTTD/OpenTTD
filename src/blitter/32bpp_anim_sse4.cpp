@@ -134,7 +134,7 @@ bmno_full_transparency:
 							dst += 2;
 						}
 
-						if (bt_last == BT_ODD) {
+						if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
 							if (src->a == 0) {
 							} else if (src->a == 255) {
 								*anim = *(const uint16*) src_mv;
@@ -249,7 +249,7 @@ bmcr_full_transparency:
 							anim += 2;
 						}
 
-						if (effective_width & 1) {
+						if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
 							/* In case the m-channel is zero, do not remap this pixel in any way. */
 							__m128i srcABCD;
 							if (src->a == 0) break;
@@ -298,7 +298,7 @@ bmcr_alpha_blend_single:
 					if (src[-2].a) anim[-2] = 0;
 					if (src[-1].a) anim[-1] = 0;
 				}
-				if (bp->width & 1) {
+				if ((bt_last == BT_NONE && bp->width & 1) || bt_last == BT_ODD) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 					DARKEN_2();
