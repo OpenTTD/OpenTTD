@@ -79,7 +79,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 						for (uint x = (uint) effective_width / 2; x > 0; x--) {
 							__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 							__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
-							ALPHA_BLEND_2(pack_low_cm);
+							ALPHA_BLEND_2();
 							_mm_storel_epi64((__m128i*) dst, srcABCD);
 							src += 2;
 							dst += 2;
@@ -87,7 +87,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 						if (bt_last == BT_ODD) {
 							__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 							__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-							ALPHA_BLEND_2(pack_low_cm);
+							ALPHA_BLEND_2();
 							dst->data = _mm_cvtsi128_si32(srcABCD);
 						}
 						break;
@@ -146,7 +146,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							}
 
 							/* Blend colours. */
-							ALPHA_BLEND_2(pack_low_cm);
+							ALPHA_BLEND_2();
 							_mm_storel_epi64((__m128i *) dst, srcABCD);
 							dst += 2;
 							src += 2;
@@ -173,7 +173,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 								if (src->a < 255) {
 bmcr_alpha_blend_single:
 									__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-									ALPHA_BLEND_2(pack_low_cm);
+									ALPHA_BLEND_2();
 								}
 								dst->data = _mm_cvtsi128_si32(srcABCD);
 							}

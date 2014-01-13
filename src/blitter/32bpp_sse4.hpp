@@ -18,22 +18,22 @@
 #include "smmintrin.h"
 
 #undef EXTR32
-#define EXTR32(from, rank) _mm_extract_epi32((*(um128i*) &from).m128i, rank)
+#define EXTR32(m_from, m_rank) _mm_extract_epi32((*(um128i*) &m_from).m128i, m_rank)
 #undef INSR32
-#define INSR32(val, into, rank) (*(um128i*) &into).m128i = _mm_insert_epi32((*(um128i*) &into).m128i, val, rank)
+#define INSR32(m_val, m_into, m_rank) (*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, m_val, m_rank)
 
 IGNORE_UNINITIALIZED_WARNING_START
 #ifdef _SQ64
 	#undef INSR64
-	#define INSR64(val, into, rank) (*(um128i*) &into).m128i = _mm_insert_epi64((*(um128i*) &into).m128i, val, rank)
+	#define INSR64(m_val, m_into, m_rank) (*(um128i*) &m_into).m128i = _mm_insert_epi64((*(um128i*) &m_into).m128i, m_val, m_rank)
 #else
 	typedef union { uint64 u64; struct _u32 { uint32 low, high; } u32; } u6432;
 	#undef INSR64
-	#define INSR64(val, into, rank) { \
+	#define INSR64(m_val, m_into, m_rank) { \
 		u6432 v; \
-		v.u64 = val; \
-		(*(um128i*) &into).m128i = _mm_insert_epi32((*(um128i*) &into).m128i, v.u32.low, (rank)*2); \
-		(*(um128i*) &into).m128i = _mm_insert_epi32((*(um128i*) &into).m128i, v.u32.high, (rank)*2 + 1); \
+		v.u64 = m_val; \
+		(*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, v.u32.low, (m_rank)*2); \
+		(*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, v.u32.high, (m_rank)*2 + 1); \
 	}
 #endif
 IGNORE_UNINITIALIZED_WARNING_STOP

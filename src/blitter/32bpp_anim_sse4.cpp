@@ -124,7 +124,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 
 							/* Blend colours. */
 bmno_alpha_blend:
-							ALPHA_BLEND_2(pack_low_cm);
+							ALPHA_BLEND_2();
 bmno_full_opacity:
 							_mm_storel_epi64((__m128i *) dst, srcABCD);
 bmno_full_transparency:
@@ -150,7 +150,7 @@ bmno_full_transparency:
 								} else {
 									srcABCD = _mm_cvtsi32_si128(src->data);
 								}
-								ALPHA_BLEND_2(pack_low_cm);
+								ALPHA_BLEND_2();
 								dst->data = _mm_cvtsi128_si32(srcABCD);
 							}
 						}
@@ -239,7 +239,7 @@ bmno_full_transparency:
 
 							/* Blend colours. */
 bmcr_alpha_blend:
-							ALPHA_BLEND_2(pack_low_cm);
+							ALPHA_BLEND_2();
 bmcr_full_opacity:
 							_mm_storel_epi64((__m128i *) dst, srcABCD);
 bmcr_full_transparency:
@@ -272,7 +272,7 @@ bmcr_full_transparency:
 								if (src->a < 255) {
 bmcr_alpha_blend_single:
 									__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-									ALPHA_BLEND_2(pack_low_cm);
+									ALPHA_BLEND_2();
 								}
 								dst->data = _mm_cvtsi128_si32(srcABCD);
 							}

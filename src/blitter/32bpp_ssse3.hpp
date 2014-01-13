@@ -17,37 +17,26 @@
 #include "32bpp_sse2.hpp"
 #include "tmmintrin.h"
 
-/* Alpha blend 2 pixels. */
-#undef ALPHA_BLEND_2
-#define ALPHA_BLEND_2(m_pack_mask) { \
-	__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128()); /* PUNPCKLBW, expand each uint8 into uint16 */ \
-	__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128()); \
-	\
-	__m128i alphaAB = _mm_cmpgt_epi16(srcAB, _mm_setzero_si128());   /* PCMPGTW, if (alpha > 0) a++; */ \
-	alphaAB = _mm_srli_epi16(alphaAB, 15); \
-	alphaAB = _mm_add_epi16(alphaAB, srcAB); \
-	alphaAB = _mm_shuffle_epi8(alphaAB, a_cm);        /* PSHUFB, put alpha in front of each rgb */ \
-	\
-	srcAB = _mm_sub_epi16(srcAB, dstAB);              /* PSUBW,    (r - Cr) */ \
-	srcAB = _mm_mullo_epi16(srcAB, alphaAB);          /* PMULLW, a*(r - Cr) */ \
-	srcAB = _mm_srli_epi16(srcAB, 8);                 /* PSRLW,  a*(r - Cr)/256 */ \
-	srcAB = _mm_add_epi16(srcAB, dstAB);              /* PADDW,  a*(r - Cr)/256 + Cr */ \
-	srcABCD = _mm_shuffle_epi8(srcAB, m_pack_mask);   /* PSHUFB, pack 2 Colour (without saturation) */ \
-}
+/* Use PSHUFB instead of PSHUFHW+PSHUFLW. */
+#undef PUT_ALPHA_IN_FRONT_OF_RGB
+#define PUT_ALPHA_IN_FRONT_OF_RGB(m_from, m_into) m_into = _mm_shuffle_epi8(m_from, a_cm);
+
+#undef PACK_AB_WITHOUT_SATURATION
+#define PACK_AB_WITHOUT_SATURATION(m_from, m_into) m_into = _mm_shuffle_epi8(m_from, pack_low_cm);
 
 /* Adjust brightness of 2 pixels. */
-#define ADJUST_BRIGHTNESS_2(colourX2, brightnessX2) \
+#define ADJUST_BRIGHTNESS_2(m_colourX2, m_brightnessX2) \
 	/* The following dataflow differs from the one of AdjustBrightness() only for alpha.
 	 * In order to keep alpha in colAB, insert a 1 in a unused brightness byte (a*1->a).
 	 * OK, not a 1 but DEFAULT_BRIGHTNESS to compensate the div.
 	 */ \
-	brightnessX2 &= 0xFF00FF00; \
-	brightnessX2 += DEFAULT_BRIGHTNESS; \
+	m_brightnessX2 &= 0xFF00FF00; \
+	m_brightnessX2 += DEFAULT_BRIGHTNESS; \
 	\
 	__m128i zero = _mm_setzero_si128(); \
-	__m128i colAB = _mm_unpacklo_epi8(colourX2, zero); \
+	__m128i colAB = _mm_unpacklo_epi8(m_colourX2, zero); \
 	\
-	__m128i briAB = _mm_cvtsi32_si128(brightnessX2); \
+	__m128i briAB = _mm_cvtsi32_si128(m_brightnessX2); \
 	briAB = _mm_shuffle_epi8(briAB, briAB_cm); /* DEFAULT_BRIGHTNESS in 0, 0x00 in 2. */ \
 	colAB = _mm_mullo_epi16(colAB, briAB); \
 	__m128i colAB_ob = _mm_srli_epi16(colAB, 8+7); \
@@ -71,7 +60,7 @@
 	retAB = _mm_srli_epi16(retAB, 8);     /* ob*(255 - rgb)/256 */ \
 	retAB = _mm_add_epi16(retAB, colAB);  /* ob*(255 - rgb)/256 + rgb */ \
 	\
-	colourX2 = _mm_packus_epi16(retAB, retAB);
+	m_colourX2 = _mm_packus_epi16(retAB, retAB);
 
 /** The SSSE3 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSSE3 : public Blitter_32bppSSE2 {

@@ -46,13 +46,23 @@ typedef union ALIGN(16) um128i {
 #define OVERBRIGHT_CONTROL_MASK     _mm_setr_epi8( 0,  1,  0,  1,  0,  1,  7,  7,  2,  3,  2,  3,  2,  3,  7,  7)
 #define TRANSPARENT_NOM_BASE        _mm_setr_epi16(256, 256, 256, 256, 256, 256, 256, 256)
 
-#define EXTR32(from, rank) (*(um128i*) &from).m128i_u32[rank]
-#define EXTR64(from, rank) (*(um128i*) &from).m128i_u64[rank]
-#define INSR32(val, into, rank) { \
-	(*(um128i*) &into).m128i = _mm_insert_epi16((*(um128i*) &into).m128i, val, (rank)*2); \
-	(*(um128i*) &into).m128i = _mm_insert_epi16((*(um128i*) &into).m128i, (val) >> 16, (rank)*2 + 1); \
+#define EXTR32(m_from, m_rank) (*(um128i*) &m_from).m128i_u32[m_rank]
+#define EXTR64(m_from, m_rank) (*(um128i*) &m_from).m128i_u64[m_rank]
+#define INSR32(m_val, m_into, m_rank) { \
+	(*(um128i*) &m_into).m128i = _mm_insert_epi16((*(um128i*) &m_into).m128i, m_val, (m_rank)*2); \
+	(*(um128i*) &m_into).m128i = _mm_insert_epi16((*(um128i*) &m_into).m128i, (m_val) >> 16, (m_rank)*2 + 1); \
 }
-#define INSR64(val, into, rank) (*(um128i*) &into).m128i_u64[rank] = (val)
+#define INSR64(m_val, m_into, m_rank) (*(um128i*) &m_into).m128i_u64[m_rank] = (m_val)
+
+/* PUT_ALPHA_IN_FRONT_OF_RGB is redefined in 32bpp_ssse3.hpp. */
+#define PUT_ALPHA_IN_FRONT_OF_RGB(m_from, m_into) \
+	m_into = _mm_shufflelo_epi16(m_from, 0x3F); /* PSHUFLW, put alpha1 in front of each rgb1 */ \
+	m_into = _mm_shufflehi_epi16(m_into, 0x3F); /* PSHUFHW, put alpha2 in front of each rgb2 */
+
+/* PACK_AB_WITHOUT_SATURATION is redefined in 32bpp_ssse3.hpp. */
+#define PACK_AB_WITHOUT_SATURATION(m_from, m_into) \
+	m_from = _mm_and_si128(m_from, clear_hi);  /* PAND, wipe high bytes to keep low bytes when packing */ \
+	m_into = _mm_packus_epi16(m_from, m_from); /* PACKUSWB, pack 2 colours (with saturation) */
 
 /* Alpha blend 2 pixels. */
 #define ALPHA_BLEND_2() { \
@@ -62,15 +72,13 @@ typedef union ALIGN(16) um128i {
 	__m128i alphaAB = _mm_cmpgt_epi16(srcAB, _mm_setzero_si128());   /* PCMPGTW, if (alpha > 0) a++; */ \
 	alphaAB = _mm_srli_epi16(alphaAB, 15); \
 	alphaAB = _mm_add_epi16(alphaAB, srcAB); \
-	alphaAB = _mm_shufflelo_epi16(alphaAB, 0x3F); /* PSHUFLW, put alpha1 in front of each rgb1 */ \
-	alphaAB = _mm_shufflehi_epi16(alphaAB, 0x3F); /* PSHUFHW, put alpha2 in front of each rgb2 */ \
+	PUT_ALPHA_IN_FRONT_OF_RGB(alphaAB, alphaAB); \
 	\
 	srcAB = _mm_sub_epi16(srcAB, dstAB);          /* PSUBW,    (r - Cr) */ \
 	srcAB = _mm_mullo_epi16(srcAB, alphaAB);      /* PMULLW, a*(r - Cr) */ \
 	srcAB = _mm_srli_epi16(srcAB, 8);             /* PSRLW,  a*(r - Cr)/256 */ \
 	srcAB = _mm_add_epi16(srcAB, dstAB);          /* PADDW,  a*(r - Cr)/256 + Cr */ \
-	srcAB = _mm_and_si128(srcAB, clear_hi);       /* PAND, wipe high bytes to keep low bytes when packing */ \
-	srcABCD = _mm_packus_epi16(srcAB, srcAB);     /* PACKUSWB, pack 2 colours (with saturation) */ \
+	PACK_AB_WITHOUT_SATURATION(srcAB, srcABCD); \
 }
 
 /** Base methods for 32bpp SSE blitters. */
