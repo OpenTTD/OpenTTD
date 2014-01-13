@@ -44,6 +44,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		src_rgba_line += bp->skip_left;
 		src_mv_line += bp->skip_left;
 	}
+	const MapValue *src_mv = src_mv_line;
 
 	/* Load these variables into register before loop. */
 	const __m128i a_cm        = ALPHA_CONTROL_MASK;
@@ -58,136 +59,107 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	for (int y = bp->height; y != 0; y--) {
 		const Colour *src = src_rgba_line + META_LENGTH;
 		Colour *dst = dst_line;
-		const MapValue *src_mv = src_mv_line;
+		if (mode == BM_COLOUR_REMAP) src_mv = src_mv_line;
+
+		if (read_mode == RM_WITH_MARGIN) {
+			src += src_rgba_line[0].data;
+			dst += src_rgba_line[0].data;
+			if (mode == BM_COLOUR_REMAP) src_mv += src_rgba_line[0].data;
+			const int width_diff = si->sprite_width - bp->width;
+			effective_width = bp->width - (int) src_rgba_line[0].data;
+			const int delta_diff = (int) src_rgba_line[1].data - width_diff;
+			const int new_width = effective_width - delta_diff;
+			effective_width = delta_diff > 0 ? new_width : effective_width;
+			if (effective_width <= 0) goto next_line;
+		}
 
 		switch (mode) {
-			default: {
-				switch (read_mode) {
-					case RM_WITH_MARGIN: {
-						src += src_rgba_line[0].data;
-						dst += src_rgba_line[0].data;
-						const int width_diff = si->sprite_width - bp->width;
-						effective_width = bp->width - (int) src_rgba_line[0].data;
-						const int delta_diff = (int) src_rgba_line[1].data - width_diff;
-						const int new_width = effective_width - (delta_diff & ~1);
-						effective_width = delta_diff > 0 ? new_width : effective_width;
-						if (effective_width <= 0) break;
-						/* FALLTHROUGH */
+			default:
+				for (uint x = (uint) effective_width / 2; x > 0; x--) {
+					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
+					ALPHA_BLEND_2();
+					_mm_storel_epi64((__m128i*) dst, srcABCD);
+					src += 2;
+					dst += 2;
+				}
+
+				if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
+					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
+					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
+					ALPHA_BLEND_2();
+					dst->data = _mm_cvtsi128_si32(srcABCD);
+				}
+				break;
+
+			case BM_COLOUR_REMAP:
+				for (uint x = (uint) effective_width / 2; x > 0; x--) {
+					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
+					uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
+
+					/* Remap colours. */
+					if (mvX2 & 0x00FF00FF) {
+						/* Written so the compiler uses CMOV. */
+						const Colour src0 = src[0];
+						const uint m0 = (byte) mvX2;
+						const uint r0 = remap[m0];
+						const Colour c0map = (this->LookupColourInPalette(r0).data & 0x00FFFFFF) | (src0.data & 0xFF000000);
+						Colour c0 = 0; // Use alpha of 0 to keep dst as is.
+						c0 = r0 == 0 ? c0 : c0map;
+						c0 = m0 != 0 ? c0 : src0;
+						INSR32(c0.data, srcABCD, 0);
+
+						const Colour src1 = src[1];
+						const uint m1 = (byte) (mvX2 >> 16);
+						const uint r1 = remap[m1];
+						const Colour c1map = (this->LookupColourInPalette(r1).data & 0x00FFFFFF) | (src1.data & 0xFF000000);
+						Colour c1 = 0;
+						c1 = r1 == 0 ? c1 : c1map;
+						c1 = m1 != 0 ? c1 : src1;
+						INSR32(c1.data, srcABCD, 1);
+
+						if ((mvX2 & 0xFF00FF00) != 0x80008000) {
+							ADJUST_BRIGHTNESS_2(srcABCD, mvX2);
+						}
 					}
 
-					case RM_WITH_SKIP: {
-						for (uint x = (uint) effective_width / 2; x > 0; x--) {
-							__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
-							__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
-							ALPHA_BLEND_2();
-							_mm_storel_epi64((__m128i*) dst, srcABCD);
-							src += 2;
-							dst += 2;
+					/* Blend colours. */
+					ALPHA_BLEND_2();
+					_mm_storel_epi64((__m128i *) dst, srcABCD);
+					dst += 2;
+					src += 2;
+					src_mv += 2;
+				}
+
+				if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
+					/* In case the m-channel is zero, do not remap this pixel in any way. */
+					__m128i srcABCD;
+					if (src_mv->m) {
+						const uint r = remap[src_mv->m];
+						if (r != 0) {
+							Colour remapped_colour = AdjustBrightness(this->LookupColourInPalette(r), src_mv->v);
+							if (src->a == 255) {
+								*dst = remapped_colour;
+							} else {
+								remapped_colour.a = src->a;
+								srcABCD = _mm_cvtsi32_si128(remapped_colour.data);
+								goto bmcr_alpha_blend_single;
+							}
 						}
-						if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
-							__m128i srcABCD = _mm_cvtsi32_si128(src->data);
+					} else {
+						srcABCD = _mm_cvtsi32_si128(src->data);
+						if (src->a < 255) {
+bmcr_alpha_blend_single:
 							__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 							ALPHA_BLEND_2();
-							dst->data = _mm_cvtsi128_si32(srcABCD);
 						}
-						break;
+						dst->data = _mm_cvtsi128_si32(srcABCD);
 					}
-
-					default: NOT_REACHED();
 				}
 				break;
-			}
 
-			case BM_COLOUR_REMAP: {
-				switch (read_mode) {
-					case RM_WITH_MARGIN: {
-						src += src_rgba_line[0].data;
-						src_mv += src_rgba_line[0].data;
-						dst += src_rgba_line[0].data;
-						const int width_diff = si->sprite_width - bp->width;
-						effective_width = bp->width - (int) src_rgba_line[0].data;
-						const int delta_diff = (int) src_rgba_line[1].data - width_diff;
-						const int new_width = effective_width - delta_diff;
-						effective_width = delta_diff > 0 ? new_width : effective_width;
-						if (effective_width <= 0) break;
-						/* FALLTHROUGH */
-					}
-
-					case RM_WITH_SKIP: {
-						for (uint x = (uint) effective_width / 2; x > 0; x--) {
-							__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
-							__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
-							uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-
-							/* Remap colours. */
-							if (mvX2 & 0x00FF00FF) {
-								/* Written so the compiler uses CMOV. */
-								const Colour src0 = src[0];
-								const uint m0 = (byte) mvX2;
-								const uint r0 = remap[m0];
-								const Colour c0map = (this->LookupColourInPalette(r0).data & 0x00FFFFFF) | (src0.data & 0xFF000000);
-								Colour c0 = 0; // Use alpha of 0 to keep dst as is.
-								c0 = r0 == 0 ? c0 : c0map;
-								c0 = m0 != 0 ? c0 : src0;
-								INSR32(c0.data, srcABCD, 0);
-
-								const Colour src1 = src[1];
-								const uint m1 = (byte) (mvX2 >> 16);
-								const uint r1 = remap[m1];
-								const Colour c1map = (this->LookupColourInPalette(r1).data & 0x00FFFFFF) | (src1.data & 0xFF000000);
-								Colour c1 = 0;
-								c1 = r1 == 0 ? c1 : c1map;
-								c1 = m1 != 0 ? c1 : src1;
-								INSR32(c1.data, srcABCD, 1);
-
-								if ((mvX2 & 0xFF00FF00) != 0x80008000) {
-									ADJUST_BRIGHTNESS_2(srcABCD, mvX2);
-								}
-							}
-
-							/* Blend colours. */
-							ALPHA_BLEND_2();
-							_mm_storel_epi64((__m128i *) dst, srcABCD);
-							dst += 2;
-							src += 2;
-							src_mv += 2;
-						}
-
-						if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
-							/* In case the m-channel is zero, do not remap this pixel in any way. */
-							__m128i srcABCD;
-							if (src_mv->m) {
-								const uint r = remap[src_mv->m];
-								if (r != 0) {
-									Colour remapped_colour = AdjustBrightness(this->LookupColourInPalette(r), src_mv->v);
-									if (src->a == 255) {
-										*dst = remapped_colour;
-									} else {
-										remapped_colour.a = src->a;
-										srcABCD = _mm_cvtsi32_si128(remapped_colour.data);
-										goto bmcr_alpha_blend_single;
-									}
-								}
-							} else {
-								srcABCD = _mm_cvtsi32_si128(src->data);
-								if (src->a < 255) {
-bmcr_alpha_blend_single:
-									__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-									ALPHA_BLEND_2();
-								}
-								dst->data = _mm_cvtsi128_si32(srcABCD);
-							}
-						}
-						break;
-					}
-
-					default: NOT_REACHED();
-				}
-				src_mv_line += si->sprite_width;
-				break;
-			}
-
-			case BM_TRANSPARENT: {
+			case BM_TRANSPARENT:
 				/* Make the current colour a bit more black, so it looks like this image is transparent. */
 				for (uint x = (uint) bp->width / 2; x > 0; x--) {
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
@@ -197,17 +169,18 @@ bmcr_alpha_blend_single:
 					src += 2;
 					dst += 2;
 				}
+
 				if ((bt_last == BT_NONE && bp->width & 1) || bt_last == BT_ODD) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 					DARKEN_2();
 					dst->data = _mm_cvtsi128_si32(dstAB);
 				}
-
 				break;
-			}
 		}
 
+next_line:
+		if (mode == BM_COLOUR_REMAP) src_mv_line += si->sprite_width;
 		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 	}
@@ -223,21 +196,17 @@ IGNORE_UNINITIALIZED_WARNING_STOP
  */
 void Blitter_32bppSSE4::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	const BlockType bt_last = (BlockType) (bp->width & 1);
 	switch (mode) {
 		case BM_NORMAL: {
 			if (bp->skip_left != 0 || bp->width <= MARGIN_NORMAL_THRESHOLD) {
+				const BlockType bt_last = (BlockType) (bp->width & 1);
 				switch (bt_last) {
 					case BT_EVEN: Draw<BM_NORMAL, RM_WITH_SKIP, BT_EVEN>(bp, zoom); return;
 					case BT_ODD:  Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD>(bp, zoom); return;
 					default: NOT_REACHED();
 				}
 			} else {
-				switch (bt_last) {
-					case BT_EVEN: Draw<BM_NORMAL, RM_WITH_MARGIN, BT_EVEN>(bp, zoom); return;
-					case BT_ODD:  Draw<BM_NORMAL, RM_WITH_MARGIN, BT_ODD>(bp, zoom); return;
-					default: NOT_REACHED();
-				}
+				Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE>(bp, zoom); return;
 			}
 			break;
 		}
