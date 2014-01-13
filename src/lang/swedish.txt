@@ -1340,6 +1340,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standardpalett för NewGRF när ingen annan palett är angiven: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalett att använda med NewGRFer som inte anger vilken palett de behöver
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standardpalett (D)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Tidigare versions (W) palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausa automatiskt vid start av nytt spel: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Om det är aktiverat kommer OpenTTD automatiskt att pausa vid start av ett nytt spel, så att kartan kan studeras noggrannare
@@ -1565,6 +1566,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders ge
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ta bort återvändsgränder vid bekostad vägombyggnad
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Uppdatera distributionsgrafen var {STRING}:e dag{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planer för en komponent i grafen. Det medför att ett värde X för den här inställningen inte innebär att hela grafen uppdateras var X:e dag, bara vissa komponenter. Ju lägre värde du ställer in desto mer processorkraft kommer att behövas för beräkningarna. Ju högre värde du ställer in desto längre tid kommer det att ta innan distributionen av last börjar använda nya rutter.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Avsätt {STRING} dag{P 0:2 "" ar} för omberäkning av distributionsgraf
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Den tid varje omberäkning av en länkgrafkomponent tillåts ta. När en omberäkning startas skapas en tråd som tillåts löpa detta antal dagar. Ju kortare du sätter denna, desto mer troligt är det att tråden inte är hinner bli färdig i tid. Då kommer spelet att stanna tills den är klar (vilket gör att det laggar). Ju längre du sätter denna, desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
@@ -1611,6 +1614,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Brittisk (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisk (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Dragkraftsenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :När dragkraft visas i användargränssnittet, visa den i de valda enheterna
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Brittisk (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisk (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
