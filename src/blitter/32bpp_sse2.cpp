@@ -57,7 +57,10 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 	dst_sprite->y_offs = sprite->y_offs;
 	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
 
-	/* Copy colours. */
+	/* Copy colours and determine flags. */
+	bool has_remap = false;
+	bool has_anim = false;
+	bool has_translucency = false;
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		const SpriteLoader::Sprite *src_sprite = &sprite[z];
 		const SpriteLoader::CommonPixel *src = (const SpriteLoader::CommonPixel *) src_sprite->data;
@@ -68,8 +71,13 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 			for (uint x = src_sprite->width; x != 0; x--) {
 				if (src->a != 0) {
 					dst_rgba->a = src->a;
+					if (src->a != 0 && src->a != 255) has_translucency = true;
 					dst_mv->m = src->m;
 					if (src->m != 0) {
+						/* Do some accounting for flags. */
+						has_remap = true;
+						if (src->m >= PALETTE_ANIM_START) has_anim = true;
+
 						/* Get brightest value (or default brightness if it's a black pixel). */
 						const uint8 rgb_max = max(src->r, max(src->g, src->b));
 						dst_mv->v = (rgb_max == 0) ? Blitter_32bppBase::DEFAULT_BRIGHTNESS : rgb_max;
@@ -118,6 +126,13 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 			(*nb_right).data = nb_pix_transp;
 		}
 	}
+
+	/* Store sprite flags. */
+	sd.flags = SF_NONE;
+	if (has_translucency) sd.flags |= SF_TRANSLUCENT;
+	if (!has_remap) sd.flags |= SF_NO_REMAP;
+	if (!has_anim) sd.flags |= SF_NO_ANIM;
+	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
 
 	return dst_sprite;
 }

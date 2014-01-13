@@ -49,6 +49,18 @@ public:
 		BT_NONE, ///< No specialisation for either case.
 	};
 
+	/** Helper for using specialised functions designed to prevent whenever it's possible things like:
+	 *  - IO (reading video buffer),
+	 *  - calculations (alpha blending),
+	 *  - heavy branching (remap lookups and animation buffer handling).
+	 */
+	enum SpriteFlags {
+		SF_NONE        = 0,
+		SF_TRANSLUCENT = 1 << 1, ///< The sprite has at least 1 translucent pixel.
+		SF_NO_REMAP    = 1 << 2, ///< The sprite has no remappable colour pixel.
+		SF_NO_ANIM     = 1 << 3, ///< The sprite has no palette animated pixel.
+	};
+
 	/** Data stored about a (single) sprite. */
 	struct SpriteInfo {
 		uint32 sprite_offset;    ///< The offset to the sprite data.
@@ -57,12 +69,15 @@ public:
 		uint16 sprite_width;     ///< The width of the sprite.
 	};
 	struct SpriteData {
+		SpriteFlags flags;
 		SpriteInfo infos[ZOOM_LVL_COUNT];
 		byte data[]; ///< Data, all zoomlevels.
 	};
 
 	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
 };
+
+DECLARE_ENUM_AS_BIT_SET(Blitter_32bppSSE_Base::SpriteFlags);
 
 /** The SSE2 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSE2 : public Blitter_32bppSimple, public Blitter_32bppSSE_Base {
