@@ -14,91 +14,10 @@
 
 #ifdef WITH_SSE
 
-#include "32bpp_simple.hpp"
-#include "emmintrin.h"
-
-#define META_LENGTH 2 ///< Number of uint32 inserted before each line of pixels in a sprite.
-#define MARGIN_NORMAL_THRESHOLD (zoom == ZOOM_LVL_OUT_32X ? 8 : 4) ///< Minimum width to use margins with BM_NORMAL.
-#define MARGIN_REMAP_THRESHOLD 4 ///< Minimum width to use margins with BM_COLOUR_REMAP.
-
-#ifdef _MSC_VER
-	#define ALIGN(n) __declspec(align(n))
-#else
-	#define ALIGN(n) __attribute__ ((aligned (n)))
+#ifndef SSE_VERSION
+#define SSE_VERSION 2
 #endif
-
-typedef union ALIGN(16) um128i {
-	__m128i m128i;
-	uint8 m128i_u8[16];
-	uint16 m128i_u16[8];
-	uint32 m128i_u32[4];
-	uint64 m128i_u64[2];
-} um128i;
-
-#define CLEAR_HIGH_BYTE_MASK        _mm_setr_epi8(-1,  0, -1,  0, -1,  0, -1,  0, -1,  0, -1,  0, -1,  0, -1,  0)
-#define ALPHA_CONTROL_MASK          _mm_setr_epi8( 6,  7,  6,  7,  6,  7, -1, -1, 14, 15, 14, 15, 14, 15, -1, -1)
-#define PACK_LOW_CONTROL_MASK       _mm_setr_epi8( 0,  2,  4, -1,  8, 10, 12, -1, -1, -1, -1, -1, -1, -1, -1, -1)
-#define PACK_HIGH_CONTROL_MASK      _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1,  0,  2,  4, -1,  8, 10, 12, -1)
-#define BRIGHTNESS_LOW_CONTROL_MASK _mm_setr_epi8( 1,  2,  1,  2,  1,  2,  0,  2,  3,  2,  3,  2,  3,  2,  0,  2)
-#define BRIGHTNESS_DIV_CLEANER      _mm_setr_epi8(-1,  1, -1,  1, -1,  1, -1,  0, -1,  1, -1,  1, -1,  1, -1,  0)
-#define OVERBRIGHT_PRESENCE_MASK    _mm_setr_epi8( 1,  0,  1,  0,  1,  0,  0,  0,  1,  0,  1,  0,  1,  0,  0,  0)
-#define OVERBRIGHT_VALUE_MASK       _mm_setr_epi8(-1,  0, -1,  0, -1,  0,  0,  0, -1,  0, -1,  0, -1,  0,  0,  0)
-#define OVERBRIGHT_CONTROL_MASK     _mm_setr_epi8( 0,  1,  0,  1,  0,  1,  7,  7,  2,  3,  2,  3,  2,  3,  7,  7)
-#define TRANSPARENT_NOM_BASE        _mm_setr_epi16(256, 256, 256, 256, 256, 256, 256, 256)
-
-#define EXTR32(m_from, m_rank) (*(um128i*) &m_from).m128i_u32[m_rank]
-#define EXTR64(m_from, m_rank) (*(um128i*) &m_from).m128i_u64[m_rank]
-#define INSR32(m_val, m_into, m_rank) { \
-	(*(um128i*) &m_into).m128i = _mm_insert_epi16((*(um128i*) &m_into).m128i, m_val, (m_rank)*2); \
-	(*(um128i*) &m_into).m128i = _mm_insert_epi16((*(um128i*) &m_into).m128i, (m_val) >> 16, (m_rank)*2 + 1); \
-}
-#define INSR64(m_val, m_into, m_rank) (*(um128i*) &m_into).m128i_u64[m_rank] = (m_val)
-
-#ifdef _SQ64
-	#define LOAD64(m_val, m_into) m_into = _mm_cvtsi64_si128(m_val);
-#else
-	#define LOAD64(m_val, m_into) INSR64(m_val, m_into, 0)
-#endif
-
-/* PUT_ALPHA_IN_FRONT_OF_RGB is redefined in 32bpp_ssse3.hpp. */
-#define PUT_ALPHA_IN_FRONT_OF_RGB(m_from, m_into) \
-	m_into = _mm_shufflelo_epi16(m_from, 0x3F); /* PSHUFLW, put alpha1 in front of each rgb1 */ \
-	m_into = _mm_shufflehi_epi16(m_into, 0x3F); /* PSHUFHW, put alpha2 in front of each rgb2 */
-
-/* PACK_AB_WITHOUT_SATURATION is redefined in 32bpp_ssse3.hpp. */
-#define PACK_AB_WITHOUT_SATURATION(m_from, m_into) \
-	m_from = _mm_and_si128(m_from, clear_hi);  /* PAND, wipe high bytes to keep low bytes when packing */ \
-	m_into = _mm_packus_epi16(m_from, m_from); /* PACKUSWB, pack 2 colours (with saturation) */
-
-/* Alpha blend 2 pixels. */
-#define ALPHA_BLEND_2() { \
-	__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128()); /* PUNPCKLBW, expand each uint8 into uint16 */ \
-	__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128()); \
-	\
-	__m128i alphaAB = _mm_cmpgt_epi16(srcAB, _mm_setzero_si128());   /* PCMPGTW, if (alpha > 0) a++; */ \
-	alphaAB = _mm_srli_epi16(alphaAB, 15); \
-	alphaAB = _mm_add_epi16(alphaAB, srcAB); \
-	PUT_ALPHA_IN_FRONT_OF_RGB(alphaAB, alphaAB); \
-	\
-	srcAB = _mm_sub_epi16(srcAB, dstAB);          /* PSUBW,    (r - Cr) */ \
-	srcAB = _mm_mullo_epi16(srcAB, alphaAB);      /* PMULLW, a*(r - Cr) */ \
-	srcAB = _mm_srli_epi16(srcAB, 8);             /* PSRLW,  a*(r - Cr)/256 */ \
-	srcAB = _mm_add_epi16(srcAB, dstAB);          /* PADDW,  a*(r - Cr)/256 + Cr */ \
-	PACK_AB_WITHOUT_SATURATION(srcAB, srcABCD); \
-}
-
-/* Darken 2 pixels.
- * rgb = rgb * ((256/4) * 4 - (alpha/4)) / ((256/4) * 4)
- */
-#define DARKEN_2() \
-	__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128()); \
-	__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128()); \
-	__m128i PUT_ALPHA_IN_FRONT_OF_RGB(srcAB, alphaAB); \
-	alphaAB = _mm_srli_epi16(alphaAB, 2); /* Reduce to 64 levels of shades so the max value fits in 16 bits. */ \
-	__m128i nom = _mm_sub_epi16(tr_nom_base, alphaAB); \
-	dstAB = _mm_mullo_epi16(dstAB, nom); \
-	dstAB = _mm_srli_epi16(dstAB, 8); \
-	dstAB = _mm_packus_epi16(dstAB, dstAB);
+#include "32bpp_sse_func.hpp"
 
 /** Base methods for 32bpp SSE blitters. */
 class Blitter_32bppSSE_Base {
@@ -138,14 +57,11 @@ public:
 	};
 
 	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
-	virtual Colour AdjustBrightness(Colour colour, uint8 brightness) = 0;
 };
 
 /** The SSE2 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSE2 : public Blitter_32bppSimple, public Blitter_32bppSSE_Base {
 public:
-	virtual Colour AdjustBrightness(Colour colour, uint8 brightness);
-	static Colour ReallyAdjustBrightness(Colour colour, uint8 brightness);
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);

@@ -73,8 +73,7 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 				for (uint x = (uint) effective_width / 2; x > 0; x--) {
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
-					ALPHA_BLEND_2();
-					_mm_storel_epi64((__m128i*) dst, srcABCD);
+					_mm_storel_epi64((__m128i*) dst, AlphaBlendTwoPixels(srcABCD, dstABCD, clear_hi, clear_hi));
 					src += 2;
 					dst += 2;
 				}
@@ -82,8 +81,7 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 				if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-					ALPHA_BLEND_2();
-					dst->data = _mm_cvtsi128_si32(srcABCD);
+					dst->data = _mm_cvtsi128_si32(AlphaBlendTwoPixels(srcABCD, dstABCD, clear_hi, clear_hi));
 				}
 				break;
 
@@ -94,7 +92,7 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					if (src_mv->m) {
 						const uint r = remap[src_mv->m];
 						if (r != 0) {
-							Colour remapped_colour = AdjustBrightness(this->LookupColourInPalette(r), src_mv->v);
+							Colour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
 							if (src->a == 255) {
 								*dst = remapped_colour;
 							} else {
@@ -108,7 +106,7 @@ inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 						if (src->a < 255) {
 bmcr_alpha_blend_single:
 							__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-							ALPHA_BLEND_2();
+							srcABCD = AlphaBlendTwoPixels(srcABCD, dstABCD, clear_hi, clear_hi);
 						}
 						dst->data = _mm_cvtsi128_si32(srcABCD);
 					}
@@ -123,8 +121,7 @@ bmcr_alpha_blend_single:
 				for (uint x = (uint) bp->width / 2; x > 0; x--) {
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
-					DARKEN_2();
-					_mm_storel_epi64((__m128i *) dst, dstAB);
+					_mm_storel_epi64((__m128i *) dst, DarkenTwoPixels(srcABCD, dstABCD, tr_nom_base, tr_nom_base));
 					src += 2;
 					dst += 2;
 				}
@@ -132,8 +129,7 @@ bmcr_alpha_blend_single:
 				if ((bt_last == BT_NONE && bp->width & 1) || bt_last == BT_ODD) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-					DARKEN_2();
-					dst->data = _mm_cvtsi128_si32(dstAB);
+					dst->data = _mm_cvtsi128_si32(DarkenTwoPixels(srcABCD, dstABCD, tr_nom_base, tr_nom_base));
 				}
 				break;
 		}
@@ -235,7 +231,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 						dst_mv->v = (rgb_max == 0) ? Blitter_32bppBase::DEFAULT_BRIGHTNESS : rgb_max;
 
 						/* Pre-convert the mapping channel to a RGB value. */
-						const Colour colour = AdjustBrightness(Blitter_32bppBase::LookupColourInPalette(src->m), dst_mv->v);
+						const Colour colour = AdjustBrightneSSE(Blitter_32bppBase::LookupColourInPalette(src->m), dst_mv->v);
 						dst_rgba->r = colour.r;
 						dst_rgba->g = colour.g;
 						dst_rgba->b = colour.b;
@@ -281,48 +277,5 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 
 	return dst_sprite;
 }
-
-/** ReallyAdjustBrightness() is not called that often.
- * Inlining this function implies a far jump, which has a huge latency.
- */
-inline Colour Blitter_32bppSSE2::AdjustBrightness(Colour colour, uint8 brightness)
-{
-	/* Shortcut for normal brightness. */
-	if (brightness == DEFAULT_BRIGHTNESS) return colour;
-
-	return Blitter_32bppSSE2::ReallyAdjustBrightness(colour, brightness);
-}
-
-IGNORE_UNINITIALIZED_WARNING_START
-Colour Blitter_32bppSSE2::ReallyAdjustBrightness(Colour colour, uint8 brightness)
-{
-	uint64 c16 = colour.b | (uint64) colour.g << 16 | (uint64) colour.r << 32;
-	c16 *= brightness;
-	uint64 c16_ob = c16; // Helps out of order execution.
-	c16 /= DEFAULT_BRIGHTNESS;
-	c16 &= 0x01FF01FF01FF;
-
-	/* Sum overbright (maximum for each rgb is 508, 9 bits, -255 is changed in -256 so we just have to take the 8 lower bits into account). */
-	c16_ob = (((c16_ob >> (8 + 7)) & 0x0100010001) * 0xFF) & c16;
-	const uint ob = ((uint16) c16_ob + (uint16) (c16_ob >> 16) + (uint16) (c16_ob >> 32)) / 2;
-
-	const uint32 alpha32 = colour.data & 0xFF000000;
-	__m128i ret;
-	LOAD64(c16, ret);
-	if (ob != 0) {
-		__m128i ob128 = _mm_cvtsi32_si128(ob);
-		ob128 = _mm_shufflelo_epi16(ob128, 0xC0);
-		__m128i white = OVERBRIGHT_VALUE_MASK;
-		__m128i c128 = ret;
-		ret = _mm_subs_epu16(white, c128); /* PSUBUSW,   (255 - rgb) */
-		ret = _mm_mullo_epi16(ret, ob128); /* PMULLW, ob*(255 - rgb) */
-		ret = _mm_srli_epi16(ret, 8);      /* PSRLW,  ob*(255 - rgb)/256 */
-		ret = _mm_add_epi16(ret, c128);    /* PADDW,  ob*(255 - rgb)/256 + rgb */
-	}
-
-	ret = _mm_packus_epi16(ret, ret);      /* PACKUSWB, saturate and pack. */
-	return alpha32 | _mm_cvtsi128_si32(ret);
-}
-IGNORE_UNINITIALIZED_WARNING_STOP
 
 #endif /* WITH_SSE */

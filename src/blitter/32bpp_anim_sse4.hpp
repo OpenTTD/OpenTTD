@@ -14,6 +14,9 @@
 
 #ifdef WITH_SSE
 
+#ifndef SSE_VERSION
+#define SSE_VERSION 4
+#endif
 #include "32bpp_anim.hpp"
 #include "32bpp_sse4.hpp"
 
@@ -28,11 +31,9 @@ public:
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last>
 	/* virtual */ void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	/* virtual */ Colour AdjustBrightness(Colour colour, uint8 brightness);
 	/* virtual */ Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) {
 		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
 	}
-
 	/* virtual */ const char *GetName() { return "32bpp-sse4-anim"; }
 };
 

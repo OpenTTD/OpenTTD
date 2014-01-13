@@ -14,41 +14,14 @@
 
 #ifdef WITH_SSE
 
-#include "32bpp_ssse3.hpp"
-#include "smmintrin.h"
-
-#undef EXTR32
-#define EXTR32(m_from, m_rank) _mm_extract_epi32((*(um128i*) &m_from).m128i, m_rank)
-#undef INSR32
-#define INSR32(m_val, m_into, m_rank) (*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, m_val, m_rank)
-
-IGNORE_UNINITIALIZED_WARNING_START
-#ifdef _SQ64
-	#undef INSR64
-	#define INSR64(m_val, m_into, m_rank) (*(um128i*) &m_into).m128i = _mm_insert_epi64((*(um128i*) &m_into).m128i, m_val, m_rank)
-#else
-	typedef union { uint64 u64; struct _u32 { uint32 low, high; } u32; } u6432;
-	#undef INSR64
-	#define INSR64(m_val, m_into, m_rank) { \
-		u6432 v; \
-		v.u64 = m_val; \
-		(*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, v.u32.low, (m_rank)*2); \
-		(*(um128i*) &m_into).m128i = _mm_insert_epi32((*(um128i*) &m_into).m128i, v.u32.high, (m_rank)*2 + 1); \
-	}
-
-	#undef LOAD64
-	#define LOAD64(m_val, m_into) \
-		m_into = _mm_cvtsi32_si128(m_val); \
-		INSR32((m_val) >> 32, m_into, 1);
+#ifndef SSE_VERSION
+#define SSE_VERSION 4
 #endif
-IGNORE_UNINITIALIZED_WARNING_STOP
+#include "32bpp_ssse3.hpp"
 
 /** The SSE4 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSE4 : public Blitter_32bppSSSE3 {
 public:
-	Colour AdjustBrightness(Colour colour, uint8 brightness);
-	static Colour ReallyAdjustBrightness(Colour colour, uint8 brightness);
-
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);

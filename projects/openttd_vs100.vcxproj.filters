@@ -2598,6 +2598,9 @@
     <ClInclude Include="..\src\blitter\32bpp_simple.hpp">
       <Filter>Blitters</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\blitter\32bpp_sse_func.hpp">
+      <Filter>Blitters</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\blitter\32bpp_sse2.cpp">
       <Filter>Blitters</Filter>
     </ClCompile>

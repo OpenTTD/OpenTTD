@@ -83,12 +83,12 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 					const byte m0 = mvX2;
 					if (m0 >= PALETTE_ANIM_START) {
 						const Colour c0 = (this->LookupColourInPalette(m0).data & 0x00FFFFFF) | (src[0].data & 0xFF000000);
-						INSR32(AdjustBrightness(c0, (byte) (mvX2 >> 8)).data, srcABCD, 0);
+						InsertFirstUint32(AdjustBrightneSSE(c0, (byte) (mvX2 >> 8)).data, srcABCD);
 					}
 					const byte m1 = mvX2 >> 16;
 					if (m1 >= PALETTE_ANIM_START) {
 						const Colour c1 = (this->LookupColourInPalette(m1).data & 0x00FFFFFF) | (src[1].data & 0xFF000000);
-						INSR32(AdjustBrightness(c1, (byte) (mvX2 >> 24)).data, srcABCD, 1);
+						InsertSecondUint32(AdjustBrightneSSE(c1, (byte) (mvX2 >> 24)).data, srcABCD);
 					}
 
 					/* Update anim buffer. */
@@ -118,7 +118,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 
 					/* Blend colours. */
 bmno_alpha_blend:
-					ALPHA_BLEND_2();
+					srcABCD = AlphaBlendTwoPixels(srcABCD, dstABCD, a_cm, pack_low_cm);
 bmno_full_opacity:
 					_mm_storel_epi64((__m128i *) dst, srcABCD);
 bmno_full_transparency:
@@ -132,20 +132,19 @@ bmno_full_transparency:
 					if (src->a == 0) {
 					} else if (src->a == 255) {
 						*anim = *(const uint16*) src_mv;
-						*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightness(LookupColourInPalette(src_mv->m), src_mv->v) : *src;
+						*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightneSSE(LookupColourInPalette(src_mv->m), src_mv->v) : *src;
 					} else {
 						*anim = 0;
 						__m128i srcABCD;
 						__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 						if (src_mv->m >= PALETTE_ANIM_START) {
-							Colour colour = AdjustBrightness(LookupColourInPalette(src_mv->m), src_mv->v);
+							Colour colour = AdjustBrightneSSE(LookupColourInPalette(src_mv->m), src_mv->v);
 							colour.a = src->a;
 							srcABCD = _mm_cvtsi32_si128(colour.data);
 						} else {
 							srcABCD = _mm_cvtsi32_si128(src->data);
 						}
-						ALPHA_BLEND_2();
-						dst->data = _mm_cvtsi128_si32(srcABCD);
+						dst->data = _mm_cvtsi128_si32(AlphaBlendTwoPixels(srcABCD, dstABCD, a_cm, pack_low_cm));
 					}
 				}
 				break;
@@ -162,24 +161,36 @@ bmno_full_transparency:
 					const uint m1 = (byte) (mvX2 >> 16);
 					const uint r1 = remap[m1];
 					if (mvX2 & 0x00FF00FF) {
-						/* Written so the compiler uses CMOV. */
-						const Colour src0 = src[0];
-						const Colour c0map = (this->LookupColourInPalette(r0).data & 0x00FFFFFF) | (src0.data & 0xFF000000);
-						Colour c0 = dst[0];
-						c0 = r0 == 0 ? c0 : c0map;
-						c0 = m0 != 0 ? c0 : src0;
-						srcABCD = _mm_cvtsi32_si128(c0.data);
+						#define CMOV_REMAP(m_colour, m_colour_init, m_src, m_m) \
+							/* Written so the compiler uses CMOV. */ \
+							Colour m_colour = m_colour_init; \
+							{ \
+							const Colour srcm = (Colour) (m_src); \
+							const uint m = (byte) (m_m); \
+							const uint r = remap[m]; \
+							const Colour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
+							m_colour = r == 0 ? m_colour : cmap; \
+							m_colour = m != 0 ? m_colour : srcm; \
+							}
+#ifdef _SQ64
+						uint64 srcs = _mm_cvtsi128_si64(srcABCD);
+						uint64 dsts = _mm_cvtsi128_si64(dstABCD);
+						uint64 remapped_src = 0;
+						CMOV_REMAP(c0, dsts, srcs, mvX2);
+						remapped_src = c0.data;
+						CMOV_REMAP(c1, dsts >> 32, srcs >> 32, mvX2 >> 16);
+						remapped_src |= (uint64) c1.data << 32;
+						srcABCD = _mm_cvtsi64_si128(remapped_src);
+#else
+						Colour remapped_src[2];
+						CMOV_REMAP(c0, _mm_cvtsi128_si32(dstABCD), _mm_cvtsi128_si32(srcABCD), mvX2);
+						remapped_src[0] = c0.data;
+						CMOV_REMAP(c1, dst[1], src[1], mvX2 >> 16);
+						remapped_src[1] = c1.data;
+						srcABCD = _mm_loadl_epi64((__m128i*) &remapped_src);
+#endif
 
-						const Colour src1 = src[1];
-						const Colour c1map = (this->LookupColourInPalette(r1).data & 0x00FFFFFF) | (src1.data & 0xFF000000);
-						Colour c1 = dst[1];
-						c1 = r1 == 0 ? c1 : c1map;
-						c1 = m1 != 0 ? c1 : src1;
-						INSR32(c1.data, srcABCD, 1);
-
-						if ((mvX2 & 0xFF00FF00) != 0x80008000) {
-							ADJUST_BRIGHTNESS_2(srcABCD, mvX2);
-						}
+						if ((mvX2 & 0xFF00FF00) != 0x80008000) srcABCD = AdjustBrightnessOfTwoPixels(srcABCD, mvX2);
 					}
 
 					/* Update anim buffer. */
@@ -211,7 +222,7 @@ bmno_full_transparency:
 
 					/* Blend colours. */
 bmcr_alpha_blend:
-					ALPHA_BLEND_2();
+					srcABCD = AlphaBlendTwoPixels(srcABCD, dstABCD, a_cm, pack_low_cm);
 bmcr_full_opacity:
 					_mm_storel_epi64((__m128i *) dst, srcABCD);
 bmcr_full_transparency:
@@ -229,7 +240,7 @@ bmcr_full_transparency:
 						const uint r = remap[src_mv->m];
 						*anim = (src->a == 255) ? r | ((uint16) src_mv->v << 8 ) : 0;
 						if (r != 0) {
-							Colour remapped_colour = AdjustBrightness(this->LookupColourInPalette(r), src_mv->v);
+							Colour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
 							if (src->a == 255) {
 								*dst = remapped_colour;
 							} else {
@@ -244,7 +255,7 @@ bmcr_full_transparency:
 						if (src->a < 255) {
 bmcr_alpha_blend_single:
 							__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-							ALPHA_BLEND_2();
+							srcABCD = AlphaBlendTwoPixels(srcABCD, dstABCD, a_cm, pack_low_cm);
 						}
 						dst->data = _mm_cvtsi128_si32(srcABCD);
 					}
@@ -256,8 +267,7 @@ bmcr_alpha_blend_single:
 				for (uint x = (uint) bp->width / 2; x > 0; x--) {
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
-					DARKEN_2();
-					_mm_storel_epi64((__m128i *) dst, dstAB);
+					_mm_storel_epi64((__m128i *) dst, DarkenTwoPixels(srcABCD, dstABCD, a_cm, tr_nom_base));
 					src += 2;
 					dst += 2;
 					anim += 2;
@@ -268,8 +278,7 @@ bmcr_alpha_blend_single:
 				if ((bt_last == BT_NONE && bp->width & 1) || bt_last == BT_ODD) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
-					DARKEN_2();
-					dst->data = _mm_cvtsi128_si32(dstAB);
+					dst->data = _mm_cvtsi128_si32(DarkenTwoPixels(srcABCD, dstABCD, a_cm, tr_nom_base));
 					if (src[0].a) anim[0] = 0;
 				}
 				break;
@@ -316,15 +325,6 @@ void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE>(bp, zoom); return;
 		default: NOT_REACHED();
 	}
-}
-
-/** Same code as seen in 32bpp_sse2.cpp but some macros are not the same. */
-inline Colour Blitter_32bppSSE4_Anim::AdjustBrightness(Colour colour, uint8 brightness)
-{
-	/* Shortcut for normal brightness. */
-	if (brightness == DEFAULT_BRIGHTNESS) return colour;
-
-	return Blitter_32bppSSE4::ReallyAdjustBrightness(colour, brightness);
 }
 
 #endif /* WITH_SSE */
