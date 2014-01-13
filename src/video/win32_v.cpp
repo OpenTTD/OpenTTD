@@ -1077,7 +1077,7 @@ static bool AllocateDibSection(int w, int h, bool force)
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
 	bi->bmiHeader.biWidth = _wnd.width = w;
-	bi->bmiHeader.biHeight = -(_wnd.height = h+1); // Allocate extra room to prevent out-of-bounds when SSE reads a 16B block at the end of the buffer.
+	bi->bmiHeader.biHeight = -(_wnd.height = h);
 
 	bi->bmiHeader.biPlanes = 1;
 	bi->bmiHeader.biBitCount = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();

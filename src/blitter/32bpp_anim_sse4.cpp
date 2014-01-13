@@ -80,10 +80,11 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 					}
 
 					case RM_WITH_SKIP: {
-						uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-						__m128i srcABCD = _mm_loadu_si128((const __m128i*) src);
-						__m128i dstABCD = _mm_loadu_si128((__m128i*) dst);
 						for (uint x = (uint) effective_width/2; x != 0; x--) {
+							uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
+							__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+							__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
+
 							/* Remap colours. */
 							const byte m0 = mvX2;
 							if (m0 >= PALETTE_ANIM_START) {
@@ -125,42 +126,32 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 bmno_alpha_blend:
 							ALPHA_BLEND_2(pack_low_cm);
 bmno_full_opacity:
-							srcABCD = _mm_blend_epi16(srcABCD, dstABCD, 0xF0);
-
-							src_mv += 2;
-							mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-							src += 2;
-							anim += 2;
-							dstABCD = _mm_loadu_si128((__m128i*) (dst+2));
-							_mm_storeu_si128((__m128i *) dst, srcABCD);
-							srcABCD = _mm_loadu_si128((const __m128i*) src);
-							dst += 2;
-							continue;
-
+							_mm_storel_epi64((__m128i *) dst, srcABCD);
 bmno_full_transparency:
 							src_mv += 2;
-							mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-							dst += 2;
 							src += 2;
 							anim += 2;
-							dstABCD = _mm_loadu_si128((__m128i*) dst);
-							srcABCD = _mm_loadu_si128((const __m128i*) src);
+							dst += 2;
 						}
 
 						if (bt_last == BT_ODD) {
 							if (src->a == 0) {
 							} else if (src->a == 255) {
-								*anim = (uint16) mvX2;
-								*dst = ((byte) mvX2 >= PALETTE_ANIM_START) ? AdjustBrightness(LookupColourInPalette((byte) mvX2), (byte) (mvX2 >> 8)) : *src;
+								*anim = *(const uint16*) src_mv;
+								*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightness(LookupColourInPalette(src_mv->m), src_mv->v) : *src;
 							} else {
 								*anim = 0;
-								if ((byte) mvX2 >= PALETTE_ANIM_START) {
-									ALIGN(16) Colour colour = AdjustBrightness(LookupColourInPalette((byte) mvX2), (byte) (mvX2 >> 8));
+								__m128i srcABCD;
+								__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
+								if (src_mv->m >= PALETTE_ANIM_START) {
+									Colour colour = AdjustBrightness(LookupColourInPalette(src_mv->m), src_mv->v);
 									colour.a = src->a;
-									srcABCD = _mm_load_si128((__m128i*) &colour);
+									srcABCD = _mm_cvtsi32_si128(colour.data);
+								} else {
+									srcABCD = _mm_cvtsi32_si128(src->data);
 								}
 								ALPHA_BLEND_2(pack_low_cm);
-								(*dst).data = EXTR32(srcABCD, 0);
+								dst->data = _mm_cvtsi128_si32(srcABCD);
 							}
 						}
 						break;
@@ -181,18 +172,18 @@ bmno_full_transparency:
 						const int width_diff = si->sprite_width - bp->width;
 						effective_width = bp->width - (int) src_rgba_line[0].data;
 						const int delta_diff = (int) src_rgba_line[1].data - width_diff;
-						const int nd = effective_width - delta_diff;
-						effective_width = delta_diff > 0 ? nd : effective_width;
+						const int new_width = effective_width - delta_diff;
+						effective_width = delta_diff > 0 ? new_width : effective_width;
 						if (effective_width <= 0) break;
 						/* FALLTHROUGH */
 					}
 
 					case RM_WITH_SKIP: {
-						uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-						__m128i srcABCD = _mm_loadu_si128((const __m128i*) src);
-						__m128i dstABCD = _mm_loadu_si128((__m128i*) dst);
-
 						for (uint x = (uint) effective_width / 2; x != 0; x--) {
+							uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
+							__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+							__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
+
 							/* Remap colours. */
 							const uint m0 = (byte) mvX2;
 							const uint r0 = remap[m0];
@@ -250,53 +241,40 @@ bmno_full_transparency:
 bmcr_alpha_blend:
 							ALPHA_BLEND_2(pack_low_cm);
 bmcr_full_opacity:
-							srcABCD = _mm_blend_epi16(srcABCD, dstABCD, 0xF0);
-
-							src += 2;
-							src_mv += 2;
-							anim += 2;
-							mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-							dstABCD = _mm_loadu_si128((__m128i*) (dst+2));
-							_mm_storeu_si128((__m128i *) dst, srcABCD);
-							srcABCD = _mm_loadu_si128((const __m128i*) src);
-							dst += 2;
-							continue;
-
+							_mm_storel_epi64((__m128i *) dst, srcABCD);
 bmcr_full_transparency:
 							src_mv += 2;
-							mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
 							dst += 2;
 							src += 2;
 							anim += 2;
-							dstABCD = _mm_loadu_si128((__m128i*) dst);
-							srcABCD = _mm_loadu_si128((const __m128i*) src);
 						}
 
 						if (effective_width & 1) {
 							/* In case the m-channel is zero, do not remap this pixel in any way. */
-							if (src->a == 0) {
-							} else if ((byte) mvX2 != 0) {
-								const uint r = remap[(byte) mvX2];
-								*anim = (src->a == 255) ? (r | ((uint16) mvX2 & 0xFF00)) : 0;
+							__m128i srcABCD;
+							if (src->a == 0) break;
+							if (src_mv->m) {
+								const uint r = remap[src_mv->m];
+								*anim = (src->a == 255) ? r | ((uint16) src_mv->v << 8 ) : 0;
 								if (r != 0) {
-									Colour remapped_colour = AdjustBrightness(LookupColourInPalette(r), (byte) (mvX2 >> 8));
+									Colour remapped_colour = AdjustBrightness(this->LookupColourInPalette(r), src_mv->v);
 									if (src->a == 255) {
 										*dst = remapped_colour;
 									} else {
 										remapped_colour.a = src->a;
-										INSR32(remapped_colour.data, srcABCD, 0);
+										srcABCD = _mm_cvtsi32_si128(remapped_colour.data);
 										goto bmcr_alpha_blend_single;
 									}
 								}
 							} else {
 								*anim = 0;
-								if (src->a == 255) {
-									*dst = *src;
-								} else {
+								srcABCD = _mm_cvtsi32_si128(src->data);
+								if (src->a < 255) {
 bmcr_alpha_blend_single:
+									__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 									ALPHA_BLEND_2(pack_low_cm);
-									(*dst).data = EXTR32(srcABCD, 0);
 								}
+								dst->data = _mm_cvtsi128_si32(srcABCD);
 							}
 						}
 						break;
@@ -309,29 +287,27 @@ bmcr_alpha_blend_single:
 
 			case BM_TRANSPARENT: {
 				/* Make the current colour a bit more black, so it looks like this image is transparent. */
-				__m128i srcABCD = _mm_loadu_si128((const __m128i*) src);
-				__m128i dstABCD = _mm_loadu_si128((__m128i*) dst);
 				for (uint x = (uint) bp->width / 2; x > 0; x--) {
+					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
 					__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128());
 					__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128());
-					__m128i dstCD = _mm_unpackhi_epi8(dstABCD, _mm_setzero_si128());
 					__m128i alphaAB = _mm_shuffle_epi8(srcAB, a_cm);
 					alphaAB = _mm_srli_epi16(alphaAB, 2); // Reduce to 64 levels of shades so the max value fits in 16 bits.
 					__m128i nom = _mm_sub_epi16(tr_nom_base, alphaAB);
 					dstAB = _mm_mullo_epi16(dstAB, nom);
 					dstAB = _mm_srli_epi16(dstAB, 8);
-					dstAB = _mm_packus_epi16(dstAB, dstCD);
-					Colour *old_dst = dst;
+					dstAB = _mm_packus_epi16(dstAB, dstAB);
+					_mm_storel_epi64((__m128i *) dst, dstAB);
 					src += 2;
 					dst += 2;
 					anim += 2;
-					dstABCD = _mm_loadu_si128((__m128i*) dst);
-					_mm_storeu_si128((__m128i *) old_dst, dstAB);
-					srcABCD = _mm_loadu_si128((const __m128i*) src);
 					if (src[-2].a) anim[-2] = 0;
 					if (src[-1].a) anim[-1] = 0;
 				}
 				if (bp->width & 1) {
+					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
+					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 					__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128());
 					__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128());
 					__m128i alphaAB = _mm_shuffle_epi8(srcAB, a_cm);
@@ -340,7 +316,7 @@ bmcr_alpha_blend_single:
 					dstAB = _mm_mullo_epi16(dstAB, nom);
 					dstAB = _mm_srli_epi16(dstAB, 8);
 					dstAB = _mm_packus_epi16(dstAB, dstAB);
-					(*dst).data = EXTR32(dstAB, 0);
+					dst->data = _mm_cvtsi128_si32(dstAB);
 					if (src[0].a) anim[0] = 0;
 				}
 				break;

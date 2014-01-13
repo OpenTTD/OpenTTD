@@ -76,24 +76,19 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					}
 
 					case RM_WITH_SKIP: {
-						__m128i srcABCD = _mm_loadu_si128((const __m128i*) src);
-						__m128i dstABCD = _mm_loadu_si128((__m128i*) dst);
 						for (uint x = (uint) effective_width / 2; x > 0; x--) {
+							__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+							__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
 							ALPHA_BLEND_2(pack_low_cm);
-							srcABCD = _mm_blend_epi16(srcABCD, dstABCD, 0xF0);
-							Colour *old_dst = dst;
+							_mm_storel_epi64((__m128i*) dst, srcABCD);
 							src += 2;
 							dst += 2;
-							/* It is VERY important to read next data before it gets invalidated in cpu cache.
-							 * And PEXTR latency is a real problem here.
-							 */
-							dstABCD = _mm_loadu_si128((__m128i*) dst);
-							_mm_storeu_si128((__m128i *) old_dst, srcABCD);
-							srcABCD = _mm_loadu_si128((const __m128i*) src);
 						}
 						if (bt_last == BT_ODD) {
+							__m128i srcABCD = _mm_cvtsi32_si128(src->data);
+							__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 							ALPHA_BLEND_2(pack_low_cm);
-							*dst = (Colour) EXTR32(srcABCD, 0);
+							dst->data = _mm_cvtsi128_si32(srcABCD);
 						}
 						break;
 					}
@@ -112,18 +107,18 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 						const int width_diff = si->sprite_width - bp->width;
 						effective_width = bp->width - (int) src_rgba_line[0].data;
 						const int delta_diff = (int) src_rgba_line[1].data - width_diff;
-						const int nd = effective_width - delta_diff;
-						effective_width = delta_diff > 0 ? nd : effective_width;
+						const int new_width = effective_width - delta_diff;
+						effective_width = delta_diff > 0 ? new_width : effective_width;
 						if (effective_width <= 0) break;
 						/* FALLTHROUGH */
 					}
 
 					case RM_WITH_SKIP: {
-						__m128i srcABCD = _mm_loadu_si128((const __m128i*) src);
-						__m128i dstABCD = _mm_loadu_si128((__m128i*) dst);
-						uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-
 						for (uint x = (uint) effective_width / 2; x > 0; x--) {
+							__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+							__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
+							uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
+
 							/* Remap colours. */
 							if (mvX2 & 0x00FF00FF) {
 								/* Written so the compiler uses CMOV. */
@@ -152,38 +147,35 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 							/* Blend colours. */
 							ALPHA_BLEND_2(pack_low_cm);
-							srcABCD = _mm_blend_epi16(srcABCD, dstABCD, 0xF0);
-							Colour *old_dst = dst;
+							_mm_storel_epi64((__m128i *) dst, srcABCD);
 							dst += 2;
 							src += 2;
 							src_mv += 2;
-							dstABCD = _mm_loadu_si128((__m128i*) dst);
-							_mm_storeu_si128((__m128i *) old_dst, srcABCD);
-							mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
-							srcABCD = _mm_loadu_si128((const __m128i*) src);
 						}
 
 						if (effective_width & 1) {
 							/* In case the m-channel is zero, do not remap this pixel in any way. */
-							if ((byte) mvX2 == 0) {
-								if (src->a < 255) {
-									ALPHA_BLEND_2(pack_low_cm);
-									(*dst).data = EXTR32(srcABCD, 0);
-								} else
-									*dst = *src;
-							} else {
-								const uint r = remap[(byte) mvX2];
+							__m128i srcABCD;
+							if (src_mv->m) {
+								const uint r = remap[src_mv->m];
 								if (r != 0) {
-									Colour remapped_colour = AdjustBrightness(this->LookupColourInPalette(r), (byte) (mvX2 >> 8));
+									Colour remapped_colour = AdjustBrightness(this->LookupColourInPalette(r), src_mv->v);
 									if (src->a == 255) {
 										*dst = remapped_colour;
 									} else {
 										remapped_colour.a = src->a;
-										INSR32(remapped_colour.data, srcABCD, 0);
-										ALPHA_BLEND_2(pack_low_cm);
-										(*dst).data = EXTR32(srcABCD, 0);
+										srcABCD = _mm_cvtsi32_si128(remapped_colour.data);
+										goto bmcr_alpha_blend_single;
 									}
 								}
+							} else {
+								srcABCD = _mm_cvtsi32_si128(src->data);
+								if (src->a < 255) {
+bmcr_alpha_blend_single:
+									__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
+									ALPHA_BLEND_2(pack_low_cm);
+								}
+								dst->data = _mm_cvtsi128_si32(srcABCD);
 							}
 						}
 						break;
@@ -199,26 +191,24 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 				/* Make the current colour a bit more black, so it looks like this image is transparent.
 				 * rgb = rgb * ((256/4) * 4 - (alpha/4)) / ((256/4) * 4)
 				 */
-				__m128i srcABCD = _mm_loadu_si128((const __m128i*) src);
-				__m128i dstABCD = _mm_loadu_si128((__m128i*) dst);
 				for (uint x = (uint) bp->width / 2; x > 0; x--) {
+					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
+					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
 					__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128());
 					__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128());
-					__m128i dstCD = _mm_unpackhi_epi8(dstABCD, _mm_setzero_si128());
 					__m128i alphaAB = _mm_shuffle_epi8(srcAB, a_cm);
 					alphaAB = _mm_srli_epi16(alphaAB, 2); // Reduce to 64 levels of shades so the max value fits in 16 bits.
 					__m128i nom = _mm_sub_epi16(tr_nom_base, alphaAB);
 					dstAB = _mm_mullo_epi16(dstAB, nom);
 					dstAB = _mm_srli_epi16(dstAB, 8);
-					dstAB = _mm_packus_epi16(dstAB, dstCD);
-					Colour *old_dst = dst;
+					dstAB = _mm_packus_epi16(dstAB, dstAB);
+					_mm_storel_epi64((__m128i *) dst, dstAB);
 					src += 2;
 					dst += 2;
-					dstABCD = _mm_loadu_si128((__m128i*) dst);
-					_mm_storeu_si128((__m128i *) old_dst, dstAB);
-					srcABCD = _mm_loadu_si128((const __m128i*) src);
 				}
 				if (bp->width & 1) {
+					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
+					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 					__m128i srcAB = _mm_unpacklo_epi8(srcABCD, _mm_setzero_si128());
 					__m128i dstAB = _mm_unpacklo_epi8(dstABCD, _mm_setzero_si128());
 					__m128i alphaAB = _mm_shuffle_epi8(srcAB, a_cm);
@@ -227,7 +217,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					dstAB = _mm_mullo_epi16(dstAB, nom);
 					dstAB = _mm_srli_epi16(dstAB, 8);
 					dstAB = _mm_packus_epi16(dstAB, dstAB);
-					(*dst).data = EXTR32(dstAB, 0);
+					dst->data = _mm_cvtsi128_si32(dstAB);
 				}
 
 				break;
@@ -290,7 +280,7 @@ inline Colour Blitter_32bppSSE4::AdjustBrightness(Colour colour, uint8 brightnes
 IGNORE_UNINITIALIZED_WARNING_START
 /* static */ Colour Blitter_32bppSSE4::ReallyAdjustBrightness(Colour colour, uint8 brightness)
 {
-	ALIGN(16) uint64 c16 = colour.b | (uint64) colour.g << 16 | (uint64) colour.r << 32;
+	uint64 c16 = colour.b | (uint64) colour.g << 16 | (uint64) colour.r << 32;
 	c16 *= brightness;
 	uint64 c16_ob = c16; // Helps out of order execution.
 	c16 /= DEFAULT_BRIGHTNESS;
@@ -317,7 +307,7 @@ IGNORE_UNINITIALIZED_WARNING_START
 	}
 
 	ret = _mm_packus_epi16(ret, ret);      /* PACKUSWB, saturate and pack. */
-	return alpha32 | EXTR32(ret, 0);
+	return alpha32 | _mm_cvtsi128_si32(ret);
 }
 IGNORE_UNINITIALIZED_WARNING_STOP
 
