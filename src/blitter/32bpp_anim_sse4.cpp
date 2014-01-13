@@ -28,7 +28,7 @@ static FBlitter_32bppSSE4_Anim iFBlitter_32bppSSE4_Anim;
  * @param zoom zoom level at which we are drawing
  */
 IGNORE_UNINITIALIZED_WARNING_START
-template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last>
+template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last, bool translucent, bool animated>
 inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 {
 	const byte * const remap = bp->remap;
@@ -75,46 +75,70 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 
 		switch (mode) {
 			default:
+				if (!translucent) {
+					for (uint x = (uint) effective_width; x > 0; x--) {
+						if (src->a) {
+							if (animated) {
+								*anim = *(const uint16*) src_mv;
+								*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightneSSE(this->LookupColourInPalette(src_mv->m), src_mv->v) : src->data;
+							} else {
+								*anim = 0;
+								*dst = *src;
+							}
+						}
+						if (animated) src_mv++;
+						anim++;
+						src++;
+						dst++;
+					}
+					break;
+				}
+
 				for (uint x = (uint) effective_width/2; x != 0; x--) {
 					uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
 
-					/* Remap colours. */
-					const byte m0 = mvX2;
-					if (m0 >= PALETTE_ANIM_START) {
-						const Colour c0 = (this->LookupColourInPalette(m0).data & 0x00FFFFFF) | (src[0].data & 0xFF000000);
-						InsertFirstUint32(AdjustBrightneSSE(c0, (byte) (mvX2 >> 8)).data, srcABCD);
-					}
-					const byte m1 = mvX2 >> 16;
-					if (m1 >= PALETTE_ANIM_START) {
-						const Colour c1 = (this->LookupColourInPalette(m1).data & 0x00FFFFFF) | (src[1].data & 0xFF000000);
-						InsertSecondUint32(AdjustBrightneSSE(c1, (byte) (mvX2 >> 24)).data, srcABCD);
-					}
+					if (animated) {
+						/* Remap colours. */
+						const byte m0 = mvX2;
+						if (m0 >= PALETTE_ANIM_START) {
+							const Colour c0 = (this->LookupColourInPalette(m0).data & 0x00FFFFFF) | (src[0].data & 0xFF000000);
+							InsertFirstUint32(AdjustBrightneSSE(c0, (byte) (mvX2 >> 8)).data, srcABCD);
+						}
+						const byte m1 = mvX2 >> 16;
+						if (m1 >= PALETTE_ANIM_START) {
+							const Colour c1 = (this->LookupColourInPalette(m1).data & 0x00FFFFFF) | (src[1].data & 0xFF000000);
+							InsertSecondUint32(AdjustBrightneSSE(c1, (byte) (mvX2 >> 24)).data, srcABCD);
+						}
 
-					/* Update anim buffer. */
-					const byte a0 = src[0].a;
-					const byte a1 = src[1].a;
-					uint32 anim01 = 0;
-					if (a0 == 255) {
-						if (a1 == 255) {
-							*(uint32*) anim = mvX2;
-							goto bmno_full_opacity;
+						/* Update anim buffer. */
+						const byte a0 = src[0].a;
+						const byte a1 = src[1].a;
+						uint32 anim01 = 0;
+						if (a0 == 255) {
+							if (a1 == 255) {
+								*(uint32*) anim = mvX2;
+								goto bmno_full_opacity;
+							}
+							anim01 = (uint16) mvX2;
+						} else if (a0 == 0) {
+							if (a1 == 0) {
+								goto bmno_full_transparency;
+							} else {
+								if (a1 == 255) anim[1] = (uint16) (mvX2 >> 16);
+								goto bmno_alpha_blend;
+							}
 						}
-						anim01 = (uint16) mvX2;
-					} else if (a0 == 0) {
-						if (a1 == 0) {
-							goto bmno_full_transparency;
+						if (a1 > 0) {
+							if (a1 == 255) anim01 |= mvX2 & 0xFFFF0000;
+							*(uint32*) anim = anim01;
 						} else {
-							if (a1 == 255) anim[1] = (uint16) (mvX2 >> 16);
-							goto bmno_alpha_blend;
+							anim[0] = (uint16) anim01;
 						}
-					}
-					if (a1 > 0) {
-						if (a1 == 255) anim01 |= mvX2 & 0xFFFF0000;
-						*(uint32*) anim = anim01;
 					} else {
-						anim[0] = (uint16) anim01;
+						if (src[0].a) anim[0] = 0;
+						if (src[1].a) anim[1] = 0;
 					}
 
 					/* Blend colours. */
@@ -175,18 +199,19 @@ bmno_full_transparency:
 							}
 #ifdef _SQ64
 						uint64 srcs = _mm_cvtsi128_si64(srcABCD);
-						uint64 dsts = _mm_cvtsi128_si64(dstABCD);
+						uint64 dsts;
+						if (animated) dsts = _mm_cvtsi128_si64(dstABCD);
 						uint64 remapped_src = 0;
-						CMOV_REMAP(c0, dsts, srcs, mvX2);
+						CMOV_REMAP(c0, animated ? dsts : 0, srcs, mvX2);
 						remapped_src = c0.data;
-						CMOV_REMAP(c1, dsts >> 32, srcs >> 32, mvX2 >> 16);
+						CMOV_REMAP(c1, animated ? dsts >> 32 : 0, srcs >> 32, mvX2 >> 16);
 						remapped_src |= (uint64) c1.data << 32;
 						srcABCD = _mm_cvtsi64_si128(remapped_src);
 #else
 						Colour remapped_src[2];
-						CMOV_REMAP(c0, _mm_cvtsi128_si32(dstABCD), _mm_cvtsi128_si32(srcABCD), mvX2);
+						CMOV_REMAP(c0, animated ? _mm_cvtsi128_si32(dstABCD) : 0, _mm_cvtsi128_si32(srcABCD), mvX2);
 						remapped_src[0] = c0.data;
-						CMOV_REMAP(c1, dst[1], src[1], mvX2 >> 16);
+						CMOV_REMAP(c1, animated ? dst[1] : 0, src[1], mvX2 >> 16);
 						remapped_src[1] = c1.data;
 						srcABCD = _mm_loadl_epi64((__m128i*) &remapped_src);
 #endif
@@ -195,30 +220,35 @@ bmno_full_transparency:
 					}
 
 					/* Update anim buffer. */
-					const byte a0 = src[0].a;
-					const byte a1 = src[1].a;
-					uint32 anim01 = mvX2 & 0xFF00FF00;
-					if (a0 == 255) {
-						anim01 |= r0;
-						if (a1 == 255) {
-							*(uint32*) anim = anim01 | (r1 << 16);
-							goto bmcr_full_opacity;
-						}
-					} else if (a0 == 0) {
-						if (a1 == 0) {
-							goto bmcr_full_transparency;
-						} else {
+					if (animated) {
+						const byte a0 = src[0].a;
+						const byte a1 = src[1].a;
+						uint32 anim01 = mvX2 & 0xFF00FF00;
+						if (a0 == 255) {
+							anim01 |= r0;
 							if (a1 == 255) {
-								anim[1] = r1 | (anim01 >> 16);
+								*(uint32*) anim = anim01 | (r1 << 16);
+								goto bmcr_full_opacity;
 							}
-							goto bmcr_alpha_blend;
+						} else if (a0 == 0) {
+							if (a1 == 0) {
+								goto bmcr_full_transparency;
+							} else {
+								if (a1 == 255) {
+									anim[1] = r1 | (anim01 >> 16);
+								}
+								goto bmcr_alpha_blend;
+							}
 						}
-					}
-					if (a1 > 0) {
-						if (a1 == 255) anim01 |= r1 << 16;
-						*(uint32*) anim = anim01;
+						if (a1 > 0) {
+							if (a1 == 255) anim01 |= r1 << 16;
+							*(uint32*) anim = anim01;
+						} else {
+							anim[0] = (uint16) anim01;
+						}
 					} else {
-						anim[0] = (uint16) anim01;
+						if (src[0].a) anim[0] = 0;
+						if (src[1].a) anim[1] = 0;
 					}
 
 					/* Blend colours. */
@@ -239,7 +269,7 @@ bmcr_full_transparency:
 					if (src->a == 0) break;
 					if (src_mv->m) {
 						const uint r = remap[src_mv->m];
-						*anim = (src->a == 255) ? r | ((uint16) src_mv->v << 8 ) : 0;
+						*anim = (animated && src->a == 255) ? r | ((uint16) src_mv->v << 8 ) : 0;
 						if (r != 0) {
 							Colour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
 							if (src->a == 255) {
@@ -303,28 +333,46 @@ IGNORE_UNINITIALIZED_WARNING_STOP
  */
 void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
+	const Blitter_32bppSSE_Base::SpriteFlags sprite_flags = ((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags;
 	switch (mode) {
-		case BM_NORMAL: {
+		default: {
+bm_normal:
 			if (bp->skip_left != 0 || bp->width <= MARGIN_NORMAL_THRESHOLD) {
 				const BlockType bt_last = (BlockType) (bp->width & 1);
-				switch (bt_last) {
-					case BT_EVEN: Draw<BM_NORMAL, RM_WITH_SKIP, BT_EVEN>(bp, zoom); return;
-					case BT_ODD:  Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD>(bp, zoom); return;
-					default: NOT_REACHED();
+				if (bt_last == BT_EVEN) {
+					if (sprite_flags & SF_NO_ANIM) Draw<BM_NORMAL, RM_WITH_SKIP, BT_EVEN, true, false>(bp, zoom);
+					else                           Draw<BM_NORMAL, RM_WITH_SKIP, BT_EVEN, true, true>(bp, zoom);
+				} else {
+					if (sprite_flags & SF_NO_ANIM) Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD, true, false>(bp, zoom);
+					else                           Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD, true, true>(bp, zoom);
 				}
 			} else {
-				Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE>(bp, zoom); return;
+#ifdef _SQ64
+				if (sprite_flags & SF_TRANSLUCENT) {
+					if (sprite_flags & SF_NO_ANIM) Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, true, false>(bp, zoom);
+					else                           Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, true, true>(bp, zoom);
+				} else {
+					if (sprite_flags & SF_NO_ANIM) Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, false, false>(bp, zoom);
+					else                           Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, false, true>(bp, zoom);
+				}
+#else
+				if (sprite_flags & SF_NO_ANIM) Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, true, false>(bp, zoom);
+				else                           Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, true, true>(bp, zoom);
+#endif
 			}
 			break;
 		}
 		case BM_COLOUR_REMAP:
+			if (sprite_flags & SF_NO_REMAP) goto bm_normal;
 			if (bp->skip_left != 0 || bp->width <= MARGIN_REMAP_THRESHOLD) {
-				Draw<BM_COLOUR_REMAP, RM_WITH_SKIP, BT_NONE>(bp, zoom); return;
+				if (sprite_flags & SF_NO_ANIM) Draw<BM_COLOUR_REMAP, RM_WITH_SKIP, BT_NONE, true, false>(bp, zoom);
+				else                           Draw<BM_COLOUR_REMAP, RM_WITH_SKIP, BT_NONE, true, true>(bp, zoom);
 			} else {
-				Draw<BM_COLOUR_REMAP, RM_WITH_MARGIN, BT_NONE>(bp, zoom); return;
+				if (sprite_flags & SF_NO_ANIM) Draw<BM_COLOUR_REMAP, RM_WITH_MARGIN, BT_NONE, true, false>(bp, zoom);
+				else                           Draw<BM_COLOUR_REMAP, RM_WITH_MARGIN, BT_NONE, true, true>(bp, zoom);
 			}
-		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE>(bp, zoom); return;
-		default: NOT_REACHED();
+			break;
+		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 	}
 }
 

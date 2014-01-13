@@ -33,7 +33,7 @@ class Blitter_32bppSSE4_Anim FINAL : public Blitter_32bppAnim, public Blitter_32
 private:
 
 public:
-	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last>
+	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent, bool animated>
 	/* virtual */ void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	/* virtual */ Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) {

@@ -19,7 +19,8 @@ static inline void InsertFirstUint32(const uint32 value, __m128i &into)
 #if (SSE_VERSION >= 4)
 	into = _mm_insert_epi32(into, value, 0);
 #else
-	NOT_REACHED();
+	into = _mm_insert_epi16(into, value, 0);
+	into = _mm_insert_epi16(into, value >> 16, 1);
 #endif
 }
 
@@ -192,7 +193,7 @@ static inline __m128i AdjustBrightnessOfTwoPixels(__m128i from, uint32 brightnes
  * @param zoom zoom level at which we are drawing
  */
 IGNORE_UNINITIALIZED_WARNING_START
-template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last>
+template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last, bool translucent>
 #if (SSE_VERSION == 2)
 inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 #elif (SSE_VERSION == 3)
@@ -254,6 +255,15 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 		switch (mode) {
 			default:
+				if (!translucent) {
+					for (uint x = (uint) effective_width; x > 0; x--) {
+						if (src->a) *dst = *src;
+						src++;
+						dst++;
+					}
+					break;
+				}
+
 				for (uint x = (uint) effective_width / 2; x > 0; x--) {
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
@@ -278,9 +288,9 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 					/* Remap colours. */
 					if (mvX2 & 0x00FF00FF) {
-						#define CMOV_REMAP(m_colour, m_src, m_m) \
+						#define CMOV_REMAP(m_colour, m_colour_init, m_src, m_m) \
 							/* Written so the compiler uses CMOV. */ \
-							Colour m_colour = 0; \
+							Colour m_colour = m_colour_init; \
 							{ \
 							const Colour srcm = (Colour) (m_src); \
 							const uint m = (byte) (m_m); \
@@ -292,16 +302,16 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 #ifdef _SQ64
 						uint64 srcs = _mm_cvtsi128_si64(srcABCD);
 						uint64 remapped_src = 0;
-						CMOV_REMAP(c0, srcs, mvX2);
+						CMOV_REMAP(c0, 0, srcs, mvX2);
 						remapped_src = c0.data;
-						CMOV_REMAP(c1, srcs >> 32, mvX2 >> 16);
+						CMOV_REMAP(c1, 0, srcs >> 32, mvX2 >> 16);
 						remapped_src |= (uint64) c1.data << 32;
 						srcABCD = _mm_cvtsi64_si128(remapped_src);
 #else
 						Colour remapped_src[2];
-						CMOV_REMAP(c0, _mm_cvtsi128_si32(srcABCD), mvX2);
+						CMOV_REMAP(c0, 0, _mm_cvtsi128_si32(srcABCD), mvX2);
 						remapped_src[0] = c0.data;
-						CMOV_REMAP(c1, src[1], mvX2 >> 16);
+						CMOV_REMAP(c1, 0, src[1], mvX2 >> 16);
 						remapped_src[1] = c1.data;
 						srcABCD = _mm_loadl_epi64((__m128i*) &remapped_src);
 #endif
@@ -393,27 +403,32 @@ void Blitter_32bppSSE4::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 #endif
 {
 	switch (mode) {
-		case BM_NORMAL: {
+		default: {
 			if (bp->skip_left != 0 || bp->width <= MARGIN_NORMAL_THRESHOLD) {
+bm_normal:
 				const BlockType bt_last = (BlockType) (bp->width & 1);
 				switch (bt_last) {
-					case BT_EVEN: Draw<BM_NORMAL, RM_WITH_SKIP, BT_EVEN>(bp, zoom); return;
-					case BT_ODD:  Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD>(bp, zoom); return;
-					default: NOT_REACHED();
+					default:     Draw<BM_NORMAL, RM_WITH_SKIP, BT_EVEN, true>(bp, zoom); return;
+					case BT_ODD: Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD, true>(bp, zoom); return;
 				}
 			} else {
-				Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE>(bp, zoom); return;
+				if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags & SF_TRANSLUCENT) {
+					Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, true>(bp, zoom);
+				} else {
+					Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, false>(bp, zoom);
+				}
+				return;
 			}
 			break;
 		}
 		case BM_COLOUR_REMAP:
+			if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags & SF_NO_REMAP) goto bm_normal;
 			if (bp->skip_left != 0 || bp->width <= MARGIN_REMAP_THRESHOLD) {
-				Draw<BM_COLOUR_REMAP, RM_WITH_SKIP, BT_NONE>(bp, zoom); return;
+				Draw<BM_COLOUR_REMAP, RM_WITH_SKIP, BT_NONE, true>(bp, zoom); return;
 			} else {
-				Draw<BM_COLOUR_REMAP, RM_WITH_MARGIN, BT_NONE>(bp, zoom); return;
+				Draw<BM_COLOUR_REMAP, RM_WITH_MARGIN, BT_NONE, true>(bp, zoom); return;
 			}
-		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE>(bp, zoom); return;
-		default: NOT_REACHED();
+		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE, true>(bp, zoom); return;
 	}
 }
 #endif /* FULL_ANIMATION */
