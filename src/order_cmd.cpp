@@ -428,10 +428,10 @@ StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, const Order *
 						hops);
 				const Order *advance = this->GetNextDecisionNode(
 						this->GetNext(next), hops);
-				if (advance == NULL) {
-					next = skip_to;
-				} else if (skip_to == NULL) {
-					next = advance;
+				if (advance == NULL || advance == first) {
+					next = (skip_to == first) ? NULL : skip_to;
+				} else if (skip_to == NULL || skip_to == first) {
+					next = (advance == first) ? NULL : advance;
 				} else {
 					StationIDStack st1 = this->GetNextStoppingStation(v, skip_to);
 					StationIDStack st2 = this->GetNextStoppingStation(v, advance);
