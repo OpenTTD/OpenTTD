@@ -199,21 +199,27 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}hk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kp
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fod
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -221,6 +227,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer 
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indtast filter-udtryk
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Indtast nøgleord til at filtrere listen efter
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Vælg grupperingssortering
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vælg sorteringsorden (faldende/stigende)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vælg sorteringskriterie
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vælg filtreringskriterier
@@ -276,6 +283,8 @@ STR_SORT_BY_LENGTH                                              :Længde
 STR_SORT_BY_LIFE_TIME                                           :Resterende levetid
 STR_SORT_BY_TIMETABLE_DELAY                                     :Køreplans forsinkelse
 STR_SORT_BY_FACILITY                                            :Stationstype
+STR_SORT_BY_WAITING_TOTAL                                       :Total ventende fragt
+STR_SORT_BY_WAITING_AVAILABLE                                   :Tilgængelig ventende fragt
 STR_SORT_BY_RATING_MAX                                          :Højeste værdi af last
 STR_SORT_BY_RATING_MIN                                          :Laveste værdi af last
 STR_SORT_BY_ENGINE_ID                                           :Lokomotiv ID (klassisk)
@@ -301,6 +310,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis tils
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vis liste over selskabets stationer
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vis selskabets finansinformation
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vis generel selskabsinformation
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Vis historiebog
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Vis målliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vis grafer
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vis selskabsoversigten
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiér opførelse af ny industri
@@ -1321,6 +1332,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard palette NewGRFer uden valgt palette: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalet til brug af NewGRFs der ikke angiver hvilken en de har brug for
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) palet
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sæt automatisk på pause når nyt spil startes: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktiveret, vil spillet automatisk pause når du starter et nyt spil, det giver mulighed for at studerer kortet nærmere
@@ -1547,17 +1559,46 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde v
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern døde vej-ender i løbet af finansierede vej-rekostruktioner
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighedsenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighed er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/t)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Køretøjskraftenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Når et køretøjs kraft er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperisk (hk)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisk (hk)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Vægtenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når vægte er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisk (t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Rumfangsenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Når rumfang er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperisk (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisk (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Trækevneenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Når trækevne, også kendt som trækkraft, er vist i brugergrænsefladen, så vis det i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisk (kp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Højdeenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når højder er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fod)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Brugerflade
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationer
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Fragtdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Visningsindstillinger
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Brugerflade
@@ -1844,6 +1885,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sæt kod
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskyt dit spil med et kodeord hvis du ikke vil have fremmede med
 
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nej
+STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimalt antal tilladte klienter:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vælg det maksimale antal klienter. Det er ikke nødvendigt at fylde dem alle
@@ -2889,9 +2931,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Køb et
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestik de lokale myndigheder til at hæve din bedømmelse, med risiko for en stor straf hvis det bliver opdaget.{}Pris: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale mål
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Mål
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globale Mål
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ikke anvendelig -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Selskabsmål:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik på mål for at centrere hovedvinduet over industri/by/felt Ctrl+klik åbner et nyt vindue over industri/by/felt lokation
 
@@ -2931,6 +2976,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet.
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global Historiebog
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ugyldig målreference
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnavne - klik på et navn for at centrere skærmen over stationen. Ctrl+Klik åbner et nyt vindue ved stationens lokalitet
@@ -2960,7 +3007,28 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW} {COMPA
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bedømmelse
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stationens bedømmelse
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppér på
+STR_STATION_VIEW_WAITING_STATION                                :Station: Ventende
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Mængde: Ventende
+STR_STATION_VIEW_PLANNED_STATION                                :Station: Planlagt
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Mængde: Planlagt
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} fra {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} til {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} fra ukendt station
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} til enhver station
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via enhver station
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} fra denne station
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stopper ved denne station
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} til denne station
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} uden stop
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Kilde-Via-Destination
+STR_STATION_VIEW_GROUP_S_D_V                                    :Kilde-Destination-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Kilde-Destination
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destination-Kilde
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destination-Kilde-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destination-Via-Kilde
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Rædselsfuld
@@ -3706,6 +3774,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne ti
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Denne tidsplan vil starte på {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vælg en dato som starttidspunkt for denne køreplan. Ctrl+Klik sætter starttidspunkt for denne køreplan, og distribuerer alle køretøjer der deler denne ordre ligeligt baseret på deres relative rækkefølge, hvis ordren er fuldstændigt tidsplanlagt
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre hvor lang tid den markerede ordre skal tage
@@ -3819,6 +3888,7 @@ STR_AI_SETTINGS_START_DELAY                                     :Antal dage denn
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ombryd tekst
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
@@ -4196,6 +4266,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fartøjet er ødelagt
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen køretøjer vil være tilgængelige overhovedet
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Skift din NewGRF-konfiguration
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen køretøjer er tilgængelige endnu
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Start et nyt spil efter {DATE_SHORT} eller brug en NewGRF der giver tidlige køretøjer
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke få toget til at passere signalet...
