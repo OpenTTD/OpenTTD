@@ -239,6 +239,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Luk vind
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vinduestitel - træk her for at flytte vinduet
 STR_TOOLTIP_SHADE                                               :{BLACK}Oprul vindue - vis kun titellinien
 STR_TOOLTIP_DEBUG                                               :{BLACK}Vis information om NewGRF fejl
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Gendan vinduets standardstørrelse. Ctrl+Klik for at gemme nuværende størrelse som standard
 STR_TOOLTIP_STICKY                                              :{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten. Ctrl+Klik for også at gemme tilstand som standart
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik og træk for at ændre vinduets størrelse
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skift mellem stort/lille vindue
@@ -385,6 +386,7 @@ STR_FILE_MENU_EXIT                                              :Afslut
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kort over verden
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nyt lokalitetsvindue
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Laststrømforklaring
 STR_MAP_MENU_SIGN_LIST                                          :Liste over skilte
 
 ############ range for town menu starts
@@ -671,17 +673,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Kort - {
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturer
 STR_SMALLMAP_TYPE_VEHICLES                                      :Køretøjer
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrier
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Laststrøm
 STR_SMALLMAP_TYPE_ROUTES                                        :Ruter
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetation
 STR_SMALLMAP_TYPE_OWNERS                                        :Ejere
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Vis landskabskonturer på kortet
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Vis køretøjer på kortet
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Vis industrier på kortet
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Vis laststrøm på kortet
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Vis transportruter på kortet
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Vis vegetation på kortet
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Vis landejere på kortet
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik på en industritype for at vise den.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Kik på et selskab for at se dens ejendomme. Ctrl+klik deaktiverer alle selskaber undtagen det valgte. Ctrl+klik igen for atter at aktivere
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klik på en last for at skifte visning af dens egenskab. Ctrl+Klik slår alle laster undtagen den valgte fra. Ctrl+Klik på den igen for at slå alle laster til
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Veje
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Jernbaner
@@ -715,6 +720,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vis/skjul bynavne på kort
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer det lille kort ved den nuværende position
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Slå alle fra
@@ -1558,6 +1564,29 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gennemsnitlig s
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde vejelementer under opførelse af vej: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern døde vej-ender i løbet af finansierede vej-rekostruktioner
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Opdatér distributionsgraf hver {STRING} dag{P 0:2 "" e}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellem efterfølgende genberegninger af forbindelsesgrafen. Hver genberegning beregner planerne for et komponent af grafen. Det betyder, at en værdi X for denne indstilling ikke betyder at hele grafen vil blive opdateret hver X dage. Kun nogle komponenter vil. Jo kortere du sætter indstillingen, jo mere CPU-tid vil være nødvendig for at beregne forbindelsesgrafen. Jo længere du sætter indstillingen, jo længere vil det tage før lastdistribution starter på nye ruter.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Tag {STRING} dag{P 0:2 "" e} for genberegning af distributionsgraf
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tid taget for hver genberegning af et forbindelsesgrafkomponent. Når en genberegning startes, skabes en tråd som er tilladt at køre dette antal dage. Jo kortere du sætter denne indstilling, jo mere sandsynligt er det at tråden ikke er færdig når det er meningen. Så stopper spillet indtil den er ("lag"). Jo længere du sætter denne indstilling, jo længere tager det for distributionen at blive opdateret når ruter ændres.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionsmodel for passagerer: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisk" betyder at omtrent det samme antal passagerer vil rejse fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige antal passagerer kan rejse i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for passagerer.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionsmodel for post: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyder at omtrent den samme mængde post vil blive sendt fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige mængder post kan blive sendt i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for post.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionsmodel for PANSRET lastklasse: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :PANSRET lastklassen indeholder værdigenstande i det tempererede klima, diamanter i det subtropiske klima, eller guld i det subarktiske klima. NewGRF kan ændre dette. "symmetrisk" betyder at omtrent den samme mængde af denne last vil blive sendt fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige mængder af denne last kan blive sendt i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for denne last. Det anbefales at sætte denne indstilling til assymetrisk eller manuel når der spilles subarktisk, da banker ikke sender guld tilbage til guldminer. For tempereret og subtropisk kan du også vælge symmetrisk, da banker vil sende værdigenstande tilbage til oprindelsesbanken for et læs værdigenstande.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionsmodel for andre lastklasser: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisk" betyder at omtrent den samme mængde last vil blive sendt fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige mængder last kan blive sendt i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for disse laster. Du vil nok ønske at sætte dette til "asymmetrisk" eller manuel.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnøjagtighed: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo højere du sætter denne indstilling, jo mere CPU-tid vil beregningen af forbindelsesgrafen tage. Hvis den tager for længe, kan du opleve lag. Hvis du derimod sætter indstillingen til en lav værdi, vil distributionen være unøjagtig, og du kan opleve last ikke blive sendt til de steder, du forventer.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effekt af afstand på efterspørgsel: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Hvis du sætter denne indstilling til en værdi større end 0, vil afstanden mellem oprindelsesstation A for noget last og en mulig destination B have en effekt på mængden af last sendt fra A til B. Jo længere væk B er fra A, jo mindre last vil blive sendt. Jo højere du sætter denne indstilling, jo mindre last vil blive sendt til fjerne stationer, og jo mere last vil blive sendt til nærliggende stationer.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Mængde returnerende last for symmetrisk model: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ved at sætte denne indstilling til mindre end 100%, opfører den symmetriske distribution sig mere som den asymmetriske. Mindre last vil blive tvunget sendt tilbage hvis en bestemt mængde er blevet sendt til en station. Hvis du sætter denne indstilling til 0%, vil den symmetriske distribution opfører sig ligesom den asymmetriske.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Mætning af korte veje før brug af veje med høj kapacitet: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Der er ofte flere veje mellem to givne stationer. Cargodist vil mætte den korteste vej først, så bruge den næstkorteste vej indtil den er mættet, osv.. Mætning bestemmes af en vurdering af kapacitet og planlagt brug. Når den har mættet alle veje, og hvis der stadig er efterspørgsel tilbage, vil den overbelaste alle veje, og foretrække vejene med høj kapacitet. Det meste af tiden vil algoritmen dog ikke vurdere kapaciteten nøjagtigt. Denne indstilling giver dig mulighed for at bestemme op til hvilken procentdel en kortere vej skal være mættet i første omgang før den næste, længere vej vælges. Sæt denne indstilling til mindre end 100% for at undgå overfyldte stationer i tilfælde af overvurderet kapacitet.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighedsenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighed er vist i brugergrænsefladen, så vis dem i de valgte enheder
@@ -2199,8 +2228,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Slå gen
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gør objekter usynlige i stedet for gennemsigtige
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Laststrømforklaring
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Alle
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ingen
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Vælg firmaer at vise
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}ubrugt
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}mættet
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}overbelastet
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Vis dækningsområde
@@ -2937,6 +2973,8 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale 
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
 STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ikke anvendelig -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Selskabsmål:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik på mål for at centrere hovedvinduet over industri/by/felt Ctrl+klik åbner et nyt vindue over industri/by/felt lokation
 
@@ -2976,7 +3014,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet.
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Historiebog
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global Historiebog
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Side {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Gå til en bestemt side ved at vælge den i denne rulleliste.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Forrige
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Gå til forrige side
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Næste
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Gå til næste side
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ugyldig målreference
 
 # Station list window
@@ -3006,6 +3052,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW} {COMPA
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bedømmelse
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stationens bedømmelse
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Månedligt udbud og lokal bedømmelse
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppér på
 STR_STATION_VIEW_WAITING_STATION                                :Station: Ventende
@@ -3171,6 +3219,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transporteret)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer skærmen over industriens lokalitet. Ctrl+Klik åbner et nyt vindue ved industriens lokalitet.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktions niveauet: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrien har rapporteret øjeblikkelig nedlukning!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Kræver: {YELLOW}{STRING}{STRING}
@@ -3889,6 +3938,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ombryd tekst
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ombryd teksten i vinduet, så det hele passer uden at skulle rulle
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
