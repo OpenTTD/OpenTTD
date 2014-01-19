@@ -1049,7 +1049,7 @@ void SmallMapWindow::SetupWidgetData()
 SmallMapWindow::SmallMapWindow(WindowDesc *desc, int window_number) : Window(desc), refresh(FORCE_REFRESH_PERIOD)
 {
 	_smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
-	this->overlay = new LinkGraphOverlay(this, WID_SM_MAP);
+	this->overlay = new LinkGraphOverlay(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
 	this->InitNested(window_number);
 	this->LowerWidget(this->map_type + WID_SM_CONTOUR);
 
@@ -1530,7 +1530,14 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	/* Update the window every now and then */
 	if (--this->refresh != 0) return;
 
-	if (this->map_type == SMT_LINKSTATS) this->overlay->RebuildCache();
+	if (this->map_type == SMT_LINKSTATS) {
+		uint32 company_mask = this->GetOverlayCompanyMask();
+		if (this->overlay->GetCompanyMask() != company_mask) {
+			this->overlay->SetCompanyMask(company_mask);
+		} else {
+			this->overlay->RebuildCache();
+		}
+	}
 	_smallmap_industry_highlight_state = !_smallmap_industry_highlight_state;
 
 	this->refresh = _smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD;

@@ -13,6 +13,7 @@
 #define SMALLMAP_GUI_H
 
 #include "industry_type.h"
+#include "company_base.h"
 #include "window_gui.h"
 #include "strings_func.h"
 #include "blitter/factory.hpp"
@@ -133,6 +134,16 @@ protected:
 	{
 		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM +
 				this->GetNumberRowsLegend(num_columns) * FONT_HEIGHT_SMALL;
+	}
+
+	/**
+	 * Get a bitmask for company links to be displayed. Usually this will be
+	 * the _local_company. Spectators get to see all companies' links.
+	 * @return Company mask.
+	 */
+	inline uint32 GetOverlayCompanyMask() const
+	{
+		return Company::IsValidID(_local_company) ? 1U << _local_company : 0xffffffff;
 	}
 
 	uint GetNumberRowsLegend(uint columns) const;

@@ -51,8 +51,7 @@ public:
 	 * @param company_mask Bitmask of companies to be shown.
 	 * @param scale Desired thickness of lines and size of station dots.
 	 */
-	LinkGraphOverlay(const Window *w, uint wid, uint32 cargo_mask = 0xFFFFFFFF,
-			uint32 company_mask = 1 << _local_company, uint scale = 1) :
+	LinkGraphOverlay(const Window *w, uint wid, uint32 cargo_mask, uint32 company_mask, uint scale) :
 			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale)
 	{}
 
