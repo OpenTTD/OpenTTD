@@ -391,11 +391,12 @@ const Order *OrderList::GetNextDecisionNode(const Order *next, uint hops) const
  * Recursively determine the next deterministic station to stop at.
  * @param v The vehicle we're looking at.
  * @param first Order to start searching at or NULL to start at cur_implicit_order_index + 1.
+ * @param hops Number of orders we have already looked at.
  * @return Next stoppping station or INVALID_STATION.
  * @pre The vehicle is currently loading and v->last_station_visited is meaningful.
  * @note This function may draw a random number. Don't use it from the GUI.
  */
-StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, const Order *first) const
+StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, const Order *first, uint hops) const
 {
 
 	const Order *next = first;
@@ -413,42 +414,27 @@ StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, const Order *
 		}
 	}
 
-	uint hops = 0;
 	do {
 		next = this->GetNextDecisionNode(next, ++hops);
 
 		/* Resolve possibly nested conditionals by estimation. */
 		while (next != NULL && next->IsType(OT_CONDITIONAL)) {
-			++hops;
-			if (next->GetConditionVariable() == OCV_LOAD_PERCENTAGE) {
-				/* If the condition is based on load percentage we can't
-				 * tell what it will do. So we choose randomly. */
-				const Order *skip_to = this->GetNextDecisionNode(
-						this->GetOrderAt(next->GetConditionSkipToOrder()),
-						hops);
-				const Order *advance = this->GetNextDecisionNode(
-						this->GetNext(next), hops);
-				if (advance == NULL || advance == first) {
-					next = (skip_to == first) ? NULL : skip_to;
-				} else if (skip_to == NULL || skip_to == first) {
-					next = (advance == first) ? NULL : advance;
-				} else {
-					StationIDStack st1 = this->GetNextStoppingStation(v, skip_to);
-					StationIDStack st2 = this->GetNextStoppingStation(v, advance);
-					while (!st2.IsEmpty()) st1.Push(st2.Pop());
-					return st1;
-				}
+			/* We return both options of conditional orders. */
+			const Order *skip_to = this->GetNextDecisionNode(
+					this->GetOrderAt(next->GetConditionSkipToOrder()), hops);
+			const Order *advance = this->GetNextDecisionNode(
+					this->GetNext(next), hops);
+			if (advance == NULL || advance == first || skip_to == advance) {
+				next = (skip_to == first) ? NULL : skip_to;
+			} else if (skip_to == NULL || skip_to == first) {
+				next = (advance == first) ? NULL : advance;
 			} else {
-				/* Otherwise we're optimistic and expect that the
-				 * condition value won't change until it's evaluated. */
-				VehicleOrderID skip_to = ProcessConditionalOrder(next, v);
-				if (skip_to != INVALID_VEH_ORDER_ID) {
-					next = this->GetNextDecisionNode(this->GetOrderAt(skip_to),
-							hops);
-				} else {
-					next = this->GetNextDecisionNode(this->GetNext(next), hops);
-				}
+				StationIDStack st1 = this->GetNextStoppingStation(v, skip_to, hops);
+				StationIDStack st2 = this->GetNextStoppingStation(v, advance, hops);
+				while (!st2.IsEmpty()) st1.Push(st2.Pop());
+				return st1;
 			}
+			++hops;
 		}
 
 		/* Don't return a next stop if the vehicle has to unload everything. */
