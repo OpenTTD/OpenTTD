@@ -1309,7 +1309,6 @@ void SmallMapWindow::SetOverlayCargoMask()
 		if (_legend_linkstats[i].show_on_map) SetBit(cargo_mask, _legend_linkstats[i].type);
 	}
 	this->overlay->SetCargoMask(cargo_mask);
-	this->overlay->RebuildCache();
 }
 
 /**
