@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} kp
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -354,7 +355,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Hent scenarie
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Gem højdekort
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Hent højdekort
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Forlad scenarieeditor
-STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :STR_SCENEDIT_FILE_MENU_SEPARATOR
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 ############ range for SE file menu starts
 
@@ -517,7 +518,7 @@ STR_MONTH_ABBREV_OCT                                            :okt
 STR_MONTH_ABBREV_NOV                                            :nov
 STR_MONTH_ABBREV_DEC                                            :dec
 
-STR_MONTH_JAN                                                   :januar
+STR_MONTH_JAN                                                   :Januar
 STR_MONTH_FEB                                                   :februar
 STR_MONTH_MAR                                                   :marts
 STR_MONTH_APR                                                   :april
@@ -1339,6 +1340,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard palette NewGRFer uden valgt palette: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalet til brug af NewGRFs der ikke angiver hvilken en de har brug for
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) palet
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sæt automatisk på pause når nyt spil startes: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktiveret, vil spillet automatisk pause når du starter et nyt spil, det giver mulighed for at studerer kortet nærmere
@@ -1590,6 +1592,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Der er ofte fle
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighedsenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighed er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperisk (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/t)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
@@ -1601,6 +1604,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Vægtenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når vægte er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperisk (short t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisk (t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
@@ -1612,6 +1616,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Trækevneenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Når trækevne, også kendt som trækkraft, er vist i brugergrænsefladen, så vis det i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperisk (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisk (kp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
@@ -1853,6 +1858,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ændre s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netværksspil
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Advertised / Offentlig server
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vælg mellem en Offentlig server (internet) og en ikke Offentlig server (Lokal Network, LAN) spil-server
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nej
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spiller navn:
@@ -3468,7 +3475,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop uds
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vogn-udskiftningsvindue
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vogn- udskiftningsvindue
 STR_REPLACE_ENGINES                                             :Lokomotiver
 STR_REPLACE_WAGONS                                              :Vogne
 

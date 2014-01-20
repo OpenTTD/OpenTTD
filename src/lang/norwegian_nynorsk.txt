@@ -1181,19 +1181,28 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Køyretøykøar
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gjer at køyretøy stoppar foran vegsperringar til dei vert fjerna. Alternativet er at dei snur for å finne ein annan veg
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på vindauget dersom pila er nær ytterkantane på skjermen: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktivert
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Alle tilleggsvindauge
 STR_CONFIG_SETTING_BRIBE                                        :Tillet bestikkelse av bystyret: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillet kjøp av eksklusive transportretter: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat sponsing av bygningar: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillat at firma kan gi pengar til byar for finansiering av nye bygningar
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillat finansiering av lokal ombyggjing av vegnettet: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillet å sende pengar til andre firma: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillat overføring mellom firma i fleirspelar-modus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Vektmultiplikator for frakt til å simulere tunge tog: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Flyhastighet-faktor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flystyrtar: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Sett sannsynlighet for at flykrasj skjer
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Redusert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalt
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillet stoppestadar med gjennomkøyring på by-eigde vegar: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillat bygging av stoppestadar med gjennomkøyring på vegar eigd av byen
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillet stoppestadar med gjennomkøyring på konkurent-eigde vegar: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillatt bygging av stopp med gjennomkøyring på vegar eigd av andre firma
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillet å byggje stasjonar inntil andre: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Tillat forskjellige stasjonar å berøra kvarandre
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktiver fleire NewGRF-kjernesett: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Endring av denne instillinga er ikkje mogleg når det finst køyretøy
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Vedlikehald av infrastruktur: {STRING}
@@ -1208,13 +1217,24 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle køyretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Åtvar dersom eit køyretøy har negativ inntekt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køyretøy utgår aldri: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny køyretøy når det vert gamalt: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatisk fornying når køyretøy er {STRING} maks alder
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativ alder for når eit køyretøy skal vurderast for automatisk fornying
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} månad{P 0 "" s} før
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} månad{P 0 "" s} etter
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum formue for autofornying av køyretøy: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighet for feilmelding: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Syn verktøytips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hold over i {COMMA} sekund{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Høgreklikk
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Syne innbyggjartalet til byane i tittel: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Syn befolkningstal for byar saman med stadnamn på kartet
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Bredde på linjer i grafar: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskapsgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal avstand frå kartkanten for Oljeraffineri: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kor ulendt skal terrenget vere (kun TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Særs jamnt
@@ -1230,12 +1250,16 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Høgdenivå eit flatt scenariokart får: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Tillat endring av landskapsruter på kanten av kartet: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Om deaktivert, vil kartkantene alltid være hav
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ei eller fleire ruter på nordkanten er ikkje tomme
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ei eller fleire ruter på ein av kantane inneheld ikkje vatn
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimal utspreiing av stasjonar: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatisk vedlikehald ved helikopterplass: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Service på helikopter etter kvar landing, sjølv om det ikkje er depot på landingsplassen.
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Koble landskapsverktøylinja til bygningsverktøylinjane: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Landfarge nytta på oversiktskartet: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farge på terrenget i oversiktskartet
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolett
