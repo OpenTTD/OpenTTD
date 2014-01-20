@@ -298,7 +298,10 @@
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 	}
 	uint32 townnameparts;
-	GenerateTownName(&townnameparts);
+	if (!GenerateTownName(&townnameparts)) {
+		ScriptObject::SetLastError(ScriptError::ERR_NAME_IS_NOT_UNIQUE);
+		return false;
+	}
 
 	return ScriptObject::DoCommand(tile, size | (city ? 1 << 2 : 0) | layout << 3, townnameparts, CMD_FOUND_TOWN, text);
 }
