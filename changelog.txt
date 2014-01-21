@@ -1,3 +1,16 @@
+1.4.0-beta3 (2014-01-21)
+------------------------------------------------------------------------
+- Feature: Several small performance improvements with the SSE blitters (r26260, r26259, r26256, r26255, r26254)
+- Feature: [NewGRF] Add StringCodes 9A 1B, 9A 1C and 9A 1D to display amounts of cargo (r26244)
+- Fix: Do not run into infinite recursion when getting next stopping station [FS#5865] (r26267, r26263)
+- Fix: Update smallmap overlay if player joins different company and make sure company masks are valid [FS#5860] (r26266)
+- Fix: Do not rebuild the link graph overlay cache twice in a row (r26265)
+- Fix: Custom currency was reset on game start (r26262)
+- Fix: Possible out of bounds reads with the sse blitters [FS#5854, FS#5855] (r26247)
+- Fix: Do not overreserve after autorefit, but do reserve mail for aircraft (r26236)
+- Fix: Decimal and digit separators were swapped for Korean language (r26235)
+
+
 1.4.0-beta2 (2014-01-07)
 ------------------------------------------------------------------------
 - Feature: Blitter autoselection is now based on full animation state, so a non-animated specialised blitter will generally be chosen when animation is turned off (r26217)
