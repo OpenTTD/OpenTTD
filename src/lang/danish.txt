@@ -355,7 +355,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Hent scenarie
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Gem højdekort
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Hent højdekort
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Forlad scenarieeditor
-STR_SCENEDIT_FILE_MENU_SEPARATOR                                :STR_SCENEDIT_FILE_MENU_SEPARATOR
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 ############ range for SE file menu starts
 
@@ -1340,7 +1340,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard palette NewGRFer uden valgt palette: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalet til brug af NewGRFs der ikke angiver hvilken en de har brug for
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) palet
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palet
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sæt automatisk på pause når nyt spil startes: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktiveret, vil spillet automatisk pause når du starter et nyt spil, det giver mulighed for at studerer kortet nærmere
@@ -1604,7 +1604,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Vægtenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når vægte er vist i brugergrænsefladen, så vis dem i de valgte enheder
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperisk (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperisk (kort t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisk (t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
@@ -1858,8 +1858,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ændre s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netværksspil
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Advertised / Offentlig server
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vælg mellem en Offentlig server (internet) og en ikke Offentlig server (Lokal Network, LAN) spil-server
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Offentlig
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vælg mellem et offentligt (internet) og et ikke offentligt (lokalnetværk, LAN) spil
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nej
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spiller navn:
@@ -3475,7 +3475,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop uds
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vogn- udskiftningsvindue
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vognudskiftningsvindue
 STR_REPLACE_ENGINES                                             :Lokomotiver
 STR_REPLACE_WAGONS                                              :Vogne
 
