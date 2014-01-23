@@ -247,6 +247,14 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 		if (s != st && s->town == t) {
 			if (s->indtype != IT_INVALID) {
 				indtypes[s->indtype] = true;
+				StringID name = GetIndustrySpec(s->indtype)->station_name;
+				if (name != STR_UNDEFINED) {
+					/* Filter for other industrytypes with the same name */
+					for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+						const IndustrySpec *indsp = GetIndustrySpec(it);
+						if (indsp->enabled && indsp->station_name == name) indtypes[it] = true;
+					}
+				}
 				continue;
 			}
 			uint str = M(s->string_id);
