@@ -57,6 +57,12 @@ void LinkGraphSchedule::SpawnNext()
 {
 	if (this->schedule.empty()) return;
 	LinkGraph *next = this->schedule.front();
+	LinkGraph *first = next;
+	while (next->Size() < 2) {
+		this->schedule.splice(this->schedule.end(), this->schedule, this->schedule.begin());
+		next = this->schedule.front();
+		if (next == first) return;
+	}
 	assert(next == LinkGraph::Get(next->index));
 	this->schedule.pop_front();
 	if (LinkGraphJob::CanAllocateItem()) {
