@@ -253,7 +253,7 @@
 	EnforcePrecondition(false, GetRailTracks(tile) & rail_track);
 	EnforcePrecondition(false, KillFirstBit((uint)rail_track) == 0);
 
-	return ScriptObject::DoCommand(tile, tile, GetCurrentRailType() | (FindFirstTrack((::TrackBits)rail_track) << 4), CMD_REMOVE_RAILROAD_TRACK);
+	return ScriptObject::DoCommand(tile, tile, FindFirstTrack((::TrackBits)rail_track) << 4, CMD_REMOVE_RAILROAD_TRACK);
 }
 
 /* static */ bool ScriptRail::AreTilesConnected(TileIndex from, TileIndex tile, TileIndex to)
@@ -284,7 +284,7 @@
 static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 {
 	int diag_offset = abs(abs((int)::TileX(*to) - (int)::TileX(tile)) - abs((int)::TileY(*to) - (int)::TileY(tile)));
-	uint32 p2 = ScriptRail::GetCurrentRailType();
+	uint32 p2 = 0;
 	if (::TileY(from) == ::TileY(*to)) {
 		p2 |= (TRACK_X << 4);
 		*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -353,7 +353,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
-	uint32 p2 = SimulateDrag(from, tile, &to) | 1 << 8;
+	uint32 p2 = SimulateDrag(from, tile, &to) | 1 << 8 | ScriptRail::GetCurrentRailType();;
 	return ScriptObject::DoCommand(tile, to, p2, CMD_BUILD_RAILROAD_TRACK);
 }
 
@@ -370,7 +370,6 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
-	if (!IsRailTypeAvailable(GetCurrentRailType())) SetCurrentRailType(GetRailType(tile));
 	uint32 p2 = SimulateDrag(from, tile, &to);
 	return ScriptObject::DoCommand(tile, to, p2, CMD_REMOVE_RAILROAD_TRACK);
 }
