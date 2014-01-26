@@ -1563,6 +1563,8 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 				td->rail_speed = spd;
 			}
 		}
+	} else if (tt == TRANSPORT_ROAD && !IsTunnel(tile)) {
+		td->road_speed = GetBridgeSpec(GetBridgeType(tile))->speed;
 	}
 }
 

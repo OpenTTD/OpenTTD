@@ -57,7 +57,7 @@ static WindowDesc _land_info_desc(
 
 class LandInfoWindow : public Window {
 	enum LandInfoLines {
-		LAND_INFO_CENTERED_LINES   = 12,                       ///< Up to 12 centered lines
+		LAND_INFO_CENTERED_LINES   = 32,                       ///< Up to 32 centered lines (arbitrary limit)
 		LAND_INFO_MULTICENTER_LINE = LAND_INFO_CENTERED_LINES, ///< One multicenter line
 		LAND_INFO_LINE_END,
 	};
@@ -159,6 +159,7 @@ public:
 		td.airport_name = STR_NULL;
 		td.airport_tile_name = STR_NULL;
 		td.rail_speed = 0;
+		td.road_speed = 0;
 
 		td.grf = NULL;
 
@@ -271,6 +272,13 @@ public:
 		if (td.rail_speed != 0) {
 			SetDParam(0, td.rail_speed);
 			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Road speed limit */
+		if (td.road_speed != 0) {
+			SetDParam(0, td.road_speed);
+			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 

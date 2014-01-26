@@ -62,7 +62,8 @@ struct TileDesc {
 	StringID airport_tile_name; ///< Name of the airport tile
 	const char *grf;            ///< newGRF used for the tile contents
 	uint64 dparam[2];           ///< Parameters of the \a str string
-	uint16 rail_speed;          ///< Speed limit of rail
+	uint16 rail_speed;          ///< Speed limit of rail (bridges and track)
+	uint16 road_speed;          ///< Speed limit of road (bridges)
 };
 
 /**
