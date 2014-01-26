@@ -444,3 +444,11 @@ Trains might not stop at platforms that are currently being changed [FS#5553]:
 	just anywhere in the station because then it would never leave the station
 	if you have the same station in the order list multiple times in a row or
 	if there is only one station in the order list (see FS#5684).
+
+Some houses and industries are not affected by transparency [FS#5817]:
+	Some of the default houses and industries (f.e. the iron ore mine) are
+	not affected by the transparency options. This is because the graphics do
+	not (completely) separate the ground from the building.
+	This is a bug of the original graphics, and unfortunately cannot be
+	fixed with OpenGFX for the sake of maintaining compatibility with the
+	original graphics.
