@@ -94,9 +94,9 @@ protected:
 	void HandleRefit(const Order *next);
 	void ResetRefit();
 	void RefreshStats(const Order *cur, const Order *next);
-	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8 flags);
+	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
 
-	void RefreshLinks(const Order *cur, const Order *next, uint8 flags);
+	void RefreshLinks(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
 };
 
 #endif // REFRESH_H

@@ -145,12 +145,11 @@ void LinkRefresher::ResetRefit()
  * @param cur Current order being evaluated.
  * @param next Next order to be evaluated.
  * @param flags RefreshFlags to give hints about the previous link and state carried over from that.
+ * @param num_hops Number of hops already taken by recursive calls to this method.
  * @return new next Order.
  */
-const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8 flags)
+const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8 flags, uint num_hops)
 {
-	int num_hops = 0; // Count hops to catch infinite loops without station or implicit orders.
-
 	/* next is good if it's either NULL (then the caller will stop the
 	 * evaluation) or if it's not conditional and the caller allows it to be
 	 * chosen (by setting USE_NEXT). */
@@ -163,14 +162,14 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
 
 		if (next->IsType(OT_CONDITIONAL)) {
 			const Order *skip_to = this->vehicle->orders.list->GetNextDecisionNode(
-					this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()), num_hops++);
-			if (skip_to != NULL) {
+					this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()), num_hops);
+			if (skip_to != NULL && num_hops < this->vehicle->orders.list->GetNumOrders()) {
 				/* Make copies of capacity tracking lists. There is potential
 				 * for optimization here: If the vehicle never refits we don't
 				 * need to copy anything. Also, if we've seen the branched link
 				 * before we don't need to branch at all. */
 				LinkRefresher branch(*this);
-				branch.RefreshLinks(cur, skip_to, flags);
+				branch.RefreshLinks(cur, skip_to, flags, num_hops + 1);
 			}
 		}
 
@@ -221,8 +220,9 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
  * @param cur Current order being evaluated.
  * @param next Next order to be checked.
  * @param flags RefreshFlags to give hints about the previous link and state carried over from that.
+ * @param num_hops Number of hops already taken by recursive calls to this method.
  */
-void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flags)
+void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flags, uint num_hops)
 {
 	while (next != NULL) {
 
@@ -246,7 +246,7 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flag
 			ClrBit(flags, RESET_REFIT);
 		}
 
-		next = this->PredictNextOrder(cur, next, flags);
+		next = this->PredictNextOrder(cur, next, flags, num_hops);
 		if (next == NULL) break;
 		Hop hop(cur->index, next->index, this->cargo);
 		if (this->seen_hops->find(hop) != this->seen_hops->end()) {
