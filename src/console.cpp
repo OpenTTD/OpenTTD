@@ -475,7 +475,7 @@ void IConsoleCmdExec(const char *cmdstr)
 		DEBUG(console, 8, "Token %d is: '%s'", i, tokens[i]);
 	}
 
-	if (tokens[0] == '\0') return; // don't execute empty commands
+	if (StrEmpty(tokens[0])) return; // don't execute empty commands
 	/* 2. Determine type of command (cmd or alias) and execute
 	 * First try commands, then aliases. Execute
 	 * the found action taking into account its hooking code
