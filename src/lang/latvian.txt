@@ -2481,6 +2481,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Pieņem kravu: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Sliežu ātruma ierobežojums: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ceļa ātruma ierobežojums: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Akmeņi
@@ -3858,6 +3859,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} kopas {STRING} izmaiņu žurnāls
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} kopas {STRING} licence
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Aplauzt tekstu
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Aplauzt tekstu logā, lai tas viss iekļautos un nevajadzētu ritināt
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
@@ -4231,6 +4233,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nevar ma
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... transportlīdzeklis ir iznīcināts
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Vispār nebūs pieejami transporta līdzekļi
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mainiet jūsu NewGRF konfogurāciju
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Transportlīdzekļi vēl nav pieejami
 
