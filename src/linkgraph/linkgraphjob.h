@@ -64,6 +64,8 @@ protected:
 	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
 	EdgeAnnotationMatrix edges;       ///< Extra edge data necessary for link graph calculation.
 
+	void EraseFlows(NodeID from);
+
 public:
 
 	/**

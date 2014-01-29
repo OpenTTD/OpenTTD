@@ -35,6 +35,17 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 }
 
 /**
+ * Erase all flows originating at a specific node.
+ * @param from Node to erase flows for.
+ */
+void LinkGraphJob::EraseFlows(NodeID from)
+{
+	for (NodeID node_id = 0; node_id < this->Size(); ++node_id) {
+		(*this)[node_id].Flows().erase(from);
+	}
+}
+
+/**
  * Join the link graph job and destroy it.
  */
 LinkGraphJob::~LinkGraphJob()
@@ -52,14 +63,20 @@ LinkGraphJob::~LinkGraphJob()
 	for (NodeID node_id = 0; node_id < size; ++node_id) {
 		Node from = (*this)[node_id];
 
-		/* The station can have been deleted. */
+		/* The station can have been deleted. Remove all flows originating from it then. */
 		Station *st = Station::GetIfValid(from.Station());
-		if (st == NULL) continue;
+		if (st == NULL) {
+			this->EraseFlows(node_id);
+			continue;
+		}
 
 		/* Link graph merging and station deletion may change around IDs. Make
 		 * sure that everything is still consistent or ignore it otherwise. */
 		GoodsEntry &ge = st->goods[this->Cargo()];
-		if (ge.link_graph != this->link_graph.index || ge.node != node_id) continue;
+		if (ge.link_graph != this->link_graph.index || ge.node != node_id) {
+			this->EraseFlows(node_id);
+			continue;
+		}
 
 		LinkGraph *lg = LinkGraph::Get(ge.link_graph);
 		FlowStatMap &flows = from.Flows();
