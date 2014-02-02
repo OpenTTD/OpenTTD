@@ -1515,16 +1515,19 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	RailType totype = Extract<RailType, 0, 4>(p2);
+	TileIndex area_start = p1;
+	TileIndex area_end = tile;
+	bool diagonal = HasBit(p2, 4);
 
 	if (!ValParamRailtype(totype)) return CMD_ERROR;
-	if (p1 >= MapSize()) return CMD_ERROR;
+	if (area_start >= MapSize()) return CMD_ERROR;
 
 	TrainList affected_trains;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
-	TileArea ta(tile, p1);
-	TileIterator *iter = HasBit(p2, 4) ? (TileIterator *)new DiagonalTileIterator(tile, p1) : new OrthogonalTileIterator(ta);
+
+	TileIterator *iter = diagonal ? (TileIterator *)new DiagonalTileIterator(area_start, area_end) : new OrthogonalTileIterator(area_start, area_end);
 	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
 		TileType tt = GetTileType(tile);
 
@@ -1639,8 +1642,13 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 				/* If both ends of tunnel/bridge are in the range, do not try to convert twice -
 				 * it would cause assert because of different test and exec runs */
-				if (endtile < tile && TileX(endtile) >= TileX(ta.tile) && TileX(endtile) < TileX(ta.tile) + ta.w &&
-						TileY(endtile) >= TileY(ta.tile) && TileY(endtile) < TileY(ta.tile) + ta.h) continue;
+				if (endtile < tile) {
+					if (diagonal) {
+						if (DiagonalTileArea(area_start, area_end).Contains(endtile)) continue;
+					} else {
+						if (OrthogonalTileArea(area_start, area_end).Contains(endtile)) continue;
+					}
+				}
 
 				/* When not converting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
 				if (!IsCompatibleRail(GetRailType(tile), totype)) {
