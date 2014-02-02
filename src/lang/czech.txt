@@ -352,7 +352,7 @@ STR_SORT_BY_MAX_SPEED                                           :max. rychlosti
 STR_SORT_BY_MODEL                                               :modelu
 STR_SORT_BY_VALUE                                               :hodnoty
 STR_SORT_BY_LENGTH                                              :délky
-STR_SORT_BY_LIFE_TIME                                           :Zbývající životnost
+STR_SORT_BY_LIFE_TIME                                           :zbývající životnosti
 STR_SORT_BY_TIMETABLE_DELAY                                     :zpoždění
 STR_SORT_BY_FACILITY                                            :druhu stanice
 STR_SORT_BY_WAITING_TOTAL                                       :Celkového čekajícího nákladu
@@ -1660,7 +1660,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Rovnoměrný" 
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Mód distribuce pro poštu: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Rovnoměrný" znamená, že téměř stejné množství pošty bude odesláno ze stanice A do stanice B, jako ze stanice B do A. "Nerovnoměrný znamená", že libovolná množství pošty může být odesláno v jakýchkoliv směrech. "manuální" znamená, že zde nebude žádná automatická distribuce pro poštu.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Mód distribuce pro náklady pancéřových vozů: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Pancéřované vozy převážejí ceniny v mírném, diamanty v subtropickém nebo zlato v subarktickém klimatu. Nové grafiky však toho mohou změnit. "Rovnoměrný" znamená, že téměř stejné množství nákladu bude odesláno ze stanice A do stanice B, jako ze stanice B do A. "Nerovnoměrný znamená", že libovolná množství nákladu mohou být odeslána v jakýchkoliv směrech. "manuální" znamená, že zde nebude žádná automatická distribuce pro tyto druhy nákladu. Je doporučeno nastavit "nerovnoměrný" nebo "manuální" při hraní v subarktickém klimatu, neboť banky posílají do dolů žádné zlato. Pro mírné a subtropické klima můžeš nastavit "rovnoměrné", neboť banky odesílají zpět do původní banky nějaký náklad cenin.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Pancéřované vozy převážejí ceniny v mírném, diamanty v subtropickém nebo zlato v subarktickém klimatu. Nové grafiky však toho mohou změnit. "Rovnoměrný" znamená, že téměř stejné množství nákladu bude odesláno ze stanice A do stanice B, jako ze stanice B do A. "Nerovnoměrný znamená", že libovolná množství nákladu mohou být odeslána v jakýchkoliv směrech. "manuální" znamená, že zde nebude žádná automatická distribuce pro tyto druhy nákladu. Je doporučeno nastavit "nerovnoměrný" nebo "manuální" při hraní v subarktickém klimatu, neboť banky neposílají do dolů žádné zlato. Pro mírné a subtropické klima můžeš nastavit "rovnoměrné", neboť banky odesílají zpět do původní banky nějaký náklad cenin.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Módy distribuce pro ostatní třídy nákladu: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Rovnoměrný" znamená, že téměř stejné množství nákladu bude odesláno ze stanice A do stanice B, jako ze stanice B do A. "Nerovnoměrný znamená", že libovolná množství nákladu mohou být odeslána v jakýchkoliv směrech. "manuální" znamená, že zde nebude žádná automatická distribuce pro tyto druhy nákladu. Pravděpodobně chceš nastavit "nerovnoměrná" nebo "manuální"."
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Přesnost distribuce: {STRING}
@@ -1669,8 +1669,8 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Vliv vzdálenos
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Pokud nastavíš vyšší hodnotu než 0, vzdálenost mezi zdrojovou stanicí A u určitých druhů nákladu a možnou cílovou stanicí B bude mít efekt na množství odeslaného nákladu z A do B. Čím vzdálenější je B od A, tím méně nákladu bude odesláno. Čím vyšší hodnotu nastavíš tím méně nákladu bude odesláno do vzdálených stanic a více bude odesláno do blízkých stanic.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Množství vracejícího se nákladu pro rovnoměrný mód: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Nastavením méně než 100% zapříčiní, že se bude rovnoměrná distribuce chovat více nerovnoměrně. Méně nákladu bude odesláno zpět, pokud je určité množství odesláno do stanice. Pokud nastavíš 0%, bude se rovnoměrná distribuce chovat jako nerovnoměrná.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Vytížení kratších cest před využitím kapacitnějších: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vzhledem k tomu, že je často mezi dvěmi stanicemi více cest, Cargodist jako první vytíží tu nejkratší a dále využije druhou nejkratší dokud také není vytížená a tak dále. Pokud jsou všechny trasy zatížené ale stále nestačí provozu, přetíží všechny trasy s preferencí té nejkapacitnější. Bohužel, většinou však algoritmus neodhaduje kapacitu přesně. Toto nastavení dovolí zvolit na kolik procent musí být nejkratší cesta zaplněna, než dojde k vytížení té delší. Nastav na méně než 100% pro zabránění přeplnění stanic v případně nadhodnocené kapacity.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Vytížení kratších tras před využitím kapacitnějších tras: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vzhledem k tomu, že je často mezi dvěma stanicemi více tras, Distribuce nákladu jako první vytíží tu nejkratší a dále využije druhou nejkratší dokud také není vytížená a tak dále. Pokud jsou všechny trasy zatížené, ale stále nestačí provozu, přetíží všechny trasy s preferencí té nejkapacitnější. Bohužel, většinou však algoritmus neodhaduje kapacitu přesně. Toto nastavení dovolí zvolit na kolik procent musí být nejkratší cesta zaplněna, než dojde k vytížení té delší. Nastav na méně než 100% pro zabránění přeplnění stanic v případně nadhodnocené kapacity.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednotky rychlosti: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kdykoliv se rychlost zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
@@ -1684,7 +1684,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperiální (h
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrické (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednotky hmotnost: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednotky hmotnosti: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kdykoliv se hmotnost zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperiální (short t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrické (t/tuna)
@@ -2635,6 +2635,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Přijímané zboží: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rychlostní omezení tratě: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Rychlostní omezení silnice: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kamení

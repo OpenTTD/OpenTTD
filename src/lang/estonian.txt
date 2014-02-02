@@ -2397,7 +2397,7 @@ STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Rippsild, betoo
 STR_BRIDGE_NAME_WOODEN                                          :Puidust
 STR_BRIDGE_NAME_CONCRETE                                        :Betoonist
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Torujas, terasest
-STR_BRIDGE_TUBULAR_SILICON                                      :Torujas, silikoonist
+STR_BRIDGE_TUBULAR_SILICON                                      :Torujas, Räni
 
 
 # Road construction toolbar
