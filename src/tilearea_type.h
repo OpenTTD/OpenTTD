@@ -15,7 +15,7 @@
 #include "map_func.h"
 
 /** Represents the covered area of e.g. a rail station */
-struct TileArea {
+struct OrthogonalTileArea {
 	TileIndex tile; ///< The base tile of the area
 	uint16 w;       ///< The width of the area
 	uint16 h;       ///< The height of the area
@@ -26,10 +26,11 @@ struct TileArea {
 	 * @param w the width
 	 * @param h the height
 	 */
-	TileArea(TileIndex tile = INVALID_TILE, uint8 w = 0, uint8 h = 0) : tile(tile), w(w), h(h) {}
+	OrthogonalTileArea(TileIndex tile = INVALID_TILE, uint8 w = 0, uint8 h = 0) : tile(tile), w(w), h(h)
+	{
+	}
 
-	TileArea(TileIndex start, TileIndex end);
-
+	OrthogonalTileArea(TileIndex start, TileIndex end);
 
 	void Add(TileIndex to_add);
 
@@ -43,7 +44,7 @@ struct TileArea {
 		this->h    = 0;
 	}
 
-	bool Intersects(const TileArea &ta) const;
+	bool Intersects(const OrthogonalTileArea &ta) const;
 
 	bool Contains(TileIndex tile) const;
 
@@ -59,6 +60,41 @@ struct TileArea {
 	}
 };
 
+/** Represents a diagonal tile area. */
+struct DiagonalTileArea {
+
+	TileIndex tile; ///< Base tile of the area
+	int16 a;        ///< Extent in diagonal "x" direction (may be negative to signify the area stretches to the left)
+	int16 b;        ///< Extent in diagonal "y" direction (may be negative to signify the area stretches upwards)
+
+	/**
+	 * Construct this tile area with some set values.
+	 * @param tile The base tile.
+	 * @param a The "x" extent.
+	 * @param b The "y" estent.
+	 */
+	DiagonalTileArea(TileIndex tile = INVALID_TILE, int8 a = 0, int8 b = 0) : tile(tile), a(a), b(b)
+	{
+	}
+
+	DiagonalTileArea(TileIndex start, TileIndex end);
+
+	/**
+	 * Clears the TileArea by making the tile invalid and setting a and b to 0.
+	 */
+	void Clear()
+	{
+		this->tile = INVALID_TILE;
+		this->a    = 0;
+		this->b    = 0;
+	}
+
+	bool Contains(TileIndex tile) const;
+};
+
+/** Shorthand for the much more common orthogonal tile area. */
+typedef OrthogonalTileArea TileArea;
+
 /** Base class for tile iterators. */
 class TileIterator {
 protected:
@@ -68,7 +104,7 @@ protected:
 	 * Initialise the iterator starting at this tile.
 	 * @param tile The tile we start iterating from.
 	 */
-	TileIterator(TileIndex tile) : tile(tile)
+	TileIterator(TileIndex tile = INVALID_TILE) : tile(tile)
 	{
 	}
 
@@ -110,8 +146,18 @@ public:
 	 * Construct the iterator.
 	 * @param ta Area, i.e. begin point and width/height of to-be-iterated area.
 	 */
-	OrthogonalTileIterator(const TileArea &ta) : TileIterator(ta.w == 0 || ta.h == 0 ? INVALID_TILE : ta.tile), w(ta.w), x(ta.w), y(ta.h)
+	OrthogonalTileIterator(const OrthogonalTileArea &ta) : TileIterator(ta.w == 0 || ta.h == 0 ? INVALID_TILE : ta.tile), w(ta.w), x(ta.w), y(ta.h)
 	{
+	}
+
+	/**
+	 * Construct the iterator.
+	 * @param corner1 Tile from where to begin iterating.
+	 * @param corner2 Tile where to end the iterating.
+	 */
+	OrthogonalTileIterator(TileIndex corner1, TileIndex corner2)
+	{
+		*this = OrthogonalTileIterator(OrthogonalTileArea(corner1, corner2));
 	}
 
 	/**
@@ -149,7 +195,25 @@ private:
 	int b_max;   ///< The (rotated) y coordinate of the end of the iteration.
 
 public:
-	DiagonalTileIterator(TileIndex begin, TileIndex end);
+
+	/**
+	 * Construct the iterator.
+	 * @param ta Area, i.e. begin point and (diagonal) width/height of to-be-iterated area.
+	 */
+	DiagonalTileIterator(const DiagonalTileArea &ta) :
+		TileIterator(ta.tile), base_x(TileX(ta.tile)), base_y(TileY(ta.tile)), a_cur(0), b_cur(0), a_max(ta.a), b_max(ta.b)
+	{
+	}
+
+	/**
+	 * Construct the iterator.
+	 * @param corner1 Tile from where to begin iterating.
+	 * @param corner2 Tile where to end the iterating.
+	 */
+	DiagonalTileIterator(TileIndex corner1, TileIndex corner2)
+	{
+		*this = DiagonalTileIterator(DiagonalTileArea(corner1, corner2));
+	}
 
 	TileIterator& operator ++();
 
