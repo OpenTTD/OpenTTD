@@ -230,6 +230,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtra v
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Ievadīt filtra virkni
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Ievadīt atslēgvārdu, lai filtrētu sarakstu
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Izvēlēties grupēšanas kārtību
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izvēlēties kārtošanas secību (dilstoša/augoša)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izvēlēties kārtošanas pazīmes
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izvēlēties filtrēšanas pazīmes
@@ -285,6 +286,8 @@ STR_SORT_BY_LENGTH                                              :garuma
 STR_SORT_BY_LIFE_TIME                                           :atlikušā kalpošanas laika
 STR_SORT_BY_TIMETABLE_DELAY                                     :saraksta kavējuma
 STR_SORT_BY_FACILITY                                            :stacijas veida
+STR_SORT_BY_WAITING_TOTAL                                       :Gaidošā krava kopā
+STR_SORT_BY_WAITING_AVAILABLE                                   :Piejamā gaidošā krava
 STR_SORT_BY_RATING_MAX                                          :augstākā kravu vērtējuma
 STR_SORT_BY_RATING_MIN                                          :zemākā kravu vērtējuma
 STR_SORT_BY_ENGINE_ID                                           :dzinēja ID (klasiskais veids)
@@ -1534,8 +1537,11 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Lielpilsētu vi
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Finansētās ceļu rekonstrukcijas laikā noņem vairs neizmantojamos ceļu nobeiguma posmus
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuāli
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetriska
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Sadales precizitāte: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Uzstādod šo mazāk par 100% liks simetriskajai sadalei izturēties vairāk kā asimetriskajai. Mazāk kravas ar varu tiks sūtīts atpakaļ ja noteikts daudzums tiks sūtīts uz piestātni. Ja jūs uzstādīsiet to uz 0% simetriskā sadale izturēsies tā pat kā asimetriskā.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Ātruma mērvienības: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :impērijas, britu (jūdzes stundā)
@@ -1996,7 +2002,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Izmantot
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pievienoties
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Pievienoties un spēlēt ar šo uzņēmumu
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Parole
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Jūsu uzņēmuma aizsardzība ar paroli, lai novērstu neatļautu lietotāju pievienošanos
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Aizsargājiet savu uzņēmumu ar paroli, lai novērstu neatļautu lietotāju pievienošanos
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Iestatīt uzņēmuma paroli
 
 # Network chat
@@ -2175,6 +2181,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslē
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Caurspīdības vietā objektus padarīt neredzamus
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Atzīmēt kompānijas kuras uzrādīt
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
@@ -2960,6 +2967,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķ
 # Story book window
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM} lapa
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Pārlēkt uz specifisku lapu spiežot to zemāk esošajā sarakstā.
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Iepriekšējā
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Doties uz iepriekšējo lapu
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nākamā
@@ -2992,12 +3000,22 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vērtējumi
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumus
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mēneša apgāde un vietējais vērtējums:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Grupēt pēc
+STR_STATION_VIEW_WAITING_STATION                                :Piestātne: Gaida
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Daudzums: Gaida
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} no {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} caur {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} uz {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} no nezināmas piestātnes
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} uz jebkuru staciju
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} caur jebkuru piestātni
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} no šīs stacijas
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stājas šajā piestātnē
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} uz šo piestātni
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} bez apstājas
 
 
 ############ range for rating starts
