@@ -651,13 +651,16 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			}
 
 		case 0x61: // Get variable of n-th vehicle in chain [signed number relative to vehicle]
-			if (!v->IsGroundVehicle() || parameter == 0x61) return 0;
+			if (!v->IsGroundVehicle() || parameter == 0x61) {
+				/* Not available */
+				break;
+			}
 
 			/* Only allow callbacks that don't change properties to avoid circular dependencies. */
 			if (object->ro.callback == CBID_NO_CALLBACK || object->ro.callback == CBID_RANDOM_TRIGGER || object->ro.callback == CBID_TRAIN_ALLOW_WAGON_ATTACH ||
 					object->ro.callback == CBID_VEHICLE_START_STOP_CHECK || object->ro.callback == CBID_VEHICLE_32DAY_CALLBACK || object->ro.callback == CBID_VEHICLE_COLOUR_MAPPING) {
 				Vehicle *u = v->Move((int32)GetRegister(0x10F));
-				if (u == NULL) return 0;
+				if (u == NULL) return 0; // available, but zero
 
 				if (parameter == 0x5F) {
 					/* This seems to be the only variable that makes sense to access via var 61, but is not handled by VehicleGetVariable */
@@ -666,7 +669,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 					return VehicleGetVariable(u, object, parameter, GetRegister(0x10E), available);
 				}
 			}
-			return 0;
+			/* Not available */
+			break;
 
 		case 0x62: { // Curvature/position difference for n-th vehicle in chain [signed number relative to vehicle]
 			/* Format: zzyyxxFD
