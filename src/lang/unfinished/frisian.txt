@@ -1973,6 +1973,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Fleanfji
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Fleanfjild tile namme: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akseptearre fracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Faasjelimyt spoar: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Faasjelimyt dyk: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
@@ -1984,12 +1985,36 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fjilden
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snie
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woastine
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} spoarbaan
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} spoarbaan mei blokseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} spoarbaan mei foar-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} spoarbaan mei útgong-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} spoarbaan mei kombi-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} spoarbaan mei paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} spoarbaan mei ienrjochtings paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} spoarbaan mei blok- en foar-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} spoarbaan mei blok- en útgong-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} spoarbaan mei blok- en kombi-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} spoarbaan mei blok- en paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} spoarbaan mei blok- en ienrjochtings paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} spoarbaan mei foar- en útgong-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} spoarbaan mei foar- en kombi-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} spoarbaan mei foar- en paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} spoarbaan mei foar en ienrjochtings paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} spoarbaan mei útgong- en kombi-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} spoarbaan mei útgong- en paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} spoarbaan mei útgong en ienrjochtings paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} spoarbaan mei kombi- en paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} spoarbaan mei kombi- en ienrjochtings paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} spoarbaan mei paad- en ienrjochtings paadseinen
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} treindepot
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Wei
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Wei mei strjitteljochten
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Wei mei beammen oan 'e siden
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Autodepot
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Dyk/spoar krusing
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Trambaan
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (yn oanbou)
@@ -1999,13 +2024,20 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Reinwâld
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktussen
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Treinstasjon
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Fleantúchhangaar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Fleanfjild
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Frachtweinlaadgebiet
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Bushalte
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Haven
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boei
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Kontrôlepost
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Wetter
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanaal
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Slûs
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rivier
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kust of igge
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Dok
 
 # Industries come directly from their industry names
 
@@ -2028,6 +2060,7 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten brêge
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen brêge
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Buis Brêge
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akwadukt
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Sendmast
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Fjoertoer
@@ -2048,9 +2081,13 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laad Sce
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laad Hichtemap
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Hichtekaart bewarje
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hjir klikke om nei standert opslach- en laadtriemtafel te gean
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} frij
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}List fan skiven, mappen en bestânen
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Op dit stuit selektearre namme foar opslein spul
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Fuortsmite
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}It no selektearre opsleine spul fuortsmite
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Opslaan
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}It hjoeddeisk spul opslaan ûnder de selektearre namme
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laad
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Laad selektjeare spul
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spul Details
@@ -2058,30 +2095,91 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Gjin ynf
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Fier in namme yn foar it opsleine spul
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wrâldgeneraasje
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Lângrutte:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selektearje de grutte fan de kaart yn tegels. It tal beskikbere tegels sil leger lizze.
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Oantal stêden:
+STR_MAPGEN_DATE                                                 :{BLACK}Datum:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Oantal yndustrien:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hichte sniegrins:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sniegrins ien omheech ferpleatsje:
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sniegrins ien nei beneden ferpleatsje:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Samar in getal:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om sels in getal yn te fieren
+STR_MAPGEN_RANDOM                                               :{BLACK}Meitsje eigenwillich
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Feroarje it getal hokker brûkt wurdt foar de terreingeneraasje
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lângenerator:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boskalgoritme:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Seenivo:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivieren:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Sljochtens:
+STR_MAPGEN_VARIETY                                              :{BLACK}Lânskipsfariaasje:
+STR_MAPGEN_GENERATE                                             :{WHITE}Generearje
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaartrânen:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Noardwest
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Noardeast
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Súdeast
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}Súdwest
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frij foarmje
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Wetter
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Samar wat
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Samar wat
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Hânmjittich
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaasje hichtekaart:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namme hichtekaart:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grutte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Samar in getal ynfiere
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{BLACK}Sniehichte oanpasse
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{BLACK}Startjier oanpasse
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Type Senario
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Sljocht lân
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}In sljocht lânskip generearje
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Samar in lânskip
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hichte sljocht lânskip:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}De hichte fan it sljochte lânskip oanpasse
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Hichte sljocht lânskip ien omheech ferpleatse
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Hichte sljocht lânskip oanpasse
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}Generearret Wrâld...
+STR_GENERATION_ABORT                                            :{BLACK}Ofbrekke
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Wrâldgeneraasje ôfbrekke
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Witte jo seker dat jo de generaasje ôfbrekke wolle?
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% kompleet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wrâldgeneraasje
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Riviergeneraasje
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bostgeneraasje
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekt meitsje
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rûchtes en rotsen generearje
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Set spul klear
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Trochrint tegellus
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Fiert skript út
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Riedt spul ta
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-ynstellings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}útgebreide NewGRF ynformaasje
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}NewGRF bestânen diet brûkt wurde
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}NewGRF bestânen diet net brûkt binne
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selektearje ynstellings:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter namme:
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Selektearre ynstellings lade
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sla ynstellings op
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sla dizze list op as foarynstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Jou dizze ynstellings in namme
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Verwiderje ynstellings
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Verwiderje de selektjere ynstellings
@@ -2090,45 +2188,94 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Foeg de 
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Lit sykje ny nije bestanden
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Fernij list my beskikbere NewGRF bestanden
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Fourthelje
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Smyt de selektearre NewGRF út de list
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Pleats heger
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Set selektjere NewGRF boppe oan de list
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Pleats leger
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Set selektjere NewGRF ûnderoan de list
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}In list fan ynstalearre NewGRF bestânen
 
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parameters ynstelle
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Parameters sjen litte
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Skeakel palet
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Skeakel it palet fan de selektearre NewGRF.{}Dit kinst dwaan at de ôfbyldings út de NewGRF der rôze útsjoche
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Feroarings tapasse
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Sykje ynhâld op ynternet
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Gean nei oft de missende ynhâld online fûn wurde kin
 
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Bestânsnamme: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Ferzje: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Leechte noch wurkjende ferzje: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameters: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}gjin ynformaasje beskikber
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Keppelt bestând koe net fûn wurde
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Útskeakele
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Dat strykt net mei dizze ferzje fan OpenTTD
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Feroarje NewGRF-parameters
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Slút
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Set werom
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set alle ynstellings op normale wearde
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Tal parameters: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Ynspektearje - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Haad
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Ynspektearje it objekt fan it haadmêd
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} op {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :spoar soart
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF fariabele 60+x parameter (heksadesimaal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Rjochted ôfbylding {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Folgend flak
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gean fierder nei de folgjende ôfbylding, sla pseudo/werkleure/lettertype ôfbyldings oer en begjin wer oernei at it ein berikke is
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gean nei ôfbylding
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gean nei de ôfbylding yn kwestje. Sla net 'normale' ofbyldings oer
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Foarig flak
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gean tebek nei de foarige ôfbylding, sla pseudo/werkleure/lettertype ôfbyldings oer en begjin wer oernei at it begjin berikke is
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Represintaasje fan de no selektearre ôfbylding. Dizze wurdt net rjochte by it tekenjen
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Ferweech de ôfbylding, feroarje de X en Y útslach
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Utslach X: {NUM}, Utslach Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Kies ôfbylding
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pak in ôfbylding fan alle lokaasjes op it skerm ôf
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gea ny flak
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warskôging: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Flater: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatale flater: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Der hat in fatale NewGRF-flater plakfûn: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sil net wurkje kinne mei de TTDPatch-ferzje dy't troch OpenTTD meldt wurdt
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is makke foar de {STRING}-ferzje fan TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} makke om te brûken tegeare my{STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Unjildige parameter foar {1:STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} moat earder laden wurde as {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} moat letter laden wurde as {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} is een OpenTTD-ferzje nedich dy't better is as {STRING}
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :it GRF-bestând dat er besyket oer te setten
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tevolle NewGRF's binne laden
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :It laden fan {1:STRING} as in statyske NewGRF mei {STRING} soe liede kinne ta desyngronisaasje
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unferwachte ôfbylding (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekinde aksje 0 eigenskip {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Hat besocht in ûnjildich ID te brûken (sprite {3:NUM})
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} befettet in korrupte ôfbylding. Alle korrupte ôfbyldings sille mei in read fraachteken markearre wurde (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Befet meardere Aksje-8 fermeldings (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ein fan pseudo-ôfbylding lêze (sprite {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}It hjoeddeiske basisôfbyldingspakket misset in oantal ôfbylding.{}Besykje dit ôfbyldingspakket te fernijen
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wie útskeakele troch {STRING}
 
 # NewGRF related 'general' warnings
