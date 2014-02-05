@@ -306,6 +306,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}प्�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}आलेख दाखवा
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}दाखवा कंपनी लीग तक्ता
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}नवीन उद्योगाचे फंड बांधकाम
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}कंपनीच्या गाड्या प्रदर्शन यादी.Ctrl+Click गट / वाहन सूची उघडणे
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}कंपनीच्या रस्त्याच्या वाहने प्रदर्शन यादी.Ctrl+Click गट / वाहन सूची उघडणे
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}कंपनीच्या जहाजे प्रदर्शन यादी.Ctrl+Click गट / वाहन सूची उघडणे
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK} कंपनीच्या विमानाची प्रदर्शन यादी.Ctrl+Click गट / वाहन सूची उघडणे
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}द्श्य मोठे करा
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}द्श्य छोटे करा
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK} लोहमार्ग बांधा
@@ -313,6 +317,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}रस�
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}बोटींचा धक्का बांधा
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}विमानतळ बांधा
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}आवाज/संगीत खिडकी दाखवा
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}शेवटचा संदेश अहवाल दर्शवा, संदेश पर्याय दर्शवा
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}साधनपट्टी बदला
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}ओपेन टीटीडी
@@ -320,27 +326,39 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}सु�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}सुरुवातीची तारीख एक वर्ष पुढे न्या
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}सुरुवातीचं वर्ष पुरवण्यासाठी क्लिक करा
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}नकाशा, शहरांची यादी दाखवा
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}प्रदेश उत्पन्न करणे
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}गावे उत्पन्न करणे
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}इंडस्ट्री उत्पन्न करणे
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}रस्तेबांधणी
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}चिन्ह लावा
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :उद्देश जतन
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :उद्देश उघडा
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद करा
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :खेळाचे पर्याय
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :प्रगत सेटिंग
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ए.आय. / गेम स्क्रिप्ट सेटिंग्ज
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF पर्याय
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :पारदर्शकता पर्याय
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :शहरांची नावे दाखवा
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :स्थानकांची नावे दाखवा
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :दिशा नावे दर्शविली
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :चिन्ह दाखवा
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :स्पर्धक चिन्हे आणि दर्शविले नावे
+STR_SETTINGS_MENU_FULL_ANIMATION                                :पूर्ण अॅनिमेशन
 STR_SETTINGS_MENU_FULL_DETAIL                                   :पूर्ण तपशील
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :इमारती पारदर्शक
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :स्थानकांची नावे पारदर्शक
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :खेळ वाचवणे
+STR_FILE_MENU_LOAD_GAME                                         :खेळ उघडा
 STR_FILE_MENU_QUIT_GAME                                         :खेळ सोडून द्या
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :बाहेर पडा
@@ -356,16 +374,28 @@ STR_TOWN_MENU_FOUND_TOWN                                        :सापडल
 ############ range ends here
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :अनुदान
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :चालू असले नफा आलेख
 STR_GRAPH_MENU_INCOME_GRAPH                                     :आवक आलेख
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :वितरित मालवाहू आलेख
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :कामगिरी इतिहास आलेख
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :कंपनी मूल्य आलेख
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :मालवाहू देयक दर
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :कंपनी लीग तक्ता
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :तपशीलावर कामगिरी रेटिंग
+STR_GRAPH_MENU_HIGHSCORE                                        :उच्च स्कोअर तक्ता
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :उद्योग निर्देशिका
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :इंडस्ट्री बंदिवासात
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :नवीन उद्योग फंड
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -398,6 +428,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :ध्वनी
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :शेवटचा संदेश/बातम्या अहवाल
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोपांचा इतिहास
 ############ range ends here
 

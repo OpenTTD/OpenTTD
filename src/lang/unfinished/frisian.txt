@@ -1080,6 +1080,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ynstellings dy'
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Behein de ûndersteande list ta bepaalde ynstellingtypes
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle ynstellingtypes
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliïntynstellings (wurdt net per spul opslein; hat ynvloed op alle spullen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spulynstellings (wurdt per spul opslein; hat allinich effekt op nije spullen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spulynstellings (wurdt per spul opslein; hat allinich effekt op it hjoeddeiske spul)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Bedriuwynstellings (wurdt per spul opslein; hat allinich effekt op nije spullen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Bedriuwynstellings (wurdt per spul opslein; hat allinich effekt op it hjoeddeiske bedriuw)
 
 STR_CONFIG_SETTING_OFF                                          :út
 STR_CONFIG_SETTING_ON                                           :oan
@@ -1097,6 +1102,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lofts
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rjochts
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimale startersliening: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimale bedrach hokker troch in bedriuw lient wurde kin {sûnder acht te slaan op de ynflaasje)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rinte: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rinte op lienings; behearsket ek ynflaasje at dizze oan stiet
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Eksploitaasjekosten: {STRING}
@@ -1110,18 +1117,29 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stel yn hoefoll
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stel hichte bouw- en oankeapkosten yn
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjes: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :By ynskeakeljen kinne der om de safolle jier resesjes plakfine. Under in resesje nim de produksje op alle flakken ôf (sadree in resesje oergean is giet de produkje wer nei it âlde nivo omheech)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ferbied treinen te draaien yn stasjons: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :By ynskeakeljen sille treinen net draaie op net kopstasjons, ek net as der in koarter paad is nei de folgjende bestimming by it wol omdraaien
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skeakel rampen oan/út. Rampen kinne sa no en dan fiertugen en ynfrastruktuer sawolblokearje as ferneatigje
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Hâlding gemeenten tsjinoer werstrukturearring: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoe grut ympact fan lûdsoerlêst en omwrâldskea toch bedriuwen is op har reputaasje by de lokale bestjoeren en takomstige konstruksje yn harren mêd
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :It boue op in helling tastean: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :By ynskeakeljen kinne spoarbanen en stasjon op de measte skeantes bout wurde. Oars meie sy allinich bout wurde op skeantes dy't in oerienkommende rjochting hawwe en dêrtroch gjin fûndearrings nedich binne
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Stean lânskipsbewurkings ta ûnder gebouwen en spoarbanen sûnder dat dizze ferwidere wurde
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebrûk meer realistyske hannelsgebieten: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Brûk ferskillende opheinbewâlden foar ferskillende typen stasjons en fleanfjilden
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Stjin ferwiderje fan stedelike dyken, brêgen en tunnels ta: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Meitsje it makliker om gebouwen en ynfrastruktuer dy't yn it besit fan in stêd binne te ferwiderjen
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimale treinlingte: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Stelt de maksimale lingte fan treinen yn
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teil{P 0 "" en}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Utjefte fan steam/fonken by treinen: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Stel yn hoefolle smoke as fonken fiertugen útstjitte
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein akselerasje model: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Selektearje it natuerkundige model foar de treinfersnelling. It 'orizjinele' model straffet alle fiertugen itselde op skeantes. It 'realistyske' model straffet fiertugen op skeantes en yn bochten op basis fan feskate eigenskippen sa as lingte en lûkkrêft
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Dyk reau akselerasje model: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Steitle skeanten foar treinen: {STRING}
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -2276,19 +2294,31 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Befet meardere Aksje-8 fermeldings (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ein fan pseudo-ôfbylding lêze (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}It hjoeddeiske basisôfbyldingspakket misset in oantal ôfbylding.{}Besykje dit ôfbyldingspakket te fernijen
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Oanfrege GRF-bron is net beskikber (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wie útskeakele troch {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Unjildich/ûnbekind ôfbyldingsútlisformaat (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Warskôging!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jo stean op it punt oanpassings te meitsjen yn in aktyf spul. Dit kin OpenTTD in flater oprinne litte of de it spul brekke. Fier gjin flatermeldings yn oer dizze probelem.{}Witte jo wierlik seker dat dat jo dit wolle?
 
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kin bestând net tafoege: duplikaat GRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Keppele bestân koe net fûn wurde (kompatibel GRF ynladen)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kin bestând net tafoege: NewGRF bestânslimyt berikke
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibile GRF(s) ynladen foar de missende bestânen
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missende GRF bestânen binne útskeakele
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missende GRF-bestânen
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Ferfetsje fan it spul kin in flater yn OpenTTD feroarsaaksje. Fier gjin flatermeldings yn at dit bart.{}Witte jo seker dat jo it spul ferfetjse wolle?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :gjin
 STR_NEWGRF_LIST_ALL_FOUND                                       :Alle bestânnen oanwêzig
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Kompatibile bestânen fûn
 STR_NEWGRF_LIST_MISSING                                         :{RED}Dêr misse bestânen
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN                                               :{WHITE}It gedrach fan NewGRF '{0:STRING}' sil wierskynlik desyngronisaasjes en/of flater feroarsaakje
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -2303,21 +2333,40 @@ STR_INVALID_VEHICLE                                             :<ûnjildich fie
 # NewGRF scanning window
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Boerdenlist - {COMMA} Boerd{P "" en}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Haadletters meinimme
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Wol as net op haadletters lette by it filterjen fan de boerden
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Feroarje tekst fan buordsje
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Gean nei it folgjende boerd
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gean ne it foarige boerd
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Fier in namme yn foar it boerd
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stêden
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Gjin -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stêdsnammen - klik op de namme om it byld op dy stêd te sintrearen. Ctrl+klick iepent in nij sichtber diel op de stêd lokaasje
+STR_TOWN_POPULATION                                             :{BLACK}Wrâldpopulaasje: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Ynwenners: {ORANGE}{COMMA}{BLACK}  Hûzen: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passazjiers lêste moanne: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post lêste moanne: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Guod nedich foar stêdsgroei:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} ferplichte
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ferplichte yn de winter
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} ôflevere
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (noch nedich)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (ôflevere)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stêd groeit eltse {ORANGE}{COMMA}{BLACK} {P dei dagen}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stêd groeit eltse {ORANGE}{COMMA}{BLACK} {P dei dagen} (subsidearre)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stêd groeit{RED}net{BLACK}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Lûdslimyt yn dizze stêd: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sintrearje it byld op de lokaasje fan dizze stêd
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Lit ynformaasje sjen oer de gemeente
@@ -2345,11 +2394,15 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grutte promoasj
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Subsidiearje lokale weiferbouwing
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bou stânbyld fan bedrieuwseigner
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Betelje bouw fan nije gebouwen
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Keapje eksklusive ferfiersrjochten
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Keapje it lokale bestjoer om
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begjin in lytse advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Subsidearje de fernijing fan it dikenstelsel yn dizze stêd. Jout tsjin de seis moannen grutte oerlêst foar it ferkear {}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Subsidearje de bou fan nije kommersjele gebouwen yn dizze stêd.{}Kosten: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalde doelen
