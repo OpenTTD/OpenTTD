@@ -140,7 +140,8 @@ public:
 	static bool Show(StoryPageID story_page_id);
 
 	/**
-	 * Remove a story page from the list.
+	 * Remove a story page and all the page elements
+	 * associated with it.
 	 * @param story_page_id The story page to remove.
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
