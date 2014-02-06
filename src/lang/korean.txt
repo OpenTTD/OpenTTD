@@ -55,7 +55,7 @@ STR_CARGO_PLURAL_CANDY                                          :{G=m}사탕
 STR_CARGO_PLURAL_COLA                                           :{G=f}콜라
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}솜사탕
 STR_CARGO_PLURAL_BUBBLES                                        :{G=m}거품
-STR_CARGO_PLURAL_TOFFEE                                         :{G=f}태피
+STR_CARGO_PLURAL_TOFFEE                                         :{G=f}토피
 STR_CARGO_PLURAL_BATTERIES                                      :{G=f}건전지
 STR_CARGO_PLURAL_PLASTIC                                        :{G=m}플라스틱
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}탄산음료
@@ -89,7 +89,7 @@ STR_CARGO_SINGULAR_CANDY                                        :{G=m}사탕
 STR_CARGO_SINGULAR_COLA                                         :{G=f}콜라
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=m}솜사탕
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=m}거품
-STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}태피
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}토피
 STR_CARGO_SINGULAR_BATTERY                                      :{G=f}건전지
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}플라스틱
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음료
@@ -123,7 +123,7 @@ STR_QUANTITY_SWEETS                                             :사탕 {COMMA}�
 STR_QUANTITY_COLA                                               :콜라 {VOLUME_LONG}
 STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
-STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT_LONG}
+STR_QUANTITY_TOFFEE                                             :토피 {WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :건전지 {COMMA}개
 STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME_LONG}
 STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA}개
@@ -4455,7 +4455,7 @@ STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=m}장난감 
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}플라스틱 분수
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}탄산음료 공장
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}거품 제조 공장
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}태피 채취장
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}토피 채취장
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}설탕 광산
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -4546,7 +4546,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :과일 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :고무 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :설탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :솜사탕 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :태피 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :토피 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :거품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :사탕 수송차량
@@ -4576,7 +4576,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :과일 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :고무 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :설탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :솜사탕 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :태피 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :토피 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :거품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :사탕 수송차량
@@ -4608,7 +4608,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :과일 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :고무 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :설탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :솜사탕 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :태피 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :토피 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :거품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :사탕 수송차량
@@ -4683,9 +4683,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow 콜라
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover 솜사탕 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught 솜사탕 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow 솜사탕 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover 태피 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught 태피 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow 태피 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover 토피 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught 토피 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow 토피 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover 장난감 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught 장난감 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow 장난감 수송차

@@ -213,21 +213,27 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}כ"ס
 STR_UNITS_POWER_METRIC                                          :{COMMA}כ"ס
 STR_UNITS_POWER_SI                                              :{COMMA}קילו וואט
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ט'
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ט'
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}ק"ג
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} טו{P ן נות}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{P 0 "טון " ""}{COMMA}{P "" " טונות"}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} ק"ג
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}גל'
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ל'
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}מ'³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{P 0 "ליטר " ""}{COMMA}{P "" " ליטרים"}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מטר
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} ליברות כוח
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ק"ג
 STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} רגל
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} מ'
 STR_UNITS_HEIGHT_SI                                             :{COMMA} מ'
 
 # Common window strings
@@ -235,6 +241,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}מחרו
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}בחר סדר קיבוץ
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}(בחר(י) סדר מיון (עולה\יורד
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}בחר\י קרטריון מיון
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}בחר קריטריון סינון
@@ -246,7 +253,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}סגור
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}כותרת החלון - גרור להזזה
 STR_TOOLTIP_SHADE                                               :{BLACK}הצל חלון - הצג רק את שורת הכותרת
 STR_TOOLTIP_DEBUG                                               :{BLACK}הצג מידע דיבאג של newGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}'סמן חלון זה כחלון מוגן מפני מקש 'סגור את כל החלונות
+STR_TOOLTIP_STICKY                                              :{BLACK}'סמן חלון זה כחלון מוגן מפני מקש 'סגור את כל החלונות. Ctrl+Click לשמירה כברירת מחדל
 STR_TOOLTIP_RESIZE                                              :{BLACK}לחץ ומשוך כדי לשנות את גודל החלון
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}החלף בין גודל חלון קטן/גדול
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}כפתור גלילה - גולל רשימה מעלה/מטה
@@ -290,15 +297,17 @@ STR_SORT_BY_LENGTH                                              :אורך
 STR_SORT_BY_LIFE_TIME                                           :זמן חיים נותר
 STR_SORT_BY_TIMETABLE_DELAY                                     :עיכוב בלוח זמנים
 STR_SORT_BY_FACILITY                                            :סוג תחנה
+STR_SORT_BY_WAITING_TOTAL                                       :מטען כולל בהמתנה
+STR_SORT_BY_WAITING_AVAILABLE                                   :מטען זמין בהמתנה
 STR_SORT_BY_RATING_MAX                                          :דירוג מטען גבוה ביותר
 STR_SORT_BY_RATING_MIN                                          :דירוג מטען נמוך ביותר
 STR_SORT_BY_ENGINE_ID                                           :מספר קטר
 STR_SORT_BY_COST                                                :מחיר
 STR_SORT_BY_POWER                                               :כח
 STR_SORT_BY_TRACTIVE_EFFORT                                     :מאמץ גרירה
-STR_SORT_BY_INTRO_DATE                                          :תאריך התחלת ייצור
+STR_SORT_BY_INTRO_DATE                                          :תאריך ייצור
 STR_SORT_BY_RUNNING_COST                                        :עלות הפעלה
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :כח/עלות הפעלה
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :הספק\עלות הפעלה
 STR_SORT_BY_CARGO_CAPACITY                                      :קיבולת סחורה
 STR_SORT_BY_RANGE                                               :טווח
 STR_SORT_BY_POPULATION                                          :אכלוסיה
@@ -314,6 +323,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}הצג �
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}הצג רשימת תחנות החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}הצג מידע כספי על החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}הצג מידע כללי על החברה
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}הצג את סיפור החברה
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}הצג רשימת מטרות
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}הצג גרפים
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}הצג את טבלת ליגת החברות
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ממן בניה של תעשייה חדשה או הצג את רשימת כל התעשיות
@@ -1108,9 +1119,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :קבע כמה �
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :עלויות בנייה: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :קבע את רמת העלויות של בנייה ורכישה
 STR_CONFIG_SETTING_RECESSIONS                                   :מיתונים: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :אם מאופשר מיתונים עלולים להתרחש מדי כמה שנים. בעת מיתון כל הייצור קטן יותר באופן משמעותי (הוא חוזר לרמתו הקודמת בסוף המיתון)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :אם מאופשר מיתונים עלולים להתרחש מדי כמה שנים. בתקופת מיתון כל הייצור קטן יותר באופן משמעותי (הוא חוזר לרמתו הקודמת בסוף המיתון)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :מנע החלפת כיוון רכבות בתחנות: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :אם מאופשר רכבות לא יחליפו כיוון בתחנות שאינן סופיות, אם עקב החלפת כיוון יש נתיב קצר יותר אל יעדן הבא
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :אם מאופשר רכבות לא יחליפו כיוון בתחנות שאינן סופיות, גם אם עקב החלפת כיוון יש נתיב קצר יותר אל היעד הבא
 STR_CONFIG_SETTING_DISASTERS                                    :אסונות: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :אפשר/מנע אסונות אשר עלולים מדי פעם לחסום או להרוס כלי רכב או תשתיות
 STR_CONFIG_SETTING_CITY_APPROVAL                                :יחס מועצת העיר כלפי שינוי מבנה אזורי: {STRING}
@@ -1158,7 +1169,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{STRING} :שי�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :אופן מימון תעשיה עיקרית. "ללא" משמע שלא ניתן לממן כאלו. "סיקור" משמע שניתן לממן כאלו, אך הבנייה מתרחשת בנקודה אקראית על גבי המפה ועלולה אף להיכשל. "כמו תעשיות אחרות" משמע שתעשיות גולמיות ניתנות לבנייה ע"י חברות כמו תעשיות עיבוד, בכל מקום שהן רוצות
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ללא
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :כמו שאר התעשיות
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :חיפוש אחר התעשיות
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :איתור מחצבים
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :אזרו שטוח סביב תעשיות: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :כמות המקום השטוח סביב תעשיה. זה מבטיח שיהיה מקום פנוי סביב תעשיה לבניית מסילות וכו'
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{STRING} :אפשר יצירת מספר תעשיות זהות בשטחה של עיר אחת
@@ -1368,7 +1379,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :השמע צלי
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :סוף שנה: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :השמע צליל בסוף שנה המסכם את תפקוד החברה בהשוואה לשנה הקודמת
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :בנייה: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :השמע צליל בעת בנייה מוצלחת או פעולות אחרות
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :השמע צליל בעת הצלחת בנייה או פעולות אחרות
 STR_CONFIG_SETTING_SOUND_CLICK                                  :הקשה על כפתורים: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :השמע צפצוף בהקשת כפתורים
 STR_CONFIG_SETTING_SOUND_DISASTER                               :אסונות/תאונות: {STRING}
@@ -1556,17 +1567,49 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :הסר רכיב
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :הסר קצות כבישים ללא מוצא בעת סלילה מחדש ממומנת של כבישים
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :יחידות מהירות: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :כאשר מוצגת מהירות השתמש ביחידות הנבחרות
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :בריטית (מייל לשעה)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :מטרי (קמ"ש)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :בינלאומית (מטר לשניה)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :יחידות הספק כלי תחבורה: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :כאשר מוצג הספק כלי תחבורה השתמש ביחידות הנבחרות
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :בריטית (כ"ס)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :מטרי (כ"ס)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :בינלאומית (קילו וואט)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :יחידות משקל: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :כאשר מוצגים משקלים השתמש ביחידות הנבחרות
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :בריטית (טון)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :מטרי (טון)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :בינלאומית (קילוגרם)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :יחידות נפח: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :כאשר מוצגים נפחים השתמש ביחידות שנבחרו
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :בריטית (גלון)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :מטרי (ליטר)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :בינלאומית (מטר מעוקב)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :יחידות כח גרר: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :כאשר מוצג כח גרר השתמש ביחידות הנבחרות
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :בריטית (ליברות כח)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :מטרי (קילוגרם כוח)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :בינלאומית (קילו ניוטון)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :יחידות גובה: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :כאשר מוצגים גבהים השתמש ביחידות שנבחרו.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :בריטית (רגל)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מטר)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}ממשק חזותי
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}הגדרות מיקום
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}בנייה
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}תחנות
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}כלכלה
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}התפלגות המטען
 STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}הצג הגדרות
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}אינטראקציה
@@ -1752,7 +1795,7 @@ STR_FACE_LOAD_DONE                                              :{WHITE}הפני
 STR_FACE_FACECODE                                               :{BLACK}תוי פנים מספר
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}צפה/שנה מספר סידורי של תוי הפנים
 STR_FACE_FACECODE_CAPTION                                       ::{WHITE}צפה/שנה מספר סידורי של תוי הפנים
-STR_FACE_FACECODE_SET                                           :{WHITE}המפר הסידורי של תוי הפנים הוחלף
+STR_FACE_FACECODE_SET                                           :{WHITE}המספר הסידורי של תוי הפנים הוחלף
 STR_FACE_FACECODE_ERR                                           :{WHITE}לא ניתן לקבוע מספר פנים של השחקן - חייב להיות מספר בין 0 ל-4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}שמור
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}שמור את הפנים לקובץ
@@ -1833,7 +1876,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}רענן
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}אתר שרת
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}סרוק את הרשת לאיתור שרת
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}הוסף שרת
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}מוסיף שרת לרשימה שתמיד יבדק למשחקים פעילים.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}מוסיף שרת לרשימה שתמיד תבדק למשחקים פעילים.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}הפעל שרת
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}הפעל שרת חדש
 
@@ -1968,6 +2011,7 @@ STR_NETWORK_CLIENT                                              :לקוח
 STR_NETWORK_SPECTATORS                                          :צופים
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}הכנס סכום כסף שברצונך לתת
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}צופה
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}בטל שמירת הסיסמה החדשה
@@ -1980,7 +2024,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}השתמ
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}הצטרף
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}הצטרף ושחק כשותף בחברה
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}ססמה
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}הגן על חברתך בסיסמה בכדי למנוע הצטרפות בלתי-מורשים
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}הגן על חברתך בסיסמה בכדי למנוע הצטרפות משתמשים בלתי-מורשים
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}קבע סיסמה לחברה
 
 # Network chat
@@ -2144,13 +2188,13 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}לא, צ
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}הגדרות שקיפות
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK} שנה שקיפות עבור שלטי תחנות
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}שנה שקיפות עבור עצים
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}שנה שקיפות עבור בניינים
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}שנה שקיפות עבור תעשיות
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}שנה שקיפות עבור מבני תחבורה
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}שנה שקיפות עבור גשרים
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}שנה שקיפות עבור מבנים כגון מיגדלור/אנטנה
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK} שנה שקיפות עבור שלטי תחנות. Ctrl+לחיצה לנעילה
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}שנה שקיפות עבור עצים. Ctrl+לחיצה לנעילה
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}שנה שקיפות עבור בניינים Ctrl+לחיצה לנעילה
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}שנה שקיפות עבור תעשיות. Ctrl+לחיצה לנעילה
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}שנה שקיפות עבור מבני תחבורה כמו תחנות, מוסכים ונקודות ציון. Ctrl+לחיצה לנעילה
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}שנה שקיפות עבור גשרים. Ctrl+לחיצה לנעילה
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}שנה שקיפות עבור מבנים כגון מיגדלור ואנטנה. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}שנה שקיפות עבור עמודי חשמל
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}שנה שקיפות עבור מצביעי הטענה
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}הסתר במקום הפוך לשקוף
@@ -2461,6 +2505,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK} :מקבל {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({1:STRING} {0:COMMA}/8 )
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}מגבלת מהירות על המסילה: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}הגבלת מהירות בכביש: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :סלעים
@@ -2805,6 +2850,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<דגם כלי 
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<תעשייה לא תקינה>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<כלי תחבורה שגוי>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}סורק NewGRF-ים
@@ -2887,9 +2933,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}רכו�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}שחד את הרשות המקומית כדי להגדיל את הדרוג שלך בעיר תוך כדי סיכון להתפס ולשלם קנס חמור.{}עלות: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} מטרות
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}מטרות גלובליות
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}מטרות גלובליות:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- אין -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- לא זמין -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}מטרות חברה:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}הקלק על מטרה כדי למרכז את התצוגה הראשית על תעשיה/עיירה/משבצת. קליק תוך כדי לחיצה על מקש Ctrl פותח חלון תצוגה חדש במיקום התעשיה/העיירה/המשבצת
 
@@ -2929,6 +2978,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום העיר/תעשייה
 
 # Story book window
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}מטרה לא תקינה
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}שמות תחנות - לחץ על השם כדי להתמקד בתחנה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התחנה
@@ -2957,7 +3007,28 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}דירוג
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}הצג את דירוג השירות
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}קבץ לפי
+STR_STATION_VIEW_WAITING_STATION                                :תחנה: בהמתנה
+STR_STATION_VIEW_WAITING_AMOUNT                                 :כמות: בהמתנה
+STR_STATION_VIEW_PLANNED_STATION                                :תחנה: מתוכננת
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :כמות: מתוכננת
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} מ{STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} דרך {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} אל {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} מתחנה לא ידועה
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} אל תחנה כלשהי
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} דרך תחנה כלשהי
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} מתחנה זו
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} עוצר בתחנה זו
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} ליעד זה
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} ללא עצירה
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :מקור-דרך-יעד
+STR_STATION_VIEW_GROUP_S_D_V                                    :מקור-יעד-דרך
+STR_STATION_VIEW_GROUP_V_S_D                                    :דרך-מקור-יעד
+STR_STATION_VIEW_GROUP_V_D_S                                    :דרך-יעד-מקור
+STR_STATION_VIEW_GROUP_D_S_V                                    :יעד-מקור-דרך
+STR_STATION_VIEW_GROUP_D_V_S                                    :מקור-דרך-יעד
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :מחריד
@@ -3699,6 +3770,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}לוח �
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}לוח זמנים זה יתחיל ב-{STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}תאריך התחלה
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}בחר תאריך כנקודת ההתחלה ללוח הזמנים. Ctrl+לחיצה קובע את נקודת ההתחלה של לוח זמנים זה ומפזר בצורה אחידה בין כל כלי התחבורה המשותפים בלוח זמנים זה לפי סדרם, במידה וכל ההוראות כפופות ללוח הזמנים.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}שנה זמן
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}שנה את פרק הזמן לשהייה ביעד שנבחר
@@ -3812,6 +3884,8 @@ STR_AI_SETTINGS_START_DELAY                                     :מספר הימ
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "קרא אותי" של {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} רשימת שינויים של {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} רשיון של {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}גלישת טקסט
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}אפשר גלישת טקסט של החלון כך שכולו יוצג ללא צורך בגלילה
 STR_TEXTFILE_VIEW_README                                        :{BLACK}צפה ב-"קרא אותי"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}רשימת שינויים
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}רשיון
@@ -4185,6 +4259,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא נ�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... הרכב נהרס
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}כלי תחבורה לא יהיו זמינים
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}שנה הגדרות NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}כלי תחבורה עדיין לא זמינים
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}התחל משחק חדש אחרי {DATE_SHORT} או השתמש ב-NewGRF המכיל כלי תחבורה קדומים
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה...
@@ -4354,7 +4432,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :(קירבי-פ�
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :(אם-גי-אס' 250 (דיזל'
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :'פלודיפוט' (קיטור)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :'פאוורנאוט' (קיטור)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :'מייטי מובר' (קיטור)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :מייטי מובר (קיטור)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :(פלודיפוט' (דיזל'
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :'פאוורנאוט' (דיזל)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :(וויילס' 2-8-0 (קיטור'
@@ -4680,6 +4758,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
