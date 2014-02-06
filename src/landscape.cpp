@@ -32,6 +32,7 @@
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"
 #include <list>
+#include <set>
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1095,18 +1096,20 @@ static void BuildRiver(TileIndex begin, TileIndex end)
 
 /**
  * Try to flow the river down from a given begin.
- * @param marks  Array for temporary of iterated tiles.
  * @param spring The springing point of the river.
  * @param begin  The begin point we are looking from; somewhere down hill from the spring.
  * @return True iff a river could/has been built, otherwise false.
  */
-static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
+static bool FlowRiver(TileIndex spring, TileIndex begin)
 {
+	#define SET_MARK(x) marks.insert(x)
+	#define IS_MARKED(x) (marks.find(x) != marks.end())
+
 	uint height = TileHeight(begin);
 	if (IsWaterTile(begin)) return DistanceManhattan(spring, begin) > _settings_game.game_creation.min_river_length;
 
-	MemSetT(marks, 0, MapSize());
-	marks[begin] = true;
+	std::set<TileIndex> marks;
+	SET_MARK(begin);
 
 	/* Breadth first search for the closest tile we can flow down to. */
 	std::list<TileIndex> queue;
@@ -1127,8 +1130,8 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 			TileIndex t2 = end + TileOffsByDiagDir(d);
-			if (IsValidTile(t2) && !marks[t2] && FlowsDown(end, t2)) {
-				marks[t2] = true;
+			if (IsValidTile(t2) && !IS_MARKED(t2) && FlowsDown(end, t2)) {
+				SET_MARK(t2);
 				count++;
 				queue.push_back(t2);
 			}
@@ -1137,13 +1140,14 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 
 	if (found) {
 		/* Flow further down hill. */
-		found = FlowRiver(marks, spring, end);
+		found = FlowRiver(spring, end);
 	} else if (count > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
 		TileIndex lakeCenter = 0;
-		for (int i = RandomRange(count - 1); i != 0; lakeCenter++) {
-			if (marks[lakeCenter]) i--;
-		}
+		int i = RandomRange(count - 1) + 1;
+		std::set<TileIndex>::const_iterator cit = marks.begin();
+		while (--i) cit++;
+		lakeCenter = *cit;
 
 		if (IsValidTile(lakeCenter) &&
 				/* A river, or lake, can only be built on flat slopes. */
@@ -1167,6 +1171,7 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 		}
 	}
 
+	marks.clear();
 	if (found) BuildRiver(begin, end);
 	return found;
 }
@@ -1181,18 +1186,15 @@ static void CreateRivers()
 
 	uint wells = ScaleByMapSize(4 << _settings_game.game_creation.amount_of_rivers);
 	SetGeneratingWorldProgress(GWP_RIVER, wells + 256 / 64); // Include the tile loop calls below.
-	bool *marks = CallocT<bool>(MapSize());
 
 	for (; wells != 0; wells--) {
 		IncreaseGeneratingWorldProgress(GWP_RIVER);
 		for (int tries = 0; tries < 128; tries++) {
 			TileIndex t = RandomTile();
 			if (!CircularTileSearch(&t, 8, FindSpring, NULL)) continue;
-			if (FlowRiver(marks, t, t)) break;
+			if (FlowRiver(t, t)) break;
 		}
 	}
-
-	free(marks);
 
 	/* Run tile loop to update the ground density. */
 	for (uint i = 0; i != 256; i++) {
