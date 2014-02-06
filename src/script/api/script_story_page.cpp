@@ -95,8 +95,7 @@
 			story_page_element_id,
 			type == ::SPET_GOAL ? reference : 0,
 			CMD_UPDATE_STORY_PAGE_ELEMENT,
-			type == ::SPET_TEXT || type == ::SPET_LOCATION ? text->GetEncodedText() : NULL,
-			&ScriptInstance::DoCommandReturnStoryPageElementID);
+			type == ::SPET_TEXT || type == ::SPET_LOCATION ? text->GetEncodedText() : NULL);
 }
 
 /* static */ bool ScriptStoryPage::SetTitle(StoryPageID story_page_id, Text *title)
