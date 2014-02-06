@@ -32,11 +32,15 @@ void SQGSStoryPage_Register(Squirrel *engine)
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::New,                     "New",                     3, ".i.");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::NewElement,              "NewElement",              5, ".iii.");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::UpdateElement,           "UpdateElement",           4, ".ii.");
-	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::GetPageSort,             "GetPageSort",             2, ".i");
-	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::GetPageElementSort,      "GetPageElementSort",      2, ".i");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::GetPageSortValue,        "GetPageSortValue",        2, ".i");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::GetPageElementSortValue, "GetPageElementSortValue", 2, ".i");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::GetCompany,              "GetCompany",              2, ".i");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::GetDate,                 "GetDate",                 2, ".i");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::SetDate,                 "SetDate",                 3, ".ii");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::SetTitle,                "SetTitle",                3, ".i.");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::Show,                    "Show",                    2, ".i");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::Remove,                  "Remove",                  2, ".i");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::RemoveElement,           "RemoveElement",           2, ".i");
 
 	SQGSStoryPage.PostRegister(engine);
 }

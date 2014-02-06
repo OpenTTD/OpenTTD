@@ -251,6 +251,32 @@ CommandCost CmdSetStoryPageTitle(TileIndex tile, DoCommandFlag flags, uint32 p1,
 }
 
 /**
+ * Update date of a story page.
+ * @param tile unused.
+ * @param flags type of operation
+ * @param p1 = (bit 0 - 15) - StoryPageID to update.
+ * @param p2 = (bit 0 - 31) - date
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetStoryPageDate(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	StoryPageID page_id = (StoryPageID)GB(p1, 0, 16);
+	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
+	Date date = (Date)p2;
+
+	if (flags & DC_EXEC) {
+		StoryPage *p = StoryPage::Get(page_id);
+		p->date = date;
+
+		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+	}
+
+	return CommandCost();
+}
+
+/**
  * Display a story page for all clients that are allowed to
  * view the story page.
  * @param tile unused.
@@ -302,6 +328,33 @@ CommandCost CmdRemoveStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
 		if (StoryPage::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
+	}
+
+	return CommandCost();
+}
+
+/**
+ * Remove a story page element
+ * @param tile unused.
+ * @param flags type of operation
+ * @param p1 = (bit 0 - 15) - StoryPageElementID to remove.
+ * @param p2 unused.
+ * @param text unused.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdRemoveStoryPageElement(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	StoryPageElementID page_element_id = (StoryPageElementID)p1;
+	if (!StoryPageElement::IsValidID(page_element_id)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		StoryPageElement *pe = StoryPageElement::Get(page_element_id);
+		StoryPageID page_id = pe->page;
+
+		delete pe;
+
+		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
 	}
 
 	return CommandCost();

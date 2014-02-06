@@ -126,7 +126,7 @@ public:
 	 * @param story_page_id The story page to get the sort value of.
 	 * @return Page sort value.
 	 */
-	static uint32 GetPageSort(StoryPageID story_page_id);
+	static uint32 GetPageSortValue(StoryPageID story_page_id);
 
 	/**
 	 * Get story page element sort value. Each page element has a sort value that is internally
@@ -137,7 +137,34 @@ public:
 	 * @param story_page_element_id The story page element to get the sort value of.
 	 * @return Page element sort value.
 	 */
-	static uint32 GetPageElementSort(StoryPageElementID story_page_element_id);
+	static uint32 GetPageElementSortValue(StoryPageElementID story_page_element_id);
+
+	/**
+	 * Get the company which the page belongs to. If the page is global,
+	 * ScriptCompany::COMPANY_INVALID is returned.
+	 * @param story_page_id The story page to get the company for.
+	 * @return owner company or ScriptCompany::COMPANY_INVALID
+	 * @pre IsValidStoryPage(story_page_id).
+	 */
+	static ScriptCompany::CompanyID GetCompany(StoryPageID story_page_id);
+
+	/**
+	 * Get the page date which is displayed at the top of each page.
+	 * @param story_page_id The story page to get the date of.
+	 * @return The date
+	 * @pre IsValidStoryPage(story_page_id).
+	 */
+	static int32 GetDate(StoryPageID story_page_id);
+
+	/**
+	 * Update date of a story page. The date is shown in the top left of the page
+	 * @param story_page_id The story page to set the date for.
+	 * @param date Page date (@see ScriptDate)
+	 * @return True if the action succeeded.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre IsValidStoryPage(story_page_id).
+	 */
+	static bool SetDate(StoryPageID story_page_id, int32 date);
 
 	/**
 	 * Update title of a story page. The title is shown in the page selector drop down.
@@ -169,6 +196,15 @@ public:
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool Remove(StoryPageID story_page_id);
+
+	/**
+	 * Removes a story page element.
+	 * @param story_page_element_id The story page element to remove.
+	 * @return True if the action succeeded.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre IsValidStoryPageElement(story_page_element_id).
+	 */
+	static bool RemoveElement(StoryPageElementID story_page_element_id);
 };
 
 #endif /* SCRIPT_STORY_HPP */
