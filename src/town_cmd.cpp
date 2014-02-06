@@ -46,6 +46,7 @@
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
+#include "gfx_layout.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -1889,6 +1890,14 @@ bool GenerateTowns(TownLayout layout)
 	 * Note that this is really a suggested value, not a required one.
 	 * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
 	do {
+		if (total % 512 == 0) {
+			/* Clear the caches regularly, otherwise it will only be done
+			 * at the end of the whole cycle when OpenTTD has allocated
+			 * lots and lots of memory for these essentially caches. */
+			ClearPersistentStorageChanges(true);
+			Layouter::ReduceLineCache();
+		}
+
 		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* Get a unique name for the town. */
