@@ -1563,7 +1563,30 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
-	const Industry *i;
+	const Industry *i = NULL;
+
+	/* On a large map with many industries, it may be faster to check an area. */
+	const int dmax = 14;
+	if (Industry::GetNumItems() > (size_t) (dmax * dmax * 2)) {
+		const int tx = TileX(tile);
+		const int ty = TileY(tile);
+		TileArea tile_area = TileArea(TileXY(max(0, tx - dmax), max(0, ty - dmax)), TileXY(min(MapMaxX(), tx + dmax), min(MapMaxY(), ty + dmax)));
+		TILE_AREA_LOOP(atile, tile_area) {
+			if (GetTileType(atile) == MP_INDUSTRY) {
+				const Industry *i2 = Industry::GetByTile(atile);
+				if (i == i2) continue;
+				i = i2;
+				if (DistanceMax(tile, i->location.tile) > dmax) continue;
+				if (i->type == indspec->conflicting[0] ||
+						i->type == indspec->conflicting[1] ||
+						i->type == indspec->conflicting[2]) {
+					return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
+				}
+			}
+		}
+		return CommandCost();
+	}
+
 	FOR_ALL_INDUSTRIES(i) {
 		/* Within 14 tiles from another industry is considered close */
 		if (DistanceMax(tile, i->location.tile) > 14) continue;
