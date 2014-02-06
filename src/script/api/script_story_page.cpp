@@ -105,6 +105,13 @@
 	return StoryPage::Get(story_page_id)->sort_value;
 }
 
+/* static */ uint32 ScriptStoryPage::GetPageElementSort(StoryPageElementID story_page_element_id)
+{
+	EnforcePrecondition(false, IsValidStoryPageElement(story_page_element_id));
+
+	return StoryPageElement::Get(story_page_element_id)->sort_value;
+}
+
 /* static */ bool ScriptStoryPage::SetTitle(StoryPageID story_page_id, Text *title)
 {
 	CCountedPtr<Text> counter(title);

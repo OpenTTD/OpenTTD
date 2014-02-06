@@ -2340,6 +2340,9 @@
     <ClInclude Include="..\src\script\api\script_storypagelist.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script\api\script_storypageelementlist.hpp">
+      <Filter>Script API</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\script\api\script_subsidy.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
@@ -2527,6 +2530,9 @@
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_storypagelist.cpp">
+      <Filter>Script API Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\api\script_storypageelementlist.cpp">
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_subsidy.cpp">

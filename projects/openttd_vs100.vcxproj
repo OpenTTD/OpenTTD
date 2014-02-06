@@ -1037,6 +1037,7 @@
     <ClInclude Include="..\src\script\api\script_stationlist.hpp" />
     <ClInclude Include="..\src\script\api\script_story_page.hpp" />
     <ClInclude Include="..\src\script\api\script_storypagelist.hpp" />
+    <ClInclude Include="..\src\script\api\script_storypageelementlist.hpp" />
     <ClInclude Include="..\src\script\api\script_subsidy.hpp" />
     <ClInclude Include="..\src\script\api\script_subsidylist.hpp" />
     <ClInclude Include="..\src\script\api\script_testmode.hpp" />
@@ -1100,6 +1101,7 @@
     <ClCompile Include="..\src\script\api\script_stationlist.cpp" />
     <ClCompile Include="..\src\script\api\script_story_page.cpp" />
     <ClCompile Include="..\src\script\api\script_storypagelist.cpp" />
+    <ClCompile Include="..\src\script\api\script_storypageelementlist.cpp" />
     <ClCompile Include="..\src\script\api\script_subsidy.cpp" />
     <ClCompile Include="..\src\script\api\script_subsidylist.cpp" />
     <ClCompile Include="..\src\script\api\script_testmode.cpp" />

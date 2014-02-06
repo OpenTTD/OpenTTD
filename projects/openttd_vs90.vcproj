@@ -3480,6 +3480,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_storypageelementlist.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_subsidy.hpp"
 				>
 			</File>
@@ -3733,6 +3737,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_storypagelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_storypageelementlist.cpp"
 				>
 			</File>
 			<File
