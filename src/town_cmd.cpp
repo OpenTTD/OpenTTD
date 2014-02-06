@@ -340,6 +340,24 @@ static void AnimateTile_Town(TileIndex tile)
  */
 static bool IsCloseToTown(TileIndex tile, uint dist)
 {
+	/* On a large map with many towns, it may be faster to check the surroundings of the tile.
+	 * An iteration in TILE_AREA_LOOP() is generally 2 times faster than one in FOR_ALL_TOWNS(). */
+	if (Town::GetNumItems() > (size_t) (dist * dist * 2)) {
+		const int tx = TileX(tile);
+		const int ty = TileY(tile);
+		TileArea tile_area = TileArea(
+			TileXY(max(0,         tx - (int) dist), max(0,         ty - (int) dist)),
+			TileXY(min(MapMaxX(), tx + (int) dist), min(MapMaxY(), ty + (int) dist))
+		);
+		TILE_AREA_LOOP(atile, tile_area) {
+			if (GetTileType(atile) == MP_HOUSE) {
+				Town *t = Town::GetByTile(atile);
+				if (DistanceManhattan(tile, t->xy) < dist) return true;
+			}
+		}
+		return false;
+	}
+
 	const Town *t;
 
 	FOR_ALL_TOWNS(t) {
