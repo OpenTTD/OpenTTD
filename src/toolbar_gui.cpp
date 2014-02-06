@@ -1064,14 +1064,14 @@ static void MenuClickLargeWorldScreenshot(ScreenshotType t)
 {
 	ViewPort vp;
 	SetupScreenshotViewport(t, &vp);
-	if (vp.width * vp.height > 8192 * 8192) {
+	if ((uint64)vp.width * (uint64)vp.height > 8192 * 8192) {
 		/* Ask for confirmation */
 		SetDParam(0, vp.width);
 		SetDParam(1, vp.height);
 		_confirmed_screenshot_type = t;
 		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, NULL, ScreenshotConfirmCallback);
 	} else {
-		/* Less than 4M pixels, just do it */
+		/* Less than 64M pixels, just do it */
 		MakeScreenshot(t, NULL);
 	}
 }
