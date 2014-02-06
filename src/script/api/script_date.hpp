@@ -13,6 +13,7 @@
 #define SCRIPT_DATE_HPP
 
 #include "script_object.hpp"
+#include "../../date_type.h"
 
 /**
  * Class that handles all date related (calculation) functions.
@@ -28,34 +29,49 @@
 class ScriptDate : public ScriptObject {
 public:
 	/**
+	 * Date data type is an integer value. Use ScriptDate::GetDate to
+	 * compose valid date values for a known year, month and day.
+	 */
+	enum Date {
+		DATE_INVALID = ::INVALID_DATE, ///< A value representing an invalid date.
+	};
+
+	/**
+	 * Validates if a date value represent a valid date.
+	 * @param date The date to validate.
+	 * @return True if the date is valid, otherwise false
+	 */
+	static bool IsValidDate(Date date);
+
+	/**
 	 * Get the current date.
 	 * This is the number of days since epoch under the assumption that
 	 *  there is a leap year every 4 years, except when dividable by
 	 *  100 but not by 400.
 	 * @return The current date.
 	 */
-	static int32 GetCurrentDate();
+	static Date GetCurrentDate();
 
 	/**
 	 * Get the year of the given date.
 	 * @param date The date to get the year of.
 	 * @return The year.
 	 */
-	static int32 GetYear(int32 date);
+	static int32 GetYear(Date date);
 
 	/**
 	 * Get the month of the given date.
 	 * @param date The date to get the month of.
 	 * @return The month.
 	 */
-	static int32 GetMonth(int32 date);
+	static int32 GetMonth(Date date);
 
 	/**
 	 * Get the day (of the month) of the given date.
 	 * @param date The date to get the day of.
 	 * @return The day.
 	 */
-	static int32 GetDayOfMonth(int32 date);
+	static int32 GetDayOfMonth(Date date);
 
 	/**
 	 * Get the date given a year, month and day of month.
@@ -64,7 +80,7 @@ public:
 	 * @param day_of_month The day of month of the to-be determined date.
 	 * @return The date.
 	 */
-	static int32 GetDate(int32 year, int32 month, int32 day_of_month);
+	static Date GetDate(int32 year, int32 month, int32 day_of_month);
 
 	/**
 	 * Get the time of the host system.

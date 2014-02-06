@@ -171,11 +171,11 @@
 	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort();
 }
 
-/* static */ int32 ScriptEngine::GetDesignDate(EngineID engine_id)
+/* static */ ScriptDate::Date ScriptEngine::GetDesignDate(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return -1;
+	if (!IsValidEngine(engine_id)) return ScriptDate::DATE_INVALID;
 
-	return ::Engine::Get(engine_id)->intro_date;
+	return (ScriptDate::Date)::Engine::Get(engine_id)->intro_date;
 }
 
 /* static */ ScriptVehicle::VehicleType ScriptEngine::GetVehicleType(EngineID engine_id)

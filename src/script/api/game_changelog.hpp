@@ -21,6 +21,8 @@
  *
  * API additions:
  * \li GSCompany::ChangeBankBalance
+ * \li GSDate::DATE_INVALID
+ * \li GSDate::IsValidDate
  * \li GSGoal::GT_STORY_PAGE
  * \li GSGoal::IsCompleted
  * \li GSGoal::SetCompleted

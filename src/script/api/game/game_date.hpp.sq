@@ -21,6 +21,9 @@ void SQGSDate_Register(Squirrel *engine)
 	SQGSDate.PreRegister(engine);
 	SQGSDate.AddConstructor<void (ScriptDate::*)(), 1>(engine, "x");
 
+	SQGSDate.DefSQConst(engine, ScriptDate::DATE_INVALID, "DATE_INVALID");
+
+	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::IsValidDate,    "IsValidDate",    2, ".i");
 	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::GetCurrentDate, "GetCurrentDate", 1, ".");
 	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::GetYear,        "GetYear",        2, ".i");
 	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::GetMonth,       "GetMonth",       2, ".i");

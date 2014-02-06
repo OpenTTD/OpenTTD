@@ -13,6 +13,7 @@
 #define SCRIPT_SUBSIDY_HPP
 
 #include "script_company.hpp"
+#include "script_date.hpp"
 
 /**
  * Class that handles all subsidy related functions.
@@ -83,7 +84,7 @@ public:
 	 * @note The return value of this function will change if the subsidy is
 	 *  awarded.
 	 */
-	static int32 GetExpireDate(SubsidyID subsidy_id);
+	static ScriptDate::Date GetExpireDate(SubsidyID subsidy_id);
 
 	/**
 	 * Get the cargo type that has to be transported in order to be awarded this

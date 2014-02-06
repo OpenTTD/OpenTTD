@@ -519,8 +519,10 @@ public:
 		int y_offset = - this->vscroll->GetPosition();
 
 		/* Date */
-		SetDParam(0, page->date);
-		DrawString(0, right - x, y_offset, STR_JUST_DATE_LONG, TC_BLACK);
+		if (page->date != INVALID_DATE) {
+			SetDParam(0, page->date);
+			DrawString(0, right - x, y_offset, STR_JUST_DATE_LONG, TC_BLACK);
+		}
 		y_offset += line_height;
 
 		/* Title */

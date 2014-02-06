@@ -48,9 +48,9 @@
 	return (ScriptCompany::CompanyID)((byte)::Subsidy::Get(subsidy_id)->awarded);
 }
 
-/* static */ int32 ScriptSubsidy::GetExpireDate(SubsidyID subsidy_id)
+/* static */ ScriptDate::Date ScriptSubsidy::GetExpireDate(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return -1;
+	if (!IsValidSubsidy(subsidy_id)) return ScriptDate::DATE_INVALID;
 
 	int year = ScriptDate::GetYear(ScriptDate::GetCurrentDate());
 	int month = ScriptDate::GetMonth(ScriptDate::GetCurrentDate());

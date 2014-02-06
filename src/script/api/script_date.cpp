@@ -14,45 +14,50 @@
 #include "script_date.hpp"
 #include "../../date_func.h"
 
-/* static */ int32 ScriptDate::GetCurrentDate()
+/* static */ bool ScriptDate::IsValidDate(Date date)
 {
-	return ::_date;
+	return date >= 0;
 }
 
-/* static */ int32 ScriptDate::GetYear(int32 date)
+/* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
 {
-	if (date < 0) return -1;
+	return (ScriptDate::Date)_date;
+}
+
+/* static */ int32 ScriptDate::GetYear(ScriptDate::Date date)
+{
+	if (date < 0) return DATE_INVALID;
 
 	::YearMonthDay ymd;
 	::ConvertDateToYMD(date, &ymd);
 	return ymd.year;
 }
 
-/* static */ int32 ScriptDate::GetMonth(int32 date)
+/* static */ int32 ScriptDate::GetMonth(ScriptDate::Date date)
 {
-	if (date < 0) return -1;
+	if (date < 0) return DATE_INVALID;
 
 	::YearMonthDay ymd;
 	::ConvertDateToYMD(date, &ymd);
 	return ymd.month + 1;
 }
 
-/* static */ int32 ScriptDate::GetDayOfMonth(int32 date)
+/* static */ int32 ScriptDate::GetDayOfMonth(ScriptDate::Date date)
 {
-	if (date < 0) return -1;
+	if (date < 0) return DATE_INVALID;
 
 	::YearMonthDay ymd;
 	::ConvertDateToYMD(date, &ymd);
 	return ymd.day;
 }
 
-/* static */ int32 ScriptDate::GetDate(int32 year, int32 month, int32 day_of_month)
+/* static */ ScriptDate::Date ScriptDate::GetDate(int32 year, int32 month, int32 day_of_month)
 {
-	if (month < 1 || month > 12) return -1;
-	if (day_of_month < 1 || day_of_month > 31) return -1;
-	if (year < 0 || year > MAX_YEAR) return -1;
+	if (month < 1 || month > 12) return DATE_INVALID;
+	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
+	if (year < 0 || year > MAX_YEAR) return DATE_INVALID;
 
-	return ::ConvertYMDToDate(year, month - 1, day_of_month);
+	return (ScriptDate::Date)::ConvertYMDToDate(year, month - 1, day_of_month);
 }
 
 /* static */ int32 ScriptDate::GetSystemTime()

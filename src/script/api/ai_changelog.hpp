@@ -20,6 +20,8 @@
  * 1.4.0 is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li AIDate::DATE_INVALID
+ * \li AIDate::IsValidDate
  * \li AIStation::HasCargoRating
  * \li AITile::GetTerrainType
  * \li AITown::FoundTown

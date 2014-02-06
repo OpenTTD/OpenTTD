@@ -132,14 +132,15 @@
 	return company;
 }
 
-/* static */ int32 ScriptStoryPage::GetDate(StoryPageID story_page_id)
+/* static */ ScriptDate::Date ScriptStoryPage::GetDate(StoryPageID story_page_id)
 {
-	EnforcePrecondition(-1, IsValidStoryPage(story_page_id));
+	EnforcePrecondition(ScriptDate::DATE_INVALID, IsValidStoryPage(story_page_id));
+	EnforcePrecondition(ScriptDate::DATE_INVALID, ScriptObject::GetCompany() == OWNER_DEITY);
 
-	return StoryPage::Get(story_page_id)->date;
+	return (ScriptDate::Date)StoryPage::Get(story_page_id)->date;
 }
 
-/* static */ bool ScriptStoryPage::SetDate(StoryPageID story_page_id, int32 date)
+/* static */ bool ScriptStoryPage::SetDate(StoryPageID story_page_id, ScriptDate::Date date)
 {
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);

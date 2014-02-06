@@ -13,6 +13,7 @@
 #define SCRIPT_STORY_HPP
 
 #include "script_company.hpp"
+#include "script_date.hpp"
 #include "../../story_type.h"
 #include "../../story_base.h"
 
@@ -154,17 +155,17 @@ public:
 	 * @return The date
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
-	static int32 GetDate(StoryPageID story_page_id);
+	static ScriptDate::Date GetDate(StoryPageID story_page_id);
 
 	/**
 	 * Update date of a story page. The date is shown in the top left of the page
 	 * @param story_page_id The story page to set the date for.
-	 * @param date Page date (@see ScriptDate)
+	 * @param date Date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
-	static bool SetDate(StoryPageID story_page_id, int32 date);
+	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
 
 	/**
 	 * Update title of a story page. The title is shown in the page selector drop down.
