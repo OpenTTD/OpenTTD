@@ -75,9 +75,10 @@ char *GetTownName(char *buff, const Town *t, const char *last)
  * Verifies the town name is valid and unique.
  * @param r random bits
  * @param par town name parameters
+ * @param town_names if a name is generated, check its uniqueness with the set
  * @return true iff name is valid and unique
  */
-bool VerifyTownName(uint32 r, const TownNameParams *par)
+bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
 {
 	/* reserve space for extra unicode character and terminating '\0' */
 	char buf1[(MAX_LENGTH_TOWN_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
@@ -88,16 +89,21 @@ bool VerifyTownName(uint32 r, const TownNameParams *par)
 	/* Check size and width */
 	if (Utf8StringLength(buf1) >= MAX_LENGTH_TOWN_NAME_CHARS) return false;
 
-	const Town *t;
-	FOR_ALL_TOWNS(t) {
-		/* We can't just compare the numbers since
-		 * several numbers may map to a single name. */
-		const char *buf = t->name;
-		if (buf == NULL) {
-			GetTownName(buf2, t, lastof(buf2));
-			buf = buf2;
+	if (town_names != NULL) {
+		if (town_names->find(buf1) != town_names->end()) return false;
+		town_names->insert(buf1);
+	} else {
+		const Town *t;
+		FOR_ALL_TOWNS(t) {
+			/* We can't just compare the numbers since
+			 * several numbers may map to a single name. */
+			const char *buf = t->name;
+			if (buf == NULL) {
+				GetTownName(buf2, t, lastof(buf2));
+				buf = buf2;
+			}
+			if (strcmp(buf1, buf) == 0) return false;
 		}
-		if (strcmp(buf1, buf) == 0) return false;
 	}
 
 	return true;
@@ -107,9 +113,10 @@ bool VerifyTownName(uint32 r, const TownNameParams *par)
 /**
  * Generates valid town name.
  * @param townnameparts if a name is generated, it's stored there
+ * @param town_names if a name is generated, check its uniqueness with the set
  * @return true iff a name was generated
  */
-bool GenerateTownName(uint32 *townnameparts)
+bool GenerateTownName(uint32 *townnameparts, TownNames *town_names)
 {
 	/* Do not set too low tries, since when we run out of names, we loop
 	 * for #tries only one time anyway - then we stop generating more
@@ -120,7 +127,7 @@ bool GenerateTownName(uint32 *townnameparts)
 
 	for (int i = 1000; i != 0; i--) {
 		uint32 r = _generating_world ? Random() : InteractiveRandom();
-		if (!VerifyTownName(r, &par)) continue;
+		if (!VerifyTownName(r, &par, town_names)) continue;
 
 		*townnameparts = r;
 		return true;

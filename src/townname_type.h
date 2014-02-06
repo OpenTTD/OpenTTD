@@ -17,6 +17,10 @@
 
 #include "newgrf_townname.h"
 #include "town_type.h"
+#include <set>
+#include <string>
+
+typedef std::set<std::string> TownNames;
 
 /**
  * Struct holding a parameters used to generate town name.

@@ -1901,6 +1901,7 @@ bool GenerateTowns(TownLayout layout)
 	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
 	total = min(TownPool::MAX_SIZE, total);
 	uint32 townnameparts;
+	TownNames town_names;
 
 	SetGeneratingWorldProgress(GWP_TOWN, total);
 
@@ -1919,10 +1920,12 @@ bool GenerateTowns(TownLayout layout)
 		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* Get a unique name for the town. */
-		if (!GenerateTownName(&townnameparts)) continue;
+		if (!GenerateTownName(&townnameparts, &town_names)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
 		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != NULL) current_number++; // If creation was successful, raise a flag.
 	} while (--total);
+
+	town_names.clear();
 
 	if (current_number != 0) return true;
 
