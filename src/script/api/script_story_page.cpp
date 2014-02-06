@@ -98,6 +98,13 @@
 			type == ::SPET_TEXT || type == ::SPET_LOCATION ? text->GetEncodedText() : NULL);
 }
 
+/* static */ uint32 ScriptStoryPage::GetPageSort(StoryPageID story_page_id)
+{
+	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
+
+	return StoryPage::Get(story_page_id)->sort_value;
+}
+
 /* static */ bool ScriptStoryPage::SetTitle(StoryPageID story_page_id, Text *title)
 {
 	CCountedPtr<Text> counter(title);

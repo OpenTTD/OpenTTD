@@ -67,6 +67,7 @@
 #include "../script/api/game/game_station.hpp.sq"
 #include "../script/api/game/game_stationlist.hpp.sq"
 #include "../script/api/game/game_story_page.hpp.sq"
+#include "../script/api/game/game_storypagelist.hpp.sq"
 #include "../script/api/game/game_subsidy.hpp.sq"
 #include "../script/api/game/game_subsidylist.hpp.sq"
 #include "../script/api/game/game_testmode.hpp.sq"
@@ -171,6 +172,7 @@ void GameInstance::RegisterAPI()
 	SQGSStationList_Register(this->engine);
 	SQGSStationList_Vehicle_Register(this->engine);
 	SQGSStoryPage_Register(this->engine);
+	SQGSStoryPageList_Register(this->engine);
 	SQGSSubsidy_Register(this->engine);
 	SQGSSubsidyList_Register(this->engine);
 	SQGSTestMode_Register(this->engine);

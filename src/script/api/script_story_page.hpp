@@ -119,6 +119,16 @@ public:
 	static bool UpdateElement(StoryPageElementID story_page_element_id, uint32 reference, Text *text);
 
 	/**
+	 * Get story page sort value. Each page has a sort value that is internally assigned and used
+	 * to sort the pages in the story book. OpenTTD maintains this number so that the sort order
+	 * is perceived. This API exist only so that you can sort ScriptStoryPageList the same order
+	 * as in GUI. You should not use this number for anything else.
+	 * @param story_page_id The story page to get the sort value of.
+	 * @return Page sort value.
+	 */
+	static uint32 GetPageSort(StoryPageID story_page_id);
+
+	/**
 	 * Update title of a story page. The title is shown in the page selector drop down.
 	 * @param story_page_id The story page to update.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).

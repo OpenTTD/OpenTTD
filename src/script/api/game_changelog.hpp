@@ -28,6 +28,7 @@
  * \li GSGoal::SetText
  * \li GSStation::HasCargoRating
  * \li GSStoryPage
+ * \li GSStoryPageList
  * \li GSTile::GetTerrainType
  * \li GSTown::FoundTown
  * \li GSTown::GetFundBuildingsDuration
