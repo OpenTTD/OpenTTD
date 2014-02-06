@@ -1,3 +1,15 @@
+1.4.0-beta4 (2014-02-06)
+------------------------------------------------------------------------
+- Change: [NewGRF] Make vehicle variable 61 return 'not available' instead of zero when using it in invalid callback contexts (r26294)
+- Feature: Display speed limit also for road bridges in the TileInfo window [FS#5849] (r26277)
+- Fix: [NoGo] Invalid DoCommand return callback for method returning bool (r26298)
+- Fix: Correctly identify opposite ends of bridges and tunnels when converting rails [FS#5866, FS#5888] (r26291)
+- Fix: Prevent infinite recursion also in RefreshLinks [FS#5878] (r26283)
+- Fix: [NoAI] Some RemoveRail methods required to set a valid railtype, though it was not used anyway. Remove the need to set one [FS#5853] (r26279)
+- Fix: Do not spawn link graph jobs for link graphs with only one node [FS#5874] (r26276)
+- Fix: [NewGRF] If NewGRF provided the same station name for different industry types, stations would end up with same name. So also consider the provided name, not only the industry type (r26275)
+
+
 1.4.0-beta3 (2014-01-21)
 ------------------------------------------------------------------------
 - Feature: Several small performance improvements with the SSE blitters (r26260, r26259, r26256, r26255, r26254)
