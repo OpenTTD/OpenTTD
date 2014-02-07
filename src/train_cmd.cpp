@@ -122,9 +122,9 @@ void CheckTrainsLengths()
  * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
  * to/removed from the chain, and when the game is loaded.
  * Note: this needs to be called too for 'wagon chains' (in the depot, without an engine)
- * @param same_length should length of vehicles stay the same?
+ * @param allowed_changes Stuff that is allowed to change.
  */
-void Train::ConsistChanged(bool same_length)
+void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 {
 	uint16 max_speed = UINT16_MAX;
 
@@ -207,8 +207,15 @@ void Train::ConsistChanged(bool same_length)
 		}
 
 		uint16 new_cap = e_u->DetermineCapacity(u);
-		u->refit_cap = min(new_cap, u->refit_cap);
-		u->cargo_cap = new_cap;
+		if (allowed_changes & CCF_CAPACITY) {
+			/* Update vehicle capacity. */
+			if (u->cargo_cap > new_cap) u->cargo.Truncate(new_cap);
+			u->refit_cap = min(new_cap, u->refit_cap);
+			u->cargo_cap = new_cap;
+		} else {
+			/* Verify capacity hasn't changed. */
+			if (new_cap != u->cargo_cap) ShowNewGrfVehicleError(u->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_CAPACITY, GBUG_VEH_CAPACITY, true);
+		}
 		u->vcache.cached_cargo_age_period = GetVehicleProperty(u, PROP_TRAIN_CARGO_AGE_PERIOD, e_u->info.cargo_age_period);
 
 		/* check the vehicle length (callback) */
@@ -227,11 +234,13 @@ void Train::ConsistChanged(bool same_length)
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
 		veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
 
-		/* verify length hasn't changed */
-		if (same_length && veh_len != u->gcache.cached_veh_length) VehicleLengthChanged(u);
-
-		/* update vehicle length? */
-		if (!same_length) u->gcache.cached_veh_length = veh_len;
+		if (allowed_changes & CCF_LENGTH) {
+			/* Update vehicle length. */
+			u->gcache.cached_veh_length = veh_len;
+		} else {
+			/* Verify length hasn't changed. */
+			if (veh_len != u->gcache.cached_veh_length) VehicleLengthChanged(u);
+		}
 
 		this->gcache.cached_total_length += u->gcache.cached_veh_length;
 		this->InvalidateNewGRFCache();
@@ -632,7 +641,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 		_new_vehicle_id = v->index;
 
 		VehicleUpdatePosition(v);
-		v->First()->ConsistChanged(false);
+		v->First()->ConsistChanged(CCF_ARRANGE);
 		UpdateTrainGroupID(v->First());
 
 		CheckConsistencyOfArticulatedVehicle(v);
@@ -774,7 +783,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 			AddArticulatedParts(v);
 		}
 
-		v->ConsistChanged(false);
+		v->ConsistChanged(CCF_ARRANGE);
 		UpdateTrainGroupID(v);
 
 		if (!HasBit(data, 0) && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
@@ -1120,7 +1129,7 @@ static void NormaliseTrainHead(Train *head)
 	if (head == NULL) return;
 
 	/* Tell the 'world' the train changed. */
-	head->ConsistChanged(false);
+	head->ConsistChanged(CCF_ARRANGE);
 	UpdateTrainGroupID(head);
 
 	/* Not a front engine, i.e. a free wagon chain. No need to do more. */
@@ -1824,7 +1833,7 @@ void ReverseTrainDirection(Train *v)
 	ClrBit(v->flags, VRF_REVERSING);
 
 	/* recalculate cached data */
-	v->ConsistChanged(true);
+	v->ConsistChanged(CCF_TRACK);
 
 	/* update all images */
 	for (Train *u = v; u != NULL; u = u->Next()) u->UpdateViewport(false, false);
@@ -1908,7 +1917,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 		if (flags & DC_EXEC) {
 			ToggleBit(v->flags, VRF_REVERSE_DIRECTION);
 
-			front->ConsistChanged(false);
+			front->ConsistChanged(CCF_ARRANGE);
 			SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
 			SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
 			SetWindowDirty(WC_VEHICLE_VIEW, front->index);
@@ -3271,7 +3280,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
-						v->First()->ConsistChanged(true);
+						v->First()->ConsistChanged(CCF_TRACK);
 					}
 
 					v->track = chosen_track;
@@ -3437,7 +3446,7 @@ static void DeleteLastWagon(Train *v)
 
 	if (first != v) {
 		/* Recalculate cached train properties */
-		first->ConsistChanged(false);
+		first->ConsistChanged(CCF_ARRANGE);
 		/* Update the depot window if the first vehicle is in depot -
 		 * if v == first, then it is updated in PreDestructor() */
 		if (first->track == TRACK_BIT_DEPOT) {

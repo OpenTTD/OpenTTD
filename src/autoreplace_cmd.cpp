@@ -160,7 +160,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 	}
 
 	/* Update train weight etc., the old vehicle will be sold anyway */
-	if (part_of_chain && new_head->type == VEH_TRAIN) Train::From(new_head)->ConsistChanged(true);
+	if (part_of_chain && new_head->type == VEH_TRAIN) Train::From(new_head)->ConsistChanged(CCF_LOADUNLOAD);
 }
 
 /**

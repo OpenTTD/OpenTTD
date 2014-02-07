@@ -1355,7 +1355,7 @@ void VehicleEnterDepot(Vehicle *v)
 			t->wait_counter = 0;
 			t->force_proceed = TFP_NONE;
 			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
-			t->ConsistChanged(true);
+			t->ConsistChanged(CCF_ARRANGE);
 			break;
 		}
 

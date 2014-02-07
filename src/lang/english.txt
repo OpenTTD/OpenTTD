@@ -2877,6 +2877,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Missing fi
 STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{0:RAW_STRING}' is likely to cause desyncs and/or crashes
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}It changed powered-wagon state for '{1:ENGINE}' when not inside a depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changed vehicle length for '{1:ENGINE}' when not inside a depot
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}It changed vehicle capacity for '{1:ENGINE}' when not inside a depot or refitting
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:RAW_STRING}' provides incorrect information

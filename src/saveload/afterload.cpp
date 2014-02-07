@@ -1221,7 +1221,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_TRAINS(v) {
-			if (v->IsFrontEngine() || v->IsFreeWagon()) v->ConsistChanged(true);
+			if (v->IsFrontEngine() || v->IsFreeWagon()) v->ConsistChanged(CCF_TRACK);
 		}
 
 	}
