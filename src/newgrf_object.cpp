@@ -158,7 +158,8 @@ static uint32 GetObjectIDAtOffset(TileIndex tile, uint32 cur_grfid)
 		return 0xFFFF;
 	}
 
-	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
+	const Object *o = Object::GetByTile(tile);
+	const ObjectSpec *spec = ObjectSpec::Get(o->type);
 
 	/* Default objects have no associated NewGRF file */
 	if (spec->grf_prop.grffile == NULL) {
@@ -166,7 +167,7 @@ static uint32 GetObjectIDAtOffset(TileIndex tile, uint32 cur_grfid)
 	}
 
 	if (spec->grf_prop.grffile->grfid == cur_grfid) { // same object, same grf ?
-		return spec->grf_prop.local_id;
+		return spec->grf_prop.local_id | o->view << 16;
 	}
 
 	return 0xFFFE; // Defined in another grf file
