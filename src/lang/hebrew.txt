@@ -2195,8 +2195,8 @@ STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}שנה �
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}שנה שקיפות עבור מבני תחבורה כמו תחנות, מוסכים ונקודות ציון. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}שנה שקיפות עבור גשרים. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}שנה שקיפות עבור מבנים כגון מיגדלור ואנטנה. Ctrl+לחיצה לנעילה
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}שנה שקיפות עבור עמודי חשמל
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}שנה שקיפות עבור מצביעי הטענה
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}שנה שקיפות עבור עמודי חשמל. Ctrl+לחיצה לנעילה
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}שנה שקיפות עבור מצביעי הטענה. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}הסתר במקום הפוך לשקוף
 
 # Linkgraph legend window
@@ -2225,16 +2225,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :בניית מס
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :בניית מסילות חד פסיות
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :בניית מסילות מגנטיות
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}בניית מסילת רכבת. Ctrl בורר בניית/הסרת מסילת רכבת
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}בנה מסילה במצב בנייה אוטומטי. Ctrl בורר בניית/הסרת מסילת רכבת
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}בניית מוסך רכבות (לרכישה וטיפול ברכבות)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}הפוך מסילה לנקודת ציון. Ctrl מאפשר איחוד נקודות ציון
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}בניית תחנת רכבת. Ctrl מאפשר איחוד תחנות
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}בניית רמזורי רכבת. Ctrl בורר בין איתות דגלים ואיתות תאורה{}גרירה בונה אותות לאורך מסילת רכבת ישרה. Ctrl בונה אותות עד להצטלבות הבאה{}Ctrl+לחיצה בורר פתיחת חלון בחירת איתותים
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}בניית גשרים למסילות
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}חציבת מנהרות למסילות
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}בניית מסילת רכבת. Ctrl בורר בניית/הסרת מסילת רכבת. Shift בורר בנייה/הצגה של הערכת עלות
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}בנה מסילה במצב בנייה אוטומטי. Ctrl בורר בניית/הסרת מסילת רכבת. Shift בורר בנייה/הצגה של הערכת עלות
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}בניית מוסך רכבות (לרכישה וטיפול ברכבות). Shift בורר בנייה/הערכת עלות
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}הפוך מסילה לנקודת ציון. Ctrl מאפשר איחוד נקודות ציון. Shift בורר בנייה/הערכת עלות
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}בניית תחנת רכבת. Ctrl מאפשר איחוד תחנות. Shift בורר בנייה/הערכת עלות
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}בניית רמזורי רכבת. Ctrl בורר בין איתות דגלים ואיתות תאורה{}גרירה בונה אותות לאורך מסילת רכבת ישרה. Ctrl בונה אותות עד להצטלבות הבאה{}Ctrl+לחיצה בורר פתיחת חלון בחירת איתותים. Shift בורר בנייה/הצגה של הערכת עלות
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}בניית גשרים למסילות. Shift בורר בנייה/הצגה של הערכת עלות
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}חציבת מנהרות למסילות. Shift בורר בנייה/הצגה של הערכת עלות
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}החלף מצב בנייה/הסרה של פסי רכבת, רמזורים, נקודות ציון ותחנות. החזקת Ctrl מסירה גם פסי רכבת מנקודות ציון ותחנות רכבת
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}שנה/שדרג את המסילה
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}שנה/שדרג את המסילה. Shift בורר בנייה/הצגה של הערכת עלות
 
 STR_RAIL_NAME_RAILROAD                                          :מסילת ברזל
 STR_RAIL_NAME_ELRAIL                                            :מסילת ברזל חשמלית
@@ -2268,11 +2268,11 @@ STR_STATION_CLASS_WAYP                                          :נקודות ד
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}בחירת רמזורים
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}(רמזורי בלוק (מכאניים{NBSP}{}אלו הרמזורים הפשוטים ביותר, מאפשרים לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}(רמזורי כניסה (מכאניים {}{NBSP}ירוקים כל עוד יש לפחות רמזור יציאה ירוק הקטע המסילה העוקב. אחרת-אדומים
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}(רמזורי יציאה (מכאניים {}{NBSP} מתנהגים בדומה לרמזורי הבלוק, אבל מחייבים שינוי האור ברמזור בעת כניסה
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}רמזורים משולבים (מכאניים){}מתפקדים כרמזורי כניסה ויציאה במשולב. דבר זה מאפשר יצירת "עצים" מורכבים של רמזורים
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}(רמזורי נתיב (מכאניים{}{NBSP} מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}רמזור בלוק (מכאניים){}זהו הרמזורי הפשוט ביותר, מאפשר לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}רמזור כניסה (סמפור) {}ירוקים כל עוד יש לפחות רמזור יציאה ירוק מקטע המסילה העוקב. אחרת מראה אדום
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}רמזור יציאה (סמפור){} מתנהג בדומה לרמזור הבלוק, אבל נחוץ להצגת הצבע הנכון ברמזורי כניסה ורמזורים משולבים
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}רמזור משולב (סמפור){}מתפקד כרמזור כניסה ויציאה במשולב. דבר זה מאפשר יצירת "עצים" מורכבים של רמזורים מקדימים
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}רמזור נתיב (סמפור){} מאפשר ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח. ניתן לחלוף על פני רמזור נתיב מאחורה
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}(רמזורי נתיב חד-סיטרי (מכאניים{}{NBSP} מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}(רמזורי בלוק (חשמליים{NBSP}{}אלו הרמזורים הפשוטים ביותר, מאפשרים לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}(רמזורי כניסה (חשמליים {}{NBSP}ירוקים כל עוד יש לפחות רמזור יציאה ירוק הקטע המסילה העוקב. אחרת-אדומים

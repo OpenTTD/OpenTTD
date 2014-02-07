@@ -39,7 +39,7 @@ STR_CARGO_PLURAL_IRON_ORE                                       :Izererts
 STR_CARGO_PLURAL_STEEL                                          :Stiel
 STR_CARGO_PLURAL_VALUABLES                                      :Kostberheden
 STR_CARGO_PLURAL_COPPER_ORE                                     :Kopererts
-STR_CARGO_PLURAL_MAIZE                                          :Mais
+STR_CARGO_PLURAL_MAIZE                                          :Stynske weet
 STR_CARGO_PLURAL_FRUIT                                          :Fruit
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamanten
 STR_CARGO_PLURAL_FOOD                                           :Iten
@@ -73,7 +73,7 @@ STR_CARGO_SINGULAR_IRON_ORE                                     :Iizererts
 STR_CARGO_SINGULAR_STEEL                                        :Stiel
 STR_CARGO_SINGULAR_VALUABLES                                    :Kostberheden
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Kopererts
-STR_CARGO_SINGULAR_MAIZE                                        :Mais
+STR_CARGO_SINGULAR_MAIZE                                        :Stynske weet
 STR_CARGO_SINGULAR_FRUIT                                        :Fruit
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
 STR_CARGO_SINGULAR_FOOD                                         :Iten
@@ -107,7 +107,7 @@ STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} f
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} fan stiel
 STR_QUANTITY_VALUABLES                                          :{COMMA} sek{P "" ken} kostberheden
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} fan kopererts
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} fan mais
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} stynske weet
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fan fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sek{P "" ken} diamanten
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} fan iten
