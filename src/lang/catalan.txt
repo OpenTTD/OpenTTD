@@ -368,7 +368,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Extensions NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms de les poblacions
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostra els noms de les estacions
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra els punts de control
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra els punts de pas
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra els senyals
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra noms i senyals dels competidors
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animació completa
@@ -2259,8 +2259,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisio
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ajuntar estació
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construir una estació separada
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneix punt de control
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construeix un punt de control separat
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneix punt de pas
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construeix un punt de pas separat
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcció de Ferrocarril
@@ -2285,11 +2285,11 @@ STR_RAIL_NAME_MONORAIL                                          :Monorail
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientació Cotxeres
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientació del Dipòsit
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona l'orientació de les cotxeres de tren
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Punt de control
+STR_WAYPOINT_CAPTION                                            :{WHITE}Punt de pas
 STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Selecciona tipus de punt de control
 
 # Rail station construction window
@@ -2875,9 +2875,10 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Arxius 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Arxius que falten
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' probablement causarà desincronitzacions i/o penjades
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Canvia l'estat del vagó amb potència per '{1:ENGINE}' quan no sigui dins la cotxera
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Canvia la llargada del vehicle pel '{1:ENGINE}' quan no sigui dins del dipòsit
+STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' pot fer que el joc es pengi o es desincronitzi
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle '{1:ENGINE}' ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva llargada mentre estava fora del dipòsit
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva capacitat mentre estava fora del dipòsit o no s'estava canviant el tipus de càrrega a transportar
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se o penjar-se
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta
@@ -3118,7 +3119,7 @@ STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Canvia e
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra vista principal al lloc de la boia. Ctrl+Clic obre una nova vista al lloc de la boia
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Canvia el nom de la boia
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita nom de punt de control
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita nom del punt de pas
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Economia {BLACK}{COMPANY_NUM}
@@ -3734,7 +3735,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ves al dipòsit
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ves a l'hangar més proper
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
 STR_ORDER_SHARE                                                 :Comparteix ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de control 'sense parada' i les ordres de cotxeres 'revisió'. 'Comparteix ordres' o Ctrl permet que aquest vehicle comparteixi ordres amb el vehicle seleccionat. Clicant un vehicle copia les ordres des d'aquest vehicle. Una ordre de cotxeres desactiva la revisió automàtica del vehicle
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de pas 'sense parada' i les ordres de cotxeres 'revisió'. 'Comparteix ordres' o Ctrl permet que aquest vehicle comparteixi ordres amb el vehicle seleccionat. Clicant un vehicle copia les ordres des d'aquest vehicle. Una ordre de cotxeres desactiva la revisió automàtica del vehicle
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 
@@ -4151,14 +4152,14 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Primer h
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Primer has d'enderrocar l'aeroport
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Més d'un punt de control existent adjunt
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Més d'un punt de pas existent adjunt
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Massa prop d'un altre punt de control
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Aquí no es pot construir punt de control de tren...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Aquí no es pot construir un punt de pas de tren...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Aquí no es pot situar una boia...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No es pot canviar el nom del punt de control...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Aquí no es pot treure punt de control de tren...
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Aquí no es pot treure un punt de pas de tren...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primer s'ha de treure la via punt de control
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boia en el camí
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boia en ús per una altra companyia!
@@ -4474,17 +4475,17 @@ STR_SV_STNAME_SOUTH                                             :{STRING} Sud
 STR_SV_STNAME_EAST                                              :{STRING} Est
 STR_SV_STNAME_WEST                                              :{STRING} Oest
 STR_SV_STNAME_CENTRAL                                           :{STRING} Central
-STR_SV_STNAME_TRANSFER                                          :{STRING} Transfereix
-STR_SV_STNAME_HALT                                              :{STRING} De Munt
-STR_SV_STNAME_VALLEY                                            :{STRING} De Vall
-STR_SV_STNAME_HEIGHTS                                           :{G=Masculin}Pic de {STRING}
-STR_SV_STNAME_WOODS                                             :{G=Masculin}{STRING} Boscos
-STR_SV_STNAME_LAKESIDE                                          :{G=Masculin}{STRING} Del llac
+STR_SV_STNAME_TRANSFER                                          :{STRING} Transbord
+STR_SV_STNAME_HALT                                              :Parada de {STRING}
+STR_SV_STNAME_VALLEY                                            :Vall de {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Pic de {STRING}
+STR_SV_STNAME_WOODS                                             :{G=Masculin}Boscos de {STRING}
+STR_SV_STNAME_LAKESIDE                                          :{G=Masculin}Llac de {STRING}
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Intercanvi
-STR_SV_STNAME_AIRPORT                                           :{G=Masculin}{STRING} Aeroport
-STR_SV_STNAME_OILFIELD                                          :{G=Masculin}{STRING} Camp de Petroli
-STR_SV_STNAME_MINES                                             :{G=Femenin}{STRING} Mines
-STR_SV_STNAME_DOCKS                                             :{G=Masculin}{STRING} Port
+STR_SV_STNAME_AIRPORT                                           :Aeroport de {STRING}
+STR_SV_STNAME_OILFIELD                                          :Camp petrolífer de {STRING}
+STR_SV_STNAME_MINES                                             :Mines de {STRING}
+STR_SV_STNAME_DOCKS                                             :Port de {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
@@ -4764,20 +4765,20 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{G=Femenin}{TOWN} Boia
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{G=Femenin}{TOWN} Boia #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :Boia de {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Boia de {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :{G=Femenin}(Companyia {COMMA})
 STR_FORMAT_GROUP_NAME                                           :{G=Masculin}Grup {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}: {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :{G=Masculin}{TOWN} Punt de Control
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{G=Masculin}{TOWN} Punt de Control #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Punt de pas de {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{G=Masculin}Punt de pas de {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{G=Femenin}{TOWN} Cotxera
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{G=Femenin}{TOWN} Cotxera #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=Femenin}{TOWN} Cotxera
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=Femenin}{TOWN} Cotxera #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=Femenin}{TOWN} Drassana
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=Femenin}{TOWN} Drassana #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{G=Femenin}Dipòsit de trens de {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{G=Femenin}Dipòsit de trens de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=Femenin}Cotxera de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=Femenin}Cotxera de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=Femenin}Drassanes de {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=Femenin}Drassanes de {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=Masculin}{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :{G=Femenin}estació desconeguda

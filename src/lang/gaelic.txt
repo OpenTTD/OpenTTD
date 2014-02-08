@@ -2758,6 +2758,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carago air a ghabhail ris: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Crìoch-luaiths rèile: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Crìoch-astair rathaid: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Creagan
@@ -3105,6 +3106,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Tha faidhl
 STR_NEWGRF_BROKEN                                               :{WHITE}Tha e coltach gun adhbharaich an NewGRF “{0:STRING}" dì-shioncronachadh is/no tuisleadh
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Dh'atharraich a staid a' charbaid-cumhachd airson “{1:ENGINE}" nuair nach robh e ann an trèan-lann
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dh'atharraich e faide a' charbaid/na trèan airson “{1:ENGINE}" nuair nach robh e/i ann an garaids/trèan-lann
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Dh'atharraich e tomhas-lìonaidh carbaid airson '{1:ENGINE}' fhad 's nach robh e ann an garaid, trèana-lann, cala no hangar no ga mhùthadh
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tha faide mì-dhligheach aig an trèan “{VEHICLE}" le “{COMPANY}". Tha e coltach gu bheil duilgheadasan le NewGRF as coireach. Dh'fhaoidte gun dì-shioncronaich no gun tuislich an geama
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Tha an NewGRF “{0:STRING}" a' toirt seachad fiosrachadh mealltach

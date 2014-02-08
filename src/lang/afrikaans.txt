@@ -2548,6 +2548,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NuweGRF:
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vrag aangeneem: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Spoorlyn spoed limiet: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Pad spoedgrens: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rotse

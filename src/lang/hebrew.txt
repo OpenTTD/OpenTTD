@@ -2273,14 +2273,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}רמזו
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}רמזור יציאה (סמפור){} מתנהג בדומה לרמזור הבלוק, אבל נחוץ להצגת הצבע הנכון ברמזורי כניסה ורמזורים משולבים
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}רמזור משולב (סמפור){}מתפקד כרמזור כניסה ויציאה במשולב. דבר זה מאפשר יצירת "עצים" מורכבים של רמזורים מקדימים
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}רמזור נתיב (סמפור){} מאפשר ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח. ניתן לחלוף על פני רמזור נתיב מאחורה
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}(רמזורי נתיב חד-סיטרי (מכאניים{}{NBSP} מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}(רמזורי בלוק (חשמליים{NBSP}{}אלו הרמזורים הפשוטים ביותר, מאפשרים לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}(רמזורי כניסה (חשמליים {}{NBSP}ירוקים כל עוד יש לפחות רמזור יציאה ירוק הקטע המסילה העוקב. אחרת-אדומים
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}(רמזורי יציאה (חשמליים {}{NBSP} מתנהגים בדומה לרמזורי הבלוק, אבל מחייבים שינוי האור ברמזור בעת כניסה
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}רמזורים משולבים (חשמליים){}מתפקדים כרמזורי כניסה ויציאה במשולב, מאפשרים יצירת "עצים" מורכבים של רמזורים
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}(רמזורי נתיב (חשמליים{}{NBSP} מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}(רמזורי נתיב חד-סיטרי (חשמליים{}{NBSP}מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}החלפת סוג הרמזור – בחר סוג חדש ולחץ על רמזור קיים להחלפה
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}רמזור נתיב חד-סטרי (סמפור){} רמזור נתיב מאפשר ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה. לא ניתן לחלוף על פני רמזורי נתיב חד-סטריים מאחור
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}רמזור בלוק (חשמלי){}זהו הרמזור הפשוט ביותר, מאפשר לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}רמזור כניסה (חשמלי){}ירוק כל עוד יש לפחות רמזור יציאה ירוק אחד בקטע המסילה העוקב. אחרת-אדום
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}רמזור יציאה (חשמלי){} מתנהג בדומה לרמזור בלוק, אבל נחוץ לשינוי הצבע הנכון ברמזורי כניסה ורמזורים משולבים
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}רמזור משולב (חשמלי){}הרמזור המשולב מתפקד כרמזור כניסה ויציאה במשולב. מאפשרים יצירת "עצים" מורכבים של רמזורים מקדימים
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}רמזור נתיב (חשמלי){}רמזור נתיב מאפשר ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח. ניתן לחלוף על פני רמזורי נתיב רגילים מאחור
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}רמזור נתיב חד-סטרי (חשמלי){}רמזור נתיב מאפשר ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה. לא ניתן לחלוף על פני רמזורי נתיב חד סטריים מאחור
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}החלפת סוג הרמזור{}בחר סוג חדש ולחץ על רמזור קיים להחלפה. Ctrl+לחיצה בורר את הוריאציה של הסוג הנוכחי. Shift+לחיצה מראה הערכת עלות להחלפה
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}צפיפות הרמזורים הנוצרים בעת גרירה
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}הקטן צפיפות
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}הגדל צפיפות
@@ -2304,21 +2304,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :צינורי, �
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}סלילת כבישים
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}בניה של רכבת קלה\חשמלית
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}סלול קטע כביש. Ctrl בורר בניית/הסרת כביש
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}בנה קטע מסילת חשמלית. Ctrl בורר בניית/הסרת מסילת חשמלית
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}סלול כביש באופן אוטומטי. Ctrl בורר בניית/הריסת כביש
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}בנה מסילת חשמלית באופן אוטומטי. Ctrl בורר בניית/הסרת מסילת חשמלית
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}בנה מוסך לרכבים (כדי לבנות ולתקן משאיות ואוטובוסים)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}בנה מוסך לחשמלית (כדי לבנות ולתקן חשמליות)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}בנה תחנת אוטובוס. Ctrl מאפשר איחוד תחנות
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}בנה תחנת נוסעים לחשמלית. Ctrl מאפשר איחוד תחנות
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}בנה תחנת העמסה למשאיות. Ctrl מאפשר איחוד תחנות
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}בנה תחנת משאות לחשמלית. Ctrl מאפשר איחוד תחנות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}סלול קטע כביש. Ctrl בורר בניית/הסרת כביש. Shift בורר הערכת עלות של בנייה/הסרה
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}בנה קטע מסילת חשמלית. Ctrl בורר בניית/הסרת מסילת חשמלית. Shift בורר הערכת עלות של בנייה/הסרה
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}סלול כביש באופן אוטומטי. Ctrl בורר בניית/הריסת כביש. Shift בורר בנייה/הצגת הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}בנה מסילת חשמלית באופן אוטומטי. Ctrl בורר בניית/הסרת מסילת חשמלית. Shift בורר בנייה/הצגת הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}בנה מוסך לכלי רכב (כדי לבנות ולתקן משאיות ואוטובוסים). Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}בנה מוסך לחשמלית (לרכישה ושירות חשמליות). Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}בנה תחנת אוטובוס. Ctrl מאפשר איחוד תחנות. Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}בנה תחנת נוסעים לחשמלית. Ctrl מאפשר איחוד תחנות. Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}בנה תחנת העמסה למשאיות. Ctrl מאפשר איחוד תחנות. Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}בנה תחנת משאות לחשמלית. Ctrl מאפשר איחוד תחנות. Shift בורר בנייה/הצגה של הערכת עלות
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}הפעל\כבה כבישים חד סיטריים
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}בנה גשר כביש
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}בנה גשר לחשמלית
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}בנה מנהרה לכביש
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}בנה מנהרה לחשמלית
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}בנה גשר כביש. Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}בנה גשר לחשמלית. Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}בנה מנהרה לכביש. Shift בורר בנייה/הצגה של הערכת עלות
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}בנה מנהרה לחשמלית. Shift בורר בנייה/הצגה של הערכת עלות
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}שנה מצב בנה/הסר כבישים
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}שנה מצב בנה\מחק למבני חשמלית
 
@@ -2333,22 +2333,22 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}כיוו
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}בחר כיוון תחנת אוטובוס
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}כיוון תחנת משאיות
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}בחר כיוון תחנת טעינה למשאיות
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}התמצאות חשמלית לנוסעים
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}כוון תחנת חשמלית לנוסעים
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}בחר את כיוון התחנה
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}כיוון חשמלית משא
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}כוון תחנת חשמלית משא
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}בחר את כיוון התחנה
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}בניית נתיבי מים
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}נתיבי מים
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}בנה תעלות
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}בניית שערים ימיים
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}בניית מבדוק אוניות (לבניה וטיפול בכלי שייט)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}בניית רציף לכלי שייט. Ctrl מאפשר איחוד תחנות
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}מקם מצוף שיכול לשמש כנקודת ציון לכלי שייט
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}בנה מוביל-מים
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}בנה תעלות. Shift בורר בנייה/הצגה של הערכת עלות
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}בניית תא שיט. Shift בורר בנייה/הצגה של הערכת עלות
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}בניית מבדוק אוניות (לרכישה ושירות כלי שייט). Shift בורר בניה/הצגה של הערכת עלות
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}בניית מזח לכלי שייט. Ctrl מאפשר איחוד תחנות. Shift בורר בניה/הצגה של הערכת עלות
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}מקם מצוף שיכול לשמש כנקודת ציון לכלי שייט. Shift בורר בניה/הצגה של הערכת עלות
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}בנה מוביל-מים. Shift בורר בניה/הצגה של הערכת עלות
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}הגדר את שטח המים.{}הכן תעלה, אלא אם כן CTRL לחוץ בגובה הים, ואז זה יציף את הסביבה במקום
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}מקם נחלים.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}מקם נחלים
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}כיוון המבדוק
@@ -2359,7 +2359,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}מזח
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}שדות תעופה
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}בנה שדה תעופה. Ctrl מאפשר איחוד תחנות
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}בנה שדה תעופה. Ctrl מאפשר איחוד תחנות. Shift בורר בניה/הצגה של הערכת עלות
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}בחירת שדה תעופה
@@ -2386,14 +2386,14 @@ STR_STATION_BUILD_NOISE                                         :{GOLD}{COMMA}{B
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}שינוי פני השטח
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}הנמכת משבצת קרקע
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}הגבהת משבצת קרקע
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}שיטוח הקרקע
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה אדמה לשימוש עתידי
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}הנמכת פינת קרקע. גרירה מנמיכה את הפינה הראשונה שנבחרה ומיישרת את השטח הנבחר לגובה החדש. Ctrl בוחר שטח באלכסון. Shift בורר בניה/הצגה של הערכת עלות
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}הגבהת משבצת קרקע.גרירה מגביהה את הפינה הראשונה שנבחרה ומיישרת את השטח הנבחר לגובה החדש. Ctrl בוחר שטח באלכסון. Shift בורר בניה/הצגה של הערכת עלות
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}שיטוח הקרקע לגובה של הפינה הראשונה שנבחרה. Ctrl בוחר שטח באלכסון. Shift בורר בניה/הצגה של הערכת עלות
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה אדמה לשימוש עתידי. Shift בורר בניה/הצגה של הערכת עלות
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}פירט נבחר
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}בחר פריט לבנייה
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}בחר פריט לבנייה. Shift בורר בניה/הצגה של הערכת עלות
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}בחר את סוג הפריט לבנייה
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}צפיה מקדימה של האובייקט
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}גודל: {GOLD}{NUM} x {NUM} משבצת
@@ -2403,9 +2403,9 @@ STR_OBJECT_CLASS_TRNS                                           :אנטנות
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}עצים
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}בחר סוג עץ לנטיעה
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}בחר סוג עץ לנטיעה. במידה ויש עץ במשבצת, יתווספו עצים נוספים מסוגים שונים ללא קשר לסוג הנבחר
 STR_TREES_RANDOM_TYPE                                           :{BLACK}עצים מסוג אקראי
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}נטע עצים מסוג אקראי במקום זה
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}נטע עצים מסוג אקראי במקום זה. Shift בורר בניה/הצגה של הערכת עלות
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}עצים אקראיים
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}שתול עצים באופן אקראי על פני השטח
 
@@ -2418,15 +2418,15 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}הקטן
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}צור קרקע אקראית
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}צור תרחיש חדש
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}אפס קרקע
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}מחק מהמפה את כל רכוש השחקן
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}מחק מהמפה את כל הרכוש שבבעלות החברה
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}אפס קרקע
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}האם אתה בטוח שאתה רוצה למחוק את כל רכושו של השחקן?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}האם אתה בטוח שאתה רוצה למחוק את כל רכוש החברה?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}יצירת ערים
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}עיירה חדשה
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ייסד עיר חדשה
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ייסד עיר חדשה. Shift+לחיצה מציג הערכת עלות
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}עיר אקראית
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ייסד עיר במקום אקראי
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}ערים אקראיות
@@ -2622,7 +2622,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}שמור
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}טען
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}טען את המשחק שנבחר
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}פרטי משחק
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין מידע זמין.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין מידע זמין
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2798,12 +2798,12 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} חי
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} חייב להיטען אחרי {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} דורש גרסת {STRING} של OpenTTD ומעלה.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :קובץ השדרוג הגראפי אותו יועד לתרגם
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :יותר מידי קבצי שדרוג גראפי פתוחים בן זמנית
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :יותר מידי קבצי שדרוג גראפי פתוחים
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {1:STRING} as static NewGRF with {STRING} could cause desyncs.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :ספרייט לא מצופה (ספרייט {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :מאפיין Action 0 לא ידוע {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :ניסיון שימוש ב-ID לא תקין (ספרייט {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?).
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} מכיל אלמנט גרפי שגוי. כל האלמנטים הגרפיים השגויים יוצגו כסימן שאלה אדום (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :מכיל מספר רשומות Action 8 (ספרייט {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :קראת אחר סוף הפסאודו-ספרייט (ספרייט {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}בערכת גרפיקה הבסיסית חסרים מספר ספרייטים.{}אנא עדכן את הערכה הגרפית הבסיסית
@@ -2814,7 +2814,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :מבנה פור
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}!אזהרה
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}הנך עומד לבצע שינוייך במהלך ריצת המשחק. פעולה זו עלולה לגרום לקריסה. האם אתה בטוח לחלוטין שברצונך להמשיך?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}הנך עומד לבצע שינויים במהלך ריצת המשחק. פעולה זו עלולה לגרום לקריסה. נא לא לדווח על בעיות אלה.{} האם אתה בטוח לחלוטין שברצונך להמשיך?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}הקובץ לא נמצא, הוטען קובץ תואם
@@ -2832,14 +2832,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}נמצ�
 STR_NEWGRF_LIST_MISSING                                         :{RED}חסרים קבצים
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}התנהגות ה-NewGRF '{STRING}' עלולה לגרום לקריסה ו/או חוסר סנכרון במשחק.
+STR_NEWGRF_BROKEN                                               :{WHITE}התנהגות ה-NewGRF '{STRING}' עלולה לגרום לקריסה ו/או חוסר סנכרון
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}שינה את מצב קרון מונע עבור '{1:ENGINE}' כאשר לא נמצא במוסך
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}זה שינה את אורך הרכב ל'{1:ENGINE}' כאשר לא במוסך.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}רכבת '{VEHICLE}' השייכת לחברת '{COMPANY}' בעלת אורך לא חוקי. דבר זה נגמר ככל הנראה בעקבות בעיות ב-NEWGRF.המשחק עלול לצאת מסנכרון או לקרוס.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}זה שינה את אורך הרכב ל'{1:ENGINE}' כאשר לא במוסך
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}רכבת '{VEHICLE}' השייכת לחברת '{COMPANY}' בעלת אורך לא חוקי. דבר זה נגרם ככל הנראה בעקבות בעיות ב-NEWGRF. המשחק עלול לצאת מסנכרון או לקרוס
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' סיפק מידע לא נכון.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}מידע מטען/התאמה מחדש עבור '{1:ENGINE}' שונה מרשימת הרכישה לאחר הבניה. דבר זה עלול לגרום מילוי/חידוש אוטומטי לכישלון התאמה מחדש בצורה נכונה.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' גרם ללולאה אינסופית בהתקשרות חזרה של הייצור.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' סיפק מידע לא נכון
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}מידע מטען/התאמה מחדש עבור '{1:ENGINE}' שונה מרשימת הרכישה לאחר הבניה. דבר זה עלול לגרום לכישלון חידוש אוטומטי/החלפה בצורה נכונה
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' גרם ללולאה אינסופית בהתקשרות חזרה של הייצור
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}קריאה חוזרת {1:HEX} החזירה תוצאה לא מוכרת / לא תקינה {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -3120,7 +3120,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}הקם �
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}צפה במטה
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}צפה במטה החברה
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}שנה מיקום המטה
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}מקם מחדש את מטה החברה תמורת 1% משווי החברה
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}מקם מחדש את מטה החברה עבור 1% משווי החברה. Shift+לחיצה מציג הערכת עלות ללא מיקום מחדש של המטה
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}פרטים
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}צפה בספירות מפורטות של תשתיות
 
@@ -3135,8 +3135,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}שנה �
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}קנה 25% ממניות החברה
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}מכור 25% ממניות החברה שברשותך
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}קנה 25% ממניות חברה זו
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}מכור 25% ממניות חברה זו
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}קנה 25% ממניות חברה זו. Shift+לחיצה מציג הערכת עלות ללא רכישת המניה
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}מכור 25% ממניות חברה זו. Shift+לחיצה מציג הערכת הכנסות ללא מכירת המניה
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :שם החברה
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :שם המנהל
@@ -3263,7 +3263,7 @@ STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}מהחר
 STR_PURCHASE_INFO_RUNNINGCOST                                   ::לשנה {GOLD}{CURRENCY_LONG}{BLACK} :עלות תפעולית
 STR_PURCHASE_INFO_CAPACITY                                      :{GOLD}{1:STRING} {0:CARGO_LONG}{BLACK} :קיבולת
 STR_PURCHASE_INFO_REFITTABLE                                    :(ניתן להתאמה)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{GOLD}{1:COMMA}{BLACK} :(משך חיים(שנים {GOLD}{0:NUM}{BLACK} :תוכנן
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}מודל: {GOLD}{NUM}{BLACK} משך חיים: {GOLD}{COMMA} שנ{P ה ים}
 STR_PURCHASE_INFO_RELIABILITY                                   :{GOLD}{COMMA}%{BLACK} :אמינות מירבית
 STR_PURCHASE_INFO_COST                                          :{GOLD}{CURRENCY_LONG}{BLACK} :מחיר
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}משקל: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
@@ -3286,10 +3286,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}רכוש
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}רכוש כלי שייט
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}רכוש כלי טייס
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}רכוש את קרון הרכבת שמודגש
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}רכוש את כלי הרכב שמודגש
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}רכוש את כלי השייט שמודגש
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}רכוש את כלי הטייס שמודגש
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}רכוש את קרון הרכבת שמודגש. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}רכוש את כלי הרכב שמודגש. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}רכוש את כלי השייט שמודגש. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}רכוש את כלי הטייס שמודגש. Shift+לחיצה מציג הערכת עלות ללא רכישה
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}שנה שם
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}שנה שם
@@ -3354,7 +3354,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}שכפל
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}שכפל כלי שייט
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}שכפל כלי טייס
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}פעולה זו תרכוש העתק נוסף של הרכבת וכל קרונותיה. לחץ על כפתור זה ולאחר מכן על רכבת בתוך או מחוץ לתחנה. Ctrl+לחיצה יעתיק גם את הוראות הרכבת
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}פעולה זו תרכוש העתק נוסף של הרכבת וכל קרונותיה. לחץ על כפתור זה ולאחר מכן על רכבת בתוך או מחוץ למוסך. Ctrl+לחיצה לשיתוף הוראות הרכבת. Shift+לחיצה מציג הערכת עלות ללא רכישה
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}פעולה זו תרכוש העתק נוסף של כלי רכב. לחץ על כפתור זה ולאחר מכן על כלי רכב בתוך או מחוץ למוסך. Ctrl+לחיצה יעתיק גם את הוראות כלי הרכב
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}פעולה זו תרכוש העתק נוסף של כלי שייט חדש. לחץ על כפתור זה ולאחר מכן על כלי שייט בתוך או מחוץ למבדוק. Ctrl+לחיצה יעתיק גם את הוראות כלי השייט
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}פעולה זו תרכוש העתק נוסף של כלי הטייס. לחץ על כפתור זה ולאחר מכן על כלי טייס בתוך או מחוץ למוסך-המטוסים. Ctrl+לחיצה יעתיק גם את הוראות כלי הטייס

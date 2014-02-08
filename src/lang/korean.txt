@@ -2878,6 +2878,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없
 STR_NEWGRF_BROKEN                                               :{WHITE}'{STRING}' NewGRF이 하려는 행위는 비동기화 혹은 충돌을 일으킬 수 있습니다.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}'에 대한 동력 차량 상태가 바뀌었습니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}차량이 기지 안에 있지 않거나 개조가 불가능한 상태에서 '{1:ENGINE}'의 수송량이 변경되었습니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'에 속한 열차 '{0:VEHICLE}'의 길이가 잘못된 값을 가지고 있습니다. NewGRF에 의한 문제로 추축됩니다. 게임이 비동기화 또는 충돌을 일으킬 수 있습니다.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' (이)가 잘못된 정보를 제공하고 있습니다.

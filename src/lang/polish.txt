@@ -3257,6 +3257,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmienia stan wagonu dla '{1:ENGINE}' gdy nie jest w zajezdni
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia długość pojazdu dla '{1:ENGINE}' gdy nie jest w zajezdni
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono pojemność pojazdu na '{1:ENGINE}', kiedy nie był w lokomotywowni lub w trakcie przebudowy
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
