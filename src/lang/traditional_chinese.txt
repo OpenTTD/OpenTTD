@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :遊戲設定 (�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :公司設定 (存檔時保存；僅在往後建立的新遊戲生效)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :公司設定 (存檔時保存；僅影響您正在控制的公司)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}顯示：
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}限制以下列表僅顯示曾被更改的設定
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :進階設定

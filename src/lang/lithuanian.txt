@@ -1265,7 +1265,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :žaidimo (įra�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :kompanijos (įrašoma pradedant naują žaidimą)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :kompanijos (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik šiuo metu aktyviai kompanijai)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Rodyti:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rodyti tik tam tikros rūšies nuostatas
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pagrindines nuostatas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Sudėtingesnes nuostatas

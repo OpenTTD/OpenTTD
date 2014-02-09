@@ -1047,7 +1047,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Joko ezarpenak 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Konpainia ezarpenak (Gorden bilduta; bakarrik joko berriei eragingo die)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Konpainia ezarpenak (Gorden bilduta; bakarrik uneko konpainiari eragiten dio)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Erakutsi
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beheko zerrenda laburtu bakarrik aldatutako ezarpenak erakutsiz
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Oinarrizko ezarpenak
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ezarpen aurreratuak

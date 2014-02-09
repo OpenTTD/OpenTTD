@@ -1152,7 +1152,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavení hry 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Zobrazit:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Zobrazovat v seznamu níže pouze změněná nastavení
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základní nastavení
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé nastavení

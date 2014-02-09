@@ -1071,7 +1071,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Oyun ayarları 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarları (kayıtlı dosyada saklanır; sadece mevcut şirketi etkilemektedir)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Göster:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi yalnızca değişen ayarları göstererek sınırlandırır
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel ayarlar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş ayarlar

@@ -1051,7 +1051,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Goymslu instill
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Fyritøku instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Fyritøku instilling (goymt í goymslufílum; ávirkar einans núverðandi fyritøku)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vís:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Avmarkar listan niðanfyr so hann einans vísur broyttar instillingar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund innstillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Víðkaðir innstillingar

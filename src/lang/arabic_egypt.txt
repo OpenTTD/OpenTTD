@@ -1029,7 +1029,6 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}إعدا
 STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :اظهر:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :اﻹعدادات الاساسيه
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}احصر القائمة على انواع اعدادات محددة

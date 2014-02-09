@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Game setting (s
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Company setting (stored in saves; only affects new games)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting (stored in save; only affects current company)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Show:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below showing only changed settings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic settings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced settings

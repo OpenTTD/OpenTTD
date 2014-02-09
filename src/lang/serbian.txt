@@ -1261,7 +1261,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Podešavanja ig
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Podešavanja preduzeća (čuvaju se prilikom snimanja; utiču samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Podešavanja preduzeća (čuvaju se prilikom snimanja; utiču samo tekuće preduzeće)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ograničava donju listu tako da prikazuje samo promenjena podešavanja
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovna podešavanja
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredna podešavanja

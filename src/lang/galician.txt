@@ -1071,7 +1071,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuración 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configuración da compañía (almacénase nas partidas gravadas; afecta só ás novas partidas)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configuración da compañía (almacénase nas partidas gravadas; afecta só á partida actual)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mostrar:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restrinxe a seguinte lista amosando só os valores alterados
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Configuración básica
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Configuración avanzada

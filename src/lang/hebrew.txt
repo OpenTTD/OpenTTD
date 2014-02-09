@@ -1072,7 +1072,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :הגדרת מש
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :הגדרת חברה (מאוחסנת במשחק שמור; משפיעה על משחקים חדשים בלבד)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :הגדרת חברה (מאוחסנת במשחק שמור; משפיעה על החברה הנוכחית בלבד)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}הצג:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}מגביל את הרשימה להלן כך שתציג רק הגדרות שהשתנו
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :הגדרות בסיסיות
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :הגדרות מתקדמות

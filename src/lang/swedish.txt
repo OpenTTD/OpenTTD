@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinställnin
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Företagsinställning (sparad i spel-fil och påverkar enbart nya spel)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Företagsinställning (sparad i spel-fil och påverkar enbart nuvarande företag)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Visa:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begränsar listan till att endast visa ändrade inställningar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundläggande inställningar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerade inställningar

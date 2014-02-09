@@ -1152,7 +1152,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ρύθμιση 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο νέα παιχνίδια)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο την τρέχουσα εταιρεία)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Προβολή:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Μειώνει την παρακάτω λίστα προβάλλοντας μόνο αλλαγμένες ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις

@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinstellinge
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op nieuw spel)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op huidig bedrijf)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Toon:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Filtert de onstaande lijst op alleen gewijzigde instellingen
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gewone instellingen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Geavanceerde instellingen

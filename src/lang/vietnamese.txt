@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Thiết lập t
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Thiết lập công ty (chứa trong save; chỉ tác động tới các ván chơi mới)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập công ty (chứa trong save; chỉ tác động tới công ty hiện tại)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Hiển thị:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Chỉ hiển thị danh sách các thiết lập đã bị thay đổi
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tùy chọn cơ bản
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tùy chọn nâng cao

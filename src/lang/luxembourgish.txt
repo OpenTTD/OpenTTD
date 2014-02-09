@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spillastellung 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmenastellung (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Weis:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limitéiert d'Lëscht dass nëmmen geännert Astellungen gewisen ginn
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic Astellungen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweidert Astellungen

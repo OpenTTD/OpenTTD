@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ตั้งค
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :ตั้งค่าองค์กร (ถูกเก็บไว้ในการบันทึกเกม; มีผลเฉพาะการเริ่มเกมใหม่)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :ตั้งค่าองค์กร (ถูกเก็บไว้ในการบันทึกเกม; มีผลเฉพาะเกมปัจจุบัน)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}แสดง:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}จำกัดรายการด้านล่างให้แสดงเฉพาะการตั้งค่าที่มีการเปลี่ยนแปลง
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :ตั้งค่าพื้นฐาน
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :ตั้งค่าขั้นสูง

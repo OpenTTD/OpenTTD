@@ -1166,7 +1166,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Postavke igre (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Postavke kompanije (pohranjene u snimljenoj datoteci; utječu samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Postavke kompanije (pohranjene u snimljenoj datoteci; utječu samo na trenutnu kompaniju)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu prikazom samo izmijenjenih postavki
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne postavke
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne postavke

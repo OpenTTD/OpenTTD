@@ -1034,7 +1034,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ஆட்டத
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களை மட்டுமே மாற்றும்)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; தற்போதைய நிறுவனத்தை மட்டுமே மாற்றும்)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}காட்டு:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :அடிப்படை அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :சிறப்பு அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :அதிக / அனைத்து அமைப்புகள்

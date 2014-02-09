@@ -1127,7 +1127,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Mängu seaded (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult praegust ettevõtet)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Näidatud:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Piirab alljärgnevat nimekirja muudetud seadete kuvamiseks
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Põhilised seaded
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Täpsemad seaded

@@ -1383,7 +1383,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Наладкі 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Наладкі кампаніі (утрымліваюцца ў файлах захаваньняў; сапраўдныя толькі для новых гульняў)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Наладкі кампаніі (утрымліваюцца ў файлах захаваньняў; сапраўдныя толькі для бягучай гульні)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Паказваць:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Адлюстроўваць у сьпісе толькі зьмененыя наладкі
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Базавыя наладкі
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Пашыраныя наладкі

@@ -1047,7 +1047,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Tetapan permain
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Tetapan syarikat (disimpan di simpanan; berkesan hanya permainan baru)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Tetapan syarikat (disimpan di penyimpanan; hanya berkesan kepada syarikat semasa)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Pamer:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hadkan senarai di bawah hanya ditunjukkan tetapan ditukar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tetapan asas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tetapan tambahan

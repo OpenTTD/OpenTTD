@@ -1223,7 +1223,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavitve igre
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavitve podjetja (shranjeno v igrah, vpliva samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavitve podjetja (shranjeno v igrah, vpliva samo na trenutno podjetje)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omeji seznam na prikaz le spremenjenih nastavitev
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne nastavitve
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne nastavitve

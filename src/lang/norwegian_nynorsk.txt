@@ -1072,7 +1072,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinnstilling
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmainnstilling (lagra med enkeltspel; påverkar berre nye spel)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmainnstilling (lagra med enkeltspel; påverkar berre noverande firma)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vis:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Gjer at lista under berre viser innstillingar som er gjorde om
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnlegjande instillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte instillingar

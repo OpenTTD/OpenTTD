@@ -1051,7 +1051,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Leikjastillinga
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Fyrirtækjastillingar (geymdar í vistunarskrám; hefur bara áhrif á nýja leiki)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Fyrirtækjastillingar (geymdar í vistunarskrám; hefur bara áhrif á núverandi fyrirtæki)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Sýna:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Takmarkar listan hér fyrir neðan við breyttar stillingar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnstillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ítarlegar stillingar

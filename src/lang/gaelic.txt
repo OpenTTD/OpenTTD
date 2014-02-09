@@ -1272,7 +1272,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Roghainnean a' 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Seall:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach roghainnean air an atharrachadh
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Roghainnean bunasach
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Roghainnean adhartach

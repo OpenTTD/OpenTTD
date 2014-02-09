@@ -1071,7 +1071,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paramètre de j
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paramètre de compagnie (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de compagnie (enregistré dans la sauvegarde{NBSP}; affecte uniquement la compagnie actuelle)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Afficher{NBSP}:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restreint la liste ci-dessous en ne montrant que les paramètres modifiés
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Options de base
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Options avancées

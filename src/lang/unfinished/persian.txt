@@ -1059,7 +1059,6 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :تنظیمات 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :تنظیمات بازی ( در ذخیره سازی اعمال میشود و فقط در بازی فعلی تاثیر دارد)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :تنظیمات شرکت ( در ذخیره سازی ها اعمال میشود و در بازی فعلی موثر است)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}نمایش:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :تنظیمات پایه
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :تنظیمات پیشرفته
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :تنظیمات حرفه ای/ همه تنظیمات

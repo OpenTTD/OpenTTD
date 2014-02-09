@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spulynstellings
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedriuwynstellings (wurdt per spul opslein; hat allinich effekt op nije spullen)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedriuwynstellings (wurdt per spul opslein; hat allinich effekt op it hjoeddeiske bedriuw)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Lit sjen:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Behein de ûndersteande list ta feroare ynstellings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basisynstellings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Wiidweidige ynstellings

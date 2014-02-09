@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ゲーム設定
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :会社設定(新規ゲームにのみ影響)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :会社設定(現在の会社のみに影響)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}表示:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}設定のレベルでフィルタリングします。標準の設定と異なるもののみ表示することもできます
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :詳細設定

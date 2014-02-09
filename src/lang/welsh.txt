@@ -1070,7 +1070,6 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Gosodiad gêm (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Gosodiad cwmni (cedwir yn y ffeiliau cadw; yn effeithio ar gemau newydd yn unig)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni (cedwir yn y ffeil gadw; yn effeithio ar y cwmni presennol yn unig)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Dangos:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Yn cyfyngu'r rhestr isod gan ddangos gosodiadau sydd wedi newid yn unig
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gosodiadau sylfaenol
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gosodiadau uwch
