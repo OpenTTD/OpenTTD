@@ -1071,7 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Karten-Einstell
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmen-Einstellung (in Spielständen gespeichert; beeinflußt nur neue Spiele)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmen-Einstellung (im Spielstand gespeichert; beeinflußt nur aktuelle Firma)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Zeige:
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Art:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beschränkt die Liste auf geänderte Einstellungen
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundlegende Einstellungen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweiterte Einstellungen
@@ -1086,6 +1087,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spiel-spezifisc
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spiel-spezifische Einstellungen (im Spielstand gespeichert; beeinflußt nur aktuelles Spiel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firmeneinstellungen (im Spielstand gesichert; beeinflußt nur neue Spiele)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firmeneinstellungen (im Spielstand gesichert; beeinflußt nur die aktuelle Firma)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Um alle Suchergebnisse anzuzeigen, setze{}{SILVER}Kategorie {BLACK}auf {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Um alle Suchergebnisse anzuzeigen, setze{}{SILVER}Typ {BLACK}auf {WHITE}Alle Arten von Einstellungen
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Zeige alle Suchergebnisse an indem{}{SILVER}Kategorie {BLACK}auf {WHITE}{STRING} {BLACK}und {SILVER}Art {BLACK}auf {WHITE}Alle Arten von Einstellungen
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Keine -
 
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :An
@@ -2878,6 +2883,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Fehlende D
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ändert die Antriebseigenschaften für '{1:ENGINE}' außerhalb von Depots
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ändert die Ladekapazität für '{1:ENGINE}' ohne Umrüst-Auftrag außerhalb von Depots
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen

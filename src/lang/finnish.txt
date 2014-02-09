@@ -1070,7 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Pelin asetus (t
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Yhtiön asetus (tallennetaan tallenteisiin; vaikuttaa vain uusiin peleihin)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus (tallennetaan tallenteeseen; vaikuttaa vain nykyiseen yhtiöön)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Näytä:
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tyyppi:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rajaa alla olevaa listaa ja näyttää vain muutetut asetukset
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Perusasetukset
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Lisäasetukset
@@ -1085,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pelin asetukset
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pelin asetukset (tallennetaan pelitallenteeseen; vaikuttavat vain nykyiseen peliin)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Yhtiön asetukset (tallennetaan pelitallenteisiin; vaikuttavat vain uusiin peleihin)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Yhtiön asetukset (tallennetaan pelitallenteeseen; vaikuttavat ainoastaan nykyiseen yhtiöön)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}Kategoriaksi {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Näytä kaikki hakutulokset muuttamalla{}{SILVER}Tyypiksi {WHITE}Kaikki asetustyypit
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}Kategoriaksi {WHITE}{STRING} {BLACK}ja {SILVER}Tyypiksi {WHITE}Kaikki asetustyypit
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ei mitään -
 
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
@@ -2877,6 +2882,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Puuttuvia 
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n '{0:STRING}' käytös aiheuttaa todennäköisesti nykimistä ja/tai kaatumisia.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Se muutti vetävän vaunun '{1:ENGINE}' tilaa tallin ulkopuolella
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muutti kulkuneuvon '{1:ENGINE}' pituutta varikon ulkopuolella
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Se muutti kulkuneuvon '{1:ENGINE}' kapasiteettia, vaikka kulkuneuvo ei ollut varikolla tai uudelleensovitettavana
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiölle '{1:COMPANY}' kuuluvan junan '{0:VEHICLE}' pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa nykiä tai kaatua
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa

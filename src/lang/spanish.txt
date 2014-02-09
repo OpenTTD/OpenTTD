@@ -1071,7 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Opción de part
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Opción de empresa (se almacena en las partidas guardadas, afecta solamente a las nuevas partidas)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empresa (almacenada en la partida guardada, afecta solamente a la empresa actual)
 
-STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mostrar:
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Muestra solamente las opciones modificadas en la lista
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opciones básicas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Opciones avanzadas
@@ -1086,6 +1087,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Opciones de jue
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Opciones de juego (se almacena en las partidas guardadas, afecta solamente a la partida actual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente a partidas nuevas)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente a la compañía actual)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Categoría {BLACK}a {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Tipo {BLACK}a {WHITE}Todos los tipos de opción
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Categoría {BLACK}a {WHITE}{STRING} {BLACK}y {SILVER}Tipo {BLACK}a {WHITE}Todos los tipos de opción
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ninguno -
 
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_ON                                           :Sí
@@ -2878,6 +2883,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Ficheros q
 STR_NEWGRF_BROKEN                                               :{WHITE}Es probable que el funcionamiento del NewGRF '{0:STRING}' cause desincronizaciones o fallos
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha cambiado el estado 'vagón con potencia' para '{1:ENGINE}' fuera de un depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha cambiado la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ha cambiado la capacidad del vehículo para '{1:ENGINE}' fuera de un depósito o mientras no se estava remodelando
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' da información incorrecta
