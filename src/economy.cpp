@@ -1509,8 +1509,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 				/* The station does not accept our goods anymore. */
 				if (front->current_order.GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) {
 					/* Transfer instead of delivering. */
-					v->cargo.Reassign(v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER),
-							VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER);
+					v->cargo.Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER>(
+							v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER), INVALID_STATION);
 				} else {
 					uint new_remaining = v->cargo.RemainingCount() + v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER);
 					if (v->cargo_cap < new_remaining) {
@@ -1519,8 +1519,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 					}
 
 					/* Keep instead of delivering. This may lead to no cargo being unloaded, so ...*/
-					v->cargo.Reassign(v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER),
-							VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP);
+					v->cargo.Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP>(
+							v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER));
 
 					/* ... say we unloaded something, otherwise we'll think we didn't unload
 					 * something and we didn't load something, so we must be finished

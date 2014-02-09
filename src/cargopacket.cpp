@@ -544,17 +544,54 @@ void VehicleCargoList::InvalidateCache()
 
 /**
  * Moves some cargo from one designation to another. You can only move
- * between adjacent designations. E.g. you can keep cargo that was
- * previously reserved (MTA_LOAD) or you can mark cargo to be transferred
- * that was previously marked as to be delivered, but you can't reserve
- * cargo that's marked as to be delivered.
+ * between adjacent designations. E.g. you can keep cargo that was previously
+ * reserved (MTA_LOAD), but you can't reserve cargo that's marked as to be
+ * delivered. Furthermore, as this method doesn't change the actual packets,
+ * you cannot move cargo from or to MTA_TRANSFER. You need a specialized
+ * template method for that.
+ * @tparam from Previous designation of cargo.
+ * @tparam to New designation of cargo.
+ * @param max_move Maximum amount of cargo to reassign.
+ * @return Amount of cargo actually reassigned.
  */
-uint VehicleCargoList::Reassign(uint max_move, MoveToAction from, MoveToAction to)
+template<VehicleCargoList::MoveToAction Tfrom, VehicleCargoList::MoveToAction Tto>
+uint VehicleCargoList::Reassign(uint max_move, TileOrStationID)
 {
-	max_move = min(this->action_counts[from], max_move);
-	assert(Delta((int)from, (int)to) == 1);
-	this->action_counts[from] -= max_move;
-	this->action_counts[to] += max_move;
+	assert_compile(Tfrom != MTA_TRANSFER && Tto != MTA_TRANSFER);
+	assert_compile(Tfrom - Tto == 1 || Tto - Tfrom == 1);
+	max_move = min(this->action_counts[Tfrom], max_move);
+	this->action_counts[Tfrom] -= max_move;
+	this->action_counts[Tto] += max_move;
+	return max_move;
+}
+
+/**
+ * Reassign cargo from MTA_DELIVER to MTA_TRANSFER and take care of the next
+ * station the cargo wants to visit.
+ * @param max_move Maximum amount of cargo to reassign.
+ * @param next_station Station to record as next hop in the reassigned packets.
+ * @return Amount of cargo actually reassigned.
+ */
+template<>
+uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER>(uint max_move, TileOrStationID next_station)
+{
+	max_move = min(this->action_counts[MTA_DELIVER], max_move);
+
+	uint sum = 0;
+	for (Iterator it(this->packets.begin()); sum < this->action_counts[MTA_TRANSFER] + max_move;) {
+		CargoPacket *cp = *it++;
+		sum += cp->Count();
+		if (sum <= this->action_counts[MTA_TRANSFER]) continue;
+		if (sum > this->action_counts[MTA_TRANSFER] + max_move) {
+			CargoPacket *cp_split = cp->Split(sum - this->action_counts[MTA_TRANSFER] + max_move);
+			sum -= cp_split->Count();
+			this->packets.insert(it, cp_split);
+		}
+		cp->next_station = next_station;
+	}
+
+	this->action_counts[MTA_DELIVER] -= max_move;
+	this->action_counts[MTA_TRANSFER] += max_move;
 	return max_move;
 }
 
@@ -806,7 +843,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, TileIndex loa
 	uint move = min(dest->ActionCount(VehicleCargoList::MTA_LOAD), max_move);
 	if (move > 0) {
 		this->reserved_count -= move;
-		dest->Reassign(move, VehicleCargoList::MTA_LOAD, VehicleCargoList::MTA_KEEP);
+		dest->Reassign<VehicleCargoList::MTA_LOAD, VehicleCargoList::MTA_KEEP>(move);
 		return move;
 	} else {
 		return this->ShiftCargo(CargoLoad(this, dest, max_move, load_place), next_station, true);
@@ -831,3 +868,5 @@ uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID 
  */
 template class CargoList<VehicleCargoList, CargoPacketList>;
 template class CargoList<StationCargoList, StationCargoPacketMap>;
+template uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP>(uint max_move, TileOrStationID);
+template uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER>(uint max_move, TileOrStationID next_station);
