@@ -694,12 +694,15 @@ enum RestrictionMode {
 	RM_CHANGED_AGAINST_NEW,              ///< Show only settings which are different compared to the user's new game setting values.
 	RM_END,                              ///< End for iteration.
 };
+DECLARE_POSTFIX_INCREMENT(RestrictionMode)
 
 /** Filter for settings list. */
 struct SettingFilter {
 	StringFilter string;     ///< Filter string.
+	RestrictionMode min_cat; ///< Minimum category needed to display all filtered strings (#RM_BASIC, #RM_ADVANCED, or #RM_ALL).
+	bool type_hides;         ///< Whether the type hides filtered strings.
 	RestrictionMode mode;    ///< Filter based on category.
-	SettingType type;       ///< Filter based on type.
+	SettingType type;        ///< Filter based on type.
 };
 
 /** Data structure describing a single setting in a tab */
@@ -1051,8 +1054,16 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 
 				visible = filter.string.GetState();
 			}
-			if (filter.type != ST_ALL) visible = visible && sd->GetType() == filter.type;
-			visible = visible && this->IsVisibleByRestrictionMode(filter.mode);
+			if (visible) {
+				if (filter.type != ST_ALL && sd->GetType() != filter.type) {
+					filter.type_hides = true;
+					visible = false;
+				}
+				if (!this->IsVisibleByRestrictionMode(filter.mode)) {
+					while (filter.min_cat < RM_ALL && (filter.min_cat == filter.mode || !this->IsVisibleByRestrictionMode(filter.min_cat))) filter.min_cat++;
+					visible = false;
+				}
+			}
 			break;
 		}
 		case SEF_SUBTREE_KIND: {
@@ -1713,6 +1724,15 @@ static const StringID _game_settings_restrict_dropdown[] = {
 };
 assert_compile(lengthof(_game_settings_restrict_dropdown) == RM_END);
 
+/** Warnings about hidden search results. */
+enum WarnHiddenResult {
+	WHR_NONE,          ///< Nothing was filtering matches away.
+	WHR_CATEGORY,      ///< Category setting filtered matches away.
+	WHR_TYPE,          ///< Type setting filtered matches away.
+	WHR_CATEGORY_TYPE, ///< Both category and type settings filtered matches away.
+};
+
+/** Window to edit settings of the game. */
 struct GameSettingsWindow : Window {
 	static const int SETTINGTREE_LEFT_OFFSET   = 5; ///< Position of left edge of setting values
 	static const int SETTINGTREE_RIGHT_OFFSET  = 5; ///< Position of right edge of setting values
@@ -1730,6 +1750,8 @@ struct GameSettingsWindow : Window {
 	SettingFilter filter;              ///< Filter for the list.
 	QueryString filter_editbox;        ///< Filter editbox;
 	bool manually_changed_folding;     ///< Whether the user expanded/collapsed something manually.
+	WarnHiddenResult warn_missing;     ///< Whether and how to warn about missing search results.
+	int warn_lines;                    ///< Number of lines used for warning about missing search results.
 
 	Scrollbar *vscroll;
 
@@ -1737,9 +1759,13 @@ struct GameSettingsWindow : Window {
 	{
 		static bool first_time = true;
 
-		filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
-		filter.type = ST_ALL;
-		settings_ptr = &GetGameSettings();
+		this->warn_missing = WHR_NONE;
+		this->warn_lines = 0;
+		this->filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
+		this->filter.min_cat = RM_ALL;
+		this->filter.type = ST_ALL;
+		this->filter.type_hides = false;
+		this->settings_ptr = &GetGameSettings();
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
@@ -1810,7 +1836,37 @@ struct GameSettingsWindow : Window {
 			this->valuedropdown_entry->SetButtons(0);
 			this->valuedropdown_entry = NULL;
 		}
+
+		/* Reserve the correct number of lines for the 'some search results are hidden' notice in the central settings display panel. */
+		const NWidgetBase *panel = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL);
+		StringID warn_str = STR_CONFIG_SETTING_CATEGORY_HIDES - 1 + this->warn_missing;
+		int new_warn_lines;
+		if (this->warn_missing == WHR_NONE) {
+			new_warn_lines = 0;
+		} else {
+			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
+			new_warn_lines = GetStringLineCount(warn_str, panel->current_x);
+		}
+		if (this->warn_lines != new_warn_lines) {
+			this->vscroll->SetCount(this->vscroll->GetCount() - this->warn_lines + new_warn_lines);
+			this->warn_lines = new_warn_lines;
+		}
+
 		this->DrawWidgets();
+
+		/* Draw the 'some search results are hidden' notice. */
+		if (this->warn_missing != WHR_NONE) {
+			const int left = panel->pos_x;
+			const int right = left + panel->current_x - 1;
+			const int top = panel->pos_y;
+			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
+			if (this->warn_lines == 1) {
+				/* If the warning fits at one line, center it. */
+				DrawString(left + WD_FRAMETEXT_LEFT, right - WD_FRAMETEXT_RIGHT, top + WD_FRAMETEXT_TOP, warn_str, TC_FROMSTRING, SA_HOR_CENTER);
+			} else {
+				DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top + WD_FRAMERECT_TOP, INT32_MAX, warn_str);
+			}
+		}
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -1861,10 +1917,13 @@ struct GameSettingsWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case WID_GS_OPTIONSPANEL:
-				_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
-						this->vscroll->GetPosition(), this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->last_clicked);
+			case WID_GS_OPTIONSPANEL: {
+				int top_pos = r.top + SETTINGTREE_TOP_OFFSET + 1 + this->warn_lines * FONT_HEIGHT_NORMAL;
+				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
+				_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, top_pos,
+						this->vscroll->GetPosition(), last_row, this->last_clicked);
 				break;
+			}
 
 			case WID_GS_HELP_TEXT:
 				if (this->last_clicked != NULL) {
@@ -1939,7 +1998,8 @@ struct GameSettingsWindow : Window {
 		if (widget != WID_GS_OPTIONSPANEL) return;
 
 		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET);
-		if (btn == INT_MAX) return;
+		if (btn == INT_MAX || (int)btn < this->warn_lines) return;
+		btn -= this->warn_lines;
 
 		uint cur_row = 0;
 		SettingEntry *pe = _settings_main_page.FindEntry(btn, &cur_row);
@@ -2187,9 +2247,20 @@ struct GameSettingsWindow : Window {
 	{
 		if (!gui_scope) return;
 
+		/* Update which settings are to be visible. */
+		RestrictionMode min_level = (this->filter.mode <= RM_ALL) ? this->filter.mode : RM_BASIC;
+		this->filter.min_cat = min_level;
+		this->filter.type_hides = false;
 		_settings_main_page.UpdateFilterState(this->filter, false);
 
-		this->vscroll->SetCount(_settings_main_page.Length());
+		if (this->filter.string.IsEmpty()) {
+			this->warn_missing = WHR_NONE;
+		} else if (min_level < this->filter.min_cat) {
+			this->warn_missing = this->filter.type_hides ? WHR_CATEGORY_TYPE : WHR_CATEGORY;
+		} else {
+			this->warn_missing = this->filter.type_hides ? WHR_TYPE : WHR_NONE;
+		}
+		this->vscroll->SetCount(_settings_main_page.Length() + this->warn_lines);
 
 		if (this->last_clicked != NULL && !_settings_main_page.IsVisible(this->last_clicked)) {
 			this->SetDisplayedHelpText(NULL);
