@@ -224,8 +224,7 @@ bool VehicleCargoReroute::operator()(CargoPacket *cp)
 	}
 	if (this->source != this->destination) {
 		this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
-		this->source->AddToMeta(cp_new, VehicleCargoList::MTA_TRANSFER);
-		this->destination->action_counts[VehicleCargoList::MTA_TRANSFER] += cp_new->Count();
+		this->destination->AddToMeta(cp_new, VehicleCargoList::MTA_TRANSFER);
 	}
 
 	/* Legal, as front pushing doesn't invalidate iterators in std::list. */
