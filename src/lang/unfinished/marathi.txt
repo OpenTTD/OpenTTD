@@ -435,17 +435,60 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोप
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :जागाची माहिती
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_SCREENSHOT                                       :द्श्य
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :द्श्य मोठे करा
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :स्थिर द्श्य
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :संपूर्ण नकाशा स्क्रीनशॉट
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन टीटीडी बद्दल
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :प्रथम
-STR_ORDINAL_NUMBER_2ND                                          :द्वितीय
-STR_ORDINAL_NUMBER_3RD                                          :तृतीय
-STR_ORDINAL_NUMBER_4TH                                          :चौथे
+STR_ORDINAL_NUMBER_1ST                                          :१
+STR_ORDINAL_NUMBER_2ND                                          :२
+STR_ORDINAL_NUMBER_3RD                                          :३
+STR_ORDINAL_NUMBER_4TH                                          :४
+STR_ORDINAL_NUMBER_5TH                                          :५
+STR_ORDINAL_NUMBER_6TH                                          :६
+STR_ORDINAL_NUMBER_7TH                                          :७
+STR_ORDINAL_NUMBER_8TH                                          :८
+STR_ORDINAL_NUMBER_9TH                                          :९
+STR_ORDINAL_NUMBER_10TH                                         :१०
+STR_ORDINAL_NUMBER_11TH                                         :११
+STR_ORDINAL_NUMBER_12TH                                         :१२
+STR_ORDINAL_NUMBER_13TH                                         :१३
+STR_ORDINAL_NUMBER_14TH                                         :१४
+STR_ORDINAL_NUMBER_15TH                                         :१५
+STR_ORDINAL_NUMBER_16TH                                         :१६
+STR_ORDINAL_NUMBER_17TH                                         :१७
+STR_ORDINAL_NUMBER_18TH                                         :१८
+STR_ORDINAL_NUMBER_19TH                                         :१९
+STR_ORDINAL_NUMBER_20TH                                         :२०
+STR_ORDINAL_NUMBER_21ST                                         :२१
+STR_ORDINAL_NUMBER_22ND                                         :२२
+STR_ORDINAL_NUMBER_23RD                                         :२३
+STR_ORDINAL_NUMBER_24TH                                         :२४
+STR_ORDINAL_NUMBER_25TH                                         :२५
+STR_ORDINAL_NUMBER_26TH                                         :२६
+STR_ORDINAL_NUMBER_27TH                                         :२७
+STR_ORDINAL_NUMBER_28TH                                         :२८
+STR_ORDINAL_NUMBER_29TH                                         :२९
+STR_ORDINAL_NUMBER_30TH                                         :३०
+STR_ORDINAL_NUMBER_31ST                                         :३१
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :जाने
+STR_MONTH_ABBREV_FEB                                            :फेब्रु
+STR_MONTH_ABBREV_MAR                                            :मार्च
+STR_MONTH_ABBREV_APR                                            :एप्रिल
+STR_MONTH_ABBREV_MAY                                            :मे
+STR_MONTH_ABBREV_JUN                                            :जून
+STR_MONTH_ABBREV_JUL                                            :जुलै
+STR_MONTH_ABBREV_AUG                                            :ऑग
+STR_MONTH_ABBREV_SEP                                            :सप्टें
+STR_MONTH_ABBREV_OCT                                            :ऑक्टो
+STR_MONTH_ABBREV_NOV                                            :नोव्हें
+STR_MONTH_ABBREV_DEC                                            :डिसें
 
 STR_MONTH_JAN                                                   :जानेवारी
 STR_MONTH_FEB                                                   :फेब्रूवारी
@@ -462,21 +505,48 @@ STR_MONTH_DEC                                                   :डिसें
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}किल्ली
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}आलेख दर्शवा की
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}चालू असले नफा आलेख
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}उत्पन्न आलेख
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}वितरित कार्गो एकके
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}कंपनी कामगिरी रेटिंग (कमाल रेटिंग = 1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}कंपनी मूल्ये
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}मालवाहू भरणा दर
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}संक्रमणादरम्यान दिवस
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}मालवाहू 10 युनिट (किंवा 10,000 लिटर) 20 चौरस अंतरावर वितरण भरणा
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}सर्व सक्षम
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}सर्व अक्षम
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}देयक दर आलेखावरील सर्व मालवाहू प्रदर्शित
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}देयक दर आलेखावरील नाही मालवाहू प्रदर्शित
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}मालवाहू प्रकारासाठी टॉगल आलेख - वर / बंद
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}सविस्तर कामगिरी रेटिंग दाखवा
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}कंपनी आलेख किल्ली
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}कंपनी लीग सारणी
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :अभियंता
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :वाहतूक व्यवस्थापक
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :वाहतूक समन्वयक
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :रूट पर्यवेक्षक
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :संचालक
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :मुख्य कार्यकारी
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :अध्यक्ष
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :राष्ट्राध्यक्ष
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}तपशीलवार कामगिरी रेटिंग
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%

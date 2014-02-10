@@ -1071,6 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paràmetre del 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paràmetre de la companyia (emmagatzemat als jocs desats; només afecta els jocs nous)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetre de la companyia (emmagatzemat al joc desat; només afecta la companyia actual)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipus:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringeix la llista de sota mostrant només els paràmetres canviats
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Paràmetres bàsics
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Paràmetres avançats

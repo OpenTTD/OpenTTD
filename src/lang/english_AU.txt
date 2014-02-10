@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Game setting (s
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Company setting (stored in saves; only affects new games)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting (stored in save; only affects current company)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Category:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below showing only changed settings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic settings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced settings
@@ -1084,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Game settings (
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Game settings (stored in save; only affects current game)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Company settings (stored in saves; only affects new games)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Company settings (stored in save; only affects current company)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Show all search results by setting{}{SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- None -
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -2876,6 +2882,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Missing fi
 STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{0:STRING}' is likely to cause desyncs and/or crashes
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}It changed powered-wagon state for '{1:ENGINE}' when not inside a depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changed vehicle length for '{1:ENGINE}' when not inside a depot
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}It changed vehicle capacity for '{1:ENGINE}' when not inside a depot or refitting
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' provides incorrect information

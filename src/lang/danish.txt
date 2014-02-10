@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Firma indstilli
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firma indstilling (lagret i gemt spil; påvirker kun nye spil)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firma indstilling (lagret i gemt spil; påvirker kun aktuelt selskab)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begrænser listen nedenfor så den kun viser ændrede indstillinger
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund Indstillinger
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerede indstillinger
@@ -1084,6 +1086,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spil indstillin
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spil indstilling (lagret i gemt spil, påvirker kun det aktuelt spil)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma indstilling (lagret i gemt spil; påvirker kun nye spil)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma indstilling (lagret i gemt spil; påvirker kun aktuelt selskab)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 
 STR_CONFIG_SETTING_OFF                                          :Fra
 STR_CONFIG_SETTING_ON                                           :Til

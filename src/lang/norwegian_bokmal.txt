@@ -1072,6 +1072,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Selskapet innst
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Selskapet innstilling (lagret i lagringsfilen, påvirker bare nye spill)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Selskapet innstilling (lagret i lagringsfilen, påvirker bare gjeldende selskap)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Viser kun endrede innstillinger i listen nedenfor
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnleggende innstillinger
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte innstillinger
@@ -1086,6 +1088,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spillinnstillin
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spillinnstillinger (lagres i lagringsfilen; påvirker bare gjeldende spill)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Selskapets innstillinger (lagres i lagringsfilen; påvirker bare nye spill)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Selskapets innstillinger (lagret i lagringsfilen; påvirker bare gjeldende selskap)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK} Vis alle søkeresultater ved å sette {} {SILVER} kategori {BLACK} til {WHITE} {STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK} Vis alle søkeresultater ved å sette {} {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK} Vis alle søkeresultater ved å sette {} {SILVER} kategori {BLACK} til {WHITE} {STRING} {BLACK} og {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -2878,6 +2884,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende 
 STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret maskinvogn-tilstand for '{1:ENGINE}' mens det er utenfor en togstall.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE} Det endret kjøretøykapasitet for '{1:ENGINE}' når ikke i et depot eller under ombygging
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan bli usynkronisert eller krasje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon.

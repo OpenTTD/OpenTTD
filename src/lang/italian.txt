@@ -1072,6 +1072,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Impostazione di
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Impostazione della compagnia (conservata nei salvataggi; influenza solo le nuove partite)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione della compagnia (conservata nel salvataggio; influenza solo la compagnia corrente)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante alle sole impostazioni con valore modificato
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Impostazioni di base
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Impostazioni avanzate
@@ -1086,6 +1088,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Impostazioni di
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Impostazioni di gioco (conservate nel salvataggio; influenzano solo la partita corrente)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Impostazioni della compagnia (conservate nei salvataggi; influenzano solo le nuove partite)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Impostazioni della compagnia (conservate nel salvataggio; influenzano solo la compagnia corrente)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Per mostrare tutti i risultati impostare la{}{SILVER}Categoria {BLACK}su {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Per mostrare tutti i risultati impostare il{}{SILVER}Tipo {BLACK}su {WHITE}Tutti i tipi di impostazioni
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Per mostrare tutti i risultati impostare la{}{SILVER}Categoria {BLACK}su {WHITE}{STRING} {BLACK}e il {SILVER}Tipo {BLACK}su {WHITE}Tutti i tipi di impostazioni
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nessuna -
 
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_OFF.ms                                       :No
