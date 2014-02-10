@@ -1566,7 +1566,7 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int t
 	const Industry *i = NULL;
 
 	/* On a large map with many industries, it may be faster to check an area. */
-	const int dmax = 14;
+	static const int dmax = 14;
 	if (Industry::GetNumItems() > (size_t) (dmax * dmax * 2)) {
 		const int tx = TileX(tile);
 		const int ty = TileY(tile);
@@ -1576,7 +1576,7 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int t
 				const Industry *i2 = Industry::GetByTile(atile);
 				if (i == i2) continue;
 				i = i2;
-				if (DistanceMax(tile, i->location.tile) > dmax) continue;
+				if (DistanceMax(tile, i->location.tile) > (uint)dmax) continue;
 				if (i->type == indspec->conflicting[0] ||
 						i->type == indspec->conflicting[1] ||
 						i->type == indspec->conflicting[2]) {

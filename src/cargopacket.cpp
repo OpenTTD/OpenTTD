@@ -868,5 +868,4 @@ uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID 
  */
 template class CargoList<VehicleCargoList, CargoPacketList>;
 template class CargoList<StationCargoList, StationCargoPacketMap>;
-template uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP>(uint max_move, TileOrStationID);
-template uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER>(uint max_move, TileOrStationID next_station);
+template uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP>(uint, TileOrStationID);
