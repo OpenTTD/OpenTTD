@@ -1071,6 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :게임 설정 (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :회사 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (게임 저장 파일에 저장됨; 현재 회사에만 적용됨)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}분류:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}종류:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}설정 값이 변경된 설정만 목록에 표시하도록 할 수 있습니다.
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :기본 설정
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :고급 설정
@@ -1085,6 +1087,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :게임 설정 (
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :게임 설정 (게임 저장 파일에 저장됨; 현재 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :회사 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :회사 설정 (게임 저장 파일에 저장됨; 현재 회사에만 적용됨)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}검색 결과를 전부 보시려면 {}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로 바꾸십시오.
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}검색 결과를 전부 보시려면 {}{SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}검색 결과를 전부 보시려면 {}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로, {SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 없음 -
 
 STR_CONFIG_SETTING_OFF                                          :아니요
 STR_CONFIG_SETTING_ON                                           :예
@@ -1532,7 +1538,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :주메뉴의 �
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :주 메뉴가 화면 상단의 어느 위치에 표시될지를 선택합니다.
 STR_CONFIG_SETTING_STATUSBAR_POS                                :상태 표시줄의 위치: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :상태 표시줄이 화면 하단의 어느 위치에 표시될지를 선택합니다.
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :윈도우 자동 결합 거리: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :창 자동 결합 거리: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :창을 다른 가까운 창에 일정 픽셀 이상 가까이 접근시키면 자동으로 정렬되어 붙게 됩니다.
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA}픽셀
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :사용 안 함
@@ -1730,7 +1736,7 @@ STR_QUIT_YES                                                    :{BLACK}예
 STR_QUIT_NO                                                     :{BLACK}아니요
 
 # Supported OSes
-STR_OSNAME_WINDOWS                                              :{G=f}윈도우
+STR_OSNAME_WINDOWS                                              :{G=f}Windows
 STR_OSNAME_DOS                                                  :{G=f}DOS
 STR_OSNAME_UNIX                                                 :{G=f}Unix
 STR_OSNAME_OSX                                                  :{G=f}OS{NBSP}X
@@ -4375,11 +4381,11 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :트랜스포트
 # Translatable descriptions in media/baseset/*.ob* files
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 도스 에디션의 그래픽입니다.
 STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :오리지널 트랜스포트 타이쿤 디럭스 도스 에디션(독일)의 그래픽입니다.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 윈도우 에디션의 그래픽입니다.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 그래픽입니다.
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 도스 에디션의 효과음입니다.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 디럭스 윈도우 에디션의 효과음입니다.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 효과음입니다.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :아무런 효과음도 없는 효과음 팩입니다.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 윈도우 에디션의 음악입니다.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 음악입니다.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :실제 음악이 없는 음악 목록입니다.
 
 ##id 0x2000

@@ -1084,6 +1084,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :遊戲設定 (�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :遊戲設定 (儲存時保存；只影響目前遊戲)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :公司設定 (儲存時保存；只影響新遊戲)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :公司設定 (儲存時保存；只影響目前的公司)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 無 -
 
 STR_CONFIG_SETTING_OFF                                          :關
 STR_CONFIG_SETTING_ON                                           :開
@@ -2546,6 +2547,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF�
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接收貨物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}軌道速限：{LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}道路速限：{LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :石頭
@@ -2875,6 +2877,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}缺少檔�
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' 的行為可能會造成失去同步或當機
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' 不在機廠內卻發生動力車廂列車狀態的變動。
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' 不在機廠內卻發生列車長度的變動。
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它會在 '{1:ENGINE}' 在機廠外或不在接受改装時改變其容量
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' 提供了錯誤的資訊。

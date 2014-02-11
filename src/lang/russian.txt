@@ -1236,6 +1236,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Настрой�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Настройки игры (записываются в сохранение; влияют только на текущую игру)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Настройки компании (записываются в сохранения; влияют только на новые игры)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Настройки компании (записываются в сохранение; влияют только на текущую компанию)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Показать все результаты поиска, установив{}{SILVER}категорию {BLACK}для {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Показать все результаты поиска, установив{}{SILVER}тип {BLACK}для {WHITE}всех типов настроек
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Показать все результаты поиска, установив{}{SILVER}категорию {BLACK}для {WHITE}{STRING} {BLACK}и {SILVER}тип {BLACK}для {WHITE}всех типов настроек
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Нет -
 
 STR_CONFIG_SETTING_OFF                                          :нет
@@ -1460,7 +1463,7 @@ STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Включит�
 STR_CONFIG_SETTING_LIVERIES_NONE                                :нет
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :только для своей компании
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :для всех компаний
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Предпочитать командный чат при нажатии Enter: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Открывать командный чат при нажатии Enter: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Настроить внутрикорпоративный чат на клавишу «Enter», а общий - на «Ctrl+Enter»
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Использовать колесо прокрутки: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Можно настроить смещение обзора с помощью качающегося колеса прокрутки

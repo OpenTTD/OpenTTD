@@ -1091,16 +1091,16 @@ STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Lit alle
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Lit alle sykresyltaten per ynstelling sjen{}{SILVER}Katagory {BLACK}oant {WHITE}{STRING} {BLACK}en {SILVER}Type {BLACK}oant {WHITE}Alle ynstellingtypes
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Gjin -
 
-STR_CONFIG_SETTING_OFF                                          :út
-STR_CONFIG_SETTING_ON                                           :oan
-STR_CONFIG_SETTING_DISABLED                                     :Útskeakele
+STR_CONFIG_SETTING_OFF                                          :Ut
+STR_CONFIG_SETTING_ON                                           :Oan
+STR_CONFIG_SETTING_DISABLED                                     :Utskeakele
 
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Ût
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Ut
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigen bedriuw
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle bedriuwen
 
 STR_CONFIG_SETTING_NONE                                         :Gjin
-STR_CONFIG_SETTING_ORIGINAL                                     :Orizjiniel
+STR_CONFIG_SETTING_ORIGINAL                                     :Orizjineel
 STR_CONFIG_SETTING_REALISTIC                                    :Realistysk
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lofts
@@ -1112,28 +1112,28 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimale bedra
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rinte: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rinte op lienings; behearsket ek ynflaasje at dizze oan stiet
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Eksploitaasjekosten: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stel hichte ûnderhâlds- en ekploitaasjekosten fan fiertúgen en ynfrastruktuer yn
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stel hichte ûnderhâlds- en ekploitaasjekosten fan fiertugen en ynfrastruktuer yn
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Boufaasje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Behein it oantal bouwaksjes foar AI's
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Fiertúchsteurings: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Behearskje hoe faak min ûnderhâlden fiertúgen in steuring hawwe meie
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsydzjefermannichfâldiger: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stel yn hoefolle der betelle wurdt foar subsidiearre ferbinings
-STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Boukosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stel hichte bouw- en oankeapkosten yn
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjes: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :By ynskeakeljen kinne der om de safolle jier resesjes plakfine. Under in resesje nim de produksje op alle flakken ôf (sadree in resesje oergean is giet de produkje wer nei it âlde nivo omheech)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ferbied treinen te draaien yn stasjons: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :By ynskeakeljen sille treinen net draaie op net kopstasjons, ek net as der in koarter paad is nei de folgjende bestimming by it wol omdraaien
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skeakel rampen oan/út. Rampen kinne sa no en dan fiertugen en ynfrastruktuer sawolblokearje as ferneatigje
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skeakel rampen oan/út. Rampen kinne sa no en dan fiertugen en ynfrastruktuer sawol blokearje as ferneatigje
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Hâlding gemeenten tsjinoer werstrukturearring: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoe grut ympact fan lûdsoerlêst en omwrâldskea toch bedriuwen is op har reputaasje by de lokale bestjoeren en takomstige konstruksje yn harren mêd
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :It boue op in helling tastean: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :By ynskeakeljen kinne spoarbanen en stasjon op de measte skeantes bout wurde. Oars meie sy allinich bout wurde op skeantes dy't in oerienkommende rjochting hawwe en dêrtroch gjin fûndearrings nedich binne
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean (autoslope): {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Stean lânskipsbewurkings ta ûnder gebouwen en spoarbanen sûnder dat dizze ferwidere wurde
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Stean lânskipsbewurkings ûnder gebouwen en spoarbanen ta sûnder dat dizze ferwidere wurde
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebrûk meer realistyske hannelsgebieten: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Brûk ferskillende opheinbewâlden foar ferskillende typen stasjons en fleanfjilden
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Stjin ferwiderje fan stedelike dyken, brêgen en tunnels ta: {STRING}
@@ -1143,41 +1143,65 @@ STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Stelt de maksim
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teil{P 0 "" en}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Utjefte fan steam/fonken by treinen: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Stel yn hoefolle smoke as fonken fiertugen útstjitte
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein akselerasje model: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Treinakseleraasjemodel: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Selektearje it natuerkundige model foar de treinfersnelling. It 'orizjinele' model straffet alle fiertugen itselde op skeantes. It 'realistyske' model straffet fiertugen op skeantes en yn bochten op basis fan feskate eigenskippen sa as lingte en lûkkrêft
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Dyk reau akselerasje model: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Akseleraasjemodel foar dykfiertugen: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Selektearje it natuerkundige model foar de akseleraasje fan dykfiertugen. It "Orizjinele" model straft skeantes itselde foar alle fiertugen. It "realistyske" model straft fiertugen op skeantes op basis fan ferskeidene eigenskippen fan it fiertuch sa as syn 'lûkkrêft'
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Steitle skeanten foar treinen: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steilte fan skeanten foar treinen. Hegere weardes meitsje it dreger foar treinen om skeates op te riden
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Steilte skeanten foar dykfiertúgen: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Ferbied treinen en boarten om 90° te swaaien: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :stjin it gearfoegje fan stasjons ta diet net oaniensletten binne: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :gebrûk it ferbettere algoritme: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Laad reau stadichoan: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Steilte skeanten foar dykfiertugen: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steilte fan skeanten foar dykfiertugen. Hegere weardes meitsje it dreger foar dykfiertugen om skeates op te riden
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Ferbied treinen en skippen om 90° te swaaien: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Bochten fan 90 graden komme foar op it spoar at in horizontale spoarwei folge wurdt troch in fertikaal stik sparwei. In trein soe yn dizze sitewaasje in bocht fan 90 graden meitsje yn stee fan de normale 45 graden. Dizze opsje hat ek effect op de swaaisirkel fan skippen
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Stean it gearfoegjen fan stasjon dy't elkoar net reitsje ta: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Stean it ta nije parten oan in stasjon ta foegjen sûnder dat dizze in besteand diel fan it stasjon oanrekje. Brûk Ctrl+Klik om dizze parten de pleatsen
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Brûk in ferbetterd laadalgoritme: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :By ynskeakeljen wurde meardere fiertugen op ien stasjon efter elkoar laden yn stee fan tagelyk. It laden fan de oare fiertugen begjint pas at der genôch fracht is om it earste fiertúch fol te laden
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Fiertúgen stadich lade: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Laad fiertugen stadich en op basis fan hja spesifyke eigenskippen yn stee fan allinich op basis fan de hoemannichte fracht dy't oerset wurdt
 STR_CONFIG_SETTING_INFLATION                                    :Ynflaasje: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :Bringst allinich besoargje by in stasjon as der fraach nei is: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Skeakel ynflaasje foar de ekonomy yn, hjirby gean de kosten justjes hurder omheech as de ynkomsten
+STR_CONFIG_SETTING_SELECTGOODS                                  :Fracht allinnich ôflevere op in stasjon at dêr in fraach foar bestiet: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Fracht allinnich oant it stasjon levere at der in oer fiertúch deselde fracht oan it laden is. Dit foarkomt minne wurdearrings foar frachten dy't net troch it stasjon sels ôfhannele wurde
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimale brêgelingte: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimumlingte wêroerst brêgen oanlizze kinst
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimale tunnellingte: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimumlingte wêroerst tunnels oanlizze kinst
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mei de hân te betsjinjen boumetoade foar primêre yndustryen: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoade foar it oprjochtsen fan primêre yndustryen. 'Gjin' bestjust dat it net mooglik is primêre yndustryen op te rjochtsjen, 'sykje' betsjut dat dat wol kin mar de lokaasje fan de nije yndustry sis samar earne wêze of der kin neat barre, 'sa as oare yndustryen betsjut datst primêre yndustryen bouwe kinst wêr'st wolst
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Gjin
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Lyk as oare yndustryen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Probearje
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Sa oare yndustryen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Sykje
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Sljochte romte rûnom yndustrien: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Romte rûnom yndustryen dy't sljocht hâlden wurdt. Dit soarget derfoar dat der rûnom yndustryen romte oerbliuwt foar it bouwen fan spoarweien ensafierder
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Meardere ferlykbere yndustryen de sted tastean: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normaalsprutsen wol in stêd near mear as ien yndustry fan elst type hawwe. Dizze ynstelling wurde meardere yndustryen fan itselde type wol tastien
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Seinen sjen litte: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selektearje oan hokker kant fan in spoarwei seinen pleatst wurde moatte
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Oan de lofterkant
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Oan de riidkant
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Oan de rjochterkant
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Finansjeel oersjoch oan it ein fan it jier sjen litte: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :By ynskeakeljen wurdt der elts jier in finansjeel jierferlslach sjen litten, dit makket it makliker in oersjoch fan de finansjele steat fan it bedriuw te krijen
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nije oarder binne standert 'non-stop': {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :Nije trein oarders stopje de trein standert {STRING} fan it perron
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :begjin
-STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midden
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ein
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Opstopping by reau (mei bywurkingen): {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Ferskow it skerm ot de mûs op de râne is: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalsprutsen sil in fiertúch op alle stasjons dy't hy tsjinkomt stopje. Troch dizze opsje yn te skeakeljen sille nije oarders standerd op non-stop set wurden. Dit hat dus gjin ynvloed op besteande oarders!
+STR_CONFIG_SETTING_STOP_LOCATION                                :Nije treinoarders stopje de trein standert {STRING} fan it perron
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plak wêr't treinen stopje by it binnenriden fan in stasjon. Dit hat allinnich ynvloed op nije oarders en kin altyd yndividueel ynstelt wurde
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :oan it ein
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :yn it midden
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :oan it ein
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Wachtrijfoarming foar dykfiertugen (mei bywurkingen): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Lit dykfiertugen wachtsje by besette haltes oant dizze wer frijkomme
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Ferskow it skerm at de mûs op de râne is: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :By ynskeakeljen sil it loaitsfinster scrolle at de mûs by de râne fan it finster komt
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Utskeakele
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Haadloaitsfinster, allinnich folslein skerm
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Haadfinster
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elts loaitsfinster
 STR_CONFIG_SETTING_BRIBE                                        :It omkeapjen fan de gemeente tastean: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Eksklusyfe transport rjochten keapje tastean: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Stean ta dat bedriuwen gemeentes omkeapje kinne. At dit ûntdutsem wurdt kin it bedriuw yn kwestje 6 moannen gjin saken dwaan yn de stêd
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Eksklusyfe transportrjochten keapje tastean: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Gebouwen finansierje tastean: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Finansierje fan dyk ûnderhâld tastean: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Jild jaan oan oarde bedriuwen tastean: {STRING}

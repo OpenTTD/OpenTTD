@@ -1084,6 +1084,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :当前游戏设
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :当前游戏设置（可保存在存档中，仅对当前游戏生效）
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :当前公司设置（可保存在存档中，仅对新游戏生效）
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :当前公司设置（可保存在存档中，仅对当前公司生效）
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 无 -
 
 STR_CONFIG_SETTING_OFF                                          :关闭
 STR_CONFIG_SETTING_ON                                           :打开
@@ -2546,6 +2547,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受货物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}轨道限速: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}道路限速：{LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :岩石
@@ -2875,6 +2877,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}缺失文�
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}'的行为可能造成同步错误或是崩溃。
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}{1:ENGINE}机车车厢的状态没在车库内发生变动
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}当车辆不在车库中时,这将改变 '{1:ENGINE}' 的车辆长度.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它会在 '{1:ENGINE}' 在机厂外或不在接受改装时改変其运载能力
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}列车 '{VEHICLE}' 属于 '{COMPANY}' 使长度无效化了. 这可能是NewGRF导致的. 有可能会发生崩溃或同步错误.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 的信息不正确
