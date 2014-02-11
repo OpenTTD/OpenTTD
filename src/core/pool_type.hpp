@@ -82,7 +82,7 @@ private:
 template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PT_NORMAL, bool Tcache = false, bool Tzero = true>
 struct Pool : PoolBase {
 	/* Ensure Tmax_size is within the bounds of Tindex. */
-	assert_compile((Tmax_size - 1) >> 8 * sizeof(Tindex) == 0);
+	assert_compile((uint64)(Tmax_size - 1) >> 8 * sizeof(Tindex) == 0);
 
 	static const size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
