@@ -107,10 +107,10 @@ static Colour ReallyAdjustBrightness(Colour colour, uint8 brightness)
 	c16 *= brightness;
 	uint64 c16_ob = c16; // Helps out of order execution.
 	c16 /= Blitter_32bppBase::DEFAULT_BRIGHTNESS;
-	c16 &= 0x01FF01FF01FF;
+	c16 &= 0x01FF01FF01FFULL;
 
 	/* Sum overbright (maximum for each rgb is 508, 9 bits, -255 is changed in -256 so we just have to take the 8 lower bits into account). */
-	c16_ob = (((c16_ob >> (8 + 7)) & 0x0100010001) * 0xFF) & c16;
+	c16_ob = (((c16_ob >> (8 + 7)) & 0x0100010001ULL) * 0xFF) & c16;
 	const uint ob = ((uint16) c16_ob + (uint16) (c16_ob >> 16) + (uint16) (c16_ob >> 32)) / 2;
 
 	const uint32 alpha32 = colour.data & 0xFF000000;
