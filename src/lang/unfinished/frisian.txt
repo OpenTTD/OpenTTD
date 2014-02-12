@@ -1202,42 +1202,71 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elts loaitsfins
 STR_CONFIG_SETTING_BRIBE                                        :It omkeapjen fan de gemeente tastean: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Stean ta dat bedriuwen gemeentes omkeapje kinne. At dit ûntdutsem wurdt kin it bedriuw yn kwestje 6 moannen gjin saken dwaan yn de stêd
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Eksklusyfe transportrjochten keapje tastean: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Gebouwen finansierje tastean: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Finansierje fan dyk ûnderhâld tastean: {STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Jild jaan oan oarde bedriuwen tastean: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewichtsfaktor foar vracht om swiere treinen te simulearje: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :At in bedriuw eksklusive transportrjochten keapet foar in stêd sille stasjon fan tsjinstanners in jier lang gjin passazjiers en fracht ûntfange
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Nije gebouwen stipe tastean: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Stean bedriuwen ta stêden jild te jaan foar de oanlis fan nije hûzen
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Dykûnderhâld stypje tastean : {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Stean bedriuwen ta stêden jild te jaan foar de rekonstrukje fan har diken om sa ferfier oer de dyk yn de stêd te sabotearjen
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Oare bedriuwen stypje tastean: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Stean de oerdacht fan jild tusken bedriuwen ta ûnder in multiplayerspul
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Wichtsfermannichfâldiger foar vracht om swiere treinen te simulearjen: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Stel de ympact fan fracht op treinen yn. In hegere wearde makket it dreger foar treinen om foarút te kommen, boppe-al op skeantes
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Faasjefaktor fleantugen: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :Oantal fleanmasine ûngelokken: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Stelt it faasjeferskil tusken fleantugen en oare fiertugen yn. Dit kin de ynkomsten foar luchtferfier ferminderje
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Oantal fleanmasineûngemakken: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Stel de kâns yn dat in fleanmasine in ûngemak meimakket
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Gjin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Minder
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Gewoan
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stean ta dat Ienrjochtingsbuordsjes pleatst wurde troch de stêd behearde dyken: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stean ta dat Ienrjochtingsbuordsjes pleatst wurde troch de tsjinstander behearde dyken: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bouwe oanbuorjende stasjons tastean: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Meitsje it mooglik meardere NewGRF reau sets te brûke: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}As der reau binne kin dizze ynstelling net feroare wurde
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stean it bouwen fan haltes op troch de stêd behearde diken ta: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Stean it bouwen fan haltes op troch de stêd behearde diken ta
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stean it bouwen fan haltes op troch in tsjinstanner behearde diken ta {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Stiet it bouwen fan haltes op troch in tsjinstanner behearde diken ta
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bouwe fan oanbuorjende stasjons tastean: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Stean ta dat ûnderkate stasjons harren oanreitsje
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Meitsje it mooglik meardere NewGRF-fiertúchsets te brûken: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompatibiliteitsopsje foar âlde NewGRF's. Feroarje dizze opsje net at jo net witte wat jo dogge!
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}At der fiertugen yn it spul binne kin dizze ynstelling net feroare wurde
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Ynfrastruktuerûnderhâld: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :By ynskeakeljen binne der koster ferbûn oan it ûnderhâld fan ynfrastruktuer. De kosten wurde heger by gruttere netwurken wêrtoch gruttere bedriuwen hjir mear lêst fan hawwe
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fleanfjilden ferrinne litte kin net: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fleanfjilden ferrinne nea: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :By ynskeakeljen bliuwe alle fleanfjildtypes foar ivich beskikber
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warskôgje as in reau it paad bjuster is: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opennij besjen reau' oarders: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warskôgje as in fiertúch it paad bjuster is: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Lit berjochten sjen at in fiertúch gjin paad nei syn bestimming fine kin
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Hâld fiertúchoarders yn de gaten: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :By ynkeakeljen wurde de oarder fan de fiertugen sa no en dan kontrolearre en wurde flater dy't dêrby nei boppe komme melden
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, mar slút stilsteande reau ût
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, mar slút stilsteande fiertugen út
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Fan alle fiertugen
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warskôgje as de fertsjinsten fan in reau negatyf binne: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Reau ferrinne litte kin net: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Âlde reau automatysk ferfange: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autofernij fiertúch at dizze maksimaal {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum nedich bedrach by automatysk ferfange: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duer flatermeldings: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :Arktip sjen litte: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warskôgje at de fertsjinsten fan in fiertúch negatyf binne: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :By ynskeakeljen wurdt der berjochte at in fiertúch it ôfrûnne jier gjin winst makke hat
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fiertugen ferinne nea: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :By ynskeakeljen bliuwe alle fiertugen foar ivich beskikber
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ferfang âlde fiertugen automatysk: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :By ynskeakeljen wurden fiertugen dy't hast op harren ein binne automatyske ferfongen
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Ferfang in fiertúch at dizze {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Leeftiid wêrop in fiertúch yn oanmerking komt foar automatysk fernije
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} moanne fan te foaren
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} moannen letter
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimumbedrach benedicht foar automatysk fernije: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Bedrach wat oerbliuwe moat foardat der oer neitocht wurdt in fiertúch automatysk te ferfangen
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doer flatermeldings: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Doer fan reade flatermeldings. Guon krityske flater wurde net automatysk ôfsluten
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Arktips sjen litte: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiid wernei arktips sjen litten wurde at jo de mûs de boppe hâlde. Arktips kinne ek oan de rjochtermûsknop bûn wurde
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sweve foar {COMMA} seconde {P "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rjochtsklikje
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Ynwennertal sjen litte by in sted: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte fan grafyklijnen: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Ynwennertal sjen litte by steden: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Lit it ynwennteral fan steden in harren labels sjen
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Groute fan grafyklijnen: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Widens dan de linen yn de grafiken. Tinne linen binne presyser, groutere linen binne makliker te sjen
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :Lân generator: {STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orizineel
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Lângenerator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orizjineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimale ôfstan fanôf de râne fan 'e kaart foar oaljeraffinaderijen: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snie hichte: {STRING}

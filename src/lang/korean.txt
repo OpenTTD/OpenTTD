@@ -2040,7 +2040,7 @@ STR_NETWORK_CLIENTLIST_KICK                                     :추방
 STR_NETWORK_CLIENTLIST_BAN                                      :차단
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :돈 보내기
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :모두에게 말하기
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :우리 회사에게 말하기
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :이 회사에게 말하기
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :귓속말하기
 
 STR_NETWORK_SERVER                                              :서버
