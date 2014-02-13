@@ -547,13 +547,40 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :राष्ट
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}तपशीलवार कामगिरी रेटिंग
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}तपशील
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}या कंपनी बद्दल तपशील पहा
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}वाहने:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}स्टेशन:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}किमान नफा:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}किमान उत्पन्न:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}कमाल उत्पन्न:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}वितरीत:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}मालवाहू:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}पैसा:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}कर्ज:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}एकूण:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}गेल्या वर्षी नफा दिल्या वाहनांची संख्या. या वाहने, गाड्या, जहाजे, विमानाची समावेश आहे.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}सर्वात कमी उत्पन्न वाहनाच्या नफा (दोन वर्षे पेक्षा फक्त वाहने जुन्या मानले जातात)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}गेल्या 12 मात्रेत सर्वात कमी नफा तिमाहीत केली रोख
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}गेल्या 12 मात्रेत सर्वाधिक नफा तिमाहीत केली रोख
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}गेल्या चार मात्रेत वितरित कार्गो एकके
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}गेल्या तिमाहीत वितरित माल प्रकारच्या संख्या
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}पैसा या कंपनीच्या बँकेत आहे.
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}पैसा हा कंपनी कर्ज घेतले आहे.
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}शक्य बिंदू बाहेर एकूण गुण.
 
 # Music window
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}सर्व
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}जुन्या शैली
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}नवीन शैली
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy रस्त्यावर
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}सानुकूल १
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}सानुकूल २
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}

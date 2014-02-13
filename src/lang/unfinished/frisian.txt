@@ -1269,39 +1269,49 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Lângenerator: 
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orizjineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimale ôfstan fanôf de râne fan 'e kaart foar oaljeraffinaderijen: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snie hichte: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rûgens fan it terrein (allinich TerraGenesis) : {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :O sa glêd
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oaljeraffinaderijen wurde allinnich tichtoan de râne fan 'e kaart bout
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniehichte: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rûgens fan it terrein (allinnich TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Tige glêd
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glêd
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rûch
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :O sa rûch
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tige rûch
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritme foar pleatsing beamen: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Gjint
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Gjin
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Orizjineel
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Ferbettere
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Heightmap rotaasje: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Hichtekaartrotaasje: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tsjin de klok yn
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Mei de klok mei
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :De hichte fan in plat senario wurdt: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Oanpasse fan de hichte oan de kanten fan de kaart tastean: {STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ien as meardere fakjes oan de noardkant binne net leech
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ien as meardere fakjes oan de kant binne gjin wetter
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Stean it bewurkjen fan de teilen oan de râne fan 'e kaart ta: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :By útskeakeljen sille de de rânen fan de kaart altyd oseaan wêze
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ien as meardere teilen oan de noardkant binne net leech
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ien as meardere teilen oan de kant binne gjin wetter
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimale omfang stasjons: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimale sprieding stasjons: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimaal gebiert weroer't de parten fan in stasjon útspriede wêze meie. Hegere weardes meitje it spul stadiger
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Helikopters automatysk reparearje op helipads: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :ferbin lânskipsarkbalke oan dy fan spoar/dyken/wetter/fleanfjild: {STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :lân kleur fan spiler op de lytse kaart: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Helikopters nei eltse landing in beurt jaan, ek al bestiet der gjin depot op it landingsplak
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ferbyn de lânskipsarkbalke oan dy foar spoar/dyken/wetter/fleanfjilden: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :By it iepenjen fan in arkbalke foar transport ek it lânskipsark iepenje
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Lânkleur dy't brûkt wurdt op de lytse kaart: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur fan it lânskip op de lytse kaart
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grien
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker grien
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolet
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Draai scroll rjochtig om: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sjochfinster floeiend scrolle : {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Diminsje ynformaasje by it gebrûk fan ferskillende bouarken sjen litte: {STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :Lit alle bedriuws kleuren sjen: {STRING}
-STR_CONFIG_SETTING_LIVERIES_NONE                                :Gjint
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Draai scrollrjochtig om: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :By útskeakjen beweecht de mûs de kamera. By ynskeakeljen beweecht de mûs de kaart
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Loaitsfinster floeiend scrolle : {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepaalt hoe it haadfinster scrollt. By ynskeakeljen sil dit floeiend wêze. By útskeakeljen ljept it byld direktst nei de selektearre lokaasje
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Under it gebrûk fan de ferskate bou-arken diminsjes sjen litte: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Lit it oantal teilen en it hichteferskil sjen ûnder it dellizzen fan ynfrastruktuer
+STR_CONFIG_SETTING_LIVERIES                                     :Lit bedriuwskleuren sjen: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Bepaalt oft fiertúchspesifyke kleuren kleuren brûkt wurde meie oft allinnich bedriuwskleuren tastien binne
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Gjin
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eigen bedriuw
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle bedriuwen
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Foarkar foar team chat mei <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Foarkar foar teamchat mei <ENTER>: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funksje fan scrolltsjil: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll kaart
