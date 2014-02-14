@@ -1071,6 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuração 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configurações de empresa (guardado; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configurações de empresa (guardado; afeta apenas a empresa atual)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringe a lista abaixo para mostrar apenas opções modificadas
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opções Básicas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Opções Avançadas
@@ -1085,6 +1087,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Configuração 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Configuração do jogo (guardado; afeta apenas jogo atual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Configurações de empresa (guardado; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Configurações de empresa (guardado; afeta apenas companhia actual)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostrar todos os resultados de pesquisa por configuração{}{SILVER}Categoria {BLACK}para {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar todos os resultados de pesquisa por configuração{}{SILVER}Tipo {BLACK}para {WHITE}Todos os tipos de configuração
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos os resultados de pesquisa por configuração{}{SILVER}Categoria {BLACK}para {WHITE}{STRING} {BLACK}e {SILVER}Tipo {BLACK}para {WHITE}Todos os tipos de configuração
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nenhum -
 
 STR_CONFIG_SETTING_OFF                                          :Desligado
 STR_CONFIG_SETTING_ON                                           :Ligado
@@ -2547,6 +2553,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceite: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limite de velocidade da linha: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite de velocidade da estrada: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rochas

@@ -805,10 +805,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insektenbefall bei {INDUSTRY}!{}Produktioun geet ëm 50% erof
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} Produktioun vun {INDUSTRY} geet ëm {COMMA}% erof!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} waart am Depot
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waart am Depot
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} waart am Depot
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} waart am Hangar
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} waard am Schapp
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waard am Schapp
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} waard am Schapp
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} waard am Hangar
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spillastellung 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmenastellung (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limitéiert d'Lëscht dass nëmmen geännert Astellungen gewisen ginn
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic Astellungen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweidert Astellungen
@@ -1084,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spillastellunge
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spillastellungen (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firmenastellungen (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Weis all Sich-Resultater no der Astellung{}{SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING} {BLACK}an {SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Keng -
 
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :Un
@@ -2268,7 +2274,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnéitbahnbau
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Schinnen bauen. Ctrl wiesselt tëscht bauen/ofrappen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Schinnen am automateschen Modus bauen. Ctrl wiesselt tëscht bauen/ofrappen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zuchdepot bauen (fir Zich ze kafen an ze flécken). Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zuchschapp bauen (fir Zich ze kafen an ze flécken). Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Konvertéiert d'Schinnen zum Weepunkt. Ctrl aktivéiert Weepunkter ze verbannen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Gare bauen. Ctrl aktivéiert fir d'Statioun unzebauen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zuchsignaler bauen. Ctrl wiesselt tëscht Diks/Luuten{}Zéien baut Signaler laanscht eng Zuchstreck. Ctrl baut Signaler bis déi nächst Weich{}Ctrl+Klick mécht Selectiounsfënster op.Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
@@ -2283,8 +2289,8 @@ STR_RAIL_NAME_MONORAIL                                          :Monorail
 STR_RAIL_NAME_MAGLEV                                            :Magnéitbunn
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Zuchdepot Richtung
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wielt d'Richtung vum Zuchdepot
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Richtung vum Zuchschapp
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wielt d'Richtung vum Zuchschapp
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Weepunkt
@@ -2350,7 +2356,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramschi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}D'Strooss mat der Bau-Automatik bauen. Ctrl wiësselt tëscht Stroossen bauen/ofrappen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Tramschinnen mam "Autotram" Modus bauen. Ctrl wiesselt tëscht Tramschinnen bauen/ofrappen. Shift wiesselt tëschtbauen/ongeféier Käschten uweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Baut Stroossendepot (fir Gefierer ze kafen an ze flécken). Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramdepot bauen(fir ze kafen an fir d'Revisioun). Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramschapp bauen (fir Gefierer ze kafen an d'Revisioun). Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Baut Busarrêt. Ctrl aktivéiert ubauen vun Statiounen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Passagéier-Tramstatioun bauen. Ctrl aktivéirt ubauen vun Statiounen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Baut Camionsgare. Ctrl aktivéiert ubauen vun Statiounen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
@@ -2366,8 +2372,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Wiesselt
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Stroossendepot Richtung
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wielt Stroossendepot Richtung
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramdepot Richtung
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tramdepot Richtung wielen
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Richtung vum Tramschapp
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tramschapp Ausriichtung wielen
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Busarrêt Richtung
@@ -2384,7 +2390,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waassers
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waasserstroosen
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanäl bauen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Schlass setzen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Schëffdepot bauen (fir Schëffer ze bauen an ze warten). Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Schëffsschapp bauen (fir Schëffer ze bauen an ze warten). Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Schëffdock bauen. Ctrl aktivéiert ubauen vun Statiounen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plazéiert eng Boje, déi als Weepunkt kann benotzt ginn. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquadukt bauen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
@@ -2392,8 +2398,8 @@ STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Waasser 
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Plazéier Flëss
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Schëffdepot Richtung
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Wielt d'Schëffdepot Richtung
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Schëffsschapp Richtung
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Wielt Richtung vum Schëffsschapp
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hafen
@@ -2579,7 +2585,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} Schinn
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} Schinn mat Kombo- an Weesignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} Schinn mat Kombo- an Einbahnweesignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} Schinn mat Wee- and Einbahnweesignaler
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} Zuchdepot
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} Zuchschapp
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strooss
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strooss mat Luuchten
@@ -2609,7 +2615,7 @@ STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Schlass
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Floss
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Küst oder Flossufer
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Schëffdepot
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Schëffsschapp
 
 # Industries come directly from their industry names
 
@@ -2874,8 +2880,9 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Dateien fe
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalen vun der NewGRF '{0:STRING}' kann Desyncs oder Crashen verursachen
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Changéiert Zoustand fir '{1:ENGINE}' wann net an engem Depot
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Changéiert Gefierlängt fir '{1:ENGINE}' wann net an engem Depot
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ännert den Zoustand fir '{1:ENGINE}' wann net an engem Schapp
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ännnert d'Gefierlängt fir '{1:ENGINE}' wann net an engem Schapp
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Geännerte Gefierkapazitéit vun '{1:ENGINE}' wann net an engem Schapp oder amgaang emgebaut ze ginn
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zuch'{VEHICLE}' vun der Firma '{COMPANY}' huet eng falsch Längt. Et kënnt wahrscheinlech wéinst den NewGRFs. Spill kann desyncroniséiren oder ofstierzen
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' huet Fehlinformatiounen
@@ -3040,7 +3047,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Näischt -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Selectéier all d'Fabriken
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Wielt all Luedungstyp (ouni Luedung déi waart)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Wielt all Luedungstyp (ouni Luedung déi waard)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Kéng Luedung
 
 # Station view window
@@ -3268,9 +3275,9 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Scheckt 
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Gefierer ersetzen
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :An d'Revisioun schécken
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :An den Depot schécken
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :An den Schapp schécken
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :An den Depot schécken
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :An den Depot schécken
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :An den Schapp schécken
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :An den Hangar schécken
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klick fir all Gefierer an der Lëscht ze stoppen
@@ -3365,8 +3372,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Fligerty
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Enner den Numm vum Depot
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Depot ëmbenennen
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Enner den Numm vum Schapp
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Schapp ëmbenennen
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3385,14 +3392,14 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Zitt den
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Lokomotiv heihinner zéien fir de ganzen Zuch ze läschen
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}All Zich am Depot verkafen
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}All Zich am Schapp verkafen
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}All Gefiert am Depot verkafen
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}All Schëff am Depot verkafen
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}All Schëff am Schapp verkafen
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}All Fliger am Hangar verkafen
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}All Zich am Depot automatesch ersetzen
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}All Zich am Schapp automatesch ersetzen
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}All Gefierer am Depot automatesch ersetzen
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}All Schëffer am Depot automatesch ersetzen
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}All Schëffer am Schapp automatesch ersetzen
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}All Fliger am Hangar automatesch ersetzen
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nei Gefierer
@@ -3410,32 +3417,32 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gefiert 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schëff klonen
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Fliger klonen
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Waggonen. Klick op dësen Knäppchen an dann op en Zuch am Depot oder baussen. Ctrl+Klick fir Opträg ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Waggonen. Klick op dësen Knäppchen an dann op en Zuch am Schapp oder baussen. Ctrl+Klick fir Opträg ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Keeft eng Kopie vum Stroossengefier. Klick dësen Kneppchen an dann op en Stroossengefier am oder baussent dem Depot. Ctrl+Klick deelt och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dëst baut eng Kopie vum Schëff. Klick op dësen Knäppchen an dann op en Schëff am Depot oder baussen.Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dëst baut eng Kopie vum Schëff. Klick op dësen Knäppchen an dann op en Schëff am Schapp oder baussen.Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klick op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen. Ctrl+Klick fir Uerder ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op den Schapp. Ctrl+Klick erstellt eng nei Usiicht op den Schapp
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op den Schapp. Ctrl+Klick erstellt eng nei Usiicht op den Schapp
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Zentréiert d'Usiicht op den Hangar. Ctrl+Klick erstellt eng nei Usiicht op den Hangar
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Lëscht mat all Zich an dësem Depot
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Lëscht mat all Zich an dësem Schapp
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Lëscht mat all Gefierer an dësem Depot
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Lëscht mat all Schëffer an dësem Depot
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Lëscht mat all Schëffer an dësem Schapp
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Lëscht mat all Fliger am Hangar op dësem Fluchhafen
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klick fir all Zich am Depot ze stoppen
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klick fir all Zich am Schapp ze stoppen
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klick fir all Gefierer am Depot ze stoppen
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klick fir all Schëffer am Depot ze stoppen
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klick fir all Schëffer am Schapp ze stoppen
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klick fir all Fliger am Hangar ze stoppen
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klick fir all Zich am Depot ze starten
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klick fir all Zich am Schapp ze starten
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klick fir all Gefierer am Depot ze starten
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klick fir all Schëff am Schapp ze starten
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klick fir all Fliger am Hangar ze starten
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du verkeefs grad all Gefierer am Depot. Bass du sécher ?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du verkeefs grad all Gefierer am Schapp. Bass du sécher ?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meldung vum Gefiertenhiersteller
@@ -3455,7 +3462,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Käscht
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Tausch{STRING} - {STRING} aus
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetz {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Zuch
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stroossengefier
 STR_REPLACE_VEHICLE_SHIP                                        :Schëff
@@ -3481,8 +3488,8 @@ STR_REPLACE_WAGONS                                              :Waggonen
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt den Schinnentyp fir den Maschinen ausgetosch ginn
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Weist un wellech Maschin vun der lénks selectéierter Maschin ausgetosch soll ginn, wann et zoutrëfft
-STR_REPLACE_RAIL_VEHICLES                                       :Schinnengefierter
-STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Schinnen Gefierer
+STR_REPLACE_RAIL_VEHICLES                                       :Zich
+STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Zich
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Gefierer
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnéitbunn Gefierer
 
@@ -3497,9 +3504,9 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Zentréi
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Zentréiert d'Usiicht op d'Schëff. Ctrl+Klick follegt dem Schëff an der Haaptusiicht
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Zentréiert d'Usiicht op den Fliger. Ctrl+Klick follegt dem Fliger an der Haaptusiicht
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Schéckt den Zuch an den Depot. CTRL+Klick fir nëmmen Revisoun
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Schéckt den Zuch an den Schapp. Ctrl+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt d'Gefiert an den Depot. CTRL+Klick fir nëmmen Revisoun
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéck d'Schëff an den Depot. CTRL+Klick fir nëmmen Revisoun
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéck d'Schëff an den Schapp. Ctrl+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Schéckt den Fliger an den Hangar. CTRL+Klick mëscht nëmmen Revisioun
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Waggonen. Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
@@ -3728,11 +3735,11 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Deelen s
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop d'Deelen vun der Optragslëscht. Ctrl+Klick lescht ausserdem all Opträg vun dësem Gefiert
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Géi op
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Géi an den noosten Depot
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Géi an den noosten Schapp
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Géi bei den noosten Hangar
 STR_ORDER_CONDITIONAL                                           :Bedéngten Optragssprong
 STR_ORDER_SHARE                                                 :Opträg deelen
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Setzt en neien Optrag firun den ungewielten Optrag, oder un d'Enn vun der Lëscht. Ctrl setzt Statioun Opträg op voll lueden, Weepunkter op 'non-stop', an Depot Opträg 'Revisioun'. Op en Gefiert klicken, kopéiert d'Opträg vun dem Gefiert
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Setzt en neien Optrag firun den ungewielten Optrag, oder un d'Enn vun der Lëscht. Ctrl setzt Statioun Opträg op voll lueden, Weepunkter op 'non-stop', an Schapp Opträg 'Revisioun'. Op en Gefiert klicken, kopéiert d'Opträg vun dem Gefiert
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Weis all Gefierer déi dësen Plang deelen
 
@@ -3745,9 +3752,9 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Revisioun non-s
 
 STR_ORDER_NEAREST_DEPOT                                         :den noosten
 STR_ORDER_NEAREST_HANGAR                                        :den noosten Hangar
-STR_ORDER_TRAIN_DEPOT                                           :Zuchdepot
+STR_ORDER_TRAIN_DEPOT                                           :Zuchschapp
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Stroossengefierer-Depot
-STR_ORDER_SHIP_DEPOT                                            :Schëffdepot
+STR_ORDER_SHIP_DEPOT                                            :Schëffsschapp
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -3850,9 +3857,9 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Setzt de
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofëllen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fëll den Zäitplang automatesch mat den Wäerter vum nächsten Trajet (Ctrl+Klick fir Wardzäiten probéiren bäizehalen)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}Erwaart
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Erwaard
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geplangt
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Tëschent erwaart an geplangt wiesselen
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Tëschent erwaard a geplangt wiesselen
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
@@ -4084,7 +4091,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ze v
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... et ass keng Plaz méi op der Kaart
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Stied bauen keng Stroossen. Du kanns den Bau iwwert Erweidert Astellungen->Economie->Stied anschalten
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Stroossenarbeschten umgaangen
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des Stad net leschen...{}Eng Statioun oder Depot huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des Stad net leschen...{}Eng Statioun oder Schapp huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... et gëtt keng Gëeegent Plaz fir eng Statue am Stadzentrum
 
 # Industry related errors
@@ -4162,19 +4169,19 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... Boje
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje ass am Gebrauch vun enger anerer Firma!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kann den Zuchdepot hei net bauen...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kann den Depot hei net bauen...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kann den Zuchschapp hei net bauen...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kann de Schapp hei net bauen...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kann den Tramschapp hei net bauen...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kann de Schëffdepot hei net bauen...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kann de Schëffsschapp hei net bauen...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kann den Depot net ëmbenennen
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kann den Schapp net ëmbenennen
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... muss an engem Depot gestoppt ginn
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... muss an engem Schapp gestoppt ginn
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss an engem Depot gestoppt ginn
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... muss an engem Schëffdepot gestoppt ginn
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... muss an engem Schëffsschapp gestoppt ginn
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... muss an engem Hangar gestoppt ginn
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Zich kënnen nëmmen an engem Depot verännert ginn
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Zich kënnen nëmmen an engem Schapp verännert ginn
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zuch ze laang
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kann d'Gefiert hei net ëmdréinen...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... ass aus e puer Eenheeten zesummengesat
@@ -4182,10 +4189,10 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Onkompatibel Sc
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kann d'Gefiert net réckelen...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}D'hënnescht Maschinn geet ëmmer der viischter no.
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kann den Wee an den Depot net fannen
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann den Depot net fannen
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kann den Wee an den Schapp net fannen
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann den Schapp net fannen
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falschen Depot-Typ
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falschen Schapp-Typ
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ass ze laang nom Auswiesselen
@@ -4293,9 +4300,9 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kann d'S
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kann d'Schëff net stoppen/starten...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kann den Fliger net stoppen/starten...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kann den Zuch net an den Depot schécken...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kann den Zuch net an den Schapp schécken...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kann d'Gefiert net an den Depot schécken...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kann d'Schëff net an den Depot schécken...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kann d'Schëff net an den Schapp schécken...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kann den Fliger net an den Hangar schécken...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kann den Zuch net bauen...
@@ -4770,12 +4777,12 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Weepunkt {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Weepunkt {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Zuchdepot
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Zuchdepot #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Stroossendepot
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Zuchschapp vun {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Zuchschapp #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Stroossengefierdepot vun{TOWN}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Stroossendepot #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Schëffdepot
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Schëffdepot #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Schëffsschapp vun {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Schëffsschapp #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :onbekannt Statioun

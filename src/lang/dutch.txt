@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinstellinge
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op nieuw spel)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op huidig bedrijf)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Filtert de onstaande lijst op alleen gewijzigde instellingen
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gewone instellingen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Geavanceerde instellingen
@@ -1084,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinstellinge
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Bedrijfsinstellingen (Opgeslagen in bestand; heeft alleen betrekking op nieuwe spellen)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig bedrijf)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Toon alle zoekresultaten per instelling{}{SILVER}Categorie {BLACK}naar {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Toon alle zoekresultaten per instelling{}{SILVER}Type {BLACK}naar {WHITE}Alle instellingstypen
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Toon alle zoekresultaten per instelling{}{SILVER}Categorie {BLACK}to {WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}naar {WHITE}Alle instellingstypen
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Geen -
 
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan
@@ -2876,6 +2882,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Ontbrekend
 STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of crashes veroorzaken
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Wagon '{1:ENGINE}' gewijzigde status van aandrijfeenheid wanneer niet in een depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' terwijl het niet in een depot is
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Het wijzigde voertuigcapaciteit voor '{1:ENGINE}' wanneer niet in een depot of ombouwen
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen met NewGRFs. Het spel kan desynchroniseren of vastlopen
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie

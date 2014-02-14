@@ -1297,7 +1297,7 @@ STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Dar servicio a 
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Une la barra de terreno a la barra de construcción: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Cuando se abre una barra de herramientas de construcción, se abre también la barra de terraformación
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color de terreno usado en el mapa: {STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color que usar para el terreno en el mapa
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color a usar para el terreno en el mapa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
@@ -1486,7 +1486,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Fecha de inicio
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economía suave (cambios más pequeños): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Si se activa, se producirán cambios de producción en las industrias más frecuentemente y en pasos menores. Si se usa un NewGRF para proveer industrias, esta opción generalmente no tiene efecto
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cuando se activa, permite comprar y vender acciones de empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa una edad determinada
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cuando se activa, permite comprar y vender acciones de empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa cumpla una edad determinada
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje del beneficio total a pagar en transferencias: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaje de los beneficios dados a los transportes intermedios en sistemas de transferencias, dando un mayor control sobre el beneficio de cada vehículo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, colocar señales cada: {STRING}
@@ -1563,7 +1563,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápida
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muy rápida
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de pueblos que se convertirá en ciudades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de pueblos que se convertirán en ciudades: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Número de pueblos que se convertirán en ciudades. Las ciudades comienzan siendo más grandes y crecen más rápido
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguna

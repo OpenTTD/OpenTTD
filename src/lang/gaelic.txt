@@ -1272,6 +1272,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Roghainnean a' 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Roinn-seòrsa:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Seòrsa:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach roghainnean air an atharrachadh
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Roghainnean bunasach
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Roghainnean adhartach
@@ -1286,6 +1288,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Roghainnean a' 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Seall na h-uile toradh luirg 's tu a' suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Seall na h-uile toradh luirg 's tu a' suidheachadh{}{SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Seall na h-uile toradh luirg 's tu a' suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING} {BLACK}agus {SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Chan eil gin -
 
 STR_CONFIG_SETTING_OFF                                          :Dheth
 STR_CONFIG_SETTING_ON                                           :Air
