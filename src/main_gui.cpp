@@ -253,11 +253,17 @@ struct MainWindow : Window
 
 	virtual void OnTick()
 	{
-		if (--refresh == 0) {
-			this->viewport->overlay->RebuildCache();
-			this->GetWidget<NWidgetBase>(WID_M_VIEWPORT)->SetDirty(this);
-			this->refresh = LINKGRAPH_REFRESH_PERIOD;
+		if (--this->refresh > 0) return;
+
+		this->refresh = LINKGRAPH_REFRESH_PERIOD;
+
+		if (this->viewport->overlay->GetCargoMask() == 0 ||
+				this->viewport->overlay->GetCompanyMask() == 0) {
+			return;
 		}
+
+		this->viewport->overlay->RebuildCache();
+		this->GetWidget<NWidgetBase>(WID_M_VIEWPORT)->SetDirty(this);
 	}
 
 	virtual void OnPaint()
