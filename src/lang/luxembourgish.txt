@@ -1260,7 +1260,7 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :Weis Tooltips: 
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Verzögerung bis d'Tooltips ugewisen ginn, wann een mat der Maus iwwert en Element geet. Alternativ kënnen d'Tooltips och op d'riets Maustast geluet ginn
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Fir {COMMA} Sekonn{P 0 "" en} dropbleiwen
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rietsklick
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Weist Bewunnerzuel am Numm vun der Stadt: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Weist Awunner am Numm vun der Stad: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Weis d'Awunnerzuel vun Stied an deenen hirem Label un op der Kaart
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Déckt vunn de Linnen vun den Graphen: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breed vun den Linnen an den Grafiken. Eng dënn Linn kann méi präzis gelies ginn, eng méi déck kann besser gesinn ginn an d'Faarwen sinn besser ze ënnerscheeden
@@ -2928,7 +2928,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Weltbev�
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Stad)
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Bewunnerunzuel: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Awunner: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagéier leschten Mount: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post leschten Mount: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Luedungen gebraucht fir Stadwuestum:
@@ -4086,7 +4086,7 @@ STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kann d'S
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kann d'Stad hei net bauen...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kann d'Stad net vergréissern...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ze noo um Enn vun der Kaart
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ze noo un enger aanerer Stadt
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ze no un enger anerer Stad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ze vill Stied
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... et ass keng Plaz méi op der Kaart
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Stied bauen keng Stroossen. Du kanns den Bau iwwert Erweidert Astellungen->Economie->Stied anschalten
@@ -4100,7 +4100,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kann ken
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kann {STRING} net hei bauen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kann deen Industrietyp hei net bauen...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... ze Noo bei enger aanerer Fabrik
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... muss fir d'éischt eng Stadt bauen
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... muss fir d'éischt eng Stad bauen
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... nëmmen 1 pro Stad erlaabt
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kann nëmmen an Stiedt mat opmannst 1200 Anwunner gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kann nëmmen am Regenwaldgebitt gebaut ginn

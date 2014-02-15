@@ -481,10 +481,10 @@ STR_SORT_BY_ENGINE_ID                                           :ID mašine (sta
 STR_SORT_BY_COST                                                :Ceni
 STR_SORT_BY_POWER                                               :Snazi
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Vučnoj snazi
-STR_SORT_BY_INTRO_DATE                                          :Datumu uvođenja
+STR_SORT_BY_INTRO_DATE                                          :Datum uvođenja
 STR_SORT_BY_RUNNING_COST                                        :Troškovima održavanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snazi/Troškovima održavanja
-STR_SORT_BY_CARGO_CAPACITY                                      :Nosivosti tovara
+STR_SORT_BY_CARGO_CAPACITY                                      :Nosivosti tereta
 STR_SORT_BY_RANGE                                               :Dometu
 STR_SORT_BY_POPULATION                                          :Naseljenosti
 STR_SORT_BY_RATING                                              :Rejtingu
@@ -1395,6 +1395,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Dozvoljava pred
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Dozvoljeno slanje novca drugim preduzećima: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Dozvoljava prenos novca između preduzeća u modu za više igrača
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Množilac težine tovara za simulaciju opterećenja vozova: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Podesi uticaj nošenje tereta u vozovima. Veća vrednost čini nošenje tereta zahtevniji za vozove, posebno na brdima
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Faktor brzine aviona: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Postavlja brzinu aviona relativno u odnosu na druge vrste vozila kako bi se ograničio prihod od avio saobraćaja
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
@@ -1415,10 +1416,12 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje inf
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ako je omogućeno, infrastruktura će imati troškove održavanja. Trošak raste brže sa porastom veličine putne mreže i time više pogađa veća preduzeća od manjih
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Nezastarevanje aerodroma: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Omogućavanje ovog podešavanja čini svaki tip aerodroma zauvek pristupan nakon njegovog uvođenja
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Upozorenje ukoliko se vozilo izgubi: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Prikazuje poruke o vozilima koja ne mogu da nađu put do odredišta
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Provera naredbi vozila: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kada je omogućeno, naređenja vozila se periodično proveravaju, i neke jasne probleme su izveštavane sa vestnom porukom kada su detektovane
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nijedno
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, osim zaustavljenih vozila
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :svih vozila
@@ -1427,6 +1430,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ako je omoguće
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikad ne zastarevaju: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ako je omogućeno, svi modeli vozila ostaju zauvek dostupni (posle njihovog predstavljanja)
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatska zamena kada vozilo ostari: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kada je omogućeno, vozilo blizu kraja života će se automatski zameniti kada su ispunjeni uslovi obnavljanja
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatska zamena kada je vozilo staro najviše {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Starost vozila pri kojoj postaje kandidat za automatsku zamenu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesec{P "" a i} pre
@@ -1703,6 +1707,8 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ukloni slepe ul
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :ručno
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrično
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetrično
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Uticaj daljine na zahteve: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ako podesite ovu vrednost veće od 0, daljina između porekla stanice A nekog tereta i moguće destinacije B će imati uticaj na iznos poslatog tereta od A do B. Što daljnije B je od A, smaniće se iznos tereta što će biti poslat. Ako vrednost povećavate, manji iznos tereta će biti poslat dalekim mestima i veći iznos tereta će biti poslat bližnjim stanicama.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Mere brzine: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kada brzina bude pokazana u interfejsu, pokaži u željenoj meri
@@ -2983,6 +2989,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<nevažeći mod
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<nevažeće vozilo>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Pregledanje NewGRF-ova
@@ -3414,7 +3421,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {G
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Nosivost: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorni vagoni: {GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prepravljivo za: {GOLD}{STRING}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tovara
+STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tereta
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve sem {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Najveća vučna snaga: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} pločica
@@ -3610,7 +3617,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ovim će
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ovim ćete kupiti isti brod. Sa Ctrl+Klik će imati zajedničke naredbe. Shift+Klik prikazuje procenu troškova bez kupovine
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ovim ćete kupiti kopiju letilice. Sa Ctrl+Klik će imati zajedničke naredbe. Shift+Klik prikazuje procenu troškova bez kupovine
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Voz će krenuti bez čekanja na signal za slobodan kolosek
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Nateraj voza da krene bez čekanja na signal za slobodan kolosek
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Prepravlja voz kako bi prevozio drugu vrstu tereta
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prepravite drumsko vozilo kako bi prevozio drugu vrstu tovara

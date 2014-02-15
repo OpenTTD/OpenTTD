@@ -1464,6 +1464,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ustawienia gry 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na aktualną grę)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko w nowo rozpoczętych grach)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko na aktualnie aktywną firmę)
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Pokaż wszystkie wyniki według ustawień{}{SILVER}Kategorii {BLACK} {WHITE}{STRING} {BLACK}i {SILVER} Typu {BLACK} {WHITE}Wszystkie typy ustawień
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Żadne -
 
 STR_CONFIG_SETTING_OFF                                          :wył.
