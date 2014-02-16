@@ -89,6 +89,28 @@ public:
 };
 
 /**
+ * Simple mutex locker to keep a mutex locked until the locker goes out of scope.
+ */
+class ThreadMutexLocker {
+public:
+	/**
+	 * Lock the mutex and keep it locked for the life time of this object.
+	 * @param mutex Mutex to be locked.
+	 */
+	ThreadMutexLocker(ThreadMutex *mutex) : mutex(mutex) { mutex->BeginCritical(); }
+
+	/**
+	 * Unlock the mutex.
+	 */
+	~ThreadMutexLocker() { this->mutex->EndCritical(); }
+
+private:
+	ThreadMutexLocker(const ThreadMutexLocker &) { NOT_REACHED(); }
+	ThreadMutexLocker &operator=(const ThreadMutexLocker &) { NOT_REACHED(); return *this; }
+	ThreadMutex *mutex;
+};
+
+/**
  * Get number of processor cores in the system, including HyperThreading or similar.
  * @return Total number of processor cores.
  */
