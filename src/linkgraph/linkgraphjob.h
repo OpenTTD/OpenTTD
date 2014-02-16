@@ -65,6 +65,8 @@ protected:
 	EdgeAnnotationMatrix edges;       ///< Extra edge data necessary for link graph calculation.
 
 	void EraseFlows(NodeID from);
+	void JoinThread();
+	void SpawnThread();
 
 public:
 

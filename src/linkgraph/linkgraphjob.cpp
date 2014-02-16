@@ -13,6 +13,7 @@
 #include "../core/pool_func.hpp"
 #include "../window_func.h"
 #include "linkgraphjob.h"
+#include "linkgraphschedule.h"
 
 /* Initialize the link-graph-job-pool */
 LinkGraphJobPool _link_graph_job_pool("LinkGraphJob");
@@ -46,11 +47,42 @@ void LinkGraphJob::EraseFlows(NodeID from)
 }
 
 /**
+ * Spawn a thread if possible and run the link graph job in the thread. If
+ * that's not possible run the job right now in the current thread.
+ */
+void LinkGraphJob::SpawnThread()
+{
+	if (!ThreadObject::New(&(LinkGraphSchedule::Run), this, &this->thread)) {
+		this->thread = NULL;
+		/* Of course this will hang a bit.
+		 * On the other hand, if you want to play games which make this hang noticably
+		 * on a platform without threads then you'll probably get other problems first.
+		 * OK:
+		 * If someone comes and tells me that this hangs for him/her, I'll implement a
+		 * smaller grained "Step" method for all handlers and add some more ticks where
+		 * "Step" is called. No problem in principle. */
+		LinkGraphSchedule::Run(this);
+	}
+}
+
+/**
+ * Join the calling thread with this job's thread if threading is enabled.
+ */
+void LinkGraphJob::JoinThread()
+{
+	if (this->thread != NULL) {
+		this->thread->Join();
+		delete this->thread;
+		this->thread = NULL;
+	}
+}
+
+/**
  * Join the link graph job and destroy it.
  */
 LinkGraphJob::~LinkGraphJob()
 {
-	assert(this->thread == NULL);
+	this->JoinThread();
 
 	/* Don't update stuff from other pools, when everything is being removed.
 	 * Accessing other pools may be invalid. */

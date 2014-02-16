@@ -17,40 +17,6 @@
 #include "flowmapper.h"
 
 /**
- * Spawn a thread if possible and run the link graph job in the thread. If
- * that's not possible run the job right now in the current thread.
- * @param job Job to be executed.
- */
-void LinkGraphSchedule::SpawnThread(LinkGraphJob *job)
-{
-	if (!ThreadObject::New(&(LinkGraphSchedule::Run), job, &job->thread)) {
-		job->thread = NULL;
-		/* Of course this will hang a bit.
-		 * On the other hand, if you want to play games which make this hang noticably
-		 * on a platform without threads then you'll probably get other problems first.
-		 * OK:
-		 * If someone comes and tells me that this hangs for him/her, I'll implement a
-		 * smaller grained "Step" method for all handlers and add some more ticks where
-		 * "Step" is called. No problem in principle.
-		 */
-		LinkGraphSchedule::Run(job);
-	}
-}
-
-/**
- * Join the calling thread with the given job's thread if threading is enabled.
- * @param job Job whose execution thread is to be joined.
- */
-void LinkGraphSchedule::JoinThread(LinkGraphJob *job)
-{
-	if (job->thread != NULL) {
-		job->thread->Join();
-		delete job->thread;
-		job->thread = NULL;
-	}
-}
-
-/**
  * Start the next job in the schedule.
  */
 void LinkGraphSchedule::SpawnNext()
@@ -67,7 +33,7 @@ void LinkGraphSchedule::SpawnNext()
 	this->schedule.pop_front();
 	if (LinkGraphJob::CanAllocateItem()) {
 		LinkGraphJob *job = new LinkGraphJob(*next);
-		this->SpawnThread(job);
+		job->SpawnThread();
 		this->running.push_back(job);
 	} else {
 		NOT_REACHED();
@@ -84,8 +50,7 @@ void LinkGraphSchedule::JoinNext()
 	if (!next->IsFinished()) return;
 	this->running.pop_front();
 	LinkGraphID id = next->LinkGraphIndex();
-	this->JoinThread(next);
-	delete next;
+	delete next; // implicitly joins the thread
 	if (LinkGraph::IsValidID(id)) {
 		LinkGraph *lg = LinkGraph::Get(id);
 		this->Unqueue(lg); // Unqueue to avoid double-queueing recycled IDs.
@@ -114,7 +79,7 @@ void LinkGraphSchedule::JoinNext()
 void LinkGraphSchedule::SpawnAll()
 {
 	for (JobList::iterator i = this->running.begin(); i != this->running.end(); ++i) {
-		this->SpawnThread(*i);
+		(*i)->SpawnThread();
 	}
 }
 
@@ -125,7 +90,7 @@ void LinkGraphSchedule::SpawnAll()
 {
 	LinkGraphSchedule *inst = LinkGraphSchedule::Instance();
 	for (JobList::iterator i(inst->running.begin()); i != inst->running.end(); ++i) {
-		inst->JoinThread(*i);
+		(*i)->JoinThread();
 	}
 	inst->running.clear();
 	inst->schedule.clear();
