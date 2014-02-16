@@ -66,13 +66,19 @@ public:
 
 	/**
 	 * Begin the critical section
+	 * @param allow_recursive Whether recursive locking is intentional.
+	 *                        If false, NOT_REACHED() will be called when the mutex is already locked
+	 *                        by the current thread.
 	 */
-	virtual void BeginCritical() = 0;
+	virtual void BeginCritical(bool allow_recursive = false) = 0;
 
 	/**
 	 * End of the critical section
+	 * @param allow_recursive Whether recursive unlocking is intentional.
+	 *                        If false, NOT_REACHED() will be called when the mutex was locked more
+	 *                        than once by the current thread.
 	 */
-	virtual void EndCritical() = 0;
+	virtual void EndCritical(bool allow_recursive = false) = 0;
 
 	/**
 	 * Wait for a signal to be send.

@@ -98,9 +98,11 @@ private:
 	pthread_mutex_t mutex;    ///< The actual mutex.
 	pthread_cond_t condition; ///< Data for conditional waiting.
 	pthread_mutexattr_t attr; ///< Attributes set for the mutex.
+	pthread_t owner;          ///< Owning thread of the mutex.
+	uint recursive_count;     ///< Recursive lock count.
 
 public:
-	ThreadMutex_pthread()
+	ThreadMutex_pthread() : owner(0), recursive_count(0)
 	{
 		pthread_mutexattr_init(&this->attr);
 		pthread_mutexattr_settype(&this->attr, PTHREAD_MUTEX_ERRORCHECK);
@@ -116,22 +118,45 @@ public:
 		assert(err != EBUSY);
 	}
 
-	/* virtual */ void BeginCritical()
+	bool IsOwnedByCurrentThread() const
 	{
-		int err = pthread_mutex_lock(&this->mutex);
-		assert(err == 0);
+		return this->owner == pthread_self();
 	}
 
-	/* virtual */ void EndCritical()
+	/* virtual */ void BeginCritical(bool allow_recursive = false)
 	{
+		/* pthread mutex is not recursive by itself */
+		if (this->IsOwnedByCurrentThread()) {
+			if (!allow_recursive) NOT_REACHED();
+		} else {
+			int err = pthread_mutex_lock(&this->mutex);
+			assert(err == 0);
+			assert(this->recursive_count == 0);
+			this->owner = pthread_self();
+		}
+		this->recursive_count++;
+	}
+
+	/* virtual */ void EndCritical(bool allow_recursive = false)
+	{
+		assert(this->IsOwnedByCurrentThread());
+		if (!allow_recursive && this->recursive_count != 1) NOT_REACHED();
+		this->recursive_count--;
+		if (this->recursive_count != 0) return;
+		this->owner = 0;
 		int err = pthread_mutex_unlock(&this->mutex);
 		assert(err == 0);
 	}
 
 	/* virtual */ void WaitForSignal()
 	{
+		uint old_recursive_count = this->recursive_count;
+		this->recursive_count = 0;
+		this->owner = 0;
 		int err = pthread_cond_wait(&this->condition, &this->mutex);
 		assert(err == 0);
+		this->owner = pthread_self();
+		this->recursive_count = old_recursive_count;
 	}
 
 	/* virtual */ void SendSignal()
