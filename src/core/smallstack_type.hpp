@@ -12,16 +12,90 @@
 #ifndef SMALLSTACK_TYPE_HPP
 #define SMALLSTACK_TYPE_HPP
 
-#include "pool_type.hpp"
-#include "pool_func.hpp"
+#include "smallvec_type.hpp"
+#include "../thread/thread.h"
+
+/**
+ * A simplified pool which stores values instead of pointers and doesn't
+ * redefine operator new/delete. It also never zeroes memory and always reuses
+ * it.
+ */
+template<typename Titem, typename Tindex, Tindex Tgrowth_step, Tindex Tmax_size>
+class SimplePool {
+public:
+	inline SimplePool() : first_unused(0), first_free(0), mutex(ThreadMutex::New()) {}
+	inline ~SimplePool() { delete this->mutex; }
+
+	/**
+	 * Get the mutex. We don't lock the mutex in the pool methods as the
+	 * SmallStack isn't necessarily in a consistent state after each method.
+	 * @return Mutex.
+	 */
+	inline ThreadMutex *GetMutex() { return this->mutex; }
+
+	/**
+	 * Get the item at position index.
+	 * @return Item at index.
+	 */
+	inline Titem &Get(Tindex index) { return this->data[index]; }
+
+	/**
+	 * Create a new item and return its index.
+	 * @return Index of new item.
+	 */
+	inline Tindex Create()
+	{
+		Tindex index = this->FindFirstFree();
+		if (index < Tmax_size) {
+			this->data[index].valid = true;
+			this->first_free = index + 1;
+			this->first_unused = max(this->first_unused, this->first_free);
+		}
+		return index;
+	}
+
+	/**
+	 * Destroy (or rather invalidate) the item at the given index.
+	 * @param index Index of item to be destroyed.
+	 */
+	inline void Destroy(Tindex index)
+	{
+		this->data[index].valid = false;
+		this->first_free = min(this->first_free, index);
+	}
+
+private:
+
+	inline Tindex FindFirstFree()
+	{
+		Tindex index = this->first_free;
+		for (; index < this->first_unused; index++) {
+			if (!this->data[index].valid) return index;
+		}
+
+		if (index >= this->data.Length() && index < Tmax_size) {
+			this->data.Resize(index + 1);
+		}
+		return index;
+	}
+
+	struct SimplePoolPoolItem : public Titem {
+		bool valid;
+	};
+
+	Tindex first_unused;
+	Tindex first_free;
+
+	ThreadMutex *mutex;
+	SmallVector<SimplePoolPoolItem, Tgrowth_step> data;
+};
 
 /**
  * Base class for SmallStack. We cannot add this into SmallStack itself as
  * certain compilers don't like it.
  */
-template <typename Tindex, typename Titem>
-class SmallStackItem {
-protected:
+template <typename Titem, typename Tindex>
+struct SmallStackItem {
 	Tindex next; ///< Pool index of next item.
 	Titem value; ///< Value of current item.
 
@@ -50,30 +124,30 @@ protected:
  * 5. You can choose your own index type, so that you can align it with your
  *    value type. E.G. value types of 16 bits length like to be combined with
  *    index types of the same length.
+ * 6. All accesses to the underlying pool are guarded by a mutex and atomic in
+ *    the sense that the mutex stays locked until the pool has reacquired a
+ *    consistent state. This means that even though a common data structure is
+ *    used the SmallStack is still reentrant.
  * @tparam Titem Value type to be used.
  * @tparam Tindex Index type to use for the pool.
  * @tparam Tinvalid Invalid item to keep at the bottom of each stack.
  * @tparam Tgrowth_step Growth step for pool.
  * @tparam Tmax_size Maximum size for pool.
  */
-template <typename Titem, typename Tindex, Titem Tinvalid, size_t Tgrowth_step, size_t Tmax_size>
-class SmallStack : public SmallStackItem<Tindex, Titem> {
-protected:
-	class PooledSmallStack;
+template <typename Titem, typename Tindex, Titem Tinvalid, Tindex Tgrowth_step, Tindex Tmax_size>
+class SmallStack : public SmallStackItem<Titem, Tindex> {
+public:
+
+	typedef SmallStackItem<Titem, Tindex> Item;
 
 	/**
-	 * Create a branch in the pool if necessary.
+	 * SmallStack item that can be kept in a pool.
 	 */
-	void Branch()
-	{
-		if (PooledSmallStack::IsValidID(this->next)) {
-			PooledSmallStack::Get(this->next)->CreateBranch();
-		}
-	}
+	struct PooledSmallStack : public Item {
+		Tindex branch_count; ///< Number of branches in the tree structure this item is parent of
+	};
 
-public:
-	typedef SmallStackItem<Tindex, Titem> Item;
-	typedef Pool<PooledSmallStack, Tindex, Tgrowth_step, Tmax_size, PT_NORMAL, true, false> SmallStackPool;
+	typedef SimplePool<PooledSmallStack, Tindex, Tgrowth_step, Tmax_size> SmallStackPool;
 
 	/**
 	 * Constructor for a stack with one or two items in it.
@@ -86,14 +160,8 @@ public:
 	 */
 	inline ~SmallStack()
 	{
-		if (PooledSmallStack::IsValidID(this->next)) {
-			PooledSmallStack *item = PooledSmallStack::Get(this->next);
-			if (item->NumBranches() == 0) {
-				delete item;
-			} else {
-				item->DeleteBranch();
-			}
-		}
+		/* Pop() locks the mutex and after each pop the pool is consistent.*/
+		while (this->next != Tmax_size) this->Pop();
 	}
 
 	/**
@@ -110,23 +178,32 @@ public:
 	inline SmallStack &operator=(const SmallStack &other)
 	{
 		if (this == &other) return *this;
-		this->~SmallStack();
+		while (this->next != Tmax_size) this->Pop();
 		this->next = other.next;
 		this->value = other.value;
+		/* Deleting and branching are independent operations, so it's fine to
+		 * acquire separate locks for them. */
 		this->Branch();
 		return *this;
 	}
 
 	/**
-	 * Push a new item onto the stack.
+	 * Pushes a new item onto the stack if there is still space in the
+	 * underlying pool. Otherwise the topmost item's value gets overwritten.
 	 * @param item Item to be pushed.
 	 */
 	inline void Push(const Titem &item)
 	{
 		if (this->value != Tinvalid) {
-			assert(PooledSmallStack::CanAllocateItem());
-			PooledSmallStack *next = new PooledSmallStack(this->value, this->next);
-			this->next = next->index;
+			ThreadMutexLocker lock(_pool.GetMutex());
+			Tindex new_item = _pool.Create();
+			if (new_item != Tmax_size) {
+				PooledSmallStack &pushed = _pool.Get(new_item);
+				pushed.value = this->value;
+				pushed.next = this->next;
+				pushed.branch_count = 0;
+				this->next = new_item;
+			}
 		}
 		this->value = item;
 	}
@@ -138,17 +215,26 @@ public:
 	inline Titem Pop()
 	{
 		Titem ret = this->value;
-		if (!PooledSmallStack::IsValidID(this->next)) {
+		if (this->next == Tmax_size) {
 			this->value = Tinvalid;
 		} else {
-			PooledSmallStack *next = PooledSmallStack::Get(this->next);
-			static_cast<Item &>(*this) = *next;
-			if (next->NumBranches() == 0) {
-				delete next;
+			ThreadMutexLocker lock(_pool.GetMutex());
+			PooledSmallStack &popped = _pool.Get(this->next);
+			this->value = popped.value;
+			if (popped.branch_count == 0) {
+				_pool.Destroy(this->next);
 			} else {
-				next->DeleteBranch();
-				this->Branch();
+				--popped.branch_count;
+				/* We can't use Branch() here as we already have the mutex.*/
+				if (popped.next != Tmax_size) {
+					++(_pool.Get(popped.next).branch_count);
+				}
 			}
+			/* Accessing popped here is no problem as the pool will only set
+			 * the validity flag, not actually delete the item, on Destroy().
+			 * It's impossible for another thread to acquire the same item in
+			 * the mean time because of the mutex. */
+			this->next = popped.next;
 		}
 		return ret;
 	}
@@ -159,7 +245,7 @@ public:
 	 */
 	inline bool IsEmpty() const
 	{
-		return this->value == Tinvalid && !PooledSmallStack::IsValidID(this->next);
+		return this->value == Tinvalid && this->next == Tmax_size;
 	}
 
 	/**
@@ -170,11 +256,14 @@ public:
 	inline bool Contains(const Titem &item) const
 	{
 		if (item == Tinvalid || item == this->value) return true;
-		const SmallStack *in_list = this;
-		while (PooledSmallStack::IsValidID(in_list->next)) {
-			in_list = static_cast<const SmallStack *>(
-					static_cast<const Item *>(PooledSmallStack::Get(in_list->next)));
-			if (in_list->value == item) return true;
+		if (this->next != Tmax_size) {
+			ThreadMutexLocker lock(_pool.GetMutex());
+			const SmallStack *in_list = this;
+			do {
+				in_list = static_cast<const SmallStack *>(
+						static_cast<const Item *>(&_pool.Get(in_list->next)));
+				if (in_list->value == item) return true;
+			} while (in_list->next != Tmax_size);
 		}
 		return false;
 	}
@@ -183,19 +272,15 @@ protected:
 	static SmallStackPool _pool;
 
 	/**
-	 * SmallStack item that can be kept in a pool (by having an index).
+	 * Create a branch in the pool if necessary.
 	 */
-	class PooledSmallStack : public Item, public SmallStackPool::template PoolItem<&SmallStack::_pool> {
-	private:
-		Tindex branch_count; ///< Number of branches in the tree structure this item is parent of
-	public:
-		PooledSmallStack(Titem value, Tindex next) : Item(value, next), branch_count(0) {}
-
-		inline void CreateBranch() { ++this->branch_count; }
-		inline void DeleteBranch() { --this->branch_count; }
-		inline Tindex NumBranches() { return this->branch_count; }
-	};
+	inline void Branch()
+	{
+		if (this->next != Tmax_size) {
+			ThreadMutexLocker lock(_pool.GetMutex());
+			++(_pool.Get(this->next).branch_count);
+		}
+	}
 };
-
 
 #endif
