@@ -146,7 +146,7 @@ public:
 		this->EndCritical();
 		WaitForSingleObject(this->event, INFINITE);
 		this->BeginCritical();
-		this->recursive_count = this->recursive_count;
+		this->recursive_count = old_recursive_count;
 	}
 
 	/* virtual */ void SendSignal()

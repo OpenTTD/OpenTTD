@@ -133,7 +133,7 @@ public:
 		this->EndCritical();
 		DosWaitEventSem(event, SEM_INDEFINITE_WAIT);
 		this->BeginCritical();
-		this->recursive_count = this->recursive_count;
+		this->recursive_count = old_recursive_count;
 	}
 
 	/* virtual */ void SendSignal()
