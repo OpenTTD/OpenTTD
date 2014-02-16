@@ -102,8 +102,8 @@ LinkGraphJob::~LinkGraphJob()
 
 		/* Swap shares and invalidate ones that are completely deleted. Don't
 		 * really delete them as we could then end up with unroutable cargo
-		 * somewhere. Do delete them if automatic distribution has been turned
-		 * off for that cargo, though. */
+		 * somewhere. Do delete them and also reroute relevant cargo if
+		 * automatic distribution has been turned off for that cargo. */
 		for (FlowStatMap::iterator it(ge.flows.begin()); it != ge.flows.end();) {
 			FlowStatMap::iterator new_it = flows.find(it->first);
 			if (new_it == flows.end()) {
@@ -111,7 +111,13 @@ LinkGraphJob::~LinkGraphJob()
 					it->second.Invalidate();
 					++it;
 				} else {
+					FlowStat shares(INVALID_STATION, 1);
+					it->second.SwapShares(shares);
 					ge.flows.erase(it++);
+					for (FlowStat::SharesMap::const_iterator shares_it(shares.GetShares()->begin());
+							shares_it != shares.GetShares()->end(); ++shares_it) {
+						RerouteCargo(st, this->Cargo(), shares_it->second, st->index);
+					}
 				}
 			} else {
 				it->second.SwapShares(new_it->second);
