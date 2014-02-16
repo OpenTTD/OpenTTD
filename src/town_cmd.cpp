@@ -1913,7 +1913,6 @@ bool GenerateTowns(TownLayout layout)
 			/* Clear the caches regularly, otherwise it will only be done
 			 * at the end of the whole cycle when OpenTTD has allocated
 			 * lots and lots of memory for these essentially caches. */
-			ClearPersistentStorageChanges(true);
 			Layouter::ReduceLineCache();
 		}
 
