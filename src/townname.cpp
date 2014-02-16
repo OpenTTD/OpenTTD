@@ -16,6 +16,7 @@
 #include "strings_func.h"
 #include "core/random_func.hpp"
 #include "genworld.h"
+#include "gfx_layout.h"
 
 #include "table/townname.h"
 
@@ -124,6 +125,10 @@ bool GenerateTownName(uint32 *townnameparts, TownNames *town_names)
 	 * the other towns may take considerable amount of time (10000 is
 	 * too much). */
 	TownNameParams par(_settings_game.game_creation.town_name);
+
+	/* This function is called very often without entering the gameloop
+	 * inbetween. So reset layout cache to prevent it from growing too big. */
+	Layouter::ReduceLineCache();
 
 	for (int i = 1000; i != 0; i--) {
 		uint32 r = _generating_world ? Random() : InteractiveRandom();
