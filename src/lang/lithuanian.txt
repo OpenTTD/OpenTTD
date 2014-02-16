@@ -1281,6 +1281,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Žaidimo (įra�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Žaidimo (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik aktyviam žaidimui)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Kompanijos (įrašoma pradedant naują žaidimą)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompanijos (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik šiuo metu aktyviai kompanijai)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Rodyti visus paeiškos rezultatus nustatant{}{SILVER}kategoriją{BLACK}į {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Rodyti visus paeiškos rezultatus nustatant{}{SILVER}tipą {BLACK}į {WHITE}„Visos nuostatos“
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Rodyti visus paieškos rezultatus nustatant{}{SILVER}kategoriją {BLACK}į {WHITE}{STRING} {BLACK}bei {SILVER}tipą {BLACK}į {WHITE}„Visos nuostatos“
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nėra -
 
 STR_CONFIG_SETTING_OFF                                          :Ne

@@ -1236,9 +1236,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Настрой�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Настройки игры (записываются в сохранение; влияют только на текущую игру)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Настройки компании (записываются в сохранения; влияют только на новые игры)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Настройки компании (записываются в сохранение; влияют только на текущую компанию)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Показать все результаты поиска, установив{}{SILVER}категорию {BLACK}для {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Показать все результаты поиска, установив{}{SILVER}тип {BLACK}для {WHITE}всех типов настроек
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Показать все результаты поиска, установив{}{SILVER}категорию {BLACK}для {WHITE}{STRING} {BLACK}и {SILVER}тип {BLACK}для {WHITE}всех типов настроек
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Чтобы показать все результаты поиска, выберите{}{SILVER}категорию{BLACK}: {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Чтобы показать все результаты поиска, выберите{}{SILVER}тип{BLACK}: {WHITE}Все настройки
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Чтобы показать все результаты поиска, выберите{}{SILVER}категорию{BLACK}: {WHITE}{STRING} {BLACK}и {SILVER}тип{BLACK}: {WHITE}Все настройки
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Нет -
 
 STR_CONFIG_SETTING_OFF                                          :нет

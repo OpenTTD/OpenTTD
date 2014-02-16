@@ -758,11 +758,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första fartyget ankommer till {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första flygplanet ankommer till {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tågkrash!{}{COMMA} dog i eldklot efter kollision
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Vägfordonskrash!{}Förare dör i eldklot efter kollision med tåg
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Vägfordonskrash!{}{COMMA} dör i eldklot efter kollision med tåg
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Flygplanskrasch!{}{COMMA} dör i eldklot på {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Flygplanskrasch!{}Flygplanet fick slut på bränsle, {COMMA} dör i eldklot!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tågkrasch!{}{COMMA} dog i lågorna efter kollision
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Vägfordonskrasch!{}Föraren dog i lågorna efter kollision med tåg
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Vägfordonskrasch!{}{COMMA} dog i lågorna efter kollision med tåg
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Flygplanskrasch!{}{COMMA} dog i lågorna på {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Flygplanskrasch!{}Flygplanet fick slut på bränsle, {COMMA} dog i lågorna!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinare-katastrof på {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Vägfordon förstört i 'UFO'-kollision!

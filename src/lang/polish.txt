@@ -1450,6 +1450,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ustawienie gry 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ustawienie firmy (przechowywane w plikach zapisu; ma wpływ tylko na nowe gry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ustawienie firmy (przechowywane w pliku zapisu; ma wpływ tylko na aktualną firmę)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicza poniższą listę tylko do modyfikowanych ustawień
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Ustawienia podstawowe
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ustawienia zaawansowane
@@ -1464,6 +1466,8 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ustawienia gry 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na aktualną grę)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko w nowo rozpoczętych grach)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko na aktualnie aktywną firmę)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Pokaż wszystkie wyniki wyszukiwania według ustawień{}{SILVER}Kategoria {BLACK}do {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Pokaż wszystkie wyniki wyszukiwania według ustawień{}{SILVER}Typ {BLACK}do {WHITE}Wszystkie typy ustawień
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Pokaż wszystkie wyniki według ustawień{}{SILVER}Kategorii {BLACK} {WHITE}{STRING} {BLACK}i {SILVER} Typu {BLACK} {WHITE}Wszystkie typy ustawień
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Żadne -
 
