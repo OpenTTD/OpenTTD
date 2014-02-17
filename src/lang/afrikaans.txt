@@ -1071,6 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Maatskappy inst
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Maatskappy instelling (word gestoor in Spaarspeletjies; raak net nuwe speletjies)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipe:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beperk die lys hier onder tot slegs veranderde verstellings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basiese verstellings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gevorderde verstellings
@@ -1085,6 +1087,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spel instelling
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spel instelling (word gestoor in spaarspeletjie; raak net die huidige speletjie)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Maatskappy instelling (word gestoor in spaarspeletjies; raak slegs nuwe speletjies)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Wys alle soekresultate deur oprigting{}{SILVER}Kategorie {BLACK}tot {WHITE}{STRING} {BLACK}en {SILVER}Tik {BLACK}tot {WHITE}Alle opstel tipes
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Geen -
 
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
@@ -2877,6 +2883,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Vermiste l
 STR_NEWGRF_BROKEN                                               :{WHITE}Die gedrag van NewGRF '{0:STRING}' kan moontlik sinkroniesasie probleme of program ongelukke veroorsaak
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Dit het die aangedrewe-wa staat vir '{1:ENGINE}' wanneer nie in 'n depot verander
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het lengte van voertuig verander '{1:ENGINE}' wanneer dit nie in 'n diensstasie is nie
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Dit verander voertuig kapasiteit vir '{1:ENGINE}' wanneer nie binne 'n diensstasie is nie of herstelwerk word gedoen
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' wat aan '{COMPANY}' behoort se lengte is ongeldig. Dit is waarskynlik veroorsaak deur 'n NewGRF. Spel kan verongeluk of sinchronisasie verloor
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' verskaf foutiewe inligting.

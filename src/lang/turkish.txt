@@ -1071,6 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Oyun ayarları 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarları (kayıtlı dosyada saklanır; sadece mevcut şirketi etkilemektedir)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tür:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi yalnızca değişen ayarları göstererek sınırlandırır
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel ayarlar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş ayarlar
@@ -1085,6 +1087,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Oyun ayarları 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Oyun ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK}{WHITE}{STRING} ayarlayarak göster
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Tüm arama sonuçlarını{}{SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK} {WHITE}{STRING} {BLACK}ve {SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Hiçbiri -
 
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
@@ -2547,6 +2553,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}İstenen: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ray hız sınırı: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Yol hız sınırı: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kayalar
@@ -2876,6 +2883,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Eksik dosy
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı muhtemelen senkron kaybı ve/veya çakılmalara neden olacak
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' için enerjilendirilmiş wagon durumunu depo dışındayken değiştirdi
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' hangar içinde değilken araç uzunluğunu değiştirdi
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Bir garajda veya tamir halinde değilken araç kapasitesini '{1:ENGINE}' için değiştirdi
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir

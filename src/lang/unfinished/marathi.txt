@@ -581,11 +581,31 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy रस्त्यावर
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}सानुकूल १
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}सानुकूल २
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}संगीत आवाज
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}प्रभाव आवाज
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}कमी
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}अधिक
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}लोहमार्ग
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}शीर्षक
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}चुळबूळ
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}कार्यक्रम
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}मागील संगीत जा
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}पुढील संगीत जा
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}संगीत थांबवा
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}संगीत प्रारंभ
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}संगीत आणि खंड सेट करण्यासाठी स्लाइडर पकडू
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}निवडा 'सर्व संगीत' कार्यक्रम
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}निवडा 'जुन्या प्रकारच्या संगीत' कार्यक्रम
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}निवडा 'नवीन संगीत' कार्यक्रम
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}निवडा 'स्ट्रीट संगीत' कार्यक्रम
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'कस्टम 1' (वापरकर्ता परिभाषित) कार्यक्रम निवडा
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'कस्टम 2' (वापरकर्ता परिभाषित) कार्यक्रम निवडा
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}कार्यक्रम चुळबूळ - प्रारंभ / बंद
 
 
 # Playlist window
