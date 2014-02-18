@@ -1395,16 +1395,30 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omjouwing: {STR
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Lit omjouwingslûd fan bygelyks it lânskip, yndustryen en stêden heare
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Stean bouwen fan ynfrastruktuer net ta at der gjin geskikte fiertugen beskikber binne: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimum oantal treinen per bedriuw: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimum oantal auto's per bedriuw: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maksimum oantal fleanmasines per bedriuw: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Maksimum oantal skepen per bedriuw: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :By ynkeakeljen kinst allinnich ynfrastruktuer bouwe foar typen ynfrastruktuer dêr't ek fiertúgen foar beskikber binne.
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimaal oantal treinen per bedriuw: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimaal oantal treinen dat in bedriuw hawwe mei
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimaal oantal auto's per bedriuw: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimaal oantal auto's dat in bedriuw hawwe kin
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maksimaal oantal fleanmasines per bedriuw: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimaal oantal fleanmasines dat in bedriuw hawwe kin
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Maksimaal oantal skepen per bedriuw: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimaal oantal skepen dat in bedriuw hawwe kin
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Ferbied treinen foar computerspiler: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Ferbied auto's foar computerspiler: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Ferbied Fleantúg foar computerspiler: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ferbied skippen foar computerspiler: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Ferbied treinen foar computerspilers: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :By ynskeakeljen is it ûnmooglik foar kompjûterspilers om treinen te bouwen
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Ferbied auto's foar kompjûterspilers: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :By ynskeakeljen is it ûnmooglik foar kompjûterspilers om auto's te bouwen
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Ferbied fleanmasines foar kompjûterspilers: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :By ynskeakeljen is it ûnmooglik foar kompjûterspilers om fleanmasines te bouwen
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ferbied skippen foar kompjûterspilers: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :By ynskeakeljen is it ûnmooglik foar kompjûterspilers om skippen te bouwen
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Standerd ynstellingsprofyl: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Kies hokker ynstellingsprofyl brûkt wurde moat foar ien of oare AI of foar begjinweardes by it tafoegjen fan in nije AI of Spulskript
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Maklik
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middel
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Dreech
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Stea AIs ta yn multiplayer: {STRING}
 
