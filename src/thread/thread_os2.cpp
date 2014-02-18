@@ -128,12 +128,9 @@ public:
 	/* virtual */ void WaitForSignal()
 	{
 		assert(this->recursive_count == 1); // Do we need to call Begin/EndCritical multiple times otherwise?
-		uint old_recursive_count = this->recursive_count;
-		this->recursive_count = 0;
 		this->EndCritical();
 		DosWaitEventSem(event, SEM_INDEFINITE_WAIT);
 		this->BeginCritical();
-		this->recursive_count = old_recursive_count;
 	}
 
 	/* virtual */ void SendSignal()
