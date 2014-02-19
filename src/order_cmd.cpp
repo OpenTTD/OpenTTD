@@ -1296,7 +1296,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	Order *order = v->GetOrder(sel_ord);
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
-			if (mof == MOF_COND_VARIABLE || mof == MOF_COND_COMPARATOR || mof == MOF_DEPOT_ACTION || mof == MOF_COND_VALUE) return CMD_ERROR;
+			if (mof != MOF_NON_STOP && mof != MOF_STOP_LOCATION && mof != MOF_UNLOAD && mof != MOF_LOAD) return CMD_ERROR;
 			break;
 
 		case OT_GOTO_DEPOT:
@@ -1330,6 +1330,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 
 		case MOF_UNLOAD:
+			if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return CMD_ERROR;
 			if ((data & ~(OUFB_UNLOAD | OUFB_TRANSFER | OUFB_NO_UNLOAD)) != 0) return CMD_ERROR;
 			/* Unload and no-unload are mutual exclusive and so are transfer and no unload. */
 			if (data != 0 && ((data & (OUFB_UNLOAD | OUFB_TRANSFER)) != 0) == ((data & OUFB_NO_UNLOAD) != 0)) return CMD_ERROR;
@@ -1337,6 +1338,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 
 		case MOF_LOAD:
+			if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return CMD_ERROR;
 			if (data > OLFB_NO_LOAD || data == 1) return CMD_ERROR;
 			if (data == order->GetLoadType()) return CMD_ERROR;
 			break;
@@ -1366,7 +1368,9 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 		case MOF_COND_VALUE:
 			switch (order->GetConditionVariable()) {
-				case OCV_UNCONDITIONALLY: return CMD_ERROR;
+				case OCV_UNCONDITIONALLY:
+				case OCV_REQUIRES_SERVICE:
+					return CMD_ERROR;
 
 				case OCV_LOAD_PERCENTAGE:
 				case OCV_RELIABILITY:
@@ -1388,7 +1392,11 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		switch (mof) {
 			case MOF_NON_STOP:
 				order->SetNonStopType((OrderNonStopFlags)data);
-				if (data & ONSF_NO_STOP_AT_DESTINATION_STATION) order->SetRefit(CT_NO_REFIT);
+				if (data & ONSF_NO_STOP_AT_DESTINATION_STATION) {
+					order->SetRefit(CT_NO_REFIT);
+					order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
+					order->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
+				}
 				break;
 
 			case MOF_STOP_LOCATION:
@@ -1441,6 +1449,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 					case OCV_REQUIRES_SERVICE:
 						if (occ != OCC_IS_TRUE && occ != OCC_IS_FALSE) order->SetConditionComparator(OCC_IS_TRUE);
+						order->SetConditionValue(0);
 						break;
 
 					case OCV_LOAD_PERCENTAGE:
