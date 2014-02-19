@@ -1168,6 +1168,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavení hry 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením {}{SILVER}kategorie {BLACK}na {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením {}{SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením {}{SILVER}kategorie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nic -
 
 STR_CONFIG_SETTING_OFF                                          :Vypnuto
@@ -2967,6 +2970,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}některé 
 STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Změnil se stav lokomotivy '{1:ENGINE}', když nebyla v depu
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Změnila se kapacita vozidla '{1:ENGINE}', i když nebylo v depu nebo nebylo přestavováno
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace

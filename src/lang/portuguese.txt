@@ -2883,6 +2883,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Faltam fic
 STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar dessincronizações e/ou outros problemas.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Mudou o estado electrificado do modelo de vagão '{1:ENGINE}' quando fora do depósito.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Mudou a capacidade do veículo para '{1:ENGINE}' quando não estiver no interior do depósito ou em adaptação
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorrecta
