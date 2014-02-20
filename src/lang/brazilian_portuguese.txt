@@ -1071,6 +1071,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Config. do jogo
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Config. da companhia (guardado no savegame; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Config. da companhia (guardado no savegame; afeta apenas a comp. atual)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringe a lista abaixo a mostrar apenas configs. alteradas
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Configs. básicas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Configs. avançadas
@@ -1085,6 +1087,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Config. do jogo
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Config. do jogo (guardado no savegame; afeta apenas o jogo atual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Config. da companhia (guardado no savegame; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Config. de companhia (guardado no savegame; afeta apenas a companhia atual)
+STR_CONFIG_SETTINGS_NONE                                        :{G=m}{WHITE}- Nenhum -
 
 STR_CONFIG_SETTING_OFF                                          :Desl.
 STR_CONFIG_SETTING_ON                                           :Lig.
@@ -2547,6 +2550,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceita: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Velocidade limite do trilho: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite de velocidade da rua: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rochas
@@ -2876,6 +2880,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Arquivos f
 STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' tem altas chances de causar desincronias e/ou travamentos
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Alterou o estado do vagão motorizado para '{1:ENGINE}' estando fora de um depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mudou o tamanho do veículo para '{1:ENGINE}' estando fora de um depósito
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}A capacidade do veículo mudou para '{1:ENGINE}' quando fora do depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta
