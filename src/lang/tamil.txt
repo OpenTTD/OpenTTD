@@ -228,6 +228,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}வட�
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}குழு அமைப்பினைத் தேர்ந்தெடுக்கவும்
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Select sorting order (descending/ascending)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Select sorting criteria
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select filtering criteria
@@ -239,7 +240,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}சா�
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}சாளர தலைப்பு - சாளரத்தை நகர்த்த இழுக்கவும்
 STR_TOOLTIP_SHADE                                               :{BLACK}சாளரத்தை சுருக்கவும் - தலைப்பை மட்டும் காண்பி
 STR_TOOLTIP_DEBUG                                               :{BLACK}Show NewGRF debug information
-STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable by the 'Close All Windows' key
+STR_TOOLTIP_STICKY                                              :{BLACK}இந்தப் பகுதியினை மூட முடியாதபடி செய். Ctrl+சொடுக்கு அழுத்தினால் இந்த அமைப்பு சேமிக்கப்படும்
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click and drag to resize this window
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list up/down
@@ -292,8 +293,8 @@ STR_SORT_BY_COST                                                :செலவு
 STR_SORT_BY_POWER                                               :சக்தி
 STR_SORT_BY_TRACTIVE_EFFORT                                     :இழுக்கை முயற்சி
 STR_SORT_BY_INTRO_DATE                                          :அறிமுகப்படுத்தப்பட்ட தேதி
-STR_SORT_BY_RUNNING_COST                                        :நடத்துதல் செலவு
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :ஆற்றல்/நடத்துதல் செலவு
+STR_SORT_BY_RUNNING_COST                                        :நடத்துதல் செலவுகள்
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :ஆற்றல்/செயற்படுத்தல் செலவு
 STR_SORT_BY_CARGO_CAPACITY                                      :சரக்கு கொள்ளளவு
 STR_SORT_BY_RANGE                                               :வரையறை
 STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
@@ -1034,18 +1035,21 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ஆட்டத
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களை மட்டுமே மாற்றும்)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; தற்போதைய நிறுவனத்தை மட்டுமே மாற்றும்)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}பகுப்பு:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}வகை:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :அடிப்படை அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :சிறப்பு அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :அதிக / அனைத்து அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :முதலில் இருந்த மதிப்பினை மாற்றம் செய்யப்பட்ட அமைப்புகள்
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}கீழுள்ள பட்டியலினை குறிப்பிட்ட அமைப்பு வகைகளுக்கு குறைக்கும்
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :அனைத்து அமைப்புகள்
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :அனைத்து அமைப்பு வகைகள்
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Client அமைப்புகள் (பதிவு செய்யப்படாது; அனைத்து ஆட்டங்களையும் மாற்றும்)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :ஆட்டத்தின் அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களில் மட்டும் மாற்றம் தெரியும்)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :ஆட்டத்தின் அமைப்புகள் (பதிவு செய்யப்பட்டது; தற்போதைய ஆட்டத்தில் மட்டும் மாற்றம் தெரியும்)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களில் மாற்றம் தெரியும்)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; தற்போதைய நிறுவனம் மட்டும்)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- ஒன்றுமில்லை -
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -1803,6 +1807,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}கொடுக்கப்படும் பணத்தின் அளவினை இடவும்
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}பார்வையாளர்
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}கடவுச்சொல்லினை நினைவில் வைத்திருக்காதே
@@ -2250,6 +2255,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}ஏற்றுக்கொள்ளப்படும் சரக்குகள்: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}இரயில் வேகத் தடை: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}சாலை வேகத்தடை: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :கற்கள்
@@ -2560,6 +2566,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<செல்�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<தவறான தொழிற்சாலை>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<செல்லுபடியாகாத வாகனம்>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF பதிவுகள் ஆராயப்படுகின்றன
@@ -2688,6 +2695,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}மு�
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}முந்தைய பக்கத்திற்குச் செல்லவும்
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}அடுத்தது
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}அடுத்த பக்கத்திற்கு செல்லவும்
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}செல்லுபடியாகாத குறிக்கோள் மேற்கோள்
 
 # Station list window
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl அழுத்தி ஒன்றிற்கும் மேற்ப்பட்ட பொருட்களைத் தேர்ந்தெடுக்கவும்
@@ -2718,6 +2726,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}நி�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}மாத வினியோகம் மற்றும் பகுதி தர மதிப்பீடு:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}குழுவிடு
 STR_STATION_VIEW_WAITING_STATION                                :நிலையம்: காத்திருக்கிறது
 STR_STATION_VIEW_WAITING_AMOUNT                                 :தொகை: காத்திருக்கிறது
 STR_STATION_VIEW_PLANNED_STATION                                :நிலையம்: திட்டமிடப்பட்டது

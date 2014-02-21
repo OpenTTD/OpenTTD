@@ -1085,6 +1085,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pengaturan perm
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan aktif)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada permainan baru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada perusahaan aktif)
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tampilkan semua hasil pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING} {BLACK}dan {SILVER}Jenis {BLACK}sampai {WHITE}Semua jenis pengaturan
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Tidak ada-
 
 STR_CONFIG_SETTING_OFF                                          :Tidak
