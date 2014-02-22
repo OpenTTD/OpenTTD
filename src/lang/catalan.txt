@@ -1087,7 +1087,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paràmetres del
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paràmetres del joc (emmagatzemats al joc desat; només afecten el joc actual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paràmetres de la companyia (emmagatzemats al jocs desats; només afecten els jocs nous)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paràmetres de la companyia (emmagatzemats al joc desat; només afecten la companyia actual)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostra tots els resultats de la cerca ajustant{}{SILVER}Categoria {BLACK}a {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar tots els resultats per opció de configuració{}{SILVER}Tipus {BLACK}a {WHITE}Tots els tipus d'opció
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostra tots els resultats de la cerca ajustant{}{SILVER}Categoria {BLACK}a {WHITE}{STRING} {BLACK}i {SILVER}Tipus {BLACK}a {WHITE}Tots els tipus d'ajustaments
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Cap -
 
 STR_CONFIG_SETTING_OFF                                          :Inactiu
