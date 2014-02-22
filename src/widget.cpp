@@ -2069,21 +2069,22 @@ Dimension NWidgetScrollbar::horizontal_dimension = {0, 0};
 /** Reset the cached dimensions. */
 /* static */ void NWidgetLeaf::InvalidateDimensionCache()
 {
-	shadebox_dimension.width  = shadebox_dimension.height  = 0;
-	debugbox_dimension.width  = debugbox_dimension.height  = 0;
-	stickybox_dimension.width = stickybox_dimension.height = 0;
-	resizebox_dimension.width = resizebox_dimension.height = 0;
-	closebox_dimension.width  = closebox_dimension.height  = 0;
-	dropdown_dimension.width  = dropdown_dimension.height  = 0;
+	shadebox_dimension.width   = shadebox_dimension.height   = 0;
+	debugbox_dimension.width   = debugbox_dimension.height   = 0;
+	defsizebox_dimension.width = defsizebox_dimension.height = 0;
+	stickybox_dimension.width  = stickybox_dimension.height  = 0;
+	resizebox_dimension.width  = resizebox_dimension.height  = 0;
+	closebox_dimension.width   = closebox_dimension.height   = 0;
+	dropdown_dimension.width   = dropdown_dimension.height   = 0;
 }
 
-Dimension NWidgetLeaf::shadebox_dimension  = {0, 0};
-Dimension NWidgetLeaf::debugbox_dimension  = {0, 0};
+Dimension NWidgetLeaf::shadebox_dimension   = {0, 0};
+Dimension NWidgetLeaf::debugbox_dimension   = {0, 0};
 Dimension NWidgetLeaf::defsizebox_dimension = {0, 0};
-Dimension NWidgetLeaf::stickybox_dimension = {0, 0};
-Dimension NWidgetLeaf::resizebox_dimension = {0, 0};
-Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
-Dimension NWidgetLeaf::dropdown_dimension  = {0, 0};
+Dimension NWidgetLeaf::stickybox_dimension  = {0, 0};
+Dimension NWidgetLeaf::resizebox_dimension  = {0, 0};
+Dimension NWidgetLeaf::closebox_dimension   = {0, 0};
+Dimension NWidgetLeaf::dropdown_dimension   = {0, 0};
 
 /**
  * Nested leaf widget.
