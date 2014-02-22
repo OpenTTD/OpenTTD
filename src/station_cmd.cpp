@@ -1757,7 +1757,8 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  *           bit 1: 0 For normal stops, 1 for drive-through.
  *           bit 2..3: The roadtypes.
  *           bit 5: Allow stations directly adjacent to other stations.
- *           bit 6..7: Entrance direction (#DiagDirection).
+ *           bit 6..7: Entrance direction (#DiagDirection) for normal stops.
+ *           bit 6: #Axis of the road for drive-through stops.
  *           bit 16..31: Station ID to join (NEW_STATION if build new one).
  * @param text Unused.
  * @return The cost of this operation or an error.
@@ -1791,12 +1792,17 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Trams only have drive through stops */
 	if (!is_drive_through && HasBit(rts, ROADTYPE_TRAM)) return CMD_ERROR;
 
-	DiagDirection ddir = Extract<DiagDirection, 6, 2>(p2);
-
-	/* Safeguard the parameters. */
-	if (!IsValidDiagDirection(ddir)) return CMD_ERROR;
-	/* If it is a drive-through stop, check for valid axis. */
-	if (is_drive_through && !IsValidAxis((Axis)ddir)) return CMD_ERROR;
+	DiagDirection ddir;
+	Axis axis;
+	if (is_drive_through) {
+		/* By definition axis is valid, due to there being 2 axes and reading 1 bit. */
+		axis = Extract<Axis, 6, 1>(p2);
+		ddir = AxisToDiagDir(axis);
+	} else {
+		/* By definition ddir is valid, due to there being 4 diagonal directions and reading 2 bits. */
+		ddir = Extract<DiagDirection, 6, 2>(p2);
+		axis = DiagDirToAxis(ddir);
+	}
 
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
 	if (ret.Failed()) return ret;
@@ -1804,7 +1810,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Total road stop cost. */
 	CommandCost cost(EXPENSES_CONSTRUCTION, roadstop_area.w * roadstop_area.h * _price[type ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS]);
 	StationID est = INVALID_STATION;
-	ret = CheckFlatLandRoadStop(roadstop_area, flags, is_drive_through ? 5 << ddir : 1 << ddir, is_drive_through, type, DiagDirToAxis(ddir), &est, rts);
+	ret = CheckFlatLandRoadStop(roadstop_area, flags, is_drive_through ? 5 << axis : 1 << ddir, is_drive_through, type, axis, &est, rts);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret);
 
@@ -1858,7 +1864,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					}
 				}
 
-				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, rs_type, rts | cur_rts, DiagDirToAxis(ddir));
+				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, rs_type, rts | cur_rts, axis);
 				road_stop->MakeDriveThrough();
 			} else {
 				/* Non-drive-through stop never overbuild and always count as two road bits. */
