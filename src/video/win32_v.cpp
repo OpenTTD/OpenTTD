@@ -62,6 +62,8 @@ static bool _draw_threaded;
 static ThreadObject *_draw_thread = NULL;
 /** Mutex to keep the access to the shared memory controlled. */
 static ThreadMutex *_draw_mutex = NULL;
+/** Event that is signaled when the drawing thread has finished initializing. */
+static HANDLE _draw_thread_initialized = NULL;
 /** Should we keep continue drawing? */
 static volatile bool _draw_continue;
 /** Local copy of the palette for use in the drawing thread. */
@@ -394,11 +396,7 @@ static void PaintWindowThread(void *)
 {
 	/* First tell the main thread we're started */
 	_draw_mutex->BeginCritical();
-	_draw_mutex->SendSignal();
-
-	/* Do our best to make sure the main thread is the one that
-	 * gets the signal, and not our wait below. */
-	Sleep(0);
+	SetEvent(_draw_thread_initialized);
 
 	/* Now wait for the first thing to draw! */
 	_draw_mutex->WaitForSignal();
@@ -1208,24 +1206,24 @@ void VideoDriver_Win32::MainLoop()
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
 		_draw_mutex = ThreadMutex::New();
-		if (_draw_mutex == NULL) {
+		_draw_thread_initialized = CreateEvent(NULL, FALSE, FALSE, NULL);
+		if (_draw_mutex == NULL || _draw_thread_initialized == NULL) {
 			_draw_threaded = false;
 		} else {
-			_draw_mutex->BeginCritical();
 			_draw_continue = true;
-
 			_draw_threaded = ThreadObject::New(&PaintWindowThread, NULL, &_draw_thread);
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
-				_draw_mutex->EndCritical();
 				delete _draw_mutex;
 				_draw_mutex = NULL;
+				CloseHandle(_draw_thread_initialized);
+				_draw_thread_initialized = NULL;
 			} else {
 				DEBUG(driver, 1, "Threaded drawing enabled");
-
-				/* Wait till the draw mutex has started itself. */
-				_draw_mutex->WaitForSignal();
+				/* Wait till the draw thread has started itself. */
+				WaitForSingleObject(_draw_thread_initialized, INFINITE);
+				_draw_mutex->BeginCritical();
 			}
 		}
 	}
@@ -1319,6 +1317,7 @@ void VideoDriver_Win32::MainLoop()
 		_draw_mutex->EndCritical();
 		_draw_thread->Join();
 
+		CloseHandle(_draw_thread_initialized);
 		delete _draw_mutex;
 		delete _draw_thread;
 	}
