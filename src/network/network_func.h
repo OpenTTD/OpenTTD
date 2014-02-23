@@ -12,6 +12,12 @@
 #ifndef NETWORK_FUNC_H
 #define NETWORK_FUNC_H
 
+/**
+ * Uncomment the following define to enable command replaying.
+ * See docs/desync.txt for details.
+ */
+// #define DEBUG_DUMP_COMMANDS
+
 #include "core/address.h"
 #include "network_type.h"
 #include "../console_type.h"
