@@ -601,7 +601,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
  * @param cmd   the command cost to return.
  * @param clear whether to keep the storage changes or not.
  */
-#define return_dcpi(cmd, clear) { _docommand_recursive = 0; ClearPersistentStorageChanges(clear); return cmd; }
+#define return_dcpi(cmd) { _docommand_recursive = 0; return cmd; }
 
 /*!
  * Helper function for the toplevel network safe docommand function for the current company.
@@ -645,7 +645,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 #endif
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return_dcpi(CMD_ERROR, false);
+	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return_dcpi(CMD_ERROR);
 
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0;
@@ -654,7 +654,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
 	if (_game_mode == GM_NORMAL && !exec_as_spectator && !Company::IsValidID(_current_company) && !(_current_company == OWNER_DEITY && (cmd_flags & CMD_DEITY) != 0)) {
-		return_dcpi(CMD_ERROR, false);
+		return_dcpi(CMD_ERROR);
 	}
 
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
@@ -665,8 +665,9 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	/* Test the command. */
 	_cleared_object_areas.Clear();
 	SetTownRatingTestMode(true);
-	ClearPersistentStorageChanges(false);
+	BasePersistentStorageArray::SwitchMode(PSM_ENTER_TESTMODE);
 	CommandCost res = proc(tile, flags, p1, p2, text);
+	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
 
 	/* Make sure we're not messing things up here. */
@@ -685,7 +686,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 			DEBUG(desync, 1, "cmdf: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text, GetCommandName(cmd));
 		}
 		cur_company.Restore();
-		return_dcpi(res, false);
+		return_dcpi(res);
 	}
 
 #ifdef ENABLE_NETWORK
@@ -701,7 +702,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 		 * This way it's not handled by DoCommand and only the
 		 * actual execution of the command causes messages. Also
 		 * reset the storages as we've not executed the command. */
-		return_dcpi(CommandCost(), false);
+		return_dcpi(CommandCost());
 	}
 #endif /* ENABLE_NETWORK */
 	DEBUG(desync, 1, "cmd: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text, GetCommandName(cmd));
@@ -709,8 +710,9 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
 	_cleared_object_areas.Clear();
-	ClearPersistentStorageChanges(false);
+	BasePersistentStorageArray::SwitchMode(PSM_ENTER_COMMAND);
 	CommandCost res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
+	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
 	if (cmd_id == CMD_COMPANY_CTRL) {
 		cur_company.Trash();
@@ -731,7 +733,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	if (!test_and_exec_can_differ) {
 		assert(res.GetCost() == res2.GetCost() && res.Failed() == res2.Failed()); // sanity check
 	} else if (res2.Failed()) {
-		return_dcpi(res2, false);
+		return_dcpi(res2);
 	}
 
 	/* If we're needing more money and we haven't done
@@ -741,7 +743,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 		 * So make sure the signal buffer is empty even in this case */
 		UpdateSignalsInBuffer();
 		SetDParam(0, _additional_cash_required);
-		return_dcpi(CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY), false);
+		return_dcpi(CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY));
 	}
 
 	/* update last build coordinate of company. */
@@ -755,7 +757,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
 
-	return_dcpi(res2, true);
+	return_dcpi(res2);
 }
 #undef return_dcpi
 

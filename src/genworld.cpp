@@ -105,6 +105,8 @@ static void _GenerateWorld(void *)
 		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
+		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
+
 		IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
 		/* Must start economy early because of the costs. */
 		StartupEconomy();
@@ -140,8 +142,6 @@ static void _GenerateWorld(void *)
 				GenerateTrees();
 			}
 		}
-
-		ClearPersistentStorageChanges(true);
 
 		/* These are probably pointless when inside the scenario editor. */
 		SetGeneratingWorldProgress(GWP_GAME_INIT, 3);
@@ -179,6 +179,8 @@ static void _GenerateWorld(void *)
 			}
 		}
 
+		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
+
 		ResetObjectToPlace();
 		_cur_company.Trash();
 		_current_company = _local_company = _gw.lc;
@@ -202,6 +204,7 @@ static void _GenerateWorld(void *)
 			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR, false);
 		}
 	} catch (...) {
+		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP, true);
 		if (_cur_company.IsValid()) _cur_company.Restore();
 		_generating_world = false;
 		_modal_progress_work_mutex->EndCritical();

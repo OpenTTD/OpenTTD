@@ -39,6 +39,7 @@ static void Save_PSAC()
 
 	/* Write the industries */
 	FOR_ALL_STORAGES(ps) {
+		ps->ClearChanges();
 		SlSetArrayIndex(ps->index);
 		SlObject(ps, _storage_desc);
 	}

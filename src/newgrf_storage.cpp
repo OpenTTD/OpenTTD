@@ -22,6 +22,10 @@ INSTANTIATE_POOL_METHODS(PersistentStorage)
 /** The changed storage arrays */
 static std::set<BasePersistentStorageArray*> *_changed_storage_arrays = new std::set<BasePersistentStorageArray*>;
 
+bool BasePersistentStorageArray::gameloop;
+bool BasePersistentStorageArray::command;
+bool BasePersistentStorageArray::testmode;
+
 /**
  * Remove references to use.
  */
@@ -42,25 +46,54 @@ void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 }
 
 /**
- * Clear the changes made since the last #ClearStorageChanges.
- * This is done for *all* storages that have been registered to with
- * #AddChangedStorage since the previous #ClearStorageChanges.
+ * Clear temporary changes made since the last call to SwitchMode, and
+ * set whether subsequent changes shall be persistent or temporary.
  *
- * This can be done in two ways:
- *  - saving the changes permanently
- *  - reverting to the previous version
- * @param keep_changes do we save or revert the changes since the last #ClearChanges?
+ * @param mode Mode switch affecting temporary/persistent changes.
+ * @param ignore_prev_mode Disable some sanity checks for exceptional call circumstances.
  */
-void ClearPersistentStorageChanges(bool keep_changes)
+/* static */ void BasePersistentStorageArray::SwitchMode(PersistentStorageMode mode, bool ignore_prev_mode)
 {
-	/* Loop over all changes arrays */
-	for (std::set<BasePersistentStorageArray*>::iterator it = _changed_storage_arrays->begin(); it != _changed_storage_arrays->end(); it++) {
-		if (!keep_changes) {
-			DEBUG(desync, 1, "Discarding persistent storage changes: Feature %d, GrfID %08X, Tile %d", (*it)->feature, BSWAP32((*it)->grfid), (*it)->tile);
-		}
-		(*it)->ClearChanges(keep_changes);
+	switch (mode) {
+		case PSM_ENTER_GAMELOOP:
+			assert(ignore_prev_mode || !gameloop);
+			assert(!command && !testmode);
+			gameloop = true;
+			break;
+
+		case PSM_LEAVE_GAMELOOP:
+			assert(ignore_prev_mode || gameloop);
+			assert(!command && !testmode);
+			gameloop = false;
+			break;
+
+		case PSM_ENTER_COMMAND:
+			assert((ignore_prev_mode || !command) && !testmode);
+			command = true;
+			break;
+
+		case PSM_LEAVE_COMMAND:
+			assert(ignore_prev_mode || command);
+			command = false;
+			break;
+
+		case PSM_ENTER_TESTMODE:
+			assert(!command && (ignore_prev_mode || !testmode));
+			testmode = true;
+			break;
+
+		case PSM_LEAVE_TESTMODE:
+			assert(ignore_prev_mode || testmode);
+			testmode = false;
+			break;
+
+		default: NOT_REACHED();
 	}
 
-	/* And then clear that array */
+	/* Discard all temporary changes */
+	for (std::set<BasePersistentStorageArray*>::iterator it = _changed_storage_arrays->begin(); it != _changed_storage_arrays->end(); it++) {
+		DEBUG(desync, 1, "Discarding persistent storage changes: Feature %d, GrfID %08X, Tile %d", (*it)->feature, BSWAP32((*it)->grfid), (*it)->tile);
+		(*it)->ClearChanges();
+	}
 	_changed_storage_arrays->clear();
 }

@@ -16,6 +16,18 @@
 #include "tile_type.h"
 
 /**
+ * Mode switches to the behaviour of persistent storage array.
+ */
+enum PersistentStorageMode {
+	PSM_ENTER_GAMELOOP,   ///< Enter the gameloop, changes will be permanent.
+	PSM_LEAVE_GAMELOOP,   ///< Leave the gameloop, changes will be temporary.
+	PSM_ENTER_COMMAND,    ///< Enter command scope, changes will be permanent.
+	PSM_LEAVE_COMMAND,    ///< Leave command scope, revert to previous mode.
+	PSM_ENTER_TESTMODE,   ///< Enter command test mode, changes will be tempoary.
+	PSM_LEAVE_TESTMODE,   ///< Leave command test mode, revert to previous mode.
+};
+
+/**
  * Base class for all persistent NewGRF storage arrays. Nothing fancy, only here
  * so we have a generalised access to the virtual methods.
  */
@@ -26,14 +38,24 @@ struct BasePersistentStorageArray {
 
 	virtual ~BasePersistentStorageArray();
 
+	static void SwitchMode(PersistentStorageMode mode, bool ignore_prev_mode = false);
+
+protected:
 	/**
-	 * Clear the changes made since the last #ClearChanges.
-	 * This can be done in two ways:
-	 *  - saving the changes permanently
-	 *  - reverting to the previous version
-	 * @param keep_changes do we save or revert the changes since the last #ClearChanges?
+	 * Discard temporary changes.
 	 */
-	virtual void ClearChanges(bool keep_changes) = 0;
+	virtual void ClearChanges() = 0;
+
+	/**
+	 * Check whether currently changes to the storage shall be persistent or
+	 * temporary till the next call to ClearChanges().
+	 */
+	static bool AreChangesPersistent() { return (gameloop || command) && !testmode; }
+
+private:
+	static bool gameloop;
+	static bool command;
+	static bool testmode;
 };
 
 /**
@@ -82,7 +104,9 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 		if (this->storage[pos] == value) return;
 
 		/* We do not have made a backup; lets do so */
-		if (this->prev_storage == NULL) {
+		if (AreChangesPersistent()) {
+			assert(this->prev_storage == NULL);
+		} else if (this->prev_storage == NULL) {
 			this->prev_storage = MallocT<TYPE>(SIZE);
 			memcpy(this->prev_storage, this->storage, sizeof(this->storage));
 
@@ -107,19 +131,13 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 		return this->storage[pos];
 	}
 
-	/**
-	 * Clear the changes, or assign them permanently to the storage.
-	 * @param keep_changes Whether to assign or ditch the changes.
-	 */
-	void ClearChanges(bool keep_changes)
+	void ClearChanges()
 	{
-		assert(this->prev_storage != NULL);
-
-		if (!keep_changes) {
+		if (this->prev_storage != NULL) {
 			memcpy(this->storage, this->prev_storage, sizeof(this->storage));
+			free(this->prev_storage);
+			this->prev_storage = NULL;
 		}
-		free(this->prev_storage);
-		this->prev_storage = NULL;
 	}
 };
 
@@ -189,8 +207,6 @@ struct TemporaryStorageArray {
 };
 
 void AddChangedPersistentStorage(BasePersistentStorageArray *storage);
-void ClearPersistentStorageChanges(bool keep_changes);
-
 
 typedef PersistentStorageArray<int32, 16> OldPersistentStorage;
 

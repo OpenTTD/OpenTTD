@@ -1355,15 +1355,14 @@ void StateGameLoop()
 	}
 	if (HasModalProgress()) return;
 
-	ClearPersistentStorageChanges(false);
-
 	Layouter::ReduceLineCache();
 
 	if (_game_mode == GM_EDITOR) {
+		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		RunTileLoop();
 		CallVehicleTicks();
 		CallLandscapeTick();
-		ClearPersistentStorageChanges(true);
+		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 		UpdateLandscapingLimits();
 
 		CallWindowTickEvent();
@@ -1382,12 +1381,13 @@ void StateGameLoop()
 		 *  for multiplayer compatibility */
 		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
+		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
 		IncreaseDate();
 		RunTileLoop();
 		CallVehicleTicks();
 		CallLandscapeTick();
-		ClearPersistentStorageChanges(true);
+		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 
 #ifndef DEBUG_DUMP_COMMANDS
 		AI::GameLoop();
