@@ -192,12 +192,6 @@ static void ClientSizeChanged(int w, int h)
 		BlitterFactory::GetCurrentBlitter()->PostResize();
 
 		GameSizeChanged();
-
-		/* redraw screen */
-		if (_wnd.running) {
-			_screen.dst_ptr = _wnd.buffer_bits;
-			UpdateWindows();
-		}
 	}
 }
 
@@ -211,7 +205,6 @@ int RedrawScreenDebug()
 	HBITMAP old_bmp;
 	HPALETTE old_palette;
 
-	_screen.dst_ptr = _wnd.buffer_bits;
 	UpdateWindows();
 
 	dc = GetDC(_wnd.main_wnd);
@@ -755,8 +748,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			if (!_cursor.in_window) {
 				_cursor.in_window = true;
 				SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
-
-				DrawMouseCursor();
 			}
 
 			if (_cursor.fix_at) {
@@ -1066,9 +1057,6 @@ static bool AllocateDibSection(int w, int h, bool force)
 
 	if (!force && w == _screen.width && h == _screen.height) return false;
 
-	_screen.width = w;
-	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
-	_screen.height = h;
 	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
@@ -1086,6 +1074,11 @@ static bool AllocateDibSection(int w, int h, bool force)
 	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID**)&_wnd.buffer_bits, NULL, 0);
 	if (_wnd.dib_sect == NULL) usererror("CreateDIBSection failed");
 	ReleaseDC(0, dc);
+
+	_screen.width = w;
+	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
+	_screen.height = h;
+	_screen.dst_ptr = _wnd.buffer_bits;
 
 	return true;
 }
@@ -1300,7 +1293,6 @@ void VideoDriver_Win32::MainLoop()
 
 			if (_force_full_redraw) MarkWholeScreenDirty();
 
-			_screen.dst_ptr = _wnd.buffer_bits;
 			UpdateWindows();
 			CheckPaletteAnim();
 		} else {
@@ -1314,7 +1306,6 @@ void VideoDriver_Win32::MainLoop()
 			Sleep(1);
 			if (_draw_threaded) _draw_mutex->BeginCritical();
 
-			_screen.dst_ptr = _wnd.buffer_bits;
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}
