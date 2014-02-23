@@ -1085,6 +1085,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pengaturan perm
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan aktif)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada permainan baru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada perusahaan aktif)
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK} Tampilkan semua hasil pencarian dengan pengaturan {} {SILVER} Jenis {BLACK} ke {WHITE} Semua jenis pengaturan
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tampilkan semua hasil pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING} {BLACK}dan {SILVER}Jenis {BLACK}sampai {WHITE}Semua jenis pengaturan
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Tidak ada-
 
@@ -2879,6 +2880,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Berkas hil
 STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya NewGRF '{0:STRING}' dapat menyebabkan de-sinkron dan atau crash
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ini akan mengubah keadaan gerbong listrik '{1:ENGINE}' saat tidak berada di depo
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta sebanyak '{1:ENGINE}' ketika tidak berada di dalam depo
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Mengubah kapasitas kendaraan '{1:ENGINE}' ketika tidak di dalam depot atau reparasi
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau macet
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah
