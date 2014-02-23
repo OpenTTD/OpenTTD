@@ -1326,27 +1326,38 @@ void VideoDriver_Win32::MainLoop()
 
 bool VideoDriver_Win32::ChangeResolution(int w, int h)
 {
+	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
 	if (_window_maximize) ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL);
 
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
 
-	return this->MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
+	bool ret = this->MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
+	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
+	return ret;
 }
 
 bool VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 {
-	return this->MakeWindow(full_screen);
+	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
+	bool ret = this->MakeWindow(full_screen);
+	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
+	return ret;
 }
 
 bool VideoDriver_Win32::AfterBlitterChange()
 {
-	return AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
+	bool ret = AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
+	return ret;
 }
 
 void VideoDriver_Win32::EditBoxLostFocus()
 {
+	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
 	CancelIMEComposition(_wnd.main_wnd);
 	SetCompositionPos(_wnd.main_wnd);
 	SetCandidatePos(_wnd.main_wnd);
+	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
 }
