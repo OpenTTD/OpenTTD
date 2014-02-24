@@ -1213,7 +1213,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		/* Perform NewStation checks */
 
 		/* Check if the station size is permitted */
-		if (HasBit(statspec->disallowed_platforms, numtracks - 1) || HasBit(statspec->disallowed_lengths, plat_len - 1)) {
+		if (HasBit(statspec->disallowed_platforms, min(numtracks - 1, 7)) || HasBit(statspec->disallowed_lengths, min(plat_len - 1, 7))) {
 			return CMD_ERROR;
 		}
 

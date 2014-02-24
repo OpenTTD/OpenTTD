@@ -894,23 +894,27 @@ private:
 	{
 		if (statspec == NULL || _settings_client.gui.station_dragdrop) return;
 
-		/* If current number of tracks is not allowed, make it as big as possible (which is always less than currently selected) */
+		/* If current number of tracks is not allowed, make it as big as possible */
 		if (HasBit(statspec->disallowed_platforms, _settings_client.gui.station_numtracks - 1)) {
 			this->RaiseWidget(_settings_client.gui.station_numtracks + WID_BRAS_PLATFORM_NUM_BEGIN);
 			_settings_client.gui.station_numtracks = 1;
-			while (HasBit(statspec->disallowed_platforms, _settings_client.gui.station_numtracks - 1)) {
-				_settings_client.gui.station_numtracks++;
+			if (statspec->disallowed_platforms != UINT8_MAX) {
+				while (HasBit(statspec->disallowed_platforms, _settings_client.gui.station_numtracks - 1)) {
+					_settings_client.gui.station_numtracks++;
+				}
+				this->LowerWidget(_settings_client.gui.station_numtracks + WID_BRAS_PLATFORM_NUM_BEGIN);
 			}
-			this->LowerWidget(_settings_client.gui.station_numtracks + WID_BRAS_PLATFORM_NUM_BEGIN);
 		}
 
 		if (HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
 			this->RaiseWidget(_settings_client.gui.station_platlength + WID_BRAS_PLATFORM_LEN_BEGIN);
 			_settings_client.gui.station_platlength = 1;
-			while (HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
-				_settings_client.gui.station_platlength++;
+			if (statspec->disallowed_lengths != UINT8_MAX) {
+				while (HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
+					_settings_client.gui.station_platlength++;
+				}
+				this->LowerWidget(_settings_client.gui.station_platlength + WID_BRAS_PLATFORM_LEN_BEGIN);
 			}
-			this->LowerWidget(_settings_client.gui.station_platlength + WID_BRAS_PLATFORM_LEN_BEGIN);
 		}
 	}
 
