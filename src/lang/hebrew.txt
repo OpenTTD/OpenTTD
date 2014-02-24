@@ -1086,6 +1086,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :הגדרות מ
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :הגדרות משחק (נמצא בשמורים; משפיע רק על משחק נוכחי)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :הגדרות חברה (נמצא בשמורים; משפיע רק על משחקים חדשים)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :הגדרות חברה (נמצא בשמורים; משפיע רק על חברה נוכחית)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- אין -
 
 STR_CONFIG_SETTING_OFF                                          :כבוי
 STR_CONFIG_SETTING_ON                                           :דלוק
@@ -3354,9 +3355,9 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}שכפל
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}שכפל כלי טייס
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}פעולה זו תרכוש העתק נוסף של הרכבת וכל קרונותיה. לחץ על כפתור זה ולאחר מכן על רכבת בתוך או מחוץ למוסך. Ctrl+לחיצה לשיתוף הוראות הרכבת. Shift+לחיצה מציג הערכת עלות ללא רכישה
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}פעולה זו תרכוש העתק נוסף של כלי רכב. לחץ על כפתור זה ולאחר מכן על כלי רכב בתוך או מחוץ למוסך. Ctrl+לחיצה יעתיק גם את הוראות כלי הרכב
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}פעולה זו תרכוש העתק נוסף של כלי שייט חדש. לחץ על כפתור זה ולאחר מכן על כלי שייט בתוך או מחוץ למבדוק. Ctrl+לחיצה יעתיק גם את הוראות כלי השייט
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}פעולה זו תרכוש העתק נוסף של כלי הטייס. לחץ על כפתור זה ולאחר מכן על כלי טייס בתוך או מחוץ למוסך-המטוסים. Ctrl+לחיצה יעתיק גם את הוראות כלי הטייס
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}פעולה זו תרכוש העתק נוסף של כלי רכב. לחץ על כפתור זה ולאחר מכן על כלי רכב בתוך או מחוץ למוסך. Ctrl+לחיצה יעתיק גם את הוראות כלי הרכב. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}פעולה זו תרכוש העתק נוסף של כלי שייט חדש. לחץ על כפתור זה ולאחר מכן על כלי שייט בתוך או מחוץ למבדוק. Ctrl+לחיצה יעתיק גם את הוראות כלי השייט. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}פעולה זו תרכוש העתק נוסף של כלי הטייס. לחץ על כפתור זה ולאחר מכן על כלי טייס בתוך או מחוץ למוסך-המטוסים. Ctrl+לחיצה משתף את הוראות כלי הטייס. Shift+לחיצה מציג הערכת עלות ללא רכישה
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}מקד את החלון הראשי על מיקום מוסך הרכבות. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום המוסך
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה הראשית על מיקום מוסך כלי הרכב. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום המוסך
@@ -3430,7 +3431,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :רכבות חד
 STR_REPLACE_MAGLEV_VEHICLES                                     :רכבות פס-מגנטי
 
 STR_REPLACE_REMOVE_WAGON                                        :{ORANGE}{STRING}{BLACK} : הסרת קרונות
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}הסר קרונות מהסוף על מנת לשמור על האורך המקורי של הרכבת
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}שמור על האורך המקורי של הרכבת בעת שימוש בהחלפה אוטומטית, במידה והקטר מאריך את הרכבת הסר קרונות מתחילת הרכבת
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3445,10 +3446,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}.שלח 
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}שלח את כלי השייט למבדוק
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sשלח את כלי הטייס לסככת המטוסים
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה. Ctrl+לחיצה יעתיק גם את ההוראות
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}.פעולה זו תיצור עותק נוסף של כלי הרכב. Ctrl+לחיצה תעתיק גם את ההוראות
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}פעולה זו תיצור עותק של כלי השייט. Ctrl+לחיצה תעתיק גם את ההוראות
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}פעולה זו תיצור עותק של כלי הטייס. Ctrl+לחיצה תעתיק גם את ההוראות
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה. Ctrl+לחיצה ישתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}פעולה זו תיצור עותק נוסף של כלי הרכב. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}פעולה זו תיצור עותק של כלי השייט. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}פעולה זו תיצור עותק של כלי הטייס. Ctrl+לחיצה תשתף את ההוראות. Shift+לחיצה מציג הערכת עלות ללא רכישה
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}הכרח את הרכבת להמשיך מבלי להמתין לרמזור
 
@@ -3591,7 +3592,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}(יעד�
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}לוח זמנים
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}עבור להצגת לוח זמנים
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}רשימת יעדים - לחץ על יעד על מנת להדגישו
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}רשימת יעדים - לחץ על יעד על מנת להדגישו. Ctrl+לחיצה מתמקד ביעד
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3639,7 +3640,7 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}נתונ
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :אחוז טעינה
 STR_ORDER_CONDITIONAL_RELIABILITY                               :אמינות
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :מהירות מירבית
-STR_ORDER_CONDITIONAL_AGE                                       ::(גיל הכלי (שנים
+STR_ORDER_CONDITIONAL_AGE                                       :גיל (שנים)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :זקוק לטיפול
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :תמיד
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :זמן חיים נותר (שנים)
@@ -3671,7 +3672,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :עבור דרך
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :עבור דרך סככת המטוסים הקרובה
 STR_ORDER_CONDITIONAL                                           :דילוג מותנה על יעד
 STR_ORDER_SHARE                                                 :שתף פקודות
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}הכנס הוראה חדשה לפני ההוראה המודגשת, או הוסף הוראה לסוף הרשימה. Ctrl גורם להוראות של תחנות להיות 'טען מטען כלשהו במלואו', נקודות ציון להיות 'ללא עצירה' והוראות מוסכים להיות 'בשירות'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}הכנס הוראה חדשה לפני ההוראה המודגשת, או הוסף הוראה לסוף הרשימה. Ctrl גורם להוראות של תחנות להיות 'טען מטען כלשהו במלואו', נקודות ציון להיות 'ללא עצירה' והוראות מוסכים להיות 'בשירות'. 'שתף הוראות' או Ctrl מאפשר שיתוף הוראות עם כלי הרכב הנבחר. לחיצה על כלי רכב מעתיקה את ההוראות ממנו. הוראה למוסך מבטלת את הטיפולים האוטומטיים של כלי הרכב
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}הצג את כל הרכבים אשר עבורם יעד זה הוא מצומד
 
@@ -3709,7 +3710,7 @@ STR_ORDER_TRANSFER                                              :(העבר מט�
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(העבר מטען קיים והמתן להעמסה מלאה)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(העבר מטען קיים והמתן עד להעמסה מלאה של כל סוג מטען)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(העבר מטען קיים ועזוב ריק)
-STR_ORDER_NO_UNLOAD                                             :(אל תפרוק, העמס מטען זמין)
+STR_ORDER_NO_UNLOAD                                             :(אל תפרוק והעמס מטען זמין)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(אל תפרוק והמתן להעמסה מלאה)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(אל תפרוק, המתן עד להעמסה כוללת ומלאה)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(אל תפרוק ואל תעמיס)
@@ -3807,17 +3808,17 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}בחר �
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}דה-באג לבינה מלאכותית
+STR_AI_DEBUG                                                    :{WHITE}דה-באג למשחק/בינה מלאכותית
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}שם הבינה המלאכותית
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}הגדרות בינה מלאכותית
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}הגדרות
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}שנה את הגדרות הבינה המלאכותית
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} הטען מחדש את הסקריפט ואתחל בינה מלאכותית
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}אפשר/בטל עצירה כאשר הודעת לוג של AI מתאימה למחרוזת העצירה
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}עצירה פועלת:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}עצירה פועלת
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}כאשר הודעת לוג של ה-AI מתאימה למחרוזת זו, המשחק יופסק.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}כאשר הודעת לוג של הבינה המלאכותית מתאימה למחרוזת זו, המשחק יופסק
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}התאם רישיות
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}בחר התאמת רישיות בהשוואת הודעות לוג של AI כנגד מחרוזת העצירה
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}המשך
@@ -3827,11 +3828,11 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}סקרי
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}בדוק את הלוג של סקריפט המשחק
 
 STR_ERROR_AI_NO_AI_FOUND                                        :לא נמצאה בינה מלאכותית מתאימה לטעינה.{}בינה מלאכותית זו הינה מדומה ולא תעשה כלום.{}באפשרותך להוריד מספר אלגורתמים של בינה מלאכותית בעזרת מערכת 'תוכן מקוון'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד מאלגורתמי הבינה המלאכותית קרס. אנא דווח זאת ליוצר האלגוריתם וצרף צילום מסך של מסך ה-Debug.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד מאלגורתמי הבינה המלאכותית קרס. אנא דווח זאת ליוצר האלגוריתם וצרף צילום מסך של מסך הדה-באג.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}חלון הדה-באג זמין רק עבור השרת
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}הגדרות משחק
+STR_AI_CONFIG_CAPTION                                           :{WHITE}הגדרות משחק/בינה מלאכותית
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}סקריפט המשחק אשר יטען במשחק הבא
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}שחקני המחשב אשר יטענו במשחק הבא
 STR_AI_CONFIG_HUMAN_PLAYER                                      :שחקן אנושי
@@ -3865,7 +3866,7 @@ STR_AI_LIST_VERSION                                             :{LTBLUE}גרס�
 STR_AI_LIST_URL                                                 :{LTBLUE}קישור: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}אשר
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} בחר סוג בינה מלאכותית שהודגש
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} בחר בינה מלאכותית שהודגשה
 STR_AI_LIST_CANCEL                                              :{BLACK}בטל
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל תשנה את התסריט
 
@@ -3924,16 +3925,16 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :קובץ לא �
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :קןבץ לא כתיב
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :בדיקת שלמות נתונים נכשלה
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<לא זמין>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}המשחק נשמר ללא תמיכה בחשמליות. כל החשמליות הוסרו.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}המשחק נשמר בגירסה ללא תמיכה בחשמליות. כל החשמליות הוסרו.
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}יצירת המפה בוטלה...{}... אין מיקומי ערים מתאימים
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   ::{WHITE}אין ערים בתרחיש זה...
 
 STR_ERROR_PNGMAP                                                :{WHITE}לא יכול לטעון שטח אדמה מקובץ...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... הקובץ לא נמצא.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... לא יכול להמיר את סוג התמונה. צריך תמונת PNG של 8 או 24-ביט.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... משהו לא הלך כשורה. מצטער. (כנראה קובץ מקולקל)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... הקובץ לא נמצא
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... לא יכול להמיר את סוג התמונה. צריך תמונת PNG של 8 או 24-ביט
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... משהו לא הלך כשורה. (כנראה קובץ לא תקין)
 
 STR_ERROR_BMPMAP                                                :{WHITE}לא יכול לטעון קרקע מתמונת BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... לא יכול להמיר סוג תמונה
@@ -3944,7 +3945,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}אזהר
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}?שינוי גדול של גודל המפה המקורית אינו מומלץ. להמשיך
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}נמצאה ערכת צלילים לגיבוי בלבד. אם ברצונך לשמוע צלילים במשחק, יש להתקין ערכת צלילים בעזרת מערכת הורדת תוכן.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}נמצאה ערכת צלילים לגיבוי בלבד. אם ברצונך לשמוע צלילים במשחק, יש להתקין ערכת צלילים בעזרת מערכת הורדת תוכן
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}צילום מסך ענק
@@ -4017,7 +4018,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... קר
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... קרוב מידי לעיר אחרת
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... יותר מידי ערים
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... אין יותר מקום על המפה
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}עיר זאת לא תבנה כבישים. באפשרותך לאפשר בניית כבישים בעזרת תפריט הגדרות מתקמדות->כלכלה->ערים.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}העיר לא תבנה כבישים. באפשרותך לאפשר בניית כבישים בעזרת תפריט הגדרות מתקמדות->כלכלה->ערים
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}עבודות כביש בפעולה
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}לא ניתן למחוק עיר זו...{}תחנה או מוסך מקושר לעיר או שמשבצת בבעלות העיר לא ניתנת להסרה
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... אין אף מיקום מתאים לפסל במרכז עיירה זו
@@ -4033,7 +4034,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ני
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ניתן לבנות בערים עם אוכלוסייה בעלת לפחות 1200 איש
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... יכול להבנות רק ליד אזורי יערות הגשם
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... יכול להבנות רק ליד אזורי מדבר
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... יכול להבנות רק בערים
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... יכול להבנות רק בערים (במקום בתים)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... ניתן לבנייה רק בקרבת מרכז עיירה
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... ניתן לבנות רק באיזורים נמוכים
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... יכול להיות ממוקם בסמוך לשולי המפה בלבד
@@ -4638,10 +4639,10 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :מעבורת נ
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :'רחפת 'באקוול 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :'מעבורת נוסעים 'צו'גר צ'וג
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :'מעבורת נוסעים 'שיברשייק
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :'ספינת משא 'יאט
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :'ספינת משא 'באקוול'
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :ספינת משא 'מייטי מובר'
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :ספינת משא 'פאוורנאוט'
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :ספינת משא יאט
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :ספינת משא באקוול
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :ספינת משא מייטי מובר
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :ספינת משא פאוורנאוט
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :'סמפסון יו-52'
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :'קולמן קאונט'
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :'אף-אף-פי דארט'
