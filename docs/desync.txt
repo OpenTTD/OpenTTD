@@ -20,13 +20,13 @@ Table of contents
 
 1.1) OpenTTD multiplayer architecture
 ---- --------------------------------
-  OpenTTD has a huge game state, which changes all of the time.
-  The savegame containts the complete game state at a specific point
+  OpenTTD has a huge gamestate, which changes all of the time.
+  The savegame contains the complete gamestate at a specific point
   in time. But this state changes completely each tick: Vehicles move
   and trees grow.
 
   However, most of these changes in the gamestate are deterministic:
-  Without a player interfering a vehicle follows it's orders always
+  Without a player interfering a vehicle follows its orders always
   in the same way, and trees always grow the same.
 
   In OpenTTD multiplayer synchronisation works by creating a savegame
@@ -60,7 +60,7 @@ Table of contents
      check simple preconditions. (Just to give the client an
      immediate response without bothering the server and waiting for
      the response.) The test-run may not actually change the
-     game state, all changes must be discarded.
+     gamestate, all changes must be discarded.
    - If the local test-run succeeds the command is sent to the server.
    - The server inserts the command into the command queue, which
      assigns a network frame to the commands, i.e. when it shall be
@@ -106,10 +106,11 @@ Table of contents
   The important thing here is: The detection of the Desync is
   only an ultimate failure detection. It does not give any
   indication on when the Desync happened. The Desync may after
-  all occured long ago, and just did not affect the checksum
+  all have occured long ago, and just did not affect the checksum
   up to now. The checksum may have matched 10 times or more
   since the Desync happend, and only now the Desync has spiraled
-  enough to finally affect the checksum.
+  enough to finally affect the checksum. (There was once a desync
+  which was only noticed by the checksum after 20 game years.)
 
 1.3) Typical causes of Desyncs
 ---- -------------------------
@@ -119,13 +120,18 @@ Table of contents
         gamestate is not saved in the savegame.
       - Some information which affects the progression of the
         gamestate is not loaded from the savegame.
+        This includes the case that something is not completely
+        reset before loading the savegame, so data from the
+        previous game is carried over to the new one.
    - The gamestate does not behave deterministic.
       - Cache mismatch: The game logic depends on some cached
         values, which are not invalidated properly. This is
         the usual case for NewGRF-specific Desyncs.
       - Undefined behaviour: The game logic performs multiple
         things in an undefined order or with an undefined
-        result.
+        result. E.g. when sorting something with a key while
+        some keys are equal. Or some computation that depends
+        on the CPU architecture (32/64 bit, little/big endian).
    - The gamestate is modified when it shall not be modified.
       - The test-run of a command alters the gamestate.
       - The gamestate is altered by a player or script without
