@@ -1,3 +1,9 @@
+openttd (1.4.0~beta5-0) unstable; urgency=low
+
+  * New upstream release 1.4.0-beta5
+
+ -- OpenTTD <info@openttd.org>  Tue, 25 Feb 2014 10:15:00 +0100
+
 openttd (1.4.0~beta4-0) unstable; urgency=low
 
   * New upstream release 1.4.0-beta4
