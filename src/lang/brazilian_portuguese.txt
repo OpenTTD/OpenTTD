@@ -1087,6 +1087,8 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Config. do jogo
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Config. do jogo (guardado no savegame; afeta apenas o jogo atual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Config. da companhia (guardado no savegame; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Config. de companhia (guardado no savegame; afeta apenas a companhia atual)
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar todos resultados por configuração{}{SILVER}Tipo {BLACK}até {WHITE}Todas configurações de tipos
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos resultados por configuração{}{SILVER}Category {BLACK}até {WHITE}{STRING} {BLACK}e {SILVER}Tipo {BLACK}até {WHITE}Todas configurações de tipos
 STR_CONFIG_SETTINGS_NONE                                        :{G=m}{WHITE}- Nenhum -
 
 STR_CONFIG_SETTING_OFF                                          :Desl.
