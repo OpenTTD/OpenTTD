@@ -1076,6 +1076,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Игрови н
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Игрови настройки (съхраняват се в записаната игра; важат само за текущата игра)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Настройки за компанията (съхраняват се в записаната игра; важат само за нови игри)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Настройки за компанията (съхраняват се в записаната игра; важат само за текущата компания)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Нищо -
 
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено

@@ -1127,6 +1127,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Mängu seaded (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult praegust ettevõtet)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Rühm:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Liik:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Piirab alljärgnevat nimekirja muudetud seadete kuvamiseks
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Põhilised seaded
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Täpsemad seaded
@@ -1141,6 +1143,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Mängu seaded (
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma seaded (hoitakse salvestuses; mõjutab ainult praegust firmat)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Kõiki otsingu tulemusi näeb, kui{}{SILVER}rühm {BLACK}on {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Kõiki otsingu tulemusi näeb, kui{}{SILVER}liik {BLACK}on {WHITE}Kõik seadistuste liigid
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Kõiki otsingu tulemusi näeb, kui{}{SILVER}rühm {BLACK}on {WHITE}{STRING} {BLACK}ja {SILVER}liik {BLACK}on {WHITE}Kõik seadistuste liigid
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Puudub -
 
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
@@ -2603,6 +2609,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastuvõetavad veosed: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Raudtee kiiruspiirang: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Lubatud piirkiirus: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kaljud
@@ -2932,6 +2939,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Puuduvad f
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}See muutis sõiduki '{1:ENGINE}' vedavate vagunite olekut väljaspool depood
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes on sõiduki '{1:ENGINE}' pikkus muudetud.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Sõiduki '{1:ENGINE}' kandevõimet muudeti, kuid sõiduk ei olnud depoos ega ümberseadistamisel
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte «{1:COMPANY}» rongil «{0:VEHICLE}» pikkus on kõlbmatu. Midagi on valesti NewGRF-iga. Mäng võib kokku joosta või sünkroonist välja minna
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' sisaldab väära teavet.

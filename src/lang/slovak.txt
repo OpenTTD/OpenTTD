@@ -1154,6 +1154,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavenia hry 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavenia hry (uložené v uložených hrách; ovplyvní iba aktuálnu hru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavenia spoločnosti (uložené v uložených hrách; ovplyvní iba nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavenia spoločnosti (uchované v uloženej hre; ovplyvnia iba aktuálnu spoločnosť)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Zobrazenie všetkých výsledkov vyhľadávania nastavením{}{SILVER}kategórie {BLACK}na {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Zobrazenie všetkých výsledkov vyhľadávania nastavením{}{SILVER}typu {BLACK}na {WHITE}Všetky typy nastavenia
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Zobrazenie všetkých výsledkov vyhľadávania nastavením{}{SILVER}kategórie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všetky typy nastavenia
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nič -
 
 STR_CONFIG_SETTING_OFF                                          :nie
@@ -2947,6 +2950,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Chýbajúc
 STR_NEWGRF_BROKEN                                               :{WHITE}Správanie NewGRF '{STRING}' môže sposobiť chybu obrazu a/alebo pád hry.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmenilo stav hnacieho vozidla v '{1:ENGINE}' keď nebolo v depe.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dĺžku vozidla '{1:ENGINE}' keď nebolo v depe.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Bola zmenená kapacita vozidla '{1:ENGINE}', hoci nebolo v depe alebo prestavané
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patriaci '{COMPANY}' má neplatnú dlžku. Pravdeposobne to spôsobil problém s NewGRF. Môže nastať chybné zobrazenie alebo pád hry.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nesprávne informácie.

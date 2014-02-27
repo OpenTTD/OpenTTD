@@ -1006,7 +1006,7 @@ STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maks. a
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Kun finansiering
 STR_MINIMAL                                                     :Minimal
-STR_NUM_VERY_LOW                                                :Særs låg
+STR_NUM_VERY_LOW                                                :Særs lågt
 STR_NUM_LOW                                                     :Lite
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Høgt
@@ -1072,6 +1072,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinnstilling
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmainnstilling (lagra med enkeltspel; påverkar berre nye spel)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmainnstilling (lagra med enkeltspel; påverkar berre noverande firma)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Gjer at lista under berre viser innstillingar som er gjorde om
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnlegjande instillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte instillingar
@@ -1086,6 +1088,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinnstilling
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spelinstillingar (gjeldande spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firmainnstillingar (nye spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma instillingar (gjeldande firma)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -1184,6 +1187,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Køyretøykøar
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gjer at køyretøy stoppar foran vegsperringar til dei vert fjerna. Alternativet er at dei snur for å finne ein annan veg
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på vindauget dersom pila er nær ytterkantane på skjermen: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktivert
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hovudvindauge
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Alle tilleggsvindauge
 STR_CONFIG_SETTING_BRIBE                                        :Tillet bestikkelse av bystyret: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillet kjøp av eksklusive transportretter: {STRING}
@@ -1279,6 +1283,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kart
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rull kart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Av
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Rullehjulets hastigheit på kartet: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skjerm-tastatur: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Deaktivert
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dobbelklikk
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelt klikk (når vald)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelt klikk (umiddelbart)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Høgreklikkemulering: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+klikk
@@ -1308,11 +1317,14 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Syne rutetabell
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Syne ankomst og avferd i rutetabellane: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :Hurtig-laging av køyretøy-ordrar: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard jernbanetype (etter nytt/lasta spel): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jernbanetype vald etter oppstart eller innlasting av spel. 'fyrste tilgjengelege' vel den eldste typen jernbane, 'sist tilgjengelege' vel den nyaste typen jernbane, og 'mest brukt' vel den typen som for øyeblikket er mest nytta
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelege
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelege
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukte
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Syne reserverte spor: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Gi reserverte sport ein anna farge for å assistera ved problem med tog som nektar å køyra inn på spor-baserte delar
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hold byggjeverktya aktive etter bruk: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hald bygningsverkty for bruer, tunnelar, osv. opne etter bruk
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper utgifter i firmarekneskapen-vindauget: {STRING}
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Samandrag: {STRING}
@@ -1801,7 +1813,7 @@ STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} fi
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. antal firma:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begrens tenaren til eit visst antal firma
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} tilskodar{P "" ar}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. antal tilskoderar:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. antal tilskodarar:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrens tenaren til eit visst antal tilskodarar
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk som vert tala på tenaren:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spelarar skal vete kva språk ein talar på denne tenaren
@@ -2418,6 +2430,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Godtekne varer: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Fartsgrense for jernbanespor: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Veg-fartsgrense: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Steinar
