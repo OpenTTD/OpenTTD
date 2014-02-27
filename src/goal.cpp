@@ -92,7 +92,11 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		g->progress = NULL;
 		g->completed = false;
 
-		InvalidateWindowData(WC_GOALS_LIST, 0);
+		if (g->company == INVALID_COMPANY) {
+			InvalidateWindowClassesData(WC_GOALS_LIST);
+		} else {
+			InvalidateWindowData(WC_GOALS_LIST, g->company);
+		}
 		if (Goal::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 
 		_new_goal_id = g->index;
@@ -117,9 +121,14 @@ CommandCost CmdRemoveGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	if (flags & DC_EXEC) {
 		Goal *g = Goal::Get(p1);
+		CompanyID c = g->company;
 		delete g;
 
-		InvalidateWindowData(WC_GOALS_LIST, 0);
+		if (c == INVALID_COMPANY) {
+			InvalidateWindowClassesData(WC_GOALS_LIST);
+		} else {
+			InvalidateWindowData(WC_GOALS_LIST, c);
+		}
 		if (Goal::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 	}
 
@@ -146,7 +155,11 @@ CommandCost CmdSetGoalText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		free(g->text);
 		g->text = strdup(text);
 
-		InvalidateWindowData(WC_GOALS_LIST, 0);
+		if (g->company == INVALID_COMPANY) {
+			InvalidateWindowClassesData(WC_GOALS_LIST);
+		} else {
+			InvalidateWindowData(WC_GOALS_LIST, g->company);
+		}
 	}
 
 	return CommandCost();
@@ -175,7 +188,11 @@ CommandCost CmdSetGoalProgress(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			g->progress = strdup(text);
 		}
 
-		InvalidateWindowData(WC_GOALS_LIST, 0);
+		if (g->company == INVALID_COMPANY) {
+			InvalidateWindowClassesData(WC_GOALS_LIST);
+		} else {
+			InvalidateWindowData(WC_GOALS_LIST, g->company);
+		}
 	}
 
 	return CommandCost();
@@ -199,7 +216,11 @@ CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		Goal *g = Goal::Get(p1);
 		g->completed = p2 == 1;
 
-		InvalidateWindowData(WC_GOALS_LIST, 0);
+		if (g->company == INVALID_COMPANY) {
+			InvalidateWindowClassesData(WC_GOALS_LIST);
+		} else {
+			InvalidateWindowData(WC_GOALS_LIST, g->company);
+		}
 	}
 
 	return CommandCost();
