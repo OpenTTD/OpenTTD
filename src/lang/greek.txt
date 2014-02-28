@@ -291,6 +291,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Φιλτ
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για φιλτράρισμα της λίστας
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Επιλέξτε κατάταξη ομαδοποίησης
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Επιλογή σειράς ταξινόμησης (καθοδικά/ανοδικά)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Επιλογή κριτηρίου ταξινόμησης
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Επιλέξτε κριτήρια φιλτραρίσματος
@@ -302,12 +303,13 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Κλεί
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε το για να το μετακινήσετε
 STR_TOOLTIP_SHADE                                               :{BLACK}Σκίαση παραθύρου - Εμφάνιση μόνο της μπάρας τιτλου
 STR_TOOLTIP_DEBUG                                               :{BLACK}Εμφάνιση πληροφοριών αποσφαλμάτωσης για NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Κλιμακώνει το παράθυρο στο προκαθορισμένο μέγεθος. Με Ctrl+Click αποθηκεύεται το τρέχον μέγεθος ως προκαθορισμένο
 STR_TOOLTIP_STICKY                                              :{BLACK}Σημειώστε αυτό το παραθύρο ωστέ να μην κλείνει από το πλήκτρο «Κλείσιμο Όλων των Παραθύρων». Πατήστε Ctrl+Κλικ για να αποθηκεύσετε την κατάσταση απο επιλογή
 STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντε κλίκ και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα κίνησης - κινεί τη λίστα αριστερά/δεξιά
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κλπ. σε συγκεκριμένο τετράγωνο. Το Ctrl επιλέγει την επιφάνεια διαγώνια. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κλπ. σε συγκεκριμένο τετράγωνο. Με Ctrl επιλέγεται μια επιφάνεια διαγώνια. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
@@ -346,6 +348,8 @@ STR_SORT_BY_LENGTH                                              :Μήκος
 STR_SORT_BY_LIFE_TIME                                           :Υπόλοιπη διάρκεια ζωής
 STR_SORT_BY_TIMETABLE_DELAY                                     :Καθυστέρηση δρομολογίου
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
+STR_SORT_BY_WAITING_TOTAL                                       :Σύνολο εμπορεύματος εν αναμονή
+STR_SORT_BY_WAITING_AVAILABLE                                   :Διαθέσιμο εμπόρευμα εν αναμονή
 STR_SORT_BY_RATING_MAX                                          :Υψηλότερη βαθμολογία φορτίου
 STR_SORT_BY_RATING_MIN                                          :Χαμηλότερη βαθμολογία φορτίου
 STR_SORT_BY_ENGINE_ID                                           :EngineID (κλασική ταξινόμηση)
@@ -371,12 +375,13 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Εμφά
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Εμφάνιση λίστας σταθμών της εταιρίας
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Εμφάνιση οικονομικών πληροφοριών εταιρίας
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Εμφάνιση γενικών πληροφοριών της εταιρίας
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Εμφάνιση λίστας στόχων
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφάνιση γραφημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιριών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Χρηματοδοτήστε την κατασκευή νέας βιομηχανίας
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τρένων της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το άνοιγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Με Ctrl+Κλικ εναλλάσσει το άνοιγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφανίστε λίστα με τα αεροσκάφη της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Σμίκρυνση εικόνας
@@ -770,8 +775,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Εμφα
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Εμφανίστε μεταφορικούς οδούς στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Εμφανίστε βλάστηση στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Εμφανίστε ιδιοκτήτες γης στον χάρτη
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Επιλέξτε μια βιομηχανία για εναλλαγή εμφάνισής της. Το Ctrl+Κλικ απενεργοποιεί όλους τους τύπους εκτός του επιλεγμένου. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των τύπων
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Επιλέξτε μια εταιρεία για εναλλαγή εμφάνισης της περιουσίας της. Το Ctrl+Κλικ απενεργοποιεί όλες τις εταιρείες εκτός της επιλεγμένης. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των εταιρειών
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Επιλέξτε μια βιομηχανία για εναλλαγή εμφάνισής της. Με Ctrl+Κλικ απενεργοποιούνται όλοι οι τύποι εκτός του επιλεγμένου. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των τύπων
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Επιλέξτε μια εταιρεία για εναλλαγή εμφάνισης της περιουσίας της. Με Ctrl+Κλικ απενεργοποιούνται όλες οι εταιρείες εκτός της επιλεγμένης. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των εταιρειών
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Δρόμοι
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Σιδηρόδρομοι
@@ -1152,6 +1157,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ρύθμιση 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο νέα παιχνίδια)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο την τρέχουσα εταιρεία)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Κατηγορία:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Τύπος:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Μειώνει την παρακάτω λίστα προβάλλοντας μόνο αλλαγμένες ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις
@@ -1166,6 +1173,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ρυθμίσε�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ρυθμίσεις παιχνιδιού (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο το τρέχον παιχνίδι)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ρυθμίσεις εταιρίας (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο τα νέα παιχνίδια)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ρυθμίσεις εταιρίας (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο την τωρινή εταιρία)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{SILVER}Κατηγορία {BLACK}εώς {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{SILVER}Τύπος {BLACK}εώς {WHITE}Όλοι οι τύποι ρυθμίσεων
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Εμφάνιση όλων των αποτελεσμάτων αναζήτησης ανά ρύθμιση{}{SILVER}Κατηγορία {BLACK}εώς {WHITE}{STRING} {BLACK}και {SILVER}Τύπος {BLACK}εώς {WHITE}Όλοι οι τύποι ρυθμίσεων
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Κανένα -
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργή
@@ -1554,14 +1565,14 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτ�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο κτίσιμο σηματοφόρων πριν από το: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Εμφανίζεται ένα παράθυρο για την επιλογή του τύπου του σήματος που θα τοποθετηθεί, αντί για την απλή μετατροπή από τον έναν τύπο στον άλλο χωρίς παράθυρο, με πάτημα πάνω σε τοποθετημένα σήματα κρατώντας το Ctrl
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Εμφανίζεται παράθυρο για την επιλογή του τύπου του σήματος που θα τοποθετηθεί, αντί για την απλή μετατροπή από τον έναν τύπο στον άλλο χωρίς παράθυρο, με κλικ σε τοποθετημένα σήματα κρατώντας πατημένο το Ctrl
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Τύπος σηματοδότη που θα χρησιμοποιείται ως προεπιλογή: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Προκαθορισμένος τύπος σημάτων που χρησιμοποιείται
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Σηματοδότες τμήματος
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Σηματοδότες τροχιάς
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Σηματοδότες μονόδρομης τροχιάς
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Περιήγηση στους τύπους σηματοδότησης: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Επιλέξτε τους τύπους σημάτων μεταξύ των οποίων θα γίνονται οι αλλαγές, όταν πατάτε πάνω σε ένα τοποθετημένο σήμα κρατώντας το Ctrl
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Επιλέξτε τους τύπους σημάτων μεταξύ των οποίων θα γίνονται οι αλλαγές, όταν κάνετε κλικ σε ένα τοποθετημένο σήμα κρατώντας πατημένο το Ctrl
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Μόνο σηματοδότες τμήματος
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Μόνο σηματοδότες τροχιάς
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλοι
@@ -1725,7 +1736,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδ
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και Δέσμης Ενεργειών
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Το Ctrl+Κλικ παρακάμπτει τη ρύθμιση του χάρτη
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Με Ctrl+Κλικ παρακάμπτεται η ρύθμιση του χάρτη
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού με χρήση χάρτη υψομετρίας
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
@@ -2284,12 +2295,12 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Κατασκε�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Μονοτρόχιου Σιδηρόδρομου
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Κατασκευή Σιδηροδρόμου Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Σιδηροτροχιά. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Με Ctrl εναλλάσσεται η κατασκευή/αφαίρεση σιδηρόδρομου. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Σιδηροτροχιά. Με Ctrl εναλλάσσεται η κατασκευή/αφαίρεση σιδηρόδρομου. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστάσιου (για αγορά και επισκευή τρένων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Το Ctrl ενεργοποιεί συνένωση σημείων καθοδήγησης. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Το Ctrl ενεργοποιεί συνένωση σταθμών.Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Το Ctrl εναλλάσσει σηματοφόρους/σηματοδότες{}Το σύρσιμο κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Το Ctrl κατασκευάζει μέχρι την επομένη διασταύρωση{}Το Ctrl+Κλικ εναλλάσσει το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Με Ctrl ενεργοποιείται η συνένωση σημείων καθοδήγησης. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Με Ctrl ενεργοποιείται η συνένωση σταθμών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Με Ctrl εναλλάσσονται σηματοφόροι/σηματοδότες{}Το σύρσιμο κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Με το Ctrl πατημένο, κατασκευάζει μέχρι την επομένη διασταύρωση{}Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους, σηματοδότες, σημείων καθοδήγησης και σταθμών. Κρατώντας πατημένο το Ctrl αφαιρεί και τον σιδηρόδρομο από τα σημεία καθοδήγησης και σταθμούς
@@ -2363,16 +2374,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Σιλικόν�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Δρόμου
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Τροχιόδρομου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση δρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιοδρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου με χρήση της λειτουργίας Αυτόματου Δρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση δρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή τροχιοδρόμου με χρήση της λειτουργίας Αυτόματης Γραμμής. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Με Ctrl εναλλάσσεται η κατασκευή/αφαίρεση δρόμου. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιοδρόμου. Με Ctrl εναλλάσσεται η κατασκευή/αφαίρεση τροχιόδρομου. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου με χρήση της λειτουργίας Αυτόματου Δρόμου. Με Ctrl εναλλάσσεται η κατασκευή/αφαίρεση δρόμου. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή τροχιοδρόμου με χρήση της λειτουργίας Αυτόματης Γραμμής. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Το Ctrl ενεργοποιεί συνένωση σταθμών. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Το Ctrl ενεργοποιεί συνένωση επιβατικών σταθμών. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών. Το Ctrl ενεργοποιεί συνένωση σταθμών φόρτωσης. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Το Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Με Ctrl ενεργοποιείται η συνένωση σταθμών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Με Ctrl ενεργοποιείται η συνένωση επιβατικών σταθμών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών. Με Ctrl ενεργοποιείται η συνένωση σταθμών φόρτωσης. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Με Ctrl ενεργοποιείται συνένωση εμπορευματικών σταθμών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ενεργοποίηση/Απενεργοποίηση μονόδρομων
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιοδρόμου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
@@ -2403,7 +2414,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Κανά
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Κτίσιμο καναλιών. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή υδατοφράκτη. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναυπηγείο πλοίων (για αγορά και επισκευή πλοίων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Το Ctrl ενεργοποιεί συνένωση λιμένων. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Με Ctrl ενεργοποιείται η συνένωση λιμένων. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Τοποθετήστε μια σημαδούρα που μπορεί να χρησιμοποιηθεί ως σημείο καθοδήγησης. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή καναλιού. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Προσδιορισμός θαλάσσιας επιφάνειας.{}Δημιουργία καναλιού, εκτός εάν το πλήκτρο Ctrl είναι κρατημένο στο επίπεδο της θάλασσας, όπου θα πλημμυρίσει τις παρακείμενες περιοχές
@@ -2418,7 +2429,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Λιμά
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Αεροδρόμια
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου. Το Ctrl ενεργοποιεί συνένωση αεροδρομίων. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου. Με Ctrl ενεργοποιείται η συνένωση αεροδρομίων. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Επιλογή Αεροδρομίου
@@ -2564,6 +2575,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτά εμπορεύματα: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας δρόμου: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Πέτρες
@@ -2893,6 +2905,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Λείπο
 STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF «{0:STRING}» είναι πιθανό να προκαλέσει αποσυγχρονισμούς ή/και απρόοπτα κλεισίματα
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Άλλαξε την κατάσταση *** για «{1:ENGINE}» όταν δεν είναι μέσα σε αμαξοστάσιο
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος «{1:ENGINE}» ενώ δεν βρισκόταν μέσα σε αμαξοστάσιο
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Άλλαξε τη χωριτικότητα όχηματος για τη «{1:ENGINE}» όταν δεν είναι σε αμαξοστάσιο ή διαδικασία μετατροπής
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρένο «{VEHICLE}» που ανήκει στην εταιρία «{COMPANY}» έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από προβλήματα με NewGRF. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κλείσει απρόοπτα.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF «{0:STRING}» δίνει λάθος πληροφορίες
@@ -2951,7 +2964,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Η πό�
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} ημέρ{P α ες} (χρηματοδοτούμενη)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Η πόλη {RED}δεν{BLACK} επεκτείνεται
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Επίπεδο θορύβου στη πόλη: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Το Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της πόλης
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της πόλης
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Τοπική αρχή
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Εμφάνιση πληροφοριών για την τοπική αρχή
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή του ονόματος της πόλης
@@ -3044,7 +3057,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Μετα
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - κάνετε κλικ στο όνομα για κεντράρισμα στο σταθμό. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του σταθμού
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσότερα από ένα αντικείμενα
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσότερο από ένα αντικείμενο
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμ{P ός οί}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
