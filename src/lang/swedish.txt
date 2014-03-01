@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinställnin
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Företagsinställning (sparad i spel-fil och påverkar enbart nya spel)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Företagsinställning (sparad i spel-fil och påverkar enbart nuvarande företag)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begränsar listan till att endast visa ändrade inställningar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundläggande inställningar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerade inställningar
@@ -1084,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinställnin
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spelinställningar (sparas i spel-fil och påverkar enbart nuvarande spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Företagsinställningar (sparas i spel-fil och påverkar enbart nya spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Företagsinställningar (sparas i spel-fil och påverkar bara aktuellt företag)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Visa alla sökresultat genom att sätta{}{SILVER}Kategori {BLACK}till {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Visa alla sökresultat genom att sätta{}{SILVER}Typ {BLACK}till {WHITE}Alla typer av inställningar
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Visa alla sökresultat genom att sätta{}{SILVER}Kategori {BLACK}till {WHITE}{STRING} {BLACK}och {SILVER}Typ {BLACK}till {WHITE}Alla typer av inställningar
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Inga -
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
