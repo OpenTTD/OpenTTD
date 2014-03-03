@@ -637,9 +637,10 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseS
 	/* callback_param1 == 2 means  we are resolving the foundation sprites. */
 	StationResolverObject object(statspec, st, tile, CBID_NO_CALLBACK, 2, layout | (edge_info << 16));
 
-	ClearRegister(0x100);
 	const SpriteGroup *group = ResolveStation(object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
+
+	/* Note: SpriteGroup::Resolve zeroes all registers, so register 0x100 is initialised to 0. (compatibility) */
 	return group->GetResult() + GetRegister(0x100);
 }
 

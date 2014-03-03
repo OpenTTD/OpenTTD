@@ -33,17 +33,6 @@ static inline uint32 GetRegister(uint i)
 	return _temp_store.GetValue(i);
 }
 
-/**
- * Clears the value of a so-called newgrf "register".
- * @param i index of the register
- * @pre i < 0x110
- */
-static inline void ClearRegister(uint i)
-{
-	extern TemporaryStorageArray<int32, 0x110> _temp_store;
-	_temp_store.StoreValue(i, 0);
-}
-
 /* List of different sprite group types */
 enum SpriteGroupType {
 	SGT_REAL,
