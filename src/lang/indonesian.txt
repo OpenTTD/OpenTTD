@@ -1070,6 +1070,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setting permain
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setting perusahaan (disimpan dalam penyimpanan; hanya mempengaruhi permainan baru)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setting perusahaan (disimpan dalam penyimpanan; hanya mempengaruhi permainan saat ini)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Jenis:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hambat daftar dibawah, hanya tampilkan aturan yang diubah
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pengaturan dasar
@@ -1085,6 +1086,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pengaturan perm
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan aktif)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada permainan baru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada perusahaan aktif)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Tampilkan semua pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK} Tampilkan semua hasil pencarian dengan pengaturan {} {SILVER} Jenis {BLACK} ke {WHITE} Semua jenis pengaturan
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tampilkan semua hasil pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING} {BLACK}dan {SILVER}Jenis {BLACK}sampai {WHITE}Semua jenis pengaturan
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Tidak ada-
