@@ -38,13 +38,21 @@ struct VehicleScopeResolver : public ScopeResolver {
 
 /** Resolver for a vehicle (chain) */
 struct VehicleResolverObject : public ResolverObject {
+	/** Application of 'wagon overrides'. */
+	enum WagonOverride {
+		WO_NONE,     //!< Resolve no wagon overrides.
+		WO_UNCACHED, //!< Resolve wagon overrides.
+		WO_CACHED,   //!< Resolve wagon overrides using TrainCache::cached_override.
+		WO_SELF,     //!< Resolve self-override (helicopter rotors and such).
+	};
+
 	VehicleScopeResolver self_scope;     ///< Scope resolver for the indicated vehicle.
 	VehicleScopeResolver parent_scope;   ///< Scope resolver for its parent vehicle.
 
 	VehicleScopeResolver relative_scope; ///< Scope resolver for an other vehicle in the chain.
 	byte cached_relative_count;          ///< Relative position of the other vehicle.
 
-	VehicleResolverObject(EngineID engine_type, const Vehicle *v, bool info_view = false,
+	VehicleResolverObject(EngineID engine_type, const Vehicle *v, WagonOverride wagon_override, bool info_view = false,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 
 	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0);

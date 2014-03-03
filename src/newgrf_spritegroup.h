@@ -321,6 +321,26 @@ struct ResolverObject {
 	uint32 reseed[VSG_END];     ///< Collects bits to rerandomise while triggering triggers.
 
 	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
+	const SpriteGroup *root_spritegroup; ///< Root SpriteGroup to use for resolving
+
+	/**
+	 * Resolve SpriteGroup.
+	 * @return Result spritegroup.
+	 */
+	const SpriteGroup *Resolve()
+	{
+		return SpriteGroup::Resolve(this->root_spritegroup, *this);
+	}
+
+	/**
+	 * Resolve callback.
+	 * @return Callback result.
+	 */
+	uint16 ResolveCallback()
+	{
+		const SpriteGroup *result = Resolve();
+		return result != NULL ? result->GetCallbackResult() : CALLBACK_FAILED;
+	}
 
 	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 

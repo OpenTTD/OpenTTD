@@ -79,15 +79,17 @@ RailTypeScopeResolver::RailTypeScopeResolver(ResolverObject &ro, TileIndex tile,
 
 /**
  * Resolver object for rail types.
+ * @param rti Railtype. NULL in NewGRF Inspect window.
  * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
  * @param context Are we resolving sprites for the upper halftile, or on a bridge?
- * @param grffile The GRF to do the lookup for.
+ * @param rtsg Railpart of interest
  * @param param1 Extra parameter (first parameter of the callback, except railtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
-RailTypeResolverObject::RailTypeResolverObject(TileIndex tile, TileContext context, const GRFFile *grffile, uint32 param1, uint32 param2)
-	: ResolverObject(grffile, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, tile, context)
+RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
+	: ResolverObject(rti != NULL ? rti->grffile[rtsg] : NULL, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, tile, context)
 {
+	this->root_spritegroup = rti != NULL ? rti->group[rtsg] : NULL;
 }
 
 /**
@@ -104,8 +106,8 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 
 	if (rti->group[rtsg] == NULL) return 0;
 
-	RailTypeResolverObject object(tile, context, rti->grffile[rtsg]);
-	const SpriteGroup *group = SpriteGroup::Resolve(rti->group[rtsg], object);
+	RailTypeResolverObject object(rti, tile, context, rtsg);
+	const SpriteGroup *group = object.Resolve();
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult();
@@ -127,9 +129,9 @@ SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalTy
 
 	uint32 param1 = gui ? 0x10 : 0x00;
 	uint32 param2 = (type << 16) | (var << 8) | state;
-	RailTypeResolverObject object(tile, TCX_NORMAL, rti->grffile[RTSG_SIGNALS], param1, param2);
+	RailTypeResolverObject object(rti, tile, TCX_NORMAL, RTSG_SIGNALS, param1, param2);
 
-	const SpriteGroup *group = SpriteGroup::Resolve(rti->group[RTSG_SIGNALS], object);
+	const SpriteGroup *group = object.Resolve();
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult();

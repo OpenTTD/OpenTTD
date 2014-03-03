@@ -217,6 +217,7 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject(ats->grf_prop.grffile, callback, callback_param1, callback_param2), tiles_scope(*this, ats, tile, st)
 {
+	this->root_spritegroup = ats->grf_prop.spritegroup[0];
 }
 
 /**
@@ -237,10 +238,7 @@ AirportTileScopeResolver::AirportTileScopeResolver(ResolverObject &ro, const Air
 uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2, const AirportTileSpec *ats, Station *st, TileIndex tile, int extra_data = 0)
 {
 	AirportTileResolverObject object(ats, tile, st, callback, param1, param2);
-	const SpriteGroup *group = SpriteGroup::Resolve(ats->grf_prop.spritegroup[0], object);
-	if (group == NULL) return CALLBACK_FAILED;
-
-	return group->GetCallbackResult();
+	return object.ResolveCallback();
 }
 
 static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte colour, StationGfx gfx)
@@ -275,7 +273,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const Airport
 	}
 
 	AirportTileResolverObject object(airts, ti->tile, st);
-	const SpriteGroup *group = SpriteGroup::Resolve(airts->grf_prop.spritegroup[0], object);
+	const SpriteGroup *group = object.Resolve();
 	if (group == NULL || group->type != SGT_TILELAYOUT) {
 		return false;
 	}

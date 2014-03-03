@@ -432,6 +432,7 @@ IndustriesResolverObject::IndustriesResolverObject(TileIndex tile, Industry *ind
 	industries_scope(*this, tile, indus, type, random_bits),
 	town_scope(NULL)
 {
+	this->root_spritegroup = GetIndustrySpec(type)->grf_prop.spritegroup[0];
 }
 
 IndustriesResolverObject::~IndustriesResolverObject()
@@ -490,10 +491,7 @@ IndustriesScopeResolver::IndustriesScopeResolver(ResolverObject &ro, TileIndex t
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile)
 {
 	IndustriesResolverObject object(tile, industry, type, 0, callback, param1, param2);
-	const SpriteGroup *group = SpriteGroup::Resolve(GetIndustrySpec(type)->grf_prop.spritegroup[0], object);
-	if (group == NULL) return CALLBACK_FAILED;
-
-	return group->GetCallbackResult();
+	return object.ResolveCallback();
 }
 
 /**
@@ -523,12 +521,10 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	ind.psa = NULL;
 
 	IndustriesResolverObject object(tile, &ind, type, seed, CBID_INDUSTRY_LOCATION, 0, creation_type);
-	const SpriteGroup *group = SpriteGroup::Resolve(GetIndustrySpec(type)->grf_prop.spritegroup[0], object);
+	uint16 result = object.ResolveCallback();
 
 	/* Unlike the "normal" cases, not having a valid result means we allow
 	 * the building of the industry, as that's how it's done in TTDP. */
-	if (group == NULL) return CommandCost();
-	uint16 result = group->GetCallbackResult();
 	if (result == CALLBACK_FAILED) return CommandCost();
 
 	return GetErrorMessageFromLocationCallbackResult(result, indspec->grf_prop.grffile, STR_ERROR_SITE_UNSUITABLE);
@@ -596,7 +592,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		}
 
 		SB(object.callback_param2, 8, 16, loop);
-		const SpriteGroup *tgroup = SpriteGroup::Resolve(spec->grf_prop.spritegroup[0], object);
+		const SpriteGroup *tgroup = object.Resolve();
 		if (tgroup == NULL || tgroup->type != SGT_INDUSTRY_PRODUCTION) break;
 		const IndustryProductionSpriteGroup *group = (const IndustryProductionSpriteGroup *)tgroup;
 

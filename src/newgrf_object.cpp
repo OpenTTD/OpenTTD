@@ -356,24 +356,6 @@ unhandled:
 }
 
 /**
- * Get the object's sprite group.
- * @param spec The specification to get the sprite group from.
- * @param o    The object to get he sprite group for.
- * @return The resolved sprite group.
- */
-static const SpriteGroup *GetObjectSpriteGroup(const ObjectSpec *spec, const Object *o)
-{
-	const SpriteGroup *group = NULL;
-
-	if (o == NULL) group = spec->grf_prop.spritegroup[CT_PURCHASE_OBJECT];
-	if (group != NULL) return group;
-
-	/* Fall back to the default set if the selected cargo type is not defined */
-	return spec->grf_prop.spritegroup[0];
-
-}
-
-/**
  * Constructor of the object resolver.
  * @param obj Object being resolved.
  * @param tile %Tile of the object.
@@ -387,6 +369,8 @@ ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, 
 	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), object_scope(*this, obj, tile, view)
 {
 	this->town_scope = NULL;
+	this->root_spritegroup = (obj == NULL && spec->grf_prop.spritegroup[CT_PURCHASE_OBJECT] != NULL) ?
+			spec->grf_prop.spritegroup[CT_PURCHASE_OBJECT] : spec->grf_prop.spritegroup[0];
 }
 
 ObjectResolverObject::~ObjectResolverObject()
@@ -428,10 +412,7 @@ TownScopeResolver *ObjectResolverObject::GetTown()
 uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view)
 {
 	ObjectResolverObject object(spec, o, tile, view, callback, param1, param2);
-	const SpriteGroup *group = SpriteGroup::Resolve(GetObjectSpriteGroup(spec, o), object);
-	if (group == NULL) return CALLBACK_FAILED;
-
-	return group->GetCallbackResult();
+	return object.ResolveCallback();
 }
 
 /**
@@ -471,7 +452,7 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 	Object *o = Object::GetByTile(ti->tile);
 	ObjectResolverObject object(spec, o, ti->tile);
 
-	const SpriteGroup *group = SpriteGroup::Resolve(GetObjectSpriteGroup(spec, o), object);
+	const SpriteGroup *group = object.Resolve();
 	if (group == NULL || group->type != SGT_TILELAYOUT) return;
 
 	DrawTileLayout(ti, (const TileLayoutSpriteGroup *)group, spec);
@@ -487,7 +468,7 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view)
 {
 	ObjectResolverObject object(spec, NULL, INVALID_TILE, view);
-	const SpriteGroup *group = SpriteGroup::Resolve(GetObjectSpriteGroup(spec, NULL), object);
+	const SpriteGroup *group = object.Resolve();
 	if (group == NULL || group->type != SGT_TILELAYOUT) return;
 
 	const DrawTileSprites *dts = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(NULL);

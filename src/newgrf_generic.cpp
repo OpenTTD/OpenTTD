@@ -179,17 +179,17 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject &object, ui
 
 	/* Test each feature callback sprite group. */
 	for (GenericCallbackList::const_iterator it = _gcl[feature].begin(); it != _gcl[feature].end(); ++it) {
-		const SpriteGroup *group = it->group;
 		object.grffile = it->file;
+		object.root_spritegroup = it->group;
 		/* Set callback param based on GRF version. */
 		object.callback_param1 = it->file->grf_version >= 8 ? param1_grfv8 : param1_grfv7;
-		group = SpriteGroup::Resolve(group, object);
-		if (group == NULL || group->GetCallbackResult() == CALLBACK_FAILED) continue;
+		uint16 result = object.ResolveCallback();
+		if (result == CALLBACK_FAILED) continue;
 
 		/* Return NewGRF file if necessary */
 		if (file != NULL) *file = it->file;
 
-		return group->GetCallbackResult();
+		return result;
 	}
 
 	/* No callback returned a valid result, so we've failed. */

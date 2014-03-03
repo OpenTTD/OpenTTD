@@ -237,6 +237,7 @@ AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, byte a
 		CallbackID callback, uint32 param1, uint32 param2)
 	: ResolverObject(AirportSpec::Get(airport_id)->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, airport_id, layout)
 {
+	this->root_spritegroup = AirportSpec::Get(airport_id)->grf_prop.spritegroup[0];
 }
 
 /**
@@ -258,7 +259,7 @@ AirportScopeResolver::AirportScopeResolver(ResolverObject &ro, TileIndex tile, S
 SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout)
 {
 	AirportResolverObject object(INVALID_TILE, NULL, as->GetIndex(), layout);
-	const SpriteGroup *group = SpriteGroup::Resolve(as->grf_prop.spritegroup[0], object);
+	const SpriteGroup *group = object.Resolve();
 	if (group == NULL) return as->preview_sprite;
 
 	return group->GetResult();
@@ -267,10 +268,7 @@ SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout)
 uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Station *st, TileIndex tile)
 {
 	AirportResolverObject object(tile, st, st->airport.type, st->airport.layout, callback, param1, param2);
-	const SpriteGroup *group = SpriteGroup::Resolve(st->airport.GetSpec()->grf_prop.spritegroup[0], object);
-	if (group == NULL) return CALLBACK_FAILED;
-
-	return group->GetCallbackResult();
+	return object.ResolveCallback();
 }
 
 /**
@@ -283,8 +281,7 @@ uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Sta
 StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback)
 {
 	AirportResolverObject object(INVALID_TILE, NULL, as->GetIndex(), layout, (CallbackID)callback);
-	const SpriteGroup *group = SpriteGroup::Resolve(as->grf_prop.spritegroup[0], object);
-	uint16 cb_res = (group != NULL) ? group->GetCallbackResult() : CALLBACK_FAILED;
+	uint16 cb_res = object.ResolveCallback();
 	if (cb_res == CALLBACK_FAILED || cb_res == 0x400) return STR_UNDEFINED;
 	if (cb_res > 0x400) {
 		ErrorUnknownCallbackResult(as->grf_prop.grffile->grfid, callback, cb_res);
