@@ -85,7 +85,7 @@ STR_CARGO_PLURAL_WOOD.b                                         :drewno
 STR_CARGO_PLURAL_WOOD.n                                         :drewnem
 STR_CARGO_PLURAL_WOOD.m                                         :drewnie
 STR_CARGO_PLURAL_WOOD.w                                         :drewno
-STR_CARGO_PLURAL_IRON_ORE                                       :Ruda Żelaza
+STR_CARGO_PLURAL_IRON_ORE                                       :Ruda żelaza
 STR_CARGO_PLURAL_IRON_ORE.d                                     :rudy żelaza
 STR_CARGO_PLURAL_IRON_ORE.c                                     :rudzie żelaza
 STR_CARGO_PLURAL_IRON_ORE.b                                     :rudę żelaza
@@ -204,7 +204,7 @@ STR_CARGO_PLURAL_COLA.b                                         :colę
 STR_CARGO_PLURAL_COLA.n                                         :colą
 STR_CARGO_PLURAL_COLA.m                                         :coli
 STR_CARGO_PLURAL_COLA.w                                         :colo
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Wata Cukrowa
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Wata cukrowa
 STR_CARGO_PLURAL_COTTON_CANDY.d                                 :waty cukrowej
 STR_CARGO_PLURAL_COTTON_CANDY.c                                 :wacie cukrowej
 STR_CARGO_PLURAL_COTTON_CANDY.b                                 :watę cukrową
@@ -239,7 +239,7 @@ STR_CARGO_PLURAL_PLASTIC.b                                      :plastik
 STR_CARGO_PLURAL_PLASTIC.n                                      :plastikiem
 STR_CARGO_PLURAL_PLASTIC.m                                      :plastiku
 STR_CARGO_PLURAL_PLASTIC.w                                      :plastiku
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Napoje Gazowane
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Napoje gazowane
 STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :napoi gazowanych
 STR_CARGO_PLURAL_FIZZY_DRINKS.c                                 :napojom gazowanym
 STR_CARGO_PLURAL_FIZZY_DRINKS.b                                 :napoje gazowane
@@ -305,7 +305,7 @@ STR_CARGO_SINGULAR_WOOD.b                                       :drewno
 STR_CARGO_SINGULAR_WOOD.n                                       :drewnem
 STR_CARGO_SINGULAR_WOOD.m                                       :drewnie
 STR_CARGO_SINGULAR_WOOD.w                                       :drewno
-STR_CARGO_SINGULAR_IRON_ORE                                     :Ruda Żelaza
+STR_CARGO_SINGULAR_IRON_ORE                                     :Ruda żelaza
 STR_CARGO_SINGULAR_IRON_ORE.d                                   :rudy żelaza
 STR_CARGO_SINGULAR_IRON_ORE.c                                   :rudzie żelaza
 STR_CARGO_SINGULAR_IRON_ORE.b                                   :rudę żelaza
@@ -423,7 +423,7 @@ STR_CARGO_SINGULAR_COLA.b                                       :colę
 STR_CARGO_SINGULAR_COLA.n                                       :colą
 STR_CARGO_SINGULAR_COLA.m                                       :coli
 STR_CARGO_SINGULAR_COLA.w                                       :colo
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata Cukrowa
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata cukrowa
 STR_CARGO_SINGULAR_COTTON_CANDY.d                               :waty cukrowej
 STR_CARGO_SINGULAR_COTTON_CANDY.c                               :wacie cukrowej
 STR_CARGO_SINGULAR_COTTON_CANDY.b                               :watę cukrową
@@ -458,7 +458,7 @@ STR_CARGO_SINGULAR_PLASTIC.b                                    :plastik
 STR_CARGO_SINGULAR_PLASTIC.n                                    :plastikiem
 STR_CARGO_SINGULAR_PLASTIC.m                                    :plastiku
 STR_CARGO_SINGULAR_PLASTIC.w                                    :plastiku
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Napój Gazowany
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Napój gazowany
 STR_CARGO_SINGULAR_FIZZY_DRINK.d                                :napoju gazowanego
 STR_CARGO_SINGULAR_FIZZY_DRINK.c                                :napojowi gazowanemu
 STR_CARGO_SINGULAR_FIZZY_DRINK.b                                :napój gazowany
@@ -485,7 +485,7 @@ STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} o
 STR_QUANTITY_DIAMONDS                                           :{COMMA} pacz{P ka ki ek} diamentów
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} żywności
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papieru
-STR_QUANTITY_GOLD                                               :{COMMA} pacz{P ka ki ek} złota
+STR_QUANTITY_GOLD                                               :{COMMA} wor{P ek ki ków} złota
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} wody
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} pszenicy
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kauczuku
@@ -546,7 +546,7 @@ STR_BAGS.b                                                      :{COMMA} worki
 STR_BAGS.n                                                      :{COMMA} workami
 STR_BAGS.m                                                      :{COMMA} workach
 STR_BAGS.w                                                      :{COMMA} worki
-STR_TONS                                                        :{COMMA} ton{P a "" ""}
+STR_TONS                                                        :{COMMA} ton{P a y ""}
 STR_LITERS                                                      :{COMMA} litr{P "" y ów}
 STR_ITEMS                                                       :{COMMA} sztuk{P a i ""}
 STR_CRATES                                                      :{COMMA} skrzy{P nia nie ń}
@@ -850,37 +850,37 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłąc
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1szy
-STR_ORDINAL_NUMBER_2ND                                          :2gi
-STR_ORDINAL_NUMBER_3RD                                          :3ci
-STR_ORDINAL_NUMBER_4TH                                          :4ty
-STR_ORDINAL_NUMBER_5TH                                          :5ty
-STR_ORDINAL_NUMBER_6TH                                          :6ty
-STR_ORDINAL_NUMBER_7TH                                          :7my
-STR_ORDINAL_NUMBER_8TH                                          :8my
-STR_ORDINAL_NUMBER_9TH                                          :9ty
-STR_ORDINAL_NUMBER_10TH                                         :10ty
-STR_ORDINAL_NUMBER_11TH                                         :11ty
-STR_ORDINAL_NUMBER_12TH                                         :12ty
-STR_ORDINAL_NUMBER_13TH                                         :13ty
-STR_ORDINAL_NUMBER_14TH                                         :14ty
-STR_ORDINAL_NUMBER_15TH                                         :15ty
-STR_ORDINAL_NUMBER_16TH                                         :16ty
-STR_ORDINAL_NUMBER_17TH                                         :17ty
-STR_ORDINAL_NUMBER_18TH                                         :18ty
-STR_ORDINAL_NUMBER_19TH                                         :19ty
-STR_ORDINAL_NUMBER_20TH                                         :20ty
-STR_ORDINAL_NUMBER_21ST                                         :21szy
-STR_ORDINAL_NUMBER_22ND                                         :22gi
-STR_ORDINAL_NUMBER_23RD                                         :23ci
-STR_ORDINAL_NUMBER_24TH                                         :24ty
-STR_ORDINAL_NUMBER_25TH                                         :25ty
-STR_ORDINAL_NUMBER_26TH                                         :26ty
-STR_ORDINAL_NUMBER_27TH                                         :27my
-STR_ORDINAL_NUMBER_28TH                                         :28my
-STR_ORDINAL_NUMBER_29TH                                         :29ty
-STR_ORDINAL_NUMBER_30TH                                         :30ty
-STR_ORDINAL_NUMBER_31ST                                         :31szy
+STR_ORDINAL_NUMBER_1ST                                          :1
+STR_ORDINAL_NUMBER_2ND                                          :2
+STR_ORDINAL_NUMBER_3RD                                          :3
+STR_ORDINAL_NUMBER_4TH                                          :4
+STR_ORDINAL_NUMBER_5TH                                          :5
+STR_ORDINAL_NUMBER_6TH                                          :6
+STR_ORDINAL_NUMBER_7TH                                          :7
+STR_ORDINAL_NUMBER_8TH                                          :8
+STR_ORDINAL_NUMBER_9TH                                          :9
+STR_ORDINAL_NUMBER_10TH                                         :10
+STR_ORDINAL_NUMBER_11TH                                         :11
+STR_ORDINAL_NUMBER_12TH                                         :12
+STR_ORDINAL_NUMBER_13TH                                         :13
+STR_ORDINAL_NUMBER_14TH                                         :14
+STR_ORDINAL_NUMBER_15TH                                         :15
+STR_ORDINAL_NUMBER_16TH                                         :16
+STR_ORDINAL_NUMBER_17TH                                         :17
+STR_ORDINAL_NUMBER_18TH                                         :18
+STR_ORDINAL_NUMBER_19TH                                         :19
+STR_ORDINAL_NUMBER_20TH                                         :20
+STR_ORDINAL_NUMBER_21ST                                         :21
+STR_ORDINAL_NUMBER_22ND                                         :22
+STR_ORDINAL_NUMBER_23RD                                         :23
+STR_ORDINAL_NUMBER_24TH                                         :24
+STR_ORDINAL_NUMBER_25TH                                         :25
+STR_ORDINAL_NUMBER_26TH                                         :26
+STR_ORDINAL_NUMBER_27TH                                         :27
+STR_ORDINAL_NUMBER_28TH                                         :28
+STR_ORDINAL_NUMBER_29TH                                         :29
+STR_ORDINAL_NUMBER_30TH                                         :30
+STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
 
 ############ range for months starts
