@@ -619,7 +619,6 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			widget_type != WWT_CLOSEBOX) {          // Don't change focused window if 'X' (close button) was clicked
 		focused_widget_changed = true;
 		SetFocusedWindow(w);
-		w->OnFocus();
 	}
 
 	if (nw == NULL) return; // exit if clicked outside of widgets
