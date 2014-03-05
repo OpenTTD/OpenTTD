@@ -296,7 +296,7 @@ STR_SORT_BY_TRACTIVE_EFFORT                                     :Gaya traksi
 STR_SORT_BY_INTRO_DATE                                          :Tanggal perkenalan
 STR_SORT_BY_RUNNING_COST                                        :Biaya Operasional
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Daya/Biaya operasional
-STR_SORT_BY_CARGO_CAPACITY                                      :Kapasitas muatan/kargo
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapasitas muatan
 STR_SORT_BY_RANGE                                               :Jangkauan
 STR_SORT_BY_POPULATION                                          :Populasi
 STR_SORT_BY_RATING                                              :Peringkat
