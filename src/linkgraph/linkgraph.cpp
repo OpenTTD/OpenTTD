@@ -145,6 +145,21 @@ void LinkGraph::RemoveNode(NodeID id)
 }
 
 /**
+ * Update distances between the given node and all others.
+ * @param id Node that changed position.
+ * @param xy New position of the node.
+ */
+void LinkGraph::UpdateDistances(NodeID id, TileIndex xy)
+{
+	assert(id < this->Size());
+	for (NodeID other = 0; other < this->Size(); ++other) {
+		if (other == id) continue;
+		this->edges[id][other].distance = this->edges[other][id].distance =
+				DistanceManhattan(xy, Station::Get(this->nodes[other].station)->xy);
+	}
+}
+
+/**
  * Add a node to the component and create empty edges associated with it. Set
  * the station's last_component to this component. Calculate the distances to all
  * other nodes. The distances to _all_ nodes are important as the demand

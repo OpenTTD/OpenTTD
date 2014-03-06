@@ -529,6 +529,7 @@ public:
 
 	NodeID AddNode(const Station *st);
 	void RemoveNode(NodeID id);
+	void UpdateDistances(NodeID id, TileIndex xy);
 
 protected:
 	friend class LinkGraph::ConstNode;

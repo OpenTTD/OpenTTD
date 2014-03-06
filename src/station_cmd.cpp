@@ -641,6 +641,14 @@ static void UpdateStationSignCoord(BaseStation *st)
 	/* clamp sign coord to be inside the station rect */
 	st->xy = TileXY(ClampU(TileX(st->xy), r->left, r->right), ClampU(TileY(st->xy), r->top, r->bottom));
 	st->UpdateVirtCoord();
+
+	if (!Station::IsExpected(st)) return;
+	Station *full_station = Station::From(st);
+	for (CargoID c = 0; c < NUM_CARGO; ++c) {
+		LinkGraphID lg = full_station->goods[c].link_graph;
+		if (!LinkGraph::IsValidID(lg)) continue;
+		LinkGraph::Get(lg)->UpdateDistances(full_station->goods[c].node, st->xy);
+	}
 }
 
 /**
