@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Game setting (s
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Company setting (stored in saves; affects only new games)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting (stored in save; affects only current company)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Category:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below showing only changed settings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic settings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced settings
@@ -1084,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Game settings (
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Game settings (stored in save; affects only current game)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Company settings (stored in saves; affects only new games)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Company settings (stored in save; affects only current company)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Show all search results by setting{}{SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- None -
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -3087,7 +3093,7 @@ STR_STATION_VIEW_GROUP_D_S_V                                    :Destination-Sou
 STR_STATION_VIEW_GROUP_D_V_S                                    :Destination-Via-Source
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Appalling
+STR_CARGO_RATING_APPALLING                                      :Atrocious
 STR_CARGO_RATING_VERY_POOR                                      :Very Poor
 STR_CARGO_RATING_POOR                                           :Poor
 STR_CARGO_RATING_MEDIOCRE                                       :Mediocre
@@ -4084,7 +4090,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... too 
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... too many towns
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... there is no more space on the map
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}The town will not build roads. You can enable building of roads via Advanced Settings->Economy->Towns
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road works in progress
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road work in progress
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Can't delete this town...{}A station or depot is referring to the town or a town owned tile can't be removed
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... there is no suitable place for a statue in the center of this town
 
@@ -4487,7 +4493,7 @@ STR_SV_STNAME_DOCKS                                             :{STRING} Docks
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
+STR_SV_STNAME_ANNEXE                                            :{STRING} Annex
 STR_SV_STNAME_SIDINGS                                           :{STRING} Sidings
 STR_SV_STNAME_BRANCH                                            :{STRING} Branch
 STR_SV_STNAME_UPPER                                             :Upper {STRING}
