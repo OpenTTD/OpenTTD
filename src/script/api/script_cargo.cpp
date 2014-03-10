@@ -13,6 +13,7 @@
 #include "script_cargo.hpp"
 #include "../../economy_func.h"
 #include "../../core/bitmath_func.hpp"
+#include "../../settings_type.h"
 
 /* static */ bool ScriptCargo::IsValidCargo(CargoID cargo_type)
 {
@@ -63,4 +64,10 @@
 {
 	if (!IsValidCargo(cargo_type)) return -1;
 	return ::GetTransportedGoodsIncome(1, distance, Clamp(days_in_transit * 2 / 5, 0, 255), cargo_type);
+}
+
+/* static */ ScriptCargo::DistributionType ScriptCargo::GetDistributionType(CargoID cargo_type)
+{
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return INVALID_DISTRIBUTION_TYPE;
+	return (ScriptCargo::DistributionType)_settings_game.linkgraph.GetDistributionType(cargo_type);
 }

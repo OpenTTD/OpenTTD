@@ -19,6 +19,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptCargo::TownEffect>(HSQUIRRELVM vm, ScriptCargo::TownEffect res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptCargo::SpecialCargoID GetParam(ForceType<ScriptCargo::SpecialCargoID>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptCargo::SpecialCargoID)tmp; }
 	template <> inline int Return<ScriptCargo::SpecialCargoID>(HSQUIRRELVM vm, ScriptCargo::SpecialCargoID res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptCargo::DistributionType GetParam(ForceType<ScriptCargo::DistributionType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptCargo::DistributionType)tmp; }
+	template <> inline int Return<ScriptCargo::DistributionType>(HSQUIRRELVM vm, ScriptCargo::DistributionType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow ScriptCargo to be used as Squirrel parameter */
 	template <> inline ScriptCargo *GetParam(ForceType<ScriptCargo *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptCargo *)instance; }

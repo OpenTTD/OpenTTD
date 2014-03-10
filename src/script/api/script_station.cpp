@@ -13,6 +13,7 @@
 #include "script_station.hpp"
 #include "script_map.hpp"
 #include "script_town.hpp"
+#include "script_cargo.hpp"
 #include "../../station_base.h"
 #include "../../roadstop_base.h"
 #include "../../town.h"
@@ -42,6 +43,39 @@
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	return ::Station::Get(station_id)->goods[cargo_id].cargo.TotalCount();
+}
+
+/* static */ int32 ScriptStation::GetCargoWaitingFrom(StationID station_id, StationID from_station_id, CargoID cargo_id)
+{
+	if (!IsValidStation(station_id)) return -1;
+	if (!IsValidStation(from_station_id) && from_station_id != STATION_INVALID) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
+
+	const StationCargoList &cargo_list = ::Station::Get(station_id)->goods[cargo_id].cargo;
+	uint16 cargo_count = 0;
+	for (StationCargoList::ConstIterator it = cargo_list.Packets()->begin(); it != cargo_list.Packets()->end(); it++) {
+		CargoPacket *cp = *it;
+		if (cp->SourceStation() == from_station_id) cargo_count += cp->Count();
+	}
+
+	return cargo_count;
+}
+
+/* static */ int32 ScriptStation::GetCargoWaitingVia(StationID station_id, StationID via_station_id, CargoID cargo_id)
+{
+	if (!IsValidStation(station_id)) return -1;
+	if (!IsValidStation(via_station_id) && via_station_id != STATION_INVALID) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
+
+	const StationCargoList &cargo_list = ::Station::Get(station_id)->goods[cargo_id].cargo;
+	uint16 cargo_count = 0;
+	std::pair<StationCargoList::ConstIterator, StationCargoList::ConstIterator> range =	cargo_list.Packets()->equal_range(via_station_id);
+	for (StationCargoList::ConstIterator it = range.first; it != range.second; it++) {
+		CargoPacket *cp = *it;
+		cargo_count += cp->Count();
+	}
+
+	return cargo_count;
 }
 
 /* static */ bool ScriptStation::HasCargoRating(StationID station_id, CargoID cargo_id)

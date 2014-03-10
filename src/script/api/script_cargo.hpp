@@ -14,6 +14,7 @@
 
 #include "script_object.hpp"
 #include "../../cargotype.h"
+#include "../../linkgraph/linkgraph_type.h"
 
 /**
  * Class that handles all cargo related functions.
@@ -58,6 +59,16 @@ public:
 		/* Note: these values represent part of the in-game CargoTypes enum */
 		CT_AUTO_REFIT = ::CT_AUTO_REFIT, ///< Automatically choose cargo type when doing auto-refitting.
 		CT_NO_REFIT   = ::CT_NO_REFIT,   ///< Do not refit cargo of a vehicle.
+	};
+
+	/**
+	 * Type of cargo distribution.
+	 */
+	enum DistributionType {
+		DT_MANUAL = ::DT_MANUAL,         ///< Manual distribution.
+		DT_ASYMMETRIC = ::DT_ASYMMETRIC, ///< Asymmetric distribution. Usually cargo will only travel in one direction.
+		DT_SYMMETRIC = ::DT_SYMMETRIC,   ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
+		INVALID_DISTRIBUTION_TYPE = 0xFFFF, ///< Invalid distribution type.
 	};
 
 	/**
@@ -121,6 +132,13 @@ public:
 	 * @return The amount of money that would be earned by this trip.
 	 */
 	static Money GetCargoIncome(CargoID cargo_type, uint32 distance, uint32 days_in_transit);
+
+	/**
+	 * Get the cargo distribution type for a cargo.
+	 * @param cargo_type The cargo to check on.
+	 * @return The cargo distribution type for the given cargo.
+	 */
+	static DistributionType GetDistributionType(CargoID cargo_type);
 };
 
 #endif /* SCRIPT_CARGO_HPP */

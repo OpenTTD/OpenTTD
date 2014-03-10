@@ -20,6 +20,7 @@
  * 1.4.0 is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li AICargo::GetDistributionType
  * \li GSCompany::ChangeBankBalance
  * \li GSDate::DATE_INVALID
  * \li GSDate::IsValidDate
@@ -29,6 +30,8 @@
  * \li GSGoal::SetProgress
  * \li GSGoal::SetText
  * \li GSStation::HasCargoRating
+ * \li AIStation::GetCargoWaitingFrom
+ * \li AIStation::GetCargoWaitingVia
  * \li GSStoryPage
  * \li GSStoryPageList
  * \li GSStoryPageElementList

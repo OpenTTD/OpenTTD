@@ -87,6 +87,31 @@ public:
 	static int32 GetCargoWaiting(StationID station_id, CargoID cargo_id);
 
 	/**
+	 * See how much cargo with a specific source station there is waiting on a station.
+	 * @param station_id The station to get the cargo-waiting of.
+	 * @param cargo_id The cargo to get the cargo-waiting of.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidStation(from_station_id) || from_station_id == STATION_INVALID.
+	 * @pre IsValidCargo(cargo_id).
+	 * @return The amount of units waiting at the station originating from from_station_id.
+	 * @note source station means, the station where cargo was first loaded.
+	 */
+	static int32 GetCargoWaitingFrom(StationID station_id, StationID from_station_id, CargoID cargo_id);
+
+	/**
+	 * See how much cargo with a specific via-station there is waiting on a station.
+	 * @param station_id The station to get the cargo-waiting of, or pass STATION_INVALID to get waiting cargo for "via any station".
+	 * @param cargo_id The cargo to get the cargo-waiting of.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidStation(via_station_id) || via_station_id == STATION_INVALID.
+	 * @pre IsValidCargo(cargo_id).
+	 * @return The amount of units waiting at the station with via_station_id as next hop.
+	 * @note if ScriptCargo.GetCargoDistributionType(cargo_id) == ScriptCargo.DT_MANUAL, then all waiting cargo will have STATION_INVALID as next hop.
+
+	 */
+	static int32 GetCargoWaitingVia(StationID station_id, StationID via_station_id, CargoID cargo_id);
+
+	/**
 	 * Check whether the given cargo at the given station a rating.
 	 * @param station_id The station to get the cargo-rating state of.
 	 * @param cargo_id The cargo to get the cargo-rating state of.

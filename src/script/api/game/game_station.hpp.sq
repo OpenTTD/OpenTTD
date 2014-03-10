@@ -48,6 +48,8 @@ void SQGSStation_Register(Squirrel *engine)
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetOwner,                   "GetOwner",                   2, ".i");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetStationID,               "GetStationID",               2, ".i");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoWaiting,            "GetCargoWaiting",            3, ".ii");
+	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoWaitingFrom,        "GetCargoWaitingFrom",        4, ".iii");
+	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoWaitingVia,         "GetCargoWaitingVia",         4, ".iii");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::HasCargoRating,             "HasCargoRating",             3, ".ii");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoRating,             "GetCargoRating",             3, ".ii");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetCoverageRadius,          "GetCoverageRadius",          2, ".i");
