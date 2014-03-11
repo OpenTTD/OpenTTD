@@ -69,7 +69,7 @@
 
 	const StationCargoList &cargo_list = ::Station::Get(station_id)->goods[cargo_id].cargo;
 	uint16 cargo_count = 0;
-	std::pair<StationCargoList::ConstIterator, StationCargoList::ConstIterator> range =	cargo_list.Packets()->equal_range(via_station_id);
+	std::pair<StationCargoList::ConstIterator, StationCargoList::ConstIterator> range = cargo_list.Packets()->equal_range(via_station_id);
 	for (StationCargoList::ConstIterator it = range.first; it != range.second; it++) {
 		CargoPacket *cp = *it;
 		cargo_count += cp->Count();
