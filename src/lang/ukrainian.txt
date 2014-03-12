@@ -1198,6 +1198,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Налашту�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Налаштування компанії (знаходяться в збережених іграх; впливають тільки на нову гру)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Налаштування компанії (знаходяться в збережених іграх; впливають тільки на поточну гру)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Категорія:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Тип:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Показати лише налаштування, які було змінено
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основні налаштування
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Розширені налаштування
@@ -1212,6 +1214,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Налашту�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Налаштування гри (знаходяться в збережених іграх; впливають лише на поточну гру)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Налаштування компанії (знаходяться в збережених іграх; впливають лише на нові ігри)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Налаштування компанії (знаходяться у збережених іграх; впливають лише на поточну компанію)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- немає -
 
 STR_CONFIG_SETTING_OFF                                          :ні
 STR_CONFIG_SETTING_ON                                           :так
@@ -2355,6 +2358,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Змін
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зробити об'єкти невидимими, а не прозорими
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Немає
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Виберіть компанії для відображення
 
 # Linkgraph legend window and linkgraph legend in smallmap
@@ -2665,6 +2669,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Приймає: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ліміт швидкості залізниці: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ліміт швидкості авто: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Каміння
@@ -3009,6 +3014,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<невірна
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невірне виробництво>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<невірний транспорт>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Шукаю NewGRF'и
@@ -3092,6 +3098,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Під�
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Цілі
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальні цілі:
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Глобальні цілі:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- нема -
@@ -3691,6 +3698,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Збіл
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зменшити період техогляду на 10. Ctrl+клік зменшує інтервал техогляду на 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :Відлік інтервалу між техоглядами
+STR_VEHICLE_DETAILS_DEFAULT                                     :Стандартно
 STR_VEHICLE_DETAILS_DAYS                                        :Дні
 STR_VEHICLE_DETAILS_PERCENT                                     :Проценти
 
