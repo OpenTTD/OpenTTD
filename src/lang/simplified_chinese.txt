@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :当前游戏设
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :当前公司设置（可保存在存档中，仅对新游戏生效）
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :当前公司设置（可保存在存档中，仅对现行公司生效）
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}筛选设定：
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}适用范围：
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}仅显示修改过的选项
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基础设置
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :高级设置
@@ -1084,6 +1086,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :当前游戏设
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :当前游戏设置（可保存在存档中，仅对当前游戏生效）
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :当前公司设置（可保存在存档中，仅对新游戏生效）
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :当前公司设置（可保存在存档中，仅对当前公司生效）
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}在 {SILVER}筛选设定 {BLACK}一栏选择 {WHITE}{STRING} {BLACK}以显示所有搜寻结果
+STR_CONFIG_SETTING_TYPE_HIDES                                   :在 {SILVER}适用范围 {BLACK}一栏选择 {WHITE}所有适用范围 {BLACK}以显示所有搜寻结果
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}在 {SILVER}筛选设定 {BLACK}一栏选择 {WHITE}{STRING} 并在 {SILVER}适用范围 {BLACK}一栏选择 {WHITE}所有适用范围 {BLACK}以显示所有搜寻结果
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 无 -
 
 STR_CONFIG_SETTING_OFF                                          :关闭

@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :遊戲設定 (�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :公司設定 (存檔時保存；僅在往後建立的新遊戲生效)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :公司設定 (存檔時保存；僅影響您正在控制的公司)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}篩選設定：
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}適用範圍：
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}限制以下列表僅顯示曾被更改的設定
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :進階設定
@@ -1084,6 +1086,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :遊戲設定 (�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :遊戲設定 (儲存時保存；只影響目前遊戲)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :公司設定 (儲存時保存；只影響新遊戲)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :公司設定 (儲存時保存；只影響目前的公司)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}在 {SILVER}篩選設定 {BLACK}一欄選擇 {WHITE}{STRING} {BLACK}以顯示所有搜尋結果
+STR_CONFIG_SETTING_TYPE_HIDES                                   :在 {SILVER}適用範圍 {BLACK}一欄選擇 {WHITE}所有適用範圍 {BLACK}以顯示所有搜尋結果
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}在 {SILVER}篩選設定 {BLACK}一欄選擇 {WHITE}{STRING} 並在 {SILVER}適用範圍 {BLACK}一欄選擇 {WHITE}所有適用範圍 {BLACK}以顯示所有搜尋結果
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 無 -
 
 STR_CONFIG_SETTING_OFF                                          :關
@@ -3946,7 +3951,7 @@ STR_AI_SETTINGS_START_DELAY                                     :此 AI 與上�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}{STRING}的 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}{STRING}的修訂紀錄
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}{STRING}的授權條款
-STR_TEXTFILE_WRAP_TEXT                                          :(WHITE)強迫文字換行
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}強迫文字換行
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫寬於視窗的文字自動換行
 STR_TEXTFILE_VIEW_README                                        :{BLACK}檢視Readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}修訂紀錄

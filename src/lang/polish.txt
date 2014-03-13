@@ -1185,7 +1185,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Plaga insektów w {INDUSTRY}!{}Produkcja maleje o 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produkcja {STRING.d} w {INDUSTRY} maleje o {COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} czeka w lokomotywowni
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} czeka w warsztatach
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} czeka w zajezdni
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} czeka w stoczni
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} czeka w hangarze
@@ -2654,7 +2654,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja lin
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa lokomotywowni (do kupowania i serwisowania pociągów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa warsztatów (do kupowania i serwisowania pociągów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na pkt. orientacyjny. Ctrl umożliwia łączenie pkt. orientacyjnych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały kolejowe. Ctrl przełącza semafory/sygnały świetlne{}Przeciągnięcie pozwala na budowę sygnałów wzdłuż prostej linii torów. Ctrl pozwala na budowę sygnałów do następnego skrzyżowania{}Ctrl+klik przełącza do okna wyboru sygnałów. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
@@ -2669,8 +2669,8 @@ STR_RAIL_NAME_MONORAIL                                          :Kolej jednoszyn
 STR_RAIL_NAME_MAGLEV                                            :Kolej magnetyczna (Maglev)
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ukierunkowanie lokomotywowni
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie lokomotywowni
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ukierunkowanie hali warsztatów
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie warsztatów
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Pkt. orientacyjny
@@ -2801,8 +2801,8 @@ STR_AIRPORT_INTERNATIONAL                                       :Międzynarodowe
 STR_AIRPORT_COMMUTER                                            :Lokalne
 STR_AIRPORT_INTERCONTINENTAL                                    :Międzykontynentalne
 STR_AIRPORT_HELIPORT                                            :Klasyczne
-STR_AIRPORT_HELIDEPOT                                           :Hangar helikopterów
-STR_AIRPORT_HELISTATION                                         :Stacja
+STR_AIRPORT_HELIDEPOT                                           :Serwisowe
+STR_AIRPORT_HELISTATION                                         :Lotnisko helikopterów
 
 STR_AIRPORT_CLASS_SMALL                                         :Małe lotniska
 STR_AIRPORT_CLASS_LARGE                                         :Duże lotniska
@@ -2965,7 +2965,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} tor z 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} tor z semaforami złożonymi (combo) i semaforami trasy
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} tor z semaforami złożonymi (combo) i jednokierunkowymi semaforami trasy
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} tor z semaforami trasy i jednokierunkowymi semaforami trasy
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{G=f}Lokomotywownia - {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{G=f}Warsztaty - {STRING}
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Droga
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Droga z oświetleniem ulicznym
@@ -3260,9 +3260,9 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego '{1:ENGINE}', gdy był poza lokomotywownią
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego '{1:ENGINE}', gdy był poza halą warsztatów
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmiana długości pojazdu '{1:ENGINE}' , który nie jest zatrzymany w hali
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono pojemność pojazdu na '{1:ENGINE}', kiedy nie był w lokomotywowni lub w trakcie przebudowy
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono pojemność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
@@ -3655,7 +3655,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij 
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Zastąp pojazdy
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do serwisu
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Wyślij do lokomotywowni
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Wyślij do warsztatów
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Wyślij do zajezdni
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Wyślij do stoczni
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Wyślij do hangaru
@@ -3752,8 +3752,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Zmień n
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Zmiana nazwy hali serwisowej
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Zmień nazwę hali serwisowej
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Zmiana nazwy hali warsztatów
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Zmień nazwę hali warsztatów
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3772,12 +3772,12 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Przecią
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Przeciągnij tutaj lokomotywę, by sprzedać cały pociąg
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Sprzedaj wszystkie pociągi z hali lokomotywowni
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Sprzedaj wszystkie pociągi z hali warsztatów
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Sprzedaj wszystkie pojazdy z tej zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Sprzedaj wszystkie statki ze stoczni
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Sprzedaj wszystkie samoloty z hangaru
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Autoodnowa wszystkich pociągów stojących w lokomotywowni
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Autoodnowa wszystkich pociągów z hali warsztatów
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autoodnowa wszystkich pojazdów stojących w zajezdni
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autoodnowa wszystkich statków stojących w stoczni
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autoodnowa wszystkich samolotów stojących w hangarze
@@ -3802,27 +3802,27 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduj
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centruj główny widok na lokomotywowni. Ctrl+klik otwiera nowy podgląd na pozycji hali
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centruj główny widok na warsztatach. Ctrl+klik otwiera nowy podgląd na pozycji hali
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej. Ctrl+klik otwiera nowy podgląd na pozycję zajezdni samochodowej
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruj główny widok na stoczni. Ctrl+klik otwiera nowy podgląd na pozycję stoczni
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruj główny widok na pozycji hangaru. Ctrl+klik otwiera nowy podgląd na pozycję hangaru
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Pokaż listę wszystkich pociągów z tą lokomotywownią w swoich poleceniach
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Pokaż listę wszystkich pociągów z tymi warsztatami w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Pokaż listę wszystkich pojazdów z tą zajezdnią w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Pokaż listę wszystkich statków z tą stocznią w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Pokaż listę wszystkich samolotów z hangarem na tym lotnisku w swoich poleceniach
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Kliknij, aby zatrzymać wszystkie pociągi w lokomotywowni
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Kliknij, aby zatrzymać wszystkie pociągi w hali warsztatów
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Kliknij aby zatrzymać wszystkie pojazdy w zajezdni
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Kliknij aby zatrzymać wszystkie statki w stoczni
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Kliknij aby zatrzymać wszystkie samoloty w hangarze
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Kliknij, aby uruchomić wszystkie pociągi w lokomotywowni
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Kliknij, aby uruchomić wszystkie pociągi z warsztatów
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Kliknij, aby uruchomić wszystkie pojazdy w zajezdni
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Kliknij, aby uruchomić wszystkie statki w stoczni
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Kliknij, aby uruchomić wszystkie samoloty w hangarze
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sprzedajesz wszystkie pojazdy zatrzymane w tej hali. Jesteś pewien?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sprzedajesz wszystkie pojazdy z tych warsztatów. Jesteś pewien?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomość od producenta pojazdów
@@ -3890,7 +3890,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centruj 
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centruj główny widok na pozycji statku. Ctrl+klik by podążać za statkiem w głównym oknie
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centruj główny widok na pozycji samolotu. Ctrl+klik by podążać za samolotem w głównym oknie
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Wyślij pociąg do lokomotywowni
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Wyślij pociąg do warsztatów
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Wyślij pojazd do zajezdni
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Wyślij statek do stoczni
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Wyślij samolot do hangaru
@@ -4136,9 +4136,9 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bez zatrzy
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj non-stop w
 
-STR_ORDER_NEAREST_DEPOT                                         :najbliższej
+STR_ORDER_NEAREST_DEPOT                                         :najbliższych
 STR_ORDER_NEAREST_HANGAR                                        :najbliższy hangar
-STR_ORDER_TRAIN_DEPOT                                           :Lokomotywowni
+STR_ORDER_TRAIN_DEPOT                                           :Warsztatów
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Zajezdni samochodowej
 STR_ORDER_SHIP_DEPOT                                            :Doku
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
@@ -4555,19 +4555,19 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja w użyciu przez inna firmę!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nie można tutaj wybudować hali lokomotywowni...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nie można tutaj wybudować warsztatów kolejowych...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni tramwajowej...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nie można tutaj wybudować stoczni...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nie można zmienić nazwy hali...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nie można zmienić nazwy warsztatów...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... musi być zatrzymany w lokomotywowni
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... musi być zatrzymany w hali warsztatów
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi być zatrzymany w zajezdni samochodowej
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... musi być zatrzymany w stoczni
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... musi być zatrzymany w hangarze
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg może być modyfikowany tylko, gdy jest zatrzymany w lokomotywowni
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg może być modyfikowany tylko, gdy jest zatrzymany w hali warsztatów
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Pociąg jest zbyt długi
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nie można zawrócić pociągu...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... składa się z wielu jednostek
@@ -4575,7 +4575,7 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Niezgodne typy 
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nie można ruszyć pojazdem...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Tylna lokomotywa zawsze porusza się razem z przednią
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nie można znaleźć drogi do najbliższej hali.
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nie można znaleźć drogi do najbliższych warsztatów
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nie można znaleźć zajezdni
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Zły typ zajezdni
@@ -4686,7 +4686,7 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nie moż
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nie można zatrzymać/ruszyć statku...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nie można zatrzymać/ruszyć samolotu...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nie można wysłać pociągu do lokomotywowni...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nie można wysłać pociągu do warsztatów...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nie można wysłać pojazdu do zajezdni...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nie można wysłać statku do stoczni...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nie można wysłać samolotu do hangaru...
@@ -5200,8 +5200,8 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Pkt. orientacyjny {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pkt. orientacyjny {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :Lokomotywownia {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Lokomotywownia {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Warsztaty w {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Warsztaty w {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia samochodowa w {TOWN}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia samochodowa w {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Stocznia {TOWN}
