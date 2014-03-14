@@ -706,10 +706,10 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Parada d'autobús
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeroport/Heliport
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Moll
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreny Irregular
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreny irregular
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Gespa
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreny erm
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Camps
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Camps de conreu
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Arbres
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Roques
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Aigua
@@ -2557,10 +2557,10 @@ STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Límit d
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Roques
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreny Irregular
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreny irregular
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreny erm
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gespa
-STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Camps
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Camps de conreu
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreny nevat
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desert
 
