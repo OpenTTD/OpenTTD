@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Gosodiad gêm (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Gosodiad cwmni (cedwir yn y ffeiliau cadw; yn effeithio ar gemau newydd yn unig)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni (cedwir yn y ffeil gadw; yn effeithio ar y cwmni presennol yn unig)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categori:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Math:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Yn cyfyngu'r rhestr isod gan ddangos gosodiadau sydd wedi newid yn unig
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gosodiadau sylfaenol
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gosodiadau uwch
@@ -1084,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Gosodiadau gêm
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Gosodiadau gêm (cedwir yn y ffeil cadw, gan effeithio ar y gêm bresennol yn unig)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Gosodiadau cwmni (cedwir yn y ffeiliau cadw, gan effeithio ar y gemau newydd yn unig)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Gosodiadau cwmni (cedwir yn y ffeil cadw, gan effeithio ar y cwmni presennol yn unig)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Categori {BLACK}i {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Math {BLACK}i {WHITE}Pob math o osodiad
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Categori {BLACK}at {WHITE}{STRING} {BLACK}a {SILVER}Math {BLACK}i {WHITE}Pob math o osodiad
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Dim -
 
 STR_CONFIG_SETTING_OFF                                          :I Ffwrdd
 STR_CONFIG_SETTING_ON                                           :Ymlaen
@@ -1579,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Mae "cymesur" y
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Dull dosrannu ar gyfer llwythi ARGOF: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARFOG yn cynnwys trysorau mewn ardaloedd tymherus, diemwntau yn y trofannau, ac aur yn yr is-arctig. Mae modd y bydd NewGRFau yn newid hyn, Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Fe argymhellir eich bod yn dewis anghymesur neu â llaw pan yn chwarae mewn ardal is-arctig, gan na fydd banciau'n gyrru aur yn ôl i gloddfeydd aur. Ar gyfer ardaloedd tymherus neu trofannol gallwch hefyd ddewis cymesur gan y bydd banciau'n gyrru trysorau'n ôl i'r banciau tardd.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Dull dosrannu ar gyfer llwythi eraill: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Mae'n debyg y byddwch eisiau dewis "anghymesur" neu "â llaw".
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi hyn.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Manylder dosrannu: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mae'r gosodiad yma'n pennu faint o amser prosesydd y bydd cyfrifo'r graff cyswllt yn ei gymeryd. Os yw'n cymryd gormod o amser efallai bydd peth oedi ar y gêm. Os ydych yn gosod gwerth isel, fodd bynnag, ni fyddy dosraniad yn fanwl gywir, a gallwch nodi nad yw llwythi'n cael ei yrru i'r mannau y bydddech y disgwyl.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effaith pellter ar y galw am lwythi: {STRING}
@@ -2876,6 +2882,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Ffeiliau c
 STR_NEWGRF_BROKEN                                               :{WHITE}Mae ymddygiad NewGRF '{0:STRING}' yn debygol o beri dadsyncroneiddio a/neu chwalfa
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Fe newidiodd stâd wagen-bŵer '{1:ENGINE}' pan nad oedd mewn depo
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Wedi newid hyd cerbyd i '{1:ENGINE}' pan na fyddai mewn depo.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Fe newidiodd cynhwysedd cerbyd '{1:ENGINE}' pan nad oedd mewn depo neu'n ail-ffitio
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Mae gan y trên' {VEHICLE}' sy'n eiddo i '{COMPANY}' hyd annilys. Mwy na thebyg fe'u hachoswyd gan NewGRFau. Gall y gêm ddadsyncroneiddio neu chwalu.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Mae NewGRF '{0:STRING}' yn darparu gwybodaeth anghywir
