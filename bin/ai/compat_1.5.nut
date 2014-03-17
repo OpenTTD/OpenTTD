@@ -1,4 +1,4 @@
-/* $Id: compat_1.3.nut 23969 2012-02-19 19:14:17Z rubidium $ */
+/* $Id$ */
 
 /*
  * This file is part of OpenTTD.

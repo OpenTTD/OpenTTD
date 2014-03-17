@@ -1,4 +1,4 @@
-/* $Id: compat_1.3.nut 24469 2012-08-13 19:33:17Z yexo $ */
+/* $Id$ */
 
 /*
  * This file is part of OpenTTD.
