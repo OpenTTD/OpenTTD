@@ -22,7 +22,8 @@
  */
 static bool CheckAPIVersion(const char *api_version)
 {
-	return strcmp(api_version, "1.2") == 0 || strcmp(api_version, "1.3") == 0 || strcmp(api_version, "1.4") == 0;
+	return strcmp(api_version, "1.2") == 0 || strcmp(api_version, "1.3") == 0 || strcmp(api_version, "1.4") == 0 ||
+			strcmp(api_version, "1.5") == 0;
 }
 
 #if defined(WIN32)
