@@ -285,7 +285,7 @@ STR_SORT_BY_POWER                                               :توان
 STR_SORT_BY_TRACTIVE_EFFORT                                     :تلاش کششی
 STR_SORT_BY_INTRO_DATE                                          :تاریخ احداث
 STR_SORT_BY_RUNNING_COST                                        :هزینه کارکرد
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :توان/هزینه کارکرد
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :هزینه توان/کارکرد
 STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت محموله
 STR_SORT_BY_RANGE                                               :بازه
 STR_SORT_BY_POPULATION                                          :جمعیت
@@ -1059,13 +1059,19 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :تنظیمات 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :تنظیمات بازی ( در ذخیره سازی اعمال میشود و فقط در بازی فعلی تاثیر دارد)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :تنظیمات شرکت ( در ذخیره سازی ها اعمال میشود و در بازی فعلی موثر است)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}دسته بندی:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :تنظیمات پایه
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :تنظیمات پیشرفته
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :تنظیمات حرفه ای/ همه تنظیمات
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :تنظیمات با مقادیر متفاوت با پیشفرض
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :تنظیمات با مقادیر متفاوت با تنظیمات بازی جدید شما
 
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :تمام تنظیمات
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :تمام انواع تنظیمات
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}نمایش تمام نتایج با تنظیم{}{SILVER}دسته بندی {BLACK}به {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}نمایش تمام نتایج با تنظیم{}{SILVER}نوع{BLACK}به {WHITE}تمام انواع تنظیم
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}نمایش تمام نتایج با تنظیم{}{SILVER}دسته بندی {BLACK}به {WHITE}{STRING} {BLACK}و {SILVER}نوع {BLACK}به {WHITE}تمام انواع
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- هیچ -
 
 STR_CONFIG_SETTING_OFF                                          :خاموش
 STR_CONFIG_SETTING_ON                                           :روشن
@@ -1334,13 +1340,39 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابت
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :حذف عناصر پوچ جاده در طول ساخت و ساز جاده: {STRING}
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :واحدهای سرعت: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :هر زمان که سرعت در محیط بازی نمایش داده شود، آن را با واحد انتخاب شده نمایش بده
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :امپریال (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :متریک (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :واحدهای توان وسیله نقلیه: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :هر زمان که توان وسیله در محیط بازی نمایش داده شود، آن را با واحد انتخاب شده نمایش بده
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :امپریال (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :متریک (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :واحدهای حجمی: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :هر زمان که وزن ها در محیط بازی نمایش داده شود، آن را با واحد انتخاب شده نمایش بده
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :امپریال (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :متریک (t/tonne)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :واحدهای تعداد: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :متریک(l)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :امپریال (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :متریک (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :واحدهای ارتفاع: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :امپریال (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :متریک (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :متر (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}واسط کاربری
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}بومی سازی
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}ساخت و ساز
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}ایستگاه ها
@@ -1741,6 +1773,7 @@ STR_NETWORK_CLIENT                                              :سرویس گی
 STR_NETWORK_SPECTATORS                                          :تماشاگران
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}مقدار پولی که می خواهید دریافت نمایید را وارد کنید
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}تماشگر
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}رمز وارد شده را به خاطر نسپار
@@ -2236,6 +2269,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}محموله های دریافتی : {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}حد سرعت ریل: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}حداکثر سرعت جاده ای: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :صخره
@@ -2698,6 +2732,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}روی �
 
 # Story book window
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}کتابچه راهنمای عمومی
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}رجوع به هدف نامعتبر
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد. Ctrl+Click برای گشودن یک پنجره نمای جدا از ایستگاه
@@ -3217,6 +3252,8 @@ STR_AI_SETTINGS_START_DELAY                                     :تعداد رو
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}راهنمای {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} گزارش تغییرات {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} گواهی {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}شکستن متن
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}متن درون پنجره را میشکند بطوری که تمام متن بدون اسکرول کردن قابل مشاهده می باشد
 STR_TEXTFILE_VIEW_README                                        :{BLACK}مشاهده راهنما
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}گزارش تغییر
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}گواهی
@@ -3341,30 +3378,43 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}متشک
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}... این وسیله را نمی توان حرکت داد
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
 
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :نوع تعمیرگاه اشتباه
 
 # Autoreplace related errors
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} بعد از تغییر بسیار طولانی شده است
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}هیچ قانون تعویض خودکار/بروزرسانی اعمال نشده است
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(محدودیت مالی)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}ترکیب ریل غیر ممکن است
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}اول باید نشانگرها را برداشت
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}قطعه مناسب راه آهن انتخاب نشده
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}اول باید ریل راه آهن حذف شود
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}جاده یکطرفه یا مسدود است
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}اینجا نمی شود علامت ساخت
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}اینجا نمی شود ریل ساخت
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}از اینجا نمی شود ریل را حذف کرد
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}از اینجا نمی شود چراغ ها ی راهنمایی را حذف کرد
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... اینجا نشانگری نیست
 
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}نمی شود نوع ریل اینجا را عوض کرد...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}اول باید جاده حذف شود
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}اینجا نمی توان جاده ساخت
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}جاده را نمی شود از اینجا حذف کرد
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... اینجا جاده ای نیست
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... اینجا تراموایی نیست
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}نمی توان در اینجا کانالی ساخت...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}نم شود در اینجا رودخانه ای ساخت...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}باید بر روی آب ساخته شود
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}نمی شود بر روی آب ساخت
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... نمی توان بر روی دریای آزاد ساخت
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... نمی توان برروی کانال ساخت
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... نمی توان بر روی رودخانه ساخت
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}باید ابتدا کانال را منهدم کرد
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}قبلا اینجا درخت کشته شده است
@@ -3374,22 +3424,36 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}اینج
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}اینجا نمی شود پل ساخت
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}اول باید پل خراب شود
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}محل شروع و پایاننمی توانند در یک نقطه باشند
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}دو انتهای پل در یک سطح نیستند
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}ارتفاع پل برای قطار بیش از حد کم است
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}محل شروع پایان باید در یک خط باشند
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}هر دو سر پل باید در خشکی قرار بگیرد
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... پل بیش از حد طولانیست
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}انتهای پل ممکن است خارج از نقشه بیافتد
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}اینجا نمی شود تونل ساخت
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}محل برای شروع تونل نا مناسب است
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}اول باید تونل خراب شود
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}با یک تونل دیگر تقاطع می کند
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}انتهای تونل ممکن است خارج از نقشه بیافتد
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... تونل خیلی طولانی است
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... موجودیتهای بیش از حد
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}نمی شود یک موجودیت ایجاد کرد...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}چیزی در مسیر قرار گرفته
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}ساختمان اصلی شرکت در مسیر قرار گرفته است
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}نمی توان این ناحیه را خرید
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}قبلا توسط شرکت خریداری شده
 
 # Group related errors
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}نمی شود یک گروه اضافه کرد...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}نمی توان این گروه را حذف کرد...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}نمی توان نام گروه را تغییر داد...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}نمی توان تمام خودروها را از این گروه حذف کرد...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}نمی توان به این گروه وسیله ای افزود...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}نمی توان وسیله های دارای سفارش اشتراکی را به گروه افزود...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}قطار در راه است
@@ -3397,17 +3461,24 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}ماشی
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}قطار در راه است
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}هواپیما در راه است
 
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}نمی توان کاربری قطار را تغییر داد...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}نمی توان کاربری وسیله نقلیه را تغییر داد...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}نمی توان این کشتی را تعمیر کرد. . .
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را تعمیر کرد. . .
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}نمی توان نام وسیله نقلیه را عوض کرد...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}نمیتوان برای این کشتی نام انتخاب کرد
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}. . . نمیتوان نام هواپیما را انتخاب کرد
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}نمی توان وسیله نقلیه را مجبور به توقف/حرکت کرد...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}نمی شود کشتی را حرکت داد / متوقف کرد ...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}نمیتوان هواپاما را متوقف/آغاز به کار کرد
 
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}نمی توان قطار را به تعمریگاه فرستاد...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}نمی توان وسیله نقلیه را به تعمیرگاه فرستاد...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}نمی توان کشتی را به لنگرگاه فرستاد...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}نمیشود قطار خرید ...
@@ -3425,18 +3496,26 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیش
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}کشتی فروخته نمی شود...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
 
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}وسیله نقلیه در دسترس نیست
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}وسیله نقلیه در دسترس نیست
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}کشتی در دسترس نیست
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}هواپیما در دسترس نیست
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ماشین‌های زیادی در بازی هستند
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... وسیله نقلیه منهدم شد
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}بطور کلی هیچ خودرویی در دسترس نخواهد بود
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}تنظیمات مربوط به NewGRF را تغییر دهید
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}هنوز خودرویی در دسترس نیست
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
 STR_ERROR_TRAIN_START_NO_POWER                                  :قطار انرژی(برق)ندارد.
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}نمی توان وسیله نقلیه را مجبور به تغییر جهت کرد...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}هواپاما در حال پرواز است
 
@@ -3446,12 +3525,21 @@ STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}دستو
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}نمی شود دستور جدید قرار داد ...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی شود دستور را حذف کرد
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این دستور تغییر نمی کند...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}نمی شود این سفارش را جابجا کرد...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}نمی شود سفارش فعلی را نادیده گرفت...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}نمی توان به سفارش بعدی جهش کرد...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... وسیله نمی تواند به تمام ایستگاه ها برود
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... وسیله نمیتواند به آن ایستگاه برود
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... وسیله ای که این سفارش را به اشتراک گذاشته نمی تواند به ایستگاه مورد نظر برود
 
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}نمی شود لیست سفارشات را به اشتراک گذاشت...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}نمی شود لیست سفارشات را از اشتراک خارج کرد...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}نمی توان برنامه حرکت را کپی کرد...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است...
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... هواپیما برد کافی ندارد
 
 # Timetable related errors
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}نمی شود مدیریت زمانی وسیله را تغییر داد...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}وسایل نقلیه فقط در ایستگاه می توانند منتظر بمانند
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}این وسیله نقلیه در این ایستگاه توقف نمی کند
 
@@ -3922,6 +4010,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
