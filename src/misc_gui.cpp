@@ -427,6 +427,7 @@ static const char * const _credits[] = {
 	"  Cian Duffy (MYOB) - BeOS port / manual writing",
 	"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
 	"  Richard Kempton (richK) - additional airports, initial TGP implementation",
+	"  Fleashosio - titlegame",
 	"",
 	"  Alberto Demichelis - Squirrel scripting language \xC2\xA9 2003-2008",
 	"  L. Peter Deutsch - MD5 implementation \xC2\xA9 1999, 2000, 2002",
