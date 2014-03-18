@@ -1585,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrësch" 
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributiounsmodus fir d'GEPANZERT Wuereklass: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :D'GEPANZERT Wuereklass huet Wertsaachen am geméissegte Klima, Diamanten am Sub-Tropenklima an Gold am sub-arktësche Klima. NewGRFen kënnen dat änneren. "symmetrësch" heescht, dass ongeféier d'selwecht vill vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Et gëtt emfuelen dëst op asymmetrësch oder manuell ze loossen wann een sub-arktësch spillt, well Banken keen Gold zréck an d’Minen liwweren. Fir geméissegt Klima an sub-tropësch Klima kann eng Bank mat der anerer Wertsachen zréckschécken.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributiounsmodus fir aner Wuerenklassen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrësch" heescht dass ongeféier genausouvill Wueren vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht dass verschidden Unzuel un Wueren verschéckt ginn an béid Richtungen. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymmetrësch" oder manuell gewielt.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrësch" heescht dass eng beléiweg Unzuel un Wueren an béid Richtungen verschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymmetrësch" oder manuell gewielt.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributiounsgenauegkeet: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Wat den Wert méi héig ass, wat méi CPU benotzt gëtt fir d'Linkgraphik ze zeechnen. Wann ze héig gesat, kann et zu Lags kommen. Ze niddreg gesat kann d'Distributioun ongenau ginn an d'Wueren net sou verdeelt ginn wéi geduet
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Afloss vun der Distanz op d'Nofro: {STRING}
@@ -4450,7 +4450,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Waasserwierk
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Waassertuerm
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrik
 STR_INDUSTRY_NAME_FARM_2                                        :Bauerenhaff
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Bauholzfabrik
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Seewierk
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Zockerwattbësch
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Séissegkeetenfabrik
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Batteriefarm
