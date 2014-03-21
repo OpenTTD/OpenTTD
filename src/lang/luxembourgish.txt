@@ -758,11 +758,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischt Schëff kënnt bei {STATION} un!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischten Fliger kënnt bei {STATION} un!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Zuch Accident!{}{COMMA} stiewen an der Explosioun nom Accident
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Zuchaccident!{}{COMMA} Leit stiewen an der Explosioun nom Accident
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Fligeraccident!{}{COMMA} stiewen an der Explosioun bei {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Fligeraccident!{}Fliger hat keen Bensin méi, {COMMA} stiewen an Explosioun!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stroossengefiertaccident!{}{COMMA} Leit stiewen an der Explosioun no Onfall mam Zuch
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Fligeraccident!{}{COMMA} Leit stiewen an der Explosioun bei {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Fligeraccident!{}Fliger hat keen Bensin méi, {COMMA} Leit stiewen an Explosioun!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinkatastroph bei {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Stroossengefiehr bei 'UFO'-Zesummenstouss zerstéiert ginn!
