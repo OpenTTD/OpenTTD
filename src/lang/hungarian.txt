@@ -1134,6 +1134,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Játék beáll�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Vállalat beállítás (mentésben tárolva; csak az új játékokat befolyásolja)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Vállalat beállítás (mentésben tárolva; csak a jelenlegi vállalatot befolyásolja)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategória:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Típus:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Leszűkíti a listát a módosított értékekkel rendelkező opciókra
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Alapbeállítások
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Haladó beállítások
@@ -1148,6 +1150,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Játék beáll�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Játék beállítások (mentésben tárolva; csak a jelenlegi játékot érintik)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Vállalat beállítások (mentésben tárolva; csak az új játékokat érintik)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Vállalat beállítások (mentésben tárolva; csak a jelenlegi vállalatot érintik)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Az összes eredmény mutatása:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Az összes eredmény mutatása:{}A {SILVER}típus {BLACK}legyen {WHITE}Minden beállítástípus
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Az összes eredmény mutatása:{}A {SILVER}kategória {BLACK}legyen {WHITE}{STRING} {BLACK}, a {SILVER}típus {BLACK}pedig {WHITE}Minden beállítástípus
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nincs találat -
 
 STR_CONFIG_SETTING_OFF                                          :Ki
 STR_CONFIG_SETTING_ON                                           :Be
@@ -1643,7 +1649,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :A "szimmetrikus
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :A PÁNCÉLOZOTT rakománytípus szétosztása: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A PÁNCÉLOZOTT rakománytípus a mérsékelt égövi tájon az értéktárgyakat, szubtrópusi tájon a gyémántot, szubarktikus tájon pedig az aranyat jelenti, ezeken a NewGRF-ek változtathatnak. A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi rakomány megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva. Szubarktikus és szubtrópusi esetben az "aszimmetrikus" vagy "kézi" beállítás javasolt, mivel a bankok nem fognak aranyat, ill. gyémántot visszaküldeni a bányáknak. Mérsékelt égövi esetben a "szimmetrikus" is jó választás, ebben az esetben a bankok a fogadott mennyiségnek megfelelően fognak értéktárgyakat visszaküldeni a küldő banknak.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Egyéb rakománytípusok szétosztása: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi rakomány megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva. Javasolt az "aszimmetrikus" vagy a "kézi" beállítás.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :A szétosztás pontossága: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Magasabb beállítás esetén a kapcsolati gráf kiszámítása több időt fog igénybe venni. A játék akadozhat, ha ez a számítás túl sok időbe telik. Alacsony beállítás esetén viszont a szétosztás pontatlan lehet, a rakományok váratlan célokat kaphatnak.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :A távolság hatása a küldött mennyiségekre: {STRING}
@@ -2610,6 +2616,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Elfogad: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Vasúti pályasebesség: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Közúti sebességkorlátozás: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kövek
@@ -2939,6 +2946,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó 
 STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' meghajtott vagon állapotát mikor nem volt bent a járműtelepen
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megváltoztatta a '{1:ENGINE}' kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}' jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat vagy lefagyhat
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0:STRING}' NewGRF helytelen információt tartalmaz
