@@ -100,11 +100,6 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget < WID_BT_TYPE_11 || widget > WID_BT_TYPE_34 || widget - WID_BT_TYPE_11 >= this->count) return;
