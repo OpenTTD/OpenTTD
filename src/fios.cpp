@@ -400,6 +400,10 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 	 * .SS1 Transport Tycoon Deluxe preset game
 	 * .SV1 Transport Tycoon Deluxe (Patch) saved game
 	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game */
+
+	/* Don't crash if we supply no extension */
+	if (ext == NULL) return FIOS_TYPE_INVALID;
+
 	if (strcasecmp(ext, ".sav") == 0) {
 		GetFileTitle(file, title, last, SAVE_DIR);
 		return FIOS_TYPE_FILE;
