@@ -273,6 +273,8 @@ struct GoalListWindow : public Window {
 	{
 		this->DrawWidgets();
 
+		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
+
 		/* Calculate progress column width. */
 		uint max_width = 0;
 		Goal *s;
