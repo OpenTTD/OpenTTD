@@ -41,13 +41,13 @@ void CcBuildDocks(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
 {
 	if (result.Failed()) return;
 
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_02_SPLAT, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_02_SPLAT_WATER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
 void CcBuildCanal(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_02_SPLAT, tile);
+	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_02_SPLAT_WATER, tile);
 }
 
 

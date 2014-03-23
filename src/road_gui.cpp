@@ -63,7 +63,7 @@ static DiagDirection _road_station_picker_orientation;
 
 void CcPlaySound1D(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
 }
 
 /**
@@ -93,7 +93,7 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
 void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded()) {
-		if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_SPLAT_2, start_tile);
+		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, start_tile);
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
 		DiagDirection start_direction = ReverseDiagDir(GetTunnelBridgeDirection(start_tile));
@@ -174,7 +174,7 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	if (result.Failed()) return;
 
 	DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	ConnectRoadToStructure(tile, dir);
 }
@@ -198,7 +198,7 @@ void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	if (result.Failed()) return;
 
 	DiagDirection dir = (DiagDirection)GB(p2, 6, 2);
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	TileArea roadstop_area(tile, GB(p1, 0, 8), GB(p1, 8, 8));
 	TILE_AREA_LOOP(cur_tile, roadstop_area) {
