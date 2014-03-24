@@ -2362,10 +2362,10 @@ STR_NETWORK_LANG_LATVIAN                                        :Łotewski
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Lobby gry wieloosobowej
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Rozpoczęcie gry wieloosobowej
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Przygotowanie do połączenia: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista wszystkich firm w grze. Możesz przyłączyć się do jednej z nich lub założyć nowa
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista wszystkich firm w grze. Możesz przyłączyć się do jednej z nich, lub założyć nową
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO O FIRMIE
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nazwa firmy: {WHITE}{STRING}
@@ -2381,7 +2381,7 @@ STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Gracze:
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nowa firma
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Rozpoczęcie działalności nowej firmy
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Gra obserwowana
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Obserwuj grę
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Oglądaj grę jako widz
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Połącz z firmą
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Pomóż zarządzać tą firmą
