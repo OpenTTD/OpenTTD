@@ -2668,6 +2668,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Späiche
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Späichert dei aktuell Partie ënnert dem gewielten Numm
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lueden
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lued d'ugewielten Spill
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ugewielten Héichtekaart lueden
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spill Detailer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keng Informatioun do
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

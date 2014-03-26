@@ -884,18 +884,18 @@ STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
 
 ############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Sty
-STR_MONTH_ABBREV_FEB                                            :Lut
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Kwi
-STR_MONTH_ABBREV_MAY                                            :Maj
-STR_MONTH_ABBREV_JUN                                            :Cze
-STR_MONTH_ABBREV_JUL                                            :Lip
-STR_MONTH_ABBREV_AUG                                            :Sie
-STR_MONTH_ABBREV_SEP                                            :Wrz
-STR_MONTH_ABBREV_OCT                                            :Paź
-STR_MONTH_ABBREV_NOV                                            :Lis
-STR_MONTH_ABBREV_DEC                                            :Gru
+STR_MONTH_ABBREV_JAN                                            :sty
+STR_MONTH_ABBREV_FEB                                            :lut
+STR_MONTH_ABBREV_MAR                                            :mar
+STR_MONTH_ABBREV_APR                                            :kwi
+STR_MONTH_ABBREV_MAY                                            :maj
+STR_MONTH_ABBREV_JUN                                            :cze
+STR_MONTH_ABBREV_JUL                                            :lip
+STR_MONTH_ABBREV_AUG                                            :sie
+STR_MONTH_ABBREV_SEP                                            :wrz
+STR_MONTH_ABBREV_OCT                                            :paź
+STR_MONTH_ABBREV_NOV                                            :lis
+STR_MONTH_ABBREV_DEC                                            :gru
 
 STR_MONTH_JAN                                                   :Styczeń
 STR_MONTH_FEB                                                   :Luty
@@ -1968,7 +1968,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Tryb dystrybucj
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymetrycznie" oznacza, że określone ilości ładunków mogą być wysłane w obu kierunkach. "manualnie" oznacza, że dystrybucja nie będzie odbywać się automatycznie.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dokładność dystrybucji: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Im wyżej ustawisz, tym wiecej czasu zajmie procesorowi obliczenie wykresu. Jeśli zajmuje zbyt dużo czasu, może pojawić sie lag. Natomiast zbyt mała ilość powoduje niedokładną dystrybucję, co można zauważyć gdy towar nie jest wysyłany do miejsc do których się spodziewasz aby dotarł.
-STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efect odległości dl żądań: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Wpływ odległości na dystrybucję: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Jeśli ustawisz tę wartość na więcej niż 0, to dystans pomiędzy stacją początkową A jakiegoś towaru a prawdopodobną stacją docelową B będzie miało wpływ na ilość towaru wysłanego z A do B. Im dalej z A do B, tym mniej towaru zostanie wysłane. Im wększa wartość, tym mniej towaru będzie wysłane do dalekich stacji, a więcej towaru będzie wysłane do bliższych stacji.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Ilość powracającego ładunku dla trybu symetrycznego: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ustawiając to na mniej niż 100% powoduje, że symetryczna dystrybucja zachowuje się podobnie do asymetrycznej. Mniej towaru będzie zwróconego jeśli pewna ilość zostanie wysłana do stacji. Jeśli ustawisz to na 0%, to symetryczna dystrybucja zachowuje się jak asymetryczna.
@@ -2853,7 +2853,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Jesteś 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Tworzenie miast
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nowe miasto
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zbuduj nowe miasto. Shift+Click pokazuje szacunkowy koszt
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zbuduj nowe miasto. Shift+klik pokazuje szacunkowy koszt
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Losowe miasto
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Budowa miasta w losowym miejscu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Wiele losowych miast
@@ -3273,7 +3273,7 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Wywołan
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nieprawidłowy ładunek>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednost{P ka ki ek} <nieprawidłowego ładunku>
 STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy model pojazdu>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy przemysł>
 
@@ -3577,8 +3577,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Zmień i
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kup 25% udziałów w firmie
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sprzedaj 25% udziałów w firmie
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kup 25% udziałów w tej firmie. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sprzedaj 25% udziałów tej firmy. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kup 25% udziałów w tej firmie. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sprzedaj 25% udziałów tej firmy. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nazwa firmy
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nazwisko prezesa
@@ -3729,10 +3729,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kup poja
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kup statek
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kup samolot
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup zaznaczony pociąg. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kup zaznaczony pojazd drogowy. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kup zaznaczony statek. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kup zaznaczony samolot. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup zaznaczony pociąg. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kup zaznaczony pojazd drogowy. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kup zaznaczony statek. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kup zaznaczony samolot. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Zmień nazwę
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Zmień nazwę
@@ -3797,10 +3797,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonuj p
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonuj statek
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonuj samolot
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Kliknij na przycisk a następnie na pociąg wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Kliknij na przycisk a następnie na pociąg wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centruj główny widok na warsztatach. Ctrl+klik otwiera nowy podgląd na pozycji hali
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej. Ctrl+klik otwiera nowy podgląd na pozycję zajezdni samochodowej

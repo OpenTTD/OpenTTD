@@ -3883,9 +3883,9 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración del script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar / desactivar pausa cuando un mensaje de log de la IA coincide con la cadena de parada
-STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausa activada:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausa activada
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar/desactivar la pausa automática cuando un mensaje de log de la IA coincide con la cadena de parada
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausar con:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausar cuando el script registre esta cadena
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cuando un mensaje de log de una IA coincide con esta cadena, el juego se pausa
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Comprobar mayúsculas/minúsculas
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activa/desactiva la comprobación de mayúsculas y minúsculas al comparar los mensajes de log de la IA con la cadena de parada

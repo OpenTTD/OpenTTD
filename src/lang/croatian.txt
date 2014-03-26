@@ -2764,6 +2764,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Spremi
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Spremi trenutnu igru koristeći odabrano ime
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Učitaj
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Učitaj odabranu igru
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Učitaj odabranu visinsku kartu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalji o igri
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nema dostupnih informacija.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

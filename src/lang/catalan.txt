@@ -2669,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Desa
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Desa la partida actual, utilitzant el nom seleccionat
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carrega
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carrega la partida seleccionada
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carrega el mapa d'alçades seleccionat
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalls de la partida
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hi ha informació disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
