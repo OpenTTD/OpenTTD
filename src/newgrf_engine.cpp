@@ -716,6 +716,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 				if (powered && !has_power) SetBit(modflags, 6);
 				if (HasBit(t->flags, VRF_TOGGLE_REVERSE)) SetBit(modflags, 8);
 			}
+			if (HasBit(v->vehicle_flags, VF_CARGO_UNLOADING)) SetBit(modflags, 1);
 			if (HasBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SetBit(modflags, 10);
 
 			return variable == 0xFE ? modflags : GB(modflags, 8, 8);
