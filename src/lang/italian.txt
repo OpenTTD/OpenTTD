@@ -2698,6 +2698,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salva
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salva la partita corrente, usando il nome scelto
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carica
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carica la partita selezionata
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carica l'heightmap selezionata
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Dettagli partita
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informazioni non disponibili
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

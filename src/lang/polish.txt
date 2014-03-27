@@ -844,8 +844,8 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut ekranu z 
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zrzut ekranu z przybliżeniem domyślnym
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Wł./wył. ramki
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłącz ramki
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłącz kolorowanie brudnych bloków
 ############ range ends here
 
@@ -1145,7 +1145,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęł{P 0 a y o} {COMMA} os{P oba oby ób}!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Katastrofa Zeppelina na {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Samochód zniszczony w kolizji z 'UFO'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Pojazd zniszczony w kolizji z 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplozja rafinerii w pobliżu {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabryka zniszczona w podejrzanych okolicznościach w pobliżu {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' wylądowało w pobliżu {TOWN}!
@@ -1539,7 +1539,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Pozwalaj na dod
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Użyj ulepszonego algorytmu załadunku: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Gdy włączone, wiele pojazdów czekających na stacji jest ładowanych po kolei. Ładowanie następnego pojazdu rozpocznie się, jeśli jest wystarczająco dużo towaru do uzupełnienia pierwszego pojazdu
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Stopniowy załadunek pojazdów: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Załadunek pojazdów odbywa się stopniowo przy użyciu specyficznych czasów ładowania zamiast ładowania wszystkiego na raz w określonym czasie w zależności tylko od ilości załadowanego towaru
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Załadunek pojazdów odbywa się stopniowo przy użyciu specyficznych czasów ładowania zamiast ładowania wszystkiego naraz w określonym czasie w zależności tylko od ilości załadowanego towaru
 STR_CONFIG_SETTING_INFLATION                                    :Inflacja: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Włącz inflację w ekonomii, gdzie koszty rosną nieco szybciej niż zapłaty
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostarcz ładunek na stację tylko jeśli jest zapotrzebowanie: {STRING}
@@ -2695,18 +2695,18 @@ STR_STATION_CLASS_WAYP                                          :Pkt. orientacyj
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym wypadku czerwony.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sygnalizator złożony (semafor){}Sygnalizator złożony zachowuje się jak kombinacja sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednokierunkowy sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sygnalizator bloku (elektryczny){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednokierunkowy sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sygnalizator bloku (elektryczny){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sygnalizator wejściowy (elektryczny){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym przypadku czerwony
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sygnalizator wyjściowy (elektryczny){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony działa jako sygnał wejściowy i wyjściowy. Umożliwia to budowę wielkich "drzew" presygnalizatorów
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. CTRL+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
@@ -3048,6 +3048,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Zapisz
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Zapisz bieżącą grę używając wybranej nazwy
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Wczytaj
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Wczytaj wybraną grę
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :Wczytaj wybraną mapę wysokości
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegóły gry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3057,7 +3058,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowad�
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzenie świata
-STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar Mapy:
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar mapy:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Wybierz rozmiar mapy w kwadratach. Liczba dostępnych kwadratów będzie nieco mniejsza
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Ilość miast:
@@ -3262,7 +3263,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego '{1:ENGINE}', gdy był poza halą warsztatów
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmiana długości pojazdu '{1:ENGINE}' , który nie jest zatrzymany w hali
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono pojemność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
@@ -3370,7 +3371,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nie d
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cele firmy:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/tytule. Ctrl+kliknięcie otwiera nowe okno podglądu lokacji danego przedsiębiorstwa.miasta/tytułu
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/polu. Ctrl+klik otwiera nowe okno podglądu
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pytanie
@@ -3412,7 +3413,7 @@ STR_STORY_BOOK_CAPTION                                          :{WHITE}Album Hi
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalne okno opowieści
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na specyficzną stronę wybierając ją z listy.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na właściwą stronę wybierając ją z listy.
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Wstecz
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idź na poprzednią stronę
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Dalej
@@ -3830,7 +3831,7 @@ STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :{G=f}lokomotywę
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}pojazd
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :{G=m}samochód
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :{G=m}pojazd
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
 STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :{G=m}samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
@@ -4020,9 +4021,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ładowno
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Przebudowa)
 STR_REFIT_TITLE                                                 :{GOLD}Wybierz typ ładunku do przewozu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Przeciągając myszkę można wybierać więcej pojazdów. Klikając na puste pole zaznaczysz cały pojazd. Ctrl+klik zaznaczy pojazd i dołączony skład
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
@@ -4267,7 +4268,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nazwa sk
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawienia
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia skryptu
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Wyłącz SI, przeładuj skrypt i zrestartuj SI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Włącz/wyłącz przerwanie, kiedy wiadomość SI zgadza się z wiadomością przerywającą
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Zatrzymaj gdy:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Zatrzymaj gdy
@@ -4438,8 +4439,8 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwo
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na to
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na budowę kolejnego lotniska w tym mieście
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokalne władzę odmawiają zgody na lotnisko ze względu na poziom hałasu
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba przekupstwa została wykryta przez okolicznych śledczych
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Lokalne władze miasta {TOWN} odmawiają zgody na lotnisko ze względu na poziom hałasu
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba przekupstwa została wykryta przez miejscowych śledczych
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść lądu...

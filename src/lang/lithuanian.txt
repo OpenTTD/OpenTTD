@@ -2877,6 +2877,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Išsaugo
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Išsaugoti žaidimą pasirinktu vardu
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Užkrauti
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Užkrauti pasirinktą žaidimą
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Įkrauti pasirinktą žemėlapį
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Žaidimo ypatybės
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nėra informacijos
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
