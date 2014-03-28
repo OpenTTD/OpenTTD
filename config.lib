@@ -2715,80 +2715,64 @@ detect_libtimidity() {
 	detect_library "$with_libtimidity" "libtimidity" "libtimidity.a" "" "timidity.h"
 }
 
-detect_lzma() {
-	# 0 means no, 1 is auto-detect, 2 is force
-	if [ "$with_lzma" = "0" ]; then
-		log 1 "checking liblzma... disabled"
+detect_pkg_config() {
+	# $1 - config-param ($with_lzma value)
+	# $2 - package name ('liblzma')
+	# $3 - config name ('lzma_config', sets $lzma_config)
+	# $4 - minimum module version ('2.3')
 
-		lzma_config=""
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$1" = "0" ]; then
+		log 1 "checking $2... disabled"
+
+		eval "$3=\"\""
 		return 0
 	fi
 
-	if [ "$with_lzma" = "1" ] || [ "$with_lzma" = "" ] || [ "$with_lzma" = "2" ]; then
-		lzma_config="pkg-config liblzma"
+	log 2 "detecting $2"
+
+	if [ "$1" = "1" ] || [ "$1" = "" ] || [ "$1" = "2" ]; then
+		pkg_config_call="pkg-config $2"
 	else
-		lzma_config="$with_lzma"
+		pkg_config_call="$1"
 	fi
 
-	version=`$lzma_config --modversion 2>/dev/null`
+	version=`$pkg_config_call --modversion 2>/dev/null`
 	ret=$?
-	log 2 "executing $lzma_config --modversion"
+	check_version "$4" "$version"
+	version_ok=$?
+	log 2 "executing $pkg_config_call --modversion"
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking liblzma... not found"
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version_ok" != "1" ]; then
+		if [ -n "$version" ] && [ "$version_ok" != "1" ]; then
+			log 1 "checking $2... needs at least version $4, $2 NOT enabled"
+		else
+			log 1 "checking $2... not found"
+		fi
 
 		# It was forced, so it should be found.
-		if [ "$with_lzma" != "1" ]; then
-			log 1 "configure: error: pkg-config liblzma couldn't be found"
-			log 1 "configure: error: you supplied '$with_lzma', but it seems invalid"
+		if [ "$1" != "1" ]; then
+			log 1 "configure: error: pkg-config $2 couldn't be found"
+			log 1 "configure: error: you supplied '$1', but it seems invalid"
 			exit 1
 		fi
 
-		lzma_config=""
+		eval "$3=\"\""
 		return 0
 	fi
 
-	log 1 "checking liblzma... found"
+	eval "$3=\"$pkg_config_call\""
+	log 1 "checking $2... found"
+}
+
+detect_lzma() {
+	detect_pkg_config "$with_lzma" "liblzma" "lzma_config" "5.0"
 }
 
 detect_xdg_basedir() {
-	# 0 means no, 1 is auto-detect, 2 is force
-	if [ "$with_xdg_basedir" = "0" ]; then
-		log 1 "checking libxdg_basedir... disabled"
-
-		xdg_basedir_config=""
-		return 0
-	fi
-
-	if [ "$with_xdg_basedir" = "1" ] || [ "$with_xdg_basedir" = "" ] || [ "$with_xdg_basedir" = "2" ]; then
-		xdg_basedir_config="pkg-config libxdg-basedir"
-	else
-		xdg_basedir_config="$with_xdg_basedir"
-	fi
-
-	version=`$xdg_basedir_config --modversion 2>/dev/null`
-	ret=$?
-	log 2 "executing $xdg_basedir_config --modversion"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking libxdg_basedir... not found"
-
-		# It was forced, so it should be found.
-		if [ "$with_xdg_basedir" != "1" ]; then
-			log 1 "configure: error: pkg-config libxdg_basedir couldn't be found"
-			log 1 "configure: error: you supplied '$with_xdg_basedir', but it seems invalid"
-			exit 1
-		fi
-
-		xdg_basedir_config=""
-		return 0
-	fi
-
-	log 1 "checking libxdg_basedir... found"
+	detect_pkg_config "$with_xdg_basedir" "libxdg-basedir" "xdg_basedir_config" "1.2"
 }
 
 detect_png() {
@@ -2936,39 +2920,7 @@ detect_fontconfig() {
 		return 0
 	fi
 
-	if [ "$with_fontconfig" = "1" ] || [ "$with_fontconfig" = "" ] || [ "$with_fontconfig" = "2" ]; then
-		fontconfig_config="pkg-config fontconfig"
-	else
-		fontconfig_config="$with_fontconfig"
-	fi
-
-	version=`$fontconfig_config --modversion 2>/dev/null`
-	ret=$?
-	check_version '2.3' "$version"
-	version_ok=$?
-	log 2 "executing $fontconfig_config --modversion"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version_ok" != "1" ]; then
-		if [ -n "$version" ] && [ "$version_ok" != "1" ]; then
-			log 1 "checking libfontconfig... needs at least version 2.3.0, fontconfig NOT enabled"
-		else
-			log 1 "checking libfontconfig... not found"
-		fi
-
-		# It was forced, so it should be found.
-		if [ "$with_fontconfig" != "1" ]; then
-			log 1 "configure: error: fontconfig-config couldn't be found"
-			log 1 "configure: error: you supplied '$with_fontconfig', but it seems invalid"
-			exit 1
-		fi
-
-		fontconfig_config=""
-		return 0
-	fi
-
-	log 1 "checking libfontconfig... found"
+	detect_pkg_config "$with_fontconfig" "fontconfig" "fontconfig_config" "2.3"
 }
 
 detect_icu() {
