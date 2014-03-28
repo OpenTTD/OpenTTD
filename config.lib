@@ -1706,7 +1706,7 @@ make_cflags_and_ldflags() {
 			if [ "$os" = "OSX" ]; then
 				# fontconfig_config goes via pkg-config on all systems, which doesn't know --prefix
 				# Also, despite the reason we link to the .a file ourself (because we can't use -static), we do need to ask pkg-config about possible other deps
-				LIBS="$LIBS `$png_config --variable=prefix`/lib/libpng.a `$png_config --libs --static | sed s@-lpng@@`"
+				LIBS="$LIBS `$png_config --variable=prefix`/lib/libpng.a `$png_config --libs --static | sed s@-lpng[0-9]*@@`"
 			else
 				LIBS="$LIBS `$png_config --libs --static | tr '\n\r' '  '`"
 			fi
