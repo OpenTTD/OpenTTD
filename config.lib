@@ -1700,17 +1700,18 @@ make_cflags_and_ldflags() {
 
 	if [ -n "$png_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_PNG"
-		CFLAGS="$CFLAGS `$png_config --cppflags --I_opts | tr '\n\r' '  '`"
+		CFLAGS="$CFLAGS `$png_config --cflags | tr '\n\r' '  '`"
 
-		# The extra flags are unneeded for latest libpng-config, but some versions are so broken...
 		if [ "$enable_static" != "0" ]; then
 			if [ "$os" = "OSX" ]; then
-				LIBS="$LIBS `$png_config --prefix`/lib/libpng.a"
+				# fontconfig_config goes via pkg-config on all systems, which doesn't know --prefix
+				# Also, despite the reason we link to the .a file ourself (because we can't use -static), we do need to ask pkg-config about possible other deps
+				LIBS="$LIBS `$png_config --variable=prefix`/lib/libpng.a `$png_config --libs --static | sed s@-lpng@@`"
 			else
-				LIBS="$LIBS `$png_config --static --ldflags | tr '\n\r' '  '`"
+				LIBS="$LIBS `$png_config --libs --static | tr '\n\r' '  '`"
 			fi
 		else
-			LIBS="$LIBS `$png_config --ldflags | tr '\n\r' '  '`"
+			LIBS="$LIBS `$png_config --libs | tr '\n\r' '  '`"
 		fi
 	fi
 
@@ -2799,33 +2800,7 @@ detect_png() {
 		return 0
 	fi
 
-	if [ "$with_png" = "1" ] || [ "$with_png" = "" ] || [ "$with_png" = "2" ]; then
-		png_config="libpng-config"
-	else
-		png_config="$with_png"
-	fi
-
-	version=`$png_config --version 2>/dev/null`
-	ret=$?
-	log 2 "executing $png_config --version"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking libpng... not found"
-
-		# It was forced, so it should be found.
-		if [ "$with_png" != "1" ]; then
-			log 1 "configure: error: libpng-config couldn't be found"
-			log 1 "configure: error: you supplied '$with_png', but it seems invalid"
-			exit 1
-		fi
-
-		png_config=""
-		return 0
-	fi
-
-	log 1 "checking libpng... found"
+	detect_pkg_config "$with_png" "libpng" "png_config" "1.2"
 }
 
 detect_freetype() {
