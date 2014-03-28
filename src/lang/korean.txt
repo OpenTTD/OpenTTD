@@ -2669,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}저장
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}선택한 이름으로 현재 게임을 저장합니다
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}불러오기
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}선택한 게임을 불러옵니다.
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}선택한 높이맵을 불러옵니다.
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}게임 상세 정보
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용 가능한 정보 없음.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2756,7 +2757,7 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}적용�
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}적용하지 않은 NewGRF 파일
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}프리셋 선택:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색할 문자열:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다.
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장합니다.
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}프리셋 이름 입력

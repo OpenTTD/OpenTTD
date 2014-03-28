@@ -2668,6 +2668,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Tallenna
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Tallenna nykyinen peli käyttäen valittua nimeä.
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lataa
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lataa valittu peli
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Lataa valittu korkeuskartta
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Tietoja pelistä
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tietoja ei ole saatavilla
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

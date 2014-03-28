@@ -2668,6 +2668,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Spara
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Spara spelet med valt namn
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ladda
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ladda valt spel
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ladda vald höjdkarta
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldetaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information tillgänglig
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
