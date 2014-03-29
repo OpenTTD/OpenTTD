@@ -2732,6 +2732,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Ment
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}A játék elmentése a választott néven
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Betölt
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Betölti a kiválasztott játékmentést
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Betölti a kiválasztott magasságtérképet
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Részletek
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nincs elérhető információ
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

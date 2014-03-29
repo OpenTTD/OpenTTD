@@ -2668,6 +2668,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Cadw
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Cadw'r gêm hwn gan ddefnyddio'r enw sydd wedi'i dewis
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Llwytho
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Llwytho'r gêm a ddewiswyd
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Llwytho'r map uchder a ddewiswyd
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Manylion Gêm
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Dim gwybodaeth ar gael
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

@@ -590,7 +590,7 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y y}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ów}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ów}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
@@ -598,7 +598,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa, opy, óp}
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa opy óp}
 STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
@@ -1357,9 +1357,9 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomi
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zmniejsz kurs wymiany za jednego Funta (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zwiększ kurs wymiany za jednego Funta (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ustal kurs wymiany za jednego Funta (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zmniejsz kurs wymiany za jednego funta (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zwiększ kurs wymiany za jednego funta (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ustal kurs wymiany za jednego funta (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ustaw znak oddzielający w twojej walucie
@@ -1369,14 +1369,14 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ustaw pr
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Ustaw symbol dla twojej waluty
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na Euro: {ORANGE}nigdy
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Ustaw rok przełączenia na Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na Euro wcześniej
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na Euro później
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na euro: {ORANGE}w {NUM} roku
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na euro: {ORANGE}nigdy
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Ustaw rok przełączenia na euro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na euro wcześniej
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na euro później
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podgląd: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Funtów (£) w twojej walucie
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 funtów (£) w twojej walucie
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmień parametr własnej waluty
 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksymalna liczba przeciwników: {ORANGE}{COMMA}
@@ -1724,8 +1724,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Domyślna paleta dla NewGRF, które nie posiadają zdefiniowanej palety: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Domyślna paleta dla NewGRF'ów, które nie określają, jakich palet potrzebują
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Domyślna (D) Paleta
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Legacy (W)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :standardowa paleta (DOS)
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :dawna paleta (Win)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Kiedy włączone, gra zostanie automatycznie zatrzymana na samym początku, pozwalając na lepsze rozpoznanie mapy
@@ -2008,7 +2008,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednostki wysokości: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Jeśli kiedykolwiek wysokości są pokazywane w interfejsie użytkownika, pokaż je w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrzyczne (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metryczne (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfejs
@@ -3048,7 +3048,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Zapisz
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Zapisz bieżącą grę używając wybranej nazwy
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Wczytaj
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Wczytaj wybraną grę
-STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :Wczytaj wybraną mapę wysokości
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Wczytaj wybraną mapę wysokości
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegóły gry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
