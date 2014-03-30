@@ -3001,6 +3001,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Заха
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Захаваць гульню пад выбранай назвай
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Загрузіць
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Загрузіць выбраную гульню
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Загрузіць выбраную мапу вышыняў
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Зьвесткі аб гульні
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Няма зьвесткаў.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
