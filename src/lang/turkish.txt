@@ -1053,7 +1053,7 @@ STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Dağlık
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :İzne tabi
 STR_CITY_APPROVAL_TOLERANT                                      :Töleranslı
-STR_CITY_APPROVAL_HOSTILE                                       :Katı
+STR_CITY_APPROVAL_HOSTILE                                       :Düşman
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
 
@@ -1586,7 +1586,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetrik" seç
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :ZIRHLI kargo sınıfı için dağıtım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :ZIRHLI kargo sınıfı ılıman iklimde değerli mallar, yarı-tropik iklimde elmaslar, veya yarı-soğuk iklimde altın içerir. NewGRF dosyaları bunu değiştirebilir. "Simetrik" olarak ayarlandığında A durağından B durağına gönderilen kargo miktarı, B'den A'ya gönderilene kabaca eşit olur. "Asimetrik" ise herhangi bir yönde rastgele miktarda kargo gönderilebileceğini gösterir. "El ile" seçildiğinde o kargo için otomatik dağıtım yapılmaz. Yarı-soğuk iklimde oynarken bu değeri "asimetrik" veya "el ile" olarak ayarlamanız tavsiye edilir, çünkü bankalar altınları altın madenine geri göndermez. Ilıman ve yarı-tropik iklim için aynı zamanda "simetrik" seçebilirsiniz, zira bankalar değerli malların bir kısmını malların geldiği kaynak bankaya geri gönderir.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Diğer kargo sınıfları için dağılım kipi: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simetrik", A durağından B durağına gönderilen kargo miktarının B'den A'ya gönderilene kabaca eşit olacağını gösterir. "asimetrik" ise iki yönde de rastgele miktarda kargo gönderileceğini gösterir. "el ile" seçildiği takdirde o kargolar için otomatik dağılım yapılmaz. Bu seçeneği muhtemelen "asimetrik" veya "el ile" olarak ayarlamak istersiniz.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimetrik", kargonun iki yönde de rastgele miktarda gönderileceğini gösterir. "el ile" seçildiği takdirde o kargolar için otomatik dağılım yapılmaz.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dağılım isabetliliği: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Buraya daha yüksek değerler girildikçe bağlantı grafiğinin hesaplanmasına daha fazla işlemci zamanı harcanır. Eğer hesaplama çok uzun sürerse gecikmeler olabilir. Fakat düşük bir değer girerseniz dağılım isabetli olmayacaktır ve kargonun beklediğiniz yerlere gönderilmediğini fark edebilirsiniz.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Mesafenin talep üzerindeki etkisi: {STRING}
