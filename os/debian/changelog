@@ -1,3 +1,9 @@
+openttd (1.4.0-0) unstable; urgency=low
+
+  * New upstream release 1.4.0
+
+ -- OpenTTD <info@openttd.org>  Tue, 01 Apr 2014 21:00:00 +0200
+
 openttd (1.4.0~RC1-0) unstable; urgency=low
 
   * New upstream release 1.4.0-RC1
