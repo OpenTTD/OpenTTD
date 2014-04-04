@@ -1585,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :設使有交通
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :裝甲貨物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :依原有設定，「裝甲貨物」包括溫帶場景的「貴重物品」、寒帶場景的「金塊」及亞熱帶場景的「鑽石」。一些 NewGRF 可能有不同設定。{} 設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的裝甲貨物數量大致相同。「不對稱」指任何一站往另一站的裝甲貨物數量皆由系統隨意決定。「手動」指系統不會自動分配裝甲貨物的目的地。{} 建議的設定：在溫帶場景應使用「對稱」，因為銀行會互相運送貴重物品；而在寒帶場景及亞熱帶場景應使用「不對稱」，因為銀行不會把金塊或鑽石送回礦場。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他貨物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的貨物數量與乙站往甲站的貨物數量大致相同。「不對稱」指任何一站往另一站的貨物數量皆由系統隨意決定。「手動」指系統不會自動分配貨物的目的地。{}由於貨物一般只會被單方向運輸，此設定應被賦值為「不對稱」或「手動」。
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如設定此值為「不對稱」，則任何一站往另一站的貨物數量皆由系統隨意決定。如設定此值為「手動」，則系統不會自動分配貨物的目的地。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精確度：{STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :此設定賦值越大，則運算連結圖所需的處理器時間越長，您可能會因此見到遊戲運行延遲。如果此設定賦值越小，則貨物分配的準確度越低，而您可能會發現部份貨物沒有被送往您預期它們會到達的目的地。
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距離對需求的影響：{STRING}
@@ -2668,6 +2668,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}儲存
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}以選定的名稱儲存目前遊戲
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}載入
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}載入所選的遊戲
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}載入所選的高度圖
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}遊戲詳細資料
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}沒有可用的資訊
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

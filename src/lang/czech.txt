@@ -2761,6 +2761,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Uložit
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Uložit současnou hru se zvoleným jménem
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Nahrát
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Rozehrát vybranou hru
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Načíst označenou výškovou mapu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Vlastnosti hry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Není dostupná žádná informace
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

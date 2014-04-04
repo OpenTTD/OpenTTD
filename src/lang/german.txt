@@ -2669,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Speicher
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Speichere das Spiel unter dem gewählten Namen
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laden
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ausgewählten Spielstand laden
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ausgewähltes Höhenrelief laden
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spielstand-Details
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keine Informationen verfügbar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

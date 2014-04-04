@@ -1585,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲货物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :依原有设定，“装甲货物”包括溫带景观的“贵重品”、寒带景观的“金块”及沙漠景观的“钻石”。一些NewGRF可能有不同设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议的设定：在溫带景观应使用“对称”，因为银行会互相运送贵重品；而在寒带及沙漠景观应使用“不对称”，因为银行不会把金块或钻石送回矿场。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他货物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的货物数量大致相同。“不对称”指任何一站往另一站的货物数量皆由系统随意决定。“手动”指系统不会自动分配货物的目的地。{}由於货物一般只会被单方向运输，此设定应赋值为“不对称”或“手动”。
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如为此设置赋值“不对称”，则任何一站往另一站的货物数量皆由系统随意决定。如为此设置赋值“手动”，则系统不会依据交通路线分配货物的目的地。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精确度：{STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :此设定赋值越大，則运算连结图所需的处理器时间越长，您可能会因此见到游戏运行延迟。如果此设定赋值越小，则货物分配的准确度越低，而您可能会发现部份货物沒有被送往您预期它们会到达的目的地。
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距离对需求的影晌：{STRING}
@@ -1605,13 +1605,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :运输工具功
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所选择的单位表示运输工具的功率
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :英制（马力）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :公制（马力）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :国际单位（千瓦）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :国际单位制（千瓦）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :重量单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :在界面上以所选择的单位表示重量
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :英制（短吨）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :米制（公吨）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :国际单位（千克）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :国际单位制（千克）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :体积单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :在界面上以所选择的单位表示体积
@@ -1623,7 +1623,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :牵引力单位
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :在界面上以所选择的单位表示牵引力
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :英制（磅力）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :公制（千克力）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :国际单位（千牛顿）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :国际单位制（千牛顿）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :高度单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :在界面上以所选择的单位表示高度
@@ -2668,6 +2668,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}保存
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}以选定的名字保存当前游戏
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}载入
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}载入所选
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}载入选定的高度图
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏详情
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
