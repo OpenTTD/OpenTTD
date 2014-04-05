@@ -2503,7 +2503,7 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Talaj a 
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Földterület megvétele későbbi használatra. Shift lenyomásával megmutatja a várható költséget
 
 # Object construction window
-STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektum kiválaszás
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektum kiválasztása
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Építendő objektum kiválasztása. Shift lenyomásával megmutatja a várható költséget
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Építendő objektum típusának kiválasztása
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektum előnézete
