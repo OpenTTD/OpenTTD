@@ -713,6 +713,12 @@ void RemoveAllGroupsForCompany(const CompanyID company)
 }
 
 
+/**
+ * Test if GroupID group is a descendant of (or is) GroupID search
+ * @param search The GroupID to search in
+ * @param group The GroupID to search for
+ * @return True iff group is search or a descendant of search
+ */
 bool GroupIsInGroup(GroupID search, GroupID group)
 {
 	if (search == NEW_GROUP ||
