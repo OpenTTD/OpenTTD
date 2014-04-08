@@ -97,6 +97,18 @@ byte _network_clients_connected = 0;
 extern void StateGameLoop();
 
 /**
+ * Return whether there is any client connected or trying to connect at all.
+ * @return whether we have any client activity
+ */
+bool HasClients()
+{
+	NetworkClientSocket *cs;
+	FOR_ALL_CLIENT_SOCKETS(cs) return true;
+
+	return false;
+}
+
+/**
  * Basically a client is leaving us right now.
  */
 NetworkClientInfo::~NetworkClientInfo()

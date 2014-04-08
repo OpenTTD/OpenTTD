@@ -316,7 +316,15 @@ void VideoDriver_Dedicated::MainLoop()
 		}
 
 		/* Don't sleep when fast forwarding (for desync debugging) */
-		if (!_ddc_fastforward) CSleep(1);
+		if (!_ddc_fastforward) {
+			/* Sleep longer on a dedicated server, if the game is paused and no clients connected.
+			 * That can allow the CPU to better use deep sleep states. */
+			if (_pause_mode != 0 && !HasClients()) {
+				CSleep(100);
+			} else {
+				CSleep(1);
+			}
+		}
 	}
 }
 

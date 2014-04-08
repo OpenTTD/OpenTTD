@@ -18,6 +18,7 @@
 void NetworkStartUp();
 void NetworkShutDown();
 void NetworkDrawChatMessage();
+bool HasClients();
 
 extern bool _networking;         ///< are we in networking mode?
 extern bool _network_server;     ///< network-server is active
@@ -31,6 +32,7 @@ extern bool _is_network_server;  ///< Does this client wants to be a network-ser
 static inline void NetworkStartUp() {}
 static inline void NetworkShutDown() {}
 static inline void NetworkDrawChatMessage() {}
+static inline bool HasClients() { return false; }
 
 #define _networking 0
 #define _network_server 0
