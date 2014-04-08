@@ -28,7 +28,7 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, G
 	EngineRenew *er = (EngineRenew *)erl;
 
 	while (er != NULL) {
-		if (er->from == engine && er->group_id == group) return er;
+		if (er->from == engine && GroupIsInGroup(group, er->group_id)) return er;
 		er = er->next;
 	}
 	return NULL;

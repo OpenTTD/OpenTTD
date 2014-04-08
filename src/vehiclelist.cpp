@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "train.h"
 #include "vehiclelist.h"
+#include "group.h"
 
 /**
  * Pack a VehicleListIdentifier in a single uint32.
@@ -145,7 +146,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 			if (vli.index != ALL_GROUP) {
 				FOR_ALL_VEHICLES(v) {
 					if (v->type == vli.vtype && v->IsPrimaryVehicle() &&
-							v->owner == vli.company && v->group_id == vli.index) {
+							v->owner == vli.company && GroupIsInGroup(v->group_id, vli.index)) {
 						*list->Append() = v;
 					}
 				}

@@ -285,6 +285,7 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		Group *g = new Group(_current_company);
 		g->replace_protection = false;
 		g->vehicle_type = vt;
+		g->parent = INVALID_GROUP;
 
 		_new_group_id = g->index;
 
@@ -312,6 +313,14 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	/* Remove all vehicles from the group */
 	DoCommand(0, p1, 0, flags, CMD_REMOVE_ALL_VEHICLES_GROUP);
+
+	/* Delete sub-groups */
+	Group *gp;
+	FOR_ALL_GROUPS(gp) {
+		if (gp->parent == g->index) {
+			DoCommand(0, gp->index, 0, flags, CMD_DELETE_GROUP);
+		}
+	}
 
 	if (flags & DC_EXEC) {
 		/* Update backupped orders if needed */
@@ -352,33 +361,60 @@ static bool IsUniqueGroupNameForVehicleType(const char *name, VehicleType type)
 }
 
 /**
- * Rename a group
+ * Alter a group
  * @param tile unused
  * @param flags type of operation
  * @param p1   index of array group
  *   - p1 bit 0-15 : GroupID
- * @param p2   unused
+ *   - p1 bit 16: 0 - Rename grouop
+ *                1 - Set group parent
+ * @param p2   parent group index
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Group *g = Group::GetIfValid(p1);
+	Group *g = Group::GetIfValid(GB(p1, 0, 16));
 	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
-	bool reset = StrEmpty(text);
+	if (!HasBit(p1, 16)) {
+		/* Rename group */
+		bool reset = StrEmpty(text);
 
-	if (!reset) {
-		if (Utf8StringLength(text) >= MAX_LENGTH_GROUP_NAME_CHARS) return CMD_ERROR;
-		if (!IsUniqueGroupNameForVehicleType(text, g->vehicle_type)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+		if (!reset) {
+			if (Utf8StringLength(text) >= MAX_LENGTH_GROUP_NAME_CHARS) return CMD_ERROR;
+			if (!IsUniqueGroupNameForVehicleType(text, g->vehicle_type)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+		}
+
+		if (flags & DC_EXEC) {
+			/* Delete the old name */
+			free(g->name);
+			/* Assign the new one */
+			g->name = reset ? NULL : strdup(text);
+		}
+	} else {
+		/* Set group parent */
+		const Group *pg = Group::GetIfValid(GB(p2, 0, 16));
+
+		if (pg != NULL) {
+			if (pg->owner != _current_company) return CMD_ERROR;
+			if (pg->vehicle_type != g->vehicle_type) return CMD_ERROR;
+
+			/* Ensure request parent isn't child of group.
+			 * This is the only place that infinite loops are prevented. */
+			const Group *looptest = pg;
+			while (looptest->parent != INVALID_GROUP) {
+				if (looptest->parent == g->index) return CMD_ERROR;
+				looptest = Group::Get(looptest->parent);
+			}
+		}
+
+		if (flags & DC_EXEC) {
+			g->parent = (pg == NULL) ? INVALID_GROUP : pg->index;
+		}
 	}
 
 	if (flags & DC_EXEC) {
-		/* Delete the old name */
-		free(g->name);
-		/* Assign the new one */
-		g->name = reset ? NULL : strdup(text);
-
 		SetWindowDirty(WC_REPLACE_VEHICLE, g->vehicle_type);
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 	}
@@ -542,6 +578,20 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 	return CommandCost();
 }
 
+/**
+ * Set replace protection for a group and its sub-groups.
+ * @param g initial group.
+ * @param protect 1 to set or 0 to clear protection.
+ */
+static void SetGroupReplaceProtection(Group *g, bool protect)
+{
+	g->replace_protection = protect;
+
+	Group *pg;
+	FOR_ALL_GROUPS(pg) {
+		if (pg->parent == g->index) SetGroupReplaceProtection(pg, protect);
+	}
+}
 
 /**
  * (Un)set global replace protection from a group
@@ -551,6 +601,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
  * - p1 bit 0-15 : GroupID
  * @param p2
  * - p2 bit 0    : 1 to set or 0 to clear protection.
+ * - p2 bit 1    : 1 to apply to sub-groups.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -560,7 +611,11 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, ui
 	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		g->replace_protection = HasBit(p2, 0);
+		if (HasBit(p2, 1)) {
+			SetGroupReplaceProtection(g, HasBit(p2, 0));
+		} else {
+			g->replace_protection = HasBit(p2, 0);
+		}
 
 		SetWindowDirty(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type);
@@ -639,8 +694,13 @@ void UpdateTrainGroupID(Train *v)
  */
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
+	uint count = 0;
 	const Engine *e = Engine::Get(id_e);
-	return GroupStatistics::Get(company, id_g, e->type).num_engines[id_e];
+	const Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->parent == id_g) count += GetGroupNumEngines(company, g->index, id_e);
+	}
+	return count + GroupStatistics::Get(company, id_g, e->type).num_engines[id_e];
 }
 
 void RemoveAllGroupsForCompany(const CompanyID company)
@@ -650,4 +710,20 @@ void RemoveAllGroupsForCompany(const CompanyID company)
 	FOR_ALL_GROUPS(g) {
 		if (company == g->owner) delete g;
 	}
+}
+
+
+bool GroupIsInGroup(GroupID search, GroupID group)
+{
+	if (search == NEW_GROUP ||
+	    search == ALL_GROUP ||
+	    search == DEFAULT_GROUP ||
+	    search == INVALID_GROUP) return search == group;
+
+	do {
+		if (search == group) return true;
+		search = Group::Get(search)->parent;
+	} while (search != INVALID_GROUP);
+
+	return false;
 }
