@@ -2344,7 +2344,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Раз�
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Выбрано вместе с {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Зависимости: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Теги: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD собрана без поддержки библиотеки «zlib»...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD скомпилирован без поддержки библиотеки «zlib»...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... загрузка контента невозможна!
 
 # Order of these is important!
@@ -3477,7 +3477,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Без груп
 STR_GROUP_DEFAULT_SHIPS                                         :Без группы
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Без группы
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Щёлкните по имени группы для отображения списка транспорта
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Щёлкните по имени группы для отображения списка транспорта. Можно создавать вложенные группы с помощью перетаскивания.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Создать группу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Удалить выбранную группу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Переименовать выбранную группу
