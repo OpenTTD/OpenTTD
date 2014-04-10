@@ -203,12 +203,15 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tona{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tona
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}galoi
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galoi{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
@@ -223,6 +226,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Lokarri 
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sartu lokarri iragazkia
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sartu hitz bat iragazkian zerrendan aurkitzeko
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Aukeratu taldekatzeko ordena
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Hautatu agertze ordena (deszendientea/aszendientea)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Aukeratu ordenatze irizpideak
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Aukeratu iragazki irizpideak
@@ -290,6 +294,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potentzia/Mante
 STR_SORT_BY_CARGO_CAPACITY                                      :Zama Edukiera
 STR_SORT_BY_RANGE                                               :Irismena
 STR_SORT_BY_POPULATION                                          :Biztanleria
+STR_SORT_BY_RATING                                              :Balorazioa
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu
@@ -705,6 +710,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Aukeratu hirien izenak on/off mapan
 STR_SMALLMAP_CENTER                                             :{BLACK}Mapa txikia orain zauden posizioan zentratu
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dena desgaitu
@@ -715,6 +721,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Erakutsi
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Garaiera mapa erakutsi/ ez erakutsi
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ez erakutsi konpainiaren jabetzak mapan.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Erakutsi konpaniaren propietate denak mapan
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Ez erakutsi zamarik mapan
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Zama guztiak mapan erakutsi
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Erakutsi azken mezu edo albiste erreportaia
@@ -2143,7 +2151,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objektua
 
 # Linkgraph legend window
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Denak
-STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}BAt ere ez
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Bat ere ez
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}erabiltzeke
@@ -2209,7 +2217,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Geltokia
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eraikiko den geltoki mota
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Eraikiko den geltoki mota
 
-STR_STATION_CLASS_DFLT                                          :Oinarrizko geltokia
+STR_STATION_CLASS_DFLT                                          :Geltoki lehenetsia
 STR_STATION_CLASS_WAYP                                          :Bidepuntuak
 
 # Signal window
@@ -2882,6 +2890,8 @@ STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Helburu 
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Helburu orokorrak:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ezer ez -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Konpainiaren helburuak:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikatu helburuan ikupegi nagusia industrian/herrian/laukian zentratzeko. Ktrl+Klik ikuspegi lehio berria irekiko du industri/herri/laukiaren kokapenean
 
@@ -2921,6 +2931,12 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikatu garraio zerbitzuan ikuspegi nagusia industria/herrian zentratzeko. Ktrl+Klik ikuspegi lehio berria irekiko du indutri/herriaren kokapenean
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Orrialdea {NUM}
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Aurrekoa
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Aurreko orrialdera joan
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Hurrengoa
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Hurrengo orrialdera joan
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Helburu erreferentzia baliogabea
 
 # Station list window
@@ -2949,17 +2965,20 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Zama balorazioak
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Geltokiaren zama balorazioak erakutsi
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_WAITING_STATION                                :Geltokia: Itxaroten
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Kopurua: Itxoiten
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} {STATION}-tik
-STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT}-tik {STATION}-ra
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT}{STATION}-tik
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT}{STATION}-ra
 STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} geltoki ezezagunetik
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} edozein geltokitara
 STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} edozein geltokitatik pasatuz
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} geltoki honetatik
-STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} geltoki honetan gelditzen
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} geltoki honetan geldituz
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} geltoki honetara
-STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} ez gelditu
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} gelditu gabe
 
 STR_STATION_VIEW_GROUP_S_V_D                                    :Abiapuntua-Bidea-Helburua
 STR_STATION_VIEW_GROUP_S_D_V                                    :Abiapuntua-Helburua-Bidea
@@ -3109,6 +3128,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Azken hi
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (%{COMMA} garraiatua)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Ikuspegi nagusia industrian kokatu. Ktrl+Klik ikuspegi lehio berri bat irekiko du industriaren kokapenarekin
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ekoizpen kopurua: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industriak berehalako itxiera iragarri du!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}
@@ -3472,6 +3492,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Mantenim
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan igo. Ktrl+klik mantenimendu tartea 5 puntutan igo
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan gutxitu. Ktrl+klik mantenimendu tartea 5 puntutan gutxitu
 
+STR_VEHICLE_DETAILS_DEFAULT                                     :Lehenetsia
+STR_VEHICLE_DETAILS_DAYS                                        :Egunak
+STR_VEHICLE_DETAILS_PERCENT                                     :Ehunekoa
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Trena izendatu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Errepide ibilgailua izendatu
@@ -3844,6 +3867,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Sarrerak: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transferitu: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferitu: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {GREEN}Sarrera: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {GREEN}Sarrera: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {RED}Kostua: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {RED}Kostua: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Gutxi gora beherako kostea: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Gutxi gora beherako sarrerak: {CURRENCY_LONG}
 
@@ -4195,7 +4222,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ezin da 
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garraioa suntsituta
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ez dago ibilgailu erabilgarririk
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ez da ibilgailu erabilgarririk egongo
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Aldatu zure NewGRF konfigurazioa
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ez dago ibilgailu erabilgarririk oraindik
 
@@ -4242,6 +4269,7 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ezin da 
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe-ren simulazio bat
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Soinurik gabeko soinu pakete bat
 
 ##id 0x2000
 # Town building names
@@ -4691,6 +4719,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

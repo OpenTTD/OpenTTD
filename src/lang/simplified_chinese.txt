@@ -1863,7 +1863,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}联机游戏
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}已啟用宣传
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}发布到互联网
 STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}选择是否在互联网上宣传此游戏
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :否
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :是
@@ -2854,7 +2854,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用非
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :具有多个Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :图像读取时发生越界错误 (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图形组缺失部分图片。{}请升级图形组。
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}当前使用的基础图形包参数有误。{}请更新基础图形包。{}如果你正在使用 {YELLOW}OPENTTD的开发测试版{WHITE}，你需要 {YELLOW}相应配套的基础图形包。{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :GRF源文件不可访问 (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} 被 {STRING} 禁用
