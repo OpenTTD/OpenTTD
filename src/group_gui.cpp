@@ -110,6 +110,7 @@ private:
 	GroupID group_sel;     ///< Selected group (for drag/drop)
 	GroupID group_rename;  ///< Group being renamed, INVALID_GROUP if none
 	GroupID group_over;    ///< Group over which a vehicle is dragged, INVALID_GROUP if none
+	GroupID group_confirm; ///< Group awaiting delete confirmation
 	GUIGroupList groups;   ///< List of groups
 	uint tiny_step_height; ///< Step height for the group list
 	Scrollbar *group_sb;
@@ -565,6 +566,15 @@ public:
 		}
 	}
 
+	static void DeleteGroupCallback(Window *win, bool confirmed)
+	{
+		if (confirmed) {
+			VehicleGroupWindow *w = (VehicleGroupWindow*)win;
+			w->vli.index = ALL_GROUP;
+			DoCommandP(0, w->group_confirm, 0, CMD_DELETE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_DELETE));
+		}
+	}
+
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
@@ -629,10 +639,8 @@ public:
 			}
 
 			case WID_GL_DELETE_GROUP: { // Delete the selected group
-				GroupID group = this->vli.index;
-				this->vli.index = ALL_GROUP;
-
-				DoCommandP(0, group, 0, CMD_DELETE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_DELETE));
+				this->group_confirm = this->vli.index;
+				ShowQuery(STR_QUERY_GROUP_DELETE_CAPTION, STR_GROUP_DELETE_QUERY_TEXT, this, DeleteGroupCallback);
 				break;
 			}
 
