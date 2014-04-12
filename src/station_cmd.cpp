@@ -658,7 +658,7 @@ static void UpdateStationSignCoord(BaseStation *st)
  * @param reuse Whether to try to reuse a deleted station (gray sign) if possible
  * @param area Area occupied by the new part
  * @param name_class Station naming class to use to generate the new station's name
- * @return Command error that occured, if any
+ * @return Command error that occurred, if any
  */
 static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reuse, TileArea area, StationNaming name_class)
 {

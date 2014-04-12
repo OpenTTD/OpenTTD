@@ -106,7 +106,7 @@ Table of contents
   The important thing here is: The detection of the Desync is
   only an ultimate failure detection. It does not give any
   indication on when the Desync happened. The Desync may after
-  all have occured long ago, and just did not affect the checksum
+  all have occurred long ago, and just did not affect the checksum
   up to now. The checksum may have matched 10 times or more
   since the Desync happend, and only now the Desync has spiraled
   enough to finally affect the checksum. (There was once a desync

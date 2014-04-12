@@ -862,7 +862,7 @@ check_params() {
 		endian="PREPROCESSOR"
 	fi
 
-	log 1 "checking endianess... $endian"
+	log 1 "checking endianness... $endian"
 
 	# Suppress language errors when there is a version defined, indicating a release
 	#  It just isn't pretty if any release produces warnings in the languages.

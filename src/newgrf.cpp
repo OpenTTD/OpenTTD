@@ -7659,7 +7659,7 @@ AllowedSubtags _tags_root[] = {
  * Try to skip the current node and all subnodes (if it's a branch node).
  * @param buf Buffer.
  * @param type The node type to skip.
- * @return True if we could skip the node, false if an error occured.
+ * @return True if we could skip the node, false if an error occurred.
  */
 static bool SkipUnknownInfo(ByteReader *buf, byte type)
 {
