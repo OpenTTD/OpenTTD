@@ -3483,6 +3483,9 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Удал
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Переименовать выбранную группу
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Защита транспорта в группе от глобальной автозамены
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Удаление группы
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Удалить эту и все вложенные группы?
+
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавить транспорт с общим маршрутом
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить все
 

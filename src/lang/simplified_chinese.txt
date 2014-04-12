@@ -1499,13 +1499,13 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :使用信号GUI
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :显示一个供选择信号灯的窗口，取代用Ctrl加点击的方式在各种形式信号灯之间切换的方法
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :默认建造的信号灯类型： {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :默认信号灯类型
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :普通
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :高级
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :高级单向
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :通过信号灯
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :路径信号灯
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :单向路径信号灯
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :在以下信号类型中循环： {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :选择用Ctrl+点击的方式切换信号灯时的切换类型
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :仅有普通
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :仅有高级
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :仅有通过信号灯
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :仅有路径信号灯
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全部
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新建城镇道路自动延伸： {STRING}
@@ -2277,7 +2277,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台。按住 Shift 键显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/光板式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口{}按住 Shift 键显示预计费用
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/电子式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口{}按住 Shift 键显示预计费用
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除铁轨、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除铁轨。
@@ -2319,13 +2319,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}标准�
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号（悬臂）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号（悬臂）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号（悬臂）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立树状预警信号灯系统
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}双向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}单向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}路径信号灯（悬臂）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}单向路径信号灯（悬臂）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}标准信号（电子）{}信号灯是多列车铁路系统的必备设施
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号（电子）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号（电子）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立树状预警信号灯系统
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}双向高级信号（电子）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向高级信号（电子）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号灯转换工具{}当此按钮按下时再选择信号灯种类{}就可以转换信号灯为选择的种类{}CTRL+点击{}可以把现有信号灯在电子和旗帜间转换
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}拖拽布置信号灯的间隔距离
@@ -3297,11 +3297,12 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :未分组汽车
 STR_GROUP_DEFAULT_SHIPS                                         :未分组船只
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分组飞机
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}组 - 点击以列出本组所有车辆
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}组 - 点击一个组别以显示所有隶属此组的车辆。拖曳组别标签以重新排列组别的次序和层级。
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}创建分组
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}删除分组
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}重命名该分组
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}点击以停止本组自动更新功能的使用
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :添加共享车辆
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车辆
