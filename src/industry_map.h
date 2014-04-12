@@ -85,13 +85,12 @@ IndustryType GetIndustryType(TileIndex tile);
 /**
  * Set if the industry that owns the tile as under construction or not
  * @param tile the tile to query
- * @param isCompleted whether it is completed or not
  * @pre IsTileType(tile, MP_INDUSTRY)
  */
-static inline void SetIndustryCompleted(TileIndex tile, bool isCompleted)
+static inline void SetIndustryCompleted(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	SB(_m[tile].m1, 7, 1, isCompleted ? 1 :0);
+	SB(_m[tile].m1, 7, 1, 1);
 }
 
 /**

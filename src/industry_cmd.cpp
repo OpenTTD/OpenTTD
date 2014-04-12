@@ -518,7 +518,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		if (newgfx != INDUSTRYTILE_NOANIM) {
 			ResetIndustryConstructionStage(tile);
-			SetIndustryCompleted(tile, true);
+			SetIndustryCompleted(tile);
 			SetIndustryGfx(tile, newgfx);
 			MarkTileDirtyByTile(tile);
 		}
@@ -718,7 +718,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
 	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STATE_CHANGE);
-	if (stage == INDUSTRY_COMPLETED) SetIndustryCompleted(tile, true);
+	if (stage == INDUSTRY_COMPLETED) SetIndustryCompleted(tile);
 
 	MarkTileDirtyByTile(tile);
 
@@ -854,7 +854,7 @@ static void TileLoop_Industry(TileIndex tile)
 				case GFX_GOLD_MINE_TOWER_ANIMATED:   gfx = GFX_GOLD_MINE_TOWER_NOT_ANIMATED;   break;
 			}
 			SetIndustryGfx(tile, gfx);
-			SetIndustryCompleted(tile, true);
+			SetIndustryCompleted(tile);
 			SetIndustryConstructionStage(tile, 3);
 			DeleteAnimatedTile(tile);
 		}
