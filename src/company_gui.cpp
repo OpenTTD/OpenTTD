@@ -2013,7 +2013,7 @@ struct CompanyWindow : Window
 			NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_BUTTONS);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
-				this->SetDirty();
+				this->InvalidateData();
 				return;
 			}
 

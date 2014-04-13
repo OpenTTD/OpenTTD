@@ -155,7 +155,7 @@ void LinkGraph::UpdateDistances(NodeID id, TileIndex xy)
 	for (NodeID other = 0; other < this->Size(); ++other) {
 		if (other == id) continue;
 		this->edges[id][other].distance = this->edges[other][id].distance =
-				DistanceManhattan(xy, Station::Get(this->nodes[other].station)->xy);
+				DistanceMaxPlusManhattan(xy, Station::Get(this->nodes[other].station)->xy);
 	}
 }
 
@@ -187,7 +187,7 @@ NodeID LinkGraph::AddNode(const Station *st)
 	new_edges[new_node].next_edge = INVALID_NODE;
 
 	for (NodeID i = 0; i <= new_node; ++i) {
-		uint distance = DistanceManhattan(st->xy, Station::Get(this->nodes[i].station)->xy);
+		uint distance = DistanceMaxPlusManhattan(st->xy, Station::Get(this->nodes[i].station)->xy);
 		new_edges[i].Init(distance);
 		this->edges[i][new_node].Init(distance);
 	}

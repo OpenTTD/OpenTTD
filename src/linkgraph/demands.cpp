@@ -271,7 +271,7 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
  * @param job Job to calculate the demands for.
  */
 DemandCalculator::DemandCalculator(LinkGraphJob &job) :
-	max_distance(MapSizeX() + MapSizeY() - 2)
+	max_distance(DistanceMaxPlusManhattan(TileXY(0,0), TileXY(MapMaxX(), MapMaxY())))
 {
 	const LinkGraphSettings &settings = job.Settings();
 	CargoID cargo = job.Cargo();
