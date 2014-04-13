@@ -113,6 +113,19 @@ public:
 	}
 
 	/**
+	 * Make a colour dark grey, for specialized 32bpp remapping.
+	 * @param r red component
+	 * @param g green component
+	 * @param b blue component
+	 * @return the brightness value of the new colour, now dark grey.
+	 */
+	static inline uint8 MakeDark(uint8 r, uint8 g, uint8 b)
+	{
+		/* Magic-numbers are ~66% of those used in MakeGrey() */
+		return ((r * 13063) + (g * 25647) + (b * 4981)) / 65536;
+	}
+
+	/**
 	 * Make a colour grey - based.
 	 * @param colour the colour to make grey.
 	 * @return the new colour, now grey.

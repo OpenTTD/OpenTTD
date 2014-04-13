@@ -788,7 +788,7 @@ void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSpri
 		GfxMainBlitterViewport(GetSprite(real_sprite, ST_NORMAL), x, y, BM_TRANSPARENT, sub, real_sprite);
 	} else if (pal != PAL_NONE) {
 		_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
-		GfxMainBlitterViewport(GetSprite(real_sprite, ST_NORMAL), x, y, BM_COLOUR_REMAP, sub, real_sprite);
+		GfxMainBlitterViewport(GetSprite(real_sprite, ST_NORMAL), x, y, pal == PALETTE_CRASH ? BM_CRASH_REMAP : BM_COLOUR_REMAP, sub, real_sprite);
 	} else {
 		GfxMainBlitterViewport(GetSprite(real_sprite, ST_NORMAL), x, y, BM_NORMAL, sub, real_sprite);
 	}
@@ -811,7 +811,7 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
 		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, BM_TRANSPARENT, sub, real_sprite, zoom);
 	} else if (pal != PAL_NONE) {
 		_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
-		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, BM_COLOUR_REMAP, sub, real_sprite, zoom);
+		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, pal == PALETTE_CRASH ? BM_CRASH_REMAP : BM_COLOUR_REMAP, sub, real_sprite, zoom);
 	} else {
 		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, BM_NORMAL, sub, real_sprite, zoom);
 	}
