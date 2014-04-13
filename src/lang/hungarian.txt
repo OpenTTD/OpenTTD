@@ -1186,7 +1186,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Támogatott kap
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési költségek: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzésk költségeinek szintje
 STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, gazdasági válság fog kitörni néhány évente. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés vissza áll az eredeti szintre.)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, gazdasági válság fog kitörni néhány évente. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vonatok állomáson történő megfordulásának tiltása: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ha engedélyezve van, a vonatok nem fordulnak vissza egy (nem vég-) állomáson, még ha lenne egy rövidebb út is visszafordulva
 STR_CONFIG_SETTING_DISASTERS                                    :Katasztrófák: {STRING}
@@ -3361,11 +3361,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Csoportosítatl
 STR_GROUP_DEFAULT_SHIPS                                         :Csoportosítatlan hajók
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Csoportosítatlan repülők
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Csoportok - Kattints a csoport nevére a járművek listázásához
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Csoportok - Kattints a csoport nevére a járművek listázásához. Húzással a csoportokat hierarchiába rendezheted.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Csoport létrehozásához kattints ide
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Kijelölt csoport törlése
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Kijelölt csoport átnevezése
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Csoport teljes listás automata csere alóli mentessége
+
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Csoport törlése
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Biztosan törölni akarod ezt a csoportot minden alcsoportjával együtt?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Megosztott jármű hozzáadása
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű eltávolítása
@@ -4340,6 +4343,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... már
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Csoport létrehozás sikertelen...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Csoport törlése sikertelen...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Csoport átnevezése sikertelen...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nem teheted ezt a csoportot a másik alcsoportjává...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Csoport járműveinek törlése sikertelen...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Jármű hozzáadása a csoporthoz sikertelen...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Megosztott jármű csoporthoz való hozzáadása sikertelen...

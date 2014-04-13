@@ -2669,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Kaydet
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Oyunu seçilen isimle kaydet
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Yükle
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Seçili oyunu yükle
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Seçili yükseklik haritasını yükle
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Oyun Ayrıntıları
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Mevcut bilgi yok
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3302,6 +3303,9 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Grup olu
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Seçili grubu sil
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Seçili grubun ismini değiştir
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Bu grubu otomatik yenilemeden ayrı tutmak için tıklayın
+
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grubu Sil
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Bu ve alt gruplarını silmek istediğinizden emin misiniz?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Bütün paylaşılan araçlar
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçları çıkar
@@ -4276,6 +4280,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... zate
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Grup oluşturulamıyor...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Bu grup silinemiyor...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Grubun ismi değiştirilemiyor...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Üst grup ayarlanamıyor...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Bu gruptaki bütün araçlar çıkartılamıyor...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Araç bu gruba eklenemiyor...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Paylaşılan araçlar bu gruba eklenemiyor...
