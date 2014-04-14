@@ -3298,11 +3298,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Automóveis sem
 STR_GROUP_DEFAULT_SHIPS                                         :Embarcações sem grupo
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sem grupo
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Clique em um grupo para listar seus veículos
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Clique em um grupo para listar seus veículos. Clique e arraste para organizar a hierarquia.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clique para criar um grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Remove o grupo selecionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renomeia o grupo selecionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para excluir esse grupo da substituição automática
+
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Remover grupo
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Tem certeza que deseja remover esse grupo e seus descendentes?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adicionar veículos compartilhados
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
@@ -4277,6 +4280,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... já 
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossível criar grupo...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Impossível remover grupo...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Impossível renomear grupo...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Impossível definir grupo ascendente...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Impossível remover todos os veículos desse grupo...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Impossível adicionar veículo a esse grupo
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossível adicionar veículos compartilhados a esse grupo...

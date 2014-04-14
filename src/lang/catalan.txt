@@ -290,7 +290,7 @@ STR_SORT_BY_WAITING_TOTAL                                       :Càrrega en esp
 STR_SORT_BY_WAITING_AVAILABLE                                   :Càrrega en espera disponible
 STR_SORT_BY_RATING_MAX                                          :Rati de càrrega més alt
 STR_SORT_BY_RATING_MIN                                          :Rati de càrrega més baix
-STR_SORT_BY_ENGINE_ID                                           :IDMotor (ordre clàssic)
+STR_SORT_BY_ENGINE_ID                                           :IDModel (ordre clàssic)
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Potència
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Esforç de tracció
@@ -393,7 +393,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Llista de senya
 
 ############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directori de Poblacions
-STR_TOWN_MENU_FOUND_TOWN                                        :Funda un poble
+STR_TOWN_MENU_FOUND_TOWN                                        :Funda una població
 ############ range ends here
 
 ############ range for subsidies menu starts
@@ -784,7 +784,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} ha estat absorbida per {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(President)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} ha patrocinat la construcció d'un nou poble, anomenat {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} ha patrocinat la construcció d'una nova població, anomenada {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}No{G u va} {STRING} en construcció prop de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}S'està implantant {G un una} {G nou nova} {STRING} prop de {TOWN}!
@@ -1128,8 +1128,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permet que e
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Commuta els desastres que poden bloquejar o destruir ocasionalment vehicles o infraestructures
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la ciutat davant de reestructuracions a la zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escull quin nivell de soroll i de danys ambientals fets per les companyies afecten al seu prestigi al poble i a futures accions de construcció a la zona
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la població davant de reestructuracions a la zona: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escull quin nivell de soroll i de danys ambientals fets per les companyies afecten al seu prestigi a la població i a futures accions de construcció a la zona
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permet construir en desnivells i costes: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si està activat, les vies i les estacions poden ser construïdes en la majoria de pendents. Si està desactivat, només està permès en aquells pendents que coincideixin amb la direcció de la via i no necessitin fonaments
@@ -1177,7 +1177,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospeccionant
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Àrea plana al voltant de les indústries: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantitat d'espai pla al voltant d'una indústira. Això assegura que quedarà espai buit al voltant de la indústria per a construir vies, etc.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permet vàries indústries similars a cada població: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalment, un poble no vol més d'un tipus d'indústria de cada tipus. Amb aquest paràmetre es permetrà diverses indústries del mateix tipus al mateix poble
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalment, una població no vol més d'un tipus d'indústria de cada tipus. Amb aquest paràmetre es permetrà diverses indústries del mateix tipus a la mateixa població
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostra els senyals: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selecciona a quin costat de la via s'han de posar els senyals
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A l'esquerra
@@ -1201,13 +1201,13 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Cada vista
 STR_CONFIG_SETTING_BRIBE                                        :Permet subornar a les autoritats locals: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar a l'autoritat local. Si el suborn es detectat per un inspector, la companyia no podrà actuar al poble durant sis mesos
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar a l'autoritat local. Si el suborn es detectat per un inspector, la companyia no podrà actuar a la població durant sis mesos
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una companyia compra els drets de transport en exclusiva en un poble, les estacions dels oponents (passatgers i càrrega) no rebran cap càrrega durant tot l'any
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permet finançar edificis: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permet a les companyies donar diners als pobles per a finançar noves cases
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permet a les companyies donar diners a les poblacions per a finançar nous edificis
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permet finançar la reconstrucció dels carrers locals: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permet a les companyies donar diners als pobles per a la reconstrucció de carrers i sabotejar la circulació de vehicles al poble
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permet a les companyies donar diners a les poblacions per a la reconstrucció de carrers i sabotejar-hi la circulació de vehicles
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permet enviar diners a altres companyies: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permet transferir diners entre companyies en el mode multijugador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de pes per contenidor per simular trens pesats: {STRING}
@@ -1226,8 +1226,8 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permet circular
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permet la construcció de passos a nivell en els carrers propietat d'altres companyies
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permet construir estacions annexes: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permet que diferents estacions es toquin l'una a l'altra
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Activa diversos paquets de motors NewGRF: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opció de compatibilitat per NewGRFs vells. No desactivis això, a menys que sàpigues exactament el que estàs fent!
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Activa diversos paquets NewGRF de models de vehicles: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opció de compatibilitat per NewGRF vells. No desactivis això, a menys que sàpigues exactament el que estàs fent!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manteniment d'infrastructures: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quan està activat, la infrastructura provoca costos de manteniment. El cost creix proporcionalment al tamany de la xarxa de transport, afectant en conseqüència més a les companyies grosses que a les petites
@@ -1261,7 +1261,7 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra descripc
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Retard abans que les descripcions emergents siguin mostrades quan el ratolí sigui sobre algun element de l'interfície. Alternativament les descripcions emergents poden ser vinculades al botó dret del ratolí
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Manté durant {COMMA} segon{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botó dret
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra els habitants a la etiqueta del nom de població: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra els habitants a l'etiqueta del nom de la població: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostra la població a l'etiqueta dels pobles dins el mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Gruix de les línies dels gràfics: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Gruix de la línia als gràfics. Una línia més fina és més llegible, una línia més gruixuda és més fàcil de veure i els colors són més fàcils de distingir
@@ -1393,7 +1393,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reprodueix els 
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehicles: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reprodueix els efectes de so dels vehicles
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodueix efectes de so ambient del paisatge, les indústries i els pobles
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodueix efectes de so ambient del paisatge, les indústries i les poblacions
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infrastructures quan no hi hagi disponibles vehicles adequats: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quan està activat, la infrastructura només està disponible si hi ha també vehicles disponibles, prevenint perdre temps i diners en infraestructures no utilitzables
@@ -1509,17 +1509,17 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Només normal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Només avançada
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Totes
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposició de carreteres pels nous pobles: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Disposició per la xarxa de carreteres dels pobles
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposició de carreteres per les noves poblacions: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Disposició per la xarxa de carreteres de les poblacions
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Millors carreteres
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :graella 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatori
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Els pobles poden construir carreteres: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permet als pobles construir carreteres per créixer. Desactiva-ho per prevenir que les autoritats del poble construeixin carreteres
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Els pobles tenen permís per construir passos a nivell: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activant aquesta opció permets als pobles construir passos a nivell
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Les poblacions poden construir carreteres: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permet a les poblacions construir carreteres per créixer. Desactiva-ho per prevenir que les autoritats de la població construeixin carreteres
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Les poblacions tenen permís per construir passos a nivell: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activant aquesta opció es permet a les poblacions construir passos a nivell
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permet a la ciutat controlar el nivell de soroll dels aeroports: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Amb aquesta opció desactivada, no hi podran haver dos aeroports en un poble. Amb aquesta opció activada, el nombre d'aeroports en una ciutat està limitat pels límits d'acceptació de sorolls de la ciutat que depen de la població, la mida de l'aeroport i la distància
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar poblacions durant la partida: {STRING}
@@ -1651,7 +1651,7 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoren
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Revisions
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Recorreguts
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pobles
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Poblacions
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Indústries
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
@@ -2496,7 +2496,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Ciutat
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les ciutats creixen més ràpid que els pobles normals{}Depenent de la configuració, són més grans quan es funden
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposició de les carreteres de la població:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecciona la disposició de les carreteres utilitzades per aquest poble
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecciona la disposició de les carreteres utilitzades per a aquesta població
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Millors carreteres
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}graella 2x2
@@ -2682,9 +2682,9 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generaci
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Mida del mapa:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecciona la mida del mapa en cel·les. El nombre de cel·les disponibles serà lleugerament més petit
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de pobles:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nombre de poblacions:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. d'indústries:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nombre d'indústries:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alçada de la neu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mou la línia de neu un pas amunt
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mou la línia de neu un pas avall
@@ -2692,13 +2692,13 @@ STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nombre a
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Clica per introduir un nombre aleatori
 STR_MAPGEN_RANDOM                                               :{BLACK}Aleatoritza
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Canvia el nombre aleatori utilitzat pel Generador de Terrenys
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gen. de terrenys:
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generació de terrenys:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritme d'arbres:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivell del mar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rius:
-STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Planitut:
-STR_MAPGEN_VARIETY                                              :{BLACK}Distribució de la varietat:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavitat:
+STR_MAPGEN_VARIETY                                              :{BLACK}Varietat:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
 
 # Strings for map borders at game generation
@@ -2941,7 +2941,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregat)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}El poble creix cada {ORANGE}{COMMA}{BLACK} di{P a es}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}El poble creix cada {ORANGE}{COMMA}{BLACK} di{P a es} (finançat)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}El poble {RED}no {BLACK} està creixent
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La població {RED}no {BLACK} està creixent
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  màx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal a la població. Ctrl+Clic obre una nova vista al lloc de la població
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoritat local
@@ -3270,7 +3270,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trens Disponibl
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehicles Disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Vaixells Disponibles
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Avions Disponibles
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Veure una llista dels motors disponibles per aquest tipus de vehicle
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Veure una llista dels models disponibles per aquest tipus de vehicle
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administra llista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envia instruccions a tots els vehicles de la llista
@@ -3364,15 +3364,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Canvia e
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Canvia el nom
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Canvia el nom
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Canvia el nom del tipus de vehicle ferroviari
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Canvia el nom del tipus d'automòbil
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Canvia el nom del tipus de vaixell
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Canvia el nom del tipus d'avió
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Canvia el nom del model de vehicle ferroviari
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Canvia el nom del model d'automòbil
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Canvia el nom del model de vaixell
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Canvia el nom del model d'avió
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Canvia el nom del tipus vehicle ferroviari
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Canvia el nom del tipus d'automòbil
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Canvia el nom del tipus de vaixell
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Canvia el nom del tipus d'avió
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Canvia el nom del model de vehicle ferroviari
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Canvia el nom del model d'automòbil
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Canvia el nom del model de vaixell
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Canvia el nom del model d'avió
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -3473,26 +3473,26 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehicle
 STR_REPLACE_VEHICLE_SHIP                                        :Vaixell
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Avió
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el tipus de motor a substituir
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona el nou tipus de motor que vols fer servir en lloc del seleccionat
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el model a substituir
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona el nou model que vols fer servir en lloc del seleccionat
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comença a substituir
 STR_REPLACE_VEHICLES_NOW                                        :Substitueix ara tots els vehicles
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Substitueix només vehicles vells
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Prem per iniciar el reemplaçament del tipus de motor seleccionat a l'esquerra pel seleccionat a la dreta
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Prem per iniciar el reemplaçament del model seleccionat a l'esquerra pel seleccionat a la dreta
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}No substituint
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Cap vehicle seleccionat
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} quan sigui vell
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Para de substituir
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per aturar el reemplaçament del tipus de motor seleccionat a l'esquerra
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per aturar el reemplaçament del model seleccionat a l'esquerra
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Canvia entre finestres de substitució de vagons i de motors
 STR_REPLACE_ENGINES                                             :Motors
 STR_REPLACE_WAGONS                                              :Vagons
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el tipus de via pel que vols substituir motors
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra quin motor dels seleccionats a l'esquerra es substitueix, si n'hi ha
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el tipus de via dels models de vehicle que vols substituir
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra quin model dels seleccionats a l'esquerra es substitueix, si n'hi ha
 STR_REPLACE_RAIL_VEHICLES                                       :Trens de Vapor i Dièsel
 STR_REPLACE_ELRAIL_VEHICLES                                     :Trens Elèctrics
 STR_REPLACE_MONORAIL_VEHICLES                                   :Trens Monorail
@@ -4004,7 +4004,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partida es va desar amb una versió sense suport de tramvies. S'han eliminat tots els tramvies
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}... no hi ha llocs adequats per als pobles
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}... no hi ha llocs adequats per a poblacions
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hi ha poblacions en aquest escenari
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossible carregar un terreny des del PNG...
@@ -4089,15 +4089,15 @@ STR_ERROR_PROTECTED                                             :{WHITE}Aquesta 
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossible construir poblacions
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es pot canviar el nom de la població...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No es pot expandir el poble...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No es pot expandir la població...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... massa prop del límit del mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... massa poblacions
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no queda espai al mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El poble no construirà carrers. Pots activar la construcció de carrers via Paràmetres avançats->Economia->Pobles
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La població no construirà carrers. Pots activar la construcció de carrers via Paràmetres avançats->Economia->Poblacions
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en progrés
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquest poble...{}Hi ha una estació o una cotxera al poble o una cel·la pertanyent al poble no pot ser eliminada
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hi ha un lloc adequat per situar l'estàtua al centre d'aquest poble
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquesta població...{}Hi ha una estació, un dipòsit o una cel·la pertanyent a la població que no pot ser eliminada
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hi ha un lloc adequat per situar l'estàtua al centre d'aquesta població
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... massa indústries

@@ -3677,11 +3677,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Pojazdy bez gru
 STR_GROUP_DEFAULT_SHIPS                                         :Statki bez grupy
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Samoloty bez grupy
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupy - Kliknij na grupie aby wyświetlić wszystkie pojazdy z grupy
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupy - kliknij na grupę, aby wyświetlić wszystkie pojazdy z grupy. Przeciągnij i upuść grupy, aby dostosować hierarchię.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij aby stworzyć grupę
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Usuń zaznaczoną grupę
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień nazwę zaznaczonej grupy
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby ochronić tę grupę przed globalną zamianą pojazdów
+
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj Grupę
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Jesteś pewien, że chcesz skasować tą grupę i wszytskich jej członków?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
@@ -4662,6 +4665,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... to j
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie można stworzyć grupy...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nie można usunąć tej grupy...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nie można zmienić nazwy grupy...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nie można ustawić grupy nadrzędnej...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nie można usunąć wszystkich pojazdów z tej grupy...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nie można dodać pojazdu do tej grupy...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nie można dodać pojazdów współdzielących polecenia do grupy...

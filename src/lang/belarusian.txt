@@ -3630,11 +3630,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Бяз груп
 STR_GROUP_DEFAULT_SHIPS                                         :Бяз групы
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Бяз групы
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Клікніце па назьве групы, каб убачыць сьпіс транспарту
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ґрупы — клікніце па назьве ґрупы, каб убачыць сьпіс транспарту ў гэтай ґрупе. Націсьніце ды перацягвайце ґрупы, каб упарадкаваць гіерархію.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Стварыць групу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Выдаліць выбраную групу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перайменаваць выбраную групу
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Абарона транспарту ў групе ад глабальнай аўтазамены
+
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Выдаліць ґрупу
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Вы ўпэўнены, што жадаеце выдаліць гэту ґрупу з усімі вытворнымі?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Дадаць транспарт з агульнымі заданьнямі
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Выдаліць усе
@@ -4629,6 +4632,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... Вы
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Не атрымалася стварыць групу...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Не атрымалася выдаліць групу...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Не атрымалася перайменаваць групу...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Немагчыма ўсталяваць "бацькоўскую" (вышэйстаячую) ґрупу...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Не атрымалася выдаліць увесь транспарт з групы...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Не атрымалася дадаць транспарт у групу...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не атрымалася дадаць транспарт з агульнымі заданьнямі ў групу...
