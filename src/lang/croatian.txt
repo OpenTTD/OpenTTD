@@ -3393,11 +3393,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupirana ces
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupirani brodovi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupirani zrakoplovi
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groupe - klikni na grupu kako bi izlistao sva vozila ove grupe
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupe - kliknite na grupu kako bi izlistali sva vozila ove grupe. Povucite i prenesite grupe za postavljanje hijerarhije.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikni za kreiranje grupe
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Obriši odabranu grupu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Preimenuj odabranu grupu
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikni kako bi zaštitio ovu grupu od globalne automatske zamjene
+
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Izbriši grupu
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Da li ste sigurni da želite izbrisati ovu grupu i sve njene podgrupe?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj dijeljena vozila
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozila
@@ -4372,6 +4375,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... već
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nije moguće kreirati grupu...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nije moguće obrisati ovu grupu...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nije moguće preimenovati ovu grupu...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Ne može se postaviti matična grupa...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nije moguće ukloniti sva vozila iz ove grupe...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nije moguće dodati vozila u ovu grupu
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nije moguće dodati dijeljena vozila u grupu...

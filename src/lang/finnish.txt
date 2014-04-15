@@ -3304,7 +3304,7 @@ STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Nimeä v
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Poista ryhmä automaattisesti korvattavien joukosta
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Poista ryhmä
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Haluatko varmasti poistaa tämä ryhmän ja sen sisällön?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Haluatko varmasti poistaa tämän ryhmän ja sen alaryhmät?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaettuja ajoneuvoja
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki ajoneuvot

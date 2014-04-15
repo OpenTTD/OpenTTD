@@ -2154,7 +2154,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Den Serv
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Den Server gëtt nei gestart...{}Weg. waarden...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Downloaden Inhalt
+STR_CONTENT_TITLE                                               :{WHITE}Inhalt Download
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Typ vum Inhalt
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Numm
@@ -2222,7 +2222,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Date
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Konnt den downgeload net dekompriméiren
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Fehlend Grafiken
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTDbrauch Grafiken fir ze funktionéiren, mee et konnten keng fond ginn. Wëllsde OpenTTD se downloaden an installéiren loossen ?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD brauch Grafiken fir ze funktionéiren, mee et konnten keng fond ginn. Wëllsde OpenTTD se downloaden an installéiren loossen ?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jo, download d'Grafiken
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, verlooss OpenTTD
 
@@ -2689,7 +2689,7 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweg Sc
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweg Schnéilinnhéicht rof
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Zoufalls-Zuel:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klick fir eng Zoufalls-Zuel anzegin
-STR_MAPGEN_RANDOM                                               :{BLACK}Duerchenen würfeln
+STR_MAPGEN_RANDOM                                               :{BLACK}Duercherneen wierfelen
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Zoufallszuel änneren fir den Terrain-Generator
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baam Algorithmus:
@@ -2701,7 +2701,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Vielfalt
 STR_MAPGEN_GENERATE                                             :{WHITE}Generéiren
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kartenenner:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaartenenner:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordwest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Südost
@@ -3302,6 +3302,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klick fi
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Déi ungewielten Grupp läschen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Déi ungewielten Grupp ëmbenennen
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klick fir déi Grupp vum globalen "Autoersetzen" auszeschléissen
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Gedeelten Gefierer bäisetzen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :All Gefierer wechhuelen
