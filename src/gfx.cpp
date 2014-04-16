@@ -418,19 +418,21 @@ static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, 
 			NOT_REACHED();
 	}
 
+	TextColour colour = TC_BLACK;
+	bool draw_shadow = false;
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun *run = line->GetVisualRun(run_index);
 		const Font *f = (const Font*)run->GetFont();
 
 		FontCache *fc = f->fc;
-		TextColour colour = f->colour;
+		colour = f->colour;
 		SetColourRemap(colour);
 
 		DrawPixelInfo *dpi = _cur_dpi;
 		int dpi_left  = dpi->left;
 		int dpi_right = dpi->left + dpi->width - 1;
 
-		bool draw_shadow = fc->GetDrawGlyphShadow() && colour != TC_BLACK;
+		draw_shadow = fc->GetDrawGlyphShadow() && colour != TC_BLACK;
 
 		for (int i = 0; i < run->GetGlyphCount(); i++) {
 			GlyphID glyph = run->GetGlyphs()[i];
@@ -461,6 +463,11 @@ static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, 
 	if (truncation) {
 		int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
 		for (int i = 0; i < 3; i++, x += dot_width) {
+			if (draw_shadow) {
+				SetColourRemap(TC_BLACK);
+				GfxMainBlitter(dot_sprite, x + 1, y + 1, BM_COLOUR_REMAP);
+				SetColourRemap(colour);
+			}
 			GfxMainBlitter(dot_sprite, x, y, BM_COLOUR_REMAP);
 		}
 	}
