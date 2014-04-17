@@ -3303,6 +3303,9 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Delete t
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Rename the selected group
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click to protect this group from global autoreplace
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Delete Group
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Are you sure you want to delete this group and any descendants?
+
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Add shared vehicles
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehicles
 
