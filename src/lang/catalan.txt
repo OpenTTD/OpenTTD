@@ -1073,7 +1073,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetre de l
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipus:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringeix la llista de sota mostrant només els paràmetres canviats
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringeix la llista de sota usant els filtres predefinits
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Paràmetres bàsics
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Paràmetres avançats
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paràmetres per experts / tots els paràmetres
@@ -1521,7 +1521,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permet a les po
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Les poblacions tenen permís per construir passos a nivell: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activant aquesta opció es permet a les poblacions construir passos a nivell
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permet a la ciutat controlar el nivell de soroll dels aeroports: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Amb aquesta opció desactivada, no hi podran haver dos aeroports en una mateixa població. Amb aquesta opció activada, el nombre d'aeroports en cada població està limitat pel seu límit d'acceptació de soroll, que depén de la mida de l'aeroport i la distància a la població
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Amb aquesta opció desactivada, no podran haver-hi més de dos aeroports en una mateixa població. Amb aquesta opció activada, el nombre d'aeroports en cada població està limitat pel límit d'acceptació de soroll de la població, que depén de la mida de l'aeroport i de la distància
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar poblacions durant la partida: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activant aquesta opció permets els jugadors fundar noves poblacions durant la partida
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibit
