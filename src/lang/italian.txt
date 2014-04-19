@@ -1074,7 +1074,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione de
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante alle sole impostazioni con valore modificato
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante usando i filtri predefiniti
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Impostazioni di base
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Impostazioni avanzate
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impostazioni (utenti esperti)

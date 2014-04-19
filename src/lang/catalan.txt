@@ -1373,7 +1373,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :El més modern 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :El més utilitzat disponible
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra les vies reservades: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dóna a les vies reservades un color diferent per ajudar en problemes de trens que refusen entrar en blocs basats en camí
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantingues les eines de construcció actives després del seu us: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantingues les eines de construcció actives després del seu ús: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantingues les eines de construcció pels ponts, túnels, etc. obertes després d'utilitzar-les
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa les despeses a la finestra de finances de la companyia: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Defineix la disposició de la companyia a la finestra de despeses
@@ -1476,7 +1476,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostra les not�
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostra les notícies d'esdeveniments generals, com ara compra de drets exclusius o finançar la reconstrucció de carrers
 
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fora
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desactivat
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resum
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
 
@@ -1677,7 +1677,7 @@ STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... car�
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorant NewGRF '{STRING}': GRF ID duplicada amb '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorant NewGRF invàlid '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :no trobat
-STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :insegur per a us estàtic
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :insegur per a ús estàtic
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible amb aquesta versió d'OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconegut
@@ -3949,7 +3949,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de la Pa
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Número de dies per començar aquesta IA després de l'anterior (dóna o pren): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Número de dies per començar aquesta IA després de l'anterior (aproximadament): {ORANGE}{STRING}
 
 
 # Textfile window
