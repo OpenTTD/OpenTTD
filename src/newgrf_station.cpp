@@ -545,7 +545,7 @@ uint32 Waypoint::GetNewGRFVariable(const ResolverObject &object, byte variable, 
  */
 StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-	: ResolverObject((statspec != NULL ? statspec->grf_prop.grffile : NULL), callback, callback_param1, callback_param2),
+	: ResolverObject(statspec->grf_prop.grffile, callback, callback_param1, callback_param2),
 	station_scope(*this, statspec, st, tile), town_scope(NULL)
 {
 	/* Invalidate all cached vars */
