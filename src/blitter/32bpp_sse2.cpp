@@ -36,6 +36,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 
 	/* Calculate sizes and allocate. */
 	SpriteData sd;
+	memset(&sd, 0, sizeof(sd));
 	uint all_sprites_size = 0;
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		const SpriteLoader::Sprite *src_sprite = &sprite[z];
