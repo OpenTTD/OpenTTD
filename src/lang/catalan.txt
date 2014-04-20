@@ -1154,17 +1154,17 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendent d'inclinació per als automòbils: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :La inclinació d'una celda en pendent per a un vehicle de carretera. Els valors més alts fan que sigui més difícil escalar un turó
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer girs de 90 graus als trens i vaixells: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan una via horitzontal està seguida d'una vertical a la cel·la annexa, provocant que el tren giri 90 graus quan atravessi la vora de la cel·la enlloc dels 45 graus usuals en les altres combinacions. Això també s'aplica al radi de gir dels vaixells
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan una via horitzontal està seguida d'una vertical a la cel·la annexa, provocant que el tren giri 90 graus quan travessi la vora de la cel·la en lloc dels 45 graus usuals en les altres combinacions. Això també s'aplica al radi de gir dels vaixells
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permetre afegir parts a una estació sense contacte directe amb les parts existents. Fa falta Ctrl + Clic, mentre és col·loquen les peces noves
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utilitza algorisme millorat de càrrega: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Si està activat, múltiples vehicles esperant a una estació es carreguen de forma seqüencial.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carrega els vehicles gradualment: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :De mica en mica, carregar els vehícles que utilitzen duracions específiques de vehícles, en comptes de carregar-los tots alhora en un temps fix que només depén de la quantitat de càrrega carregada
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :De mica en mica, carregar els vehicles que utilitzen duracions específiques de vehicles, en comptes de carregar-los tots alhora en un temps fix que només depèn de la quantitat de càrrega carregada
 STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments
 STR_CONFIG_SETTING_SELECTGOODS                                  :Entrega càrregues en una estació només quan hi ha demananda: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Només entregar la càrrega en una estació que ha demanat el vehícle de càrrega. Això evita ratis erronis per les càrregues que no han estat demanades per l'estació
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Només entregar la càrrega en una estació que ha demanat el vehicle de càrrega. Això evita ratis erronis per les càrregues que no han estat demanades per l'estació
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud del pont: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de ponts
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud del túnel: {STRING}
@@ -1248,14 +1248,14 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles ma
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quan està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quan està activat, un vehicle que arriba al seu final de vida útil és automàticament substituït quan es compleixen les condicions d'autorenovació
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenova quan el vehicle tingui {STRING} anys màx.
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edat relativa quan el vehicle hagi de ser considerat per l'autorenovació
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesos{P 0 "" s} abans
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesos{P 0 "" s} després
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenova el vehicle {STRING} de la seva edat màxima
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edat relativa a partir de la qual s'ha de considerar l'autorenovació del vehicle
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mes{P 0 "" os} abans
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0 "" os} després
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenovació: mínim de diners per renovar: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantitat mínima de diners que han de quedar al banc abans de considerar l'autorenovació de vehicles
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duració del missatge d'error: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duració d'exhibició dels missatges d'error a la finestra vermella. Alguns missatges d'error (crítics) no són tancats automàticament després d'una estona, i han de ser tancats manualment
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duració dels missatges d'error mostrats en finestres vermelles. Alguns missatges d'error (crítics) no es tanquen automàticament i s'han de tancar manualment
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segon{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra descripcions emergents: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Retard abans que les descripcions emergents siguin mostrades quan el ratolí sigui sobre algun element de l'interfície. Alternativament les descripcions emergents poden ser vinculades al botó dret del ratolí
@@ -1360,8 +1360,8 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utilitza la lli
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activa la utilització de llistes de vehicles avançades per agrupar vehicles
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilitza indicadors de càrrega: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Selecciona si els indicadors de càrrega seran mostrats sobre els vehicles en càrrega o descàrrega
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostra horaris amb marques enlloc de dies: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostra els temps de viatge als horaris en marques enlloc de dies
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostra horaris amb marques en lloc de dies: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostra els temps de viatge als horaris en marques en lloc de dies
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra l'arribada i la sortida als horaris: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra als horaris l'arribada anticipadament i les hores de sortida
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creació ràpida d'ordres per a vehicles: {STRING}
@@ -1430,7 +1430,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals d
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escull si les revisions dels vehicles depenen del temps passat des de la darrera revisió o de la caiguda d'un cert percentatge de la fiabilitat màxima
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval per defecte de servei per als trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Estableix l'interval de revisió predeterminat pels nous ferrocarrils, si no hi ha un interval de revisió explícit pel vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} di{P 0 a es}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval per defecte de servei per als vehicles: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Estableix l'interval de revisió predeterminat pels nous vehicles de caretera, si no hi ha un interval de revisió explícit pel vehicle
@@ -1491,13 +1491,13 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentatge del
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentatge del benefici donat a branques intermediàries dins els sistemes, donant més control sobre els beneficis
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :En arrossegar, col·locar senyals cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Estableix la distància en les quals els senyals seran construïts a la via fins al següent obstacle (senyal, desviament), si els senyals són arrossegats
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cel·la{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cel·l{P 0 a es}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Quan arrosseguis, mantingues fixada la distància entre senyals: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva, els senyals són situats al voltant dels túnels o ponts per evitar grans trossos sense senyals. Si s'activa, els senyals són situats cada n cel·les, fent l'alineament de senyals en vies paral·leles més fàcil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors mecànics automàticament abans de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any per utilitzar semàfors elèctrics. Abans d'aquest any s'utilitzaran senyals mecànics (que tenen exactament la mateixa funció, però amb diferent aspecte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa la interfície de senyals: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostra una finestra per escollir els tipus de senyals a construir, enlloc de només la rotació sense finestra de tipus de senyals amb Ctrl+clic sobre els senyals
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostra una finestra per escollir els tipus de senyals a construir, en lloc de només la rotació sense finestra de tipus de senyals amb Ctrl+clic sobre els senyals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipus de senyal a construir predeterminada: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipus de senyal predeterminat a utilitzar
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
@@ -1521,7 +1521,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permet a les po
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Les poblacions tenen permís per construir passos a nivell: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activant aquesta opció es permet a les poblacions construir passos a nivell
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permet a la ciutat controlar el nivell de soroll dels aeroports: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Amb aquesta opció desactivada, no podran haver-hi més de dos aeroports en una mateixa població. Amb aquesta opció activada, el nombre d'aeroports en cada població està limitat pel límit d'acceptació de soroll de la població, que depén de la mida de l'aeroport i de la distància
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Amb aquesta opció desactivada, no podran haver-hi més de dos aeroports en una mateixa població. Amb aquesta opció activada, el nombre d'aeroports en cada població està limitat pel límit d'acceptació de soroll de la població, que depèn de la mida de l'aeroport i de la distància
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar poblacions durant la partida: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activant aquesta opció permets els jugadors fundar noves poblacions durant la partida
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibit
@@ -1546,10 +1546,10 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nombre màxim d
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Nombre de finestres no-enganxoses obertes abans que les finestres antigues es tanquin automàticament per fer lloc a les noves finestres
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desactivat
-STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivell màxim de zoom cap endavant: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivell màxim de zoom cap endins a les vistes. Activant els nivells de zoom cap endins elevats incrementa les necessitats de memòria
-STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivell màxim de zoom cap enrera: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :El nivell de zoom cap enfora màxim a les vistes. Un nivell més elevat de zoom cap enfora pot causar alentiments
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Zoom màxim d'apropament: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivell de zoom d'apropament màxim a les vistes. Un major nivell de zoom d'apropament incrementa les necessitats de memòria
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Zoom màxim d'allunyament: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Nivell de zoom d'allunyament màxim a les vistes. Un nivell elevat de zoom d'allunyament pot causar alentiments
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1565,16 +1565,16 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Ràpida
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Molt ràpida
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporció de pobles que esdevindran ciutats: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Proporció de poblacions que seran ciutats, és a dir, poblacions que comencen amb més habitants i que creixen més ràpidament
-STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 en {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida de ciutat inicial: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Treu els elements de carretera absurds durant la reconstrucció de carretera: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina les carreteres sense sortida durant les reconstruccions de carreteres finançades
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING} di{P 0:2 a es}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING} di{P 0 a es}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de distribució. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING} di{P 0:2 a es} per al recàlcul del graf de distribució
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING} di{P 0 a es} per al recàlcul del graf de distribució
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Temps dedicat a cada recàlcul d'un component del graf de connexions. Quan un recàlcul s'inicia, el programa crea un fil que pot executar-se durant aquest nombre de dies. Com més curt el valor, més probable que el fil no hagi acabat quan s'espera. Aleshores el programa s'atura fins que el fil acaba ("ralentització"). Com més llarg el valor, més temps requereix l'actualització de la distribució quan les rutes canvien.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimètric
@@ -1658,12 +1658,12 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomanat)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Cerca de rutes per trens: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Cercar rutes per a utilitzar als trens
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Cerca de rutes per vehicles: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Cercar rutes per a utilitzar per a vehícles de carretera
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Cerca de rutes per vaixells: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Cercar rutes per a utilitzar als vaixells
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Encaminador dels trens: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algorisme a emprar per a escollir les rutes dels trens
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Encaminador de vehicles de carretera: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algorisme a emprar per a escollir les rutes dels vehicles de carretera
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Encaminador dels vaixells: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algorisme a emprar per a escollir les rutes dels vaixells
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Canvi de sentit automàtic als senyals: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permetre als trens girar en un senyal, si esperaven allà durant molt temps
 
@@ -2238,7 +2238,7 @@ STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Commuta 
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Commuta la transparència de les estructures com ara fars i antenes. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Commuta la transparència dels indicadors de càrrega. Ctrl+Clic per bloquejar
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Mostra els objectes invisibles enlloc de transparents
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Alternar entre transparència i invisibilitat dels objectes
 
 # Linkgraph legend window
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Llegenda del fluxe de càrrega
@@ -3581,7 +3581,7 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Anys: {L
 STR_VEHICLE_INFO_AGE                                            :{COMMA} any{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} any{P "" s} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vel. Màx: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vel. Màx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Vel. màx: {LTBLUE}{VELOCITY} {BLACK}Abast: {LTBLUE}{COMMA} cel·les
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pes: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Màx: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pes: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Màx: {LTBLUE}{VELOCITY} {BLACK}Màx. E.T.: {LTBLUE}{FORCE}

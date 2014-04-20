@@ -1073,7 +1073,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarlar
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tür:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi yalnızca değişen ayarları göstererek sınırlandırır
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi önceden tanımlı filtreler kullanarak sınırlandırır
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel ayarlar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş ayarlar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman ayarları / tüm ayarlar
@@ -1082,11 +1082,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Yeni oyun ayarl
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Aşağıdaki liste belirli bir ayar türüne göre kısıtlanır
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tüm ayar türleri
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kullanıcı ayarları (kayıtlı dosyada saklanmaz; tüm oyunları etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Oyun ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Oyun ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :İstemci ayarları (kayıtlı dosyada saklanmaz; tüm oyunları etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Oyun ayarları (kayıtlı dosyada saklanır; sadece yeni oyunları etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Oyun ayarları (kayıtlı dosyada saklanır; sadece geçerli oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Şirket ayarları (kayıtlı dosyada saklanır; sadece yeni oyunları etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarları (kayıtlı dosyada saklanır; sadece geçerli şirketi etkilemektedir)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK}{WHITE}{STRING} ayarlayarak göster
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Tüm arama sonuçlarını{}{SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Tüm arama sonuçlarını{}{SILVER}Kategoriyi {BLACK} {WHITE}{STRING} {BLACK}ve {SILVER}Türü {BLACK} {WHITE}Tüm ayar türleri olarak ayarlayarak göster
@@ -3298,7 +3298,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Gruplanmamış 
 STR_GROUP_DEFAULT_SHIPS                                         :Gruplanmamış gemiler
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Gruplanmamış uçaklar
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruplar - gruba ait araçları listelemek için grubun üzerine tıklayın
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruplar - gruba ait araçları listelemek için grubun üzerine tıklayın. Hiyerarşiyi düzenlemek için grupları sürükleyip bırakın.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Grup oluşturmak için tıklayın
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Seçili grubu sil
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Seçili grubun ismini değiştir
