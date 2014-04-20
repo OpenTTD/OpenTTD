@@ -63,7 +63,8 @@ IniGroup::IniGroup(IniLoadFile *parent, const char *name, size_t len) : next(NUL
 	if (len == 0) len = strlen(name);
 
 	this->name = strndup(name, len);
-	if (this->name != NULL) str_validate(this->name, this->name + len);
+	if (this->name == NULL) error("not enough memory to allocate group name");
+	str_validate(this->name, this->name + len);
 
 	this->last_item = &this->item;
 	*parent->last_group = this;
