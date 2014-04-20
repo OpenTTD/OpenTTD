@@ -662,7 +662,6 @@ class IcuStringIterator : public StringIterator
 {
 	icu::BreakIterator *char_itr; ///< ICU iterator for characters.
 	icu::BreakIterator *word_itr; ///< ICU iterator for words.
-	const char *string;           ///< Iteration string in UTF-8.
 
 	SmallVector<UChar, 32> utf16_str;      ///< UTF-16 copy of the string.
 	SmallVector<size_t, 32> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
@@ -686,7 +685,7 @@ public:
 
 	virtual void SetString(const char *s)
 	{
-		this->string = s;
+		const char *string_base = s;
 
 		/* Unfortunately current ICU versions only provide rudimentary support
 		 * for word break iterators (especially for CJK languages) in combination
@@ -696,7 +695,7 @@ public:
 		this->utf16_to_utf8.Clear();
 
 		while (*s != '\0') {
-			size_t idx = s - this->string;
+			size_t idx = s - string_base;
 
 			WChar c = Utf8Consume(&s);
 			if (c <	0x10000) {
@@ -710,7 +709,7 @@ public:
 			*this->utf16_to_utf8.Append() = idx;
 		}
 		*this->utf16_str.Append() = '\0';
-		*this->utf16_to_utf8.Append() = s - this->string;
+		*this->utf16_to_utf8.Append() = s - string_base;
 
 		UText text = UTEXT_INITIALIZER;
 		UErrorCode status = U_ZERO_ERROR;
