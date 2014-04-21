@@ -1661,7 +1661,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Naseljima je do
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Naseljima je dozvoljeno da grade putne prelaze: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Omogućava naseljima da grade prelaz pruge preko puta
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ako je ovo podešavanje onemogućeno mogu postojati 2 aerodroma u svakom naselju. Ako je podešavanje omogućeno, broj aerodroma u gradu je ograničen dozvoljenim nivoom buke u gradu koji zavisi od populacije te veličine i udaljenosti aerodroma
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ako je ovo podešavanje onemogućeno mogu postojati 2 aerodroma u svakom naselju. Ako je podešavanje omogućeno, broj aerodroma u gradu je ograničen dozvoljenim nivoom buke u gradu koji zavisi od populacije i od veličine i udaljenosti aerodroma
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Osnivanje naselja u toku partije: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Dozvoljava igračima osnivanje novih naselja u toku igre
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
@@ -3387,7 +3387,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupisana dru
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupisani brodovi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupisane letilice
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupe - klikom na grupu se prikazuje spisak vozila u grupi
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupe - klikom na grupu se prikazuje spisak vozila u grupi. Hijerarhija grupa se uređuje metodom "prevuci i pusti"
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikom se pravi nova grupa
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Briše se označena grupa
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Preimenovanje označene grupe

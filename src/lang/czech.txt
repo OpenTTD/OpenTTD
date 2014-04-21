@@ -215,7 +215,7 @@ STR_ABBREV_GRAIN                                                :{TINY_FONT}ZR
 STR_ABBREV_WOOD                                                 :{TINY_FONT}DŘ
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}ŽR
 STR_ABBREV_STEEL                                                :{TINY_FONT}OC
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}CE
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}CN
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}MR
 STR_ABBREV_MAIZE                                                :{TINY_FONT}KU
 STR_ABBREV_FRUIT                                                :{TINY_FONT}OV
@@ -1159,7 +1159,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení spol
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Druh:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Zobrazovat v seznamu níže pouze změněná nastavení
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omezit nastavení v seznamu níže pomocí předdefinovaných filtrů
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základní nastavení
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé nastavení
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertní nastavení / všechna nastavení
@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavení s ji
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Omezí určitá nastavení v seznamu níže
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Všechny typy nastavení
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavení klienta (není uchováno v uložených hrách; ovlivní všechny hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavení klienta (neuchována v uložených hrách; ovlivní všechny hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavení hry (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
@@ -1607,7 +1607,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí městů
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Města mohou stavět přejezdy: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolení tohoto nastavení umožní městům, budovat železniční přejezdy
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Umožnit městům ovlivňovat hlukový limit pro letiště: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Pokud je vypnuto, ve každém městě mohou být dvě letiště. Pokud je zapnuto, počet letišť bude omezen hlukovými limity města, což závisí na jeho populaci, velikosti letiště a jeho vzdálenosti od centra města
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Pokud je vypnuto, ve každém městě mohou být dvě letiště. Pokud je zapnuto, počet letišť ve městě bude omezen hlukovými limity města, což závisí na jeho populaci, velikosti letiště a jeho vzdálenosti od centra města
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakládání měst během hry: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Povoluje hráčům zakládat nové města během hry
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zakázáno
