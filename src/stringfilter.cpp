@@ -32,7 +32,7 @@ void StringFilter::SetFilterTerm(const char *str)
 
 	assert(str != NULL);
 
-	char *dest = MallocT<char *>(strlen(str) + 1);
+	char *dest = MallocT<char>(strlen(str) + 1);
 	this->filter_buffer = dest;
 
 	WChar state = STATE_WHITESPACE;
