@@ -224,7 +224,7 @@ static bool CreateMainSurface(uint w, uint h)
 	InitPalette();
 
 	char caption[32];
-	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
+	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
 	set_window_title(caption);
 
 	enable_hardware_cursor();

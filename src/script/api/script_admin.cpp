@@ -30,7 +30,7 @@
 			sq_getinteger(vm, index, &res);
 
 			char buf[10];
-			snprintf(buf, sizeof(buf), "%d", (int32)res);
+			seprintf(buf, lastof(buf), "%d", (int32)res);
 			data = buf;
 			return true;
 		}

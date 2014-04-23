@@ -433,8 +433,8 @@ static char *FormatTinyOrISODate(char *buff, Date date, StringID str, const char
 	char day[3];
 	char month[3];
 	/* We want to zero-pad the days and months */
-	snprintf(day,   lengthof(day),   "%02i", ymd.day);
-	snprintf(month, lengthof(month), "%02i", ymd.month + 1);
+	seprintf(day,   lastof(day),   "%02i", ymd.day);
+	seprintf(month, lastof(month), "%02i", ymd.month + 1);
 
 	int64 args[] = {(int64)(size_t)day, (int64)(size_t)month, ymd.year};
 	StringParameters tmp_params(args);

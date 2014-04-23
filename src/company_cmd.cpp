@@ -1168,7 +1168,7 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (c->name_1 == STR_SV_UNNAMED && c->name == NULL) {
 				char buf[80];
 
-				snprintf(buf, lengthof(buf), "%s Transport", text);
+				seprintf(buf, lastof(buf), "%s Transport", text);
 				DoCommand(0, 0, 0, DC_EXEC, CMD_RENAME_COMPANY, buf);
 			}
 		}

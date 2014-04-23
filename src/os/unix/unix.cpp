@@ -15,6 +15,7 @@
 #include "../../crashlog.h"
 #include "../../core/random_func.hpp"
 #include "../../debug.h"
+#include "../../string_func.h"
 
 
 #include <dirent.h>
@@ -107,13 +108,13 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 #if defined(__MORPHOS__) || defined(__AMIGAOS__)
 	/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
 	if (FiosIsRoot(path)) {
-		res = snprintf(filename, lengthof(filename), "%s:%s", path, ent->d_name);
+		res = seprintf(filename, lastof(filename), "%s:%s", path, ent->d_name);
 	} else // XXX - only next line!
 #else
 	assert(path[strlen(path) - 1] == PATHSEPCHAR);
 	if (strlen(path) > 2) assert(path[strlen(path) - 2] != PATHSEPCHAR);
 #endif
-	res = snprintf(filename, lengthof(filename), "%s%s", path, ent->d_name);
+	res = seprintf(filename, lastof(filename), "%s%s", path, ent->d_name);
 
 	/* Could we fully concatenate the path and filename? */
 	if (res >= (int)lengthof(filename) || res < 0) return false;

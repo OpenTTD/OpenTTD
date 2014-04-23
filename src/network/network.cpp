@@ -199,7 +199,7 @@ const char *GenerateCompanyPasswordHash(const char *password, const char *passwo
 	char salted_password[NETWORK_SERVER_ID_LENGTH];
 
 	memset(salted_password, 0, sizeof(salted_password));
-	snprintf(salted_password, sizeof(salted_password), "%s", password);
+	seprintf(salted_password, lastof(salted_password), "%s", password);
 	/* Add the game seed and the server's ID as the salt. */
 	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
 		salted_password[i] ^= password_server_id[i] ^ (password_game_seed >> (i % 32));
@@ -213,8 +213,7 @@ const char *GenerateCompanyPasswordHash(const char *password, const char *passwo
 	checksum.Append(salted_password, sizeof(salted_password) - 1);
 	checksum.Finish(digest);
 
-	for (int di = 0; di < 16; di++) sprintf(hashed_password + di * 2, "%02x", digest[di]);
-	hashed_password[lengthof(hashed_password) - 1] = '\0';
+	for (int di = 0; di < 16; di++) seprintf(hashed_password + di * 2, lastof(hashed_password), "%02x", digest[di]);
 
 	return hashed_password;
 }
@@ -703,7 +702,7 @@ void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const c
 static void NetworkInitGameInfo()
 {
 	if (StrEmpty(_settings_client.network.server_name)) {
-		snprintf(_settings_client.network.server_name, sizeof(_settings_client.network.server_name), "Unnamed Server");
+		seprintf(_settings_client.network.server_name, lastof(_settings_client.network.server_name), "Unnamed Server");
 	}
 
 	/* The server is a client too */
@@ -1028,18 +1027,18 @@ static void NetworkGenerateServerId()
 	char coding_string[NETWORK_NAME_LENGTH];
 	int di;
 
-	snprintf(coding_string, sizeof(coding_string), "%d%s", (uint)Random(), "OpenTTD Server ID");
+	seprintf(coding_string, lastof(coding_string), "%d%s", (uint)Random(), "OpenTTD Server ID");
 
 	/* Generate the MD5 hash */
 	checksum.Append((const uint8*)coding_string, strlen(coding_string));
 	checksum.Finish(digest);
 
 	for (di = 0; di < 16; ++di) {
-		sprintf(hex_output + di * 2, "%02x", digest[di]);
+		seprintf(hex_output + di * 2, lastof(hex_output), "%02x", digest[di]);
 	}
 
 	/* _settings_client.network.network_id is our id */
-	snprintf(_settings_client.network.network_id, sizeof(_settings_client.network.network_id), "%s", hex_output);
+	seprintf(_settings_client.network.network_id, lastof(_settings_client.network.network_id), "%s", hex_output);
 }
 
 void NetworkStartDebugLog(NetworkAddress address)

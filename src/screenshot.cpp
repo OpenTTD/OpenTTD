@@ -718,12 +718,12 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 
 	/* Add extension to screenshot file */
 	size_t len = strlen(_screenshot_name);
-	snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, ".%s", ext);
+	seprintf(&_screenshot_name[len], lastof(_screenshot_name), ".%s", ext);
 
 	const char *screenshot_dir = crashlog ? _personal_dir : FiosGetScreenshotDir();
 
 	for (uint serial = 1;; serial++) {
-		if (snprintf(_full_screenshot_name, lengthof(_full_screenshot_name), "%s%s", screenshot_dir, _screenshot_name) >= (int)lengthof(_full_screenshot_name)) {
+		if (seprintf(_full_screenshot_name, lastof(_full_screenshot_name), "%s%s", screenshot_dir, _screenshot_name) >= (int)lengthof(_full_screenshot_name)) {
 			/* We need more characters than MAX_PATH -> end with error */
 			_full_screenshot_name[0] = '\0';
 			break;
@@ -731,7 +731,7 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 		if (!generate) break; // allow overwriting of non-automatic filenames
 		if (!FileExists(_full_screenshot_name)) break;
 		/* If file exists try another one with same name, but just with a higher index */
-		snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, "#%u.%s", serial, ext);
+		seprintf(&_screenshot_name[len], lastof(_screenshot_name) - len, "#%u.%s", serial, ext);
 	}
 
 	return _full_screenshot_name;

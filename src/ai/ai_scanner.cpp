@@ -120,7 +120,7 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 	if (force_exact_match) {
 		/* Try to find a direct 'name.version' match */
 		char ai_name_tmp[1024];
-		snprintf(ai_name_tmp, sizeof(ai_name_tmp), "%s.%d", ai_name, versionParam);
+		seprintf(ai_name_tmp, lastof(ai_name_tmp), "%s.%d", ai_name, versionParam);
 		strtolower(ai_name_tmp);
 		if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return static_cast<AIInfo *>(this->info_list[ai_name_tmp]);
 	}
@@ -160,7 +160,7 @@ AILibrary *AIScannerLibrary::FindLibrary(const char *library, int version)
 {
 	/* Internally we store libraries as 'library.version' */
 	char library_name[1024];
-	snprintf(library_name, sizeof(library_name), "%s.%d", library, version);
+	seprintf(library_name, lastof(library_name), "%s.%d", library, version);
 	strtolower(library_name);
 
 	/* Check if the library + version exists */

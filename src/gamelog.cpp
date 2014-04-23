@@ -189,7 +189,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
 		assert((uint)la->at < GLAT_END);
 
-		snprintf(buf, GAMELOG_BUF_LEN, "Tick %u: %s", (uint)la->tick, la_text[(uint)la->at]);
+		seprintf(buf, lastof(buf), "Tick %u: %s", (uint)la->tick, la_text[(uint)la->at]);
 		proc(buf);
 
 		const LoggedChange *lcend = &la->change[la->changes];

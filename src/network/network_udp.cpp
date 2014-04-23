@@ -384,7 +384,7 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 	}
 
 	if (item->info.hostname[0] == '\0') {
-		snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", client_addr->GetHostname());
+		seprintf(item->info.hostname, lastof(item->info.hostname), "%s", client_addr->GetHostname());
 	}
 
 	if (client_addr->GetAddress()->ss_family == AF_INET6) {

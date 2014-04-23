@@ -1537,7 +1537,7 @@ static void SaveVersionInConfig(IniFile *ini)
 	IniGroup *group = ini->GetGroup("version");
 
 	char version[9];
-	snprintf(version, lengthof(version), "%08X", _openttd_newgrf_version);
+	seprintf(version, lastof(version), "%08X", _openttd_newgrf_version);
 
 	const char * const versions[][2] = {
 		{ "version_string", _openttd_revision },
@@ -2040,9 +2040,9 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
 	} else {
 		if (sd->desc.cmd == SDT_BOOLX) {
-			snprintf(value, sizeof(value), (*(const bool*)ptr != 0) ? "on" : "off");
+			seprintf(value, lastof(value), (*(const bool*)ptr != 0) ? "on" : "off");
 		} else {
-			snprintf(value, sizeof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
+			seprintf(value, lastof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
 
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
@@ -2066,11 +2066,11 @@ void IConsoleListSettings(const char *prefilter)
 		const void *ptr = GetVariableAddress(&GetGameSettings(), &sd->save);
 
 		if (sd->desc.cmd == SDT_BOOLX) {
-			snprintf(value, lengthof(value), (*(const bool *)ptr != 0) ? "on" : "off");
+			seprintf(value, lastof(value), (*(const bool *)ptr != 0) ? "on" : "off");
 		} else if (sd->desc.cmd == SDT_STRING) {
-			snprintf(value, sizeof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
+			seprintf(value, lastof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
 		} else {
-			snprintf(value, lengthof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
+			seprintf(value, lastof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
 		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->desc.name, value);
 	}

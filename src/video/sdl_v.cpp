@@ -418,7 +418,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 			NOT_REACHED();
 	}
 
-	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
+	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
 	SDL_CALL SDL_WM_SetCaption(caption, caption);
 
 	GameSizeChanged();

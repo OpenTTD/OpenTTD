@@ -1090,7 +1090,7 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_NEWGAME: // New Game --> 'Random game'
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
-				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "Random Map");
+				seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "Random Map");
 			}
 #endif /* ENABLE_NETWORK */
 			MakeNewGame(false, new_mode == SM_NEWGAME);
@@ -1117,7 +1117,7 @@ void SwitchToMode(SwitchMode new_mode)
 				DoCommandP(0, PM_PAUSED_SAVELOAD, 0, CMD_PAUSE);
 #ifdef ENABLE_NETWORK
 				if (_network_server) {
-					snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);
+					seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);
 				}
 #endif /* ENABLE_NETWORK */
 			}
@@ -1127,7 +1127,7 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_START_HEIGHTMAP: // Load a heightmap and start a new game from it
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
-				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
+				seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
 			}
 #endif /* ENABLE_NETWORK */
 			MakeNewGame(true, true);
@@ -1373,7 +1373,7 @@ void StateGameLoop()
 		if (_debug_desync_level > 2 && _date_fract == 0 && (_date & 0x1F) == 0) {
 			/* Save the desync savegame if needed. */
 			char name[MAX_PATH];
-			snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
+			seprintf(name, lastof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
 			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR, false);
 		}
 
@@ -1425,7 +1425,7 @@ static void DoAutosave()
 		static int _autosave_ctr = 0;
 
 		/* generate a savegame name and number according to _settings_client.gui.max_num_autosaves */
-		snprintf(buf, sizeof(buf), "autosave%d.sav", _autosave_ctr);
+		seprintf(buf, lastof(buf), "autosave%d.sav", _autosave_ctr);
 
 		if (++_autosave_ctr >= _settings_client.gui.max_num_autosaves) _autosave_ctr = 0;
 	}

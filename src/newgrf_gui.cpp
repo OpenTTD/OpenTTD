@@ -90,7 +90,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 
 	/* Prepare and draw GRF ID */
 	char buff[256];
-	snprintf(buff, lengthof(buff), "%08X", BSWAP32(c->ident.grfid));
+	seprintf(buff, lastof(buff), "%08X", BSWAP32(c->ident.grfid));
 	SetDParamStr(0, buff);
 	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_GRF_ID);
 

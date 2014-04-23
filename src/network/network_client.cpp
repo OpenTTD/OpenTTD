@@ -958,7 +958,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 		switch (action) {
 			case NETWORK_ACTION_CHAT_CLIENT:
 				/* For speaking to client we need the client-name */
-				snprintf(name, sizeof(name), "%s", ci_to->client_name);
+				seprintf(name, lastof(name), "%s", ci_to->client_name);
 				ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				break;
 
@@ -979,7 +979,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 		}
 	} else {
 		/* Display message from somebody else */
-		snprintf(name, sizeof(name), "%s", ci_to->client_name);
+		seprintf(name, lastof(name), "%s", ci_to->client_name);
 		ci = ci_to;
 	}
 

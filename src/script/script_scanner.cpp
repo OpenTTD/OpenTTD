@@ -114,7 +114,7 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 	strtolower(script_original_name);
 
 	char script_name[1024];
-	snprintf(script_name, sizeof(script_name), "%s.%d", script_original_name, info->GetVersion());
+	seprintf(script_name, lastof(script_name), "%s.%d", script_original_name, info->GetVersion());
 
 	/* Check if GetShortName follows the rules */
 	if (strlen(info->GetShortName()) != 4) {
