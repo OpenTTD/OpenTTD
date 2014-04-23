@@ -284,7 +284,7 @@ int CDECL main(int argc, char *argv[])
 }
 
 #ifndef WITH_COCOA
-bool GetClipboardContents(char *buffer, size_t buff_len)
+bool GetClipboardContents(char *buffer, const char *last)
 {
 	return false;
 }

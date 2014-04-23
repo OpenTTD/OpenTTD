@@ -133,7 +133,7 @@ ScriptController::~ScriptController()
 
 	LoadedLibraryList::iterator iter = controller->loaded_library.find(library_name);
 	if (iter != controller->loaded_library.end()) {
-		ttd_strlcpy(fake_class, (*iter).second, sizeof(fake_class));
+		strecpy(fake_class, (*iter).second, lastof(fake_class));
 	} else {
 		int next_number = ++controller->loaded_library_count;
 

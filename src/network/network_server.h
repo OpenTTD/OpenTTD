@@ -83,7 +83,7 @@ public:
 
 	virtual Packet *ReceivePacket();
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status);
-	void GetClientName(char *client_name, size_t size) const;
+	void GetClientName(char *client_name, const char *last) const;
 
 	NetworkRecvStatus SendMap();
 	NetworkRecvStatus SendErrorQuit(ClientID client_id, NetworkErrorCode errorno);

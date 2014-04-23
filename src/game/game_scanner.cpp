@@ -39,7 +39,7 @@ GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, boo
 	if (nameParam == NULL) return NULL;
 
 	char game_name[1024];
-	ttd_strlcpy(game_name, nameParam, sizeof(game_name));
+	strecpy(game_name, nameParam, lastof(game_name));
 	strtolower(game_name);
 
 	GameInfo *info = NULL;

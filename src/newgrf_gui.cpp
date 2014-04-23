@@ -1495,7 +1495,7 @@ void ShowMissingContentWindow(const GRFConfig *list)
 		ContentInfo *ci = new ContentInfo();
 		ci->type = CONTENT_TYPE_NEWGRF;
 		ci->state = ContentInfo::DOES_NOT_EXIST;
-		ttd_strlcpy(ci->name, c->GetName(), lengthof(ci->name));
+		strecpy(ci->name, c->GetName(), lastof(ci->name));
 		ci->unique_id = BSWAP32(c->ident.grfid);
 		memcpy(ci->md5sum, HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum, sizeof(ci->md5sum));
 		*cv.Append() = ci;

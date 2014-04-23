@@ -117,7 +117,7 @@ bool ScriptInstance::LoadCompatibilityScripts(const char *api_version, Subdirect
 	Searchpath sp;
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioAppendDirectory(buf, MAX_PATH, sp, dir);
-		ttd_strlcat(buf, script_name, MAX_PATH);
+		strecat(buf, script_name, lastof(buf));
 		if (!FileExists(buf)) continue;
 
 		if (this->engine->LoadScript(buf)) return true;

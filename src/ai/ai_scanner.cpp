@@ -98,7 +98,7 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 	if (nameParam == NULL) return NULL;
 
 	char ai_name[1024];
-	ttd_strlcpy(ai_name, nameParam, sizeof(ai_name));
+	strecpy(ai_name, nameParam, lastof(ai_name));
 	strtolower(ai_name);
 
 	AIInfo *info = NULL;

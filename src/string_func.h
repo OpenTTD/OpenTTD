@@ -29,9 +29,6 @@
 #include "core/bitmath_func.hpp"
 #include "string_type.h"
 
-void ttd_strlcat(char *dst, const char *src, size_t size);
-void ttd_strlcpy(char *dst, const char *src, size_t size);
-
 char *strecat(char *dst, const char *src, const char *last);
 char *strecpy(char *dst, const char *src, const char *last);
 

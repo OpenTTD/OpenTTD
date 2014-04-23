@@ -400,7 +400,7 @@ char *FioGetDirectory(char *buf, size_t buflen, Subdirectory subdir)
 	}
 
 	/* Could not find the directory, fall back to a base path */
-	ttd_strlcpy(buf, _personal_dir, buflen);
+	strecpy(buf, _personal_dir, &buf[buflen - 1]);
 
 	return buf;
 }
@@ -550,7 +550,7 @@ static void FioCreateDirectory(const char *name)
 	mkdir(OTTD2FS(name));
 #elif defined(__MORPHOS__) || defined(__AMIGAOS__)
 	char buf[MAX_PATH];
-	ttd_strlcpy(buf, name, MAX_PATH);
+	strecpy(buf, name, lastof(buf));
 
 	size_t len = strlen(name) - 1;
 	if (buf[len] == '/') {
@@ -594,7 +594,8 @@ bool AppendPathSeparator(char *buf, size_t buflen)
 char *BuildWithFullPath(const char *dir)
 {
 	char *dest = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(dest, dir, MAX_PATH);
+	char *last = dest + MAX_PATH - 1;
+	strecpy(dest, dir, last);
 
 	/* Check if absolute or relative path */
 	const char *s = strchr(dest, PATHSEPCHAR);
@@ -603,7 +604,7 @@ char *BuildWithFullPath(const char *dir)
 	if (s == NULL || dest != s) {
 		if (getcwd(dest, MAX_PATH) == NULL) *dest = '\0';
 		AppendPathSeparator(dest, MAX_PATH);
-		ttd_strlcat(dest, dir, MAX_PATH);
+		strecat(dest, dir, last);
 	}
 	AppendPathSeparator(dest, MAX_PATH);
 
@@ -791,15 +792,15 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
-			ttd_strlcpy(name, th.prefix, lengthof(name));
-			ttd_strlcat(name, PATHSEP, lengthof(name));
+			strecpy(name, th.prefix, lastof(name));
+			strecat(name, PATHSEP, lastof(name));
 		}
 
 		/* Copy the name of the file in a safe way at the end of 'name' */
-		ttd_strlcat(name, th.name, lengthof(name));
+		strecat(name, th.name, lastof(name));
 
 		/* Calculate the size of the file.. for some strange reason this is stored as a string */
-		ttd_strlcpy(buf, th.size, lengthof(buf));
+		strecpy(buf, th.size, lastof(buf));
 		size_t skip = strtoul(buf, &end, 8);
 
 		switch (th.typeflag) {
@@ -828,7 +829,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 			case '1': // hard links
 			case '2': { // symbolic links
 				/* Copy the destination of the link in a safe way at the end of 'linkname' */
-				ttd_strlcpy(link, th.linkname, lengthof(link));
+				strecpy(link, th.linkname, lastof(link));
 
 				if (strlen(name) == 0 || strlen(link) == 0) break;
 
@@ -844,7 +845,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 				/* Process relative path.
 				 * Note: The destination of links must not contain any directory-links. */
-				ttd_strlcpy(dest, name, lengthof(dest));
+				strecpy(dest, name, lastof(dest));
 				char *destpos = strrchr(dest, PATHSEPCHAR);
 				if (destpos == NULL) destpos = dest;
 				*destpos = '\0';

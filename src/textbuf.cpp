@@ -26,9 +26,11 @@
  * Try to retrieve the current clipboard contents.
  *
  * @note OS-specific function.
+ * @param buffer Clipboard content.
+ * @param last The pointer to the last element of the destination buffer
  * @return True if some text could be retrieved.
  */
-bool GetClipboardContents(char *buffer, size_t buff_len);
+bool GetClipboardContents(char *buffer, const char *last);
 
 int _caret_timer;
 
@@ -226,7 +228,7 @@ bool Textbuf::InsertClipboard()
 {
 	char utf8_buf[512];
 
-	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
+	if (!GetClipboardContents(utf8_buf, lastof(utf8_buf))) return false;
 
 	return this->InsertString(utf8_buf, false);
 }
@@ -406,7 +408,7 @@ void Textbuf::Assign(StringID string)
  */
 void Textbuf::Assign(const char *text)
 {
-	ttd_strlcpy(this->buf, text, this->max_bytes);
+	strecpy(this->buf, text, &this->buf[this->max_bytes - 1]);
 	this->UpdateSize();
 }
 

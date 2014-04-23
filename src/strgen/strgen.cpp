@@ -386,13 +386,13 @@ static inline void ottd_mkdir(const char *directory)
  * path separator and the filename. The separator is only appended if the path
  * does not already end with a separator
  */
-static inline char *mkpath(char *buf, size_t buflen, const char *path, const char *file)
+static inline char *mkpath(char *buf, const char *last, const char *path, const char *file)
 {
-	ttd_strlcpy(buf, path, buflen); // copy directory into buffer
+	strecpy(buf, path, last); // copy directory into buffer
 
 	char *p = strchr(buf, '\0'); // add path separator if necessary
-	if (p[-1] != PATHSEPCHAR && (size_t)(p - buf) + 1 < buflen) *p++ = PATHSEPCHAR;
-	ttd_strlcpy(p, file, buflen - (size_t)(p - buf)); // concatenate filename at end of buffer
+	if (p[-1] != PATHSEPCHAR && p != last) *p++ = PATHSEPCHAR;
+	strecpy(p, file, last); // concatenate filename at end of buffer
 	return buf;
 }
 
@@ -522,7 +522,7 @@ int CDECL main(int argc, char *argv[])
 		 * with a (free) parameter the program will translate that language to destination
 		 * directory. As input english.txt is parsed from the source directory */
 		if (mgo.numleft == 0) {
-			mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
+			mkpath(pathbuf, lastof(pathbuf), src_dir, "english.txt");
 
 			/* parse master file */
 			StringData data(TAB_COUNT);
@@ -532,7 +532,7 @@ int CDECL main(int argc, char *argv[])
 
 			/* write strings.h */
 			ottd_mkdir(dest_dir);
-			mkpath(pathbuf, lengthof(pathbuf), dest_dir, "strings.h");
+			mkpath(pathbuf, lastof(pathbuf), dest_dir, "strings.h");
 
 			HeaderFileWriter writer(pathbuf);
 			writer.WriteHeader(data);
@@ -540,7 +540,7 @@ int CDECL main(int argc, char *argv[])
 		} else if (mgo.numleft >= 1) {
 			char *r;
 
-			mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
+			mkpath(pathbuf, lastof(pathbuf), src_dir, "english.txt");
 
 			StringData data(TAB_COUNT);
 			/* parse master file and check if target file is correct */
@@ -558,12 +558,12 @@ int CDECL main(int argc, char *argv[])
 
 				/* get the targetfile, strip any directories and append to destination path */
 				r = strrchr(mgo.argv[i], PATHSEPCHAR);
-				mkpath(pathbuf, lengthof(pathbuf), dest_dir, (r != NULL) ? &r[1] : mgo.argv[i]);
+				mkpath(pathbuf, lastof(pathbuf), dest_dir, (r != NULL) ? &r[1] : mgo.argv[i]);
 
 				/* rename the .txt (input-extension) to .lng */
 				r = strrchr(pathbuf, '.');
 				if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
-				ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
+				strecpy(r, ".lng", lastof(pathbuf));
 
 				LanguageFileWriter writer(pathbuf);
 				writer.WriteLang(data);

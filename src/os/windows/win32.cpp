@@ -496,7 +496,7 @@ void DetermineBasePaths(const char *exe)
 	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path))) {
 		strecpy(tmp, FS2OTTD(path), lastof(tmp));
 		AppendPathSeparator(tmp, MAX_PATH);
-		ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
+		strecat(tmp, PERSONAL_DIR, lastof(tmp));
 		AppendPathSeparator(tmp, MAX_PATH);
 		_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
 	} else {
@@ -506,7 +506,7 @@ void DetermineBasePaths(const char *exe)
 	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path))) {
 		strecpy(tmp, FS2OTTD(path), lastof(tmp));
 		AppendPathSeparator(tmp, MAX_PATH);
-		ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
+		strecat(tmp, PERSONAL_DIR, lastof(tmp));
 		AppendPathSeparator(tmp, MAX_PATH);
 		_searchpaths[SP_SHARED_DIR] = strdup(tmp);
 	} else {
@@ -544,7 +544,7 @@ void DetermineBasePaths(const char *exe)
 }
 
 
-bool GetClipboardContents(char *buffer, size_t buff_len)
+bool GetClipboardContents(char *buffer, const char *last)
 {
 	HGLOBAL cbuf;
 	const char *ptr;
@@ -554,7 +554,7 @@ bool GetClipboardContents(char *buffer, size_t buff_len)
 		cbuf = GetClipboardData(CF_UNICODETEXT);
 
 		ptr = (const char*)GlobalLock(cbuf);
-		int out_len = WideCharToMultiByte(CP_UTF8, 0, (LPCWSTR)ptr, -1, buffer, (int)buff_len, NULL, NULL);
+		int out_len = WideCharToMultiByte(CP_UTF8, 0, (LPCWSTR)ptr, -1, buffer, (last - buffer) + 1, NULL, NULL);
 		GlobalUnlock(cbuf);
 		CloseClipboard();
 
@@ -565,7 +565,7 @@ bool GetClipboardContents(char *buffer, size_t buff_len)
 		cbuf = GetClipboardData(CF_TEXT);
 
 		ptr = (const char*)GlobalLock(cbuf);
-		ttd_strlcpy(buffer, FS2OTTD(ptr), buff_len);
+		strecpy(buffer, FS2OTTD(ptr), last);
 
 		GlobalUnlock(cbuf);
 		CloseClipboard();

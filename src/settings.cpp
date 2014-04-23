@@ -526,7 +526,7 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 				switch (GetVarMemType(sld->conv)) {
 					case SLE_VAR_STRB:
 					case SLE_VAR_STRBQ:
-						if (p != NULL) ttd_strlcpy((char*)ptr, (const char*)p, sld->length);
+						if (p != NULL) strecpy((char*)ptr, (const char*)p, (char*)ptr + sld->length - 1);
 						break;
 
 					case SLE_VAR_STR:
@@ -1929,7 +1929,7 @@ bool SetSettingValue(uint index, const char *value, bool force_newgame)
 		*var = strcmp(value, "(null)") == 0 ? NULL : strdup(value);
 	} else {
 		char *var = (char*)GetVariableAddress(NULL, &sd->save);
-		ttd_strlcpy(var, value, sd->save.length);
+		strecpy(var, value, &var[sd->save.length - 1]);
 	}
 	if (sd->desc.proc != NULL) sd->desc.proc(0);
 

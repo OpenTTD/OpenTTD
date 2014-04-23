@@ -40,7 +40,7 @@ static void SaveReal_GSDT(int *index_ptr)
 	GameConfig *config = GameConfig::GetConfig();
 
 	if (config->HasScript()) {
-		ttd_strlcpy(_game_saveload_name, config->GetName(), lengthof(_game_saveload_name));
+		strecpy(_game_saveload_name, config->GetName(), lastof(_game_saveload_name));
 		_game_saveload_version = config->GetVersion();
 	} else {
 		/* No GameScript is configured for this so store an empty string as name. */

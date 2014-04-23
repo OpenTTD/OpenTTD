@@ -41,7 +41,7 @@ static void SaveReal_AIPL(int *index_ptr)
 	AIConfig *config = AIConfig::GetConfig(index);
 
 	if (config->HasScript()) {
-		ttd_strlcpy(_ai_saveload_name, config->GetName(), lengthof(_ai_saveload_name));
+		strecpy(_ai_saveload_name, config->GetName(), lastof(_ai_saveload_name));
 		_ai_saveload_version = config->GetVersion();
 	} else {
 		/* No AI is configured for this so store an empty string as name. */

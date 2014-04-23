@@ -155,11 +155,11 @@ const char *GetCurrentLocale(const char *)
 /**
  * Return the contents of the clipboard (COCOA).
  *
- * @param buffer Clipboard content..
- * @param buff_len Length of the clipboard content..
+ * @param buffer Clipboard content.
+ * @param last The pointer to the last element of the destination buffer
  * @return Whether clipboard is empty or not.
  */
-bool GetClipboardContents(char *buffer, size_t buff_len)
+bool GetClipboardContents(char *buffer, const char *last)
 {
 	NSPasteboard *pb = [ NSPasteboard generalPasteboard ];
 	NSArray *types = [ NSArray arrayWithObject:NSStringPboardType ];
@@ -171,7 +171,7 @@ bool GetClipboardContents(char *buffer, size_t buff_len)
 	NSString *string = [ pb stringForType:NSStringPboardType ];
 	if (string == nil || [ string length ] == 0) return false;
 
-	ttd_strlcpy(buffer, [ string UTF8String ], buff_len);
+	strecpy(buffer, [ string UTF8String ], last);
 
 	return true;
 }
