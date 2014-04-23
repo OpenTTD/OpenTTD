@@ -941,7 +941,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	/* We need a valid name.. make it Player */
 	if (StrEmpty(name)) strecpy(name, "Player", lastof(name));
 
-	if (!NetworkFindName(name)) { // Change name if duplicate
+	if (!NetworkFindName(name, lastof(name))) { // Change name if duplicate
 		/* We could not create a name for this client */
 		return this->SendError(NETWORK_ERROR_NAME_IN_USE);
 	}
@@ -1443,7 +1443,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 
 	if (ci != NULL) {
 		/* Display change */
-		if (NetworkFindName(client_name)) {
+		if (NetworkFindName(client_name, lastof(client_name))) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, client_name);
 			strecpy(ci->client_name, client_name, lastof(ci->client_name));
 			NetworkUpdateClientInfo(ci->client_id);
@@ -1701,15 +1701,15 @@ static void NetworkAutoCleanCompanies()
 /**
  * Check whether a name is unique, and otherwise try to make it unique.
  * @param new_name The name to check/modify.
+ * @param last     The last writeable element of the buffer.
  * @return True if an unique name was achieved.
  */
-bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
+bool NetworkFindName(char *new_name, const char *last)
 {
 	bool found_name = false;
 	uint number = 0;
 	char original_name[NETWORK_CLIENT_NAME_LENGTH];
 
-	/* We use NETWORK_CLIENT_NAME_LENGTH in here, because new_name is really a pointer */
 	strecpy(original_name, new_name, lastof(original_name));
 
 	while (!found_name) {
@@ -1734,7 +1734,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 
 			/* Something's really wrong when there're more names than clients */
 			if (number++ > MAX_CLIENTS) break;
-			snprintf(new_name, NETWORK_CLIENT_NAME_LENGTH, "%s #%d", original_name, number);
+			seprintf(new_name, last, "%s #%d", original_name, number);
 		}
 	}
 

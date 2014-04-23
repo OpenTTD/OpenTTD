@@ -1231,7 +1231,7 @@ void NetworkUpdateClientName()
 		if (!_network_server) {
 			MyClient::SendSetName(_settings_client.network.client_name);
 		} else {
-			if (NetworkFindName(_settings_client.network.client_name)) {
+			if (NetworkFindName(_settings_client.network.client_name, lastof(_settings_client.network.client_name))) {
 				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, _settings_client.network.client_name);
 				strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
 				NetworkUpdateClientInfo(CLIENT_ID_SERVER);
