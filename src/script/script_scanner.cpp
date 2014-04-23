@@ -110,7 +110,7 @@ void ScriptScanner::Reset()
 void ScriptScanner::RegisterScript(ScriptInfo *info)
 {
 	char script_original_name[1024];
-	this->GetScriptName(info, script_original_name, sizeof(script_original_name));
+	this->GetScriptName(info, script_original_name, lastof(script_original_name));
 	strtolower(script_original_name);
 
 	char script_name[1024];

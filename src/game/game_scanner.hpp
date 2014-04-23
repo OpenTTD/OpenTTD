@@ -28,7 +28,7 @@ public:
 	class GameInfo *FindInfo(const char *nameParam, int versionParam, bool force_exact_match);
 
 protected:
-	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, int len);
+	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, const char *last);
 	/* virtual */ const char *GetFileName() const { return PATHSEP "info.nut"; }
 	/* virtual */ Subdirectory GetDirectory() const { return GAME_DIR; }
 	/* virtual */ const char *GetScannerName() const { return "Game Scripts"; }
@@ -49,7 +49,7 @@ public:
 	class GameLibrary *FindLibrary(const char *library, int version);
 
 protected:
-	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, int len);
+	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, const char *last);
 	/* virtual */ const char *GetFileName() const { return PATHSEP "library.nut"; }
 	/* virtual */ Subdirectory GetDirectory() const { return GAME_LIBRARY_DIR; }
 	/* virtual */ const char *GetScannerName() const { return "GS Libraries"; }
