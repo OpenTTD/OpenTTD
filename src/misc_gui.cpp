@@ -30,6 +30,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** Method to open the OSK. */
 enum OskActivation {
 	OSKA_DISABLED,           ///< The OSK shall not be activated at all.

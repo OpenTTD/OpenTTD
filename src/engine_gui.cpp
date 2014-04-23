@@ -25,6 +25,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Return the category of an engine.
  * @param engine Engine to examine.

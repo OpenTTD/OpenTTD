@@ -31,6 +31,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 typedef GUIList<const StoryPage*> GUIStoryPageList;
 typedef GUIList<const StoryPageElement*> GUIStoryPageElementList;
 

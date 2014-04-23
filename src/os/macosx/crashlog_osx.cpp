@@ -22,6 +22,8 @@
 #include <dlfcn.h>
 #include <cxxabi.h>
 
+#include "../../safeguards.h"
+
 
 /* Macro testing a stack address for valid alignment. */
 #if defined(__i386__)

@@ -18,6 +18,8 @@
 #include "train.h"
 #include "company_base.h"
 
+#include "safeguards.h"
+
 
 /** these are the maximums used for updating signal blocks */
 static const uint SIG_TBU_SIZE    =  64; ///< number of signals entering to block

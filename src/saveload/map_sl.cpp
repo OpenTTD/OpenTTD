@@ -16,6 +16,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static uint32 _map_dim_x;
 static uint32 _map_dim_y;
 

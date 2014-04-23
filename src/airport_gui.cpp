@@ -31,6 +31,8 @@
 
 #include "widgets/airport_widget.h"
 
+#include "safeguards.h"
+
 
 static AirportClassID _selected_airport_class; ///< the currently visible airport class
 static int _selected_airport_index;            ///< the index of the selected airport in the current class or -1

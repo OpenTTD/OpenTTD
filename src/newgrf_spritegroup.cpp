@@ -14,6 +14,8 @@
 #include "newgrf_spritegroup.h"
 #include "core/pool_func.hpp"
 
+#include "safeguards.h"
+
 SpriteGroupPool _spritegroup_pool("SpriteGroup");
 INSTANTIATE_POOL_METHODS(SpriteGroup)
 

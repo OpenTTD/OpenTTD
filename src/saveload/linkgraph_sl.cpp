@@ -16,6 +16,8 @@
 #include "../settings_internal.h"
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 typedef LinkGraph::BaseNode Node;
 typedef LinkGraph::BaseEdge Edge;
 

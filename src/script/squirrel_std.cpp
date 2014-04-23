@@ -17,6 +17,8 @@
 #include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"
 
+#include "../safeguards.h"
+
 
 SQInteger SquirrelStd::min(HSQUIRRELVM vm)
 {

@@ -21,6 +21,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Draw the details for the given vehicle at the given position
  *

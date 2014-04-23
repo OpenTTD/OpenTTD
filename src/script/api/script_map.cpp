@@ -13,6 +13,8 @@
 #include "script_map.hpp"
 #include "../../tile_map.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptMap::IsValidTile(TileIndex t)
 {
 	return ::IsValidTile(t);

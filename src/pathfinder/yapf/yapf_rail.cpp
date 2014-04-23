@@ -19,6 +19,8 @@
 #include "../../viewport_func.h"
 #include "../../newgrf_station.h"
 
+#include "../../safeguards.h"
+
 #define DEBUG_YAPF_CACHE 0
 
 #if DEBUG_YAPF_CACHE

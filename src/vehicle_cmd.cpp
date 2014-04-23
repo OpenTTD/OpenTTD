@@ -34,6 +34,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /* Tables used in vehicle.h to find the right command for a certain vehicle type */
 const uint32 _veh_build_proc_table[] = {
 	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN),

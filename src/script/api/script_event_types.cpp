@@ -19,6 +19,8 @@
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 bool ScriptEventEnginePreview::IsEngineValid() const
 {
 	const Engine *e = ::Engine::GetIfValid(this->engine);

@@ -29,6 +29,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** The type of the last built rail bridge */
 static BridgeType _last_railbridge_type = 0;
 /** The type of the last built road bridge */

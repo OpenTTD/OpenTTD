@@ -15,6 +15,8 @@
 #include "script_info.hpp"
 #include "../textfile_gui.h"
 
+#include "../safeguards.h"
+
 void ScriptConfig::Change(const char *name, int version, bool force_exact_match, bool is_random)
 {
 	free(this->name);

@@ -14,6 +14,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 /** Temporary storage of cargo monitoring data for loading or saving it. */
 struct TempStorage {
 	CargoMonitorID number;

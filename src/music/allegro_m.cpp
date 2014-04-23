@@ -16,6 +16,8 @@
 #include "allegro_m.h"
 #include <allegro.h>
 
+#include "../safeguards.h"
+
 static FMusicDriver_Allegro iFMusicDriver_Allegro;
 static MIDI *_midi = NULL;
 

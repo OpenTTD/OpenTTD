@@ -15,6 +15,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
 	SLE_CONDVAR(Sign, name,  SLE_NAME,                   0, 83),

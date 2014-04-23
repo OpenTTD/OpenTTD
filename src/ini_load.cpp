@@ -15,6 +15,8 @@
 #include "ini_type.h"
 #include "string_func.h"
 
+#include "safeguards.h"
+
 /**
  * Construct a new in-memory item of an Ini file.
  * @param parent the group we belong to

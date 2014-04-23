@@ -17,6 +17,8 @@
 #include "../../industry.h"
 #include "../../station_base.h"
 
+#include "../../safeguards.h"
+
 ScriptCargoList::ScriptCargoList()
 {
 	const CargoSpec *cs;

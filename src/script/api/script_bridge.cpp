@@ -17,6 +17,8 @@
 #include "../../strings_func.h"
 #include "../../date_func.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptBridge::IsValidBridge(BridgeID bridge_id)
 {
 	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= _cur_year;

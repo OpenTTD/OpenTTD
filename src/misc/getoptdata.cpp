@@ -12,6 +12,8 @@
 #include "../stdafx.h"
 #include "getoptdata.h"
 
+#include "../safeguards.h"
+
 /**
  * Find the next option.
  * @return Function returns one

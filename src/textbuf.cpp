@@ -20,6 +20,8 @@
 #include "window_func.h"
 #include "core/alloc_func.hpp"
 
+#include "safeguards.h"
+
 /**
  * Try to retrieve the current clipboard contents.
  *

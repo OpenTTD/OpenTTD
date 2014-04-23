@@ -41,6 +41,8 @@
 #include "table/strings.h"
 #include "table/control_codes.h"
 
+#include "safeguards.h"
+
 char _config_language_file[MAX_PATH];             ///< The file (name) stored in the configuration.
 LanguageList _languages;                          ///< The actual list of language meta data.
 const LanguageMetadata *_current_language = NULL; ///< The currently loaded language.

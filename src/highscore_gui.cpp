@@ -25,6 +25,8 @@
 
 #include "widgets/highscore_widget.h"
 
+#include "safeguards.h"
+
 struct EndGameHighScoreBaseWindow : Window {
 	uint32 background_img;
 	int8 rank;

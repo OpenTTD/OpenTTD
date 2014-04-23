@@ -21,6 +21,8 @@
 #include "../core/bitmath_func.hpp"
 #include "grf.hpp"
 
+#include "../safeguards.h"
+
 extern const byte _palmap_w2d[];
 
 /** The different colour components a sprite can have. */

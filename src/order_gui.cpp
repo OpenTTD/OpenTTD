@@ -32,6 +32,8 @@
 
 #include "widgets/order_widget.h"
 
+#include "safeguards.h"
+
 
 /** Order load types that could be given to station orders. */
 static const StringID _station_load_types[][5][5] = {

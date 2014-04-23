@@ -16,6 +16,8 @@
 #include "saveload.h"
 #include "newgrf_sl.h"
 
+#include "../safeguards.h"
+
 static const SaveLoad _object_desc[] = {
 	    SLE_VAR(Object, location.tile,              SLE_UINT32),
 	    SLE_VAR(Object, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),

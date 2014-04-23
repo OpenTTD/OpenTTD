@@ -33,6 +33,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.
  * It's done with the following arrays of widget indexes. Each of them tells if a widget side should be moved and in what direction.

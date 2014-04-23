@@ -11,6 +11,8 @@
 
 #include "../stdafx.h"
 
+#include "../safeguards.h"
+
 /**
  * Function to exit with an error message after malloc() or calloc() have failed
  * @param size number of bytes we tried to allocate

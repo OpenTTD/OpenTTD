@@ -38,6 +38,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 const NewsItem *_statusbar_news_item = NULL;
 
 static uint MIN_NEWS_AMOUNT = 30;           ///< preferred minimum amount of news messages

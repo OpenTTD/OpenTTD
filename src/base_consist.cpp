@@ -13,6 +13,8 @@
 #include "base_consist.h"
 #include "vehicle_base.h"
 
+#include "safeguards.h"
+
 BaseConsist::~BaseConsist()
 {
 	free(this->name);

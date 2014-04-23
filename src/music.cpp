@@ -15,6 +15,8 @@
 #define SET_TYPE "music"
 #include "base_media_func.h"
 
+#include "safeguards.h"
+
 INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<MusicSet>, MusicSet)
 
 /** Names corresponding to the music set's files */

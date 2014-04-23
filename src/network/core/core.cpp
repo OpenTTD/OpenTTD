@@ -18,6 +18,8 @@
 #include "os_abstraction.h"
 #include "packet.h"
 
+#include "../../safeguards.h"
+
 
 #ifdef __MORPHOS__
 /* the library base is required here */

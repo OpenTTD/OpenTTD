@@ -21,6 +21,8 @@
 #include <unicode/ustring.h>
 #endif /* WITH_ICU */
 
+#include "safeguards.h"
+
 
 /** Cache of ParagraphLayout lines. */
 Layouter::LineCache *Layouter::linecache;

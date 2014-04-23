@@ -13,6 +13,8 @@
 #include "geometry_func.hpp"
 #include "math_func.hpp"
 
+#include "../safeguards.h"
+
 /**
  * Compute bounding box of both dimensions.
  * @param d1 First dimension.

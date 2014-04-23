@@ -12,5 +12,7 @@
 #include "../stdafx.h"
 #include "null_s.h"
 
+#include "../safeguards.h"
+
 /** The factory for the null sound driver. */
 static FSoundDriver_Null iFSoundDriver_Null;

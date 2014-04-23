@@ -49,6 +49,8 @@
 #include "saveload_internal.h"
 #include "saveload_filter.h"
 
+#include "../safeguards.h"
+
 /*
  * Previous savegame versions, the trunk revision where they were
  * introduced and the released version that had that particular

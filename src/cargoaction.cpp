@@ -14,6 +14,8 @@
 #include "cargoaction.h"
 #include "station_base.h"
 
+#include "safeguards.h"
+
 /**
  * Decides if a packet needs to be split.
  * @param cp Packet to be either split or moved in one piece.

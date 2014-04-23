@@ -4,6 +4,8 @@
 #include "demands.h"
 #include <list>
 
+#include "../safeguards.h"
+
 typedef std::list<NodeID> NodeList;
 
 /**

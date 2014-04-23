@@ -15,6 +15,8 @@
 #include "script_marine.hpp"
 #include "../../waypoint_base.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptWaypoint::IsValidWaypoint(StationID waypoint_id)
 {
 	const Waypoint *wp = ::Waypoint::GetIfValid(waypoint_id);

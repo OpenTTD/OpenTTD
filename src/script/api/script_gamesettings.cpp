@@ -15,6 +15,8 @@
 #include "../../settings_type.h"
 #include "../../command_type.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptGameSettings::IsValid(const char *setting)
 {
 	uint i;

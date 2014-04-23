@@ -38,6 +38,8 @@
 
 #include "widgets/company_widget.h"
 
+#include "safeguards.h"
+
 
 /** Company GUI constants. */
 static const uint EXP_LINESPACE  = 2;      ///< Amount of vertical space for a horizontal (sub-)total line.

@@ -22,6 +22,8 @@
 
 #include "table/strings.h"
 
+#include "../safeguards.h"
+
 /**
  * Colours for the various "load" states of links. Ordered from "unused" to
  * "overloaded".

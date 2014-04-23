@@ -36,6 +36,8 @@
 
 #include <time.h>
 
+#include "safeguards.h"
+
 /* static */ const char *CrashLog::message = NULL;
 /* static */ char *CrashLog::gamelog_buffer = NULL;
 /* static */ const char *CrashLog::gamelog_last = NULL;

@@ -14,6 +14,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static const SaveLoad _group_desc[] = {
 	 SLE_CONDVAR(Group, name,               SLE_NAME,                       0,  83),
 	 SLE_CONDSTR(Group, name,               SLE_STR | SLF_ALLOW_CONTROL, 0, 84, SL_MAX_VERSION),

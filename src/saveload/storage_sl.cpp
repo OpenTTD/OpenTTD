@@ -13,6 +13,8 @@
 #include "../newgrf_storage.h"
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 /** Description of the data to save and load in #PersistentStorage. */
 static const SaveLoad _storage_desc[] = {
 	 SLE_CONDVAR(PersistentStorage, grfid,    SLE_UINT32,                  6, SL_MAX_VERSION),

@@ -12,6 +12,8 @@
 #include "../stdafx.h"
 #include "thread.h"
 
+#include "../safeguards.h"
+
 /* static */ bool ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread)
 {
 	if (thread != NULL) *thread = NULL;

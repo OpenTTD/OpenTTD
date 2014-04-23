@@ -31,6 +31,8 @@
 #include <unistd.h>
 #endif
 
+#include "../../safeguards.h"
+
 /**
  * Unix implementation for the crash logger.
  */

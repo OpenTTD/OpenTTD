@@ -33,6 +33,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 static void ShowRVStationPicker(Window *parent, RoadStopType rs);
 static void ShowRoadDepotPicker(Window *parent);
 

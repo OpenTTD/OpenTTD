@@ -14,6 +14,8 @@
 #include <pthread.h>
 #include <errno.h>
 
+#include "../safeguards.h"
+
 /**
  * POSIX pthread version for ThreadObject.
  */

@@ -14,6 +14,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static const SaveLoad _engine_renew_desc[] = {
 	    SLE_VAR(EngineRenew, from,     SLE_UINT16),
 	    SLE_VAR(EngineRenew, to,       SLE_UINT16),

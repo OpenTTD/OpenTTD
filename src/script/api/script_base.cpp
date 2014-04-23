@@ -15,6 +15,8 @@
 #include "../../network/network.h"
 #include "../../core/random_func.hpp"
 
+#include "../../safeguards.h"
+
 /* static */ uint32 ScriptBase::Rand()
 {
 	/* We pick RandomRange if we are in SP (so when saved, we do the same over and over)

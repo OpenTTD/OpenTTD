@@ -20,6 +20,8 @@
 #include "debug.h"
 #include "settings_type.h"
 
+#include "safeguards.h"
+
 static SmallVector<SoundEntry, 8> _sounds;
 
 

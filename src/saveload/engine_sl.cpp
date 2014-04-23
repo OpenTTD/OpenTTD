@@ -14,6 +14,8 @@
 #include "../engine_base.h"
 #include <map>
 
+#include "../safeguards.h"
+
 static const SaveLoad _engine_desc[] = {
 	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
 	 SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  31, SL_MAX_VERSION),

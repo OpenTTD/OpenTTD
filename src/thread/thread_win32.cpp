@@ -17,6 +17,8 @@
 #include <windows.h>
 #include <process.h>
 
+#include "../safeguards.h"
+
 /**
  * Win32 thread version for ThreadObject.
  */

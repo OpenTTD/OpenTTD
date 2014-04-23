@@ -24,6 +24,8 @@
 #include "newgrf_cargo.h"
 #include "station_base.h"
 
+#include "safeguards.h"
+
 static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
 

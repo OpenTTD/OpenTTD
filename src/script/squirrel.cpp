@@ -19,6 +19,8 @@
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
 
+#include "../safeguards.h"
+
 void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column)
 {
 	SQChar buf[1024];

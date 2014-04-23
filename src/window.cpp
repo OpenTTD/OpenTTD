@@ -37,6 +37,8 @@
 #include "game/game.hpp"
 #include "video/video_driver.hpp"
 
+#include "safeguards.h"
+
 /** Values for _settings_client.gui.auto_scrolling */
 enum ViewportAutoscrolling {
 	VA_DISABLED,                  //!< Do not autoscroll when mouse is at edge of viewport.

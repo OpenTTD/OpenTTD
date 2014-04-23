@@ -33,6 +33,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 struct SignList {
 	/**
 	 * A GUIList contains signs and uses a StringFilter for filtering.

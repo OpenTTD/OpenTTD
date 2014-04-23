@@ -12,6 +12,8 @@
 #include "../../stdafx.h"
 #include "script_cargomonitor.hpp"
 
+#include "../../safeguards.h"
+
 /* static */ uint32 ScriptCargoMonitor::GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
 {
 	CargoMonitorID monitor = EncodeCargoTownMonitor(static_cast<CompanyID>(company), cargo, town_id);

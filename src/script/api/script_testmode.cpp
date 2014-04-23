@@ -14,6 +14,8 @@
 #include "../script_instance.hpp"
 #include "../script_fatalerror.hpp"
 
+#include "../../safeguards.h"
+
 bool ScriptTestMode::ModeProc()
 {
 	/* In test mode we only return 'false', telling the DoCommand it

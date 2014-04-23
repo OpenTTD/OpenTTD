@@ -16,6 +16,8 @@
 #include "newgrf_station.h"
 #include "waypoint_base.h"
 
+#include "safeguards.h"
+
 /**
  * Draw a waypoint
  * @param x coordinate

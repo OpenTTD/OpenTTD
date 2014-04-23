@@ -35,6 +35,8 @@
 #include "table/strings.h"
 #include "table/engines.h"
 
+#include "safeguards.h"
+
 EnginePool _engine_pool("Engine");
 INSTANTIATE_POOL_METHODS(Engine)
 

@@ -18,6 +18,8 @@
 
 #include "tcp.h"
 
+#include "../../safeguards.h"
+
 /**
  * Construct a socket handler for a TCP connection.
  * @param s The just opened TCP connection.

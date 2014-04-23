@@ -17,6 +17,8 @@
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
 
+#include "../../safeguards.h"
+
 ScriptVehicleList::ScriptVehicleList()
 {
 	const Vehicle *v;

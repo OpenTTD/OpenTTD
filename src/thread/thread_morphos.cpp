@@ -23,6 +23,8 @@
 #include <proto/dos.h>
 #include <proto/exec.h>
 
+#include "../safeguards.h"
+
 /**
  *  avoid name clashes with MorphOS API functions
  */

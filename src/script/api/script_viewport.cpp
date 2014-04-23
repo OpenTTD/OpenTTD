@@ -15,6 +15,8 @@
 #include "script_map.hpp"
 #include "../../viewport_func.h"
 
+#include "../../safeguards.h"
+
 /* static */ void ScriptViewport::ScrollTo(TileIndex tile)
 {
 	if (ScriptGame::IsMultiplayer()) return;

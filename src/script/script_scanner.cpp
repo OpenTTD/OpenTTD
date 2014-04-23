@@ -18,6 +18,8 @@
 #include "script_scanner.hpp"
 #include "script_info.hpp"
 
+#include "../safeguards.h"
+
 bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
 	free(this->main_script);

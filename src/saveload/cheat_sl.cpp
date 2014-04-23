@@ -14,6 +14,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 /**
  * Save the cheat values.
  */

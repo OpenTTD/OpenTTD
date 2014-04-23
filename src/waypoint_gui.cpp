@@ -27,6 +27,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** GUI for accessing waypoints and buoys. */
 struct WaypointWindow : Window {
 private:

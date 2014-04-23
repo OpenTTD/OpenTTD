@@ -60,6 +60,8 @@
 #include "../../core/endian_func.hpp"
 #include "md5.h"
 
+#include "../../safeguards.h"
+
 #define T_MASK ((uint32)~0)
 #define T1 /* 0xd76aa478 */ (T_MASK ^ 0x28955b87)
 #define T2 /* 0xe8c7b756 */ (T_MASK ^ 0x173848a9)

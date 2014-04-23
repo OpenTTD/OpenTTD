@@ -34,6 +34,8 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 SaveLoadDialogMode _saveload_mode;
 LoadCheckData _load_check_data;    ///< Data loaded from save during SL_LOAD_CHECK.
 

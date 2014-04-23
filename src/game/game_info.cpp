@@ -16,6 +16,8 @@
 #include "game_scanner.hpp"
 #include "../debug.h"
 
+#include "../safeguards.h"
+
 /**
  * Check if the API version provided by the Game is supported.
  * @param api_version The API version as provided by the Game.

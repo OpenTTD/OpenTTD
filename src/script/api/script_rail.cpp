@@ -21,6 +21,8 @@
 #include "../../newgrf_station.h"
 #include "../../strings_func.h"
 
+#include "../../safeguards.h"
+
 /* static */ char *ScriptRail::GetName(RailType rail_type)
 {
 	if (!IsRailTypeAvailable(rail_type)) return NULL;

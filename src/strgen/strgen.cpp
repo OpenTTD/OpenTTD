@@ -39,6 +39,8 @@
 
 #include "../table/strgen_tables.h"
 
+#include "../safeguards.h"
+
 
 #ifdef _MSC_VER
 # define LINE_NUM_FMT(s) "%s (%d): warning: %s (" s ")\n"

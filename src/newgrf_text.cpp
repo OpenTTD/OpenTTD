@@ -33,6 +33,8 @@
 #include "table/strings.h"
 #include "table/control_codes.h"
 
+#include "safeguards.h"
+
 #define GRFTAB  28
 #define TABSIZE 11
 

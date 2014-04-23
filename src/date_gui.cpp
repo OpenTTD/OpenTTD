@@ -20,6 +20,8 @@
 #include "widgets/dropdown_type.h"
 #include "widgets/date_widget.h"
 
+#include "safeguards.h"
+
 
 /** Window to select a date graphically by using dropdowns */
 struct SetDateWindow : Window {

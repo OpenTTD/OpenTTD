@@ -20,6 +20,8 @@
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptEngine::IsValidEngine(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);

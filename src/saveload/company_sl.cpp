@@ -21,6 +21,8 @@
 
 #include "table/strings.h"
 
+#include "../safeguards.h"
+
 /**
  * Converts an old company manager's face format to the new company manager's face format
  *

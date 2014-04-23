@@ -29,6 +29,8 @@
 #include "table/tree_land.h"
 #include "table/clear_land.h"
 
+#include "safeguards.h"
+
 /**
  * List of tree placer algorithm.
  *

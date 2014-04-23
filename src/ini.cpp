@@ -26,6 +26,8 @@
 # include "core/mem_func.hpp"
 #endif
 
+#include "safeguards.h"
+
 /**
  * Create a new ini file with given group names.
  * @param list_group_names A \c NULL terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST

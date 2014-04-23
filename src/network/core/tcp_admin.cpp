@@ -19,6 +19,8 @@
 #include "tcp_admin.h"
 #include "../../debug.h"
 
+#include "../../safeguards.h"
+
 /* Make sure that these enums match. */
 assert_compile((int)CRR_MANUAL    == (int)ADMIN_CRR_MANUAL);
 assert_compile((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);

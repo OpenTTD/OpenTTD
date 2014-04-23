@@ -27,6 +27,8 @@
 #include <zlib.h>
 #endif
 
+#include "../safeguards.h"
+
 extern bool HasScenario(const ContentInfo *ci, bool md5sum);
 
 /** The client we use to connect to the server. */

@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "cheat_type.h"
 
+#include "safeguards.h"
+
 /** All the cheats. */
 Cheats _cheats;
 

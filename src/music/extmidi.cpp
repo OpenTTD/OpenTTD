@@ -25,6 +25,8 @@
 #include <sys/stat.h>
 #include <errno.h>
 
+#include "../safeguards.h"
+
 #ifndef EXTERNAL_PLAYER
 /** The default external midi player. */
 #define EXTERNAL_PLAYER "timidity"

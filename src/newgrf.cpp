@@ -52,6 +52,8 @@
 #include "table/strings.h"
 #include "table/build_industry.h"
 
+#include "safeguards.h"
+
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
  * Changes by Florian octo Forster are (c) by the OpenTTD development team.

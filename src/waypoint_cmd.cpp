@@ -32,6 +32,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Update the virtual coords needed to draw the waypoint sign.
  */

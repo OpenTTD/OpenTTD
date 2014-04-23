@@ -21,6 +21,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Draws an image of a ship
  * @param v         Front vehicle

@@ -13,6 +13,8 @@
 #include "../zoom_func.h"
 #include "8bpp_simple.hpp"
 
+#include "../safeguards.h"
+
 /** Instantiation of the simple 8bpp blitter factory. */
 static FBlitter_8bppSimple iFBlitter_8bppSimple;
 

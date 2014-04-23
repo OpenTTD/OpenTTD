@@ -18,6 +18,8 @@
 #include "saveload.h"
 #include "newgrf_sl.h"
 
+#include "../safeguards.h"
+
 /**
  * Rebuild all the cached variables of towns.
  */

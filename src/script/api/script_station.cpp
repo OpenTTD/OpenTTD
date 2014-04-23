@@ -18,6 +18,8 @@
 #include "../../roadstop_base.h"
 #include "../../town.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptStation::IsValidStation(StationID station_id)
 {
 	const Station *st = ::Station::GetIfValid(station_id);

@@ -34,6 +34,8 @@
 
 #include "table/strings.h"
 
+#include "../safeguards.h"
+
 /* This file handles all the client-commands */
 
 

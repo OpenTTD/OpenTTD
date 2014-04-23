@@ -14,6 +14,8 @@
 #include "town.h"
 #include "newgrf_town.h"
 
+#include "safeguards.h"
+
 /**
  * Resolver of a town scope.
  * @param ro Surrounding resolver.

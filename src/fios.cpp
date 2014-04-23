@@ -26,6 +26,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /* Variables to display file lists */
 SmallVector<FiosItem, 32> _fios_items;
 static char *_fios_path;

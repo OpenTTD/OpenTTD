@@ -16,6 +16,8 @@
 #include "string_func.h"
 #include "window_gui.h"
 
+#include "safeguards.h"
+
 char *_hotkeys_file;
 
 /**

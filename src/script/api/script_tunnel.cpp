@@ -15,6 +15,8 @@
 #include "../script_instance.hpp"
 #include "../../tunnel_map.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptTunnel::IsTunnelTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;

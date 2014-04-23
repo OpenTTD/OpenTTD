@@ -13,6 +13,8 @@
 #include "core/bitmath_func.hpp"
 #include "rev.h"
 
+#include "safeguards.h"
+
 /**
  * Is this version of OpenTTD a release version?
  * @return True if it is a release version.

@@ -23,6 +23,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 static ObjectClassID _selected_object_class; ///< the currently visible object class
 static int _selected_object_index;           ///< the index of the selected object in the current class or -1
 static uint8 _selected_object_view;          ///< the view of the selected object

@@ -14,6 +14,8 @@
 #include "roadveh.h"
 #include "depot_map.h"
 
+#include "safeguards.h"
+
 /**
  * Recalculates the cached total power of a vehicle. Should be called when the consist is changed.
  */

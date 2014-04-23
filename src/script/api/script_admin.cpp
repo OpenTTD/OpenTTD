@@ -15,6 +15,8 @@
 #include "../../network/network_admin.h"
 #include "../script_instance.hpp"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptAdmin::MakeJSON(HSQUIRRELVM vm, SQInteger index, int max_depth, std::string &data)
 {
 	if (max_depth == 0) {

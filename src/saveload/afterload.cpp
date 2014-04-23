@@ -58,6 +58,8 @@
 
 #include <signal.h>
 
+#include "../safeguards.h"
+
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 
 /**

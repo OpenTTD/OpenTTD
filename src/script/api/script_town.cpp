@@ -21,6 +21,8 @@
 #include "../../landscape.h"
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 /* static */ int32 ScriptTown::GetTownCount()
 {
 	return (int32)::Town::GetNumItems();

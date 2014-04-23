@@ -13,6 +13,8 @@
 #include "base.hpp"
 #include "../core/math_func.hpp"
 
+#include "../safeguards.h"
+
 void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash)
 {
 	int dy;

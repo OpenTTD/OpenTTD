@@ -82,6 +82,8 @@
 #include "../company_base.h"
 #include "../company_func.h"
 
+#include "../safeguards.h"
+
 AIInstance::AIInstance() :
 	ScriptInstance("AI")
 {}

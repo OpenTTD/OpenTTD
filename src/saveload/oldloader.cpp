@@ -23,6 +23,8 @@
 
 #include <exception>
 
+#include "../safeguards.h"
+
 static const int TTO_HEADER_SIZE = 41;
 static const int TTD_HEADER_SIZE = 49;
 

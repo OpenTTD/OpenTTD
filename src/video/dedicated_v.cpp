@@ -131,6 +131,8 @@ static void CloseWindowsConsoleThread()
 
 #endif
 
+#include "../safeguards.h"
+
 
 static void *_dedicated_video_mem;
 

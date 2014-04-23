@@ -14,6 +14,8 @@
 #include "script_date.hpp"
 #include "../../date_func.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptDate::IsValidDate(Date date)
 {
 	return date >= 0;

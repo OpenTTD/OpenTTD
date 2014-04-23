@@ -34,6 +34,8 @@
 
 #include "core/udp.h"
 
+#include "../safeguards.h"
+
 /** Mutex for all out threaded udp resolution and such. */
 static ThreadMutex *_network_udp_mutex = ThreadMutex::New();
 

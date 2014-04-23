@@ -18,6 +18,8 @@
 #include "water_map.h"
 #include <list>
 
+#include "safeguards.h"
+
 /** Scope resolver for generic objects and properties. */
 struct GenericScopeResolver : public ScopeResolver {
 	CargoID cargo_type;

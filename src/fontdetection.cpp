@@ -35,6 +35,8 @@ extern FT_Library _library;
 #include <shlobj.h> /* SHGetFolderPath */
 #include "os/windows/win32.h"
 
+#include "safeguards.h"
+
 /**
  * Get the short DOS 8.3 format for paths.
  * FreeType doesn't support Unicode filenames and Windows' fopen (as used
@@ -373,6 +375,8 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 #include "os/macosx/macos.h"
 
+#include "safeguards.h"
+
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
@@ -541,6 +545,8 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 #elif defined(WITH_FONTCONFIG) /* end ifdef __APPLE__ */
 
 #include <fontconfig/fontconfig.h>
+
+#include "safeguards.h"
 
 /* ========================================================================================
  * FontConfig (unix) support

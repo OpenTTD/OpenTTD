@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "thread/thread.h"
 
+#include "safeguards.h"
+
 /** Are we in a modal progress or not? */
 bool _in_modal_progress = false;
 bool _first_in_modal_loop = false;

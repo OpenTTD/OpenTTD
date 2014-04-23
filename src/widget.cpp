@@ -24,6 +24,8 @@
 #include "table/strings.h"
 #include "table/palettes.h"
 
+#include "safeguards.h"
+
 static const char *UPARROW   = "\xEE\x8A\xA0"; ///< String containing an upwards pointing arrow.
 static const char *DOWNARROW = "\xEE\x8A\xAA"; ///< String containing a downwards pointing arrow.
 

@@ -18,6 +18,8 @@
 #include "sdl_s.h"
 #include <SDL.h>
 
+#include "../safeguards.h"
+
 /** Factory for the SDL sound driver. */
 static FSoundDriver_SDL iFSoundDriver_SDL;
 

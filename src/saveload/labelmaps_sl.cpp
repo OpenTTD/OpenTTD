@@ -15,6 +15,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static SmallVector<RailTypeLabel, RAILTYPE_END> _railtype_list;
 
 /**

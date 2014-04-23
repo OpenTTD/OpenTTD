@@ -16,6 +16,8 @@
 #include "water.h"
 #include "water_map.h"
 
+#include "safeguards.h"
+
 /** Table of canal 'feature' sprite groups */
 WaterFeature _water_feature[CF_END];
 

@@ -15,6 +15,8 @@
 
 #include "table/strings.h"
 
+#include "../safeguards.h"
+
 static const int NUM_OLD_STRINGS     = 512; ///< The number of custom strings stored in old savegames.
 static const int LEN_OLD_STRINGS     =  32; ///< The number of characters per string.
 static const int LEN_OLD_STRINGS_TTO =  24; ///< The number of characters per string in TTO savegames.

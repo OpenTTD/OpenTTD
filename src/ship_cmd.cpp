@@ -36,6 +36,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Determine the effective #WaterClass for a ship travelling on a tile.
  * @param tile Tile of interest

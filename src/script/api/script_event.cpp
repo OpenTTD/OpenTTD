@@ -14,6 +14,8 @@
 
 #include <queue>
 
+#include "../../safeguards.h"
+
 /** The queue of events for a script. */
 struct ScriptEventData {
 	std::queue<ScriptEvent *> stack; ///< The actual queue.

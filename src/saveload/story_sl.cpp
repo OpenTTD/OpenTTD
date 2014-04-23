@@ -14,6 +14,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 /** Called after load to trash broken pages. */
 void AfterLoadStoryBook()
 {

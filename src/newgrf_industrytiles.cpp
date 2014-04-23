@@ -22,6 +22,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Based on newhouses equivalent, but adapted for newindustries
  * @param parameter from callback.  It's in fact a pair of coordinates

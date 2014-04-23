@@ -37,6 +37,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Get the height of a single 'entry' in the engine lists.
  * @param type the vehicle type to get the height of

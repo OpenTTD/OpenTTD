@@ -19,6 +19,8 @@
 #include "saveload.h"
 #include "table/strings.h"
 
+#include "../safeguards.h"
+
 /**
  * Update the buoy orders to be waypoint orders.
  * @param o the order 'list' to check.

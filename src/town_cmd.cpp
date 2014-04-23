@@ -50,6 +50,8 @@
 #include "table/strings.h"
 #include "table/town_land.h"
 
+#include "safeguards.h"
+
 TownID _new_town_id;
 uint32 _town_cargoes_accepted; ///< Bitmap of all cargoes accepted by houses.
 

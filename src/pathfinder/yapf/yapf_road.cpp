@@ -14,6 +14,8 @@
 #include "yapf_node_road.hpp"
 #include "../../roadstop_base.h"
 
+#include "../../safeguards.h"
+
 
 template <class Types>
 class CYapfCostRoadT

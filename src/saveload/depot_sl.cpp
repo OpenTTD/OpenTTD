@@ -15,6 +15,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static TownID _town_index;
 
 static const SaveLoad _depot_desc[] = {

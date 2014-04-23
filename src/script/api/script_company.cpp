@@ -24,6 +24,8 @@
 #include "../../settings_func.h"
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 /* static */ ScriptCompany::CompanyID ScriptCompany::ResolveCompanyID(ScriptCompany::CompanyID company)
 {
 	if (company == COMPANY_SELF) {

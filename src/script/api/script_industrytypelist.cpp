@@ -13,6 +13,8 @@
 #include "script_industrytypelist.hpp"
 #include "../../industry.h"
 
+#include "../../safeguards.h"
+
 ScriptIndustryTypeList::ScriptIndustryTypeList()
 {
 	for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {

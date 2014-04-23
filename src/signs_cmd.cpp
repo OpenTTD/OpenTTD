@@ -21,6 +21,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** The last built sign. */
 SignID _new_sign_id;
 

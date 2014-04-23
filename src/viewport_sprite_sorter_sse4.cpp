@@ -16,6 +16,8 @@
 #include "smmintrin.h"
 #include "viewport_sprite_sorter.h"
 
+#include "safeguards.h"
+
 #ifdef _SQ64
 	assert_compile((sizeof(ParentSpriteToDraw) % 16) == 0);
 	#define LOAD_128 _mm_load_si128

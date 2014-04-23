@@ -15,6 +15,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 /** Prices in pre 126 savegames */
 static void Load_PRIC()
 {

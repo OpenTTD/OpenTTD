@@ -20,6 +20,8 @@
 #include <windows.h>
 #include <mmsystem.h>
 
+#include "../safeguards.h"
+
 static FSoundDriver_Win32 iFSoundDriver_Win32;
 
 static HWAVEOUT _waveout;

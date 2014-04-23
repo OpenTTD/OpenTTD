@@ -19,6 +19,8 @@
 #include "window_func.h"
 #include "station_map.h"
 
+#include "safeguards.h"
+
 OrderBackupPool _order_backup_pool("BackupOrder");
 INSTANTIATE_POOL_METHODS(OrderBackup)
 

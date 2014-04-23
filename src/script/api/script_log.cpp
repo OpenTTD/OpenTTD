@@ -15,6 +15,8 @@
 #include "../../debug.h"
 #include "../../window_func.h"
 
+#include "../../safeguards.h"
+
 /* static */ void ScriptLog::Info(const char *message)
 {
 	ScriptLog::Log(LOG_INFO, message);

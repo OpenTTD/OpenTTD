@@ -24,6 +24,8 @@
 
 #include <map>
 
+#include "../safeguards.h"
+
 /**
  * Link front and rear multiheaded engines to each other
  * This is done when loading a savegame

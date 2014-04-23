@@ -20,6 +20,8 @@
 
 #include "table/townname.h"
 
+#include "safeguards.h"
+
 
 /**
  * Initializes this struct from town data

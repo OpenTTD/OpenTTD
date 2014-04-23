@@ -25,6 +25,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Increase the loan of your company.
  * @param tile unused

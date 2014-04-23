@@ -14,6 +14,8 @@
 #include "script_sign.hpp"
 #include "../../signs_base.h"
 
+#include "../../safeguards.h"
+
 ScriptSignList::ScriptSignList()
 {
 	Sign *s;

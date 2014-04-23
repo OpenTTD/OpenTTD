@@ -16,6 +16,8 @@
 
 #include "saveload_internal.h"
 
+#include "../safeguards.h"
+
 /**
  * Converts this order from an old savegame's version;
  * it moves all bits to the new location.

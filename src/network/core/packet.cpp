@@ -18,6 +18,8 @@
 
 #include "packet.h"
 
+#include "../../safeguards.h"
+
 /**
  * Create a packet that is used to read from a network socket
  * @param cs the socket handler associated with the socket we are reading from

@@ -19,6 +19,8 @@
 
 #include "../table/strgen_tables.h"
 
+#include "../safeguards.h"
+
 /* Compiles a list of strings into a compiled string list */
 
 static bool _translated;              ///< Whether the current language is not the master language

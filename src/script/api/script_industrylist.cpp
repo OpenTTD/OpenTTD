@@ -13,6 +13,8 @@
 #include "script_industrylist.hpp"
 #include "../../industry.h"
 
+#include "../../safeguards.h"
+
 ScriptIndustryList::ScriptIndustryList()
 {
 	Industry *i;

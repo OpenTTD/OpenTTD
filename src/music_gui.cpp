@@ -29,6 +29,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 /**
  * Get the name of the song.
  * @param index of the song.

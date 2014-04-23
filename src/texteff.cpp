@@ -17,6 +17,8 @@
 #include "viewport_func.h"
 #include "settings_type.h"
 
+#include "safeguards.h"
+
 /** Container for all information about a text effect */
 struct TextEffect : public ViewportSign {
 	uint64 params_1;     ///< DParam parameter

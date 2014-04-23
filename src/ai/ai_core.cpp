@@ -22,6 +22,8 @@
 #include "ai_info.hpp"
 #include "ai.hpp"
 
+#include "../safeguards.h"
+
 /* static */ uint AI::frame_counter = 0;
 /* static */ AIScannerInfo *AI::scanner_info = NULL;
 /* static */ AIScannerLibrary *AI::scanner_library = NULL;

@@ -15,6 +15,8 @@
 #include "../../station_base.h"
 #include "../../vehicle_base.h"
 
+#include "../../safeguards.h"
+
 ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
 	Station *st;

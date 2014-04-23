@@ -24,6 +24,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 GroupID _new_group_id;
 
 GroupPool _group_pool("Group");

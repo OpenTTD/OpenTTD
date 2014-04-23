@@ -27,6 +27,8 @@
 #include <dmusicc.h>
 #include <dmusicf.h>
 
+#include "../safeguards.h"
+
 static FMusicDriver_DMusic iFMusicDriver_DMusic;
 
 /** the direct music object manages buffers and ports */

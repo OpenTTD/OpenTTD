@@ -15,6 +15,8 @@
 #include "../../ship.h"
 #include "../../core/random_func.hpp"
 
+#include "../../safeguards.h"
+
 struct RememberData {
 	uint16 cur_length;
 	byte depth;

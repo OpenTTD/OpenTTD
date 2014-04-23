@@ -71,6 +71,8 @@
 #include "table/strings.h"
 #include "table/settings.h"
 
+#include "safeguards.h"
+
 ClientSettings _settings_client;
 GameSettings _settings_game;     ///< Game settings of a running game or the scenario editor.
 GameSettings _settings_newgame;  ///< Game settings for new games (updated from the intro screen).

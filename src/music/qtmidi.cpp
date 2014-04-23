@@ -38,6 +38,8 @@
 #undef Rect
 #undef Point
 
+#include "../safeguards.h"
+
 static FMusicDriver_QtMidi iFMusicDriver_QtMidi;
 
 

@@ -14,6 +14,8 @@
 #include "vehiclelist.h"
 #include "group.h"
 
+#include "safeguards.h"
+
 /**
  * Pack a VehicleListIdentifier in a single uint32.
  * @return The packed identifier.

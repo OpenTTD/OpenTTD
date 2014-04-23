@@ -15,6 +15,8 @@
 #include "linkgraphjob.h"
 #include "linkgraphschedule.h"
 
+#include "../safeguards.h"
+
 /* Initialize the link-graph-job-pool */
 LinkGraphJobPool _link_graph_job_pool("LinkGraphJob");
 INSTANTIATE_POOL_METHODS(LinkGraphJob)

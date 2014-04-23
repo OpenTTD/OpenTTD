@@ -22,6 +22,8 @@
 
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 /**
  * Create a new socket for the game connection.
  * @param s The socket to connect with.

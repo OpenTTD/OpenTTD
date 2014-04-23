@@ -24,6 +24,8 @@
 #include "../../settings_type.h"
 #include "../../network/network.h"
 
+#include "../../safeguards.h"
+
 /* static */ void ScriptController::SetCommandDelay(int ticks)
 {
 	if (ticks <= 0) return;

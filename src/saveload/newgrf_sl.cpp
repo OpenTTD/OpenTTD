@@ -15,6 +15,8 @@
 #include "saveload.h"
 #include "newgrf_sl.h"
 
+#include "../safeguards.h"
+
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
 	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),

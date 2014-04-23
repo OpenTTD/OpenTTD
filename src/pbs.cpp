@@ -15,6 +15,8 @@
 #include "newgrf_station.h"
 #include "pathfinder/follow_track.hpp"
 
+#include "safeguards.h"
+
 /**
  * Get the reserved trackbits for any tile, regardless of type.
  * @param t the tile

@@ -17,6 +17,8 @@
 #include "station_base.h"
 #include "newgrf_class_func.h"
 
+#include "safeguards.h"
+
 /** Resolver for the airport scope. */
 struct AirportScopeResolver : public ScopeResolver {
 	struct Station *st; ///< Station of the airport for which the callback is run, or \c NULL for build gui.

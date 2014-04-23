@@ -15,6 +15,8 @@
 #include <windows.h>
 #include <mmsystem.h>
 
+#include "../safeguards.h"
+
 static struct {
 	bool stop_song;
 	bool terminate;

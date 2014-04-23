@@ -29,6 +29,8 @@
 #include "../company_func.h"
 #include "../fileio_func.h"
 
+#include "../safeguards.h"
+
 ScriptStorage::~ScriptStorage()
 {
 	/* Free our pointers */

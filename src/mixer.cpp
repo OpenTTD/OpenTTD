@@ -13,6 +13,8 @@
 #include <math.h>
 #include "core/math_func.hpp"
 
+#include "safeguards.h"
+
 struct MixerChannel {
 	bool active;
 

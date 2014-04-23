@@ -15,6 +15,8 @@
 #include "../string_func.h"
 #include "../strings_func.h"
 
+#include "../safeguards.h"
+
 /* The reason this exists in C++, is that a user can trash his ai/ or game/ dir,
  *  leaving no Scripts available. The complexity to solve this is insane, and
  *  therefore the alternative is used, and make sure there is always a Script

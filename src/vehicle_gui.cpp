@@ -39,6 +39,8 @@
 #include "tilehighlight_func.h"
 #include "zoom_func.h"
 
+#include "safeguards.h"
+
 
 Sorting _sorting;
 

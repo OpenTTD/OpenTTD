@@ -15,6 +15,8 @@
 #include "autoreplace_base.h"
 #include "core/pool_func.hpp"
 
+#include "safeguards.h"
+
 /** The pool of autoreplace "orders". */
 EngineRenewPool _enginerenew_pool("EngineRenew");
 INSTANTIATE_POOL_METHODS(EngineRenew)

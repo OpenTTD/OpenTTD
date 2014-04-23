@@ -17,6 +17,8 @@
 #include "../../strings_func.h"
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptBaseStation::IsValidBaseStation(StationID station_id)
 {
 	const BaseStation *st = ::BaseStation::GetIfValid(station_id);

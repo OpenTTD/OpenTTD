@@ -14,6 +14,8 @@
 #include "script_bridge.hpp"
 #include "../../bridge.h"
 
+#include "../../safeguards.h"
+
 ScriptBridgeList::ScriptBridgeList()
 {
 	for (byte j = 0; j < MAX_BRIDGES; j++) {

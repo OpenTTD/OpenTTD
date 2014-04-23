@@ -15,6 +15,8 @@
 #include "../../station_base.h"
 #include "../../town.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptAirport::IsValidAirportType(AirportType type)
 {
 	return IsAirportInformationAvailable(type) && ::AirportSpec::Get(type)->IsAvailable();

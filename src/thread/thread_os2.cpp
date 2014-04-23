@@ -16,6 +16,8 @@
 #include <os2.h>
 #include <process.h>
 
+#include "../safeguards.h"
+
 /**
  * OS/2 version for ThreadObject.
  */

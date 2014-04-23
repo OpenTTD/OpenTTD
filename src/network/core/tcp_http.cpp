@@ -20,6 +20,8 @@
 
 #include "tcp_http.h"
 
+#include "../../safeguards.h"
+
 /** List of open HTTP connections. */
 static SmallVector<NetworkHTTPSocketHandler *, 1> _http_connections;
 

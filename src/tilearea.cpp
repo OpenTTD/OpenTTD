@@ -13,6 +13,8 @@
 
 #include "tilearea_type.h"
 
+#include "safeguards.h"
+
 /**
  * Construct this tile area based on two points.
  * @param start the start of the area

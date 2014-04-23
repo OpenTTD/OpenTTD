@@ -22,6 +22,8 @@
 #include "network_udp.h"
 #include "network_gamelist.h"
 
+#include "../safeguards.h"
+
 NetworkGameList *_network_game_list = NULL;
 
 /** Mutex for handling delayed insertion/querying of servers. */

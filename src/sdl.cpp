@@ -79,6 +79,8 @@ static const char *LoadSdlDLL()
 
 #endif /* DYNAMICALLY_LOADED_SDL */
 
+#include "safeguards.h"
+
 /**
  * Open the SDL library.
  * @param x The subsystem to load.

@@ -14,6 +14,8 @@
 #include "../../depot_base.h"
 #include "../../station_base.h"
 
+#include "../../safeguards.h"
+
 ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 {
 	::TileType tile_type;

@@ -17,6 +17,8 @@
 #include "../debug.h"
 #include "../rev.h"
 
+#include "../safeguards.h"
+
 /**
  * Check if the API version provided by the AI is supported.
  * @param api_version The API version as provided by the AI.

@@ -38,6 +38,8 @@
 #include "table/strings.h"
 #include "table/object_land.h"
 
+#include "safeguards.h"
+
 ObjectPool _object_pool("Object");
 INSTANTIATE_POOL_METHODS(Object)
 uint16 Object::counts[NUM_OBJECTS];

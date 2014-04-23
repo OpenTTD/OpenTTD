@@ -21,6 +21,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** Widgets for the textfile window. */
 static const NWidgetPart _nested_textfile_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

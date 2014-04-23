@@ -15,6 +15,8 @@
 #include "game_config.hpp"
 #include "game_info.hpp"
 
+#include "../safeguards.h"
+
 /* static */ GameConfig *GameConfig::GetConfig(ScriptSettingSource source)
 {
 	GameConfig **config;

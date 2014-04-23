@@ -5,6 +5,8 @@
 #include "mcf.h"
 #include <set>
 
+#include "../safeguards.h"
+
 typedef std::map<NodeID, Path *> PathViaMap;
 
 /**

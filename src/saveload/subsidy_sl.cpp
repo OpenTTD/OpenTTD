@@ -14,6 +14,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static const SaveLoad _subsidies_desc[] = {
 	    SLE_VAR(Subsidy, cargo_type, SLE_UINT8),
 	    SLE_VAR(Subsidy, remaining,  SLE_UINT8),

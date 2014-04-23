@@ -24,6 +24,8 @@
 SOCKET _debug_socket = INVALID_SOCKET;
 #endif /* ENABLE_NETWORK */
 
+#include "safeguards.h"
+
 int _debug_driver_level;
 int _debug_grf_level;
 int _debug_map_level;

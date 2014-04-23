@@ -25,6 +25,8 @@
 #include "../rev.h"
 #include "../game/game.hpp"
 
+#include "../safeguards.h"
+
 
 /* This file handles all the admin network commands. */
 

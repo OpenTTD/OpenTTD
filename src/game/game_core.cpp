@@ -21,6 +21,8 @@
 #include "game_instance.hpp"
 #include "game_info.hpp"
 
+#include "../safeguards.h"
+
 /* static */ uint Game::frame_counter = 0;
 /* static */ GameInfo *Game::info = NULL;
 /* static */ GameInstance *Game::instance = NULL;

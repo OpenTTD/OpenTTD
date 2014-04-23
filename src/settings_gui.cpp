@@ -38,6 +38,8 @@
 #include "stringfilter_type.h"
 #include "querystring_gui.h"
 
+#include "safeguards.h"
+
 
 static const StringID _driveside_dropdown[] = {
 	STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT,

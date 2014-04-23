@@ -13,6 +13,8 @@
 #include "script_grouplist.hpp"
 #include "../../group.h"
 
+#include "../../safeguards.h"
+
 ScriptGroupList::ScriptGroupList()
 {
 	Group *g;

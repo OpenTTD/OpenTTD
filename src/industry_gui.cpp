@@ -41,6 +41,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 bool _ignore_restrictions;
 uint64 _displayed_industries; ///< Communication from the industry chain window to the smallmap window about what industries to display.
 

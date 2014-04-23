@@ -27,6 +27,8 @@
 #include "../../core/alloc_func.hpp"
 #include "aystar.h"
 
+#include "../../safeguards.h"
+
 /**
  * This looks in the hash whether a node exists in the closed list.
  * @param node Node to search.

@@ -18,6 +18,8 @@
 
 #include "dropdown_widget.h"
 
+#include "../safeguards.h"
+
 
 void DropDownListItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {

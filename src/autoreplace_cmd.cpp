@@ -22,6 +22,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 extern void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index);
 extern void ChangeVehicleNews(VehicleID from_index, VehicleID to_index);
 extern void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);

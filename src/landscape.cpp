@@ -37,6 +37,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 extern const TileTypeProcs
 	_tile_type_clear_procs,
 	_tile_type_rail_procs,

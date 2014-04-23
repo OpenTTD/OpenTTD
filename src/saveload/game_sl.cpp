@@ -20,6 +20,8 @@
 #include "../game/game_instance.hpp"
 #include "../game/game_text.hpp"
 
+#include "../safeguards.h"
+
 static char _game_saveload_name[64];
 static int  _game_saveload_version;
 static char _game_saveload_settings[1024];

@@ -15,6 +15,8 @@
 #include "../../vehicle_base.h"
 #include "../../waypoint_base.h"
 
+#include "../../safeguards.h"
+
 ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_type)
 {
 	const Waypoint *wp;

@@ -19,6 +19,8 @@
 #include "../../newgrf_industries.h"
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 /* static */ int32 ScriptIndustry::GetIndustryCount()
 {
 	return (int32)::Industry::GetNumItems();

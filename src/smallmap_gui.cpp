@@ -28,6 +28,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 static int _smallmap_industry_count; ///< Number of used industries
 static int _smallmap_company_count;  ///< Number of entries in the owner legend.
 static int _smallmap_cargo_count;    ///< Number of cargos in the link stats legend.

@@ -20,6 +20,8 @@
 #include "../../town.h"
 #include "../../landscape.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptTile::IsBuildable(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;

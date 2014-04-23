@@ -14,6 +14,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static const SaveLoad _goals_desc[] = {
 	    SLE_VAR(Goal, company,   SLE_UINT16),
 	    SLE_VAR(Goal, type,      SLE_UINT16),

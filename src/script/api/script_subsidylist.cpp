@@ -13,6 +13,8 @@
 #include "script_subsidylist.hpp"
 #include "../../subsidy_base.h"
 
+#include "../../safeguards.h"
+
 ScriptSubsidyList::ScriptSubsidyList()
 {
 	const Subsidy *s;

@@ -14,6 +14,8 @@
 #include "tile_cmd.h"
 #include "viewport_func.h"
 
+#include "safeguards.h"
+
 /** The table/list with animated tiles. */
 TileIndex *_animated_tile_list = NULL;
 /** The number of animated tiles in the current state. */

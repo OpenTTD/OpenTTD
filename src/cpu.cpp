@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "core/bitmath_func.hpp"
 
+#include "safeguards.h"
+
 #undef RDTSC_AVAILABLE
 
 /* rdtsc for MSC_VER, uses simple inline assembly, or _rdtsc

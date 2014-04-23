@@ -18,6 +18,8 @@
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 
+#include "../safeguards.h"
+
 
 AIScannerInfo::AIScannerInfo() :
 	ScriptScanner(),

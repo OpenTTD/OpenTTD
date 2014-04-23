@@ -25,6 +25,8 @@
 #include "fileio_func.h"
 #include "fios.h"
 
+#include "safeguards.h"
+
 /** Create a new GRFTextWrapper. */
 GRFTextWrapper::GRFTextWrapper() :
 	text(NULL)

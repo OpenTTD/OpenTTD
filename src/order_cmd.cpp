@@ -30,6 +30,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them
  */

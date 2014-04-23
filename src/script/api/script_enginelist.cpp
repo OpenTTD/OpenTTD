@@ -13,6 +13,8 @@
 #include "script_enginelist.hpp"
 #include "../../engine_base.h"
 
+#include "../../safeguards.h"
+
 ScriptEngineList::ScriptEngineList(ScriptVehicle::VehicleType vehicle_type)
 {
 	Engine *e;

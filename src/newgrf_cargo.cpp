@@ -13,6 +13,8 @@
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 
+#include "safeguards.h"
+
 /** Resolver of cargo. */
 struct CargoResolverObject : public ResolverObject {
 	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);

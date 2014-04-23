@@ -33,6 +33,8 @@
 #include "../core/random_func.hpp"
 #include "../rev.h"
 
+#include "../safeguards.h"
+
 
 /* This file handles all the server-commands */
 

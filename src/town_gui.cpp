@@ -37,6 +37,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 typedef GUIList<const Town*> GUITownList;
 
 static const NWidgetPart _nested_town_authority_widgets[] = {

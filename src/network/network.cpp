@@ -38,6 +38,8 @@
 #include "../gfx_func.h"
 #include "../error.h"
 
+#include "../safeguards.h"
+
 #ifdef DEBUG_DUMP_COMMANDS
 #include "../fileio_func.h"
 /** When running the server till the wait point, run as fast as we can! */

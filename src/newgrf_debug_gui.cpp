@@ -43,6 +43,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** The sprite picker. */
 NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, NULL, 0, SmallVector<SpriteID, 256>() };
 

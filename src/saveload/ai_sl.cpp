@@ -20,6 +20,8 @@
 #include "../network/network.h"
 #include "../ai/ai_instance.hpp"
 
+#include "../safeguards.h"
+
 static char _ai_saveload_name[64];
 static int  _ai_saveload_version;
 static char _ai_saveload_settings[1024];

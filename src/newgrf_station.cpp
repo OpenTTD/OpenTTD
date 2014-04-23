@@ -26,6 +26,8 @@
 #include "newgrf_animation_base.h"
 #include "newgrf_class_func.h"
 
+#include "safeguards.h"
+
 
 template <typename Tspec, typename Tid, Tid Tmax>
 /* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()

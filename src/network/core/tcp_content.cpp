@@ -24,6 +24,8 @@
 #endif /* OPENTTD_MSU */
 #include "tcp_content.h"
 
+#include "../../safeguards.h"
+
 /** Clear everything in the struct */
 ContentInfo::ContentInfo()
 {

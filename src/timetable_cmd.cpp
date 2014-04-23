@@ -20,6 +20,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Change/update a particular timetable entry.
  * @param v            The vehicle to change the timetable of.

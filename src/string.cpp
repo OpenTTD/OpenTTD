@@ -32,6 +32,8 @@
 #include "gfx_func.h"
 #endif /* WITH_ICU */
 
+#include "safeguards.h"
+
 /**
  * Safer implementation of vsnprintf; same as vsnprintf except:
  * - last instead of size, i.e. replace sizeof with lastof.

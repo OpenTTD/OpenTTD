@@ -18,6 +18,8 @@
 #include "../../newgrf_industries.h"
 #include "../../core/random_func.hpp"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptIndustryType::IsValidIndustryType(IndustryType industry_type)
 {
 	if (industry_type >= NUM_INDUSTRYTYPES) return false;

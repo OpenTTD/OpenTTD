@@ -29,6 +29,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 CommandProc CmdBuildRailroadTrack;
 CommandProc CmdRemoveRailroadTrack;
 CommandProc CmdBuildSingleRail;

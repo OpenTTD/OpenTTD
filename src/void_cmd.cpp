@@ -17,6 +17,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 static void DrawTile_Void(TileInfo *ti)
 {
 	DrawGroundSprite(SPR_SHADOW_CELL, PAL_NONE);

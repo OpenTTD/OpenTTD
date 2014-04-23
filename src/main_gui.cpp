@@ -45,6 +45,8 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 static int _rename_id = 1;
 static int _rename_what = -1;
 

@@ -18,6 +18,8 @@
 
 #include "tcp.h"
 
+#include "../../safeguards.h"
+
 /** List of connections that are currently being created */
 static SmallVector<TCPConnecter *,  1> _tcp_connecters;
 

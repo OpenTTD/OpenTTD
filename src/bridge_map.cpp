@@ -13,6 +13,8 @@
 #include "landscape.h"
 #include "tunnelbridge_map.h"
 
+#include "safeguards.h"
+
 
 /**
  * Finds the end of a bridge in the specified direction starting at a middle tile

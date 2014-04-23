@@ -85,6 +85,8 @@
 #include "../script/api/game/game_waypointlist.hpp.sq"
 #include "../script/api/game/game_window.hpp.sq"
 
+#include "../safeguards.h"
+
 
 GameInstance::GameInstance() :
 	ScriptInstance("GS")

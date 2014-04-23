@@ -16,6 +16,8 @@
 #include "mcf.h"
 #include "flowmapper.h"
 
+#include "../safeguards.h"
+
 /**
  * Start the next job in the schedule.
  */

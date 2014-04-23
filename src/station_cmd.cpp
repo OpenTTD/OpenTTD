@@ -56,6 +56,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Check whether the given tile is a hangar.
  * @param t the tile to of whether it is a hangar.

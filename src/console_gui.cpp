@@ -27,6 +27,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 static const uint ICON_HISTORY_SIZE       = 20;
 static const uint ICON_LINE_SPACING       =  2;
 static const uint ICON_RIGHT_BORDERWIDTH  = 10;

@@ -29,6 +29,8 @@
 #include <errno.h>
 #include <sys/stat.h>
 
+#include "../../safeguards.h"
+
 static bool _has_console;
 static bool _cursor_disable = true;
 static bool _cursor_visible = true;

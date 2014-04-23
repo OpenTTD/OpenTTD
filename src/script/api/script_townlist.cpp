@@ -13,6 +13,8 @@
 #include "script_townlist.hpp"
 #include "../../town.h"
 
+#include "../../safeguards.h"
+
 ScriptTownList::ScriptTownList()
 {
 	Town *t;

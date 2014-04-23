@@ -12,6 +12,8 @@
 #include "../../stdafx.h"
 #include "script_accounting.hpp"
 
+#include "../../safeguards.h"
+
 Money ScriptAccounting::GetCosts()
 {
 	return this->GetDoCommandCosts();

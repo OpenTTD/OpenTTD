@@ -14,6 +14,8 @@
 #include "script_story_page.hpp"
 #include "../../story_base.h"
 
+#include "../../safeguards.h"
+
 ScriptStoryPageList::ScriptStoryPageList(ScriptCompany::CompanyID company)
 {
 	uint8 c = company;

@@ -30,6 +30,8 @@
 
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 static const int LEVEL_WIDTH = 10; ///< Indenting width of a sub-group in pixels
 
 typedef GUIList<const Group*> GUIGroupList;

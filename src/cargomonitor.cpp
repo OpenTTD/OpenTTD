@@ -13,6 +13,8 @@
 #include "cargomonitor.h"
 #include "station_base.h"
 
+#include "safeguards.h"
+
 CargoMonitorMap _cargo_pickups;    ///< Map of monitored pick-ups   to the amount since last query/activation.
 CargoMonitorMap _cargo_deliveries; ///< Map of monitored deliveries to the amount since last query/activation.
 

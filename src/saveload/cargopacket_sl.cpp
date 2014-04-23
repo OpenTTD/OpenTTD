@@ -15,6 +15,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 /**
  * Savegame conversion for cargopackets.
  */

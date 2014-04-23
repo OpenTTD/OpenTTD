@@ -29,6 +29,8 @@
 #include "game/game.hpp"
 #include "linkgraph/linkgraphschedule.h"
 
+#include "safeguards.h"
+
 
 extern TileIndex _cur_tileloop_tile;
 extern void MakeNewgameSettingsLive();

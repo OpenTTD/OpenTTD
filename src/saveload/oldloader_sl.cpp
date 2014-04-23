@@ -34,6 +34,8 @@
 #include "../table/engines.h"
 #include "../table/townname.h"
 
+#include "../safeguards.h"
+
 static bool _read_ttdpatch_flags;    ///< Have we (tried to) read TTDPatch extra flags?
 static uint16 _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
 static byte _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier

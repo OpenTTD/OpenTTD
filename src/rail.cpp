@@ -17,6 +17,8 @@
 #include "company_base.h"
 #include "engine_base.h"
 
+#include "safeguards.h"
+
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction along with the trackdir */

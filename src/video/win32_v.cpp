@@ -27,6 +27,8 @@
 #include <windows.h>
 #include <imm.h>
 
+#include "../safeguards.h"
+
 /* Missing define in MinGW headers. */
 #ifndef MAPVK_VK_TO_CHAR
 #define MAPVK_VK_TO_CHAR    (2)

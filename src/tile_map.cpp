@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "tile_map.h"
 
+#include "safeguards.h"
+
 /**
  * Return the slope of a given tile
  * @param tile Tile to compute slope of

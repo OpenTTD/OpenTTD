@@ -18,6 +18,8 @@
 #include "allegro_s.h"
 #include <allegro.h>
 
+#include "../safeguards.h"
+
 static FSoundDriver_Allegro iFSoundDriver_Allegro;
 /** The stream we are writing too */
 static AUDIOSTREAM *_stream = NULL;

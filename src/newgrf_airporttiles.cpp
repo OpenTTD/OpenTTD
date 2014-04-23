@@ -23,6 +23,8 @@
 #include "table/airporttiles.h"
 #include "newgrf_animation_base.h"
 
+#include "safeguards.h"
+
 
 AirportTileSpec AirportTileSpec::tiles[NUM_AIRPORTTILES];
 

@@ -16,6 +16,8 @@
 #include "depot_base.h"
 #include "town.h"
 
+#include "safeguards.h"
+
 /* virtual */ uint32 RailTypeScopeResolver::GetRandomBits() const
 {
 	uint tmp = CountBits(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE);

@@ -63,6 +63,8 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 	#endif
 #endif
 
+#include "../../safeguards.h"
+
 bool FiosIsRoot(const char *path)
 {
 #if !defined(__MORPHOS__) && !defined(__AMIGAOS__)

@@ -17,6 +17,8 @@
 #include "refresh.h"
 #include "linkgraph.h"
 
+#include "../safeguards.h"
+
 /**
  * Refresh all links the given vehicle will visit.
  * @param v Vehicle to refresh links for.

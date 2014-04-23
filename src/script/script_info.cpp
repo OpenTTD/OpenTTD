@@ -17,6 +17,8 @@
 #include "script_info.hpp"
 #include "script_scanner.hpp"
 
+#include "../safeguards.h"
+
 ScriptInfo::~ScriptInfo()
 {
 	/* Free all allocated strings */

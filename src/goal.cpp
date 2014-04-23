@@ -24,6 +24,8 @@
 #include "gui.h"
 #include "network/network.h"
 
+#include "safeguards.h"
+
 
 GoalID _new_goal_id;
 

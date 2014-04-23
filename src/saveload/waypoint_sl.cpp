@@ -20,6 +20,8 @@
 
 #include "saveload_internal.h"
 
+#include "../safeguards.h"
+
 /** Helper structure to convert from the old waypoint system. */
 struct OldWaypoint {
 	size_t index;

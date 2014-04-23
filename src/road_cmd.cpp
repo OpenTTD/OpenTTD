@@ -38,6 +38,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Verify whether a road vehicle is available.
  * @return \c true if at least one road vehicle is available, \c false if not

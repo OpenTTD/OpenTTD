@@ -14,6 +14,8 @@
 #include "../script_instance.hpp"
 #include "../script_fatalerror.hpp"
 
+#include "../../safeguards.h"
+
 bool ScriptExecMode::ModeProc()
 {
 	/* In execution mode we only return 'true', telling the DoCommand it

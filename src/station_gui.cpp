@@ -39,6 +39,8 @@
 #include <set>
 #include <vector>
 
+#include "safeguards.h"
+
 /**
  * Calculates and draws the accepted or supplied cargo around the selected tile(s)
  * @param left x position where the string is to be drawn

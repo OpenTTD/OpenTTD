@@ -12,6 +12,8 @@
 #include "../stdafx.h"
 #include "pool_type.hpp"
 
+#include "../safeguards.h"
+
 /**
  * Destructor removes this object from the pool vector and
  * deletes the vector itself if this was the last item removed.

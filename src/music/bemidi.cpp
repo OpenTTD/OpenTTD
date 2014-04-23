@@ -16,6 +16,8 @@
 /* BeOS System Includes */
 #include <MidiSynthFile.h>
 
+#include "../safeguards.h"
+
 /** The file we're playing. */
 static BMidiSynthFile midiSynthFile;
 

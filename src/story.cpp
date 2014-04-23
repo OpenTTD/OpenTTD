@@ -24,6 +24,8 @@
 #include "window_func.h"
 #include "gui.h"
 
+#include "safeguards.h"
+
 
 StoryPageElementID _new_story_page_element_id;
 StoryPageID _new_story_page_id;

@@ -15,6 +15,8 @@
 #include "table/airport_movement.h"
 #include "table/airporttile_ids.h"
 
+#include "safeguards.h"
+
 
 /**
  * Define a generic airport.

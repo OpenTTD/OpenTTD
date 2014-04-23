@@ -15,6 +15,8 @@
 #include "../../industry.h"
 #include "../../station_base.h"
 
+#include "../../safeguards.h"
+
 void ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
 {
 	if (!::IsValidTile(t1)) return;

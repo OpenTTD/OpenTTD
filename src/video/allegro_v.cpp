@@ -27,6 +27,8 @@
 #include "allegro_v.h"
 #include <allegro.h>
 
+#include "../safeguards.h"
+
 #ifdef _DEBUG
 /* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
  * be triggered, so rereplace the signals and make the debugger useful. */

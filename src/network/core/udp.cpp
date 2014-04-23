@@ -18,6 +18,8 @@
 #include "../../debug.h"
 #include "udp.h"
 
+#include "../../safeguards.h"
+
 /**
  * Create an UDP socket but don't listen yet.
  * @param bind the addresses to bind to.

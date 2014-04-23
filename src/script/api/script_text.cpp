@@ -17,6 +17,8 @@
 
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 ScriptText::ScriptText(HSQUIRRELVM vm) :
 	ZeroedMemoryAllocator()
 {

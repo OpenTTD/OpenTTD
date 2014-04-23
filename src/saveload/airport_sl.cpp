@@ -14,6 +14,8 @@
 #include "saveload.h"
 #include "newgrf_sl.h"
 
+#include "../safeguards.h"
+
 static void Save_APID()
 {
 	Save_NewGRFMapping(_airport_mngr);

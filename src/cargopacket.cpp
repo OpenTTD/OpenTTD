@@ -17,6 +17,8 @@
 #include "cargoaction.h"
 #include "order_type.h"
 
+#include "safeguards.h"
+
 /* Initialize the cargopacket-pool */
 CargoPacketPool _cargopacket_pool("CargoPacket");
 INSTANTIATE_POOL_METHODS(CargoPacket)

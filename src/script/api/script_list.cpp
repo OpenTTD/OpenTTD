@@ -14,6 +14,8 @@
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"
 
+#include "../../safeguards.h"
+
 /**
  * Base class for any ScriptList sorter.
  */

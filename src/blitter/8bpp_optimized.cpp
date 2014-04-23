@@ -15,6 +15,8 @@
 #include "../core/math_func.hpp"
 #include "8bpp_optimized.hpp"
 
+#include "../safeguards.h"
+
 /** Instantiation of the 8bpp optimised blitter factory. */
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 

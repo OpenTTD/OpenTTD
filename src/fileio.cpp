@@ -32,6 +32,8 @@
 #include "basedir.h"
 #endif
 
+#include "safeguards.h"
+
 /** Size of the #Fio data buffer. */
 #define FIO_BUFFER_SIZE 512
 

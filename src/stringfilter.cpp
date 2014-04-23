@@ -15,6 +15,8 @@
 #include "stringfilter_type.h"
 #include "gfx_func.h"
 
+#include "safeguards.h"
+
 static const WChar STATE_WHITESPACE = ' ';
 static const WChar STATE_WORD = 'w';
 static const WChar STATE_QUOTE1 = '\'';

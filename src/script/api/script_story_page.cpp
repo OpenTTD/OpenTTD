@@ -22,6 +22,8 @@
 #include "../../string_func.h"
 #include "../../tile_map.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptStoryPage::IsValidStoryPage(StoryPageID story_page_id)
 {
 	return ::StoryPage::IsValidID(story_page_id);

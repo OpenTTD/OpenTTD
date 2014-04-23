@@ -15,6 +15,8 @@
 #include "../../core/bitmath_func.hpp"
 #include "../../settings_type.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptCargo::IsValidCargo(CargoID cargo_type)
 {
 	return (cargo_type < NUM_CARGO && ::CargoSpec::Get(cargo_type)->IsValid());

@@ -20,6 +20,8 @@
 #include "date_func.h"
 #include "landscape.h"
 
+#include "safeguards.h"
+
 /**
  * Return if the tile is a valid tile for a crossing.
  *

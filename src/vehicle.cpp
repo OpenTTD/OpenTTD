@@ -55,6 +55,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 #define GEN_HASH(x, y) ((GB((y), 6 + ZOOM_LVL_SHIFT, 6) << 6) + GB((x), 7 + ZOOM_LVL_SHIFT, 6))
 
 VehicleID _new_vehicle_id;

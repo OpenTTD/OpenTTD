@@ -67,6 +67,8 @@
 
 #include "table/elrail_data.h"
 
+#include "safeguards.h"
+
 /**
  * Get the tile location group of a tile.
  * @param t The tile to get the tile location group of.

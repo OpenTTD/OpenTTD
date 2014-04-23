@@ -13,6 +13,8 @@
 #include "script_storypageelementlist.hpp"
 #include "../../story_base.h"
 
+#include "../../safeguards.h"
+
 ScriptStoryPageElementList::ScriptStoryPageElementList(ScriptStoryPage::StoryPageID story_page_id)
 {
 	if (!ScriptStoryPage::IsValidStoryPage(story_page_id)) return;

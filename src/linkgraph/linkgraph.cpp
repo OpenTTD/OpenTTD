@@ -13,6 +13,8 @@
 #include "../core/pool_func.hpp"
 #include "linkgraph.h"
 
+#include "../safeguards.h"
+
 /* Initialize the link-graph-pool */
 LinkGraphPool _link_graph_pool("LinkGraph");
 INSTANTIATE_POOL_METHODS(LinkGraph)

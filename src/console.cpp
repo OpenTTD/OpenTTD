@@ -20,6 +20,8 @@
 
 #include <stdarg.h>
 
+#include "safeguards.h"
+
 static const uint ICON_TOKEN_COUNT = 20;     ///< Maximum number of tokens in one command
 
 /* console parser */

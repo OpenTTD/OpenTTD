@@ -30,6 +30,8 @@
 #include "table/sprites.h"
 #include <math.h>
 
+#include "safeguards.h"
+
 /* Bitmasks of company and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_companies;
 static uint _legend_excluded_cargo;

@@ -20,6 +20,8 @@
 #include "../../goal_base.h"
 #include "../../string_func.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptGoal::IsValidGoal(GoalID goal_id)
 {
 	return ::Goal::IsValidID(goal_id);

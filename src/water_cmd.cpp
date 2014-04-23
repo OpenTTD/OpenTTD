@@ -42,6 +42,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */

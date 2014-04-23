@@ -28,6 +28,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 static const char * const SCREENSHOT_NAME = "screenshot"; ///< Default filename of a saved screenshot.
 static const char * const HEIGHTMAP_NAME  = "heightmap";  ///< Default filename of a saved heightmap.
 

@@ -24,6 +24,8 @@
 
 #include <stdarg.h>
 
+#include "../safeguards.h"
+
 void CDECL strgen_warning(const char *s, ...)
 {
 	char buf[1024];

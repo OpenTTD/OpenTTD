@@ -13,6 +13,8 @@
 #include "script_error.hpp"
 #include "../../core/bitmath_func.hpp"
 
+#include "../../safeguards.h"
+
 ScriptError::ScriptErrorMap ScriptError::error_map = ScriptError::ScriptErrorMap();
 ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::ScriptErrorMapString();
 

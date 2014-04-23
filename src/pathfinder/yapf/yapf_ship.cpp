@@ -15,6 +15,8 @@
 #include "yapf.hpp"
 #include "yapf_node_ship.hpp"
 
+#include "../../safeguards.h"
+
 /** Node Follower module of YAPF for ships */
 template <class Types>
 class CYapfFollowShipT

@@ -13,6 +13,8 @@
 #include "station_map.h"
 #include "tunnelbridge_map.h"
 
+#include "safeguards.h"
+
 
 /**
  * Returns the RoadBits on an arbitrary tile

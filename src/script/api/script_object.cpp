@@ -24,6 +24,8 @@
 #include "../script_fatalerror.hpp"
 #include "script_error.hpp"
 
+#include "../../safeguards.h"
+
 /**
  * Get the storage associated with the current ScriptInstance.
  * @return The storage.

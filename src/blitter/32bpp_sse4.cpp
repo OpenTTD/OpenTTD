@@ -17,6 +17,8 @@
 #include "32bpp_sse4.hpp"
 #include "32bpp_sse_func.hpp"
 
+#include "../safeguards.h"
+
 /** Instantiation of the SSE4 32bpp blitter factory. */
 static FBlitter_32bppSSE4 iFBlitter_32bppSSE4;
 

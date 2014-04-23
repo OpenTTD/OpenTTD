@@ -15,6 +15,8 @@
 #include "../../window_func.h"
 #include "../../window_gui.h"
 
+#include "../../safeguards.h"
+
 /* static */ void ScriptWindow::Close(WindowClass window, uint32 number)
 {
 	if (ScriptGame::IsMultiplayer()) return;

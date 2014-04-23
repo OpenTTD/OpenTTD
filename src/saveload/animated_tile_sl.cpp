@@ -15,6 +15,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 extern TileIndex *_animated_tile_list;
 extern uint _animated_tile_count;
 extern uint _animated_tile_allocated;

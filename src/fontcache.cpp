@@ -23,6 +23,8 @@
 #include "table/control_codes.h"
 #include "table/unicode.h"
 
+#include "safeguards.h"
+
 static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 static const int MAX_FONT_SIZE     = 72; ///< Maximum font size.
 

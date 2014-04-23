@@ -12,6 +12,8 @@
 #include "../stdafx.h"
 #include "math_func.hpp"
 
+#include "../safeguards.h"
+
 /**
  * Compute least common multiple (lcm) of arguments \a a and \a b, the smallest
  * integer value that is a multiple of both \a a and \a b.

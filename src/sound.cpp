@@ -21,6 +21,8 @@
 #define SET_TYPE "sounds"
 #include "base_media_func.h"
 
+#include "safeguards.h"
+
 static SoundEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
 
 static void OpenBankFile(const char *filename)

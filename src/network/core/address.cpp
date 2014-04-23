@@ -16,6 +16,8 @@
 #include "address.h"
 #include "../../debug.h"
 
+#include "../../safeguards.h"
+
 /**
  * Get the hostname; in case it wasn't given the
  * IPv4 dotted representation is given.

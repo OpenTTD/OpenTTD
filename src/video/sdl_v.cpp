@@ -26,6 +26,8 @@
 #include "sdl_v.h"
 #include <SDL.h>
 
+#include "../safeguards.h"
+
 static FVideoDriver_SDL iFVideoDriver_SDL;
 
 static SDL_Surface *_sdl_screen;

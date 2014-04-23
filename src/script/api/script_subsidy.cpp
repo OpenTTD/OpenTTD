@@ -18,6 +18,8 @@
 #include "../../subsidy_base.h"
 #include "../../station_base.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptSubsidy::IsValidSubsidy(SubsidyID subsidy_id)
 {
 	return ::Subsidy::IsValidID(subsidy_id);

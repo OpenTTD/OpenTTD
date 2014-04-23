@@ -24,6 +24,8 @@
 #include <windows.h>
 #include <signal.h>
 
+#include "../../safeguards.h"
+
 static const uint MAX_SYMBOL_LEN = 512;
 static const uint MAX_FRAMES     = 64;
 

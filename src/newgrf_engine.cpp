@@ -25,6 +25,8 @@
 #include "newgrf_railtype.h"
 #include "ship.h"
 
+#include "safeguards.h"
+
 struct WagonOverride {
 	EngineID *train_id;
 	uint trains;

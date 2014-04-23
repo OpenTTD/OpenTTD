@@ -21,6 +21,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Check whether the given name is globally unique amongst depots.
  * @param name The name to check.

@@ -30,6 +30,8 @@
 
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 
 /**
  * The 'amount' to cheat with.

@@ -33,6 +33,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 struct SelectGameWindow : public Window {
 
 	SelectGameWindow(WindowDesc *desc) : Window(desc)

@@ -25,6 +25,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 struct SubsidyListWindow : Window {
 	Scrollbar *vscroll;
 

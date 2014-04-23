@@ -29,6 +29,8 @@
 #include "table/strings.h"
 #include <list>
 
+#include "safeguards.h"
+
 static const NWidgetPart _nested_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),

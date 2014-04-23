@@ -34,6 +34,8 @@
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
 
+#include "safeguards.h"
+
 
 void GenerateClearTile();
 void GenerateIndustries();

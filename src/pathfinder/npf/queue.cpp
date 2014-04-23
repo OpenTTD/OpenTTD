@@ -13,6 +13,8 @@
 #include "../../core/alloc_func.hpp"
 #include "queue.h"
 
+#include "../../safeguards.h"
+
 
 /*
  * Binary Heap

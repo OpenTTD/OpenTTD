@@ -20,6 +20,8 @@
 #include "table/strings.h"
 #include "table/cargo_const.h"
 
+#include "safeguards.h"
+
 CargoSpec CargoSpec::array[NUM_CARGO];
 
 /**

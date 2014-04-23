@@ -14,6 +14,8 @@
 #include "core/alloc_func.hpp"
 #include "water_map.h"
 
+#include "safeguards.h"
+
 #if defined(_MSC_VER)
 /* Why the hell is that not in all MSVC headers?? */
 extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);

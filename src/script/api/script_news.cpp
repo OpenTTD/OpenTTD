@@ -15,6 +15,8 @@
 #include "../../command_type.h"
 #include "../../string_func.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptNews::Create(NewsType type, Text *text, ScriptCompany::CompanyID company)
 {
 	CCountedPtr<Text> counter(text);

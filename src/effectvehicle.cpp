@@ -19,6 +19,8 @@
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
 
+#include "safeguards.h"
+
 
 static void ChimneySmokeInit(EffectVehicle *v)
 {

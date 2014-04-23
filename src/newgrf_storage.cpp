@@ -16,6 +16,8 @@
 #include "debug.h"
 #include <set>
 
+#include "safeguards.h"
+
 PersistentStoragePool _persistent_storage_pool("PersistentStorage");
 INSTANTIATE_POOL_METHODS(PersistentStorage)
 

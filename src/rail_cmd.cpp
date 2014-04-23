@@ -38,6 +38,8 @@
 #include "table/railtypes.h"
 #include "table/track_land.h"
 
+#include "safeguards.h"
+
 /** Helper type for lists/vectors of trains */
 typedef SmallVector<Train *, 16> TrainList;
 

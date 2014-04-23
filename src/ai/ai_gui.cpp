@@ -40,10 +40,11 @@
 #include "../game/game_info.hpp"
 #include "../game/game_instance.hpp"
 
-
 #include "table/strings.h"
 
 #include <vector>
+
+#include "../safeguards.h"
 
 static ScriptConfig *GetConfig(CompanyID slot)
 {

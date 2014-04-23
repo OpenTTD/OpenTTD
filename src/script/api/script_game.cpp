@@ -15,6 +15,8 @@
 #include "../../settings_type.h"
 #include "../../network/network.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptGame::Pause()
 {
 	return ScriptObject::DoCommand(0, PM_PAUSED_GAME_SCRIPT, 1, CMD_PAUSE);

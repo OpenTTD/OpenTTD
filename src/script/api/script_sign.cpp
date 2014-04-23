@@ -18,6 +18,8 @@
 #include "../../strings_func.h"
 #include "../../tile_map.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptSign::IsValidSign(SignID sign_id)
 {
 	const Sign *si = ::Sign::GetIfValid(sign_id);

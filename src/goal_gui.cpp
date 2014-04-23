@@ -28,6 +28,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** Goal list columns. */
 enum GoalColumn {
 	GC_GOAL = 0, ///< Goal text column.

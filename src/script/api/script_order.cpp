@@ -21,6 +21,8 @@
 #include "../../station_base.h"
 #include "../../waypoint_base.h"
 
+#include "../../safeguards.h"
+
 /**
  * Gets the order type given a tile
  * @param t the tile to get the order from

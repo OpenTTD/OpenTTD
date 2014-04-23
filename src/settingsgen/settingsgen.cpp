@@ -30,6 +30,8 @@
 #define stderr stdout
 #endif /* __MORPHOS__ */
 
+#include "../safeguards.h"
+
 /**
  * Report a fatal error.
  * @param s Format string.

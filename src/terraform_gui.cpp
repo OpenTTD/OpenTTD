@@ -37,6 +37,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 void CcTerraform(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded()) {

@@ -19,6 +19,8 @@
 #include "../../settings_func.h"
 #include "table/strings.h"
 
+#include "../../safeguards.h"
+
 /* static */ bool ScriptGroup::IsValidGroup(GroupID group_id)
 {
 	const Group *g = ::Group::GetIfValid(group_id);

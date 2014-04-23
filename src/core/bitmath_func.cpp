@@ -12,6 +12,8 @@
 #include "../stdafx.h"
 #include "bitmath_func.hpp"
 
+#include "../safeguards.h"
+
 const uint8 _ffb_64[64] = {
 	0,  0,  1,  0,  2,  0,  1,  0,
 	3,  0,  1,  0,  2,  0,  1,  0,

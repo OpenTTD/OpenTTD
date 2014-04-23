@@ -13,6 +13,8 @@
 
 #include "countedptr.hpp"
 
+#include "../safeguards.h"
+
 int32 SimpleCountedObject::AddRef()
 {
 	return ++m_ref_cnt;

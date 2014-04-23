@@ -13,6 +13,8 @@
 #include "script_railtypelist.hpp"
 #include "../../rail.h"
 
+#include "../../safeguards.h"
+
 ScriptRailTypeList::ScriptRailTypeList()
 {
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {

@@ -29,6 +29,8 @@
 #include "table/strings.h"
 #include "../table/sprites.h"
 
+#include "../safeguards.h"
+
 
 /** Whether the user accepted to enter external websites during this session. */
 static bool _accepted_external_search = false;

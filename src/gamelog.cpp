@@ -21,6 +21,8 @@
 
 #include <stdarg.h>
 
+#include "safeguards.h"
+
 extern const uint16 SAVEGAME_VERSION;  ///< current savegame version
 
 extern SavegameType _savegame_type; ///< type of savegame we are loading

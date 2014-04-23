@@ -36,6 +36,8 @@
 
 #include "table/sprites.h"
 
+#include "safeguards.h"
+
 /* Maximum number of NewGRFs that may be loaded. Six reserved slots are:
  * 0 - config, 1 - sound, 2 - base, 3 - logos, 4 - climate, 5 - extra */
 static const int MAX_NEWGRFS = MAX_FILE_SLOTS - 6;

@@ -40,6 +40,8 @@
 #include "game/game.hpp"
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /* scriptfile handling */
 static bool _script_running; ///< Script is running (used to abort execution when #ConReturn is encountered).
 

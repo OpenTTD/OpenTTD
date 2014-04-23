@@ -25,6 +25,8 @@
 #include "table/strings.h"
 #include "table/tree_land.h"
 
+#include "safeguards.h"
+
 void PlaceTreesRandomly();
 
 /** Tree Sprites with their palettes */

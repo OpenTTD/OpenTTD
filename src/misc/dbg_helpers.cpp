@@ -13,6 +13,8 @@
 #include "../rail_map.h"
 #include "dbg_helpers.h"
 
+#include "../safeguards.h"
+
 /** Trackdir & TrackdirBits short names. */
 static const char * const trackdir_names[] = {
 	"NE", "SE", "UE", "LE", "LS", "RS", "rne", "rse",

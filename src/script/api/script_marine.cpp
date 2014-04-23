@@ -15,6 +15,8 @@
 #include "../../station_base.h"
 #include "../../tile_cmd.h"
 
+#include "../../safeguards.h"
+
 
 /* static */ bool ScriptMarine::IsWaterDepotTile(TileIndex tile)
 {

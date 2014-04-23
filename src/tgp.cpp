@@ -17,6 +17,8 @@
 #include "core/random_func.hpp"
 #include "landscape_type.h"
 
+#include "safeguards.h"
+
 /*
  *
  * Quickie guide to Perlin Noise

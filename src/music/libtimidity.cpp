@@ -26,6 +26,8 @@
 #include <pspaudiolib.h>
 #endif /* PSP */
 
+#include "../safeguards.h"
+
 /** The state of playing. */
 enum MidiState {
 	MIDI_STOPPED = 0,

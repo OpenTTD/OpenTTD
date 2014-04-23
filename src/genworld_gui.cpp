@@ -32,6 +32,8 @@
 
 #include "widgets/genworld_widget.h"
 
+#include "safeguards.h"
+
 
 extern void MakeNewgameSettingsLive();
 

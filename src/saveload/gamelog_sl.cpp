@@ -15,6 +15,8 @@
 
 #include "saveload.h"
 
+#include "../safeguards.h"
+
 static const SaveLoad _glog_action_desc[] = {
 	SLE_VAR(LoggedAction, tick,              SLE_UINT16),
 	SLE_END()

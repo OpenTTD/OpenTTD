@@ -14,6 +14,8 @@
 #include "../blitter/factory.hpp"
 #include "null_v.h"
 
+#include "../safeguards.h"
+
 /** Factory for the null video driver. */
 static FVideoDriver_Null iFVideoDriver_Null;
 

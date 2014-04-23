@@ -18,6 +18,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /**
  * Callback for building wagons.
  * @param result The result of the command.

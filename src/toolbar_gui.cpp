@@ -53,6 +53,8 @@
 #include "network/network_gui.h"
 #include "network/network_func.h"
 
+#include "safeguards.h"
+
 
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;

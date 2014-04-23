@@ -17,6 +17,8 @@
 #include "../../water.h"
 #include "../../station_func.h"
 
+#include "../../safeguards.h"
+
 
 /* static */ uint32 ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {

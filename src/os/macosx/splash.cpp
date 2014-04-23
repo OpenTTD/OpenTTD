@@ -23,6 +23,8 @@
 
 #include <png.h>
 
+#include "../../safeguards.h"
+
 /**
  * Handle pnglib error.
  *

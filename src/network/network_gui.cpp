@@ -39,6 +39,8 @@
 
 #include "../stringfilter_type.h"
 
+#include "../safeguards.h"
+
 
 static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);

@@ -15,6 +15,8 @@
 #include "ai_config.hpp"
 #include "ai_info.hpp"
 
+#include "../safeguards.h"
+
 /** Configuration for AI start date, every AI has this setting. */
 ScriptConfigItem _start_date_config = {
 	"start_date",

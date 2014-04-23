@@ -45,6 +45,8 @@
 #include "table/industry_land.h"
 #include "table/build_industry.h"
 
+#include "safeguards.h"
+
 IndustryPool _industry_pool("Industry");
 INSTANTIATE_POOL_METHODS(Industry)
 

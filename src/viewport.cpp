@@ -51,6 +51,8 @@
 #include "table/strings.h"
 #include "table/palettes.h"
 
+#include "safeguards.h"
+
 Point _tile_fract_coords;
 
 struct StringSpriteToDraw {

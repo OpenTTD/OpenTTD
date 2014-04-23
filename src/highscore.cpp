@@ -20,6 +20,8 @@
 #include "core/sort_func.hpp"
 #include "debug.h"
 
+#include "safeguards.h"
+
 HighScore _highscore_table[SP_HIGHSCORE_END][5]; ///< various difficulty-settings; top 5
 char *_highscore_file; ///< The file to store the highscore data in.
 

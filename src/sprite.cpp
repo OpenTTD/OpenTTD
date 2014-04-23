@@ -16,6 +16,8 @@
 #include "spritecache.h"
 #include "zoom_func.h"
 
+#include "safeguards.h"
+
 
 /**
  * Draws a tile sprite sequence.

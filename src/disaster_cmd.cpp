@@ -47,6 +47,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** Delay counter for considering the next disaster. */
 uint16 _disaster_delay;
 

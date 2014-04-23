@@ -15,6 +15,8 @@
 #include "../../debug.h"
 #include "address.h"
 
+#include "../../safeguards.h"
+
 /**
  * Internal implementation for finding the broadcast IPs.
  * This function is implemented multiple times for multiple targets.

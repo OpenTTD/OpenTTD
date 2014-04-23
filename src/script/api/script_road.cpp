@@ -16,6 +16,8 @@
 #include "../../station_base.h"
 #include "../../script/squirrel_helper_type.hpp"
 
+#include "../../safeguards.h"
+
 /* static */ ScriptRoad::RoadVehicleType ScriptRoad::GetRoadVehicleTypeForCargo(CargoID cargo_type)
 {
 	return ScriptCargo::HasCargoClass(cargo_type, ScriptCargo::CC_PASSENGERS) ? ROADVEHTYPE_BUS : ROADVEHTYPE_TRUCK;

@@ -18,6 +18,8 @@
 
 #include "table/strings.h"
 
+#include "safeguards.h"
+
 /** Initialize the sign-pool */
 SignPool _sign_pool("Sign");
 INSTANTIATE_POOL_METHODS(Sign)

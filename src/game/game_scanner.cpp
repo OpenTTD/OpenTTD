@@ -15,6 +15,8 @@
 #include "game_info.hpp"
 #include "game_scanner.hpp"
 
+#include "../safeguards.h"
+
 
 void GameScannerInfo::Initialize()
 {
