@@ -1403,8 +1403,13 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 				DoCommand(v_start->tile, v_start->index, cid | 1U << 6 | 0xFF << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 				/* Try to balance different loadable cargoes between parts of the consist, so that
 				 * all of them can be loaded. Avoid a situation where all vehicles suddenly switch
-				 * to the first loadable cargo for which there is only one packet. */
-				if (_returned_refit_capacity > 0 && consist_capleft[cid] < consist_capleft[new_cid]) {
+				 * to the first loadable cargo for which there is only one packet. If the capacities
+				 * are equal refit to the cargo of which most is available. This is important for
+				 * consists of only a single vehicle as those will generally have a consist_capleft
+				 * of 0 for all cargoes. */
+				if (_returned_refit_capacity > 0 && (consist_capleft[cid] < consist_capleft[new_cid] ||
+						(consist_capleft[cid] == consist_capleft[new_cid] &&
+						st->goods[cid].cargo.AvailableCount() > st->goods[new_cid].cargo.AvailableCount()))) {
 					new_cid = cid;
 				}
 			}
