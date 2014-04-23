@@ -13,15 +13,7 @@ typedef std::list<NodeID> NodeList;
  */
 class Scaler {
 public:
-	/**
-	 * Constructor.
-	 */
-	Scaler() : demand_per_node(0) {}
-
 	void SetDemands(LinkGraphJob &job, NodeID from, NodeID to, uint demand_forw);
-
-protected:
-	uint demand_per_node; ///< Mean demand associated with each node.
 };
 
 /**
@@ -34,7 +26,8 @@ public:
 	 * @param mod_size Size modifier to be used. Determines how much demands
 	 *                 increase with the supply of the remote station.
 	 */
-	inline SymmetricScaler(uint mod_size) : mod_size(mod_size), supply_sum(0)
+	inline SymmetricScaler(uint mod_size) : mod_size(mod_size), supply_sum(0),
+		demand_per_node(0)
 	{}
 
 	/**
@@ -82,8 +75,9 @@ public:
 	void SetDemands(LinkGraphJob &job, NodeID from, NodeID to, uint demand_forw);
 
 private:
-	uint mod_size;   ///< Size modifier. Determines how much demands increase with the supply of the remote station.
-	uint supply_sum; ///< Sum of all supplies in the component.
+	uint mod_size;        ///< Size modifier. Determines how much demands increase with the supply of the remote station.
+	uint supply_sum;      ///< Sum of all supplies in the component.
+	uint demand_per_node; ///< Mean demand associated with each node.
 };
 
 /**
@@ -92,37 +86,29 @@ private:
 class AsymmetricScaler : public Scaler {
 public:
 	/**
-	 * Constructor.
+	 * Nothing to do here.
+	 * @param unused.
 	 */
-	inline AsymmetricScaler() : demand_sum(0) {}
-
-	/**
-	 * Count a node's demand into the sum of demands.
-	 * @param node The node to be counted.
-	 */
-	inline void AddNode(const Node &node)
+	inline void AddNode(const Node &)
 	{
-		this->demand_sum += node.Demand();
 	}
 
 	/**
-	 * Calculate the mean demand per node using the sum of demands.
-	 * @param num_demands Number of accepting nodes.
+	 * Nothing to do here.
+	 * @param unused.
 	 */
-	inline void SetDemandPerNode(uint num_demands)
+	inline void SetDemandPerNode(uint)
 	{
-		this->demand_per_node = max(this->demand_sum / num_demands, (uint)1);
 	}
 
 	/**
-	 * Get the effective supply of one node towards another one. In asymmetric
-	 * distribution the demand of the other node is weighed in.
+	 * Get the effective supply of one node towards another one.
 	 * @param from The supplying node.
-	 * @param to The receiving node.
+	 * @param unused.
 	 */
-	inline uint EffectiveSupply(const Node &from, const Node &to)
+	inline uint EffectiveSupply(const Node &from, const Node &)
 	{
-		return max(from.Supply() * to.Demand() / this->demand_per_node, (uint)1);
+		return from.Supply();
 	}
 
 	/**
@@ -132,9 +118,6 @@ public:
 	 * @param to_anno Unused.
 	 */
 	inline bool HasDemandLeft(const Node &to) { return to.Demand() > 0; }
-
-private:
-	uint demand_sum; ///< Sum of all demands in the component.
 };
 
 /**
