@@ -51,15 +51,15 @@ static inline bool IsValidSearchPath(Searchpath sp)
 void FioFCloseFile(FILE *f);
 FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize = NULL);
 bool FioCheckFileExists(const char *filename, Subdirectory subdir);
-char *FioGetFullPath(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir, const char *filename);
-char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char *filename);
-char *FioAppendDirectory(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir);
-char *FioGetDirectory(char *buf, size_t buflen, Subdirectory subdir);
+char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory subdir, const char *filename);
+char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const char *filename);
+char *FioAppendDirectory(char *buf, const char *last, Searchpath sp, Subdirectory subdir);
+char *FioGetDirectory(char *buf, const char *last, Subdirectory subdir);
 
 const char *FiosGetScreenshotDir();
 
 void SanitizeFilename(char *filename);
-bool AppendPathSeparator(char *buf, size_t buflen);
+bool AppendPathSeparator(char *buf, const char *last);
 void DeterminePaths(const char *exe);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const char *filename);

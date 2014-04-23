@@ -116,7 +116,7 @@ bool ScriptInstance::LoadCompatibilityScripts(const char *api_version, Subdirect
 	char buf[MAX_PATH];
 	Searchpath sp;
 	FOR_ALL_SEARCHPATHS(sp) {
-		FioAppendDirectory(buf, MAX_PATH, sp, dir);
+		FioAppendDirectory(buf, lastof(buf), sp, dir);
 		strecat(buf, script_name, lastof(buf));
 		if (!FileExists(buf)) continue;
 
