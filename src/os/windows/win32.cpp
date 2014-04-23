@@ -212,7 +212,7 @@ void FiosGetDrives()
 	FiosItem *fios = _fios_items.Append();
 	fios->type = FIOS_TYPE_DRIVE;
 	fios->mtime = 0;
-	snprintf(fios->name, lengthof(fios->name), PATHSEP "");
+	seprintf(fios->name, lastof(fios->name), PATHSEP "");
 	strecpy(fios->title, fios->name, lastof(fios->title));
 #else
 	TCHAR drives[256];
@@ -223,7 +223,7 @@ void FiosGetDrives()
 		FiosItem *fios = _fios_items.Append();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
-		snprintf(fios->name, lengthof(fios->name),  "%c:", s[0] & 0xFF);
+		seprintf(fios->name, lastof(fios->name),  "%c:", s[0] & 0xFF);
 		strecpy(fios->title, fios->name, lastof(fios->title));
 		while (*s++ != '\0') { /* Nothing */ }
 	}
@@ -495,9 +495,9 @@ void DetermineBasePaths(const char *exe)
 #ifdef WITH_PERSONAL_DIR
 	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path))) {
 		strecpy(tmp, FS2OTTD(path), lastof(tmp));
-		AppendPathSeparator(tmp, MAX_PATH);
+		AppendPathSeparator(tmp, lastof(tmp));
 		strecat(tmp, PERSONAL_DIR, lastof(tmp));
-		AppendPathSeparator(tmp, MAX_PATH);
+		AppendPathSeparator(tmp, lastof(tmp));
 		_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
 	} else {
 		_searchpaths[SP_PERSONAL_DIR] = NULL;
@@ -505,9 +505,9 @@ void DetermineBasePaths(const char *exe)
 
 	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path))) {
 		strecpy(tmp, FS2OTTD(path), lastof(tmp));
-		AppendPathSeparator(tmp, MAX_PATH);
+		AppendPathSeparator(tmp, lastof(tmp));
 		strecat(tmp, PERSONAL_DIR, lastof(tmp));
-		AppendPathSeparator(tmp, MAX_PATH);
+		AppendPathSeparator(tmp, lastof(tmp));
 		_searchpaths[SP_SHARED_DIR] = strdup(tmp);
 	} else {
 		_searchpaths[SP_SHARED_DIR] = NULL;
@@ -519,7 +519,7 @@ void DetermineBasePaths(const char *exe)
 
 	/* Get the path to working directory of OpenTTD */
 	getcwd(tmp, lengthof(tmp));
-	AppendPathSeparator(tmp, MAX_PATH);
+	AppendPathSeparator(tmp, lastof(tmp));
 	_searchpaths[SP_WORKING_DIR] = strdup(tmp);
 
 	if (!GetModuleFileName(NULL, path, lengthof(path))) {
