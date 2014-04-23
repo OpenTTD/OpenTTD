@@ -14,7 +14,7 @@
 #include "script_log.hpp"
 #include "../../network/network_admin.h"
 #include "../script_instance.hpp"
-#include "../../string_func.hpp"
+#include "../../string_func.h"
 
 #include "../../safeguards.h"
 
