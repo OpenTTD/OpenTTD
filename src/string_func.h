@@ -31,6 +31,7 @@
 
 char *strecat(char *dst, const char *src, const char *last);
 char *strecpy(char *dst, const char *src, const char *last);
+char *stredup(const char *src, const char *last = NULL);
 
 int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4);
 

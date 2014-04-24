@@ -114,6 +114,21 @@ char *strecpy(char *dst, const char *src, const char *last)
 }
 
 /**
+ * Create a duplicate of the given string.
+ * @param s    The string to duplicate.
+ * @param last The last character that is safe to duplicate. If NULL, the whole string is duplicated.
+ * @note The maximum length of the resulting string might therefore be last - s + 1.
+ * @return The duplicate of the string.
+ */
+char *stredup(const char *s, const char *last)
+{
+	size_t len = last == NULL ? strlen(s) : ttd_strnlen(s, last - s + 1);
+	char *tmp = CallocT<char>(len + 1);
+	memcpy(tmp, s, len);
+	return tmp;
+}
+
+/**
  * Format, "printf", into a newly allocated string.
  * @param str The formatting string.
  * @return The formatted string. You must free this!
