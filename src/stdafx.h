@@ -232,7 +232,6 @@
 	#define WARN_FORMAT(string, args)
 	#define FINAL sealed
 
-	int CDECL snprintf(char *str, size_t size, const char *format, ...) WARN_FORMAT(3, 4);
 	#if defined(WINCE)
 		int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 	#endif

@@ -346,20 +346,6 @@ bool IsValidChar(WChar key, CharSetFilter afilter)
 }
 
 #ifdef WIN32
-/* Since version 3.14, MinGW Runtime has snprintf() and vsnprintf() conform to C99 but it's not the case for older versions */
-#if (__MINGW32_MAJOR_VERSION < 3) || ((__MINGW32_MAJOR_VERSION == 3) && (__MINGW32_MINOR_VERSION < 14))
-int CDECL snprintf(char *str, size_t size, const char *format, ...)
-{
-	va_list ap;
-	int ret;
-
-	va_start(ap, format);
-	ret = vsnprintf(str, size, format, ap);
-	va_end(ap);
-	return ret;
-}
-#endif /* MinGW Runtime < 3.14 */
-
 #ifdef _MSC_VER
 /**
  * Almost POSIX compliant implementation of \c vsnprintf for VC compiler.
