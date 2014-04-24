@@ -379,7 +379,7 @@ void ReconsiderGameScriptLanguage()
 	if (_current_data == NULL) return;
 
 	char temp[MAX_PATH];
-	strecpy(temp, _current_language->file, temp + sizeof(temp));
+	strecpy(temp, _current_language->file, lastof(temp));
 
 	/* Remove the extension */
 	char *l = strrchr(temp, '.');

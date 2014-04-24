@@ -197,10 +197,10 @@ void ScriptConfig::SettingsToString(char *string, const char *last) const
 		/* If it doesn't fit, skip the next settings */
 		if (string + needed_size > last) break;
 
-		s = strecat(s, last, (*it).first);
-		s = strecat(s, last, "=");
-		s = strecat(s, last, no);
-		s = strecat(s, last, ",");
+		s = strecat(s, (*it).first, last);
+		s = strecat(s, "=", last);
+		s = strecat(s, no, last);
+		s = strecat(s, ",", last);
 	}
 
 	/* Remove the last ',', but only if at least one setting was saved. */
