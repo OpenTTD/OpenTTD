@@ -1493,7 +1493,7 @@ static void AISaveConfig(IniFile *ini, const char *grpname)
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 		const char *name;
 		char value[1024];
-		config->SettingsToString(value, lengthof(value));
+		config->SettingsToString(value, lastof(value));
 
 		if (config->HasScript()) {
 			name = config->GetName();
@@ -1516,7 +1516,7 @@ static void GameSaveConfig(IniFile *ini, const char *grpname)
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 	const char *name;
 	char value[1024];
-	config->SettingsToString(value, lengthof(value));
+	config->SettingsToString(value, lastof(value));
 
 	if (config->HasScript()) {
 		name = config->GetName();

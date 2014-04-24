@@ -172,7 +172,7 @@ public:
 	 * Convert the custom settings to a string that can be stored in the config
 	 *  file or savegames.
 	 */
-	void SettingsToString(char *string, size_t size) const;
+	void SettingsToString(char *string, const char *last) const;
 
 	/**
 	 * Search a textfile file next to this script.

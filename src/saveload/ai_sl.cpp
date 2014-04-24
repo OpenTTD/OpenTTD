@@ -51,7 +51,7 @@ static void SaveReal_AIPL(int *index_ptr)
 
 	_ai_saveload_is_random = config->IsRandom();
 	_ai_saveload_settings[0] = '\0';
-	config->SettingsToString(_ai_saveload_settings, lengthof(_ai_saveload_settings));
+	config->SettingsToString(_ai_saveload_settings, lastof(_ai_saveload_settings));
 
 	SlObject(NULL, _ai_company);
 	/* If the AI was active, store his data too */

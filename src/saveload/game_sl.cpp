@@ -50,7 +50,7 @@ static void SaveReal_GSDT(int *index_ptr)
 
 	_game_saveload_is_random = config->IsRandom();
 	_game_saveload_settings[0] = '\0';
-	config->SettingsToString(_game_saveload_settings, lengthof(_game_saveload_settings));
+	config->SettingsToString(_game_saveload_settings, lastof(_game_saveload_settings));
 
 	SlObject(NULL, _game_script);
 	Game::Save();
