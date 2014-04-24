@@ -56,7 +56,7 @@
 #define gets      SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* No clear replacement. */
-//#define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /*
  * Possible future methods to mark unsafe, though needs more thought:
