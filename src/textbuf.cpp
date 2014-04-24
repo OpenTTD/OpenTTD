@@ -419,7 +419,7 @@ void Textbuf::Print(const char *format, ...)
 {
 	va_list va;
 	va_start(va, format);
-	vsnprintf(this->buf, this->max_bytes, format, va);
+	vseprintf(this->buf, &this->buf[this->max_bytes - 1], format, va);
 	va_end(va);
 	this->UpdateSize();
 }

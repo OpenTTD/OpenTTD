@@ -53,7 +53,7 @@ void CDECL strgen_warning(const char *s, ...)
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
-	vsnprintf(buf, lengthof(buf), s, va);
+	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 	fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, buf);
 	_warnings++;
@@ -64,7 +64,7 @@ void CDECL strgen_error(const char *s, ...)
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
-	vsnprintf(buf, lengthof(buf), s, va);
+	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 	fprintf(stderr, LINE_NUM_FMT("error"), _file, _cur_line, buf);
 	_errors++;
@@ -75,7 +75,7 @@ void NORETURN CDECL strgen_fatal(const char *s, ...)
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
-	vsnprintf(buf, lengthof(buf), s, va);
+	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 	fprintf(stderr, LINE_NUM_FMT("FATAL"), _file, _cur_line, buf);
 #ifdef _MSC_VER
@@ -89,7 +89,7 @@ void NORETURN CDECL error(const char *s, ...)
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
-	vsnprintf(buf, lengthof(buf), s, va);
+	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 	fprintf(stderr, LINE_NUM_FMT("FATAL"), _file, _cur_line, buf);
 #ifdef _MSC_VER

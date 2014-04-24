@@ -21,9 +21,10 @@
 
 /* Due to the different characters for Squirrel, the scsnprintf might be a simple
  * snprint which triggers the safeguard. But it isn't always a simple snprintf.
- * Likewise for scstrcat. */
+ * Likewise for scvsnprintf and scstrcat. */
 #include "../safeguards.h"
 #undef snprintf
+#undef vsnprintf
 #undef strcat
 
 void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column)

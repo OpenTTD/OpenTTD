@@ -93,7 +93,7 @@ void CDECL usererror(const char *s, ...)
 	char buf[512];
 
 	va_start(va, s);
-	vsnprintf(buf, lengthof(buf), s, va);
+	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 
 	ShowOSErrorBox(buf, false);
@@ -113,7 +113,7 @@ void CDECL error(const char *s, ...)
 	char buf[512];
 
 	va_start(va, s);
-	vsnprintf(buf, lengthof(buf), s, va);
+	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 
 	ShowOSErrorBox(buf, true);
@@ -132,7 +132,7 @@ void CDECL ShowInfoF(const char *str, ...)
 	va_list va;
 	char buf[1024];
 	va_start(va, str);
-	vsnprintf(buf, lengthof(buf), str, va);
+	vseprintf(buf, lastof(buf), str, va);
 	va_end(va);
 	ShowInfo(buf);
 }

@@ -137,7 +137,7 @@ void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
 	char buf[ICON_MAX_STREAMSIZE];
 
 	va_start(va, format);
-	vsnprintf(buf, sizeof(buf), format, va);
+	vseprintf(buf, lastof(buf), format, va);
 	va_end(va);
 
 	IConsolePrint(colour_code, buf);

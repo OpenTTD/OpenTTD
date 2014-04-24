@@ -377,7 +377,7 @@ void CDECL grfmsg(int severity, const char *str, ...)
 	va_list va;
 
 	va_start(va, str);
-	vsnprintf(buf, sizeof(buf), str, va);
+	vseprintf(buf, lastof(buf), str, va);
 	va_end(va);
 
 	DEBUG(grf, severity, "[%s:%d] %s", _cur.grfconfig->filename, _cur.nfo_line, buf);

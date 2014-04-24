@@ -32,7 +32,10 @@
 #include "gfx_func.h"
 #endif /* WITH_ICU */
 
+/* The function vsnprintf is used internally to perform the required formatting
+ * tasks. As such this one must be allowed, and makes sure it's terminated. */
 #include "safeguards.h"
+#undef vsnprintf
 
 /**
  * Safer implementation of vsnprintf; same as vsnprintf except:
@@ -44,7 +47,7 @@
  * @param ap     the list of arguments for the format
  * @return the number of added characters
  */
-static int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
+int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
 {
 	ptrdiff_t diff = last - str;
 	if (diff < 0) return 0;

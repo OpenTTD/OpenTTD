@@ -400,7 +400,7 @@ struct NewGRFInspectWindow : Window {
 
 		va_list va;
 		va_start(va, format);
-		vsnprintf(buf, lengthof(buf), format, va);
+		vseprintf(buf, lastof(buf), format, va);
 		va_end(va);
 
 		offset -= this->vscroll->GetPosition();

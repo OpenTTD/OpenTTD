@@ -100,7 +100,7 @@ struct CStrA : public CBlobT<char>
 		int err = 0;
 		for (;;) {
 			char *buf = MakeFreeSpace(addSize);
-			ret = vsnprintf(buf, base::GetReserve(), format, args);
+			ret = vseprintf(buf, buf + base::GetReserve() - 1, format, args);
 			if (ret >= (int)base::GetReserve()) {
 				/* Greater return than given count means needed buffer size. */
 				addSize = ret + 1;
