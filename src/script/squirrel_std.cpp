@@ -17,7 +17,10 @@
 #include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"
 
+/* Due to the different characters for Squirrel, the scstrcat might be a simple
+ * strcat which triggers the safeguard. But it isn't always a simple strcat. */
 #include "../safeguards.h"
+#undef strcat
 
 
 SQInteger SquirrelStd::min(HSQUIRRELVM vm)

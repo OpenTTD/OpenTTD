@@ -19,7 +19,12 @@
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
 
+/* Due to the different characters for Squirrel, the scsnprintf might be a simple
+ * snprint which triggers the safeguard. But it isn't always a simple snprintf.
+ * Likewise for scstrcat. */
 #include "../safeguards.h"
+#undef snprintf
+#undef strcat
 
 void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column)
 {
@@ -287,8 +292,9 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	sq_pushroottable(vm);
 
 	if (prepend_API_name) {
-		char *class_name2 = (char *)alloca(strlen(class_name) + strlen(engine->GetAPIName()) + 1);
-		sprintf(class_name2, "%s%s", engine->GetAPIName(), class_name);
+		size_t len = strlen(class_name) + strlen(engine->GetAPIName()) + 1;
+		char *class_name2 = (char *)alloca(len);
+		seprintf(class_name2, class_name2 + len - 1, "%s%s", engine->GetAPIName(), class_name);
 
 		sq_pushstring(vm, OTTD2SQ(class_name2), -1);
 	} else {

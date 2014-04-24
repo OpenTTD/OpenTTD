@@ -1674,8 +1674,9 @@ void GetGRFPresetList(GRFPresetList *list)
  */
 GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
 {
-	char *section = (char*)alloca(strlen(config_name) + 8);
-	sprintf(section, "preset-%s", config_name);
+	size_t len = strlen(config_name) + 8;
+	char *section = (char*)alloca(len);
+	seprintf(section, section + len - 1, "preset-%s", config_name);
 
 	IniFile *ini = IniLoadConfig();
 	GRFConfig *config = GRFLoadConfig(ini, section, false);
@@ -1692,8 +1693,9 @@ GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
  */
 void SaveGRFPresetToConfig(const char *config_name, GRFConfig *config)
 {
-	char *section = (char*)alloca(strlen(config_name) + 8);
-	sprintf(section, "preset-%s", config_name);
+	size_t len = strlen(config_name) + 8;
+	char *section = (char*)alloca(len);
+	seprintf(section, section + len - 1, "preset-%s", config_name);
 
 	IniFile *ini = IniLoadConfig();
 	GRFSaveConfig(ini, section, config);
@@ -1707,8 +1709,9 @@ void SaveGRFPresetToConfig(const char *config_name, GRFConfig *config)
  */
 void DeleteGRFPresetFromConfig(const char *config_name)
 {
-	char *section = (char*)alloca(strlen(config_name) + 8);
-	sprintf(section, "preset-%s", config_name);
+	size_t len = strlen(config_name) + 8;
+	char *section = (char*)alloca(len);
+	seprintf(section, section + len - 1, "preset-%s", config_name);
 
 	IniFile *ini = IniLoadConfig();
 	ini->RemoveGroup(section);
