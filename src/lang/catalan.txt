@@ -602,7 +602,7 @@ STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantita
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el màxim benefici dels darrers 12 quatrimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unitats de càrrega entregades en els darrers quatre trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipus de càrrega entregada durant el darrer trimestre.
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantitats de diners en efectiu
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantitat de diners en efectiu d'aquesta companyia
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}La quantitat de diners que aquesta companyia té com a préstec
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de punts sobre els punts possibles
 
@@ -1252,7 +1252,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenova el v
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edat relativa a partir de la qual s'ha de considerar l'autorenovació del vehicle
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mes{P 0 "" os} abans
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0 "" os} després
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenovació: mínim de diners per renovar: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Mínim de diners per a renovacions automàtiques: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantitat mínima de diners que han de quedar al banc abans de considerar l'autorenovació de vehicles
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duració del missatge d'error: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duració dels missatges d'error mostrats en finestres vermelles. Alguns missatges d'error (crítics) no es tanquen automàticament i s'han de tancar manualment

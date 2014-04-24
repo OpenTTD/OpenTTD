@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Postavke kompan
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu prikazom samo izmijenjenih postavki
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu koristeći samo predpostavljene filtere
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne postavke
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne postavke
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Postavke za napredne korisnike / sve postavke

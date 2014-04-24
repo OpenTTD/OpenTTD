@@ -1129,7 +1129,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ettevõtte sead
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Rühm:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Liik:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Piirab alljärgnevat nimekirja muudetud seadete kuvamiseks
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Piirab varem tehtud filtridega alljärgnevat loendit
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Põhilised seaded
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Täpsemad seaded
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Eksperdi seaded / kõik seaded
@@ -1577,7 +1577,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Luba linnadel e
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Linnadel on lubatud ehitada ülesõidukohti: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Selle seade sisse lülitamine lubab linnadel ehitada ülesõidukohti
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Lennujaamade mürapiirangud linnades: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui ei ole aktiveeritud, siis on igas linnas lubatud kuni kaks lennujaama. Kui see seade on aktiveeritud, siis on lubatud igas linnas lennujaamu ehitada vastavalt linna müra vastuvõrlikkuse tasemele, mis sõltub otseselt linna elanike arvust ja lennujaama suurusest ja kaugusest kesklinnast
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui seade ei ole sisse lülitatud, siis igasse linna on lubatud ehitada kuni kaks lennuvälja. Kui see seade on lubatud, siis lennuväljade arvu ülempiiri määrab linna müratundlikkus, mis sõltub rahvaarvust ja lennuvälja suurusest ja kaugusest
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Linnade rajamine keset mängu: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Võimaldab ettevõttel uusi linnu rajada
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Keelatud
@@ -3358,6 +3358,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klõpsa 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Eemalda valitud rühm
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Valitud rühma nime vahetamine
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klõpsa, et seda rühma üldise automaatse asenduse eest kaitsta
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Kõik jagatud sõidukid
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik sõidukid
