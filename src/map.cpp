@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "water_map.h"
+#include "string_func.h"
 
 #include "safeguards.h"
 
@@ -84,7 +85,7 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 	if (x >= MapSizeX() || y >= MapSizeY()) {
 		char buf[512];
 
-		snprintf(buf, lengthof(buf), "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
+		seprintf(buf, lastof(buf), "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
 			exp, tile, add);
 #if !defined(_MSC_VER) || defined(WINCE)
 		fprintf(stderr, "%s:%d %s\n", file, line, buf);
