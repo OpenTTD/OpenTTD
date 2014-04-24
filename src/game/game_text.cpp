@@ -66,7 +66,7 @@ void NORETURN CDECL strgen_fatal(const char *s, ...)
  */
 LanguageStrings::LanguageStrings(const char *language, const char *end)
 {
-	this->language = stredup(language, end - 1);
+	this->language = stredup(language, end != NULL ? end - 1 : NULL);
 }
 
 /** Free everything. */

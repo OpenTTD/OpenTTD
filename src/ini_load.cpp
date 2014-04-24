@@ -167,7 +167,7 @@ IniGroup *IniLoadFile::GetGroup(const char *name, size_t len, bool create_new)
 	if (!create_new) return NULL;
 
 	/* otherwise make a new one */
-	IniGroup *group = new IniGroup(this, name, name + len);
+	IniGroup *group = new IniGroup(this, name, name + len - 1);
 	group->comment = strdup("\n");
 	return group;
 }
@@ -264,7 +264,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 			s++; // skip [
 			group = new IniGroup(this, s, e - 1);
 			if (comment_size != 0) {
-				group->comment = stredup(comment, comment + comment_size);
+				group->comment = stredup(comment, comment + comment_size - 1);
 				comment_size = 0;
 			}
 		} else if (group != NULL) {
@@ -272,7 +272,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 				/* A sequence group, use the line as item name without further interpretation. */
 				IniItem *item = new IniItem(group, buffer, e - 1);
 				if (comment_size) {
-					item->comment = stredup(comment, comment + comment_size);
+					item->comment = stredup(comment, comment + comment_size - 1);
 					comment_size = 0;
 				}
 				continue;
@@ -290,7 +290,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 			/* it's an item in an existing group */
 			IniItem *item = new IniItem(group, s, t - 1);
 			if (comment_size != 0) {
-				item->comment = stredup(comment, comment + comment_size);
+				item->comment = stredup(comment, comment + comment_size - 1);
 				comment_size = 0;
 			}
 
@@ -306,7 +306,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 			*e = '\0';
 
 			/* If the value was not quoted and empty, it must be NULL */
-			item->value = (!quoted && e == t) ? NULL : stredup(t, e);
+			item->value = (!quoted && e == t) ? NULL : stredup(t);
 			if (item->value != NULL) str_validate(item->value, item->value + strlen(item->value));
 		} else {
 			/* it's an orphan item */
@@ -315,7 +315,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 	}
 
 	if (comment_size > 0) {
-		this->comment = stredup(comment, comment + comment_size);
+		this->comment = stredup(comment, comment + comment_size - 1);
 		comment_size = 0;
 	}
 
