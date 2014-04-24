@@ -28,23 +28,23 @@ endif
 
 all: table/settings.h
 
-settingsgen.o: $(SRC_DIR)/settingsgen/settingsgen.cpp $(SRC_DIR)/string_func.h $(SRC_DIR)/strings_type.h $(SRC_DIR)/misc/getoptdata.h $(SRC_DIR)/ini_type.h $(SRC_DIR)/core/smallvec_type.hpp
+settingsgen.o: $(SRC_DIR)/settingsgen/settingsgen.cpp $(SRC_DIR)/string_func.h $(SRC_DIR)/strings_type.h $(SRC_DIR)/misc/getoptdata.h $(SRC_DIR)/ini_type.h $(SRC_DIR)/core/smallvec_type.hpp $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
-alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp endian_host.h
+alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp endian_host.h $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
-getoptdata.o: $(SRC_DIR)/misc/getoptdata.cpp $(SRC_DIR)/misc/getoptdata.h
+getoptdata.o: $(SRC_DIR)/misc/getoptdata.cpp $(SRC_DIR)/misc/getoptdata.h $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/misc/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
-string.o: $(SRC_DIR)/string.cpp endian_host.h
+string.o: $(SRC_DIR)/string.cpp endian_host.h $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
-ini_load.o: $(SRC_DIR)/ini_load.cpp $(SRC_DIR)/core/alloc_func.hpp $(SRC_DIR)/core/mem_func.hpp $(SRC_DIR)/ini_type.h $(SRC_DIR)/string_func.h
+ini_load.o: $(SRC_DIR)/ini_load.cpp $(SRC_DIR)/core/alloc_func.hpp $(SRC_DIR)/core/mem_func.hpp $(SRC_DIR)/ini_type.h $(SRC_DIR)/string_func.h $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
