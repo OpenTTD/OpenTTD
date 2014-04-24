@@ -1501,7 +1501,7 @@ static void AISaveConfig(IniFile *ini, const char *grpname)
 			name = "none";
 		}
 
-		IniItem *item = new IniItem(group, name, strlen(name));
+		IniItem *item = new IniItem(group, name);
 		item->SetValue(value);
 	}
 }
@@ -1524,7 +1524,7 @@ static void GameSaveConfig(IniFile *ini, const char *grpname)
 		name = "none";
 	}
 
-	IniItem *item = new IniItem(group, name, strlen(name));
+	IniItem *item = new IniItem(group, name);
 	item->SetValue(value);
 }
 

@@ -32,21 +32,19 @@
 
 /* Use stredup instead. */
 //#define strdup    SAFEGUARD_DO_NOT_USE_THIS_METHOD
-
-/* Use stredup instead. */
-//#define strndup   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strndup   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use strecpy instead. */
 //#define strcpy    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 //#define strncpy   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use strecat instead. */
-//#define strcat    SAFEGUARD_DO_NOT_USE_THIS_METHOD
-//#define strncat   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strcat    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strncat   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use seprintf instead. */
-//#define sprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD
-//#define snprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define sprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define snprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use vseprintf instead. */
 //#define vsprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
@@ -57,11 +55,5 @@
 
 /* No clear replacement. */
 #define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
-
-/*
- * Possible future methods to mark unsafe, though needs more thought:
- *  - memcpy; when memory area overlaps it messes up, use memmove.
- *  - strlen: when the data is 'garbage', this could read beyond bounds.
- */
 
 #endif /* SAFEGUARDS_H */

@@ -1107,7 +1107,7 @@ void DetermineBasePaths(const char *exe)
 	 * unvalidated data we rather not want internally. */
 	const char *homedir = getenv("HOME");
 	if (homedir != NULL) {
-		homedir = strndup(homedir, MAX_PATH);
+		homedir = stredup(homedir);
 	}
 
 	if (homedir == NULL) {

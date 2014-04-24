@@ -21,14 +21,12 @@
  * Construct a new in-memory item of an Ini file.
  * @param parent the group we belong to
  * @param name   the name of the item
- * @param len    the length of the name of the item
+ * @param last   the last element of the name of the item
  */
-IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), value(NULL), comment(NULL)
+IniItem::IniItem(IniGroup *parent, const char *name, const char *last) : next(NULL), value(NULL), comment(NULL)
 {
-	if (len == 0) len = strlen(name);
-
-	this->name = strndup(name, len);
-	if (this->name != NULL) str_validate(this->name, this->name + len);
+	this->name = stredup(name, last);
+	str_validate(this->name, this->name + strlen(this->name));
 
 	*parent->last_item = this;
 	parent->last_item = &this->next;
@@ -58,15 +56,12 @@ void IniItem::SetValue(const char *value)
  * Construct a new in-memory group of an Ini file.
  * @param parent the file we belong to
  * @param name   the name of the group
- * @param len    the length of the name of the group
+ * @param last   the last element of the name of the group
  */
-IniGroup::IniGroup(IniLoadFile *parent, const char *name, size_t len) : next(NULL), type(IGT_VARIABLES), item(NULL), comment(NULL)
+IniGroup::IniGroup(IniLoadFile *parent, const char *name, const char *last) : next(NULL), type(IGT_VARIABLES), item(NULL), comment(NULL)
 {
-	if (len == 0) len = strlen(name);
-
-	this->name = strndup(name, len);
-	if (this->name == NULL) error("not enough memory to allocate group name");
-	str_validate(this->name, this->name + len);
+	this->name = stredup(name, last);
+	str_validate(this->name, this->name + strlen(this->name));
 
 	this->last_item = &this->item;
 	*parent->last_group = this;
@@ -116,7 +111,7 @@ IniItem *IniGroup::GetItem(const char *name, bool create)
 	if (!create) return NULL;
 
 	/* otherwise make a new one */
-	return new IniItem(this, name, strlen(name));
+	return new IniItem(this, name, NULL);
 }
 
 /**
@@ -172,7 +167,7 @@ IniGroup *IniLoadFile::GetGroup(const char *name, size_t len, bool create_new)
 	if (!create_new) return NULL;
 
 	/* otherwise make a new one */
-	IniGroup *group = new IniGroup(this, name, len);
+	IniGroup *group = new IniGroup(this, name, name + len);
 	group->comment = strdup("\n");
 	return group;
 }
@@ -267,17 +262,17 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 				e--;
 			}
 			s++; // skip [
-			group = new IniGroup(this, s, e - s);
+			group = new IniGroup(this, s, e - 1);
 			if (comment_size != 0) {
-				group->comment = strndup(comment, comment_size);
+				group->comment = stredup(comment, comment + comment_size);
 				comment_size = 0;
 			}
 		} else if (group != NULL) {
 			if (group->type == IGT_SEQUENCE) {
 				/* A sequence group, use the line as item name without further interpretation. */
-				IniItem *item = new IniItem(group, buffer, e - buffer);
+				IniItem *item = new IniItem(group, buffer, e - 1);
 				if (comment_size) {
-					item->comment = strndup(comment, comment_size);
+					item->comment = stredup(comment, comment + comment_size);
 					comment_size = 0;
 				}
 				continue;
@@ -293,9 +288,9 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 			}
 
 			/* it's an item in an existing group */
-			IniItem *item = new IniItem(group, s, t - s);
+			IniItem *item = new IniItem(group, s, t - 1);
 			if (comment_size != 0) {
-				item->comment = strndup(comment, comment_size);
+				item->comment = stredup(comment, comment + comment_size);
 				comment_size = 0;
 			}
 
@@ -311,7 +306,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 			*e = '\0';
 
 			/* If the value was not quoted and empty, it must be NULL */
-			item->value = (!quoted && e == t) ? NULL : strndup(t, e - t);
+			item->value = (!quoted && e == t) ? NULL : stredup(t, e);
 			if (item->value != NULL) str_validate(item->value, item->value + strlen(item->value));
 		} else {
 			/* it's an orphan item */
@@ -320,7 +315,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 	}
 
 	if (comment_size > 0) {
-		this->comment = strndup(comment, comment_size);
+		this->comment = stredup(comment, comment + comment_size);
 		comment_size = 0;
 	}
 
