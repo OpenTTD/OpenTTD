@@ -18,6 +18,12 @@
 #include "script_scanner.hpp"
 #include "script_info.hpp"
 
+#if defined(ENABLE_NETWORK)
+#include "../network/network_content.h"
+#include "../3rdparty/md5/md5.h"
+#include "../tar_type.h"
+#endif /* ENABLE_NETWORK */
+
 #include "../safeguards.h"
 
 bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
@@ -172,9 +178,6 @@ char *ScriptScanner::GetConsoleList(char *p, const char *last, bool newest_only)
 }
 
 #if defined(ENABLE_NETWORK)
-#include "../network/network_content.h"
-#include "../3rdparty/md5/md5.h"
-#include "../tar_type.h"
 
 /** Helper for creating a MD5sum of all files within of a script. */
 struct ScriptFileChecksumCreator : FileScanner {
