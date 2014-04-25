@@ -202,7 +202,8 @@ static inline int32 SeedChanceBias(byte shift_by, int max, uint32 seed, int bias
  */
 static void ReplaceWords(const char *org, const char *rep, char *buf)
 {
-	if (strncmp(buf, org, 4) == 0) strncpy(buf, rep, 4); // Safe as the string in buf is always more than 4 characters long.
+	assert(strlen(org) == 4 && strlen(rep) == 4 && strlen(buf) >= 4);
+	if (strncmp(buf, org, 4) == 0) memcpy(buf, rep, 4); // Safe as the string in buf is always more than 4 characters long.
 }
 
 
