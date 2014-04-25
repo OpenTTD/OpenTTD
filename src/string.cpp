@@ -528,16 +528,6 @@ size_t Utf8TrimString(char *s, size_t maxlen)
 	return length;
 }
 
-#ifdef DEFINE_STRNDUP
-char *strndup(const char *s, size_t len)
-{
-	len = ttd_strnlen(s, len);
-	char *tmp = CallocT<char>(len + 1);
-	memcpy(tmp, s, len);
-	return tmp;
-}
-#endif /* DEFINE_STRNDUP */
-
 #ifdef DEFINE_STRCASESTR
 char *strcasestr(const char *haystack, const char *needle)
 {
