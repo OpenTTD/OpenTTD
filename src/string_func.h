@@ -26,6 +26,8 @@
 #ifndef STRING_FUNC_H
 #define STRING_FUNC_H
 
+#include <stdarg.h>
+
 #include "core/bitmath_func.hpp"
 #include "string_type.h"
 
