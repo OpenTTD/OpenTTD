@@ -72,10 +72,10 @@ struct StringReader {
 	/**
 	 * Read a single line from the source of strings.
 	 * @param buffer The buffer to read the data in to.
-	 * @param size   The size of the buffer.
+	 * @param last   The last element in the buffer.
 	 * @return The buffer, or NULL if at the end of the file.
 	 */
-	virtual char *ReadLine(char *buffer, size_t size) = 0;
+	virtual char *ReadLine(char *buffer, const char *last) = 0;
 
 	/**
 	 * Handle the pragma of the file.

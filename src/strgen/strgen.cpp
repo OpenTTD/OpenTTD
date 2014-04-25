@@ -122,9 +122,9 @@ struct FileStringReader : StringReader {
 		fclose(this->fh);
 	}
 
-	/* virtual */ char *ReadLine(char *buffer, size_t size)
+	/* virtual */ char *ReadLine(char *buffer, const char *last)
 	{
-		return fgets(buffer, size, this->fh);
+		return fgets(buffer, last - buffer + 1, this->fh);
 	}
 
 	/* virtual */ void HandlePragma(char *str);

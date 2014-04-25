@@ -151,11 +151,11 @@ struct StringListReader : StringReader {
 	{
 	}
 
-	/* virtual */ char *ReadLine(char *buffer, size_t size)
+	/* virtual */ char *ReadLine(char *buffer, const char *last)
 	{
 		if (this->p == this->end) return NULL;
 
-		strncpy(buffer, *this->p, size);
+		strecpy(buffer, *this->p, last);
 		this->p++;
 
 		return buffer;

@@ -821,7 +821,7 @@ void StringReader::ParseFile()
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
 
 	_cur_line = 1;
-	while (this->ReadLine(buf, sizeof(buf)) != NULL) {
+	while (this->ReadLine(buf, lastof(buf)) != NULL) {
 		rstrip(buf);
 		this->HandleString(buf);
 		_cur_line++;
