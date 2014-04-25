@@ -47,8 +47,8 @@
 #define snprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use vseprintf instead. */
-//#define vsprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
-//#define vsnprintf SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define vsprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define vsnprintf SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use fgets instead. */
 #define gets      SAFEGUARD_DO_NOT_USE_THIS_METHOD
