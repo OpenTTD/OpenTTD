@@ -1616,7 +1616,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Dozvoli gradovi
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Gradovi smiju graditi pružne prijelaze: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Uključivanje ove postavke dozvoljava se gradovima da grade cestovno-pružne prijelaze
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Omogući određivanje razine buke za zračne luke od strane gradova: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kada je ova postavka isključena, mogu postojati dve zračne luke u svakom gradu. Kada je ova postavka uključena, broj zračnih luka u nekom gradu je limitirana količinom dozvoljene buke u gradu, koja ovisi o populaciji i udaljenosti i veličini zračnih luka
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kada je ova postavka isključena, mogu postojati dva aerodroma u svakom gradu. Kada je ova postavka uključena, broj aerodroma u nekom gradu je limitirana količinom dozvoljene buke u gradu, koja ovisi o populaciji i udaljenosti i veličini aerodroma
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Osnivanje gradova tijekom igre: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Uklučivanje ove postavke dozvoljava igračima osnivanje novih gradova tijekom igre
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zabranjeno
