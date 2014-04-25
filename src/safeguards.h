@@ -36,7 +36,7 @@
 
 /* Use strecpy instead. */
 #define strcpy    SAFEGUARD_DO_NOT_USE_THIS_METHOD
-//#define strncpy   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strncpy   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use strecat instead. */
 #define strcat    SAFEGUARD_DO_NOT_USE_THIS_METHOD

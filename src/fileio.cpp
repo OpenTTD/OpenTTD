@@ -851,29 +851,38 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 				char *pos = link;
 				while (*pos != '\0') {
-					char *next = strchr(link, PATHSEPCHAR);
-					if (next == NULL) next = pos + strlen(pos);
+					char *next = strchr(pos, PATHSEPCHAR);
+					if (next == NULL) {
+						next = pos + strlen(pos);
+					} else {
+						/* Terminate the substring up to the path separator character. */
+						*next++= '\0';
+					}
 
-					/* Skip '.' (current dir) */
-					if (next != pos + 1 || pos[0] != '.') {
-						if (next == pos + 2 && pos[0] == '.' && pos[1] == '.') {
-							/* level up */
-							if (dest[0] == '\0') {
-								DEBUG(misc, 1, "Ignoring link pointing outside of data directory: %s -> %s", name, link);
-								break;
-							}
-
-							/* Truncate 'dest' after last PATHSEPCHAR.
-							 * This assumes that the truncated part is a real directory and not a link. */
-							destpos = strrchr(dest, PATHSEPCHAR);
-							if (destpos == NULL) destpos = dest;
-						} else {
-							/* Append at end of 'dest' */
-							if (destpos != dest) *(destpos++) = PATHSEPCHAR;
-							strncpy(destpos, pos, next - pos); // Safe as we do '\0'-termination ourselves
-							destpos += next - pos;
+					if (strcmp(pos, ".") == 0) {
+						/* Skip '.' (current dir) */
+					} else if (strcmp(pos, "..") == 0) {
+						/* level up */
+						if (dest[0] == '\0') {
+							DEBUG(misc, 1, "Ignoring link pointing outside of data directory: %s -> %s", name, link);
+							break;
 						}
+
+						/* Truncate 'dest' after last PATHSEPCHAR.
+						 * This assumes that the truncated part is a real directory and not a link. */
+						destpos = strrchr(dest, PATHSEPCHAR);
+						if (destpos == NULL) destpos = dest;
 						*destpos = '\0';
+					} else {
+						/* Append at end of 'dest' */
+						if (destpos != dest) destpos = strecpy(destpos, PATHSEP, lastof(dest));
+						destpos = strecpy(destpos, pos, lastof(dest));
+					}
+
+					if (destpos >= lastof(dest)) {
+						DEBUG(misc, 0, "The length of a link in tar-file '%s' is too large (malformed?)", filename);
+						fclose(f);
+						return false;
 					}
 
 					pos = next;
