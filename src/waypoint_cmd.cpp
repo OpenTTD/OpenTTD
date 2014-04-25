@@ -416,7 +416,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		free(wp->name);
-		wp->name = reset ? NULL : strdup(text);
+		wp->name = reset ? NULL : stredup(text);
 
 		wp->UpdateVirtCoord();
 	}

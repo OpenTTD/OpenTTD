@@ -622,7 +622,7 @@ void cocoaSetApplicationBundleDir()
 	CFURLRef url = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
 	if (CFURLGetFileSystemRepresentation(url, true, (unsigned char*)tmp, MAXPATHLEN)) {
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = strdup(tmp);
+		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = stredup(tmp);
 	} else {
 		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
 	}

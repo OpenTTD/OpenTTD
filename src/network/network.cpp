@@ -653,7 +653,7 @@ void NetworkRebuildHostList()
 	_network_host_list.Clear();
 
 	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
-		if (item->manually) *_network_host_list.Append() = strdup(item->address.GetAddressAsString(false));
+		if (item->manually) *_network_host_list.Append() = stredup(item->address.GetAddressAsString(false));
 	}
 }
 

@@ -23,6 +23,7 @@
 #include "company_base.h"
 #include "story_base.h"
 #include "command_func.h"
+#include "string_func.h"
 
 #include "widgets/goal_widget.h"
 
@@ -364,7 +365,7 @@ struct GoalQuestionWindow : public Window {
 	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, byte type, uint32 button_mask, const char *question) : Window(desc), type(type)
 	{
 		assert(type < GOAL_QUESTION_TYPE_COUNT);
-		this->question = strdup(question);
+		this->question = stredup(question);
 
 		/* Figure out which buttons we have to enable. */
 		uint bit;

@@ -435,7 +435,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	/* Convert the command line to UTF-8. We need a dedicated buffer
 	 * for this because argv[] points into this buffer and this needs to
 	 * be available between subsequent calls to FS2OTTD(). */
-	char *cmdline = strdup(FS2OTTD(GetCommandLine()));
+	char *cmdline = stredup(FS2OTTD(GetCommandLine()));
 
 #if defined(_DEBUG)
 	CreateConsole();
@@ -498,7 +498,7 @@ void DetermineBasePaths(const char *exe)
 		AppendPathSeparator(tmp, lastof(tmp));
 		strecat(tmp, PERSONAL_DIR, lastof(tmp));
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
+		_searchpaths[SP_PERSONAL_DIR] = stredup(tmp);
 	} else {
 		_searchpaths[SP_PERSONAL_DIR] = NULL;
 	}
@@ -508,7 +508,7 @@ void DetermineBasePaths(const char *exe)
 		AppendPathSeparator(tmp, lastof(tmp));
 		strecat(tmp, PERSONAL_DIR, lastof(tmp));
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_SHARED_DIR] = strdup(tmp);
+		_searchpaths[SP_SHARED_DIR] = stredup(tmp);
 	} else {
 		_searchpaths[SP_SHARED_DIR] = NULL;
 	}
@@ -520,7 +520,7 @@ void DetermineBasePaths(const char *exe)
 	/* Get the path to working directory of OpenTTD */
 	getcwd(tmp, lengthof(tmp));
 	AppendPathSeparator(tmp, lastof(tmp));
-	_searchpaths[SP_WORKING_DIR] = strdup(tmp);
+	_searchpaths[SP_WORKING_DIR] = stredup(tmp);
 
 	if (!GetModuleFileName(NULL, path, lengthof(path))) {
 		DEBUG(misc, 0, "GetModuleFileName failed (%lu)\n", GetLastError());
@@ -535,7 +535,7 @@ void DetermineBasePaths(const char *exe)
 			strecpy(tmp, convert_from_fs(exec_dir, tmp, lengthof(tmp)), lastof(tmp));
 			char *s = strrchr(tmp, PATHSEPCHAR);
 			*(s + 1) = '\0';
-			_searchpaths[SP_BINARY_DIR] = strdup(tmp);
+			_searchpaths[SP_BINARY_DIR] = stredup(tmp);
 		}
 	}
 

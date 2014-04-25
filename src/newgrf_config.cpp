@@ -50,7 +50,7 @@ GRFConfig::GRFConfig(const char *filename) :
 	url(new GRFTextWrapper()),
 	num_valid_params(lengthof(param))
 {
-	if (filename != NULL) this->filename = strdup(filename);
+	if (filename != NULL) this->filename = stredup(filename);
 	this->name->AddRef();
 	this->info->AddRef();
 	this->url->AddRef();
@@ -78,7 +78,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 {
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
-	if (config.filename != NULL) this->filename = strdup(config.filename);
+	if (config.filename != NULL) this->filename = stredup(config.filename);
 	this->name->AddRef();
 	this->info->AddRef();
 	this->url->AddRef();
@@ -95,7 +95,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 /** Cleanup a GRFConfig object. */
 GRFConfig::~GRFConfig()
 {
-	/* GCF_COPY as in NOT strdupped/alloced the filename */
+	/* GCF_COPY as in NOT stredupped/alloced the filename */
 	if (!HasBit(this->flags, GCF_COPY)) {
 		free(this->filename);
 		delete this->error;
@@ -204,8 +204,8 @@ GRFError::GRFError(const GRFError &error) :
 	message(error.message),
 	severity(error.severity)
 {
-	if (error.custom_message != NULL) this->custom_message = strdup(error.custom_message);
-	if (error.data           != NULL) this->data           = strdup(error.data);
+	if (error.custom_message != NULL) this->custom_message = stredup(error.custom_message);
+	if (error.data           != NULL) this->data           = stredup(error.data);
 	memcpy(this->param_value, error.param_value, sizeof(this->param_value));
 }
 
@@ -584,7 +584,7 @@ compatible_grf:
 			 * already a local one, so there is no need to replace it. */
 			if (!HasBit(c->flags, GCF_COPY)) {
 				free(c->filename);
-				c->filename = strdup(f->filename);
+				c->filename = stredup(f->filename);
 				memcpy(c->ident.md5sum, f->ident.md5sum, sizeof(c->ident.md5sum));
 				c->name->Release();
 				c->name = f->name;

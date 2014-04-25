@@ -465,7 +465,7 @@ static const char *IConsoleHistoryAdd(const char *cmd)
 	if (_iconsole_history[0] == NULL || strcmp(_iconsole_history[0], cmd) != 0) {
 		free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
 		memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
-		_iconsole_history[0] = strdup(cmd);
+		_iconsole_history[0] = stredup(cmd);
 	}
 
 	/* Reset the history position */

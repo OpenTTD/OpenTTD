@@ -444,7 +444,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 #if defined(ENABLE_NETWORK)
 		if (dedicated_host != NULL) {
 			_network_bind_list.Clear();
-			*_network_bind_list.Append() = strdup(dedicated_host);
+			*_network_bind_list.Append() = stredup(dedicated_host);
 		}
 		if (dedicated_port != 0) _settings_client.network.server_port = dedicated_port;
 #endif /* ENABLE_NETWORK */
@@ -563,23 +563,23 @@ int openttd_main(int argc, char *argv[])
 	int i;
 	while ((i = mgo.GetOpt()) != -1) {
 		switch (i) {
-		case 'I': free(graphics_set); graphics_set = strdup(mgo.opt); break;
-		case 'S': free(sounds_set); sounds_set = strdup(mgo.opt); break;
-		case 'M': free(music_set); music_set = strdup(mgo.opt); break;
-		case 'm': free(musicdriver); musicdriver = strdup(mgo.opt); break;
-		case 's': free(sounddriver); sounddriver = strdup(mgo.opt); break;
-		case 'v': free(videodriver); videodriver = strdup(mgo.opt); break;
-		case 'b': free(blitter); blitter = strdup(mgo.opt); break;
+		case 'I': free(graphics_set); graphics_set = stredup(mgo.opt); break;
+		case 'S': free(sounds_set); sounds_set = stredup(mgo.opt); break;
+		case 'M': free(music_set); music_set = stredup(mgo.opt); break;
+		case 'm': free(musicdriver); musicdriver = stredup(mgo.opt); break;
+		case 's': free(sounddriver); sounddriver = stredup(mgo.opt); break;
+		case 'v': free(videodriver); videodriver = stredup(mgo.opt); break;
+		case 'b': free(blitter); blitter = stredup(mgo.opt); break;
 #if defined(ENABLE_NETWORK)
 		case 'D':
 			free(musicdriver);
 			free(sounddriver);
 			free(videodriver);
 			free(blitter);
-			musicdriver = strdup("null");
-			sounddriver = strdup("null");
-			videodriver = strdup("dedicated");
-			blitter = strdup("null");
+			musicdriver = stredup("null");
+			sounddriver = stredup("null");
+			videodriver = stredup("dedicated");
+			blitter = stredup("null");
 			dedicated = true;
 			SetDebugString("net=6");
 			if (mgo.opt != NULL) {
@@ -667,7 +667,7 @@ int openttd_main(int argc, char *argv[])
 			goto exit_noshutdown;
 		}
 		case 'G': scanner->generation_seed = atoi(mgo.opt); break;
-		case 'c': _config_file = strdup(mgo.opt); break;
+		case 'c': _config_file = stredup(mgo.opt); break;
 		case 'x': scanner->save_config = false; break;
 		case 'h':
 			i = -2; // Force printing of help.
@@ -739,7 +739,7 @@ int openttd_main(int argc, char *argv[])
 	InitWindowSystem();
 
 	BaseGraphics::FindSets();
-	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = strdup(BaseGraphics::ini_set);
+	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = stredup(BaseGraphics::ini_set);
 	if (!BaseGraphics::SetSet(graphics_set)) {
 		if (!StrEmpty(graphics_set)) {
 			BaseGraphics::SetSet(NULL);
@@ -755,7 +755,7 @@ int openttd_main(int argc, char *argv[])
 	GfxInitPalettes();
 
 	DEBUG(misc, 1, "Loading blitter...");
-	if (blitter == NULL && _ini_blitter != NULL) blitter = strdup(_ini_blitter);
+	if (blitter == NULL && _ini_blitter != NULL) blitter = stredup(_ini_blitter);
 	_blitter_autodetected = StrEmpty(blitter);
 	/* If we have a 32 bpp base set, try to select the 32 bpp blitter first, but only if we autoprobe the blitter. */
 	if (!_blitter_autodetected || BaseGraphics::GetUsedSet() == NULL || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP || BlitterFactory::SelectBlitter("32bpp-anim") == NULL) {
@@ -767,7 +767,7 @@ int openttd_main(int argc, char *argv[])
 	}
 	free(blitter);
 
-	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = strdup(_ini_videodriver);
+	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = stredup(_ini_videodriver);
 	_video_driver = (VideoDriver*)DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	if (_video_driver == NULL) {
 		StrEmpty(videodriver) ?
@@ -810,7 +810,7 @@ int openttd_main(int argc, char *argv[])
 	InitializeScreenshotFormats();
 
 	BaseSounds::FindSets();
-	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = strdup(BaseSounds::ini_set);
+	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = stredup(BaseSounds::ini_set);
 	if (!BaseSounds::SetSet(sounds_set)) {
 		if (StrEmpty(sounds_set) || !BaseSounds::SetSet(NULL)) {
 			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of readme.txt.");
@@ -823,7 +823,7 @@ int openttd_main(int argc, char *argv[])
 	free(sounds_set);
 
 	BaseMusic::FindSets();
-	if (music_set == NULL && BaseMusic::ini_set != NULL) music_set = strdup(BaseMusic::ini_set);
+	if (music_set == NULL && BaseMusic::ini_set != NULL) music_set = stredup(BaseMusic::ini_set);
 	if (!BaseMusic::SetSet(music_set)) {
 		if (StrEmpty(music_set) || !BaseMusic::SetSet(NULL)) {
 			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of readme.txt.");
@@ -835,7 +835,7 @@ int openttd_main(int argc, char *argv[])
 	}
 	free(music_set);
 
-	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = strdup(_ini_sounddriver);
+	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = stredup(_ini_sounddriver);
 	_sound_driver = (SoundDriver*)DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
 	if (_sound_driver == NULL) {
 		StrEmpty(sounddriver) ?
@@ -844,7 +844,7 @@ int openttd_main(int argc, char *argv[])
 	}
 	free(sounddriver);
 
-	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
+	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = stredup(_ini_musicdriver);
 	_music_driver = (MusicDriver*)DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
 	if (_music_driver == NULL) {
 		StrEmpty(musicdriver) ?
@@ -1157,7 +1157,7 @@ void SwitchToMode(SwitchMode new_mode)
 			LoadIntroGame();
 			if (BaseSounds::ini_set == NULL && BaseSounds::GetUsedSet()->fallback) {
 				ShowErrorMessage(STR_WARNING_FALLBACK_SOUNDSET, INVALID_STRING_ID, WL_CRITICAL);
-				BaseSounds::ini_set = strdup(BaseSounds::GetUsedSet()->name);
+				BaseSounds::ini_set = stredup(BaseSounds::GetUsedSet()->name);
 			}
 			break;
 

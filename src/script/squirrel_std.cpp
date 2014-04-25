@@ -16,11 +16,13 @@
 #include "squirrel_std.hpp"
 #include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"
+#include "../string_func.h"
 
 /* Due to the different characters for Squirrel, the scstrcat might be a simple
  * strcat which triggers the safeguard. But it isn't always a simple strcat. */
 #include "../safeguards.h"
 #undef strcat
+#undef strdup
 
 
 SQInteger SquirrelStd::min(HSQUIRRELVM vm)
@@ -71,7 +73,7 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 	real_filename = ReallocT(real_filename, scstrlen(real_filename) + scstrlen(filename) + 1);
 	scstrcat(real_filename, filename);
 	/* Tars dislike opening files with '/' on Windows.. so convert it to '\\' ;) */
-	char *filen = strdup(SQ2OTTD(real_filename));
+	char *filen = stredup(SQ2OTTD(real_filename));
 #if (PATHSEPCHAR != '/')
 	for (char *n = filen; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
 #endif

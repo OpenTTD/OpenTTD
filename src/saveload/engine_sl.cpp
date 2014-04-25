@@ -12,6 +12,7 @@
 #include "../stdafx.h"
 #include "saveload_internal.h"
 #include "../engine_base.h"
+#include "../string_func.h"
 #include <map>
 
 #include "../safeguards.h"
@@ -107,7 +108,7 @@ void CopyTempEngineData()
 		e->preview_company     = se->preview_company;
 		e->preview_wait        = se->preview_wait;
 		e->company_avail       = se->company_avail;
-		if (se->name != NULL) e->name = strdup(se->name);
+		if (se->name != NULL) e->name = stredup(se->name);
 	}
 
 	/* Get rid of temporary data */

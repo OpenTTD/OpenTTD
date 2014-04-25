@@ -55,7 +55,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		si->y = y;
 		si->z = GetSlopePixelZ(x, y);
 		if (!StrEmpty(text)) {
-			si->name = strdup(text);
+			si->name = stredup(text);
 		}
 		si->UpdateVirtCoord();
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
@@ -90,7 +90,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			/* Delete the old name */
 			free(si->name);
 			/* Assign the new one */
-			si->name = strdup(text);
+			si->name = stredup(text);
 			if (_game_mode != GM_EDITOR) si->owner = _current_company;
 
 			si->UpdateVirtCoord();

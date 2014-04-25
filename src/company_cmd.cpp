@@ -1114,7 +1114,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (flags & DC_EXEC) {
 		Company *c = Company::Get(_current_company);
 		free(c->name);
-		c->name = reset ? NULL : strdup(text);
+		c->name = reset ? NULL : stredup(text);
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
 	}
@@ -1163,7 +1163,7 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		if (reset) {
 			c->president_name = NULL;
 		} else {
-			c->president_name = strdup(text);
+			c->president_name = stredup(text);
 
 			if (c->name_1 == STR_SV_UNNAMED && c->name == NULL) {
 				char buf[80];

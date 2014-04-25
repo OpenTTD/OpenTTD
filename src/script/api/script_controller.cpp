@@ -154,7 +154,7 @@ ScriptController::~ScriptController()
 		sq_newslot(vm, -3, SQFalse);
 		sq_pop(vm, 1);
 
-		controller->loaded_library[strdup(library_name)] = strdup(fake_class);
+		controller->loaded_library[stredup(library_name)] = stredup(fake_class);
 	}
 
 	/* Find the real class inside the fake class (like 'sets.Vector') */

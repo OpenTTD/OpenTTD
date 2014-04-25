@@ -839,15 +839,8 @@ public:
 	/**
 	 * @param json The JSON string which got sent.
 	 */
-	ScriptEventAdminPort(const char *json) :
-		ScriptEvent(ET_ADMIN_PORT),
-		json(strdup(json))
-	{}
-
-	~ScriptEventAdminPort()
-	{
-		free(this->json);
-	}
+	ScriptEventAdminPort(const char *json);
+	~ScriptEventAdminPort();
 
 	/**
 	 * Convert an ScriptEvent to the real instance.

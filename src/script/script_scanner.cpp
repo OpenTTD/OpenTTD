@@ -29,12 +29,12 @@
 bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
 	free(this->main_script);
-	this->main_script = strdup(filename);
+	this->main_script = stredup(filename);
 	if (this->main_script == NULL) return false;
 
 	free(this->tar_file);
 	if (tar_filename != NULL) {
-		this->tar_file = strdup(tar_filename);
+		this->tar_file = stredup(tar_filename);
 		if (this->tar_file == NULL) return false;
 	} else {
 		this->tar_file = NULL;
@@ -150,13 +150,13 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 		return;
 	}
 
-	this->info_list[strdup(script_name)] = info;
+	this->info_list[stredup(script_name)] = info;
 
 	if (!info->IsDeveloperOnly() || _settings_client.gui.ai_developer_tools) {
 		/* Add the script to the 'unique' script list, where only the highest version
 		 *  of the script is registered. */
 		if (this->info_single_list.find(script_original_name) == this->info_single_list.end()) {
-			this->info_single_list[strdup(script_original_name)] = info;
+			this->info_single_list[stredup(script_original_name)] = info;
 		} else if (this->info_single_list[script_original_name]->GetVersion() < info->GetVersion()) {
 			this->info_single_list[script_original_name] = info;
 		}

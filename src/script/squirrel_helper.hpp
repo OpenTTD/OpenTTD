@@ -26,7 +26,7 @@ template <class CL, ScriptType ST> const char *GetClassName();
 namespace SQConvert {
 	/**
 	 * Pointers assigned to this class will be free'd when this instance
-	 *  comes out of scope. Useful to make sure you can use strdup(),
+	 *  comes out of scope. Useful to make sure you can use stredup(),
 	 *  without leaking memory.
 	 */
 	struct SQAutoFreePointers : SmallVector<void *, 1> {
@@ -113,7 +113,7 @@ namespace SQConvert {
 
 		const SQChar *tmp;
 		sq_getstring(vm, -1, &tmp);
-		char *tmp_str = strdup(SQ2OTTD(tmp));
+		char *tmp_str = stredup(SQ2OTTD(tmp));
 		sq_poptop(vm);
 		*ptr->Append() = (void *)tmp_str;
 		str_validate(tmp_str, tmp_str + strlen(tmp_str));

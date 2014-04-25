@@ -96,7 +96,7 @@ public:
 			const char *data = NULL, int depth = 0) :
 		TCPConnecter(address),
 		callback(callback),
-		url(strdup(url)),
+		url(stredup(url)),
 		data(data),
 		depth(depth)
 	{

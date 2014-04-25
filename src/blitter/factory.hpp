@@ -63,7 +63,7 @@ protected:
 	 * @pre There is no blitter registered with this name.
 	 */
 	BlitterFactory(const char *name, const char *description, bool usable = true) :
-			name(strdup(name)), description(strdup(description))
+			name(stredup(name)), description(stredup(description))
 	{
 		if (usable) {
 			/*

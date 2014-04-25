@@ -527,11 +527,11 @@ void NORETURN SlError(StringID string, const char *extra_msg)
 	if (_sl.action == SLA_LOAD_CHECK) {
 		_load_check_data.error = string;
 		free(_load_check_data.error_data);
-		_load_check_data.error_data = (extra_msg == NULL) ? NULL : strdup(extra_msg);
+		_load_check_data.error_data = (extra_msg == NULL) ? NULL : stredup(extra_msg);
 	} else {
 		_sl.error_str = string;
 		free(_sl.extra_msg);
-		_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
+		_sl.extra_msg = (extra_msg == NULL) ? NULL : stredup(extra_msg);
 	}
 
 	/* We have to NULL all pointers here; we might be in a state where

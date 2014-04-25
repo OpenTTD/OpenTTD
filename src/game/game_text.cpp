@@ -212,7 +212,7 @@ struct StringNameWriter : HeaderWriter {
 
 	void WriteStringID(const char *name, int stringid)
 	{
-		if (stringid == (int)this->strings->Length()) *this->strings->Append() = strdup(name);
+		if (stringid == (int)this->strings->Length()) *this->strings->Append() = stredup(name);
 	}
 
 	void Finalise(const StringData &data)
@@ -231,7 +231,7 @@ private:
 
 public:
 	/** Initialise */
-	LanguageScanner(GameStrings *gs, const char *exclude) : gs(gs), exclude(strdup(exclude)) {}
+	LanguageScanner(GameStrings *gs, const char *exclude) : gs(gs), exclude(stredup(exclude)) {}
 	~LanguageScanner() { free(exclude); }
 
 	/**

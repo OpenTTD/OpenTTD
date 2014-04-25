@@ -15,6 +15,7 @@
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 #include "../debug.h"
+#include "../string_func.h"
 #include "../rev.h"
 
 #include "../safeguards.h"
@@ -71,8 +72,8 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 	if (res != 0) return res;
 
 	ScriptConfigItem config = _start_date_config;
-	config.name = strdup(config.name);
-	config.description = strdup(config.description);
+	config.name = stredup(config.name);
+	config.description = stredup(config.description);
 	info->config_list.push_front(config);
 
 	if (info->engine->MethodExists(*info->SQ_instance, "MinVersionToLoad")) {
@@ -94,7 +95,7 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 			return SQ_ERROR;
 		}
 	} else {
-		info->api_version = strdup("0.7");
+		info->api_version = stredup("0.7");
 	}
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
@@ -117,7 +118,7 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 
 	char buf[8];
 	seprintf(buf, lastof(buf), "%d.%d", GB(_openttd_newgrf_version, 28, 4), GB(_openttd_newgrf_version, 24, 4));
-	info->api_version = strdup(buf);
+	info->api_version = stredup(buf);
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, NULL);

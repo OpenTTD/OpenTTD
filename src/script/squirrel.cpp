@@ -260,7 +260,7 @@ bool Squirrel::CallStringMethodStrdup(HSQOBJECT instance, const char *method_nam
 	HSQOBJECT ret;
 	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
 	if (ret._type != OT_STRING) return false;
-	*res = strdup(ObjectToString(&ret));
+	*res = stredup(ObjectToString(&ret));
 	ValidateString(*res);
 	return true;
 }

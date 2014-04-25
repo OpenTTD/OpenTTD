@@ -94,10 +94,10 @@ char *CopyFromOldName(StringID id)
 		/* Terminate the new string and copy it back to the name array */
 		*strto = '\0';
 
-		return strdup(tmp);
+		return stredup(tmp);
 	} else {
 		/* Name will already be in UTF-8. */
-		return strdup(&_old_name_array[LEN_OLD_STRINGS * GB(id, 0, 9)]);
+		return stredup(&_old_name_array[LEN_OLD_STRINGS * GB(id, 0, 9)]);
 	}
 }
 

@@ -45,7 +45,7 @@ const char *MusicDriver_ExtMidi::Start(const char * const * parm)
 	const char *command = GetDriverParam(parm, "cmd");
 	if (StrEmpty(command)) command = EXTERNAL_PLAYER;
 
-	this->command = strdup(command);
+	this->command = stredup(command);
 	this->song[0] = '\0';
 	this->pid = -1;
 	return NULL;

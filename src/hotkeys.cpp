@@ -141,7 +141,7 @@ static void ParseHotkeys(Hotkey *hotkey, const char *value)
  * by a '+'.
  * @param keycode The keycode to convert to a string.
  * @return A string representation of this keycode.
- * @note The return value is a static buffer, strdup the result before calling
+ * @note The return value is a static buffer, stredup the result before calling
  *  this function again.
  */
 static const char *KeycodeToString(uint16 keycode)
@@ -195,7 +195,7 @@ static const char *KeycodeToString(uint16 keycode)
  * keycodes are attached to the hotkey they are split by a comma.
  * @param hotkey The keycodes of this hotkey need to be converted to a string.
  * @return A string representation of all keycodes.
- * @note The return value is a static buffer, strdup the result before calling
+ * @note The return value is a static buffer, stredup the result before calling
  *  this function again.
  */
 const char *SaveKeycodes(const Hotkey *hotkey)

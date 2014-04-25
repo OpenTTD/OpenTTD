@@ -231,7 +231,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 			/* In case of a (broken) NewGRF without a default,
 			 * assume an empty string. */
 			grfmsg(1, "choice list misses default value");
-			this->strings[0] = strdup("");
+			this->strings[0] = stredup("");
 		}
 
 		char *d = old_d;

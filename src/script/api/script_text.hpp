@@ -42,9 +42,8 @@ public:
  */
 class RawText : public Text {
 public:
-	RawText(const char *text) :
-	  text(strdup(text)) {}
-	~RawText() { free(this->text); }
+	RawText(const char *text);
+	~RawText();
 
 	/* virtual */ const char *GetEncodedText() { return this->text; }
 private:

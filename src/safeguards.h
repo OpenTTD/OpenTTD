@@ -31,11 +31,11 @@
 #define realloc   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use stredup instead. */
-//#define strdup    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strdup    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strndup   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use strecpy instead. */
-//#define strcpy    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strcpy    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 //#define strncpy   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use strecat instead. */

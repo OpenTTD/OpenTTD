@@ -392,7 +392,7 @@ CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			/* Delete the old name */
 			free(g->name);
 			/* Assign the new one */
-			g->name = reset ? NULL : strdup(text);
+			g->name = reset ? NULL : stredup(text);
 		}
 	} else {
 		/* Set group parent */

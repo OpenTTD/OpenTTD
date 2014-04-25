@@ -566,7 +566,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		char *font_family;
 
 		/* Split & strip the font's style */
-		font_family = strdup(font_name);
+		font_family = stredup(font_name);
 		font_style = strchr(font_family, ',');
 		if (font_style != NULL) {
 			font_style[0] = '\0';

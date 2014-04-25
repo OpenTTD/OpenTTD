@@ -462,7 +462,7 @@ void GamelogSetting(const char *name, int32 oldval, int32 newval)
 	LoggedChange *lc = GamelogChange(GLCT_SETTING);
 	if (lc == NULL) return;
 
-	lc->setting.name = strdup(name);
+	lc->setting.name = stredup(name);
 	lc->setting.oldval = oldval;
 	lc->setting.newval = newval;
 }

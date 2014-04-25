@@ -77,7 +77,7 @@ ErrorMessageData::ErrorMessageData(const ErrorMessageData &data)
 	*this = data;
 	for (size_t i = 0; i < lengthof(this->strings); i++) {
 		if (this->strings[i] != NULL) {
-			this->strings[i] = strdup(this->strings[i]);
+			this->strings[i] = stredup(this->strings[i]);
 			this->decode_params[i] = (size_t)this->strings[i];
 		}
 	}
@@ -158,7 +158,7 @@ void ErrorMessageData::SetDParam(uint n, uint64 v)
 void ErrorMessageData::SetDParamStr(uint n, const char *str)
 {
 	free(this->strings[n]);
-	this->strings[n] = strdup(str);
+	this->strings[n] = stredup(str);
 }
 
 /** Define a queue with errors. */

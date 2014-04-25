@@ -532,7 +532,7 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 					case SLE_VAR_STR:
 					case SLE_VAR_STRQ:
 						free(*(char**)ptr);
-						*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
+						*(char**)ptr = p == NULL ? NULL : stredup((const char*)p);
 						break;
 
 					case SLE_VAR_CHAR: if (p != NULL) *(char *)ptr = *(const char *)p; break;
@@ -687,7 +687,7 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 
 		/* The value is different, that means we have to write it to the ini */
 		free(item->value);
-		item->value = strdup(buf);
+		item->value = stredup(buf);
 	}
 }
 
@@ -709,7 +709,7 @@ static void IniLoadSettingList(IniFile *ini, const char *grpname, StringList *li
 	list->Clear();
 
 	for (const IniItem *item = group->item; item != NULL; item = item->next) {
-		if (item->name != NULL) *list->Append() = strdup(item->name);
+		if (item->name != NULL) *list->Append() = stredup(item->name);
 	}
 }
 
@@ -1659,7 +1659,7 @@ void GetGRFPresetList(GRFPresetList *list)
 	IniGroup *group;
 	for (group = ini->group; group != NULL; group = group->next) {
 		if (strncmp(group->name, "preset-", 7) == 0) {
-			*list->Append() = strdup(group->name + 7);
+			*list->Append() = stredup(group->name + 7);
 		}
 	}
 
@@ -1929,7 +1929,7 @@ bool SetSettingValue(uint index, const char *value, bool force_newgame)
 	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) {
 		char **var = (char**)GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 		free(*var);
-		*var = strcmp(value, "(null)") == 0 ? NULL : strdup(value);
+		*var = strcmp(value, "(null)") == 0 ? NULL : stredup(value);
 	} else {
 		char *var = (char*)GetVariableAddress(NULL, &sd->save);
 		strecpy(var, value, &var[sd->save.length - 1]);

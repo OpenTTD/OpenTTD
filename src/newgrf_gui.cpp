@@ -2036,9 +2036,9 @@ struct ScanProgressWindow : public Window {
 		if (name == NULL) {
 			char buf[256];
 			GetString(buf, STR_NEWGRF_SCAN_ARCHIVES, lastof(buf));
-			this->last_name = strdup(buf);
+			this->last_name = stredup(buf);
 		} else {
-			this->last_name = strdup(name);
+			this->last_name = stredup(name);
 		}
 		this->scanned = num;
 		if (num > _settings_client.gui.last_newgrf_count) _settings_client.gui.last_newgrf_count = num;

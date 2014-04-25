@@ -51,16 +51,16 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 	IniItem *item;
 
 	fetch_metadata("name");
-	this->name = strdup(item->value);
+	this->name = stredup(item->value);
 
 	fetch_metadata("description");
-	this->description[strdup("")] = strdup(item->value);
+	this->description[stredup("")] = stredup(item->value);
 
 	/* Add the translations of the descriptions too. */
 	for (const IniItem *item = metadata->item; item != NULL; item = item->next) {
 		if (strncmp("description.", item->name, 12) != 0) continue;
 
-		this->description[strdup(item->name + 12)] = strdup(item->value);
+		this->description[stredup(item->name + 12)] = stredup(item->value);
 	}
 
 	fetch_metadata("shortname");
@@ -129,9 +129,9 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 		if (item == NULL) item = origin->GetItem("default", false);
 		if (item == NULL) {
 			DEBUG(grf, 1, "No origin warning message specified for: %s", filename);
-			file->missing_warning = strdup("");
+			file->missing_warning = stredup("");
 		} else {
-			file->missing_warning = strdup(item->value);
+			file->missing_warning = stredup(item->value);
 		}
 
 		switch (T::CheckMD5(file, BASESET_DIR)) {
@@ -164,7 +164,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(filename, BASESET_DIR);
 
-	char *path = strdup(filename + basepath_length);
+	char *path = stredup(filename + basepath_length);
 	char *psep = strrchr(path, PATHSEPCHAR);
 	if (psep != NULL) {
 		psep[1] = '\0';

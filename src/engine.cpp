@@ -1027,7 +1027,7 @@ CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		if (reset) {
 			e->name = NULL;
 		} else {
-			e->name = strdup(text);
+			e->name = stredup(text);
 		}
 
 		MarkWholeScreenDirty();

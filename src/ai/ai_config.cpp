@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../settings_type.h"
+#include "../string_func.h"
 #include "ai.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"
@@ -109,7 +110,7 @@ void AIConfig::SetSetting(const char *name, int value)
 		if (it != this->settings.end()) {
 			(*it).second = value;
 		} else {
-			this->settings[strdup(name)] = value;
+			this->settings[stredup(name)] = value;
 		}
 
 		return;

@@ -281,7 +281,7 @@
 #endif
 
 #if defined(WINCE)
-	#define strdup _strdup
+	#define stredup _stredup
 #endif /* WINCE */
 
 /* NOTE: the string returned by these functions is only valid until the next

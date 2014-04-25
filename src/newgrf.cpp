@@ -6006,7 +6006,7 @@ static void CfgApply(ByteReader *buf)
 static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 {
 	GRFError *error = DisableGrf(STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC, c);
-	error->data = strdup(_cur.grfconfig->GetName());
+	error->data = stredup(_cur.grfconfig->GetName());
 }
 
 /* Action 0x07
@@ -6369,7 +6369,7 @@ static void GRFLoadError(ByteReader *buf)
 			error->custom_message = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, message, NULL, SCC_RAW_STRING_POINTER);
 		} else {
 			grfmsg(7, "GRFLoadError: No custom message supplied.");
-			error->custom_message = strdup("");
+			error->custom_message = stredup("");
 		}
 	} else {
 		error->message = msgstr[message_id];
@@ -6381,7 +6381,7 @@ static void GRFLoadError(ByteReader *buf)
 		error->data = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, data);
 	} else {
 		grfmsg(7, "GRFLoadError: No message data supplied.");
-		error->data = strdup("");
+		error->data = stredup("");
 	}
 
 	/* Only two parameter numbers can be used in the string. */
@@ -6890,7 +6890,7 @@ static void GRFInhibit(ByteReader *buf)
 		if (file != NULL && file != _cur.grfconfig) {
 			grfmsg(2, "GRFInhibit: Deactivating file '%s'", file->filename);
 			GRFError *error = DisableGrf(STR_NEWGRF_ERROR_FORCEFULLY_DISABLED, file);
-			error->data = strdup(_cur.grfconfig->GetName());
+			error->data = stredup(_cur.grfconfig->GetName());
 		}
 	}
 }
@@ -7241,7 +7241,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 
 		char tmp[256];
 		GetString(tmp, STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE, lastof(tmp));
-		error->data = strdup(tmp);
+		error->data = stredup(tmp);
 
 		return;
 	}
@@ -8182,7 +8182,7 @@ static void InitNewGRFFile(const GRFConfig *config)
  */
 GRFFile::GRFFile(const GRFConfig *config)
 {
-	this->filename = strdup(config->filename);
+	this->filename = stredup(config->filename);
 	this->grfid = config->ident.grfid;
 
 	/* Initialise local settings to defaults */

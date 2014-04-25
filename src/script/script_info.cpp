@@ -83,9 +83,9 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	}
 
 	/* Get location information of the scanner */
-	info->main_script = strdup(info->scanner->GetMainScript());
+	info->main_script = stredup(info->scanner->GetMainScript());
 	const char *tar_name = info->scanner->GetTarFile();
-	if (tar_name != NULL) info->tar_file = strdup(tar_name);
+	if (tar_name != NULL) info->tar_file = stredup(tar_name);
 
 	/* Cache the data the info file gives us. */
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
@@ -133,7 +133,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
-			char *name = strdup(SQ2OTTD(sqvalue));
+			char *name = stredup(SQ2OTTD(sqvalue));
 			char *s;
 			ValidateString(name);
 
@@ -146,7 +146,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (strcmp(key, "description") == 0) {
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
-			config.description = strdup(SQ2OTTD(sqdescription));
+			config.description = stredup(SQ2OTTD(sqdescription));
 			ValidateString(config.description);
 			items |= 0x002;
 		} else if (strcmp(key, "min_value") == 0) {
@@ -264,8 +264,8 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 		const char *label = SQ2OTTD(sq_label);
 		ValidateString(label);
 
-		/* !Contains() prevents strdup from leaking. */
-		if (!config->labels->Contains(key)) config->labels->Insert(key, strdup(label));
+		/* !Contains() prevents stredup from leaking. */
+		if (!config->labels->Contains(key)) config->labels->Insert(key, stredup(label));
 
 		sq_pop(vm, 2);
 	}
