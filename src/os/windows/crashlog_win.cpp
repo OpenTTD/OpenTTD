@@ -613,6 +613,10 @@ static void SetWndSize(HWND wnd, int mode)
 	}
 }
 
+/* When TCHAR is char, then _sntprintf becomes snprintf. When TCHAR is wchar it doesn't. Likewise for strcat. */
+#undef snprintf
+#undef strcat
+
 static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
