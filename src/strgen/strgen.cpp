@@ -124,7 +124,7 @@ struct FileStringReader : StringReader {
 
 	/* virtual */ char *ReadLine(char *buffer, const char *last)
 	{
-		return fgets(buffer, last - buffer + 1, this->fh);
+		return fgets(buffer, ClampToU16(last - buffer + 1), this->fh);
 	}
 
 	/* virtual */ void HandlePragma(char *str);
