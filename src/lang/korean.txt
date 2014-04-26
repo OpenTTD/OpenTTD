@@ -3494,9 +3494,9 @@ STR_REPLACE_WAGONS                                              :화물차
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차의 철도 종류를 고르세요
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}왼쪽의 선택한 기관차가 어떤 기관차로 교체되고 있는지 표시합니다.
 STR_REPLACE_RAIL_VEHICLES                                       :철도 차량
-STR_REPLACE_ELRAIL_VEHICLES                                     :전기철도
+STR_REPLACE_ELRAIL_VEHICLES                                     :전기철도 차량
 STR_REPLACE_MONORAIL_VEHICLES                                   :모노레일 차량
-STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상
+STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상 차량
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 앞쪽부터 화물칸를 제거하여 열차의 전체 길이가 달라지지 않도록 합니다.
