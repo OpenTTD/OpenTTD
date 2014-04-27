@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snögränsens höjd:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snögränsens höjd ett upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett ner
-STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
+STR_FACE_RANDOM                                                 :{BLACK}Slumpa
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:

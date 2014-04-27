@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Tinggi garis salju:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Naikkan ketinggian garis salju satu angka
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Turunkan ketinggian garis salju satu angka
-STR_MAPGEN_RANDOM                                               :{BLACK}Acak angka
+STR_FACE_RANDOM                                                 :{BLACK}Acak angka
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pohon:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:

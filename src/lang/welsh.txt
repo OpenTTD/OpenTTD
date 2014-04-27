@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nifer di
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Uchder Llinell Eira:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Symud y llinell eira un yn uwch
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Symud y llinell eira un yn is
-STR_MAPGEN_RANDOM                                               :{BLACK}Ar hap
+STR_FACE_RANDOM                                                 :{BLACK}Ar hap
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Cynhyrchydd Tir:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorithm Coed:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Math Tirwedd:

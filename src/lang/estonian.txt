@@ -2718,7 +2718,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstu
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumepiiri kõrgus:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Lumepiiri liigutamine ühe võrra üles
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lumepiiri liigutamine ühe võrra alla
-STR_MAPGEN_RANDOM                                               :{BLACK}Suvaline
+STR_FACE_RANDOM                                                 :{BLACK}Suvaline
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maatekituse meetod:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puude algoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:

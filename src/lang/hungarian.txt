@@ -2726,7 +2726,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gazd. é
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hóhatár:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhatár megnövelése eggyel
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
-STR_MAPGEN_RANDOM                                               :{BLACK}Új véletlen alapszám
+STR_FACE_RANDOM                                                 :{BLACK}Új véletlen alapszám
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algoritmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:

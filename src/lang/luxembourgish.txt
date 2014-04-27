@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Unz. Ind
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Weis d'Schnéilinnhéicht
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweg Schnéilinnhéicht rop
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweg Schnéilinnhéicht rof
-STR_MAPGEN_RANDOM                                               :{BLACK}Duercherneen wierfelen
+STR_FACE_RANDOM                                                 :{BLACK}Duercherneen wierfelen
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baam Algorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:

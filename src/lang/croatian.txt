@@ -2758,7 +2758,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj ind
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Visina linije snijega
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Pomakni visinu linije snijega za jedan gore
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pomakni visinu linije snijega za jedan dolje
-STR_MAPGEN_RANDOM                                               :{BLACK}Nasumično
+STR_FACE_RANDOM                                                 :{BLACK}Nasumično
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Izrađivač zemljišta:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK} Algoritam za drveće:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:

@@ -2301,7 +2301,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد �
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK} ارتفاع خط الثلج
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ارفع خط الثلج مستوى واحد
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}خفض خط الثلج مستوى واحد
-STR_MAPGEN_RANDOM                                               :{BLACK}عشوائي
+STR_FACE_RANDOM                                                 :{BLACK}عشوائي
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK} لوغاريثم الشجر:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس

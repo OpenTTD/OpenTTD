@@ -2570,7 +2570,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industri
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Elur garaiera:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Igo puntu batean elur garaiera
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Jeitsi puntu batean elur garaiera
-STR_MAPGEN_RANDOM                                               :{BLACK}Ausaz egin
+STR_FACE_RANDOM                                                 :{BLACK}Ausaz egin
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Zuhaitz algoritmoa:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Lur mota:

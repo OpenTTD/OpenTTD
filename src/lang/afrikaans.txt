@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Hoev. ny
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sneeu lyn hoogte:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg die sneeu lyn een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweeg die sneeu lyn een af
-STR_MAPGEN_RANDOM                                               :{BLACK}Lukraake
+STR_FACE_RANDOM                                                 :{BLACK}Lukraake
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land genereerder:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boom algoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrein tipe:

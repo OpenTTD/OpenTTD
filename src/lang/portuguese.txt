@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Num. de 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altura linha neve:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mover a linha de neve um nível acima
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mover a linha de neve um nível abaixo
-STR_MAPGEN_RANDOM                                               :{BLACK}Gerar aleatório
+STR_FACE_RANDOM                                                 :{BLACK}Gerar aleatório
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Criação do terreno:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Alg. de colocação de árvores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:

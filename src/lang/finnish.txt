@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisu
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumirajan korkeus:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Siirrä lumirajaa yksi taso ylöspäin
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Siirrä lumirajaa yksi taso alaspäin
-STR_MAPGEN_RANDOM                                               :{BLACK}Satunnainen
+STR_FACE_RANDOM                                                 :{BLACK}Satunnainen
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maastogeneraattori:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puiden algoritmi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:

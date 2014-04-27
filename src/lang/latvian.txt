@@ -2603,7 +2603,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ražotņ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniega līnijas augstums
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaugstināt sniega līnijas augstumu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pazemināt sniega līnijas augstumu
-STR_MAPGEN_RANDOM                                               :{BLACK}Nejaušs
+STR_FACE_RANDOM                                                 :{BLACK}Nejaušs
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Zemes radītājs:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Koku algoritms:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Apvidus reljefs:

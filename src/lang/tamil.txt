@@ -2374,7 +2374,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}தொ�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}பனிக் கோடின் உயரம்:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}பனி கோடின் உயரத்தை ஒரு அடி உயர்த்து
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}பனி கோடின் உயரத்தை ஒரு அடி இறக்கு
-STR_MAPGEN_RANDOM                                               :{BLACK}ஏதோவொன்று
+STR_FACE_RANDOM                                                 :{BLACK}ஏதோவொன்று
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}பூமி உருவாக்குனர்:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}மரம் நடுதல்:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}நிலவகை:

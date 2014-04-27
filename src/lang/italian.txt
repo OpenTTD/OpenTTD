@@ -2692,7 +2692,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altezza delle nevi:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sposta in su di uno l'altezza delle nevi perenni
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sposta in giù di uno l'altezza delle nevi perenni
-STR_MAPGEN_RANDOM                                               :{BLACK}Scegli a caso
+STR_FACE_RANDOM                                                 :{BLACK}Scegli a caso
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatore:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo alberi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:

@@ -2661,7 +2661,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lư
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Độ cao tuyết phủ:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuyển độ cao tuyết phủ lên cao
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
-STR_MAPGEN_RANDOM                                               :{BLACK}Sinh Ngẫu Nhiên
+STR_FACE_RANDOM                                                 :{BLACK}Sinh Ngẫu Nhiên
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:

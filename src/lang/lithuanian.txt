@@ -2871,7 +2871,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industri
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniego linija:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaukštinti sniego liniją
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pažeminti sniego liniją
-STR_MAPGEN_RANDOM                                               :{BLACK}Atsitiktinai
+STR_FACE_RANDOM                                                 :{BLACK}Atsitiktinai
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Pasaulio kūrimas:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Medžių algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:

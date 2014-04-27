@@ -2585,7 +2585,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høgd på snøgrensa:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høgda på snøgrensa eitt hakk opp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høgda på snøgrensa eitt hakk ned
-STR_MAPGEN_RANDOM                                               :{BLACK}Tilferdiggjer
+STR_FACE_RANDOM                                                 :{BLACK}Tilferdiggjer
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype

@@ -3042,7 +3042,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ilość 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Śnieg od wysokości:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Podnieś wysokość śniegu o jeden w górę
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Obniż wysokość śniegu o jeden w dół
-STR_MAPGEN_RANDOM                                               :{BLACK}Losuj
+STR_FACE_RANDOM                                                 :{BLACK}Losuj
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator terenu:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorytm drzew:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:

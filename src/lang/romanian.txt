@@ -2639,7 +2639,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Înălţimea zăpezii:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mută linia zăpezii cu un punct în sus
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mută linia zăpezii cu un punct în jos
-STR_MAPGEN_RANDOM                                               :{BLACK}Aleator
+STR_FACE_RANDOM                                                 :{BLACK}Aleator
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator de teren:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm arbore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:

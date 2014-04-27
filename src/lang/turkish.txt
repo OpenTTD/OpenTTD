@@ -2663,7 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fabrika 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Kar yüksekliği:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Kar yüksekliğini bir arttır
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Kar yüksekliğini bir azalt
-STR_MAPGEN_RANDOM                                               :{BLACK}Rastgele
+STR_FACE_RANDOM                                                 :{BLACK}Rastgele
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Harita üretici:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ağaç algoritması:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:

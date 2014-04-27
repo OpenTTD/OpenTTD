@@ -2761,7 +2761,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fab
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivo snežnog pokrivača:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sužava snežni pokrivač naviše za jedan
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširuje snežni pojas naniže za jedan
-STR_MAPGEN_RANDOM                                               :{BLACK}Proizvoljno
+STR_FACE_RANDOM                                                 :{BLACK}Proizvoljno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikovanje reljefa:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritam za drveća:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:

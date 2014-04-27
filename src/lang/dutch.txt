@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hoogte van sneeuwgrens:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschuif de sneeuwgrens één omhoog
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwgrens één omlaag
-STR_MAPGEN_RANDOM                                               :{BLACK}Willekeurig maken
+STR_FACE_RANDOM                                                 :{BLACK}Willekeurig maken
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:

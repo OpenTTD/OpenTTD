@@ -2663,7 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industri
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Schneegrenze:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Schneegrenze um eine Stufe erhöhen
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Schneegrenze um eine Stufe senken
-STR_MAPGEN_RANDOM                                               :{BLACK}Zufällig
+STR_FACE_RANDOM                                                 :{BLACK}Zufällig
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baumalgorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:

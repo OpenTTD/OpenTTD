@@ -1101,7 +1101,7 @@ public:
 		this->GetWidget<NWidgetStacked>(WID_SCMF_SEL_LOADSAVE)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
 		this->GetWidget<NWidgetStacked>(WID_SCMF_SEL_PARTS)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
 		this->GetWidget<NWidgetStacked>(WID_SCMF_SEL_MALEFEMALE)->SetDisplayedPlane(advanced ? SZSP_NONE : 0);
-		this->GetWidget<NWidgetCore>(WID_SCMF_RANDOM_NEW_FACE)->widget_data = advanced ? STR_MAPGEN_RANDOM : STR_FACE_NEW_FACE_BUTTON;
+		this->GetWidget<NWidgetCore>(WID_SCMF_RANDOM_NEW_FACE)->widget_data = advanced ? STR_FACE_RANDOM : STR_FACE_NEW_FACE_BUTTON;
 
 		NWidgetCore *wi = this->GetWidget<NWidgetCore>(WID_SCMF_TOGGLE_LARGE_SMALL_BUTTON);
 		if (advanced) {

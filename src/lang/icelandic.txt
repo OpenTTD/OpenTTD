@@ -2567,7 +2567,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fjöldi 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hæð snjólínu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Hækka snjólínu upp um eitt þrep
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lækka snjólínu niður um eitt þrep
-STR_MAPGEN_RANDOM                                               :{BLACK}Nýtt raðnúmer
+STR_FACE_RANDOM                                                 :{BLACK}Nýtt raðnúmer
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Planta trjám:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:

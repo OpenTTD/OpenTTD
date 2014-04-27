@@ -2662,7 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線高度：
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}將雪線高度上移一層
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}將雪線高度下移一層
-STR_MAPGEN_RANDOM                                               :{BLACK}亂數化
+STR_FACE_RANDOM                                                 :{BLACK}亂數化
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形產生器：
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}植樹演算法：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：

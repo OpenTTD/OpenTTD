@@ -2663,7 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Linha da neve
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Aumentar a linha da neve em um ponto
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Diminuir a linha da neve em um ponto
-STR_MAPGEN_RANDOM                                               :{BLACK}Randomizar
+STR_FACE_RANDOM                                                 :{BLACK}Randomizar
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gerador de terra
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorítimo de árvores
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno

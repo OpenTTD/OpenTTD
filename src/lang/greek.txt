@@ -2686,7 +2686,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
-STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαίος
+STR_FACE_RANDOM                                                 :{BLACK}Τυχαίος
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:

@@ -2251,7 +2251,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Kiom da 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Neĝlinia alteco:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Altigu la neĝlinion per unu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Malaltigu la neĝlinion per unu
-STR_MAPGEN_RANDOM                                               :{BLACK}Hazardigu
+STR_FACE_RANDOM                                                 :{BLACK}Hazardigu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerilo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Arba algoritmo:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:

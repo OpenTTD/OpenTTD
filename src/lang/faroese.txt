@@ -2458,7 +2458,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. av �
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hædd á kava linju:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt kava linjuna eitt upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt kava linjuna eitt niður
-STR_MAPGEN_RANDOM                                               :{BLACK}Blanda
+STR_FACE_RANDOM                                                 :{BLACK}Blanda
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træ algoritma:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Slag av lendi:

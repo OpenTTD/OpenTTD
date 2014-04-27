@@ -2730,7 +2730,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Počet p
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Výška línie snehu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšiť výšku snehovej čiary
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Znížiť výšku snehovej čiary
-STR_MAPGEN_RANDOM                                               :{BLACK}Nový kód
+STR_FACE_RANDOM                                                 :{BLACK}Nový kód
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Generátor stromov:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terénu:

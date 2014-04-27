@@ -2656,7 +2656,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alt. d'enneigement{NBSP}:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Augmenter l'altitude d'enneigement
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baisser l'altitude d'enneigement
-STR_MAPGEN_RANDOM                                               :{BLACK}Nouvelle amorce
+STR_FACE_RANDOM                                                 :{BLACK}Nouvelle amorce
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Générateur{NBSP}:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ajout des arbres{NBSP}:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Type de terrain{NBSP}:

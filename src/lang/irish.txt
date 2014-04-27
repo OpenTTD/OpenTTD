@@ -2225,7 +2225,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Líon na
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Airde na líne sneachta:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Bog airde na líne sneachta suas ceann amháin
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Bog airde na líne sneachta síos ceann amháin
-STR_MAPGEN_RANDOM                                               :{BLACK}Déan randamú
+STR_FACE_RANDOM                                                 :{BLACK}Déan randamú
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Talamh a chruthú:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algartam na gcrann:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Cineál tír-raoin:

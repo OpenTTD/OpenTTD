@@ -2891,7 +2891,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gnìomha
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Àirde na loidhne-shneachda:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Gluais an loidhne-shneachda suas aon cheum
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Gluais an loidhne-shneachda sìos aon cheum
-STR_MAPGEN_RANDOM                                               :{BLACK}Cuir sìol air thuaiream
+STR_FACE_RANDOM                                                 :{BLACK}Cuir sìol air thuaiream
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algairim chraobhan:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Seòrsa a' chrutha-thìre:

@@ -2663,7 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}설선 고도:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}설선 고도를 1칸 높입니다
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}설선 고도를 1칸 낮춥니다
-STR_MAPGEN_RANDOM                                               :{BLACK}무작위화
+STR_FACE_RANDOM                                                 :{BLACK}무작위화
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}나무 알고리즘:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:

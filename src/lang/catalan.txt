@@ -2663,7 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nombre d
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alçada de la neu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mou la línia de neu un pas amunt
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mou la línia de neu un pas avall
-STR_MAPGEN_RANDOM                                               :{BLACK}Aleatoritza
+STR_FACE_RANDOM                                                 :{BLACK}Aleatoritza
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generació de terrenys:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritme d'arbres:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:

@@ -2755,7 +2755,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Množstv
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Výška sněžné čáry:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšit sněžnou čáru o jednu úroveň
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Snížit sněžnou čáru o jednu úroveň
-STR_MAPGEN_RANDOM                                               :{BLACK}Nové číslo
+STR_FACE_RANDOM                                                 :{BLACK}Nové číslo
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Sázení stromů:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ krajiny:

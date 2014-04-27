@@ -1805,6 +1805,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Freight Tram
 STR_FACE_CAPTION                                                :{WHITE}Face Selection
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancel new face selection
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accept new face selection
+STR_FACE_RANDOM                                                 :{BLACK}Randomise
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Male
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Select male faces
@@ -2684,7 +2685,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snow line height:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Move the snow line height one up
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Move the snow line height one down
-STR_MAPGEN_RANDOM                                               :{BLACK}Randomise
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land generator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tree algorithm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:

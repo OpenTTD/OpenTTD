@@ -2778,7 +2778,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кіль
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Висота лінії снігу:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Підвищити лінію снігу
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Понизити лінію снігу
-STR_MAPGEN_RANDOM                                               :{BLACK}Випадково
+STR_FACE_RANDOM                                                 :{BLACK}Випадково
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ландшафт:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Насадження дерев:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафту:

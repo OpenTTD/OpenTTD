@@ -2995,7 +2995,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Коль
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Вышыня сьнегавой лініі:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Падняць сьнегавую лінію
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Апусьціць сьнегавую лінію
-STR_MAPGEN_RANDOM                                               :{BLACK}Выпадковая
+STR_FACE_RANDOM                                                 :{BLACK}Выпадковая
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ґенэратар ляндшафту:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Альґарытм дрэваў:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тып ляндшафту:

@@ -2642,7 +2642,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nº de i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Cota de neve:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Subir a cota de neve unha altura
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baixar a cota de neve unha altura
-STR_MAPGEN_RANDOM                                               :{BLACK}Aleatorio
+STR_FACE_RANDOM                                                 :{BLACK}Aleatorio
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Xerador de terreo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo para árbores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreo:

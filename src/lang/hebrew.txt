@@ -2651,7 +2651,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK} :מספ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}גובה קו השלג
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}הגבה את קו השלג
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}הנמך את קו השלג
-STR_MAPGEN_RANDOM                                               :{BLACK}אקראית
+STR_FACE_RANDOM                                                 :{BLACK}אקראית
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :יצירת קרקע
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}אלגוריתם העצים:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
