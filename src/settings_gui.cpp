@@ -1379,57 +1379,28 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int bas
 }
 
 
-static SettingEntry _settings_ui_localisation[] = {
+static SettingEntry _settings_localisation[] = {
 	SettingEntry("locale.units_velocity"),
 	SettingEntry("locale.units_power"),
 	SettingEntry("locale.units_weight"),
 	SettingEntry("locale.units_volume"),
 	SettingEntry("locale.units_force"),
 	SettingEntry("locale.units_height"),
+	SettingEntry("gui.date_format_in_default_names"),
 };
 /** Localisation options sub-page */
-static SettingsPage _settings_ui_localisation_page = {_settings_ui_localisation, lengthof(_settings_ui_localisation)};
+static SettingsPage _settings_localisation_page = {_settings_localisation, lengthof(_settings_localisation)};
 
-static SettingEntry _settings_ui_display[] = {
-	SettingEntry("gui.date_format_in_default_names"),
-	SettingEntry("gui.population_in_label"),
-	SettingEntry("gui.measure_tooltip"),
-	SettingEntry("gui.loading_indicators"),
-	SettingEntry("gui.liveries"),
-	SettingEntry("gui.show_track_reservation"),
-	SettingEntry("gui.expenses_layout"),
-	SettingEntry("gui.smallmap_land_colour"),
+static SettingEntry _settings_graphics[] = {
 	SettingEntry("gui.zoom_min"),
 	SettingEntry("gui.zoom_max"),
+	SettingEntry("gui.smallmap_land_colour"),
 	SettingEntry("gui.graph_line_thickness"),
 };
-/** Display options sub-page */
-static SettingsPage _settings_ui_display_page = {_settings_ui_display, lengthof(_settings_ui_display)};
+/** Graphics options sub-page */
+static SettingsPage _settings_graphics_page = {_settings_graphics, lengthof(_settings_graphics)};
 
-static SettingEntry _settings_ui_interaction[] = {
-	SettingEntry("gui.window_snap_radius"),
-	SettingEntry("gui.window_soft_limit"),
-	SettingEntry("gui.link_terraform_toolbar"),
-	SettingEntry("gui.prefer_teamchat"),
-	SettingEntry("gui.auto_scrolling"),
-	SettingEntry("gui.reverse_scroll"),
-	SettingEntry("gui.smooth_scroll"),
-	SettingEntry("gui.left_mouse_btn_scrolling"),
-	/* While the horizontal scrollwheel scrolling is written as general code, only
-	 *  the cocoa (OSX) driver generates input for it.
-	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
-	SettingEntry("gui.scrollwheel_scrolling"),
-	SettingEntry("gui.scrollwheel_multiplier"),
-	SettingEntry("gui.osk_activation"),
-#ifdef __APPLE__
-	/* We might need to emulate a right mouse button on mac */
-	SettingEntry("gui.right_mouse_btn_emulation"),
-#endif
-};
-/** Interaction sub-page */
-static SettingsPage _settings_ui_interaction_page = {_settings_ui_interaction, lengthof(_settings_ui_interaction)};
-
-static SettingEntry _settings_ui_sound[] = {
+static SettingEntry _settings_sound[] = {
 	SettingEntry("sound.click_beep"),
 	SettingEntry("sound.confirm"),
 	SettingEntry("sound.news_ticker"),
@@ -1440,133 +1411,232 @@ static SettingEntry _settings_ui_sound[] = {
 	SettingEntry("sound.ambient"),
 };
 /** Sound effects sub-page */
-static SettingsPage _settings_ui_sound_page = {_settings_ui_sound, lengthof(_settings_ui_sound)};
+static SettingsPage _settings_sound_page = {_settings_sound, lengthof(_settings_sound)};
 
-static SettingEntry _settings_ui_news[] = {
-	SettingEntry("news_display.arrival_player"),
-	SettingEntry("news_display.arrival_other"),
-	SettingEntry("news_display.accident"),
-	SettingEntry("news_display.company_info"),
-	SettingEntry("news_display.open"),
-	SettingEntry("news_display.close"),
-	SettingEntry("news_display.economy"),
-	SettingEntry("news_display.production_player"),
-	SettingEntry("news_display.production_other"),
-	SettingEntry("news_display.production_nobody"),
-	SettingEntry("news_display.advice"),
-	SettingEntry("news_display.new_vehicles"),
-	SettingEntry("news_display.acceptance"),
-	SettingEntry("news_display.subsidies"),
-	SettingEntry("news_display.general"),
-	SettingEntry("gui.coloured_news_year"),
-};
-/** News sub-page */
-static SettingsPage _settings_ui_news_page = {_settings_ui_news, lengthof(_settings_ui_news)};
-
-static SettingEntry _settings_ui[] = {
-	SettingEntry(&_settings_ui_localisation_page, STR_CONFIG_SETTING_LOCALISATION),
-	SettingEntry(&_settings_ui_display_page, STR_CONFIG_SETTING_DISPLAY_OPTIONS),
-	SettingEntry(&_settings_ui_interaction_page, STR_CONFIG_SETTING_INTERACTION),
-	SettingEntry(&_settings_ui_sound_page, STR_CONFIG_SETTING_SOUND),
-	SettingEntry(&_settings_ui_news_page, STR_CONFIG_SETTING_NEWS),
-	SettingEntry("gui.show_finances"),
-	SettingEntry("gui.errmsg_duration"),
+static SettingEntry _settings_interface_general[] = {
+	SettingEntry("gui.osk_activation"),
 	SettingEntry("gui.hover_delay"),
-	SettingEntry("gui.toolbar_pos"),
-	SettingEntry("gui.statusbar_pos"),
-	SettingEntry("gui.pause_on_newgame"),
-	SettingEntry("gui.advanced_vehicle_list"),
-	SettingEntry("gui.timetable_in_ticks"),
-	SettingEntry("gui.timetable_arrival_departure"),
+	SettingEntry("gui.errmsg_duration"),
+	SettingEntry("gui.window_snap_radius"),
+	SettingEntry("gui.window_soft_limit"),
+};
+/** Interface/General sub-page */
+static SettingsPage _settings_interface_general_page = {_settings_interface_general, lengthof(_settings_interface_general)};
+
+static SettingEntry _settings_interface_viewports[] = {
+	SettingEntry("gui.auto_scrolling"),
+	SettingEntry("gui.reverse_scroll"),
+	SettingEntry("gui.smooth_scroll"),
+	SettingEntry("gui.left_mouse_btn_scrolling"),
+	/* While the horizontal scrollwheel scrolling is written as general code, only
+	 *  the cocoa (OSX) driver generates input for it.
+	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
+	SettingEntry("gui.scrollwheel_scrolling"),
+	SettingEntry("gui.scrollwheel_multiplier"),
+#ifdef __APPLE__
+	/* We might need to emulate a right mouse button on mac */
+	SettingEntry("gui.right_mouse_btn_emulation"),
+#endif
+	SettingEntry("gui.population_in_label"),
+	SettingEntry("gui.liveries"),
+	SettingEntry("construction.train_signal_side"),
+	SettingEntry("gui.measure_tooltip"),
+	SettingEntry("gui.loading_indicators"),
+	SettingEntry("gui.show_track_reservation"),
+};
+/** Interface/Viewports sub-page */
+static SettingsPage _settings_interface_viewports_page = {_settings_interface_viewports, lengthof(_settings_interface_viewports)};
+
+static SettingEntry _settings_interface_construction[] = {
+	SettingEntry("gui.link_terraform_toolbar"),
+	SettingEntry("gui.enable_signal_gui"),
+	SettingEntry("gui.persistent_buildingtools"),
 	SettingEntry("gui.quick_goto"),
 	SettingEntry("gui.default_rail_type"),
 	SettingEntry("gui.disable_unsuitable_building"),
-	SettingEntry("gui.persistent_buildingtools"),
 };
-/** Interface subpage */
-static SettingsPage _settings_ui_page = {_settings_ui, lengthof(_settings_ui)};
+/** Interface/Construction sub-page */
+static SettingsPage _settings_interface_construction_page = {_settings_interface_construction, lengthof(_settings_interface_construction)};
 
-static SettingEntry _settings_construction_signals[] = {
-	SettingEntry("construction.train_signal_side"),
-	SettingEntry("gui.enable_signal_gui"),
-	SettingEntry("gui.drag_signals_fixed_distance"),
+static SettingEntry _settings_interface[] = {
+	SettingEntry(&_settings_interface_general_page,      STR_CONFIG_SETTING_INTERFACE_GENERAL),
+	SettingEntry(&_settings_interface_viewports_page,    STR_CONFIG_SETTING_INTERFACE_VIEWPORTS),
+	SettingEntry(&_settings_interface_construction_page, STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION),
+	SettingEntry("gui.toolbar_pos"),
+	SettingEntry("gui.statusbar_pos"),
+	SettingEntry("gui.prefer_teamchat"),
+	SettingEntry("gui.advanced_vehicle_list"),
+	SettingEntry("gui.timetable_in_ticks"),
+	SettingEntry("gui.timetable_arrival_departure"),
+	SettingEntry("gui.expenses_layout"),
+};
+
+/** Interface subpage */
+static SettingsPage _settings_interface_page = {_settings_interface, lengthof(_settings_interface)};
+
+static SettingEntry _settings_advisors[] = {
+	SettingEntry("gui.coloured_news_year"),
+	SettingEntry("news_display.general"),
+	SettingEntry("news_display.new_vehicles"),
+	SettingEntry("news_display.accident"),
+	SettingEntry("news_display.company_info"),
+	SettingEntry("news_display.acceptance"),
+	SettingEntry("news_display.arrival_player"),
+	SettingEntry("news_display.arrival_other"),
+	SettingEntry("news_display.advice"),
+	SettingEntry("gui.order_review_system"),
+	SettingEntry("gui.vehicle_income_warn"),
+	SettingEntry("gui.lost_vehicle_warn"),
+	SettingEntry("gui.show_finances"),
+	SettingEntry("news_display.economy"),
+	SettingEntry("news_display.subsidies"),
+	SettingEntry("news_display.open"),
+	SettingEntry("news_display.close"),
+	SettingEntry("news_display.production_player"),
+	SettingEntry("news_display.production_other"),
+	SettingEntry("news_display.production_nobody"),
+};
+/** Interface/News sub-page */
+static SettingsPage _settings_advisors_page = {_settings_advisors, lengthof(_settings_advisors)};
+
+static SettingEntry _settings_company[] = {
 	SettingEntry("gui.semaphore_build_before"),
 	SettingEntry("gui.default_signal_type"),
 	SettingEntry("gui.cycle_signal_types"),
+	SettingEntry("gui.drag_signals_fixed_distance"),
+	SettingEntry("gui.new_nonstop"),
+	SettingEntry("gui.stop_location"),
+	SettingEntry("company.engine_renew"),
+	SettingEntry("company.engine_renew_months"),
+	SettingEntry("company.engine_renew_money"),
+	SettingEntry("vehicle.servint_ispercent"),
+	SettingEntry("vehicle.servint_trains"),
+	SettingEntry("vehicle.servint_roadveh"),
+	SettingEntry("vehicle.servint_ships"),
+	SettingEntry("vehicle.servint_aircraft"),
 };
-/** Signals subpage */
-static SettingsPage _settings_construction_signals_page = {_settings_construction_signals, lengthof(_settings_construction_signals)};
 
-static SettingEntry _settings_construction[] = {
-	SettingEntry(&_settings_construction_signals_page, STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS),
+/** Company subpage */
+static SettingsPage _settings_company_page = {_settings_company, lengthof(_settings_company)};
+
+static SettingEntry _settings_accounting[] = {
+	SettingEntry("economy.inflation"),
+	SettingEntry("difficulty.initial_interest"),
+	SettingEntry("difficulty.max_loan"),
+	SettingEntry("difficulty.subsidy_multiplier"),
+	SettingEntry("economy.feeder_payment_share"),
+	SettingEntry("economy.infrastructure_maintenance"),
+	SettingEntry("difficulty.vehicle_costs"),
+	SettingEntry("difficulty.construction_cost"),
+};
+/** Accounting sub-page */
+static SettingsPage _settings_accounting_page = {_settings_accounting, lengthof(_settings_accounting)};
+
+static SettingEntry _settings_vehicles_physics[] = {
+	SettingEntry("vehicle.train_acceleration_model"),
+	SettingEntry("vehicle.train_slope_steepness"),
+	SettingEntry("vehicle.wagon_speed_limits"),
+	SettingEntry("vehicle.freight_trains"),
+	SettingEntry("vehicle.roadveh_acceleration_model"),
+	SettingEntry("vehicle.roadveh_slope_steepness"),
+	SettingEntry("vehicle.smoke_amount"),
+	SettingEntry("vehicle.plane_speed"),
+};
+/** Vehicles/Physics sub-page */
+static SettingsPage _settings_vehicles_physics_page = {_settings_vehicles_physics, lengthof(_settings_vehicles_physics)};
+
+static SettingEntry _settings_vehicles_routing[] = {
+	SettingEntry("pf.pathfinder_for_trains"),
+	SettingEntry("difficulty.line_reverse_mode"),
+	SettingEntry("pf.reverse_at_signals"),
+	SettingEntry("pf.forbid_90_deg"),
+	SettingEntry("pf.pathfinder_for_roadvehs"),
+	SettingEntry("pf.pathfinder_for_ships"),
+};
+/** Vehicles/Routing sub-page */
+static SettingsPage _settings_vehicles_routing_page = {_settings_vehicles_routing, lengthof(_settings_vehicles_routing)};
+
+static SettingEntry _settings_vehicles[] = {
+	SettingEntry(&_settings_vehicles_physics_page, STR_CONFIG_SETTING_VEHICLES_PHYSICS),
+	SettingEntry(&_settings_vehicles_routing_page, STR_CONFIG_SETTING_VEHICLES_ROUTING),
+	SettingEntry("order.no_servicing_if_no_breakdowns"),
+	SettingEntry("order.serviceathelipad"),
+};
+/** Vehicles sub-page */
+static SettingsPage _settings_vehicles_page = {_settings_vehicles, lengthof(_settings_vehicles)};
+
+static SettingEntry _settings_limitations[] = {
+	SettingEntry("construction.command_pause_level"),
 	SettingEntry("construction.autoslope"),
 	SettingEntry("construction.extra_dynamite"),
 	SettingEntry("construction.max_bridge_length"),
 	SettingEntry("construction.max_tunnel_length"),
 	SettingEntry("station.never_expire_airports"),
-	SettingEntry("construction.freeform_edges"),
-	SettingEntry("construction.extra_tree_placement"),
-};
-/** Construction sub-page */
-static SettingsPage _settings_construction_page = {_settings_construction, lengthof(_settings_construction)};
-
-static SettingEntry _settings_stations[] = {
-	SettingEntry("station.distant_join_stations"),
+	SettingEntry("vehicle.never_expire_vehicles"),
+	SettingEntry("vehicle.max_trains"),
+	SettingEntry("vehicle.max_roadveh"),
+	SettingEntry("vehicle.max_aircraft"),
+	SettingEntry("vehicle.max_ships"),
+	SettingEntry("vehicle.max_train_length"),
 	SettingEntry("station.station_spread"),
-	SettingEntry("economy.station_noise_level"),
-	SettingEntry("station.modified_catchment"),
+	SettingEntry("station.distant_join_stations"),
 	SettingEntry("construction.road_stop_on_town_road"),
 	SettingEntry("construction.road_stop_on_competitor_road"),
+	SettingEntry("vehicle.disable_elrails"),
 };
-/** Stations sub-page */
-static SettingsPage _settings_stations_page = {_settings_stations, lengthof(_settings_stations)};
+/** Limitations sub-page */
+static SettingsPage _settings_limitations_page = {_settings_limitations, lengthof(_settings_limitations)};
 
-static SettingEntry _settings_economy_towns[] = {
+static SettingEntry _settings_disasters[] = {
+	SettingEntry("difficulty.disasters"),
+	SettingEntry("difficulty.economy"),
+	SettingEntry("difficulty.vehicle_breakdowns"),
+	SettingEntry("vehicle.plane_crashes"),
+};
+/** Disasters sub-page */
+static SettingsPage _settings_disasters_page = {_settings_disasters, lengthof(_settings_disasters)};
+
+static SettingEntry _settings_genworld[] = {
+	SettingEntry("economy.larger_towns"),
+	SettingEntry("economy.initial_city_size"),
+	SettingEntry("economy.town_layout"),
+	SettingEntry("gui.pause_on_newgame"),
+};
+
+/** Genworld subpage */
+static SettingsPage _settings_genworld_page = {_settings_genworld, lengthof(_settings_genworld)};
+
+static SettingEntry _settings_environment_authorities[] = {
 	SettingEntry("difficulty.town_council_tolerance"),
 	SettingEntry("economy.bribe"),
 	SettingEntry("economy.exclusive_rights"),
 	SettingEntry("economy.fund_roads"),
 	SettingEntry("economy.fund_buildings"),
-	SettingEntry("economy.town_layout"),
+	SettingEntry("economy.station_noise_level"),
+};
+/** Environment/Authorities sub-page */
+static SettingsPage _settings_environment_authorities_page = {_settings_environment_authorities, lengthof(_settings_environment_authorities)};
+
+static SettingEntry _settings_environment_towns[] = {
+	SettingEntry("economy.town_growth_rate"),
 	SettingEntry("economy.allow_town_roads"),
 	SettingEntry("economy.allow_town_level_crossings"),
 	SettingEntry("economy.found_town"),
-	SettingEntry("economy.town_growth_rate"),
-	SettingEntry("economy.larger_towns"),
-	SettingEntry("economy.initial_city_size"),
 };
-/** Towns sub-page */
-static SettingsPage _settings_economy_towns_page = {_settings_economy_towns, lengthof(_settings_economy_towns)};
+/** Environment/Towns sub-page */
+static SettingsPage _settings_environment_towns_page = {_settings_environment_towns, lengthof(_settings_environment_towns)};
 
-static SettingEntry _settings_economy_industries[] = {
+static SettingEntry _settings_environment_industries[] = {
 	SettingEntry("construction.raw_industry_construction"),
 	SettingEntry("construction.industry_platform"),
 	SettingEntry("economy.multiple_industry_per_town"),
 	SettingEntry("game_creation.oil_refinery_limit"),
-};
-/** Industries sub-page */
-static SettingsPage _settings_economy_industries_page = {_settings_economy_industries, lengthof(_settings_economy_industries)};
-
-
-static SettingEntry _settings_economy[] = {
-	SettingEntry(&_settings_economy_towns_page, STR_CONFIG_SETTING_ENVIRONMENT_TOWNS),
-	SettingEntry(&_settings_economy_industries_page, STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES),
-	SettingEntry("economy.inflation"),
-	SettingEntry("difficulty.initial_interest"),
-	SettingEntry("difficulty.max_loan"),
-	SettingEntry("difficulty.subsidy_multiplier"),
-	SettingEntry("difficulty.economy"),
 	SettingEntry("economy.smooth_economy"),
-	SettingEntry("economy.feeder_payment_share"),
-	SettingEntry("economy.infrastructure_maintenance"),
-	SettingEntry("difficulty.vehicle_costs"),
-	SettingEntry("difficulty.construction_cost"),
-	SettingEntry("difficulty.disasters"),
 };
-/** Economy sub-page */
-static SettingsPage _settings_economy_page = {_settings_economy, lengthof(_settings_economy)};
+/** Environment/Industries subpage */
+static SettingsPage _settings_environment_industries_page = {_settings_environment_industries, lengthof(_settings_environment_industries)};
 
-static SettingEntry _settings_linkgraph[] = {
+static SettingEntry _settings_environment_cdist[] = {
 	SettingEntry("linkgraph.recalc_time"),
 	SettingEntry("linkgraph.recalc_interval"),
 	SettingEntry("linkgraph.distribution_pax"),
@@ -1578,8 +1648,19 @@ static SettingEntry _settings_linkgraph[] = {
 	SettingEntry("linkgraph.demand_size"),
 	SettingEntry("linkgraph.short_path_saturation"),
 };
-/** Linkgraph sub-page */
-static SettingsPage _settings_linkgraph_page = {_settings_linkgraph, lengthof(_settings_linkgraph)};
+/** Environment/Cargo Distribution sub-page */
+static SettingsPage _settings_environment_cdist_page = {_settings_environment_cdist, lengthof(_settings_environment_cdist)};
+
+static SettingEntry _settings_environment[] = {
+	SettingEntry(&_settings_environment_authorities_page, STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES),
+	SettingEntry(&_settings_environment_towns_page,       STR_CONFIG_SETTING_ENVIRONMENT_TOWNS),
+	SettingEntry(&_settings_environment_industries_page,  STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES),
+	SettingEntry(&_settings_environment_cdist_page,       STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST),
+	SettingEntry("station.modified_catchment"),
+	SettingEntry("construction.extra_tree_placement"),
+};
+/** Environment sub-page */
+static SettingsPage _settings_environment_page = {_settings_environment, lengthof(_settings_environment)};
 
 static SettingEntry _settings_ai_npc[] = {
 	SettingEntry("script.settings_profile"),
@@ -1602,81 +1683,20 @@ static SettingEntry _settings_ai[] = {
 /** AI sub-page */
 static SettingsPage _settings_ai_page = {_settings_ai, lengthof(_settings_ai)};
 
-static SettingEntry _settings_vehicles_routing[] = {
-	SettingEntry("pf.pathfinder_for_trains"),
-	SettingEntry("pf.forbid_90_deg"),
-	SettingEntry("pf.pathfinder_for_roadvehs"),
-	SettingEntry("pf.pathfinder_for_ships"),
-};
-/** Autorenew sub-page */
-static SettingsPage _settings_vehicles_routing_page = {_settings_vehicles_routing, lengthof(_settings_vehicles_routing)};
-
-static SettingEntry _settings_vehicles_autorenew[] = {
-	SettingEntry("company.engine_renew"),
-	SettingEntry("company.engine_renew_months"),
-	SettingEntry("company.engine_renew_money"),
-};
-/** Autorenew sub-page */
-static SettingsPage _settings_vehicles_autorenew_page = {_settings_vehicles_autorenew, lengthof(_settings_vehicles_autorenew)};
-
-static SettingEntry _settings_vehicles_servicing[] = {
-	SettingEntry("vehicle.servint_ispercent"),
-	SettingEntry("vehicle.servint_trains"),
-	SettingEntry("vehicle.servint_roadveh"),
-	SettingEntry("vehicle.servint_ships"),
-	SettingEntry("vehicle.servint_aircraft"),
-	SettingEntry("difficulty.vehicle_breakdowns"),
-	SettingEntry("order.no_servicing_if_no_breakdowns"),
-	SettingEntry("order.serviceathelipad"),
-};
-/** Servicing sub-page */
-static SettingsPage _settings_vehicles_servicing_page = {_settings_vehicles_servicing, lengthof(_settings_vehicles_servicing)};
-
-static SettingEntry _settings_vehicles_trains[] = {
-	SettingEntry("difficulty.line_reverse_mode"),
-	SettingEntry("pf.reverse_at_signals"),
-	SettingEntry("vehicle.train_acceleration_model"),
-	SettingEntry("vehicle.train_slope_steepness"),
-	SettingEntry("vehicle.max_train_length"),
-	SettingEntry("vehicle.wagon_speed_limits"),
-	SettingEntry("vehicle.disable_elrails"),
-	SettingEntry("vehicle.freight_trains"),
-	SettingEntry("gui.stop_location"),
-};
-/** Trains sub-page */
-static SettingsPage _settings_vehicles_trains_page = {_settings_vehicles_trains, lengthof(_settings_vehicles_trains)};
-
-static SettingEntry _settings_vehicles[] = {
-	SettingEntry(&_settings_vehicles_routing_page, STR_CONFIG_SETTING_VEHICLES_ROUTING),
-	SettingEntry(&_settings_vehicles_autorenew_page, STR_CONFIG_SETTING_VEHICLES_AUTORENEW),
-	SettingEntry(&_settings_vehicles_servicing_page, STR_CONFIG_SETTING_VEHICLES_SERVICING),
-	SettingEntry(&_settings_vehicles_trains_page, STR_CONFIG_SETTING_VEHICLES_TRAINS),
-	SettingEntry("gui.new_nonstop"),
-	SettingEntry("gui.order_review_system"),
-	SettingEntry("gui.vehicle_income_warn"),
-	SettingEntry("gui.lost_vehicle_warn"),
-	SettingEntry("vehicle.never_expire_vehicles"),
-	SettingEntry("vehicle.max_trains"),
-	SettingEntry("vehicle.max_roadveh"),
-	SettingEntry("vehicle.max_aircraft"),
-	SettingEntry("vehicle.max_ships"),
-	SettingEntry("vehicle.plane_speed"),
-	SettingEntry("vehicle.plane_crashes"),
-	SettingEntry("vehicle.roadveh_acceleration_model"),
-	SettingEntry("vehicle.roadveh_slope_steepness"),
-	SettingEntry("vehicle.smoke_amount"),
-};
-/** Vehicles sub-page */
-static SettingsPage _settings_vehicles_page = {_settings_vehicles, lengthof(_settings_vehicles)};
-
 static SettingEntry _settings_main[] = {
-	SettingEntry(&_settings_ui_page,           STR_CONFIG_SETTING_INTERFACE),
-	SettingEntry(&_settings_construction_page, STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION),
-	SettingEntry(&_settings_vehicles_page,     STR_CONFIG_SETTING_VEHICLES),
-	SettingEntry(&_settings_stations_page,     STR_CONFIG_SETTING_STATIONS),
-	SettingEntry(&_settings_economy_page,      STR_CONFIG_SETTING_ECONOMY),
-	SettingEntry(&_settings_linkgraph_page,    STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST),
-	SettingEntry(&_settings_ai_page,           STR_CONFIG_SETTING_AI),
+	SettingEntry(&_settings_localisation_page,   STR_CONFIG_SETTING_LOCALISATION),
+	SettingEntry(&_settings_graphics_page,       STR_CONFIG_SETTING_GRAPHICS),
+	SettingEntry(&_settings_sound_page,          STR_CONFIG_SETTING_SOUND),
+	SettingEntry(&_settings_interface_page,      STR_CONFIG_SETTING_INTERFACE),
+	SettingEntry(&_settings_advisors_page,       STR_CONFIG_SETTING_ADVISORS),
+	SettingEntry(&_settings_company_page,        STR_CONFIG_SETTING_COMPANY),
+	SettingEntry(&_settings_accounting_page,     STR_CONFIG_SETTING_ACCOUNTING),
+	SettingEntry(&_settings_vehicles_page,       STR_CONFIG_SETTING_VEHICLES),
+	SettingEntry(&_settings_limitations_page,    STR_CONFIG_SETTING_LIMITATIONS),
+	SettingEntry(&_settings_disasters_page,      STR_CONFIG_SETTING_ACCIDENTS),
+	SettingEntry(&_settings_genworld_page,       STR_CONFIG_SETTING_GENWORLD),
+	SettingEntry(&_settings_environment_page,    STR_CONFIG_SETTING_ENVIRONMENT),
+	SettingEntry(&_settings_ai_page,             STR_CONFIG_SETTING_AI),
 };
 
 /** Main page, holding all advanced settings */
