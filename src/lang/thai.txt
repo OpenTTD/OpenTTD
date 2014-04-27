@@ -954,7 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}คว�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}เลือกความละเอียดของหน้าจอที่จะใช้
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ตั้งค่า Graphic พื้นฐาน
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}เลือกและตั้งค่าฐานกราฟิกที่จะใช้
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ไฟล์สูญหายหรือไม่สมบูรณ์
@@ -1317,7 +1316,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :เพิ่ม
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ยาว (31 ธันวาคม 2013)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :สั้น (31-12-2013)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :มาตรฐาน (2013-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :หยุดเกมอัตโนมัติเมื่อเริ่มเกมใหม่: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :เมื่อเปิดใช้งาน เกมจะหยุดอัตโนมัติเมื่อมีการเริ่มเกมใหม่
@@ -1777,6 +1775,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :รถราง
 STR_FACE_CAPTION                                                :{WHITE}เลือกใบหน้า
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}ยกเลิการเลือกใบหน้าใหม่
 STR_FACE_OK_TOOLTIP                                             :{BLACK}ยอมรับการเลือกใบหน้าใหม่
+STR_FACE_RANDOM                                                 :{BLACK}สุ่ม
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}ผู้ชาย
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}เลือกใบหน้าผู้ชาย
@@ -2654,7 +2653,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}จำ�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}เส้นความสูงเขตหิมะ:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ปรับเปลี่ยนความสูงของหิมะขึ้นไป 1 ระดับ
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}ปรับเปลี่ยนความสูงของหิมะลงมา 1 ระดับ
-STR_FACE_RANDOM                                                 :{BLACK}สุ่ม
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}เครื่องมือสร้างสภาพพื้นดิน:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tอัลกอริธึมต้นไม้:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}ประเภทภูมิประเทศ:
@@ -3264,6 +3262,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}กด�
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}ลบกลุ่มที่เลือก
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}เปลี่ยนชื่อกลุ่มที่เลือก
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}กดเพื่อป้องกันกลุ่มนี้จากการใช้งาน แทนที่ใหม่อัตโนมัติ
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :เพิ่มยานพาหนะที่ใช้รายการคำสั่งเดียวกัน
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :ลบยานพาหนะทั้งหมด

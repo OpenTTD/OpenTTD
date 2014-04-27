@@ -954,9 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skermres
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selektearje de skermresolutje om te brûken
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oars
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skermôfbyldingsformaat
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selektearje it skermôfbyldingsformaat om te brûken
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset for ôfbyldings
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektearje de basis ôfbyldingsset om te brûken
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ûntbrekke{P "" nde}/korrupt{P "" e} bestân
@@ -1130,8 +1127,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skeakel rampen 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Hâlding gemeenten tsjinoer werstrukturearring: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoe grut ympact fan lûdsoerlêst en omwrâldskea toch bedriuwen is op har reputaasje by de lokale bestjoeren en takomstige konstruksje yn harren mêd
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :It boue op in helling tastean: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :By ynskeakeljen kinne spoarbanen en stasjon op de measte skeantes bout wurde. Oars meie sy allinich bout wurde op skeantes dy't in oerienkommende rjochting hawwe en dêrtroch gjin fûndearrings nedich binne
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Stean lânskipsbewurkings ûnder gebouwen en spoarbanen ta sûnder dat dizze ferwidere wurde
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebrûk meer realistyske hannelsgebieten: {STRING}
@@ -1156,14 +1151,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Ferbied treinen
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Bochten fan 90 graden komme foar op it spoar at in horizontale spoarwei folge wurdt troch in fertikaal stik sparwei. In trein soe yn dizze sitewaasje in bocht fan 90 graden meitsje yn stee fan de normale 45 graden. Dizze opsje hat ek effect op de swaaisirkel fan skippen
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Stean it gearfoegjen fan stasjon dy't elkoar net reitsje ta: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Stean it ta nije parten oan in stasjon ta foegjen sûnder dat dizze in besteand diel fan it stasjon oanrekje. Brûk Ctrl+Klik om dizze parten de pleatsen
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Brûk in ferbetterd laadalgoritme: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :By ynskeakeljen wurde meardere fiertugen op ien stasjon efter elkoar laden yn stee fan tagelyk. It laden fan de oare fiertugen begjint pas at der genôch fracht is om it earste fiertúch fol te laden
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Fiertúgen stadich lade: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Laad fiertugen stadich en op basis fan hja spesifyke eigenskippen yn stee fan allinich op basis fan de hoemannichte fracht dy't oerset wurdt
 STR_CONFIG_SETTING_INFLATION                                    :Ynflaasje: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Skeakel ynflaasje foar de ekonomy yn, hjirby gean de kosten justjes hurder omheech as de ynkomsten
-STR_CONFIG_SETTING_SELECTGOODS                                  :Fracht allinnich ôflevere op in stasjon at dêr in fraach foar bestiet: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Fracht allinnich oant it stasjon levere at der in oer fiertúch deselde fracht oan it laden is. Dit foarkomt minne wurdearrings foar frachten dy't net troch it stasjon sels ôfhannele wurde
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimale brêgelingte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimumlingte wêroerst brêgen oanlizze kinst
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimale tunnellingte: {STRING}
@@ -1191,8 +1180,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plak wêr't tre
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :oan it ein
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :yn it midden
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :oan it ein
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Wachtrijfoarming foar dykfiertugen (mei bywurkingen): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Lit dykfiertugen wachtsje by besette haltes oant dizze wer frijkomme
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ferskow it skerm at de mûs op de râne is: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :By ynskeakeljen sil it loaitsfinster scrolle at de mûs by de râne fan it finster komt
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Utskeakele
@@ -1223,10 +1210,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stean it bouwen
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Stean it bouwen fan haltes op troch de stêd behearde diken ta
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stean it bouwen fan haltes op troch in tsjinstanner behearde diken ta {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Stiet it bouwen fan haltes op troch in tsjinstanner behearde diken ta
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bouwe fan oanbuorjende stasjons tastean: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Stean ta dat ûnderkate stasjons harren oanreitsje
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Meitsje it mooglik meardere NewGRF-fiertúchsets te brûken: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompatibiliteitsopsje foar âlde NewGRF's. Feroarje dizze opsje net at jo net witte wat jo dogge!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}At der fiertugen yn it spul binne kin dizze ynstelling net feroare wurde
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Ynfrastruktuerûnderhâld: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :By ynskeakeljen binne der koster ferbûn oan it ûnderhâld fan ynfrastruktuer. De kosten wurde heger by gruttere netwurken wêrtoch gruttere bedriuwen hjir mear lêst fan hawwe
@@ -1284,8 +1267,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Hichtekaartrota
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tsjin de klok yn
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Mei de klok mei
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :De hichte fan in plat senario wurdt: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Stean it bewurkjen fan de teilen oan de râne fan 'e kaart ta: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :By útskeakeljen sille de de rânen fan de kaart altyd oseaan wêze
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ien as meardere teilen oan de noardkant binne net leech
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ien as meardere teilen oan de kant binne gjin wetter
 
@@ -1341,11 +1322,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datumformaat fo
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lang (31 Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :koart (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standerdpalet dy't brûkt wurde moat foar NewGRF's dy't sels gjin palet spesifisearre: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standerdpalet dy't brûkt wurde moat foar NewGRF's dy't sels gjin palet spesifisearre
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standerdpalet (D)
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Erfskippalet (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatysk skoftsje by de start fan in nij spul: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :By ynskeakeljen sil it spul autmatysk skofte wurde at der in nij spul starte wurdt. Dit jout tiid om earst de kaart te besjen
@@ -1518,7 +1494,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :gewoan
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Hiel snel
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Begjin stêdgrutte fermenigfuldiger: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Helje frjemde stikken dyk fourt by it bouen fan nije routes: {STRING}
 
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :hânmjittich
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrysk
@@ -1576,7 +1551,6 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinst
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Lit moglikheden sjen
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksje
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Fracht ôfhanneling
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatysk fernije
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Ûnderhâld
@@ -2272,10 +2246,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Oantal y
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hichte sniegrins:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sniegrins ien omheech ferpleatsje:
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sniegrins ien nei beneden ferpleatsje:
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Samar in getal:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om sels in getal yn te fieren
-STR_MAPGEN_RANDOM                                               :{BLACK}Meitsje eigenwillich
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Feroarje it getal hokker brûkt wurdt foar de terreingeneraasje
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lângenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boskalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
@@ -2302,7 +2272,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namme hi
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grutte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Samar in getal ynfiere
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{BLACK}Sniehichte oanpasse
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{BLACK}Startjier oanpasse
 
@@ -2748,6 +2717,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Stjoer nei hang
 
 
 # Group window
+
 
 
 

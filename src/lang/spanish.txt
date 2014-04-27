@@ -955,7 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluci
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccione la resolución de pantalla a usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otras
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunto de gráficos base a usar
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fichero{P "" s} perdido{P "" s} o corrupto{P "" s}
@@ -1324,7 +1323,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato de la f
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :largo (31 Dic 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automáticamente al comenzar un juego nuevo: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Si se activa, el juego se pausará automáticamente al comenzar nuevas partidas para permitir revisar el mapa
@@ -1784,6 +1782,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de Car
 STR_FACE_CAPTION                                                :{WHITE}Selección de cara
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancelar selección de nueva cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aceptar selección de nueva cara
+STR_FACE_RANDOM                                                 :{BLACK}Aleatorio
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Hombre
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selecciona cara masculina
@@ -2662,7 +2661,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altura línea nieve:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mover la línea de nieve hacia arriba
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mover la línea de nieve hacia abajo
-STR_FACE_RANDOM                                                 :{BLACK}Aleatorio
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generador terreno:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo árboles:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno

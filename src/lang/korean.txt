@@ -955,7 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용하실 화면 해상도를 선택하세요.
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :{G=f}기타
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용하실 기본 그래픽을 선택하세요.
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM}개 파일 손실
@@ -1324,7 +1323,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 저장 �
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1월 1일)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :게임 시작 시 자동으로 일시정지: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 옵션을 켜면, 새로은 게임을 시작할 때 지도를 더욱 살펴볼 수 있도록 게임을 자동으로 일시정시시킵니다.
@@ -1784,6 +1782,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
 STR_FACE_CAPTION                                                :{WHITE}얼굴 선택
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}새 얼굴 선택을 취소합니다.
 STR_FACE_OK_TOOLTIP                                             :{BLACK}이 얼굴을 선택합니다.
+STR_FACE_RANDOM                                                 :{BLACK}무작위화
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}남성
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}남성 얼굴 선택
@@ -2663,7 +2662,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}설선 고도:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}설선 고도를 1칸 높입니다
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}설선 고도를 1칸 낮춥니다
-STR_FACE_RANDOM                                                 :{BLACK}무작위화
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}나무 알고리즘:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:

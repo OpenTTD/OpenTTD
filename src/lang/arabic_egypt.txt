@@ -922,7 +922,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}دقة �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر دقة الشاشة
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK} الواجهة الرسومية الاساسية
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK} اختر مجموعة الواجهة الرسومية
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ملف مفقود او غير صالح
@@ -1155,7 +1154,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :استخدم {S
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 ديسمبر 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير - 31 - 12 - 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ايزو 31-12-2008
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :إيقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :عندمل توقف أسمح: {STRING}
@@ -1461,6 +1459,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :عربة ترا
 STR_FACE_CAPTION                                                :{WHITE}اختيار الوجة
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}الغاء اختيار الوجة الجديد
 STR_FACE_OK_TOOLTIP                                             :{BLACK}اقبل الوجة الجديد
+STR_FACE_RANDOM                                                 :{BLACK}عشوائي
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}رجل
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}اختر وجة رجل
@@ -2301,7 +2300,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد �
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK} ارتفاع خط الثلج
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ارفع خط الثلج مستوى واحد
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}خفض خط الثلج مستوى واحد
-STR_FACE_RANDOM                                                 :{BLACK}عشوائي
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK} لوغاريثم الشجر:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
@@ -2811,6 +2809,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}أضغط
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}أحذف المجموعة المختارة
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}أعد تسمية المجموعة المختارة
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}اضغط لحماية المجموعة من التغيير الكلي للعربات
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :اضافة عربات مشتركة
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :أزل جميع المركبات

@@ -1018,7 +1018,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Képerny
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Játékhoz használt felbontás kiválasztása
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}A játékhoz használandó grafikus alapcsomag kiválasztása
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl
@@ -1387,7 +1386,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :A játékmenté
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :hosszú (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :rövid (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatikus szünettel kezdés új játék esetén: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Bekapcsolva a játék szünettel kezdődik, időt hagyva a térkép közelebbi tanulmányozására
@@ -1847,6 +1845,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Teherszállít�
 STR_FACE_CAPTION                                                :{WHITE}Arcválasztás
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Új arc elvetése
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Új arc elfogadása
+STR_FACE_RANDOM                                                 :{BLACK}Új véletlen alapszám
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Férfi
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Férfi arcok kiválasztása
@@ -2726,7 +2725,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gazd. é
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hóhatár:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhatár megnövelése eggyel
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
-STR_FACE_RANDOM                                                 :{BLACK}Új véletlen alapszám
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algoritmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:

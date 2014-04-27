@@ -954,7 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Độ ph
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Chọn độ phân giải màn hình để sử dụng
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :khác
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} thiếu/hỏng file
@@ -1323,7 +1322,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Định dạng 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :đầy đủ (31 T12 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ngắn (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Tự động tạm dừng khi bắt đầu game mới: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Khi bật, ván chơi sẽ tự động tạm dừng khi bắt đầu ván chơi, cho phép xem xét trước bản đồ
@@ -1783,6 +1781,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tàu Hàng Đi�
 STR_FACE_CAPTION                                                :{WHITE}Chọn Vẻ Mặt
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Bỏ qua lựa chọn vẻ mặt
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Lựa chọn vẻ mặt mới
+STR_FACE_RANDOM                                                 :{BLACK}Sinh Ngẫu Nhiên
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Nam
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Chọn vẻ mặt nam
@@ -2661,7 +2660,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lư
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Độ cao tuyết phủ:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuyển độ cao tuyết phủ lên cao
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
-STR_FACE_RANDOM                                                 :{BLACK}Sinh Ngẫu Nhiên
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
@@ -3272,6 +3270,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Ấn và
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Xoá nhóm đã chọn
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Đổi tên nhóm
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Không để nhóm này tự thay thế (thiết lập chung) khi hết hạn
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Thêm phương tiện được chia sẻ
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Xoá tất cả phương tiện

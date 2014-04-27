@@ -790,7 +790,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
-
 # Custom currency window
 
 
@@ -830,7 +829,6 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраст�
 
 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелина на линии во графици: {STRING}
-
 
 
 
@@ -1423,6 +1421,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Испрати 
 
 
 # Group window
+
 
 
 

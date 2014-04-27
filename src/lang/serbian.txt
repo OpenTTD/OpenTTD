@@ -1145,7 +1145,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Veličin
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Odaberite željenu veličinu ekrana
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni skup grafika
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberite željeni skup osnovnih grafika
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} datotek{P a e a} nedostaj{P e u e}/neispravn{P a o o}
@@ -1494,7 +1493,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma u
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dugačak (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratak (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pauzirati odmah po pokretanju nove partije : {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Tokom pauze dozvoljene su: {STRING}
@@ -1897,6 +1895,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Teretni Tramvaj
 STR_FACE_CAPTION                                                :{WHITE}Izbor lica
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Poništi ovo lice
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Prihvati ovo lice
+STR_FACE_RANDOM                                                 :{BLACK}Proizvoljno
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Muško
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izbor muškog lica
@@ -2761,7 +2760,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fab
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivo snežnog pokrivača:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sužava snežni pokrivač naviše za jedan
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširuje snežni pojas naniže za jedan
-STR_FACE_RANDOM                                                 :{BLACK}Proizvoljno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikovanje reljefa:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritam za drveća:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:

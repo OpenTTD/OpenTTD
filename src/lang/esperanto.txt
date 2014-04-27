@@ -923,7 +923,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrana m
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elektu uzotan ekranan montrograndon
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Baza grafikaro
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu la uzendan bazgrafikaron
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta{P "" j}/koruptita{P "" j} dosiero{P "" j}
@@ -1175,7 +1174,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Uzu la {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longa (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :mallonga (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Aŭtomate paŭzu startante novan ludon: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Permesu dum paŭza: {STRING}
@@ -1451,6 +1449,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Frajttramo
 STR_FACE_CAPTION                                                :{WHITE}Elekto de Vizaĝo
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nuligu elekton de nova vizaĝo
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Akceptu elekton de nova vizaĝo
+STR_FACE_RANDOM                                                 :{BLACK}Hazardigu
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Vira
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Elektu virajn vizaĝojn
@@ -2251,7 +2250,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Kiom da 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Neĝlinia alteco:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Altigu la neĝlinion per unu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Malaltigu la neĝlinion per unu
-STR_FACE_RANDOM                                                 :{BLACK}Hazardigu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerilo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Arba algoritmo:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
@@ -2736,6 +2734,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupoj -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klaku por krei grupon
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Viŝu la selektitan grupon
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Alinomi la elektitan grupon
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Aldonu kunhavajn veturilojn
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Forigi ĉiujn veturilojn

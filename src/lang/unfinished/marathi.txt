@@ -744,7 +744,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
-
 # Custom currency window
 
 
@@ -783,7 +782,6 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहना
 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन हरवल्यास सूचित करा: {STRING}
-
 
 
 
@@ -1283,6 +1281,7 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :उपलब्
 STR_GROUP_ALL_ROAD_VEHICLES                                     :सर्व रस्त्यावरचे वाहन
 STR_GROUP_ALL_SHIPS                                             :सर्व जहाज
 STR_GROUP_ALL_AIRCRAFTS                                         :सर्व विमान
+
 
 
 

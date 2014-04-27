@@ -954,7 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermre
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Anders
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset voor graphics
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies de te gebruiken basisset voor graphics
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ontbrekend{P "" e}/corrupt{P "" e} bestand{P "" en}
@@ -1323,7 +1322,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formaat van de 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lang (31e dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatisch pauzeren als je een nieuw spel start: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wanneer ingeschakeld, het spel zal automatisch pauzeren bij het starten van een nieuw spel, waardoor nadere bestudering van de kaart mogelijk is
@@ -1783,6 +1781,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Vrachttram
 STR_FACE_CAPTION                                                :{WHITE}Gezichtskeuze
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annuleer nieuwe gezichtskeuze
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accepteer nieuwe gezichtskeuze
+STR_FACE_RANDOM                                                 :{BLACK}Willekeurig maken
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mannelijk
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selecteer mannelijke gezichten
@@ -2662,7 +2661,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hoogte van sneeuwgrens:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschuif de sneeuwgrens één omhoog
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwgrens één omlaag
-STR_FACE_RANDOM                                                 :{BLACK}Willekeurig maken
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
@@ -3273,6 +3271,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hernoem de geselecteerde groep
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Toevoegen gedeelde voertuigen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwijder alle voertuigen

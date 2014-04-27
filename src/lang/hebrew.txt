@@ -968,7 +968,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלו
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{P 0 "קובץ " ""}{NUM}{P "" " קבצים"} חסר{P 0 "" ים}/הושחט{P 0 "" ו}
@@ -1337,7 +1336,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :פורמט הת
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ארוך (31 בדצמבר 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :קצר (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :עצור משחק אוטומטית אחרי התחלת משחק חדש: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :כאשר מאופשר, המשחק יושהה אוטומטית בעת התחלת משחק חדש, דבר המאפשר בחינה מדוקדקת יותר של המפה
@@ -1788,6 +1786,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :חשמלית מ
 STR_FACE_CAPTION                                                :{WHITE}בחירת תווי פנים
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}בטל פנים חדשות
 STR_FACE_OK_TOOLTIP                                             :{BLACK}אישור תווי פנים
+STR_FACE_RANDOM                                                 :{BLACK}אקראית
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}גבר
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}בחר תווי פנים של גברים
@@ -2651,7 +2650,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK} :מספ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}גובה קו השלג
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}הגבה את קו השלג
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}הנמך את קו השלג
-STR_FACE_RANDOM                                                 :{BLACK}אקראית
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :יצירת קרקע
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}אלגוריתם העצים:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
@@ -3246,6 +3244,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}לחץ �
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}מחק את הקבוצה שנבחרה
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}שנה את שם הקבוצה
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}לחץ על מנת להגן על הכלים בקבוצה בפני החלפה אוטומטית
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :הוסף כלים
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :הסר את כל הכלים מהקבוצה

@@ -955,7 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildschi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Bildschirmauflösung auswählen
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Andere
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisgrafiken
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fehlende/fehlerhafte Datei{P "" en}
@@ -1324,7 +1323,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Lege das Datums
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langes (25. Dez 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kurzes (25-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-25)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatische Pause bei Spielstart: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Starte ein Spiel im Pausenmodus; dies erlaubt vor Spielstart, die Karte ausführlich zu betrachten.
@@ -1784,6 +1782,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Frachtstraßenb
 STR_FACE_CAPTION                                                :{WHITE}Gesicht auswählen
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Gesichtswahl abbrechen
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Gesichtswahl übernehmen
+STR_FACE_RANDOM                                                 :{BLACK}Zufällig
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Männlich
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wähle männliches Gesicht aus
@@ -2663,7 +2662,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industri
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Schneegrenze:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Schneegrenze um eine Stufe erhöhen
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Schneegrenze um eine Stufe senken
-STR_FACE_RANDOM                                                 :{BLACK}Zufällig
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baumalgorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:

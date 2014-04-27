@@ -478,7 +478,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
-
 # Custom currency window
 
 
@@ -534,7 +533,6 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Obskur-verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
-
 
 
 
@@ -956,6 +954,7 @@ STR_GROUP_DEFAULT_TRAINS                                        :Negrupigita tre
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupigita voy-vehili
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupigita navi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupigita aeronavi
+
 
 
 

@@ -944,9 +944,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}وضوح
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}وضوح تصویر دلخواه را انتخاب کنید
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}قالب ذخیره تصویر بازی
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}قالب ذخیره تصویر بازی را انتخاب نمایید
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بسته گرافیک پایه
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بسته گرافیک پایه را انتخاب کنید
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} فایل وجود ندارد یا خراب است
@@ -1097,7 +1094,6 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :خرابی وس
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :ضریب سوبسید: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :هزینه های ساخت و ساز: {STRING}
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :اجازه ساخت در دامنه ها و سواحل: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره (شیب خودکار): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره بدون نیاز به تخریب
 STR_CONFIG_SETTING_CATCHMENT                                    :واقع بینانه تر شدن اندازه حوضه آبریز: {STRING}
@@ -1110,10 +1106,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :روش سرعت
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :غیر قابل پیچیدن سر پیچ های ۹۰° برای قطار و کشتی ها: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :قابلیت اتصال ایستگاه هایی که مستقیما به هم وصل نیستند: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :استفاده از الگوریتم بهبود یافته برای بارگذاری : {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :بارگیری وسایل نقلیه به تدریج: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :تورم: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :بار را فقط زمانی به ایستگاه تحویل بده که درخواستی برای آن باشد: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :حداکثر طول پل: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :حداکثر طول تونل: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :روش ساخت و ساز اولیه صنعت توسط کاربر: {STRING}
@@ -1132,7 +1125,6 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :توقف قطا
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ابتدا
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :میانه
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :انتها
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :جاده صف‌بندی خودروی جاده‌ای (با اثرات کوانتومی): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :جابجا‌شدن نمایش هنگام نزدیک شدن نشانگر موس به لبه ها: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :قابلیت رشوه دادن به مقامات محلی: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :قابلیت انحصاری کردن حقوق حمل و نقل: {STRING}
@@ -1147,8 +1139,6 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کاهش
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :عادی
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :اجازه رانندگی در خیابان‌های شهر{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :اجازه استفاده از جاده یک بازیکن توسط دیگر رقیبان: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :قابلیت ساخت ایستگاه‌های متصل به هم: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :قابلیت استفاده از چندین بسته NewGRF: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغییر دادن این تنظیم هنگامی که خودرو وجود دارد ممکن نیست
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :تعمیر و نگهداری زیرساخت ها: {STRING}
 
@@ -1184,8 +1174,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :جهت چرخش
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :پادساعت‌گرد
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ساعت‌گرد
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :سطح ارتفاعی که نقشه‌ی سناریو می‌تواند داشته باشد: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :فعال کردن محوطه سازی با قطعه‌ها در مرزهای نقشه: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :در صورت غیر فعال شدن، تمامی لبه های نقشه دریا خواهد بود
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}یک یا چند قطعه در لبه شمالی که خالی نیست
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}یک یا چند قطعه در لبه شمالی که آب نیست
 
@@ -1220,10 +1208,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :از این {ST
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طولانی (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :کوتاه(31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :پالت پیش فرض برای NewGRF هایی که پالتی برایشان مشخص نگردیده: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :پالت سیستم عامل داس
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :پالت ویندوز
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :توقف خودکار هنگام آغاز بازی جدید: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :قابلیت ها در زمان متوقف بودن بازی: {STRING}
@@ -1337,7 +1321,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :عادی
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تند
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بسیار تند
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابتدایی اندازه شهرستان: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :حذف عناصر پوچ جاده در طول ساخت و ساز جاده: {STRING}
 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :واحدهای سرعت: {STRING}
@@ -1382,7 +1365,6 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}رقی�
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}نمایش گزینه ها
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}اثرمتقابل
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}نشانگرها
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}مدیریت محموله
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}بازیگران رایانه
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}نوسازی خودکار
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}تعمیر و بازبینی
@@ -2402,10 +2384,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}تعدا
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}ارتفاع خط برف:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}اضافه کردن یک واحد به ارتفاع خط برف
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}کم کردن یک واحد از ارتفاع خط برف
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}شماره ساخت تصادفی:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}برای وارد کردن شماره تصادفی کلیک کنید
-STR_MAPGEN_RANDOM                                               :{BLACK}انتخاب تصادفی
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}شماره ساخت تصادفی برای ساخت زمین و پستی و بلندی ها به کار می رود
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}سازنده زمین:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}الگوریتم درخت ها:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}نوع پستی/بلندی:
@@ -2432,7 +2410,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}نام �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}اندازه:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}یک عدد تصادفی وارد کنید
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}تغییر ارتفاع خط برف
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}تغییر سال آغاز
 
@@ -2914,6 +2891,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :فرستادن 
 
 
 # Group window
+
 
 
 

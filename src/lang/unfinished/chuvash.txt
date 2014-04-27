@@ -497,8 +497,6 @@ STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Тулл
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Экрана сӑнарлама пултарни
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат экран сӑнӗ
-
 
 
 
@@ -575,7 +573,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Сӳнтер
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :вӑрӑм (2008 раш 31меш)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :кӗске (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 
 
@@ -1109,6 +1106,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 # Group window
+
 
 
 

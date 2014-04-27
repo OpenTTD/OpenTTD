@@ -954,7 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skærmop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vælg ønsket skærmopløsning
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafiksæt
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det basis-grafiksæt der skal bruges
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
@@ -1320,7 +1319,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formatet af dat
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sæt automatisk på pause når nyt spil startes: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktiveret, vil spillet automatisk pause når du starter et nyt spil, det giver mulighed for at studerer kortet nærmere
@@ -1780,6 +1778,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Fragt-sporvogn
 STR_FACE_CAPTION                                                :{WHITE}Ansigtsvalg
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annuller nyt valg af ansigt
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accepter nyt ansigtsvalg
+STR_FACE_RANDOM                                                 :{BLACK}Tilfældig
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mand
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vælg mandlige ansigter
@@ -2658,7 +2657,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snegrænse
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt snegrænsen een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt snegrænsen een ned
-STR_FACE_RANDOM                                                 :{BLACK}Tilfældig
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Terrængenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
@@ -3268,6 +3266,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik for
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Slet den valgte gruppe
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Omdøb den valgte gruppe
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik for at beskytte denne gruppe mod global auto-udskiftning
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tilføj delte køretøjer
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køretøjer

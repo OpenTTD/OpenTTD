@@ -1107,7 +1107,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ločljiv
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izberi ločljivost zaslona
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manjkajoč{P a i e ih}/okvarjen{P a i e ih} datotek{P a i e ""}
@@ -1470,7 +1469,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma v
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dolg (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratek (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Avtomatsko pavziraj ob zagonu nove igre: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Če je omogočeno, se igra avtomatsko pavzira ob zagonu nove igre, za preučitev ozemlja.
@@ -1930,6 +1928,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tovorni tramvaj
 STR_FACE_CAPTION                                                :{WHITE}Izbira obraza
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Prekliči izbiro novega obraza
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Sprejmi nov obraz
+STR_FACE_RANDOM                                                 :{BLACK}Naključno
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Moški
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izberi moške slike
@@ -2808,7 +2807,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Število
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Višina snežne meje:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Premik snežne meje eno enoto višje
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Premik snežne meje eno enoto nižje
-STR_FACE_RANDOM                                                 :{BLACK}Naključno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ustvarjalec terena:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritem dreves:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip terena:
@@ -3418,6 +3416,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikni z
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Izbriši izbrano skupino
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Preimenuj izbrano skupino
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikni za zaščito skupine pred splošno samoobnovo
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Vsa izmenljiva vozila
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrani vsa vozila

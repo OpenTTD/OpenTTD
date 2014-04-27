@@ -955,7 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm re
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kies die skerm resolusie om te gebruik
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikastel
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die basis-grafikastel stel om te gebruik
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} verlore / korrupte ler{P "" s}
@@ -1324,7 +1323,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formaat van dat
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lank (31ste Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Outomaties pouse wanneer om te begin 'n nuwe speletjie: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :As hierdie opsie geaktiveer is, sal die spel gepousseer wees wanneer die spel begin.
@@ -1784,6 +1782,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Vrag Trem
 STR_FACE_CAPTION                                                :{WHITE}Gesig Keuse
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Kanselleer nuwe gesig keuse
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aanvar nuwe gesig keuse
+STR_FACE_RANDOM                                                 :{BLACK}Lukraake
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Manlik
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Kies manlik gesigte
@@ -2662,7 +2661,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Hoev. ny
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sneeu lyn hoogte:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg die sneeu lyn een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweeg die sneeu lyn een af
-STR_FACE_RANDOM                                                 :{BLACK}Lukraake
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land genereerder:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boom algoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrein tipe:
@@ -3273,6 +3271,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Vee uit die gekose groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hernoem die gekose groep
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om hierdie groep teen outovervanging te beskerm
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Voeg gedeelde voertuie
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwyder alle voertuie

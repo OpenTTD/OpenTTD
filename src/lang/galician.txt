@@ -955,7 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluci
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona a resolución de pantalla a empregar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conxunto básico de gráficos
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona o conxunto de gráficos básico a empregar
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo{P "" s} inexistente{P "" s}/erróneo{P "" s}
@@ -1318,7 +1317,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automáticamente ó comezo dunha nova partida: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Cando estea activado, a partida pausarase automaticamente ao comezo dun novo xogo, permitindo un estudo detallado do mapa
@@ -1766,6 +1764,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de car
 STR_FACE_CAPTION                                                :{WHITE}Selección de cara
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancela-la selección dunha nova cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acepta-la selección da nova cara
+STR_FACE_RANDOM                                                 :{BLACK}Aleatorio
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Home
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Seleccionar caras masculinas
@@ -2642,7 +2641,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nº de i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Cota de neve:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Subir a cota de neve unha altura
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baixar a cota de neve unha altura
-STR_FACE_RANDOM                                                 :{BLACK}Aleatorio
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Xerador de terreo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo para árbores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreo:
@@ -3248,6 +3246,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Pincha p
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borrar o grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renomear o grupo seleccionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Pincha para protexer a este grupo da autosubstitución global
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Engadir vehículos compartidos
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Borrar tódolos vehículos

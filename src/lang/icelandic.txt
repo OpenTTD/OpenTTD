@@ -935,7 +935,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjáupp
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Stilla skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grunngrafík
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota grunngrafíkina
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} týnd{P "" ar} eða ónýt{P "" ar} skrá{P "" r}
@@ -1298,7 +1297,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Snið á dagset
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :löngu (31. Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :stuttu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Setja leik á bið þegar nýr leikur er hafinn: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ef þessi stilling er virk mun leikurinn fara sjálfvirkt á bið þegar nýr leikur hefst. Það gefur færi á að skoða kortið betur
@@ -1703,6 +1701,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Farmsporvagn
 STR_FACE_CAPTION                                                :{WHITE}Andlitsval
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Hætta við andlitsval
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Samþykkja andlitsval
+STR_FACE_RANDOM                                                 :{BLACK}Nýtt raðnúmer
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Karlmaður
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Velja karlmannsandlit
@@ -2567,7 +2566,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fjöldi 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hæð snjólínu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Hækka snjólínu upp um eitt þrep
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lækka snjólínu niður um eitt þrep
-STR_FACE_RANDOM                                                 :{BLACK}Nýtt raðnúmer
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Planta trjám:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:
@@ -3139,6 +3137,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Smelltu 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Eyða völdum hóp
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Endurnefna valinn hóp
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Smelltu til að halda þessum hóp frá sjálfvirkri uppfærslu
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Bæta við deildu farartæki
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjarlægja öll farartæki

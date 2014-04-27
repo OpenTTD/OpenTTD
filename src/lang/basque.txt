@@ -941,7 +941,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantaila
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} galdutako/hautsitako artxiboa{P "" k}
@@ -1300,7 +1299,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Gordetako fitxe
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :luzea (2008ko Abe 31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :laburra (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatikoki jokoa pausan jarri joko berri bat hastearakoan: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Gaitua dagoenean, joko berria hasterakoan automatikoki pausatua egongo da, aldez aurretik mapa aztertzeko
@@ -1700,6 +1698,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Merkantzietarak
 STR_FACE_CAPTION                                                :{WHITE}Aurpegia aukeratu
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Bertan behera utzi aurpegia aukeratu
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aurpegi berria onartu
+STR_FACE_RANDOM                                                 :{BLACK}Ausaz egin
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Gizonezkoa
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Aukeratu gizonezko aurpegiak
@@ -2570,7 +2569,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industri
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Elur garaiera:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Igo puntu batean elur garaiera
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Jeitsi puntu batean elur garaiera
-STR_FACE_RANDOM                                                 :{BLACK}Ausaz egin
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Zuhaitz algoritmoa:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Lur mota:
@@ -3169,6 +3167,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikatu 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Aukeratutako taldea ezabatu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Aukeratutako taldea berrizendatu
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikatu taldean ordezkatze orokorretik babesteko
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Geheitu konpartituako ibilgailuak
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ibilgailu guztiak ezabatu

@@ -954,7 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi layar yang diinginkan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Grafik Dasar
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih grafik dasar yang digunakan
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} berkas hilang atau rusak
@@ -1323,7 +1322,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format tanggal 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :panjang (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :pendek (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Selalu hentikan sementara permainan saat memulai : {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Jika diaktifkan, permainan akan berhenti sejenak secara otomatis ketika permainan baru dimulai, memungkinkan untuk lebih mempelajari peta
@@ -1783,6 +1781,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trem Barang
 STR_FACE_CAPTION                                                :{WHITE}Pilihan Wajah
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Batalkan pemilihan wajah baru
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Terima pilihan wajah baru
+STR_FACE_RANDOM                                                 :{BLACK}Acak angka
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Pria
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Pilih wajah pria
@@ -2662,7 +2661,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Tinggi garis salju:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Naikkan ketinggian garis salju satu angka
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Turunkan ketinggian garis salju satu angka
-STR_FACE_RANDOM                                                 :{BLACK}Acak angka
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pohon:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:

@@ -935,7 +935,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm up
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel hvørja skermupploysn tú vil brúka
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base grafikk sett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel ta base grafikk setti tú vil brúka
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} vantandi/oyðiløgd fíl{P a ir}
@@ -1299,7 +1298,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Des 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :stutt (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sjálvirknan steðg tá nýtt spæl verður byrja: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Um gilda er spæli steðga tá ið tú byrjar eitt nýtt spæl, hetta loyvir tær at skoða korti í frið og náðum
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Meðan steðgur er, loyv: {STRING}
@@ -1661,6 +1659,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :{G=m}Góðs spo
 STR_FACE_CAPTION                                                :{WHITE}Andlits úrval
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Angra nýtt andlits val
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Góðtak nýtt andlits val
+STR_FACE_RANDOM                                                 :{BLACK}Blanda
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Kallkyn
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vel kallkyns andlit
@@ -2458,7 +2457,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. av �
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hædd á kava linju:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt kava linjuna eitt upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt kava linjuna eitt niður
-STR_FACE_RANDOM                                                 :{BLACK}Blanda
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træ algoritma:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Slag av lendi:
@@ -2976,6 +2974,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Trýst f
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Strika valda bólkin
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Navngev valda bólkin
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Trýst fyri at verja hendan bólkin móti alheims sjálvendurnýggjan
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Legg deild flutningstól til
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bein øll flutningstól burtur

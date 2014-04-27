@@ -1082,7 +1082,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Розд
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть роздільну здатність екрану
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} відсутн{P ій іх іх}/пошкоджен{P ий их их} файл{P "" а ів}
@@ -1448,7 +1447,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат д
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :довгий (31 Гру 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Пауза на початку нової гри: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :При включенні на початку гри автоматично вмикається пауза.
@@ -1904,6 +1902,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Вантажн�
 STR_FACE_CAPTION                                                :{WHITE}Вибір обличчя
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Відмінити вибір нового обличчя
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Підтвердити вибір нового обличчя
+STR_FACE_RANDOM                                                 :{BLACK}Випадково
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Чоловік
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Вибрати чоловіче обличчя
@@ -2778,7 +2777,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кіль
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Висота лінії снігу:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Підвищити лінію снігу
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Понизити лінію снігу
-STR_FACE_RANDOM                                                 :{BLACK}Випадково
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ландшафт:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Насадження дерев:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафту:
@@ -3372,6 +3370,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Клік
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Стерти вибрану групу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перейменувати вибрану групу
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Клікніть, щоб захистити групу від глобальної автозаміни
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Додати спільний транспорт
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбутися всього транспорту

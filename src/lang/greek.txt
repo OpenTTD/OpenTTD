@@ -1041,7 +1041,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλ
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} αρχεί{P ο α} που λείπ{P ει ουν} ή είναι κατεστραμμέν{P ο α}
@@ -1407,7 +1406,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Μορφή τη
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μακριά (31 Δεκ 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Όταν είναι ενεργοποιημένο, τα νέα παιχνίδια ξεκινούν σε παύση αυτόματα, επιτρέποντας καλύτερη μελέτη του χάρτη
@@ -1815,6 +1813,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Εμπορικ�
 STR_FACE_CAPTION                                                :{WHITE}Επιλογή Προσώπου
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Ακύρωση επιλογής νέου προσώπου
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Αποδοχή νέου προσώπου
+STR_FACE_RANDOM                                                 :{BLACK}Τυχαίος
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Αρσενικό
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Επιλογή αρσενικών προσώπων
@@ -2686,7 +2685,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
-STR_FACE_RANDOM                                                 :{BLACK}Τυχαίος
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
@@ -3270,6 +3268,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Κάντ
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Διαγραφή της επιλεγμένης ομάδας
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Μετονομασία της επιλεγμένης ομάδας
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Κάντε κλικ για προστατέψετε αυτήν την ομάδα από την γενική αυτόματη αντικατάσταση
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Προσθήκη κοινόχρηστων οχημάτων
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεση όλων των οχημάτων

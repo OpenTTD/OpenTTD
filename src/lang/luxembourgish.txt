@@ -954,7 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildopl�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wielt d'Bildopléisung
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaneres
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis Grafikset
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wielt den Basis Grafikset fir ze benotzen
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fehlend/korrupt Datei{P "" en}
@@ -1323,7 +1322,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format vum Datu
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :laang (31ten Dez 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kuerz (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatesch Pausen beim Start vun enger neier Partie: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wann ugeschalt, pauséiert d'Spill automatesch wann en neit Spill gestart gëtt, wat erlaabt d'Kaart besser ze studéieren
@@ -1783,6 +1781,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Wuerentram
 STR_FACE_CAPTION                                                :{WHITE}Gesiichtsauswiel
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Briech d'Auswiel vum Gesiicht of
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accépteier néit Gesiicht
+STR_FACE_RANDOM                                                 :{BLACK}Duercherneen wierfelen
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Männlech
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wielt männlech Gesiichter
@@ -2662,7 +2661,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Unz. Ind
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Weis d'Schnéilinnhéicht
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweg Schnéilinnhéicht rop
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweg Schnéilinnhéicht rof
-STR_FACE_RANDOM                                                 :{BLACK}Duercherneen wierfelen
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baam Algorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:

@@ -923,9 +923,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}اسکر
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اسکرین کی resolution اختیار کریں
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}اسکرین کی تصویر کا فارمیٹ
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}اسکرین کی تصویر کے استعال کے لئے فارمیٹ اختیار کریں
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بُنیادی گرافک سیٹ
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بُنیادی گرافک سیٹ اختیار کریں
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} missing/corrupted file{P "" s}
@@ -1047,7 +1044,6 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :درمیان
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :ڈھلان اور ساحل پر تعمیر کی اجازت: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :تعمیرات کے نیچے منظر کشی کی اجازت: {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :کوریج کے علاقے کے حقیقت پسندانہ سائز کی اجازت: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :شہروں کی ملکیت زیادہ سڑکوں، پلوں اور سرنگوں کو توڑنے کی اجازت: {STRING}
@@ -1060,10 +1056,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :گاڑی کو �
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :ریل گاڑیوں اور بحری جہازوں کو 90° مڑنے سے روکیں: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :اسٹیشنوں کو جوڑنے کی اجازت: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :سامان لوڈ کرنے کا بہتر طریقہ استعمال کریں: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :گاڑیوں کو آہستہ آہستہ بھریں: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :افراط زر: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :سامان صرف اُسی صورت میں کسی اسٹیشن تک پہنچایا جب وہ اُسے قبول کرتا ہو: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :پل کی زیادہ سے زیادہ لمبائی: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :پل بنانے کی زیادہ سے زیادہ لمبائی
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :سرنگ کی زیادہ سے زیادہ لمبائی: {STRING}
@@ -1081,7 +1074,6 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :نئے احکا
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :شروع میں
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :درمیان میں
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :آخر میں
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :گاڑیوں کی قطار: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :ونڈو کو پین کرو جب ماؤس کنارے پر ہو: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :مقامی اتھارٹی کی رشوت کی اجازت دیں: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {STRING}
@@ -1095,8 +1087,6 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کم
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :نارمل
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :شہر کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :مد مقابلوں کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :اسٹیشن کے ساتھ اسٹیشں بنانے کی اجازت: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :ایک سے زیادہ NewGRF انجن سیٹوں کو فعال کریں: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}جب گاڑیاں موجود ہوں تو یہ سیٹنگ بدلنا ممکن نہیں
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :انفراسٹرکچر کی بحالی: {STRING}
 
@@ -1132,8 +1122,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اونچائی 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :الٹی گھڑی وار
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :گھڑی وار
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :ایک سیدھے scenario والا نقشہ کتنا اونچا ہو گا: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :نقشے کے کناروں پر منظر کشی فعال کریں: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :اگر منع کر دیا، تو نقسے کی حدود ہمیشہ سمندر ہوں گی
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}جنوبی کنارے پر ایک یا ایک سے زیادہ ٹائلیں خالی نہیں ہیں
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}کسی کنارے پر ایک یا ایک سے زیادہ ٹائلیں پانی کی نہیں ہیں
 
@@ -1164,9 +1152,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :کھیل کو �
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :نیا کھیل شروع کرنے پر خودکار توقف: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :توقف کے دوران اجازت دیں: {STRING}
@@ -1279,7 +1264,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :نارمل
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تیز
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بہت تیز
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا شروعاتی ضارب: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :سڑک کی تعمیر کے دوران غلط تعمیر شدہ حصوں کو ہٹا دے: {STRING}
 
 
 
@@ -1297,7 +1281,6 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}مد م
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}ڈسپلے کے اختیارات
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}چوراہا
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}اشعارے
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}سامان کو سنبھالنا
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}کمپیوٹر کے کھلاڑی
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}خودکار تبدیلی
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}مرمت
@@ -2327,6 +2310,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 # Group window
+
 
 
 

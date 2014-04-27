@@ -1011,7 +1011,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanil
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Alusgraafika kogu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava alusgraafika kogu
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
@@ -1380,7 +1379,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Kuupäeva vormi
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pikka (31. dets 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühikest (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Mängu alguses mäng seisab: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Sisse lülitamisel mängu alguses aeg seisab, et oleks rohkem aega kaardiga tutvuda
@@ -1840,6 +1838,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Kaubatramm
 STR_FACE_CAPTION                                                :{WHITE}Näo valik
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Tühista uue näo valimine
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Uue näo valimine
+STR_FACE_RANDOM                                                 :{BLACK}Suvaline
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mees
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vali mehe nägu
@@ -2718,7 +2717,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstu
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumepiiri kõrgus:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Lumepiiri liigutamine ühe võrra üles
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lumepiiri liigutamine ühe võrra alla
-STR_FACE_RANDOM                                                 :{BLACK}Suvaline
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maatekituse meetod:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puude algoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:

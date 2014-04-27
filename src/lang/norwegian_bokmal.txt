@@ -956,7 +956,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Velg skjermoppløsningen som skal brukes
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglende/ødelagt{P "" e} fil{P "" er}
@@ -1325,7 +1324,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datoformat i la
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pause automatisk ved start av nytt spill: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktivert, vil spillet automatisk pause når du starter et nytt spill, for å tillate nærmere studie av kartet
@@ -1785,6 +1783,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Varetrikk
 STR_FACE_CAPTION                                                :{WHITE}Velg ansikt
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Avbryt ansiktsvalg
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Godta nytt ansikt
+STR_FACE_RANDOM                                                 :{BLACK}Tilfeldiggjør
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mann
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Velg mannsansikter
@@ -2664,7 +2663,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antall i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høyde på snøgrensen:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høyden på snøgrensen ett hakk opp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høyden på snøgrensen ett hakk ned
-STR_FACE_RANDOM                                                 :{BLACK}Tilfeldiggjør
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype:

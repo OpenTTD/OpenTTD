@@ -1099,7 +1099,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Разр
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Выбор разрешения экрана
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Другое
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовый набор графики
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбрать базовый набор графики
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} отсутствующи{P й х х}/повреждённы{P й х х} файл{P "" а ов}
@@ -1475,7 +1474,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат д
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008 г.)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31.12.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Автопауза в начале игры: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Включение паузы при старте новой игры, чтобы лучше изучить карту
@@ -1935,6 +1933,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Грузово�
 STR_FACE_CAPTION                                                :{WHITE}Внешний вид
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Не менять внешность
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Применить новую внешность
+STR_FACE_RANDOM                                                 :{BLACK}Случайное
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Мужское
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Выбор мужских лиц
@@ -2842,7 +2841,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кол-�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снеговая линия:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Поднять снеговую линию
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Опустить снеговую линию
-STR_FACE_RANDOM                                                 :{BLACK}Случайное
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландшафта:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:

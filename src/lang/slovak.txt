@@ -1022,7 +1022,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozlíš
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Voľba rozlíšenia obrazovky
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základná sada grafiky
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
@@ -1391,7 +1390,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formát dátumo
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlhý (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátky (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatická pauza pri štarte novej hry: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ak je zapnuté, hra sa automaticky zapauzuje ked začne nová hra. Toto umožňuje lepšie preskúmanie mapy hry pred začatím.
@@ -1851,6 +1849,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Nákladná elek
 STR_FACE_CAPTION                                                :{WHITE}Výber tváre
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Zrušiť výber novej tváre
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Potvrdiť výber tváre
+STR_FACE_RANDOM                                                 :{BLACK}Nový kód
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Muž
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Výber mužských tvárí
@@ -2730,7 +2729,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Počet p
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Výška línie snehu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšiť výšku snehovej čiary
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Znížiť výšku snehovej čiary
-STR_FACE_RANDOM                                                 :{BLACK}Nový kód
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Generátor stromov:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terénu:
@@ -3341,6 +3339,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikni p
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Zrušiť vybranú skupinu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Premenovať vybranú skupinu
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikni pre znemožnenie automatického nahradzovania v skupine
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pridat zdielané vozidlá
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrániť všetky vozidlá

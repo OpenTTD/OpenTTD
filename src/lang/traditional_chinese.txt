@@ -954,7 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}螢幕�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其它
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
@@ -1323,7 +1322,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :在存檔的檔
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長格式 (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際格式 (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :自動在開始新遊戲時暫停：{STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :如啟用此選項，遊戲在開始時會自動暫停，方便玩家詳細觀察地圖
@@ -1783,6 +1781,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :載貨電車
 STR_FACE_CAPTION                                                :{WHITE}選擇臉孔
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}取消選擇新臉孔
 STR_FACE_OK_TOOLTIP                                             :{BLACK}接受新臉孔
+STR_FACE_RANDOM                                                 :{BLACK}亂數化
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}男性
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}選擇男性臉孔
@@ -2662,7 +2661,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線高度：
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}將雪線高度上移一層
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}將雪線高度下移一層
-STR_FACE_RANDOM                                                 :{BLACK}亂數化
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形產生器：
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}植樹演算法：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：

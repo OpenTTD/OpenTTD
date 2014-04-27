@@ -946,7 +946,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Разм
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Избор размера на екран
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Изберете базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} липсващи/повредени файлове
@@ -1318,7 +1317,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат н
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :дълъг (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :къс (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
-
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Игрите започват в пауза: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ако тази опция бъде активирана, играта автоматично ще бъде паузирана, когато започнете нова игра, това ще ви позволи да изучите по-подробно картата
@@ -1753,6 +1751,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Товарен 
 STR_FACE_CAPTION                                                :{WHITE}Избор на лице
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Прекъсване избора на ново лице
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Признавам избора на ново лице
+STR_FACE_RANDOM                                                 :{BLACK}Произволно
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Мъж
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Избери мъжки лица
@@ -2621,7 +2620,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Брой
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снежна линия:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Преместване снежната линия нагоре
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Преместване снежната линия надолу
-STR_FACE_RANDOM                                                 :{BLACK}Произволно
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Земегенератор:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Дърворазсад:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип на терен:
@@ -3197,6 +3195,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Щрак
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Изтрий избраната група
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Преименувай избраната група
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Щракни да защитиш тази група от глобална автоматична замяна
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добави споделени превозни средства
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахни всички превозни средсва

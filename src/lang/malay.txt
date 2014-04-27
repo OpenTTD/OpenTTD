@@ -931,7 +931,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi skrin untuk digunakan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
-
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafik asas
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih set grafik asas untuk digunakan
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fail hilang/rosak
@@ -1244,7 +1243,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :panjang (31hb D
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :pendek (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Berhenti automatik ketika memulakan permainan yang baru: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Semasa dihentikan, dibenarkan: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Tiada tindakan
@@ -1536,6 +1534,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trem Tambang Mu
 STR_FACE_CAPTION                                                :{WHITE}Pilihan Wajah
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Batal pilihan wajah baru
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Terima pilihan wajah baru
+STR_FACE_RANDOM                                                 :{BLACK}Rambangkan
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Lelaki
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Pilih wajah lelaki
@@ -2395,7 +2394,6 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Paras ketinggian garis salji:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tinggikan paras garis salji satu petak
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Rendahkan paras garis salji satu petak
-STR_FACE_RANDOM                                                 :{BLACK}Rambangkan
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Janaan tanah:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pokok:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis rupa bumi:
@@ -2959,6 +2957,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik unt
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Padamkan kumpulan yang telah dipilih
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Tukar nama kumpulan yang terpilih
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik untuk menghalang daripada kumpulan ini digantikan secara automatik
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tambah kenderaan berkongsi
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Buang semua kenderaan
