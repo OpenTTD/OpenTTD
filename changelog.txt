@@ -1,3 +1,19 @@
+1.4.0 (2014-04-01)
+------------------------------------------------------------------------
+(None)
+
+
+1.4.0-RC1 (2014-03-18)
+------------------------------------------------------------------------
+- Feature: [Script] APIs to get cargo waiting from/via other station (r26396)
+- Fix: Do not explain "symmetric" cargodist mode when the setting does not allow it [FS#5939] (r26394)
+- Fix: Update distances between link graph nodes when station sign is moved (r26393)
+- Fix: No need to call OnFocus twice [FS#5933] (r26392)
+- Fix: Select a specific font size when freetype fails to select one automatically [FS#5885] (r26389)
+- Fix: Return correct values from ICU iterators in case of leading or trailing whitespace [FS#5924] (r26384)
+- Fix: All goal commands invalidated the goal list of company 0 [FS#5932] (r26382)
+
+
 1.4.0-beta5 (2014-02-25)
 ------------------------------------------------------------------------
 - Feature: Warn the user about empty setting search results, and about missing setting search results due to filtering (r26322, r26321)
