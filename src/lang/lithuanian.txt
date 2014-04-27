@@ -1821,7 +1821,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. pri
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Krovinių pasiskirstymas
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutas
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miestai

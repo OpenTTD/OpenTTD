@@ -1814,7 +1814,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbada
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Sgaoileadh carago
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Èifeachdan fuaime
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharran
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Lorg shlighean
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailtean

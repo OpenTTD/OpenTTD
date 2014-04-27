@@ -1613,7 +1613,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicle
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribució de la Càrrega
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidors
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectes de so
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Senyals
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadors de l'ordinador (IA)
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Recorreguts
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Poblacions

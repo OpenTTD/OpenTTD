@@ -1676,7 +1676,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Jármű
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rakományok szétosztása (úticélok)
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Jelzők
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Települések

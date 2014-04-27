@@ -1619,7 +1619,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי 
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
 STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}רמזורים
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}שחקני מחשב
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}ניתוב
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}ערים

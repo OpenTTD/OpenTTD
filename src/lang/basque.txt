@@ -1530,7 +1530,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgai
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama Banaketa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinu efektuak
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinaleak
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ibilbideak
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Herriak

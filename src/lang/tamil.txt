@@ -1419,7 +1419,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வா�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}சரக்கு பரிமாற்றம்
 STR_CONFIG_SETTING_AI                                           :{ORANGE}போட்டியாளர்கள்
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}ஒலிகள்
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}சிக்னல்கள்
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}கணினி வீரர்கள்
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}வழி மாற்றல்
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}நகரங்கள்

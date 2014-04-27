@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ajoneuv
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rahdin jakautuminen
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kilpailijat
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ääniefektit
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Opastimet
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Tietokonepelaajat
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Reititys
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kaupungit

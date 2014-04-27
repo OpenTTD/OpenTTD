@@ -1304,7 +1304,6 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstru
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurantoj
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sonefektoj
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaloj
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Komputil-ludantoj
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Navigado
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Urboj

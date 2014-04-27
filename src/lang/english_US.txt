@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicle
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Cargo Distribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound effects
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routing
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Towns

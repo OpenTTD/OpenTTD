@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}運輸�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}貨物分配
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競爭對手
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音效
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}號誌
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}電腦玩家
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}路線
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}市鎮

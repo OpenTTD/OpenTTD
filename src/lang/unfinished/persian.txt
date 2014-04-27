@@ -1360,7 +1360,6 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}ساخ�
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}توزیع محموله
 STR_CONFIG_SETTING_AI                                           :{ORANGE}رقیبان
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}نشانگرها
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}بازیگران رایانه
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}مسیریابی
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}شهرها

@@ -1536,7 +1536,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyret
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byar

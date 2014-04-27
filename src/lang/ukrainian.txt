@@ -1734,7 +1734,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Тра�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Розподіл вантажів
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренти
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукові ефекти
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Віртуальні гравці
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрути
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Міста

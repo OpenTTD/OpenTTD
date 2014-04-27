@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}车辆
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}货物分配
 STR_CONFIG_SETTING_AI                                           :{ORANGE}竞争
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音响效果
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}信号灯
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}电脑玩家
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}经由
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}城镇

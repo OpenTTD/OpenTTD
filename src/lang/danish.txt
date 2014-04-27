@@ -1609,7 +1609,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køret�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer

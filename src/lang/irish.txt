@@ -1274,7 +1274,6 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Comhéa
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Tógáil
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Feithiclí
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Iomaitheoirí
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharthaí
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ríomh-imreoirí
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ródú
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailte

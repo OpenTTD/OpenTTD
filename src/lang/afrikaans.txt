@@ -1613,7 +1613,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertui
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrag Verspreiding
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mededingers
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Klankeffekte
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seine
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Rekenaar spelers
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Roete
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Dorpe

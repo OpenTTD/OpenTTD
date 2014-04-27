@@ -1503,7 +1503,6 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Flutningstól
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kappingarneytar
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljóð effektir
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Tekin
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Teldu spælarir
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Beining
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bygdir

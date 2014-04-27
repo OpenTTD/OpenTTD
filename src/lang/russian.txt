@@ -1764,7 +1764,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Тра�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Распределение грузов
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звуковые эффекты
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигналы
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Искусственный интеллект
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Города

@@ -1276,7 +1276,6 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}انٹ�
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}تعمیرات
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}گاڑیاں
 STR_CONFIG_SETTING_AI                                           :{ORANGE}مد مقابل
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}اشعارے
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}کمپیوٹر کے کھلاڑی
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}روٹنگ
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}شہر

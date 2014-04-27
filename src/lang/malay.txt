@@ -1372,7 +1372,6 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaram
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Isyarat
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bandar-bandar

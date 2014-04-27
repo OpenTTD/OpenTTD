@@ -1607,7 +1607,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Véhicu
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribution des cargaisons
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Compétiteurs
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effets sonores
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaux
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence artificielle
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routage
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Villes

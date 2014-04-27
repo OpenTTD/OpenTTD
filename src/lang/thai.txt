@@ -1606,7 +1606,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยา�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}การกระจายสินค้า
 STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เสียงเอฟเฟกต์
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}อาณัติสัญญาณ
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง

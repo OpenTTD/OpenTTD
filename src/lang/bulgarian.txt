@@ -1583,7 +1583,6 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Стр�
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукови ефекти
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнализация
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Градове

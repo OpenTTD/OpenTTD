@@ -1591,7 +1591,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicul
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenţi
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efecte sonore
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Semnale (semafoare)
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oraşe

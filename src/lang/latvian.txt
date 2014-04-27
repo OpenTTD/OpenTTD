@@ -1563,7 +1563,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transpo
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kravu sadale
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņas efekti
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pārvietošanās
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pilsētas

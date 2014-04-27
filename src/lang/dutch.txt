@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertui
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrachtdistributie
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tegenstanders
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Geluidseffecten
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspelers
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routebepaling
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Steden

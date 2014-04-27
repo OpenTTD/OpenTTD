@@ -1302,7 +1302,6 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}الب�
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}المركبات
 STR_CONFIG_SETTING_AI                                           :{ORANGE}المتنافسين
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}الصوت
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}الإشارات
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} المسارات
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE} مدن

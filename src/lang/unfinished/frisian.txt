@@ -1546,7 +1546,6 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}konstru
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Auto's
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Frachtdistribusje
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Route
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stêd

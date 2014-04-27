@@ -1699,7 +1699,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Dopravn
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuce nákladu
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Návěstidla
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Umělá inteligence
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Směrování
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Města

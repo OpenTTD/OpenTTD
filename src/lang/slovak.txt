@@ -1680,7 +1680,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozidl�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribúcia nákladu
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Smerovanie
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mestá

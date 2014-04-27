@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Cerbyda
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dosraniad Cargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Cystadleuwyr
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effeithiau sŵn
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalau
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Chwaraewyr Cyfrifiadurol
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Trefi

@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kendara
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi Kargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efek suara
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyal
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain Komputer
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pengarahan
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kota

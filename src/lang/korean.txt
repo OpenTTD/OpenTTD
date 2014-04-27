@@ -1613,7 +1613,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}차량
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}화물 분배
 STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}효과음
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 플레이어
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}도시

@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Gefiere
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Wuerendistributioun
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Géigner
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soundeffekter
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspiller
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routenplangung
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stied

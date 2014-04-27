@@ -1614,7 +1614,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kjøret
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Gods-distribusjon
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandere
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinstyrte spillere
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer

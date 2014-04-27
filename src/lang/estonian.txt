@@ -1669,7 +1669,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Sõiduk
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kaubajaotus
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Heliefektid
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvuti
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruutimine
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Linnad

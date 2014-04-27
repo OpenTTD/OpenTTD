@@ -1759,7 +1759,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpored tovora
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvočni učinki
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerjanje
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mesta

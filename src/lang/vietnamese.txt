@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phươn
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân Bổ Hàng Hóa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hiệu ứng âm thanh
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Đèn báo
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đường
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Đô thị

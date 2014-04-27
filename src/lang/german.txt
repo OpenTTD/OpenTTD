@@ -1613,7 +1613,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fahrzeu
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Warenverteilung
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mitbewerber
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soundeffekte
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signale
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspieler
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wegsuche
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Städte

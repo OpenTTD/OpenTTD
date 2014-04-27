@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}輸送�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}貨物配送先
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競争会社
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}効果音
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}信号
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}コンピュータプレイヤー
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}経路構築
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}街

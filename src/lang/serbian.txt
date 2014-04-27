@@ -1730,7 +1730,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija Tovara
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiranje
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Naselja

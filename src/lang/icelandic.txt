@@ -1532,7 +1532,6 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Farartæki
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mótherji
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hljóð
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Umferðarmerki
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Leiðarvísun farartækja
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bæir

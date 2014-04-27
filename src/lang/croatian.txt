@@ -1708,7 +1708,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija tereta
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalni igrači
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutanje
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Gradovi

@@ -1612,7 +1612,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fordon
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Godsdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motståndare
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljudeffekter
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planering av resrutt
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Städer
