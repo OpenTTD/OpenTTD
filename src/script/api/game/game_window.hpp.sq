@@ -454,8 +454,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_MAPSIZE_Y_PULLDOWN,                 "WID_GL_MAPSIZE_Y_PULLDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_TOWN_PULLDOWN,                      "WID_GL_TOWN_PULLDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_INDUSTRY_PULLDOWN,                  "WID_GL_INDUSTRY_PULLDOWN");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_RANDOM_EDITBOX,                     "WID_GL_RANDOM_EDITBOX");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_RANDOM_BUTTON,                      "WID_GL_RANDOM_BUTTON");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_GENERATE_BUTTON,                    "WID_GL_GENERATE_BUTTON");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_START_DATE_DOWN,                    "WID_GL_START_DATE_DOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_START_DATE_TEXT,                    "WID_GL_START_DATE_TEXT");

@@ -84,7 +84,6 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_LAND_GENERATOR, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TERRAIN_TYPE, STR_NULL), SetFill(1, 1),
-					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_RANDOM_SEED, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_SEA_LAKES, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TREE_PLACER, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_VARIETY, STR_NULL), SetFill(1, 1),
@@ -101,7 +100,6 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_LANDSCAPE_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TERRAIN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
-					NWidget(WWT_EDITBOX, COLOUR_ORANGE, WID_GL_RANDOM_EDITBOX), SetDataTip(STR_MAPGEN_RANDOM_SEED_OSKTITLE, STR_MAPGEN_RANDOM_SEED_HELP), SetFill(1, 1),
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_WATER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TREE_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
@@ -115,6 +113,7 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SNOW_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SMOOTHNESS, STR_NULL), SetFill(1, 1),
+						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_NULL), SetFill(1, 1),
 					EndContainer(),
 					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
 						/* Starting date. */
@@ -131,12 +130,8 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 						EndContainer(),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_INDUSTRY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					EndContainer(),
-				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_RANDOM_BUTTON), SetDataTip(STR_MAPGEN_RANDOM, STR_MAPGEN_RANDOM_HELP), SetFill(1, 0),
-				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
-					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_NULL), SetFill(1, 1),
-					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetFill(1, 1),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_GL_GENERATE_BUTTON), SetMinimalSize(84, 30), SetDataTip(STR_MAPGEN_GENERATE, STR_NULL), SetFill(1, 0),
@@ -201,7 +196,6 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_MAPSIZE, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_NULL), SetFill(1, 1),
-				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_RANDOM_SEED, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TREE_PLACER, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_HEIGHTMAP_ROTATION, STR_NULL), SetFill(1, 1),
@@ -219,7 +213,6 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 						EndContainer(),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_INDUSTRY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_EDITBOX, COLOUR_ORANGE, WID_GL_RANDOM_EDITBOX), SetDataTip(STR_MAPGEN_RANDOM_SEED_OSKTITLE, STR_MAPGEN_RANDOM_SEED_HELP), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TREE_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_HEIGHTMAP_ROTATION_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
@@ -245,7 +238,6 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 								EndContainer(),
 							EndContainer(),
 						EndContainer(),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_RANDOM_BUTTON), SetDataTip(STR_MAPGEN_RANDOM, STR_MAPGEN_RANDOM_HELP), SetFill(1, 0),
 						NWidget(NWID_SPACER), SetFill(1, 1),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_GL_GENERATE_BUTTON), SetMinimalSize(84, 30), SetDataTip(STR_MAPGEN_GENERATE, STR_NULL), SetFill(1, 0),
 					EndContainer(),
@@ -311,18 +303,12 @@ struct GenerateLandscapeWindow : public Window {
 	uint y;
 	char name[64];
 	GenenerateLandscapeWindowMode mode;
-	QueryString seed_editbox;
 
-	GenerateLandscapeWindow(WindowDesc *desc, WindowNumber number = 0) : Window(desc), seed_editbox(11)
+	GenerateLandscapeWindow(WindowDesc *desc, WindowNumber number = 0) : Window(desc)
 	{
 		this->InitNested(number);
 
 		this->LowerWidget(_settings_newgame.game_creation.landscape + WID_GL_TEMPERATE);
-
-		this->querystrings[WID_GL_RANDOM_EDITBOX] = &this->seed_editbox;
-		this->seed_editbox.text.Print("%u", _settings_newgame.game_creation.generation_seed);
-		this->seed_editbox.caption = STR_NULL;
-		this->seed_editbox.text.afilter = CS_NUMERAL;
 
 		this->mode = (GenenerateLandscapeWindowMode)this->window_number;
 
@@ -549,12 +535,6 @@ struct GenerateLandscapeWindow : public Window {
 				ShowDropDownMenu(this, _num_inds, _settings_newgame.difficulty.industry_density, WID_GL_INDUSTRY_PULLDOWN, 0, 0);
 				break;
 
-			case WID_GL_RANDOM_BUTTON: // Random seed
-				_settings_newgame.game_creation.generation_seed = InteractiveRandom();
-				this->seed_editbox.text.Print("%u", _settings_newgame.game_creation.generation_seed);
-				this->SetDirty();
-				break;
-
 			case WID_GL_GENERATE_BUTTON: { // Generate
 				/* Get rotated map size. */
 				uint map_x;
@@ -695,17 +675,6 @@ struct GenerateLandscapeWindow : public Window {
 		}
 	}
 
-	virtual void OnEditboxChanged(int wid)
-	{
-		if (wid == WID_GL_RANDOM_EDITBOX) {
-			/* the seed is unsigned, therefore atoi cannot be used.
-			 * As UINT32_MAX is a 'magic' value (use random seed) it
-			 * should not be possible to be entered into the input
-			 * field; the generate seed button can be used instead. */
-			_settings_newgame.game_creation.generation_seed = minu(strtoul(this->seed_editbox.text.buf, NULL, 10), UINT32_MAX - 1);
-		}
-	}
-
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
@@ -819,8 +788,8 @@ static void _ShowGenerateLandscape(GenenerateLandscapeWindowMode mode)
 
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
 
-	/* Always give a new seed if not editor */
-	if (_game_mode != GM_EDITOR) _settings_newgame.game_creation.generation_seed = InteractiveRandom();
+	/* Generate a new seed when opening the window */
+	_settings_newgame.game_creation.generation_seed = InteractiveRandom();
 
 	if (mode == GLWM_HEIGHTMAP) {
 		/* If the function returns negative, it means there was a problem loading the heightmap */

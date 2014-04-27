@@ -1278,9 +1278,6 @@ public:
 		WID_GL_TOWN_PULLDOWN                         = ::WID_GL_TOWN_PULLDOWN,                         ///< Dropdown 'No. of towns'.
 		WID_GL_INDUSTRY_PULLDOWN                     = ::WID_GL_INDUSTRY_PULLDOWN,                     ///< Dropdown 'No. of industries'.
 
-		WID_GL_RANDOM_EDITBOX                        = ::WID_GL_RANDOM_EDITBOX,                        ///< 'Random seed' editbox.
-		WID_GL_RANDOM_BUTTON                         = ::WID_GL_RANDOM_BUTTON,                         ///< 'Randomise' button.
-
 		WID_GL_GENERATE_BUTTON                       = ::WID_GL_GENERATE_BUTTON,                       ///< 'Generate' button.
 
 		WID_GL_START_DATE_DOWN                       = ::WID_GL_START_DATE_DOWN,                       ///< Decrease start year.
