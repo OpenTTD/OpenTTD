@@ -1011,8 +1011,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanil
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekraanipildi vorming
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vali kasutatav ekraanipildi vorming
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Alusgraafika kogu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava alusgraafika kogu
@@ -1187,8 +1185,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/v
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Linnavalitusese suhtumine pinnase restruktureerimisse: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vali kui suurt mõju tekitavad müra ning keskkonna muudatused ettevõtte mainele ja edasistele ehitustoimingutele antud piirkonnas
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Nõlvadele ja kallastele ehitamine: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Kui lubatud, saab teid ja jaamu ehitada enamikle nõlvadele. Kui keelatud, siis on need lubatud ainult nõlvadel, mis vastavad rööbastee suunale ja mis eeldavad seega vundamenti.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Maastikukujundus majade, rööbaste jms. all (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Lase maja- ja rööpaalust maad kujundada ilma neid eemaldamata
 STR_CONFIG_SETTING_CATCHMENT                                    :Reaalsemad veekogud: {STRING}
@@ -1213,14 +1209,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Rongidel ja lae
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 kraadine pööre esineb, kui rõhtsele rööpale järgneb püstne rööbas, seega peab rong tegema 90 kraadise pöörde tavalise 45 kraadise pöörde asemel. Muudab ka laevade pöörderaadiust
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Mitte kõrvuti asetsevate jaamade liitmine: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Lubab lisada uusi jaamade osi ilma puudutamata olemasolevaid osi. Vajalik Ctrl+Vajutus, kui asetada uut osa
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Täiustatud laadimisalgoritm: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Kui lubatud, laaditakse ootel sõidukid jaamas järjestikkul. Järgmise sõiduki laadimine käivitub ainult siis, kui on piisavalt lasti, et täielikult täita esimese sõiduk
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Veovahendite järkjärguline laadimine: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Järk-järgult laetud sõidukitel kasutatakse sõiduki kindlalt laadimis aega, selle asemel et pealelaadida kõik korraga kindlaks määratud ajaga, mis oleneb ainult laetud lasti summast
 STR_CONFIG_SETTING_INFLATION                                    :Inflatsioon: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Tekitab majandusinflatsiooni, kus hinnad tõusevad pisut kiiremini kui maksed
-STR_CONFIG_SETTING_SELECTGOODS                                  :Kauba toimetamine jaama ainult nõudluse korral: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Jaama tuleb ainult kaup mis on nõutud vastava sõiduki poolt. See välistab halvad reitingud teistele kaupadele mida sellest jaamast ei transpordita
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimaalne silla pikkus: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud sildadele
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimaalne tunneli pikkus: {STRING}
@@ -1248,8 +1238,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Esialgne peatum
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :lõpu lähedal
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mootorsõidukite järjekorrad (koos mahuefektidega): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Pane sõiduk ootama hõivatud peatuse ees kuni need on vabastatud
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate liikumine, kui hiireosuti on akna servas: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Sisse lülitamisel liigub vaade, kui hiireosuti on aknaserva lähedal
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Väljas
@@ -1280,10 +1268,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läbisõidupeat
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Lubab linnale kuuluvatel teedel ehitada läbisõidupeatuseid
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Läbisõidupeatused konkurentide teedel: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Lubab teisele ettevõttele kuulaval teel ehitada läbisõidupeatuseid
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Jaamade kõrvutiehitamine: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Luba erinevaid jaamu omavahel kokku puutuda
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Mitme NewGRF sõidukikomplekti lubamine: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Ühilduvuse suvand vanadele NewGRF'le. Ärge keelake seda, juhul kui Sa tead täpselt mida sa teed!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Taristu hooldamine: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Taristuga kaasnevad halduskulud. Kulud kasvavad taristu hulga suhtes ebaproportsionaalselt, ning mõjutavad pigem suurettevõtteid
@@ -1341,8 +1325,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Kõrgustekaardi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastu-päevapidi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päevapidi
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kõrguse level kui kõrgele lapik kaart läheb: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Maastikukujundus kaardiäärsetel ruutudel: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Kui välja lülitatud, siis kaardi piirid on alati maailmameri
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Üks või enam ruutu põhjaäärel pole tühjad
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Üks või enam ääreruutu pole vesi
 
@@ -1399,10 +1381,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pikka (31. dets
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühikest (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF-i palett, kui palett on määramata: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palett, kui NewGRF vajalikku paletti ei määra
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Vaikimisi (D) palett
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Algupärane (W) palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Mängu alguses mäng seisab: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Sisse lülitamisel mängu alguses aeg seisab, et oleks rohkem aega kaardiga tutvuda
@@ -1625,8 +1603,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iga {COMMA} k
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Mitte ühtegi
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Algne linnade suurustegur: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Keskmine linna suurus võrreldes tavalise asulaga mängu alguses
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Mittevajaliku eemaldamine teedeehitusel: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eemalda tupikteed kui rahastatakse kohalikku teedeehitust
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Jaotusgraafikuid uuendatakse igal {STRING}. päeval
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Aega ahelgraafikute koostamise vahel. Koostamine uuendab plaane ainult ühes graafiku osas. Seega X väärtusega ei uuendata graafikut iga X päeva tagant. Uuendatakse vaid ühte osa. Väiksema arvuga kasutatakse protsessorit rohkem. Suurema arvuga läheb kauem aega, kuni uuel teel alustatakse kaubavedu.
@@ -1701,7 +1677,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Käitum
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Heliefektid
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Uudised ja sõnumid
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kauba käsitlemine
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvuti
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Uuendamine
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Hooldus
@@ -2743,10 +2718,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstu
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumepiiri kõrgus:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Lumepiiri liigutamine ühe võrra üles
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lumepiiri liigutamine ühe võrra alla
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Juhuarv:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klõpsa juhuarvu sisestamiseks
 STR_MAPGEN_RANDOM                                               :{BLACK}Suvaline
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Muuda maastiku tekitamisel kasutatavat juhuarvu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maatekituse meetod:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puude algoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
@@ -2773,7 +2745,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Kõrguse
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Suurus:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Sisesta suvaline arv
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Muuda lumepiiri kõrgust
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Muuda algusaastat
 

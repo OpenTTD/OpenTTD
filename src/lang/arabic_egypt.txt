@@ -922,8 +922,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}دقة �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر دقة الشاشة
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}صيغة حفظ الشاشة
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}اختر صيغة حفظ الشاشة
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK} الواجهة الرسومية الاساسية
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK} اختر مجموعة الواجهة الرسومية
@@ -1056,7 +1054,6 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :السماح بالبناء على المنحدرات و السواحل: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {STRING}
@@ -1065,10 +1062,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :موديل تس
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :نمط تسارع عربات الطريق: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :منع القطارات والسفن من الدوران بزاوية تسعين درجة : {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :السماح بربط محطتين غير متجاورتين : {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :أستخدام خوارزمية التحميل المحسنه: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :تحميل القطارات بالتدريج: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :التضخم: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :أوصل الحموله للمحطه إذا كان هناك حاجة فقط: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :طريقة بناء المصانع الأولية يدوية : {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :بدون
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ككل المصانع الأخرى
@@ -1080,7 +1074,6 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :اوامر ال
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :قرب النهاية
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :وسط
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :النهاية القصوى
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :تسلسل عربات الطريق - بالتأثير الكمي : {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :حرك الشاشة عندما تكون المؤشر على الحافة: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :السماح برشوة السلطات االمحليه: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :السماح بشراء حقوق النقل الحصري: {STRING}
@@ -1094,8 +1087,6 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :طبيعي
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات بالعبور خلال المواقف المملوكة داخل المدن: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :السماح ببناء محطات متلاصقة{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :السماح بتعدد محركات NewGFR {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير هذا الخيار غير متاح عندما يكون هناك عربات
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :صيانة البنية التحتية: {STRING}
 
@@ -1130,7 +1121,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اتجاة خر
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :عكس عقارب الساعة
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :مع عقارب الساعة
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :الأرتفاع الأعلى في محرر الخريطة لسطح المستوي: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :السماح بتعديل الحدود الحرة للخريطة: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}مربع او اكثر غير فارغ في الحدود الشمالية
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}مربع او اكثر من حدود الخريطة لا يكون بحر
 
@@ -1166,7 +1156,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 �
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير - 31 - 12 - 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ايزو 31-12-2008
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :النوافذ القياسية للاضافة غير محددة: {STRING}
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :إيقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :عندمل توقف أسمح: {STRING}
@@ -1302,7 +1291,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :عادي
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :سريع
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :سريع جدا
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف المدن المبدئي: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :ازالة العوالق اثناء ترميم الطرق: {STRING}
 
 
 
@@ -1322,7 +1310,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE} الت
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}الصوت
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}الاخبار و الرسائل
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}الإشارات
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE} طريقة التحميل
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE} التجديد التلقائي
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE} الصيانة
@@ -2314,10 +2301,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد �
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK} ارتفاع خط الثلج
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ارفع خط الثلج مستوى واحد
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}خفض خط الثلج مستوى واحد
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}مرجع عشوائي
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}اضغط لادخال مرجع عشوائي
 STR_MAPGEN_RANDOM                                               :{BLACK}عشوائي
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}غير المرجع العشوائي لتوليد تضاريس الخريطة
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK} لوغاريثم الشجر:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
@@ -2344,7 +2328,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}اسم �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}الحجم:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}ادخل مرجع عشوائي
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}غير مستوى خط الثلج
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}غير سنة البداية
 

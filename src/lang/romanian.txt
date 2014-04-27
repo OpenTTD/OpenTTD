@@ -954,8 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rezoluţ
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Alege rezoluţia dorită pentru joc
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formatul capturii de ecran
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Alege tipul fişierului în care se salvează captura de ecran (screenshot)
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectează setul grafic de bază utilizat în joc
@@ -1124,8 +1122,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Comută dezastr
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitudinea consiliului orașului cu privire la restructurarea zonei: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce măsură poluarea fonică si deranjamentul local provocat de o companie va afecta impresia orașului despre aceasta, si viitoarele planuri de construcție in zonă
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Permite construirea pe coastă şi în pantă: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Dacă este activat, şinele şi staţiile pot fi construite pe majoritatea pantelor. Dacă este dezactivat, acestea pot fi construite doar pe pante care coincid cu direcţia şinelor şi astfel nu necesită fundaţie
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite terraformarea sub clădiri şi şine fără eliminarea acestora
 STR_CONFIG_SETTING_CATCHMENT                                    :Permite arii de cuprindere mai realiste: {STRING}
@@ -1150,14 +1146,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Interzice trenu
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Întoarcerile la 90 de grade au loc atunci când o bucată orizontală de şină este urmată imediat de o bucată verticală, astfel făcând trenul să întoarcă la 90 de grade când traversează muchia unui pătrăţel faţă de întoarcerile obişnuite de la 45 de grade pentru alte combinaţii de şină. Aceasta se aplică şi unghiului de întoarcere al navelor
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permite unirea staţiilor neînvecinate: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite adăugarea de elemente unei staţii fără a atinge direct elemente existente. Necesită Ctrl+Click pentru adăugărea elementelor noi
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Foloseşte algoritm de încărcare îmbunătăţit: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Dacă este activată, încărcarea vehiculelor care aşteaptă în aceeaşi staţie se va face în secvenţă. Încărcarea următorului vehicul începe doar dacă există destul cargo pentru a umple complet primul vehicul
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Încarcă vehiculele gradual: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Încarcă vehiculele gradual folosind duratele de încarcare specifice fiecărui vehicul, în loc să se încarce totul dintr-o dată folosind o durată fixată în funcţie de cantitatea de cargo încărcată
 STR_CONFIG_SETTING_INFLATION                                    :Inflaţia: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Activează inflaţia în economie, unde costurile cresc ceva mai rapid decât plăţile
-STR_CONFIG_SETTING_SELECTGOODS                                  :Livrează marfa doar în staţiile unde aceasta este cerută: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Livrează cargo doar către o staţie unde există cereri de la vehicule pentru încărcare. Aceasta previne rating-uri slabe pentru cargo care nu este ridicat din staţie
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Lungimea maximă a podurilor: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de poduri
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lungimea maximă a tunelurilor: {STRING}
@@ -1185,8 +1175,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Locul unde un t
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :capătul apropiat al
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mijlocul
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :capătul îndepartat al
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autovehiculele pot forma cozi (cu efecte cuantice): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Vehiculele așteptă în fața stației pînă se eliberează
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Mută imaginea când mouse-ul este la marginea ecranului: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Cand este activată, ecranele se vor deplasa cînd mouse-ul este aproape de margine
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :dezactivat
@@ -1217,10 +1205,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite constru
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construcția stațiilor pe drumurile construite de un oraș
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permite construirea staţiilor pe drumurile competitorilor: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construcția stațiilor pe drumurile construite de altă companie
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permite construirea de staţii adiacente: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permite staților diferite sa se atingă
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Permite mai multe seturi NewGRF simultan: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Optiune de compatibilitate pentru vechile fișiere NewGRF. Nu dezactiva asta, decât dacă știi exact ce faci!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbarea acestei setări nu este permisă când există vehicule în joc
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mentenanță infrastructură: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cand este activă, infrastructura necesita cheltuieli cu intreținerea. Costurile cresc proporțional cu rețeaua de transport, afectând companiile mari mai mult decât companiile mici
@@ -1278,8 +1262,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotaţie hartă
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Spre stânga
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Spre dreapta
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Nivelul înălţimii pentru hărţile plane: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Permite terraformarea suprafeţelor din marginea hărţii: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Dacă este dezactivat, marginile hărţii vor fi întotdeauna ocean
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una sau mai multe suprafeţe din marginea nordică nu sunt goale
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una sau mai multe suprafeţe din marginea hărţii nu contin apă
 
@@ -1336,10 +1318,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lung (31 Dec 20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :scurt (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta implicită pentru NewGRF-uri care nu specifică o paletă: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta implicită care va fi folosită cu un NewGRF, dacă acesta nu specifică o anume paletă
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paletă (D) implicită
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paletă (W) veche
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :La pornirea unui joc nou, pune-l pe pauză: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Când este activată, jocul se va comuta automat in mod pauză la pornirea unui nou joc, permițând astfel un studiu mai atent al hărții
@@ -1557,8 +1535,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 din {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :deloc
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator iniţial dimensiune oraş: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a oraşelor mari relativ la oraşele normale, la începutul jocului
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimină elementele de drum absurde pe durata construcţiei drumului: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimină capatul drumurilor înfundate în timpul reconstrucţiei finanţată a drumurilor
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizează graficul de distribuţie la fiecare {STRING} zi{P 0:2 "" le}
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING} zi{P 0:2 "" le} pentru recalcularea graficului de distribuţie
@@ -1623,7 +1599,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interac
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efecte sonore
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Știri și mesaje
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Semnale (semafoare)
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Operare marfă
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Reînnoire automată
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Service
@@ -2664,10 +2639,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Înălţimea zăpezii:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mută linia zăpezii cu un punct în sus
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mută linia zăpezii cu un punct în jos
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Parametru aleator:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click pt introducerea unui parametru aleator
 STR_MAPGEN_RANDOM                                               :{BLACK}Aleator
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Modifică parametrul aleator folosit pentru Generarea Terenului
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator de teren:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm arbore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:
@@ -2694,7 +2666,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume har
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Introduceţi o valoare de pornire pentru numerele aleatoare
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifică înălţimea zăpezii
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifică anul de început
 

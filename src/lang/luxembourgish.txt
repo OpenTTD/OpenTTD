@@ -954,8 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildopl�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wielt d'Bildopléisung
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaneres
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshotformat
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Wielt de Screenshotformat deen benotzt sollt ginn
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis Grafikset
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wielt den Basis Grafikset fir ze benotzen
@@ -1130,8 +1128,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Stelle Katastro
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Dem Stadrot seng Astellung zum Embauen vun der Landschaft: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wielt aus, wéivill vun der Firma verursachten Kaméidi an Emweltschiedegung sech op d'Stadbewertung auswierkt an op weider Bauaktiounen
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Erlaabt d'Bauen op Küsten an op Ofhäng: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Wann ugeschalt, kënnen Schinnen an Statiounen op den meeschten Häng gebaut ginn. Wann ausgeschalt, kënnen se just an der Richtung vum Hang gebaut ginn an brauchen dann keen Fundament
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Erlaabt Landforumung ënnert Gebaier, Stroossen, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Erlaabt Terraintransformatioun ënnert Gebaier an Schinnen ouni dës ewechzehuelen
 STR_CONFIG_SETTING_CATCHMENT                                    :Erlaabt méi realistësch Staugréisstplazen: {STRING}
@@ -1156,14 +1152,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbidd Zich an
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90gradkéiren entstinn wann eng horizontal Spur direkt op eng vertikal trëfft, sou dass den Zuch misst ëm 90 Grad dréinen fir op dat nächst Stéck ze kommen, amplaz vun den üblechen 45 Grad. Dëst zielt och fir d'Weeër vun Schëffer
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Erlaabt Statiounsdeeler un eng Statioun unzehenken ouni déi existéiernd Statioun ze beréiren. Ctr+Klick fir déi nei Deeler unzehenken
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Benotz verbesserten Luedalgorithmus: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Wann ugeschalt, ginn Gefierter déi op enger Statioun warden een nom aneren belueden. D'Belueden fänkt just un, wann genuch Wueren verfügbar sinn fir dat éischt Gefiert ganz ze belueden
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lued d'Gefierer schrëttweis: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gefierter ginn regelméisseg belueden während enger spezifëscher Dauer, amplaz alles beieneen ze lueden mat enger fixer Wardezäit déi vun der Unzuel Wueren ofhänkt
 STR_CONFIG_SETTING_INFLATION                                    :Inflatioun: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Erlab Inflatioun an der Economie, wou d'Käschten méi séier klammen wéi d'Bezuelungen
-STR_CONFIG_SETTING_SELECTGOODS                                  :Luedung nëmmen ofliwweren wann et gebraucht gëtt: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Liwwer nëmmen Wueren op eng Statioun déi ugefrot gouf vun engem ze beluedenen Gefiert. Dëst verhënnert schlecht Bewertungen fir Wueren déi net vun der Statioun ungeholl ginn
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal Bréckelängt: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal Längt déi eng Bréck dierf hunn
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal Tunnellängt: {STRING}
@@ -1191,8 +1181,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaz wou en Zuc
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no um Enn
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :an der Mëtt
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :um Enn
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stroossengefiererschlaang (mat Quanteneffekter): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Looss Stroossgefierer am Ufank vun engem besaten Stroossestopp waarden, bis se eidel sinn.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :D'Fënster schwenken wann d'Maus um Rand ass: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wann ugeschalt, scrollt d'Usiicht wann d'Maus no um Rand vun der Fënster ass
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Ausgeschalt
@@ -1223,10 +1211,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Erlaabt d'Iwwer
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaabt d'Bauen vun säitlechen Busarrêten op Stroossen déi der Stad gehéieren
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Erlaabt d'Iwwerfueren vun Stopschëlder op Stroossen vun der Konkurrenz: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Erlaabt d'Bauen vun säitlechen Busarrêten op Stroossen déi enger anerer Firma gehéieren
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Erlaabt ugrenzent Statiounen: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Erlaabt verschiddenen Statiounen sech ze beréiren
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :E puer NewGRF-Päk aktivéiren: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompabilitéitsoptioun fir al NewGRFen. Net ausschalten, et sief et weess een genau wat een mëscht
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Astellung kann net geännert ginn wann et Gefierer gëtt
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastrukturënnerhalt {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wann ugeschalt, kaschten Infrastrukturen Ennerhaltskäschten. D'Käschten wuessen iwwerproportional zu der Netzwierkgréisst, an treffen sou grouss Firmen méi wéi klenger
@@ -1284,8 +1268,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Héichtenkaartr
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Géint d'Auer
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Matt der Auer
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Héichtenintervall den eng flaach Szenariokaart kritt: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Erdëmformung vun Felder um Kaartenrand erlaaben: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Wann ausgeschalt, sinn d'Ränner ëmmer Ozean
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een oder méi Felder um nördlechsten Rand sinn net eidel
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een oder méi Felder op engem Eck sinn keen Waasser
 
@@ -1342,10 +1324,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :laang (31ten De
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kuerz (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard Palette fir NewGRFen déi keng spezifësch Palette hunn: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalette fir NewGRFen déi net definéiert hunn wéi eng se brauchen
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) Palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Aal (W) Palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatesch Pausen beim Start vun enger neier Partie: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wann ugeschalt, pauséiert d'Spill automatesch wann en neit Spill gestart gëtt, wat erlaabt d'Kaart besser ze studéieren
@@ -1568,8 +1546,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 zu {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Keng
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Ufangs-Gréisst vun Stied mulitiplizéiren mat: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëttsgréisst vun Stied an Proportioun zu normalen Dierfer um Spillstart
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Beim Stroossebau absurd Stroossenelementer ofrappen: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Huel Sakgaassen ewech wann d'Stroossen renovéiert ginn
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualiséier d'Distributiounsgrafik all {STRING} D{P 0:2 ag eeg}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Zäit tëscht nofolgenden Neiberechnungen vun der Linkgrafik. All Neiberechnung rechent d'Pläng fir eng Komponent vun der Grafik. Dat heescht dass en Wert X fir dës Astellung net all X Deeg aktualiséiert gëtt. Nëmmen een Komponent gëtt aktualiséiert. Wat méi kuerz gesat, wat méi CPU Rechenzäit gebraucht gëtt. Wat se méi laang gesat gëtt, wat méi Zäit vergeet bis Wuerendistributioun op enger neier Route gestart gëtt.
@@ -1644,7 +1620,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interak
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soundeffekter
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}News an Messagen
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Luedungshandhabung
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspiller
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoerneieren
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Revisiounen
@@ -2687,10 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Unz. Ind
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Weis d'Schnéilinnhéicht
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweg Schnéilinnhéicht rop
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweg Schnéilinnhéicht rof
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Zoufalls-Zuel:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klick fir eng Zoufalls-Zuel anzegin
 STR_MAPGEN_RANDOM                                               :{BLACK}Duercherneen wierfelen
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Zoufallszuel änneren fir den Terrain-Generator
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baam Algorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
@@ -2717,7 +2689,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichte
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Gréisst:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Gëff eng zoufälleg Zuel an
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ännert d'Schnéilinnhéicht
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Änner d'Startjoer
 

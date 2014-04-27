@@ -955,8 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Ç
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekran görüntüsü biçimi
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Kullanılacak ekran görüntüsü biçimini seçin
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin
@@ -1131,8 +1129,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya d
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Arazi şekillendirmeye karşı belediye meclisinin tavrı: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Şirketlerin sebep olduğu gürültü ve çevreye zararın kasaba beğenilerini ve ilerideki inşaatlarını nasıl etkileyeceğini seçin
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Kıyılara ve eğimli araziye inşaat izni: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Etkinleştirilirse raylar ve istasyonlar çoğu zaman eğimlerin üzerine inşa edilebilir. Etkinliği kaldırılırsa raylar ve istasyonlar sadece raylarla aynı doğrultuda olan eğimlerin üzerine inşa edilebilir, böylelikle altyapı gerektirmez
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Binaları ve yolları kaldırmaksızın altlarında yeryüzü şekillendirmesi yapılmasına izin ver
 STR_CONFIG_SETTING_CATCHMENT                                    :İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {STRING}
@@ -1157,14 +1153,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Tren ve gemiler
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 derece dönüşler yatay bir rayı bitişik karede dikey bir ray parçası takip ettiği zaman gerçekleşir, böylelikle trenin diğer ray kombinasyonlarındaki alışılagelmiş 45 derecelik dönüşü yerine karenin kenarından geçerken 90 derecelik dönüş yapmasını sağlar. Bu aynı zamanda gemilerin dönme açısına da uygulanır
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Doğrudan bitişik olmayan istasyonları birleştirme izni: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Mevcut parçalarına doğrudan temas etmeksizin bir istasyona parçalar eklenmesine müsaade et. Yeni parçalar eklenirken Ctrl+Tıklama gerekir
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Geliştirilmiş yükleme algoritması kullan: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Etkinleştirilirse istasyonda bekleyen araçlar sırayla yüklenecektir. Bir sonraki aracın yüklenmesi ancak istasyonda bekleyen ilk aracı tamamen doldurmaya yetecek kadar kargo olduğunda başlar
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Araçlar yavaş yavaş dolsun: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Sadece yüklenen kargo miktarına bağlı olarak belirli bir zaman içerisinde her şeyin tek seferde yüklenmesi yerine, araçları kendilerine özel yükleme sürelerini kullanarak teker teker yükle
 STR_CONFIG_SETTING_INFLATION                                    :Enflasyon: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Maliyetlerin ödemelerden biraz daha hızlı arttığı ekonomide enflasyonu etkinleştir
-STR_CONFIG_SETTING_SELECTGOODS                                  :Sadece istek varsa kargo kabul edilsin: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Bir istasyona sadece bir yükleme aracından talep edilen kargoyu ulaştır. Bu ayarlama bir istasyona getirilmeyen kargolar yüzünden kötü derecelendirmeyi önler
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Azami köprü uzunluğu: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Köprü inşası için azami uzunluk
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Azami tünel uzunluğu: {STRING}
@@ -1192,8 +1182,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Bir trenin plat
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :yakın uç
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :orta
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :uzak uç
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Karayolu taşıtları kuyruğa girsin (iç içe geçerek): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Kara taşıtlarını meşgul olan duraklar boşalana kadar önlerinde bekleyecek şekilde ayarlayın
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Fare kenardayken pencere etkin: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Etkinleştirilirse fare pencerenin kenarına yaklaştığında görüş alanı kaymaya başlayacaktır
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Kapalı
@@ -1224,10 +1212,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Şehiriçi yoll
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Kasabanın sahip olduğu yollarda yol üstü durakların inşasına izin verir
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Rakiplerin yolu üzerinde durak yapmaya izin ver: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Başka şirketlerin sahip olduğu yollarda yol üstü durakların inşasına izin verir
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bitişik istasyonlar izinli: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Farklı istasyonların birbirine değmesine izin verir
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Birden çok NewGRF lokomotif setini etkinleştir: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Eski NewGRF'ler için uyumluluk seçeneği. Ne yaptığınızı kesin olarak bilmiyorsanız, bu seçeneği kapatmayın!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Altyapı bakımları: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Etkinleştirildiğinde; altyapı, bakım giderine neden olur. Maliyet ağ büyüklüğüne göre daha hızlı yükselir, dolayısıyla büyük şirketleri küçüklere göre daha çok etkiler
@@ -1285,8 +1269,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Yükseklik hari
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Düzlük bir senaryonun yükseklik seviyesi: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Harita kenarlarındaki karelerde bulunan araziyi şekillendirmeye izin ver: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Kapatıldığı takdirde haritanın kenarları daima okyanusla çevrili olur.
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Kuzey kenarda bir veya daha fazla kare boş değil
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Kenarlardan birinde bir veya daha fazla kare su değil
 
@@ -1343,10 +1325,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :uzun (31 Ara 20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kısa (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palet belirtmeyen NewGRF'ler için varsayılan palet: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Hangi paleti kullandığını belirtmeyen NewGRF dosyaları için kullanılacak varsayılan palet.
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Öntanımlı (D) palet
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Eski (W) palet
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Yeni bir oyun başlatırken zamanı duraklat: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Etkinleştirildiğinde, haritaya ayrıntılı bir bakış atabilmek için yeni oyuna başlarken otomatik olarak oyun duraklatılır.
@@ -1569,8 +1547,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}'de 1
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Hiçbiri
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Birincil şehir büyüklüğü çarpanı: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Oyun başlangıcında şehirlerin normal kasabalara kıyasla ortalama büyüklüğü
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Yol yapımı sırasında gerçekçi olmayan yerleri kaldır: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Yolların yeniden yapılmasını finanse ederken çıkmaz sokakları kaldır
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Dağıtım grafiğini her {STRING} günde bir güncelle
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Bağlantı grafiğinin tekrar hesaplamaları arasında geçen süre. Her tekrar hesaplama grafiğin öğelerinden biri için planları hesaplar. Yani bu ayar için girdiğiniz X değeri tüm grafiğin her X günde bir güncelleneceği manasına gelmez; sadece grafiğin öğelerinden biri güncellenir. Daha kısa sürelere ayarladıkça hesaplamalar için daha fazla işlemci süresi gerekir. Daha uzun süreler seçtikçe yeni güzergahlardaki kargo dağıtımının başlaması da daha uzun sürer.
@@ -1645,7 +1621,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Etkile�
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ses efektleri
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Haberler ve mesajlar
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyaller
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kargo idaresi
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Otomatik yenileme
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Bakımlar
@@ -2688,10 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fabrika 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Kar yüksekliği:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Kar yüksekliğini bir arttır
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Kar yüksekliğini bir azalt
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Rastgele sayı:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Rastgele bir sayı girmek için tıklayın
 STR_MAPGEN_RANDOM                                               :{BLACK}Rastgele
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Harita yapımı için kullanılan rastgele sayıyı değiştir
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Harita üretici:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ağaç algoritması:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
@@ -2718,7 +2690,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Yüksekl
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Boyut:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Rastgele bir tohum girin
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Kar yüksekliğini değiştir
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Başlangıç yılını değiştir
 

@@ -1149,8 +1149,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrano r
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pasirinkite ekrano raišką
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Kita
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekrano vaizdo kopijos tipas
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Pasirinkite ekrano vaizdo kopijos formatą
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Bazinis grafikos rinkinys
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
@@ -1325,8 +1323,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Įgalinti atsit
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Miestų gyventojų požiūris į triukšmą ir aplinkos darkymą: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nustatyti miestų požiūrį į statybas, triukšmą ir kraštovaizdžio keitimą. Nuo to priklauso kompanijos reitingas bei leidimasstatyti įvairius objektus
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Leisti statybas pakrantėse ir ant šlaitų: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Leisti statyti bėgius, stoteles bei kitus objektus ant šlaitų. Priešingu atveju ant šlaito bus galima tiesti tik bėgius ir tik šlaito kryptimi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leisti keisti reljefą po pastatais ir bėgiais, jų nepašalinant
 STR_CONFIG_SETTING_CATCHMENT                                    :Aptarnaujamos teritorijos dydis priklauso nuo stotelė tipo: {STRING}
@@ -1351,14 +1347,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Drausti traukin
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90° posūkis susidaro, kai horizontalus bėgių elementas yra sujungiamas su gretimame langelyje esančiu vertikaliu elementu. Ši nuostata taip pat galioja ir laivams
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leisti sujungti stoteles, kurios nėra šalia: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Leisti praplėsti stotelę naujomis krovos aikštelėmis jas statant ne šalia jau esančiųjų, bet tolėliau. Statant reikia laikyti nuspaustą Ctrl klavišą
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Naudoti patobulintą krovimo algoritmą: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Transporto priemonės, laukiančios stotelėje, bus aptarnaujamos paeiliui: tik prikrovus vieną transporto priemonę bus pradedama krauti kita transporto priemonė
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Pakrauti transporto priemones palaipsniui: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Transporto priemonę pakrauti, atsižvelgiant į įvairius krovos parametrus, palaipsniui, vietoj to, kad transporto priemonė būtų pakrauta vienu ypu, atsižvegiant tik į krovinio kiekį
 STR_CONFIG_SETTING_INFLATION                                    :Infliacija: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Įjungti/išjungti infliaciją (išlaidos augs truputį greičiau už atlygius)
-STR_CONFIG_SETTING_SELECTGOODS                                  :Pristatyti krovinį stotelei tiktai tuomet, kai yra poreikis: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Pramonės įmonės tieks stotelei tik tuos krovinius, kuriuos mėgins paimti į stotelę atvykstančios transporto priemonės. Tokiu būdu bus išvengta prastų stotelės krovos reitingų tiems kroviniams, kurių žaidėjas net neketino gabenti iš pasirinktos stotelės
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Didžiausias tilto ilgis: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Didžiausias galimas tilto ilgis
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Didžiausias tunelio ilgis: {STRING}
@@ -1386,8 +1376,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Numatytoji trau
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ties artimuoju kraštu
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :viduryje
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ties tolimuoju kraštu
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Automobilių vilkstinė (su kvantavimo efektu): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Jei kelyje pasitaikys kliūtis (ar tiesiog krovos aikštelė bus užimta), automobiliai nebandys grūstis, o stos į tvarkingą eilę
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Slinkti vaizdą pelei esant prie krašto: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pelės žymikliui priartėjus prie pagrindinio ar papildomo peržiūros langų krašto, vaizdas jame gali būti slenkamas.
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Neslinkti
@@ -1418,10 +1406,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leisti pravaži
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leidžia statyti pravažiuojamojo tipo stoteles miestams priklausiančiuose keliuose
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leisti pravažiuojamąsias stoteles priešininko keliuose: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Leidžia statyti pravažiuojamojo tipo stoteles kitiems priešininkams priklausiančiuose keliuose
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Leisti statyti susiliečiančias stoteles: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Leisti skirtingas stoteles liestis viena su kita
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Leisti kelis NewGRF transporto pr. rinkinius vienu metu: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Suderinamumo pasirinktis seniems NewGRFs. Neišjunkite, nebent žinote, ką tiksliai darote!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Neįmanoma pakeisti nuostatos kai yra tr. priemonių.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūros priežiūra reikalauja išlaidų: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Infrastruktūros (kelių, geležinkelių, stotelių, angarą ir kitų objektų) priežiūra kainuoja. Kaštai auga proporcingai kompanijos dydžiui, taigi didesnėms kompanijoms infrastruktūros priežiūra kainuos daugiau, nei mažesnėms
@@ -1479,8 +1463,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Aukščių žem
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Prieš laikrodžio rodyklę
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pagal laikrodžio rodyklę
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Aukštis skiriamas „lygiaus scenarijaus“ žemėlapiui: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Leisti keisti reljefą žemėlapio kraštuose: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Jeigu išjungta, žemėlapio kraštai visada bus vandenynas
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Vienas ar daugiau blokų šiauriniame krašte yra ne tušti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Viena ar daugiau plokštumų nėra ant vandens
 
@@ -1537,10 +1519,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ilgąjį (31 Gr
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :trumpąjį (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Įprastinė paletė taikoma NewGRF, nenurodžius paletės: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Numatytoji spalvų paletė tiems NewGRF objektams, kurie nenurodo, kokios konkrečiai paletės jiems reikia
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Numatytoji (D) paletė
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pasenusi (W) paletė
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatinė pauzė paleidžiant naują žaidimą: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Pradėjus naują žaidimą, laiko tėkmė bus pristabdyta, taip suteikiant progą atidžiau išstudijuoti žemėlapį
@@ -1763,8 +1741,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iš {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenaudojamas
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pradinis miestų dydžio daugiklis: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Vidutinis miestų dydis santykiu su normaliais miestais žaidimo pradžioje
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Panaikinti beprasmius kelio elementus kelių statybos metu: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Panaikinti aklavietes po finansuojamų kelių rekonstrukcijos
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Pasiskirstymo grafą atnaujinti kas {STRING} dien{P 0:2 ą as ų}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Laiko trukmė tarp grafo mazgų perskaičiavimo operacijų. Kiekviena operacija perskaičiuoja tik vieną mazgą, o ne visą grafą; tad jei šioje nuostatoje nurodytą, kad, pavyzdžiui, grafas bus atnaujinamas kas 4-ias dienas, tai nereiškia, kad jis visas bus atnaujintas, o atnaujinti bus tik kai kurie mazgai. Kuo trumpesnė trukmė tarp perskaičiavimų, tuo daugiau grafo perskaičiavimas sueikvos procesoriaus išteklių, tačiau pats grafas geriau atspindės realią situaciją. Kita vertus, ilgesnė trukmė mažiau apkraus procesorių, tačiau gali tekti ilgėliau palaukti, kol nauji maršrutai bus įtraukti į grafą.
@@ -1853,7 +1829,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveik
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Naujienos ir žinutės
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Krovinų valdymas
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatiškai atnaujinti
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Techninė apžiūra
@@ -2896,10 +2871,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industri
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniego linija:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaukštinti sniego liniją
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pažeminti sniego liniją
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Atsitiktinė pradžia:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Paspauskite, jeigu norite įvesti atsitiktinę skaičių seką naudojamą pasaulio kūrimui
 STR_MAPGEN_RANDOM                                               :{BLACK}Atsitiktinai
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Parenką naują atsitiktinę skaičių seką naudojamą pasaulio kūrimui
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Pasaulio kūrimas:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Medžių algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
@@ -2926,7 +2898,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Žemėla
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Įveskite atsitiktinį skaičių
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Pakeisti sniego linijos aukštį
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradžios metus
 

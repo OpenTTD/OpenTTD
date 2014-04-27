@@ -941,8 +941,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantaila
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Pantaila argazkien formatoa
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Screenshot-aren formatua aukeratu
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
@@ -1107,8 +1105,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Azpiegiturak et
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Udaletxearen jarrera bere lurrak berregituratzeko: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Aukeratu zenbateraino eragingo dion konpainia bati herri batean zarata sortzea eta ingurumena kaltetzea, herrian duen balorazioa txartuz eta eraikin berriak egiteko baimena mugatuz
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Aldapa eta kostan eraikitzea baimendu: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Gaitua badago, bideak eta geltokiak mendi magal gehienetan eraiki daitezke. Desgaitua badago, bakarrik onartuko dira bidearen norabidearekin bat datozen mendi magalak
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Eraikinen, trenbideen etabarren azpian paisaia aldatzea baimendu. (autoaldapak): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Eraikin eta bideen azpian paisaia aldatzea baimendu hauek kendu gabe
 STR_CONFIG_SETTING_CATCHMENT                                    :Geltokien irismen eremu hedapena errealagoa egitea baimendu: {STRING}
@@ -1133,14 +1129,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Itsasontzi eta 
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graduko bihurgunek trenbide horizontalari trenbide bertikala jarraitzen dionean gertatzen da, trenak 90 graduko bihurgunea egingo du ohiko 45 graduko bihurguneen ordez. Honako hau itsasuntzientzat aplikatzen da ere
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Elkarren ondoan ez baina oso hurbil dauden geltokiak bateratu : {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Geltoki bati zatiak gehitu dauden zatiak ukitu gabe. Zati berriak gehitzerakoan Crtl+klikatu sakatu beharko da.
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Zamatzeko algoritmo hobetua erabili: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Gaitua badago, geltokian dauden ibilgailuak sekuentzalki kargatuko dira. Hurrengo ibilgailuaren karga bakarrik hasiko da aurreko ibilgailua betetzeko adina karga badago
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Ibilgailuak mailaka zamatu: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Ibilgailuak gradualki zamatu ibilgailu bakoitzaren zamaketa denbora espezifikazioak erabiliz, guztia batera zamatuko duen denbora finkoa erabili ordez, zama kopuruan oinarritzen dena
 STR_CONFIG_SETTING_INFLATION                                    :Inflazioa: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Gaitu inflazioa ekonomiari, kosteak salneurriak baino pixka bat azkarrago igoko dira
-STR_CONFIG_SETTING_SELECTGOODS                                  :Geltokietan bakarrik onartutako zama utzi : {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Bakarrik zamak geltokietara eraman ibilgailu batek zama hori jasotzera joan bada. Honek geltokietan garraiatuak ez diren zamen kalifikazio txarrak ekiditzen ditu
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Zubien gehienezko luzera: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Zubiak eraikitzeko gehienezko luzera
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tunel baten gehienezko luzera: {STRING}
@@ -1168,8 +1158,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Lehenezpenez tr
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :amaieratik gertu
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :erdian
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :amaieratik urrun
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Errepide ibilgailuen lerroketak(quantum efektuekin): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Errepide ibligaluak okupatutako errepideen aurrean itxaronaraztea errepidea hustu arte
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Leihoa mugitu sagua ertzean dagoenean: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Gaitua dagoenean, sagua lehioen ertzara hurbiltzerakoan mapa mugitzen hasiko da
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desgaitua
@@ -1200,10 +1188,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Herrien errepid
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Herrien menpe dauden errepideetan zehar-pasatzeko geltokiak baimendu
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Arerioen errepideetan zehar-pasatzeko geltokiak baimendu: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Beste konpainien menpe dauden errepideetan zehar-pasatzeko geltokiak bahimendu
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Alboko geltokiak eraikitzea baimendu: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Geltoki ezberdinak bata bestea ukitzea baimendu
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :NewGRF set bat baino gehiago erabili ahal izatea aktibatu: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :NewGRF zaharren bateragarritasun aukera. Ez ezgaitu hau ez badakizu zer egiten hari zaren!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Hau ezin da aldatu ibilgailuak daudenean
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Azpiegituren mantentze-lana: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Gaitua dagoenean, azpiegiturek mantentze kostuak eragiten dituzte. Kostuak garraio sarearekin proportzionalki hazten dira, hau da, kostu handiagoak izango dituzten konpainia handiagoek
@@ -1261,8 +1245,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Garaiera mapare
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Eszenario mapa lauak hartzen duten garaiera: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Maparen ertzean dauden laukitxoetan paisaia eraldatzea baimendu: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Desgaituta badago, maparen mugak itsasoa izango dira beti
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ipar ertzean dauden laukitxoetako bat, edo bat baino gehiago ez daude hutsik
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Edozein ertzean dauden laukitxo bat edo bat baino gehiagotan ez da urik egongo
 
@@ -1319,8 +1301,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :luzea (2008ko A
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :laburra (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paletarik zehazten ez duten NewGRF berrientzat aurretik zehaztutako paleta erabiltzea: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Beharrezko paleta zehazten ez duten NewGRFetan paleta lehenetsia erabili
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatikoki jokoa pausan jarri joko berri bat hastearakoan: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Gaitua dagoenean, joko berria hasterakoan automatikoki pausatua egongo da, aldez aurretik mapa aztertzeko
@@ -1512,8 +1492,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}-tik bat
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Bat ere ez
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Herrien hasierako tamainaren biderkatzailea: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Joko hasieran hirien bataz besteko tamaina herri normalekin alderatuta
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Errepideak eraikitzerakoan elementu ez egokiak eragotzi: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Errepide berreraikuntza ordaintzerakoan irteerarik gabeko errepideak kentzea
 
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :eskuz egin
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrikoa
@@ -1560,7 +1538,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interak
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinu efektuak
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Albisteak eta mezuak
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinaleak
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Zamak
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Berritze automatikoa
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Mantenimendua
@@ -2593,10 +2570,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industri
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Elur garaiera:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Igo puntu batean elur garaiera
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Jeitsi puntu batean elur garaiera
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Ausazko hazia:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikatu ausazko hazia ezartzeko
 STR_MAPGEN_RANDOM                                               :{BLACK}Ausaz egin
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ausazko hazia aldatu paisaia sortzeko
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Zuhaitz algoritmoa:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Lur mota:
@@ -2623,7 +2597,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Garaiera
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaina:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Ausazko hazia ezarri
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Elur garaiera aldatu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Hasierako urtea aldatu
 

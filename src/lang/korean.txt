@@ -955,8 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용하실 화면 해상도를 선택하세요.
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :{G=f}기타
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}스크린 샷 파일 형식
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}사용하실 스크린 샷의 파일 형식을 선택하세요.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용하실 기본 그래픽을 선택하세요.
@@ -1131,8 +1129,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :블록이나 �
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시 의회의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :경사/해안가 위의 건설을 허용: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :이 옵션을 켜면 도로, 철도, 역 등을 대부분의 경사에 설치할 수 있게 됩니다. 이 옵션을 끄면 오직 트랙의 방향과 일치하는 경사에만 설치가 가능하기 때문에 기반 지형을 만들 필요가 없습니다.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
 STR_CONFIG_SETTING_CATCHMENT                                    :더 현실적인 역세권 지정: {STRING}
@@ -1157,14 +1153,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :열차/선박�
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 옵션을 켜면 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 옵션은 선박의 회전 반경에도 적용됩니다.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 CTRL+클릭해야 합니다.
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :향상된 수송 알고리즘 사용: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :이 옵션을 켜면 역에서 차량이 여러 대가 기다리고 있으면 먼저 도착한 순서대로 화물을 싣게 됩니다. 다음에 도착하는 차량은, 이미 화물을 싣고 있는 차량이 화물을 모두 싣고 난 다음에서야 적재를 시작하게 됩니다.
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :화물을 차량에 단계적으로 싣기: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :적재된 화물의 양에 따라 고정된 시간이 지나면 한 번에 모두 적재하는 대신, 차량의 적재 상황을 시간이 지남에 따라 단계별로 표시합니다.
 STR_CONFIG_SETTING_INFLATION                                    :인플레이션(화폐 가치 하락) 사용: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :비용이 지불하는 것보다 약간 더 빠르게 성장하고 있는 경제가 되면 인플레이션을 활성화합니다.
-STR_CONFIG_SETTING_SELECTGOODS                                  :수요가 있을 때만 화물을 역에 옮겨놓음: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :역으로 수송되는 화물만 차량에 적재가 가능해집니다. 이 옵션을 켜면 역에서 수송되지 않는 화물이 낮은 수송등급을 받는 것을 막아줍니다.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :다리의 최대 건설 길이: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :다리의 최대 길이를 제한할 수 있습니다.
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :터널의 최대 길이: {STRING}
@@ -1192,8 +1182,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :정류장/적치장이 빌 때까지 앞에서 차량을 대기시킴: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :자동차가 정류장이나 적치장이 빌 때까지 그 앞쪽에서 기다리도록 합니다.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :가장자리에 마우스를 가져가면 화면 움직이기: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :이 옵션을 켜면, 마우스를 게임 및 외부 화면 창의 가장자리에 가까이 가져가면 화면을 이동시킵니다.
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :사용 안 함
@@ -1224,10 +1212,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :도시 소유�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :도시 소유의 도로 위에 버스 정류장 건설을 허용합니다.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :경쟁자 소유의 도로 위에 버스 정류장 건설 허용: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :다른 회사 소유의 도로 위에 버스 정류장을 건설하는 것을 허용합니다.
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :역 바로 옆에 다른 이름의 역 건설 허용: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :기존에 존재하는 역 바로 옆에 새로운 역을 붙여서 건설할 수 있도록 허용합니다.
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :여러 개의 NewGRF 엔진 세트 허용: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :오래된 NewGRF에 대한 적합 옵션입니다. 정확히 어떤 기능을 하는지 알지 못한다면 절대 이 옵션을 끄지 마십시오!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 차량이 존재하면 이 설정을 변경하실 수 없습니다.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :기반시설 유지비: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :이 옵션을 활성화하면 기반시설 유지비가 발생합니다. 유지비는 교통망의 규모에 비례하며 대형 회사는 소형 회사보다 많은 유지비가 들어갑니다.
@@ -1285,8 +1269,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :높이맵 회�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :평지 시나리오의 평지 높이: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :지도 가장자리의 지형 변경을 허용: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :이 옵션을 끄면, 지도의 동서남북 끝이 반드시 모두 물이어야 합니다.
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}지도 북쪽 맨 가장자리에 있는 지형의 칸 한 개 이상이 비어있지 않습니다.
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}지도 맨 가장자리에 있는 칸 한 개 이상이 물이 아닙니다.
 
@@ -1343,10 +1325,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :기본으로 설정할 NewGRF 색상표: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :어떤 색상표를 사용할지 지정하지 않은 NewGRF에 사용할 기본 색상표를 선택합니다.
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :기본(DOS) 색상표
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :기존 (Windows) 색상표
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :게임 시작 시 자동으로 일시정지: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 옵션을 켜면, 새로은 게임을 시작할 때 지도를 더욱 살펴볼 수 있도록 게임을 자동으로 일시정시시킵니다.
@@ -1569,8 +1547,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}개 중�
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :없음
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :초기 대도시 크기 비율: 일반 도시보다 {STRING}배 크게 시작
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :게임을 시작했을 때 일반 도시에 대한 대도시의 평균 크기를 설정합니다.
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :도로 재건설 중 불필요한 도로 요소를 제거: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :도로 재건설에 투자하였을 때, 재건설 도중에 불필요한 도로를 제거합니다.
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :분배 상태를 매 {STRING}일 마다 갱신
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :다음 연결 상태를 재계산하기까지의 시간입니다. 한 번의 재계산할 때마다 그래프의 한 요소를 위한 계획을 계산합니다. 이는 이 설정의 X값에 따라 모든 그래프가 매 X일마다 갱신되는 것이 아니라는 것을 뜻합니다. 일부 요소만 재계산된다는 뜻입니다. 값이 작으면 작을 수록 CPU가 계산해야 할 횟수가 늘어납니다. 값을 크게 설정할 수록 화물 분배 상태가 새롭게 지정되는 데 더 오랜 시간이 걸립니다.
@@ -1645,7 +1621,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}효과음
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}뉴스와 메시지
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}화물
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 플레이어
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 교체
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}정비
@@ -2688,10 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}설선 고도:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}설선 고도를 1칸 높입니다
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}설선 고도를 1칸 낮춥니다
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}무작위수치:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}무작위수치를 입력하세요
 STR_MAPGEN_RANDOM                                               :{BLACK}무작위화
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}지형 만들기를 위한 무작위수치 변경
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}나무 알고리즘:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
@@ -2718,7 +2690,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}크기:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}임의 설정값 입력
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}설선 고도를 변경
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}시작 연도를 변경합니다.
 

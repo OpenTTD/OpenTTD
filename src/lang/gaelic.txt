@@ -1156,8 +1156,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Dùmhlac
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Tagh dùmhlachd-bhreacaidh na sgrìn a chleachdas tu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Gnàthaichte
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Fòrmat ghlacaidhean-sgrìn
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Tagh am fòrmat ghlacaidhean-sgrìn a chleachdas tu
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Seata grafaigeachd bunasach
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Tagh an seata grafaigeachd bunasach a chleachdas tu
@@ -1332,8 +1330,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglaich dunaid
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Beachdan comhairle a' bhaile air leasachadh raointean: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Tagh am meud dhe dh'fhuaim is milleadh na h-àrainneachd le companaidhean a tha a dhìth mus bi buaidh air luachadh a' bhaile is barrachd togail san sgìre
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Ceadaich gun tèid togail air slèibhtean is an oirthir: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ma tha seo air, faodar slighean is stèiseanan a thogail air a' mhòr chuid dhe shlèibhtean. Ma tha seo dheth, chan fhaodar an togail ach air slèibhtean leis an aon chomhair ’s a tha aig an t-slighe is aig nach eil feum air bonn togalaich
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaich atharrachadh crutha-tìre fo thogalaichean, slighean agus msaa. (fèin-sliabh): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ceadaich atharrachadh crutha-tìre fo thogalaichean is slighean gun a bhith gan toirt air falbh
 STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaich raointean tionail le meud a tha nas fhìor-riochdail: {STRING}
@@ -1358,14 +1354,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Bac trèanaiche
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tachraidh tionndadh 90 nuair a bhios slighe còmhnard is inghearach dìreach an dèidh càch a chèile, mar sin bhiodh trèan a' tionndadh le 90 ceum nuair a ruigeas i oir na leacaige an àite nan tionndaidhean àbhaisteach le 45 ceum aig co-cheanglaidhean shlighean eile. Tha seo fìor airson rèideas tionndaidh nan longan cuideachd
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ceadaich aonadh aig stèiseanan nach eil dìreach ri taobh càch a chèile: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Ceadaich gun tèid pàirtean a chur ri stèisean nach eil dìreach ri taobh nam pàirtean a tha ann mu thràth. Feumaidh tu Ctrl+Briogadh a chleachdadh nuair a chuireas tu na pàirtean ùra ann
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Cleachd algairim luchdaidh leasaichte: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ma tha seo air, thèid carbadan a bhios a' feitheamh aig stèisean a luchdadh an dèidh càch a chèile. Cha tòisich luchdadh an ath charbaid nuair a bhios carago gu leòr ann gus a' chiad charbad a lìonadh
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Luchdaich carbadan beag air bheag: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Luchdaich carbadan beag air bheag is ùine an luchdaidh a' crochadh air seòrsa a' charbaid an àite a bhith a' luchdadh a h-uile rud aig an aon àm le ùine luchdaidh shuidhichte a tha a' crochadh air seòrsa a' charago a-mhàin
 STR_CONFIG_SETTING_INFLATION                                    :Atmhorachd: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Cuir atmhorachd an comas san eaconamaidh is bidh cosgaisean a' dìreadh beagan nas luaithe na pàighidhean
-STR_CONFIG_SETTING_SELECTGOODS                                  :Na lìbhrig carago dha stèisean ach ma tha iarrtas ann: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Na lìbhrig carago dha stèisean ach ma chaidh iarraidh aig carbad a bhios a' luchdadh. Le seo, chan fhaigh thu rangachadh dona airson carago nach tèid a fhrithealadh aig an stèisean
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Faide as motha nan drochaidean: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Chan urrainn dhut drochaidean a thogail a tha nas fhaide na seo
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Faide as motha nan tunailean: {STRING}
@@ -1393,8 +1383,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Tagh far an sta
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :toiseach
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meadhan
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ceann thall
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ciutha nan carbadan-rathaid (le èifeachdan quantum): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Thoir air carbad-rathaid stad air beulaibh stèiseanan rathaid sa bheil carbad eile gus am falbh am fear eile
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Panaich an uinneag nuair a bhios an luchag aig oir na sgrìn: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Nuair a bhios seo air, tòisichidh pùirt-seallaidh air sgroladh nuair a bhios an luchag faisg air oir na h-uinneige
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :À comas
@@ -1425,10 +1413,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaich stèis
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ceadaich gun tèid stèiseanan ri taobh an rathaid a thogail air rathaidean a bhuineas ri baile
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaich stèiseanan ri taobh an rathaid air rathaidean a bhuineas ri co-fharpaisiche: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Ceadaich gun tèid stèiseanan ri taobh an rathaid a thogail air rathaidean a bhuineas ri companaidh eile
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Ceadaich togail stèiseanan ri taobh càch a chèile: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Ceadaich gum bean stèiseanan eadar-dhealaichte ri chèile
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Cuir seataidhean iomadach NewGRF an comas: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Roghainn co-chòrdalachd airson NewGRFan seana. Na cuir seo à comas mura h-eil thu eòlach air na tha thu a' dèanamh!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cha ghabh an roghainn seo atharrachadh nuair a bhios carbad ann
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cumail suas a' bhun-structair: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Nuair a bhios seo air, bidh cumail suas a' bhun-structair a' cosg airgid. Fàsaidh na cosgaisean nas luaithe na meud an lìonraidh, mar sin bheir an roghainn seo barrachd buaidh air companaidhean mòra
@@ -1486,8 +1470,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Cuairteachadh a
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tuathal
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Deiseil
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Ìre na h-àirde a bhios aig mapa cnàmh-sgeòil rèidh: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Cuir cruth-tìre nan leacan ri crìochan a' mhapa an comas: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ma tha seo dheth, bidh crìochan a' mhapa nan cuantan an-còmhnaidh
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Tha co-dhiù aon leac aig oir a tuath nach eil falamh
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Tha co-dhiù aon leac aig oir nach eil na uisge
 
@@ -1544,10 +1526,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :fada (31d Dùbh
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :goirid (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Pailead bunaiteach airson NewGRFan gun phailead aca fhèin: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Pailead dhathan bunasach a thèid a chleachdadh le NewGRFan nach sònraich dè am fear a tha a dhìth
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailead tùsail (D)
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailead dìleabach (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Cuir geamannan air ùr-thòiseachadh nan stad gu fèin-obrachail: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Nuair a bhios seo air, stadaidh an geama gu fèin-obrachail nuair a thòisicheas tu geama ùr. Bheir seo cothrom dhut gus am mapa a sgrùdadh air do shocair
@@ -1770,8 +1748,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a-mach à {CO
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Chan eil gin
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iomadaichear meud nam bailtean aig an toiseach: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Am meud cuibheasach dhe mhòr-bhailtean an coimeas ri bailtean àbhaisteach aig toiseach a' gheama
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Thoir air falbh eileamaidean-rathaid gun chiall nuair a thèid rathaid a thogail: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Thoir cùil-dhùinte nan rathaidean air falbh nuair a thèid togail rathaidean a mhaoineachadh
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Ùraich graf an sgaoilidh gach {STRING} {P 0:2 latha latha làithean latha}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :An ùine eadar dà ath-àireamhachadh dhe ghraf nan ceangal. Àireamhaichidh gach ath-àireamhachadh na planaichean airson co-phàirt dhen ghraf. Is ciall dha seo nach tèid an graf air fad ùrachadh gach X latha nuair a bhios an luach seo suidhichte air X, ach nach tèid ach co-phàirt ath-àireamhachadh. Mar as giorra a shuidhicheas tu e, ’s ann nas motha dhe ùine an CPU a bhios a dhìth airson an àireamhachadh. Mar as fhaide a shuidhicheas tu e, ’s ann nas fhaide a bheir e gus an tòisich sgaoileadh a' charago air slighean ùra.
@@ -1846,7 +1822,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Eadar-g
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Èifeachdan fuaime
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Naidheachdan is brathan
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharran
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Làimhseachadh carago
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Fèin-nuadhachadh
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Obair-ghlèidhidh
@@ -2916,10 +2891,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gnìomha
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Àirde na loidhne-shneachda:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Gluais an loidhne-shneachda suas aon cheum
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Gluais an loidhne-shneachda sìos aon cheum
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Sìol air thuaiream:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Briog gus sìol air thuaiream a chur a-steach
 STR_MAPGEN_RANDOM                                               :{BLACK}Cuir sìol air thuaiream
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Atharraich an sìol air thuaiream a thèid a chleachdadh gus cruth-tìre a ghintinn
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algairim chraobhan:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Seòrsa a' chrutha-thìre:
@@ -2946,7 +2918,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm a' 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Meud:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Cuir a-steach sìol air thuaiream
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Atharraich àirde na loidhne-shneachda
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Atharraich am bliadhna-tòiseachaidh
 

@@ -956,8 +956,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Risoluzi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleziona la risoluzione dello schermo da utilizzare
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato screenshot
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selezionare il formato da usare per gli screenshot
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pacchetto grafico di base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleziona il pacchetto grafico di base da utilizzare
@@ -1154,8 +1152,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Controlla l'att
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atteggiamento della città in merito alle modifiche: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione nell'area controllata
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Consenti la costruzione su pendii e coste: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se abilitato, binari e stazioni possono essere costruiti sulla maggior parte dei pendii. Se disabilitato, è permesso costruirli solo su pendii rivolti nella stessa direzione, per i quali non è necessario costruire fondamenta
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Consenti rimodellazione terreno sotto a edifici, rotaie, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Consente la rimodellazione del terreno sotto edifici e rotaie senza doverli rimuovere
 STR_CONFIG_SETTING_CATCHMENT                                    :Consenti aree di copertura più realistiche: {STRING}
@@ -1180,14 +1176,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Impedisci a tre
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nel riquadro adiacente, facendo sì che un treno che attraversa il bordo fra i riquadri curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari. L'impostazione si applica anche al raggio di virata delle navi
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Consenti di unire stazioni non direttamente adiacenti: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Consente di aggiungere nuove parti a una stazione senza toccare direttamente le parti esistenti. Richiede l'uso di CTRL+clic per posizionare le nuove parti
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usa l'algoritmo di caricamento migliorato: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Se abilitato, più veicoli fermi a una stazione sono caricati in modo sequenziale. Il caricamento di un veicolo inizia solo quando è presente in attesa una quantità di carico sufficiente da riempire il veicolo precedente
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carica i veicoli gradualmente: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Carica i veicoli gradualmente utilizzando la durata di caricamento specifica del veicoli, invece di caricare tutto insieme con un tempo fisso dipendente solo dalla quantità di carico
 STR_CONFIG_SETTING_INFLATION                                    :Inflazione: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Abilita l'inflazione nell'economia, facendo crescere i costi leggermente più in fretta dei compensi
-STR_CONFIG_SETTING_SELECTGOODS                                  :Scarica il carico in una stazione solo se richiesto: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Consegna i carichi a una stazione in cui ha caricato almeno un veicolo. In questo modo si evita una cattiva valutazione per i carichi che non sono processati a una stazione
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Lunghezza massima dei ponti: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Lunghezza massima per la costruzione dei ponti
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lunghezza massima dei tunnel: {STRING}
@@ -1215,8 +1205,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Seleziona il va
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :all'inizio
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :al centro
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :alla fine
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Accodamento automezzi fuori da una stazione occupata: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fa attendere gli automezzi davanti alle fermate occupate finché non si liberano
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Scorri visuali quando il mouse è su un bordo: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Se abilitato, le visuali iniziano a scorrere quando il mouse è vicino al bordo della finestra
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Disabilitato
@@ -1247,10 +1235,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Consenti fermat
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Consente la costruzione di fermate stradali passanti sulle strade di proprietà della città
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Consenti fermate passanti sulle strade di proprietà degli avversari: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Consente la costruzione di fermate stradali passanti sulle strade di proprietà delle altre compagnie
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Consenti la costruzione di stazioni adiacenti: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Consente a stazioni diverse di toccarsi
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Abilita pacchetti di locomotive NewGRF multipli: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opzione per la compatibilità con i vecchi NewGRF. Si raccomanda di non disabilitarla, a meno di non essere a conoscenza degli effetti
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è possibile modificare questa impostazione quando esistono veicoli
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenzione infrastrutture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Se abilitata, le infrastrutture causano dei costi di manutenzione. I costi crescono in modo più che proporzionale alla dimensione della rete, influenzando maggiormente le compagnie più grandi rispetto alle piccole
@@ -1308,8 +1292,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotazione heigh
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Altitudine delle mappe pianeggiante: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Consenti la rimodellazione del riquadri di terreno ai bordi della mappa: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Se disabilitato, ai bordi della mappa è sempre presente dell'acqua
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
 
@@ -1366,10 +1348,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :Lungo (31 Dic 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :Corto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Tavolozza predefinita da utilizzare per i NewGRF che non ne specificano alcuna: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Tavolozza predefinita da utilizzare per i NewGRF che non ne specificano alcuna
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Tavolozza predefinita (D)
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Tavolozza obsoleta (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Metti in pausa all'inizio di una nuova partita: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Se abilitata, il gioco andrà automaticamente in pausa all'inizio di una nuova partita, permettendo di esaminare meglio la mappa
@@ -1592,8 +1570,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 su {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nessuna
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Moltiplicatore iniziale dimensioni metropoli: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensione media delle metropoli in rapporto alle normali città all'inizio della partita
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Rimuovi segmenti isolati con la ricostruzione delle strade cittadine: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Rimuove i segmenti di strada abbandonati come parte di una ricostruzione finanziata delle strade
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aggiorna il grafo di distribuzione ogni {STRING} giorn{P 0:2 o i}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tempo fra due ricalcoli consecutivi del grafo delle rotte. Ad ogni ricalcolo vengono generati i piani per una sola componente del grafo. Ciò significa che una valore X per questa impostazione non causa il ricalcolo dell'intero grafo ogni X giorni, ma solo di una componente. Più breve l'intervallo impostato, più tempo la CPU consuma per calcolare il grafo. Più lungo l'intervallo, più a lungo bisogna attendere prima che la distribuzione abbia inizio su nuovi percorsi.
@@ -1668,7 +1644,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaz
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effetti sonori
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Notizie e messaggi
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Segnali
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Gestione dei carichi
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Giocatori controllati dal computer
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Rinnovo automatico
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Manutenzione
@@ -2717,10 +2692,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altezza delle nevi:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sposta in su di uno l'altezza delle nevi perenni
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sposta in giù di uno l'altezza delle nevi perenni
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Seme casuale:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Fare clic per introdurre un seme casuale
 STR_MAPGEN_RANDOM                                               :{BLACK}Scegli a caso
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Cambia il seme casuale usato per la generazione del terreno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatore:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo alberi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
@@ -2747,7 +2719,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome hei
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dim.:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Inserire un seme casuale
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Cambia l'altezza delle nevi perenni
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Cambia l'anno di inizio
 

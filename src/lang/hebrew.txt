@@ -968,8 +968,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלו
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}פורמט עבור צילומי מסך
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}בחר את הפורמט של צילום המסך
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
@@ -1144,8 +1142,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :אפשר/מנע
 STR_CONFIG_SETTING_CITY_APPROVAL                                :יחס מועצת העיר כלפי שינוי מבנה אזורי: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :בחר באיזו מידה רעש ונזק סביבתי ע"י חברות משפיעים על הדירוג העירוני שלהן ופעולות בנייה עתידיות באזור
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :אפשר לבנות על מידרונות וחופים: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :אם מאופשר, ניתן לבנות מסילות ותחנות על גבי רוב המדרונות. אם מבוטל, ניתן לבנות אותם רק על מדרונות המתאימים לכיוון המסילה וכך אינם דורשים יסודות
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{STRING} :'אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :אפשר שינוי פני השטח מתחת לבניינים ולמסילות ללא הסרתם
 STR_CONFIG_SETTING_CATCHMENT                                    :אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {STRING}
@@ -1170,14 +1166,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :אסור על �
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :סיבוב של 90 מעלות מתרחש כאשר מסילה אנכית באה מיד אחרי מסילה אופקית במשבצת סמוכה, וכך מאלצת את הרכבת לבצע פנייה של 90 מעלות בעת חציית גבול המשבצות במקום פניית 45 הרגילה עבור צירופי מסילות אחרים. הנ"ל תקף גם לגבי רדיוס הסיבוב של אוניות
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{STRING} :אפשר חיבור בין תחנות שאינן צמודות זו לזו
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :אפשר הוספת חלקים לתחנה מבלי לגעת ישירות בחלקים הקיימים. דורש קליק בצירוף לחיצה על מקש Ctrl בעת מיקום החלקים החדשים
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :השתמש באלגוריתם טעינה משופר: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :אם מאופר, מספר רכבים הממתינים בתחנה מוטענים בזה אחר זה. טעינת הרכב הבא מתחילה רק כאשר ממתין די מטען לצורך מילוי הרכב הראשון
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :טען כלי רכב בהדרגה: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :טען רכבים בהדרגה באמצעות זמני טעינה ייחודיים לכל רכב, במקום לטעון הכל בבת אחת עם פרק זמן קבוע התלוי רק בכמות המטען הטעונה
 STR_CONFIG_SETTING_INFLATION                                    :אנפלציה: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :אפשר אינפלציה בכלכלה, כך שהעלויות עולות מעט מהר יותר מאשר התשלומים
-STR_CONFIG_SETTING_SELECTGOODS                                  :מסור סחורה לתחנה רק כאשר יש ביקוש: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :מסור מטען לתחנה רק אם התבקש ע"י כלי רכב טוען. זה מונע דירוגים רעים עבור מטענים אשר אינם מקבלים שירות בתחנה
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :אורך גשר מירבי: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :אורך מירבי לבניית גשרים
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :אורך מנהרה מירבי: {STRING}
@@ -1205,8 +1195,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :מקום בו �
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :קצה קרוב
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :אמצע
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :קצה רחוק
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        ::(כלי רכב ממתינים(עם אפקט קונט {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :גרום לרכבי כביש להמתין מול תחנות מלאות עד שהן מתפנות
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{STRING} :גלילת תצוגה בעת שסמן העכבר נמצא בסמוך לקצוות
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :כאשר מאופשר, חלונות תצוגה יתחילו לגלול כאשר העכבר קרוב לקצה החלון
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :מבוטל
@@ -1237,10 +1225,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{STRING} :אפ�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :אפשר בנייה של תחנות "על הדרך" בכבישים בבעלות עיירות
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :אפשר נסיעה דרך תמרורי-עצירה על דרכים בבעלות מתחרים: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :אפשר בנייה של תחנות "על הדרך" בכבישים בבעלות חברות אחרות
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{STRING} :אפשר בניית תחנות בשכנות
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :אפשר לתחנות שונות לדעת זו בזו
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :אפשר מספר ערכות מנוע GRF חדשות: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :אפשרות תאימות עבור NewGRF-ים ישנים. אל תבטל/י אפשרות זו, אלא אם את/ה יודע/ת בדיוק מה את/ה עושה!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}שינוי הגדרה זו אינה אפשרית כאשר קיימים כלי רכב
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :תחזוקת תשתיות: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :כאשר מאופשר, תשתיות גורמות לעלויות תחזוקה. העלות גדלה באופן שהוא מעבר ליחסי לעומת גודל הרשת, וכך משפיע יותר על חברות גדולות מאשר על חברות קטנות
@@ -1298,8 +1282,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :סיבוב מפ
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :נגד כיוון השעון
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :בכיוון השעון
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{STRING} :עומק הקרקע עבור מפה שטוחה
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{STRING} :אפשר יצירת קרקע בשולי המפה
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :אם מבוטל, גבולות המפה תמיד יהיו אוקיינוס
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}לפחות משבצת אחת בקצה הצפוני אינה ריקה
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}לפחות משבצת אחת באחד הקצוות אינה מכוסה מים
 
@@ -1356,10 +1338,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ארוך (31 ב
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :קצר (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :לוח צבעים ברירת מחדל שיש להניח עבור NewGRF-ים אשר אינם מפרטים לוח צבעים: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :לוח צבעים ברירת מחדל לשימוש עבור NewGRF-ים אשר אינם מפרטים איזה לוח צבעים הם צריכים
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :לוח צבעים ברירת מחדל (D)
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :לוח צבעים מיושן (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :עצור משחק אוטומטית אחרי התחלת משחק חדש: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :כאשר מאופשר, המשחק יושהה אוטומטית בעת התחלת משחק חדש, דבר המאפשר בחינה מדוקדקת יותר של המפה
@@ -1582,8 +1560,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 ב-{COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ללא
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{STRING} :מכפיל התחלתי של גודל העיירות
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :גודל ממוצע של ערים יחסית לעיירות רגילות בתחילת המשחק
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :הסר רכיבי-דרך לא הגיוניים במהלך בניית דרכים: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :הסר קצות כבישים ללא מוצא בעת סלילה מחדש ממומנת של כבישים
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :עדכן את הגרף מדי {STRING} {P 0:2 יום ימים}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :זמן לחישוב מחדש של גרף הקישור. כל חישוב מחדש מחשב את התכניות של פריט יחיד בגרף. כלומר, בהגדרה של ערך X אין הכרח שכל הגרף יתעדכן מדי X ימים. רק פריט ממנו יתעדכן. ערך קטן יותר דורש יותר זמן מעבד לחישוב. ערך גבוה קובע זמן ארוך יותר עד שחלוקת המטען מתחילה בנתיב חדש.
@@ -1651,7 +1627,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}אינ�
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}חדשות והודעות
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}רמזורים
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}טיפול במטען
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}שחקני מחשב
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}חידוש אוטומטי
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}טיפולים
@@ -2676,10 +2651,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK} :מספ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}גובה קו השלג
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}הגבה את קו השלג
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}הנמך את קו השלג
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK} :מספר אקראי
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}הכנס מספר אקראי כלשהוא
 STR_MAPGEN_RANDOM                                               :{BLACK}אקראית
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}בחר מספר אקראי שישמש בסיס ליצירת הקרקע
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :יצירת קרקע
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}אלגוריתם העצים:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
@@ -2706,7 +2678,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK} :שם �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}גודל:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} על {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}מספר אקראי
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}שנה את גובה קו השלג
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}שנה את שנת הפתיחה
 

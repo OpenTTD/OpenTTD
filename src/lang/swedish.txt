@@ -954,8 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skärmup
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj skärmupplösning att använda
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skärmdumpsformat
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Välj filformat för skärmdump
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
@@ -1130,8 +1128,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på ka
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggantion av områden: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Välj hur mycket ett företags oväsen och miljöpåverkan ska påverka dess anseende och möjlighet till vidare byggnationer i området
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillåt konstruktion på sluttningar och kuster: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Om det är aktiverat kan räls och stationer byggas på de flesta sluttningar. Om det är inaktiverat är de bara tillåtna att bygga på sluttningar som motsvarar spårens riktning och därför inte kräver någon grund
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillåt landskapsarkitektur under byggnader och spår utan att ta bort dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillåt mer realistiska uppsamlingsområden för stationer: {STRING}
@@ -1156,14 +1152,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Förbjud tåg o
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta och därmed gör så att tåget svänger 90-grader om de kör längs med spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget. Denna inställning påverkar även svängradien för fartyg
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillåt att lägga till delar till en station utan att de är i direktkontakt med existerande delar. Kräver Ctrl+klick vid placering av nya stationsdelar.
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Använd förbättrad algoritm: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Om aktiverad och flera fordon befinner sig på stationen, kommer de att lastas på en efter en. Lastning av nästa fordon startar först när det finns tillräckligt med gods för att fylla det första fordonet.
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lasta fordon gradvis: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Lasta på fordon gradvis genom att använda fordonsspecifika tider för lastning istället för att lasta på allt samtidigt med en fast tid som endast beror på mängden gods att lasta på.
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktivera inflation i ekonomin. Kostnaderna stiger något fortare än inkomsterna.
-STR_CONFIG_SETTING_SELECTGOODS                                  :Leverera gods till en station enbart om någon frågar efter det: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Leverera endast gods till en station där godstypen har efterfrågats av ett fordon genom att försöka lasta på gods. Detta förhindrar dåliga värderingar för godstyper som inte betjänas på en station.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal brolängd: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal längd för broar
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal tunnellängd: {STRING}
@@ -1191,8 +1181,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Grundinställni
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :början
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mitten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :slutet
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vägfordonsköer (med kvanteffekter): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gör så att vägfordon väntar framför ett upptaget genomfarts-stopp tills dess att det är ledigt.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Scrolla vyn när musen är vid kanten: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :När det är aktiverat börjar vyer scrolla när muspekaren är nära fönstrets kant
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Avstängd
@@ -1223,10 +1211,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfa
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfarts-stopp på stadsägda vägar
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillåt dina fordon att köra genom motståndarens hållplatser: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillåt konstruktion av genomfarts-stopp på vägar som ägs av andra företag
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillåt konstruktion av närliggande stationer: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Tillåt att olika stationer rör vid varandra
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Tillåt flera NewGRF-set: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompabilitetsinställning för gamla NewGRFer. Inaktivera inte detta såvida du inte vet exakt vad du håller på med!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Underhåll av infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är aktiverat så kostar underhåll av infrastruktur. Kostnaden ökar mer än proportionellt mot nätverkets storlek, vilket innebär att större företag drabbas hårdare än små företag av underhållskostnader.
@@ -1284,8 +1268,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Höjkartans rot
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Motsols
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Medsols
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Vilken nivåhöjd en platt scenario-karta får: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Tillåt landskapsarkitektur på rutorna vid kartans kanter: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Om det är inaktiverat kommer kartans kanter alltid att vara hav
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller fler rutor vid den norra gränsen är inte tomma
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller fler rutor vid en av gränserna är inte vatten
 
@@ -1342,10 +1324,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lång (31st Dec
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standardpalett för NewGRF när ingen annan palett är angiven: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalett att använda med NewGRFer som inte anger vilken palett de behöver
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standardpalett (D)
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Tidigare versions (W) palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausa automatiskt vid start av nytt spel: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Om det är aktiverat kommer OpenTTD automatiskt att pausa vid start av ett nytt spel, så att kartan kan studeras noggrannare
@@ -1568,8 +1546,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ta bort återvändsgränder vid bekostad vägombyggnad
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Uppdatera distributionsgrafen var {STRING}:e dag{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planer för en komponent i grafen. Det medför att ett värde X för den här inställningen inte innebär att hela grafen uppdateras var X:e dag, bara vissa komponenter. Ju lägre värde du ställer in desto mer processorkraft kommer att behövas för beräkningarna. Ju högre värde du ställer in desto längre tid kommer det att ta innan distributionen av last börjar använda nya rutter.
@@ -1644,7 +1620,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interag
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljudeffekter
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nyheter och meddelanden
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Frakthantering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoförnya
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Service
@@ -2687,10 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snögränsens höjd:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snögränsens höjd ett upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett ner
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Slumpnummer:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klicka för att mata in ett slump-nummer
 STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändra slumpnummer som används för terräng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
@@ -2717,7 +2689,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namn på
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storlek:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Mata in ett slumpmässigt frö
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ändra snögränsens höjd
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ändra Startår
 

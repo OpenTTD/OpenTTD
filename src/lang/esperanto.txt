@@ -923,8 +923,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrana m
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elektu uzotan ekranan montrograndon
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekranfota formato
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Elektu uzotan ekranfotan formaton
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Baza grafikaro
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu la uzendan bazgrafikaron
@@ -1068,7 +1066,6 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ŝanĝu nivelon
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {STRING}
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Permesu konstrui sur kliniĝoj kaj bordoj: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permesu terecigon sub konstruaĵoj, trakoj, ktp. (aŭtodeklivo): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Permesu pli realgrandaj kaptoregionoj: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permesu forigon de pli da urbaj stratoj, pontoj ktp: {STRING}
@@ -1079,10 +1076,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de strat
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Vagonaroj kaj ŝipoj ne ort-turniĝu: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permesu ligi staciojn ne rekte najbarajn: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Uzu plibonigitan ŝarĝalgoritmon: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Laŭgrade ŝarĝu veturilojn: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflacio: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :Nur liveru ŝarĝon al stacio se estas peto: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Permana ĉefa industri-konstrumaniero: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neniu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj industrioj
@@ -1097,7 +1091,6 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :Novaj trajnordo
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :proksima fino
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meza
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fora fino
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stratveturila vicigo (kun kvantum-efektoj): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ŝovu fenestron se la muso estas ĉe la rando: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Malaktiva
 STR_CONFIG_SETTING_BRIBE                                        :Permesu subaĉeti la lokajn estrojn: {STRING}
@@ -1112,8 +1105,6 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduktita
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permesu trairajn bushaltejojn sur urboposedataj stratoj: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permesu konstrui staciojn apude: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Ebligu multoblajn NewGRF-motorarojn: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas ŝanĝi ĉi tiujn agordon dum veturiloj ĉeestas
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughavenoj neniam antikviĝas: {STRING}
@@ -1146,7 +1137,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Altecmapa turni
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Maldekstrume
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dekstrume
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kiom alta fariĝos scenara mapo: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Ebligu terecigon de la kaheloj ĉe la eĝoj de la mapo: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Unu ay pli da xeloj en norda parto ne malplenas
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Almenaŭ unu kahelo ĉe unu de la eĝoj ne estas akvo
 
@@ -1186,7 +1176,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longa (31st Dec
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :mallonga (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Norma paletro supozi por NewGRFs ne specifanta paletron: {STRING}
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Aŭtomate paŭzu startante novan ludon: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Permesu dum paŭza: {STRING}
@@ -1304,7 +1293,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normale
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapide
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Tre rapide
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgrandeca multobligo: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Forigu sensensajn straterojn dum stratkonstruado: {STRING}
 
 
 
@@ -1324,7 +1312,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interag
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sonefektoj
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novaĵo kaj mesaĝoj
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaloj
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kargotraktado
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Komputil-ludantoj
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Aŭtorenovigo
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Prizorgado
@@ -2264,10 +2251,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Kiom da 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Neĝlinia alteco:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Altigu la neĝlinion per unu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Malaltigu la neĝlinion per unu
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Hazarda Enigo:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klaku por enigi hazardan enigon
 STR_MAPGEN_RANDOM                                               :{BLACK}Hazardigu
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ŝanĝu la hazardan enigon uzatan de la terengenerilo
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerilo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Arba algoritmo:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
@@ -2294,7 +2278,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Mapa nom
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grandeco:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Enigu hazardan semon
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ŝanĝu altecon de la neĝlinio
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu komencjaron
 

@@ -956,8 +956,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel skjermoppløysinga som skal nyttast
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Filformat for skjermdump
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel kva format skjermdumpen skal lagrast i
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel grafikksett som skal nyttast
@@ -1132,8 +1130,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skru av/på kat
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Haldninga til bystyra når det gjeld ombygging: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vel kor mykje vurderinga frå bystyra og høvet for meir bygging i området vert påverka av støy og øydelegging frå eit firma.
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillet bygging på skråningar og i vasskanten: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Tillet bygging av vegar, jernbanespor og stasjonar i bakkar, med hjelp av ekstra fundament. Skru av for å gjere at all bygging i bakkar må passe med kva retning terrenget skrånar
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillet landskapsendringar under bygningar, spor o.s.b.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillet å endre landskapet under bygningar, vegar og jernbanespor, utan å måtte fjerne dei fyrst.
 STR_CONFIG_SETTING_CATCHMENT                                    :Meir realistisk storleik på oppfangingsområde: {STRING}
@@ -1156,12 +1152,8 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kor bratt ei he
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forby tog og skip å gjere 90-graderssvingar: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillet samanbygging av ikkje direkte tilstøtande stasjonar: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillat å bygge stasjonar som ikkje heng saman. (Ctrl+klikk for å bygge åtskilte delar av stasjonen )
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Bruk forbetra lastingsalgoritme: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Fyll opp køyretøy etter kvarandre, så eitt køyretøy er fullt før det neste vert lasta. Når det er nok varer på stasjonen blir fleire køyretøy lasta samtidig
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Last køyretøy gradvis: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflasjon: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Skrur på inflasjon, kor kostnader aukar noko fortare enn innbetalingar
-STR_CONFIG_SETTING_SELECTGOODS                                  :Lever varer til ein stasjon kun hvis det er etterspørjing: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Største brolengde: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal lengde for brubygging
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Største tunnellengde: {STRING}
@@ -1186,8 +1178,6 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :Nye togordrar s
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :starten
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :i andre enden
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Køyretøykøar (med kvantumseffektar): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gjer at køyretøy stoppar foran vegsperringar til dei vert fjerna. Alternativet er at dei snur for å finne ein annan veg
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på vindauget dersom pila er nær ytterkantane på skjermen: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktivert
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hovudvindauge
@@ -1211,9 +1201,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillet stoppest
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillat bygging av stoppestadar med gjennomkøyring på vegar eigd av byen
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillet stoppestadar med gjennomkøyring på konkurent-eigde vegar: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillatt bygging av stopp med gjennomkøyring på vegar eigd av andre firma
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillet å byggje stasjonar inntil andre: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Tillat forskjellige stasjonar å berøra kvarandre
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktiver fleire NewGRF-kjernesett: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Endring av denne instillinga er ikkje mogleg når det finst køyretøy
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Vedlikehald av infrastruktur: {STRING}
 
@@ -1259,8 +1246,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Høgdekartroter
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Høgdenivå eit flatt scenariokart får: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Tillat endring av landskapsruter på kanten av kartet: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Om deaktivert, vil kartkantene alltid være hav
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ei eller fleire ruter på nordkanten er ikkje tomme
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ei eller fleire ruter på ein av kantane inneheld ikkje vatn
 
@@ -1308,9 +1293,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Anteke standardpalett for NewGRFer utan spesifisert palett: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) palett
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Tradisjonell (W) palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatisk pause når ein startar nytt spel: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Når spelet er pausa, tillet: {STRING}
@@ -1499,8 +1481,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innleiande bystorleiksmultiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storleiken til byar på starten av spelet, jamført med tettstader
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde vegelement under vegkonstruksjon: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern blindvegar under finansiering av vegutbygging
 
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
@@ -1564,7 +1544,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Samhand
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nyheiter og meldingar
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Varehantering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoforny
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
@@ -2606,10 +2585,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høgd på snøgrensa:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høgda på snøgrensa eitt hakk opp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høgda på snøgrensa eitt hakk ned
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Såtal:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikk her for å taste inn eit såtal
 STR_MAPGEN_RANDOM                                               :{BLACK}Tilferdiggjer
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Endre såtal som nyttast for terreng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype
@@ -2636,7 +2612,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høgdeka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storleik:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv inn eit såtal
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Byt høgda på snøgrensa
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Byt startår
 

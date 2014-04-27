@@ -1018,8 +1018,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Képerny
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Játékhoz használt felbontás kiválasztása
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Képmentés formátuma
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Képmentésekhez használandó formátum kiválasztása
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}A játékhoz használandó grafikus alapcsomag kiválasztása
@@ -1194,8 +1192,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ha engedélyezv
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Városi tanács hozzáállása a területének az átépítéséhez: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Válaszd ki, hogy mennyi zaj és környezeti kár okozása befolyásolja a cég megítélését egy városban, mely hatással van a cég további építési lehetőségeire a város területén belül
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Bekapcsolva utak, vasutak és állomások lejtőre is építhetőek. Kikapcsolva csak olyan lejtőre építhetőek, melyek megegyeznek a lejtő irányával és nem igényelnek egyéb létesítményeket
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok stb. alatti tereprendezés engedélyezése: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
 STR_CONFIG_SETTING_CATCHMENT                                    :Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {STRING}
@@ -1220,14 +1216,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Vonatok és haj
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 fokos kanyarok akkor fordulnak elő, ha egy vízszintes pályaelemet egy függőleges elem követ közvetlenül a következő mezőn, ami által a vonat egy 90 fokos kanyart tesz a szokásos 45 fokos helyett. Ez ugyanígy előfordulhat hajók esetében is
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Nem közvetlen szomszédos állomások egyesítése: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Állomásrészek hozzáadásának engedélyezése úgy, hogy az nem érinti közvetlenül a meglévő részeket. Ctrl+kattintás szükséges hozzá az új részek elhelyezése közben
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Járművek egymás utáni telerakodása (egyidejű helyett): {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ha engedélyezett, az egyszerre az állomáson tartózkodó járművek egymás után kerülnek berakodásra. A következő jármű berakodása csak akkor kezdődik el, ha van elegendő áru az előző jármű teljes megtöltésére
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Járművek fokozatos rakodása: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Járművek fokozatos rakodása meghatározott rakodási időkkel ahelyett, hogy minden egyszerre lenne berakodva egy adott ideig az áru mennyiségétől függően
 STR_CONFIG_SETTING_INFLATION                                    :Infláció: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Infláció engedélyezése a gazdaságban, ahol a költségek jobban emelkednek, mint a bevételek
-STR_CONFIG_SETTING_SELECTGOODS                                  :Csak igény esetén kerüljön rakomány az állomásra: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Csak akkor kerül az állomásra az áru, ha arra igény van egy berakandó jármű által. Ez megelőzi a rossz értékelés kialakulását azokra az árufajtákra, amik nem kerülnek az állomáson kiszolgálásra
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hidak maximális hossza: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Az építendő hidak maximális hossza
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Alagutak maximális hossza: {STRING}
@@ -1255,8 +1245,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :A hely, ahol a 
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :távoli végén
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Közúti járművek sorbanállása: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Közúti járművek megállítása foglalt útszakasz előtt, míg az fel nem szabadul
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ablakmozgatás, ha az egér a képernyő szélén van: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Bekapcsolva görgetődik a látkép, ha az egér az ablak széléhez közel van
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :kikapcsolva
@@ -1287,10 +1275,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Áthaladó meg�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Áthaladó megállóhelyek építésének engedélyezése települési tulajdonú utakon
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Áthaladó megállóhelyek engedélyezése ellenfél tulajdonában lévő utakon: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Áthaladó megállóhelyek építésének engedélyezése olyan utakon, melyek más vállalatok birtokában vannak
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Érintkező állomások építésének engedélyezése: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Különböző állomások érintkezésének engedélyezése
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Több NewGRF járműgarnitúra engedélyezése: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompatibilitási lehetőség régi NewGRF-ekhez. Ne kapcsold ki, ha nem tudod mit csinálsz!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Az infrastruktúra fenntartási költségének engedélyezése: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Bekapcsolva az infrastruktúrának fenntartási költsége van. A költség hatványozottan nő a hálózatnagysággal, nagyobb hatással a nagyobb vállalatokra mint a kisebbekre
@@ -1348,8 +1332,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Magasságtérk�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Órairánnyal szemben
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Órairányban
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :A sík térképhez hozzáadandó magasság: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :A térkép határain lévő mezők tájrendezésének engedélyezése: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Kikapcsolva a térkép határain mindig óceán lesz
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
 
@@ -1406,10 +1388,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :hosszú (31st D
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :rövid (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Alapértelmezett paletta NewGRF-eknek ha nincs meghatározva: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Alapértelmezett paletta, melyet a NewGRF-ek használnak amennyiben nincs meghatározva, hogy melyikre van szükségük
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Alapértelmezett (D) paletta
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Hagyományos (W) paletta
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatikus szünettel kezdés új játék esetén: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Bekapcsolva a játék szünettel kezdődik, időt hagyva a térkép közelebbi tanulmányozására
@@ -1632,8 +1610,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a {COMMA}-bó
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nincs
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kezdeti városméret-szorzó: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Átlagos városméret a normál településekhez képest a játék kezdetén
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Abszurd útrészletek automatikus eltávolítása útépítés közben: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Zsákutcák eltávolítása támogatott útfelújítások ideje alatt
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :A szétosztási gráf frissítése {STRING} naponként
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :A kapcsolati gráf egyes újraszámításai között eltelő idő. Minden számítás a gráf egy adott komponensére vonatkozik. Egy adott X beállítás esetén nem fog a teljes gráf X naponként frissülni, csak egy komponense. Minél rövidebb ez az idő, annál több CPU időre lesz szükség a számítás elvégzéséhez. Minél hosszabb ez az idő, annál több ideig fog tartani, mire a szétosztás megindul az új útvonalakon.
@@ -1708,7 +1684,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Irány�
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Hírek és üzenetek
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Jelzők
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Rakomány kezelés
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automata felújítás
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Javítás
@@ -2751,10 +2726,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gazd. é
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hóhatár:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhatár megnövelése eggyel
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Véletlen alapszám:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Kattints ide a véletlen alapszám beírásához
 STR_MAPGEN_RANDOM                                               :{BLACK}Új véletlen alapszám
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Megváltoztatja a térképgenerálásnál használt véletlen alapszámot
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algoritmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
@@ -2781,7 +2753,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magassá
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méret:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Irj be egy tetszőleges számot
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Hóhatár megváltoztatása
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Kezdő év megváltoztatása
 

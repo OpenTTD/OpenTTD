@@ -954,8 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skærmop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vælg ønsket skærmopløsning
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skærmbillede-format
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vælg skærmbillede-format
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafiksæt
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det basis-grafiksæt der skal bruges
@@ -1127,8 +1125,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofe
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til omstrukturering: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vælg hvor meget selskaber støj og miljømæssige skader påvirker byvurdering og fremtidige byggeretigheder i området
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillad bygning på skråninger og kyster: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Hvis den er aktiveret, kan spor og stationer bygges på de fleste skråninger. Hvis den er deaktiveret, er de kun tilladt på skråninger, som svarer til retningen af sporet og kræver derfor ikke fundament
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillad landskabsformning under bygninger, spor, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillad landskabsformning under bygninger og spor uden at fjerne dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillad mere realistisk størrelse på stationernes opland: {STRING}
@@ -1153,14 +1149,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbyd skibe og
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graders drejninger forekommer når et horisontalt spor er direkte efterfulgt af et lodret spor stykke på det tilstødende felt, hvorved toget drejer 90 grader ved kørsel på feltets kant stedet for de sædvanlige 45 grader for andre spor kombinationer. Dette gælder også for drejeradius af skibe
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillad at tilføje dele til en station uden direkte at berøre eksisterende dele. Ctrl+Klik for at sætte nye dele
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Brug forbedret indlæsningsalgoritme: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Hvis aktiveret, er flere køretøjer ventende på en station indlæst sekventielt. Lastning af det næste køretøj kun starter, når der er nok fragt der venter på at fylde det første køretøj
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Last køretøjer gradvist: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gradvist last køretøjer ved brug af specifikke laste varigheder, i stedet for at laste alting på én gang med en fast tid afhængigt af kun lastet mængde gods
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiver inflation i økonomien, hvor omkostningerne er lidt hurtigere stigende end betalinger
-STR_CONFIG_SETTING_SELECTGOODS                                  :Aflever kun last til en station hvis der er en forespørgsel: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Kun aflevere last til en station, der er blevet anmodet af et køretøj. Dette forhindrer dårlige bedømmelse af laster, der ikke serviceres på en station
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimal bro længde: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal længde af broer
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnel længde: {STRING}
@@ -1188,8 +1178,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Stedet hvor et 
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :den nærmeste ende
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :den fjerneste ende
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Kødannelse af køretøjer (med kvanteeffekt): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Få et køretøj til at vente foran optaget veje indtil de er ryddet
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Panorér vindue når musen er ved kanten: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Når den er aktiveret, vil skærmbilledet begynde at rulle, når musen er nær kanten af skærmen
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktiveret
@@ -1220,10 +1208,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillad gennemk�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillad konstruktion af gennemkørsels-stop på by-ejede veje
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillad gennemkørsels-stoppesteder på veje ejet af konkurrenter: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillad konstruktion af gennemkørsels-stop på veje ejet af andre firmaer
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillad bygning af tilstødende stationer: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Tillad forskellige stationer til at røre hinanden
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Muliggør flere NewGRF køretøjssæt: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompatibilitet for gamle NewGRFs. Deaktiver ikke dette, medmindre du ved præcis hvad du laver!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Denne indstilling kan ikke ændres, når der er køretøjer.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktur vedligeholdelse: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Når aktiveret, infrastruktur forårsager vedligeholdelsesomkostninger. Omkostningerne vokser over-proportional med nettets størrelse, hvilket påvirker større virksomheder mere end de små
@@ -1281,8 +1265,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotér højdeko
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mod uret
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med uret
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Den højde et flat scenariekort får: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Tillad landskabsændring af felter ved kortets kanter: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Hvis deaktiveret vil kortets kanter altid være hav
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Et eller flere felter ved den nordlige kant er ikke tomme
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Et eller flere felter ved en af kanterne er ikke vand
 
@@ -1339,10 +1321,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Dec 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard palette NewGRFer uden valgt palette: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalet til brug af NewGRFs der ikke angiver hvilken en de har brug for
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standard (D) palet
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palet
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sæt automatisk på pause når nyt spil startes: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktiveret, vil spillet automatisk pause når du starter et nyt spil, det giver mulighed for at studerer kortet nærmere
@@ -1565,8 +1543,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 ud af {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Startværdi for bystørrelsesfaktor: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gennemsnitlig størrelse af storbyer i forhold til normale byer ved start af spillet
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde vejelementer under opførelse af vej: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern døde vej-ender i løbet af finansierede vej-rekostruktioner
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Opdatér distributionsgraf hver {STRING} dag{P 0:2 "" e}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellem efterfølgende genberegninger af forbindelsesgrafen. Hver genberegning beregner planerne for et komponent af grafen. Det betyder, at en værdi X for denne indstilling ikke betyder at hele grafen vil blive opdateret hver X dage. Kun nogle komponenter vil. Jo kortere du sætter indstillingen, jo mere CPU-tid vil være nødvendig for at beregne forbindelsesgrafen. Jo længere du sætter indstillingen, jo længere vil det tage før lastdistribution starter på nye ruter.
@@ -1641,7 +1617,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Brugerf
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nyheder og beskeder
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Fragthåndtering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-forny
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicering
@@ -2683,10 +2658,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snegrænse
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt snegrænsen een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt snegrænsen een ned
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Tilfældig
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik for at angive tilfældighed
 STR_MAPGEN_RANDOM                                               :{BLACK}Tilfældig
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ændre den tilfældige værdi ved brug i terrængeneratoren
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Terrængenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
@@ -2713,7 +2685,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdeko
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv startværdi til tilfældige tal
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ændre snegrænsen
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ændre startår
 

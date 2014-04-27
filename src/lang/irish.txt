@@ -920,8 +920,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Taifeach
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Roghnaigh an taifeach scáileáin le húsáid
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formáid seatanna scáileáin
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Roghnaigh an formáid le húsáid do sheatanna scáileáin
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Sraith graifice bunaidh
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Roghnaigh an sraith grafaice bunaidh le húsáid
@@ -1051,7 +1049,6 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa lár
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ar dheis
 
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Ceadaigh tuilleadh bóithre, droichid agus tolláin ar le baile iad a bhaint: {STRING}
@@ -1060,10 +1057,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Samhail luasgh�
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Samhail luasghéaraithe d'fheithiclí bóthair: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ceadaigh stáisiúin a changal nach bhfuil taobh lena gcéile: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Úsáid an algartam lódála feabhsaithe: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lódáil feithiclí de réir a chéile: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Boilsciú: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :Ná déan lastas a sheachadadh chuig stáisiún ach má tá éileamh ann: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Modh tógála tionscail de láimh go príomhúil: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ceann ar bith
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :cosúil le tionscail eile
@@ -1075,7 +1069,6 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :Stopann orduith
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :taobh abhus
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :lár
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :taobh thall
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Scuainí feithiclí bóthair (le maisíochtaí candamacha): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Peanáil an fhuinneog agus an luch ag an taobh: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Ceadaigh breabanna a thabhairt don údarás áitiúil: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ceadaigh cearta eisiach iompair a cheannach: {STRING}
@@ -1088,8 +1081,6 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :laghdaithe
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gnáth
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaigh stadanna bóthair 'tiomáin tríd' ar bhóithre ar le bailte iad: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaigh stopanna bóthair 'tiomáin tríd' ar bhóithre ar le hiomaitheoirí iad: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Ceadaigh tógáil taobh le stáisiúin: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Cumasaigh níos mó ná sraith innill NewGRF amháin: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féidir an socrú seo a athrú nuair atá feithiclí ann
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cothabháil bonneagair: {STRING}
 
@@ -1124,7 +1115,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rothlú an mhap
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tuathal
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Deiseal
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Leibhéal airde a fhaighann léarscáil scéil réidh: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Ceadaigh athrú talún ar na tíleanna ag teorainneacha na léarscáile: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Tá tíl amháin nó níos mó ag an taobh thuaidh nach bhfuil folamh
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Tá tíl amháin nó níos mó ag ceann de na taobhanna nach uisce é
 
@@ -1274,7 +1264,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Gnáth
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Scioptha
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :An-scioptha
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iolraitheoir tosaigh mhéid na gcathracha: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bain gnéithe bóthair áiféiseacha agus bóithre á dtógáil: {STRING}
 
 
 
@@ -1292,7 +1281,6 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Iomaith
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Roghanna taispeána
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Idirghníomhú
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharthaí
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Láimhseáil lastais
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ríomh-imreoirí
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Uathathnuachan
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Seirbhísiú
@@ -2237,10 +2225,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Líon na
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Airde na líne sneachta:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Bog airde na líne sneachta suas ceann amháin
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Bog airde na líne sneachta síos ceann amháin
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Síol randamach:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Cliceáil chun síol randamach a iontráil
 STR_MAPGEN_RANDOM                                               :{BLACK}Déan randamú
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Athraigh an síol randamach a úsáidtear chun an Tír-Raon a chruthú
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Talamh a chruthú:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algartam na gcrann:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Cineál tír-raoin:
@@ -2266,7 +2251,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm an 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méid:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Iontráil síol randamach
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Athraigh airde na líne sneachta
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Athraigh an bhliain tosaigh
 

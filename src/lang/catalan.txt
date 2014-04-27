@@ -955,8 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluci
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolució de pantalla
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format de les captures de pantalla
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecciona el format a utilitzar en les captures de pantalla
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar
@@ -1131,8 +1129,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Commuta els des
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la població davant de reestructuracions a la zona: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escull quin nivell de soroll i de danys ambientals fets per les companyies afecten al seu prestigi a la població i a futures accions de construcció a la zona
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Permet construir en desnivells i costes: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si està activat, les vies i les estacions poden ser construïdes en la majoria de pendents. Si està desactivat, només està permès en aquells pendents que coincideixin amb la direcció de la via i no necessitin fonaments
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet modelar el terreny sota edificis, rails, etc. (autopendent): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permetre modelar el terreny sota edificis i rails, sense eliminar-los
 STR_CONFIG_SETTING_CATCHMENT                                    :Permet una mida més real de l'àrea d'influència: {STRING}
@@ -1157,14 +1153,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer g
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan una via horitzontal està seguida d'una vertical a la cel·la annexa, provocant que el tren giri 90 graus quan travessi la vora de la cel·la en lloc dels 45 graus usuals en les altres combinacions. Això també s'aplica al radi de gir dels vaixells
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permetre afegir parts a una estació sense contacte directe amb les parts existents. Fa falta Ctrl + Clic, mentre és col·loquen les peces noves
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utilitza algorisme millorat de càrrega: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Si està activat, múltiples vehicles esperant a una estació es carreguen de forma seqüencial.
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carrega els vehicles gradualment: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :De mica en mica, carregar els vehicles que utilitzen duracions específiques de vehicles, en comptes de carregar-los tots alhora en un temps fix que només depèn de la quantitat de càrrega carregada
 STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments
-STR_CONFIG_SETTING_SELECTGOODS                                  :Entrega càrregues en una estació només quan hi ha demananda: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Només entregar la càrrega en una estació que ha demanat el vehicle de càrrega. Això evita ratis erronis per les càrregues que no han estat demanades per l'estació
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud del pont: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de ponts
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud del túnel: {STRING}
@@ -1192,8 +1182,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Situa en quin l
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a l'extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més llunyà
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cues d'automòbils (amb efectes quàntics): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fes que un vehicle esperi davant d'una parada plena fins que estigui lliure
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avis quan el ratolí és al marc del programa: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, les vistes començaran a desplaçar-se quan el ratolí sigui a prop la vora de la finestra
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivat
@@ -1224,10 +1212,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permet situar p
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permet la construcció de passos a nivell en els carrers propietat de les poblacions
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permet circular a través de les parades en carreteres propietat de competidors: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permet la construcció de passos a nivell en els carrers propietat d'altres companyies
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permet construir estacions annexes: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permet que diferents estacions es toquin l'una a l'altra
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Activa diversos paquets NewGRF de models de vehicles: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opció de compatibilitat per NewGRF vells. No desactivis això, a menys que sàpigues exactament el que estàs fent!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manteniment d'infrastructures: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quan està activat, la infrastructura provoca costos de manteniment. El cost creix proporcionalment al tamany de la xarxa de transport, afectant en conseqüència més a les companyies grosses que a les petites
@@ -1285,8 +1269,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotació del ma
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Alçada que un escenari pla pren: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Activa modelar el terreny de les cel·les a les vores del mapa: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Si està desactivat, les vores del mapa sempre seran oceans
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
@@ -1343,10 +1325,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31 Dec 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta predeterminada pels NewGRF que no n'especifiquin una: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta predeterminada a utilitzar als NewGRF que no especifiquen quina necessiten
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta predeterminada (D)
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta preexistent (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausa automàticament en començar una nova partida: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es pausarà automàticament quan es comenci una partida nova, permetent a l'usuari estudiar el mapa més detalladament
@@ -1569,8 +1547,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMM
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Treu els elements de carretera absurds durant la reconstrucció de carretera: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina les carreteres sense sortida durant les reconstruccions de carreteres finançades
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING} di{P 0 a es}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de distribució. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
@@ -1645,7 +1621,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interac
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectes de so
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Notícies i missatges
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Senyals
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulació de la càrrega
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadors de l'ordinador (IA)
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenovació
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Revisions
@@ -2688,10 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nombre d
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alçada de la neu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mou la línia de neu un pas amunt
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mou la línia de neu un pas avall
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nombre aleatori:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Clica per introduir un nombre aleatori
 STR_MAPGEN_RANDOM                                               :{BLACK}Aleatoritza
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Canvia el nombre aleatori utilitzat pel Generador de Terrenys
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generació de terrenys:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritme d'arbres:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
@@ -2718,7 +2690,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom del 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Mida:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Posa un valor aleatori
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Canviar alçada de la línia de neu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Canviar l'any inicial
 

@@ -1145,8 +1145,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Veličin
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Odaberite željenu veličinu ekrana
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format slike ekrana
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Odaberite željeni format slike ekrana
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni skup grafika
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberite željeni skup osnovnih grafika
@@ -1315,8 +1313,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključuje i is
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stav gradskog odbora u pogledu restrukturiranja zone: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izbor koliko će buka i zagađenje koje proizvode kompanije uticati na njihov gradski rejting i dalje građevinske akcije u toj zoni
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Dozvoljena gradnja na kosinama i obalama: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ako je uključeno, rute i stanice mogu se graditi na većini strmina. Ako je isključeno, mogu se graditi samo na strminama koje odgovaraju smeru rute i ne traže posebnu osnovu
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Dozvoli iskopavanja ispod građevina i pruge bez da se uklone
 STR_CONFIG_SETTING_CATCHMENT                                    :Realističnije veličine prihvatnih površina: {STRING}
@@ -1341,14 +1337,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabranjeno okre
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Okretanje za 90 stepeni se dešava kada se uspravna pruga nalazi odmah posle vodoravne pruge na susednoj pločici i time čini da voz skreće pod 90 stepeni kad prelazi sa pločice na pločicu, umesto uobičajenih 45 stepeni kod drugih kombinacija pruge. Ovo takođe važi i za radijus zaokreta brodova
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Dozvoljeno sjedinjavanje udaljenih stanica: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Dozvoljava dodavanje delova stanici bez da oni dodiruju postojeće delove stanice. Zahteva Ctrl+Klik kod postavljanja novih delova
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Koristiti poboljšan algoritam utovara: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ako je omogućen, više vozila koja čekaju u stanici će se utovarivati jedno za drugim. Sledeće vozilo će početi sa utovarom kada čeka dovoljno tereta da napuni prethodno vozilo
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Postepeno utovarivanje u vozilo: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Postupno utovaruj vozila koristeći različito vreme utovara za svako vozilo, umesto utovara odjednom za fiksno vreme koje zavisi samo od količine tovara
 STR_CONFIG_SETTING_INFLATION                                    :Inflacija: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Omogućuje inflaciju tako da troškovi rastu malo brže od isplata
-STR_CONFIG_SETTING_SELECTGOODS                                  :Dostavljanje tovara na stanicu samo ako ima potražnje: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Dostavlja na stanicu samo onaj tovar koji je potreban vozilu koje se utovaruje. Ovo onemogućava loš rejting za one vrste tovara koji ne mogu da se iskoriste u stanici
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Najveća dužina mosta: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimalna dužina za podizanje mostova
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Najveća dužina tunela: {STRING}
@@ -1376,8 +1366,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Mesto gde će s
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :početak
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :sredina
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :kraj
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vozila čekaju u koloni (na zauzetim stanicama): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Čini da drumsko vozilo čeka ispred zauzetih stanica dok se ne raščiste
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Pomeranje prozora kada miš priđe ivicama: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ako je omogućeno, prikaz će početi da skroluje kada je kursor miša blizu ivice prozora
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Isključeno
@@ -1408,9 +1396,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Dozvoljene uli�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Dozvoljava izgradnju protočnih drumskih stanica na putevima čiji je vlasnik naselje
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Dozvoljene ulične stanice na kolovozima u vlasništvu drugih preduzeća: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Dozvoljava izgradnju protočnih drumskih stanica na putevima čiji je vlasnik drugo preduzeće
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Dozvoljena gradnja stanica jedne pored druge: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Dozvoljava da se različite stanice dodiruju
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Dozvoljeno više NewGRF kolekcija mašina: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena ovog podešavanja nije moguća dok postoje vozila
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje infrastrukture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ako je omogućeno, infrastruktura će imati troškove održavanja. Trošak raste brže sa porastom veličine putne mreže i time više pogađa veća preduzeća od manjih
@@ -1465,8 +1450,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Orijentacija el
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nalevo
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Nadesno
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Visina ravnog terena je: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Dozvoljeno oblikovanje reljefa na ivicama terena: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ako je onemogućeno, na ivicama karte će uvek biti okean
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedan ili više sektora na severnoj ivici nije prazan
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedan ili više sektora na jednoj od ivica nije voda
 
@@ -1512,7 +1495,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dugačak (31st 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratak (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Podrazumevana paleta za NewGRF: {STRING}
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pauzirati odmah po pokretanju nove partije : {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Tokom pauze dozvoljene su: {STRING}
@@ -1703,8 +1685,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 u {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nijedan
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Inicijalni množilac razvoja gradova: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Prosečna veličina naselja relativno u odnosu na gradove na početku partije
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Uklanjati besmislene kolovoze u naseljima: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ukloni slepe ulice tokom plaćene rekonstrukcije puteva
 
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :ručno
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrično
@@ -1758,7 +1738,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interak
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Vesti i poruke
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Baratanje teretom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatska zamena
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
@@ -2782,10 +2761,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fab
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivo snežnog pokrivača:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sužava snežni pokrivač naviše za jedan
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširuje snežni pojas naniže za jedan
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Klica proizvoljnosti:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Kliknite za unos klice proizvoljnosti
 STR_MAPGEN_RANDOM                                               :{BLACK}Proizvoljno
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Promena klice proizvoljnosti za Oblikovanje Reljefa
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikovanje reljefa:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritam za drveća:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
@@ -2812,7 +2788,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv el
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veličina:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Unos nove vrednosti klice
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Promena donjeg nivoa snežnog pojasa
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Promena početne godine
 

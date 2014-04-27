@@ -931,8 +931,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi skrin untuk digunakan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format tangkapan skrin
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Pilih format tangkapan skrin untuk digunakan
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafik asas
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih set grafik asas untuk digunakan
@@ -1094,8 +1092,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Jika kereta api
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap majlis bandaraya terhadap penyusunan semula kawasan: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih tahap kebisingan dan kerosakan persekitaran
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Benarkan pembinaan di tepi pantai dan cerun bukit: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Jika diupayakan, trek dan stesen boleh membina pada yang paling cerun. Jika dilumpuhkan, mereka hanya dibenarkan di cerun yang sepadan arah trek dan dengan itu tidak memerlukan asas
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Benarkan landskap di arah bangunan dan trek tanpa memusnahkannya
 STR_CONFIG_SETTING_CATCHMENT                                    :Benarkan kawasan tangkapan yang lebih realistik: {STRING}
@@ -1120,14 +1116,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Halangkan keret
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Pusingan 90 darjah apabila trek yang mendatar secara langsung diikuti oleh suatu trek menegak pada laluan bersebelahan sekeligus menjadikan keretapi kearah 90 darjah apabila melalui laluan 45 darjah untuk kombilasa trek lain. Ini juga berlaku kepada laluan membelok kapal
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Benarkan penyambungan stesen yang tidak bersebelahan: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Benarkan menambah bahagian untuk stesen tanpa menyentuh bahagian yang sedia ada. Perlu Ctrl + Klik sambil meletakkan bahagian-bahagian baru
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gunakan algoritma muatan yang diperbaiki: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Jika dibolehkan, pelbagai kenderaan menunggu di stesen dimuatkan berurutan.Pemuatan kenderaan seterusnya hanya bermula apabila terdapat kargo yang mencukupi menunggu untuk mengisi kenderaan pertama sepenuhnya
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Muatkan kenderaan sedikit demi sedikit: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Secara beransur-ansur muatan kenderaan akan menggunakan jangka masa tertentu, bukannya memuatkan sekaligus dengan masa yang tetap bergantung pada jumlah muatan dimuatkan
 STR_CONFIG_SETTING_INFLATION                                    :Inflasi: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Mengupayakan inflasi kepada ekonomi, di mana kos adalah sedikit lebih cepat meningkat daripada pembayaran
-STR_CONFIG_SETTING_SELECTGOODS                                  :Hantarkan kargo ke stesen hanya jika ada permintaan: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Hanya menghantar muatan ke stesen yang telah diminta daripada kenderaan pemuat. Ini menghalang nilai yang buruk bagi kargo yang tidak diservis di stesen
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Panjang maksimum jambatan: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Panjang maksimum untuk binaan jambatan
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Panjang maksimum terowong: {STRING}
@@ -1148,7 +1138,6 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :Arahan keretapi
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :berhampiran hujung
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah-tengah
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :hujung sekali
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Perbarisan kenderaan jalanraya (dengan kesan kuantum): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Gerakkan pemandangan apabila tetikus di sempadan: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Dinyah-upayakan
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Dinyah-upayakan
@@ -1178,10 +1167,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Benarkan hentia
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Benarkan pembinaan untuk jalan pemanduan berhenti di jalan milik bandaran
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Benarkan hentian pandu-lalu di jalanraya yang dimiliki oleh pesaing: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Benarkan pembinaan untuk jalan pemanduan berhenti di jalan milik bandaran
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Benarkan membina stesen yang bersebelahan stesen lain: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Benarkan stesen yang berbeza untuk berdekatan dengan lain
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Benarkan berbilang set enjin NewGRF: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Pilihan keserasian untuk NewGRFs lama. Jangan melumpuhkan ini, melainkan jika anda tahu apa yang anda lakukan!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Menukar tetapan ini adalah mustahil apabila terdapat kenderaan.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Penyelenggaraan Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Apabila diupayakan,infrastuktur menyebabkan kos penyelenggaraan. Kadar kos tumbuh berdasarkan saiz rangkaian, sekaligus menjejaskan syarikat yang lebih besar daripada yang kecil
@@ -1218,8 +1203,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Putaran heightm
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Lawan jam
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pusingan jam
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Tahap ketinggian peta senario rata: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Benarkan pengubahsuaian tanah di petak di sempadan peta: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Jika dilumpuhkan, sempadan peta akan sentiasa sebagai lautan
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Satu atau lebih petak di bucu utara tidak kosong
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Satu atau lebih petak di salah satu bucu bukan air
 
@@ -1261,7 +1244,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :panjang (31hb D
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :pendek (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palet asal untuk mengambil alih bagi NewGRFs yang tidak menyatakan palet: {STRING}
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Berhenti automatik ketika memulakan permainan yang baru: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Semasa dihentikan, dibenarkan: {STRING}
@@ -1380,7 +1362,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Biasa
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Pantas
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Sangat pantas
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal saiz bandar: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Buang elemen jalanraya yang tidak masuk akal daripada pembinaan jalanraya: {STRING}
 
 
 
@@ -1398,7 +1379,6 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Pilihan paparan
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksi
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Isyarat
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Pengendalian kargo
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Pembaharuan Automatik
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servis
@@ -2415,10 +2395,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Paras ketinggian garis salji:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tinggikan paras garis salji satu petak
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Rendahkan paras garis salji satu petak
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Benihkan secara rambang:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik untuk memasukkan benih rambang
 STR_MAPGEN_RANDOM                                               :{BLACK}Rambangkan
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Tukarkan benih rambang yang digunakan untuk Penjanaan Rupa Bumi
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Janaan tanah:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pokok:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis rupa bumi:
@@ -2445,7 +2422,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama hei
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Saiz:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Masukkan benih rambang
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Tukarkan paras garis salji
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Tukar tahun permulaan
 

@@ -955,8 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm re
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kies die skerm resolusie om te gebruik
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skermkiekie formaat
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Kies die skermkiekie formaat om te gebruik
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikastel
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die basis-grafikastel stel om te gebruik
@@ -1131,8 +1129,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skakel rampe aa
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsraad se gesindheid teenoor omgewings-konstruksie: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel invloed klank en skade aan die omgewing deur maatskappye aan die stadswaardering het en verderde bouwerk in die stad.
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Laat bou op skuinstes en kuslyn toe: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :As geaktiveer, kan spore en stasies op meeste hellings gebou word. Indien gedeaktiveer, kan hulle net gebou work op hellings wat die rigting van die spoor volg, en dus geen fondasies verg nie
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Laat landargitektuur toe onder geboue, spore, ens. (outohelling): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat Landargitektuur onder geboue en spore sonder om dit te verwyder
 STR_CONFIG_SETTING_CATCHMENT                                    :Laat meer realisties grootte opvangsgebied toe: {STRING}
@@ -1157,14 +1153,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied triene 
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 grade draaie kom voor wanneer 'n horisontale spoor direk gevolg deur 'n vertikale spoor op die aangrensende teël, dus waardeur die trein 'n 90 grade draai maak deur die teël rand in plaas van die gewone 45 grade vir 'n ander spoor kombinasies. Dit geld ook vir die draai radius van skepe
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Laat toe dat stasies lanks mekaar gebind kan word: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Laat die toevoeging van dele van 'n stasie sonder om direk aan die bestaande dele te raak toe. Ctrl+klik om die nuwe dele te plaas
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verebeterde laai algoritme: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Indien geaktiveer, verskeie voertuie wat by 'n stasie wag sal opeenvolgend gelaai word. Die laai van die volgende voertuig begin eers wanneer daar is genoeg vrag is wat wag om die eerste voertuig te vul
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Laai voertuie geleidelik: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Geleidelik laai vanvoertuie deur die gebruik van die voertuig se spesifieke laai tydsduur, in plaas van om alles op eenslag te laai met 'n vaste tydduur, afhangende van diehoeveelheid vrag gelaai
 STR_CONFIG_SETTING_INFLATION                                    :Inflasie: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiveer inflasie in die ekonomie, waar die kostes vinniger styg as betalings
-STR_CONFIG_SETTING_SELECTGOODS                                  :Aflewer vrag na 'n stasie slegs as daar 'n aanvrag is:: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Lewer slegs 'n vrag af by 'n stasie wat die vrag van die voertuig versoek het. Dit verhoed dat slegte graderings vir ladings wat nie benodig word by 'n stasie nie
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van bruë
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel lengte: {STRING}
@@ -1192,8 +1182,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plek waar 'n tr
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :naby einde
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Pad voertuig toustaan (met kwantum effekte): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Maak 'n pad voertuig wag by besette padstoppe totdat hulle leeg is
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :As dit geaktiveer is, sal subventers begin skuif wanneer die muis naby die kante van die venster is
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Gedeaktiveer
@@ -1224,10 +1212,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Laat deur-ry pa
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Laat Bouery van deur-ry pad stasies op dorp beheerde paaie
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Laat deur-ry padhalte toe op paaie wat deur ander deelnemers besit word: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Laat die konstruksie van die ry-deur pad stasies op paaie toe wat deur ander maatskappye besit word
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Laat die bou van aangrensende stasies toe: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Laat verskeie stasies toe om mekaar te raak
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktiveer veeltallige NewGRF enjin stelle: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :versoenbaarheid opsie vir ou NewGRFs. Moenie deaktiveer, behalwe as jy weet wat jy doen!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Verandering van die stelling is nie moontlik wanneer daar voertuie is nie
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuur onderhoud: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :As dit geaktiveer is sal dit veroorsaak dat infrastruktuur onderhoudskoste verhoog. Die koste groei oor-proporsioneel met die netwerk grootte, wat groter maatskappye meer as kleiner maatskappye benadeel
@@ -1285,8 +1269,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Hoogtekaart rot
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Teller vooruit
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Vooruit
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Die hoogte vlak wat 'n plat scenario kaart kry: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Aktiveer terra vorming van teëls op die kaart rant: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :wanneer gedeaktiveer, die kaart se kante sal altyd see wees
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer teëls op die Noordelike grens is nie leeg nie
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer teëls by een van die kante is nie water nie
 
@@ -1343,10 +1325,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lank (31ste Des
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standaard palet word aangeneem vir NewGRFs geen palet gespesifiseer: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Verstek kleurskema om te gebruik vir NewGRFs wat nie spesifeer watter kleurskema benodig word nie
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Verstek (D) kleur skakering
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Tradisionele (W) kleur skakering
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Outomaties pouse wanneer om te begin 'n nuwe speletjie: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :As hierdie opsie geaktiveer is, sal die spel gepousseer wees wanneer die spel begin.
@@ -1569,8 +1547,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Normale stede groote relatief na normale dorpe aan die begin van speletjie
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwyder absurde pad-elemente gedurende die pad konstruksie: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Verwyder doodloop strate, wanner befondse pad konstruksie plaasvind
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Herreken die verspreingskaart elke {STRING} da{P 0:2 g e}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tyd tussen daaropvolgende herrekeninge van die verspreidingskaart. Elke herrekening is vir een komponent van die hele kaart, so net 'n gedeelte is dan op datum, nie die hele kaart nie. Hoe korter hierdie stelling is, hoe meer verwerkingskrag word benodig, hoe langer hierdie stelling is, hoe langer vat dit vir die vrag om op nuwe roetes te versprei.
@@ -1645,7 +1621,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interak
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Klankeffekte
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nuus en booskappe
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seine
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Goedere hantering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Rekenaar spelers
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Outo hernu
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Diens
@@ -2687,10 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Hoev. ny
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sneeu lyn hoogte:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg die sneeu lyn een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweeg die sneeu lyn een af
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Lukraak Saad:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om 'n willekeurige saad in te voer
 STR_MAPGEN_RANDOM                                               :{BLACK}Lukraake
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Verander die lukraak saad gebruik vir Terrein Generasie
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land genereerder:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boom algoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrein tipe:
@@ -2717,7 +2689,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Hoogteka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Groote:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Sleutel 'n lukraak saad in
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander sneeu lyn hoogte
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander begin jaar
 

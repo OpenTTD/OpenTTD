@@ -954,8 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}屏幕�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}选择要使用的屏幕分辨率
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}屏幕截图类型
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}选择屏幕截图类型
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基础图形组
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}选择要使用的基础图形组
@@ -1130,8 +1128,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :灾难可能引
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地区政府对区域改造的态度: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :设置相关参数以决定各公司造成的噪音及环境破坏时，各城镇对该公司的评价及未来区域建设的影响。
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :允许在斜坡和河岸上建设：{STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :启用时轨道和站台能够建造在斜坡上，禁止时只能建设与斜坡方向相同的轨道，因而不需要改变地形
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :允许在建筑和轨道下方改变地形而不需要拆除他们
 STR_CONFIG_SETTING_CATCHMENT                                    :允许更真实的客源范围：{STRING}
@@ -1156,14 +1152,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车和
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :当水平方向轨道与垂直方向轨道交叉时，没有采用45度的轨道组合连接，而是采用轨道90度直接连接时，列车通过时需要90度转弯，当本设置”打开“时，将禁止火车90度转弯，本设置同样影响船只转弯时的航线。
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允许非毗邻站台合并：{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :“打开”时允许为已经存在的车站添加不相邻的站台，建造新的部分时需要按住Ctrl键
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :使用进阶的装货算法：{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :“打开”时，多辆车在一个车站依次排队装货，只有当货物足够装满第一列车时才同时为下一列车装货
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :装货时循序渐进：{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :根据车辆的特定装货时间来逐渐装货, 而不要根据货物量在一定时间内一次装满全部货物
 STR_CONFIG_SETTING_INFLATION                                    :通货膨胀：{STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :“打开”通货膨胀时，支出比收入增长得稍快
-STR_CONFIG_SETTING_SELECTGOODS                                  :仅在车站接受此货物时卸货：{STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :“打开”时只有车站接收此货物时才卸载
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :桥梁的最大长度: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建设桥梁时允许的最大长度
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道最大长度: {STRING}
@@ -1191,8 +1181,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :设置车辆在
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中间
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :远端
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :汽车自动排队 (有量子效应)： {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :“打开”时汽车在堵车的道路上排队等候，直到道路畅通
 STR_CONFIG_SETTING_AUTOSCROLL                                   :当鼠标移动到屏幕边缘时移动屏幕：{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :启用后，鼠标移动到视点窗口边缘时，视点窗口自动滚动
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :禁用
@@ -1223,10 +1211,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :允许在城镇
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :“打开”时允许在城市所属的道路上建设通过式车站
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :允许在竞争对手所属的道路上建通过式车站： {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :“打开”时，允许在其它公司所属的道路上建设通过式车站
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :允许建设临近站台： {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :“打开”时，允许不同车站相邻
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :允许使用多GRF运输工具： {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :为旧版本的NewGRF准备的兼容性选项，不要禁止本选项，除非你明白你在做什么！
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}当有车辆时，不可能更改此设定。
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :加强版固定资产维护: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :固定资产会发生维护费用，“打开”本选项时，维护费用的增长会超过交通网络的增长规模，因而，对大公司影响更大。
@@ -1284,8 +1268,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :高度图旋转
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :由水面场景得到的高度：{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :允许调整地图边缘的地块地形：{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :禁用后，地图边缘将变成海洋
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
 
@@ -1342,10 +1324,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :完整时间 (2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :简短形式 (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :当NewGRF没有指定调色板时，使用: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :设置当NewGRF没有指定时的默认调色板
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :默认使用 (D) 色板
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :旧有 (W) 色板
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :开始新游戏时自动暂停： {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :“打开”时，为了让玩家有时间研究地图，开启新游戏自动暂停游戏
@@ -1568,8 +1546,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :没有
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市规模因子：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时，城市的平均规模相对于普通城镇的比值
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :在道路建设过程中移除荒废的道路元素：{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :在道路重建改造过程中，移除荒废的道路元素
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每 {STRING} 天更新一次统计图
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次计算货物分配图之间的时间。由于每次重新计算只会处理一个货物分配图元件，因此本设定不代表“每若干日重新计算整个货物分配图”。{}如果此设定赋值越小，則系统需要使用更多处理器时间计算货物分配图。相反，如果此设定赋值越大，則货物被派往新路线所需的时间越长。
@@ -1644,7 +1620,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互动
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音响效果
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}新闻和消息
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}信号灯
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}货物处理
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}电脑玩家
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}自动更新
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}维修
@@ -2687,10 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工业�
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪线高度：
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}提高雪线高度
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}降低雪线高度
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}随机种子：
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}点志这里可以输入一个随机种子
 STR_MAPGEN_RANDOM                                               :{BLACK}随机种子
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}改变生成地形所用的随机种子
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}生成地形：
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}生成树木：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形特点：
@@ -2717,7 +2689,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}地图尺寸：
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}请输入随机种子
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}改变雪线高度
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}改变游戏开始的日期
 

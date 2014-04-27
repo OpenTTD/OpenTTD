@@ -935,8 +935,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm up
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel hvørja skermupploysn tú vil brúka
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skermmynda snið
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel hvat skermmynda snið tú vil brúka
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base grafikk sett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel ta base grafikk setti tú vil brúka
@@ -1105,8 +1103,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Tendra/sløkk �
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Støðan hjá býraðnum viðvíkjandi umbygging: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vel hvussu nógv óljóð og umhvørvis skaði frá fyritøkum virkar á teirra meting í bygdini og hvussu tær sleppa at byggja víðari í økinum
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Loyv bygging á hellandi lendi og strondum: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Um tendra kunnu breytir og støðir byggjast har lendi hellur. Um sløkt, mugu breytir fara sama veg sum lendi hellir og støðir mugu byggjast á flatt lendi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Loyv landslagsbroytingar undir bygningum, breytum, osv. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Loyv landslagsbroytingar undir bygningum og breytum uttan at beina tey burtur
 STR_CONFIG_SETTING_CATCHMENT                                    :Loyv meira verðuleikakendum støddum á upplandi hjá støðum: {STRING}
@@ -1131,14 +1127,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Bannað tokum o
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 gradirs sneiðingar eru tá ein vatnrætt breyt kemur beint aftaná eina loddrætta breyt í tí puntinum ið er næstur, ið førir við sær at toki ger eina 90 gradirs sneiðing heldur enn tær vanligu 45. Hetta ávirkar eisini snúnings radius hjá skipum
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Loyv at skoyta støðir saman ið ikki hava beinleiðis samband: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Loyvir at leggja deilir til eina støð uttan at teir beinleiðis nerta verðandi deilir. Krevst Ctrl+trýst tá tú leggur nýggju deilinar
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Brúka betraða lessingar algoritmu: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Um tendra, verða flutningstól lessaði hvørt eftir annað tá tey eru fleyri í einari støð. Lessing av næsta flutningstólinum byrjar ikki fyrr enn nóg miki av farmi er til at fylla fyrra flutningstóli
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lessa flutningstól so líðandi: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Lessa flutningstól so líðandi við nýtslu av serligum lessingar tíðarbilum fyri hvørt flutningstóli, í staðin fyri at lessa alt uppá ein gang uppá eina fasta tíð einans treytað av hvussu nógvur farmur skal lessast
 STR_CONFIG_SETTING_INFLATION                                    :Virðisminkan: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Gilda virðisminkan í búskapinum, har kostnaðir vaksa eitt sindur skjótari enn lønir
-STR_CONFIG_SETTING_SELECTGOODS                                  :Einans útflýggja farm til eina støð tá ið ein tørvur er: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Einans útflýggja farm til eina støð ið var umbiðin av einum lessandi flutningstóli. Hetta forðar vánaligum metingum av farmi ið ikki verður avgreiddur á eini støð
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Mest loyvda longd av brúm: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Mest loyvda longd tá ið tú byggir brýr
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Mest loyvda longd av bergholi: {STRING}
@@ -1166,8 +1156,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Áset hvar við
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :nær endanum
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :miðjuni
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fjart endanum
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Akfar í bíðirøð (við kvantum ávirkan): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Akfør bíða frammanfyri upptiknar veg steðgir til teir eru tómir
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Skotra vindeyga tá músin er við eggina: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Um gilda, byrja sýnisgluggar at skrulla tá músin er nær við egginar á vindeyganum
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Ikki sligi til
@@ -1198,10 +1186,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Loyv gjøgnumko
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Loyv bygging av gjøgnumkoyrings steðgum á vegum ið bygdir eiga
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Loyv gjøgnumkoyrings steðgum á vegum ið kappingarneytar eiga: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Loyv bygging av gjøgnumkoyrings steðgum á vegum ið kappingarneytar eiga
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Loyv at byggja støðir síð um síð: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Loyv ymsum støðum at nema við hvørja aðra
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Gilda fleiri NewGRF motor sett: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Háttlíkis møguleiki fyri gomul NewGRF. Ikki ógilda hetta, uttan so er at tú veist nágreiniliga hvat tú ger!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ikki møguligt at broyta hesa áseting tá ta eru flutningstól
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Innakervis viðlílkahald: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Um gilda, innankervi elvir til viðlíkahalds kostnað. Kostnaðurin vaksur yvir-lutfalsliga við støddina á kervinum, og ávirkar harvið størri fyritøkur meira enn smærri fyritøkur
@@ -1259,8 +1243,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Hæddarkort sna
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Í móti klokkunu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Við klokkuni
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Hæddar støði eitt flatt tilburðs kort fær: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Gilda landslags broytingar av puntum við eggina á kortinum: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Um ógilda, eru egginar á kortinum altíð hav
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ein ella fleiri puntar við norðaru eggina eru ikki tómir
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ein ella fleiri puntar við eina egg eru ikki vatn
 
@@ -1317,8 +1299,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Des 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :stutt (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Vanligt litaval at ganga út frá fyri NewGRFs uttan serstakt litaval: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Vanligt litaval at nýta fyri NewGRF ið ikki tilskila hvat litaval teimum tørvar
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sjálvirknan steðg tá nýtt spæl verður byrja: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Um gilda er spæli steðga tá ið tú byrjar eitt nýtt spæl, hetta loyvir tær at skoða korti í frið og náðum
@@ -1531,7 +1511,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Ávirka
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljóð effektir
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Tíðindi og boð
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Tekin
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Farma stýring
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Teldu spælarir
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Sjálvendurnýggja
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Eftirlit
@@ -2479,10 +2458,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. av �
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hædd á kava linju:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt kava linjuna eitt upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt kava linjuna eitt niður
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Tilvildarligt sáð:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Trýst fyri at skriva tilvildarligt sáð
 STR_MAPGEN_RANDOM                                               :{BLACK}Blanda
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Broyt tilvildarliga sáði ið verur nýtt til landslags framleiðslu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træ algoritma:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Slag av lendi:
@@ -2509,7 +2485,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Navn á 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Stødd:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriva eitt tilvildarligt sáð
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Broyt hædd á kava linju
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Broyt byrjunar ár
 

@@ -955,8 +955,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluç
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecionar a resolução da tela para usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da captura de tela
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecionar o formato da captura de tela para usar
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecionar o conjunto de gráficos base para usar
@@ -1131,8 +1129,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Alterna desastr
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação de área: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolhe como a poluição sonoroa e ambiental afeta a classificação na cidade e as ações futuras naquela área
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a construção em declives e encostas: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ativado, trilhos e estações podem ser construídas na maioria das inclinações. Se desativado, são permitidas apenas em inclinações correspondentes à direção da via, sem precisar de fundações
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, ruas, etc. (auto nivelação): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-las
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista das áreas de abrangência: {STRING}
@@ -1157,14 +1153,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir trens e
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas em 90 graus ocorrem quando um trilho horizontal é seguido imediatamente por um trilho vertical, fazendo com que o trem vire 90 graus, ao invés dos 45 graus padrão para as outras combinações de trilhos. Isso também afeta as embarcações
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitie unir estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite adicionar partes a uma estação sem que aquelas encostem diretamente nestas. Pressione Ctrl+clique para fazer isso
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo de carregamento melhorado: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Se ativado, veículos múltiplos aguardando em uma estação são carregados um por vez. Carregamento do próximo veículo só começa quando houver carga o bastante para encher o primeiro veículo
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carregar veículos gradualmente: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gradualmente carrega veículos usando durações de carregamento específicos de cada veículo, ao invés de carregar tudo de uma vez durante um intervalo fixo dependendo apenas da carga carregada
 STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativa inflação na economia, de forma que custos sobem um pouco mais do que recebidos
-STR_CONFIG_SETTING_SELECTGOODS                                  :Somente entregar carga a uma estação quando houver procura: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Apenas entrega carga a uma estação com um veículo que a requisitou. Isso impede más avaliações para cargas que não são coletadas numa estação
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo de pontes: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Tamanho máximo para construção de pontes
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tamanho máximo de túneis: {STRING}
@@ -1192,8 +1182,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Define onde um 
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :início
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fim
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fila de automóveis (com efeitos de quantidade): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Faz com que automóveis aguardem na frente de paradas de rua até que sejam liberados
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o cursor está na borda do mapa: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando ativado, janelas de visualização irão rolar quando o mouse se aproximar das bordas
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desativado
@@ -1224,10 +1212,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estaç
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite a construção de paradas nas laterais das ruas em vias locais
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações drive-through nas ruas de outros competidores: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite a construção de paradas nas laterais das ruas em vias de outras companhias
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construção de estações adjacentes: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permite construir várias estações, uma do lado da outra, criando estações mistas
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Ativar múltiplos conjuntos NewGRF de locomotivas: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opção de compatibilidade para NewGRFs velhos. Não desative isso a não ser que você saiba o que está fazendo!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de Infraestrutura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativado, infraestrutura gera custos de manutenção. O custo aumenta proporcionalmente à malha de transportes, afetando companhias maiores mais do que as menores
@@ -1285,8 +1269,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotação do ma
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido Anti-Horário
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido Horário
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :A altitude de um mapa regular é de: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Permitir paisagismo nos quadrados na bordas do mapa: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Se desativado, as bordas do mapa serão sempre oceanos
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Há construções na borda norte do mapa
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Há bordas acima da nível do mar
 
@@ -1343,10 +1325,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :comprido (31 De
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta padrão a ser usada para NewGRF's sem paletas específicas: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta padrão a ser usada por NewGRFs que não a especificarem
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta Padrão (D)
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Original (W)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automaticamente ao inicar um novo jogo: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ativado, pausa o jogo ao iniciar um jogo novo, permitindo um estudo do mapa antes do jogo
@@ -1569,8 +1547,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a cada {COMMA
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador do tamanho inicial da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades grandes em relação às cidades no início do jogo
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover elementos de estrada absurdos ao construir ruas: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove ruas sem saída durante a reconstrução de ruas patrocinada
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Atualizar gráfico de distribuição a cada {STRING} dia{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tempo tomado entre recálculos subsequentes de cada gráfico. Cada recálculo calcula os planos para cada componente do gráfico. Isso significa que um valor X para essa configuração não indica que o gráfico todo será atualizado a cada X dias. Apenas alguns componentes irão. Quanto mais curto você o definir, mais tempo de CPU será necessário para calculá-lo. Quanto mais longo, mais tempo levará até que a distribuição de carga começe em novas rotas.
@@ -1645,7 +1621,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Intera�
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efeitos sonoros
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Notícias e mensagens
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manejo de carga
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computadores
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-renovação
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Manutenção
@@ -2688,10 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Linha da neve
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Aumentar a linha da neve em um ponto
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Diminuir a linha da neve em um ponto
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Semente:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Clique para digitar uma semente
 STR_MAPGEN_RANDOM                                               :{BLACK}Randomizar
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Muda a semente randômica da Geração de Terreno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gerador de terra
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorítimo de árvores
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno
@@ -2718,7 +2690,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Coloque uma semente randomica
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mudar linha da neve
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mudar data de início
 

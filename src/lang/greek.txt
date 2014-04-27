@@ -1041,8 +1041,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλ
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Τύπος αρχείου στιγμιότυπου οθόνης
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Επιλογή του τύπου αρχείου για το στιγμιότυπο οθόνης
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
@@ -1215,8 +1213,6 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Όταν είν
 STR_CONFIG_SETTING_DISASTERS                                    :Καταστροφές: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Στάση δημοτικού συμβουλίου προς τον μετασχηματισμό της περιοχής: {STRING}
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το κτίσιμο σε πλαγιές και ακτές: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Όταν είναι ενεργοποιημένο, οι σιδηροτροχιές και σταθμοί μπορούν να κτισθούν στις περισσότερες κλίσεις. Όταν είναι απενεργοποιημένο, επιτρέπονται μόνο όπου αντιστοιχούν στην κατεύθυνση της σιδηροτροχιάς και γι' αυτό δεν χρειάζονται θεμέλια
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Επιτρέπεται η διαμόρφωση του εδάφους κάτω από κτίρια και σιδηροτροχιές χωρίς αυτά να αφαιρούνται
 STR_CONFIG_SETTING_CATCHMENT                                    :Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {STRING}
@@ -1241,14 +1237,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγόρε�
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Στροφές 90 μοιρών προκύπτουν όταν μια οριζόντια σιδηροτροχιά ακολουθείται από μια κάθετη στο επόμενο τετραγωνίδιο, κάνοντας το τραίνο να στρίψει κατά 90 μοίρες όταν αλλάζει τετραγωνίδιο, αντί για τις συνηθισμένες 45 μοίρες σε άλλους συνδυασμούς σιδηροτροχιών. Αυτό έχει επίσης εφαρμογή στην ακτίνα στροφής των πλοίων
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Επιτρέπεται η προσθήκη τμημάτων σε σταθμό χωρίς αυτά να αγγίζουν τα ήδη υπάρχοντα τμήματα. Χρειάζεται Ctrl+Κλικ κατά την τοποθέτηση των νέων τμημάτων
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Όταν είναι ενεργό, τα οχήματα που περιμένουν σε ένα σταθμό φορτώνονται με τη σειρά. Η φόρτωση του επόμενου οχήματος αρχίζει μόνο όταν υπάρχει αρκετό φορτίο σε αναμονή ώστε να γεμίσει πλήρως το πρώτο όχημα
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Φόρτωση οχημάτων σταδιακά: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Σταδιακή φόρτωση των οχημάτων χρησιμοποιώντας τους χρόνους φόρτωσής τους, αντί της φόρτωσης όλων δια μιας σε ορισμένο χρόνο που εξαρτάται μόνο από την ποσότητα του φορτίου που φορτώθηκε
 STR_CONFIG_SETTING_INFLATION                                    :Πληθωρισμός: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ενεργοποίηση του πληθωρισμού στην οικονομία, όπου τα κόστη αυξάνονται ελάχιστα ταχύτερα από τις πληρωμές
-STR_CONFIG_SETTING_SELECTGOODS                                  :Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Παραδίδονται σε σταθμό μόνο τα φορτία που ζητήθηκαν από όχημα που φορτώνει. Αυτό αποτρέπει τις χαμηλές αξιολογήσεις για φορτία που δεν εξυπηρετούνται από το σταθμό
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Μέγιστο μήκος γέφυρας: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κτίσιμο γεφυρών
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Μέγιστο μήκος σήραγγας: {STRING}
@@ -1276,8 +1266,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Το προεπ
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :κοντινό άκρο
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :στη μέση
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :μακρινό άκρο
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ουρά οχημάτων (με κβαντικά εφέ): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Υποχρεώνεται το όχημα να περιμένει μπροστά από τις κατειλημμένες στάσεις μέχρι να ελευθερωθούν
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Μετακίνηση παραθύρου όταν το ποντίκι είναι στην άκρη: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Όταν είναι ενεργή, η εμφάνιση θα κυλά όταν το ποντίκι είναι κοντά στην άκρη του παραθύρου
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Απενεργοποιημένη
@@ -1308,10 +1296,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέπ�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους που είναι ιδιοκτησία των πόλεων
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Επιτρέπονται οι στάσεις σε δρόμους που ανήκουν σε ανταγωνιστές: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους που ανοίκουν σε ανταγωνιστές
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Επιτρέπεται να ακουμπούν μεταξύ τους διαφορετικοί σταθμοί
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Επιλογή συμβατότητας για παλιά NewGRF. Μην την απενεργοποιήσετε, εκτός αν ξέρετε καλά τι κάνετε!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Συντήρηση υποδομής: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένη, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει δυσανάλογα με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
@@ -1369,8 +1353,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Περιστρ�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αριστερόστροφη
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφη
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Το επίπεδο ύψους που παίρνει ένα σενάριο: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Επιτρέπεται η διαμόρφωση του εδάφους στις άκρες του χάρτη: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Όταν είναι απενεργοποιημένη, τα όρια του χάρτη θα είναι πάντα ωκεανός
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ένα ή περισσότερα τετραγωνίδια στην βόρεια άκρη δεν είναι κενά
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα ή περισσότερα τετραγωνίδια σε μια από τις άκρες δεν είναι νερό
 
@@ -1426,8 +1408,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μακριά (3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Η προεπιλεγμένη παλέτα για NewGRF δεν ορίζει ορθά παλέτα: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Η προκαθορισμένη παλέτα που θα χρησιμοποιείται για τα NewGRF που δεν έχουν ορίσει ποια χρειάζονται
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Όταν είναι ενεργοποιημένο, τα νέα παιχνίδια ξεκινούν σε παύση αυτόματα, επιτρέποντας καλύτερη μελέτη του χάρτη
@@ -1637,8 +1617,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 σε {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Καμία
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Αρχικός πολλαπλασιαστής μεγέθους πόλης: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Μέσο μέγεθος μεγάλων πόλεων σε σχέση με τις κανονικές στην αρχή του παιχνιδιού
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Αφαίρεση αδιέξοδων άκρων κατά την χρηματοδοτούμενη ανακατασκευή δρόμων
 
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :χειροκίνητη
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :μη συμμετρική
@@ -1675,7 +1653,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Αλλ�
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ηχητικά εφέ
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Νέα και μηνύματα
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Σηματοδότες
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Χειρισμός εμπορευμάτων
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Παίκτες υπολογιστή
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Αυτόματη ανανέωση
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Έλεγχος οχημάτων
@@ -2709,10 +2686,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Τυχαίος σπόρος:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Κάνετε κλικ για να δώσετε ένα σπόρο τυχαίας παραγωγής
 STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαίος
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Αλλαγή του σπόρου τυχαίας παραγωγής για την Δημιουργία Εδάφους
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
@@ -2739,7 +2713,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομ
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Μέγεθος:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Δώστε έναν σπόρο τυχαίας παραγωγής
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή έτους έναρξης
 

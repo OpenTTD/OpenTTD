@@ -1041,8 +1041,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozliše
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Zvolit rozlišení obrazovky
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :jiné
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formát screenshotů
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Zvolit formát screenshotů
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky
@@ -1217,8 +1215,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Katastrofy, kte
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj městské rady k úpravám v oblasti: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vyber jak moc hluku a změn prostředí poškozuje hodnocení společnosti u města a tak dále komplikuje budoucí stavbu na jeho území
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Povolit výstavbu na svazích kopců a na pobřežích: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Pokud je zapnuto, tratě a stanice mohou být postaveny na většině svahů. Pokud ne, mohou být postaveny pouze na svazích stejného směru tak, že nevyžadují žádné základy.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Srovnání terénu pod budovami, kolejemi atd. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Povoluje změnu terénu pod budovami a tratěmi bez jejich odstranění
 STR_CONFIG_SETTING_CATCHMENT                                    :Povolit u oblasti pokrytí realističtější velikost: {STRING}
@@ -1243,14 +1239,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Zakázat vlaků
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90° zatočení nastane ve chvíli, kdy vodorovná kolej přímo navazuje na svislou kolej na vedlejším políčku. Vlak tak zatáčí o 90° místo klasických 45° u jiných kombinací kolejí. Ovlivní i zatáčení lodí.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Umožnit spojení nesousedících stanic: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Povolit přidávání částí stanice, které se nedotýkají již existujících částí. Je potřeba stisknout Ctrl při přidávání nových částí.
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Použít vylepšený algoritmus nakládání: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Pokud je zapnuto, vozidla čekající ve stanici jsou nakládána postupně. Nakládání druhého vozidla začne pouze pokud ve stanici čeká dostatek nákladu k plnému naložení prvního vozidla.
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Nakládat vozidla postupně: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Postupně nakládat vozidla po danou dobu, místo nakládání všeho najednou za pevný čas stanovený množstvím nákladu
 STR_CONFIG_SETTING_INFLATION                                    :Inflace: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Povolit inflaci. Ceny se časem zvyšují mírně rychleji než platby.
-STR_CONFIG_SETTING_SELECTGOODS                                  :Dodávat zboží do stanice jen když je poptávka: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Stanice přijme náklad pouze pokud je vyžadován nakládajícím vozidlem. Zamezí se tak špatnému hodnocení u nákladů, které nejsou ze stanice vůbec odváženy
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximální délka mostu: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Určuje maximální délku mostů
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximální délka tunelu: {STRING}
@@ -1278,8 +1268,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Místo kde vlak
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začátku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :uprostřed
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :na konci
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Silniční vozidla stojí fronty (s kvantovým efektem): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Vozidlo bude stát před zastávkou dokud se neuvolní
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posouvat okno, když je kurzor na okraji: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pokud je zapnuto, pohledy se začnou posouvat pokud bude kurzor v blízkosti okraje okna
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Vypnuto
@@ -1310,10 +1298,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stavba průjezd
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoluje stavbu průjezdných stanic na městem vlastněných silnicích
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Povolit stavění průjezných stanic na silnicích vlastněných jinými společnostmi.
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Povolit stavění přilehlých stanic: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Povoluje stavbu stanic dotýkajících se jiných
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Více grafických setů s vozidly vedle sebe: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Možnost kompatibility pro starší grafiky. Nevypínej, pokud nevíš co přesně děláš!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Udržování infrastruktury: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pokud je zapnuto, je třeba platit za údržbu infrastruktury. Náklady vzrůstají společně s velikostí dopravní sítě, takže velké společnosti platí více než malé.
@@ -1371,8 +1355,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Otočení výš
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Doleva
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Výšková úroveň pro plochou krajinu: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Umožnit terénní úpravy na okrajích mapy: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Pokud je deaktivován, okraje mapy budou vždy tvořeny oceánem
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
@@ -1429,10 +1411,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlouhý (31. pr
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátký (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Předpokládaná základní paleta pro NewGRF nespecifikuje paletu: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Pro nové grafiky, které nemají definovanou potřebnou paletu, použít paletu defaultní.
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Původní (D) paleta
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Stará (W) paleta
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Zastavit automaticky hru při začínání nové hry: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Pokud je zapnuto, hra se na začátku nové hry automaticky pozastaví a umožní tak bližší prozkoumání mapy
@@ -1655,8 +1633,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Žádné
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Činitel základní velikosti města: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná velikost větších měst v porovnání s ostatními městy na začátku hry
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstraňovat nesmyslné prvky vozovky při výstavbě silnic: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstraní mrtvé konce silnice při rekonstrukci silnic
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovat distribuční graf každých {STRING} {P den dny dnů}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Čas mezi přepočítáváním částí grafu spojení. Každý přepočet přepočítává plány jedné části grafu. To znamená, že hodnota X u toho nastavení nezpůsobí, že se každých X dní přepočítá celý graf, ale pouze určité části. Čím kratší interval nastavíš, tím více času CPU bude potřeba ke spočítání. Čím delší nastavíš, tím déle bude trvat dokud si distribuce nákladu najde nové trasy.
@@ -1731,7 +1707,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Chován
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novinky a zprávy
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Návěstidla
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Náklad
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Umělá inteligence
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Obnovování
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servis
@@ -2780,10 +2755,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Množstv
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Výška sněžné čáry:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšit sněžnou čáru o jednu úroveň
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Snížit sněžnou čáru o jednu úroveň
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Náhodné číslo:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Zde můžeš zadat seed
 STR_MAPGEN_RANDOM                                               :{BLACK}Nové číslo
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Vytvořit nový seed (číslo) pro generátor terénu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Sázení stromů:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ krajiny:
@@ -2810,7 +2782,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Jméno v
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velikost:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Zadej náhodné číslo
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Změnit výšku sněžne čáry
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Změnit počáteční rok
 

@@ -954,8 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermre
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Anders
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshotformaat
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecteer het bestandsformaat van screenshots
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset voor graphics
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies de te gebruiken basisset voor graphics
@@ -1130,8 +1128,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Schakel rampen 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Gemeenteraad's houding ten opzichte van herstructurering gebied: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel lawaai en schade aan het milieu door bedrijven de stadswaardering en hun acties beïnvloeden in hun bouwgebied
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op hellingen en kusten toestaan: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Indien ingeschakeld kunnen sporen en stations gebouwd worden op hellingen. Indien uitgeschakeld kunnen stations en sporen alleen gebouwd worden op hellingen waar geen fundering nodig is en alleen in de richting van het spoor.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat het aanpassen van funderingne onder gebouwen en spoor toe zonder deze te verwijderen
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebruik meer realistische handelsgebieden: {STRING}
@@ -1156,14 +1152,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied treinen
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graden draaien treden op wanneer een horizontale baan direct gevolgd door een verticale baan stuk op de aangrenzende tegel, waardoor de trein daarna 90 graad wanneer het doorlopen van de tegel rand plaats van de gebruikelijke 45 graden voor andere spoor combinaties. Dit geldt ook voor de draaicirkel van schepen
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Sta het samenvoegen van niet direct aaneensluitende stations toe: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Sta toe dat er aanvullende onderdelen aan een station worden geplaatst, zonder dat reed bestaande onderdelen beïnvloed worden. Gebruikt Ctrl+Click tijdens het plaatsen van nieuwe onderdelen.
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verbeterd laadalgoritme: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Indien ingeschakeld, meerdere voertuigen die wachten op een station worden achter elkaar geplaatst. Het laden van het volgende voertuig start pas als er voldoende lading is om het eerste voertuig volledig te vullen
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Voertuigen geleidelijk laden: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Geleidelijk laadt voertuigen die gebruikmaken van het voertuig specifieke laad-duur, in plaats van laden alles in een keer met een vaste tijd die alleen afhangt van de hoeveelheid te laden vracht
 STR_CONFIG_SETTING_INFLATION                                    :Inflatie: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Schakel de inflatie in de economie in, waar de kosten iets sneller stijgen dan de betalingen
-STR_CONFIG_SETTING_SELECTGOODS                                  :Vracht alleen bezorgen aan een station als er vraag naar is: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Leveren alleen vracht naar een station dat werd aangevraagd bij een laad-voertuig. Dit voorkomt een slechte score voor ladingen die niet wordt opgehaald bij een station
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte voor te bouwen bruggen
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel lengte: {STRING}
@@ -1191,8 +1181,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaats waar een
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :aan het begin
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in het midden
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aan het einde
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Wachtrijvorming bij wegvoertuigen (met bijwerkingen): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Wegvoertuigen laten stoppen voor een bezet wegstation tot ze toestemming krijgen om door te gaan.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Verschuif scherm als muis aan de rand is: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer aan, start een subvenster met scrollen wanneer de muis vlak bij de rand van het venster komt
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Uitgeschakeld
@@ -1223,10 +1211,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Sta toe dat doo
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Laat het bouwen van doorrijhaltes toe op stedelijke wegen
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Sta doorrijhaltes op wegen van tegenstanders toe: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Laat het bouwen van doorrijhaltes toe op wegen van andere bedrijven
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bouwen van aangrenzende stations toestaan: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Laat het aaneen bouwen van verschillende stations toe
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Maak het mogelijk om meerdere NewGRF-voertuigsets te gebruiken: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Compatibiliteit optie voor oude NewGRFs. Schakel dit niet uit, tenzij je precies weet wat je doet!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze instelling kan niet gewijzigd worden als er voertuigen zijn
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Onderhoud infrastructuur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wanneer ingeschakeld, infrastructuur veroorzaakt onderhoudskosten. De kosten groeit boven-proportioneel met de grootte van het netwerk, hetgeen van hogere invloed is op grotere bedrijven dan kleinere
@@ -1284,8 +1268,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Draaiing van ho
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok in
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :De hoogte van een plat scenario wordt: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Aanpassen van de hoogte van de randen van de kaart toestaan: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Indien uitgeschakeld, zijn de kaart grenzen altijd oceaan
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer vakjes aan de noordelijke rand zijn niet leeg
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes aan de rand zijn geen water
 
@@ -1342,10 +1324,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lang (31e dec 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standaard palette voor NewGRFs zonder specifiek palette: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standaard palet te gebruiken voor NewGRFs die niet aangeven welke ze nodig hebben
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Standaard (D) palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatisch pauzeren als je een nieuw spel start: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wanneer ingeschakeld, het spel zal automatisch pauzeren bij het starten van een nieuw spel, waardoor nadere bestudering van de kaart mogelijk is
@@ -1568,8 +1546,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 op {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Stadsgroei-indicator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwijder rare weg-elementen tijdens het repareren van de weg: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Verwijder doodlopende wegen bij het bouwen van gefinancierde wegen.
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Bijwerken distributie grafiek elke {STRING} dag{P 0:2 "" en}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tijd tussen opeenvolgende herberekeningen van de link grafiek. Elke herberekening berekent de plannen voor een component van de grafiek. Dat betekent dat een waarde X voor deze instelling betekent niet dat de hele grafiek wordt elke X dagen worden bijgewerkt. Slechts een component wil. Hoe korter u instellen hoe meer CPU-tijd nodig is om het te berekenen zal zijn. Hoe langer je instellen hoe langer het zal duren totdat de lading distributie start op nieuwe routes.
@@ -1644,7 +1620,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interac
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Geluidseffecten
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nieuws en berichten
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Vrachtafhandeling
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspelers
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatisch vervangen
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Onderhoud
@@ -2687,10 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hoogte van sneeuwgrens:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschuif de sneeuwgrens één omhoog
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwgrens één omlaag
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Willekeurig getal:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om een willekeurig getal in te voeren
 STR_MAPGEN_RANDOM                                               :{BLACK}Willekeurig maken
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Wijzig het willekeurige getal dat gebruikt wordt om het landschap te genereren
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
@@ -2717,7 +2689,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naam van
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Voer een willekeurig getal in
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander hoogte van sneeuwgrens
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander beginjaar
 

@@ -935,8 +935,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjáupp
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Stilla skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Snið skjámynda
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Snið á skjámyndaskrám
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grunngrafík
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota grunngrafíkina
@@ -1105,8 +1103,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Kveikja eða sl
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Viðhörf bæjaryfirvalda til endurskipulagningar: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Veldu hversu mikil áhrif hávaði og umhverfisspjöll frá fyrirtækjum hafa áhrif á mat bæja á fyrirtækinu og frekari framkvæmdir innan bæjarmarkanna
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Leyfilegt að byggja í halla og á strönd: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ef þessi stilling er virk er hægt að byggja spor og stöðvar í flestum brekkum. Ef hún er óvirk er það bara hægt í brekkum sem snúa í sömu átt og sporin og því þurfa þau engar undirstöður
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leyfa landslagsbreytingar undir byggingum, sporum o.fl. (landfylling): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leyfa mótun á landslagi undir byggingum og sporum án þess að þurfa að fjarlægja
 STR_CONFIG_SETTING_CATCHMENT                                    :Raunverulegri stærð svæðis sem stöðvar ná yfir: {STRING}
@@ -1131,14 +1127,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Banna lestum og
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 gráðu beygjur verða þegar lárétt spor liggja saman við lóðrétt spor, þannig að lestin beygir 90 gráður þegar hún fer milli reita í staðinn fyrir 45 gráður fyrir aðrar samsetningar spora. Þetta á einnig við um beygjuradíus skipa
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leyfa sameiningu stöðva sem ekki tengjast á korti: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Gerir mögulegt að bæta við stöð án þess að reitirnir liggi saman. Það þarf að halda Ctrl+Smella þegar bætt er við stöðina
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Nota endurbættan algóriþma við hleðslu: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ef þetta er virkt þá eru farartækin sem bíða á stöðinni hlaðinn eftir röð. Hleðsla á næsta farartæki byrjar aðeins þegar það bíður nógur farmur til að fylla fyrsta ökutækið
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Ferma farartæki smám saman: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Smám saman hlaða farartækin eftir ákveðnum tíma sem miðast við hvert farartæki, í staðinn fyrir að hlaða öllu í einu á ákveðnum tíma sem miðast við magn farmsins
 STR_CONFIG_SETTING_INFLATION                                    :Verðbólga: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Hafa verðbólgu, þá eykst kostnaður aðeins hraðar en greiðslur
-STR_CONFIG_SETTING_SELECTGOODS                                  :Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Aðeins afhlaða farm á stöðvar sem taka á móti fluttum farmi. Það kemur í veg fyrir að farmur fái slæma einkunn á stöð sem ekki tekur við viðkomandi farmi
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hámarkslengd á brúm: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Hámarkslengd á brúm sem á að byggja
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Hámarkslengd á göngum: {STRING}
@@ -1166,8 +1156,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Sjálfgefin sti
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :upphaf
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :miðju
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enda
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Bifreiðir bíða í röð (með skömmtunaráhrifum): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Bílar verða að bíða fyrir aftan vegahindranir þar til þær hafa verið fjarlægðar
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Færa sjónarhorn þegar músin nálgast brún gluggans: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ef þessi stilling er virk þá færist landslagið til hliðar ef músin er við jaðra gluggans
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Óvirkt
@@ -1198,10 +1186,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leyfa stoppist�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leyfa byggingu stoppistöðvar sem keyrt er í gegnum, á vegum í eigu bæja
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leyfa stoppistöðvar sem keyrt er í gegnum, á vegum í eigu samkeppnisaðila: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Leyfa byggingu stoppistöðva sem keyrt er í gegnum, á vegum í eigu samkeppnisaðila
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Heimila sambyggingu stöðva: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Leyfa ólíkum stöðvum að snerta hvor aðra
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Virkja mörg NewGRF vélasöfn: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Samhæfni kostur fyrir gamla NewGRF. Ekki slökkva á þessu, nema þú vitir nákvæmlega hvað þú ert að gera!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er hægt að breyta þessari stillingu þegar til eru farartæki
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Viðhald á innviðum: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ef þessi stilling er virk kostar að reka innviði fyrirtækisins. Kostnaður eykst í auknu hlutfalli við stærð fyrirtækisins, því eru áhrifin meiri á stór fyrirtæki en lítil
@@ -1259,8 +1243,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Snúningur hæ�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Rangsælis
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Réttsælis
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Hæð jafnslétts lands yfir sjávarmáli: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Leyfa landslagsbreytingar á jöðrum korts: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ef þessi stilling er óvirk eru jaðrar kortsins alltaf sjór
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Einn eða fleiri reitir við norðurjaðarinn eru ekki tómir
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Einn eða fleiri reitir við eina hlið kortsins hafa ekki vatn
 
@@ -1317,8 +1299,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :löngu (31. Des
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :stuttu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Sjálfgefið litaspjald fyrir NewGRF sem tilgreina ekki litaspjald: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Sjálfgefið litaspjald til að nota með NewGRF sem skilgreina ekki hvaða litaspjald það notar
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Setja leik á bið þegar nýr leikur er hafinn: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ef þessi stilling er virk mun leikurinn fara sjálfvirkt á bið þegar nýr leikur hefst. Það gefur færi á að skoða kortið betur
@@ -1541,8 +1521,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 af {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Enginn
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Upphaflegur margfaldari bogarstærðar: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð borga miðað við bæi, við upphaf leiks
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjarlægja fráleita vegahluti þegar vegagerð stendur yfir: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Þegar bæir hafa verið styrktir til að endurnýja vegina sýna á þá að fjarlægja ónotaða vegenda
 
 
 
@@ -1562,7 +1540,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Viðmó
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hljóð
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Fréttir og skilaboð
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Umferðarmerki
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Meðhöndlun farms
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Sjálfvirk endurnýjun
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Viðhald farartækja
@@ -2590,10 +2567,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fjöldi 
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hæð snjólínu:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Hækka snjólínu upp um eitt þrep
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lækka snjólínu niður um eitt þrep
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Raðnúmer lands:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Smelltu til að skrifa inn raðnúmer
 STR_MAPGEN_RANDOM                                               :{BLACK}Nýtt raðnúmer
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Fá tilviljanakennt raðnúmer fyrir myndun lands
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Planta trjám:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:
@@ -2620,7 +2594,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nafn hæ
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Stærð:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Sláðu inn slembistofn
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Breyta hæð snjólínu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Breyta upphafsári
 

@@ -949,8 +949,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrāna 
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekrāna izšķirtspējas izvēle
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Cita
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekrānuzņēmumu formāts
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Ekrānuzņēmumu formāta izvēle
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pamata grafikas kopa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Atlasīt lietošanai pamata grafikas kopu
@@ -1109,8 +1107,6 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Neatļaut vilci
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofas: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Pilsētu domju attieksme pret platības pārstrukturēšanu: {STRING}
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ja ieslēgts, ceļus un stacijas var būvēt uz vairums nogāzēm. Ja izslēgts, tas ir atļauts tikai uz ceļu virzienam atbilstošām nogāzēm un tādēļ nav nepieciešami ieguldījumi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Atļauj ainavas veidošanu zem ekām un ceļiem bez to nojaukšanas
 STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
@@ -1135,14 +1131,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcie
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 grādu pagriezieni rodas, ja horizontālam sliežu ceļa posmam tieši seko vertikāls sliežu ceļa posms uz blakus esošā lauciņa. Tādējādi vilciens, šķērsojot lauciņu malas, veic 90 grādu pagriezienu, nevis parasto 45 grādu kā citām sliežu ceļu kombinācijām. Tas attiecas arī uz kuģu pagrieziena lenķiem
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savienot stacijas, kas neatrodas tieši blakus: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Atļaut pievienot staciju daļas, tām nesaskaroties ar jau esošajām. Novietojot jaunās daļas, ir nepieciešams nospiest Ctrl+klikšķis
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ja ir ieslēgts, vairāki transportlīdzekļi gaida stacijā uz secīgu piekraušanu. Nākamā transportlīdzekļa piekraušana sākas tikai tad, kad ir pietiekami daudz kravas, lai pilnībā piepildītu pirmo transportlīdzekli
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdzekļus piekraut pakāpeniski: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Transportlīdzekļi tiek piekrauti pakāpeniski, izmantojot tam raksturīgos ilgumus. Nevis piekrauj visu uzreiz ar fiksētu laiku, tikai atkarībā no kravas daudzuma
 STR_CONFIG_SETTING_INFLATION                                    :Inflācija: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Atļaut inflāciju ekonomikā, kur izmaksu celšanās nedaudz apsteidz ienākumus
-STR_CONFIG_SETTING_SELECTGOODS                                  :Nogādāt kravu stacijā tikai tad, ja ir pieprasījums: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Tikai nogādā kravu līdz stacijai, kas tika pieprasīts piekraujot transportlīdzekli. Tas novērš sliktus vērtējumus stacijā neapkalpotām kravām
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimālais tiltu garums: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Būvējamo tiltu maksimālais garums
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimālais tuneļu garums: {STRING}
@@ -1170,8 +1160,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Vieta, kur vilc
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :sākumā
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :beigās
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta līdzekļu rindošana (ar daudzuma efektiem): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Autotransporta līdzekļiem likt gaidīt pirms aizņemtas pieturvietas, līdz tā tiek atbrīvota
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, kad peles kursors atrodas tā malā: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ja iespējots, skatvieta sāk ritināties kad peles kursors ir pie loga malas
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :atspējots
@@ -1202,10 +1190,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut caurbra
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ļauj būvēt caurbraucamas pieturvietas uz pilsētai piederošiem ceļiem
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturvietas uz sāncenšu ceļiem: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Ļauj būvēt caurbraucamas pieturvietas uz citiem uzņēmumiem piederošiem ceļiem
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Atļaut būvēt vienu otrai piekļautas stacijas: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Ļauj atšķirīgas stacijas piekļaut vienu otrai
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Atļaut vairākus NewGRF transportlīdzekļu komplektus: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Saderības izvēle veciem NewGRF failiem. Neatspējojiet šo, izņemot ja jūs zinat ko darat!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iestatījumu nav iespējams mainīt, kad tur ir transportlīdzekļi
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūras uzturēšana: {STRING}
 
@@ -1262,8 +1246,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Augstumu kartes
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Pret pulksteņa rādītāja virzienu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pulksteņa rādītāja virzienā
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Augstuma līmenis līdzenai scenārija kartei: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Atļaut pārveidot lauciņus kas atrodas kartes malās : {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ja izslēgts, kartes malās vienmēr būs okeāns
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Viens vai vairāki lauciņi pie ziemeļu malas nav tukši
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam vai vairākiem lauciņiem kādā malā nav ūdens
 
@@ -1316,10 +1298,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garu (31. Dec 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īsu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF noklusējuma palete, kuriem tā nav norādīta: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Noklusējuma palete NewGRF failiem, ja nepieciešamā nav norādīta
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :noklusējuma (D) palete
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :mantota (W) palete
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automātiski pauzēt sākot jaunu spēli: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ja ir ieslēgts, sākot jaunu spēli, tā tiek automātiski pauzēta. Tas ļauj rūpīgāk izpētīt karti
@@ -1535,8 +1513,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 pret {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :neviena
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lielpilsētu sākuma lieluma reizinātājs: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Lielpilsētu vidējais lielums attiecībā pret parastām pilsētām spēles sākumā
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Finansētās ceļu rekonstrukcijas laikā noņem vairs neizmantojamos ceļu nobeiguma posmus
 
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuāli
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
@@ -1595,7 +1571,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Mijieda
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņas efekti
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Avīžu raksti un ziņojumi
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kravu pārvietošana
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automātiskā atjaunošana
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Apkope
@@ -2628,10 +2603,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ražotņ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniega līnijas augstums
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaugstināt sniega līnijas augstumu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pazemināt sniega līnijas augstumu
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nejaušs sākums:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikšķināt, lai ievadītu nejaušu sākumu
 STR_MAPGEN_RANDOM                                               :{BLACK}Nejaušs
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Mainīt apvidus radīšanā izmantoto nejaušo sākumu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Zemes radītājs:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Koku algoritms:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Apvidus reljefs:
@@ -2658,7 +2630,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Augstumu
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Lielums:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Ievadīt nejaušu sākumu
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mainīt sniega līnijas augstumu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mainīt sākuma gadu
 

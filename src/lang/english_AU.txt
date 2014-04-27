@@ -954,8 +954,6 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen r
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshot format
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Select the screenshot format to use
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use
@@ -1130,8 +1128,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disaster
 STR_CONFIG_SETTING_CITY_APPROVAL                                :City council's attitude towards area restructuring: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Allow building on slopes and coasts: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :If enabled, tracks and stations can be built on most slopes. If disabled, they are only allowed on slopes which match the direction of the track and thus require no foundations
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow landscaping under buildings, tracks, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow landscaping under buildings and tracks without removing them
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING}
@@ -1156,14 +1152,8 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbid trains a
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 degree turns occur when a horizontal track is directly followed by a vertical track piece on the adjacent tile, thus making the train turn by 90 degree when traversing the tile edge instead of the usual 45 degrees for other track combinations. This also applies to the turning radius of ships
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Allow to join stations not directly adjacent: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Allow adding parts to a station without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Use improved loading algorithm: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :If enabled, multiple vehicles waiting at a station are loaded sequentially. Loading of the next vehicle only starts when there is enough cargo waiting to completely fill the first vehicle
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Load vehicles gradually: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gradually load vehicles using vehicle specific loading durations, instead of loading everything at once with a fixed time depending only on the amount of cargo loaded
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Enable inflation in the economy, where costs are rising slightly faster than payments
-STR_CONFIG_SETTING_SELECTGOODS                                  :Deliver cargo to a station only when there is a demand: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Only deliver cargo to a station that was requested from a loading vehicle. This prevents bad ratings for cargoes that are not serviced at a station
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum bridge length: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum length for building bridges
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel length: {STRING}
@@ -1191,8 +1181,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Place where a t
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :near end
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middle
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :far end
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Road vehicle queueing (with quantum effects): {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Make road vehicle wait in front of occupied road stops until they are cleared
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Pan window when mouse is at the edge: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :When enabled, viewports will start to scroll when the mouse is near the edge of the window
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Disabled
@@ -1223,10 +1211,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-thr
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on town-owned roads
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Allow building adjacent stations: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Allow different stations to touch each other
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Enable multiple NewGRF engine sets: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Compatibility option for old NewGRFs. Do not disable this, unless you know exactly what you are doing!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows in proportion to the network size, thus affecting larger companies more than smaller ones
@@ -1284,8 +1268,6 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Heightmap rotat
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter clockwise
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :The height level a flat scenario map gets: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Enable landscaping the tiles at the map borders: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :If disabled, the map borders will always be ocean
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
@@ -1342,10 +1324,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Default palette to assume for NewGRFs not specifying a palette: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Default palette to use for NewGRFs that do not specify which one they need
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Default (D) palette
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Legacy (W) palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatically pause when starting a new game: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :When enabled, the game will automatically pause when starting a new game, allowing for closer study of the map
@@ -1568,8 +1546,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :None
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial city size multiplier: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of cities relative to normal towns at start of the game
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remove absurd road-elements during the road construction: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove dead road ends during funded road reconstruction
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Update distribution graph every {STRING} day{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X days. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes.
@@ -1644,7 +1620,6 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interac
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound effects
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}News and messages
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Cargo handling
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenew
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicing
@@ -2687,10 +2662,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of i
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snow line height:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Move the snow line height one up
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Move the snow line height one down
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Random seed:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click to enter a random seed
 STR_MAPGEN_RANDOM                                               :{BLACK}Randomise
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Change the random seed used for Terrain Generation
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land generator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tree algorithm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:
@@ -2717,7 +2689,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Heightma
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Size:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Enter a random seed
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Change snow line height
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
 
