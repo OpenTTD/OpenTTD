@@ -758,11 +758,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischt Schëff kënnt bei {STATION} un!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischten Fliger kënnt bei {STATION} un!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Zuch Accident!{}{COMMA} stiewen an der Explosioun nom Accident
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Zuchaccident!{}{COMMA} Leit stiewen an der Explosioun nom Accident
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Fligeraccident!{}{COMMA} stiewen an der Explosioun bei {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Fligeraccident!{}Fliger hat keen Bensin méi, {COMMA} stiewen an Explosioun!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stroossengefiertaccident!{}{COMMA} Leit stiewen an der Explosioun no Onfall mam Zuch
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Fligeraccident!{}{COMMA} Leit stiewen an der Explosioun bei {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Fligeraccident!{}Fliger hat keen Bensin méi, {COMMA} Leit stiewen an Explosioun!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinkatastroph bei {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Stroossengefiehr bei 'UFO'-Zesummenstouss zerstéiert ginn!
@@ -1585,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrësch" 
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributiounsmodus fir d'GEPANZERT Wuereklass: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :D'GEPANZERT Wuereklass huet Wertsaachen am geméissegte Klima, Diamanten am Sub-Tropenklima an Gold am sub-arktësche Klima. NewGRFen kënnen dat änneren. "symmetrësch" heescht, dass ongeféier d'selwecht vill vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Et gëtt emfuelen dëst op asymmetrësch oder manuell ze loossen wann een sub-arktësch spillt, well Banken keen Gold zréck an d’Minen liwweren. Fir geméissegt Klima an sub-tropësch Klima kann eng Bank mat der anerer Wertsachen zréckschécken.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributiounsmodus fir aner Wuerenklassen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrësch" heescht dass ongeféier genausouvill Wueren vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht dass verschidden Unzuel un Wueren verschéckt ginn an béid Richtungen. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymmetrësch" oder manuell gewielt.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrësch" heescht dass eng beléiweg Unzuel un Wueren an béid Richtungen verschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymmetrësch" oder manuell gewielt.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributiounsgenauegkeet: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Wat den Wert méi héig ass, wat méi CPU benotzt gëtt fir d'Linkgraphik ze zeechnen. Wann ze héig gesat, kann et zu Lags kommen. Ze niddreg gesat kann d'Distributioun ongenau ginn an d'Wueren net sou verdeelt ginn wéi geduet
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Afloss vun der Distanz op d'Nofro: {STRING}
@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Wuerentram
 STR_FACE_CAPTION                                                :{WHITE}Gesiichtsauswiel
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Briech d'Auswiel vum Gesiicht of
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accépteier néit Gesiicht
+STR_MAPGEN_RANDOM                                               :{BLACK}Duercherneen wierfelen
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Männlech
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wielt männlech Gesiichter
@@ -2154,7 +2155,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Den Serv
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Den Server gëtt nei gestart...{}Weg. waarden...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Downloaden Inhalt
+STR_CONTENT_TITLE                                               :{WHITE}Inhalt Download
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Typ vum Inhalt
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Numm
@@ -2222,7 +2223,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Date
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Konnt den downgeload net dekompriméiren
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Fehlend Grafiken
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTDbrauch Grafiken fir ze funktionéiren, mee et konnten keng fond ginn. Wëllsde OpenTTD se downloaden an installéiren loossen ?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD brauch Grafiken fir ze funktionéiren, mee et konnten keng fond ginn. Wëllsde OpenTTD se downloaden an installéiren loossen ?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jo, download d'Grafiken
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, verlooss OpenTTD
 
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Späiche
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Späichert dei aktuell Partie ënnert dem gewielten Numm
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lueden
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lued d'ugewielten Spill
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ugewielten Héichtekaart lueden
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spill Detailer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keng Informatioun do
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweg Sc
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweg Schnéilinnhéicht rof
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Zoufalls-Zuel:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klick fir eng Zoufalls-Zuel anzegin
-STR_MAPGEN_RANDOM                                               :{BLACK}Duerchenen würfeln
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Zoufallszuel änneren fir den Terrain-Generator
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baam Algorithmus:
@@ -2700,7 +2701,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Vielfalt
 STR_MAPGEN_GENERATE                                             :{WHITE}Generéiren
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kartenenner:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaartenenner:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordwest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Südost
@@ -4450,7 +4451,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Waasserwierk
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Waassertuerm
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrik
 STR_INDUSTRY_NAME_FARM_2                                        :Bauerenhaff
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Bauholzfabrik
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Seewierk
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Zockerwattbësch
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Séissegkeetenfabrik
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Batteriefarm

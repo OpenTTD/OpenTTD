@@ -1070,6 +1070,8 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ゲーム設定
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :会社設定(新規ゲームにのみ影響)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :会社設定(現在の会社のみに影響)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}カテゴリ:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}種類:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}設定のレベルでフィルタリングします。標準の設定と異なるもののみ表示することもできます
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :詳細設定
@@ -1084,6 +1086,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :ゲーム設定
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :ゲーム設定(今のゲームにのみ影響)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :会社設定(ニューゲーム時に影響)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :会社設定(今の会社だけに影響)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}設定による検索結果を全て表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}設定による検索結果を全て表示{}{SILVER}種類{BLACK}別{WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}設定による検索結果を全て表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- なし -
 
 STR_CONFIG_SETTING_OFF                                          :無効
 STR_CONFIG_SETTING_ON                                           :有効
@@ -1579,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :郵便がどの
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲車輸送品の行先分配法: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :装甲車輸送品とは貴重品(温帯)、金(亜寒帯)、ダイヤモンド(亜熱帯)のことです(NewGRFの導入状況よっては変わることがあります)。これらの品目ががどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう輸送品とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう輸送品数は独立に決められます。「無効」では行き先別分配をしなくなります。温帯では銀行同士で貴重品のやりとりがあるので「対称」を選択しても問題ありませんが、金やダイヤモンドが銀行から鉱山に送られるようなことはないので、亜寒帯・亜熱帯では「非対称」か「無効」にすることをお勧めします。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :一般貨物の行先分配法: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :一般的な貨物がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう貨物とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう貨物数は独立に決められます。「無効」では行き先別分配をしなくなります。一般的な貨物輸送は常に一方通行なので、「非対称」か「無効」にしておくことをお勧めします。
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :一般的な貨物がどのように行き先別に分配されるかを設定します。「非対称」ではそれぞれの方向に向かう貨物数はプログラムの任意に決められます。「無効」では行き先別分配をしなくなります。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精度: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :この値を高くすると、リンクグラフ演算の為CPUへの負荷が大きくなります。演算に時間がかかりすぎると、目に見えてタイムラグが起こる場合があります。しかし低い値に設定すると、分配が不正確になり、望まれる場所に貨物が送られなくなる場合があります
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距離効果: {STRING}
@@ -1802,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :貨物用路面
 STR_FACE_CAPTION                                                :{WHITE}顔の変更
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}顔の変更をキャンセルします
 STR_FACE_OK_TOOLTIP                                             :{BLACK}顔の変更を適用します
+STR_MAPGEN_RANDOM                                               :{BLACK}ランダム
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}男性
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}男性顔を表示します
@@ -2546,6 +2553,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}受入れ貨物: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}線路の制限速度: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}道路の最高速度: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :岩石
@@ -2661,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}保存
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}指定したファイル名で現在のゲームを保存します
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}ロード
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}ロードするゲームを選びます
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}選択されたハイトマップをロード
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}ゲームの詳細
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}― 情報なし ―
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2681,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}雪線�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}雪線を下げる
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}乱数種(シード):
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}乱数種を入力するにはクリックします
-STR_MAPGEN_RANDOM                                               :{BLACK}ランダム
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}地形作成の乱数種を変更します
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形作成:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}植林アルゴリズム:
@@ -2875,6 +2883,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}欠落フ�
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF{0:STRING}の挙動によって同期エラーやクラッシュが引き起こされる可能性があります!
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}機関車の状態が車庫外で{1:ENGINE}に変更されました
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}列車の長さがに車庫外で{1:ENGINE}に変更されました
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}NewGRFにより車庫外や改装以外で'{1:ENGINE}'の積載量が変更されました
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY}が所有している{0:VEHICLE}という列車は不正な長さです。使用しているNewGRFが原因であるかもしれません。同期エラーやクラッシュが起こる可能性があります!
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF{0:STRING}の情報が誤っています

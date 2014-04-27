@@ -1726,6 +1726,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Farmsporvagn
 STR_FACE_CAPTION                                                :{WHITE}Andlitsval
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Hætta við andlitsval
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Samþykkja andlitsval
+STR_MAPGEN_RANDOM                                               :{BLACK}Nýtt raðnúmer
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Karlmaður
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Velja karlmannsandlit
@@ -2592,7 +2593,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Hækka s
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lækka snjólínu niður um eitt þrep
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Raðnúmer lands:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Smelltu til að skrifa inn raðnúmer
-STR_MAPGEN_RANDOM                                               :{BLACK}Nýtt raðnúmer
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Fá tilviljanakennt raðnúmer fyrir myndun lands
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Planta trjám:

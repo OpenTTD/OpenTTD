@@ -2121,6 +2121,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Грузавы 
 STR_FACE_CAPTION                                                :{WHITE}Выбар твару
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Скасаваць выбар новага твару
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Прыняць выбар новага твару
+STR_MAPGEN_RANDOM                                               :{BLACK}Выпадковая
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Мужчынскі
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Выбар мужчынскіх твараў
@@ -3001,6 +3002,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Заха
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Захаваць гульню пад выбранай назвай
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Загрузіць
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Загрузіць выбраную гульню
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Загрузіць выбраную мапу вышыняў
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Зьвесткі аб гульні
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Няма зьвесткаў.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3021,7 +3023,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Падн
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Апусьціць сьнегавую лінію
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Выпадковая лічба:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Пстрыкніце тут, каб увесьці адвольную пачатковую лічбу. Ляндшафт ствараецца псэўдавыпадкова, лічба — апорная кропка ў пасьлядоўнасьці выпадковых лічбаў.
-STR_MAPGEN_RANDOM                                               :{BLACK}Выпадковая
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Зьмяніць выпадковую лічбу, якую выкарыстоўвае ґенэратар ляндшафту
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ґенэратар ляндшафту:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Альґарытм дрэваў:

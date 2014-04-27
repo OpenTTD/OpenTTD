@@ -1929,6 +1929,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Вантажн�
 STR_FACE_CAPTION                                                :{WHITE}Вибір обличчя
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Відмінити вибір нового обличчя
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Підтвердити вибір нового обличчя
+STR_MAPGEN_RANDOM                                               :{BLACK}Випадково
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Чоловік
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Вибрати чоловіче обличчя
@@ -2805,7 +2806,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Підв
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Понизити лінію снігу
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Випадкове число:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Клік для вводу значення
-STR_MAPGEN_RANDOM                                               :{BLACK}Випадково
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Змінити початкове значення для генератора
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ландшафт:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Насадження дерев:

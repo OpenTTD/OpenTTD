@@ -2274,7 +2274,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sniegrin
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sniegrins ien nei beneden ferpleatsje:
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Samar in getal:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om sels in getal yn te fieren
-STR_MAPGEN_RANDOM                                               :{BLACK}Meitsje eigenwillich
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Feroarje it getal hokker brûkt wurdt foar de terreingeneraasje
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lângenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boskalgoritme:

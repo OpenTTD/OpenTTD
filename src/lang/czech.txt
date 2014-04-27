@@ -215,7 +215,7 @@ STR_ABBREV_GRAIN                                                :{TINY_FONT}ZR
 STR_ABBREV_WOOD                                                 :{TINY_FONT}DŘ
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}ŽR
 STR_ABBREV_STEEL                                                :{TINY_FONT}OC
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}CE
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}CN
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}MR
 STR_ABBREV_MAIZE                                                :{TINY_FONT}KU
 STR_ABBREV_FRUIT                                                :{TINY_FONT}OV
@@ -1159,7 +1159,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení spol
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Druh:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Zobrazovat v seznamu níže pouze změněná nastavení
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omezit nastavení v seznamu níže pomocí předdefinovaných filtrů
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základní nastavení
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé nastavení
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertní nastavení / všechna nastavení
@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavení s ji
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Omezí určitá nastavení v seznamu níže
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Všechny typy nastavení
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavení klienta (není uchováno v uložených hrách; ovlivní všechny hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavení klienta (neuchována v uložených hrách; ovlivní všechny hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavení hry (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
@@ -1607,7 +1607,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí městů
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Města mohou stavět přejezdy: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolení tohoto nastavení umožní městům, budovat železniční přejezdy
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Umožnit městům ovlivňovat hlukový limit pro letiště: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Pokud je vypnuto, ve každém městě mohou být dvě letiště. Pokud je zapnuto, počet letišť bude omezen hlukovými limity města, což závisí na jeho populaci, velikosti letiště a jeho vzdálenosti od centra města
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Pokud je vypnuto, ve každém městě mohou být dvě letiště. Pokud je zapnuto, počet letišť ve městě bude omezen hlukovými limity města, což závisí na jeho populaci, velikosti letiště a jeho vzdálenosti od centra města
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakládání měst během hry: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Povoluje hráčům zakládat nové města během hry
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zakázáno
@@ -1895,6 +1895,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Nákladní tram
 STR_FACE_CAPTION                                                :{WHITE}Volba tváře
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Zrušit volbu nového obličeje
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Potvrdit výběr obličeje
+STR_MAPGEN_RANDOM                                               :{BLACK}Nové číslo
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mužská
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Zvolit mužské obličeje
@@ -2761,6 +2762,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Uložit
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Uložit současnou hru se zvoleným jménem
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Nahrát
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Rozehrát vybranou hru
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Načíst označenou výškovou mapu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Vlastnosti hry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Není dostupná žádná informace
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2781,7 +2783,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšit
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Snížit sněžnou čáru o jednu úroveň
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Náhodné číslo:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Zde můžeš zadat seed
-STR_MAPGEN_RANDOM                                               :{BLACK}Nové číslo
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Vytvořit nový seed (číslo) pro generátor terénu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Sázení stromů:

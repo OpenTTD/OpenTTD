@@ -934,8 +934,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Seall a 
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Toglaich sealladh a' mhapa-àirde
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Na seall seilbh nan companaidh air a' mhapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Seall a h-uile sealbh nan companaidh air a' mhapa
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Na seall carago sam bith air a' mhapa
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Seall na h-uile carago air a' mhapa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Na seall carago sam bith air a’ mhapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Seall na h-uile carago air a’ mhapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Seall am brath no aithisg naidheachd mu dheireadh
@@ -1288,9 +1288,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Roghainnean a' 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Seall na h-uile toradh luirg 's tu a' suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Seall na h-uile toradh luirg 's tu a' suidheachadh{}{SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Seall na h-uile toradh luirg 's tu a' suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING} {BLACK}agus {SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Seall na h-uile toradh luirg ’s tu a’ suidheachadh{}{SILVER}Roinn-seòrsa {BLACK}air {WHITE}{STRING} {BLACK}agus {SILVER}Seòrsa {BLACK}air {WHITE}Gach seòrsa
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Chan eil gin -
 
 STR_CONFIG_SETTING_OFF                                          :Dheth
@@ -1785,13 +1785,13 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Is ciall dha �
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Am modh sgaoilidh airson post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Is ciall dha “co-chothromach” gun tèid cha mhòr an aon uiread dhe phost a chur o stèisean A gu stèisean B ’s a thèid a chur o stèisean B gu stèisean A. Is ciall dha “neo-chothromach” gun tèid uiread air thuaiream dhe phost a chur dhan dà chomhair. Is ciall dha “a làimh” nach tèid sgaoileadh fèin-obrachail sam bith a dhèanamh airson post.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Am modh sgaoilidh airson an t-seòrsa carago ARMAILTE: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Tha an seòrsa carago ARMAILTE a' gabhail a-steach seilbh fo gnàth-shìde mheasarra, daoimeanan fo gnàth-shìde fho-thropaigeach is òr fo gnàth-shìde fho-artach. Dh'fhaoidte gun atharraich NewGRF seo. Is ciall dha “co-chothromach” gun tèid cha mhòr an aon uiread dhe charago a chur o stèisean A gu stèisean B ’s a thèid a chur o stèisean B gu stèisean A. Is ciall dha “neo-chothromach” gun tèid uiread air thuaiream a chur dhan dà chomhair. Is ciall dha “a làimh” nach tèid sgaoileadh fèin-obrachail sam bith a dhèanamh airson a' charago ud. Cha chreid sinn nach eil thu airson seo a shuidheachadh air “neo-chothromach” no “a làimh” nuair a bhios tu a' cluich le cruth-tìre fo-artach on nach cuir bancaichean òr air ais gu mèinnean òir. Le cruth-tìre measarra no fo-thropaigeach, 's urrainn dhut “co-chothromach” a thaghadh cuideachd on a chuireas bancaichean seilbh air ais dhan bhanca eile.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Tha an seòrsa carago ARMAILTE a’ gabhail a-steach seilbh fo gnàth-shìde mheasarra, daoimeanan fo gnàth-shìde fho-thropaigeach is òr fo gnàth-shìde fho-artach. Dh’fhaoidte gun atharraich NewGRF seo. Is ciall dha “co-chothromach” gun tèid cha mhòr an aon uiread dhe charago a chur o stèisean A gu stèisean B ’s a thèid a chur o stèisean B gu stèisean A. Is ciall dha “neo-chothromach” gun tèid uiread air thuaiream a chur dhan dà chomhair. Is ciall dha “a làimh” nach tèid sgaoileadh fèin-obrachail sam bith a dhèanamh airson a’ charago ud. Cha chreid sinn nach eil thu airson seo a shuidheachadh air “neo-chothromach” no “a làimh” nuair a bhios tu a’ cluich le cruth-tìre fo-artach on nach cuir bancaichean òr air ais gu mèinnean òir. Le cruth-tìre measarra no fo-thropaigeach, ’s urrainn dhut “co-chothromach” a thaghadh cuideachd on a chuireas bancaichean seilbh air ais dhan bhanca eile.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Am modh sgaoilidh airson seòrsaichean eile dhe charago: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Is ciall dha “co-chothromach” gun tèid cha mhòr an aon uiread dhe charago a chur o stèisean A gu stèisean B ’s a thèid a chur o stèisean B gu stèisean A. Is ciall dha “neo-chothromach” gun tèid uiread air thuaiream a chur dhan dà chomhair. Is ciall dha “a làimh” nach tèid sgaoileadh fèin-obrachail sam bith a dhèanamh airson a' charago ud. Cha chreid sinn nach eil thu airson seo a shuidheachadh air “neo-chothromach” no “a làimh”.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Is ciall dha “neo-chothromach” gun tèid uiread air thuaiream a chur dhan dà chomhair. Is ciall dha “a làimh” nach tèid sgaoileadh fèin-obrachail sam bith a dhèanamh airson a' charago ud.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Pongalachd an sgaoilidh: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mar as àirde a shuidhicheas tu seo, ’s ann nas motha dhe dh'ùine CPU a bheir àireamhachadh air graf nan ceangal. Ma bhios seo a' toirt ro fhada, ’s dòcha gum mothaich thu dàil. Co-dhiù, ma shuidhicheas tu air luach ìseal e, cha bhi an sgaoileadh pongail is mothaichidh tu nach tèid carago a chur dhan àite an robh thu an dùil.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Am buaidh aig an t-astar air iarrtasan: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ma chuireas tu luach nas àirde na 0 ann, bidh buaidh aig an t-astar eadar an stèisean tùsail A aig carago air choireigin is stèisean cinn-uidhe B air a' mheud dhe charago a thèid a chur o A gu B. Mar as fhaide air falbh o B 's a tha A, 's ann as lugha dhe charago a thèid a chur. Mar as àirde a shuidhicheas tu an luach seo, 's ann as lugha dhe charago a thèid a chur gu stèiseanan a bhios fad air falbh agus 's ann as motha dhe charago a thèid a chur gu stèiseanan a tha faisg.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ma chuireas tu luach nas àirde na 0 ann, bidh buaidh aig an t-astar eadar an stèisean tùsail A aig carago air choireigin is stèisean cinn-uidhe B air a’ mheud dhe charago a thèid a chur o A gu B. Mar as fhaide air falbh o B ’s a tha A, ’s ann as lugha dhe charago a thèid a chur. Mar as àirde a shuidhicheas tu an luach seo, ’s ann as lugha dhe charago a thèid a chur gu stèiseanan a bhios fad air falbh agus ’s ann as motha dhe charago a thèid a chur gu stèiseanan a tha faisg.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Na thèid a thilleadh dhe charago leis a' mhodh co-chothromach: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ma shuidhicheas tu seo air nas lugha na 100%, bidh giùlan an sgaoilidh co-chothromaich nas coltaiche ris an sgaoileadh neo-chothromach. Cha tèid sparradh air an aon uiread dhe charago tilleadh ma tha uiread sònraichte dhe charago ga cur gu stèisean. Ma shuidhicheas tu seo air 0%, bidh an aon ghiùlan aig an dà chuid sgaoileadh co-chothromach is neo-chothromach.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Lìonadh nan slighean giorra mus tèid slighean le mòran ruim a chleachdadh: {STRING}
@@ -2010,6 +2010,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trama carago
 STR_FACE_CAPTION                                                :{WHITE}Taghadh aodainn
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Sguir dhen taghadh aodainn ùir
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Gabh ris an taghadh aodainn ùir
+STR_MAPGEN_RANDOM                                               :{BLACK}Cuir sìol air thuaiream
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Fireannach
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Tagh aodann fireannaich
@@ -2897,6 +2898,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Sàbhail
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sàbhail an geama làithreach leis an ainm a thagh thu
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Luchdaich
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Luchdaich an geama a thagh thu
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Luchdaich am mapa-àirde air a thaghadh
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Fiosrachadh a' gheama
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Chan eil fiosrachadh ri làimh
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2917,7 +2919,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Gluais a
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Gluais an loidhne-shneachda sìos aon cheum
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Sìol air thuaiream:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Briog gus sìol air thuaiream a chur a-steach
-STR_MAPGEN_RANDOM                                               :{BLACK}Cuir sìol air thuaiream
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Atharraich an sìol air thuaiream a thèid a chleachdadh gus cruth-tìre a ghintinn
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algairim chraobhan:
@@ -3111,7 +3112,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Tha faidhl
 STR_NEWGRF_BROKEN                                               :{WHITE}Tha e coltach gun adhbharaich an NewGRF “{0:STRING}" dì-shioncronachadh is/no tuisleadh
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Dh'atharraich a staid a' charbaid-cumhachd airson “{1:ENGINE}" nuair nach robh e ann an trèan-lann
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dh'atharraich e faide a' charbaid/na trèan airson “{1:ENGINE}" nuair nach robh e/i ann an garaids/trèan-lann
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Dh'atharraich e tomhas-lìonaidh carbaid airson '{1:ENGINE}' fhad 's nach robh e ann an garaid, trèana-lann, cala no hangar no ga mhùthadh
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Dh’atharraich e tomhas-lìonaidh carbaid airson “{1:ENGINE}” fhad ’s nach robh e ann an garaid, trèana-lann, cala no hangar no ga mhùthadh
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tha faide mì-dhligheach aig an trèan “{VEHICLE}" le “{COMPANY}". Tha e coltach gu bheil duilgheadasan le NewGRF as coireach. Dh'fhaoidte gun dì-shioncronaich no gun tuislich an geama
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Tha an NewGRF “{0:STRING}" a' toirt seachad fiosrachadh mealltach
@@ -4118,13 +4119,13 @@ STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Nuair a 
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Aire do litrichean mòra is beaga
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toglaich an tèid aire a thoirt do litrichean mòra is beaga nuair a thèid teachdaireachdan loga an IF a choimeas ris an t-sreang brisidh
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lean air adhart
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cuir a' dol is lean air an IF
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cuir a’ dol is lean air an IF
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Seall às-chur dì-bhugaidh aig an IF seo
 STR_AI_GAME_SCRIPT                                              :{BLACK}Sgriobt geama
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Thoir sùil air loga aig an sgriobt geama
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Cha deach IF freagarrach a lorg airson luchdadh.{}Seo IF caochaige nach dèan dad.{}’S urrainn dhut caochladh dhe IF luchdadh a-nuas leis an t-siostam “Susbaint air loidhne"
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuislich aon dhe na sgriobtan a bha a' ruith. Feuch an cuir thu aithisg dha ùghdar an sgriobt le glacadh-sgrìn dhen uinneag dì-bhugaidh aig an IF/sgriobt geama
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuislich aon dhe na sgriobtan a bha a’ ruith. Feuch an cuir thu aithisg dha ùghdar an sgriobt le glacadh-sgrìn dhen uinneag dì-bhugaidh aig an IF/sgriobt geama
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Chan eil an uinneag dì-bhugaidh aig an IF/sgriobt geama ri làimh ach airson an fhrithealaiche
 
 # AI configuration window
@@ -4216,7 +4217,7 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ga shàb
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Dh’fhàillig leis an fhèin-shàbhaladh
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Cha ghabh an draibh leughadh
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Dh’fhàillig le sàbhaladh a’ gheama{}{STRING}
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Cha ghabh sguabadh às dhan fhaidhle
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Cha ghabh am faidhle sguabadh às
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Dh’fhàillig le luchdadh a’ gheama{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Mearachd taobh a-staigh: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Tha an geama air shàbhaladh briste - {STRING}
@@ -4228,24 +4229,24 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<chan eil seo r
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Chaidh an geama a shàbhaladh le tionndadh nach cuir taic ri tramaichean. Chaidh na h-uile trama a thoirt air falbh
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Chaidh sgur dhe ghinntin a' mhapa...{}... chan eil àiteachan freagarrach airson bailtean ann
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Chaidh sgur dhe ghinntin a’ mhapa...{}... chan eil àiteachan freagarrach airson bailtean ann
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... chan eil baile sam bith sa chnàmh-sgeul seo
 
 STR_ERROR_PNGMAP                                                :{WHITE}Cha ghabh an cruth-tìre luchdadh bhon PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... cha deach am faidhle a lorg
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... cha b' urrainn dhuinn seòrsa an deilbh iompachadh. Tha PNG 8 no 24-biod a dhìth
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... cha b’ urrainn dhuinn seòrsa an deilbh iompachadh. Tha PNG 8 no 24-biod a dhìth
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... chaidh rudeigin gu cearr (faidhle coirbte, cha chreids)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Cha ghabh cruth-tìre luchdadh bhon BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... cha b' urrainn dhuinn seòrsa an deilbh iompachadh
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... cha b’ urrainn dhuinn seòrsa an deilbh iompachadh
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... tha an dealbh ro mhòr
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Rabhadh sgèile
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Cha mholamaid gun tèid meud a' mhapa tùsail atharrachadh cus. A bheil thu airson leantainn air adhart leis an gintinn?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Cha mholamaid gun tèid meud a’ mhapa tùsail atharrachadh cus. A bheil thu airson leantainn air adhart leis an gintinn?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Cha deach ach seata dhe dh'fhuaimean èiginneach a lorg. Ma tha thu ag iarraidh fuaimean, stàlaich seata dhe dh'fhuaimean le siostam luchdaidh a-nuas na susbainte
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Cha deach ach seata dhe dh’fhuaimean èiginneach a lorg. Ma tha thu ag iarraidh fuaimean, stàlaich seata dhe dh’fhuaimean le siostam luchdaidh a-nuas na susbainte
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Glacadh-sgrìn anabarrach mòr
@@ -4259,11 +4260,11 @@ STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Brath
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Brath bho {STRING}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Taobh a-muigh a' mhapa
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Ro fhaisg air oir a' mhapa
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Taobh a-muigh a’ mhapa
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Ro fhaisg air oir a’ mhapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Airgead a dhìth - feum air {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Tha tìr rèidh a dhìth
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Sliabh na tìre ris a' chomhair chearr
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Sliabh na tìre ris a’ chomhair chearr
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Cha ghabh seo dèanamh...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Feumaidh tu an togalach a leagail an toiseach
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Cha ghabh an raon seo falamhachadh...
@@ -4272,7 +4273,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... air 
 STR_ERROR_OWNED_BY                                              :{WHITE}... tha seo le {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... tha companaidh eile na shealbhaiche aig an raon seo
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... ràinig thu na tha ceadaichte dhut dhe dh’atharrachadh na crutha-tìre
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ràinig thu na tha ceadaichte dhut dhe dh'fhalamhachadh leacan
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ràinig thu na tha ceadaichte dhut dhe dh’fhalamhachadh leacan
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... ràinig thu na tha ceadaichte dhut dhe chur chraobhan
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Chan fhaod an aon ainm a bhith ann barrachd air aon turas
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}Tha {1:STRING} san rathad
@@ -4282,13 +4283,13 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Chan eil
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Dhiùilt an t-ùghdarras ionadail aig {TOWN} gun dèan thu seo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Dhiùlt an t-ùghdarras ionadail aig {TOWN} gun tog thu port-adhair sa bhaile seo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Dhiùlt an t-ùghdarras ionadail aig {TOWN} gun tog thu port-adhair air sàilleibh fuaime
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Mhothaich sgrùdair ionadail gun do dh'fheuch thu ri brìbeadh a thoirt
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Mhothaich sgrùdair ionadail gun do dh’fheuch thu ri brìbeadh a thoirt
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Cha ghabh tìr àrdachadh an-seo...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Cha ghabh tìr ìsleachadh an-seo...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Cha ghabh an tìr dèanamh rèidh an-seo...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Bhiodh an cladhach a' milleadh tunail
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Bhiodh an cladhach a’ milleadh tunail
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... air àirde na mara mu thràth
 STR_ERROR_TOO_HIGH                                              :{WHITE}... ro àrd
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... rèidh mu thràth
@@ -4302,7 +4303,7 @@ STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Chan urr
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... chan eil iasad ri pàigheadh ann
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... feum air {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Cha ghabh an t-iasad pàigheadh air ais...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Chan urrainn dhut airgead a thoirt seachad a chaidh a thoirt dhut mar iasad leis a' bhanca...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Chan urrainn dhut airgead a thoirt seachad a chaidh a thoirt dhut mar iasad leis a’ bhanca...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Chan urrainn dhut a' chompanaidh a cheannach...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Cha ghabh ionad na companaidh togail...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Chan urrainn dhut earrann dhe 25% aig a' chompanaidh seo a cheannach....
@@ -4320,7 +4321,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tha 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... chan eil rum air fhàgail air a' mhapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Cha tog am baile rathad sam bith. ’S urrainn dhut togail rathaidean a chur an comas le Roghainnean adhartach->Eaconamaidh->Bailtean
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Rathad ga ath-thogail
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Cha ghabh sguabadh às dhan bhaile seo...{}Tha stèisean no port no garaids no trèan-lann no cala no hangar a' toirt iomradh air a' bhaile no tha leac ann a tha leis a' bhaile is nach gabh toirt air falbh
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Cha ghabh am baile seo sguabadh às...{}Tha stèisean no port no garaids no trèan-lann no cala no hangar a' toirt iomradh air a' bhaile no tha leac ann a tha leis a' bhaile is nach gabh toirt air falbh
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... chan eil ionad freagarrach airson ìomhaigh ann am meadhan a' bhaile seo
 
 # Industry related errors
@@ -4502,7 +4503,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... tha 
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Cha ghabh am buidheann cruthachadh...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Cha ghabh sguabadh às dhan bhuidheann seo...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Cha ghabh am buidheann seo sguabadh às...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Cha ghabh ainm a' bhuidhinn atharrachadh...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Cha ghabh na h-uile carbad toirt air falbh bhon bhuidheann seo...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Chan urrainn dhut an carbad seo a chur ris a' bhuidheann seo...
@@ -4577,7 +4578,7 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Tha an c
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Chan eil barrachd rum airson òrduighean ann
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Tha cus òrduighean ann
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Cha ghabh òrdugh ùr cur a-steach...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Cha ghabh sguabadh às dhan òrdugh seo...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Cha ghabh an t-òrdugh seo sguabadh às...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Cha ghabh an t-òrdugh seo atharrachadh...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Cha ghabh an t-òrdugh seo gluasad...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Cha ghabh leum gearradh thar an òrduigh seo...
@@ -4601,7 +4602,7 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Chan eil
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... tha cus sanasan ann
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Chan urrainn dhut sanas a chur an-seo...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Cha ghabh ainm an t-sanais atharrachadh...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Cha ghabh sguabadh às dhan t-sanas...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Cha ghabh an sanas sguabadh às...
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Geama saoghail mas-fhìor stèidhichte air Transport Tycoon Deluxe

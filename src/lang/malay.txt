@@ -1556,6 +1556,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trem Tambang Mu
 STR_FACE_CAPTION                                                :{WHITE}Pilihan Wajah
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Batal pilihan wajah baru
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Terima pilihan wajah baru
+STR_MAPGEN_RANDOM                                               :{BLACK}Rambangkan
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Lelaki
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Pilih wajah lelaki
@@ -2417,7 +2418,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tinggika
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Rendahkan paras garis salji satu petak
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Benihkan secara rambang:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik untuk memasukkan benih rambang
-STR_MAPGEN_RANDOM                                               :{BLACK}Rambangkan
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Tukarkan benih rambang yang digunakan untuk Penjanaan Rupa Bumi
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Janaan tanah:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pokok:

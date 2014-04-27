@@ -1809,6 +1809,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Frachtstraßenb
 STR_FACE_CAPTION                                                :{WHITE}Gesicht auswählen
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Gesichtswahl abbrechen
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Gesichtswahl übernehmen
+STR_MAPGEN_RANDOM                                               :{BLACK}Zufällig
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Männlich
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wähle männliches Gesicht aus
@@ -2669,6 +2670,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Speicher
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Speichere das Spiel unter dem gewählten Namen
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laden
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ausgewählten Spielstand laden
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ausgewähltes Höhenrelief laden
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spielstand-Details
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keine Informationen verfügbar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2689,7 +2691,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Schneegr
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Schneegrenze um eine Stufe senken
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Zufallsstartwert:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Zufallsstartwert eingeben
-STR_MAPGEN_RANDOM                                               :{BLACK}Zufällig
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändere den Zufallsstartwert für die Landschaftsgenerierung
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baumalgorithmus:

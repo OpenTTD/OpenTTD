@@ -1803,6 +1803,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tramway pour fr
 STR_FACE_CAPTION                                                :{WHITE}Sélection du visage
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annuler le choix du nouveau visage
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Valider le nouveau visage
+STR_MAPGEN_RANDOM                                               :{BLACK}Nouvelle amorce
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Homme
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Choisir un visage masculin
@@ -2683,7 +2684,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Augmente
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baisser l'altitude d'enneigement
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Amorce{NBSP}:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Cliquer pour saisir une amorce
-STR_MAPGEN_RANDOM                                               :{BLACK}Nouvelle amorce
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Modifier l'amorce utilisée pour la création du terrain
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Générateur{NBSP}:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ajout des arbres{NBSP}:

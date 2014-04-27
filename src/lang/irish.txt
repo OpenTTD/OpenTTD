@@ -1428,6 +1428,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tram Lastais
 STR_FACE_CAPTION                                                :{WHITE}Aghaidh a Roghnú
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cealaigh roghnúchán aghaidhe nua
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Glac leis an aghaidh nua
+STR_MAPGEN_RANDOM                                               :{BLACK}Déan randamú
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Fear
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Roghnaigh aghaidheanna fir
@@ -2239,7 +2240,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Bog aird
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Bog airde na líne sneachta síos ceann amháin
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Síol randamach:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Cliceáil chun síol randamach a iontráil
-STR_MAPGEN_RANDOM                                               :{BLACK}Déan randamú
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Athraigh an síol randamach a úsáidtear chun an Tír-Raon a chruthú
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Talamh a chruthú:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algartam na gcrann:

@@ -57,7 +57,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :泡泡
 STR_CARGO_PLURAL_TOFFEE                                         :太妃糖
 STR_CARGO_PLURAL_BATTERIES                                      :电池
 STR_CARGO_PLURAL_PLASTIC                                        :塑料块
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :跳跳水
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :汽水
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -91,7 +91,7 @@ STR_CARGO_SINGULAR_BUBBLE                                       :泡泡
 STR_CARGO_SINGULAR_TOFFEE                                       :太妃糖
 STR_CARGO_SINGULAR_BATTERY                                      :电池
 STR_CARGO_SINGULAR_PLASTIC                                      :塑料
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :跳跳水
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :汽水
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -125,7 +125,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} 个泡�
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} 太妃糖
 STR_QUANTITY_BATTERIES                                          :{COMMA} 箱电池
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} 塑料
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 瓶跳跳水
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 瓶汽水
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -160,7 +160,7 @@ STR_ABBREV_BUBBLES                                              :{TINY_FONT}泡
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}太
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}电
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}塑
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}跳
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}汽
 STR_ABBREV_NONE                                                 :{TINY_FONT}无
 STR_ABBREV_ALL                                                  :{TINY_FONT}全
 
@@ -176,7 +176,7 @@ STR_CRATES                                                      :{COMMA} 件
 STR_COLOUR_DARK_BLUE                                            :深蓝色
 STR_COLOUR_PALE_GREEN                                           :浅绿色
 STR_COLOUR_PINK                                                 :粉红色
-STR_COLOUR_YELLOW                                               :明黄色
+STR_COLOUR_YELLOW                                               :黄 色
 STR_COLOUR_RED                                                  :红　色
 STR_COLOUR_LIGHT_BLUE                                           :淡蓝色
 STR_COLOUR_GREEN                                                :绿　色
@@ -195,33 +195,33 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 千米/小时
 STR_UNITS_VELOCITY_SI                                           :{COMMA} 米/秒
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} 马力
-STR_UNITS_POWER_METRIC                                          :{COMMA} 马力
-STR_UNITS_POWER_SI                                              :{COMMA} 千瓦
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}马力
+STR_UNITS_POWER_METRIC                                          :{COMMA}马力
+STR_UNITS_POWER_SI                                              :{COMMA}千瓦
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} 短吨
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} 吨
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} 千克
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}英吨
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}吨
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}千克
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} 短吨
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 公吨
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} 千克
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}英吨
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 吨
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}千克
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} 加仑
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} 升
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} 立方米
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}加仑
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}升
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}立方米
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} 加仑
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} 升
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} 立方米
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}加仑
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}升
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}立方米
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} 磅力
-STR_UNITS_FORCE_METRIC                                          :{COMMA} 千克力
-STR_UNITS_FORCE_SI                                              :{COMMA} 千牛顿
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}磅力
+STR_UNITS_FORCE_METRIC                                          :{COMMA}千克力
+STR_UNITS_FORCE_SI                                              :{COMMA}千牛
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} 英呎
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} 米
-STR_UNITS_HEIGHT_SI                                             :{COMMA} 公尺
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}英尺
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}米
+STR_UNITS_HEIGHT_SI                                             :{COMMA}米
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}过滤字串:
@@ -1148,10 +1148,10 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :选择列车加
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :汽车加速模型: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :选择汽车加速度模型，选“原版”时斜坡对所有汽车影响相同，选“真实”时依赖引擎性能，比如“牵引力”
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :斜坡对火车的影响率：{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :每一格斜坡对火车速度的影响率，数值越大，火车越难爬上山
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :每一格斜坡对火车速度的影响率，数值越大，火车越难爬上斜坡
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :斜坡对汽车速度影响率: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :每一格斜坡对汽车速度的影响率，数值越大，汽车越难爬上山
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :每一格斜坡对汽车速度的影响率，数值越大，汽车越难爬上斜坡
 STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车和轮船 90 度转弯：{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :当水平方向轨道与垂直方向轨道交叉时，没有采用45度的轨道组合连接，而是采用轨道90度直接连接时，列车通过时需要90度转弯，当本设置”打开“时，将禁止火车90度转弯，本设置同样影响船只转弯时的航线。
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允许非毗邻站台合并：{STRING}
@@ -1186,8 +1186,8 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :在年终显示
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :“打开”时，在年底显示财务报表窗口，方便查看公司财务状况
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :新的调度命令默认为“不停车”： {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :通常，车辆在它经过的每一个车站都会停车。“打开”本选项时，车辆会不停车的通过所有中间车站前往最终目的地。注意：这只是为每一条新调度命令设置一个默认信息，仍然可以为每条调度命令设置明确的信息
-STR_CONFIG_SETTING_STOP_LOCATION                                :新列车调度计划中默认命令为停靠车站月台 {STRING} 位置
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :设置车辆在站台的默认停靠位置，“近端”是靠近车辆进入月台的那一端，“中间”是月台中间位置，“远端”是原理车辆进入月台的那一端
+STR_CONFIG_SETTING_STOP_LOCATION                                :新列车调度计划中默认命令为停靠在站台{STRING} 位置
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :设置车辆在站台的默认停靠位置，“近端”是靠近车辆进入的那一端，“中间”是站台中间位置，“远端”是远离车辆进入的那一端
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中间
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :远端
@@ -1499,13 +1499,13 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :使用信号GUI
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :显示一个供选择信号灯的窗口，取代用Ctrl加点击的方式在各种形式信号灯之间切换的方法
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :默认建造的信号灯类型： {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :默认信号灯类型
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :普通
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :高级
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :高级单向
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :通过信号灯
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :路径信号灯
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :单向路径信号灯
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :在以下信号类型中循环： {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :选择用Ctrl+点击的方式切换信号灯时的切换类型
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :仅有普通
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :仅有高级
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :仅有通过信号灯
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :仅有路径信号灯
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全部
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新建城镇道路自动延伸： {STRING}
@@ -1585,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲货物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :依原有设定，“装甲货物”包括溫带景观的“贵重品”、寒带景观的“金块”及沙漠景观的“钻石”。一些NewGRF可能有不同设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议的设定：在溫带景观应使用“对称”，因为银行会互相运送贵重品；而在寒带及沙漠景观应使用“不对称”，因为银行不会把金块或钻石送回矿场。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他货物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的货物数量大致相同。“不对称”指任何一站往另一站的货物数量皆由系统随意决定。“手动”指系统不会自动分配货物的目的地。{}由於货物一般只会被单方向运输，此设定应赋值为“不对称”或“手动”。
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如为此设置赋值“不对称”，则任何一站往另一站的货物数量皆由系统随意决定。如为此设置赋值“手动”，则系统不会依据交通路线分配货物的目的地。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精确度：{STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :此设定赋值越大，則运算连结图所需的处理器时间越长，您可能会因此见到游戏运行延迟。如果此设定赋值越小，则货物分配的准确度越低，而您可能会发现部份货物沒有被送往您预期它们会到达的目的地。
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距离对需求的影晌：{STRING}
@@ -1598,38 +1598,38 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :货物分配功
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :在界面上以所选择的单位表示速度
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里/小时）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :米制（千米/小时）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国际单位（米/秒）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :公制（千米/小时）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国际单位制（米/秒）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :运输工具功率单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所选择的单位表示运输工具的功率
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :英制（马力）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :米制（马力）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :国际单位（千瓦）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :公制（马力）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :国际单位制（千瓦）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :重量单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :在界面上以所选择的单位表示重量
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :英制（短吨）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :米制（公吨）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :国际单位（千克）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :英制（英吨）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :公制（吨）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :国际单位制（千克）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :体积单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :在界面上以所选择的单位表示体积
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :英制（加仑）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :米制（升）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :国际单位（立方米）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :公制（升）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :国际单位制（立方米）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :牵引力单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :在界面上以所选择的单位表示牵引力
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :英制（磅力）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :米制（千克力）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :国际单位（千牛顿）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :公制（千克力）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :国际单位制（千牛顿）
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :高度单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :在界面上以所选择的单位表示高度
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :英制（呎）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :米制（米）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国际单位（米）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :公制（米）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国际单位制（米）
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}界面
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地化
@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :货运电车
 STR_FACE_CAPTION                                                :{WHITE}选择头像
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}放弃新的头像
 STR_FACE_OK_TOOLTIP                                             :{BLACK}使用新的头像
+STR_MAPGEN_RANDOM                                               :{BLACK}随机种子
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}男性
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}选择男性的头像
@@ -1863,8 +1864,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}联机游戏
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}已啟用宣传
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}选择是否在互联网上宣传此游戏
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}发布到互联网
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}选择是否将游戏发布到官方服务器列表。发布的话，可以让互联网上的玩家找到你的服务器并加入游戏，否则进行局域网内的游戏。
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :否
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :是
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名称：
@@ -2272,15 +2273,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :电气化铁路
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :单轨铁路建设
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :磁悬浮铁路建设
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设铁轨。按住 Ctrl 键切换建设/移除铁轨。按住 Shift 键显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设铁轨。按住 Ctrl 键切换建设/移除铁轨。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设轨道。按住 Ctrl 键切换建设/移除轨道。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设轨道。按住 Ctrl 键切换建设/移除轨道。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台。按住 Shift 键显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/光板式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口{}按住 Shift 键显示预计费用
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/电子式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口{}按住 Shift 键显示预计费用
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 Shift 键显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除铁轨、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除铁轨。
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除轨道、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除轨道。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型。按住 Shift 键显示预计费用。
 
 STR_RAIL_NAME_RAILROAD                                          :铁路
@@ -2301,9 +2302,9 @@ STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}火车�
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}方向
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}选择火车站的方向
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}轨道数量
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}选择车站月台的数量
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}月台长度
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}选择车站月台的长度
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}选择车站站台的数量
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}站台长度
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}选择车站站台的长度
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}拖动模式
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}使用拖动模式建设车站
 
@@ -2315,19 +2316,19 @@ STR_STATION_CLASS_WAYP                                          :路标
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号灯
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}标准信号（悬臂）{}信号灯是多列车铁路系统的必备设施
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号（悬臂）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号（悬臂）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号（悬臂）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立树状预警信号灯系统
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}双向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}单向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}标准信号（电子）{}信号灯是多列车铁路系统的必备设施
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号（电子）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号（电子）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通过信号灯（悬臂）{}是最基本的信号灯，只允许一列车进入该信号灯以后的区间
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号灯（悬臂）{}在下一轨道区间上至少有一个出口信号灯是绿色时此信号亮绿灯,否则亮红灯
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}运作等同于通过信号灯,但是对于触发入口及复合信号灯是必要的
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号灯（悬臂）{}复合信号灯可完全担当入口信号灯和出口信号灯的功能,并可建立树状预警信号灯系统
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}路径信号灯（悬臂）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}单向路径信号灯（悬臂）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}通过信号灯（电子）{}是最基本的信号灯，只允许一列车进入该信号灯以后的区间
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号灯（电子）{}当下一轨道区间至少有一个出口信号灯是绿色时,此信号灯亮绿灯,否则亮红灯
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号灯（电子){}运作等同与通过信号灯,但是对于触发入口及复合信号灯来说是必要的
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立树状预警信号灯系统
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}双向高级信号（电子）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向高级信号（电子）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号灯转换工具{}当此按钮按下时再选择信号灯种类{}就可以转换信号灯为选择的种类{}CTRL+点击{}可以把现有信号灯在电子和旗帜间转换
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号灯转换工具{}按下此按钮，可以将已经存在的信号灯转化为选择的信号灯类型，按下CTRL键盘再点击，可以在电子和悬臂型之间转换
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}拖拽布置信号灯的间隔距离
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}减少拖拽布置信号灯的间隔距离
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加拖拽布置信号灯的间隔距离
@@ -2564,27 +2565,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有信号灯的{STRING}铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} 预信号灯轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 出口信号灯轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} 复合信号灯轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} 普通信号灯轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 单向信号灯轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} 具有入口信号灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} 具有出口信号灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} 具有组合信号灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} 具有高级信号灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} 具有高级单向信号灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} 同时有入口灯和出口灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} 同时有入口灯和组合灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} 同时有入口灯和高级灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} 同时有入口灯和单向高级灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} 同时有出口灯和组合灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} 同时有出口灯和高级灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} 同时有出口灯和单向高级灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} 同时有组合灯和高级灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} 同时有组合灯和高级单向灯的铁轨
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} 同时有高级灯和单向高级灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有通过信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :有入口信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :有出口信号灯的{STRING} 轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :有复合信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :有路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 有单向路径信号灯的轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :有通过信号灯和入口信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :有通过信号灯和出口信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :有通过信号灯和复合信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :有通过信号灯和路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :有通过信号灯和单向路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :有入口信号灯和出口信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :有入口信号灯和复合信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :有入口信号灯和路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :有入口信号灯和单向路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :有出口信号灯和复合信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :有出口信号灯和路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :有出口信号灯和单向路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :有复合信号灯和路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :有复合信号灯和单向路径信号灯的{STRING}轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :有路径信号灯和单向路径信号灯的{STRING}轨道
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 列车车库
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :公路
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}保存
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}以选定的名字保存当前游戏
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}载入
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}载入所选
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}载入选定的高度图
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏详情
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}提高�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}降低雪线高度
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}随机种子：
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}点志这里可以输入一个随机种子
-STR_MAPGEN_RANDOM                                               :{BLACK}随机种子
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}改变生成地形所用的随机种子
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}生成地形：
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}生成树木：
@@ -2853,7 +2854,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用非
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :具有多个Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :图像读取时发生越界错误 (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图形组缺失部分图片。{}请升级图形组。
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}当前使用的基础图形包参数有误。{}请更新基础图形包。{}如果你正在使用 {YELLOW}OPENTTD的开发测试版{WHITE}，你需要 {YELLOW}相应配套的基础图形包。{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :GRF源文件不可访问 (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} 被 {STRING} 禁用
@@ -3797,9 +3798,9 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(不卸货且�
 
 STR_ORDER_AUTO_REFIT_ANY                                        :可用类型
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[月台近端]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[月台中间]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[月台远端]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[近端]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中间]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[远端]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (下一个目的地距离过远)
 
@@ -4200,15 +4201,15 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}当前�
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(现金不够)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能的铁轨组合
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能的轨道组合
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必须先拆除信号灯
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}没有合适的铁轨
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必须先拆除铁轨
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}没有合适的轨道
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必须先拆除轨道
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}这是单行道或这条路被堵死了
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}该轨道类型不允许建设平交道
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}不能在这里设置信号灯……
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能在这里铺设铁轨……
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能从这里拆除铁轨……
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能在这里铺设轨道……
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能从这里拆除轨道……
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}不能从这里拆除信号灯……
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}无法转换此处的信号灯…
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... 这里没有铁路
@@ -4458,7 +4459,7 @@ STR_INDUSTRY_NAME_COLA_WELLS                                    :可乐泉
 STR_INDUSTRY_NAME_TOY_SHOP                                      :玩具店
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :玩具工厂
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :塑料喷泉
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :跳跳水工厂
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :汽水工厂
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :泡泡小屋
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :太妃场
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :蔗糖矿
@@ -4557,7 +4558,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :可乐罐车
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :糖果篷车
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :玩具篷车
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :电池挂车
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :跳跳汁挂车
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :汽水挂车
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :塑料挂车
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (电力)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (电力)

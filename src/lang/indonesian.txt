@@ -1072,7 +1072,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setting perusah
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Jenis:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hambat daftar dibawah, hanya tampilkan aturan yang diubah
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Batasi daftar dibawah ini menggunakan filter yang telah ditetapkan
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pengaturan dasar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pengaturan lanjut
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pengaturan mahir / semua aturan
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Perbolehkan kot
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Kota yang diperbolehkan untuk membangun perlintasan tingkat: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mengaktifkan setelan ini akan memperbolehkan kota membuat perlintasan rel kereta
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ijinkan kota mengatur tingkat kebisingan bandara : {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Jika diaktifkan, pembuatan bandara di kota tergantung dari jarak,kebisingan bandara dan populasi kota. Jika dimatikan, di kota hanya boleh ada dua bandara
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Jika dimatikan, di setiap kota hanya boleh ada dua bandara. Jika diaktifkan, pembuatan bandara di kota dibatasi oleh batas kebisingan bandara, yang bergantung pada populasi kota, juga jarak dan ukuran bandara.
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Mendirikan kota pada permainan: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mengaktifkan setting ini akan membolehkan pemain mendirikan kota dalam permainan
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Dilarang
@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trem Barang
 STR_FACE_CAPTION                                                :{WHITE}Pilihan Wajah
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Batalkan pemilihan wajah baru
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Terima pilihan wajah baru
+STR_MAPGEN_RANDOM                                               :{BLACK}Acak angka
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Pria
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Pilih wajah pria
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Simpan
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Simpan permainan saat ini, gunakan nama yang terpilih
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Muat
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Membuka permainan yang telah dipilih
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Muat heightmap yang dipilih
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Rincian Permainan
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tidak ada informasi yang tersedia
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Naikkan 
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Turunkan ketinggian garis salju satu angka
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Angka masukkan:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik untuk mengisi umpan angka acak
-STR_MAPGEN_RANDOM                                               :{BLACK}Acak angka
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ganti angka umpan pengacakan untuk menghasilkan pulau
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pohon:
@@ -3299,8 +3300,9 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Pesawat tanpa k
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Kelompok - Klik salah satu untuk melihat daftar kendaraan pada kelompok tersebut
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik untuk membuat kelompok
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Hapus kelompok terpilih
-STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ubah Nama kelompok terpilih
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ubah nama kelompok terpilih
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik untuk memproteksi kelompok ini dari perintah penggantian otomatis
+
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tambah kendaraan dgn perintah bersama
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Jual semua

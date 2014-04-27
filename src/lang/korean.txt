@@ -1073,7 +1073,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}분류:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}종류:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}설정 값이 변경된 설정만 목록에 표시하도록 할 수 있습니다.
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}미리 지정한 검색어에 해당하는 설정 목록에 표시하도록 할 수 있습니다.
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :기본 설정
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :고급 설정
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :전문가 설정 / 모든 설정
@@ -1809,6 +1809,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
 STR_FACE_CAPTION                                                :{WHITE}얼굴 선택
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}새 얼굴 선택을 취소합니다.
 STR_FACE_OK_TOOLTIP                                             :{BLACK}이 얼굴을 선택합니다.
+STR_MAPGEN_RANDOM                                               :{BLACK}무작위화
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}남성
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}남성 얼굴 선택
@@ -2669,6 +2670,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}저장
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}선택한 이름으로 현재 게임을 저장합니다
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}불러오기
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}선택한 게임을 불러옵니다.
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}선택한 높이맵을 불러옵니다.
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}게임 상세 정보
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용 가능한 정보 없음.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2689,7 +2691,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}설선 �
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}설선 고도를 1칸 낮춥니다
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}무작위수치:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}무작위수치를 입력하세요
-STR_MAPGEN_RANDOM                                               :{BLACK}무작위화
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}지형 만들기를 위한 무작위수치 변경
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}나무 알고리즘:
@@ -2756,7 +2757,7 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}적용�
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}적용하지 않은 NewGRF 파일
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}프리셋 선택:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색할 문자열:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다.
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장합니다.
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}프리셋 이름 입력
@@ -3490,9 +3491,9 @@ STR_REPLACE_WAGONS                                              :화물차
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차의 철도 종류를 고르세요
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}왼쪽의 선택한 기관차가 어떤 기관차로 교체되고 있는지 표시합니다.
 STR_REPLACE_RAIL_VEHICLES                                       :철도 차량
-STR_REPLACE_ELRAIL_VEHICLES                                     :전기철도
+STR_REPLACE_ELRAIL_VEHICLES                                     :전기철도 차량
 STR_REPLACE_MONORAIL_VEHICLES                                   :모노레일 차량
-STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상
+STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상 차량
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 앞쪽부터 화물칸를 제거하여 열차의 전체 길이가 달라지지 않도록 합니다.

@@ -1758,6 +1758,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Kravas tramvajs
 STR_FACE_CAPTION                                                :{WHITE}Sejas izvēle
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Pārtraukt jaunas sejas izvēli
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Apstiprināt izvēlēto seju
+STR_MAPGEN_RANDOM                                               :{BLACK}Nejaušs
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Vīrietis
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izvēlēties vīriešu sejas
@@ -2630,7 +2631,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaugsti
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pazemināt sniega līnijas augstumu
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nejaušs sākums:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikšķināt, lai ievadītu nejaušu sākumu
-STR_MAPGEN_RANDOM                                               :{BLACK}Nejaušs
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Mainīt apvidus radīšanā izmantoto nejaušo sākumu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Zemes radītājs:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Koku algoritms:

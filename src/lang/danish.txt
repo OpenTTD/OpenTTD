@@ -1805,6 +1805,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Fragt-sporvogn
 STR_FACE_CAPTION                                                :{WHITE}Ansigtsvalg
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annuller nyt valg af ansigt
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accepter nyt ansigtsvalg
+STR_MAPGEN_RANDOM                                               :{BLACK}Tilfældig
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mand
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vælg mandlige ansigter
@@ -2685,7 +2686,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt sne
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt snegrænsen een ned
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Tilfældig
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik for at angive tilfældighed
-STR_MAPGEN_RANDOM                                               :{BLACK}Tilfældig
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ændre den tilfældige værdi ved brug i terrængeneratoren
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Terrængenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træalgoritme:

@@ -1682,6 +1682,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :{G=m}Góðs spo
 STR_FACE_CAPTION                                                :{WHITE}Andlits úrval
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Angra nýtt andlits val
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Góðtak nýtt andlits val
+STR_MAPGEN_RANDOM                                               :{BLACK}Blanda
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Kallkyn
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vel kallkyns andlit
@@ -2481,7 +2482,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt kav
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt kava linjuna eitt niður
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Tilvildarligt sáð:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Trýst fyri at skriva tilvildarligt sáð
-STR_MAPGEN_RANDOM                                               :{BLACK}Blanda
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Broyt tilvildarliga sáði ið verur nýtt til landslags framleiðslu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træ algoritma:

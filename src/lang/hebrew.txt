@@ -1588,6 +1588,19 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :הסר קצות
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :עדכן את הגרף מדי {STRING} {P 0:2 יום ימים}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :זמן לחישוב מחדש של גרף הקישור. כל חישוב מחדש מחשב את התכניות של פריט יחיד בגרף. כלומר, בהגדרה של ערך X אין הכרח שכל הגרף יתעדכן מדי X ימים. רק פריט ממנו יתעדכן. ערך קטן יותר דורש יותר זמן מעבד לחישוב. ערך גבוה קובע זמן ארוך יותר עד שחלוקת המטען מתחילה בנתיב חדש.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :המתן {STRING} י{P 0:2 ום מים} לחישוב מחדש של גרף החלוקה
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :הזמן לחישוב מחדש של נקודה בגרף. החישוב מורשה לרוץ במשך מספר ימים זה. בקביעת זמן קצר, החישוב עלול שלא להסתיים במועד. המשחק נעצר עד הסיום (השהיה). בקביעת זמן ארוך, עדכון הערך יתעכב זמן ארוך יותר לאחר שינוי מסלולים.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :ידני
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :אסימטרי
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :סימטרי
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :אופן החלוקה עבור נוסעים: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"סימטרי" הכוונה שמספר הנוסעים מתחנה א' לתחנה ב' הוא פחות או יותר אותו מספר הנוסעים מתחנה ב' לתחנה א'. "אסימטרי" הכוונה שמספר נוסעים שרירותי יכול ליסוע כל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור נוסעים.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :אופן החלוקה עבור דואר: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"סימטרי" הכוונה שכמות הדואר מתחנה א' לתחנה ב' הוא פחות או יותר אותה כמות הדואר מתחנה ב' לתחנה א'. "אסימטרי" הכוונה שכמויות דואר שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור דואר.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :אופן החלוקה עבור מחלקה משוריינת: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :מחלקה משוריינת מובילה חפצי ערך באקלים ממוזג, יהלומים באקלים טרופי וזהב באקלים קר. קבצי שדרוג גראפי עלולים לשנות חלוקה זו. "סימטרי" הכוונה שכמות המטען מתחנה א' לתחנה ב' הוא פחות או יותר אותה כמות המטען מתחנה ב' לתחנה א'. "אסימטרי" הכוונה שכמויות מטען שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור המטען. באקלים קר מומלץ לקבוע למצב אסימטרי או ידני כי בנקים לא שולחים זהב חזרה למכרות יהלומים. באקלים ממוטזג או טרופי ניתן לבחור גם במצב סימטרי כאשר בנקים ישלחו חפצי ערך חזרה למקור של אותם חפצי ערך.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :אופן החלוקה עבור מטענים אחרים: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"אסימטרי" הכוונה שכמויות מטען שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור המטען.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :דיוק החלוקה: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :יחידות מהירות: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :כאשר מוצגת מהירות השתמש ביחידות הנבחרות
@@ -1800,6 +1813,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :חשמלית מ
 STR_FACE_CAPTION                                                :{WHITE}בחירת תווי פנים
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}בטל פנים חדשות
 STR_FACE_OK_TOOLTIP                                             :{BLACK}אישור תווי פנים
+STR_MAPGEN_RANDOM                                               :{BLACK}אקראית
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}גבר
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}בחר תווי פנים של גברים
@@ -2644,6 +2658,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}שמור
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}שמור את המשחק הנוכחי עם השם שנבחר
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}טען
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}טען את המשחק שנבחר
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}טען את מפת הגבהים שנבחרה
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}פרטי משחק
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין מידע זמין
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2664,7 +2679,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}הגבה
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}הנמך את קו השלג
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK} :מספר אקראי
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}הכנס מספר אקראי כלשהוא
-STR_MAPGEN_RANDOM                                               :{BLACK}אקראית
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}בחר מספר אקראי שישמש בסיס ליצירת הקרקע
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :יצירת קרקע
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}אלגוריתם העצים:

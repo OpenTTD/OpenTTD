@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tàu Hàng Đi�
 STR_FACE_CAPTION                                                :{WHITE}Chọn Vẻ Mặt
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Bỏ qua lựa chọn vẻ mặt
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Lựa chọn vẻ mặt mới
+STR_MAPGEN_RANDOM                                               :{BLACK}Sinh Ngẫu Nhiên
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Nam
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Chọn vẻ mặt nam
@@ -2688,7 +2689,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuy�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Số ngẫu nhiên:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Chọn để nhập con số ngẫu nhiên khi tạo bản đồ
-STR_MAPGEN_RANDOM                                               :{BLACK}Sinh Ngẫu Nhiên
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Thay đổi con số ngẫu nhiên để khởi tạo địa hình ngẫu nhiên
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:

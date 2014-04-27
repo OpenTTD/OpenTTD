@@ -1072,7 +1072,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Category:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below showing only changed settings
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below using predefined filters
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic settings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced settings
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert settings / all settings
@@ -1081,11 +1081,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Settings with a
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restricts the list below to certain setting types
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :All setting types
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Client settings (not stored in saves; affects all games)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Game settings (stored in saves; affects only new games)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Game settings (stored in save; affects only current game)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Company settings (stored in saves; affects only new games)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Company settings (stored in save; affects only current company)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Client settings (not stored in saves; affect all games)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Game settings (stored in saves; affect only new games)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Game settings (stored in save; affect only current game)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Company settings (stored in saves; affect only new games)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Company settings (stored in save; affect only current company)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Show all search results by setting{}{SILVER}Type {BLACK}to {WHITE}All setting types
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
@@ -1127,12 +1127,12 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Disallow train 
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled, trains will not reverse in non-terminus stations, even if there is a shorter path to their next destination when reversing
 STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
-STR_CONFIG_SETTING_CITY_APPROVAL                                :City council's attitude towards area restructuring: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Town council's attitude towards area restructuring: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Allow building on slopes and coasts: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :If enabled, tracks and stations can be build on most slopes. If disabled, they are only allowed on slopes which match the direction of the track and thus require no foundations
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow terraforming under buildings, tracks, etc. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow terraforming under buildings, tracks, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow terraforming under buildings and tracks without removing them
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Have differently sized catchment areas for different types of stations and airports
@@ -1306,7 +1306,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap or when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Show a measurement tooltip when using various build-tools: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Display tile-distances and height differences when dragging during construction operations
-STR_CONFIG_SETTING_LIVERIES                                     :Show company liveries: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Show vehicle-type specific liveries: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Control usage of vehicle-type specific liveries for vehicles (in contrary to company specific)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :None
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Own company
@@ -1355,7 +1355,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :No actions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :All non-construction actions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :All but landscape modifying actions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :All actions
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Use the advanced vehicle list: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Use groups in vehicle list: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Enable usage of the advanced vehicle lists for grouping vehicles
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Use loading indicators: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Select whether loading indicators are displayed above loading or unloading vehicles
@@ -1370,7 +1370,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rail type to se
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :First available
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Last available
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Show reserved tracks: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Show path reservations for tracks: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Give reserved tracks a different color to assist in problems with trains refusing to enter path-based blocks
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Keep building tools active after usage: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Keep the building tools for bridges, tunnels, etc. open after use
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Allow towns to 
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Towns are allowed to build grade crossings: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Enabling this setting allows towns to build grade crossings
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Allow town controlled noise level for airports: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :With this setting disabled, there can be two airports in each town. With this setting enabled, the number of airports in a city is limited by the noise acceptance of the town, which depends on population and airport size and distance
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :With this setting disabled, there can be two airports in each town. With this setting enabled, the number of airports in a town is limited by the noise acceptance of the town, which depends on population and airport size and distance
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Founding towns in game: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Enabling this setting allows players to found new towns in the game
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbidden
@@ -1585,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetric" mea
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribution mode for the ARMORED cargo class: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMORED cargo class contains valuables in the temperate, diamonds in the subtropical or gold in subarctic climate. NewGRFs may change that. "symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary of that cargo can be sent in either direction. "manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic, as banks won't send any gold back to gold mines. For temperate and subtropical you can also choose symmetric as banks will send valuables back to the origin bank of some load of valuables.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribution mode for other cargo classes: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetric" means that roughly the same amount of cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "manual" means that no automatic distribution will take place for those cargos. You probably want to set this to either "asymmetric" or manual.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "manual" means that no automatic distribution will take place for those cargos.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribution accuracy: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :The higher you set this the more CPU time the calculation of the link graph will take. If it takes too long you may notice lag. If you set it to a low value, however, the distribution will be inaccurate, and you may notice cargo not being sent to the places you expect it to go.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect of distance on demands: {STRING}
@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Freight Streetc
 STR_FACE_CAPTION                                                :{WHITE}Face Selection
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancel new face selection
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accept new face selection
+STR_MAPGEN_RANDOM                                               :{BLACK}Randomize
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Male
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Select male faces
@@ -1874,7 +1875,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Name
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Name of the game
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clients
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clients online / clients max
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clients online / clients max{}Companies online / companies max
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Map size
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Map size of the game{}Click to sort by area
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Save
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Save the current game, using the selected name
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Load
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Load the selected game
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Load the selected heightmap
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Game Details
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No information available
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Move the
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Move the snow line height down one
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Random seed:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click to enter a random seed
-STR_MAPGEN_RANDOM                                               :{BLACK}Randomize
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Change the random seed used for Terrain Generation
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land generator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tree algorithm:
@@ -3690,8 +3691,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change t
 
 STR_ORDER_REFIT                                                 :{BLACK}Refit
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Select what cargo type to refit to in this order. Ctrl+Click to remove refit instruction
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-refit
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Select what cargo type to auto-refit to in this order. Ctrl+Click to remove refit instruction. Auto-refitting will only be done if the vehicle allows it
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Refit at station
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Select what cargo type to refit to in this order. Ctrl+Click to remove refit instruction. Refitting at stations will only be done if the vehicle allows it
 STR_ORDER_DROP_REFIT_AUTO                                       :Fixed cargo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Available cargo
 
@@ -3782,18 +3783,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unloading a
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unloading and wait for any full load)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No unloading and no loading)
 
-STR_ORDER_AUTO_REFIT                                            :(Auto-refit to {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Full load with auto-refit to {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Full load any cargo with auto-refit to {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Unload and take cargo with auto-refit to {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Unload and wait for full load with auto-refit to {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Unload and wait for any full load with auto-refit to {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transfer and take cargo with auto-refit to {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfer and wait for full load with auto-refit to {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfer and wait for any full load with auto-refit to {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(No unloading and take cargo with auto-refit to {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No unloading and wait for full load with auto-refit to {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No unloading and wait for any full load with auto-refit to {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Refit to {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Full load with refit to {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Full load any cargo with refit to {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Unload and take cargo with refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Unload and wait for full load with refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Unload and wait for any full load with refit to {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transfer and take cargo with refit to {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfer and wait for full load with refit to {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfer and wait for any full load with refit to {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(No unloading and take cargo with refit to {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No unloading and wait for full load with refit to {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No unloading and wait for any full load with refit to {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :available cargo
 

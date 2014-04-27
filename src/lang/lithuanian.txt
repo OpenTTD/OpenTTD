@@ -2017,6 +2017,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Krovininis tram
 STR_FACE_CAPTION                                                :{WHITE}Veido pasirinkimas
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nutraukia veido pasirinkimą
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Užbaigia veido pasirinkimą
+STR_MAPGEN_RANDOM                                               :{BLACK}Atsitiktinai
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Vyras
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Pasirink vyro veidą
@@ -2877,6 +2878,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Išsaugo
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Išsaugoti žaidimą pasirinktu vardu
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Užkrauti
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Užkrauti pasirinktą žaidimą
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Įkrauti pasirinktą žemėlapį
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Žaidimo ypatybės
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nėra informacijos
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2897,7 +2899,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaukšt
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pažeminti sniego liniją
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Atsitiktinė pradžia:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Paspauskite, jeigu norite įvesti atsitiktinę skaičių seką naudojamą pasaulio kūrimui
-STR_MAPGEN_RANDOM                                               :{BLACK}Atsitiktinai
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Parenką naują atsitiktinę skaičių seką naudojamą pasaulio kūrimui
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Pasaulio kūrimas:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Medžių algoritmas:

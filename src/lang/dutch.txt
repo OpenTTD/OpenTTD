@@ -1585,7 +1585,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisch" b
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributie-modus voor de GEPANTSERDE lading klasse: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :De GEPANTSERDE lading klasse bevat waardevolle spullen in het gematigde klimaat, diamanten in de subtropische of goud in subarctische klimaat. NewGRFs kan dat veranderen. "symmetrisch" betekent dat ongeveer dezelfde hoeveelheid lading die wordt verzonden van een station A naar station B als een van B naar A. "asymmetrische" dat willekeurige deze vracht kan in beide richtingen worden verzonden. "handmatig" betekent dat er geen automatische distributie zal plaatsvinden voor die lading. Het wordt aanbevolen om dit op asymmetrische of handmatig bij het spelen van subarctische, zoals banken zullen geen goud terug te sturen naar goudmijnen. Voor gematigde en subtropische kunt u ook kiezen symmetrische als banken zullen waardevolle spullen terugsturen naar de oorsprong bank van enkele lading van kostbaarheden.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributie-modus voor andere vrachtsoorten: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisch" betekent dat ongeveer dezelfde hoeveelheid vracht wordt verzonden van een station A naar station B als een van B naar A. "asymmetrische" dat willekeurige hoeveelheid lading in beide richtingen worden verzonden. "handmatig" betekent dat er geen automatische distributie zal plaatsvinden voor die ladingen. Waarschijnlijk wilt u dit instellen op "asymmetrische" of handmatig.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisch" betekent dat willekeurige hoeveelheden lading in beide richtingen kan worden gestuurd. "manual" betekent dat er geen automatische distributie zal plaatsvinden voor die lading.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Verdeelnauwkeurigheid: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Hoe hoger de instelling des te meer CPU-tijd de berekening van de link grafiek zal gebruiken. Als het te lang duurt kan vertraging opleveren. Als u deze instelt op een lage waarde, echter, zal de verdeling onnauwkeurig zijn, en de lading zal niet altijd worden verzonden naar de plaatsen die u verwacht.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect van afstand op de vraag: {STRING}
@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Vrachttram
 STR_FACE_CAPTION                                                :{WHITE}Gezichtskeuze
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annuleer nieuwe gezichtskeuze
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accepteer nieuwe gezichtskeuze
+STR_MAPGEN_RANDOM                                               :{BLACK}Willekeurig maken
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mannelijk
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selecteer mannelijke gezichten
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Opslaan
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sla het huidige spel op onder de gekozen naam
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laad
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Laad het geselecteerde spel
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Laad de geselecteerd hoogtekaart
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spel details
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Geen informatie beschikbaar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verschui
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verschuif de sneeuwgrens één omlaag
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Willekeurig getal:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om een willekeurig getal in te voeren
-STR_MAPGEN_RANDOM                                               :{BLACK}Willekeurig maken
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Wijzig het willekeurige getal dat gebruikt wordt om het landschap te genereren
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgoritme:

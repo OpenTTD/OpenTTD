@@ -1809,6 +1809,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Vrag Trem
 STR_FACE_CAPTION                                                :{WHITE}Gesig Keuse
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Kanselleer nuwe gesig keuse
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aanvar nuwe gesig keuse
+STR_MAPGEN_RANDOM                                               :{BLACK}Lukraake
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Manlik
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Kies manlik gesigte
@@ -2689,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg d
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweeg die sneeu lyn een af
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Lukraak Saad:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klik om 'n willekeurige saad in te voer
-STR_MAPGEN_RANDOM                                               :{BLACK}Lukraake
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Verander die lukraak saad gebruik vir Terrein Generasie
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land genereerder:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boom algoritme:

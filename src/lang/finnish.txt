@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Raitiotavaravau
 STR_FACE_CAPTION                                                :{WHITE}Kasvojen valinta
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Peruuta uusien kasvojen valinta.
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Hyväksy uusien kasvojen valinta.
+STR_MAPGEN_RANDOM                                               :{BLACK}Satunnainen
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mies
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Valitse miehen kasvot.
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Tallenna
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Tallenna nykyinen peli käyttäen valittua nimeä.
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lataa
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lataa valittu peli
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Lataa valittu korkeuskartta
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Tietoja pelistä
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tietoja ei ole saatavilla
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Siirrä 
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Siirrä lumirajaa yksi taso alaspäin
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Satunnaislukusiemen:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikkaa antaaksesi satunnaislukusiemenen
-STR_MAPGEN_RANDOM                                               :{BLACK}Satunnainen
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Vaihda maaston luomisessa käytettävä satunnaislukusiemen
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maastogeneraattori:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puiden algoritmi:

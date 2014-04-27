@@ -1787,6 +1787,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tramvai marfă
 STR_FACE_CAPTION                                                :{WHITE}Alegerea pozei
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Anulează alegerea unei poze noi
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acceptă poza selectată
+STR_MAPGEN_RANDOM                                               :{BLACK}Aleator
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Bărbat
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Alege figură masculină
@@ -2666,7 +2667,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mută li
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mută linia zăpezii cu un punct în jos
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Parametru aleator:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click pt introducerea unui parametru aleator
-STR_MAPGEN_RANDOM                                               :{BLACK}Aleator
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Modifică parametrul aleator folosit pentru Generarea Terenului
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator de teren:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm arbore:

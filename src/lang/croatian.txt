@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Postavke kompan
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu prikazom samo izmijenjenih postavki
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu koristeći samo predpostavljene filtere
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne postavke
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne postavke
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Postavke za napredne korisnike / sve postavke
@@ -1616,7 +1616,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Dozvoli gradovi
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Gradovi smiju graditi pružne prijelaze: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Uključivanje ove postavke dozvoljava se gradovima da grade cestovno-pružne prijelaze
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Omogući određivanje razine buke za zračne luke od strane gradova: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kada je ova postavka isključena, mogu postojati dve zračne luke u svakom gradu. Kada je ova postavka uključena, broj zračnih luka u nekom gradu je limitirana količinom dozvoljene buke u gradu, koja ovisi o populaciji i udaljenosti i veličini zračnih luka
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kada je ova postavka isključena, mogu postojati dva aerodroma u svakom gradu. Kada je ova postavka uključena, broj aerodroma u nekom gradu je limitirana količinom dozvoljene buke u gradu, koja ovisi o populaciji i udaljenosti i veličini aerodroma
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Osnivanje gradova tijekom igre: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Uklučivanje ove postavke dozvoljava igračima osnivanje novih gradova tijekom igre
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zabranjeno
@@ -1904,6 +1904,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Teretni tramvaj
 STR_FACE_CAPTION                                                :{WHITE}Izbor lica
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Odustani od izbora novog lica
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Prihvati izbor novog lica
+STR_MAPGEN_RANDOM                                               :{BLACK}Nasumično
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Muško
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Odaberi muška lica
@@ -2764,6 +2765,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Spremi
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Spremi trenutnu igru koristeći odabrano ime
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Učitaj
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Učitaj odabranu igru
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Učitaj odabranu visinsku kartu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalji o igri
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nema dostupnih informacija.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2784,7 +2786,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Pomakni 
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pomakni visinu linije snijega za jedan dolje
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nasumični slijed:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikni za unos nasumičnog slijeda
-STR_MAPGEN_RANDOM                                               :{BLACK}Nasumično
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Promijeni slučajni slijed koji se koristi za kreiranje terena
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Izrađivač zemljišta:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK} Algoritam za drveće:

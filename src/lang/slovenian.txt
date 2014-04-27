@@ -1955,6 +1955,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tovorni tramvaj
 STR_FACE_CAPTION                                                :{WHITE}Izbira obraza
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Prekliči izbiro novega obraza
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Sprejmi nov obraz
+STR_MAPGEN_RANDOM                                               :{BLACK}Naključno
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Moški
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izberi moške slike
@@ -2835,7 +2836,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Premik s
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Premik snežne meje eno enoto nižje
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Naključno seme:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikni za vnos naključnega semena
-STR_MAPGEN_RANDOM                                               :{BLACK}Naključno
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Spremeni naključno seme za ustvarjanje terena
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ustvarjalec terena:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritem dreves:

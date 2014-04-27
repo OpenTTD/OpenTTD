@@ -1587,7 +1587,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" be
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribusjonsmodus for den pansrede gods-klassen: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den pansrede godsklassen inneholder verdisaker i det tempererte klimaet, diamanter i det subtropiske, og gull i det subarktiske. NEWGRF kan endre på dette. "symmetrisk" betyr at omtrent like mye gods vil bli sendt fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen auomatisk distribusjon vil forekomme for lasten. Det anbefales å sette denne til asymmetrisk eller manuell når du spiller subarktisk, siden banker ikke vil sende noe gull tilbake til gullgruver. For temperert og subtropisk klima kan du også velge symmetrisk, da banker fint kan velge å sende verdisaker tilbake til opprinnelig bank.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribusjonsmodus for andre godsklasser: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisk" betyr at omtrent samme mengde gods vil bli sendt fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen automatisk distribusjon av gods vil forekomme for disse godstypene. Du vil sannsynligvis sette denne til enten asymmetrisk eller manuell.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen automatisk distribusjon av gods vil forekomme for disse godstypene.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribusjons-nøyaktighet: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo høyere du setter denne, desto mer prosessor-tid vil beregningen av koblingsgrafen ta. Hvis dette bruker for lang tid, vil du oppleve etterslep. Hvis du setter den til en lav verdi, vil distribusjonen bli mer unøyaktig, og du vil kunne oppleve at gods ikke blir sendt til de stedene du forventer at den skal gå.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efffekten av avstand på behov: {STRING}
@@ -1810,6 +1810,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Varetrikk
 STR_FACE_CAPTION                                                :{WHITE}Velg ansikt
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Avbryt ansiktsvalg
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Godta nytt ansikt
+STR_MAPGEN_RANDOM                                               :{BLACK}Tilfeldiggjør
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mann
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Velg mannsansikter
@@ -2670,6 +2671,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Lagre
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Lagre gjeldende spill ved å bruke navnet som er valgt
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Last inn
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Last inn det valgte spillet
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Last inn det valgte høydekartet
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spilldetaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen informasjon tilgjengelig.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2690,7 +2692,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt h�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høyden på snøgrensen ett hakk ned
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Såtall:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikk her for å taste inn et såtall
-STR_MAPGEN_RANDOM                                               :{BLACK}Tilfeldiggjør
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Endre såtall som brukes for terreng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:

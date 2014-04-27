@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Fraktspårvagn
 STR_FACE_CAPTION                                                :{WHITE}Välj ansikte
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Avbryt val av ansikte
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acceptera nytt ansikte
+STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Man
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Välj manliga ansikten
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Spara
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Spara spelet med valt namn
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ladda
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ladda valt spel
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ladda vald höjdkarta
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldetaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information tillgänglig
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj sn�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett ner
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Slumpnummer:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klicka för att mata in ett slump-nummer
-STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändra slumpnummer som används för terräng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:

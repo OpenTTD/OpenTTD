@@ -1728,6 +1728,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Varetrikk
 STR_FACE_CAPTION                                                :{WHITE}Vel utsjånad
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Avbryt val av utsjånad
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Godta ny utsjånad
+STR_MAPGEN_RANDOM                                               :{BLACK}Tilferdiggjer
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mann
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vel mannsandlet
@@ -2608,7 +2609,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt h�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høgda på snøgrensa eitt hakk ned
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Såtal:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikk her for å taste inn eit såtal
-STR_MAPGEN_RANDOM                                               :{BLACK}Tilferdiggjer
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Endre såtal som nyttast for terreng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:

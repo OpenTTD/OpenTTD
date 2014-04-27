@@ -1474,6 +1474,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :عربة ترا
 STR_FACE_CAPTION                                                :{WHITE}اختيار الوجة
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}الغاء اختيار الوجة الجديد
 STR_FACE_OK_TOOLTIP                                             :{BLACK}اقبل الوجة الجديد
+STR_MAPGEN_RANDOM                                               :{BLACK}عشوائي
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}رجل
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}اختر وجة رجل
@@ -2316,7 +2317,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ارفع
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}خفض خط الثلج مستوى واحد
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}مرجع عشوائي
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}اضغط لادخال مرجع عشوائي
-STR_MAPGEN_RANDOM                                               :{BLACK}عشوائي
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}غير المرجع العشوائي لتوليد تضاريس الخريطة
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK} لوغاريثم الشجر:

@@ -1074,7 +1074,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione de
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante alle sole impostazioni con valore modificato
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante usando i filtri predefiniti
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Impostazioni di base
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Impostazioni avanzate
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impostazioni (utenti esperti)
@@ -1330,7 +1330,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scorrimento mor
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlla il modo in cui la visuale principale scorre verso una specifica posizione quando si fa clic sulla minimappa o si ordina di visualizzare un oggetto specifico sulla mappa. Se abilitata, la visuale scorre in modo morbido. Se disabilitata, salta direttamente al punto prescelto
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un tooltip di misura durante la costruzione: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra le distanze in riquadri e le differenze di altezza quando si trascina durante le operazioni di costruzione
-STR_CONFIG_SETTING_LIVERIES                                     :Mostra le livree delle compagnie: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Mostra le livree specifiche per tipo di veicolo: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlla l'utilizzo delle livree specifiche per il tipo di veicolo (invece di quelle specifiche della compagnia)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nessuna
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propria compagnia
@@ -1379,7 +1379,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nessuna
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Tutte tranne quelle di costruzione
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Tutte tranne quelle di modifica del terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Tutte
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utilizza la lista veicoli avanzata: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utilizza i gruppi nella lista veicoli: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Abilita l'utilizzo delle liste veicoli avanzate per raggruppare i veicoli
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilizza gli indicatori di caricamento: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Determina se gli indicatori di caricamento sono mostrati sopra i veicoli in caricamento o scaricamento
@@ -1394,7 +1394,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo di ferrovi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :La prima disponibile
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :L'ultima disponibile
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :La più usata
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra i binari riservati: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra i percorsi riservati sui binari: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dà ai binari riservati un colore differente, aiutando a correggere problemi di treni che si rifiutano di entrare in blocchi protetti con segnali a percorso
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantieni aperte le finestre di costruzione dopo l'uso: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantiene aperti dopo l'uso gli strumenti di costruzione di ponti, tunnel, etc.
@@ -1832,6 +1832,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tram merci
 STR_FACE_CAPTION                                                :{WHITE}Seleziona faccia
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Annulla la selezione della nuova faccia
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Accetta la selezione della nuova faccia
+STR_MAPGEN_RANDOM                                               :{BLACK}Scegli a caso
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Maschio
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Seleziona fra volti maschili
@@ -2698,6 +2699,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salva
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salva la partita corrente, usando il nome scelto
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carica
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carica la partita selezionata
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carica l'heightmap selezionata
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Dettagli partita
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informazioni non disponibili
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2718,7 +2720,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sposta i
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sposta in giù di uno l'altezza delle nevi perenni
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Seme casuale:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Fare clic per introdurre un seme casuale
-STR_MAPGEN_RANDOM                                               :{BLACK}Scegli a caso
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Cambia il seme casuale usato per la generazione del terreno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatore:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo alberi:
@@ -3720,8 +3721,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambia l
 
 STR_ORDER_REFIT                                                 :{BLACK}Riadatta
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selezionare il tipo di carico per il quale riadattare in questo ordine. Premere CTRL+clic per rimuovere l'istruzione di riadattamento
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-riadatta
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selezionare il tipo di carico per il quale auto-riadattare in questo ordine. Premere CTRL+clic per rimuovere l'istruzione di riadattamento. L'auto-riadattamento sarà eseguito solo se il veicolo lo consente
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Riadatta
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selezionare il tipo di carico per il quale riadattare in questo ordine. Premere CTRL+clic per rimuovere l'istruzione di riadattamento. Il riadattamento presso le stazioni sarà eseguito solo se il veicolo lo consente
 STR_ORDER_DROP_REFIT_AUTO                                       :Carico prefissato
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carico in attesa
 
@@ -3812,18 +3813,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non scaricare 
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non scaricare e attendi qualsiasi pieno carico)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Non scaricare e non caricare)
 
-STR_ORDER_AUTO_REFIT                                            :(Auto-riadatta per {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Attendi qualsiasi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Scarica e carica, auto-riadatta per {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Scarica e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Scarica e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Trasferisci e carica, auto-riadatta per {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trasferisci e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trasferisci e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Non scaricare e carica, auto-riadatta per {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Non scaricare e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non scaricare e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Riadatta per {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Attendi pieno carico, riadatta per {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Attendi qualsiasi pieno carico, riadatta per {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Scarica e carica, riadatta per {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Scarica e attendi pieno carico, riadatta per {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Scarica e attendi qualsiasi pieno carico, riadatta per {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Trasferisci e carica, riadatta per {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trasferisci e attendi pieno carico, riadatta per {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trasferisci e attendi qualsiasi pieno carico, riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Non scaricare e carica, riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Non scaricare e attendi pieno carico, riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non scaricare e attendi qualsiasi pieno carico, riadatta per {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :il carico in attesa
 

@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Cuando se activa, todos los modelos de vehículos permanecen disponibles para siempre una vez han sido introducidos
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovación automática de vehículos cuando se vuelven viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Cuando se activa, los vehículos que se acerquen al final de su vida útil serán reemplazados automáticamente cuando las condiciones de renovación se cumplan
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automáticamente cuando el vehículo tenga {STRING} años como máximo
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenueva el vehículo {STRING} de su edad máxima
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edad relativa con la cual un vehículo debería de ser considerado para ser autorenovado
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mes{P 0 "" es} antes
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0 "" es} después
@@ -1809,6 +1809,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de Car
 STR_FACE_CAPTION                                                :{WHITE}Selección de cara
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancelar selección de nueva cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Aceptar selección de nueva cara
+STR_MAPGEN_RANDOM                                               :{BLACK}Aleatorio
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Hombre
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selecciona cara masculina
@@ -2689,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mover la
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mover la línea de nieve hacia abajo
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Semilla Aleatoria:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Pulsa para introducir la semilla aleatoria
-STR_MAPGEN_RANDOM                                               :{BLACK}Aleatorio
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Cambiar la semilla aleatoria usada por el Generador de Terrenos
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generador terreno:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo árboles:
@@ -3883,9 +3883,9 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración del script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar / desactivar pausa cuando un mensaje de log de la IA coincide con la cadena de parada
-STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausa activada:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausa activada
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar/desactivar la pausa automática cuando un mensaje de log de la IA coincide con la cadena de parada
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausar con:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausar cuando el script registre esta cadena
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cuando un mensaje de log de una IA coincide con esta cadena, el juego se pausa
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Comprobar mayúsculas/minúsculas
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activa/desactiva la comprobación de mayúsculas y minúsculas al comparar los mensajes de log de la IA con la cadena de parada

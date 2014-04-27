@@ -1838,6 +1838,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Εμπορικ�
 STR_FACE_CAPTION                                                :{WHITE}Επιλογή Προσώπου
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Ακύρωση επιλογής νέου προσώπου
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Αποδοχή νέου προσώπου
+STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαίος
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Αρσενικό
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Επιλογή αρσενικών προσώπων
@@ -2711,7 +2712,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετα
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Τυχαίος σπόρος:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Κάνετε κλικ για να δώσετε ένα σπόρο τυχαίας παραγωγής
-STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαίος
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Αλλαγή του σπόρου τυχαίας παραγωγής για την Δημιουργία Εδάφους
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:

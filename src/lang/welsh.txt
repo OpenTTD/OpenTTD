@@ -1582,7 +1582,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Dull dosrannu a
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Mae "cymesur" yn golygu y bydd tua'r un faint o deithwyr yn mynd o orsaf A i orsaf B ac yr aiff o B i A. Mae "anghymesur" yn golygu y gall niferoedd mympwyol fynd yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer teithwyr.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Dull dosrannu ar gyfer post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Mae "cymesur" yn golygu y bydd tua'r un faint o bost yn cael ei yrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer post.
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Dull dosrannu ar gyfer llwythi ARGOF: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Dull dosrannu ar gyfer llwythi ARFOG: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARFOG yn cynnwys trysorau mewn ardaloedd tymherus, diemwntau yn y trofannau, ac aur yn yr is-arctig. Mae modd y bydd NewGRFau yn newid hyn, Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Fe argymhellir eich bod yn dewis anghymesur neu â llaw pan yn chwarae mewn ardal is-arctig, gan na fydd banciau'n gyrru aur yn ôl i gloddfeydd aur. Ar gyfer ardaloedd tymherus neu trofannol gallwch hefyd ddewis cymesur gan y bydd banciau'n gyrru trysorau'n ôl i'r banciau tardd.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Dull dosrannu ar gyfer llwythi eraill: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi hyn.
@@ -1647,7 +1647,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signala
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Trin llwyth
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Chwaraewyr Cyfrifiadurol
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Awtoadnewyddu
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Wrthi'n gwasanaethu
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Gwasanaethu
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenau
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Trefi
@@ -1808,6 +1808,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tram Nwyddau
 STR_FACE_CAPTION                                                :{WHITE}Dewiswch Wyneb
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Diddymu dewis wyneb
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Derbyn y dewis newydd o wyneb
+STR_MAPGEN_RANDOM                                               :{BLACK}Ar hap
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Gwrywaidd
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Dewis gwyneb gwrywaidd
@@ -2668,6 +2669,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Cadw
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Cadw'r gêm hwn gan ddefnyddio'r enw sydd wedi'i dewis
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Llwytho
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Llwytho'r gêm a ddewiswyd
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Llwytho'r map uchder a ddewiswyd
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Manylion Gêm
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Dim gwybodaeth ar gael
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2688,7 +2690,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Symud y 
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Symud y llinell eira un yn is
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Hedyn Hap
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Cliciwch i fewnbynnu hedyn hap
-STR_MAPGEN_RANDOM                                               :{BLACK}Ar hap
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Newid yr hedyn hap syn cael ei ddefnyddio ar gyfer Cynhyrchu Tirwedd
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Cynhyrchydd Tir:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorithm Coed:

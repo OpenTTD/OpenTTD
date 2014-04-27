@@ -1464,6 +1464,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Frajttramo
 STR_FACE_CAPTION                                                :{WHITE}Elekto de Vizaĝo
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nuligu elekton de nova vizaĝo
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Akceptu elekton de nova vizaĝo
+STR_MAPGEN_RANDOM                                               :{BLACK}Hazardigu
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Vira
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Elektu virajn vizaĝojn
@@ -2266,7 +2267,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Altigu l
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Malaltigu la neĝlinion per unu
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Hazarda Enigo:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klaku por enigi hazardan enigon
-STR_MAPGEN_RANDOM                                               :{BLACK}Hazardigu
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ŝanĝu la hazardan enigon uzatan de la terengenerilo
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerilo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Arba algoritmo:

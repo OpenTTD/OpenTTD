@@ -1789,6 +1789,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de car
 STR_FACE_CAPTION                                                :{WHITE}Selección de cara
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Cancela-la selección dunha nova cara
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Acepta-la selección da nova cara
+STR_MAPGEN_RANDOM                                               :{BLACK}Aleatorio
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Home
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Seleccionar caras masculinas
@@ -2667,7 +2668,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Subir a 
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baixar a cota de neve unha altura
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Semente aleatoria:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Pincha para introducir unha semente aleatoria
-STR_MAPGEN_RANDOM                                               :{BLACK}Aleatorio
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Cambia-la semente aleatoria usada para a xeración de terreo
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Xerador de terreo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo para árbores:

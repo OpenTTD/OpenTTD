@@ -2404,7 +2404,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}اضاف
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}کم کردن یک واحد از ارتفاع خط برف
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}شماره ساخت تصادفی:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}برای وارد کردن شماره تصادفی کلیک کنید
-STR_MAPGEN_RANDOM                                               :{BLACK}انتخاب تصادفی
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}شماره ساخت تصادفی برای ساخت زمین و پستی و بلندی ها به کار می رود
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}سازنده زمین:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}الگوریتم درخت ها:

@@ -590,7 +590,7 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y y}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ów}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ów}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
@@ -598,7 +598,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa, opy, óp}
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa opy óp}
 STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
@@ -844,8 +844,8 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut ekranu z 
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zrzut ekranu z przybliżeniem domyślnym
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Wł./wył. ramki
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłącz ramki
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłącz kolorowanie brudnych bloków
 ############ range ends here
 
@@ -884,18 +884,18 @@ STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
 
 ############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Sty
-STR_MONTH_ABBREV_FEB                                            :Lut
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Kwi
-STR_MONTH_ABBREV_MAY                                            :Maj
-STR_MONTH_ABBREV_JUN                                            :Cze
-STR_MONTH_ABBREV_JUL                                            :Lip
-STR_MONTH_ABBREV_AUG                                            :Sie
-STR_MONTH_ABBREV_SEP                                            :Wrz
-STR_MONTH_ABBREV_OCT                                            :Paź
-STR_MONTH_ABBREV_NOV                                            :Lis
-STR_MONTH_ABBREV_DEC                                            :Gru
+STR_MONTH_ABBREV_JAN                                            :sty
+STR_MONTH_ABBREV_FEB                                            :lut
+STR_MONTH_ABBREV_MAR                                            :mar
+STR_MONTH_ABBREV_APR                                            :kwi
+STR_MONTH_ABBREV_MAY                                            :maj
+STR_MONTH_ABBREV_JUN                                            :cze
+STR_MONTH_ABBREV_JUL                                            :lip
+STR_MONTH_ABBREV_AUG                                            :sie
+STR_MONTH_ABBREV_SEP                                            :wrz
+STR_MONTH_ABBREV_OCT                                            :paź
+STR_MONTH_ABBREV_NOV                                            :lis
+STR_MONTH_ABBREV_DEC                                            :gru
 
 STR_MONTH_JAN                                                   :Styczeń
 STR_MONTH_FEB                                                   :Luty
@@ -1145,7 +1145,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęł{P 0 a y o} {COMMA} os{P oba oby ób}!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Katastrofa Zeppelina na {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Samochód zniszczony w kolizji z 'UFO'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Pojazd zniszczony w kolizji z 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplozja rafinerii w pobliżu {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabryka zniszczona w podejrzanych okolicznościach w pobliżu {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' wylądowało w pobliżu {TOWN}!
@@ -1357,9 +1357,9 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomi
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zmniejsz kurs wymiany za jednego Funta (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zwiększ kurs wymiany za jednego Funta (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ustal kurs wymiany za jednego Funta (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zmniejsz kurs wymiany za jednego funta (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zwiększ kurs wymiany za jednego funta (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ustal kurs wymiany za jednego funta (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ustaw znak oddzielający w twojej walucie
@@ -1369,14 +1369,14 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ustaw pr
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Ustaw symbol dla twojej waluty
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na Euro: {ORANGE}nigdy
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Ustaw rok przełączenia na Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na Euro wcześniej
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na Euro później
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na euro: {ORANGE}w {NUM} roku
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na euro: {ORANGE}nigdy
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Ustaw rok przełączenia na euro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na euro wcześniej
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Przełącz na euro później
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podgląd: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Funtów (£) w twojej walucie
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 funtów (£) w twojej walucie
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmień parametr własnej waluty
 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksymalna liczba przeciwników: {ORANGE}{COMMA}
@@ -1452,7 +1452,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ustawienie firm
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicza poniższą listę tylko do modyfikowanych ustawień
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicza poniższą listę używając zdefiniowanych filtrów
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Ustawienia podstawowe
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ustawienia zaawansowane
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ustawienia eksperta / wszystkie ustawienia
@@ -1462,10 +1462,10 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wa
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ogranicza poniższą listę do pewnych typów ustawień
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Wszystkie typy ustawień
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Ustawienia klienta (nie przechowywane w plikach zapisu; wpływa na wszystkie gry)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na nowe gry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na nowo rozpoczęte gry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na aktualną grę)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko w nowo rozpoczętych grach)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko na aktualnie aktywną firmę)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w pliku zapisu; wpływa tylko na nowo rozpoczęte gry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; wpływa tylko na aktualną firmę)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Pokaż wszystkie wyniki wyszukiwania według ustawień{}{SILVER}Kategoria {BLACK}do {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Pokaż wszystkie wyniki wyszukiwania według ustawień{}{SILVER}Typ {BLACK}do {WHITE}Wszystkie typy ustawień
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Pokaż wszystkie wyniki według ustawień{}{SILVER}Kategorii {BLACK} {WHITE}{STRING} {BLACK}i {SILVER} Typu {BLACK} {WHITE}Wszystkie typy ustawień
@@ -1900,7 +1900,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Pozwalaj miasto
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Miasta, które mogą budować przejazdy kolejowe: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Aktywacja tej opcji pozwala miastom budować przejazdy kolejowe
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Pozwól miastom kontrolować poziom hałasu dla lotnisk: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kiedy ta opcja jest wyłączona, w miastach można zbudować 2 lotniska. Kiedy opcja jest włączona, dopuszczalna liczba lotnisk jest określana przez tolerancję hałasu w mieście, która zależy od populacji oraz rozmiaru i odległości od lotniska
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kiedy ta opcja jest wyłączona, w miastach można zbudować 2 lotniska. Kiedy ta opcja jest włączona, liczba lotnisk jest ograniczona przez tolerancję hałasu tego miasta, która zależna jest od populacji oraz rozmiaru lotniska i jego odległości
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakładanie miast w grze: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Aktywacja tej opcji umożliwia graczom zakładanie nowych miast w grze
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zabronione
@@ -1965,10 +1965,10 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symetryczna" o
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Typ dystrybucji dla CHRONIONEJ klasy towarów: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :CHRONIONA klasa towarów zawiera kosztowności w umiarkowanym, diamenty w tropikalnym lub złoto w arktycznym klimacie. NewGRF-y mogą to zmieniać. "Symetryczna" oznacza, że mniej więcej tyle samo towaru będzie wysłane ze stacji A do stacji B, co z B do A. "Asymetryczna" znaczy, że narzucone ilości towarów mogą być wysłane w obu kierunkach. "Ręczna" oznacza, że nie będzie automatycznej dystrybucji dla tych towarów. Rekomendowane ustawienie to asymetryczne lub ręczne dla klimatu arktycznego, ponieważ banki nie będą wysyłać złota spowrotem do kopalni złota. Dla umiarkowanego i tropikalnego klimatu możesz także wybrać symetryczne, ponieważ banki będą wysyłać kosztowności spowrotem do banku, z którego pochodzi część kosztowności.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Tryb dystrybucji dla innych typów ładunku: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Symetryczna" znaczy, że mniej więcej tyle samo towaru będzie wysłane ze stacji A do stacji B, co z B do A. "Asymetryczna" znaczy, że narzucone ilości towarów mogą być wysłane w obu kierunkach. "Ręczna" oznacza, że nie będzie automatycznej dystrybucji dla tych towarów. Prawdopodobnie chcesz to ustawić na "asymetryczną" lub ręczną.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymetrycznie" oznacza, że określone ilości ładunków mogą być wysłane w obu kierunkach. "manualnie" oznacza, że dystrybucja nie będzie odbywać się automatycznie.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dokładność dystrybucji: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Im wyżej ustawisz, tym wiecej czasu zajmie procesorowi obliczenie wykresu. Jeśli zajmuje zbyt dużo czasu, może pojawić sie lag. Natomiast zbyt mała ilość powoduje niedokładną dystrybucję, co można zauważyć gdy towar nie jest wysyłany do miejsc do których się spodziewasz aby dotarł.
-STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efect odległości dl żądań: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Wpływ odległości na dystrybucję: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Jeśli ustawisz tę wartość na więcej niż 0, to dystans pomiędzy stacją początkową A jakiegoś towaru a prawdopodobną stacją docelową B będzie miało wpływ na ilość towaru wysłanego z A do B. Im dalej z A do B, tym mniej towaru zostanie wysłane. Im wększa wartość, tym mniej towaru będzie wysłane do dalekich stacji, a więcej towaru będzie wysłane do bliższych stacji.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Ilość powracającego ładunku dla trybu symetrycznego: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ustawiając to na mniej niż 100% powoduje, że symetryczna dystrybucja zachowuje się podobnie do asymetrycznej. Mniej towaru będzie zwróconego jeśli pewna ilość zostanie wysłana do stacji. Jeśli ustawisz to na 0%, to symetryczna dystrybucja zachowuje się jak asymetryczna.
@@ -2008,7 +2008,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednostki wysokości: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Jeśli kiedykolwiek wysokości są pokazywane w interfejsie użytkownika, pokaż je w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrzyczne (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metryczne (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfejs
@@ -2188,6 +2188,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tramwaj towarow
 STR_FACE_CAPTION                                                :{WHITE}Wybór twarzy
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Anuluj wybór nowej twarzy
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Zatwierdź wybór nowej twarzy
+STR_MAPGEN_RANDOM                                               :{BLACK}Losuj
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mężczyzna
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wybierz męską twarz
@@ -2362,10 +2363,10 @@ STR_NETWORK_LANG_LATVIAN                                        :Łotewski
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Lobby gry wieloosobowej
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Rozpoczęcie gry wieloosobowej
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Przygotowanie do połączenia: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista wszystkich firm w grze. Możesz przyłączyć się do jednej z nich lub założyć nowa
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista wszystkich firm w grze. Możesz przyłączyć się do jednej z nich, lub założyć nową
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO O FIRMIE
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nazwa firmy: {WHITE}{STRING}
@@ -2381,7 +2382,7 @@ STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Gracze:
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nowa firma
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Rozpoczęcie działalności nowej firmy
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Gra obserwowana
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Obserwuj grę
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Oglądaj grę jako widz
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Połącz z firmą
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Pomóż zarządzać tą firmą
@@ -2695,18 +2696,18 @@ STR_STATION_CLASS_WAYP                                          :Pkt. orientacyj
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym wypadku czerwony.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sygnalizator złożony (semafor){}Sygnalizator złożony zachowuje się jak kombinacja sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednokierunkowy sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sygnalizator bloku (elektryczny){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednokierunkowy sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sygnalizator bloku (elektryczny){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sygnalizator wejściowy (elektryczny){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym przypadku czerwony
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sygnalizator wyjściowy (elektryczny){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony działa jako sygnał wejściowy i wyjściowy. Umożliwia to budowę wielkich "drzew" presygnalizatorów
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. CTRL+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
@@ -2853,7 +2854,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Jesteś 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Tworzenie miast
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nowe miasto
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zbuduj nowe miasto. Shift+Click pokazuje szacunkowy koszt
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zbuduj nowe miasto. Shift+klik pokazuje szacunkowy koszt
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Losowe miasto
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Budowa miasta w losowym miejscu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Wiele losowych miast
@@ -3048,6 +3049,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Zapisz
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Zapisz bieżącą grę używając wybranej nazwy
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Wczytaj
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Wczytaj wybraną grę
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Wczytaj wybraną mapę wysokości
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegóły gry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3057,7 +3059,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowad�
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzenie świata
-STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar Mapy:
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar mapy:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Wybierz rozmiar mapy w kwadratach. Liczba dostępnych kwadratów będzie nieco mniejsza
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Ilość miast:
@@ -3068,7 +3070,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Podnieś
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Obniż wysokość śniegu o jeden w dół
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Losowy numer:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Kliknij aby wpisać losowy numer
-STR_MAPGEN_RANDOM                                               :{BLACK}Losuj
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Zmień losowy numer używany przy tworzeniu terenu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator terenu:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorytm drzew:
@@ -3262,7 +3263,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego '{1:ENGINE}', gdy był poza halą warsztatów
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmiana długości pojazdu '{1:ENGINE}' , który nie jest zatrzymany w hali
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono pojemność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
@@ -3273,7 +3274,7 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Wywołan
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nieprawidłowy ładunek>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednost{P ka ki ek} <nieprawidłowego ładunku>
 STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy model pojazdu>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy przemysł>
 
@@ -3370,7 +3371,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nie d
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cele firmy:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/tytule. Ctrl+kliknięcie otwiera nowe okno podglądu lokacji danego przedsiębiorstwa.miasta/tytułu
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/polu. Ctrl+klik otwiera nowe okno podglądu
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pytanie
@@ -3412,7 +3413,7 @@ STR_STORY_BOOK_CAPTION                                          :{WHITE}Album Hi
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalne okno opowieści
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na specyficzną stronę wybierając ją z listy.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na właściwą stronę wybierając ją z listy.
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Wstecz
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idź na poprzednią stronę
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Dalej
@@ -3577,8 +3578,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Zmień i
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kup 25% udziałów w firmie
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sprzedaj 25% udziałów w firmie
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kup 25% udziałów w tej firmie. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sprzedaj 25% udziałów tej firmy. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kup 25% udziałów w tej firmie. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sprzedaj 25% udziałów tej firmy. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nazwa firmy
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nazwisko prezesa
@@ -3729,10 +3730,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kup poja
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kup statek
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kup samolot
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup zaznaczony pociąg. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kup zaznaczony pojazd drogowy. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kup zaznaczony statek. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kup zaznaczony samolot. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup zaznaczony pociąg. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kup zaznaczony pojazd drogowy. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kup zaznaczony statek. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kup zaznaczony samolot. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Zmień nazwę
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Zmień nazwę
@@ -3797,10 +3798,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonuj p
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonuj statek
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonuj samolot
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Kliknij na przycisk a następnie na pociąg wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń. Shift+Click pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Kliknij na przycisk a następnie na pociąg wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centruj główny widok na warsztatach. Ctrl+klik otwiera nowy podgląd na pozycji hali
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruj główne okno na pozycji zajezdni samochodowej. Ctrl+klik otwiera nowy podgląd na pozycję zajezdni samochodowej
@@ -3830,7 +3831,7 @@ STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :{G=f}lokomotywę
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}pojazd
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :{G=m}samochód
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :{G=m}pojazd
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
 STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :{G=m}samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
@@ -4020,9 +4021,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ładowno
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Przebudowa)
 STR_REFIT_TITLE                                                 :{GOLD}Wybierz typ ładunku do przewozu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Przeciągając myszkę można wybierać więcej pojazdów. Klikając na puste pole zaznaczysz cały pojazd. Ctrl+klik zaznaczy pojazd i dołączony skład
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
@@ -4267,7 +4268,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nazwa sk
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawienia
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia skryptu
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Wyłącz SI, przeładuj skrypt i zrestartuj SI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Włącz/wyłącz przerwanie, kiedy wiadomość SI zgadza się z wiadomością przerywającą
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Zatrzymaj gdy:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Zatrzymaj gdy
@@ -4438,8 +4439,8 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwo
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na to
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na budowę kolejnego lotniska w tym mieście
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokalne władzę odmawiają zgody na lotnisko ze względu na poziom hałasu
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba przekupstwa została wykryta przez okolicznych śledczych
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Lokalne władze miasta {TOWN} odmawiają zgody na lotnisko ze względu na poziom hałasu
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba przekupstwa została wykryta przez miejscowych śledczych
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść lądu...

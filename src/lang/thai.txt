@@ -1802,6 +1802,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :รถราง
 STR_FACE_CAPTION                                                :{WHITE}เลือกใบหน้า
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}ยกเลิการเลือกใบหน้าใหม่
 STR_FACE_OK_TOOLTIP                                             :{BLACK}ยอมรับการเลือกใบหน้าใหม่
+STR_MAPGEN_RANDOM                                               :{BLACK}สุ่ม
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}ผู้ชาย
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}เลือกใบหน้าผู้ชาย
@@ -2681,7 +2682,6 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ปร�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}ปรับเปลี่ยนความสูงของหิมะลงมา 1 ระดับ
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Random seed:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}คลิ๊กเมาส์เพื่อ random seed
-STR_MAPGEN_RANDOM                                               :{BLACK}สุ่ม
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}เปลี่ยนการ random seed สำหรับการสร้างพื้นดิน
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}เครื่องมือสร้างสภาพพื้นดิน:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tอัลกอริธึมต้นไม้:
