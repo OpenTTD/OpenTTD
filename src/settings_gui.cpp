@@ -1474,7 +1474,6 @@ static SettingEntry _settings_ui[] = {
 	SettingEntry("gui.hover_delay"),
 	SettingEntry("gui.toolbar_pos"),
 	SettingEntry("gui.statusbar_pos"),
-	SettingEntry("gui.newgrf_default_palette"),
 	SettingEntry("gui.pause_on_newgame"),
 	SettingEntry("gui.advanced_vehicle_list"),
 	SettingEntry("gui.timetable_in_ticks"),
@@ -1500,7 +1499,6 @@ static SettingsPage _settings_construction_signals_page = {_settings_constructio
 
 static SettingEntry _settings_construction[] = {
 	SettingEntry(&_settings_construction_signals_page, STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS),
-	SettingEntry("construction.build_on_slopes"),
 	SettingEntry("construction.autoslope"),
 	SettingEntry("construction.extra_dynamite"),
 	SettingEntry("construction.max_bridge_length"),
@@ -1508,22 +1506,11 @@ static SettingEntry _settings_construction[] = {
 	SettingEntry("station.never_expire_airports"),
 	SettingEntry("construction.freeform_edges"),
 	SettingEntry("construction.extra_tree_placement"),
-	SettingEntry("construction.command_pause_level"),
 };
 /** Construction sub-page */
 static SettingsPage _settings_construction_page = {_settings_construction, lengthof(_settings_construction)};
 
-static SettingEntry _settings_stations_cargo[] = {
-	SettingEntry("order.improved_load"),
-	SettingEntry("order.gradual_loading"),
-	SettingEntry("order.selectgoods"),
-};
-/** Cargo handling sub-page */
-static SettingsPage _settings_stations_cargo_page = {_settings_stations_cargo, lengthof(_settings_stations_cargo)};
-
 static SettingEntry _settings_stations[] = {
-	SettingEntry(&_settings_stations_cargo_page, STR_CONFIG_SETTING_STATIONS_CARGOHANDLING),
-	SettingEntry("station.adjacent_stations"),
 	SettingEntry("station.distant_join_stations"),
 	SettingEntry("station.station_spread"),
 	SettingEntry("economy.station_noise_level"),
@@ -1544,7 +1531,6 @@ static SettingEntry _settings_economy_towns[] = {
 	SettingEntry("economy.allow_town_roads"),
 	SettingEntry("economy.allow_town_level_crossings"),
 	SettingEntry("economy.found_town"),
-	SettingEntry("economy.mod_road_rebuild"),
 	SettingEntry("economy.town_growth_rate"),
 	SettingEntry("economy.larger_towns"),
 	SettingEntry("economy.initial_city_size"),
@@ -1620,7 +1606,6 @@ static SettingEntry _settings_vehicles_routing[] = {
 	SettingEntry("pf.pathfinder_for_trains"),
 	SettingEntry("pf.forbid_90_deg"),
 	SettingEntry("pf.pathfinder_for_roadvehs"),
-	SettingEntry("pf.roadveh_queue"),
 	SettingEntry("pf.pathfinder_for_ships"),
 };
 /** Autorenew sub-page */
@@ -1677,7 +1662,6 @@ static SettingEntry _settings_vehicles[] = {
 	SettingEntry("vehicle.max_ships"),
 	SettingEntry("vehicle.plane_speed"),
 	SettingEntry("vehicle.plane_crashes"),
-	SettingEntry("vehicle.dynamic_engines"),
 	SettingEntry("vehicle.roadveh_acceleration_model"),
 	SettingEntry("vehicle.roadveh_slope_steepness"),
 	SettingEntry("vehicle.smoke_amount"),
