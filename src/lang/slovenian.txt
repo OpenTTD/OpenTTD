@@ -1756,20 +1756,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalno
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Gradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Postaje
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomija
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpored tovora
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Prikaži možnosti
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktivnost
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvočni učinki
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novice in sporočila
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Samoobnova
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerjanje
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaki
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mesta
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
 

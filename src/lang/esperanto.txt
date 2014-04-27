@@ -1302,19 +1302,11 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgran
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaco
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruado
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacioj
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomio
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurantoj
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Montru opciojn
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interago
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sonefektoj
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novaĵo kaj mesaĝoj
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaloj
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Komputil-ludantoj
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Aŭtorenovigo
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Prizorgado
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Navigado
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trajnoj
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Urboj
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrioj
 

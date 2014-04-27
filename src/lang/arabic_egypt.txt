@@ -1300,19 +1300,11 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف ال
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}النظام البيني
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}البناء
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}المركبات
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}المحطات
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}الأقتصاد
 STR_CONFIG_SETTING_AI                                           :{ORANGE}المتنافسين
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}عرض الخيارات
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE} التفاعل
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}الصوت
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}الاخبار و الرسائل
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}الإشارات
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE} التجديد التلقائي
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE} الصيانة
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} المسارات
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطارات
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE} مدن
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE} مصانع
 

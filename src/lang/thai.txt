@@ -1603,20 +1603,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่�
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}มาตราวัดต่างๆ
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}สถานี
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}เศรฐกิจ
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}การกระจายสินค้า
 STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}ตัวเลือกการแสดงผล
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}การโต้ตอบ
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เสียงเอฟเฟกต์
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}ข่าวสารและข้อความ
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}อาณัติสัญญาณ
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}การแทนที่อัตโนมัติ
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}เกี่ยวกับการซ่อมบำรุง
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}รถไฟ
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}อุตสาหกรรม
 

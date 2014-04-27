@@ -1731,20 +1731,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інт�
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локалізація
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будівництво
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станції
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Економіка
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Розподіл вантажів
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренти
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Параметри відображення
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Параметри взаємодії
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукові ефекти
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Новини та повідомлення
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Віртуальні гравці
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автозаміна
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Техогляд
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрути
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Поїзди
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Міста
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Підприємства
 

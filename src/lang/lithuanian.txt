@@ -1818,20 +1818,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vaizdas
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizavimas
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstrukcijos
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. priemonės
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stotelės
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Krovinių pasiskirstymas
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaizdo nustatymai
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveika
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Naujienos ir žinutės
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatiškai atnaujinti
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Techninė apžiūra
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutas
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traukiniai
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miestai
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gamyklos
 

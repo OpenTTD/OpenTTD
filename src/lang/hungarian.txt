@@ -1673,20 +1673,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Megjele
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Honosítás
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Építkezés
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Járművek
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Állomások
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Gazdaság
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rakományok szétosztása (úticélok)
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Megjelenítési beállítások
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Irányítás
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Hírek és üzenetek
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Jelzők
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automata felújítás
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Javítás
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vonatok
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Települések
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gazdasági épületek
 

@@ -1609,20 +1609,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaram
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisasi
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksi
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kendaraan
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasiun
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi Kargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Tampilkan Pilihan
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksi
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efek suara
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Berita dan pesan
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyal
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain Komputer
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Perbaruan Otomatis
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Perbaikan
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pengarahan
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Kereta
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kota
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri
 

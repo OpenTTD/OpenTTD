@@ -1371,17 +1371,10 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal 
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka (Interface)
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stesen
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Pilihan paparan
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksi
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Isyarat
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Pembaharuan Automatik
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servis
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Keretapi
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bandar-bandar
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri-industri
 

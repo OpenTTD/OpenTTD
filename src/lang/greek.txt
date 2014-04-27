@@ -1643,19 +1643,11 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Περ�
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Τοπικοποίηση
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Κατασκευή
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Σταθμοί
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Οικονομία
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Επιλογές εμφάνισης
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Αλληλεπιδράσεις
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ηχητικά εφέ
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Νέα και μηνύματα
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Σηματοδότες
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Παίκτες υπολογιστή
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Αυτόματη ανανέωση
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Έλεγχος οχημάτων
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρομολογήσεις
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Τρένα
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Βιομηχανίες
 

@@ -1501,19 +1501,11 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Eingin
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Takførisflati
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Flutningstól
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Støðir
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Búskapur
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kappingarneytar
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vísu møguleikar
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Ávirkan
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljóð effektir
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Tíðindi og boð
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Tekin
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Teldu spælarir
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Sjálvendurnýggja
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Eftirlit
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Beining
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tok
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bygdir
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ídnaðir
 

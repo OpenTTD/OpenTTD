@@ -1989,20 +1989,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfe
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizacja
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstrukcje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Pojazdy
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacje
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomia
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dystrybucja Ładunku (Cargo Distribution)
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcje wyświetlania
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcja
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efekty dźwiękowe
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Wiadomości
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sygnały
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gracze komputerowi
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoodnowa
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Serwisowanie
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wyznaczanie trasy
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Pociągi
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miasta
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Przedsiębiorstwa
 

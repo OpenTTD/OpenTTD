@@ -1609,20 +1609,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Gränss
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fordon
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationer
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Godsdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motståndare
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skärminställningar
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interagera
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljudeffekter
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nyheter och meddelanden
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoförnya
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Service
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planering av resrutt
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tåg
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Städer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
 

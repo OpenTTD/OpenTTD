@@ -1727,20 +1727,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Okruže
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Prevod
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Izgradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomija
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija Tovara
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Prikazivanje
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcija
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Vesti i poruke
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatska zamena
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiranje
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vozovi
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Naselja
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
 

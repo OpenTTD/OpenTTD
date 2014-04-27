@@ -1560,20 +1560,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Saskarn
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizēšana
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Būvniecība
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transportlīdzekļi
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacijas
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kravu sadale
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Ekrāna opcijas
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Mijiedarbība
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņas efekti
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Avīžu raksti un ziņojumi
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automātiskā atjaunošana
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Apkope
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pārvietošanās
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vilcieni
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pilsētas
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ražotnes
 

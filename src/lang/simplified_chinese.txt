@@ -1609,20 +1609,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}界面
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地化
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}建设
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}车辆
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}车站
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}经济
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}货物分配
 STR_CONFIG_SETTING_AI                                           :{ORANGE}竞争
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}显示选项
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互动
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音响效果
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}新闻和消息
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}信号灯
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}电脑玩家
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}自动更新
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}维修
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}经由
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列车
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}城镇
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}工业设施
 

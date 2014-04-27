@@ -1533,20 +1533,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grenses
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Plassering
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjonar
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Syne innstillingar
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Samhandling
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nyheiter og meldingar
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoforny
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byar
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriar
 

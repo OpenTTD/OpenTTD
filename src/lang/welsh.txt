@@ -1609,20 +1609,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Rhyngwy
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Unedau Lleol
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Adeiladu
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Cerbydau
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Gorsafoedd
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economi
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dosraniad Cargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Cystadleuwyr
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Dewisiadau dangos
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Rhyngweithio
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effeithiau sŵn
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Newyddion a negeseuon
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalau
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Chwaraewyr Cyfrifiadurol
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Awtoadnewyddu
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Gwasanaethu
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenau
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Trefi
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Diwydiannau
 

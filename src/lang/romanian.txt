@@ -1588,20 +1588,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfa
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localizare
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcţie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicule
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Staţii
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economie
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenţi
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Setări vizuale
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacţiune
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efecte sonore
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Știri și mesaje
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Semnale (semafoare)
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Reînnoire automată
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Service
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenuri
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrii
 

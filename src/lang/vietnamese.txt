@@ -1609,20 +1609,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Giao Di
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Tiêu Chuẩn Đo Lường
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Xây Dựng
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Ga, Bến, Cảng
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Kinh Tế
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân Bổ Hàng Hóa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Tùy chỉnh hiển thị
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Tương tác
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hiệu ứng âm thanh
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Tin tức
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Đèn báo
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Tự thay mới
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Bảo trì
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đường
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tàu hoả
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Đô thị
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nhà máy
 

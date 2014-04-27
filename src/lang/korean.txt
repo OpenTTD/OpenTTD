@@ -1610,20 +1610,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}인터�
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}단위 설정
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}건설
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}차량
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}역
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}경제
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}화물 분배
 STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}디스플레이 옵션
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 옵션
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}효과음
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}뉴스와 메시지
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 플레이어
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 교체
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}정비
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{G=f}{ORANGE}열차
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}도시
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}산업시설
 

@@ -1609,20 +1609,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfa
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localization
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construction
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stations
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economy
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Cargo Distribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Display options
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound effects
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}News and messages
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenew
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Maintenance
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routing
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Towns
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industries
 

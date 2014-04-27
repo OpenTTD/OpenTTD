@@ -1705,20 +1705,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Sučelj
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizacija
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Izgradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Postaje
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomija
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija tereta
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Postavke prikaza
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcija
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novosti i poruke
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalni igrači
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-obnavljanje
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutanje
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlakovi
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Gradovi
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
 

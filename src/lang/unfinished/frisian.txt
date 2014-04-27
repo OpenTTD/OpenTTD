@@ -1544,18 +1544,11 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfa
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisaasje
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}konstruksje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Auto's
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjons
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomy
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Frachtdistribusje
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Lit moglikheden sjen
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksje
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatysk fernije
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Ûnderhâld
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Route
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treinen
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stêd
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}yndustryen
 

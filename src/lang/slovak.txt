@@ -1677,20 +1677,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Rozhran
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizácia
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Výstavba
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozidlá
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribúcia nákladu
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Možnosti zobrazenia
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Chovanie
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novinky a správy
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatická obnova
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servis
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Smerovanie
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mestá
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Priemysel
 

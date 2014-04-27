@@ -1922,20 +1922,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інт�
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Лакалізацыя
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будаўніцтва
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспарт
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станцыі
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Эканоміка
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Разьмеркаваньне грузаў
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Канкурэнты
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Наладкі відарысу
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Узаемадзеяньне
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Гукавыя эфэкты
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Навіны й паведамленьні
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сыґналы
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Кампутарныя гульцы
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Аўтаабнаўленьне
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Абслугоўваньне
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Цягнікі
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Населеныя пункты
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Прамысловасьць
 

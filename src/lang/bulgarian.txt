@@ -1581,19 +1581,11 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Инт�
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Позициониране
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строене
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станции
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Икономика
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Покажи опциите
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукови ефекти
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Новини и съобщения
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнализация
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автоматично подновяване
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Сервизиране
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Влакове
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Градове
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Индустрии
 

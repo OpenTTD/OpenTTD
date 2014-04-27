@@ -1811,20 +1811,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Eadar-a
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Ionadaileadh
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Togail
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbadan
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stèiseanan
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Eaconamaidh
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Sgaoileadh carago
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Taisbeanadh
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Eadar-ghnìomh
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Èifeachdan fuaime
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Naidheachdan is brathan
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharran
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Fèin-nuadhachadh
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Obair-ghlèidhidh
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Lorg shlighean
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trèanaichean
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailtean
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gnìomhachasan
 

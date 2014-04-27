@@ -1616,20 +1616,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ממש�
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}הגדרות מיקום
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}בנייה
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}תחנות
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}כלכלה
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
 STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}הצג הגדרות
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}אינטראקציה
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}חדשות והודעות
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}רמזורים
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}שחקני מחשב
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}חידוש אוטומטי
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}טיפולים
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}ניתוב
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}רכבות
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}ערים
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}תעשיות
 

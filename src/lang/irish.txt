@@ -1273,17 +1273,10 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iolraitheoir to
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Comhéadan
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Tógáil
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Feithiclí
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stáisiúin
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Geilleagar
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Iomaitheoirí
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Roghanna taispeána
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Idirghníomhú
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharthaí
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ríomh-imreoirí
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Uathathnuachan
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Seirbhísiú
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ródú
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traenacha
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailte
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Tionscail
 

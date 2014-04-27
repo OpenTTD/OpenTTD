@@ -1606,20 +1606,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerf
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationer
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Visningsindstillinger
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nyheder og beskeder
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-forny
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicering
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
 

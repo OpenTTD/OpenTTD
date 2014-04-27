@@ -1610,20 +1610,12 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Arayüz
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Yerelleştirme
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}İnşaat
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Araçlar
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}İstasyonlar
-STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kargo Dağılımı
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rakipler
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Görüntü seçenekleri
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Etkileşim
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ses efektleri
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Haberler ve mesajlar
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyaller
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Otomatik yenileme
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Bakımlar
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Yönlenme
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenler
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Şehirler
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Endüstri
 
