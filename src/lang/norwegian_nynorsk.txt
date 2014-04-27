@@ -1529,13 +1529,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britisk eining 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Grensesnitt
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Plassering
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksjon
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjonar
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Varefordeling
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Syne innstillingar
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Samhandling
@@ -1547,8 +1547,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autofor
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byar
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriar
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

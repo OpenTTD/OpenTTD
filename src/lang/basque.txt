@@ -1523,13 +1523,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inperiala (oin)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikoa (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfazea
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfazea
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Kokapena
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Eraikuntza
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Eraikuntza
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Geltokiak
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomia
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Zama Banaketa
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama Banaketa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Aukerak erakutsi
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakzioa
@@ -1541,8 +1541,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Berritz
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Mantenimendua
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ibilbideak
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Herriak
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriak
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Jatorrizkoa
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1606,13 +1606,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localização
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construção
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construção
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veículos
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estações
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economia
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribuição de Carga
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuição de Carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Oponentes
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opções de visualização
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interação
@@ -1624,8 +1624,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-re
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Manutenção
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rota
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} Cidades
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Indústrias
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE} Cidades
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Indústrias
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

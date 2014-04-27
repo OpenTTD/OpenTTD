@@ -1752,13 +1752,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperične (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrične (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vmesnik
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalno
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Gradnja
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Gradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Postaje
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomija
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Razpored tovora
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpored tovora
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Prikaži možnosti
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktivnost
@@ -1770,8 +1770,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Samoobn
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerjanje
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaki
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mesta
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mesta
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

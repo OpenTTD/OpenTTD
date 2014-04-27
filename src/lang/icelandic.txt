@@ -1527,8 +1527,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð b
 
 
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Viðmót
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Bygging
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Viðmót
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Farartæki
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stöðvar
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Efnahagur
@@ -1543,8 +1543,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Sjálfv
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Viðhald farartækja
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Leiðarvísun farartækja
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Lestir
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bæir
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Iðnaður
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bæir
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Iðnaður
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Upprunalegt
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1498,8 +1498,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Eingin
 
 
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Takførisflati
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Bygging
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Takførisflati
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Flutningstól
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Støðir
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Búskapur
@@ -1514,8 +1514,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Sjálve
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Eftirlit
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Beining
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tok
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bygdir
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Ídnaðir
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bygdir
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ídnaðir
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Upprunaligur
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

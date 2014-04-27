@@ -608,14 +608,14 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑв
 
 
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Лартӑм
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Лартӑм
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ҫул-йӗр:
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станцисем:
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ӑмӑртуҫӑсем
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автоҫӗнет
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Пуйӑссем
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Хуласем
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Хуласем
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 

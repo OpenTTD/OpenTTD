@@ -1297,8 +1297,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف ال
 
 
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}النظام البيني
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}البناء
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}النظام البيني
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}البناء
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}المركبات
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}المحطات
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}الأقتصاد
@@ -1313,8 +1313,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE} الت
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE} الصيانة
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} المسارات
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطارات
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} مدن
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE} مدن
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE} مصانع
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلي
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

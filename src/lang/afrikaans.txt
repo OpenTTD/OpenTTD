@@ -1606,13 +1606,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Empiries (vt)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metries (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}koppelvlak
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}koppelvlak
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisasie
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksie
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertuie
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasies
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomie
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Vrag Verspreiding
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrag Verspreiding
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mededingers
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skerm opsies
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksie
@@ -1624,8 +1624,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Outo he
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Diens
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Roete
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treine
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Dorpe
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Nywerhede
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Dorpe
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nywerhede
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oorspronklik
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

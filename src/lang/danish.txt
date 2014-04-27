@@ -1602,13 +1602,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fod)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Brugerflade
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationer
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Fragtdistribution
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Visningsindstillinger
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Brugerflade
@@ -1620,8 +1620,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-fo
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicering
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byer
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

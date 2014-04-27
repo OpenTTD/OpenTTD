@@ -1299,8 +1299,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgran
 
 
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaco
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruado
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaco
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruado
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacioj
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomio
@@ -1315,8 +1315,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Aŭtore
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Prizorgado
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Navigado
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trajnoj
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Urboj
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrioj
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Urboj
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrioj
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originale
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

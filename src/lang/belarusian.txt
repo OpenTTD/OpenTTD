@@ -1918,13 +1918,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ангельс�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :мэтрычная (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Інтэрфэйс
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтэрфэйс
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Лакалізацыя
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Будаўніцтва
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будаўніцтва
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспарт
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станцыі
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Эканоміка
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Разьмеркаваньне грузаў
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Разьмеркаваньне грузаў
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Канкурэнты
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Наладкі відарысу
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Узаемадзеяньне
@@ -1936,8 +1936,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Аўт�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Абслугоўваньне
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Цягнікі
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Населеныя пункты
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Прамысловасьць
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Населеныя пункты
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Прамысловасьць
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :арыґінальны
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

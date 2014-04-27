@@ -1605,13 +1605,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :英制（英呎
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :米制（米）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :國際單位（米）
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}介面
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}介面
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地化
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建造
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}建造
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}運輸工具
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}車站
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}經濟
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}貨物分配
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}貨物分配
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競爭對手
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}顯示選項
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互動
@@ -1623,8 +1623,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}自動�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}維修
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}路線
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列車
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市鎮
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工業
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}市鎮
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}工業
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :預設
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

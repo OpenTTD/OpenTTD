@@ -1639,9 +1639,9 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Μονάδες 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικές (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Περιβάλλον Λειτουργίας
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Περιβάλλον Λειτουργίας
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Τοπικοποίηση
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Κατασκευή
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Κατασκευή
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Σταθμοί
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Οικονομία
@@ -1656,8 +1656,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Αυτ�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Έλεγχος οχημάτων
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρομολογήσεις
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Τρένα
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Πόλεις
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Βιομηχανίες
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Πόλεις
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Βιομηχανίες
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Αρχικό
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

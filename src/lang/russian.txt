@@ -1757,13 +1757,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :английс�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :метрическая (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СИ (м)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локализация
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строительство
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строительство
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станции
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Экономика
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Распределение грузов
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Распределение грузов
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Настройки экрана
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
@@ -1775,8 +1775,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Авт�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Обслуживание
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Поезда
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Города
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Предприятия
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Города
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Предприятия
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :оригинальный
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

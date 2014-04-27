@@ -1807,13 +1807,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impireil (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meatrach (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Eadar-aghaidh
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Eadar-aghaidh
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Ionadaileadh
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Togail
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Togail
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbadan
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stèiseanan
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Eaconamaidh
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Sgaoileadh carago
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Sgaoileadh carago
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Taisbeanadh
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Eadar-ghnìomh
@@ -1825,8 +1825,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Fèin-n
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Obair-ghlèidhidh
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Lorg shlighean
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trèanaichean
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bailtean
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gnìomhachasan
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailtean
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gnìomhachasan
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Tùsail
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1540,13 +1540,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Ymperiaal (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrysk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisaasje
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}konstruksje
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}konstruksje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Auto's
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjons
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomy
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Frachtdistribusje
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Frachtdistribusje
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Lit moglikheden sjen
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksje
@@ -1556,8 +1556,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automat
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Ûnderhâld
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Route
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treinen
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Stêd
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}yndustryen
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stêd
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}yndustryen
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orizjiniel
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

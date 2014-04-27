@@ -1599,13 +1599,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :อิมพี
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :เมตริก (เมตร)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :มาตรฐานสากล (เมตร)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}มาตราวัดต่างๆ
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}การก่อสร้าง
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}สถานี
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}เศรฐกิจ
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}การกระจายสินค้า
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}การกระจายสินค้า
 STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}ตัวเลือกการแสดงผล
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}การโต้ตอบ
@@ -1617,8 +1617,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}กา�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}เกี่ยวกับการซ่อมบำรุง
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}รถไฟ
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}เมือง
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}อุตสาหกรรม
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}อุตสาหกรรม
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :ดั้งเดิม
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

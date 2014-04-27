@@ -1606,13 +1606,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :임페리얼법
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :미터법 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :국제표준규격 (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}인터페이스
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}인터페이스
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}단위 설정
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}건설
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}건설
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}차량
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}역
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}경제
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}화물 분배
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}화물 분배
 STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}디스플레이 옵션
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 옵션
@@ -1624,8 +1624,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}정비
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{G=f}{ORANGE}열차
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}도시
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}산업시설
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :오리지널
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

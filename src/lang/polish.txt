@@ -1985,13 +1985,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metryczne (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfejs
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfejs
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizacja
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstrukcje
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstrukcje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Pojazdy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacje
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomia
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Dystrybucja Ładunku (Cargo Distribution)
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dystrybucja Ładunku (Cargo Distribution)
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcje wyświetlania
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcja
@@ -2003,8 +2003,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoodn
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Serwisowanie
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wyznaczanie trasy
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Pociągi
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miasta
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Przedsiębiorstwa
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miasta
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Przedsiębiorstwa
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oryginalne
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

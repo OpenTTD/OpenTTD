@@ -1612,13 +1612,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :בריטית (�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מטר)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}ממשק חזותי
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ממשק חזותי
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}הגדרות מיקום
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}בנייה
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}בנייה
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}תחנות
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}כלכלה
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}התפלגות המטען
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
 STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}הצג הגדרות
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}אינטראקציה
@@ -1630,8 +1630,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}חיד�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}טיפולים
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}ניתוב
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}רכבות
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}ערים
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}תעשיות
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}ערים
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}תעשיות
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :מקורי
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

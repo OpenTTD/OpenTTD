@@ -1662,13 +1662,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inglise mõõdu
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meetermõõdustik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-süsteem (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Liides
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Liides
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Kohandused
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Ehitus
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Ehitus
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Sõidukid
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Jaamad
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Majandus
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Kaubajaotus
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kaubajaotus
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaate seadistus
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Käitumine
@@ -1680,8 +1680,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Uuendam
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Hooldus
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruutimine
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Rongid
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Linnad
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tööstused
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Linnad
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Tööstused
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Algne
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

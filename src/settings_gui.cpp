@@ -1549,8 +1549,8 @@ static SettingsPage _settings_economy_industries_page = {_settings_economy_indus
 
 
 static SettingEntry _settings_economy[] = {
-	SettingEntry(&_settings_economy_towns_page, STR_CONFIG_SETTING_ECONOMY_TOWNS),
-	SettingEntry(&_settings_economy_industries_page, STR_CONFIG_SETTING_ECONOMY_INDUSTRIES),
+	SettingEntry(&_settings_economy_towns_page, STR_CONFIG_SETTING_ENVIRONMENT_TOWNS),
+	SettingEntry(&_settings_economy_industries_page, STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES),
 	SettingEntry("economy.inflation"),
 	SettingEntry("difficulty.initial_interest"),
 	SettingEntry("difficulty.max_loan"),
@@ -1670,12 +1670,12 @@ static SettingEntry _settings_vehicles[] = {
 static SettingsPage _settings_vehicles_page = {_settings_vehicles, lengthof(_settings_vehicles)};
 
 static SettingEntry _settings_main[] = {
-	SettingEntry(&_settings_ui_page,           STR_CONFIG_SETTING_GUI),
-	SettingEntry(&_settings_construction_page, STR_CONFIG_SETTING_CONSTRUCTION),
+	SettingEntry(&_settings_ui_page,           STR_CONFIG_SETTING_INTERFACE),
+	SettingEntry(&_settings_construction_page, STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION),
 	SettingEntry(&_settings_vehicles_page,     STR_CONFIG_SETTING_VEHICLES),
 	SettingEntry(&_settings_stations_page,     STR_CONFIG_SETTING_STATIONS),
 	SettingEntry(&_settings_economy_page,      STR_CONFIG_SETTING_ECONOMY),
-	SettingEntry(&_settings_linkgraph_page,    STR_CONFIG_SETTING_LINKGRAPH),
+	SettingEntry(&_settings_linkgraph_page,    STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST),
 	SettingEntry(&_settings_ai_page,           STR_CONFIG_SETTING_AI),
 };
 

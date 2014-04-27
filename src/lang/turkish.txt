@@ -1606,13 +1606,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (Ingil
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (Uluslararası Ölçüm Sistemi) (m)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Arayüz
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Arayüz
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Yerelleştirme
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}İnşaat
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}İnşaat
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Araçlar
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}İstasyonlar
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Kargo Dağılımı
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kargo Dağılımı
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rakipler
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Görüntü seçenekleri
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Etkileşim
@@ -1624,8 +1624,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Otomati
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Bakımlar
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Yönlenme
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenler
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Şehirler
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Endüstri
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Şehirler
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Endüstri
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Özgün
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

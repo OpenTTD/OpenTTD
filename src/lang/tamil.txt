@@ -1413,12 +1413,12 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :இம்பீ
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :மெட்ரிக் (மீ)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (மீ)
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}கட்டுமானம்
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}கட்டுமானம்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}நிலையங்கள்
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}பொருளாதாரம்
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}சரக்கு பரிமாற்றம்
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}சரக்கு பரிமாற்றம்
 STR_CONFIG_SETTING_AI                                           :{ORANGE}போட்டியாளர்கள்
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}திரை அமைப்புகள்
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
@@ -1430,8 +1430,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}தா�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}பராமரிப்பு
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}வழி மாற்றல்
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}இரயில் வண்டிகள்
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}நகரங்கள்
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}தொழிற்சாலைகள்
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}நகரங்கள்
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}தொழிற்சாலைகள்
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :அசல்
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
