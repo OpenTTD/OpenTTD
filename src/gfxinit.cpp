@@ -238,16 +238,21 @@ static bool SwitchNewGRFBlitter()
 	/* Null driver => dedicated server => do nothing. */
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return false;
 
-	/* Get preferred depth. */
+	/* Get preferred depth.
+	 *  - depth_wanted_by_base: Depth required by the baseset, i.e. the majority of the sprites.
+	 *  - depth_wanted_by_grf:  Depth required by some NewGRF.
+	 * Both can force using a 32bpp blitter. depth_wanted_by_base is used to select
+	 * between multiple 32bpp blitters, which perform differently with 8bpp sprites.
+	 */
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
-	uint depth_wanted_by_grf = 8;
+	uint depth_wanted_by_grf = _support8bpp == S8BPP_NONE ? 32 : 8;
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_INIT_ONLY)) continue;
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
 	}
 
 	/* Search the best blitter. */
-	struct {
+	static const struct {
 		const char *name;
 		uint animation; ///< 0: no support, 1: do support, 2: both
 		uint min_base_depth, max_base_depth, min_grf_depth, max_grf_depth;

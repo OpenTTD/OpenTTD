@@ -52,7 +52,6 @@ static struct {
 bool _force_full_redraw;
 bool _window_maximize;
 uint _display_hz;
-uint _fullscreen_bpp;
 static Dimension _bck_resolution;
 #if !defined(WINCE) || _WIN32_WCE >= 0x400
 DWORD _imm_props;
@@ -272,23 +271,21 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 	if (full_screen) {
 		DEVMODE settings;
 
-		/* Make sure we are always at least the screen-depth of the blitter */
-		if (_fullscreen_bpp < BlitterFactory::GetCurrentBlitter()->GetScreenDepth()) _fullscreen_bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-
 		memset(&settings, 0, sizeof(settings));
 		settings.dmSize = sizeof(settings);
 		settings.dmFields =
-			(_fullscreen_bpp != 0 ? DM_BITSPERPEL : 0) |
+			DM_BITSPERPEL |
 			DM_PELSWIDTH |
 			DM_PELSHEIGHT |
 			(_display_hz != 0 ? DM_DISPLAYFREQUENCY : 0);
-		settings.dmBitsPerPel = _fullscreen_bpp;
+		settings.dmBitsPerPel = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 		settings.dmPelsWidth  = _wnd.width_org;
 		settings.dmPelsHeight = _wnd.height_org;
 		settings.dmDisplayFrequency = _display_hz;
 
 		/* Check for 8 bpp support. */
-		if (settings.dmBitsPerPel != 32 && ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL) {
+		if (settings.dmBitsPerPel == 8 &&
+				(_support8bpp != S8BPP_HARDWARE || ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL)) {
 			settings.dmBitsPerPel = 32;
 		}
 
@@ -1107,11 +1104,14 @@ static void FindResolutions()
 	uint i;
 	DEVMODEA dm;
 
+	/* Check modes for the relevant fullscreen bpp */
+	int bpp = _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+
 	/* XXX - EnumDisplaySettingsW crashes with unicows.dll on Windows95
 	 * Doesn't really matter since we don't pass a string anyways, but still
 	 * a letdown */
 	for (i = 0; EnumDisplaySettingsA(NULL, i, &dm) != 0; i++) {
-		if (dm.dmBitsPerPel == BlitterFactory::GetCurrentBlitter()->GetScreenDepth() &&
+		if (dm.dmBitsPerPel == bpp &&
 				dm.dmPelsWidth >= 640 && dm.dmPelsHeight >= 480) {
 			uint j;
 

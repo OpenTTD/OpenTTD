@@ -757,8 +757,15 @@ int openttd_main(int argc, char *argv[])
 	DEBUG(misc, 1, "Loading blitter...");
 	if (blitter == NULL && _ini_blitter != NULL) blitter = stredup(_ini_blitter);
 	_blitter_autodetected = StrEmpty(blitter);
-	/* If we have a 32 bpp base set, try to select the 32 bpp blitter first, but only if we autoprobe the blitter. */
-	if (!_blitter_autodetected || BaseGraphics::GetUsedSet() == NULL || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP || BlitterFactory::SelectBlitter("32bpp-anim") == NULL) {
+	/* Activate the initial blitter.
+	 * This is only some initial guess, after NewGRFs have been loaded SwitchNewGRFBlitter may switch to a different one.
+	 *  - Never guess anything, if the user specified a blitter. (_blitter_autodetected)
+	 *  - Use 32bpp blitter if baseset or 8bpp-support settings says so.
+	 *  - Use 8bpp blitter otherwise.
+	 */
+	if (!_blitter_autodetected ||
+			(_support8bpp != S8BPP_NONE && (BaseGraphics::GetUsedSet() == NULL || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP)) ||
+			BlitterFactory::SelectBlitter("32bpp-anim") == NULL) {
 		if (BlitterFactory::SelectBlitter(blitter) == NULL) {
 			StrEmpty(blitter) ?
 				usererror("Failed to autoprobe blitter") :

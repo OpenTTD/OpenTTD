@@ -317,7 +317,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 		 * (which we can't force in 8bpp on 8bpp mode,
 		 * unfortunately).
 		 */
-		want_hwpalette = (bpp == 8 && _fullscreen);
+		want_hwpalette = bpp == 8 && _fullscreen && _support8bpp == S8BPP_HARDWARE;
 	} else {
 		/* User specified a value manually */
 		want_hwpalette = _use_hwpalette;
