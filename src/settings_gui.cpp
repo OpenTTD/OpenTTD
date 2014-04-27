@@ -15,7 +15,6 @@
 #include "settings_gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
-#include "screenshot.h"
 #include "network/network.h"
 #include "town.h"
 #include "settings_internal.h"
@@ -274,15 +273,6 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
-			case WID_GO_SCREENSHOT_DROPDOWN: // Setup screenshot format dropdown
-				list = new DropDownList();
-				*selected_index = _cur_screenshot_format;
-				for (uint i = 0; i < _num_screenshot_formats; i++) {
-					if (!GetScreenshotFormatSupports_32bpp(i) && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32) continue;
-					*list->Append() = new DropDownListStringItem(SPECSTR_SCREENSHOT_START + i, i, false);
-				}
-				break;
-
 			case WID_GO_BASE_GRF_DROPDOWN:
 				list = BuiltSetDropDownList<BaseGraphics>(selected_index);
 				break;
@@ -311,7 +301,6 @@ struct GameOptionsWindow : Window {
 			case WID_GO_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
 			case WID_GO_LANG_DROPDOWN:       SetDParamStr(0, _current_language->own_name); break;
 			case WID_GO_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
-			case WID_GO_SCREENSHOT_DROPDOWN: SetDParam(0, SPECSTR_SCREENSHOT_START + _cur_screenshot_format); break;
 			case WID_GO_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case WID_GO_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
 			case WID_GO_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
@@ -512,11 +501,6 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
-			case WID_GO_SCREENSHOT_DROPDOWN: // Change screenshot format
-				SetScreenshotFormat(index);
-				this->SetDirty();
-				break;
-
 			case WID_GO_BASE_GRF_DROPDOWN:
 				this->SetMediaSet<BaseGraphics>(index);
 				break;
@@ -563,9 +547,6 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_GO_BACKGROUND), SetPIP(6, 6, 10),
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 10, 10),
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
-				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_ROADSIDE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
@@ -588,8 +569,8 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 0), SetFill(0, 1),
 			EndContainer(),

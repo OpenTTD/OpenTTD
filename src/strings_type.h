@@ -69,10 +69,6 @@ enum SpecialStrings {
 	/* reserve 32 strings for various screen resolutions */
 	SPECSTR_RESOLUTION_START   = SPECSTR_LANGUAGE_END + 1,
 	SPECSTR_RESOLUTION_END     = SPECSTR_RESOLUTION_START + 0x1F,
-
-	/* reserve 32 strings for screenshot formats */
-	SPECSTR_SCREENSHOT_START   = SPECSTR_RESOLUTION_END + 1,
-	SPECSTR_SCREENSHOT_END     = SPECSTR_SCREENSHOT_START + 0x1F,
 };
 
 #endif /* STRINGS_TYPE_H */

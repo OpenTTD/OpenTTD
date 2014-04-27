@@ -64,10 +64,8 @@ typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, 
 
 /** Screenshot format information. */
 struct ScreenshotFormat {
-	const char *name;            ///< Name of the format.
 	const char *extension;       ///< File extension.
 	ScreenshotHandlerProc *proc; ///< Function for writing the screenshot.
-	bool supports_32bpp;         ///< Does this format support 32bpp images?
 };
 
 /*************************************************
@@ -573,10 +571,10 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 /** Available screenshot formats. */
 static const ScreenshotFormat _screenshot_formats[] = {
 #if defined(WITH_PNG)
-	{"PNG", "png", &MakePNGImage, true},
+	{"png", &MakePNGImage},
 #endif
-	{"BMP", "bmp", &MakeBMPImage, true},
-	{"PCX", "pcx", &MakePCXImage, false},
+	{"bmp", &MakeBMPImage},
+	{"pcx", &MakePCXImage},
 };
 
 /** Get filename extension of current screenshot file format. */
@@ -597,37 +595,6 @@ void InitializeScreenshotFormats()
 	}
 	_cur_screenshot_format = j;
 	_num_screenshot_formats = lengthof(_screenshot_formats);
-}
-
-/**
- * Give descriptive name of the screenshot format.
- * @param i Number of the screenshot format.
- * @return String constant describing the format.
- */
-const char *GetScreenshotFormatDesc(int i)
-{
-	return _screenshot_formats[i].name;
-}
-
-/**
- * Determine whether a certain screenshot format support 32bpp images.
- * @param i Number of the screenshot format.
- * @return true if 32bpp is supported.
- */
-bool GetScreenshotFormatSupports_32bpp(int i)
-{
-	return _screenshot_formats[i].supports_32bpp;
-}
-
-/**
- * Set the screenshot format to use.
- * @param i Number of the format.
- */
-void SetScreenshotFormat(uint i)
-{
-	assert(i < _num_screenshot_formats);
-	_cur_screenshot_format = i;
-	strecpy(_screenshot_format_name, _screenshot_formats[i].extension, lastof(_screenshot_format_name));
 }
 
 /**

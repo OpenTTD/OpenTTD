@@ -23,7 +23,6 @@ enum GameOptionsWidgets {
 	WID_GO_LANG_DROPDOWN,          ///< Language dropdown.
 	WID_GO_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution.
 	WID_GO_FULLSCREEN_BUTTON,      ///< Toggle fullscreen.
-	WID_GO_SCREENSHOT_DROPDOWN,    ///< Select the screenshot type... please use PNG!.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_STATUS,        ///< Info about missing files etc.
 	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).

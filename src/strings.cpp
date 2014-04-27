@@ -13,7 +13,6 @@
 #include "currency.h"
 #include "station_base.h"
 #include "town.h"
-#include "screenshot.h"
 #include "waypoint_base.h"
 #include "depot_base.h"
 #include "industry.h"
@@ -1680,12 +1679,6 @@ static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, c
 			buff, last, "%ux%u", _resolutions[i].width, _resolutions[i].height
 		);
 		return buff;
-	}
-
-	/* screenshot format name? */
-	if (IsInsideMM(ind, (SPECSTR_SCREENSHOT_START - 0x70E4), (SPECSTR_SCREENSHOT_END - 0x70E4) + 1)) {
-		int i = ind - (SPECSTR_SCREENSHOT_START - 0x70E4);
-		return strecpy(buff, GetScreenshotFormatDesc(i), last);
 	}
 
 	NOT_REACHED();
