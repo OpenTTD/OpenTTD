@@ -116,15 +116,18 @@ bool DriverFactoryBase::SelectDriverImpl(const char *name, Driver::Type type)
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
 
+				Driver *oldd = *GetActiveDriver(type);
 				Driver *newd = d->CreateInstance();
+				*GetActiveDriver(type) = newd;
+
 				const char *err = newd->Start(NULL);
 				if (err == NULL) {
 					DEBUG(driver, 1, "Successfully probed %s driver '%s'", GetDriverTypeName(type), d->name);
-					delete *GetActiveDriver(type);
-					*GetActiveDriver(type) = newd;
+					delete oldd;
 					return true;
 				}
 
+				*GetActiveDriver(type) = oldd;
 				DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s", GetDriverTypeName(type), d->name, err);
 				delete newd;
 			}
