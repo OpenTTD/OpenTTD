@@ -78,9 +78,15 @@ public:
 	 * An edit box lost the input focus. Abort character compositing if necessary.
 	 */
 	virtual void EditBoxLostFocus() {}
+
+	/**
+	 * Get the currently active instance of the video driver.
+	 */
+	static VideoDriver *GetInstance() {
+		return static_cast<VideoDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO));
+	}
 };
 
-extern VideoDriver *_video_driver;
 extern char *_ini_videodriver;
 extern int _num_resolutions;
 extern Dimension _resolutions[32];

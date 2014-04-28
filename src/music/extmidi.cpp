@@ -37,8 +37,8 @@ static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
 const char *MusicDriver_ExtMidi::Start(const char * const * parm)
 {
-	if (strcmp(_video_driver->GetName(), "allegro") == 0 ||
-			strcmp(_sound_driver->GetName(), "allegro") == 0) {
+	if (strcmp(VideoDriver::GetInstance()->GetName(), "allegro") == 0 ||
+			strcmp(SoundDriver::GetInstance()->GetName(), "allegro") == 0) {
 		return "the extmidi driver does not work when Allegro is loaded.";
 	}
 

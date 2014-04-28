@@ -18,17 +18,14 @@
 
 #include "safeguards.h"
 
-VideoDriver *_video_driver; ///< The currently active video driver.
 char *_ini_videodriver;     ///< The video driver a stored in the configuration file.
 int _num_resolutions;       ///< The number of resolutions.
 Dimension _resolutions[32]; ///< List of resolutions.
 Dimension _cur_resolution;  ///< The current resolution.
 bool _rightclick_emulate;   ///< Whether right clicking is emulated.
 
-SoundDriver *_sound_driver; ///< The currently active sound driver.
 char *_ini_sounddriver;     ///< The sound driver a stored in the configuration file.
 
-MusicDriver *_music_driver; ///< The currently active music driver.
 char *_ini_musicdriver;     ///< The music driver a stored in the configuration file.
 
 char *_ini_blitter;         ///< The blitter as stored in the configuration file.
@@ -88,9 +85,25 @@ int GetDriverParamInt(const char * const *parm, const char *name, int def)
  * @param type the type of driver to select
  * @post Sets the driver so GetCurrentDriver() returns it too.
  */
-Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
+void DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
 {
-	if (GetDrivers().size() == 0) return NULL;
+	if (!DriverFactoryBase::SelectDriverImpl(name, type)) {
+		StrEmpty(name) ?
+			usererror("Failed to autoprobe %s driver", GetDriverTypeName(type)) :
+			usererror("Failed to select requested %s driver '%s'", GetDriverTypeName(type), name);
+	}
+}
+
+/**
+ * Find the requested driver and return its class.
+ * @param name the driver to select.
+ * @param type the type of driver to select
+ * @post Sets the driver so GetCurrentDriver() returns it too.
+ * @return True upon success, otherwise false.
+ */
+bool DriverFactoryBase::SelectDriverImpl(const char *name, Driver::Type type)
+{
+	if (GetDrivers().size() == 0) return false;
 
 	if (StrEmpty(name)) {
 		/* Probe for this driver, but do not fall back to dedicated/null! */
@@ -109,7 +122,7 @@ Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
 					DEBUG(driver, 1, "Successfully probed %s driver '%s'", GetDriverTypeName(type), d->name);
 					delete *GetActiveDriver(type);
 					*GetActiveDriver(type) = newd;
-					return newd;
+					return true;
 				}
 
 				DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s", GetDriverTypeName(type), d->name, err);
@@ -160,7 +173,7 @@ Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
 			DEBUG(driver, 1, "Successfully loaded %s driver '%s'", GetDriverTypeName(type), d->name);
 			delete *GetActiveDriver(type);
 			*GetActiveDriver(type) = newd;
-			return newd;
+			return true;
 		}
 		usererror("No such %s driver: %s\n", GetDriverTypeName(type), buffer);
 	}
