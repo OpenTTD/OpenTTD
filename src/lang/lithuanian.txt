@@ -1814,17 +1814,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :imperiniai (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriniai (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vaizdas
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizavimas
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vaizdas
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstrukcijos
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. priemonės
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Krovinių pasiskirstymas
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutas
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miestai
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gamyklos
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Krovinių pasiskirstymas
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originalus
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

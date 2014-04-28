@@ -1605,17 +1605,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisasi
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efek suara
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksi
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kendaraan
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi Kargo
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efek suara
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain Komputer
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pengarahan
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kota
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi Kargo
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain Komputer
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Asli
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

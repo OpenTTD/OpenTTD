@@ -1606,17 +1606,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Empiries (vt)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metries (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}koppelvlak
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisasie
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Klankeffekte
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}koppelvlak
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertuie
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrag Verspreiding
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Mededingers
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Klankeffekte
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Rekenaar spelers
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Roete
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Dorpe
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nywerhede
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrag Verspreiding
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Mededingers
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Rekenaar spelers
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oorspronklik
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

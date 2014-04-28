@@ -1588,17 +1588,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localización
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de son
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construción
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehículos
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución da carga
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de son
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores da computadora
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Encamiñamento
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Cidades
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución da carga
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores da computadora
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orixinal
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

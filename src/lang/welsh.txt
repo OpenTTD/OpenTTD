@@ -1605,17 +1605,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrig (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Rhyngwyneb
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Unedau Lleol
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effeithiau sŵn
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Rhyngwyneb
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Adeiladu
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Cerbydau
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dosraniad Cargo
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Cystadleuwyr
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effeithiau sŵn
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Chwaraewyr Cyfrifiadurol
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Trefi
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Diwydiannau
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dosraniad Cargo
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Cystadleuwyr
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Chwaraewyr Cyfrifiadurol
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Gwreiddiol
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1556,17 +1556,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :impērijas, bri
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriskās (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI, starptautiskās (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Saskarne
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizēšana
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņas efekti
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Saskarne
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Būvniecība
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transportlīdzekļi
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kravu sadale
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņas efekti
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pārvietošanās
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pilsētas
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ražotnes
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kravu sadale
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Sākotnējais
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

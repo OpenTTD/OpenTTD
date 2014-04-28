@@ -1599,17 +1599,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :อิมพี
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :เมตริก (เมตร)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :มาตรฐานสากล (เมตร)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}มาตราวัดต่างๆ
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เสียงเอฟเฟกต์
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}การกระจายสินค้า
-STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เสียงเอฟเฟกต์
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}อุตสาหกรรม
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}การกระจายสินค้า
+STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :ดั้งเดิม
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

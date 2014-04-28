@@ -1752,17 +1752,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperične (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrične (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalno
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvočni učinki
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Gradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpored tovora
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvočni učinki
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerjanje
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mesta
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpored tovora
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

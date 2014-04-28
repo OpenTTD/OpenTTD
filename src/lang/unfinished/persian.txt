@@ -1354,16 +1354,16 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :امپریال 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :متریک (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :متر (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}واسط کاربری
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}بومی سازی
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}واسط کاربری
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}ساخت و ساز
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}توزیع محموله
-STR_CONFIG_SETTING_AI                                           :{ORANGE}رقیبان
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}بازیگران رایانه
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}مسیریابی
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}شهرها
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}صنایع
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}توزیع محموله
+STR_CONFIG_SETTING_AI                                           :{ORANGE}رقیبان
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}بازیگران رایانه
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

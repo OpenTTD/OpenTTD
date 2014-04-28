@@ -1612,17 +1612,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :בריטית (�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מטר)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ממשק חזותי
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}הגדרות מיקום
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ממשק חזותי
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}בנייה
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
-STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}שחקני מחשב
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}ניתוב
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}ערים
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}תעשיות
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
+STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}שחקני מחשב
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :מקורי
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1727,17 +1727,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Імперсь�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метричні (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтерфейс
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локалізація
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукові ефекти
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтерфейс
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будівництво
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Розподіл вантажів
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренти
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукові ефекти
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Віртуальні гравці
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрути
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Міста
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Підприємства
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Розподіл вантажів
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренти
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Віртуальні гравці
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :стандартний
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

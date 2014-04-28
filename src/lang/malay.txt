@@ -1371,11 +1371,11 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal 
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka (Interface)
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bandar-bandar
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri-industri
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Asal
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

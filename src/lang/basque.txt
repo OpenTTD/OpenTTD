@@ -1523,17 +1523,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inperiala (oin)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikoa (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfazea
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Kokapena
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinu efektuak
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfazea
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Eraikuntza
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama Banaketa
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinu efektuak
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ibilbideak
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Herriak
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriak
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama Banaketa
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Jatorrizkoa
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

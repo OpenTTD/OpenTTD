@@ -1918,17 +1918,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ангельс�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :мэтрычная (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтэрфэйс
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Лакалізацыя
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Гукавыя эфэкты
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтэрфэйс
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будаўніцтва
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспарт
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Разьмеркаваньне грузаў
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Канкурэнты
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Гукавыя эфэкты
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Кампутарныя гульцы
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Населеныя пункты
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Прамысловасьць
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Разьмеркаваньне грузаў
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Канкурэнты
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Кампутарныя гульцы
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :арыґінальны
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

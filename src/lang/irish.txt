@@ -1273,11 +1273,11 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iolraitheoir to
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Comhéadan
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Tógáil
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Feithiclí
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Iomaitheoirí
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ríomh-imreoirí
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ródú
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailte
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Tionscail
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Iomaitheoirí
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ríomh-imreoirí
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Molta)

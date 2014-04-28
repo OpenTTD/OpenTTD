@@ -1540,16 +1540,16 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Ymperiaal (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrysk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisaasje
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}konstruksje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Auto's
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Frachtdistribusje
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Route
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stêd
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}yndustryen
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Frachtdistribusje
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orizjiniel
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

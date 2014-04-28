@@ -1577,16 +1577,16 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Позициониране
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукови ефекти
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строене
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукови ефекти
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Градове
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Индустрии
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Оригинален
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

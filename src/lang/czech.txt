@@ -1692,17 +1692,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiální (f
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Ovládaní
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Překlad
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Ovládaní
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Výstavba
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Dopravní prostředky
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuce nákladu
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Umělá inteligence
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Směrování
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Města
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Průmysl
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuce nákladu
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Umělá inteligence
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Původní
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1602,17 +1602,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fod)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

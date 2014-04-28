@@ -1807,17 +1807,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impireil (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meatrach (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Eadar-aghaidh
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Ionadaileadh
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Èifeachdan fuaime
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Eadar-aghaidh
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Togail
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbadan
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Sgaoileadh carago
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Èifeachdan fuaime
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Lorg shlighean
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailtean
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gnìomhachasan
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Sgaoileadh carago
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Tùsail
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

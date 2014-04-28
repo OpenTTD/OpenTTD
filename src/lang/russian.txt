@@ -1483,7 +1483,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ничего
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :все действия, кроме строительства
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :все действия, кроме изменения ландшафта
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :все действия
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Использовать расширенный список транспорта: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Показывать группы в списке транспорта: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Включить расширенный список транспорта, позволяющий объединять транспортные средства в группы
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Показывать индикатор загрузки: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Отображение индикаторов загрузки над загружающимся и разгружающимся транспортом
@@ -1757,17 +1757,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :английс�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :метрическая (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СИ (м)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локализация
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строительство
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Распределение грузов
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Графика
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звуковые эффекты
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Искусственный интеллект
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Общие
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Окна просмотра
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строительство
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Новости / советы
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Компания
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Расчёты
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Физика
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ограничения
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Аварии / катастрофы
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Создание карты
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Окружающая среда
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Администрация
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Города
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Предприятия
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Распределение грузов
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Искусственный интеллект
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :оригинальный
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -2045,13 +2057,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защи
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Нет
 STR_NETWORK_START_SERVER_ADVERTISED                             :Да
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" а ов}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. клиентов:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. количество клиентов:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} компани{P я и й}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. компаний:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. количество компаний:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ограничить максимальное количество компаний на сервере
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} наблюдател{P ь я ей}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. наблюдателей:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. количество наблюдателей:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ограничить максимальное количество наблюдателей на сервере
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Язык общения:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другие игроки будут знать, на каком языке общаются на сервере
@@ -3288,7 +3300,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}ИТОГО:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс:
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Заём
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Максимальный заём: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. сумма займа: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Занять {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги взаймы. Ctrl+щелчок - увеличить заём до максимума.

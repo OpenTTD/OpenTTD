@@ -1605,17 +1605,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Hoàng Gia (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Giao Diện
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Tiêu Chuẩn Đo Lường
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hiệu ứng âm thanh
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Giao Diện
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Xây Dựng
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân Bổ Hàng Hóa
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hiệu ứng âm thanh
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đường
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Đô thị
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nhà máy
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân Bổ Hàng Hóa
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Nguyên bản
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

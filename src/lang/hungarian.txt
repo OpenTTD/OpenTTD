@@ -1669,17 +1669,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angolszász (l�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikus (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Megjelenítés
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Honosítás
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Megjelenítés
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Építkezés
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Járművek
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rakományok szétosztása (úticélok)
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Települések
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gazdasági épületek
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rakományok szétosztása (úticélok)
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Eredeti
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1529,17 +1529,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britisk eining 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Plassering
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byar
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriar
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1600,17 +1600,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impérial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrique (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localisation
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effets sonores
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construction
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Véhicules
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribution des cargaisons
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Compétiteurs
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effets sonores
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence artificielle
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routage
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Villes
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industries
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribution des cargaisons
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Compétiteurs
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence artificielle
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

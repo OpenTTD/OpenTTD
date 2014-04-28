@@ -1413,16 +1413,16 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :இம்பீ
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :மெட்ரிக் (மீ)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (மீ)
 
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}ஒலிகள்
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}கட்டுமானம்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}சரக்கு பரிமாற்றம்
-STR_CONFIG_SETTING_AI                                           :{ORANGE}போட்டியாளர்கள்
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}ஒலிகள்
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}கணினி வீரர்கள்
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}வழி மாற்றல்
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}நகரங்கள்
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}தொழிற்சாலைகள்
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}சரக்கு பரிமாற்றம்
+STR_CONFIG_SETTING_AI                                           :{ORANGE}போட்டியாளர்கள்
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}கணினி வீரர்கள்
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :அசல்
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

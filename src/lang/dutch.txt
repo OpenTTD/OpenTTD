@@ -1605,17 +1605,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisch (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisatie
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Geluidseffecten
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Constructie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertuigen
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrachtdistributie
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Tegenstanders
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Geluidseffecten
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspelers
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routebepaling
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Steden
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrieën
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrachtdistributie
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Tegenstanders
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspelers
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Origineel
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

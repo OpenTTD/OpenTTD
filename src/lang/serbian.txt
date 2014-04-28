@@ -1723,17 +1723,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperijalne mer
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metričke mere (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Okruženje
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Prevod
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Okruženje
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Izgradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija Tovara
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiranje
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Naselja
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija Tovara
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originalno
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

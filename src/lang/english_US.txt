@@ -1230,7 +1230,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenew when vehicle is {STRING} max age
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenew when vehicle is {STRING} maximum age
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relative age when a vehicle should be considered for auto-renewing
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} month{P 0 "" s} before
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} month{P 0 "" s} after
@@ -1251,7 +1251,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Width of the li
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max distance from edge for Oil Refineries: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil refineries: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oil refineries are only constructed near the map border, that is at the coast for island maps
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain (TerraGenesis only) : {STRING}
@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :The height leve
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Max station spread: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maximum station spread: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximum area the parts of a single station may be spread out on. Note that high values will slow the game
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Perform maintenance on helicopters at helipads automatically: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Service helicopters after every landing, even if there is no depot at the airport
@@ -1372,13 +1372,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Play ambient so
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disable infrastructure building when no suitable vehicles are available: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :When enabled, infrastructure is only available if there are also vehicles available, preventing waste of time and money on unusable infrastructure
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Max trains per company: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum number of trains per company: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximum number of trains that a company can have
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max road vehicles per company: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum number of road vehicles per company: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximum number of road vehicles that a company can have
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max aircraft per company: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maximum number of aircraft per company: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximum number of aircraft that a company can have
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Max ships per company: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Maximum number of ships per company: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximum number of ships that a company can have
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Disable trains for computer: {STRING}
@@ -1605,17 +1605,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localization
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Graphics
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Viewports
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construction
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}News / Advisors
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Company
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Accounting
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Cargo Distribution
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound effects
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physics
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routing
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitations
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Disasters / Accidents
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}World generation
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Environment
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Authorities
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Towns
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industries
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Cargo distribution
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1893,13 +1905,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect 
 STR_NETWORK_START_SERVER_UNADVERTISED                           :No
 STR_NETWORK_START_SERVER_ADVERTISED                             :Yes
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max clients:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximum number of clients:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choose the maximum number of clients. Not all slots need to be filled
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compan{P y ies}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max companies:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximum number of companies:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limit the server to a certain number of companies
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spectator{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spectators:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maximum number of spectators:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limit the server to a certain number of spectators
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Language spoken:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Other players will know which language is spoken on the server
@@ -3108,7 +3120,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bank Balance
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Loan
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Max Loan: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximum Loan: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Borrow {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click borrows as much as possible

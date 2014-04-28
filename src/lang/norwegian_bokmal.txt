@@ -1607,17 +1607,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Det britiske im
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kjøretøy
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Gods-distribusjon
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandere
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinstyrte spillere
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Gods-distribusjon
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandere
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinstyrte spillere
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

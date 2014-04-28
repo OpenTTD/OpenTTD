@@ -1584,17 +1584,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaţă
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localizare
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efecte sonore
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaţă
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcţie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicule
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenţi
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efecte sonore
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrii
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenţi
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
