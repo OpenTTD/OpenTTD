@@ -561,7 +561,7 @@ int CDECL main(int argc, char *argv[])
 				/* rename the .txt (input-extension) to .lng */
 				r = strrchr(pathbuf, '.');
 				if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
-				ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
+				strecpy(r, ".lng", lastof(pathbuf));
 
 				LanguageFileWriter writer(pathbuf);
 				writer.WriteLang(data);
