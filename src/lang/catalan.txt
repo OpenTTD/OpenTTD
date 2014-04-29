@@ -1607,14 +1607,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Mètric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localització
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gràfics
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectes de so
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfície
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcció
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Notícies / Consells
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Companyia
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Comptabilitat
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Lleis físiques
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Recorreguts
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitacions
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Accidents
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoritats
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Poblacions
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Indústries
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribució de la Càrrega
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribució de la càrrega
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidors
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadors de l'ordinador (IA)
 

@@ -1524,11 +1524,20 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikoa (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Kokapena
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikoak
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinu efektuak
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfazea
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Orokorra
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Eraikuntza
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Konpainia
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ibilbideak
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Mugak
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Hondamendiak / Istripuak
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Mundua sortu
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ingurugiroa
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Agintariak
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Herriak
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriak
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama Banaketa
