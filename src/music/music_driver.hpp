@@ -39,9 +39,15 @@ public:
 	 * @param vol The new volume.
 	 */
 	virtual void SetVolume(byte vol) = 0;
+
+	/**
+	 * Get the currently active instance of the music driver.
+	 */
+	static MusicDriver *GetInstance() {
+		return static_cast<MusicDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_MUSIC));
+	}
 };
 
-extern MusicDriver *_music_driver;
 extern char *_ini_musicdriver;
 
 #endif /* MUSIC_MUSIC_DRIVER_HPP */

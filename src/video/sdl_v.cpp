@@ -409,7 +409,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 			break;
 
 		case Blitter::PALETTE_ANIMATION_BLITTER:
-			if (_video_driver != NULL) blitter->PaletteAnimate(_local_palette);
+			if (VideoDriver::GetInstance() != NULL) blitter->PaletteAnimate(_local_palette);
 			break;
 
 		default:

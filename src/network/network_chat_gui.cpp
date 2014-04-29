@@ -167,7 +167,7 @@ void NetworkUndrawChatMessage()
 		/* Put our 'shot' back to the screen */
 		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _chatmessage_backup, width, height);
 		/* And make sure it is updated next time */
-		_video_driver->MakeDirty(x, y, width, height);
+		VideoDriver::GetInstance()->MakeDirty(x, y, width, height);
 
 		_chatmessage_dirty = true;
 	}
@@ -254,7 +254,7 @@ void NetworkDrawChatMessage()
 	}
 
 	/* Make sure the data is updated next flush */
-	_video_driver->MakeDirty(x, y, width, height);
+	VideoDriver::GetInstance()->MakeDirty(x, y, width, height);
 
 	_chatmessage_visible = true;
 	_chatmessage_dirty = false;

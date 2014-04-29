@@ -95,7 +95,7 @@ void CDECL usererror(const char *s, ...)
 	va_end(va);
 
 	ShowOSErrorBox(buf, false);
-	if (_video_driver != NULL) _video_driver->Stop();
+	if (VideoDriver::GetInstance() != NULL) VideoDriver::GetInstance()->Stop();
 
 	exit(1);
 }
@@ -341,7 +341,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	CheckForMissingGlyphs();
 
 	/* Play main theme */
-	if (_music_driver->IsSongPlaying()) ResetMusic();
+	if (MusicDriver::GetInstance()->IsSongPlaying()) ResetMusic();
 }
 
 void MakeNewgameSettingsLive()
@@ -434,7 +434,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		*save_config_ptr = save_config;
 
 		/* restore saved music volume */
-		_music_driver->SetVolume(_settings_client.music.music_vol);
+		MusicDriver::GetInstance()->SetVolume(_settings_client.music.music_vol);
 
 		if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
@@ -766,12 +766,7 @@ int openttd_main(int argc, char *argv[])
 	free(blitter);
 
 	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = strdup(_ini_videodriver);
-	_video_driver = (VideoDriver*)DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
-	if (_video_driver == NULL) {
-		StrEmpty(videodriver) ?
-			usererror("Failed to autoprobe video driver") :
-			usererror("Failed to select requested video driver '%s'", videodriver);
-	}
+	DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	free(videodriver);
 
 	InitializeSpriteSorter();
@@ -802,7 +797,7 @@ int openttd_main(int argc, char *argv[])
 		goto exit_bootstrap;
 	}
 
-	_video_driver->ClaimMousePointer();
+	VideoDriver::GetInstance()->ClaimMousePointer();
 
 	/* initialize screenshot formats */
 	InitializeScreenshotFormats();
@@ -834,21 +829,11 @@ int openttd_main(int argc, char *argv[])
 	free(music_set);
 
 	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = strdup(_ini_sounddriver);
-	_sound_driver = (SoundDriver*)DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
-	if (_sound_driver == NULL) {
-		StrEmpty(sounddriver) ?
-			usererror("Failed to autoprobe sound driver") :
-			usererror("Failed to select requested sound driver '%s'", sounddriver);
-	}
+	DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
 	free(sounddriver);
 
 	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
-	_music_driver = (MusicDriver*)DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
-	if (_music_driver == NULL) {
-		StrEmpty(musicdriver) ?
-			usererror("Failed to autoprobe music driver") :
-			usererror("Failed to select requested music driver '%s'", musicdriver);
-	}
+	DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
 	free(musicdriver);
 
 	/* Take our initial lock on whatever we might want to do! */
@@ -866,7 +851,7 @@ int openttd_main(int argc, char *argv[])
 	ScanNewGRFFiles(scanner);
 	scanner = NULL;
 
-	_video_driver->MainLoop();
+	VideoDriver::GetInstance()->MainLoop();
 
 	WaitTillSaved();
 
@@ -934,7 +919,7 @@ static void MakeNewGameDone()
 	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
 
 	/* In a dedicated server, the server does not play */
-	if (!_video_driver->HasGUI()) {
+	if (!VideoDriver::GetInstance()->HasGUI()) {
 		SetLocalCompany(COMPANY_SPECTATOR);
 		if (_settings_client.gui.pause_on_newgame) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 		IConsoleCmdExec("exec scripts/game_start.scr 0");
@@ -1500,6 +1485,6 @@ void GameLoop()
 
 	InputLoop();
 
-	_sound_driver->MainLoop();
+	SoundDriver::GetInstance()->MainLoop();
 	MusicLoop();
 }

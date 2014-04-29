@@ -773,7 +773,7 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
 	/* Only then can we really start, especially by marking the whole screen dirty. Get those other windows hidden!. */
 	MarkWholeScreenDirty();
 
-	if (!_video_driver->HasGUI() || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL)) {
+	if (!VideoDriver::GetInstance()->HasGUI() || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL)) {
 		_modal_progress_work_mutex->EndCritical();
 		_modal_progress_paint_mutex->EndCritical();
 		DoScanNewGRFFiles(callback);

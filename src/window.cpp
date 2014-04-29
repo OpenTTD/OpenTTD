@@ -446,7 +446,7 @@ bool EditBoxInGlobalFocus()
 void Window::UnfocusFocusedWidget()
 {
 	if (this->nested_focus != NULL) {
-		if (this->nested_focus->type == WWT_EDITBOX) _video_driver->EditBoxLostFocus();
+		if (this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
 
 		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 		this->nested_focus->SetDirty(this);
@@ -470,7 +470,7 @@ bool Window::SetFocusedWidget(int widget_index)
 
 		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 		this->nested_focus->SetDirty(this);
-		if (this->nested_focus->type == WWT_EDITBOX) _video_driver->EditBoxLostFocus();
+		if (this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
 	}
 	this->nested_focus = this->GetWidget<NWidgetCore>(widget_index);
 	return true;
@@ -481,7 +481,7 @@ bool Window::SetFocusedWidget(int widget_index)
  */
 void Window::OnFocusLost()
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) _video_driver->EditBoxLostFocus();
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
 }
 
 /**

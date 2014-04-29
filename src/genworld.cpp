@@ -98,7 +98,7 @@ static void _GenerateWorld(void *)
 	try {
 		_generating_world = true;
 		_modal_progress_work_mutex->BeginCritical();
-		if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
+		if (_network_dedicated) DEBUG(net, 1, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
 		_random.SetSeed(_settings_game.game_creation.generation_seed);
@@ -195,7 +195,7 @@ static void _GenerateWorld(void *)
 
 		ShowNewGRFError();
 
-		if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
+		if (_network_dedicated) DEBUG(net, 1, "Map generated, starting game");
 		DEBUG(desync, 1, "new_map: %08x", _settings_game.game_creation.generation_seed);
 
 		if (_debug_desync_level > 0) {
@@ -328,7 +328,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 		_gw.thread = NULL;
 	}
 
-	if (!_video_driver->HasGUI() || !ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
+	if (!VideoDriver::GetInstance()->HasGUI() || !ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_modal_progress_work_mutex->EndCritical();

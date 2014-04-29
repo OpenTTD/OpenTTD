@@ -122,7 +122,7 @@ struct FileStringReader : StringReader {
 
 	/* virtual */ char *ReadLine(char *buffer, size_t size)
 	{
-		return fgets(buffer, size, this->fh);
+		return fgets(buffer, ClampToU16(size), this->fh);
 	}
 
 	/* virtual */ void HandlePragma(char *str);

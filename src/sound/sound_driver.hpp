@@ -19,9 +19,15 @@ class SoundDriver : public Driver {
 public:
 	/** Called once every tick */
 	virtual void MainLoop() {}
+
+	/**
+	 * Get the currently active instance of the sound driver.
+	 */
+	static SoundDriver *GetInstance() {
+		return static_cast<SoundDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_SOUND));
+	}
 };
 
-extern SoundDriver *_sound_driver;
 extern char *_ini_sounddriver;
 
 #endif /* SOUND_SOUND_DRIVER_HPP */
