@@ -133,6 +133,46 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					}
 					break;
 
+				case BM_CRASH_REMAP:
+					if (src_px->a == 255) {
+						do {
+							uint m = *src_n;
+							if (m == 0) {
+								uint8 g = MakeDark(src_px->r, src_px->g, src_px->b);
+								*dst = ComposeColourRGBA(g, g, g, src_px->a, *dst);
+								*anim = 0;
+							} else {
+								uint r = remap[GB(m, 0, 8)];
+								*anim = r | (m & 0xFF00);
+								if (r != 0) *dst = this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
+							}
+							anim++;
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					} else {
+						do {
+							uint m = *src_n;
+							if (m == 0) {
+								if (src_px->a != 0) {
+									uint8 g = MakeDark(src_px->r, src_px->g, src_px->b);
+									*dst = ComposeColourRGBA(g, g, g, src_px->a, *dst);
+									*anim = 0;
+								}
+							} else {
+								uint r = remap[GB(m, 0, 8)];
+								*anim = 0;
+								if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
+							}
+							anim++;
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					}
+					break;
+
 				case BM_TRANSPARENT:
 					/* TODO -- We make an assumption here that the remap in fact is transparency, not some colour.
 					 *  This is never a problem with the code we produce, but newgrfs can make it fail... or at least:
@@ -208,6 +248,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		case BM_NORMAL:       Draw<BM_NORMAL>      (bp, zoom); return;
 		case BM_COLOUR_REMAP: Draw<BM_COLOUR_REMAP>(bp, zoom); return;
 		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT> (bp, zoom); return;
+		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP> (bp, zoom); return;
 	}
 }
 
