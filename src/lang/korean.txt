@@ -1125,7 +1125,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :열차가 역 �
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :이 옵션을 켜면 회차했을 때 다음 목적지까지 가는 더 짧은 경로가 있어도 열차가 비두단식 역에서 회차할 수 없게 됩니다.
 STR_CONFIG_SETTING_DISASTERS                                    :재앙: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :블록이나 차량, 기반시설을 간혹 파괴할 수도 있는 재앙 옵션을 켜거나 끕니다.
-STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시 의회의 태도: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용: {STRING}
@@ -1215,7 +1215,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 �
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :기반시설 유지비: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :이 옵션을 활성화하면 기반시설 유지비가 발생합니다. 유지비는 교통망의 규모에 비례하며 대형 회사는 소형 회사보다 많은 유지비가 들어갑니다.
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항이 사라지지 않고 계속 만들 수 있게 함: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 옵션을 켜면 소형 공항을 포함한 모든 공항 종류를 도입 이후 계속 사용할 수 있게 됩니다.
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :차량이 길을 잃으면 경고: {STRING}
@@ -1340,8 +1340,8 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :열차 시간�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :열차 시간표에서 열차의 운행 시간을 '일'보다 자세한 '틱'으로 표시합니다. 1일은 74틱과 같습니다.
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :시간표에서 출발일과 도착일 표시: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :열차 시간표에서 예상 출발 & 도착 시간을 표시합니다.
-STR_CONFIG_SETTING_QUICKGOTO                                    :행선지 설정 후 계속해서 행선지 지정: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :경로 창을 열었을 때, 자동으로 '행선지' 버튼을 눌러 창을 열면 바로 행선지를 지정할 수 있도록 합니다.
+STR_CONFIG_SETTING_QUICKGOTO                                    :빠른 행선지 설정: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :경로 창을 열면 자동으로 '행선지' 버튼을 선택하여 곧바로 행선지를 지정할 수 있도록 합니다.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :철도 형식 기본값 설정 (게임 시작/불러온 후): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :게임을 새로 시작하거나 불러온 뒤에 사용할 철도의 종류를 선택합니다. '처음 사용 가능한 것'은 가장 오래된 철도 종류를 선택하고, '최신 기술의 철도'는 가장 최신에 나온 철도 종류를 선택하며 '가장 많이 사용한 것'은 플레이어가 가장 많이 사용한 철도 타입을 선택합니다.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 가능한 것
@@ -1453,8 +1453,8 @@ STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :일반 정보: 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :도로 재건축 투자나 수송 독점권의 구입 등과 같은 일반적인 사건에 대한 소식을 메시지로 알려줍니다.
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :끄기
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :요약
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :상태 표시줄로 알림
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체 메시지로 알림
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :컬러로 된 뉴스가 시작되는 해: {STRING}년
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :신문이 컬러로 나오게 되는 연도를 설정합니다. 이 연도 이전까지는 신문이 흑백으로 나옵니다.
@@ -1611,9 +1611,9 @@ STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}그래�
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}효과음
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}인터페이스
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}일반
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}외부 화면
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}게임 화면
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}건설
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}뉴스 / 자문
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}뉴스 / 정보
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}회사
 STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}회계
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}차량
