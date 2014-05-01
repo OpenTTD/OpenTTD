@@ -39,4 +39,26 @@ enum DistributionType {
 template <> struct EnumPropsT<DistributionType> : MakeEnumPropsT<DistributionType, byte, DT_BEGIN, DT_END, DT_NUM> {};
 typedef TinyEnumT<DistributionType> DistributionTypeByte; // typedefing-enumification of DistributionType
 
+/**
+ * Special modes for updating links. 'Restricted' means that vehicles with
+ * 'no loading' orders are serving the link. If a link is only served by
+ * such vehicles it's 'fully restricted'. This means the link can be used
+ * by cargo arriving in such vehicles, but not by cargo generated or
+ * transferring at the source station of the link. In order to find out
+ * about this condition we keep two update timestamps in each link, one for
+ * the restricted and one for the unrestricted part of it. If either one
+ * times out while the other is still valid the link becomes fully
+ * restricted or fully unrestricted, respectively.
+ * Refreshing a link makes just sure a minimum capacity is kept. Increasing
+ * actually adds the given capacity.
+ */
+enum EdgeUpdateMode {
+	EUM_INCREASE     = 1,      ///< Increase capacity.
+	EUM_REFRESH      = 1 << 1, ///< Refresh capacity.
+	EUM_RESTRICTED   = 1 << 2, ///< Use restricted link.
+	EUM_UNRESTRICTED = 1 << 3, ///< Use unrestricted link.
+};
+
+DECLARE_ENUM_AS_BIT_SET(EdgeUpdateMode)
+
 #endif /* LINKGRAPH_TYPE_H */

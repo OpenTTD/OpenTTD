@@ -3505,9 +3505,10 @@ void DeleteStaleLinks(Station *from)
  * @param cargo Cargo to increase stat for.
  * @param next_station_id Station the consist will be travelling to next.
  * @param capacity Capacity to add to link stat.
- * @param usage Usage to add to link stat. If UINT_MAX refresh the link instead of increasing.
+ * @param usage Usage to add to link stat.
+ * @param mode Update mode to be applied.
  */
-void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint capacity, uint usage)
+void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint capacity, uint usage, EdgeUpdateMode mode)
 {
 	GoodsEntry &ge1 = st->goods[cargo];
 	Station *st2 = Station::Get(next_station_id);
@@ -3549,7 +3550,7 @@ void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint c
 		}
 	}
 	if (lg != NULL) {
-		(*lg)[ge1.node].UpdateEdge(ge2.node, capacity, usage);
+		(*lg)[ge1.node].UpdateEdge(ge2.node, capacity, usage, mode);
 	}
 }
 
@@ -3570,7 +3571,7 @@ void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id)
 			 * As usage is not such an important figure anyway we just
 			 * ignore the additional cargo then.*/
 			IncreaseStats(st, v->cargo_type, next_station_id, v->refit_cap,
-				min(v->refit_cap, v->cargo.StoredCount()));
+				min(v->refit_cap, v->cargo.StoredCount()), EUM_INCREASE);
 		}
 	}
 }

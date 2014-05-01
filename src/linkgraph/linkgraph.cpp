@@ -197,47 +197,41 @@ NodeID LinkGraph::AddNode(const Station *st)
 }
 
 /**
- * Fill an edge with values from a link. If usage < capacity set the usage,
- * otherwise set the restricted or unrestricted update timestamp.
+ * Fill an edge with values from a link. Set the restricted or unrestricted
+ * update timestamp according to the given update mode.
  * @param to Destination node of the link.
  * @param capacity Capacity of the link.
- * @param usage Usage to be added or REFRESH_UNRESTRICTED or REFRESH_RESTRICTED.
+ * @param usage Usage to be added.
+ * @param mode Update mode to be used.
  */
-void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage)
+void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage, EdgeUpdateMode mode)
 {
 	assert(this->index != to);
 	BaseEdge &edge = this->edges[to];
 	BaseEdge &first = this->edges[this->index];
 	edge.capacity = capacity;
+	edge.usage = usage;
 	edge.next_edge = first.next_edge;
 	first.next_edge = to;
-	switch (usage) {
-		case REFRESH_UNRESTRICTED:
-			edge.last_unrestricted_update = _date;
-			break;
-		case REFRESH_RESTRICTED:
-			edge.last_restricted_update = _date;
-			break;
-		default:
-			edge.usage = usage;
-			break;
-	}
+	if (mode & EUM_UNRESTRICTED)  edge.last_unrestricted_update = _date;
+	if (mode & EUM_RESTRICTED) edge.last_restricted_update = _date;
 }
 
 /**
  * Creates an edge if none exists yet or updates an existing edge.
  * @param to Target node.
  * @param capacity Capacity of the link.
- * @param usage Usage to be added or REFRESH_UNRESTRICTED or REFRESH_RESTRICTED.
+ * @param usage Usage to be added.
+ * @param mode Update mode to be used.
  */
-void LinkGraph::Node::UpdateEdge(NodeID to, uint capacity, uint usage)
+void LinkGraph::Node::UpdateEdge(NodeID to, uint capacity, uint usage, EdgeUpdateMode mode)
 {
 	assert(capacity > 0);
-	assert(usage <= capacity || usage == REFRESH_RESTRICTED || usage == REFRESH_UNRESTRICTED);
+	assert(usage <= capacity);
 	if (this->edges[to].capacity == 0) {
-		this->AddEdge(to, capacity, usage);
+		this->AddEdge(to, capacity, usage, mode);
 	} else {
-		(*this)[to].Update(capacity, usage);
+		(*this)[to].Update(capacity, usage, mode);
 	}
 }
 
@@ -270,34 +264,30 @@ void LinkGraph::Node::RemoveEdge(NodeID to)
 }
 
 /**
- * Create a new edge or update an existing one. If usage is REFRESH_UNRESTRICTED
- * or REFRESH_RESTRICTED refresh the edge to have at least the given capacity
- * and also update the respective update timestamp, otherwise add the capacity.
+ * Update an edge. If mode contains UM_REFRESH refresh the edge to have at
+ * least the given capacity and usage, otherwise add the capacity and usage.
+ * In any case set the respective update timestamp(s), according to the given
+ * mode.
  * @param from Start node of the edge.
  * @param to End node of the edge.
  * @param capacity Capacity to be added/updated.
- * @param usage Usage to be added or REFRESH_UNRESTRICTED or REFRESH_RESTRICTED.
+ * @param usage Usage to be added.
+ * @param mode Update mode to be applied.
  */
-void LinkGraph::Edge::Update(uint capacity, uint usage)
+void LinkGraph::Edge::Update(uint capacity, uint usage, EdgeUpdateMode mode)
 {
 	assert(this->edge.capacity > 0);
-	if (usage > capacity) {
-		this->edge.capacity = max(this->edge.capacity, capacity);
-		switch (usage) {
-			case REFRESH_UNRESTRICTED:
-				this->edge.last_unrestricted_update = _date;
-				break;
-			case REFRESH_RESTRICTED:
-				this->edge.last_restricted_update = _date;
-				break;
-			default:
-				NOT_REACHED();
-				break;
-		}
-	} else {
+	assert(capacity >= usage);
+
+	if (mode & EUM_INCREASE) {
 		this->edge.capacity += capacity;
 		this->edge.usage += usage;
+	} else if (mode & EUM_REFRESH) {
+		this->edge.capacity = max(this->edge.capacity, capacity);
+		this->edge.usage = max(this->edge.usage, usage);
 	}
+	if (mode & EUM_UNRESTRICTED) this->edge.last_unrestricted_update = _date;
+	if (mode & EUM_RESTRICTED) this->edge.last_restricted_update = _date;
 }
 
 /**

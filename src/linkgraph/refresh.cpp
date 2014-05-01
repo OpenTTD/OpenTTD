@@ -23,8 +23,9 @@
  * Refresh all links the given vehicle will visit.
  * @param v Vehicle to refresh links for.
  * @param allow_merge If the refresher is allowed to merge or extend link graphs.
+ * @param is_full_loading If the vehicle is full loading.
  */
-/* static */ void LinkRefresher::Run(Vehicle *v, bool allow_merge)
+/* static */ void LinkRefresher::Run(Vehicle *v, bool allow_merge, bool is_full_loading)
 {
 	/* If there are no orders we can't predict anything.*/
 	if (v->orders.list == NULL) return;
@@ -34,7 +35,7 @@
 	if (first == NULL) return;
 
 	HopSet seen_hops;
-	LinkRefresher refresher(v, &seen_hops, allow_merge);
+	LinkRefresher refresher(v, &seen_hops, allow_merge, is_full_loading);
 
 	refresher.RefreshLinks(first, first, v->last_loading_station != INVALID_STATION ? 1 << HAS_CARGO : 0);
 }
@@ -65,9 +66,11 @@ bool LinkRefresher::Hop::operator<(const Hop &other) const
  * @param seen_hops Set of hops already seen. This is shared between this
  *                  refresher and all its children.
  * @param allow_merge If the refresher is allowed to merge or extend link graphs.
+ * @param is_full_loading If the vehicle is full loading.
  */
-LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_merge) :
-		vehicle(vehicle), seen_hops(seen_hops), cargo(CT_INVALID), allow_merge(allow_merge)
+LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_merge, bool is_full_loading) :
+	vehicle(vehicle), seen_hops(seen_hops), cargo(CT_INVALID), allow_merge(allow_merge),
+	is_full_loading(is_full_loading)
 {
 	/* Assemble list of capacities and set last loading stations to 0. */
 	for (Vehicle *v = this->vehicle; v != NULL; v = v->Next()) {
@@ -205,10 +208,32 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 				continue;
 			}
 
-			/* A link is at least partly restricted if a
-			 * vehicle can't load at its source. */
-			IncreaseStats(st, c, next_station, i->second,
-					(cur->GetLoadType() & OLFB_NO_LOAD) == 0 ? LinkGraph::REFRESH_UNRESTRICTED : LinkGraph::REFRESH_RESTRICTED);
+			/* A link is at least partly restricted if a vehicle can't load at its source. */
+			EdgeUpdateMode restricted_mode = (cur->GetLoadType() & OLFB_NO_LOAD) == 0 ?
+						EUM_UNRESTRICTED : EUM_RESTRICTED;
+
+			/* If the vehicle is currently full loading, increase the capacities at the station
+			 * where it is loading by an estimate of what it would have transported if it wasn't
+			 * loading. Don't do that if the vehicle has been waiting for longer than the entire
+			 * order list is supposed to take, though. If that is the case the total duration is
+			 * probably far off and we'd greatly overestimate the capacity by increasing.*/
+			if (this->is_full_loading && this->vehicle->orders.list != NULL &&
+					st->index == vehicle->last_station_visited &&
+					this->vehicle->orders.list->GetTotalDuration() >
+					(Ticks)this->vehicle->current_order_time) {
+				uint effective_capacity = i->second * this->vehicle->load_unload_ticks;
+				if (effective_capacity > (uint)this->vehicle->orders.list->GetTotalDuration()) {
+					IncreaseStats(st, c, next_station, effective_capacity /
+							this->vehicle->orders.list->GetTotalDuration(), 0,
+							EUM_INCREASE | restricted_mode);
+				} else if (RandomRange(this->vehicle->orders.list->GetTotalDuration()) < effective_capacity) {
+					IncreaseStats(st, c, next_station, 1, 0, EUM_INCREASE | restricted_mode);
+				} else {
+					IncreaseStats(st, c, next_station, i->second, 0, EUM_REFRESH | restricted_mode);
+				}
+			} else {
+				IncreaseStats(st, c, next_station, i->second, 0, EUM_REFRESH | restricted_mode);
+			}
 		}
 	}
 }
