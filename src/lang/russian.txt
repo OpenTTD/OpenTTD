@@ -1183,9 +1183,9 @@ STR_RIVERS_FEW                                                  :Малое
 STR_RIVERS_MODERATE                                             :Среднее
 STR_RIVERS_LOT                                                  :Большое
 
-STR_DISASTER_NONE                                               :Выключено
-STR_DISASTER_REDUCED                                            :Умеренная
-STR_DISASTER_NORMAL                                             :Обычная
+STR_DISASTER_NONE                                               :нет
+STR_DISASTER_REDUCED                                            :сниженная
+STR_DISASTER_NORMAL                                             :обычная
 
 STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
@@ -1197,9 +1197,9 @@ STR_TERRAIN_TYPE_FLAT                                           :Плоский
 STR_TERRAIN_TYPE_HILLY                                          :Холмистый
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Гористый
 
-STR_CITY_APPROVAL_PERMISSIVE                                    :Дозволяющее
-STR_CITY_APPROVAL_TOLERANT                                      :Терпимое
-STR_CITY_APPROVAL_HOSTILE                                       :Враждебное
+STR_CITY_APPROVAL_PERMISSIVE                                    :дозволяющее
+STR_CITY_APPROVAL_TOLERANT                                      :терпимое
+STR_CITY_APPROVAL_HOSTILE                                       :отрицательное
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}Их можно скачать через систему проверки онлайн-контента.
 
@@ -1264,8 +1264,8 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Эксплуа�
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Установите уровень стоимости обслуживания и эксплуатации транспорта и инфраструктуры
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Скорость строительства: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ограничьте количество строительных мероприятий для ИИ
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Поломки транспорта: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Задайте частоту поломок недостаточно качественно обслуженного транспорта
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Вероятность поломки транспорта: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Частота поломок недостаточно качественно обслуживаемого транспорта
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множитель субсидий: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Установите множитель оплаты за субсидируемые перевозки
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Затраты на строительство: {STRING}
@@ -1455,10 +1455,10 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Скорост�
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Настройка скорости смещения обзора с помощью колеса прокрутки
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Экранная клавиатура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Выберите способ открытия экранной клавиатуры для ввода текста с помощью указателя. Эта настройка предназначена для мобильных устройств, не имеющих клавиатуры.
-STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Отключено
-STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Двойной щелчок
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Одиночный щелчок (когда выделено)
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Одиночный щелчок (немедленно)
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :отключена
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :двойной щелчок
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :одиночный щелчок (когда фокус в поле ввода)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :одиночный щелчок (немедленно)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Эмуляция нажатия правой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Выбор способа эмуляции нажатия правой кнопки мыши
@@ -1515,7 +1515,7 @@ STR_CONFIG_SETTING_SOUND_CONFIRM                                :Строите�
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Воспроизводить звуковые эффекты при строительстве и других действиях
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Нажатия кнопок: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Воспроизводить звук нажатий на кнопки
-STR_CONFIG_SETTING_SOUND_DISASTER                               :Аварии/катастрофы: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Аварии и катастрофы: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Воспроизводить звук аварий и катастроф
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Транспорт: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Воспроизводить звук, издаваемый транспортом
@@ -1592,7 +1592,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Изм. про�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Показывать новости об изменении производительности предприятий, обслуживаемых конкурентами
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Изм. производительности предпр., никем не обслуживаемых: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Показывать новости об изменении производительности никем не обслуживаемых предприятий
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Советы/сведения по транспорту компании: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Советы и сведения, касающиеся транспорта компании: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Показывать сообщения о транспортных средствах, на которые следует обратить внимание
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новый транспорт: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Показывать новости о новых моделях транспортных средств
@@ -1603,9 +1603,9 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Показыв�
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Общая информация: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Показывать общие новости, вроде покупки эксклюзивных транспортных прав или проведения реконструкции дорог
 
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Выкл
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кратко
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Полно
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :отключено
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :кратко
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :полностью
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветные газеты появляются в {STRING} году
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Обычно в газетах печатают чёрно-белые изображения, а начиная с указанного года - цветные
@@ -1642,7 +1642,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :старый а
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :улучшенный алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :решёткой 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случайно
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :выбирается случайно
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Городам разрешено строить дороги: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Разрешить администрации городов расширять дорожную сеть. При отключенной настройке города самостоятельно расти не будут.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Города могут создавать ж/д переезды: {STRING}
@@ -1650,7 +1650,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Разреши�
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Разрешить городам контролировать уровень шума аэропортов: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :При выключенной настройке количество аэропортов ограничено двумя на каждый город. При включенной - администрация города ограничивает только уровень допустимого шума (он зависит от количества жителей). Уровень шума, производимого аэропортом, зависит от его типа и расстояния от центра города.
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Строительство городов в игре: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Разрешить игрокам создавать новые города
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Включение данной настройки позволяет игрокам основывать новые города
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :запрещено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с выбором сети дорог
@@ -1761,20 +1761,20 @@ STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Лок�
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Графика
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звуковые эффекты
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Общие
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Общие настройки
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Окна просмотра
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строительство
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Новости / советы
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Новости и информация
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Компания
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Расчёты
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Финансы
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Физика
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Физическая модель
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ограничения
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Аварии / катастрофы
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Аварии и катастрофы
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Создание карты
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Окружающая среда
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Администрация
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Городская администрация
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Города
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Предприятия
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Распределение грузов
@@ -3984,10 +3984,14 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Граф
 
 STR_TIMETABLE_NO_TRAVEL                                         :Нет назначения
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В пути (время учтено в ближайшем не автоматическом задании)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В пути (время не задано)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :В пути со скоростью не более {2:VELOCITY} (время не задано)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В пути (график не составлен)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Идти со скоростью не более {2:VELOCITY} (график не составлен)
 STR_TIMETABLE_TRAVEL_FOR                                        :В пути {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :В пути {STRING} со скоростью не более {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Идти {STRING} со скоростью не более {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Идти ≈{STRING} (график не составлен)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Идти ≈{STRING} со скоростью не более {VELOCITY} (график не составлен)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ждать {STRING}, график не составлен)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(в пути {STRING}, график не составлен)
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти в {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ня ней}

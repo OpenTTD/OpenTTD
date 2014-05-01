@@ -1614,7 +1614,7 @@ STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Näkym�
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Rakentaminen
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Uutiset / Neuvonantajat
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Yhtiö
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Kirjanpito
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Talous
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ajoneuvot
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysiikka
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Reititys
