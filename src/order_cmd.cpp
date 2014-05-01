@@ -301,7 +301,7 @@ void OrderList::Initialize(Order *chain, Vehicle *v)
 	for (Order *o = this->first; o != NULL; o = o->next) {
 		++this->num_orders;
 		if (!o->IsType(OT_IMPLICIT)) ++this->num_manual_orders;
-		this->timetable_duration += o->wait_time + o->travel_time;
+		this->timetable_duration += o->GetWaitTime() + o->GetTravelTime();
 	}
 
 	for (Vehicle *u = this->first_shared->PreviousShared(); u != NULL; u = u->PreviousShared()) {
@@ -476,7 +476,7 @@ void OrderList::InsertOrderAt(Order *new_order, int index)
 	}
 	++this->num_orders;
 	if (!new_order->IsType(OT_IMPLICIT)) ++this->num_manual_orders;
-	this->timetable_duration += new_order->wait_time + new_order->travel_time;
+	this->timetable_duration += new_order->GetWaitTime() + new_order->GetTravelTime();
 
 	/* We can visit oil rigs and buoys that are not our own. They will be shown in
 	 * the list of stations. So, we need to invalidate that window if needed. */
@@ -508,7 +508,7 @@ void OrderList::DeleteOrderAt(int index)
 	}
 	--this->num_orders;
 	if (!to_remove->IsType(OT_IMPLICIT)) --this->num_manual_orders;
-	this->timetable_duration -= (to_remove->wait_time + to_remove->travel_time);
+	this->timetable_duration -= (to_remove->GetWaitTime() + to_remove->GetTravelTime());
 	delete to_remove;
 }
 
@@ -609,7 +609,7 @@ void OrderList::DebugCheckSanity() const
 	for (const Order *o = this->first; o != NULL; o = o->next) {
 		++check_num_orders;
 		if (!o->IsType(OT_IMPLICIT)) ++check_num_manual_orders;
-		check_timetable_duration += o->wait_time + o->travel_time;
+		check_timetable_duration += o->GetWaitTime() + o->GetTravelTime();
 	}
 	assert(this->num_orders == check_num_orders);
 	assert(this->num_manual_orders == check_num_manual_orders);
@@ -2081,7 +2081,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 				UpdateVehicleTimetable(v, false);
 				v->cur_implicit_order_index = v->cur_real_order_index = next_order;
 				v->UpdateRealOrderIndex();
-				v->current_order_time += v->GetOrder(v->cur_real_order_index)->travel_time;
+				v->current_order_time += v->GetOrder(v->cur_real_order_index)->GetTravelTime();
 
 				/* Disable creation of implicit orders.
 				 * When inserting them we do not know that we would have to make the conditional orders point to them. */

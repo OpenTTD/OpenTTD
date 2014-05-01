@@ -43,12 +43,12 @@ private:
 
 	CargoID refit_cargo;  ///< Refit CargoID
 
-public:
-	Order *next;          ///< Pointer to next order. If NULL, end of list
-
 	uint16 wait_time;    ///< How long in ticks to wait at the destination.
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
 	uint16 max_speed;    ///< How fast the vehicle may go on the way to the destination.
+
+public:
+	Order *next;          ///< Pointer to next order. If NULL, end of list
 
 	Order() : refit_cargo(CT_NO_REFIT), max_speed(UINT16_MAX) {}
 	~Order();
@@ -166,6 +166,30 @@ public:
 	inline void SetConditionSkipToOrder(VehicleOrderID order_id) { this->flags = order_id; }
 	/** Set the value to base the skip on. */
 	inline void SetConditionValue(uint16 value) { SB(this->dest, 0, 11, value); }
+
+	/** Get the time in ticks a vehicle should wait at the destination. */
+	inline uint16 GetWaitTime() const { return this->wait_time; }
+	/** Get the time in ticks a vehicle should take to reach the destination. */
+	inline uint16 GetTravelTime() const { return this->travel_time; }
+
+	/**
+	 * Get the maxmimum speed in km-ish/h a vehicle is allowed to reach on the way to the
+	 * destination.
+	 * @return maximum speed.
+	 */
+	inline uint16 GetMaxSpeed() const { return this->max_speed; }
+
+	/** Set the time in ticks a vehicle should wait at the destination. */
+	inline void SetWaitTime(uint16 time) { this->wait_time = time; }
+	/** Set the time in ticks a vehicle should take to reach the destination. */
+	inline void SetTravelTime(uint16 time) { this->travel_time = time; }
+
+	/**
+	 * Set the maxmimum speed in km-ish/h a vehicle is allowed to reach on the way to the
+	 * destination.
+	 * @param speed Speed to be set.
+	 */
+	inline void SetMaxSpeed(uint16 speed) { this->max_speed = speed; }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 	bool CanLoadOrUnload() const;

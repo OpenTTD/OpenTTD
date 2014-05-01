@@ -432,7 +432,7 @@ int Train::GetCurrentMaxSpeed() const
 		}
 	}
 
-	max_speed = min(max_speed, this->current_order.max_speed);
+	max_speed = min(max_speed, this->current_order.GetMaxSpeed());
 	return min(max_speed, this->gcache.cached_max_track_speed);
 }
 

@@ -2137,7 +2137,7 @@ void Vehicle::HandleLoading(bool mode)
 {
 	switch (this->current_order.GetType()) {
 		case OT_LOADING: {
-			uint wait_time = max(this->current_order.wait_time - this->lateness_counter, 0);
+			uint wait_time = max(this->current_order.GetWaitTime() - this->lateness_counter, 0);
 
 			/* Not the first call for this tick, or still loading */
 			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) || this->current_order_time < wait_time) return;
@@ -2375,9 +2375,9 @@ void Vehicle::ShowVisualEffect() const
 		}
 
 		max_speed = min(max_speed, t->gcache.cached_max_track_speed);
-		max_speed = min(max_speed, this->current_order.max_speed);
+		max_speed = min(max_speed, this->current_order.GetMaxSpeed());
 	}
-	if (this->type == VEH_ROAD || this->type == VEH_SHIP) max_speed = min(max_speed, this->current_order.max_speed * 2);
+	if (this->type == VEH_ROAD || this->type == VEH_SHIP) max_speed = min(max_speed, this->current_order.GetMaxSpeed() * 2);
 
 	const Vehicle *v = this;
 

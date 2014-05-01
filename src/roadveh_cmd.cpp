@@ -460,7 +460,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 		}
 	}
 
-	return min(max_speed, this->current_order.max_speed * 2);
+	return min(max_speed, this->current_order.GetMaxSpeed() * 2);
 }
 
 /**

@@ -378,7 +378,7 @@ static bool ShipAccelerate(Vehicle *v)
 	byte t;
 
 	spd = min(v->cur_speed + 1, v->vcache.cached_max_speed);
-	spd = min(spd, v->current_order.max_speed * 2);
+	spd = min(spd, v->current_order.GetMaxSpeed() * 2);
 
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
