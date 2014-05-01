@@ -1448,6 +1448,27 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 }
 
 /**
+ * Update the vehicle's load_unload_ticks, the time it will wait until it tries to load or unload
+ * again. Adjust for overhang of trains and set it at least to 1.
+ * @param front The vehicle to be updated.
+ * @param st The station the vehicle is loading at.
+ * @param ticks The time it would normally wait, based on cargo loaded and unloaded.
+ */
+static void UpdateLoadUnloadTicks(Vehicle *front, const Station *st, int ticks)
+{
+	if (front->type == VEH_TRAIN) {
+		/* Each platform tile is worth 2 rail vehicles. */
+		int overhang = front->GetGroundVehicleCache()->cached_total_length - st->GetPlatformLength(front->tile) * TILE_SIZE;
+		if (overhang > 0) {
+			ticks <<= 1;
+			ticks += (overhang * ticks) / 8;
+		}
+	}
+	/* Always wait at least 1, otherwise we'll wait 'infinitively' long. */
+	front->load_unload_ticks = max(1, ticks);
+}
+
+/**
  * Loads/unload the vehicle if possible.
  * @param front the vehicle to be (un)loaded
  */
@@ -1479,7 +1500,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		return;
 	}
 
-	int unloading_time = 0;
+	int new_load_unload_ticks = 0;
 	bool dirty_vehicle = false;
 	bool dirty_station = false;
 
@@ -1544,7 +1565,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			if (amount_unloaded > 0) {
 				dirty_vehicle = true;
 				anything_unloaded = true;
-				unloading_time += amount_unloaded;
+				new_load_unload_ticks += amount_unloaded;
 
 				/* Deliver goods to the station */
 				st->time_since_unload = 0;
@@ -1638,7 +1659,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 					AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
 				}
 
-				unloading_time += loaded;
+				new_load_unload_ticks += loaded;
 
 				dirty_vehicle = dirty_station = true;
 			}
@@ -1670,7 +1691,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			 * on the vehicle type - the values here are those found in TTDPatch */
 			const uint gradual_loading_wait_time[] = { 40, 20, 10, 20 };
 
-			unloading_time = gradual_loading_wait_time[front->type];
+			new_load_unload_ticks = gradual_loading_wait_time[front->type];
 		}
 		/* We loaded less cargo than possible for all cargo types and it's not full
 		 * load and we're not supposed to wait any longer: stop loading. */
@@ -1678,7 +1699,10 @@ static void LoadUnloadVehicle(Vehicle *front)
 				front->current_order_time >= (uint)max(front->current_order.GetTimetabledWait() - front->lateness_counter, 0)) {
 			SetBit(front->vehicle_flags, VF_STOP_LOADING);
 		}
+
+		UpdateLoadUnloadTicks(front, st, new_load_unload_ticks);
 	} else {
+		UpdateLoadUnloadTicks(front, st, 20); // We need the ticks for link refreshing.
 		bool finished_loading = true;
 		if (front->current_order.GetLoadType() & OLFB_FULL_LOAD) {
 			if (front->current_order.GetLoadType() == OLF_FULL_LOAD_ANY) {
@@ -1699,18 +1723,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 			 * links die while it's loading. */
 			if (!finished_loading) LinkRefresher::Run(front);
 		}
-		unloading_time = 20;
 
 		SB(front->vehicle_flags, VF_LOADING_FINISHED, 1, finished_loading);
-	}
-
-	if (front->type == VEH_TRAIN) {
-		/* Each platform tile is worth 2 rail vehicles. */
-		int overhang = front->GetGroundVehicleCache()->cached_total_length - st->GetPlatformLength(front->tile) * TILE_SIZE;
-		if (overhang > 0) {
-			unloading_time <<= 1;
-			unloading_time += (overhang * unloading_time) / 8;
-		}
 	}
 
 	/* Calculate the loading indicator fill percent and display
@@ -1728,9 +1742,6 @@ static void LoadUnloadVehicle(Vehicle *front)
 			UpdateFillingPercent(front->fill_percent_te_id, percent, percent_up_down);
 		}
 	}
-
-	/* Always wait at least 1, otherwise we'll wait 'infinitively' long. */
-	front->load_unload_ticks = max(1, unloading_time);
 
 	if (completely_emptied) {
 		/* Make sure the vehicle is marked dirty, since we need to update the NewGRF
