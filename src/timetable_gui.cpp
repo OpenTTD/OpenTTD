@@ -78,9 +78,9 @@ static bool CanDetermineTimeTaken(const Order *order, bool travelling)
 	/* Current order is conditional */
 	if (order->IsType(OT_CONDITIONAL) || order->IsType(OT_IMPLICIT)) return false;
 	/* No travel time and we have not already finished travelling */
-	if (travelling && order->GetTravelTime() == 0) return false;
+	if (travelling && !order->IsTravelTimetabled()) return false;
 	/* No wait time but we are loading at this timetabled station */
-	if (!travelling && order->GetWaitTime() == 0 && order->IsType(OT_GOTO_STATION) &&
+	if (!travelling && !order->IsWaitTimetabled() && order->IsType(OT_GOTO_STATION) &&
 			!(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) {
 		return false;
 	}
@@ -121,12 +121,12 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
 		if (!order->IsType(OT_IMPLICIT)) {
 			if (travelling || i != start) {
 				if (!CanDetermineTimeTaken(order, true)) return;
-				sum += order->GetTravelTime();
+				sum += order->GetTimetabledTravel();
 				table[i].arrival = sum;
 			}
 
 			if (!CanDetermineTimeTaken(order, false)) return;
-			sum += order->GetWaitTime();
+			sum += order->GetTimetabledWait();
 			table[i].departure = sum;
 		}
 
@@ -143,7 +143,7 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
 	 * travelling part of the first order. */
 	if (!travelling) {
 		if (!CanDetermineTimeTaken(order, true)) return;
-		sum += order->GetTravelTime();
+		sum += order->GetTimetabledTravel();
 		table[i].arrival = sum;
 	}
 }
@@ -401,12 +401,12 @@ struct TimetableWindow : Window {
 						} else if (order->IsType(OT_IMPLICIT)) {
 							string = STR_TIMETABLE_NOT_TIMETABLEABLE;
 							colour = ((i == selected) ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
-						} else if (order->GetTravelTime() == 0) {
+						} else if (!order->IsTravelTimetabled()) {
 							string = order->GetMaxSpeed() != UINT16_MAX ?
 									STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED :
 									STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
 						} else {
-							SetTimetableParams(0, 1, order->GetTravelTime());
+							SetTimetableParams(0, 1, order->GetTimetabledTravel());
 							string = order->GetMaxSpeed() != UINT16_MAX ?
 									STR_TIMETABLE_TRAVEL_FOR_SPEED : STR_TIMETABLE_TRAVEL_FOR;
 						}
@@ -546,7 +546,7 @@ struct TimetableWindow : Window {
 				StringID current = STR_EMPTY;
 
 				if (order != NULL) {
-					uint time = (selected % 2 == 1) ? order->GetTravelTime() : order->GetWaitTime();
+					uint time = (selected % 2 == 1) ? order->GetTimetabledTravel() : order->GetTimetabledWait();
 					if (!_settings_client.gui.timetable_in_ticks) time /= DAY_TICKS;
 
 					if (time != 0) {

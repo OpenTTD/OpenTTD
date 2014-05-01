@@ -28,21 +28,27 @@
  * @param order_number The index of the timetable in the order list.
  * @param val          The new data of the timetable entry.
  * @param mtf          Which part of the timetable entry to change.
+ * @param timetabled   If the new value is explicitly timetabled.
  */
-static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val, ModifyTimetableFlags mtf)
+static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val, ModifyTimetableFlags mtf, bool timetabled)
 {
 	Order *order = v->GetOrder(order_number);
-	int delta = 0;
+	int total_delta = 0;
+	int timetable_delta = 0;
 
 	switch (mtf) {
 		case MTF_WAIT_TIME:
-			delta = val - order->GetWaitTime();
+			total_delta = val - order->GetWaitTime();
+			timetable_delta = (timetabled ? val : 0) - order->GetTimetabledWait();
 			order->SetWaitTime(val);
+			order->SetWaitTimetabled(timetabled);
 			break;
 
 		case MTF_TRAVEL_TIME:
-			delta = val - order->GetTravelTime();
+			total_delta = val - order->GetTravelTime();
+			timetable_delta = (timetabled ? val : 0) - order->GetTimetabledTravel();
 			order->SetTravelTime(val);
+			order->SetTravelTimetabled(timetabled);
 			break;
 
 		case MTF_TRAVEL_SPEED:
@@ -52,17 +58,20 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
 		default:
 			NOT_REACHED();
 	}
-	v->orders.list->UpdateOrderTimetable(delta);
+	v->orders.list->UpdateTotalDuration(total_delta);
+	v->orders.list->UpdateTimetableDuration(timetable_delta);
 
 	for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
 		if (v->cur_real_order_index == order_number && v->current_order.Equals(*order)) {
 			switch (mtf) {
 				case MTF_WAIT_TIME:
 					v->current_order.SetWaitTime(val);
+					v->current_order.SetWaitTimetabled(timetabled);
 					break;
 
 				case MTF_TRAVEL_TIME:
 					v->current_order.SetTravelTime(val);
+					v->current_order.SetTravelTimetabled(timetabled);
 					break;
 
 				case MTF_TRAVEL_SPEED:
@@ -107,8 +116,8 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	ModifyTimetableFlags mtf = Extract<ModifyTimetableFlags, 28, 2>(p1);
 	if (mtf >= MTF_END) return CMD_ERROR;
 
-	int wait_time   = order->GetWaitTime();
-	int travel_time = order->GetTravelTime();
+	int wait_time   = order->GetTimetabledWait();
+	int travel_time = order->GetTimetabledTravel();
 	int max_speed   = order->GetMaxSpeed();
 	switch (mtf) {
 		case MTF_WAIT_TIME:
@@ -128,7 +137,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			NOT_REACHED();
 	}
 
-	if (wait_time != order->GetWaitTime()) {
+	if (wait_time != order->GetTimetabledWait()) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
 				if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return_cmd_error(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
@@ -141,13 +150,13 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 	}
 
-	if (travel_time != order->GetTravelTime() && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
+	if (travel_time != order->GetTimetabledTravel() && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
 	if (max_speed != order->GetMaxSpeed() && (order->IsType(OT_CONDITIONAL) || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (wait_time   != order->GetWaitTime())   ChangeTimetable(v, order_number, wait_time,   MTF_WAIT_TIME);
-		if (travel_time != order->GetTravelTime()) ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME);
-		if (max_speed   != order->GetMaxSpeed())   ChangeTimetable(v, order_number, max_speed,   MTF_TRAVEL_SPEED);
+		if (wait_time   != order->GetTimetabledWait())   ChangeTimetable(v, order_number, wait_time,   MTF_WAIT_TIME,    wait_time > 0);
+		if (travel_time != order->GetTimetabledTravel()) ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME,  travel_time > 0);
+		if (max_speed   != order->GetMaxSpeed())         ChangeTimetable(v, order_number, max_speed,   MTF_TRAVEL_SPEED, max_speed != UINT16_MAX);
 	}
 
 	return CommandCost();
@@ -347,7 +356,6 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
  */
 void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 {
-	uint timetabled = travelling ? v->current_order.GetTravelTime() : v->current_order.GetWaitTime();
 	uint time_taken = v->current_order_time;
 
 	v->current_order_time = 0;
@@ -380,42 +388,47 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
 
-	if (HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) {
-		if (travelling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) {
-			/* Need to clear that now as otherwise we are not able to reduce the wait time */
-			v->current_order.SetWaitTime(0);
-		}
-
-		if (just_started) return;
-
-		/* Modify station waiting time only if our new value is larger (this is
-		 * always the case when we cleared the timetable). */
-		if (!v->current_order.IsType(OT_CONDITIONAL) && (travelling || time_taken > v->current_order.GetWaitTime())) {
-			/* Round the time taken up to the nearest day, as this will avoid
-			 * confusion for people who are timetabling in days, and can be
-			 * adjusted later by people who aren't.
-			 * For trains/aircraft multiple movement cycles are done in one
-			 * tick. This makes it possible to leave the station and process
-			 * e.g. a depot order in the same tick, causing it to not fill
-			 * the timetable entry like is done for road vehicles/ships.
-			 * Thus always make sure at least one tick is used between the
-			 * processing of different orders when filling the timetable. */
-			time_taken = CeilDiv(max(time_taken, 1U), DAY_TICKS) * DAY_TICKS;
-
-			ChangeTimetable(v, v->cur_real_order_index, time_taken, travelling ? MTF_TRAVEL_TIME : MTF_WAIT_TIME);
-		}
-
-		if (v->cur_real_order_index == first_manual_order && travelling) {
-			/* If we just started we would have returned earlier and have not reached
-			 * this code. So obviously, we have completed our round: So turn autofill
-			 * off again. */
-			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-			ClrBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
-		}
-		return;
+	bool autofilling = HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+	if (travelling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) {
+		/* Need to clear that now as otherwise we are not able to reduce the wait time */
+		v->current_order.SetWaitTime(0);
 	}
 
 	if (just_started) return;
+
+	/* Modify station waiting time only if our new value is larger (this is
+	 * always the case when we cleared the timetable). */
+	if (!v->current_order.IsType(OT_CONDITIONAL) && (travelling || time_taken > v->current_order.GetWaitTime())) {
+		/* Round the time taken up to the nearest day, as this will avoid
+		 * confusion for people who are timetabling in days, and can be
+		 * adjusted later by people who aren't.
+		 * For trains/aircraft multiple movement cycles are done in one
+		 * tick. This makes it possible to leave the station and process
+		 * e.g. a depot order in the same tick, causing it to not fill
+		 * the timetable entry like is done for road vehicles/ships.
+		 * Thus always make sure at least one tick is used between the
+		 * processing of different orders when filling the timetable. */
+		uint time_to_set = CeilDiv(max(time_taken, 1U), DAY_TICKS) * DAY_TICKS;
+
+		if (travelling && (autofilling || !v->current_order.IsTravelTimetabled())) {
+			ChangeTimetable(v, v->cur_real_order_index, time_to_set, MTF_TRAVEL_TIME, autofilling);
+		} else if (!travelling && (autofilling || !v->current_order.IsWaitTimetabled())) {
+			ChangeTimetable(v, v->cur_real_order_index, time_to_set, MTF_WAIT_TIME, autofilling);
+		}
+	}
+
+	if (v->cur_real_order_index == first_manual_order && travelling) {
+		/* If we just started we would have returned earlier and have not reached
+		 * this code. So obviously, we have completed our round: So turn autofill
+		 * off again. */
+		ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+		ClrBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+	}
+
+	if (autofilling) return;
+
+	uint timetabled = travelling ? v->current_order.GetTimetabledTravel() :
+			v->current_order.GetTimetabledWait();
 
 	/* Vehicles will wait at stations if they arrive early even if they are not
 	 * timetabled to wait there, so make sure the lateness counter is updated

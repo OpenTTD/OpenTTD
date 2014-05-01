@@ -186,6 +186,10 @@ static void Load_ORDR()
 		while ((index = SlIterateArray()) != -1) {
 			Order *order = new (index) Order();
 			SlObject(order, GetOrderDescription());
+			if (IsSavegameVersionBefore(190)) {
+				order->SetTravelTimetabled(order->GetTravelTime() > 0);
+				order->SetWaitTimetabled(order->GetWaitTime() > 0);
+			}
 		}
 	}
 }
