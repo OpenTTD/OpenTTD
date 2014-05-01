@@ -266,8 +266,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 			if (timetable) {
 				SetDParam(3, STR_EMPTY);
 
-				if (order->IsWaitTimetabled()) {
-					SetDParam(5, STR_TIMETABLE_STAY_FOR);
+				if (order->GetWaitTime() > 0) {
+					SetDParam(5, order->IsWaitTimetabled() ? STR_TIMETABLE_STAY_FOR : STR_TIMETABLE_STAY_FOR_ESTIMATED);
 					SetTimetableParams(6, 7, order->GetWaitTime());
 				}
 			} else {
@@ -334,8 +334,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				SetDParam(4, value);
 			}
 
-			if (timetable && order->IsWaitTimetabled()) {
-				SetDParam(5, STR_TIMETABLE_AND_TRAVEL_FOR);
+			if (timetable && order->GetWaitTime() > 0) {
+				SetDParam(5, order->IsWaitTimetabled() ? STR_TIMETABLE_AND_TRAVEL_FOR : STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED);
 				SetTimetableParams(6, 7, order->GetWaitTime());
 			} else {
 				SetDParam(5, STR_EMPTY);

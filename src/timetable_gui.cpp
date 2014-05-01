@@ -402,9 +402,16 @@ struct TimetableWindow : Window {
 							string = STR_TIMETABLE_NOT_TIMETABLEABLE;
 							colour = ((i == selected) ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 						} else if (!order->IsTravelTimetabled()) {
-							string = order->GetMaxSpeed() != UINT16_MAX ?
-									STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED :
-									STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
+							if (order->GetTravelTime() > 0) {
+								SetTimetableParams(0, 1, order->GetTravelTime());
+								string = order->GetMaxSpeed() != UINT16_MAX ?
+										STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED  :
+										STR_TIMETABLE_TRAVEL_FOR_ESTIMATED;
+							} else {
+								string = order->GetMaxSpeed() != UINT16_MAX ?
+										STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED :
+										STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
+							}
 						} else {
 							SetTimetableParams(0, 1, order->GetTimetabledTravel());
 							string = order->GetMaxSpeed() != UINT16_MAX ?
@@ -546,7 +553,7 @@ struct TimetableWindow : Window {
 				StringID current = STR_EMPTY;
 
 				if (order != NULL) {
-					uint time = (selected % 2 == 1) ? order->GetTimetabledTravel() : order->GetTimetabledWait();
+					uint time = (selected % 2 == 1) ? order->GetTravelTime() : order->GetWaitTime();
 					if (!_settings_client.gui.timetable_in_ticks) time /= DAY_TICKS;
 
 					if (time != 0) {
@@ -556,7 +563,7 @@ struct TimetableWindow : Window {
 				}
 
 				this->query_is_speed_query = false;
-				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
 			}
 

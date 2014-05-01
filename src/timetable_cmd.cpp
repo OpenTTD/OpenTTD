@@ -116,8 +116,8 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	ModifyTimetableFlags mtf = Extract<ModifyTimetableFlags, 28, 2>(p1);
 	if (mtf >= MTF_END) return CMD_ERROR;
 
-	int wait_time   = order->GetTimetabledWait();
-	int travel_time = order->GetTimetabledTravel();
+	int wait_time   = order->GetWaitTime();
+	int travel_time = order->GetTravelTime();
 	int max_speed   = order->GetMaxSpeed();
 	switch (mtf) {
 		case MTF_WAIT_TIME:
@@ -137,7 +137,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			NOT_REACHED();
 	}
 
-	if (wait_time != order->GetTimetabledWait()) {
+	if (wait_time != order->GetWaitTime()) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
 				if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return_cmd_error(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
@@ -150,13 +150,19 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 	}
 
-	if (travel_time != order->GetTimetabledTravel() && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
+	if (travel_time != order->GetTravelTime() && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
 	if (max_speed != order->GetMaxSpeed() && (order->IsType(OT_CONDITIONAL) || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (wait_time   != order->GetTimetabledWait())   ChangeTimetable(v, order_number, wait_time,   MTF_WAIT_TIME,    wait_time > 0);
-		if (travel_time != order->GetTimetabledTravel()) ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME,  travel_time > 0);
-		if (max_speed   != order->GetMaxSpeed())         ChangeTimetable(v, order_number, max_speed,   MTF_TRAVEL_SPEED, max_speed != UINT16_MAX);
+		if (wait_time != order->GetWaitTime() || (wait_time > 0 && !order->IsWaitTimetabled())) {
+			ChangeTimetable(v, order_number, wait_time, MTF_WAIT_TIME, wait_time > 0);
+		}
+		if (travel_time != order->GetTravelTime() || (travel_time > 0 && !order->IsTravelTimetabled())) {
+			ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME, travel_time > 0);
+		}
+		if (max_speed != order->GetMaxSpeed()) {
+			ChangeTimetable(v, order_number, max_speed, MTF_TRAVEL_SPEED, max_speed != UINT16_MAX);
+		}
 	}
 
 	return CommandCost();
