@@ -1674,11 +1674,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizácia
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Rozhranie
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Všeobecné
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Náhľady
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Výstavba
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Novinky / Varovania
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Spoločnosť
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Účtovníctvo
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozidlá
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fyzika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Smerovanie
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Obmedzenia
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofy / Nehody
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generovanie sveta
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Prostredie
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Miestne správy
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mestá
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Priemysel
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribúcia nákladu
@@ -3331,6 +3343,8 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Zrušiť
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Premenovať vybranú skupinu
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikni pre znemožnenie automatického nahradzovania v skupine
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Vymazať skupinu
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Ste si istý, že chcete vymazať túto skupinu a jej podskupiny?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pridat zdielané vozidlá
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrániť všetky vozidlá
@@ -3852,6 +3866,9 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcen�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Cestovanie nanajvýš s {2:VELOCITY} (bez cestovného plánu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Cestovanie na {STRING} s {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Cesta ({STRING}, nerozvrhnuté)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(prestávka {STRING}, nerozvrhnuté)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(cesta {STRING}, nerozvrhnuté)
 STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a cestuj {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ni ní}
@@ -4305,6 +4322,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... už 
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie je možné vytvoriť skupinu...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nie je možné zrušiť túto skupinu...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nie je možné premenovať skupinu...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nie je možné nastaviť rodičovskú skupinu...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nie je možné odstrániť všetky vozidlá z tejto skupiny...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nie je možné pridať vozidlo do tejto skupiny
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nie je možné pridať zdielané vozidlo do skupiny

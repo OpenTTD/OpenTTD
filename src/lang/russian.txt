@@ -3988,8 +3988,8 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В пути (г
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Идти со скоростью не более {2:VELOCITY} (график не составлен)
 STR_TIMETABLE_TRAVEL_FOR                                        :В пути {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Идти {STRING} со скоростью не более {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Идти ≈{STRING} (график не составлен)
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Идти ≈{STRING} со скоростью не более {VELOCITY} (график не составлен)
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :В пути примерно {STRING} (график не составлен)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Идти примерно {STRING} со скоростью не более {VELOCITY} (график не составлен)
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ждать {STRING}, график не составлен)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(в пути {STRING}, график не составлен)
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}

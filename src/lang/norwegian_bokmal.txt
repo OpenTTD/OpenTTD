@@ -1608,11 +1608,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikk
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Synsfelt
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyheter / Rådgivere
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Regnskap
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kjøretøy
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysikk
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Begrensninger
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofer / Ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Verdensgenerering
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Myndigheter
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Gods-distribusjon
@@ -3788,6 +3800,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reise (uten rut
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis med maks {2:VELOCITY} (uten rutetabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reise i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING} med maks {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reise (i {STRING}, ikke oppsatt i rutetabell)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reise (i {STRING}, ikke oppsatt i rutetabell) med høyst {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(opphold i {STRING}, ikke oppsatt i rutetabell)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reise for {STRING}, ikke oppsatt med rutetabell)
 STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" er}
