@@ -184,7 +184,7 @@ void FiosMakeSavegameName(char *buf, const char *name, const char *last)
 {
 	const char *extension = (_game_mode == GM_EDITOR) ? ".scn" : ".sav";
 
-	FiosMakeFilename(buf, _fios_path, name, extension, _fios_path_last);
+	FiosMakeFilename(buf, _fios_path, name, extension, last);
 }
 
 /**
@@ -199,12 +199,13 @@ void FiosMakeHeightmapName(char *buf, const char *name, const char *last)
 	ext[0] = '.';
 	strecpy(ext + 1, GetCurrentScreenshotExtension(), lastof(ext));
 
-	FiosMakeFilename(buf, _fios_path, name, ext, _fios_path_last);
+	FiosMakeFilename(buf, _fios_path, name, ext, last);
 }
 
 /**
  * Delete a file.
  * @param name Filename to delete.
+ * @return Whether the file deletion was successful.
  */
 bool FiosDelete(const char *name)
 {
