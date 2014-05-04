@@ -89,6 +89,7 @@ public:
 	/**
 	 * See how much cargo with a specific source station there is waiting on a station.
 	 * @param station_id The station to get the cargo-waiting of.
+	 * @param from_station_id The source station of the cargo. Pass STATION_INVALID to get cargo of which the source has been deleted.
 	 * @param cargo_id The cargo to get the cargo-waiting of.
 	 * @pre IsValidStation(station_id).
 	 * @pre IsValidStation(from_station_id) || from_station_id == STATION_INVALID.
@@ -100,16 +101,31 @@ public:
 
 	/**
 	 * See how much cargo with a specific via-station there is waiting on a station.
-	 * @param station_id The station to get the cargo-waiting of, or pass STATION_INVALID to get waiting cargo for "via any station".
+	 * @param station_id The station to get the cargo-waiting of.
+	 * @param via_station_id The next station the cargo is going to. Pass STATION_INVALID to get waiting cargo for "via any station".
 	 * @param cargo_id The cargo to get the cargo-waiting of.
 	 * @pre IsValidStation(station_id).
 	 * @pre IsValidStation(via_station_id) || via_station_id == STATION_INVALID.
 	 * @pre IsValidCargo(cargo_id).
 	 * @return The amount of units waiting at the station with via_station_id as next hop.
 	 * @note if ScriptCargo.GetCargoDistributionType(cargo_id) == ScriptCargo.DT_MANUAL, then all waiting cargo will have STATION_INVALID as next hop.
-
 	 */
 	static int32 GetCargoWaitingVia(StationID station_id, StationID via_station_id, CargoID cargo_id);
+
+	/**
+	 * See how much cargo with a specific via-station and source station there is waiting on a station.
+	 * @param station_id The station to get the cargo-waiting of.
+	 * @param from_station_id The source station of the cargo. Pass STATION_INVALID to get cargo of which the source has been deleted.
+	 * @param via_station_id The next station the cargo is going to. Pass STATION_INVALID to get waiting cargo for "via any station".
+	 * @param cargo_id The cargo to get the cargo-waiting of.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidStation(from_station_id) || from_station_id == STATION_INVALID.
+	 * @pre IsValidStation(via_station_id) || via_station_id == STATION_INVALID.
+	 * @pre IsValidCargo(cargo_id).
+	 * @return The amount of units waiting at the station with from_station_id as source and via_station_id as next hop.
+	 * @note if ScriptCargo.GetCargoDistributionType(cargo_id) == ScriptCargo.DT_MANUAL, then all waiting cargo will have STATION_INVALID as next hop.
+	 */
+	static int32 GetCargoWaitingFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoID cargo_id);
 
 	/**
 	 * Check whether the given cargo at the given station a rating.
@@ -226,6 +242,12 @@ public:
 	 * @return True if the state could be toggled.
 	 */
 	static bool OpenCloseAirport(StationID station_id);
+
+private:
+	template<bool Tfrom, bool Tvia>
+	static int32 CountCargoWaiting(StationID station_id, StationID from_station_id,
+			StationID via_station_id, CargoID cargo_id);
+
 };
 
 DECLARE_ENUM_AS_BIT_SET(ScriptStation::StationType)

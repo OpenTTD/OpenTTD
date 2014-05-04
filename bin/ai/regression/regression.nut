@@ -1234,10 +1234,6 @@ function Regression::Station()
 	print("  GetLocation(1000):        " + AIStation.GetLocation(1000));
 	print("  GetStationID(33411):      " + AIStation.GetStationID(33411));
 	print("  GetStationID(34411):      " + AIStation.GetStationID(34411));
-	print("  GetCargoWaiting(0, 0):    " + AIStation.GetCargoWaiting(0, 0));
-	print("  GetCargoWaiting(1000, 0): " + AIStation.GetCargoWaiting(1000, 0));
-	print("  GetCargoWaiting(0, 1000): " + AIStation.GetCargoWaiting(0, 1000));
-
 	print("  GetStationID(33411):      " + AIStation.GetStationID(33411));
 	print("  HasRoadType(3, TRAM):     " + AIStation.HasRoadType(3, AIRoad.ROADTYPE_TRAM));
 	print("  HasRoadType(3, ROAD):     " + AIStation.HasRoadType(3, AIRoad.ROADTYPE_ROAD));
@@ -1253,6 +1249,25 @@ function Regression::Station()
 	print("  GetNearestTown():         " + AIStation.GetNearestTown(0));
 	print("  GetNearestTown():         " + AIStation.GetNearestTown(10000));
 	print("  GetNearestTown():         " + AIStation.GetNearestTown(3));
+
+	print("");
+	print("--CargoWaiting--");
+	for (local cargo = 0; cargo <= 1000; cargo += 1000) {
+		for (local station0 = 0; station0 <= 1000; station0 += 1000) {
+			print("  GetCargoWaiting(" + station0 + ", " + cargo + "): " +
+					AIStation.GetCargoWaiting(station0, cargo));
+			for (local station1 = 0; station1 <= 1000; station1 += 1000) {
+				print("  GetCargoWaitingFrom(" + station0 + ", " + station1 + ", " + cargo + "): " +
+						AIStation.GetCargoWaitingFrom(station0, station1, cargo));
+				print("  GetCargoWaitingVia(" + station0 + ", " + station1 + ", " + cargo + "): " +
+						AIStation.GetCargoWaitingFrom(station0, station1, cargo));
+				for (local station2 = 0; station2 <= 1000; station2 += 1000) {
+					print("  GetCargoWaitingFromVia(" + station0 + ", " + station1 + ", " + station2 + ", " + cargo + "): " +
+							AIStation.GetCargoWaitingFromVia(station0, station1, station2, cargo));
+				}
+			}
+		}
+	}
 
 	local list = AIStationList(AIStation.STATION_BUS_STOP + AIStation.STATION_TRUCK_STOP);
 

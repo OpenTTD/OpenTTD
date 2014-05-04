@@ -7487,9 +7487,6 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetLocation(1000):        -1
   GetStationID(33411):      4
   GetStationID(34411):      65535
-  GetCargoWaiting(0, 0):    0
-  GetCargoWaiting(1000, 0): -1
-  GetCargoWaiting(0, 1000): -1
   GetStationID(33411):      4
   HasRoadType(3, TRAM):     false
   HasRoadType(3, ROAD):     false
@@ -7503,6 +7500,44 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetNearestTown():         15
   GetNearestTown():         65535
   GetNearestTown():         10
+
+--CargoWaiting--
+  GetCargoWaiting(0, 0): 0
+  GetCargoWaitingFrom(0, 0, 0): 0
+  GetCargoWaitingVia(0, 0, 0): 0
+  GetCargoWaitingFromVia(0, 0, 0, 0): 0
+  GetCargoWaitingFromVia(0, 0, 1000, 0): -1
+  GetCargoWaitingFrom(0, 1000, 0): -1
+  GetCargoWaitingVia(0, 1000, 0): -1
+  GetCargoWaitingFromVia(0, 1000, 0, 0): -1
+  GetCargoWaitingFromVia(0, 1000, 1000, 0): -1
+  GetCargoWaiting(1000, 0): -1
+  GetCargoWaitingFrom(1000, 0, 0): -1
+  GetCargoWaitingVia(1000, 0, 0): -1
+  GetCargoWaitingFromVia(1000, 0, 0, 0): -1
+  GetCargoWaitingFromVia(1000, 0, 1000, 0): -1
+  GetCargoWaitingFrom(1000, 1000, 0): -1
+  GetCargoWaitingVia(1000, 1000, 0): -1
+  GetCargoWaitingFromVia(1000, 1000, 0, 0): -1
+  GetCargoWaitingFromVia(1000, 1000, 1000, 0): -1
+  GetCargoWaiting(0, 1000): -1
+  GetCargoWaitingFrom(0, 0, 1000): -1
+  GetCargoWaitingVia(0, 0, 1000): -1
+  GetCargoWaitingFromVia(0, 0, 0, 1000): -1
+  GetCargoWaitingFromVia(0, 0, 1000, 1000): -1
+  GetCargoWaitingFrom(0, 1000, 1000): -1
+  GetCargoWaitingVia(0, 1000, 1000): -1
+  GetCargoWaitingFromVia(0, 1000, 0, 1000): -1
+  GetCargoWaitingFromVia(0, 1000, 1000, 1000): -1
+  GetCargoWaiting(1000, 1000): -1
+  GetCargoWaitingFrom(1000, 0, 1000): -1
+  GetCargoWaitingVia(1000, 0, 1000): -1
+  GetCargoWaitingFromVia(1000, 0, 0, 1000): -1
+  GetCargoWaitingFromVia(1000, 0, 1000, 1000): -1
+  GetCargoWaitingFrom(1000, 1000, 1000): -1
+  GetCargoWaitingVia(1000, 1000, 1000): -1
+  GetCargoWaitingFromVia(1000, 1000, 0, 1000): -1
+  GetCargoWaitingFromVia(1000, 1000, 1000, 1000): -1
 
 --StationList--
   Count():             2
