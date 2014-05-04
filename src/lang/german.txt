@@ -1073,7 +1073,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmen-Einstell
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Art:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beschränkt die Liste auf geänderte Einstellungen
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Vordefinierte Filter auf die untenstehende Liste anwenden
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundlegende Einstellungen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweiterte Einstellungen
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Alle Einstellungen
@@ -1128,7 +1128,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zügen das Umdr
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Falls aktiv, werden Züge in Durchgangsbahnhöfen nicht umdrehen, auch wenn ein kürzerer Pfad zum nächsten Zielbahnhof mittels Umdrehen verfügbar ist
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ein- oder Ausschalten von Katastrophen, durch die gelegentlich Fahrzeuge oder Infrastruktur blockiert oder zerstört werden können
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Toleranz der Stadtverwaltung bei Landschaftsumgestaltungen: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Toleranz der Stadtverwaltung gegenüber Landschaftsumgestaltungen: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Auswählen, wie stark Lärm und Umweltschäden die Stadtbewertung einer Firma sinken lassen. Bei einer zu schlechten Bewertung werden dann in dieser Stadt keine Bauvorhaben mehr genehmigt
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Das Bauen an Hängen und Küsten erlauben: {STRING}
@@ -1930,13 +1930,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ein Pass
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nein
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Teilnehmer
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max. Teilnehmeranzahl:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximale Teilnehmeranzahl:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Auswahl der maximal erlaubten Anzahl von Teilnehmern. Nicht alle Slots müssen belegt werden
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Firm{P a en}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max. Firmenanzahl:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximale Firmenanzahl:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begrenzt den Server auf eine bestimmte Anzahl an Firmen
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} Zuschauer
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max. Zuschaueranzahl:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maximale Zuschaueranzahl:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Zuschauern
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesprochene Sprache:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird
@@ -3692,8 +3692,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändert 
 
 STR_ORDER_REFIT                                                 :{BLACK}Umrüsten
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Frachtart auswählen, auf die umgerüstet werden soll. Strg+Klick, um einen Umrüstungsauftrag wieder zu entfernen
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatisches Umrüsten
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Auswählen, auf welche Frachtart automatisch umgerüstet wird. Strg+Klick um Auftrag zum Umrüsten zu entfernen. Automatisches Umrüsten wird vorgenommen, wenn das Fahrzeug es zuläßt.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Umrüstung im Bahnhof
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Auswählen, auf welche Frachtart umgerüstet wird. Strg+Klick um Auftrag zum Umrüsten zu entfernen. Umrüsten wird vorgenommen, wenn das Fahrzeug es zuläßt.
 STR_ORDER_DROP_REFIT_AUTO                                       :Vorgegebene Fracht
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Verfügbare Fracht
 
@@ -3784,18 +3784,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nicht entladen
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nicht entladen, aber voll beladen mit beliebiger Fracht)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Weder entladen noch beladen)
 
-STR_ORDER_AUTO_REFIT                                            :(Automatische Umrüstung auf {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Volladen mit automatischer Umrüstung auf {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Volladen einer Frachtart und automatischer Umrüstung auf {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Entladen und laden mit automatischer Umrüstung auf {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Umladen und warten auf volle Zuladung mit automatischer Umrüstung auf {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Entladen und warten auf volle Zuladung einer Frachtart mit automatischer Umrüstung auf {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Umladen und laden mit automatischer Umrüstung auf {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Umladen und warten auf volle Zuladung mit automatischer Umrüstung auf {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Umladen und warten auf volle Zuladung einer Frachtart mit automatischer Umrüstung auf {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Nicht entladen und laden mit automatischer Umrüstung auf {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nicht entladen und warten auf volle Zuladung mit automatischer Umrüstung auf {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nicht entladen und warten auf volle Zuladung einer Fracht mit automatischer Umrüstung auf {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Umrüstung auf {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Volladen mit Umrüstung auf {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Volladen einer Frachtart und Umrüstung auf {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Entladen und laden mit Umrüstung auf {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Umladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Entladen und warten auf volle Zuladung einer Frachtart mit Umrüstung auf {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Umladen und laden mit Umrüstung auf {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Umladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Umladen und warten auf volle Zuladung einer Frachtart mit Umrüstung auf {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nicht entladen und laden mit Umrüstung auf {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nicht entladen und warten auf volle Zuladung mit Umrüstung auf {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nicht entladen und warten auf volle Zuladung einer Fracht mit Umrüstung auf {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :verfügbare Fracht
 

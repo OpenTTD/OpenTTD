@@ -1072,7 +1072,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstell
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Filtert de onstaande lijst op alleen gewijzigde instellingen
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beperkt de onderstaande lijst met vooraf gedefinieerde filters
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gewone instellingen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Geavanceerde instellingen
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Geavanceerde instellingen / Alle instellingen
@@ -1082,8 +1082,8 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instellingen me
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Filter de lijst hieronder op bepaalde instellingstypen
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instellingen
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gebruikersinstellingen (Niet opgeslagen in bestand; heeft betrekking op alle spellen)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinstellingen (Opgeslagen in bestand; hebben alleen betrekking op nieuw spel)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig spel)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinstellingen (Opgeslagen in bestand; hebben alleen betrekking op nieuwe spellen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spelinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Bedrijfsinstellingen (Opgeslagen in bestand; heeft alleen betrekking op nieuwe spellen)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig bedrijf)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Toon alle zoekresultaten per instelling{}{SILVER}Categorie {BLACK}naar {WHITE}{STRING}
@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel la
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op hellingen en kusten toestaan: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Indien ingeschakeld kunnen sporen en stations gebouwd worden op hellingen. Indien uitgeschakeld kunnen stations en sporen alleen gebouwd worden op hellingen waar geen fundering nodig is en alleen in de richting van het spoor.
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat het aanpassen van funderingne onder gebouwen en spoor toe zonder deze te verwijderen
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebruik meer realistische handelsgebieden: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Heb verschillende grootte verzorgingsgebied voor verschillende typen stations en luchthavens
@@ -1268,7 +1268,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breedte van de 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand van de rand voor Olierafinaderijen: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum afstand van de rand voor Olierafinaderijen: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaart grens, dat is aan de kust van eiland kaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein (alleen TerraGenesis) : {STRING}
@@ -1306,7 +1306,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vloeiend scroll
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepalen hoe de hoofdweergave schuift naar een specifieke positie bij het klikken op de minikaart of bij de afgifte van een opdracht om naar een specifiek object op de kaart. Indien ingeschakeld, de viewport scrollt soepel, als deze uitgeschakeld gaat u rechtstreeks naar de beoogde plek
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon dimensie-informatie bij het gebruik van diverse bouwgereedschappen: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Geef tegel-afstanden en hoogteverschillen bij het slepen tijdens de bouw werkzaamheden
-STR_CONFIG_SETTING_LIVERIES                                     :Laat alle bedrijfskleuren zien: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Laat alle voertuigkleuren zien: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Beheer het gebruik van voertuigspecifieke levering voor voertuigen (in tegenstelling tot bedrijfsspecifieke leveringen).
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Niets
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eigen bedrijf
@@ -1355,7 +1355,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Geen mogelijkhe
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle niet-constructie mogelijkheden
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alles behalve landschapsaanpassingen
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle mogelijkheden
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gebruik de geavanceerde voertuigenlijst: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gebruik groepen voor voertuigenlijst: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Schakel het gebruik van de geavanceerde voertuigenlijsten in voor het groeperen van voertuigen
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gebruik laadindicatoren: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Geef aan of laad indicatoren worden weergegeven boven ladende of lossende voertuigen
@@ -1396,13 +1396,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel omgevings
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bouwen van infrastructuur uitschakelen wanneer geen geschikt voertuig beschikbaar is: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wanneer ingeschakeld, de infrastructuur is alleen beschikbaar als er ook voertuigen beschikbaar zijn, het voorkomen van verspilling van tijd en geld aan onbruikbare infrastructuur
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximaal aantal treinen per bedrijf: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum aantal treinen per bedrijf: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximum aantal treinen dat een bedrijf kan hebben
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximaal aantal wegvoertuigen per bedrijf: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum aantal wegvoertuigen per bedrijf: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximum aantal wegvoertuigen die een bedrijf kan hebben
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maximaal aantal vliegtuigen per bedrijf: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maximum aantal vliegtuigen per bedrijf: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximum aantal vliegtuigen dat een bedrijf kan hebben
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Maximaal aantal schepen per bedrijf: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Maximum aantal schepen per bedrijf: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximum aantal schepen dat een bedrijf kan hebben
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Treinen voor de computer uitschakelen: {STRING}
@@ -1929,13 +1929,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bescherm
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximaal aantal spelers:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximum aantal spelers:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies het maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} bedr{P ijf ijven}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max bedrijven:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximum aantal bedrijven:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Beperk de server tot een bepaald aantal bedrijven
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} toeschouwer{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max toeschouwers:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maximum aantal toeschouwers:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk de server tot een bepaald aantal toeschouwers
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesproken taal:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server
@@ -3148,7 +3148,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totaal:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Max. lening: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximum lening: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Leen {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+klik om zoveel als mogelijk te lenen
@@ -3691,8 +3691,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Verander
 
 STR_ORDER_REFIT                                                 :{BLACK}Ombouwen
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Kies naar welk type vracht ombouwen in deze order. Ctrl+klik om ombouw instructie te verwijderen
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-ombouwen
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Kies vrachttype voor auto-ombouwen naar in deze order. Ctrl+Klik om ombouw opdracht te verwijderen. Auto-ombouwen wordt alleen uitgevoerd als het voertuig dit toelaat
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Ombouwen
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Kies vrachttype voor ombouwen naar in deze order. Ctrl+Klik om ombouw opdracht te verwijderen. Ombouwen wordt alleen uitgevoerd als het voertuig dit toelaat
 STR_ORDER_DROP_REFIT_AUTO                                       :Voorgedefinieerde vracht
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beschikbare vracht
 
@@ -3783,18 +3783,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en één soort vracht volledig laden)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Niet lossen en niet laden)
 
-STR_ORDER_AUTO_REFIT                                            :(Auto-ombouw naar {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Volledig laden met auto-ombouw naar {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Volledig willekeurige vracht laden met auto-ombouw naar {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Lossen en neem vracht met auto-ombouw naar {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Lossen en wacht op volledig geladen vracht met auto-ombouw naar {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Lossen en wacht op willekeurig volledig geladen vracht met auto-ombouw naar {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Overdragen en neem vracht met auto-ombouw naar {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Overdragen en wacht op volledig geladen vracht met auto-ombouw naar {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Overdragen en wacht op willekeurige vollediggeladen vracht met auto-ombouw naar {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Niet lossen en neem vracht met auto-ombouw naar {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Niet lossen en wacht op volledig geladen vracht met auto-ombouw naar {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Niet lossen en wacht voor willekeurige volledigladen vracht met auto-ombouw naar {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Ombouw naar {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Volledig laden met ombouw naar {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Volledig willekeurige vracht laden met ombouw naar {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Lossen en neem vracht met ombouw naar {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Lossen en wacht op volledig geladen vracht met ombouw naar {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Lossen en wacht op willekeurig volledig geladen vracht met ombouw naar {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Overdragen en neem vracht met ombouw naar {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Overdragen en wacht op volledig geladen vracht met ombouw naar {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Overdragen en wacht op willekeurige vollediggeladen vracht met ombouw naar {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Niet lossen en neem vracht met ombouw naar {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Niet lossen en wacht op volledig geladen vracht met ombouw naar {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Niet lossen en wacht voor willekeurige volledigladen vracht met ombouw naar {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :beschikbare vracht
 

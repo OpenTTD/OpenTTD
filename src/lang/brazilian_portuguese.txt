@@ -1073,7 +1073,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Config. da comp
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringe a lista abaixo a mostrar apenas configs. alteradas
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringe a lista abaixo a mostrar apenas filtros pré-definidos
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Configs. básicas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Configs. avançadas
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Configs. expert / todas as configs.
@@ -1082,11 +1082,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Configs. com um
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringe a lista abaixo a determinados tipos
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todos os tipos de configs.
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Config. do cliente (não é guardado no savegame; afeta todos os jogos)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Config. do jogo (guardado no savegame; afeta apenas novos jogos)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Config. do jogo (guardado no savegame; afeta apenas o jogo atual)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Config. da companhia (guardado no savegame; afeta apenas novos jogos)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Config. de companhia (guardado no savegame; afeta apenas a companhia atual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Configs. do cliente (não é guardado no savegame; afeta todos os jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Configs. do jogo (guardado no savegame; afeta apenas novos jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Configs. do jogo (guardado no savegame; afeta apenas o jogo atual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Configs. da companhia (guardado no savegame; afeta apenas novos jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Configs. de companhia (guardado no savegame; afeta apenas a companhia atual)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostrar todos resultados por configuração{}{SILVER}Categoria {BLACK}até {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar todos resultados por configuração{}{SILVER}Tipo {BLACK}até {WHITE}Todas configurações de tipos
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos resultados por configuração{}{SILVER}Category {BLACK}até {WHITE}{STRING} {BLACK}e {SILVER}Tipo {BLACK}até {WHITE}Todas configurações de tipos
@@ -1128,12 +1128,12 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desabilitar rev
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se ativado, trens não irão mudar de direção em estações não terminais, mesmo se houver um caminho mais curto ao próximo destino ao trocar de direção
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Alterna desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestrutura
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação de área: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação local: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolhe como a poluição sonoroa e ambiental afeta a classificação na cidade e as ações futuras naquela área
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a construção em declives e encostas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ativado, trilhos e estações podem ser construídas na maioria das inclinações. Se desativado, são permitidas apenas em inclinações correspondentes à direção da via, sem precisar de fundações
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, ruas, etc. (auto nivelação): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, trilhos, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-las
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista das áreas de abrangência: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Exibe áreas de abrangência de para diferentes tipos de estações e aeroportos
@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quanto ativado, mantém todos os modelos de veículos disponíveis após serem introduzidos
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, os veículos próximos do fim da vida útil são automaticamente substituídos quando as condições forem atingidas
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar a {STRING} da vida útil
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar veículos a {STRING} da vida útil
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa para quando um veículo deva ser renovado
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} m{P 0 ês eses} antes
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} m{P 0 ês eses} depois
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grossura da lin
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de Terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Dist. máx. da borda para Refinarias de Óleo: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Dist máx da borda para Refinarias de Óleo: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias são construídas apenas nas bordas, ou no litoral, para ilhas
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude da linha de neve: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno (TerraGenesis apenas) : {STRING}
@@ -1290,7 +1290,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Se desativado, 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Há construções na borda norte do mapa
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Há bordas acima da nível do mar
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Tam. máx. de estações compostas {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :Tam máx de estações compostas {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Área máxima que uma só estação pode ocupar com partes de estação. Valores altos tornam o jogo lento
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção automática de helicópteros em heliportos: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Faz manutenção de helicópteros a cada pouso, mesmo que não haja depósito no local de pouso
@@ -1307,7 +1307,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar rolame
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a janela principal rola para uma posição específica quando clicado no minimapa ou após localizar um objeto. Ativado torna o rolamento suave. Desativado torna o rolamento instanâneo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Exibe distâncias quando usar ferramentas de construção: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Exibe distâncias e diferenças de altitude quando clicando e arrastando enquanto constrói
-STR_CONFIG_SETTING_LIVERIES                                     :Exibir cores das empresas: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Exibir cores avançadas: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Contra o uso de cores de veículos dependentes do tipo (ao invés de cores específicas à companhia)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Minha empresa
@@ -1356,7 +1356,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nenhuma ação
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas ações "não-construentes"
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Todas ações exceto modificações de terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Todas ações
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar a lista avançada de veículos: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar a lista agrupada de veículos: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativa o uso da listagem avançada para agrupamento de veículos
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Seleciona se os indicadores de carga são exibidos sobre os veículos (des)carregando
@@ -1371,7 +1371,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de trilho 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Exibir vias reservadas: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Exibir vias reservadas para trilhos: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Escurece as vias reservadas para ajudar a lidar com problemas de trens não funcionando em blocos baseados em destinos
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Manter a barra de construção aberta: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantém as ferramentas de construção para pontes, túneis, etc abertas após o uso
@@ -1397,13 +1397,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Tocar som ambie
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desativar construção de infraestrutura quando nenhum veículo adequado estiver disponível: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quando ativado, a infraestrutura só é disponível se há veículos disponíveis para usá-la, prevenindo gasto de tempo e dinheiro com infraestrutura inútil.
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Máximo de trens por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máx de trens por companhia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Máx. de trens que uma companhia pode ter
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Máximo de automóveis por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máx de automóveis por companhia: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Quantidade máxima de automóveis que uma companhia pode ter
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Máximo de aeronaves por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Número máx de aeronaves por companhia: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Quantidade máxima de aeronaves que uma companhia pode ter
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Máximo de embarcações por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Número máx de embarcações por companhia: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Quantidade máxima de embarcações que uma companhia pode ter
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desativar trens para o computador: {STRING}
@@ -1521,7 +1521,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite cidades
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir cidades construirem cruzamentos de nível: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Se ativado, permite as cidades construírem ruas que atravessam ferrovias
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir controle de ruído de aeronaves pelas cidades: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Se desativado, podem haver 2 aeroportos por cidade. Se ativado, o número de aeroportos depende do controle de ruído da cidade, que depende da população, tamanho e distância do aeroporto
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Se desativado, podem haver 2 aeroportos por cidade. Se ativado, o número de aeroportos é limitado pelo controle de ruído da cidade, que depende da população, tamanho e distância do aeroporto
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundação de cidades no jogo: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Se ativado, permite jogadores construírem novas cidades
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
@@ -1930,13 +1930,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja 
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Não
 STR_NETWORK_START_SERVER_ADVERTISED                             :Sim
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máx de clientes:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Num máx de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolha o número máximo de clientes. Não é necessário estarem todos preenchidos
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} empresa{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Máximo de empresas:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Núm máx de empresas:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita o servidor para uma certa quantia de empresas
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} espectador{P "" es}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Máx de espectadores:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Núm máx de espectadores:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita o servidor para um certa quantia de espectadores
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
@@ -3692,8 +3692,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Altera a
 
 STR_ORDER_REFIT                                                 :{BLACK}Adaptar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecionar a adaptação na ordem atual. CTRL + Clique para remover a instrução
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-reforma
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecione o tipo de carga para o qual auto-reformar nessa ordem. Ctrl+clique para remover a ordem de reforma. Auto-reformar apenas será feito se o veículo permitir
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Reformar na estação
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecione o tipo de carga para o qual reformar nessa ordem. Ctrl+clique para remover a ordem de reforma. Reforma apenas será feita se o veículo permitir
 STR_ORDER_DROP_REFIT_AUTO                                       :Carga fixa
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargas disponíveis
 
@@ -3784,18 +3784,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarreg
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e esperar por qualquer carregamento completo)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Não descarregar e não carregar)
 
-STR_ORDER_AUTO_REFIT                                            :(Auto-reformar para {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Carga completa com auto-reforma para {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Qualquer carga completa com auto-reforma para {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Descarregar e carregar com auto-reforma para {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descarregar e aguardar carga completa com auto-reforma para {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarregar e aguardar qualquer carga completa com auto-reforma para {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transferir e carregar com auto-reforma para {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir e aguardar carga completa com auto-reforma para {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir e aguardar por qualquer carga completa com auto-reforma para {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Não descarregar e carregar com auto-reforma para {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Não descarregar e aguardar carga completa com auto-reforma para {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Não carregar e aguardar por qualquer carga completa com auto-reforma para {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Reformar para {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Carga completa com reforma para {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Qualquer carga completa com reforma para {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Descarregar e carregar com reforma para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descarregar e aguardar carga completa com reforma para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarregar e aguardar qualquer carga completa com reforma para {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transferir e carregar com reforma para {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir e aguardar carga completa com reforma para {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir e aguardar por qualquer carga completa com reforma para {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Não descarregar e carregar com reforma para {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Não descarregar e aguardar carga completa com reforma para {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Não descarregar e aguardar por qualquer carga completa com reforma para {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :cargas disponíveis
 

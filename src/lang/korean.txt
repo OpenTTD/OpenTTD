@@ -1128,12 +1128,12 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :열차가 역 �
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :이 옵션을 켜면 회차했을 때 다음 목적지까지 가는 더 짧은 경로가 있어도 열차가 비두단식 역에서 회차할 수 없게 됩니다.
 STR_CONFIG_SETTING_DISASTERS                                    :재앙: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :블록이나 차량, 기반시설을 간혹 파괴할 수도 있는 재앙 옵션을 켜거나 끕니다.
-STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시 의회의 태도: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :경사/해안가 위의 건설을 허용: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :이 옵션을 켜면 도로, 철도, 역 등을 대부분의 경사에 설치할 수 있게 됩니다. 이 옵션을 끄면 오직 트랙의 방향과 일치하는 경사에만 설치가 가능하기 때문에 기반 지형을 만들 필요가 없습니다.
-STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
 STR_CONFIG_SETTING_CATCHMENT                                    :더 현실적인 역세권 지정: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :역과 공항의 종류에 따라 다른 크기의 역세권을 가지도록 만듭니다.
@@ -1232,7 +1232,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 �
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :기반시설 유지비: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :이 옵션을 활성화하면 기반시설 유지비가 발생합니다. 유지비는 교통망의 규모에 비례하며 대형 회사는 소형 회사보다 많은 유지비가 들어갑니다.
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항이 사라지지 않고 계속 만들 수 있게 함: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 옵션을 켜면 소형 공항을 포함한 모든 공항 종류를 도입 이후 계속 사용할 수 있게 됩니다.
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :차량이 길을 잃으면 경고: {STRING}
@@ -1356,7 +1356,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :아무 것도 �
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :모든 비건설적인 행동
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :지형 편집을 제외한 모든 행동
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :모든 행동
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :고급화된 차량 목록 사용: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :차량 목록에서 그룹 기능 사용: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :고급화된 차량 목록의 사용 여부를 설정합니다.
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :적재율 표시: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :적재나 하차하는 차량 위에 적재/하차율을 표시할지 말지를 선택합니다.
@@ -1364,8 +1364,8 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :열차 시간�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :열차 시간표에서 열차의 운행 시간을 '일'보다 자세한 '틱'으로 표시합니다. 1일은 74틱과 같습니다.
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :시간표에서 출발일과 도착일 표시: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :열차 시간표에서 예상 출발 & 도착 시간을 표시합니다.
-STR_CONFIG_SETTING_QUICKGOTO                                    :행선지 설정 후 계속해서 행선지 지정: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :경로 창을 열었을 때, 자동으로 '행선지' 버튼을 눌러 창을 열면 바로 행선지를 지정할 수 있도록 합니다.
+STR_CONFIG_SETTING_QUICKGOTO                                    :빠른 행선지 설정: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :경로 창을 열면 자동으로 '행선지' 버튼을 선택하여 곧바로 행선지를 지정할 수 있도록 합니다.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :철도 형식 기본값 설정 (게임 시작/불러온 후): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :게임을 새로 시작하거나 불러온 뒤에 사용할 철도의 종류를 선택합니다. '처음 사용 가능한 것'은 가장 오래된 철도 종류를 선택하고, '최신 기술의 철도'는 가장 최신에 나온 철도 종류를 선택하며 '가장 많이 사용한 것'은 플레이어가 가장 많이 사용한 철도 타입을 선택합니다.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 가능한 것
@@ -1397,13 +1397,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :주변 풍경�
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :사용 가능한 차량이 없을 경우 해당 기반시설 비활성화: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :이 옵션을 켜면, 불필요하게 시간과 돈을 낭비하지 않도록 차량이 존재하지 않는 기반시설을 설치할 수 없게 됩니다.
-STR_CONFIG_SETTING_MAX_TRAINS                                   :최대 열차 수: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :회사당 최대 열차 수: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :한 회사가 소유할 수 있는 열차의 최대 수를 제한합니다.
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :최대 자동차/전차 수: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :회사당 최대 자동차/전차 수: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :한 회사가 소유할 수 있는 자동차/전차의 최대 수를 제한합니다.
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :최대 항공기 수: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :회사당 최대 항공기 수: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :한 회사가 소유할 수 있는 항공기의 최대 수를 제한합니다.
-STR_CONFIG_SETTING_MAX_SHIPS                                    :최대 선박 수: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :회사당 최대 선박 수: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :한 회사가 소유할 수 있는 선박의 최대 수를 제한합니다.
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :컴퓨터의 철도 사용을 허가하지 않음: {STRING}
@@ -1477,8 +1477,8 @@ STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :일반 정보: 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :도로 재건축 투자나 수송 독점권의 구입 등과 같은 일반적인 사건에 대한 소식을 메시지로 알려줍니다.
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :끄기
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :요약
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :상태 표시줄로 알림
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체 메시지로 알림
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :컬러로 된 뉴스가 시작되는 해: {STRING}년
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :신문이 컬러로 나오게 되는 연도를 설정합니다. 이 연도 이전까지는 신문이 흑백으로 나옵니다.
@@ -2679,7 +2679,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}게임을 저장할 파일명을 입력하세요
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}세계 창조
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}세계 제작
 STR_MAPGEN_MAPSIZE                                              :{BLACK}지도 크기:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}지도의 크기를 칸 수 기준으로 선택하십시오. 사용 가능한 지도의 칸 수는 선택한 값보다 조금 적습니다.
 STR_MAPGEN_BY                                                   :{BLACK}x
@@ -2736,7 +2736,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}평지�
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}세계 만드는 중..
 STR_GENERATION_ABORT                                            :{BLACK}중지
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}세계 만들기 중지
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}세계 제작 중지
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 만들기를 중지하시겠습니까?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% 완료
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
@@ -3692,8 +3692,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택�
 
 STR_ORDER_REFIT                                                 :{BLACK}개조
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}이 경로에서 열차를 어떤 화물을 받을 수 있게 개조할 것인지 선택하십시오. CTRL+클릭하면 개조 설정을 해제합니다.
-STR_ORDER_REFIT_AUTO                                            :{G=f}{BLACK}자동 개조
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 단계에서 자동으로 개조할 화물의 종류를 선택하세요. CTRL+클릭하면 개조 설정을 해제합니다. 자동 개조 기능은 개조 가능한 차량에서만 사용할 수 있습니다.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}개조
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 경로에서 개조할 화물의 종류를 선택하세요. CTRL+클릭하면 개조 설정을 해제합니다. 개조 기능은 개조 가능한 차량에서만 사용할 수 있습니다.
 STR_ORDER_DROP_REFIT_AUTO                                       :화물 종류 고정
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :이용가능한 화물
 
@@ -3760,7 +3760,7 @@ STR_ORDER_SHIP_DEPOT                                            :정박소
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :({STRING}(으)로 개조)
+STR_ORDER_REFIT_ORDER                                           :({STRING}{G 0 "으" ""}로 개조)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}에서 수리 후 멈춤)
 STR_ORDER_STOP_ORDER                                            :(멈춤)
 
@@ -3768,36 +3768,36 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 STR_ORDER_IMPLICIT                                              :(자동)
 
-STR_ORDER_FULL_LOAD                                             :(모든 화물을 가득 실음)
+STR_ORDER_FULL_LOAD                                             :(모든 화물을 가득 싣기)
 STR_ORDER_FULL_LOAD_ANY                                         :(아무 화물이나 가득 싣기)
 STR_ORDER_NO_LOAD                                               :(싣지 않기)
 STR_ORDER_UNLOAD                                                :(화물 하차 후 적재)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(화물 하차 후 모든 화물을 싣고 출발)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(화물 하차 후 모든 화물을 가득 싣기)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 아무 화물이나 가득 싣기)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(화물 하차 후 빈 차로 출발)
-STR_ORDER_TRANSFER                                              :(환승 후 화물 받음)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(환승 후 모든 화물 적재)
+STR_ORDER_TRANSFER                                              :(환승 후 화물 적재)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(환승 후 모든 화물을 가득 싣기)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 아무 화물이나 가득 싣기)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(환승 후 빈 차로 출발)
-STR_ORDER_NO_UNLOAD                                             :(내리지 않고 화물을 받음)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않고 가득 찰 때까지 기다림)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(내리지 않고 아무 화물이나 가득 찰 때까지 기다림)
+STR_ORDER_NO_UNLOAD                                             :(내리지 않고 화물 적재)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않고 모든 화물을 가득 싣기)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(내리지 않고 아무 화물이나 가득 싣기)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(적재와 하차 없음)
 
-STR_ORDER_AUTO_REFIT                                            :({STRING}{G 0 "으" ""}로 자동 개조)
-STR_ORDER_FULL_LOAD_REFIT                                       :({STRING}{G 0 "으" ""}로 자동 개조하면서 모든 화물을 가득 싣기)
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :({STRING}{G 0 "으" ""}로 자동 개조하면서 아무 화물이나 가득 싣기)
-STR_ORDER_UNLOAD_REFIT                                          :({STRING}{G 0 "으" ""}로 자동 개조하면서 화물 하차 후 적재)
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :({STRING}{G 0 "으" ""}로 자동 개조하면서 화물 하차 후 모든 화물을 싣고 출발)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :({STRING}{G 0 "으" ""}로 자동 개조하면서 화물 하차 후 아무 화물이나 가득 싣기)
-STR_ORDER_TRANSFER_REFIT                                        :({STRING}{G 0 "으" ""}로 자동 개조하면서 환승 후 화물 받음)
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :({STRING}{G 0 "으" ""}로 자동 개조하면서 환승 후 모든 화물 적재)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :({STRING}{G 0 "으" ""}로 자동 개조하면서 환승 후 아무 화물이나 가득 싣기)
-STR_ORDER_NO_UNLOAD_REFIT                                       :({STRING}{G 0 "으" ""}로 자동 개조하면서 내리지 않고 화물을 받음)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :({STRING}{G 0 "으" ""}로 자동 개조하면서 내리지 않고 가득 찰 때까지 기다림)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :({STRING}{G 0 "으" ""}로 자동 개조하면서 내리지 않고 아무 화물이나 가득 찰 때까지 기다림)
+STR_ORDER_AUTO_REFIT                                            :({STRING}{G 0 "으" ""}로 개조)
+STR_ORDER_FULL_LOAD_REFIT                                       :({STRING}{G 0 "으" ""}로 개조하며 모든 화물을 가득 싣기)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :({STRING}{G 0 "으" ""}로 개조하며 아무 화물이나 가득 싣기)
+STR_ORDER_UNLOAD_REFIT                                          :({STRING}{G 0 "으" ""}로 개조하며 화물 하차 후 적재)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :({STRING}{G 0 "으" ""}로 개조하며 화물 하차 후 모든 화물을 가득 싣기)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :({STRING}{G 0 "으" ""}로 개조하며 화물 하차 후 아무 화물이나 가득 싣기)
+STR_ORDER_TRANSFER_REFIT                                        :({STRING}{G 0 "으" ""}로 개조하며 환승 후 화물 적재)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :({STRING}{G 0 "으" ""}로 개조하며 환승 후 모든 화물을 가득 싣기)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :({STRING}{G 0 "으" ""}로 개조하며 환승 후 아무 화물이나 가득 싣기)
+STR_ORDER_NO_UNLOAD_REFIT                                       :({STRING}{G 0 "으" ""}로 개조하며 화물을 내리지 않고 적재)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :({STRING}{G 0 "으" ""}로 개조하며 화물을 내리지 않고 모든 화물을 가득 싣기)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :({STRING}{G 0 "으" ""}로 개조하며 화물을 내리지 않고 아무 화물이나 가득 싣기)
 
-STR_ORDER_AUTO_REFIT_ANY                                        :{G=m}이용가능한 화물
+STR_ORDER_AUTO_REFIT_ANY                                        :이용 가능한 화물
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[가까운쪽]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[중간]

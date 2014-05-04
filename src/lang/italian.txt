@@ -3850,7 +3850,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tabella 
 STR_TIMETABLE_NO_TRAVEL                                         :Nessun viaggio
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viaggia (automatico; orario basato sul successivo ordine manuale)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaggia (senza orario)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viaggia a non più di {2:VELOCITY} (senza orario)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viaggia (senza orario) a non più di {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaggia per {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaggia per {STRING} a non più di {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :e sosta per {STRING}

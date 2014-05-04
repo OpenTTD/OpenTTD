@@ -696,7 +696,7 @@ STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Edificis/Indústries
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Vehicles
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trens
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Vehicles de carretera
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Automòbils
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Vaixells
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Avions
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rutes de Transport
@@ -1147,12 +1147,12 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Establir la qua
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model d'acceleració dels trens: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleccioneu el model físic per a l'acceleració del tren. El model "original" penalitza les pujades per igual a tots els vehicles. El model "realístic" penalitza les pujades i les corbes en funció de diverses propietats del compost, al igual que la longitud i la força de tracció
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model d'acceleració per als vehicles: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleccioneu el model físic per a l'acceleració d'un vehicle de carretera. El model "original" penalitza les pujades per igual a tots els vehicles. El model "realista" penalitza les pendents en funció de les diferents propietats de la màquina, com per exemple "l'esforç de tracció"
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleccioneu el model físic per a l'acceleració dels automòbils. El model "original" penalitza les pujades per igual a tots els vehicles. El model "realista" penalitza les pendents en funció de les diferents propietats de la màquina, com per exemple "l'esforç de tracció"
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendent d'inclinació per als trens: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :La inclinació d'una celda en pendent per a un tren. Els valors més alts fan que sigui més difícil escalar un turó
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :La inclinació d'una cel·la en pendent per a un tren. Els valors més alts fan que sigui més difícil escalar un turó
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendent d'inclinació per als automòbils: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :La inclinació d'una celda en pendent per a un vehicle de carretera. Els valors més alts fan que sigui més difícil escalar un turó
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :La inclinació d'una cel·la amb pendent per a automòbils. Els valors més alts fan que sigui més difícil escalar un turó
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer girs de 90 graus als trens i vaixells: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan una via horitzontal està seguida d'una vertical a la cel·la annexa, provocant que el tren giri 90 graus quan travessi la vora de la cel·la en lloc dels 45 graus usuals en les altres combinacions. Això també s'aplica al radi de gir dels vaixells
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Gruix de la lí
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terrenys: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màxima des de la vora de refineries de petroli: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màxima des de la vora a les refineries de petroli: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Les refineries de petroli només es construeixen a prop de les vores del mapa, això és a la costa en els mapes d'illes
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada de la cota de neu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Geografia del terreny (TerraGenesis només) : {STRING}
@@ -1290,7 +1290,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Si està desact
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Màx. extensió de les estacions: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :Extensió màxima de les estacions: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Àrea màxima en què les parts d'una sola estació es poden estendre. Un valor alt farà alentir el joc
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Revisions automàtiques dels helicòpters als heliports: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Inspecciona els helicòpters cada vegada que aterrin, encara que no hi hagi hangar a l'aeroport
@@ -1397,19 +1397,19 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodueix efec
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infrastructures quan no hi hagi disponibles vehicles adequats: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quan està activat, la infrastructura només està disponible si hi ha també vehicles disponibles, prevenint perdre temps i diners en infraestructures no utilitzables
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Màx. trens per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Màxim nombre de trens per companyia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Màxim nombre de trens que pot tenir una companyia
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Màx. automòbils per companyia: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Màxim nombre de vehicles de carretera que pot tenir una companyia
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Màx. avions per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Màxim nombre d'automòbils per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Màxim nombre d'automòbils que pot tenir una companyia
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Màxim nombre d'avions per companyia: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Màxim nombre d'avions que pot tenir una companyia
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Màx. vaixells per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Màxim nombre de vaixells per companyia: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Màxim nombre de vaixells que pot tenir una companyia
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactiva trens per a les IA de l'ordinador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activant aquesta opció fa que sigui impossible construir trens als jugadors IA de l'ordinador
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactiva automòbils per a les IA de l'ordinador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activant aquesta opció fa que sigui impossible construir vehicles de carretera als jugadors IA de l'ordinador
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activant aquesta opció fa que sigui impossible construir automòbils als jugadors IA de l'ordinador
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactiva els avions per a les IA de l'ordinador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activant aquesta opció fa que sigui impossible construir avions als jugadors IA de l'ordinador
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva vaixells per a les IA de l'ordinador: {STRING}
@@ -1440,7 +1440,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval per de
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Estableix l'interval de revisió predeterminat pels nous vaixells, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactiva les revisions quan les avaries s'estableixen a cap: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quan està activat, els vehicles no són revisats si no es poden espatllar
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa limit de velocitat per al vagó: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa límits de velocitat per als vagons: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quan està activat, també utilitza els límits de velocitat dels vagons per decidir la velocitat màxima del tren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
@@ -1660,8 +1660,8 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rec
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Encaminador dels trens: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algorisme a emprar per a escollir les rutes dels trens
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Encaminador de vehicles de carretera: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algorisme a emprar per a escollir les rutes dels vehicles de carretera
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Encaminador d'automòbils: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algorisme a emprar per a escollir les rutes dels automòbils
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Encaminador dels vaixells: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algorisme a emprar per a escollir les rutes dels vaixells
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Canvi de sentit automàtic als senyals: {STRING}
@@ -1930,14 +1930,14 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegei
 STR_NETWORK_START_SERVER_UNADVERTISED                           :No
 STR_NETWORK_START_SERVER_ADVERTISED                             :Sí
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Màx. clients:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Màxim nombre de clients:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} companyi{P a es}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Màx. companyies:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Màxim nombre de companyies:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita el servidor a un cert nombre de companyies
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} espectador{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Màx. espectadors:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita el servidor a un cert nombre de espectadors
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Màxim nombre d'espectadors:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita el servidor a un cert nombre d'espectadors
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma parlat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Els altres jugadors sabran quin idioma es parla en aquest servidor.
 
@@ -2335,8 +2335,8 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminue
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementa la densitat de senyals en arrossegar
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona pont de tren
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona un Pont de carretera
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona Pont de Tren
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona Pont de Carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
@@ -3519,7 +3519,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Això co
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga al tren a actuar sense esperar a tenir el semàfor lliure
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Remodela un tren per transportar un altre tipus de càrrega
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Remodela vehicle de carretera per dur un tipus diferent de càrrega
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Remodela l'automòbil per dur un tipus diferent de càrrega
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Remodela vaixell mercant per portar un tipus diferent de càrrega
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Remodela avions per poder transportar diferents tipus de càrrega
 
@@ -3647,12 +3647,12 @@ STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Seleccio
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Selecciona tipus de càrrega a transportar
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Remodela tren
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Remodela vehicle de carretera
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Remodela automòbil
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Remodela vaixell
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Remodela avió
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Remodela un tren per transportar el tipus de càrrega seleccionada
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Remodela vehicle de carretera per a dur el tipus de carrega senyalat
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Remodela l'automòbil per a dur el tipus de càrrega escollit
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Remodela vaixell per portar el tipus de càrrega seleccionat
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Remodela l'avió per poder transportar el tipus de càrrega seleccionat
 
@@ -4288,7 +4288,7 @@ STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Vaixell 
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Avió al camí
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No es pot remodelar el tren...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No es pot remodelar el vehicle de carretera...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No es pot remodelar l'automòbil...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}No es pot remodelar el vaixell...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}No es pot remodelar l'avió...
 

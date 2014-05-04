@@ -1219,7 +1219,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vyber jak moc h
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Povolit výstavbu na svazích kopců a na pobřežích: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Pokud je zapnuto, tratě a stanice mohou být postaveny na většině svahů. Pokud ne, mohou být postaveny pouze na svazích stejného směru tak, že nevyžadují žádné základy.
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Srovnání terénu pod budovami, kolejemi atd. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Povolit srovnání terénu pod budovami, kolejemi atd. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Povoluje změnu terénu pod budovami a tratěmi bez jejich odstranění
 STR_CONFIG_SETTING_CATCHMENT                                    :Povolit u oblasti pokrytí realističtější velikost: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Rozdílná velikost oblasti pokrytí u různých stanic a letišť
@@ -1334,7 +1334,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se ni
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pokud je zapnuto, všechny modely vlaků zůstanou po uvedení dostupné napořád. (nezastarají)
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automaticky nahradit dopravní prostředek, když zestárne: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pokud je zapnuto, vozidla na konci své plánované životnosti budou automaticky nahrazena, když jsou splněny podmínky pro automatické obnovení.
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automaticky nahradit vozidlo {STRING} před/po dosažení životnosti
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automaticky nahradit vozidlo při dosažení {STRING} životnosti
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativní věk kdy by měli být vozidlo automaticky vyměněno za nové
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} měsíc{P "" e ů} před
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} měsíc{P "" e ů} po
@@ -1442,7 +1442,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Žádné akce
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Všechny akce kromě stavebních
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Všechny akce kromě úprav terénu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Všechny akce
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Používat pokročilý seznam vozidel: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Používat seznam vozidel se skupinami: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Umožňuje použití vylepšeného seznamu vozidel ve skupinách
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Používat ukazatele naložení: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vyber jestli budou zobrazovány ukazatele naložení nad nakládajícími a vykládajícími vozidly.
@@ -1483,7 +1483,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Přehrávat zvu
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázat zastávky, když nejsou dostupná příslušná vozidla: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pokud je zapnuto, infrastruktura je dostupná pouze pokud jsou k dispozici vozidla, která ji mohou používat. Zamezí ztrátě času a peněz za budovaní nevyužitelné infrastruktury
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vlaků na hráče: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vlaků na společnost: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximální počet vlaků, které může společnost vlastnit
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum silničních vozidel na společnost: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximální počet vozidel, které může společnost vlastnit
@@ -3241,7 +3241,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Celkem:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Stav na účtu
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Půjčka
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Max. půjčka: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximální půjčka: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Půjčit {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Půjčit si více
@@ -3790,7 +3790,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ovlivnit
 
 STR_ORDER_REFIT                                                 :{BLACK}Přestavět
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyber, na který druh nákladu přestavět. Ctrl+klik odstraní přestavbu z příkazu
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaticky přestavět
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Ve stanici přestavět
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Zvolit druh nákladu pro automatické přestavění pro tento příkaz. Ctrl+Click odebere z příkazu automatické přestavění. Automatické přestavění bude fungovat pouze pokud vozidlo lze přestavět.
 STR_ORDER_DROP_REFIT_AUTO                                       :Neměnný náklad
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupný náklad
@@ -3882,18 +3882,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(nevykládat a 
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(nevykládat a plně naložit čímkoli)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(nevykládat ani nenakládat)
 
-STR_ORDER_AUTO_REFIT                                            :(Automatické přestavění na {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Plně naložit vše s automatickým přestavěním na {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Plně naložit cokoliv a automaticky přestavět na {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Vyložit a naložit s automatickým přestavěním na {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Vyložit a počkat na plné naložení s automatickým přestavěním na {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Vyložit a počkat na naložení čehokoliv s automatickým přestavěním na {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Přeložit a naložit s automatickým přestavěním na {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Přeložit a počkat na plné naložení s automatickým přestavěním na {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Přeložit a počkat na naložení čehokoliv s automatickým přestavěním na {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Nevykládat a naložit s automatickým přestavěním na {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nevykládat a počkat na plné naložení s automatickým přestavěním na {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nevykládat a počkat na plné naložení čehokoliv s automatickým přestavěním na {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Přestavění na {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Plně naložit vše s přestavěním na {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Plně naložit cokoliv a přestavět na {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Vyložit a naložit s přestavěním na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Vyložit a počkat na plné naložení s přestavěním na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Vyložit a počkat na naložení čehokoliv s přestavěním na {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Přeložit a naložit s přestavěním na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Přeložit a počkat na plné naložení s přestavěním na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Přeložit a počkat na naložení čehokoliv s přestavěním na {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nevykládat a naložit s přestavěním na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nevykládat a počkat na plné naložení s přestavěním na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nevykládat a počkat na plné naložení čehokoliv s přestavěním na {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :dostupný náklad
 
@@ -3919,7 +3919,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní
 STR_TIMETABLE_NO_TRAVEL                                         :Nikam nejet
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Jet do (automatický; jizdní řád podle následujícího ručního příkazu)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Jet maximálně {2:VELOCITY} (mimo jízdní řád)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Jet (mimo jízdní řád) maximální rychlostí {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Jeď {STRING} a maximálně {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}

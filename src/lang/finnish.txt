@@ -1072,7 +1072,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus 
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tyyppi:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rajaa alla olevaa listaa ja näyttää vain muutetut asetukset
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rajaa alla olevaa listaa ennalta määritellyillä suodattimilla
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Perusasetukset
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Lisäasetukset
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Kehittyneet asetukset / kaikki asetukset
@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Valitse, kuinka
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Rakentaminen rinteisiin ja rannikolle sallittu: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Mikäli käytössä, ratoja ja asemia voidaan rakentaa useimmille rinteille. Mikäli pois käytöstä, niitä voidaan rakentaa vain radalle sopivaan maastoon joka ei vaadi perustuksia
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sallii maaston muokkaamisen rakennusten ja ratojen alta tuhoamatta niitä
 STR_CONFIG_SETTING_CATCHMENT                                    :Realistisemman kokoiset vaikutusalueet: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Erityyppisillä asemilla ja lentokentillä on eri kokoiset vaikutusalueet
@@ -1306,7 +1306,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Näkymän tasai
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Hallitse miten päänäkymä siirtyy valittuun paikkaan karttaa klikattaessa tai käytettäessä komentoa joka muuttaa näkymän sijaintia. Mikäli käytössä, päänäkymä siirtyy uuteen sijaintiin pehmeäesti, muutoin se hyppää suoraan valittuun sijaintiin
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Näytä etäisyydet ja korkeuserot vedettäessä rakennustoimintojen aikana
-STR_CONFIG_SETTING_LIVERIES                                     :Näytä yhtiön tunnukset: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Näytä kulkuneuvotyypille ominaiset tunnukset: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Hallitse kulkuneuvokohtaisten tunnusten käyttöä (yhtiökohtaisten tunnusten sijaan)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ei yhtään
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma yhtiö
@@ -1355,7 +1355,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ei mitkään to
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kaikki ei-rakennustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kaikki paitsi maastonmuokkaustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kaikki toiminnot
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Edistynyt ajoneuvolista: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Käytä ryhmiä kulkuneuvolistassa: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Salli kehittyneiden kulkuneuvolistojen käyttö kulkuneuvojen ryhmittelyssä
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lastausilmaisimet: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Määritä näytetäänkö lastausilmaisimet kulkuneuvojen yläpuolella lastatessa ja purettaessa rahtia
@@ -1370,7 +1370,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Ratatyyppi, jok
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Näytä varatut raiteet: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Näytä reittivaraukset raiteilla: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Värjää varatut rataosuudet eri värillä. Tämä auttaa opastimien ja risteysten vianetsinnässä
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pidä rakennustyökalut aktiivisina käytön jälkeen: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pidä siltojen, tunneleiden, jne. rakennustyökalut käytössä käytön jälkeen
@@ -3691,8 +3691,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Muuta ko
 
 STR_ORDER_REFIT                                                 :{BLACK}Sovita
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Valitse mihin rahtityyppiin tämä käsky sovittaa. Ctrl+Klik poistaa sovituskäskyn
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaattinen sovitus
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Valitse tällä määräyksellä automaattisesti sovitettava rahtityyppi. Ctrl+Klik poistaaksesi sovitusmääräyksen. Automaattinen sovitus suoritetaan vain, jos kulkuneuvo sallii sen.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Uudelleensovitus asemalla
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Valitse tällä määräyksellä sovitettava rahtityyppi. Ctrl+Klik poistaaksesi sovitusmääräyksen. Sovitus suoritetaan vain, jos kulkuneuvo sallii sen.
 STR_ORDER_DROP_REFIT_AUTO                                       :Määrätty rahti
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Saatavilla oleva rahti
 
@@ -3783,18 +3783,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei lastin purk
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purkua, mutta odota minkä tahansa lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei purkua eikä lastausta)
 
-STR_ORDER_AUTO_REFIT                                            :(Sovita automaattisesti rahdille {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Täysi lasti ja automaattinen sovitus rahdille {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Täysi lasti mitä tahansa rahtia sekä sovita automaattisesti rahdille {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Pura ja ota rahti sekä automaattinen sovitus rahdille {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Pura ja odota täyttä lastia sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Sovita rahdille {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Täysi lasti ja sovitus rahdille {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Täysi lasti mitä tahansa rahtia sekä sovita rahdille {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Pura ja ota rahti sekä sovita rahdille {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Pura ja odota täyttä lastia sekä sovita rahdille {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Pura ja odota mitä tahansa täyttä lastia sekä sovita rahdille {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Siirrä ja ota rahti sekä sovita automaattisesti rahdille {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Siirrä ja odota täyttä lastia sekä sovita automaattisesti rahdille {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Siirrä ja odota mitä tahansa täyttä lastia sekä sovita automaattisesti rahdille {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei purkua ja ota rahti sekä sovita automaattisesti rahdille {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei purkua ja odota täyttä lastia sekä sovita automaattisesti rahdille {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei purkua ja odota mitä tahansa täyttä lastia sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Siirrä ja ota rahti sekä sovita rahdille {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Siirrä ja odota täyttä lastia sekä sovita rahdille {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Siirrä ja odota mitä tahansa täyttä lastia sekä sovita rahdille {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei purkua ja ota rahti sekä sovita rahdille {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei purkua ja odota täyttä lastia sekä sovita rahdille {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei purkua ja odota mitä tahansa täyttä lastia sekä sovita rahdille {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :saatavilla oleva rahti
 

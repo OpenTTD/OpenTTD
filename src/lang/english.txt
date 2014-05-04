@@ -3820,7 +3820,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetabl
 STR_TIMETABLE_NO_TRAVEL                                         :No travel
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Travel (automatic; timetabled by next manual order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel with at most {2:VELOCITY} (not timetabled)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel (not timetabled) with at most {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING1}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Travel for {STRING1} with at most {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING1}
