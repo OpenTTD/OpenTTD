@@ -3795,9 +3795,13 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataul
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen käskyn mukaisesti)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje enimmillään {2:VELOCITY} (ei aikataulutettu)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje (ilman aikataulua) enimmillään {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Kulje kohteeseen {STRING} enintään {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Kulje ({STRING}, ei aikataulua)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Kulje ({STRING}, ei aikataulua) enimmillään {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(pysy {STRING}, ei aikataulua)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(matkusta {STRING}, ei aikataulua)
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} päivä{P "" ä}

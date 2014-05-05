@@ -1133,7 +1133,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Vállalat beál
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategória:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Típus:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Leszűkíti a listát a módosított értékekkel rendelkező opciókra
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Leszűkíti a listát a megadott szűrők segítségével
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Alapbeállítások
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Haladó beállítások
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Szakértő beállítások / minden beállítás
@@ -1670,11 +1670,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikus (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Honosítás
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Megjelenés
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Megjelenítés
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Felület
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Általános
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Nézet
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Építkezés
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Hírüzenetek / Figyelmeztetések
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Vállalat
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Pénzügyek
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Járművek
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Korlátozások
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katasztrófák / Balesetek
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Térképgenerálás
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Környezet
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Önkormányzatok
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Települések
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gazdasági épületek
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rakományok szétosztása (úticélok)
@@ -3811,11 +3823,11 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ki nem rakodá
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nincs ki- és berakodás)
 
 STR_ORDER_AUTO_REFIT                                            :(Átalakítás {STRING} szállítására)
-STR_ORDER_FULL_LOAD_REFIT                                       :(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_FULL_LOAD_REFIT                                       :(Mindenből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_UNLOAD_REFIT                                          :(Kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Ki nem rakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Ki nem rakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_REFIT                                        :(Elszállítás, rakományfelvétel és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Elszállítás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Elszállítás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
@@ -3850,6 +3862,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Következő cé
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Menet {2:VELOCITY} max. sebességgel (nincs menetrend)
 STR_TIMETABLE_TRAVEL_FOR                                        :Menetidő: {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Menetidő: {STRING} {VELOCITY} max. sebességgel
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Menet ({STRING}ig, időzítetlen)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Menet ({STRING}ig, időzítetlen) {VELOCITY} max. sebességgel
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ottmarad {STRING}ig, időzítetlen)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} utazás, időzítetlen)
 STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING}ig
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :és a menetidő: {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} nap
