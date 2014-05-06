@@ -27,6 +27,7 @@
 #include "waypoint_base.h"
 #include "company_base.h"
 #include "order_backup.h"
+#include "cheat_type.h"
 
 #include "table/strings.h"
 
@@ -657,6 +658,7 @@ static void DeleteOrderWarnings(const Vehicle *v)
 	DeleteVehicleNews(v->index, STR_NEWS_VEHICLE_HAS_VOID_ORDER);
 	DeleteVehicleNews(v->index, STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY);
 	DeleteVehicleNews(v->index, STR_NEWS_VEHICLE_HAS_INVALID_ENTRY);
+	DeleteVehicleNews(v->index, STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY);
 }
 
 /**
@@ -1788,7 +1790,16 @@ void CheckOrders(const Vehicle *v)
 				const Station *st = Station::Get(order->GetDestination());
 
 				n_st++;
-				if (!CanVehicleUseStation(v, st)) problem_type = 3;
+				if (!CanVehicleUseStation(v, st)) {
+					problem_type = 3;
+				} else if (v->type == VEH_AIRCRAFT &&
+							(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
+							(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
+							_settings_game.vehicle.plane_crashes != 0 &&
+							!_cheats.no_jetcrash.value &&
+							problem_type == -1) {
+					problem_type = 4;
+				}
 			}
 		}
 
