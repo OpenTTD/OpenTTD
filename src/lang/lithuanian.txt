@@ -864,25 +864,32 @@ STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLAC
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} iš {COMPANY} pasiekė „{STRING}“ statusą!
 
 # Smallmap window
-STR_SMALLMAP_CAPTION                                            :{WHITE}Žemėlapis - {STRING}
+STR_SMALLMAP_CAPTION                                            :{WHITE}{STRING.ko} žemėlapis
 
-STR_SMALLMAP_TYPE_CONTOURS                                      :Kontūrai
+STR_SMALLMAP_TYPE_CONTOURS                                      :Izohipsės
+STR_SMALLMAP_TYPE_CONTOURS.ko                                   :Izohipsių
 STR_SMALLMAP_TYPE_VEHICLES                                      :Transporto priemonės
+STR_SMALLMAP_TYPE_VEHICLES.ko                                   :Transporto priemonių
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Pramonės įmonės
-STR_SMALLMAP_TYPE_ROUTEMAP                                      :Krovinių Tiekimas
-STR_SMALLMAP_TYPE_ROUTES                                        :Keliai
+STR_SMALLMAP_TYPE_INDUSTRIES.ko                                 :Pramonės įmonių
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Krovinių srautai
+STR_SMALLMAP_TYPE_ROUTEMAP.ko                                   :Krovinių srautų
+STR_SMALLMAP_TYPE_ROUTES                                        :Transporto keliai
+STR_SMALLMAP_TYPE_ROUTES.ko                                     :Transporto kelių
 STR_SMALLMAP_TYPE_VEGETATION                                    :Augalija
-STR_SMALLMAP_TYPE_OWNERS                                        :Savininkai
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Rodyti žemės kontūrus žemėlapyje
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Rodyti transporto priemones žemėlapyje
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Rodyti gamyklas žemėlapyje
-STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Rodyti krovinių tiekimą žemėlapyje
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Rodyti transporto kelius žemėlapyje
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Rodyti augmeniją žemėlapyje
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Rodyti žemės savininkus žemėlapyje
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Paspaudus ant gamyklos tipo bus perjungiamas to tipo gamyklų rodymas. Ctrl+Paspaudimas neberodys visų išskyrus pasirinktą. Ctrl+Paspaudimas dar kartą rodys visas.
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Paspaudus ant įmonės perjungs įmonės turto rodymą. Ctrl+Paspaudimas panaikins visas įmones išskyrus pasirinktą. Ctrl+Paspaudimas dar kartą sugrąžins visas įmones.
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Spauskite ant krovinio, kad rodytų jo savybes. Ctrl+Click išjungia visus krovinius, išskyrus pasirinktus. Ctrl+Click pakartojus - įjungia juos
+STR_SMALLMAP_TYPE_VEGETATION.ko                                 :Augalijos
+STR_SMALLMAP_TYPE_OWNERS                                        :Nuosavybė
+STR_SMALLMAP_TYPE_OWNERS.ko                                     :Nuosavybės
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Rodyti izohipsių (vienodo aukščio linijų) žemėlapį
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Rodyti transporto priemonių žemėlapį
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Rodyti pramonės įmonių žemėlapį
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Rodyti krovinių srautų žemėlapį
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Rodyti transporto kelių žemėlapį
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Rodyti augmenijos žemėlapį
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Rodyti nuosavybės žemėlapį
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Spragtelėjus bus įjungiamas arba išjungiamas pasirinkto tipo pramonės įmonės atvaizdavimas žemėlapyje. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvaizduojamos/neatvaizduojamos visos kitos pramonės įmonės.
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Spragtelėjus bus įjungiamas arba išjungiamas pasirinktos kompanijos nuosavybės atvaizdavimas žemėlapyje. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvaizduojama/neatvaizduojama visų kitų kompanijų nuosavybė.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Spragtelėjus bus įjungiamas arba išjungiamas pasirinkto krovinio srautų atvaizdavimas žemėlapyje. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvaizduojami/neatvaizduojami visų kitų krovinių srautai.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Keliai
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Geležinkeliai
@@ -894,14 +901,14 @@ STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Laivai
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Lėktuvai
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Keliai
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Miškas
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Geležinkelio stotis
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Sunkvežimių pakrovimo aikštelė
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobusų stotis
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Oro uostas/Sraigtasparnių aikštelė
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Prieplauka
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Kalnuotas kraštas
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Ganykla
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Miškai
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Geležinkelio stotys
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Sunkvežimių krovos aikštelės
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobusų stotys
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Oro uostai/sraigtasparnių aikštelės
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Prieplaukos
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Kalnuoti kraštai
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Ganyklos
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Lygumos
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Laukai
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Medžiai
@@ -910,25 +917,25 @@ STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Nėra savininko
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Miestai
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Pramonės įmonės
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Dykuma
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sniegas
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Dykumos
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snieguoti kraštai
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Rodyti/slėpti miestų pavadinimus žemėlapyje
-STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti mažą žemėlapį į šitą vietą
+STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti žemėlapį esamoje vietoje
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Išjungti visas
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Įjungti visas
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Sniego aukštis
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Žemėlapyje nerodyti industrijų
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Žemėlapyje rodyti visas industrijas
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Rodyti arba slėpti heightmap
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nerodyti įmonės turto žemėlapyje
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Rodyti visą įmonės turtą žemėlapyje
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nerodyti krovinių žemėlapyje
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Rodyti visus krovinius žemėlapyje
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Nerodyti nieko
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Rodyti viską
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Rodyti izohipses
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nerodyti nei vienos pramonės įmonės
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Rodyti visas pramonės įmones
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Rodyti/slėpti izohipses
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nerodyti nei vienos kompanijos nuosavybės
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Rodyti visų kompanijų nuosavybę
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nerodyti jokių krovinių srautų
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Rodyti visų krovinių srautus
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Parodyti paskutinę žinutę ar spaudos pranešimą
@@ -1692,7 +1699,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Miestams leidž
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Įjungus šį nustatymą miestams bus galima statyti pervažas
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Leisti miestams kontroliuoti oro uostų triukšmo lygį: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Išjungus šį nustatymą, gali būti tik du oro uostai kiekviename mieste. Įjungus šį nustatymą, oro uostų skaičius mieste yra ribojamas pagal miesto triukšmo lygio palankumo, kurį nurodo gyventojų skaičius, oro uosto dydis bei atstumas
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :Naujų miestų kurimas žaidime: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Naujų miestų kūrimas žaidime: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Įjungiant šį nustatymą, žaidėjai gali įkurti naujus miestus žaidime
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Uždrausta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Leista
@@ -1815,11 +1822,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriniai (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizavimas
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vaizdas
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Bendros nuostatos
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Papildomi peržiūros langai
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstrukcijos
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. priemonės
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Žinios ir patarėjai
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Kompanija
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Apskaita
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transporto priemonės
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutas
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ribos
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofos ir incidentai
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Žemėlapio kūrimas
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Aplinka
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Valdžia
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miestai
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gamyklos
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Krovinių pasiskirstymas
@@ -4045,6 +4064,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kelionė (nėra
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Vykti ne didesniu, nei {2:VELOCITY} greičiu (kelionės trukmė nenustatyta)
 STR_TIMETABLE_TRAVEL_FOR                                        :Keliauti {STRING.ka}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Vykti {STRING} ne didesniu, nei {VELOCITY} greičiu
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Vykti ({STRING.ka}, neįtraukiant į tvarkaraštį)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Vykti ({STRING.ka}, neįtraukiant į tvarkaraštį) ne greičiau, nei {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stovėti {STRING.ka}, neįtraukti į tvarkaraštį)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(vykti {STRING.ka}, neįtraukiant į tvarkaraštį)
 STR_TIMETABLE_STAY_FOR                                          :ir pasilikti {STRING.ka}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ir keliauti {STRING.ka}
 STR_TIMETABLE_DAYS                                              :{G=mot}{COMMA} dien{P a os ų}
