@@ -1772,17 +1772,16 @@ void CheckOrders(const Vehicle *v)
 
 	/* Only check every 20 days, so that we don't flood the message log */
 	if (v->owner == _local_company && v->day_counter % 20 == 0) {
-		int n_st, problem_type = -1;
 		const Order *order;
-		int message = 0;
+		StringID message = INVALID_STRING_ID;
 
 		/* Check the order list */
-		n_st = 0;
+		int n_st = 0;
 
 		FOR_VEHICLE_ORDERS(v, order) {
 			/* Dummy order? */
 			if (order->IsType(OT_DUMMY)) {
-				problem_type = 1;
+				message = STR_NEWS_VEHICLE_HAS_VOID_ORDER;
 				break;
 			}
 			/* Does station have a load-bay for this vehicle? */
@@ -1791,14 +1790,14 @@ void CheckOrders(const Vehicle *v)
 
 				n_st++;
 				if (!CanVehicleUseStation(v, st)) {
-					problem_type = 3;
+					message = STR_NEWS_VEHICLE_HAS_INVALID_ENTRY;
 				} else if (v->type == VEH_AIRCRAFT &&
 							(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
 							(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
 							_settings_game.vehicle.plane_crashes != 0 &&
 							!_cheats.no_jetcrash.value &&
-							problem_type == -1) {
-					problem_type = 4;
+							message == INVALID_STRING_ID) {
+					message = STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY;
 				}
 			}
 		}
@@ -1808,22 +1807,19 @@ void CheckOrders(const Vehicle *v)
 			const Order *last = v->GetLastOrder();
 
 			if (v->orders.list->GetFirstOrder()->Equals(*last)) {
-				problem_type = 2;
+				message = STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY;
 			}
 		}
 
 		/* Do we only have 1 station in our order list? */
-		if (n_st < 2 && problem_type == -1) problem_type = 0;
+		if (n_st < 2 && message == INVALID_STRING_ID) message = STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS;
 
 #ifndef NDEBUG
 		if (v->orders.list != NULL) v->orders.list->DebugCheckSanity();
 #endif
 
 		/* We don't have a problem */
-		if (problem_type < 0) return;
-
-		message = STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS + problem_type;
-		//DEBUG(misc, 3, "Triggered News Item for vehicle %d", v->index);
+		if (message == INVALID_STRING_ID) return;
 
 		SetDParam(0, v->index);
 		AddVehicleAdviceNewsItem(message, v->index);
