@@ -811,13 +811,12 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} est en attente au dépôt
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} est en attente au hangar
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} a trop peu d'ordres dans son itinéraire
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} a un ordre vide
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} a des ordres en double
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} a une station invalide dans ses ordres
-# end of order system
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} a dans ses ordres un aéroport dont la piste est trop courte
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} devient vieux
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} devient très vieux
@@ -1068,7 +1067,9 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paramètre de j
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paramètre de compagnie (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de compagnie (enregistré dans la sauvegarde{NBSP}; affecte uniquement la compagnie actuelle)
 
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restreint la liste ci-dessous en ne montrant que les paramètres modifiés
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Catégorie{NBSP}:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type{NBSP}:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restreint la liste ci-dessous en utilisant des filtres prédéfinis
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Options de base
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Options avancées
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paramètres expert / Tous les paramètres
@@ -1082,6 +1083,10 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paramètres de 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paramètres de jeu (enregistrés dans les sauvegardes{NBSP}; affectent uniquement la partie actuelle)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paramètres de compagnie (enregistrés dans les sauvegardes{NBSP}; affectent uniquement les nouvelles parties)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paramètres de compagnie (enregistrés dans les sauvegardes{NBSP}; affectent uniquement la compagnie actuelle)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Afficher tous les résultats de la recherche en définissant{}la {SILVER}catégorie {BLACK}sur {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Afficher tous les résultats de la recherche en définissant{}le {SILVER}type {BLACK}sur {WHITE}tous les types
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Afficher tous les résultats de la recherche en définissant{}la{SILVER}catégorie {BLACK}sur {WHITE}{STRING} {BLACK}et le{SILVER} type {BLACK}sur {WHITE}tous les types
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Aucun -
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
@@ -1122,7 +1127,7 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désact
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude du conseil municipal envers la restructuration de la zone{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Définit comment le bruit et les dommages environnementaux des compagnies affectent leur réputation et leurs prochaines actions de constructions dans la zone
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc. (Autoslope){NBSP}: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc.{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Autoriser le terrassement sous les bâtiments et les voies sans les retirer
 STR_CONFIG_SETTING_CATCHMENT                                    :Autoriser des zones de desserte plus réalistes{NBSP}: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Les zones de desserte ont des tailles différentes selon les types de stations et d'aéroports
@@ -1282,7 +1287,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Défilement ré
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Contrôle comment la vue principale défile jusqu'à une position spécifique lors d'un clic sur la mini-carte ou pour atteindre un objet précis sur la carte. Si activé, la vue défile doucement, si désactivé elle saute directement à la cible
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Affiche les distances et les différences de hauteur lors des opérations de construction
-STR_CONFIG_SETTING_LIVERIES                                     :Affichage des livrées des compagnies{NBSP}: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Affichage des livrées spécifiques aux types de véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Contrôle l'utilisation des livrées spécifiques au type de véhicule (ou, au contraire, celles spécifiques à la compagnie)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Aucune
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propre compagnie
@@ -1326,7 +1331,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Aucune
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Toutes hors construction
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Toutes sauf celles modifiant le terrain
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Toutes
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utiliser la liste de véhicules avancée{NBSP}: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utiliser les groupes dans la liste de véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Active l'utilisation des listes de véhicule avancées pour grouper les véhicules
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utiliser les indicateurs de chargement{NBSP}: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Choisir si les indicateurs de chargement doivent être affichés au dessus des véhicules qui chargent ou déchargent
@@ -1341,7 +1346,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Type de rail à
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Premier disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Dernier disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Le plus utilisé
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Afficher les voies réservées{NBSP}: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Afficher les réservations de chemin sur les voies{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donne une couleur différente aux voies réservées pour aider à résoudre les problèmes de trains refusant d'entrer dans des blocs basés sur le chemin
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Conserver les outils de construction actifs après usage{NBSP}: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Garde les outils de construction de ponts, tunnels, etc. ouverts après usage
@@ -1491,7 +1496,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Autoriser les v
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Autoriser la construction des passages à niveau par les villes{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activer ce paramètre pour autoriser les villes à construire des passages à niveau
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permettre plus d'aéroports par ville, selon les nuisances sonores{NBSP}: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Avec ce paramètre désactivé, il peut y avoir deux aéroports dans chaque ville. Avec ce paramètre désactivé, le nombre d'aéroports dans une ville est limité par le bruit qu'elle accepte, celui-ci dépend de la population, de la taille de l'aéroport et de la distance
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Avec ce paramètre désactivé, il peut y avoir deux aéroports dans chaque ville. Avec ce paramètre activé, le nombre d'aéroports dans une ville est limité par le bruit qu'elle accepte, celui-ci dépend de la population, de la taille de l'aéroport et de la distance
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fonder des villes en cours de jeu{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activer ce paramètre permet aux joueurs de fonder de nouvelles villes dans la partie
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Interdit
@@ -1554,7 +1559,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symétrique" s
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Type de distribution pour les cargaisons de classe ARMOURED{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de cargaison ARMOURED contient des biens de valeur dans les climats tempéré, des diamants dans le climat subtropical, et de l'or dans le climat subarctique. Les NewGRFs peuvent changer ça. "symétrique" signifie qu'autant de ces cargaisons iront d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de ces cargaisons peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour ces cargaisons. Il est conseillé de choisir "asymétrique" ou "manuel" dans le climat subarctique, car les banques n'enverront pas d'or en retour vers les mines d'or. Dans les climats tempéré et subtropical, on peut choisir aussi "symétrique", car les banques peuvent renvoyer en retour des biens de valeurs aux banques qui en envoient à l'origine.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Type de distribution pour les autres classes de cargaison{NBSP}: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symétrique" signifie qu'autant de cargaison ira d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de cargaison peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour la cargaison. Le mieux ici est logiquement de choisir "asymétrique" ou "manuel".
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymétrique" signifie qu'une quantité arbitraire de cargaison peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour la cargaison.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Précision de la distribution{NBSP}: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Plus ce réglage est élevé, plus la réactualisation du graphique de distribution occupe de temps CPU. S'il est trop élevé, cela peut produire de la latence ("lag"). Au contraire, plus la valeur est basse, plus la distribution sera imprécise et l'on risque de voir des cargaisons ne pas aller vers la destination attendue.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effet de la distance sur la demande{NBSP}: {STRING}
@@ -1601,14 +1606,26 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrique (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localisation
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effets sonores
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Graphiques
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Son
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Général
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vues
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construction
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Informations / Annonces
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Compagnie
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Comptabilité
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Véhicules
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physique
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routage
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitations
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Catastrophes / Accidents
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Création du terrain
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Environnement
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autorités
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Villes
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industries
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribution des cargaisons
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribution des marchandises
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Compétiteurs
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence artificielle
 
@@ -1888,13 +1905,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protége
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Non
 STR_NETWORK_START_SERVER_ADVERTISED                             :Oui
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nombre de clients max.{NBSP}:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nombre de clients maximum{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagnie{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max. compagnies{NBSP}:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Nombre de compagnies maximum{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limiter le serveur à un certain nombre de compagnies
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spectateur{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max. spectateurs{NBSP}:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Nombre de spectateurs maximum{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limiter le serveur à un certain nombre de spectateurs
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Langue utilisée{NBSP}:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur
@@ -2628,6 +2645,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Sauvegar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sauvegarder la partie en cours avec le nom choisi
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Charger
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Charger la partie sélectionnée
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Charger la carte d'altitude sélectionnée
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Détails
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Pas d'informations disponibles
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}{NBSP}: {WHITE}{STRING}
@@ -2837,6 +2855,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Modules ma
 STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF "{0:STRING}" peut provoquer des erreurs de synchronisation et/ou des plantages
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour "{1:ENGINE}" en dehors du dépôt
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour "{1:ENGINE}" en dehors du dépôt
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Il a changé la capacité pour '{1:ENGINE}' hors d'un dépôt ou d'un réaménagement
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train "{VEHICLE}" appartenant à "{COMPANY}" a une longueur invalide. Cela est probablement dû à des problèmes avec des NewGRFs, et peut provoquer des erreurs de synchronisation ou planter le jeu.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Le module NewGRF "{0:STRING}" fournit une information incorrecte
@@ -3250,12 +3269,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Véhicules rout
 STR_GROUP_DEFAULT_SHIPS                                         :Navires non groupés
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aéronefs non groupés
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groupes - Cliquer sur un groupe pour lister tous les véhicules de ce groupe
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groupes - Cliquer sur un groupe pour lister tous les véhicules de ce groupe. Glisser et déposer les groupes pour les hiérarchiser.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Créer un groupe de véhicules
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Supprimer le groupe sélectionné
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renommer le groupe sélectionné
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Cliquer pour protéger ce groupe contre l'auto-remplacement global
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Supprimer un groupe
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Êtes-vous sûr de vouloir supprimer ce groupe et ses descendants{NBSP}?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Ajouter des véhicules partagés
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Retirer tous les véhicules
@@ -3645,8 +3666,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Modifier
 
 STR_ORDER_REFIT                                                 :{BLACK}Réaménager
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Choisir pour quelle cargaison réaménager avec cet ordre.{}Ctrl-clic pour retirer l'instruction de réaménagement.
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Réaménagement automatique
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Sélectionner pour quel type de cargaison cet ordre va réaménager automatiquement.{}Ctrl-Clic pour retirer l'instruction de réaménagement. Le réaménagement automatique ne sera fait que si le véhicule l'autorise.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Réaménagement aux stations
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Sélectionner pour quel type de cargaison cet ordre va réaménager.{}Ctrl-Clic pour retirer l'instruction de réaménagement. Le réaménagement aux stations ne sera fait que si le véhicule l'autorise.
 STR_ORDER_DROP_REFIT_AUTO                                       :Cargaison fixée
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargaison disponible
 
@@ -3737,18 +3758,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne pas déchar
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne pas décharger et attendre pleine charge pour un seul type)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne pas décharger et ne pas charger)
 
-STR_ORDER_AUTO_REFIT                                            :(Réaménager automatiquement pour {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Charger complétement avec réaménagement automatique pour {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Charger complétement pour un seul type avec réaménagement automatique pour {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Décharger et charger avec réaménagement automatique pour {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Décharger et attendre pleine charge avec réaménagement automatique pour {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Décharger et attendre pleine charge pour un seul type avec réaménagement automatique pour {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transférer et charger avec réaménagement automatique pour {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transférer et attendre pleine charge avec réaménagement automatique pour {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transférer et attendre pleine charge pour un seul type avec réaménagement automatique pour {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ne pas décharger et charger avec réaménagement automatique pour {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ne pas décharger et attendre pleine charge avec réaménagement automatique pour {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne pas décharger et attendre pleine charge pour un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Réaménager pour {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Charger complétement avec réaménagement pour {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Charger complétement pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Décharger et charger avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Décharger et attendre pleine charge avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Décharger et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transférer et charger avec réaménagement pour {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transférer et attendre pleine charge avec réaménagement pour {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transférer et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Ne pas décharger et charger avec réaménagement pour {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ne pas décharger et attendre pleine charge avec réaménagement pour {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne pas décharger et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :cargaison disponible
 
@@ -3774,9 +3795,13 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire 
 STR_TIMETABLE_NO_TRAVEL                                         :Pas de voyage
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Voyager (automatique{NBSP}; horaire au prochain ordre manuel)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaire)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Déplacement à {2:VELOCITY} max. (non planifié)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Voyager (non planifié) à {2:VELOCITY} max.
 STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Déplacement de {STRING} à {VELOCITY} max.
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Voyager pendant {STRING} à {VELOCITY} max.
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Voyager (pendant {STRING}, non planifié)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Voyager (pendant {STRING}, non planifié) à {VELOCITY} max.
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(rester pendant {STRING}, non planifié)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(voyager pendant {STRING}, non planifié)
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} jour{P "" s}
@@ -4230,6 +4255,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... il v
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossible de créer le groupe...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Impossible de supprimer ce groupe...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Impossible de renommer le groupe...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Impossible de définir le groupe parent...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Impossible de retirer tous les véhicules de ce groupe...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Impossible d'ajouter le véhicule à ce groupe...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossible d'ajouter les véhicules partagés à ce groupe...

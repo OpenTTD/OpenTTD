@@ -955,13 +955,12 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}ТС «{
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}ТС «{VEHICLE}» ждёт в доке
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}ТС «{VEHICLE}» ждёт в ангаре
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}У ТС «{VEHICLE}» мало заданий
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}У ТС «{VEHICLE}» недействительное задание
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}У ТС «{VEHICLE}» повторяющиеся задания
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}У ТС «{VEHICLE}» некорректный пункт назначения
-# end of order system
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} направлен{G "" а о ы} в аэропорт со слишком короткой полосой
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}ТС «{VEHICLE}» устарело
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}ТС «{VEHICLE}» сильно устарело
