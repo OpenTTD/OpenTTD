@@ -960,7 +960,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}У ТС 
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}У ТС «{VEHICLE}» недействительное задание
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}У ТС «{VEHICLE}» повторяющиеся задания
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}У ТС «{VEHICLE}» некорректный пункт назначения
-STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} направлен{G "" а о ы} в аэропорт со слишком короткой полосой
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} направлен{G 0 "" а о ы} в аэропорт со слишком короткой полосой
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}ТС «{VEHICLE}» устарело
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}ТС «{VEHICLE}» сильно устарело
