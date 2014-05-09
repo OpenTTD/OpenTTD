@@ -869,14 +869,17 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}{STRING.
 STR_SMALLMAP_TYPE_CONTOURS                                      :Izohipsės
 STR_SMALLMAP_TYPE_CONTOURS.ko                                   :Izohipsių
 STR_SMALLMAP_TYPE_VEHICLES                                      :Transporto priemonės
+STR_SMALLMAP_TYPE_VEHICLES.kas                                  :Transporto priemonės
 STR_SMALLMAP_TYPE_VEHICLES.ko                                   :Transporto priemonių
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Pramonės įmonės
+STR_SMALLMAP_TYPE_INDUSTRIES.kas                                :Pramonės įmonės
 STR_SMALLMAP_TYPE_INDUSTRIES.ko                                 :Pramonės įmonių
 STR_SMALLMAP_TYPE_ROUTEMAP                                      :Krovinių srautai
 STR_SMALLMAP_TYPE_ROUTEMAP.ko                                   :Krovinių srautų
 STR_SMALLMAP_TYPE_ROUTES                                        :Transporto keliai
 STR_SMALLMAP_TYPE_ROUTES.ko                                     :Transporto kelių
 STR_SMALLMAP_TYPE_VEGETATION                                    :Augalija
+STR_SMALLMAP_TYPE_VEGETATION.kas                                :Augalija
 STR_SMALLMAP_TYPE_VEGETATION.ko                                 :Augalijos
 STR_SMALLMAP_TYPE_OWNERS                                        :Nuosavybė
 STR_SMALLMAP_TYPE_OWNERS.ko                                     :Nuosavybės

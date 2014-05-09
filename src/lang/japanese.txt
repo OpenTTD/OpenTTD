@@ -810,13 +810,12 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}は造船所に停泊しました
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}は格納庫に駐機しました
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}に十分な指令がありません
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}に無効な指令があります
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE}に重複した指令があります
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}の指令に無効な停留施設があります
-# end of order system
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE}の命令中に滑走路が短すぎる空港が含まれています
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE}は老朽化が進んでいます
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}はひどく老朽化しています
@@ -1069,7 +1068,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :会社設定(�
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}カテゴリ:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}種類:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}設定のレベルでフィルタリングします。標準の設定と異なるもののみ表示することもできます
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}定義されたフィルタでリストをフィルタリングします。
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :詳細設定
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :拡張設定(全設定)
@@ -1078,11 +1077,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :新規ゲーム
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}設定のジャンルでフィルタリングします
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :全設定
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :クライアント設定(変更はセーブされません)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :ゲーム設定(ニューゲーム時に影響)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :ゲーム設定(今のゲームにのみ影響)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :会社設定(ニューゲーム時に影響)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :会社設定(今の会社だけに影響)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :クライアント設定(保存ゲーム内に記録無・全ゲームに影響)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :ゲーム設定(全保存ゲーム内に記録・ニューゲーム時に影響)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :ゲーム設定(保存ゲーム内に記録・今のゲームにのみ影響)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :会社設定(全保存ゲーム内に記録・ニューゲーム時に影響)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :会社設定(保存ゲーム内に記録・今の会社だけに影響)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}設定による検索結果を全て表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}設定による検索結果を全て表示{}{SILVER}種類{BLACK}別{WHITE}All setting types
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}設定による検索結果を全て表示{}{SILVER}カテゴリ{BLACK}別{WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
@@ -1606,11 +1605,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :メートル法
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国際単位系 (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}多国籍対応
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}グラフィック
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}効果音
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}インターフェース
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}一般
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}画面表示
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}建設
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}ニュース/アドバイス
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}会社
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}会計
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}輸送機器
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}物理モデル
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}経路構築
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}制限
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}災害/事故
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}マップ生成
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}環境
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}地方自治体
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}街
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}産業
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}貨物配送先
@@ -2693,13 +2704,13 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}平地�
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}平地高度を変更
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}地形作成中
+STR_GENERATION_WORLD                                            :{WHITE}マップ生成中
 STR_GENERATION_ABORT                                            :{BLACK}キャンセル
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}地形作成を中止
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}地形作成をキャンセルしてもよろしいですか?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}マップ生成を中止
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}マップ生成をキャンセルしてもよろしいですか?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}%完了
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}地形作成中
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}マップ生成
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}河川を生成中
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台/電波塔配置中
@@ -3257,12 +3268,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :グループ化
 STR_GROUP_DEFAULT_SHIPS                                         :グループ化されていない船舶
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :グループ化されていない航空機
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}グループ - クリックするとこのグループに所属する全車両一覧を表示します
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}グループ - クリックするとこのグループに所属する全車両一覧を表示します。ドラック&ドロップで順序を並べ替えられます
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}新規のグループを作成します
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}選択したグループを削除します
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}選択したグループの名称を変更します
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}このグループ内の輸送機器を全体を対象とする自動交換の際も交換されないようにします
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}グループを削除
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}このグループとそれに所属する全てを削除してもよろしいですか?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :共有輸送機器を追加
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :全輸送機器を削除
@@ -3784,6 +3797,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :該当区間を
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :最高速度{2:VELOCITY}で該当区間を運行 (ダイヤ設定無)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}で該当区間を運行
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING}で該当区間を運行(最高速度{VELOCITY})
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :運行({0:STRING}・ダイヤ設定無)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :最高速度{1:VELOCITY}で運行({0:STRING}・ダイヤ設定無)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :({STRING}停車・ダイヤ設定無)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING}で運行・ダイヤ設定無)
 STR_TIMETABLE_STAY_FOR                                          :して{STRING}停車
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :して{STRING}運行
 STR_TIMETABLE_DAYS                                              :{COMMA}日
@@ -4237,6 +4254,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}すで�
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}グループを作成できません
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}グループを削除できません
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}グループ名を変更できません
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}親グループを設定できません
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}グループ内の全車両を移動できません
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}この車両をこのグループに追加できません
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}グループに共有車両を追加できません

@@ -1194,7 +1194,7 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vypne alebo zap
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj mestskej správy k zmenám v ich oblasti: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Zvoľte ako veľmi ovplyvňuje hluk a poškodzovanie prostredia spoločnosťami ich hodnotenie v meste a ich budúce možnosti výstavby v oblasti vlastnenej mestom
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Povoliť úpravy terénu pod budovami, koľajami, a pod.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Povoliť úpravy terénu pod budovami, koľajami, atď.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Umožňuje úpravy terénu pod budovami a traťami bez potreby ich odstránenia
 STR_CONFIG_SETTING_CATCHMENT                                    :Povoliť realistickejšiu veľkosť oblasti pokrytia: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Má úchytné plochy rôznych veľkostí pre rôzne typy staníc a letísk
@@ -1318,7 +1318,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Hrúbka čiar v
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generátor uzemia: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Pôvodný
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximálna vzdialenosť rafinérií od okrajov mapy: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximálna vzdialenosť od okrajov mapy pre rafinérie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinérie ropy sú vybudované len na okrajoch mapy, tzn na pobreží pri ostrovných mapách
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Úroveň čiary snehu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitosť terénu (len pre TerraGenesis) : {STRING}
@@ -1398,7 +1398,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :žiadne akcie
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :všetky nekonštrukčné akcie
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :všetky akcie okrem úpravy terénu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :všetky činnosti
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Použit vylepšený zoznam vozidiel: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Použit skupiny v zozname vozidiel: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Povolí použitie rozšíreného zoznamu vozidiel pre skupiny
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Zobraziť ukazovatele nakladania/vykladania: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Zvoľte či indikátory nakladania/vykladania budú zobrazené nad vozidlom.
@@ -1439,9 +1439,9 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Prehrávať zuk
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázať výstavbu infraštruktúry ak nieje dostupné žiadne vhodné vozidlo: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ak je zapnuté, infraštruktúra je k dispozícii len ak su k nej pripojené vozidlá. Toto predchádza plýtvaniu peniazmi a časom pri nepoužiteľnej infraštruktúre.
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximálny počet vlakov hráča: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximálny počet vlakov na spoločnosť: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximálny počet vlakov ktorý môže spoločnosť vlastniť.
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximálny počet automobilov hráča: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximálny počet automobilov na spoločnosť: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximálny počet automobilov ktorý môže spoločnosť vlastniť.
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maximálny počet lietadiel hráča: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximálny počet lietadiel ktorý môže spoločnosť vlastniť.
@@ -3825,7 +3825,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nevykladaj a �
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a čakaj na plné naloženie akéhokoľvek nákladu)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Žiadné vykládanie a nakládanie)
 
-STR_ORDER_AUTO_REFIT                                            :(Automaticky naplň do {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Upraviť na {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Plné naloženie s automatickým nakladaním do {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Plné naloženie akéhokoľvek nákladu s automatickým nakladaním do {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Vyložiť a zobrať náklad s automatickým nakladaním do {STRING})
