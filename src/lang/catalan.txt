@@ -811,13 +811,12 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} està esperant a la drassana
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} està esperant a l'hangar
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} té massa poques ordres a l'agenda
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} té una ordre buida
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} té ordres duplicades
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} té una estació invàlida en les seves ordres
-# end of order system
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} té en les seves ordres un aeroport amb pista d'aterratge massa curta
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} s'està fent vell
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} s'està fent molt vell
@@ -1154,9 +1153,9 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permetre afegir parts a una estació sense contacte directe amb les parts existents. Fa falta Ctrl + Clic, mentre és col·loquen les peces noves
 STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud del pont: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud dels ponts: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de ponts
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud del túnel: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud dels túnels: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud màxima per a construir tunels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mètode de construcció de la indústria primària manual: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Mètode de finançament d'indústria primària. 'cap' significa que no serà possible fundar-ne cap, 'prospecció' significa que serà possible fundar-ne, però la construcció succeirà en un lloc aleatori del mapa i també podria passar que fracassi, 'com les altre indústries' significa que les indústries de matèries primeres poden ser construides a qualsevol lloc per les companyies igual que les indústries manufactureres
@@ -1181,7 +1180,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Situa en quin l
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a l'extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més llunyà
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avis quan el ratolí és al marc del programa: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avís quan el ratolí és al marc del programa: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, les vistes començaran a desplaçar-se quan el ratolí sigui a prop la vora de la finestra
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivat
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal, només pantalla completa
@@ -1275,7 +1274,7 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :Extensió màxi
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Àrea màxima en què les parts d'una sola estació es poden estendre. Un valor alt farà alentir el joc
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Revisions automàtiques dels helicòpters als heliports: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Inspecciona els helicòpters cada vegada que aterrin, encara que no hi hagi hangar a l'aeroport
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quan s'obre la barra d'eines de construcció per un tipus de transport, també s'obre la barra d'eines de remodelació del paisatge
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color del terra utilitzat al mapa petit: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color del terreny al mapa petit
@@ -1386,7 +1385,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactiva trens
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activant aquesta opció fa que sigui impossible construir trens als jugadors IA de l'ordinador
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactiva automòbils per a les IA de l'ordinador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activant aquesta opció fa que sigui impossible construir automòbils als jugadors IA de l'ordinador
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactiva els avions per a les IA de l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactiva avions per a les IA de l'ordinador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activant aquesta opció fa que sigui impossible construir avions als jugadors IA de l'ordinador
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva vaixells per a les IA de l'ordinador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activant aquesta opció fa que sigui impossible construir vaixells als jugadors IA de l'ordinador
@@ -1427,13 +1426,13 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del pr
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra les notícies quan arribi el primer vehicle a una estació d'un competidor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra un diari quan passin accidents i desastres
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostra les notícies de companyies noves que es creen i de companyies en risc de fer fallida
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostra les notícies d'aparicions d'indústries noves
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tancament d'indústries: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostra les notícies d'indústries que tanquen
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'Economia: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'economia: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostra un diari sobre els canvis globals en l'economia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Canvis de producció de les indústries aprovisionades per la companyia: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostra les notícies de canvis als nivells de producció de les indústries proveïdes per la companyia pròpia
@@ -1449,7 +1448,7 @@ STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'adm
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra missatges sobre les estacions que canviïn l'acceptació d'alguna càrrega
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencions: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostra les notícies d'esdeveniments relacionats amb subsidis
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació general: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostra les notícies d'esdeveniments generals, com ara compra de drets exclusius o finançar la reconstrucció de carrers
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desactivat
@@ -1611,6 +1610,7 @@ STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gràfic
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectes de so
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfície
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Finestres de visualització
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcció
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Notícies / Consells
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Companyia
@@ -1620,6 +1620,8 @@ STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Lleis f
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Recorreguts
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitacions
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Accidents
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generació del món
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Interacció amb l'entorn
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoritats
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Poblacions
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Indústries
@@ -3793,9 +3795,13 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari -
 STR_TIMETABLE_NO_TRAVEL                                         :Sense viatge
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viatge (automàtic; programat per la següent ordre manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viatja com a molt a {2:VELOCITY} (sense horari)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viatja (sense horari) com a molt a {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viatja durant {STRING} com a molt a {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viatja (durant {STRING}, sense horari)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viatja (durant {STRING}, sense horari) com a molt a {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(quedar-s'hi durant {STRING}, sense horari)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viatja durant {STRING}, sense horari)
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} di{P a es}
