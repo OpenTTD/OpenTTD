@@ -1609,6 +1609,7 @@ STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gráfic
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de sonido
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaz
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Ventanas de visualización
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcción
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Noticias / Consejos
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Empresa
@@ -1618,6 +1619,7 @@ STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Leyes f
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Encaminamiento
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitaciones
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Accidentes
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generación de mundo
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pueblos
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
@@ -2641,6 +2643,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Guardar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guarda el juego actual, usando el nombre seleccionado
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Cargar
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Cargar la partida seleccionada
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Cargar el mapa de alturas seleccionado
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalles de la Partida
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hay información disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3271,6 +3274,7 @@ STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renombra
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click para proteger este grupo del auto reemplazado global
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Borrar Grupo
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}¿Está seguro de querer borrar este grupo y todos sus subgrupos?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Añadir vehículos con órdenes compartidas
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos los vehículos
@@ -4245,6 +4249,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡ya
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}No se puede crear grupo...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}No se puede borrar grupo...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}No se puede renombrar grupo...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}No se puede establecer la jerarquía de grupos...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}No se pueden quitar todos los vehículos de este grupo...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}No se puede añadir el vehículo a este grupo...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}No se pueden añadir vehículos compartidos al grupo...

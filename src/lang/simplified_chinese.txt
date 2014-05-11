@@ -810,13 +810,12 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} 正在船坞待命
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在机库待命
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} 的调度计划太少
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}的调度计划中有无效调度命令
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} 有重复调度命令
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}的调度计划有无效的车站
-# end of order system
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} 的计划列表中有机场跑道太短不足及起降
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} 即将达到报废年限
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} 已经达到报废年限
@@ -1270,7 +1269,7 @@ STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :由水面场景
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :车站最大占地： {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :车站占地上限格数： {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :设置车站最大占地面积，注意：太大影响游戏速度
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升机在降落平台自动保养：{STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :直升飞机在降落平台自动保养，即使机场没有机库
@@ -1606,11 +1605,19 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :公制（米）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国际单位制（米）
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地化
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音响效果
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}图形
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音效
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}界面
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}视点
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}建设
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}公司
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}车辆
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}物理
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}经由
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}限制
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}灾难/事故
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}生成地图
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}环境保护
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}城镇
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}工业设施
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}货物分配
@@ -3263,11 +3270,13 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}删除�
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}重命名该分组
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}点击以停止本组自动更新功能的使用
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}删除分组
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}确定要删除这个分组及其下级分组么?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :添加共享车辆
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车辆
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}移除分组
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}重命名分组
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :购买普通列车
@@ -3784,6 +3793,8 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶 (无时�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :途中行驶 {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :开往{STRING} ，限速为 {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(停靠 {STRING}, 无时间表)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(驶往 {STRING}, 无时间表)
 STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} 天
@@ -4237,6 +4248,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}你已�
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}无法新建分组……
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}无法删除分组……
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}无法重命名分组……
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}无法移动分组...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}无法从该组移除所有运输工具
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}无法添加运输工具到该组……
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}无法添加共享指令的运输工具到该组……
