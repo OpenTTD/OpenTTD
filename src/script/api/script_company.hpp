@@ -145,7 +145,7 @@ public:
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if the loan could be set to your requested amount.
 	 */
-	static bool SetLoanAmount(int32 loan);
+	static bool SetLoanAmount(Money loan);
 
 	/**
 	 * Sets the minimum amount to loan, i.e. the given amount of loan rounded up.
@@ -155,7 +155,7 @@ public:
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if we could allocate a minimum of 'loan' loan.
 	 */
-	static bool SetMinimumLoanAmount(int32 loan);
+	static bool SetMinimumLoanAmount(Money loan);
 
 	/**
 	 * Gets the amount your company have loaned.
@@ -194,10 +194,12 @@ public:
 	 * @param expenses_type The account in the finances window that will register the cost.
 	 * @game @pre No ScriptCompanyMode active in scope.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre delta >= -2**31
+	 * @pre delta <   2**31
 	 * @note You need to create your own news message to inform about costs/gifts that you create using this command.
 	 * @api -ai
 	 */
-	static bool ChangeBankBalance(CompanyID company, int32 delta, ExpensesType expenses_type);
+	static bool ChangeBankBalance(CompanyID company, Money delta, ExpensesType expenses_type);
 
 	/**
 	 * Get the income of the company in the given quarter.
@@ -314,9 +316,11 @@ public:
 	 * Set the minimum money needed to autorenew an engine for your company.
 	 * @param money The new minimum required money for autorenew to work.
 	 * @return True if autorenew money has been modified.
+	 * @pre money >= 0
+	 * @pre money <  2**32
 	 * @api -game
 	 */
-	static bool SetAutoRenewMoney(uint32 money);
+	static bool SetAutoRenewMoney(Money money);
 
 	/**
 	 * Return the minimum money needed to autorenew an engine for a company.
@@ -324,7 +328,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The minimum required money for autorenew to work.
 	 */
-	static uint32 GetAutoRenewMoney(CompanyID company);
+	static Money GetAutoRenewMoney(CompanyID company);
 };
 
 DECLARE_POSTFIX_INCREMENT(ScriptCompany::CompanyID)
