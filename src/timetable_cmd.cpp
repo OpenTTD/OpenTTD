@@ -395,7 +395,8 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
 
 	bool autofilling = HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-	if (travelling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) {
+	if (travelling && (!v->current_order.IsWaitTimetabled() ||
+			(autofilling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)))) {
 		/* Need to clear that now as otherwise we are not able to reduce the wait time */
 		v->current_order.SetWaitTime(0);
 	}
