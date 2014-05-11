@@ -1558,8 +1558,18 @@ static void LoadUnloadVehicle(Vehicle *front)
 				}
 			}
 
-			/* Mark the station dirty if we transfer, but not if we only deliver. */
-			dirty_station = v->cargo.ActionCount(VehicleCargoList::MTA_TRANSFER) > 0;
+			if (v->cargo.ActionCount(VehicleCargoList::MTA_TRANSFER) > 0) {
+				/* Mark the station dirty if we transfer, but not if we only deliver. */
+				dirty_station = true;
+
+				if (!ge->HasRating()) {
+					/* Upon transfering cargo, make sure the station has a rating. Fake a pickup for the
+					 * first unload to prevent the cargo from quickly decaying after the initial drop. */
+					ge->time_since_pickup = 0;
+					SetBit(ge->status, GoodsEntry::GES_RATING);
+				}
+			}
+
 			amount_unloaded = v->cargo.Unload(amount_unloaded, &ge->cargo, payment);
 			remaining = v->cargo.UnloadCount() > 0;
 			if (amount_unloaded > 0) {
@@ -1758,6 +1768,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	if (dirty_station) {
 		st->MarkTilesDirty(true);
 		SetWindowDirty(WC_STATION_VIEW, last_visited);
+		InvalidateWindowData(WC_STATION_LIST, last_visited);
 	}
 }
 
