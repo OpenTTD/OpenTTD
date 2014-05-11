@@ -181,7 +181,7 @@ NodeID LinkGraph::AddNode(const Station *st)
 			max(new_node + 1U, this->edges.Height()));
 
 	this->nodes[new_node].Init(st->index,
-			HasBit(good.acceptance_pickup, GoodsEntry::GES_ACCEPTANCE));
+			HasBit(good.status, GoodsEntry::GES_ACCEPTANCE));
 
 	BaseEdge *new_edges = this->edges[new_node];
 

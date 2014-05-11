@@ -175,7 +175,7 @@ struct GoodsEntry {
 		 * This also indicates, whether a cargo has a rating at the station.
 		 * This flag is never cleared.
 		 */
-		GES_PICKUP,
+		GES_RATING,
 
 		/**
 		 * Set when a vehicle ever delivered cargo to the station for final delivery.
@@ -203,7 +203,7 @@ struct GoodsEntry {
 	};
 
 	GoodsEntry() :
-		acceptance_pickup(0),
+		status(0),
 		time_since_pickup(255),
 		rating(INITIAL_STATION_RATING),
 		last_speed(0),
@@ -214,7 +214,7 @@ struct GoodsEntry {
 		max_waiting_cargo(0)
 	{}
 
-	byte acceptance_pickup; ///< Status of this cargo, see #GoodsEntryStatus.
+	byte status; ///< Status of this cargo, see #GoodsEntryStatus.
 
 	/**
 	 * Number of rating-intervals (up to 255) since the last vehicle tried to load this cargo.
@@ -252,18 +252,18 @@ struct GoodsEntry {
 
 	/**
 	 * Reports whether a vehicle has ever tried to load the cargo at this station.
-	 * This does not imply that there was cargo available for loading. Refer to GES_PICKUP for that.
+	 * This does not imply that there was cargo available for loading. Refer to GES_RATING for that.
 	 * @return true if vehicle tried to load.
 	 */
 	bool HasVehicleEverTriedLoading() const { return this->last_speed != 0; }
 
 	/**
 	 * Does this cargo have a rating at this station?
-	 * @return true if the cargo has a rating, i.e. pickup has been attempted.
+	 * @return true if the cargo has a rating, i.e. cargo has been moved to the station.
 	 */
 	inline bool HasRating() const
 	{
-		return HasBit(this->acceptance_pickup, GES_PICKUP);
+		return HasBit(this->status, GES_RATING);
 	}
 
 	uint GetSumFlowVia(StationID via) const;
