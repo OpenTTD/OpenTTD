@@ -169,11 +169,12 @@ struct GoodsEntry {
 		GES_ACCEPTANCE,
 
 		/**
-		 * Set when the cargo was ever waiting at the station.
+		 * This indicates whether a cargo has a rating at the station.
+		 * Set when cargo was ever waiting at the station.
 		 * It is set when cargo supplied by surrounding tiles is moved to the station, or when
 		 * arriving vehicles unload/transfer cargo without it being a final delivery.
-		 * This also indicates, whether a cargo has a rating at the station.
-		 * This flag is never cleared.
+		 *
+		 * This flag is cleared after 255 * STATION_RATING_TICKS of not having seen a pickup.
 		 */
 		GES_RATING,
 

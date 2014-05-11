@@ -3240,6 +3240,28 @@ static inline void byte_inc_sat(byte *p)
 	if (b != 0) *p = b;
 }
 
+/**
+ * Truncate the cargo by a specific amount.
+ * @param cs The type of cargo to perform the truncation for.
+ * @param ge The goods entry, of the station, to truncate.
+ * @param amount The amount to truncate the cargo by.
+ */
+static void TruncateCargo(const CargoSpec *cs, GoodsEntry *ge, uint amount = UINT_MAX)
+{
+	/* If truncating also punish the source stations' ratings to
+	 * decrease the flow of incoming cargo. */
+
+	StationCargoAmountMap waiting_per_source;
+	ge->cargo.Truncate(amount, &waiting_per_source);
+	for (StationCargoAmountMap::iterator i(waiting_per_source.begin()); i != waiting_per_source.end(); ++i) {
+		Station *source_station = Station::GetIfValid(i->first);
+		if (source_station == NULL) continue;
+
+		GoodsEntry &source_ge = source_station->goods[cs->Index()];
+		source_ge.max_waiting_cargo = max(source_ge.max_waiting_cargo, i->second);
+	}
+}
+
 static void UpdateStationRating(Station *st)
 {
 	bool waiting_changed = false;
@@ -3260,6 +3282,13 @@ static void UpdateStationRating(Station *st)
 		/* Only change the rating if we are moving this cargo */
 		if (ge->HasRating()) {
 			byte_inc_sat(&ge->time_since_pickup);
+			if (ge->time_since_pickup == 255 && _settings_game.order.selectgoods) {
+				ClrBit(ge->status, GoodsEntry::GES_RATING);
+				ge->last_speed = 0;
+				TruncateCargo(cs, ge);
+				waiting_changed = true;
+				continue;
+			}
 
 			bool skip = false;
 			int rating = 0;
@@ -3373,18 +3402,7 @@ static void UpdateStationRating(Station *st)
 					 * next rating calculation. */
 					ge->max_waiting_cargo = 0;
 
-					/* If truncating also punish the source stations' ratings to
-					 * decrease the flow of incoming cargo. */
-
-					StationCargoAmountMap waiting_per_source;
-					ge->cargo.Truncate(ge->cargo.AvailableCount() - waiting, &waiting_per_source);
-					for (StationCargoAmountMap::iterator i(waiting_per_source.begin()); i != waiting_per_source.end(); ++i) {
-						Station *source_station = Station::GetIfValid(i->first);
-						if (source_station == NULL) continue;
-
-						GoodsEntry &source_ge = source_station->goods[cs->Index()];
-						source_ge.max_waiting_cargo = max(source_ge.max_waiting_cargo, i->second);
-					}
+					TruncateCargo(cs, ge, ge->cargo.AvailableCount() - waiting);
 				} else {
 					/* If the average number per next hop is low, be more forgiving. */
 					ge->max_waiting_cargo = waiting_avg;
