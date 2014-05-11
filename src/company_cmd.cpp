@@ -865,7 +865,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			if (company_id != INVALID_COMPANY && (company_id >= MAX_COMPANIES || Company::IsValidID(company_id))) return CMD_ERROR;
 			Company *c = DoStartupNewCompany(true, company_id);
+#ifdef ENABLE_NETWORK
 			if (c != NULL) NetworkServerNewCompany(c, NULL);
+#endif /* ENABLE_NETWORK */
 			break;
 		}
 
