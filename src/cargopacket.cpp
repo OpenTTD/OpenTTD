@@ -359,6 +359,7 @@ void VehicleCargoList::AddToCache(const CargoPacket *cp)
  */
 void VehicleCargoList::RemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count)
 {
+	assert(count <= this->action_counts[action]);
 	this->AssertCountConsistency();
 	this->RemoveFromCache(cp, count);
 	this->action_counts[action] -= count;
