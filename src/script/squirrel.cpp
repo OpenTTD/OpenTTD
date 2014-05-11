@@ -31,11 +31,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 {
 	SQChar buf[1024];
 
-#ifdef _SQ64
-	scsnprintf(buf, lengthof(buf), _SC("Error %s:%ld/%ld: %s"), source, line, column, desc);
-#else
-	scsnprintf(buf, lengthof(buf), _SC("Error %s:%d/%d: %s"), source, line, column, desc);
-#endif
+	scsnprintf(buf, lengthof(buf), _SC("Error %s:") SQ_PRINTF64 _SC("/") SQ_PRINTF64 _SC(": %s"), source, line, column, desc);
 
 	/* Check if we have a custom print function */
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);

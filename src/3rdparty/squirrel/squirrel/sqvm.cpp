@@ -259,11 +259,7 @@ void SQVM::ToString(const SQObjectPtr &o,SQObjectPtr &res)
 		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),_SC("%g"),_float(o));
 		break;
 	case OT_INTEGER:
-#if defined(_SQ64)
-		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),_SC("%ld"),_integer(o));
-#else
-		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),_SC("%d"),_integer(o));
-#endif
+		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),SQ_PRINTF64,_integer(o));
 		break;
 	case OT_BOOL:
 		scsprintf(_sp(rsl(6)),_integer(o)?_SC("true"):_SC("false"));

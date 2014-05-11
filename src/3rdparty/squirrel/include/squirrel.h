@@ -49,33 +49,14 @@ extern "C" {
 #define SQUIRREL_API extern
 #endif
 
-#if (defined(_WIN64) || defined(_LP64))
-#ifndef _SQ64
-#define _SQ64
-#endif
+#if defined(__GNUC__)
+	#define __int64 long long
 #endif
 
-#ifdef _SQ64
-#ifdef _MSC_VER
 typedef __int64 SQInteger;
 typedef unsigned __int64 SQUnsignedInteger;
 typedef unsigned __int64 SQHash; /*should be the same size of a pointer*/
-#elif defined(_WIN32)
-typedef long long SQInteger;
-typedef unsigned long long SQUnsignedInteger;
-typedef unsigned long long SQHash; /*should be the same size of a pointer*/
-#else
-typedef long SQInteger;
-typedef unsigned long SQUnsignedInteger;
-typedef unsigned long SQHash; /*should be the same size of a pointer*/
-#endif
 typedef int SQInt32;
-#else
-typedef int SQInteger;
-typedef int SQInt32; /*must be 32 bits(also on 64bits processors)*/
-typedef unsigned int SQUnsignedInteger;
-typedef unsigned int SQHash; /*should be the same size of a pointer*/
-#endif
 
 
 #ifdef SQUSEDOUBLE
@@ -84,17 +65,8 @@ typedef double SQFloat;
 typedef float SQFloat;
 #endif
 
-#if defined(SQUSEDOUBLE) && !defined(_SQ64) || !defined(SQUSEDOUBLE) && defined(_SQ64)
-#ifdef _MSC_VER
 typedef __int64 SQRawObjectVal; //must be 64bits
-#else
-typedef long long SQRawObjectVal; //must be 64bits
-#endif
 #define SQ_OBJECT_RAWINIT() { _unVal.raw = 0; }
-#else
-typedef SQUnsignedInteger SQRawObjectVal; //is 32 bits on 32 bits builds and 64 bits otherwise
-#define SQ_OBJECT_RAWINIT()
-#endif
 
 typedef void* SQUserPointer;
 typedef SQUnsignedInteger SQBool;
@@ -184,6 +156,12 @@ typedef char SQChar;
 #define scstrrchr	strrchr
 #define scstrcat	strcat
 #define MAX_CHAR 0xFFFF
+#endif
+
+#if defined(_MSC_VER) || defined(__MINGW32__)
+	#define SQ_PRINTF64 _SC("%I64d")
+#else
+	#define SQ_PRINTF64 _SC("%lld")
 #endif
 
 #define SQUIRREL_VERSION	_SC("Squirrel 2.2.5 stable - With custom OpenTTD modifications")
