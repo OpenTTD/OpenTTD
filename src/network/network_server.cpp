@@ -2173,4 +2173,31 @@ void NetworkPrintClients()
 	}
 }
 
+/**
+ * Perform all the server specific administration of a new company.
+ * @param c  The newly created company; can't be NULL.
+ * @param ci The client information of the client that made the company; can be NULL.
+ */
+void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
+{
+	assert(c != NULL);
+
+	if (!_network_server) return;
+
+	_network_company_states[c->index].months_empty = 0;
+	_network_company_states[c->index].password[0] = '\0';
+	NetworkServerUpdateCompanyPassworded(c->index, false);
+
+	if (ci != NULL) {
+		/* ci is NULL when replaying, or for AIs. In neither case there is a client. */
+		ci->client_playas = c->index;
+		NetworkUpdateClientInfo(ci->client_id);
+		NetworkSendCommand(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name, c->index);
+		NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, c->index + 1);
+	}
+
+	/* Announce new company on network. */
+	NetworkAdminCompanyInfo(c, true);
+}
+
 #endif /* ENABLE_NETWORK */
