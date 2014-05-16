@@ -1464,9 +1464,50 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 	return 0;
 }
 
+/**
+ * Check whether the variable size of the variable in the saveload configuration
+ * matches with the actual variable size.
+ * @param sld The saveload configuration to test.
+ */
+static bool IsVariableSizeRight(const SaveLoad *sld)
+{
+	switch (sld->cmd) {
+		case SL_VAR:
+			switch (GetVarMemType(sld->conv)) {
+				case SLE_VAR_BL:
+					return sld->size == sizeof(bool);
+				case SLE_VAR_I8:
+				case SLE_VAR_U8:
+					return sld->size == sizeof(int8);
+				case SLE_VAR_I16:
+				case SLE_VAR_U16:
+					return sld->size == sizeof(int16);
+				case SLE_VAR_I32:
+				case SLE_VAR_U32:
+					return sld->size == sizeof(int32);
+				case SLE_VAR_I64:
+				case SLE_VAR_U64:
+					return sld->size == sizeof(int64);
+				default:
+					return sld->size == sizeof(void *);
+			}
+		case SL_REF:
+			/* These should all be pointer sized. */
+			return sld->size == sizeof(void *);
+
+		case SL_STR:
+			/* These should be pointer sized, or fixed array. */
+			return sld->size == sizeof(void *) || sld->size == sld->length;
+
+		default:
+			return true;
+	}
+}
 
 bool SlObjectMember(void *ptr, const SaveLoad *sld)
 {
+	assert(IsVariableSizeRight(sld));
+
 	VarType conv = GB(sld->conv, 0, 8);
 	switch (sld->cmd) {
 		case SL_VAR:
