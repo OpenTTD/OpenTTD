@@ -740,7 +740,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostra t
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostra el darrer missatge o notícia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EN PAUSA  *  *
-STR_STATUSBAR_AUTOSAVE                                          :RED}DESADA AUTOMÀTICA
+STR_STATUSBAR_AUTOSAVE                                          :{RED}DESADA AUTOMÀTICA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  DESANT PARTIDA  *  *
 
 # News message history

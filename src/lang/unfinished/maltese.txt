@@ -374,9 +374,7 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 
 
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
-# end of order system
+# Order review system / warnings
 
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} mitluf
 

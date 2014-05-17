@@ -441,9 +441,7 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 
 
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
-# end of order system
+# Order review system / warnings
 
 
 

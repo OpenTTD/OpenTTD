@@ -1012,13 +1012,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Tha {VEH
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Tha {VEHICLE} a' feitheamh sa chala
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Tha {VEHICLE} a' feitheamh sa hangar
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Chan eil òrduighean gu leòr air a' chlàr-ama aig {VEHICLE}
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Tha òrdugh falamh aig {VEHICLE}
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Tha òrdugh dùbailte aig {VEHICLE}
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Tha stèisean mì-dhligheach sna h-òrduighean aig {VEHICLE}
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Tha {VEHICLE} a' fàs aosta
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Tha {VEHICLE} a' fàs glè aosta

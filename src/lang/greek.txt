@@ -897,13 +897,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Το {VE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Το {VEHICLE} περιμένει στο ναυπήγειο
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Το {VEHICLE} περιμένει στο υπόστεγο αεροσκαφών
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Το {VEHICLE} έχει πολύ λίγες εντολές στο πρόγραμμα
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Το {VEHICLE} έχει μη έγκυρη εντολή
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Το {VEHICLE} έχει διπλή εντολή
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Το {VEHICLE} έχει μη έγκυρο σταθμό στις εντολές του
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Το {VEHICLE} αρχίζει να παλιώνει
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Το {VEHICLE} ξεπερνά το όριο ηλικίας

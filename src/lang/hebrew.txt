@@ -824,13 +824,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}ממתינה במבדוק {VEHICLE}
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}ממתין בסככת המטוסים {VEHICLE}
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}ל{VEHICLE} חסר(ים) יעד(ים) במסלול הנסיעה של
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}ל{VEHICLE} יעד שאינו קיים עוד עבור
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}ל{VEHICLE} כפילות ברשימת היעדים של
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} יעד בלתי חוקי במסלול הנסיעה של
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}מתיישן {VEHICLE}
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}מתיישן מאוד {VEHICLE}
