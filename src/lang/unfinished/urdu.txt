@@ -783,13 +783,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} اڈے میں انتظار کر رہا یے
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} ہوائی یینگر میں انتظار کر رہا یے
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} کے پاس اوقات کے جدول کے مطابق احکامات بہت کم ہیں
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} کے پاس غلط (بے کار) حکم ہے
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} کے پاس ایسا ہی حکم پہلے سے ہے
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} کے پاس احکامات میں ایک ختم شدہ اسٹیشن ہے
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} پرانا ہو رہا ہے
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} بہت پرانا ہو رہا ہے

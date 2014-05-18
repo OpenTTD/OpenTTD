@@ -791,13 +791,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} பணிமனையில் காத்துக்கொண்டிருக்கிறது
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} பணிமனையில் காத்துக்கொண்டிருக்கிறது
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} அட்டவனையில் மிக குறைவாக கட்டளைகளைக் கொண்டுள்ளது
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} பிழையான கட்டளையைக் கொண்டுள்ளது
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} இரட்டடிப்பு கட்டளைகளைக் கொண்டுள்ளது
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} பிழையான நிலையத்தினை கட்டளைகளில் கொண்டுள்ளது
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} பழையதாகிறது
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} பழையதாகிறது

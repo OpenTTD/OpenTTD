@@ -752,9 +752,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLAC
 
 
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
-# end of order system
+# Order review system / warnings
 
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} не може да се стигне до следната дестинација, бидејќи тоа е надвор од опсегот
 

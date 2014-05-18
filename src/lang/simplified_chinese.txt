@@ -810,13 +810,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} 正在船坞待命
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在机库待命
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} 的调度计划太少
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}的调度计划中有无效调度命令
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} 有重复调度命令
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}的调度计划有无效的车站
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} 即将达到报废年限
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} 已经达到报废年限
@@ -1289,7 +1287,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :禁用后，地
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :车站最大占地： {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :车站占地上限格数： {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :设置车站最大占地面积，注意：太大影响游戏速度
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升机在降落平台自动保养：{STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :直升飞机在降落平台自动保养，即使机场没有机库
@@ -2318,14 +2316,14 @@ STR_STATION_CLASS_WAYP                                          :路标
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号灯
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通过信号灯（悬臂）{}是最基本的信号灯，只允许一列车进入该信号灯以后的区间
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号灯（悬臂）{}在下一轨道区间上至少有一个出口信号灯是绿色时此信号亮绿灯,否则亮红灯
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}运作等同于通过信号灯,但是对于触发入口及复合信号灯是必要的
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号灯（悬臂）{}复合信号灯可完全担当入口信号灯和出口信号灯的功能,并可建立树状预警信号灯系统
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}信号显示条件与通过信号灯相同,但是它的状态可以触发入口及复合信号灯
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号灯（悬臂）{}复合信号灯是入口和出口信号灯的组合,这样允许建立大型“树状”预警信号灯系统
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}路径信号灯（悬臂）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}单向路径信号灯（悬臂）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}通过信号灯（电子）{}是最基本的信号灯，只允许一列车进入该信号灯以后的区间
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号灯（电子）{}当下一轨道区间至少有一个出口信号灯是绿色时,此信号灯亮绿灯,否则亮红灯
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号灯（电子){}运作等同与通过信号灯,但是对于触发入口及复合信号灯来说是必要的
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立树状预警信号灯系统
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号灯（电子){}信号显示条件与通过信号灯相同,但是它的状态可以触发入口及复合信号灯
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯是入口和出口信号灯的组合,这样允许建立大型“树状”预警信号灯系统
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号灯转换工具{}按下此按钮，可以将已经存在的信号灯转化为选择的信号灯类型，按下CTRL键盘再点击，可以在电子和悬臂型之间转换
@@ -3306,7 +3304,7 @@ STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}点击�
 STR_GROUP_ADD_SHARED_VEHICLE                                    :添加共享车辆
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车辆
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}移除分组
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}重命名分组
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :购买普通列车

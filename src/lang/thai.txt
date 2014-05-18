@@ -810,13 +810,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} กำลังรออยู่ในอู่
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} กำลังรออยู่ในโรงจอด
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} มีคำสั่งน้อยเกินไปในกำหนดการเดินทาง
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} มีคำสั่งว่าง
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} มีคำสั่งซ้ำซ้อน
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} มีสถานีที่ใช้ไม่ได้ในคำสั่ง
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} เริ่มเก่าแล้ว
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} เก่ามากแล้ว

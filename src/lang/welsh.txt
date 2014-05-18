@@ -810,13 +810,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Mae {VEH
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Mae {VEHICLE} yn aros yn y depo
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Mae {VEHICLE} yn aros yn yr awrendy
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Mae gan {VEHICLE} rhy ddiffyg gorchmynion yn ei amserlen
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Mae gan {VEHICLE} orchymyn gwallus
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Mae gan {VEHICLE} orchmynion dyblyg
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Mae gan {VEHICLE} orsaf annilys yn ei orchmynion
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Mae {VEHICLE} yn heneiddio
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Mae {VEHICLE} yn hynod o hen
@@ -1072,7 +1070,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni 
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Math:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Yn cyfyngu'r rhestr isod gan ddangos gosodiadau sydd wedi newid yn unig
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Yn cyfyngu'r rhestr isod drwy hidlau rhagosodedig
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gosodiadau sylfaenol
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gosodiadau uwch
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Gosodiadau arbenigwyr / pob gosodiad
@@ -1084,7 +1082,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Pob math o osod
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gosodiadau gwestai (cedwir yn y ffeiliau cadw; yn effeithio ar pob gêm)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Gosodiadau gêm (cedwir yn y ffeiliau cadw, gan effeithio ar gemau newydd yn unig)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Gosodiadau gêm (cedwir yn y ffeil cadw, gan effeithio ar y gêm bresennol yn unig)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Gosodiadau cwmni (cedwir yn y ffeiliau cadw, gan effeithio ar y gemau newydd yn unig)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Gosodiadau cwmni (cedwir yn y ffeiliau cadw, gan effeithio ar gemau newydd yn unig)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Gosodiadau cwmni (cedwir yn y ffeil cadw, gan effeithio ar y cwmni presennol yn unig)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Categori {BLACK}i {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Dangosir holl ganlyniadau chwilio drwy osod{}{SILVER}Math {BLACK}i {WHITE}Pob math o osodiad
@@ -1127,12 +1125,12 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Rhwystro trenau
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Os y galluogir, ni fydd trenau yn gwrthdroi mewn gorsafoedd nad ydynt yn derfynfeydd, hyd yn oed os oes llwybr byrach i'w cyrchfan drwy wrthdroi
 STR_CONFIG_SETTING_DISASTERS                                    :Trychinebau: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglo trychinebau a all rhwystro neu ddinistrio cerbydau neu tanadeiledd
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Agwedd cyngor dinas at ailstrwythuro'r ardal: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Agwedd y cyngor tref at ailstrwythuro'r ardal: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niewd amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Caniatáu adeiladu a'r lethrau ac arfordiroedd {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Os y galluogir, gellir adeiladu traciau a gorsafoedd ar y rhan helaeth o lethrau. Os yr analluogir, feu caniateir ar lethrau sy'n gweddu at lwybr y trac yn unig (h.y. heb angen eu tanseilio)
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, etc. (awtolethru): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, ayyb.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Caniatáu tirffurfio o dan adeiladau a thraciau heb eu chwalu
 STR_CONFIG_SETTING_CATCHMENT                                    :Caniatáu ardaloedd dalgylch mwy realistig eu maint: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Defnyddio dalgylchoedd o feintiau gwahanol ar gyfer gwahanol fathau o orsafoedd a meysydd awyr
@@ -1247,7 +1245,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nid yw cerbydau
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pan fo wedi'i alluogi, bydd bob math o gerbyd yn aros ar gael am byth wedi eu cyflwyniad gyntaf
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Awtoadnewyddu cerbyd pan aiff yn hen: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pan fo wedi'i alluogi, bydd cerbyd sy'n agos at ddiwedd ei oes yn cael ei ddisodli'n ddiofyn pan y caiff yr amodau adnewyddu eu cyflawni
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Awtoadnewyddu pan fo'r cerbyd {STRING} ei oed uchafsymol
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Awtoadnewyddu pan fo cerbyd {STRING} ei oed uchafsymol
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Oed cymharol pan y dylid ystyried awtoadnewyddu cerbyd
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mis cyn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mis wedi
@@ -1268,7 +1266,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Lled y linell m
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Cynhyrchydd Tir: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gwreiddiol
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd Olew: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd olew: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Codir purfeydd olew ger ymylon y map yn unig, h.y. ar yr arfordir mewn mapiau ynys
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd (TerraGenesis yn unig) : {STRING}
@@ -1306,7 +1304,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgrolio prif ff
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Rheoli syt y mae'r prif olygfa'n sgrolio at leoliad penodol pan yn clicio ar y map bychan neu yn rhoi gorchymyn i sgrolio at wrthrych penodol
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Dangos pellterau teil a gwahaniaethau uchder wrth lusgo tra'n adeiladu
-STR_CONFIG_SETTING_LIVERIES                                     :Dangos lifrau cwmnïau: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Defnyddio lifrau cerbyd-benodol: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Rheoli defnydd o lifrau cerbyd-benodol ar gyfer cerbydau (yn hytrach na lliwiau'r cwmni)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Dim
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eich Cwmni
@@ -1355,7 +1353,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Dim gweithredoe
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Pob gweithred ac eithro adeiladu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Pob gweithred ac eithro addasu tirwedd
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Pob gweithred
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Defnyddio'r rhestr cerbydau uwch {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Defnyddio grwpiau yn y rhestr cerbydau: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Galluogi defnydd o'r rhestrau cerbyd uwch ar gyfer grwpio cerbydau
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Dangos llwytho: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Dewis a fydd dangosyddion llwytho'n cael eu dangos uwch cerbydau sy'n llwytho neu dadlwytho
@@ -1370,7 +1368,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Math o gledrau 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y cyntaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yr olaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Defnydd mwyaf
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Dangos traciau wedi'u cadw: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Dangos llwybrau traciau wedi'u cadw: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Rhoi lliw gwahanol ar gledrau lliw gwahanol i gynorthwyo datrys problemau gyda threnau sy'n gwrthod myned blociau llwybro
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Cadw'r offer adeiladu yn weithredol wedi ei ddefnydd: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Cadw'r offer adeiladu pontydd, twneli, a.y.y.b. ar agor wedi eu defnydd
@@ -1396,13 +1394,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Chwarae synau c
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pan y galluogir, nid yw tanadeiledd ar gael nes fod cerbydau ar gael iddo, gan osgoi gwastraff arian ac amser ar danadeiledd na ellir ei ddefnyddio
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Uchafswm nifer trenau cwmni: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Uchafswm nifer y trenau i bob cwmni: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Nifer uchafsymol y trenau y gall cwmni fod yn berchen arnynt
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uchafswm cerbydau ffordd cwmni: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uchafswm nifer y cerbydau ffordd i bob cwmni: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Nifer uchafsymol y cerbydau ffordd y gall cwmni fod yn berchen arnynt
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Uchafswm awyrennau cwmni: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Uchafswm nifer yr awyrennau i bob cwmni: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Nifer uchafsymol yr awyrennau y gall cwmni fod yn berchen arnynt
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Uchafswm llongau cwmni: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Uchafswm nifer y llongau i bob cwmni: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Nifer uchafsymol y llongau y gall cwmni fod yn berchen arnynt
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Analluogi trenau ar gyfer y cyfrifiadur: {STRING}
@@ -1520,7 +1518,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Caniatáu i dre
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Caniatáu i drefi adeiladau croesfannau rheilffordd: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Galluogwch y gosodiad yma i ganiatáu i drefi adeiladu croesfannau rheilffordd
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Caniatáu i drefi reoli lefel swn meysydd awyrenau: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Os analluogir y gosodiad yma, gellir cael dwy faes awyr ymhob tref. Os y galluogir, fe gyfyngir y nifer o feysydd awyr gan dderbyniath sŵn y dref, sydd yn dibynnu ar y boblogaeth, ynghŷd â maint a phellter maes awyr
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Os analluogir y gosodiad yma, gellir cael dau faes awyr ymhob tref. Os y galluogir, fe gyfyngir y nifer o feysydd awyr gan y lefel sŵn mae'r dref am dderbyn, sydd yn dibynnu ar y boblogaeth a maint a phellter y maes awyr
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Sefydlu trefi mewn gêm: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mae galluogi'r gosodiad yma'n caniatáu i chwaraewyr sefydlu trefi newydd yn y gêm
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Gwahardd
@@ -1929,13 +1927,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Diogelwc
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Na
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ia
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gwestai
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Uchafswm gwesteion:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Uchafswm nifer gwesteion:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Dewiswch uchafswm y gwesteion. Does dim rhaid llanw pob slot
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} cwmni
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Uchafswm cwmnïau:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Uchafswm nifer cwmnïau:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}rhoi cyfyngiad penodol ar sawl cwmni mae'r gweinydd yn ei ganiatáu
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} gwyliwr
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uchafswm gwylwyr:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uchafswm nifer gwylwyr:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}rhoi cyfyngiad penodol ar sawl gwyliwr mae'r gweinydd yn ei ganiatáu
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Iaith i'w siarad:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Rhoi gwybod i'r chwaraewyr pa iaith y dylid ei siarad ar y gweinydd
@@ -3691,8 +3689,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Newid ym
 
 STR_ORDER_REFIT                                                 :{BLACK}Ailffitio
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Dewiswch y math o lwyth yr hoffech chi ailffitio gyda'r gorchymyn hwn. Cliciwch Ctrl-clic er mwyn diddymu'r cyfarwyddyd hwn.
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Awto-ailffitio
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Dewis y math o lwyth i awto-ailffitio ar ei gyfer yn y gorchymyn yma. Mae Ctrl+Clic yn tynnu'r gorchymyn. Bydd awto-ailffitio ond yn digwydd os yw'r cerbyd yn caniatáu hynny
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Ailffitio mewn gorsaf
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Dewis y math o lwyth i ailffitio ar ei gyfer yn y gorchymyn yma. Mae Ctrl+Clic yn tynnu'r gorchymyn. Bydd ailffitio ond yn digwydd os yw'r cerbyd yn caniatáu hynny
 STR_ORDER_DROP_REFIT_AUTO                                       :Llwyth gosodedig
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Llwythi ar gael
 
@@ -3783,18 +3781,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Dim dadlwytho,
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Dim dadlwytho, aros am unrhyw lwyth llawn)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Dim llwytho na dadlwytho)
 
-STR_ORDER_AUTO_REFIT                                            :(Awto-ailffitio i {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Llwyth llawn gan awto-ailffitio i {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Llwyth llawn o unrhyw gargo gan awto-ailffitio i {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Dadlwytho a llwytho gan awto-ailffitio i {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Dadlwytho ac aros am lwyth llawn o gargo gan awto-ailffitio i {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Dadlwytho ac aros am unrhyw lwyth llawn gan awto-ailffitio o {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Trosglwyddo a llwytho gan awto-ailffitio i {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trosglwyddo ac aros am lwyth llawn gan awto-ailffitio i {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trosglwyddo ac aros am unrhyw lwyth llawn gan awto-ailffitio i {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Dim dadlwytho ond llwytho gan awto-ailffitio i {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Dim dadlwytho ac aros am lwyth llawn gan awto-ailffitio i {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Dim dadlwytho ac aros am unrhyw lwyth llawn gan awto-ailffitio i {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Ailffitio i {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Llwyth llawn gan ailffitio i {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Llwyth llawn o unrhyw gargo gan ailffitio i {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Dadlwytho a llwytho gan ailffitio i {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Dadlwytho ac aros am lwyth llawn o gargo gan ailffitio i {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Dadlwytho ac aros am unrhyw lwyth llawn gan ailffitio o {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Trosglwyddo a llwytho gan ailffitio i {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trosglwyddo ac aros am lwyth llawn gan ailffitio i {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trosglwyddo ac aros am unrhyw lwyth llawn gan ailffitio i {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Dim dadlwytho ond llwytho gan ailffitio i {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Dim dadlwytho ac aros am lwyth llawn gan ailffitio i {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Dim dadlwytho ac aros am unrhyw lwyth llawn gan ailffitio i {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :llwythi ar gael
 

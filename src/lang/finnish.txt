@@ -810,13 +810,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} odottaa varikolla
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} odottaa lentokonehallissa
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Kulkuneuvolla {VEHICLE} on liian vähän käskyjä
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Kulkuneuvolla {VEHICLE} on virheellinen käsky
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia käskyjä
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Kulkuneuvon {VEHICLE} käskyissä on virheellinen asema
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} on tulossa vanhaksi
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi
@@ -3820,7 +3818,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataul
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen käskyn mukaisesti)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje enimmillään {2:VELOCITY} (ei aikataulutettu)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje (ilman aikataulua) enimmillään {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Kulje kohteeseen {STRING} enintään {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}

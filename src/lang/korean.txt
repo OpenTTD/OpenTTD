@@ -598,10 +598,10 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 수익을 낸 차량의 수를 나타냅니다. 자동차/전차, 열차, 선박, 항공기를 포함합니다.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 차량만 계산)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최소 이익을 달성한 차량이 번 돈의 양입니다.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최대 이익을 달성한 차량이 번 돈의 양입니다.
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}지난 4분기동안 수송한 화물량입니다.
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}지난 1분기에 수송한 화물의 종류 수입니다.
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기 동안 최소 이익을 달성한 차량이 벌어들인 돈의 양입니다.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기 동안 최대 이익을 달성한 차량이 벌어들인 돈의 양입니다.
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}지난 4분기 동안 수송한 화물량입니다.
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}지난 1분기 동안 수송한 화물의 종류 수입니다.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}회사가 소지한 재정입니다.
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}회사가 대출해간 재정의 양입니다.
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}위 항목들의 총 합계 점수입니다.
@@ -811,13 +811,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} : 정박소 안에서 대기 중입니다.
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} : 격납고 안에서 대기 중입니다.
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로를 하나 이상 지정해주십시오
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} : 차량이 낡았습니다.
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} : 차량이 매우 낡았습니다.
@@ -1203,7 +1201,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :모든 화면�
 STR_CONFIG_SETTING_BRIBE                                        :지역 당국에 뇌물을 주는 행위 허용: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :회사가 지역 도시 당국에 뇌물을 주는 것을 허용합니다. 뇌물 행위가 적발되는 경우, 회사는 해당 도시에서 6개월간 아무 행동도 할 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송권 구입 허용: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해 동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 행위 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :회사가 도시가 새로운 건물에 투자할 수 있도록 자금을 주는 것을 허용합니다.
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :도시 도로 보수공사 시행을 허용: {STRING}
@@ -3477,7 +3475,7 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 �
 STR_REPLACE_VEHICLES_NOW                                        :모든 차량을 지금 교체
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :오래된 차량만 교체
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}왼쪽에서 선택한 기관차를 오른쪽의 새 기관차로 교체하려면 누르세요
-STR_REPLACE_NOT_REPLACING                                       :{BLACK}교체 안됨
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}교체 안 됨
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}차량이 선택되지 않았음
 STR_REPLACE_REPLACING_WHEN_OLD                                  :낡으면 {ENGINE}(으)로 교체
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}차량 교체 중지
@@ -3821,9 +3819,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간�
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표가 작성되지 않음)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속력으로 운행 (시간표 작성 안됨)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속력으로 운행 (시간표 작성 안 됨)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}에 걸쳐 운행
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}동안 최대 {1:VELOCITY}의 속력으로 운행
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING} 동안 최대 {1:VELOCITY}의 속력으로 운행
 STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
 STR_TIMETABLE_DAYS                                              :{COMMA}일

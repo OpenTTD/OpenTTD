@@ -874,13 +874,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} a dokkban vár
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} a hangárban vár
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} menetrendje túl kevés utasításból áll
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} érvénytelen utasítással rendelkezik
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} duplikált utasítással rendelkezik
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} utasításai között nem létező állomás szerepel
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} elöregedett
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} nagyon elöregedett
@@ -1136,7 +1134,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Vállalat beál
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategória:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Típus:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Leszűkíti a listát a módosított értékekkel rendelkező opciókra
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Leszűkíti a listát a megadott szűrők segítségével
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Alapbeállítások
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Haladó beállítások
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Szakértő beállítások / minden beállítás
@@ -3848,11 +3846,11 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ki nem rakodá
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nincs ki- és berakodás)
 
 STR_ORDER_AUTO_REFIT                                            :(Átalakítás {STRING} szállítására)
-STR_ORDER_FULL_LOAD_REFIT                                       :(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_FULL_LOAD_REFIT                                       :(Mindenből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_UNLOAD_REFIT                                          :(Kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Ki nem rakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Ki nem rakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_REFIT                                        :(Elszállítás, rakományfelvétel és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Elszállítás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Elszállítás, mindenből teljes berakodás és átalakítás {STRING} rakományra)

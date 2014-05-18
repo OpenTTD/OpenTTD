@@ -800,13 +800,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} در گاراژ منتظر است
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :تعداد دستورهای نسبت داده ی {WHITE}{VEHICLE} کم تر از حد می باشد
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :برنامه حرکت {WHITE}{VEHICLE} باطل شده است
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :برنامه جابجایی {WHITE}{VEHICLE} دستور تکراری دارد
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} یک ایستگاه نا معتبر در برنامه جابجایی خود دارد
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} قدیمی شده است
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} بسیار قدیمی شده است
@@ -1198,11 +1196,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفش
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :برعکس کردن جهت حرکت کردن صفحه: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :تصویر صاف در نمای اضافه: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :نمایش متن کمکی وقتی از چندین ابزار استفاده می شود: {STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :نمایش دخل و خرج شرکت: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :نمایش طراحی مخصوص وسیله نقلیه : {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :کنترل موارد قابل استفاده برای طراحی مخصوص ماشین‌های جاده‌ای (در مقابل طراحی شرکت)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :هیچکدام
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :شرکت خود
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :همه شرکت‌ها
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :چت با تیم با دکمه «Enter»: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :ترجیح برای چت با تیمِ «Enter»: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :عمل غلطک ماوس: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :بزرگنمایی نقشه
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :جابجا کردن نقشه
@@ -1227,11 +1226,12 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :پالت وین
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :توقف خودکار هنگام آغاز بازی جدید: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :قابلیت ها در زمان متوقف بودن بازی: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :انتخاب کارکرد مورد نظر در هنگام متوقف کردن بازی
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :هیچ کار
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :همه کارها غیر از ساخت و ساز
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :همه کارها به جز تغییر پستی/بلندی زمین
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :همه کارها
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :اسنفاده از لیست پیشرفته خودرو: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :اسنفاده گروهی از لیست خودرو: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :استفاده از نشانه‌های بارگیری/بارگذاری: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :استفاده از تیک(هزارم ثانیه) به جای روز در برنامه ساعتی: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :نشان دادن ورود و خروج در جدول زمانی: {STRING}

@@ -810,13 +810,11 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} is waiting in depot
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} is waiting in the aircraft hangar
 
-# Start of order review system
-# DON'T ADD OR REMOVE LINES HERE
+# Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} has too few orders in the schedule
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} has a void order
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} has duplicate orders
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} has an invalid station in its orders
-# end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} is getting old
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} is getting very old
@@ -1451,7 +1449,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Display a newsp
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / disasters: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Display a newspaper when accidents or disasters occur
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Company information: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Display a newspaper when a new company starts, or when companies are risking to bankrupt
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Display a newspaper when a new company starts, or when companies are at risk of going bankrupt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening of industries: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Display a newspaper when new industries open
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Closing of industries: {STRING}
@@ -4535,7 +4533,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elect
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Electric)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Passenger Car
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Mail Car
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Coal Car
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Coal Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Oil Tanker
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Livestock Boxcar
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Goods Car
@@ -4565,7 +4563,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Passenger Car
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Mail Car
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Coal Car
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Coal Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Oil Tanker
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Livestock Boxcar
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Goods Car
@@ -4597,7 +4595,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passenger Car
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Mail Car
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Coal Car
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Coal Hopper
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Oil Tanker
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Livestock Boxcar
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Goods Car
