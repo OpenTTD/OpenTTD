@@ -1,3 +1,13 @@
+1.4.1-RC2 (2014-05-18)
+------------------------------------------------------------------------
+- Fix: Save/load issues on big endian machines (r26593, r26590, r26589)
+- Fix: Consider multiheaded trains in station refits [FS#5995] (r26586)
+- Fix: Game script could be changed in game by double clicking [FS#5974] (r26583)
+- Fix: Transfer stations also should have a cargo rating [FS#5989] (r26581, r26580)
+- Fix: [Network] AIs would not reset certain network state information upon creation of their company [FS#6003] (r26578, r26576)
+- Fix: [Network] Client of non-dedicated server was not correctly put into the first company for all state variables [FS#6001] (r26577)
+
+
 1.4.1-RC1 (2014-05-04)
 ------------------------------------------------------------------------
 - Change: Remove demand calculation based on tiles (r26484)
