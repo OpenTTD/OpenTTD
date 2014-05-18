@@ -436,7 +436,7 @@ static uint GetAcceptanceMask(const Station *st)
 	uint mask = 0;
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::GES_ACCEPTANCE)) mask |= 1 << i;
+		if (HasBit(st->goods[i].status, GoodsEntry::GES_ACCEPTANCE)) mask |= 1 << i;
 	}
 	return mask;
 }
@@ -579,7 +579,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 		}
 
 		GoodsEntry &ge = st->goods[i];
-		SB(ge.acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1, amt >= 8);
+		SB(ge.status, GoodsEntry::GES_ACCEPTANCE, 1, amt >= 8);
 		if (LinkGraph::IsValidID(ge.link_graph)) {
 			(*LinkGraph::Get(ge.link_graph))[ge.node].SetDemand(amt / 8);
 		}
@@ -3189,7 +3189,7 @@ void TriggerWatchedCargoCallbacks(Station *st)
 	/* Collect cargoes accepted since the last big tick. */
 	uint cargoes = 0;
 	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-		if (HasBit(st->goods[cid].acceptance_pickup, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(cargoes, cid);
+		if (HasBit(st->goods[cid].status, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(cargoes, cid);
 	}
 
 	/* Anything to do? */
@@ -3222,7 +3222,7 @@ static bool StationHandleBigTick(BaseStation *st)
 		TriggerWatchedCargoCallbacks(Station::From(st));
 
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			ClrBit(Station::From(st)->goods[i].acceptance_pickup, GoodsEntry::GES_ACCEPTED_BIGTICK);
+			ClrBit(Station::From(st)->goods[i].status, GoodsEntry::GES_ACCEPTED_BIGTICK);
 		}
 	}
 
@@ -3618,8 +3618,8 @@ void StationMonthlyLoop()
 	FOR_ALL_STATIONS(st) {
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			GoodsEntry *ge = &st->goods[i];
-			SB(ge->acceptance_pickup, GoodsEntry::GES_LAST_MONTH, 1, GB(ge->acceptance_pickup, GoodsEntry::GES_CURRENT_MONTH, 1));
-			ClrBit(ge->acceptance_pickup, GoodsEntry::GES_CURRENT_MONTH);
+			SB(ge->status, GoodsEntry::GES_LAST_MONTH, 1, GB(ge->status, GoodsEntry::GES_CURRENT_MONTH, 1));
+			ClrBit(ge->status, GoodsEntry::GES_CURRENT_MONTH);
 		}
 	}
 }
@@ -3635,7 +3635,7 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry *ge = &st->goods[i];
 
-				if (ge->acceptance_pickup != 0) {
+				if (ge->status != 0) {
 					ge->rating = Clamp(ge->rating + amount, 0, 255);
 				}
 			}
@@ -3676,7 +3676,7 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 
 	if (!ge.HasRating()) {
 		InvalidateWindowData(WC_STATION_LIST, st->index);
-		SetBit(ge.acceptance_pickup, GoodsEntry::GES_PICKUP);
+		SetBit(ge.status, GoodsEntry::GES_RATING);
 	}
 
 	TriggerStationRandomisation(st, st->xy, SRT_NEW_CARGO, type);

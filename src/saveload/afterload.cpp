@@ -1597,7 +1597,7 @@ bool AfterLoadGame()
 		FOR_ALL_STATIONS(st) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				st->goods[c].last_speed = 0;
-				if (st->goods[c].cargo.AvailableCount() != 0) SetBit(st->goods[c].acceptance_pickup, GoodsEntry::GES_PICKUP);
+				if (st->goods[c].cargo.AvailableCount() != 0) SetBit(st->goods[c].status, GoodsEntry::GES_RATING);
 			}
 		}
 	}

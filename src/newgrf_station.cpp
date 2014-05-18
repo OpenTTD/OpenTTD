@@ -394,7 +394,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject &object, byte variable, b
 			uint32 value = 0;
 
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (HasBit(this->goods[cargo_type].acceptance_pickup, GoodsEntry::GES_ACCEPTANCE)) SetBit(value, cargo_type);
+				if (HasBit(this->goods[cargo_type].status, GoodsEntry::GES_ACCEPTANCE)) SetBit(value, cargo_type);
 			}
 			return value;
 		}
@@ -426,12 +426,12 @@ uint32 Station::GetNewGRFVariable(const ResolverObject &object, byte variable, b
 			case 0x62: return ge->HasRating() ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->cargo.DaysInTransit();
 			case 0x64: return ge->HasVehicleEverTriedLoading() ? ge->last_speed | (ge->last_age << 8) : 0xFF00;
-			case 0x65: return GB(ge->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
+			case 0x65: return GB(ge->status, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
 			case 0x69: {
 				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 1 == (int)GoodsEntry::GES_LAST_MONTH);
 				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 2 == (int)GoodsEntry::GES_CURRENT_MONTH);
 				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 3 == (int)GoodsEntry::GES_ACCEPTED_BIGTICK);
-				return GB(ge->acceptance_pickup, GoodsEntry::GES_EVER_ACCEPTED, 4);
+				return GB(ge->status, GoodsEntry::GES_EVER_ACCEPTED, 4);
 			}
 		}
 	}
@@ -441,7 +441,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject &object, byte variable, b
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
 			case 0: return g->cargo.TotalCount();
-			case 1: return GB(min(g->cargo.TotalCount(), 4095), 0, 4) | (GB(g->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
+			case 1: return GB(min(g->cargo.TotalCount(), 4095), 0, 4) | (GB(g->status, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
 			case 4: return g->cargo.Source();
