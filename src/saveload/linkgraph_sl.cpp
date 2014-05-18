@@ -21,7 +21,7 @@ typedef LinkGraph::BaseEdge Edge;
 
 const SettingDesc *GetSettingDescription(uint index);
 
-static uint _num_nodes;
+static uint16 _num_nodes;
 
 /**
  * Get a SaveLoad array for a link graph.

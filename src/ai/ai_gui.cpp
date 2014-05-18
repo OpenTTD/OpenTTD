@@ -853,7 +853,7 @@ struct AIConfigWindow : public Window {
 			case WID_AIC_GAMELIST: {
 				this->selected_slot = OWNER_DEITY;
 				this->InvalidateData();
-				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowAIListWindow((CompanyID)this->selected_slot);
+				if (click_count > 1 && this->selected_slot != INVALID_COMPANY && _game_mode != GM_NORMAL) ShowAIListWindow((CompanyID)this->selected_slot);
 				break;
 			}
 
