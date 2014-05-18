@@ -3353,7 +3353,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :차량기지 �
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}차량 {NUM}대{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하십시오. 두 기능을 해당 차량 뒤에 딸려오는 차량에 적용하고 싶다면 CTRL 키를 누르고 계십시오.
