@@ -1195,6 +1195,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ma nieważne polecenie
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} ma zdublowane polecenia
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} ma nieprawiodłową stację w poleceniach
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} ma w rozkazach lotnisko ze zbyt krótkim pasem startowym
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} starzeje się
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} bardzo się starzeje
@@ -1673,7 +1674,7 @@ STR_CONFIG_SETTING_LIVERIES_ALL                                 :wszystkich firm
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferuj czat drużynowy po użyciu <ENTER> lub <T>: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Przypisz przyciski <ENTER> i <Ctrl+ENTER> odpowiednio do czatu firmowego i czatu publicznego
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcja rolki myszy: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Włączenie przewijania z użyciem dwu-wymiarowych rolek myszy
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Włączenie przewijania z użyciem dwuwymiarowych rolek myszy
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :powiększ widok
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :przesuń widok
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :wył.
@@ -4170,6 +4171,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez u
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Podróżuj z maksymalną prędkością {2:VELOCITY} (poza rozkładem)
 STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Podróżuj przez {STRING} z maksymalną prędkością {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Przejazd przez {STRING} (poza rozkładem)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Podróżuj przez {STRING} z prędkością {VELOCITY} maks. (poza rozkładem)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(postój w {STRING} poza rozkładem)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(przejazd przez {STRING} poza rozkładem)
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i podróżuje przez{STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P zień ni ni}
@@ -5159,7 +5164,7 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Boja
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Boja #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Pkt. orientacyjny {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pkt. orientacyjny {TOWN} #{COMMA}
 
