@@ -1597,9 +1597,19 @@ static SettingEntry _settings_disasters[] = {
 static SettingsPage _settings_disasters_page = {_settings_disasters, lengthof(_settings_disasters)};
 
 static SettingEntry _settings_genworld[] = {
+	SettingEntry("game_creation.landscape"),
+	SettingEntry("game_creation.land_generator"),
+	SettingEntry("difficulty.terrain_type"),
+	SettingEntry("game_creation.tgen_smoothness"),
+	SettingEntry("game_creation.variety"),
+	SettingEntry("game_creation.snow_line_height"),
+	SettingEntry("game_creation.amount_of_rivers"),
+	SettingEntry("game_creation.tree_placer"),
+	SettingEntry("vehicle.road_side"),
 	SettingEntry("economy.larger_towns"),
 	SettingEntry("economy.initial_city_size"),
 	SettingEntry("economy.town_layout"),
+	SettingEntry("difficulty.industry_density"),
 	SettingEntry("gui.pause_on_newgame"),
 };
 
