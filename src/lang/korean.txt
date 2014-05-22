@@ -1248,21 +1248,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시 이름 �
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :그래프 선의 두께: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :그래프의 선 두께를 설정합니다. 얇으면 자세히 볼 수 있고, 두꺼우면 눈에 확 들어오며 색상을 분간하기가 편해집니다.
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :지형: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :지형에 따라 화물과 도시 성장 요구 조건이 다른 게임 플레이 시나리오가 만들어집니다. NewGRF과 게임 스크립트를 통해 세밀한 조절이 가능합니다.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :지형 만들기: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :오리지널 모드는 기본 그래픽 세트에 따라 다른 지형을 생성하며, 단조로운 지형을 구성합니다. 천지창조는 개선된 제어 설정을 가진 생성기로 만들어진 임의 지형(펄린 노이즈)을 구성합니다.
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :지형 종류: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(천지창조 전용) 지형의 언덕 모양을 결정합니다.
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :산업시설 수: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :게임을 플레이하는 동안 얼마나 많은 산업시설이 생성되고 유지되어야 할 지를 설정합니다.
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :정유 공장의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장은 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :설선 고도: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :아한대 기후의 설선 고도를 조절합니다. 눈은 산업시설의 생성과 도시 성장에 영향을 미칩니다.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도 ('천지창조' 전용): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(천지창조 전용) 언덕의 빈도수를 선택합니다. 평탄한 지형은 개수가 적고 넓게 퍼진 언덕을 만듭니다. 거친 지형은 똑같아 보일 수 있는 많은 언덕이 생기게 됩니다.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :매우 거칠게
+STR_CONFIG_SETTING_VARIETY                                      :산세 험준도: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(천지창조 전용) 지도가 산지와 평지를 모두 갖도록 만들 것인 지를 결정합니다. 이 옵션은 지형을 더 평평하게 만드므로, 다른 옵션은 '산'으로 설정하시기 바랍니다.
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :강의 양: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :강을 얼마나 만들지 선택하십시오.
 STR_CONFIG_SETTING_TREE_PLACER                                  :나무 배치 알고리즘: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :지도의 나무 분포 형식을 선택하십시오. '오리지널'을 선택하면 나무가 고르게 분포되고, '향상됨'을 선택하면 나무가 군락을 이루게 됩니다.
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :없음
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :오리지널
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :향상됨
+STR_CONFIG_SETTING_ROAD_SIDE                                    :자동차/전차: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :통행방향을 선택하세요.
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :높이맵 회전: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
@@ -1557,7 +1573,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"균형"은 A�
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :우편에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"균형"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "불균형"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :장갑 화물에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :장갑 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 냉대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "균형"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 냉대 기후에서는 균형으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 불균형이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 균형을 선택해도 됩니다.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :장갑 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "균형"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대 기후에서는 균형으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 불균형이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 균형을 선택해도 됩니다.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "불균형"이나 "수동"으로 설정하십시오.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :분배 정확도: {STRING}
@@ -1690,7 +1706,7 @@ STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}사용�
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}멀티 플레이 게임을 시작합니다
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}온대 기후 선택
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}냉대 기후 선택
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}아한대 기후 선택
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열대 기후 선택
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
 
@@ -1736,10 +1752,10 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 건물 제거): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차 허용: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형 항공기가 소형 공항에서 (자주) 충돌하지 않게 함: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :냉대 기후
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감 나라
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후 지형
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :아한대 지형
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후 지형
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감나라 지형
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재의 연도를 변경
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}1차 산업시설 생산량 조절 허용: {ORANGE}{STRING}

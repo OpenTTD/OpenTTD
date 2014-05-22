@@ -1247,21 +1247,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Display the pop
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Thickness of lines in graphs: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Width of the line in the graphs. A thin line is more precisely readable, a thicker line is easier to see and colours are easier to distinguish
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Landscape: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landscapes define basic gameplay scenarios with different cargos and town growth requirements. NewGRF and Game Scripts allow finer control though
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :The original generator depends on the base graphics set, and composes fixed landscape shapes. TerraGenesis is a Perlin noise based generator with finer control settings
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrain type: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Hilliness of the landscape
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry density: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil refineries: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oil refineries are only constructed near the map border, that is at the coast for island maps
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain (TerraGenesis only) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Control at what height snow starts in sub-arctic landscape. Snow also affects industry generation and town growth requirements
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choose the frequency of hills: Smooth landscapes have fewer, more wide-spread hills. Rough landscapes have many hills, which may look repetitive
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
+STR_CONFIG_SETTING_VARIETY                                      :Variety distribution: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only) Control whether the map contains both mountainous and flat areas. Since this only makes the map flatter, other settings should be set to mountainous
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :River amount: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Choose how many rivers to generate
 STR_CONFIG_SETTING_TREE_PLACER                                  :Tree placer algorithm: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Choose the distribution of trees on the map: 'Original' plants trees uniformly scattered, 'Improved' plants them in groups
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :None
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Improved
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Road vehicles: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Choose the driving side
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Heightmap rotation: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter clockwise
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise

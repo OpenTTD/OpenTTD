@@ -1405,7 +1405,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Максимальное расстояние от края карты до нефтезаводов: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нефтеперерабатывающие заводы всегда строятся у краёв карты или на берегах островов, находящихся недалеко от края
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Высота снеговой линии: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Неровность земли (только для TerraGenesis): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Неровность ландшафта: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубый

@@ -1247,21 +1247,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Toon de populat
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van de lijnen in grafieken: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breedte van de lijnen in de grafiek. Een dunne lijn is preciezer leesbaar, een dikke lijn is makkelijker te zien en kleuren zijn gemakkelijker herkenbaar.e lijn
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Landschap: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landschappen definiëren basis gameplay scenario's met verschillende vracht en stadsgroei eisen. NewGRF en Game Scripts kunnen fijne instellingen hebben
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :De originele generator afhankelijk van de basis graphics set, en composeert vaste landschap vormen. TerraGenesis is een Perlin-ruis gebaseerde generator met fijnere instellingen
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrein type: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Alleen TerraGenesis) Heuvelachtigheid van het landschap
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industrie-dichtheid: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Stel in hoeveel industrieën moeten worden gegenereerd en welk niveau tijdens het spel moet worden gehandhaafd
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum afstand van de rand voor Olierafinaderijen: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaart grens, dat is aan de kust van eiland kaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Instellen op welke hoogte de sneeuw begint in sub-arctische landschap. Sneeuw heeft ook invloed op de industrie generatie en stadsgroei eisen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein (alleen TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Alleen TerraGenesis) Kies de frequentie van de heuvels: Gladde landschappen hebben minder, meer wijdverspreide heuvels. Ruwe landschappen hebben veel heuvels, die repetitief kunnen lijken
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glad
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruig
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erg ruig
+STR_CONFIG_SETTING_VARIETY                                      :Variëteit distributie: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Alleen TerraGenesis) Controleer of de kaart zowel bergachtige als vlakke gebieden bevat. Aangezien dit alleen de kaart platter maakt, moeten andere instellingen worden ingesteld op bergachtige
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Hoeveelheid rivieren: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Kies hoeveel rivieren er gegenereerd worden
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritme voor plaatsing van bomen: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Kies de verdeling van de bomen op de kaart: 'Origineel' plant bomen gelijkmatig verspreid, 'verbeterde' plant in groepen
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Geen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Origineel
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbeterd
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Wegvoertuigen: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Kies de rij zijde
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Draaiing van hoogtekaart: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok in
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee

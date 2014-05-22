@@ -1315,21 +1315,31 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zobrazí popul�
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Hrúbka čiar v grafe: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Hrúbka čiar v grafe. Tenké čiary sú presnejšie, hrubšie zase lepšie viditeľné.
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Krajina: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generátor uzemia: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Pôvodný
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Typ terénu: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Hustota priemyslu: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Nastavte, koľko má byť vygenerovaného priemyslu a aká úroveň by mala byť zachovaná v priebehu hry
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximálna vzdialenosť od okrajov mapy pre rafinérie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinérie ropy sú vybudované len na okrajoch mapy, tzn na pobreží pri ostrovných mapách
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Úroveň čiary snehu: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Určuje v akej výške začína sneh v subarktickej krajine. Sneh tiež ovplyvňuje generáciu priemyslu a požiadaviek rastu mesta
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitosť terénu (len pre TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veľmi rovný
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rovný
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Členitý
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Veľmi členitý
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Množstvo riek: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Vyberte koľko riek sa má generovať
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmus umiestňovania stromov: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Vyberte rozloženie stromov na mape: 'Pôvodné' - stromy budú rovnomerne rozptýlené, 'Zdokonalené' - budú v skupinách
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Žiadny
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Pôvodný
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Vylepšený
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Cestné vozidlá: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vyberte jazdnú stranu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Orientácia výškovej mapy: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Proti smeru hodinových ručičiek
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :V smere hodinových ručičiek
@@ -3866,6 +3876,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Cestovanie nana
 STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Cestovanie na {STRING} s {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Cesta ({STRING}, nerozvrhnuté)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Cesta (for {STRING}, nerozvrhnuté) pri najviac {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(prestávka {STRING}, nerozvrhnuté)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(cesta {STRING}, nerozvrhnuté)
 STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}

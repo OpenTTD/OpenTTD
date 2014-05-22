@@ -1248,21 +1248,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zeige die Einwo
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linienstärke in Diagrammen: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Strichdicke der Linien in Diagrammen. Dünnere Linien sind genauer ablesbar, dickere Linien sind besser sichtbar und erlauben es, Farben leichter zu unterscheiden
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Landschaftstyp: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landschaftstype definiert grundlegende Spielscenarien in Bezug auf verfügbare Fracht und Wachstumsvoraussetzungen für Städte. NewGRFs und Spielskripte erlauben weitgehendere Kontrolle dieser Parameter
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Algorithmus zur Landschaftserzeugung: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Der orginale Generator hängt von den verwendeten Basisgrafiken ab und setzt vorgefertigte Landschaftsformen zusammen. terraGenesis ist ein auf Perlinrauschen basierter Generator mit erweiterten Einstellmöglichkeiten
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Landschaftstyp: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(nur TerraGenesis) Hügeligkeit der Landschaft
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichte: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Wähle wieviele Industrien generiert werden sollen und welche Anzahl während des Spiels angestrebt wird zu erhalten
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalabstand vom Kartenrand für Ölraffinerien: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ölraffinerien werden nur in der Nähe des Kartenrands gebaut, bei inselreichen Karten nahe der Küste
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schneegrenze auf: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit (nur TerraGenesis): {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wähle die Höhe der Schneefallgrenze im subarktischen Klima. Schnee beeinflusst auch die Platzierung von Industrien und Voraussetzungen für Städtewachstum
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit des Geländes: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(nur TerraGenesis) Wähle die Häufigkeit von Hügeln: Rollende Landschaften haben wenige, weit verteilte Hügel. Zerklüftete Landschaften haben viele Hügel, was wiederum sich wiederholend aussehen kann
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rau
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr rau
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :zerklüftet
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr zerklüftet
+STR_CONFIG_SETTING_VARIETY                                      :Größe der Geländeformen: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(nur TerraGenesis) Beinflusst, ob die Karte sowohl bergige als auch ebene Gegenden enthält. Weil dieses die Karte nur ebener macht, sollten andere Einstellungen auf bergig gesetzt werden
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Anzahl Flüsse: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Wähle die Anzahl zu erzeugender Flüsse
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorithmus zur Baumplatzierung: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Wähle die Verteilung der Bäume auf der Karte: 'Original' pflanzt die Bäume gleichmäßig verteilt, 'Verbessert' pflanzt sie in Gruppen
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Keiner
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Straßenfahrzeuge: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Die Seite des Straßenverkehrs auswählen
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Drehung der Reliefkarte: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nach links
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Nach rechts
@@ -3795,7 +3811,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan
 STR_TIMETABLE_NO_TRAVEL                                         :Nicht unterwegs
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Unterwegs (automatisch; Fahrplan abhängig vom nächsten manuellen Auftrag)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Unterwegs (ohne Fahrplan)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Fahrt mit höchstens {2:VELOCITY} (ohne Fahrplan)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Fahrt (ohne Fahrplan) mit höchstens {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} unterwegs
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Fahrt zu {STRING} mit höchstens {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Fahre ({STRING}, ohne Fahrplan)

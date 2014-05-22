@@ -1271,21 +1271,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mosta la popola
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Spessore delle linee nei grafici: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Larghezza delle linee nei grafici. Le linee sottili sono più leggibili, quelle più spesse sono più facili da vedere e i colori più facili da distinguere
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Paesaggio: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :I paesaggi definiscono scenari di gioco di base che differiscono per i carichi disponibili e per i requisiti di crescita delle città. NewGRF e Script offrono tuttavia un controllo più fine su questi aspetti
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generatore terreno: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Il generatore originale dipende dal pacchetto grafico di base e si limita a comporre insieme frammenti di paesaggio di forma fissa. TerraGenesis è un generatore basato sul Rumore di Perlin che offre impostazioni più fini
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originale
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo di terreno: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Solo TerraGenesis) Tipo di dislivelli presenti nel paesaggio
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densità delle industrie: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Determina quante industrie sono generate e attorno a quale livello sono mantenute nel corso della partita
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Massima distanza delle raffinerie dal bordo della mappa: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Le raffinerie sono costruite solo vicino ai bordi della mappa, ovvero sulla costa nel caso di mappe insulari
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle nevi perenni: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregolarità del terreno (solo TerraGenesis): {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi sub-artici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregolarità del terreno: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo TerraGenesis) Seleziona la frequenza delle colline. I paesaggi morbidi presentano poche colline di forma allargata. I paesaggi accidentati hanno molte colline, che potrebbero apparire ripetitive
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molto morbido
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Morbido
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Accidentato
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molto accidentato
+STR_CONFIG_SETTING_VARIETY                                      :Varietà del terreno: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Solo TerraGenesis) Determina in quale misura la mappa affianca aree montuose ed aree pianeggianti. Poiché questa impostazione ha l'effetto di rendere la mappa più pianeggiante, le altre impostazioni dovrebbero essere impostate per un terreno montuoso
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantità di fiumi: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Seleziona la quantità di fiumi generati
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmo di piazzamento degli alberi: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Seleziona la modalità di distribuzione degli alberi sulla mappa: 'Originale' pianta gli alberi spargendoli in modo uniforme, 'Migliorato' li pianta in gruppi
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nessuno
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originale
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Migliorato
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Automezzi: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Seleziona il lato di guida
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotazione heightmap: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria

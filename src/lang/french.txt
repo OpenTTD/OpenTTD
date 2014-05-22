@@ -1248,21 +1248,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Afficher la pop
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Épaisseur des lignes dans les graphiques{NBSP}: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Épaisseur de la ligne dans les graphiques. Une ligne fine est lisible plus précisément, une ligne épaisse est plus facile à voir et les couleurs sont plus facile à distinguer
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Paysage{NBSP}: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Les paysages définissent les scénarios de jouabilité classique avec différentes marchandises et exigences pour la croissance des villes. Les NewGRFs et les scripts de jeux autorisent cependant un contrôle plus fin
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Générateur de terrain{NBSP}: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Le générateur original dépend des graphiques de base, et compose des zones de paysage fixes. TerraGenesis est un générateur basé sur le bruit de Perlin avec des paramètres de contrôle plus fins
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Type de terrain{NBSP}: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Vallonnement du paysage
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densité des industries{NBSP}: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Définit combien d'industries doivent être générée et quel niveau doit être maintenu pendant la partie
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximum depuis les bords pour les raffineries{NBSP}: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Les raffineries pétrolières ne sont construites que près du bord de la carte, ou sur la côte pour les cartes d'îles.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude d'enneigement{NBSP}: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosité du terrain (TerraGenesis seulement){NBSP}: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Contrôle à quelle altitude la neige commence dans le climat sub-arctique.La neige affecte aussi la génération des industries et les exigences pour la croissance des villes
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosité du terrain{NBSP}: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choisir la fréquence des collines{NBSP}: Les paysages doux ont des collines moins nombreuses et plus éloignées. Les paysages rudes ont beaucoup de collines, ce qui peut sembler répétitif
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lisse
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rugueux
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Très rugueux
+STR_CONFIG_SETTING_VARIETY                                      :Distribution de variété{NBSP}: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis seulement) Contrôle si la carte contient à la fois de la montagne et du terrain plat. Comme cela rend seulement la carte plus plate, les autres paramètres doivent être définis sur montagneux
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantité de rivières{NBSP}: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Choisir combien de rivières générer
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorithme de placement des arbres{NBSP}: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Choisir la distribution des arbres sur la carte{NBSP}: 'Original' répartit les arbres uniformément, 'Amélioré' les plante en groupes
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Aucun
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Amélioré
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Véhicules routiers{NBSP}: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Choisir le côté de circulation
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotation de la carte d'altitude{NBSP}: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horaire
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horaire
