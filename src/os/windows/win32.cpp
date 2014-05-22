@@ -19,7 +19,7 @@
 #include <fcntl.h>
 #include <regstr.h>
 #include <shlobj.h> /* SHGetFolderPath */
-#include <Shellapi.h>
+#include <shellapi.h>
 #include "win32.h"
 #include "../../core/alloc_func.hpp"
 #include "../../openttd.h"
