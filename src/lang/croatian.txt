@@ -1343,21 +1343,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Prikaži popula
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Debljina linije u grafikonima. Tanja linija je preciznija za čitanje, deblja linija je lakša za vidjeti i boje su lakše za razabrati
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Teren: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Tereni definiraju osnovne scenarije za igru sa različitim teretima i preduvjetima za rast gradova. NewGRF-ovi i Skripte Igre dozvoljavaju detaljnije kontrole i postavke.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator zemlje: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originalni generator ovisi o baznom grafičkom setu i stvara fiksne oblike u terenu. TerraGenesis je generator baziran na Perlinu sa detaljnijim kontrolama i postavkama.
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Izvorni
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Vrsta terena: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Samo TerraGenesis) Brdovitost terena
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gustoća industrija: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Odredite koliko će industrija biti stvoreno i kolika će količina biti održavana tijekom igre.
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Najveća udaljenost rafinerija nafte od rubova mape: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerije nafte se grade samo uz rubove mape odnosno na obali za otočne mape
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Visina linije snijega: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Grubost terena (samo TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Upravljajte na kojoj visini počinje snijeg u subarktičkoj klimi. Snijeg također utječe na stvaranje industrija i preduvjeta za rast gradova.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Grubost terena: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Samo TerraGenesis) Odaberite učestalost brda: Blaži tereni imaju rjeđa ali raširenija brda. Teži tereni imaju više brda koja bi mogla izgledati kao da se ponavljaju.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Vrlo glatko
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glatko
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Grubo
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Vrlo grubo
+STR_CONFIG_SETTING_VARIETY                                      :Raspodjela raznolikosti: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Samo TerraGenesis) Upravljajte da li će mapa sadržati i planinska i ravna područja. Pošto ovo samo radi mapu ravnijom, druge postavke bi trebali biti podešene na planinske.
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Količina rijeka: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Odaberite koliko rijeka želite stvoriti
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritam za sađenje drveća: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Odaberite raspored drveća na mapi: 'Original' sadi drveće ravnomjerno raspoređeno, 'Napredno' ih sadi u skupinama.
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nijedan
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Izvorni
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unaprijeđen
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Cestovna vozila: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Odaberite stranu vožnje
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotacija visinske karte: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Obrnuto od smjera kazaljke na satu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :U smjeru kazaljke na satu

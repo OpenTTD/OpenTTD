@@ -274,12 +274,12 @@ STR_SORT_BY_PRODUCTION                                          :Producció
 STR_SORT_BY_TYPE                                                :Tipus
 STR_SORT_BY_TRANSPORTED                                         :Transportat
 STR_SORT_BY_NUMBER                                              :Número
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Benef. darrer any
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Benef. aquest any
-STR_SORT_BY_AGE                                                 :Antig.
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Benefici darrer any
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Benefici aquest any
+STR_SORT_BY_AGE                                                 :Antiguitat
 STR_SORT_BY_RELIABILITY                                         :Rendibilitat
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capac. total per tipus de càrrega
-STR_SORT_BY_MAX_SPEED                                           :Veloc. Màxima
+STR_SORT_BY_MAX_SPEED                                           :Velocitat màxima
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Llargada
@@ -373,7 +373,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra els seny
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra noms i senyals dels competidors
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animació completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detall complet
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificis Transparents
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificis transparents
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Senyals transparents
 ############ range ends here
 
@@ -388,7 +388,7 @@ STR_FILE_MENU_EXIT                                              :Surt
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa del món
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Vista extra
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Llegenda del fluxe de càrrega
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Llegenda del flux de càrrega
 STR_MAP_MENU_SIGN_LIST                                          :Llista de senyals
 
 ############ range for town menu starts
@@ -422,15 +422,15 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financia una no
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcció de Ferrocarril
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcció de Ferrocarril Elèctric
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcció de Monorail
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcció de ferrocarril
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcció de ferrocarril elèctric
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcció de monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcció de Maglev
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construcció de Carreteres
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcció de Tramvies
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construcció de carreteres
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcció de tramvies
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -438,7 +438,7 @@ STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcció de
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcció d'Aeroport
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcció d'aeroport
 ############ range ends here
 
 ############ range for landscaping menu starts
@@ -453,7 +453,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :So/música
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Darrer missatge/notícia
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de Missatges
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de missatges
 ############ range ends here
 
 ############ range for about menu starts
@@ -596,10 +596,10 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstec
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Quantitat de vehicles que han donat beneficis el darrer any. Inclou els automòbils, trens, vaixells i avions
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat d'estacions revisades recentment. Estacions, parades d'autobús, aeroports, etc. es compten separadament, fins hi tot si pertanyen a la mateixa estació.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat d'estacions revisades recentment. Estacions, parades d'autobús, aeroports, etc. es compten separadament, fins i tot si pertanyen a la mateixa estació.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}El benefici del vehicle amb els menors ingressos (només s'han considerat els vehicles més antics de 2 anys)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el mínim benefici dels darrers 12 quatrimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el màxim benefici dels darrers 12 quatrimestres
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners guanyats durant el trimestre amb el mínim benefici dels darrers 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners guanyats durant el trimestre amb el màxim benefici dels darrers 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unitats de càrrega entregades en els darrers quatre trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipus de càrrega entregada durant el darrer trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantitat de diners en efectiu d'aquesta companyia
@@ -675,14 +675,14 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {
 STR_SMALLMAP_TYPE_CONTOURS                                      :Límits
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehicles
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Indústries
-STR_SMALLMAP_TYPE_ROUTEMAP                                      :Fluxe de càrregues
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Flux de càrregues
 STR_SMALLMAP_TYPE_ROUTES                                        :Rutes
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetació
 STR_SMALLMAP_TYPE_OWNERS                                        :Propietaris
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Mostra els límits de terreny al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Mostra els vehicles al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostra les indústries al mapa
-STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostra el fluxe de càrregues al mapa
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostra el flux de càrregues al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostra les rutes de transport al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostra la vegetació al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostra els propietaris del terreny al mapa
@@ -759,21 +759,21 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Celebració popular...{}El primer vaixell arriba a {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Celebració popular...{}El primer avió arriba a {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Accident de Tren!{}{COMMA} moren en una bola de foc després de la col·lisió
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Accident de tren!{}{COMMA} moren en una bola de foc després de la col·lisió
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Accident d'avió!{}{COMMA} moren en una bola de foc a {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accident d'aviació!{}L'avió s'ha quedat sense combustible, {COMMA} morts en l'accident!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Desastre de Zeppelin a {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Automòbil destruït en col·lisionar amb un 'OVNI'!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Desastre amb un zepelí a {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Automòbil destruït en col·lisionar amb un ovni!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Explosió de refineria de petroli prop de {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fàbrica destruïda en estranyes circumstàncies prop de {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'OVNI' aterra prop de {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}Ovni aterra prop de {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}L'enfonsament d'una mina de carbó deixa un rastre de destrucció prop de {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inundacions!{}Al menys {COMMA} presumptament desapareguts o morts després de les inundacions!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inundacions!{}Almenys {COMMA} presumptament desapareguts o morts després de les inundacions!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Empresa de Transport en dificultats!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Empresa de transport en dificultats!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} ha de ser venuda o declarar-se en fallida a menys que el seu rendiment s'incrementi aviat!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Fusió d'Empreses de Transport!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} s'ha venut a {STRING} per {CURRENCY_LONG}!
@@ -2217,7 +2217,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Commuta 
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Alternar entre transparència i invisibilitat dels objectes
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Llegenda del fluxe de càrrega
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Llegenda del Flux de Càrrega
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Tot
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Cap
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecciona les companyies que seran mostrades

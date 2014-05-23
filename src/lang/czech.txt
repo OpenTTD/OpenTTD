@@ -1344,10 +1344,17 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :velmi rovná
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :rovná
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :členitá
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :velmi členitá
+STR_CONFIG_SETTING_VARIETY                                      :Rozmanitost umisťování: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Pouze TerraGenesis) Určuje, zda krajina bude obsahovat zároveň hory i roviny. Vzhledem k tomu, že toto dělá mapu rovinatější, ostatní nastavení by měla být nastavena na hornatá
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Množství řek: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Zvol množství řek k vytvoření
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmus sázení stromového porostu: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Zvol způsob rozmisťování stromů ve světe: "Originální" sází stromy rovnoměrně, "Vylepšené" sází stromy ve skupinách
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :žádné
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :původní
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :vylepšené
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Silniční vozidla: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Zvol na jaké straně vozovky jezdí vozidla
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Otočení výškové mapy: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Doleva
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava

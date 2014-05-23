@@ -1049,8 +1049,8 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ирански�
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Направление движения
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}По какой стороне дороги ездит автотранспорт
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Левостороннее
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Правостороннее
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :левостороннее
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :правостороннее
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Названия городов
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}На каком языке будут названы населённые пункты
@@ -1410,10 +1410,16 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гл
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубый
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Очень грубый
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Только для TerraGenesis){}Выберите, должны ли на карте встречаться горные и равнинные области. Однако так как применение этих настроек влияет только на сглаживание карты, разница будет видна только при выборе горного ландшафта.
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Количество рек: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Выберите количество рек на карте
 STR_CONFIG_SETTING_TREE_PLACER                                  :Алгоритм рассадки деревьев: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Выберите способ распределения деревьев на карте: «оригинальный» алгоритм высаживает их равномерно поодиночке; «улучшенный» - группами.
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Нет
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Оригинальный
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Улучшенный
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Движение автотранспорта: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Выберите сторону дороги, по которой движется автотранспорт
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Вращение карты высот: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против часовой стрелки
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой стрелке

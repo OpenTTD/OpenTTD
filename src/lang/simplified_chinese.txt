@@ -1258,7 +1258,10 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :河流数量: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :选择生成河流的数量
 STR_CONFIG_SETTING_TREE_PLACER                                  :森林算法：{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :选择地图上树木的分布方式：“原版”树木各处一致分布，“改良”各类树木成片分布
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :没有
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :原始的
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :增强的

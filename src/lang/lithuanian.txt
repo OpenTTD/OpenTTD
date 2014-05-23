@@ -498,7 +498,7 @@ STR_SORT_BY_RATING                                              :Reitingas
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pristabdyti žaidimą
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Pagreitinti laiko tekmę
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Pagreitinti žaidimą
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Parinktys
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Išsaugoti/nutraukti žaidimą arba užverti programą
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Rodyti žemėlapį, papildomą peržiūros langą arba ženklų sąrašą
@@ -582,7 +582,7 @@ STR_FILE_MENU_EXIT                                              :Išeiti
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Žemėlapis
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildomas peržiūros langas
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Krovinių Tiekimo Legenda
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Krovinių srautų legenda
 STR_MAP_MENU_SIGN_LIST                                          :Ženklų sąrašas
 
 ############ range for town menu starts
@@ -2435,14 +2435,14 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Perjungt
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nustatyti objektus nematomais vietoje permatomų
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Krovinių paskirstymas
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Krovinių srautai
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Visi
-STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nieko
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Pasirinkite vaizduojamas kompanijas
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Joks
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Pasirinkite kompanijas, kurių krovinių srautus norite matyti
 
 # Linkgraph legend window and linkgraph legend in smallmap
-STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nenaudotas
-STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}prisotintas
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nenaudojamas
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}optimalus
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}perkrautas
 
 # Base for station construction window(s)
