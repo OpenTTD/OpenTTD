@@ -36,6 +36,7 @@
 
 #include "table/sprites.h"
 
+#include <map>
 #include "safeguards.h"
 
 /* Maximum number of NewGRFs that may be loaded. Six reserved slots are:
@@ -586,6 +587,23 @@ public:
 	}
 };
 
+
+typedef std::map<uint32, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
+
+/**
+ * Add all grf configs from \a c into the map.
+ * @param c Grf list to add.
+ * @param grfid_map Map to add them to.
+ */
+static void FillGrfidMap(const GRFConfig *c, GrfIdMap *grfid_map)
+{
+	while (c != NULL) {
+		std::pair<uint32, const GRFConfig *> p(c->ident.grfid, c);
+		grfid_map->insert(p);
+		c = c->next;
+	}
+}
+
 static void NewGRFConfirmationCallback(Window *w, bool confirmed);
 static void ShowSavePresetWindow(const char *initial_text);
 
@@ -677,6 +695,44 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		/* Remove the temporary copy of grf-list used in window */
 		ClearGRFConfigList(&this->actives);
 		_grf_preset_list.Clear();
+	}
+
+	/**
+	 * Test whether the currently active set of NewGRFs can be upgraded with the available NewGRFs.
+	 * @return Whether an upgrade is possible.
+	 */
+	bool CanUpgradeCurrent()
+	{
+		GrfIdMap grfid_map;
+		FillGrfidMap(this->actives, &grfid_map);
+
+		for (const GRFConfig *a = _all_grfs; a != NULL; a = a->next) {
+			GrfIdMap::const_iterator iter = grfid_map.find(a->ident.grfid);
+			if (iter != grfid_map.end() && a->version > iter->second->version) return true;
+		}
+		return false;
+	}
+
+	/** Upgrade the currently active set of NewGRFs. */
+	void UpgradeCurrent()
+	{
+		GrfIdMap grfid_map;
+		FillGrfidMap(this->actives, &grfid_map);
+
+		for (const GRFConfig *a = _all_grfs; a != NULL; a = a->next) {
+			GrfIdMap::iterator iter = grfid_map.find(a->ident.grfid);
+			if (iter == grfid_map.end() || iter->second->version >= a->version) continue;
+
+			GRFConfig **c = &this->actives;
+			while (*c != iter->second) c = &(*c)->next;
+			GRFConfig *d = new GRFConfig(*a);
+			d->next = (*c)->next;
+			d->CopyParams(**c);
+			if (this->active_sel == *c) this->active_sel = NULL;
+			delete *c;
+			*c = d;
+			iter->second = d;
+		}
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -1012,6 +1068,13 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				break;
 			}
 
+			case WID_NS_UPGRADE: { // Upgrade GRF.
+				if (!this->editable || this->actives == NULL) break;
+				UpgradeCurrent();
+				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
+				break;
+			}
+
 			case WID_NS_AVAIL_LIST: { // Select a non-active GRF.
 				ResetObjectToPlace();
 
@@ -1190,6 +1253,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			WIDGET_LIST_END
 		);
 		this->SetWidgetDisabledState(WID_NS_ADD, !this->editable || this->avail_sel == NULL || HasBit(this->avail_sel->flags, GCF_INVALID));
+		this->SetWidgetDisabledState(WID_NS_UPGRADE, !this->editable || this->actives == NULL || !this->CanUpgradeCurrent());
 
 		bool disable_all = this->active_sel == NULL || !this->editable;
 		this->SetWidgetsDisabledState(disable_all,
@@ -1772,6 +1836,8 @@ static const NWidgetPart _nested_newgrf_actives_widgets[] = {
 					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
 							SetDataTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
 				EndContainer(),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_UPGRADE), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_UPGRADE, STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP),
 			EndContainer(),
 
 			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2),

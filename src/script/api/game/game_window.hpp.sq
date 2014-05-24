@@ -788,6 +788,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_REMOVE,                             "WID_NS_REMOVE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_MOVE_UP,                            "WID_NS_MOVE_UP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_MOVE_DOWN,                          "WID_NS_MOVE_DOWN");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_UPGRADE,                            "WID_NS_UPGRADE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_FILTER,                             "WID_NS_FILTER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_FILE_LIST,                          "WID_NS_FILE_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_SCROLLBAR,                          "WID_NS_SCROLLBAR");

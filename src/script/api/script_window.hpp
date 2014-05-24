@@ -1820,6 +1820,7 @@ public:
 		WID_NS_REMOVE                                = ::WID_NS_REMOVE,                                ///< Remove NewGRF from active list.
 		WID_NS_MOVE_UP                               = ::WID_NS_MOVE_UP,                               ///< Move NewGRF up in active list.
 		WID_NS_MOVE_DOWN                             = ::WID_NS_MOVE_DOWN,                             ///< Move NewGRF down in active list.
+		WID_NS_UPGRADE                               = ::WID_NS_UPGRADE,                               ///< Upgrade NewGRFs that have a newer version available.
 		WID_NS_FILTER                                = ::WID_NS_FILTER,                                ///< Filter list of available NewGRFs.
 		WID_NS_FILE_LIST                             = ::WID_NS_FILE_LIST,                             ///< List window of active NewGRFs.
 		WID_NS_SCROLLBAR                             = ::WID_NS_SCROLLBAR,                             ///< Scrollbar for active NewGRF list.
