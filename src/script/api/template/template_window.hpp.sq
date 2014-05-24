@@ -161,6 +161,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::NewGRFParametersWidgets>(HSQUIRRELVM vm, ScriptWindow::NewGRFParametersWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::NewGRFStateWidgets GetParam(ForceType<ScriptWindow::NewGRFStateWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::NewGRFStateWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::NewGRFStateWidgets>(HSQUIRRELVM vm, ScriptWindow::NewGRFStateWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWindow::SavePresetWidgets GetParam(ForceType<ScriptWindow::SavePresetWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::SavePresetWidgets)tmp; }
+	template <> inline int Return<ScriptWindow::SavePresetWidgets>(HSQUIRRELVM vm, ScriptWindow::SavePresetWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::ScanProgressWidgets GetParam(ForceType<ScriptWindow::ScanProgressWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::ScanProgressWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::ScanProgressWidgets>(HSQUIRRELVM vm, ScriptWindow::ScanProgressWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::NewsWidgets GetParam(ForceType<ScriptWindow::NewsWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::NewsWidgets)tmp; }

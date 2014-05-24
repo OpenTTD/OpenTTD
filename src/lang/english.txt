@@ -2783,6 +2783,16 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matching f
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabled
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible with this version of OpenTTD
 
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Save preset
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}List of available presets, select one to copy it to the save name below
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Enter a name for the preset
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Currently selected name for the preset to save
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancel
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Don't change the preset
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Save
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Save the preset to the current selected name
+
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Change NewGRF parameters
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Close

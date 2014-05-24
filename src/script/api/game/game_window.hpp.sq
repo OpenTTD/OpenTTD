@@ -137,6 +137,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_NEWGRF_INSPECT,                         "WC_NEWGRF_INSPECT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SPRITE_ALIGNER,                         "WC_SPRITE_ALIGNER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_LINKGRAPH_LEGEND,                       "WC_LINKGRAPH_LEGEND");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SAVE_PRESET,                            "WC_SAVE_PRESET");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_INVALID,                                "WC_INVALID");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::TC_BLUE,                                   "TC_BLUE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::TC_SILVER,                                 "TC_SILVER");
@@ -806,6 +807,11 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_CONTENT_DOWNLOAD2,                  "WID_NS_CONTENT_DOWNLOAD2");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_SHOW_REMOVE,                        "WID_NS_SHOW_REMOVE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_SHOW_APPLY,                         "WID_NS_SHOW_APPLY");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SVP_PRESET_LIST,                       "WID_SVP_PRESET_LIST");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SVP_SCROLLBAR,                         "WID_SVP_SCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SVP_EDITBOX,                           "WID_SVP_EDITBOX");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SVP_CANCEL,                            "WID_SVP_CANCEL");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SVP_SAVE,                              "WID_SVP_SAVE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SP_PROGRESS_BAR,                       "WID_SP_PROGRESS_BAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SP_PROGRESS_TEXT,                      "WID_SP_PROGRESS_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_PANEL,                               "WID_N_PANEL");

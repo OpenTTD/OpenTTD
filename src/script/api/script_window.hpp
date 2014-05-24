@@ -753,10 +753,16 @@ public:
 		WC_SPRITE_ALIGNER                            = ::WC_SPRITE_ALIGNER,
 
 		/**
-		 * Linkgraph legend; Window numbers:
+		 * Linkgraph legend; %Window numbers:
 		 *   - 0 = #LinkGraphWidgets
 		 */
 		WC_LINKGRAPH_LEGEND                          = ::WC_LINKGRAPH_LEGEND,
+
+		/**
+		 * Save preset; %Window numbers:
+		 *   - 0 = #SavePresetWidgets
+		 */
+		WC_SAVE_PRESET                               = ::WC_SAVE_PRESET,
 
 		WC_INVALID                                   = ::WC_INVALID,                                   ///< Invalid window.
 	};
@@ -1833,6 +1839,15 @@ public:
 		WID_NS_CONTENT_DOWNLOAD2                     = ::WID_NS_CONTENT_DOWNLOAD2,                     ///< Open content download (active NewGRFs).
 		WID_NS_SHOW_REMOVE                           = ::WID_NS_SHOW_REMOVE,                           ///< Select active list buttons (0, 1 = simple layout).
 		WID_NS_SHOW_APPLY                            = ::WID_NS_SHOW_APPLY,                            ///< Select display of the buttons below the 'details'.
+	};
+
+	/** Widgets of the #SavePresetWindow class. */
+	enum SavePresetWidgets {
+		WID_SVP_PRESET_LIST                          = ::WID_SVP_PRESET_LIST,                          ///< List with available preset names.
+		WID_SVP_SCROLLBAR                            = ::WID_SVP_SCROLLBAR,                            ///< Scrollbar for the list available preset names.
+		WID_SVP_EDITBOX                              = ::WID_SVP_EDITBOX,                              ///< Edit box for changing the preset name.
+		WID_SVP_CANCEL                               = ::WID_SVP_CANCEL,                               ///< Button to cancel saving the preset.
+		WID_SVP_SAVE                                 = ::WID_SVP_SAVE,                                 ///< Button to save the preset.
 	};
 
 	/** Widgets of the #ScanProgressWindow class. */

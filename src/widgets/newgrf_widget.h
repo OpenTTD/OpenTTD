@@ -60,6 +60,15 @@ enum NewGRFStateWidgets {
 	WID_NS_SHOW_APPLY,        ///< Select display of the buttons below the 'details'.
 };
 
+/** Widgets of the #SavePresetWindow class. */
+enum SavePresetWidgets {
+	WID_SVP_PRESET_LIST, ///< List with available preset names.
+	WID_SVP_SCROLLBAR,   ///< Scrollbar for the list available preset names.
+	WID_SVP_EDITBOX,     ///< Edit box for changing the preset name.
+	WID_SVP_CANCEL,      ///< Button to cancel saving the preset.
+	WID_SVP_SAVE,        ///< Button to save the preset.
+};
+
 /** Widgets of the #ScanProgressWindow class. */
 enum ScanProgressWidgets {
 	WID_SP_PROGRESS_BAR,  ///< Simple progress bar.
