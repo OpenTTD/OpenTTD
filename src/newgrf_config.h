@@ -177,6 +177,8 @@ struct GRFConfig : ZeroedMemoryAllocator {
 
 	struct GRFConfig *next;                        ///< NOSAVE: Next item in the linked list
 
+	void CopyParams(const GRFConfig &src);
+
 	bool IsOpenTTDBaseGRF() const;
 
 	const char *GetTextfile(TextfileType type) const;

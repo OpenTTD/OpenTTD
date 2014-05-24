@@ -82,7 +82,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	this->name->AddRef();
 	this->info->AddRef();
 	this->url->AddRef();
-	if (config.error    != NULL) this->error    = new GRFError(*config.error);
+	if (config.error != NULL) this->error = new GRFError(*config.error);
 	for (uint i = 0; i < config.param_info.Length(); i++) {
 		if (config.param_info[i] == NULL) {
 			*this->param_info.Append() = NULL;
@@ -105,6 +105,17 @@ GRFConfig::~GRFConfig()
 	this->url->Release();
 
 	for (uint i = 0; i < this->param_info.Length(); i++) delete this->param_info[i];
+}
+
+/**
+ * Copy the parameter information from the \a src config.
+ * @param src Source config.
+ */
+void GRFConfig::CopyParams(const GRFConfig &src)
+{
+	this->num_params = src.num_params;
+	this->num_valid_params = src.num_valid_params;
+	MemCpyT<uint32>(this->param, src.param, lengthof(this->param));
 }
 
 /**
