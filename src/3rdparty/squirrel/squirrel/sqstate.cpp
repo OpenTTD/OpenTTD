@@ -507,26 +507,26 @@ void SQStringTable::AllocNodes(SQInteger size)
 {
 	_numofslots = size;
 	_strings = (SQString**)SQ_MALLOC(sizeof(SQString*)*_numofslots);
-	memset(_strings,0,sizeof(SQString*)*_numofslots);
+	memset(_strings,0,sizeof(SQString*)*(size_t)_numofslots);
 }
 
 SQString *SQStringTable::Add(const SQChar *news,SQInteger len)
 {
 	if(len<0)
 		len = (SQInteger)scstrlen(news);
-	SQHash h = ::_hashstr(news,len)&(_numofslots-1);
+	SQHash h = ::_hashstr(news,(size_t)len)&(_numofslots-1);
 	SQString *s;
 	for (s = _strings[h]; s; s = s->_next){
-		if(s->_len == len && (!memcmp(news,s->_val,rsl(len))))
+		if(s->_len == len && (!memcmp(news,s->_val,(size_t)rsl(len))))
 			return s; //found
 	}
 
 	SQString *t=(SQString *)SQ_MALLOC(rsl(len)+sizeof(SQString));
 	new (t) SQString;
-	memcpy(t->_val,news,rsl(len));
+	memcpy(t->_val,news,(size_t)rsl(len));
 	t->_val[len] = _SC('\0');
 	t->_len = len;
-	t->_hash = ::_hashstr(news,len);
+	t->_hash = ::_hashstr(news,(size_t)len);
 	t->_next = _strings[h];
 	_strings[h] = t;
 	_slotused++;
