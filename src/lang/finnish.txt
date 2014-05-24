@@ -1247,21 +1247,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näytä kaupunk
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Viivan leveys kuvaajissa. Ohut viiva on tarkasti luettavissa kun taas paksumpi viiva on helpompi nähdä ja sen värit ovat helpommin havaittavissa
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Maasto: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maasto vaikuttaa useisiin pelin peruselementteihin, kuten rahtiin ja kaupunkien kasvuvaatimuksiin. NewGRF:t ja Peliskriptit voivat kuitenkin vaikuttaa tarkemmin pelin kulkuun
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maastogeneraattori: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Alkuperäinen maastonluoja riippuu perusgrafiikkapaketista ja luo ennalta määritettyjä maastonmuotoja. TerraGenesis luo maastoa Perlin-kohinan perusteella ja mahdollistaa asetusten tarkemman määrittelyn
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maaston tyyppi: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Vain TerraGenesis) Maaston mäkisyys
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Teollisuuden määrä: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määritä, kuinka paljon teollisuutta tulisi luoda ja millä tasolla teollisuuden tulisi pysytellä pelin aikana
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu etäisyys kartan reunoilta öljynjalostamoille: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamoja rakennetaan ainoastaan kartan reunoille eli rannikoille saarikartoilla
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maaston epätasaisuus (vain TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määritä, millä korkeudella lumiraja on pohjoisessa maastotyypissä. Lumi vaikuttaa teollisuuksien luontiin sekä kaupunkien kasvuvaatimuksiin
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maaston epätasaisuus: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Vain TerraGenesis) Määritä mäkien tiheys: Tasaisessa maastossa mäet ovat laajempia ja niitä on vähemmän. Epätasaisessa maastossa on enemmän mäkiä, mikä voi saada maaston näyttämään itseään toistavalta
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erittäin epätasainen
+STR_CONFIG_SETTING_VARIETY                                      :Maaston vaihtelu: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Vain TerraGenesis) Valitse, onko kartalla sekä vuoristoisia että tasaisia alueita. Koska tämä asetus tekee maastosta tasaisempaa, muut asetukset tulisi määrittää vuoristoisiksi
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Jokien määrä: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Valitse, kuinka paljon jokia luodaan
 STR_CONFIG_SETTING_TREE_PLACER                                  :Puiden sijoittelualgoritmi: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Määritä puiden jakautuminen kartalla: 'Alkuperäinen' istuttaa puita tasaisesti ympäri karttaa, 'Parannettu' istuttaa niitä ryhmiin
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ei mitään
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Alkuperäinen
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Parannettu
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Ajoneuvot: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Valitse ajokaista
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Korkeuskartan pyöritys:{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään

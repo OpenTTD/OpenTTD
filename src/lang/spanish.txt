@@ -816,6 +816,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tiene una orden vacía
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tiene órdenes duplicadas
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tiene una estación inválida en sus órdenes
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} tiene en sus órdenes un aeropuerto con una pista demasiado corta
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} se está volviendo viejo
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} se está volviendo muy viejo
@@ -1126,7 +1127,7 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastre
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los pueblos frente a reestructuraciones en su zona: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir la medida en la que el ruido y el daño ambiental causado por las compañías afecta a su calificación local en los pueblos
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo carreteras, raíles, etc.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo edificios, raíles, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir modificar el terreno debajo de edificios y raíles sin eliminarlos
 STR_CONFIG_SETTING_CATCHMENT                                    :Tamaño del área de captación realista: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite tener diferentes áreas de captación para distintos tipos de estaciones y aeropuertos
@@ -1247,21 +1248,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Muestra el núm
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las líneas en los gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las líneas en los gráficos. Una línea fina es más precisa, una línea más gruesa es más fácil de distinguir
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen escenarios con diferentes tipos de carga y requisitos de crecimiento de pueblos. Es posible modificarlos empleando NewGRF y scripts de juego
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador terreno: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :El generador original depende del tipo de gráficos base, y crea formas de terreno fijas. TerraGenesis es un generador basado en ruido Perlin que permite un mayor control de configuración
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Solo TerraGenesis) Colinas del terreno
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad de industria: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Permite fijar el número de industrias que deberían de generarse, y el nivel que debería mantenerse durante el juego
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías de petróleo solamente se construyen cerca del borde del mapa, el cual es costa para los mapas con borde de océano
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura línea nieve: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Aspereza del terreno (Sólo TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Permite escoger la altura a la cual la nieve comienza en el clima subártico. La nieve también afecta a la generación de industrias y a los requisitos de crecimiento de pueblos
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosidad del terreno: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo TerraGenesis) Permite elegir la frecuencia de colinas: los terrenos más planos tienen un número menor de colinas, agrupadas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetivo
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Áspero
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muy Áspero
+STR_CONFIG_SETTING_VARIETY                                      :Variedad: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Solo TerraGenesis) Permite controlar si el mapa contendrá zonas montañosas y planas. Dado que esto únicamente hace que el mapa sea mas plano, otras opciones deberían fijarse a Montañoso
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Cantidad de ríos: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Elegir el número de ríos a generar
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmo de colocación de árboles: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Permite escoger la distribución de árboles en el mapa. 'Original' coloca los árboles distribuidos de forma uniforme, mientras que 'Mejorado' los planta en grupos
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ninguno
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Mejorado
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Elegir el lado de conducción
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotación de Mapa de altura: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
@@ -1286,7 +1303,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla la forma en la que la vista principal se mueve a una posición específica como resultado de hacer click en el mapa o al enviar la orden de moverse a un objeto determinado del mapa. Si se activa, la vista se mueve de forma suave. Si se desactiva, la vista se mueve directamente al destino
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas usando las herramientas de construcción: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Muestra distancias en número de casillas y las diferencias de altura al arrastrar durante operaciones de construcción
-STR_CONFIG_SETTING_LIVERIES                                     :Ver estaciones de la empresa: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Ver tipos específicos para cada vehículo: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla el uso de esquemas de color específicos para vehículos (en oposición a los específicos para compañías)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propia empresa
@@ -1558,7 +1575,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribu
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribución para la clase de carga BLINDADA: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La clase de carga BLINDADA contiene los objetos de valor del clima templado, los diamantes del clima subtropical o el oro del clima subártico. Los NewGRFs pueden modificar las cargas BLINDADAS presentes en una partida. En una distribución simétrica, se envía la misma cantidad de carga de la estación A a la B que de B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de carga en ambas direcciones. Manual significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribución a asimétrica o manual al jugar en subártico o subtropical. En el clima templado es posible escoger simétrica ya que los bancos pueden enviar de vuelta objetos de valor
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otras clases de carga: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :La clase de carga BLINDADA contiene los objetos de valor del clima templado, los diamantes del clima subtropical o el oro del clima subártico. Los NewGRFs pueden modificar las cargas BLINDADAS presentes en una partida. En una distribución simétrica, se envía la misma cantidad de carga de la estación A a la B que de B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de carga en ambas direcciones. Manual significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribución a asimétrica o manual al jugar en subártico o subtropical. En el clima templado es posible escoger simétrica ya que los bancos pueden enviar de vuelta objetos de valor
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrico" significa que se pueden mover cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no habrá distribución automática para estos tipos de carga.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de la distribución: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Este valor determina el tiempo de CPU empleado en calcular el grafo de distribución. Si es demasiado elevado puede producir ralentización en el juego. Si es demasiado bajo la distribución puede ser poco precisa, causando que ocasionalmente se produzcan errores en los lugares a los que va la carga
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
@@ -1620,6 +1637,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Encamin
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitaciones
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Accidentes
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generación de mundo
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambiente
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pueblos
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
@@ -3267,7 +3285,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehículos de c
 STR_GROUP_DEFAULT_SHIPS                                         :Barcos sin agrupar
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sin agrupar
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Click en un grupo para ver la lista de sus vehículos
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Click en un grupo para ver la lista de sus vehículos. Es posible arrastrar grupos para modificar su jerarquía.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click para crear un grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borrar el grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renombrar el grupo seleccionado
@@ -3793,9 +3811,13 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarios
 STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado por la próxima orden manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar a como máximo {2:VELOCITY} (sin horarios)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (sin horarios) a como máximo {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar a {STRING} con un límite de velocidad de {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajando (a {STRING}, sin horarios)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajando (a {STRING}, sin horario) a como máximo {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permaneciendo por {STRING}, sin horarios)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajando a {STRING}, sin horarios)
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}

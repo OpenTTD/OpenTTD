@@ -1292,7 +1292,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Morbido
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Accidentato
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molto accidentato
 STR_CONFIG_SETTING_VARIETY                                      :Varietà del terreno: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Solo TerraGenesis) Determina in quale misura la mappa affianca aree montuose ed aree pianeggianti. Poiché questa impostazione ha l'effetto di rendere la mappa più pianeggiante, le altre impostazioni dovrebbero essere impostate per un terreno montuoso
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Solo TerraGenesis) Determina in quale misura la mappa affianca aree montuose ed aree pianeggianti. Poiché questa impostazione agisce abbassando progressivamente la quota del terreno, le altre impostazioni dovrebbero essere impostate per un terreno montuoso
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantità di fiumi: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Seleziona la quantità di fiumi generati
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmo di piazzamento degli alberi: {STRING}
