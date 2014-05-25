@@ -937,11 +937,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonialainen
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille.
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Pois
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Kuukausittain
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Joka 3. kuukausi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Joka 6. kuukausi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kerran vuodessa
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kieli
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli.
@@ -1331,6 +1333,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vasemmalla hiiren painikkeella liikkuminen: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Salli näkymän siirtäminen vetämällä hiiren vasemmalla näppäimellä. Hyödyllinen erityisesti kosketusnäyttöä käytettäessä
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Käytä {STRING} päivämäärämuotoa tallennettujen pelien niminä
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Pelitallenteiden tiedostonimissä käytettävä päivämäärän muoto
@@ -2759,6 +2762,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Siirrä 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Siirrä valittua NewGRF-tiedostoa listassa ylöspäin
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Siirrä alas
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Siirrä valittua NewGRF-tiedostoa listassa alaspäin
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Päivitä
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Päivitä NewGRF-tiedostot joista on asennettuna uudempi versio
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista asennetuista NewGRF-tiedostoista
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Aseta parametrit
@@ -2782,6 +2787,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ei tieto
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sopivaa tiedostoa ei löydy
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytössä
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Epäyhteensopiva tämän OpenTTD-version kanssa
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Tallenna valmislistaksi
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Luettelo saatavilla olevista valmislistoista, valitse yksi kopioitavaksi alla olevaan tallenteeseen
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Syötä nimi valmislistalle
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Valittu nimi tallennettavalle valmislistalle
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Peruuta
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Älä muuta valmislistaa
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Tallenna
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Tallenna valmislista valitulle nimelle
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametrejä

@@ -938,11 +938,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :카탈로니아
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안함
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}언어
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용하실 언어를 선택하세요.
@@ -1262,7 +1264,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :정유 공장�
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장은 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :설선 고도: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :아한대 기후의 설선 고도를 조절합니다. 눈은 산업시설의 생성과 도시 성장에 영향을 미칩니다.
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도 ('천지창조' 전용): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(천지창조 전용) 언덕의 빈도수를 선택합니다. 평탄한 지형은 개수가 적고 넓게 퍼진 언덕을 만듭니다. 거친 지형은 똑같아 보일 수 있는 많은 언덕이 생기게 됩니다.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
@@ -1332,6 +1334,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :마우스 왼쪽 버튼으로 스크롤: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :왼쪽 마우스 버튼을 드래그하여 지도를 스크롤 할 수 있도록 합니다. 터치 스크린 환경에서 이 옵션을 켜면 매우 유용합니다.
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :저장 파일의 이름으로 {STRING} 날짜 형식을 사용합니다.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 저장 파일 이름에 사용할 날짜 형식을 선택합니다.
@@ -2760,6 +2763,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}위로
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}선택한 NewGRF 파일의 순서를 위로 올립니다.
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}아래로
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}선택한 NewGRF 파일의 순서를 아래로 내립니다.
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}업데이트
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}새 버전이 있는 NewGRF 파일을 업데이트합니다.
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}설치된 NewGRF의 목록입니다.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}매개 변수 설정
@@ -2783,6 +2788,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}관련 �
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}일치하는 파일을 찾을 수 없습니다
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용 안 함
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTTD 버전과 맞지 않습니다...
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}프리셋 저장
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}사용 가능한 프리셋 목록입니다. 아래에 같은 이름을 복사하려면 선택하십시오.
+STR_SAVE_PRESET_TITLE                                           :{BLACK}프리셋의 이름을 입력하세요
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}저장할 프리셋에 지정할 이름입니다.
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}취소
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}프리셋을 바꾸지 않습니다.
+STR_SAVE_PRESET_SAVE                                            :{BLACK}저장
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}이 프리셋을 선택한 이름으로 저장합니다.
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 매개 변숫값 변경

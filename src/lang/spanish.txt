@@ -938,11 +938,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalán
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre guardados automáticos del juego
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desactivado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleccione el idioma a emplear para la interfaz del juego
@@ -1255,7 +1257,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :El generador or
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Solo TerraGenesis) Colinas del terreno
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Sólo TerraGenesis) Colinas del terreno
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad de industria: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Permite fijar el número de industrias que deberían de generarse, y el nivel que debería mantenerse durante el juego
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
@@ -1263,13 +1265,13 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura línea nieve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Permite escoger la altura a la cual la nieve comienza en el clima subártico. La nieve también afecta a la generación de industrias y a los requisitos de crecimiento de pueblos
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosidad del terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo TerraGenesis) Permite elegir la frecuencia de colinas: los terrenos más planos tienen un número menor de colinas, agrupadas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetivo
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Sólo TerraGenesis) Permite elegir la frecuencia de colinas: los terrenos más planos tienen un número menor de colinas, agrupadas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetitivo
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Áspero
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muy Áspero
 STR_CONFIG_SETTING_VARIETY                                      :Variedad: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Solo TerraGenesis) Permite controlar si el mapa contendrá zonas montañosas y planas. Dado que esto únicamente hace que el mapa sea mas plano, otras opciones deberían fijarse a Montañoso
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Sólo TerraGenesis) Permite controlar si el mapa contendrá zonas montañosas y planas. Dado que esto únicamente hace que el mapa sea más plano, otras opciones deberían fijarse a Montañoso
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Cantidad de ríos: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Elegir el número de ríos a generar
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmo de colocación de árboles: {STRING}
@@ -1332,6 +1334,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desplazamiento con botón izquierdo: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activa el deslizamiento del mapa al arrastrarlo con el botón izquierdo. Esto es especialmente útil al usar pantallas táctiles
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de fecha {STRING} para los nombres de partidas guardadas
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato de la fecha en el nombre de partidas guardadas
@@ -2783,6 +2786,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No tiene
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichero no encontrado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible con esta versión de OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambiar parámetros NewGRF

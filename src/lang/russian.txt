@@ -1082,11 +1082,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталан�
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автосохранение
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервал автосохранения игры
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Отключено
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Каждый месяц
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Каждые 3 месяца
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Каждые 6 месяцев
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Каждый год
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Язык
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Язык пользовательского интерфейса
@@ -1483,6 +1485,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Смещение обзора по нажатию левой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Смещение обзора левой кнопкой мыши. Это удобно при использовании сенсорного экрана.
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Использовать {STRING} формат даты для имён сохранений
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат даты, использующийся в названиях сохранённых игр
@@ -2939,6 +2942,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Ввер
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Переместить выбранный файл NewGRF выше по списку
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Вниз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Переместить выбранный файл NewGRF ниже по списку
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Обновить
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Обновить файлы модулей NewGRF, если есть такая возможность
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список используемых файлов NewGRF
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
@@ -2962,6 +2967,10 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Нет �
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл не найден
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Отключено
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несовместимо с данной версией OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Отмена
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Сохранить
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Изменить параметры NewGRF

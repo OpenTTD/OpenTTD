@@ -938,11 +938,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalans
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sauvegarde automatique
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Désactivée
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Tous les mois
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Tous les 3 mois
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Tous les 6 mois
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Tous les 12 mois
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Langue
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Sélectionner la langue à utiliser pour l'interface
@@ -1332,6 +1334,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Désactivé
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Défilement par clic gauche{NBSP}: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Active le défilement de la carte en la glissant avec le bouton gauche de la souris. C'est surtout utile pour les écrans tactiles
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utiliser le format de date {STRING} pour le nom des sauvegardes
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la date dans les noms des fichiers de sauvegarde
@@ -2760,6 +2763,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Monter
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le module NewGRF sélectionné dans la liste{NBSP}: cela réduit son influence relative (certains de ses paramètres sont plus susceptibles d'être écrasés par ceux équivalents provenant de modules situés plus bas dans la liste)
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le module NewGRF sélectionné dans la liste{NBSP}: cela augmente son influence relative (certains de ses paramètres sont moins susceptibles d'être écrasés par ceux équivalents provenant de modules situés plus bas dans la liste)
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Mettre à jour
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Mettre à jour les NewGRFs pour lesquels vous avez une version installée plus récente
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Une liste des modules NewGRF installés
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
@@ -2783,6 +2788,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Pas d'in
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Module correspondant non trouvé
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Désactivé
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible avec cette version d'OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Sauvegarder la présélection
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liste des présélections disponibles, en sélectionner une pour la copier sous le nom de sauvegarde ci-dessous
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Entrer un nom pour la présélection
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nom actuellement sélectionné pour la présélection à sauvegarder
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annuler
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne pas modifier la présélection
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Sauvegarder
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sauvegarder la présélection sous le nom actuellement sélectionné
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Modifier les paramètres NewGRF

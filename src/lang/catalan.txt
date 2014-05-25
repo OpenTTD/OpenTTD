@@ -392,7 +392,7 @@ STR_MAP_MENU_LINGRAPH_LEGEND                                    :Llegenda del fl
 STR_MAP_MENU_SIGN_LIST                                          :Llista de senyals
 
 ############ range for town menu starts
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directori de Poblacions
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directori de poblacions
 STR_TOWN_MENU_FOUND_TOWN                                        :Funda una població
 ############ range ends here
 
@@ -405,7 +405,7 @@ STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gràfic de bene
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gràfic d'ingressos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gràfic d'entrega de càrrega
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gràfic històric de rendiment
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gràfic de valor de l'Empresa
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gràfic de valor de l'empresa
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifes de pagament per càrrega
 ############ range ends here
 
@@ -936,13 +936,15 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Català
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Desa automàticament
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona l'interval en què el joc es desa automàticament
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona l'interval entre desades automàtiques de les partides
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Inactiu
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 mesos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 mesos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 mesos
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona l'idioma de la interfície
@@ -1045,7 +1047,7 @@ STR_SUBSIDY_X4                                                  :x4
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Molt Pla
 STR_TERRAIN_TYPE_FLAT                                           :Pla
 STR_TERRAIN_TYPE_HILLY                                          :Accidentat
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Muntanyenc
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Muntanyós
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiu
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1248,21 +1250,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostra els habi
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Gruix de les línies dels gràfics: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Gruix de la línia als gràfics. Una línia més fina és més llegible, una línia més gruixuda és més fàcil de veure i els colors són més fàcils de distingir
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Paisatge: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :El tipus de paisatge defineix escenaris amb diferents tipus de càrrega i requisits per al creixement de les poblacions. Els NewGRF i l'script de la partida poden modificar-ne l'aparença i el comportament
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terrenys: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :L'algorisme generador original depèn del tipus de gràfics base i crea formes de terreny predefinides. TerraGenesis és un generador basat en el soroll Perlin que permet una configuració més precisa
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipus de terreny: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Només TerraGenesis) Escollir el tipus de terreny: des de molt pla fins a muntanyós
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitat d'indústries: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Fixa el nombre d'indústries que s'haurien de generar i mantenir durant la partida
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màxima des de la vora a les refineries de petroli: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Les refineries de petroli només es construeixen a prop de les vores del mapa, això és a la costa en els mapes d'illes
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada de la cota de neu: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Geografia del terreny (TerraGenesis només) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a quina alçada la neu comença en el paisatge subàrtic. La neu també afecta la generació d'indústries i els requisits per al creixement de les poblacions
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Geografia del terreny: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Només TerraGenesis) Escollir la suavitat del paisatge: els terrenys suaus tenen menys turons i són regulars; els terrenys més rugosos són irregulars i tenen molts turons
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escarpat
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molt escarpat
+STR_CONFIG_SETTING_VARIETY                                      :Varietat: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Només TerraGenesis) Controla la varietat en la distribució de les zones muntanyoses i planes. Aquesta opció controla la distribució d'aquestes zones; si es vol modificar si el terreny és més o menys muntanyós s'han de modificar altres opcions
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantitat de rius: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Escollir la quantitat de rius a generar
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorisme per situar arbres: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Permet escollir la distribució d'arbres al mapa. 'Original' distribueix els arbres uniformement. 'Millorat' els planta en grups
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Cap
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Millorat
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Automòbils: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Escollir el costat de conducció
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotació del mapa d'alçades: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
@@ -1317,7 +1335,10 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivat
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desplaçament amb el botó esquerre: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activa el desplaçament del mapa arrossegant-lo amb el botó esquerre del ratolí. Això és especialment útil quan s'utilitzen pantalles tàctils
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data curta {STRING} per a guardar partides
+STR_CONFIG_SETTING_AUTOSAVE                                     :Desada automàtica: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecciona l'interval entre desades automàtiques de les partides
+
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data {STRING} per a guardar partides
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la data en els noms dels arxius de les partides que es guardin
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31 Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
@@ -1697,7 +1718,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Seleccio
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra les opcions del joc
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra la taula de rècords
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra paràmetres avançats
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra els paràmetres NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra la configuració de les extensions NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra els paràmetres de les IA/Script de la partida
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
@@ -1736,10 +1757,10 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugant 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, objectes inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els túnels es poden creuar: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció no tindran accidents (freqüents) en els aeroports petits: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :paisatge temperat
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :paisatge subàrtic
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :paisatge subtropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :paisatge de joguines
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Paisatge temperat
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Paisatge subàrtic
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Paisatge subtropical
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Paisatge de joguines
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l'any actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació de valors de producció: {ORANGE}{STRING}
@@ -2729,10 +2750,10 @@ STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arxius N
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selecciona configuració:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Cadena de filtre:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa predef.
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa configuració
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Desa la llista actual com a predefinició
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introdueix el nom de la predefinició
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Esborra predef.
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Esborra configuració
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Esborra la predefinició selecciona actualment
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Afegeix
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Afegeix l'arxiu NewGRF seleccionat a la teva configuració
@@ -2744,9 +2765,11 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mou amun
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mou amunt l'arxiu NewGRF seleccionat de la llista
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mou avall
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mou avall l'arxiu NewGRF seleccionat de la llista
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Actualitza
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Empra les versions més noves dels NewGRF d'aquesta configuració preestablerta si prèviament se n'han actualitzat els NewGRF corresponents
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una llista de fitxers NewGRF que estan instal·lats
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Estableix paràm.
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establir paràmetres
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostra els paràmetres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Commuta paleta
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Commuta la paleta del NewGRF seleccionat.{}Fes això quan els gràfics del NewGRF en el joc es vegin rosats
@@ -2767,6 +2790,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No hi ha
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}No s'ha trobat cap arxiu coincident
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivat
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Versió incompatible amb aquesta versió de OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Guardar configuració NewGRF
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Llista de totes les configuracions NewGRF preestablertes; seleccioneu-ne una per a copiar el nom
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Introduïu un nom per a l'actual configuració NewGRF
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nom amb què guardar la nova configuració preestablerta de NewGRF
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancel·la
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}No guardar els canvies en la configuració NewGRF preestablerta
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Guarda
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Guarda la configuració NewGRF preestablerta amb el nom seleccionat
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Canvia els paràmetres NewGRF
