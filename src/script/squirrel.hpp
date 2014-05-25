@@ -41,6 +41,11 @@ private:
 	 */
 	const char *GetAPIName() { return this->APIName; }
 
+	/** Perform all initialization steps to create the engine. */
+	void Initialize();
+	/** Perform all the cleanups for the engine. */
+	void Uninitialize();
+
 protected:
 	/**
 	 * The CompileError handler.
@@ -249,11 +254,6 @@ public:
 	bool HasScriptCrashed();
 
 	/**
-	 * Reset the crashed status.
-	 */
-	void ResetCrashed();
-
-	/**
 	 * Set the script status to crashed.
 	 */
 	void CrashOccurred();
@@ -267,6 +267,11 @@ public:
 	 * How many operations can we execute till suspension?
 	 */
 	SQInteger GetOpsTillSuspend();
+
+	/**
+	 * Completely reset the engine; start from scratch.
+	 */
+	void Reset();
 };
 
 #endif /* SQUIRREL_HPP */

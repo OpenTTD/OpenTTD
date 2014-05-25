@@ -53,9 +53,9 @@ bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const 
 
 	if (!FioCheckFileExists(filename, this->subdir) || !FioCheckFileExists(this->main_script, this->subdir)) return false;
 
-	/* We don't care if one of the other scripts failed to load. */
-	this->engine->ResetCrashed();
+	this->ResetEngine();
 	this->engine->LoadScript(filename);
+
 	return true;
 }
 
@@ -66,17 +66,20 @@ ScriptScanner::ScriptScanner() :
 {
 }
 
+void ScriptScanner::ResetEngine()
+{
+	this->engine->Reset();
+	this->engine->SetGlobalPointer(this);
+	this->RegisterAPI(this->engine);
+}
+
 void ScriptScanner::Initialize(const char *name)
 {
 	this->engine = new Squirrel(name);
 
-	/* Mark this class as global pointer */
-	this->engine->SetGlobalPointer(this);
-
-	this->RegisterAPI(this->engine);
 	this->RescanDir();
 
-	this->engine->ResetCrashed();
+	this->ResetEngine();
 }
 
 ScriptScanner::~ScriptScanner()

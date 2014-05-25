@@ -128,6 +128,10 @@ protected:
 	 */
 	void Reset();
 
+	/**
+	 * Reset the engine to ensure a clean environment for further steps.
+	 */
+	void ResetEngine();
 };
 
 #endif /* SCRIPT_SCANNER_HPP */
