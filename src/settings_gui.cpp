@@ -1462,6 +1462,7 @@ static SettingEntry _settings_interface[] = {
 	SettingEntry(&_settings_interface_general_page,      STR_CONFIG_SETTING_INTERFACE_GENERAL),
 	SettingEntry(&_settings_interface_viewports_page,    STR_CONFIG_SETTING_INTERFACE_VIEWPORTS),
 	SettingEntry(&_settings_interface_construction_page, STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION),
+	SettingEntry("gui.autosave"),
 	SettingEntry("gui.toolbar_pos"),
 	SettingEntry("gui.statusbar_pos"),
 	SettingEntry("gui.prefer_teamchat"),
