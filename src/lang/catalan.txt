@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostra l
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostra llista d'objectius
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostra gràfics
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostra la taula de la lliga d'empreses
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financia la construcció d'una nova indústria
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finança la construcció d'una nova indústria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostra la llista de trens de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostra la llista de vehicles de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra la llista de vaixells de la companyia. Ctrl+Clic canvia entre l'obertura de la llista de grups/vehicles
@@ -418,7 +418,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Taula de rècor
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Directori d'indústries
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadenes industrials
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financia una nova indústria
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finança una nova indústria
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -2501,14 +2501,14 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}graella 
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatori
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financia una nova indústria
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finança una nova indústria
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolleix el tipus d'indústria adequada d'aquesta llista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Moltes indústries aleatòries
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Omple el mapa amb indústries situades aleatòriament
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospecciona
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construeix
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financia
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finança
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial per la indústria {STRING}
@@ -2971,18 +2971,18 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Treure l
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Petita campanya de publicitat
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mitjana campanya de publicitat
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Gran campanya de publicitat
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financia la reconstrucció dels carrers de la població
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finança la reconstrucció dels carrers de la població
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construeix una estàtua del propietari de la companyia
-STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financia nous edificis
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finança nous edificis
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra els drets de transport en exclusiva
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna les autoritats locals
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Inicia una petita campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inicia una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inicia una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financia la reconstrucció de la xarxa local de carrers. Dificulta notablement el trànsit durant 6 mesos.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finança la reconstrucció de la xarxa local de carrers. Dificulta notablement el trànsit durant 6 mesos.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construeix una estàtua en honor a la teva companyia.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financia la construcció de nous edificis comercials a la població.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finança la construcció de nous edificis comercials a la població.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal·lacions de la teva companyia de transports als passatgers i les mercaderies.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}Cost: {CURRENCY_LONG}
 

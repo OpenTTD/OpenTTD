@@ -939,11 +939,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalani
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvataggi automatici
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Seleziona l'intervallo fra i salvataggi automatici della partita
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :No
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Ogni mese
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Ogni 3 mesi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Ogni 6 mesi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Ogni 12 mesi
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingua
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleziona la lingua da utilizzare per l'interfaccia
@@ -1355,6 +1357,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Nessuna
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scorrimento con clic sinistro: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Abilita lo scorrimento della mappa trascinandola con il pulsante sinistro del mouse. Questa impostazione è utile quando si utilizza un touch-screen
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :Salvataggi automatici: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Seleziona l'intervallo fra i salvataggi automatici della partita
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Formato data nei nomi dei salvataggi: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato della data nei nomi dei file delle partite salvate
@@ -2789,6 +2794,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Sposta s
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Sposta il file NewGRF selezionato più in alto nell'elenco
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Sposta giù
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Sposta il file NewGRF selezionato più in basso nell'elenco
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Aggiorna
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Aggiorna i file NewGRF per i quali è stata installata una versione più recente
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Elenco dei file NewGRF installati.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Imposta parametri
@@ -2812,6 +2819,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informaz
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File corrispondente non trovato
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabilitato
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatibile con questa versione di OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salva profilo
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista dei profili disponibili, selezionarne uno per copiarlo nella casella del nome del salvataggio
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Inserire il nome del profilo
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome scelto per il profilo da salvare
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annulla
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Non modifica il profilo
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Salva
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salva il profilo utilizzando il nome inserito
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambia parametri NewGRF

@@ -1033,11 +1033,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonski
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatsko spremanje
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Odaberi interval između automatskih spremanja igre
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Isključeno
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Svaki mjesec
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Svaka 3 mjeseca
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Svakih 6 mjeseci
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Svakih 12 mjeseci
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Izaberi jezično sučelje
@@ -1427,6 +1429,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Isključeno
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Skrolanje lijevim klikom: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Uključi pomicanje mape povlačenjem sa lijevom tipkom miša. Ovo je posebno korisno kada se koristi ekran na dodir za pomicanje
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :Automatsko snimanje: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Odaberite interval između automatskog snimanja igre
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Koristi {STRING} format datuma za ime snimljene pozicije
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma u imenima datoteka sa snimljenom igrom
@@ -2855,6 +2860,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Pomakni 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomakni odabranu NewGRF datoteku gore na listi
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK} Pomakni dolje
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomakni odabranu NewGRF datoteku dolje na listi
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Nadogradnja
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Nadogradite NewGRF datoteke za koje već imate instalirane novije verzije
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Popis instaliranih NewGRF datoteka
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
@@ -2878,6 +2885,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nema dos
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nije pronađena odgovarajuća datoteka
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogućeno
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nije kompatibilno sa ovom verzijom OpenTTD-a
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Snimiti predpostavke
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Popis dostupnih predpostavki, odaberite jednu za kopiranje pod imenom ispod
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Unesite ime za predpostavke
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Trenutno odabrano ime za snimanje predpostavki
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Odustani
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne mijenjati predpostavke
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Snimanje
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Snimite predpostavke u trenutno odabrano ime
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promijeni NewGRF parametre
