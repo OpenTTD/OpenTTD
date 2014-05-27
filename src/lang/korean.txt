@@ -1335,6 +1335,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :마우스 왼쪽 버튼으로 스크롤: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :왼쪽 마우스 버튼을 드래그하여 지도를 스크롤 할 수 있도록 합니다. 터치 스크린 환경에서 이 옵션을 켜면 매우 유용합니다.
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :자동 저장: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :게임을 자동으로 저장할 간격을 선택하십시오.
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :저장 파일의 이름으로 {STRING} 날짜 형식을 사용합니다.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 저장 파일 이름에 사용할 날짜 형식을 선택합니다.

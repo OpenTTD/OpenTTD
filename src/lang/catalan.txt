@@ -2983,8 +2983,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inicia 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finança la reconstrucció de la xarxa local de carrers. Dificulta notablement el trànsit durant 6 mesos.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construeix una estàtua en honor a la teva companyia.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finança la construcció de nous edificis comercials a la població.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal·lacions de la teva companyia de transports als passatgers i les mercaderies.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra per 1 any els drets exclusius de transport en la població. L'autoritat local només permetrà utilitzar les instal·lacions de la teva companyia de transports als passatgers i les mercaderies.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen.{}Cost: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectius
@@ -3455,7 +3455,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Missatge del fabricant de vehicles
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabem de dissenyar {G un una} {G nou nova} {STRING}. Esteu interessats en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llançament mundial ?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabem de dissenyar {G un una} {G nou nova} {STRING}. Esteu interessats en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llançament mundial?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=Femenin}locomotora de tren
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=Masculin}automòbil
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=Masculin}avió
