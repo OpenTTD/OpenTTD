@@ -1426,7 +1426,7 @@ STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Только �
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Количество рек: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Выберите количество рек на карте
 STR_CONFIG_SETTING_TREE_PLACER                                  :Алгоритм рассадки деревьев: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Выберите способ распределения деревьев на карте: «оригинальный» алгоритм высаживает их равномерно поодиночке; «улучшенный» - группами.
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Выберите способ распределения деревьев на карте: «оригинальный» алгоритм высаживает их равномерно по всей карте; «улучшенный» - группами.
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Нет
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Оригинальный
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Улучшенный
@@ -2835,7 +2835,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Сохр
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузить сценарий
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузить карту
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Сохранить карту высот
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Щёлкните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Переход в каталог загрузки и сохранения, установленный по умолчанию
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбранное название для сохранения игры
@@ -2971,8 +2971,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Отклю
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несовместимо с данной версией OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Сохранение набора
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Список доступных наборов. Выберите один из них, чтобы скопировать его название в строку имени.
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Введите имя набора
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Имя для сохранения набора
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Отмена
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Не делать никаких изменений
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Сохранить
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Сохранить набор под выбранным именем
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Изменить параметры NewGRF

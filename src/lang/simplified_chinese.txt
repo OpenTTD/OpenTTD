@@ -937,11 +937,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :加泰罗尼亚
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}选择自动保存的周期
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :关闭
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :每月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :每 3 个月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :每 6 个月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :每 12 个月
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}语言
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}选择界面语言
@@ -1247,17 +1249,24 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :在地图城镇
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :图表曲线宽度: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :图表中曲线的宽度，细线清晰易读，粗线容易分辨颜色
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :景观: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :生成地形：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原始算法
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :新算法
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地貌类型: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(仅限生成地图时) 多丘陵地形
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工业布局: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :设置地图生成过程中，工业数量及一、二级工业比例。
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :炼油厂距地图边缘的最大距离：{STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :炼油厂只能在地图边缘建设或者海岛海岸。
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限 TerraGenesis)：{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :控制在寒带气候中雪线高度.大雪会影响工业和城镇发展需求.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限生成地图时):{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
+STR_CONFIG_SETTING_VARIETY                                      :多样的分发: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :河流数量: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :选择生成河流的数量
 STR_CONFIG_SETTING_TREE_PLACER                                  :森林算法：{STRING}
@@ -1265,6 +1274,8 @@ STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :选择地图上
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :没有
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :原始的
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :增强的
+STR_CONFIG_SETTING_ROAD_SIDE                                    :道路车辆: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :选择道路通行方向
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :高度图旋转：{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
@@ -1318,6 +1329,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :左击滚动： {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :可用按住鼠标左键再拖拉的方法来进行屏幕滚动. 这对于触摸屏设备特别有用
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :自动保存: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :选择自动存档时间间隔
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 形式的文件名存档
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :游戏存档文件名中日期的格式
@@ -1611,9 +1625,12 @@ STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地�
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}图形
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音效
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}界面
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}通用
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}视点
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}建设
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}消息/新闻
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}公司
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}财务管理
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}车辆
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}物理
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}经由
@@ -1621,6 +1638,7 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}限制
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}灾难/事故
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}生成地图
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}环境保护
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}政府监管
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}城镇
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}工业设施
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}货物分配
@@ -2742,6 +2760,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上移
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}将选定的 NewGRF 文件向上移动
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下移
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}将选定的 NewGRF 文件向下移动
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}更新
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}更新当前已安装的扩展包
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经安装的 NewGRF 文件列表{}点击可以改变参数
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
@@ -2765,6 +2785,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}没有�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找到对应的文件
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}与此版本OpenTTD不兼容
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}保存预设值
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}可用的预设名称，请选择一个来复制到存档列表中
+STR_SAVE_PRESET_TITLE                                           :{BLACK}输入预设名称
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}保存预设值到当前选定的名称
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}取消
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}不修改默认设置
+STR_SAVE_PRESET_SAVE                                            :{BLACK}保存
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}以当前选定的名称保存预设值
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
@@ -3796,6 +3826,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶 (无时�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :途中行驶 {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :开往{STRING} ，限速为 {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :前往 {STRING},以最大速度 {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(停靠 {STRING}, 无时间表)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(驶往 {STRING}, 无时间表)
 STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
