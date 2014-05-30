@@ -1334,6 +1334,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vasemmalla hiiren painikkeella liikkuminen: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Salli näkymän siirtäminen vetämällä hiiren vasemmalla näppäimellä. Hyödyllinen erityisesti kosketusnäyttöä käytettäessä
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Automaattitallennus: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Valitse aikaväli automaattisille pelitallennuksille
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Käytä {STRING} päivämäärämuotoa tallennettujen pelien niminä
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Pelitallenteiden tiedostonimissä käytettävä päivämäärän muoto

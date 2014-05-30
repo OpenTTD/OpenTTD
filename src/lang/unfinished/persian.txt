@@ -926,11 +926,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :کاتالان�
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK} ذخیره اتوماتیک
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :خاموش
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :هر ماه
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :هر ۳ ماه
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :هر ۶ ماه
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :هر ۱۲ ماه
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}زبان
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}زبان واسط کاربری را برای استفاده انتخاب کنید
@@ -1159,15 +1161,19 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :پیدایش زمین
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :تمام پالایشگاه ها در لبه های تقشه ساخته می شوند که ساحل جزیره است
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط برف: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :پستی و بلندی های شدید (فقط در حالت «پیدایش زمین») : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :پستی و بلندی های زمین: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بسیار هموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :هموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :ناهموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :بسیار ناهموار
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :تعداد رودخانه ها: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :تعداد رودخانه ها برای ساخت را مشخص نمایید
 STR_CONFIG_SETTING_TREE_PLACER                                  :الگوریتم قرار دهنده مکان درخت‌ها: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :هیچکدام
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :اصلی
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بهبودیافته
+STR_CONFIG_SETTING_ROAD_SIDE                                    :خودروهای جاده ای: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :انتخاب جهت رانندگی
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :جهت چرخش نقشه بلندی: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :پادساعت‌گرد
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ساعت‌گرد
@@ -1202,6 +1208,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :کنترل+کل
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :خاموش
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :حرکت در نقشه با کلیک چپ:: {STRING}
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :ذخیره خودکار: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :انتخاب فاصله زمانی بین ذخیره کردن های خودکار
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :از این {STRING} برای نام فایل‌های ذخیره استفاده کن
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طولانی (31st Dec 2008)
@@ -2456,6 +2465,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}حرکت
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF انتخاب شده را به بالا می فرستد
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}حرکت به پایین
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF انتخاب شده را به پایین می فرستد
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}بروزرسانی
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}NewGRF هایی که ویرایش جدیدترشان را دارید به روزرسانی کنید
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}یک لیست از فایلهای NewGRF که نصب شده است
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ثبت پارامترها
@@ -2479,6 +2490,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}هیچ �
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}فایل همسان پیدا نشد
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}غیرفعال
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}با این ورژن از OpenTTD همخوانی ندارد
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}ذخیره لیست
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}لیست های موجود،برای کپی یکی را انتخاب کنید
+STR_SAVE_PRESET_TITLE                                           :{BLACK}یک نام برای لیست وارد کنید
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}لیست انتخاب شده برای ذخیره
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}لغو
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}تغییر ندادن لیست
+STR_SAVE_PRESET_SAVE                                            :{BLACK}ذخیره
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}ذخیره لیست در نام انتخاب شده
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}تغییر پارامترهای NewGRF
