@@ -1005,11 +1005,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanske
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukladanie
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vyber interval automatickeho ukladania
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnuté
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý mesiac
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Každé 3 mesiace
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Každých 6 mesiacov
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 mesiacov
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Výber jazyka rozhrania
@@ -1393,6 +1395,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Žiadna
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Posúvať pohľad ľavým tlačidlom myši: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Povolí posúvanie mapy ĽAVÝM tlačítkom myši. Toto je obzvlášť užitočné pri použití dotykového displeja.
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :Automatické ukladanie: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vyberte interval pre automatické ukladanie hry
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Použiť {STRING} dátum v názve uloženej hry
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formát dátumov v názvoch uložených hier.
@@ -2821,6 +2826,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Vyššie
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Posunút vybraný NewGRF súbor v zozname vyššie
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Nižšie
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunút vybraný NewGRF súbor v zozname nižšie
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Aktualizovať
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Zoznam inštalovaných NewGRF súborov.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametre
@@ -2844,6 +2850,10 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Žiadne 
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Príslušný súbor nenájdený
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Nedostupný
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nekompatibilné s touto verziou OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Zrušiť
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Uložiť
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmeniť NewGRF parametre

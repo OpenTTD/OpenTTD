@@ -902,6 +902,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} nemá žádné příkazy
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} má zdvojené příkazy
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} má v příkazech neplatnou stanici
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} má v příkazech letiště, jehož dráha je příliš krátká
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} zastarává
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} silně zastarává
@@ -1023,11 +1024,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalánská
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukládání
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Volba intervalu mezi automatickým ukládáním hry
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnuto
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý měsíc
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Každé 3 měsíce
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Každých 6 měsíců
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 měsíců
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Zvolit jazyk uživatelského rozhraní
@@ -1333,13 +1336,22 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zobrazovat měs
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tloušťky čar v grafech: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Tloušťka čáry v grafech. Tenká čára se čte přesněji, silnější je lépe viditelná a barva je snadněji rozpoznatelná.
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Klima: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Klima určuje základy herního scénáře s rozdílnými druhy nákladu a požadavky na růst měst. Nové GRaFiky a Herní Skripty umožní ještě jemnější kontrolu
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Tvůrce krajiny: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originální generátor závisí na originálním setu grafik a tvoří mapy pevně daného tvaru. TerraGenesis je založen na generátoru Perlinova šumu s lepšími možnostmi nastavení
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :původní
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Druh terénu: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(pouze TerraGenesis) Hornatost terénu
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Množství průmyslu: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Nastavuje množství průmyslu, které bude nyní vytvořeno a udržováno v průběhu hry
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximální vzdálenost rafinerie od okraje mapy: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ropné rafinerie jsou stavěny pouze blízko okrajům mapy. Pokud je mapa ostrov, pak je to pobřeží.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Výška sněhové čáry: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitost krajiny (jen TerraGenesis): {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Určuje o jaké výšky se vyskytuje sníh u subarktického klimatu. Sníh rovněž ovlivňuje vytváření průmyslu a požadavky na růst měst
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitost krajiny: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Pouze TerraGenesis) Zvol množství hor: Rovinatý terén má méně hor, které jsou však rozlehlejší. Členitý terén má mnoho hor, u kterých se může zdát, že se upakují
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :velmi rovná
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :rovná
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :členitá
@@ -1408,6 +1420,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :vypnutá
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Posouvání levým tlačítkem: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Povolit posouvání mapy chycením pomocí levého tlačítka myši. Toto je velmi užitečné hlavně při použití s dotykovou obrazovkou.
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :Automaticky ukládat: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Zvol frekvenci automatického ukládání
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Pro jméno uložené hry použít {STRING} formát
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formát data v názvu uložené hry
@@ -2842,6 +2857,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Nahoru
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Posunout označenou grafiku nahoru
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Dolů
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunout označenou grafiku dolů
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Aktualizovat
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Aktualizovat soubory nových grafik, u kterých jsi nainstaloval novější verzi.
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam NewGRF souborů, které jsou nainstalovány.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametry
@@ -2865,6 +2882,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informac
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nenalezen odpovídající soubor
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Vypnuto
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Není kompatibilní s touto verzí OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Uložit předvolby
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Seznam předvoleb k dispozici, vyber jednu pro zkopírování do uložené hry vybrané níže
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Vlož název pro předvolby
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktuálně zvolený název pro předvolby
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Zrušit
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Neměnit předvolby
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Uložit
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Uloží předvolby do aktuálně zvolené uložené hry
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Úprava nastavení parametrů
