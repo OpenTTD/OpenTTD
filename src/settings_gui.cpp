@@ -647,27 +647,6 @@ enum SettingEntryFlags {
 
 	SEF_LAST_FIELD = 0x04, ///< This entry is the last one in a (sub-)page
 	SEF_FILTERED   = 0x08, ///< Entry is hidden by the string filter
-
-	/* Entry kind */
-	SEF_SETTING_KIND = 0x10, ///< Entry kind: Entry is a setting
-	SEF_SUBTREE_KIND = 0x20, ///< Entry kind: Entry is a sub-tree
-	SEF_KIND_MASK    = (SEF_SETTING_KIND | SEF_SUBTREE_KIND), ///< Bit-mask for fetching entry kind
-};
-
-struct SettingsPage; // Forward declaration
-
-/** Data fields for a sub-page (#SEF_SUBTREE_KIND kind)*/
-struct SettingEntrySubtree {
-	SettingsPage *page; ///< Pointer to the sub-page
-	bool folded;        ///< Sub-page is folded (not visible except for its title)
-	StringID title;     ///< Title of the sub-page
-};
-
-/** Data fields for a single setting (#SEF_SETTING_KIND kind) */
-struct SettingEntrySetting {
-	const char *name;           ///< Name of the setting
-	const SettingDesc *setting; ///< Setting description of the setting
-	uint index;                 ///< Index of the setting in the settings table
 };
 
 /** How the list of advanced settings is filtered. */
@@ -691,21 +670,16 @@ struct SettingFilter {
 };
 
 /** Data structure describing a single setting in a tab */
-struct SettingEntry {
+struct BaseSettingEntry {
 	byte flags; ///< Flags of the setting entry. @see SettingEntryFlags
 	byte level; ///< Nesting level of this setting entry
-	union {
-		SettingEntrySetting entry; ///< Data fields if entry is a setting
-		SettingEntrySubtree sub;   ///< Data fields if entry is a sub-page
-	} d; ///< Data fields for each kind
 
-	SettingEntry(const char *nm);
-	SettingEntry(SettingsPage *sub, StringID title);
+	BaseSettingEntry() : flags(0), level(0) {}
+	virtual ~BaseSettingEntry() {}
 
-	void Init(byte level);
-	void FoldAll();
-	void UnFoldAll();
-	void SetButtons(byte new_val);
+	virtual void Init(byte level = 0);
+	virtual void FoldAll() {}
+	virtual void UnFoldAll() {}
 
 	/**
 	 * Set whether this is the last visible entry of the parent node.
@@ -713,37 +687,62 @@ struct SettingEntry {
 	 */
 	void SetLastField(bool last_field) { if (last_field) SETBITS(this->flags, SEF_LAST_FIELD); else CLRBITS(this->flags, SEF_LAST_FIELD); }
 
-	uint Length() const;
-	void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
-	bool IsVisible(const SettingEntry *item) const;
-	SettingEntry *FindEntry(uint row, uint *cur_row);
-	uint GetMaxHelpHeight(int maxw);
+	virtual uint Length() const = 0;
+	virtual void GetFoldingState(bool &all_folded, bool &all_unfolded) const {}
+	virtual bool IsVisible(const BaseSettingEntry *item) const;
+	virtual BaseSettingEntry *FindEntry(uint row, uint *cur_row);
+	virtual uint GetMaxHelpHeight(int maxw) { return 0; }
 
-	bool IsFiltered() const;
-	bool UpdateFilterState(SettingFilter &filter, bool force_visible);
+	/**
+	 * Check whether an entry is hidden due to filters
+	 * @return true if hidden.
+	 */
+	bool IsFiltered() const { return (this->flags & SEF_FILTERED) != 0; }
 
-	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected);
+	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible) = 0;
+
+	virtual uint Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
+
+protected:
+	virtual void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const = 0;
+};
+
+/** Standard setting */
+struct SettingEntry : BaseSettingEntry {
+	const char *name;           ///< Name of the setting
+	const SettingDesc *setting; ///< Setting description of the setting
+	uint index;                 ///< Index of the setting in the settings table
+
+	SettingEntry(const char *name);
+
+	virtual void Init(byte level = 0);
+	virtual uint Length() const;
+	virtual uint GetMaxHelpHeight(int maxw);
+	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible);
+
+	void SetButtons(byte new_val);
 
 	/**
 	 * Get the help text of a single setting.
 	 * @return The requested help text.
 	 */
-	inline StringID GetHelpText()
+	inline StringID GetHelpText() const
 	{
-		assert((this->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
-		return this->d.entry.setting->desc.str_help;
+		return this->setting->desc.str_help;
 	}
 
-	void SetValueDParams(uint first_param, int32 value);
+	void SetValueDParams(uint first_param, int32 value) const;
+
+protected:
+	virtual void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const;
 
 private:
-	void DrawSetting(GameSettings *settings_ptr, int x, int y, int max_x, int state, bool highlight);
 	bool IsVisibleByRestrictionMode(RestrictionMode mode) const;
 };
 
-/** Data structure describing one page of settings in the settings window. */
-struct SettingsPage {
-	typedef std::vector<SettingEntry*> EntryVector;
+/** Containers for BaseSettingEntry */
+struct SettingsContainer {
+	typedef std::vector<BaseSettingEntry*> EntryVector;
 	EntryVector entries; ///< Settings on this page
 
 	template<typename T>
@@ -759,122 +758,49 @@ struct SettingsPage {
 
 	uint Length() const;
 	void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
-	bool IsVisible(const SettingEntry *item) const;
-	SettingEntry *FindEntry(uint row, uint *cur_row) const;
+	bool IsVisible(const BaseSettingEntry *item) const;
+	BaseSettingEntry *FindEntry(uint row, uint *cur_row);
 	uint GetMaxHelpHeight(int maxw);
 
 	bool UpdateFilterState(SettingFilter &filter, bool force_visible);
 
-	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, SettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
+	uint Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
 };
 
+/** Data structure describing one page of settings in the settings window. */
+struct SettingsPage : BaseSettingEntry, SettingsContainer {
+	StringID title;     ///< Title of the sub-page
+	bool folded;        ///< Sub-page is folded (not visible except for its title)
 
-/* == SettingEntry methods == */
+	SettingsPage(StringID title);
 
-/**
- * Constructor for a single setting in the 'advanced settings' window
- * @param nm Name of the setting in the setting table
- */
-SettingEntry::SettingEntry(const char *nm)
-{
-	this->flags = SEF_SETTING_KIND;
-	this->level = 0;
-	this->d.entry.name = nm;
-	this->d.entry.setting = NULL;
-	this->d.entry.index = 0;
-}
+	virtual void Init(byte level = 0);
+	virtual void FoldAll();
+	virtual void UnFoldAll();
 
-/**
- * Constructor for a sub-page in the 'advanced settings' window
- * @param sub   Sub-page
- * @param title Title of the sub-page
- */
-SettingEntry::SettingEntry(SettingsPage *sub, StringID title)
-{
-	this->flags = SEF_SUBTREE_KIND;
-	this->level = 0;
-	this->d.sub.page = sub;
-	this->d.sub.folded = true;
-	this->d.sub.title = title;
-}
+	virtual uint Length() const;
+	virtual void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
+	virtual bool IsVisible(const BaseSettingEntry *item) const;
+	virtual BaseSettingEntry *FindEntry(uint row, uint *cur_row);
+	virtual uint GetMaxHelpHeight(int maxw) { return SettingsContainer::GetMaxHelpHeight(maxw); }
+
+	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible);
+
+	virtual uint Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
+
+protected:
+	virtual void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const;
+};
+
+/* == BaseSettingEntry methods == */
 
 /**
  * Initialization of a setting entry
  * @param level      Page nesting level of this entry
  */
-void SettingEntry::Init(byte level)
+void BaseSettingEntry::Init(byte level)
 {
 	this->level = level;
-
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			this->d.entry.setting = GetSettingFromName(this->d.entry.name, &this->d.entry.index);
-			assert(this->d.entry.setting != NULL);
-			break;
-		case SEF_SUBTREE_KIND:
-			this->d.sub.page->Init(level + 1);
-			break;
-		default: NOT_REACHED();
-	}
-}
-
-/** Recursively close all (filtered) folds of sub-pages */
-void SettingEntry::FoldAll()
-{
-	if (this->IsFiltered()) return;
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			break;
-
-		case SEF_SUBTREE_KIND:
-			this->d.sub.folded = true;
-			this->d.sub.page->FoldAll();
-			break;
-
-		default: NOT_REACHED();
-	}
-}
-
-/** Recursively open all (filtered) folds of sub-pages */
-void SettingEntry::UnFoldAll()
-{
-	if (this->IsFiltered()) return;
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			break;
-
-		case SEF_SUBTREE_KIND:
-			this->d.sub.folded = false;
-			this->d.sub.page->UnFoldAll();
-			break;
-
-		default: NOT_REACHED();
-	}
-}
-
-/**
- * Recursively accumulate the folding state of the (filtered) tree.
- * @param[in,out] all_folded Set to false, if one entry is not folded.
- * @param[in,out] all_unfolded Set to false, if one entry is folded.
- */
-void SettingEntry::GetFoldingState(bool &all_folded, bool &all_unfolded) const
-{
-	if (this->IsFiltered()) return;
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			break;
-
-		case SEF_SUBTREE_KIND:
-			if (this->d.sub.folded) {
-				all_unfolded = false;
-			} else {
-				all_folded = false;
-			}
-			this->d.sub.page->GetFoldingState(all_folded, all_unfolded);
-			break;
-
-		default: NOT_REACHED();
-	}
 }
 
 /**
@@ -883,20 +809,112 @@ void SettingEntry::GetFoldingState(bool &all_folded, bool &all_unfolded) const
  * @param item Entry to search for.
  * @return true if entry is visible.
  */
-bool SettingEntry::IsVisible(const SettingEntry *item) const
+bool BaseSettingEntry::IsVisible(const BaseSettingEntry *item) const
 {
 	if (this->IsFiltered()) return false;
 	if (this == item) return true;
+	return false;
+}
 
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			return false;
+/**
+ * Find setting entry at row \a row_num
+ * @param row_num Index of entry to return
+ * @param cur_row Current row number
+ * @return The requested setting entry or \c NULL if it not found (folded or filtered)
+ */
+BaseSettingEntry *BaseSettingEntry::FindEntry(uint row_num, uint *cur_row)
+{
+	if (this->IsFiltered()) return NULL;
+	if (row_num == *cur_row) return this;
+	(*cur_row)++;
+	return NULL;
+}
 
-		case SEF_SUBTREE_KIND:
-			return !this->d.sub.folded && this->d.sub.page->IsVisible(item);
+/**
+ * Draw a row in the settings panel.
+ *
+ * The scrollbar uses rows of the page, while the page data structure is a tree of #SettingsPage and #SettingEntry objects.
+ * As a result, the drawing routing traverses the tree from top to bottom, counting rows in \a cur_row until it reaches \a first_row.
+ * Then it enables drawing rows while traversing until \a max_row is reached, at which point drawing is terminated.
+ *
+ * The \a parent_last parameter ensures that the vertical lines at the left are
+ * only drawn when another entry follows, that it prevents output like
+ * \verbatim
+ *  |-- setting
+ *  |-- (-) - Title
+ *  |    |-- setting
+ *  |    |-- setting
+ * \endverbatim
+ * The left-most vertical line is not wanted. It is prevented by setting the
+ * appropriate bit in the \a parent_last parameter.
+ *
+ * @param settings_ptr Pointer to current values of all settings
+ * @param left         Left-most position in window/panel to start drawing \a first_row
+ * @param right        Right-most x position to draw strings at.
+ * @param y            Upper-most position in window/panel to start drawing \a first_row
+ * @param first_row    First row number to draw
+ * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
+ * @param selected     Selected entry by the user.
+ * @param cur_row      Current row number (internal variable)
+ * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @return Row number of the next row to draw
+ */
+uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row, uint parent_last) const
+{
+	if (this->IsFiltered()) return cur_row;
+	if (cur_row >= max_row) return cur_row;
 
-		default: NOT_REACHED();
+	bool rtl = _current_text_dir == TD_RTL;
+	int offset = rtl ? -4 : 4;
+	int level_width = rtl ? -LEVEL_WIDTH : LEVEL_WIDTH;
+
+	int x = rtl ? right : left;
+	if (cur_row >= first_row) {
+		int colour = _colour_gradient[COLOUR_ORANGE][4];
+		y += (cur_row - first_row) * SETTING_HEIGHT; // Compute correct y start position
+
+		/* Draw vertical for parent nesting levels */
+		for (uint lvl = 0; lvl < this->level; lvl++) {
+			if (!HasBit(parent_last, lvl)) GfxDrawLine(x + offset, y, x + offset, y + SETTING_HEIGHT - 1, colour);
+			x += level_width;
+		}
+		/* draw own |- prefix */
+		int halfway_y = y + SETTING_HEIGHT / 2;
+		int bottom_y = (flags & SEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
+		GfxDrawLine(x + offset, y, x + offset, bottom_y, colour);
+		/* Small horizontal line from the last vertical line */
+		GfxDrawLine(x + offset, halfway_y, x + level_width - offset, halfway_y, colour);
+		x += level_width;
+
+		this->DrawSetting(settings_ptr, rtl ? left : x, rtl ? x : right, y, this == selected);
 	}
+	cur_row++;
+
+	return cur_row;
+}
+
+/* == SettingEntry methods == */
+
+/**
+ * Constructor for a single setting in the 'advanced settings' window
+ * @param name Name of the setting in the setting table
+ */
+SettingEntry::SettingEntry(const char *name)
+{
+	this->name = name;
+	this->setting = NULL;
+	this->index = 0;
+}
+
+/**
+ * Initialization of a setting entry
+ * @param level      Page nesting level of this entry
+ */
+void SettingEntry::Init(byte level)
+{
+	BaseSettingEntry::Init(level);
+	this->setting = GetSettingFromName(this->name, &this->index);
+	assert(this->setting != NULL);
 }
 
 /**
@@ -910,47 +928,10 @@ void SettingEntry::SetButtons(byte new_val)
 	this->flags = (this->flags & ~SEF_BUTTONS_MASK) | new_val;
 }
 
-/** Return numbers of rows needed to display the (filtered) entry */
+/** Return number of rows needed to display the (filtered) entry */
 uint SettingEntry::Length() const
 {
-	if (this->IsFiltered()) return 0;
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			return 1;
-		case SEF_SUBTREE_KIND:
-			if (this->d.sub.folded) return 1; // Only displaying the title
-
-			return 1 + this->d.sub.page->Length(); // 1 extra row for the title
-		default: NOT_REACHED();
-	}
-}
-
-/**
- * Find setting entry at row \a row_num
- * @param row_num Index of entry to return
- * @param cur_row Current row number
- * @return The requested setting entry or \c NULL if it not found (folded or filtered)
- */
-SettingEntry *SettingEntry::FindEntry(uint row_num, uint *cur_row)
-{
-	if (this->IsFiltered()) return NULL;
-	if (row_num == *cur_row) return this;
-
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			(*cur_row)++;
-			break;
-		case SEF_SUBTREE_KIND:
-			(*cur_row)++; // add one for row containing the title
-			if (this->d.sub.folded) {
-				break;
-			}
-
-			/* sub-page is visible => search it too */
-			return this->d.sub.page->FindEntry(row_num, cur_row);
-		default: NOT_REACHED();
-	}
-	return NULL;
+	return this->IsFiltered() ? 0 : 1;
 }
 
 /**
@@ -960,20 +941,7 @@ SettingEntry *SettingEntry::FindEntry(uint row_num, uint *cur_row)
  */
 uint SettingEntry::GetMaxHelpHeight(int maxw)
 {
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND: return GetStringHeight(this->GetHelpText(), maxw);
-		case SEF_SUBTREE_KIND: return this->d.sub.page->GetMaxHelpHeight(maxw);
-		default:               NOT_REACHED();
-	}
-}
-
-/**
- * Check whether an entry is hidden due to filters
- * @return true if hidden.
- */
-bool SettingEntry::IsFiltered() const
-{
-	return (this->flags & SEF_FILTERED) != 0;
+	return GetStringHeight(this->GetHelpText(), maxw);
 }
 
 /**
@@ -987,11 +955,10 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 	if (mode == RM_ALL) return true;
 
 	GameSettings *settings_ptr = &GetGameSettings();
-	assert((this->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
-	const SettingDesc *sd = this->d.entry.setting;
+	const SettingDesc *sd = this->setting;
 
-	if (mode == RM_BASIC) return (this->d.entry.setting->desc.cat & SC_BASIC_LIST) != 0;
-	if (mode == RM_ADVANCED) return (this->d.entry.setting->desc.cat & SC_ADVANCED_LIST) != 0;
+	if (mode == RM_BASIC) return (this->setting->desc.cat & SC_BASIC_LIST) != 0;
+	if (mode == RM_ADVANCED) return (this->setting->desc.cat & SC_ADVANCED_LIST) != 0;
 
 	/* Read the current value. */
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
@@ -1031,134 +998,36 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	CLRBITS(this->flags, SEF_FILTERED);
 
 	bool visible = true;
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND: {
-			const SettingDesc *sd = this->d.entry.setting;
-			if (!force_visible && !filter.string.IsEmpty()) {
-				/* Process the search text filter for this item. */
-				filter.string.ResetState();
 
-				const SettingDescBase *sdb = &sd->desc;
+	const SettingDesc *sd = this->setting;
+	if (!force_visible && !filter.string.IsEmpty()) {
+		/* Process the search text filter for this item. */
+		filter.string.ResetState();
 
-				SetDParam(0, STR_EMPTY);
-				filter.string.AddLine(sdb->str);
-				filter.string.AddLine(this->GetHelpText());
+		const SettingDescBase *sdb = &sd->desc;
 
-				visible = filter.string.GetState();
-			}
-			if (visible) {
-				if (filter.type != ST_ALL && sd->GetType() != filter.type) {
-					filter.type_hides = true;
-					visible = false;
-				}
-				if (!this->IsVisibleByRestrictionMode(filter.mode)) {
-					while (filter.min_cat < RM_ALL && (filter.min_cat == filter.mode || !this->IsVisibleByRestrictionMode(filter.min_cat))) filter.min_cat++;
-					visible = false;
-				}
-			}
-			break;
+		SetDParam(0, STR_EMPTY);
+		filter.string.AddLine(sdb->str);
+		filter.string.AddLine(this->GetHelpText());
+
+		visible = filter.string.GetState();
+	}
+
+	if (visible) {
+		if (filter.type != ST_ALL && sd->GetType() != filter.type) {
+			filter.type_hides = true;
+			visible = false;
 		}
-		case SEF_SUBTREE_KIND: {
-			if (!force_visible && !filter.string.IsEmpty()) {
-				filter.string.ResetState();
-				filter.string.AddLine(this->d.sub.title);
-				force_visible = filter.string.GetState();
-			}
-			visible = this->d.sub.page->UpdateFilterState(filter, force_visible);
-			break;
+		if (!this->IsVisibleByRestrictionMode(filter.mode)) {
+			while (filter.min_cat < RM_ALL && (filter.min_cat == filter.mode || !this->IsVisibleByRestrictionMode(filter.min_cat))) filter.min_cat++;
+			visible = false;
 		}
-		default: NOT_REACHED();
 	}
 
 	if (!visible) SETBITS(this->flags, SEF_FILTERED);
 	return visible;
 }
 
-
-
-/**
- * Draw a row in the settings panel.
- *
- * See SettingsPage::Draw() for an explanation about how drawing is performed.
- *
- * The \a parent_last parameter ensures that the vertical lines at the left are
- * only drawn when another entry follows, that it prevents output like
- * \verbatim
- *  |-- setting
- *  |-- (-) - Title
- *  |    |-- setting
- *  |    |-- setting
- * \endverbatim
- * The left-most vertical line is not wanted. It is prevented by setting the
- * appropriate bit in the \a parent_last parameter.
- *
- * @param settings_ptr Pointer to current values of all settings
- * @param left         Left-most position in window/panel to start drawing \a first_row
- * @param right        Right-most x position to draw strings at.
- * @param base_y       Upper-most position in window/panel to start drawing \a first_row
- * @param first_row    First row number to draw
- * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
- * @param cur_row      Current row number (internal variable)
- * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
- * @param selected     Selected entry by the user.
- * @return Row number of the next row to draw
- */
-uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected)
-{
-	if (this->IsFiltered()) return cur_row;
-	if (cur_row >= max_row) return cur_row;
-
-	bool rtl = _current_text_dir == TD_RTL;
-	int offset = rtl ? -4 : 4;
-	int level_width = rtl ? -LEVEL_WIDTH : LEVEL_WIDTH;
-
-	int x = rtl ? right : left;
-	int y = base_y;
-	if (cur_row >= first_row) {
-		int colour = _colour_gradient[COLOUR_ORANGE][4];
-		y = base_y + (cur_row - first_row) * SETTING_HEIGHT; // Compute correct y start position
-
-		/* Draw vertical for parent nesting levels */
-		for (uint lvl = 0; lvl < this->level; lvl++) {
-			if (!HasBit(parent_last, lvl)) GfxDrawLine(x + offset, y, x + offset, y + SETTING_HEIGHT - 1, colour);
-			x += level_width;
-		}
-		/* draw own |- prefix */
-		int halfway_y = y + SETTING_HEIGHT / 2;
-		int bottom_y = (flags & SEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
-		GfxDrawLine(x + offset, y, x + offset, bottom_y, colour);
-		/* Small horizontal line from the last vertical line */
-		GfxDrawLine(x + offset, halfway_y, x + level_width - offset, halfway_y, colour);
-		x += level_width;
-	}
-
-	switch (this->flags & SEF_KIND_MASK) {
-		case SEF_SETTING_KIND:
-			if (cur_row >= first_row) {
-				this->DrawSetting(settings_ptr, rtl ? left : x, rtl ? x : right, y, this->flags & SEF_BUTTONS_MASK,
-						this == selected);
-			}
-			cur_row++;
-			break;
-		case SEF_SUBTREE_KIND:
-			if (cur_row >= first_row) {
-				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? x - 8 : x, y + (SETTING_HEIGHT - 11) / 2);
-				DrawString(rtl ? left : x + 12, rtl ? x - 12 : right, y, this->d.sub.title);
-			}
-			cur_row++;
-			if (!this->d.sub.folded) {
-				if (this->flags & SEF_LAST_FIELD) {
-					assert(this->level < sizeof(parent_last));
-					SetBit(parent_last, this->level); // Add own last-field state
-				}
-
-				cur_row = this->d.sub.page->Draw(settings_ptr, left, right, base_y, first_row, max_row, selected, cur_row, parent_last);
-			}
-			break;
-		default: NOT_REACHED();
-	}
-	return cur_row;
-}
 
 static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd)
 {
@@ -1178,10 +1047,9 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
  * @param first_param First DParam to use
  * @param value Setting value to set params for.
  */
-void SettingEntry::SetValueDParams(uint first_param, int32 value)
+void SettingEntry::SetValueDParams(uint first_param, int32 value) const
 {
-	assert((this->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
-	const SettingDescBase *sdb = &this->d.entry.setting->desc;
+	const SettingDescBase *sdb = &this->setting->desc;
 	if (sdb->cmd == SDT_BOOLX) {
 		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
@@ -1198,19 +1066,19 @@ void SettingEntry::SetValueDParams(uint first_param, int32 value)
 }
 
 /**
- * Private function to draw setting value (button + text + current value)
+ * Function to draw setting value (button + text + current value)
  * @param settings_ptr Pointer to current values of all settings
  * @param left         Left-most position in window/panel to start drawing
  * @param right        Right-most position in window/panel to draw
  * @param y            Upper-most position in window/panel to start drawing
- * @param state        State of the left + right arrow buttons to draw for the setting
  * @param highlight    Highlight entry.
  */
-void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, int state, bool highlight)
+void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
-	const SettingDesc *sd = this->d.entry.setting;
+	const SettingDesc *sd = this->setting;
 	const SettingDescBase *sdb = &sd->desc;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
+	int state = this->flags & SEF_BUTTONS_MASK;
 
 	bool rtl = _current_text_dir == TD_RTL;
 	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
@@ -1238,14 +1106,13 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	DrawString(text_left, text_right, y, sdb->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
-
-/* == SettingsPage methods == */
+/* == SettingsContainer methods == */
 
 /**
  * Initialization of an entire setting page
  * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
  */
-void SettingsPage::Init(byte level)
+void SettingsContainer::Init(byte level)
 {
 	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
 		(*it)->Init(level);
@@ -1253,7 +1120,7 @@ void SettingsPage::Init(byte level)
 }
 
 /** Recursively close all folds of sub-pages */
-void SettingsPage::FoldAll()
+void SettingsContainer::FoldAll()
 {
 	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
 		(*it)->FoldAll();
@@ -1261,7 +1128,7 @@ void SettingsPage::FoldAll()
 }
 
 /** Recursively open all folds of sub-pages */
-void SettingsPage::UnFoldAll()
+void SettingsContainer::UnFoldAll()
 {
 	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
 		(*it)->UnFoldAll();
@@ -1273,7 +1140,7 @@ void SettingsPage::UnFoldAll()
  * @param[in,out] all_folded Set to false, if one entry is not folded.
  * @param[in,out] all_unfolded Set to false, if one entry is folded.
  */
-void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
+void SettingsContainer::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 {
 	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
 		(*it)->GetFoldingState(all_folded, all_unfolded);
@@ -1286,7 +1153,7 @@ void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
  * @param force_visible Whether to force all items visible, no matter what
  * @return true if item remains visible
  */
-bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
+bool SettingsContainer::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
 	bool visible = false;
 	bool first_visible = true;
@@ -1301,11 +1168,11 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 
 /**
  * Check whether an entry is visible and not folded or filtered away.
- * Note: This does not consider the scrolling range; it might still require scrolling ot make the setting really visible.
+ * Note: This does not consider the scrolling range; it might still require scrolling to make the setting really visible.
  * @param item Entry to search for.
  * @return true if entry is visible.
  */
-bool SettingsPage::IsVisible(const SettingEntry *item) const
+bool SettingsContainer::IsVisible(const BaseSettingEntry *item) const
 {
 	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
 		if ((*it)->IsVisible(item)) return true;
@@ -1314,7 +1181,7 @@ bool SettingsPage::IsVisible(const SettingEntry *item) const
 }
 
 /** Return number of rows needed to display the whole page */
-uint SettingsPage::Length() const
+uint SettingsContainer::Length() const
 {
 	uint length = 0;
 	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
@@ -1329,11 +1196,10 @@ uint SettingsPage::Length() const
  * @param cur_row Variable used for keeping track of the current row number. Should point to memory initialized to \c 0 when first called.
  * @return The requested setting entry or \c NULL if it does not exist
  */
-SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
+BaseSettingEntry *SettingsContainer::FindEntry(uint row_num, uint *cur_row)
 {
-	SettingEntry *pe = NULL;
-
-	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+	BaseSettingEntry *pe = NULL;
+	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
 		pe = (*it)->FindEntry(row_num, cur_row);
 		if (pe != NULL) {
 			break;
@@ -1347,7 +1213,7 @@ SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
  * @param maxw Maximal width of a line help text.
  * @return Biggest height needed to display any help text of this (sub-)tree.
  */
-uint SettingsPage::GetMaxHelpHeight(int maxw)
+uint SettingsContainer::GetMaxHelpHeight(int maxw)
 {
 	uint biggest = 0;
 	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
@@ -1356,30 +1222,25 @@ uint SettingsPage::GetMaxHelpHeight(int maxw)
 	return biggest;
 }
 
+
 /**
- * Draw a selected part of the settings page.
- *
- * The scrollbar uses rows of the page, while the page data structure is a tree of #SettingsPage and #SettingEntry objects.
- * As a result, the drawing routing traverses the tree from top to bottom, counting rows in \a cur_row until it reaches \a first_row.
- * Then it enables drawing rows while traversing until \a max_row is reached, at which point drawing is terminated.
+ * Draw a row in the settings panel.
  *
  * @param settings_ptr Pointer to current values of all settings
- * @param left         Left-most position in window/panel to start drawing of each setting row
- * @param right        Right-most position in window/panel to draw at
- * @param base_y       Upper-most position in window/panel to start drawing of row number \a first_row
- * @param first_row    Number of first row to draw
+ * @param left         Left-most position in window/panel to start drawing \a first_row
+ * @param right        Right-most x position to draw strings at.
+ * @param y            Upper-most position in window/panel to start drawing \a first_row
+ * @param first_row    First row number to draw
  * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
+ * @param selected     Selected entry by the user.
  * @param cur_row      Current row number (internal variable)
  * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
- * @param selected     Selected entry by the user.
  * @return Row number of the next row to draw
  */
-uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, SettingEntry *selected, uint cur_row, uint parent_last) const
+uint SettingsContainer::Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row, uint parent_last) const
 {
-	if (cur_row >= max_row) return cur_row;
-
 	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		cur_row = (*it)->Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last, selected);
+		cur_row = (*it)->Draw(settings_ptr, left, right, y, first_row, max_row, selected, cur_row, parent_last);
 		if (cur_row >= max_row) {
 			break;
 		}
@@ -1387,18 +1248,186 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int bas
 	return cur_row;
 }
 
+/* == SettingsPage methods == */
+
+/**
+ * Constructor for a sub-page in the 'advanced settings' window
+ * @param title Title of the sub-page
+ */
+SettingsPage::SettingsPage(StringID title)
+{
+	this->title = title;
+	this->folded = true;
+}
+
+/**
+ * Initialization of an entire setting page
+ * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
+ */
+void SettingsPage::Init(byte level)
+{
+	BaseSettingEntry::Init(level);
+	SettingsContainer::Init(level + 1);
+}
+
+/** Recursively close all (filtered) folds of sub-pages */
+void SettingsPage::FoldAll()
+{
+	if (this->IsFiltered()) return;
+	this->folded = true;
+
+	SettingsContainer::FoldAll();
+}
+
+/** Recursively open all (filtered) folds of sub-pages */
+void SettingsPage::UnFoldAll()
+{
+	if (this->IsFiltered()) return;
+	this->folded = false;
+
+	SettingsContainer::UnFoldAll();
+}
+
+/**
+ * Recursively accumulate the folding state of the (filtered) tree.
+ * @param[in,out] all_folded Set to false, if one entry is not folded.
+ * @param[in,out] all_unfolded Set to false, if one entry is folded.
+ */
+void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
+{
+	if (this->IsFiltered()) return;
+
+	if (this->folded) {
+		all_unfolded = false;
+	} else {
+		all_folded = false;
+	}
+
+	SettingsContainer::GetFoldingState(all_folded, all_unfolded);
+}
+
+/**
+ * Update the filter state.
+ * @param filter Filter
+ * @param force_visible Whether to force all items visible, no matter what (due to filter text; not affected by restriction drop down box).
+ * @return true if item remains visible
+ */
+bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
+{
+	if (!force_visible && !filter.string.IsEmpty()) {
+		filter.string.ResetState();
+		filter.string.AddLine(this->title);
+		force_visible = filter.string.GetState();
+	}
+
+	bool visible = SettingsContainer::UpdateFilterState(filter, force_visible);
+	if (visible) {
+		CLRBITS(this->flags, SEF_FILTERED);
+	} else {
+		SETBITS(this->flags, SEF_FILTERED);
+	}
+	return visible;
+}
+
+/**
+ * Check whether an entry is visible and not folded or filtered away.
+ * Note: This does not consider the scrolling range; it might still require scrolling to make the setting really visible.
+ * @param item Entry to search for.
+ * @return true if entry is visible.
+ */
+bool SettingsPage::IsVisible(const BaseSettingEntry *item) const
+{
+	if (this->IsFiltered()) return false;
+	if (this == item) return true;
+	if (this->folded) return false;
+
+	return SettingsContainer::IsVisible(item);
+}
+
+/** Return number of rows needed to display the (filtered) entry */
+uint SettingsPage::Length() const
+{
+	if (this->IsFiltered()) return 0;
+	if (this->folded) return 1; // Only displaying the title
+
+	return 1 + SettingsContainer::Length();
+}
+
+/**
+ * Find setting entry at row \a row_num
+ * @param row_num Index of entry to return
+ * @param cur_row Current row number
+ * @return The requested setting entry or \c NULL if it not found (folded or filtered)
+ */
+BaseSettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row)
+{
+	if (this->IsFiltered()) return NULL;
+	if (row_num == *cur_row) return this;
+	(*cur_row)++;
+	if (this->folded) return NULL;
+
+	return SettingsContainer::FindEntry(row_num, cur_row);
+}
+
+/**
+ * Draw a row in the settings panel.
+ *
+ * @param settings_ptr Pointer to current values of all settings
+ * @param left         Left-most position in window/panel to start drawing \a first_row
+ * @param right        Right-most x position to draw strings at.
+ * @param y            Upper-most position in window/panel to start drawing \a first_row
+ * @param first_row    First row number to draw
+ * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
+ * @param selected     Selected entry by the user.
+ * @param cur_row      Current row number (internal variable)
+ * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @return Row number of the next row to draw
+ */
+uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row, uint parent_last) const
+{
+	if (this->IsFiltered()) return cur_row;
+	if (cur_row >= max_row) return cur_row;
+
+	cur_row = BaseSettingEntry::Draw(settings_ptr, left, right, y, first_row, max_row, selected, cur_row, parent_last);
+
+	if (!this->folded) {
+		if (this->flags & SEF_LAST_FIELD) {
+			assert(this->level < 8 * sizeof(parent_last));
+			SetBit(parent_last, this->level); // Add own last-field state
+		}
+
+		cur_row = SettingsContainer::Draw(settings_ptr, left, right, y, first_row, max_row, selected, cur_row, parent_last);
+	}
+
+	return cur_row;
+}
+
+/**
+ * Function to draw setting value (button + text + current value)
+ * @param settings_ptr Pointer to current values of all settings
+ * @param left         Left-most position in window/panel to start drawing
+ * @param right        Right-most position in window/panel to draw
+ * @param y            Upper-most position in window/panel to start drawing
+ * @param highlight    Highlight entry.
+ */
+void SettingsPage::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
+{
+	bool rtl = _current_text_dir == TD_RTL;
+	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - 8 : left, y + (SETTING_HEIGHT - 11) / 2);
+	DrawString(rtl ? left : left + 12, rtl ? right - 12 : right, y, this->title);
+}
 
 /** Construct settings tree */
-static SettingsPage &GetSettingsTree()
+static SettingsContainer &GetSettingsTree()
 {
-	static SettingsPage *main = NULL;
+	static SettingsContainer *main = NULL;
+
 	if (main == NULL)
 	{
 		/* Build up the dynamic settings-array only once per OpenTTD session */
-		main = new SettingsPage();
+		main = new SettingsContainer();
 
-		SettingsPage *localisation = new SettingsPage();
-		main->Add(new SettingEntry(localisation, STR_CONFIG_SETTING_LOCALISATION));
+		SettingsPage *localisation = main->Add(new SettingsPage(STR_CONFIG_SETTING_LOCALISATION));
 		{
 			localisation->Add(new SettingEntry("locale.units_velocity"));
 			localisation->Add(new SettingEntry("locale.units_power"));
@@ -1409,8 +1438,7 @@ static SettingsPage &GetSettingsTree()
 			localisation->Add(new SettingEntry("gui.date_format_in_default_names"));
 		}
 
-		SettingsPage *graphics = new SettingsPage();
-		main->Add(new SettingEntry(graphics, STR_CONFIG_SETTING_GRAPHICS));
+		SettingsPage *graphics = main->Add(new SettingsPage(STR_CONFIG_SETTING_GRAPHICS));
 		{
 			graphics->Add(new SettingEntry("gui.zoom_min"));
 			graphics->Add(new SettingEntry("gui.zoom_max"));
@@ -1418,8 +1446,7 @@ static SettingsPage &GetSettingsTree()
 			graphics->Add(new SettingEntry("gui.graph_line_thickness"));
 		}
 
-		SettingsPage *sound = new SettingsPage();
-		main->Add(new SettingEntry(sound, STR_CONFIG_SETTING_SOUND));
+		SettingsPage *sound = main->Add(new SettingsPage(STR_CONFIG_SETTING_SOUND));
 		{
 			sound->Add(new SettingEntry("sound.click_beep"));
 			sound->Add(new SettingEntry("sound.confirm"));
@@ -1431,11 +1458,9 @@ static SettingsPage &GetSettingsTree()
 			sound->Add(new SettingEntry("sound.ambient"));
 		}
 
-		SettingsPage *interface = new SettingsPage();
-		main->Add(new SettingEntry(interface, STR_CONFIG_SETTING_INTERFACE));
+		SettingsPage *interface = main->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE));
 		{
-			SettingsPage *general = new SettingsPage();
-			interface->Add(new SettingEntry(general, STR_CONFIG_SETTING_INTERFACE_GENERAL));
+			SettingsPage *general = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_GENERAL));
 			{
 				general->Add(new SettingEntry("gui.osk_activation"));
 				general->Add(new SettingEntry("gui.hover_delay"));
@@ -1444,8 +1469,7 @@ static SettingsPage &GetSettingsTree()
 				general->Add(new SettingEntry("gui.window_soft_limit"));
 			}
 
-			SettingsPage *viewports = new SettingsPage();
-			interface->Add(new SettingEntry(viewports, STR_CONFIG_SETTING_INTERFACE_VIEWPORTS));
+			SettingsPage *viewports = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_VIEWPORTS));
 			{
 				viewports->Add(new SettingEntry("gui.auto_scrolling"));
 				viewports->Add(new SettingEntry("gui.reverse_scroll"));
@@ -1468,8 +1492,7 @@ static SettingsPage &GetSettingsTree()
 				viewports->Add(new SettingEntry("gui.show_track_reservation"));
 			}
 
-			SettingsPage *construction = new SettingsPage();
-			interface->Add(new SettingEntry(construction, STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION));
+			SettingsPage *construction = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION));
 			{
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
 				construction->Add(new SettingEntry("gui.enable_signal_gui"));
@@ -1489,8 +1512,7 @@ static SettingsPage &GetSettingsTree()
 			interface->Add(new SettingEntry("gui.expenses_layout"));
 		}
 
-		SettingsPage *advisors = new SettingsPage();
-		main->Add(new SettingEntry(advisors, STR_CONFIG_SETTING_ADVISORS));
+		SettingsPage *advisors = main->Add(new SettingsPage(STR_CONFIG_SETTING_ADVISORS));
 		{
 			advisors->Add(new SettingEntry("gui.coloured_news_year"));
 			advisors->Add(new SettingEntry("news_display.general"));
@@ -1514,8 +1536,7 @@ static SettingsPage &GetSettingsTree()
 			advisors->Add(new SettingEntry("news_display.production_nobody"));
 		}
 
-		SettingsPage *company = new SettingsPage();
-		main->Add(new SettingEntry(company, STR_CONFIG_SETTING_COMPANY));
+		SettingsPage *company = main->Add(new SettingsPage(STR_CONFIG_SETTING_COMPANY));
 		{
 			company->Add(new SettingEntry("gui.semaphore_build_before"));
 			company->Add(new SettingEntry("gui.default_signal_type"));
@@ -1533,8 +1554,7 @@ static SettingsPage &GetSettingsTree()
 			company->Add(new SettingEntry("vehicle.servint_aircraft"));
 		}
 
-		SettingsPage *accounting = new SettingsPage();
-		main->Add(new SettingEntry(accounting, STR_CONFIG_SETTING_ACCOUNTING));
+		SettingsPage *accounting = main->Add(new SettingsPage(STR_CONFIG_SETTING_ACCOUNTING));
 		{
 			accounting->Add(new SettingEntry("economy.inflation"));
 			accounting->Add(new SettingEntry("difficulty.initial_interest"));
@@ -1546,11 +1566,9 @@ static SettingsPage &GetSettingsTree()
 			accounting->Add(new SettingEntry("difficulty.construction_cost"));
 		}
 
-		SettingsPage *vehicles = new SettingsPage();
-		main->Add(new SettingEntry(vehicles, STR_CONFIG_SETTING_VEHICLES));
+		SettingsPage *vehicles = main->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES));
 		{
-			SettingsPage *physics = new SettingsPage();
-			vehicles->Add(new SettingEntry(physics, STR_CONFIG_SETTING_VEHICLES_PHYSICS));
+			SettingsPage *physics = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_PHYSICS));
 			{
 				physics->Add(new SettingEntry("vehicle.train_acceleration_model"));
 				physics->Add(new SettingEntry("vehicle.train_slope_steepness"));
@@ -1562,8 +1580,7 @@ static SettingsPage &GetSettingsTree()
 				physics->Add(new SettingEntry("vehicle.plane_speed"));
 			}
 
-			SettingsPage *routing = new SettingsPage();
-			vehicles->Add(new SettingEntry(routing, STR_CONFIG_SETTING_VEHICLES_ROUTING));
+			SettingsPage *routing = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_ROUTING));
 			{
 				routing->Add(new SettingEntry("pf.pathfinder_for_trains"));
 				routing->Add(new SettingEntry("difficulty.line_reverse_mode"));
@@ -1577,8 +1594,7 @@ static SettingsPage &GetSettingsTree()
 			vehicles->Add(new SettingEntry("order.serviceathelipad"));
 		}
 
-		SettingsPage *limitations = new SettingsPage();
-		main->Add(new SettingEntry(limitations, STR_CONFIG_SETTING_LIMITATIONS));
+		SettingsPage *limitations = main->Add(new SettingsPage(STR_CONFIG_SETTING_LIMITATIONS));
 		{
 			limitations->Add(new SettingEntry("construction.command_pause_level"));
 			limitations->Add(new SettingEntry("construction.autoslope"));
@@ -1599,8 +1615,7 @@ static SettingsPage &GetSettingsTree()
 			limitations->Add(new SettingEntry("vehicle.disable_elrails"));
 		}
 
-		SettingsPage *disasters = new SettingsPage();
-		main->Add(new SettingEntry(disasters, STR_CONFIG_SETTING_ACCIDENTS));
+		SettingsPage *disasters = main->Add(new SettingsPage(STR_CONFIG_SETTING_ACCIDENTS));
 		{
 			disasters->Add(new SettingEntry("difficulty.disasters"));
 			disasters->Add(new SettingEntry("difficulty.economy"));
@@ -1608,8 +1623,7 @@ static SettingsPage &GetSettingsTree()
 			disasters->Add(new SettingEntry("vehicle.plane_crashes"));
 		}
 
-		SettingsPage *genworld = new SettingsPage();
-		main->Add(new SettingEntry(genworld, STR_CONFIG_SETTING_GENWORLD));
+		SettingsPage *genworld = main->Add(new SettingsPage(STR_CONFIG_SETTING_GENWORLD));
 		{
 			genworld->Add(new SettingEntry("game_creation.landscape"));
 			genworld->Add(new SettingEntry("game_creation.land_generator"));
@@ -1627,11 +1641,9 @@ static SettingsPage &GetSettingsTree()
 			genworld->Add(new SettingEntry("gui.pause_on_newgame"));
 		}
 
-		SettingsPage *environment = new SettingsPage();
-		main->Add(new SettingEntry(environment, STR_CONFIG_SETTING_ENVIRONMENT));
+		SettingsPage *environment = main->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT));
 		{
-			SettingsPage *authorities = new SettingsPage();
-			environment->Add(new SettingEntry(authorities, STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES));
+			SettingsPage *authorities = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES));
 			{
 				authorities->Add(new SettingEntry("difficulty.town_council_tolerance"));
 				authorities->Add(new SettingEntry("economy.bribe"));
@@ -1641,8 +1653,7 @@ static SettingsPage &GetSettingsTree()
 				authorities->Add(new SettingEntry("economy.station_noise_level"));
 			}
 
-			SettingsPage *towns = new SettingsPage();
-			environment->Add(new SettingEntry(towns, STR_CONFIG_SETTING_ENVIRONMENT_TOWNS));
+			SettingsPage *towns = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_TOWNS));
 			{
 				towns->Add(new SettingEntry("economy.town_growth_rate"));
 				towns->Add(new SettingEntry("economy.allow_town_roads"));
@@ -1650,8 +1661,7 @@ static SettingsPage &GetSettingsTree()
 				towns->Add(new SettingEntry("economy.found_town"));
 			}
 
-			SettingsPage *industries = new SettingsPage();
-			environment->Add(new SettingEntry(industries, STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES));
+			SettingsPage *industries = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES));
 			{
 				industries->Add(new SettingEntry("construction.raw_industry_construction"));
 				industries->Add(new SettingEntry("construction.industry_platform"));
@@ -1660,8 +1670,7 @@ static SettingsPage &GetSettingsTree()
 				industries->Add(new SettingEntry("economy.smooth_economy"));
 			}
 
-			SettingsPage *cdist = new SettingsPage();
-			environment->Add(new SettingEntry(cdist, STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST));
+			SettingsPage *cdist = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST));
 			{
 				cdist->Add(new SettingEntry("linkgraph.recalc_time"));
 				cdist->Add(new SettingEntry("linkgraph.recalc_interval"));
@@ -1679,11 +1688,9 @@ static SettingsPage &GetSettingsTree()
 			environment->Add(new SettingEntry("construction.extra_tree_placement"));
 		}
 
-		SettingsPage *ai = new SettingsPage();
-		main->Add(new SettingEntry(ai, STR_CONFIG_SETTING_AI));
+		SettingsPage *ai = main->Add(new SettingsPage(STR_CONFIG_SETTING_AI));
 		{
-			SettingsPage *npc = new SettingsPage();
-			ai->Add(new SettingEntry(npc, STR_CONFIG_SETTING_AI_NPC));
+			SettingsPage *npc = ai->Add(new SettingsPage(STR_CONFIG_SETTING_AI_NPC));
 			{
 				npc->Add(new SettingEntry("script.settings_profile"));
 				npc->Add(new SettingEntry("script.script_max_opcode_till_suspend"));
@@ -1909,7 +1916,7 @@ struct GameSettingsWindow : Window {
 
 			case WID_GS_HELP_TEXT:
 				if (this->last_clicked != NULL) {
-					const SettingDesc *sd = this->last_clicked->d.entry.setting;
+					const SettingDesc *sd = this->last_clicked->setting;
 
 					int y = r.top;
 					switch (sd->GetType()) {
@@ -1984,16 +1991,17 @@ struct GameSettingsWindow : Window {
 		btn -= this->warn_lines;
 
 		uint cur_row = 0;
-		SettingEntry *pe = GetSettingsTree().FindEntry(btn, &cur_row);
+		BaseSettingEntry *clicked_entry = GetSettingsTree().FindEntry(btn, &cur_row);
 
-		if (pe == NULL) return;  // Clicked below the last setting of the page
+		if (clicked_entry == NULL) return;  // Clicked below the last setting of the page
 
-		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (clicked_entry->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
 		if (x < 0) return;  // Clicked left of the entry
 
-		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
+		SettingsPage *clicked_page = dynamic_cast<SettingsPage*>(clicked_entry);
+		if (clicked_page != NULL) {
 			this->SetDisplayedHelpText(NULL);
-			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
+			clicked_page->folded = !clicked_page->folded; // Flip 'folded'-ness of the sub-page
 
 			this->manually_changed_folding = true;
 
@@ -2001,8 +2009,9 @@ struct GameSettingsWindow : Window {
 			return;
 		}
 
-		assert((pe->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
-		const SettingDesc *sd = pe->d.entry.setting;
+		SettingEntry *pe = dynamic_cast<SettingEntry*>(clicked_entry);
+		assert(pe != NULL);
+		const SettingDesc *sd = pe->setting;
 
 		/* return if action is only active in network, or only settable by server */
 		if (!sd->IsEditable()) {
@@ -2106,9 +2115,9 @@ struct GameSettingsWindow : Window {
 
 			if (value != oldvalue) {
 				if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-					SetCompanySetting(pe->d.entry.index, value);
+					SetCompanySetting(pe->index, value);
 				} else {
-					SetSettingValue(pe->d.entry.index, value);
+					SetSettingValue(pe->index, value);
 				}
 				this->SetDirty();
 			}
@@ -2141,8 +2150,7 @@ struct GameSettingsWindow : Window {
 		if (str == NULL) return;
 
 		assert(this->valuewindow_entry != NULL);
-		assert((this->valuewindow_entry->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
-		const SettingDesc *sd = this->valuewindow_entry->d.entry.setting;
+		const SettingDesc *sd = this->valuewindow_entry->setting;
 
 		int32 value;
 		if (!StrEmpty(str)) {
@@ -2155,9 +2163,9 @@ struct GameSettingsWindow : Window {
 		}
 
 		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-			SetCompanySetting(this->valuewindow_entry->d.entry.index, value);
+			SetCompanySetting(this->valuewindow_entry->index, value);
 		} else {
-			SetSettingValue(this->valuewindow_entry->d.entry.index, value);
+			SetSettingValue(this->valuewindow_entry->index, value);
 		}
 		this->SetDirty();
 	}
@@ -2191,13 +2199,13 @@ struct GameSettingsWindow : Window {
 				if (widget < 0) {
 					/* Deal with drop down boxes on the panel. */
 					assert(this->valuedropdown_entry != NULL);
-					const SettingDesc *sd = this->valuedropdown_entry->d.entry.setting;
+					const SettingDesc *sd = this->valuedropdown_entry->setting;
 					assert(sd->desc.flags & SGF_MULTISTRING);
 
 					if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-						SetCompanySetting(this->valuedropdown_entry->d.entry.index, index);
+						SetCompanySetting(this->valuedropdown_entry->index, index);
 					} else {
-						SetSettingValue(this->valuedropdown_entry->d.entry.index, index);
+						SetSettingValue(this->valuedropdown_entry->index, index);
 					}
 
 					this->SetDirty();
