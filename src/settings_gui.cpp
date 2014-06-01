@@ -37,6 +37,8 @@
 #include "stringfilter_type.h"
 #include "querystring_gui.h"
 
+#include <vector>
+
 #include "safeguards.h"
 
 
@@ -741,8 +743,15 @@ private:
 
 /** Data structure describing one page of settings in the settings window. */
 struct SettingsPage {
-	SettingEntry *entries; ///< Array of setting entries of the page.
-	byte num;              ///< Number of entries on the page (statically filled).
+	typedef std::vector<SettingEntry*> EntryVector;
+	EntryVector entries; ///< Settings on this page
+
+	template<typename T>
+	T *Add(T *item)
+	{
+		this->entries.push_back(item);
+		return item;
+	}
 
 	void Init(byte level = 0);
 	void FoldAll();
@@ -1238,24 +1247,24 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
  */
 void SettingsPage::Init(byte level)
 {
-	for (uint field = 0; field < this->num; field++) {
-		this->entries[field].Init(level);
+	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		(*it)->Init(level);
 	}
 }
 
 /** Recursively close all folds of sub-pages */
 void SettingsPage::FoldAll()
 {
-	for (uint field = 0; field < this->num; field++) {
-		this->entries[field].FoldAll();
+	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		(*it)->FoldAll();
 	}
 }
 
 /** Recursively open all folds of sub-pages */
 void SettingsPage::UnFoldAll()
 {
-	for (uint field = 0; field < this->num; field++) {
-		this->entries[field].UnFoldAll();
+	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		(*it)->UnFoldAll();
 	}
 }
 
@@ -1266,8 +1275,8 @@ void SettingsPage::UnFoldAll()
  */
 void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 {
-	for (uint field = 0; field < this->num; field++) {
-		this->entries[field].GetFoldingState(all_folded, all_unfolded);
+	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		(*it)->GetFoldingState(all_folded, all_unfolded);
 	}
 }
 
@@ -1281,9 +1290,9 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
 	bool visible = false;
 	bool first_visible = true;
-	for (int field = this->num - 1; field >= 0; field--) {
-		visible |= this->entries[field].UpdateFilterState(filter, force_visible);
-		this->entries[field].SetLastField(first_visible);
+	for (EntryVector::reverse_iterator it = this->entries.rbegin(); it != this->entries.rend(); ++it) {
+		visible |= (*it)->UpdateFilterState(filter, force_visible);
+		(*it)->SetLastField(first_visible);
 		if (visible && first_visible) first_visible = false;
 	}
 	return visible;
@@ -1298,8 +1307,8 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
  */
 bool SettingsPage::IsVisible(const SettingEntry *item) const
 {
-	for (uint field = 0; field < this->num; field++) {
-		if (this->entries[field].IsVisible(item)) return true;
+	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		if ((*it)->IsVisible(item)) return true;
 	}
 	return false;
 }
@@ -1308,8 +1317,8 @@ bool SettingsPage::IsVisible(const SettingEntry *item) const
 uint SettingsPage::Length() const
 {
 	uint length = 0;
-	for (uint field = 0; field < this->num; field++) {
-		length += this->entries[field].Length();
+	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		length += (*it)->Length();
 	}
 	return length;
 }
@@ -1324,8 +1333,8 @@ SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
 {
 	SettingEntry *pe = NULL;
 
-	for (uint field = 0; field < this->num; field++) {
-		pe = this->entries[field].FindEntry(row_num, cur_row);
+	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		pe = (*it)->FindEntry(row_num, cur_row);
 		if (pe != NULL) {
 			break;
 		}
@@ -1341,8 +1350,8 @@ SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
 uint SettingsPage::GetMaxHelpHeight(int maxw)
 {
 	uint biggest = 0;
-	for (uint field = 0; field < this->num; field++) {
-		biggest = max(biggest, this->entries[field].GetMaxHelpHeight(maxw));
+	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		biggest = max(biggest, (*it)->GetMaxHelpHeight(maxw));
 	}
 	return biggest;
 }
@@ -1369,8 +1378,8 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int bas
 {
 	if (cur_row >= max_row) return cur_row;
 
-	for (uint i = 0; i < this->num; i++) {
-		cur_row = this->entries[i].Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last, selected);
+	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
+		cur_row = (*it)->Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last, selected);
 		if (cur_row >= max_row) {
 			break;
 		}
@@ -1379,339 +1388,321 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int bas
 }
 
 
-static SettingEntry _settings_localisation[] = {
-	SettingEntry("locale.units_velocity"),
-	SettingEntry("locale.units_power"),
-	SettingEntry("locale.units_weight"),
-	SettingEntry("locale.units_volume"),
-	SettingEntry("locale.units_force"),
-	SettingEntry("locale.units_height"),
-	SettingEntry("gui.date_format_in_default_names"),
-};
-/** Localisation options sub-page */
-static SettingsPage _settings_localisation_page = {_settings_localisation, lengthof(_settings_localisation)};
+/** Construct settings tree */
+static SettingsPage &GetSettingsTree()
+{
+	static SettingsPage *main = NULL;
+	if (main == NULL)
+	{
+		/* Build up the dynamic settings-array only once per OpenTTD session */
+		main = new SettingsPage();
 
-static SettingEntry _settings_graphics[] = {
-	SettingEntry("gui.zoom_min"),
-	SettingEntry("gui.zoom_max"),
-	SettingEntry("gui.smallmap_land_colour"),
-	SettingEntry("gui.graph_line_thickness"),
-};
-/** Graphics options sub-page */
-static SettingsPage _settings_graphics_page = {_settings_graphics, lengthof(_settings_graphics)};
+		SettingsPage *localisation = new SettingsPage();
+		main->Add(new SettingEntry(localisation, STR_CONFIG_SETTING_LOCALISATION));
+		{
+			localisation->Add(new SettingEntry("locale.units_velocity"));
+			localisation->Add(new SettingEntry("locale.units_power"));
+			localisation->Add(new SettingEntry("locale.units_weight"));
+			localisation->Add(new SettingEntry("locale.units_volume"));
+			localisation->Add(new SettingEntry("locale.units_force"));
+			localisation->Add(new SettingEntry("locale.units_height"));
+			localisation->Add(new SettingEntry("gui.date_format_in_default_names"));
+		}
 
-static SettingEntry _settings_sound[] = {
-	SettingEntry("sound.click_beep"),
-	SettingEntry("sound.confirm"),
-	SettingEntry("sound.news_ticker"),
-	SettingEntry("sound.news_full"),
-	SettingEntry("sound.new_year"),
-	SettingEntry("sound.disaster"),
-	SettingEntry("sound.vehicle"),
-	SettingEntry("sound.ambient"),
-};
-/** Sound effects sub-page */
-static SettingsPage _settings_sound_page = {_settings_sound, lengthof(_settings_sound)};
+		SettingsPage *graphics = new SettingsPage();
+		main->Add(new SettingEntry(graphics, STR_CONFIG_SETTING_GRAPHICS));
+		{
+			graphics->Add(new SettingEntry("gui.zoom_min"));
+			graphics->Add(new SettingEntry("gui.zoom_max"));
+			graphics->Add(new SettingEntry("gui.smallmap_land_colour"));
+			graphics->Add(new SettingEntry("gui.graph_line_thickness"));
+		}
 
-static SettingEntry _settings_interface_general[] = {
-	SettingEntry("gui.osk_activation"),
-	SettingEntry("gui.hover_delay"),
-	SettingEntry("gui.errmsg_duration"),
-	SettingEntry("gui.window_snap_radius"),
-	SettingEntry("gui.window_soft_limit"),
-};
-/** Interface/General sub-page */
-static SettingsPage _settings_interface_general_page = {_settings_interface_general, lengthof(_settings_interface_general)};
+		SettingsPage *sound = new SettingsPage();
+		main->Add(new SettingEntry(sound, STR_CONFIG_SETTING_SOUND));
+		{
+			sound->Add(new SettingEntry("sound.click_beep"));
+			sound->Add(new SettingEntry("sound.confirm"));
+			sound->Add(new SettingEntry("sound.news_ticker"));
+			sound->Add(new SettingEntry("sound.news_full"));
+			sound->Add(new SettingEntry("sound.new_year"));
+			sound->Add(new SettingEntry("sound.disaster"));
+			sound->Add(new SettingEntry("sound.vehicle"));
+			sound->Add(new SettingEntry("sound.ambient"));
+		}
 
-static SettingEntry _settings_interface_viewports[] = {
-	SettingEntry("gui.auto_scrolling"),
-	SettingEntry("gui.reverse_scroll"),
-	SettingEntry("gui.smooth_scroll"),
-	SettingEntry("gui.left_mouse_btn_scrolling"),
-	/* While the horizontal scrollwheel scrolling is written as general code, only
-	 *  the cocoa (OSX) driver generates input for it.
-	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
-	SettingEntry("gui.scrollwheel_scrolling"),
-	SettingEntry("gui.scrollwheel_multiplier"),
+		SettingsPage *interface = new SettingsPage();
+		main->Add(new SettingEntry(interface, STR_CONFIG_SETTING_INTERFACE));
+		{
+			SettingsPage *general = new SettingsPage();
+			interface->Add(new SettingEntry(general, STR_CONFIG_SETTING_INTERFACE_GENERAL));
+			{
+				general->Add(new SettingEntry("gui.osk_activation"));
+				general->Add(new SettingEntry("gui.hover_delay"));
+				general->Add(new SettingEntry("gui.errmsg_duration"));
+				general->Add(new SettingEntry("gui.window_snap_radius"));
+				general->Add(new SettingEntry("gui.window_soft_limit"));
+			}
+
+			SettingsPage *viewports = new SettingsPage();
+			interface->Add(new SettingEntry(viewports, STR_CONFIG_SETTING_INTERFACE_VIEWPORTS));
+			{
+				viewports->Add(new SettingEntry("gui.auto_scrolling"));
+				viewports->Add(new SettingEntry("gui.reverse_scroll"));
+				viewports->Add(new SettingEntry("gui.smooth_scroll"));
+				viewports->Add(new SettingEntry("gui.left_mouse_btn_scrolling"));
+				/* While the horizontal scrollwheel scrolling is written as general code, only
+				 *  the cocoa (OSX) driver generates input for it.
+				 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
+				viewports->Add(new SettingEntry("gui.scrollwheel_scrolling"));
+				viewports->Add(new SettingEntry("gui.scrollwheel_multiplier"));
 #ifdef __APPLE__
-	/* We might need to emulate a right mouse button on mac */
-	SettingEntry("gui.right_mouse_btn_emulation"),
+				/* We might need to emulate a right mouse button on mac */
+				viewports->Add(new SettingEntry("gui.right_mouse_btn_emulation"));
 #endif
-	SettingEntry("gui.population_in_label"),
-	SettingEntry("gui.liveries"),
-	SettingEntry("construction.train_signal_side"),
-	SettingEntry("gui.measure_tooltip"),
-	SettingEntry("gui.loading_indicators"),
-	SettingEntry("gui.show_track_reservation"),
-};
-/** Interface/Viewports sub-page */
-static SettingsPage _settings_interface_viewports_page = {_settings_interface_viewports, lengthof(_settings_interface_viewports)};
+				viewports->Add(new SettingEntry("gui.population_in_label"));
+				viewports->Add(new SettingEntry("gui.liveries"));
+				viewports->Add(new SettingEntry("construction.train_signal_side"));
+				viewports->Add(new SettingEntry("gui.measure_tooltip"));
+				viewports->Add(new SettingEntry("gui.loading_indicators"));
+				viewports->Add(new SettingEntry("gui.show_track_reservation"));
+			}
 
-static SettingEntry _settings_interface_construction[] = {
-	SettingEntry("gui.link_terraform_toolbar"),
-	SettingEntry("gui.enable_signal_gui"),
-	SettingEntry("gui.persistent_buildingtools"),
-	SettingEntry("gui.quick_goto"),
-	SettingEntry("gui.default_rail_type"),
-	SettingEntry("gui.disable_unsuitable_building"),
-};
-/** Interface/Construction sub-page */
-static SettingsPage _settings_interface_construction_page = {_settings_interface_construction, lengthof(_settings_interface_construction)};
+			SettingsPage *construction = new SettingsPage();
+			interface->Add(new SettingEntry(construction, STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION));
+			{
+				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
+				construction->Add(new SettingEntry("gui.enable_signal_gui"));
+				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
+				construction->Add(new SettingEntry("gui.quick_goto"));
+				construction->Add(new SettingEntry("gui.default_rail_type"));
+				construction->Add(new SettingEntry("gui.disable_unsuitable_building"));
+			}
 
-static SettingEntry _settings_interface[] = {
-	SettingEntry(&_settings_interface_general_page,      STR_CONFIG_SETTING_INTERFACE_GENERAL),
-	SettingEntry(&_settings_interface_viewports_page,    STR_CONFIG_SETTING_INTERFACE_VIEWPORTS),
-	SettingEntry(&_settings_interface_construction_page, STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION),
-	SettingEntry("gui.autosave"),
-	SettingEntry("gui.toolbar_pos"),
-	SettingEntry("gui.statusbar_pos"),
-	SettingEntry("gui.prefer_teamchat"),
-	SettingEntry("gui.advanced_vehicle_list"),
-	SettingEntry("gui.timetable_in_ticks"),
-	SettingEntry("gui.timetable_arrival_departure"),
-	SettingEntry("gui.expenses_layout"),
-};
+			interface->Add(new SettingEntry("gui.autosave"));
+			interface->Add(new SettingEntry("gui.toolbar_pos"));
+			interface->Add(new SettingEntry("gui.statusbar_pos"));
+			interface->Add(new SettingEntry("gui.prefer_teamchat"));
+			interface->Add(new SettingEntry("gui.advanced_vehicle_list"));
+			interface->Add(new SettingEntry("gui.timetable_in_ticks"));
+			interface->Add(new SettingEntry("gui.timetable_arrival_departure"));
+			interface->Add(new SettingEntry("gui.expenses_layout"));
+		}
 
-/** Interface subpage */
-static SettingsPage _settings_interface_page = {_settings_interface, lengthof(_settings_interface)};
+		SettingsPage *advisors = new SettingsPage();
+		main->Add(new SettingEntry(advisors, STR_CONFIG_SETTING_ADVISORS));
+		{
+			advisors->Add(new SettingEntry("gui.coloured_news_year"));
+			advisors->Add(new SettingEntry("news_display.general"));
+			advisors->Add(new SettingEntry("news_display.new_vehicles"));
+			advisors->Add(new SettingEntry("news_display.accident"));
+			advisors->Add(new SettingEntry("news_display.company_info"));
+			advisors->Add(new SettingEntry("news_display.acceptance"));
+			advisors->Add(new SettingEntry("news_display.arrival_player"));
+			advisors->Add(new SettingEntry("news_display.arrival_other"));
+			advisors->Add(new SettingEntry("news_display.advice"));
+			advisors->Add(new SettingEntry("gui.order_review_system"));
+			advisors->Add(new SettingEntry("gui.vehicle_income_warn"));
+			advisors->Add(new SettingEntry("gui.lost_vehicle_warn"));
+			advisors->Add(new SettingEntry("gui.show_finances"));
+			advisors->Add(new SettingEntry("news_display.economy"));
+			advisors->Add(new SettingEntry("news_display.subsidies"));
+			advisors->Add(new SettingEntry("news_display.open"));
+			advisors->Add(new SettingEntry("news_display.close"));
+			advisors->Add(new SettingEntry("news_display.production_player"));
+			advisors->Add(new SettingEntry("news_display.production_other"));
+			advisors->Add(new SettingEntry("news_display.production_nobody"));
+		}
 
-static SettingEntry _settings_advisors[] = {
-	SettingEntry("gui.coloured_news_year"),
-	SettingEntry("news_display.general"),
-	SettingEntry("news_display.new_vehicles"),
-	SettingEntry("news_display.accident"),
-	SettingEntry("news_display.company_info"),
-	SettingEntry("news_display.acceptance"),
-	SettingEntry("news_display.arrival_player"),
-	SettingEntry("news_display.arrival_other"),
-	SettingEntry("news_display.advice"),
-	SettingEntry("gui.order_review_system"),
-	SettingEntry("gui.vehicle_income_warn"),
-	SettingEntry("gui.lost_vehicle_warn"),
-	SettingEntry("gui.show_finances"),
-	SettingEntry("news_display.economy"),
-	SettingEntry("news_display.subsidies"),
-	SettingEntry("news_display.open"),
-	SettingEntry("news_display.close"),
-	SettingEntry("news_display.production_player"),
-	SettingEntry("news_display.production_other"),
-	SettingEntry("news_display.production_nobody"),
-};
-/** Interface/News sub-page */
-static SettingsPage _settings_advisors_page = {_settings_advisors, lengthof(_settings_advisors)};
+		SettingsPage *company = new SettingsPage();
+		main->Add(new SettingEntry(company, STR_CONFIG_SETTING_COMPANY));
+		{
+			company->Add(new SettingEntry("gui.semaphore_build_before"));
+			company->Add(new SettingEntry("gui.default_signal_type"));
+			company->Add(new SettingEntry("gui.cycle_signal_types"));
+			company->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
+			company->Add(new SettingEntry("gui.new_nonstop"));
+			company->Add(new SettingEntry("gui.stop_location"));
+			company->Add(new SettingEntry("company.engine_renew"));
+			company->Add(new SettingEntry("company.engine_renew_months"));
+			company->Add(new SettingEntry("company.engine_renew_money"));
+			company->Add(new SettingEntry("vehicle.servint_ispercent"));
+			company->Add(new SettingEntry("vehicle.servint_trains"));
+			company->Add(new SettingEntry("vehicle.servint_roadveh"));
+			company->Add(new SettingEntry("vehicle.servint_ships"));
+			company->Add(new SettingEntry("vehicle.servint_aircraft"));
+		}
 
-static SettingEntry _settings_company[] = {
-	SettingEntry("gui.semaphore_build_before"),
-	SettingEntry("gui.default_signal_type"),
-	SettingEntry("gui.cycle_signal_types"),
-	SettingEntry("gui.drag_signals_fixed_distance"),
-	SettingEntry("gui.new_nonstop"),
-	SettingEntry("gui.stop_location"),
-	SettingEntry("company.engine_renew"),
-	SettingEntry("company.engine_renew_months"),
-	SettingEntry("company.engine_renew_money"),
-	SettingEntry("vehicle.servint_ispercent"),
-	SettingEntry("vehicle.servint_trains"),
-	SettingEntry("vehicle.servint_roadveh"),
-	SettingEntry("vehicle.servint_ships"),
-	SettingEntry("vehicle.servint_aircraft"),
-};
+		SettingsPage *accounting = new SettingsPage();
+		main->Add(new SettingEntry(accounting, STR_CONFIG_SETTING_ACCOUNTING));
+		{
+			accounting->Add(new SettingEntry("economy.inflation"));
+			accounting->Add(new SettingEntry("difficulty.initial_interest"));
+			accounting->Add(new SettingEntry("difficulty.max_loan"));
+			accounting->Add(new SettingEntry("difficulty.subsidy_multiplier"));
+			accounting->Add(new SettingEntry("economy.feeder_payment_share"));
+			accounting->Add(new SettingEntry("economy.infrastructure_maintenance"));
+			accounting->Add(new SettingEntry("difficulty.vehicle_costs"));
+			accounting->Add(new SettingEntry("difficulty.construction_cost"));
+		}
 
-/** Company subpage */
-static SettingsPage _settings_company_page = {_settings_company, lengthof(_settings_company)};
+		SettingsPage *vehicles = new SettingsPage();
+		main->Add(new SettingEntry(vehicles, STR_CONFIG_SETTING_VEHICLES));
+		{
+			SettingsPage *physics = new SettingsPage();
+			vehicles->Add(new SettingEntry(physics, STR_CONFIG_SETTING_VEHICLES_PHYSICS));
+			{
+				physics->Add(new SettingEntry("vehicle.train_acceleration_model"));
+				physics->Add(new SettingEntry("vehicle.train_slope_steepness"));
+				physics->Add(new SettingEntry("vehicle.wagon_speed_limits"));
+				physics->Add(new SettingEntry("vehicle.freight_trains"));
+				physics->Add(new SettingEntry("vehicle.roadveh_acceleration_model"));
+				physics->Add(new SettingEntry("vehicle.roadveh_slope_steepness"));
+				physics->Add(new SettingEntry("vehicle.smoke_amount"));
+				physics->Add(new SettingEntry("vehicle.plane_speed"));
+			}
 
-static SettingEntry _settings_accounting[] = {
-	SettingEntry("economy.inflation"),
-	SettingEntry("difficulty.initial_interest"),
-	SettingEntry("difficulty.max_loan"),
-	SettingEntry("difficulty.subsidy_multiplier"),
-	SettingEntry("economy.feeder_payment_share"),
-	SettingEntry("economy.infrastructure_maintenance"),
-	SettingEntry("difficulty.vehicle_costs"),
-	SettingEntry("difficulty.construction_cost"),
-};
-/** Accounting sub-page */
-static SettingsPage _settings_accounting_page = {_settings_accounting, lengthof(_settings_accounting)};
+			SettingsPage *routing = new SettingsPage();
+			vehicles->Add(new SettingEntry(routing, STR_CONFIG_SETTING_VEHICLES_ROUTING));
+			{
+				routing->Add(new SettingEntry("pf.pathfinder_for_trains"));
+				routing->Add(new SettingEntry("difficulty.line_reverse_mode"));
+				routing->Add(new SettingEntry("pf.reverse_at_signals"));
+				routing->Add(new SettingEntry("pf.forbid_90_deg"));
+				routing->Add(new SettingEntry("pf.pathfinder_for_roadvehs"));
+				routing->Add(new SettingEntry("pf.pathfinder_for_ships"));
+			}
 
-static SettingEntry _settings_vehicles_physics[] = {
-	SettingEntry("vehicle.train_acceleration_model"),
-	SettingEntry("vehicle.train_slope_steepness"),
-	SettingEntry("vehicle.wagon_speed_limits"),
-	SettingEntry("vehicle.freight_trains"),
-	SettingEntry("vehicle.roadveh_acceleration_model"),
-	SettingEntry("vehicle.roadveh_slope_steepness"),
-	SettingEntry("vehicle.smoke_amount"),
-	SettingEntry("vehicle.plane_speed"),
-};
-/** Vehicles/Physics sub-page */
-static SettingsPage _settings_vehicles_physics_page = {_settings_vehicles_physics, lengthof(_settings_vehicles_physics)};
+			vehicles->Add(new SettingEntry("order.no_servicing_if_no_breakdowns"));
+			vehicles->Add(new SettingEntry("order.serviceathelipad"));
+		}
 
-static SettingEntry _settings_vehicles_routing[] = {
-	SettingEntry("pf.pathfinder_for_trains"),
-	SettingEntry("difficulty.line_reverse_mode"),
-	SettingEntry("pf.reverse_at_signals"),
-	SettingEntry("pf.forbid_90_deg"),
-	SettingEntry("pf.pathfinder_for_roadvehs"),
-	SettingEntry("pf.pathfinder_for_ships"),
-};
-/** Vehicles/Routing sub-page */
-static SettingsPage _settings_vehicles_routing_page = {_settings_vehicles_routing, lengthof(_settings_vehicles_routing)};
+		SettingsPage *limitations = new SettingsPage();
+		main->Add(new SettingEntry(limitations, STR_CONFIG_SETTING_LIMITATIONS));
+		{
+			limitations->Add(new SettingEntry("construction.command_pause_level"));
+			limitations->Add(new SettingEntry("construction.autoslope"));
+			limitations->Add(new SettingEntry("construction.extra_dynamite"));
+			limitations->Add(new SettingEntry("construction.max_bridge_length"));
+			limitations->Add(new SettingEntry("construction.max_tunnel_length"));
+			limitations->Add(new SettingEntry("station.never_expire_airports"));
+			limitations->Add(new SettingEntry("vehicle.never_expire_vehicles"));
+			limitations->Add(new SettingEntry("vehicle.max_trains"));
+			limitations->Add(new SettingEntry("vehicle.max_roadveh"));
+			limitations->Add(new SettingEntry("vehicle.max_aircraft"));
+			limitations->Add(new SettingEntry("vehicle.max_ships"));
+			limitations->Add(new SettingEntry("vehicle.max_train_length"));
+			limitations->Add(new SettingEntry("station.station_spread"));
+			limitations->Add(new SettingEntry("station.distant_join_stations"));
+			limitations->Add(new SettingEntry("construction.road_stop_on_town_road"));
+			limitations->Add(new SettingEntry("construction.road_stop_on_competitor_road"));
+			limitations->Add(new SettingEntry("vehicle.disable_elrails"));
+		}
 
-static SettingEntry _settings_vehicles[] = {
-	SettingEntry(&_settings_vehicles_physics_page, STR_CONFIG_SETTING_VEHICLES_PHYSICS),
-	SettingEntry(&_settings_vehicles_routing_page, STR_CONFIG_SETTING_VEHICLES_ROUTING),
-	SettingEntry("order.no_servicing_if_no_breakdowns"),
-	SettingEntry("order.serviceathelipad"),
-};
-/** Vehicles sub-page */
-static SettingsPage _settings_vehicles_page = {_settings_vehicles, lengthof(_settings_vehicles)};
+		SettingsPage *disasters = new SettingsPage();
+		main->Add(new SettingEntry(disasters, STR_CONFIG_SETTING_ACCIDENTS));
+		{
+			disasters->Add(new SettingEntry("difficulty.disasters"));
+			disasters->Add(new SettingEntry("difficulty.economy"));
+			disasters->Add(new SettingEntry("difficulty.vehicle_breakdowns"));
+			disasters->Add(new SettingEntry("vehicle.plane_crashes"));
+		}
 
-static SettingEntry _settings_limitations[] = {
-	SettingEntry("construction.command_pause_level"),
-	SettingEntry("construction.autoslope"),
-	SettingEntry("construction.extra_dynamite"),
-	SettingEntry("construction.max_bridge_length"),
-	SettingEntry("construction.max_tunnel_length"),
-	SettingEntry("station.never_expire_airports"),
-	SettingEntry("vehicle.never_expire_vehicles"),
-	SettingEntry("vehicle.max_trains"),
-	SettingEntry("vehicle.max_roadveh"),
-	SettingEntry("vehicle.max_aircraft"),
-	SettingEntry("vehicle.max_ships"),
-	SettingEntry("vehicle.max_train_length"),
-	SettingEntry("station.station_spread"),
-	SettingEntry("station.distant_join_stations"),
-	SettingEntry("construction.road_stop_on_town_road"),
-	SettingEntry("construction.road_stop_on_competitor_road"),
-	SettingEntry("vehicle.disable_elrails"),
-};
-/** Limitations sub-page */
-static SettingsPage _settings_limitations_page = {_settings_limitations, lengthof(_settings_limitations)};
+		SettingsPage *genworld = new SettingsPage();
+		main->Add(new SettingEntry(genworld, STR_CONFIG_SETTING_GENWORLD));
+		{
+			genworld->Add(new SettingEntry("game_creation.landscape"));
+			genworld->Add(new SettingEntry("game_creation.land_generator"));
+			genworld->Add(new SettingEntry("difficulty.terrain_type"));
+			genworld->Add(new SettingEntry("game_creation.tgen_smoothness"));
+			genworld->Add(new SettingEntry("game_creation.variety"));
+			genworld->Add(new SettingEntry("game_creation.snow_line_height"));
+			genworld->Add(new SettingEntry("game_creation.amount_of_rivers"));
+			genworld->Add(new SettingEntry("game_creation.tree_placer"));
+			genworld->Add(new SettingEntry("vehicle.road_side"));
+			genworld->Add(new SettingEntry("economy.larger_towns"));
+			genworld->Add(new SettingEntry("economy.initial_city_size"));
+			genworld->Add(new SettingEntry("economy.town_layout"));
+			genworld->Add(new SettingEntry("difficulty.industry_density"));
+			genworld->Add(new SettingEntry("gui.pause_on_newgame"));
+		}
 
-static SettingEntry _settings_disasters[] = {
-	SettingEntry("difficulty.disasters"),
-	SettingEntry("difficulty.economy"),
-	SettingEntry("difficulty.vehicle_breakdowns"),
-	SettingEntry("vehicle.plane_crashes"),
-};
-/** Disasters sub-page */
-static SettingsPage _settings_disasters_page = {_settings_disasters, lengthof(_settings_disasters)};
+		SettingsPage *environment = new SettingsPage();
+		main->Add(new SettingEntry(environment, STR_CONFIG_SETTING_ENVIRONMENT));
+		{
+			SettingsPage *authorities = new SettingsPage();
+			environment->Add(new SettingEntry(authorities, STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES));
+			{
+				authorities->Add(new SettingEntry("difficulty.town_council_tolerance"));
+				authorities->Add(new SettingEntry("economy.bribe"));
+				authorities->Add(new SettingEntry("economy.exclusive_rights"));
+				authorities->Add(new SettingEntry("economy.fund_roads"));
+				authorities->Add(new SettingEntry("economy.fund_buildings"));
+				authorities->Add(new SettingEntry("economy.station_noise_level"));
+			}
 
-static SettingEntry _settings_genworld[] = {
-	SettingEntry("game_creation.landscape"),
-	SettingEntry("game_creation.land_generator"),
-	SettingEntry("difficulty.terrain_type"),
-	SettingEntry("game_creation.tgen_smoothness"),
-	SettingEntry("game_creation.variety"),
-	SettingEntry("game_creation.snow_line_height"),
-	SettingEntry("game_creation.amount_of_rivers"),
-	SettingEntry("game_creation.tree_placer"),
-	SettingEntry("vehicle.road_side"),
-	SettingEntry("economy.larger_towns"),
-	SettingEntry("economy.initial_city_size"),
-	SettingEntry("economy.town_layout"),
-	SettingEntry("difficulty.industry_density"),
-	SettingEntry("gui.pause_on_newgame"),
-};
+			SettingsPage *towns = new SettingsPage();
+			environment->Add(new SettingEntry(towns, STR_CONFIG_SETTING_ENVIRONMENT_TOWNS));
+			{
+				towns->Add(new SettingEntry("economy.town_growth_rate"));
+				towns->Add(new SettingEntry("economy.allow_town_roads"));
+				towns->Add(new SettingEntry("economy.allow_town_level_crossings"));
+				towns->Add(new SettingEntry("economy.found_town"));
+			}
 
-/** Genworld subpage */
-static SettingsPage _settings_genworld_page = {_settings_genworld, lengthof(_settings_genworld)};
+			SettingsPage *industries = new SettingsPage();
+			environment->Add(new SettingEntry(industries, STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES));
+			{
+				industries->Add(new SettingEntry("construction.raw_industry_construction"));
+				industries->Add(new SettingEntry("construction.industry_platform"));
+				industries->Add(new SettingEntry("economy.multiple_industry_per_town"));
+				industries->Add(new SettingEntry("game_creation.oil_refinery_limit"));
+				industries->Add(new SettingEntry("economy.smooth_economy"));
+			}
 
-static SettingEntry _settings_environment_authorities[] = {
-	SettingEntry("difficulty.town_council_tolerance"),
-	SettingEntry("economy.bribe"),
-	SettingEntry("economy.exclusive_rights"),
-	SettingEntry("economy.fund_roads"),
-	SettingEntry("economy.fund_buildings"),
-	SettingEntry("economy.station_noise_level"),
-};
-/** Environment/Authorities sub-page */
-static SettingsPage _settings_environment_authorities_page = {_settings_environment_authorities, lengthof(_settings_environment_authorities)};
+			SettingsPage *cdist = new SettingsPage();
+			environment->Add(new SettingEntry(cdist, STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST));
+			{
+				cdist->Add(new SettingEntry("linkgraph.recalc_time"));
+				cdist->Add(new SettingEntry("linkgraph.recalc_interval"));
+				cdist->Add(new SettingEntry("linkgraph.distribution_pax"));
+				cdist->Add(new SettingEntry("linkgraph.distribution_mail"));
+				cdist->Add(new SettingEntry("linkgraph.distribution_armoured"));
+				cdist->Add(new SettingEntry("linkgraph.distribution_default"));
+				cdist->Add(new SettingEntry("linkgraph.accuracy"));
+				cdist->Add(new SettingEntry("linkgraph.demand_distance"));
+				cdist->Add(new SettingEntry("linkgraph.demand_size"));
+				cdist->Add(new SettingEntry("linkgraph.short_path_saturation"));
+			}
 
-static SettingEntry _settings_environment_towns[] = {
-	SettingEntry("economy.town_growth_rate"),
-	SettingEntry("economy.allow_town_roads"),
-	SettingEntry("economy.allow_town_level_crossings"),
-	SettingEntry("economy.found_town"),
-};
-/** Environment/Towns sub-page */
-static SettingsPage _settings_environment_towns_page = {_settings_environment_towns, lengthof(_settings_environment_towns)};
+			environment->Add(new SettingEntry("station.modified_catchment"));
+			environment->Add(new SettingEntry("construction.extra_tree_placement"));
+		}
 
-static SettingEntry _settings_environment_industries[] = {
-	SettingEntry("construction.raw_industry_construction"),
-	SettingEntry("construction.industry_platform"),
-	SettingEntry("economy.multiple_industry_per_town"),
-	SettingEntry("game_creation.oil_refinery_limit"),
-	SettingEntry("economy.smooth_economy"),
-};
-/** Environment/Industries subpage */
-static SettingsPage _settings_environment_industries_page = {_settings_environment_industries, lengthof(_settings_environment_industries)};
+		SettingsPage *ai = new SettingsPage();
+		main->Add(new SettingEntry(ai, STR_CONFIG_SETTING_AI));
+		{
+			SettingsPage *npc = new SettingsPage();
+			ai->Add(new SettingEntry(npc, STR_CONFIG_SETTING_AI_NPC));
+			{
+				npc->Add(new SettingEntry("script.settings_profile"));
+				npc->Add(new SettingEntry("script.script_max_opcode_till_suspend"));
+				npc->Add(new SettingEntry("difficulty.competitor_speed"));
+				npc->Add(new SettingEntry("ai.ai_in_multiplayer"));
+				npc->Add(new SettingEntry("ai.ai_disable_veh_train"));
+				npc->Add(new SettingEntry("ai.ai_disable_veh_roadveh"));
+				npc->Add(new SettingEntry("ai.ai_disable_veh_aircraft"));
+				npc->Add(new SettingEntry("ai.ai_disable_veh_ship"));
+			}
 
-static SettingEntry _settings_environment_cdist[] = {
-	SettingEntry("linkgraph.recalc_time"),
-	SettingEntry("linkgraph.recalc_interval"),
-	SettingEntry("linkgraph.distribution_pax"),
-	SettingEntry("linkgraph.distribution_mail"),
-	SettingEntry("linkgraph.distribution_armoured"),
-	SettingEntry("linkgraph.distribution_default"),
-	SettingEntry("linkgraph.accuracy"),
-	SettingEntry("linkgraph.demand_distance"),
-	SettingEntry("linkgraph.demand_size"),
-	SettingEntry("linkgraph.short_path_saturation"),
-};
-/** Environment/Cargo Distribution sub-page */
-static SettingsPage _settings_environment_cdist_page = {_settings_environment_cdist, lengthof(_settings_environment_cdist)};
+			ai->Add(new SettingEntry("economy.give_money"));
+			ai->Add(new SettingEntry("economy.allow_shares"));
+		}
 
-static SettingEntry _settings_environment[] = {
-	SettingEntry(&_settings_environment_authorities_page, STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES),
-	SettingEntry(&_settings_environment_towns_page,       STR_CONFIG_SETTING_ENVIRONMENT_TOWNS),
-	SettingEntry(&_settings_environment_industries_page,  STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES),
-	SettingEntry(&_settings_environment_cdist_page,       STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST),
-	SettingEntry("station.modified_catchment"),
-	SettingEntry("construction.extra_tree_placement"),
-};
-/** Environment sub-page */
-static SettingsPage _settings_environment_page = {_settings_environment, lengthof(_settings_environment)};
-
-static SettingEntry _settings_ai_npc[] = {
-	SettingEntry("script.settings_profile"),
-	SettingEntry("script.script_max_opcode_till_suspend"),
-	SettingEntry("difficulty.competitor_speed"),
-	SettingEntry("ai.ai_in_multiplayer"),
-	SettingEntry("ai.ai_disable_veh_train"),
-	SettingEntry("ai.ai_disable_veh_roadveh"),
-	SettingEntry("ai.ai_disable_veh_aircraft"),
-	SettingEntry("ai.ai_disable_veh_ship"),
-};
-/** Computer players sub-page */
-static SettingsPage _settings_ai_npc_page = {_settings_ai_npc, lengthof(_settings_ai_npc)};
-
-static SettingEntry _settings_ai[] = {
-	SettingEntry(&_settings_ai_npc_page, STR_CONFIG_SETTING_AI_NPC),
-	SettingEntry("economy.give_money"),
-	SettingEntry("economy.allow_shares"),
-};
-/** AI sub-page */
-static SettingsPage _settings_ai_page = {_settings_ai, lengthof(_settings_ai)};
-
-static SettingEntry _settings_main[] = {
-	SettingEntry(&_settings_localisation_page,   STR_CONFIG_SETTING_LOCALISATION),
-	SettingEntry(&_settings_graphics_page,       STR_CONFIG_SETTING_GRAPHICS),
-	SettingEntry(&_settings_sound_page,          STR_CONFIG_SETTING_SOUND),
-	SettingEntry(&_settings_interface_page,      STR_CONFIG_SETTING_INTERFACE),
-	SettingEntry(&_settings_advisors_page,       STR_CONFIG_SETTING_ADVISORS),
-	SettingEntry(&_settings_company_page,        STR_CONFIG_SETTING_COMPANY),
-	SettingEntry(&_settings_accounting_page,     STR_CONFIG_SETTING_ACCOUNTING),
-	SettingEntry(&_settings_vehicles_page,       STR_CONFIG_SETTING_VEHICLES),
-	SettingEntry(&_settings_limitations_page,    STR_CONFIG_SETTING_LIMITATIONS),
-	SettingEntry(&_settings_disasters_page,      STR_CONFIG_SETTING_ACCIDENTS),
-	SettingEntry(&_settings_genworld_page,       STR_CONFIG_SETTING_GENWORLD),
-	SettingEntry(&_settings_environment_page,    STR_CONFIG_SETTING_ENVIRONMENT),
-	SettingEntry(&_settings_ai_page,             STR_CONFIG_SETTING_AI),
-};
-
-/** Main page, holding all advanced settings */
-static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_main)};
+		main->Init();
+	}
+	return *main;
+}
 
 static const StringID _game_settings_restrict_dropdown[] = {
 	STR_CONFIG_SETTING_RESTRICT_BASIC,                            // RM_BASIC
@@ -1755,8 +1746,6 @@ struct GameSettingsWindow : Window {
 
 	GameSettingsWindow(WindowDesc *desc) : Window(desc), filter_editbox(50)
 	{
-		static bool first_time = true;
-
 		this->warn_missing = WHR_NONE;
 		this->warn_lines = 0;
 		this->filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
@@ -1765,13 +1754,7 @@ struct GameSettingsWindow : Window {
 		this->filter.type_hides = false;
 		this->settings_ptr = &GetGameSettings();
 
-		/* Build up the dynamic settings-array only once per OpenTTD session */
-		if (first_time) {
-			_settings_main_page.Init();
-			first_time = false;
-		} else {
-			_settings_main_page.FoldAll(); // Close all sub-pages
-		}
+		GetSettingsTree().FoldAll(); // Close all sub-pages
 
 		this->valuewindow_entry = NULL; // No setting entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric setting buttons are depressed
@@ -1812,7 +1795,7 @@ struct GameSettingsWindow : Window {
 					size->width = max(size->width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width);
 				}
 				size->height = 2 * FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL +
-						max(size->height, _settings_main_page.GetMaxHelpHeight(size->width));
+						max(size->height, GetSettingsTree().GetMaxHelpHeight(size->width));
 				break;
 			}
 
@@ -1918,7 +1901,7 @@ struct GameSettingsWindow : Window {
 			case WID_GS_OPTIONSPANEL: {
 				int top_pos = r.top + SETTINGTREE_TOP_OFFSET + 1 + this->warn_lines * FONT_HEIGHT_NORMAL;
 				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
-				int next_row = _settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, top_pos,
+				int next_row = GetSettingsTree().Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, top_pos,
 						this->vscroll->GetPosition(), last_row, this->last_clicked);
 				if (next_row == 0) DrawString(r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, top_pos, STR_CONFIG_SETTINGS_NONE);
 				break;
@@ -1967,13 +1950,13 @@ struct GameSettingsWindow : Window {
 		switch (widget) {
 			case WID_GS_EXPAND_ALL:
 				this->manually_changed_folding = true;
-				_settings_main_page.UnFoldAll();
+				GetSettingsTree().UnFoldAll();
 				this->InvalidateData();
 				break;
 
 			case WID_GS_COLLAPSE_ALL:
 				this->manually_changed_folding = true;
-				_settings_main_page.FoldAll();
+				GetSettingsTree().FoldAll();
 				this->InvalidateData();
 				break;
 
@@ -2001,7 +1984,7 @@ struct GameSettingsWindow : Window {
 		btn -= this->warn_lines;
 
 		uint cur_row = 0;
-		SettingEntry *pe = _settings_main_page.FindEntry(btn, &cur_row);
+		SettingEntry *pe = GetSettingsTree().FindEntry(btn, &cur_row);
 
 		if (pe == NULL) return;  // Clicked below the last setting of the page
 
@@ -2189,8 +2172,8 @@ struct GameSettingsWindow : Window {
 
 					if (!this->manually_changed_folding) {
 						/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
-						_settings_main_page.UpdateFilterState(this->filter, false);
-						_settings_main_page.UnFoldAll();
+						GetSettingsTree().UpdateFilterState(this->filter, false);
+						GetSettingsTree().UnFoldAll();
 					}
 				} else {
 					/* Non-'changes' filter. Save as default. */
@@ -2250,7 +2233,7 @@ struct GameSettingsWindow : Window {
 		RestrictionMode min_level = (this->filter.mode <= RM_ALL) ? this->filter.mode : RM_BASIC;
 		this->filter.min_cat = min_level;
 		this->filter.type_hides = false;
-		_settings_main_page.UpdateFilterState(this->filter, false);
+		GetSettingsTree().UpdateFilterState(this->filter, false);
 
 		if (this->filter.string.IsEmpty()) {
 			this->warn_missing = WHR_NONE;
@@ -2259,15 +2242,15 @@ struct GameSettingsWindow : Window {
 		} else {
 			this->warn_missing = this->filter.type_hides ? WHR_TYPE : WHR_NONE;
 		}
-		this->vscroll->SetCount(_settings_main_page.Length() + this->warn_lines);
+		this->vscroll->SetCount(GetSettingsTree().Length() + this->warn_lines);
 
-		if (this->last_clicked != NULL && !_settings_main_page.IsVisible(this->last_clicked)) {
+		if (this->last_clicked != NULL && !GetSettingsTree().IsVisible(this->last_clicked)) {
 			this->SetDisplayedHelpText(NULL);
 		}
 
 		bool all_folded = true;
 		bool all_unfolded = true;
-		_settings_main_page.GetFoldingState(all_folded, all_unfolded);
+		GetSettingsTree().GetFoldingState(all_folded, all_unfolded);
 		this->SetWidgetDisabledState(WID_GS_EXPAND_ALL, all_unfolded);
 		this->SetWidgetDisabledState(WID_GS_COLLAPSE_ALL, all_folded);
 	}
@@ -2279,7 +2262,7 @@ struct GameSettingsWindow : Window {
 			if (!this->filter.string.IsEmpty() && !this->manually_changed_folding) {
 				/* User never expanded/collapsed single pages and entered a filter term.
 				 * Expand everything, to save weird expand clicks, */
-				_settings_main_page.UnFoldAll();
+				GetSettingsTree().UnFoldAll();
 			}
 			this->InvalidateData();
 		}
