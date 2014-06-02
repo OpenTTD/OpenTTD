@@ -1,3 +1,8 @@
+1.4.1 (2014-06-02)
+------------------------------------------------------------------------
+- Fix: First send packages about new company, then clients joining it to admin port [FS#6025] (r26616)
+
+
 1.4.1-RC2 (2014-05-18)
 ------------------------------------------------------------------------
 - Fix: Save/load issues on big endian machines (r26593, r26590, r26589)
