@@ -2765,6 +2765,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Nach obe
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Die ausgewählte NewGRF-Datei in der Liste nach oben verschieben
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Nach unten
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Die ausgewählte NewGRF-Datei in der Liste nach unten verschieben
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Update
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}NewGRF-Dateien updaten für die eine neuere Version installiert ist
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eine Liste der installierten NewGRF-Dateien
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parameter setzen
@@ -2790,6 +2792,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivier
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nicht mit dieser Version von OpenTTD kompatibel
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Voreinstellung speichern
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liste der verfügbaren Voreinstellungen. Eine wählen, um deren Namen zum Speichern auszuwählen
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Namen der Voreinstellung eingeben
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Name, der zum Speichern der Voreinstellung verwendet wird
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Abbrechen
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Voreinstellung nicht ändern
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Speichern
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Voreinstellung unter dem ausgewählten Namen speichern
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter ändern
