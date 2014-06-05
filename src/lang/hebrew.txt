@@ -950,11 +950,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :רומאית
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמירה אוטומטית
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :כבוי
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :מידי חודש
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :כל 3 חודשים
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :כל 6 חודשים
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :כל 12 חודשים
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}שפה
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}בחר את שפת הממשק
@@ -1081,7 +1083,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :הגדרת חב
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}קטגוריה:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}סוג:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}מגביל את הרשימה להלן כך שתציג רק הגדרות שהשתנו
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}מגביל את הרשימה להלן תוך שימוש בסינון שהוגדר מראש.
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :הגדרות בסיסיות
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :הגדרות מתקדמות
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :הגדרות מומחה / כל ההגדרות
@@ -1261,20 +1263,26 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :עובי קוו
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :עובי הקו בגרפים. קו דק ניתן לקריאה באופן מדויק יותר, אולם קל יותר לראות קו עבה ולהבחין בין הצבעים של קוים עבים
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :יוצר אדמה: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :המחולל המקורי מבוסס על הגרפיקה הבסיסית, ויוצר פני שטח אחידים. בורא הקרקע מבוסס על אלגוריתם רעש פרלין עם אפשרויות עריכה עדינות
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :מקורי
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :בורא הקרקע
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :מרחק מירבי מן הקצה עבור מזקקות נפט: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :מזקקות נפט נבנות רק בקרבת גבול המפה, כלומר חוף הים עבור מפות בצורת אי
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :גובה קו השלג: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :רמת חספוס השטח (בבורא האדמה בלבד) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :רמת חספוס השטח: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :חלק מאוד
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :חלק
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :מחוספס
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :מחוספס מאוד
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :כמות הנהרות: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :בחר את כמות הנהרות
 STR_CONFIG_SETTING_TREE_PLACER                                  :אלגוריתם של נוטע העצים: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :בחר את הפיזור של העצים על המפה: 'מקורי' שותל עצים בצורה אחידה, 'משופר' שותל אותם בקבוצות
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :בכלל לא
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :מקורי
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :משופר
+STR_CONFIG_SETTING_ROAD_SIDE                                    :כלי רכב: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :בחר את צד הנסיעה
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :סיבוב מפת גבהים: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :נגד כיוון השעון
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :בכיוון השעון
@@ -1328,6 +1336,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :כבוי
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :גלילה בלחיצה שמאלית: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :אפשר גלילת המפה באמצעות גרירתה עם כפתור העכבר השמאלי. אפשרות זו שימושית במיוחד בעת שימוש במסך מגע לצורך גלילה
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :שמירה אוטומטית: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :בחר פרק זמן בין שמירות אוטומטיות
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :השתמש במבנה התאריך {STRING} בשביל שמות קבצי השמירה.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :פורמט התאריך בשמות קבצים של משחקים שמורים
@@ -2719,6 +2730,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}העבר
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}מעביר את הקובץ שנבחר כלפי מעלה ברשימה
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}העבר למטה
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}מעביר את הקובץ שנבחר כלפי מטה ברשימה
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}עדכן
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}עדכן קבצי NewGRF שלהם הגרסה המותקנת חדשה יותר
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK} רשימת קבצי שדרוג גראפי מותקנים
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}קבע ערכים
@@ -2742,6 +2755,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}לא ק�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}לא נמצא קובץ מתאים
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}אינו תואם גרסא זו של OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}שמור סביבה גראפית
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}הצג את כל הסביבות הגראפיות, בחר אחת כדי להעתיק את שמה לשמירה
+STR_SAVE_PRESET_TITLE                                           :{BLACK}הכנס שם לסביבה הגראפית
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}השם הנבחר לשמירת הסביבה הגראפית
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}ביטול
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}אל תשנה את הסביבה הגראפית
+STR_SAVE_PRESET_SAVE                                            :{BLACK}שמור
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}שמור את הסביבה הגראפית עם השם שנבחר
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}שנה/י פרמטרים של NewGRF

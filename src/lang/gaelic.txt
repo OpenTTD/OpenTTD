@@ -1138,11 +1138,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanach
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Dheth
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Gach mìos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Gach 3s mìos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Gach 6mh mìos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Gach bliadhna
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Cànan
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Tagh cànan an eadar-aghaidh a chleachdas tu
@@ -1269,7 +1271,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Roghainnean na 
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Roinn-seòrsa:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Seòrsa:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach roghainnean air an atharrachadh
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal le criathradh ro-shocraichte
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Roghainnean bunasach
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Roghainnean adhartach
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Roghainnean an eòlaiche / na h-uile roghainn
@@ -1454,7 +1456,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Astar as motha eadar an oir is fìneadairean-ola: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Cha tèid fìneadairean-ola a thogail ach faisg air crìochan a' mhapa, seo an oirthir le mapaichean eilein
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Àirde an loidhne sneachda: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garbhachd a' chrutha-tìre (TerraGenesis a-mhàin): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garbhachd a' chrutha-tìre: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Glè rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garbh
@@ -1516,6 +1518,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Dheth
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sgroladh le briogadh clì: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cuir an comas gun tèid am mapa a sgroladh le slaodadh le putan clì na luchaige. Tha seo feumail gu h-àraidh nuair a chleachdas tu sgrìn-shuathaidh airson sgroladh
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Fòrmat cinn-latha {STRING} airson ainmean nan geamannan air an sàbhaladh
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Fòrmat a' chinn-latha ann an ainmean faidhle nan geamannan air an sàbhaladh
@@ -2982,6 +2985,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Chan eil
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Cha deach faidhle a dh’freagras a lorg
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}À comas
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Neo-chòrdail ris an tionndadh seo dhe OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Atharraich paramadairean NewGRF
