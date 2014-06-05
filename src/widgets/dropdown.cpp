@@ -116,6 +116,8 @@ struct DropdownWindow : Window {
 	DropdownWindow(Window *parent, const DropDownList *list, int selected, int button, bool instant_close, const Point &position, const Dimension &size, Colours wi_colour, bool scroll)
 			: Window(&_dropdown_desc)
 	{
+		assert(list->Length() > 0);
+
 		this->position = position;
 
 		this->CreateNestedTree();

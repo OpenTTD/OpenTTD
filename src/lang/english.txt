@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Select t
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} corrupted file{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Additional information about the base music set
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Failed to retrieve a list of supported resolutions
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullscreen mode failed
 
 # Custom currency window
