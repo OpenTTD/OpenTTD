@@ -971,6 +971,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selezion
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} file corrott{P o i}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informazioni aggiuntive sul pacchetto musicale di base
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Errore nel recupero della lista delle risoluzioni supportate
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Attivazione modalità schermo intero non riuscita
 
 # Custom currency window

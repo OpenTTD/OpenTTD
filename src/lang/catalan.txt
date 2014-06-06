@@ -192,37 +192,37 @@ STR_COLOUR_GREY                                                 :{G=Masculin}Gri
 STR_COLOUR_WHITE                                                :{G=Masculin}Blanc
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
-STR_UNITS_POWER_METRIC                                          :{COMMA}cv
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}cv
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tones{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{G=Femenin}{COMMA} ton{P a es}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton{P a es}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{G=Femenin}{COMMA}{NBSP}ton{P a es}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}quilogram{P "" s}
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{G=Masculin}{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}L
+STR_UNITS_VOLUME_SHORT_SI                                       :{G=Masculin}{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galons{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{G=Masculin}{COMMA} litre{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{G=Masculin}{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gal{P ó ons}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{G=Masculin}{COMMA}{NBSP}litre{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{G=Masculin}{COMMA}{NBSP}metre{P "" s}{NBSP}cúbic{P "" s}
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{G=Masculin}{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{G=Masculin}{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Cadena de filtre:
@@ -410,7 +410,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifes de paga
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Taula de la Lliga d'Empreses
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Taula de la lliga d'empreses
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detall de ratis de rendiment
 STR_GRAPH_MENU_HIGHSCORE                                        :Taula de rècords
 ############ range ends here
@@ -472,37 +472,37 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta el colo
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1
-STR_ORDINAL_NUMBER_2ND                                          :2
-STR_ORDINAL_NUMBER_3RD                                          :3
-STR_ORDINAL_NUMBER_4TH                                          :4
-STR_ORDINAL_NUMBER_5TH                                          :5
-STR_ORDINAL_NUMBER_6TH                                          :6
-STR_ORDINAL_NUMBER_7TH                                          :7
-STR_ORDINAL_NUMBER_8TH                                          :8
-STR_ORDINAL_NUMBER_9TH                                          :9
-STR_ORDINAL_NUMBER_10TH                                         :10
-STR_ORDINAL_NUMBER_11TH                                         :11
-STR_ORDINAL_NUMBER_12TH                                         :12
-STR_ORDINAL_NUMBER_13TH                                         :13
-STR_ORDINAL_NUMBER_14TH                                         :14
-STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+STR_ORDINAL_NUMBER_1ST                                          :1r
+STR_ORDINAL_NUMBER_2ND                                          :2n
+STR_ORDINAL_NUMBER_3RD                                          :3r
+STR_ORDINAL_NUMBER_4TH                                          :4t
+STR_ORDINAL_NUMBER_5TH                                          :5è
+STR_ORDINAL_NUMBER_6TH                                          :6è
+STR_ORDINAL_NUMBER_7TH                                          :7è
+STR_ORDINAL_NUMBER_8TH                                          :8è
+STR_ORDINAL_NUMBER_9TH                                          :9è
+STR_ORDINAL_NUMBER_10TH                                         :10è
+STR_ORDINAL_NUMBER_11TH                                         :11è
+STR_ORDINAL_NUMBER_12TH                                         :12è
+STR_ORDINAL_NUMBER_13TH                                         :13è
+STR_ORDINAL_NUMBER_14TH                                         :14è
+STR_ORDINAL_NUMBER_15TH                                         :15è
+STR_ORDINAL_NUMBER_16TH                                         :16è
+STR_ORDINAL_NUMBER_17TH                                         :17è
+STR_ORDINAL_NUMBER_18TH                                         :18è
+STR_ORDINAL_NUMBER_19TH                                         :19è
+STR_ORDINAL_NUMBER_20TH                                         :20è
+STR_ORDINAL_NUMBER_21ST                                         :21è
+STR_ORDINAL_NUMBER_22ND                                         :22è
+STR_ORDINAL_NUMBER_23RD                                         :23è
+STR_ORDINAL_NUMBER_24TH                                         :24è
+STR_ORDINAL_NUMBER_25TH                                         :25è
+STR_ORDINAL_NUMBER_26TH                                         :26è
+STR_ORDINAL_NUMBER_27TH                                         :27è
+STR_ORDINAL_NUMBER_28TH                                         :28è
+STR_ORDINAL_NUMBER_29TH                                         :29è
+STR_ORDINAL_NUMBER_30TH                                         :30è
+STR_ORDINAL_NUMBER_31ST                                         :31è
 ############ range for days ends
 
 ############ range for months starts
@@ -970,6 +970,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleccio
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fitxer{P "" s} corromput{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació adicional sobre el conjunt de músiques base
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No s'ha pogut obtenir la llista de resolucions suportades
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El mode en pantalla completa ha fallat
 
 # Custom currency window

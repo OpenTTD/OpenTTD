@@ -970,6 +970,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Ein Musi
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fehlerhafte Datei{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Zusätzliche Informationen über das Musikset
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Eine Liste unterstützter Auflösungen konnte nicht ermittelt werden
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Vollbildmodus nicht möglich
 
 # Custom currency window

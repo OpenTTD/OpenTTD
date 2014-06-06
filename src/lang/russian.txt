@@ -1115,6 +1115,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выбе
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} повреждённы{P й х х} файл{P 0 "" а ов}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дополнительная информация о наборе базовой музыки
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не удалось получить список поддерживаемых разрешений экрана
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Сбой полноэкранного режима
 
 # Custom currency window
