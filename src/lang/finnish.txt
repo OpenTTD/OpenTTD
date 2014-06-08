@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valitse 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} korruptoitun{P ut utta} tiedosto{P "" a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätietoja musiikkipaketista
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tuettujen näyttötarkkuuksien hakeminen epäonnistui
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täyskuvatila ei toimi
 
 # Custom currency window
@@ -4032,7 +4033,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Vain til
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Suuri kuvankaappaus
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Kuvankaappauksen resoluutio tulee olemaan {COMMA} x {COMMA} pikseliä. Kuvankaappauksen ottaminen voi kestää jonkin aikaa. Haluatko jatkaa?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Kuvankaappauksen tarkkuus tulee olemaan {COMMA} x {COMMA} pikseliä. Kuvankaappauksen ottaminen voi kestää jonkin aikaa. Haluatko jatkaa?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Kuvakaappaus tallennettu nimellä '{STRING}'.
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Kuvakaappaus epäonnistui!
