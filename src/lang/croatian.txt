@@ -1065,6 +1065,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Odaberi 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} neispravn{P a e ih} datotek{P a e a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatne informacije o setu osnovne glazbe
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Povlačenje liste podržanih rezolucija nije uspjelo
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Neuspješan prelazak na prikaz na cijelom ekranu
 
 # Custom currency window
