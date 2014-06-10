@@ -3024,7 +3024,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}積込�
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}積込待ち: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}(うち、{1:STATION}からの転送{0:CARGO_SHORT})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT}が積込予約済み)
@@ -4839,9 +4838,7 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
