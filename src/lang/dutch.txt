@@ -937,11 +937,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalaans
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen automatisch opgeslagen spellen
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Uit
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Iedere maand
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Iedere 3 maanden
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Iedere 6 maanden
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Iedere 12 maanden
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecteer de interfacetaal
@@ -967,6 +969,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kies de 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} corrupt{P "" e} bestand{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basisset voor muziek
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislukt om een ​​lijst met ondersteunde resoluties op te halen
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus voor volledig scherm is mislukt
 
 # Custom currency window
@@ -1261,7 +1264,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum afstand
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaart grens, dat is aan de kust van eiland kaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Instellen op welke hoogte de sneeuw begint in sub-arctische landschap. Sneeuw heeft ook invloed op de industrie generatie en stadsgroei eisen
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein (alleen TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Alleen TerraGenesis) Kies de frequentie van de heuvels: Gladde landschappen hebben minder, meer wijdverspreide heuvels. Ruwe landschappen hebben veel heuvels, die repetitief kunnen lijken
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glad
@@ -1331,6 +1334,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrollen met linkermuisknop: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Schakel scrollen met de linkermuis knop in door te slepen. Dit is vooral handig bij het gebruik van een touch-screen voor scrollen
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :Automatisch opslaan: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Kies interval tussen automatische spelopslag
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gebruik {STRING} datumformaat voor naamgeving van opgeslagen spellen
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formaat van de datum in op te slaan spel bestandsnamen
@@ -2759,6 +2765,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naar bov
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar boven in de lijst
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar beneden
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden in de lijst
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Opwaarderen
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Opwaarderen van NewGRF bestanden waar je een nieuwere versie van hebt geïnstalleerd
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
@@ -2782,6 +2790,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Geen inf
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Bestand niet gevonden
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Uitgeschakeld
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Niet compatibel met deze versie van OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Preset opslaan
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lijst met beschikbare presets, Kies er één om deze te kopiëren naar de opslagnaam hieronder
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Voer een naam in voor de preset
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nu gekozen naam voor de preset opslag
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annuleren
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Preset niet wijzigen
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Opslaan
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sla de huidige preset op naar de nu gekozen naam
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parameters wijzigen

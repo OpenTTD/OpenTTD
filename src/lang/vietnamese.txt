@@ -936,11 +936,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Tắt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hàng tháng
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hàng quý
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hàng nửa năm
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hàng năm
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Ngôn ngữ
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
@@ -966,6 +968,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn g
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} file bị hỏng
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Không thể lấy danh sách độ phân giải được hỗ trợ
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất bại khi bật chế độ fullscreen
 
 # Custom currency window
@@ -1067,7 +1070,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập c
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Phân loại:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Kiểu:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Chỉ hiển thị danh sách các thiết lập đã bị thay đổi
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Giới hạn danh sách bên dưới bằng những bộ lọc định sẵn
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tùy chọn cơ bản
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tùy chọn nâng cao
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Thiết lập chuyên gia/tất cả thiết lập
@@ -1252,7 +1255,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Khoảng cách tối đa từ lề bản đồ tới nhà máy lọc dầu: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Nhà máy hóa dầu chỉ có thể xây gần rìa bản đồ, tương ứng là ven biển với những bản đồ dạng đảo
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Độ cao tuyết phủ: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất (cho TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Rất Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
@@ -1315,6 +1318,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Cuộn chuột trái: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cho phép cuộn bản đồ bằng cách kéo với nút trái chuột. Tùy chọn này sẽ hữu ích khi dùng màn hình cảm ứng
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Tự động save: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Chọn chu kỳ giữa mỗi lần tự động save
+
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Sử dụng định dạng ngày {STRING} cho tên file lưu ván chơi.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Định dạng ngày trong tên file lưu
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :đầy đủ (31 T12 2008)
@@ -1329,7 +1335,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :không có thao
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :tất cả những thao tác phi xây dựng
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tất cả ngoại trừ chỉnh sửa địa hình
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tất cả thao tác
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Danh sách phương tiện nâng cao: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gom nhóm trong danh sách phương tiện: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cho phép sử dụng danh mục nâng cao các loại phương tiện để nhóm chúng lại
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Hiển thị quá trình nạp hàng: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Lựa chọn liệu có chỉ thị tỉ lệ bốc xếp hiển thị khi bốc xếp hàng
@@ -1370,13 +1376,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Phát các âm 
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Khi bật, thì cơ sở hạ tầng chỉ sẵn có nếu loại phương tiện tương ứng cũng sẵn có, giúp cho việc tránh xây nhầm hạ tầng không thích hợp
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi công ty: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Số lượng tối đa tàu hỏa mà mỗi công ty có thể có
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi công ty: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Số lượng ôtô tối đa mà một công ty có thể có
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Số máy bay tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Số máy bay tối đa mỗi công ty: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Số lượng máy bay tối đa mà một công ty có thể có
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Số tàu thủy tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Số tàu thủy tối đa mỗi công ty: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Số lượng tàu thủy tối đa mà một công ty có thể có
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Nhân vật máy không được mua tàu hoả: {STRING}
@@ -1557,7 +1563,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Thư tín có t
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Chế độ phân phối đối với hàng hóa đóng két: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Hàng hóa được đóng két là gói hàng có giá trong địa hình nhiệt đới, kim cương trong hoang mạc, vàng trong địa hình vùng cực lạnh. NewGRF có thể khác. Bạn nên đặt là bất đối xứng hoặc bằng tay nếu ở địa hình cực lạnh, vì ngân hàng sẽ không gửi vàng trở lại mỏ vàng. Với địa hình nhiệt đới hoặc hoang mạc thì có thể chọn đối xứng bởi các ngân hàng có thể gửi hai chiều với nhau.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Chế độ phân phối đối với các loại hàng hóa mặc định: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"đối xứng" là sẽ có lượng hàng từ A đến B sẽ giống lượng từ B đến A. "bất đối xứng" là tùy ý hàng hóa có thể gửi theo chiều bất kỳ. "bằng tay" là sẽ không phân phối tự động mà bạn sẽ phải chỉ ra. Bạn nên đặt là "bất đối xứng" hoặc "bằng tay".
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"bất đối xứng" là khối lượng hàng hóa tùy ý có thể gửi theo chiều bất kỳ. "bằng tay" là sẽ không phân phối tự động mà bạn sẽ phải chỉ ra.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Độ chính xác phân phối: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mức chính xác tính toán đồ thị, nếu giá trị càng cao càng tốn CPU và trò chơi có thể chậm phản ứng, tuy nhiên giá trị thấp sẽ khiến việc phân phối sẽ giảm sự chính xác và bạn sẽ thấy sự khác biệt là hàng hóa không gửi đến chỗ cần đến.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Ảnh hưởng bởi khoảng cách đến nhu cầu gửi: {STRING}
@@ -1604,14 +1610,14 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Tiêu Chuẩn Đo Lường
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hiệu ứng âm thanh
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Âm thanh
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Giao Diện
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Xây Dựng
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đường
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Đô thị
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nhà máy
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân Bổ Hàng Hóa
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân bổ hàng hóa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
 
@@ -2729,6 +2735,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Dịch l
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Dịch NewGRF file lên phía trên
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Chuyển xuống
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Chuyển NewGRF file xuống dưới
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Nâng cấp
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Nâng cấp những file NewGRF nếu bạn đã cài phiên bản mới
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Danh sách file NewGRF đã cài đặt.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Đặt tham số
@@ -2752,6 +2760,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Không c
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp lệ không có
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Không tương thích với phiên bản OpenTTD này.
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay Đổi Tham Số NewGRF
@@ -3253,7 +3263,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Xe ôtô chưa 
 STR_GROUP_DEFAULT_SHIPS                                         :Tày thuỷ chưa lập nhóm
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Máy bay chưa lập nhóm
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Nhóm - chọn nhóm để hiển thị các phương tiện thuộc nhóm
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Nhóm - chọn nhóm để hiển thị các phương tiện thuộc nhóm. Kéo thả nhóm để sắp xếp lại danh sách.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Ấn vào để tạo nhóm
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Xoá nhóm đã chọn
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Đổi tên nhóm
