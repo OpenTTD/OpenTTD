@@ -1037,6 +1037,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Zvoľte 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} poškoden{P ý é ých} súbor{P "" y ov}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatočné informácie o základnej sade hudby
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nepodarilo sa načítať zoznam podporovaných rozlíšení
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
 
 # Custom currency window
@@ -2852,8 +2853,13 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Nedostupn�
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nekompatibilné s touto verziou OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Uložiť predvoľby
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Zadajte názov pre predvoľby
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktuálne vybraný názov pre uloženie predvolieb
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Zrušiť
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nemeniť predvoľby
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Uložiť
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Uložiť predvoľby do práve vybraného názvu
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmeniť NewGRF parametre

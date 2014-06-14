@@ -937,11 +937,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanaidd
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Diffodd Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Bob mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Bob 3 mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Bob 6 mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Bob 12 mis
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Iaith
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Dewiswch yr iaith rhyngwyneb i'w defnyddio
@@ -967,6 +969,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Dewisiwc
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ffeil llygredig
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Gwybodaeth bellach am y set gerddoriaeth sylfaenol
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Methu nôl rhestr o cydraniadau cydnaws
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd y modd sgrin llawn
 
 # Custom currency window
@@ -1253,15 +1256,22 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd olew: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Codir purfeydd olew ger ymylon y map yn unig, h.y. ar yr arfordir mewn mapiau ynys
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd (TerraGenesis yn unig) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Llyfn Iawn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Llyfn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garw
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Garw Iawn
+STR_CONFIG_SETTING_VARIETY                                      :Dosraniad amrywiaeth: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis yn unig) Rheoli a yw'r map yn cynnwys ardaloedd mynyddig a gwastad. Gan fod hyn yn gwneud y map yn fwy gwastad, dylid addasu gosodiadau eraill at mynyddig
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Nifer afonydd: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Dewis sawl afon i'w creu
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorithm gosod coed: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Dewis dosraniad coed ar y map: mae 'Gwreiddiol' yn plannu coed mewn dosraniad unffurf, a 'Gwell' yn eu plannu mewn grwpiau
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Dim
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Gwreiddiol
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Gwell
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Cerbydau ffordd: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Dewis yr ochr gyrru
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Tro Map Uchder: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Gwrthglocwedd
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clocwedd
@@ -1315,6 +1325,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :I ffwrdd
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sgrolio Clic-chwith: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Galluogi sgrolio ar y map drwy ei lusgo gyda botwm chwith y llygoden. Mae hyn yn arbennig o ddefnyddiol pan yn defnyddio sgrin-gyffwrdd ar gyfer sgrolio
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :Awtogadw: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Dewis pa mor aml y dylid awtogadw gemau
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Defnyddio'r fformat dyddiad {STRING} ar gyfer enwau gemau wedi'u cadw
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Fformat y dyddiad mewn enwau ffeiliau cadw
@@ -2743,6 +2756,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Symud i 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i fyny'r rhestr
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Symud i Lawr
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i lawr y rhestr
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Uwchraddio
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Uwchraddio ffeiliau NewGRF lle fo gennych fersiwn diweddarach wedi ei lwytho
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o bob ffeil NewGRF sydd wedi'u gosod
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Gosod paramedrau
@@ -2766,6 +2781,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Dim gwyb
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ddarganfuwyd ffeil sy'n cyfateb
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwyd
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Anghydnaws gyda'r fersiwn yma o OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Cadw rhagosodiad
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Rhestr o ragosodiadau ar gael, Dewiswch un i'w gopïo i'r enw cadw isod
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Rhowch enw ar gyfer y rhagosodiad
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Enw a ddewiswyd ar gyfer cadw'r rhagosodiad
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Canslo
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Peidio newid y rhagosodiad
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Cadw
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Cadw'r rhagosodiad i'r enw a ddewiswyd
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Newid paramedrau NewGRF
