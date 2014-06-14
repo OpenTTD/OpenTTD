@@ -259,7 +259,6 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 		for (NodeID to = iter.Next(); to != INVALID_NODE; to = iter.Next()) {
 			if (to == from) continue; // Not a real edge but a consumption sign.
 			Edge edge = this->job[from][to];
-			assert(edge.Distance() < UINT_MAX);
 			uint capacity = edge.Capacity();
 			if (this->max_saturation != UINT_MAX) {
 				capacity *= this->max_saturation;
@@ -267,7 +266,7 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 				if (capacity == 0) capacity = 1;
 			}
 			/* punish in-between stops a little */
-			uint distance = edge.Distance() + 1;
+			uint distance = DistanceMaxPlusManhattan(this->job[from].XY(), this->job[to].XY()) + 1;
 			Tannotation *dest = static_cast<Tannotation *>(paths[to]);
 			if (dest->IsBetter(source, capacity, capacity - edge.Flow(), distance)) {
 				annos.erase(dest);

@@ -49,8 +49,9 @@ public:
 		uint supply;             ///< Supply at the station.
 		uint demand;             ///< Acceptance at the station.
 		StationID station;       ///< Station ID.
+		TileIndex xy;            ///< Location of the station referred to by the node.
 		Date last_update;        ///< When the supply was last updated.
-		void Init(StationID st = INVALID_STATION, uint demand = 0);
+		void Init(TileIndex xy = INVALID_TILE, StationID st = INVALID_STATION, uint demand = 0);
 	};
 
 	/**
@@ -60,13 +61,12 @@ public:
 	 * the column as next_edge.
 	 */
 	struct BaseEdge {
-		uint distance;                 ///< Length of the link.
 		uint capacity;                 ///< Capacity of the link.
 		uint usage;                    ///< Usage of the link.
 		Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
 		Date last_restricted_update;   ///< When the restricted part of the link was last updated.
 		NodeID next_edge;              ///< Destination of next valid edge starting at the same source node.
-		void Init(uint distance = 0);
+		void Init();
 	};
 
 	/**
@@ -97,12 +97,6 @@ public:
 		 * @return Usage.
 		 */
 		uint Usage() const { return this->edge.usage; }
-
-		/**
-		 * Get edge's distance.
-		 * @return Distance.
-		 */
-		uint Distance() const { return this->edge.distance; }
 
 		/**
 		 * Get the date of the last update to the edge's unrestricted capacity.
@@ -169,6 +163,12 @@ public:
 		 * @return Last update.
 		 */
 		Date LastUpdate() const { return this->node.last_update; }
+
+		/**
+		 * Get the location of the station associated with the node.
+		 * @return Location of the station.
+		 */
+		TileIndex XY() const { return this->node.xy; }
 	};
 
 	/**
@@ -413,6 +413,15 @@ public:
 		}
 
 		/**
+		 * Update the node's location on the map.
+		 * @param xy New location.
+		 */
+		void UpdateLocation(TileIndex xy)
+		{
+			this->node.xy = xy;
+		}
+
+		/**
 		 * Set the node's demand.
 		 * @param demand New demand for the node.
 		 */
@@ -513,7 +522,6 @@ public:
 
 	NodeID AddNode(const Station *st);
 	void RemoveNode(NodeID id);
-	void UpdateDistances(NodeID id, TileIndex xy);
 
 protected:
 	friend class LinkGraph::ConstNode;
