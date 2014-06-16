@@ -939,11 +939,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalansk
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk lagring
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Velg intervall for automatisk lagring
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Av
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hver måned
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hver 3. måned
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hver 6. måned
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hver 12. måned
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Språk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Velg språk som skal brukes
@@ -969,6 +971,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg mus
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ødelagt{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislytes med å hente en liste over støttede oppløsninger
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermmodus mislyktes
 
 # Custom currency window
@@ -1249,21 +1252,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis inbyggertal
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graflinjenes tykkelse: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjebredde i grafene. En tynn linje er mer presis å lese av, mens en tykkere linje er lettere å se, og farger er lettere å skille
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Landskap: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landskap definerer grunnleggende spill-scenarier med forskjellige laster og byers vekstkrav. NewGRF og spill-skript tillater imidlertid finere kontroll
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskapsgenerator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den opprinnelige generatoren avhenger av det originale grafikksettet, og komponerer faste landskapsformer. TerraGenesis er en Perlin støybasert generator med finere kontrollinnstillinger
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orginal
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrengtype: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis bare) Hvor kupert landskapet er
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritetthet: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angi hvor mange næringer som skal genereres og hvilket nivå som skal opprettholdes i løpet av spillet
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maks distanse fra kant for Olje Raffinerier: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olje rafinerier er bare bygd nær kartets kanter, det er ved kysten på øy kart
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontroller på hvilken høyde snøen begynner i sub-arktiske landskap. Snø påvirker også industrigenerering og byers vekstkrav
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ulendthet på terreng (kun TerraGenesis): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis bare) Velg frekvensen av åser: Glatte landskap har færre og mer utbredte åser. Røffe landskap har mange åser, som kan fremstå repeterende
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veldig jevnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jevnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ulendt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Veldig ulendt
+STR_CONFIG_SETTING_VARIETY                                      :Variasjonsspredning: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis bare) Kontrollere om kartet inneholder både fjellrike og flate områder. Siden dette bare gjør kartet flatere, bør andre innstillinger settes til fjellrik
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Elvemengde: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Velg hvor mange elver som genereres
 STR_CONFIG_SETTING_TREE_PLACER                                  :Treplasseringalgoritme: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Velg fordelingen av trær på kartet: 'Original' planter trær jevnt spredt, 'Forbedret' planter dem i grupper
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ingen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbedret
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Veikjøretøy: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Velg kjøre-siden
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Høydekartrotering: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
@@ -1317,6 +1336,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Venstre-klikk rulling: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Tillat rulling av kartet ved å dra det med den venstre museknappen. Dette er spesielt nyttig når du bruker en berøringsskjerm
+
+STR_CONFIG_SETTING_AUTOSAVE                                     :Autolagring: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Velg intervall mellom automatiske lagringer av spillet
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Bruk {STRING} datoformat i navn på lagrede spill.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datoformat i lagrede spills filnavn
@@ -2745,6 +2767,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Flytt op
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Flytt den valgte NewGRF-filen oppover listen
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Flytt ned
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytt den valgte NewGRF-filen nedover listen
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Oppgrader
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Oppgrader NewGRF-filene der du har en nyere versjon installert
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En liste over NewGRF-filene som er installert.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Sett parametre
@@ -2768,6 +2792,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ingen in
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchende fil ble ikke funnet
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivert
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Inkompatibel med denne versjonen av OpenTTD
+
+# NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lagre forhåndsinnstilling
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liste over tilgjengelige forhåndsinnstillinger. Velg en for å kopiere den til det lagrede navnet nedenfor
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv inn et navn for forhåndsinnstillingen
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Valgt navn for forhåndsinnstillingen som skal lagres
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ikke forandre forhåndsinnstillingen
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Lagre
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lagre forhåndsinnstillingen med det valgte navnet
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Forandre NewGRF-parametre
