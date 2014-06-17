@@ -56,4 +56,19 @@
 /* No clear replacement. */
 #define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
+/* Use our own templated implementation instead of a macro or function with only one type. */
+#ifdef min
+#undef min
+#endif
+
+/* Use our own templated implementation instead of a macro or function with only one type. */
+#ifdef max
+#undef max
+#endif
+
+/* Use our own templated implementation instead of a macro or function with only one type. */
+#ifdef abs
+#undef abs
+#endif
+
 #endif /* SAFEGUARDS_H */

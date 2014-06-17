@@ -12,18 +12,6 @@
 #ifndef MATH_FUNC_HPP
 #define MATH_FUNC_HPP
 
-#ifdef min
-#undef min
-#endif
-
-#ifdef max
-#undef max
-#endif
-
-#ifdef abs
-#undef abs
-#endif
-
 /**
  * Returns the maximum of two values.
  *
