@@ -1544,6 +1544,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\safeguards.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\screenshot.h"
 				>
 			</File>

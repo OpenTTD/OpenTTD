@@ -303,6 +303,7 @@ road_internal.h
 road_type.h
 roadstop_base.h
 roadveh.h
+safeguards.h
 screenshot.h
 sdl.h
 sound/sdl_s.h

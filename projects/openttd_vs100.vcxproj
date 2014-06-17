@@ -568,6 +568,7 @@
     <ClInclude Include="..\src\road_type.h" />
     <ClInclude Include="..\src\roadstop_base.h" />
     <ClInclude Include="..\src\roadveh.h" />
+    <ClInclude Include="..\src\safeguards.h" />
     <ClInclude Include="..\src\screenshot.h" />
     <ClInclude Include="..\src\sdl.h" />
     <ClInclude Include="..\src\sound\sdl_s.h" />
