@@ -533,7 +533,7 @@ public:
 					if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
 						delete this;
 						ShowHeightmapLoad();
-					} else if (_load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
+					} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
 						_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 						ClearErrorMessages();
 						delete this;
@@ -550,7 +550,7 @@ public:
 			case WID_SL_MISSING_NEWGRFS:
 				if (!_network_available) {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
-				} else {
+				} else if (_load_check_data.HasNewGrfs()) {
 #if defined(ENABLE_NETWORK)
 					ShowMissingContentWindow(_load_check_data.grfconfig);
 #endif
@@ -691,7 +691,7 @@ public:
 				}
 				if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
 					this->SetWidgetDisabledState(WID_SL_LOAD_BUTTON,
-							this->selected == NULL || _load_check_data.HasErrors() || !(_load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()));
+							this->selected == NULL || _load_check_data.HasErrors() || !(!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()));
 					this->SetWidgetDisabledState(WID_SL_NEWGRF_INFO,
 							!_load_check_data.HasNewGrfs());
 					this->SetWidgetDisabledState(WID_SL_MISSING_NEWGRFS,

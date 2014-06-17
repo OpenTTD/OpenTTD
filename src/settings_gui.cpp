@@ -265,6 +265,8 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_RESOLUTION_DROPDOWN: // Setup resolution dropdown
+				if (_num_resolutions == 0) break;
+
 				list = new DropDownList();
 				*selected_index = GetCurRes();
 				for (int i = 0; i < _num_resolutions; i++) {
@@ -440,6 +442,8 @@ struct GameOptionsWindow : Window {
 				DropDownList *list = this->BuildDropDownList(widget, &selected);
 				if (list != NULL) {
 					ShowDropDownList(this, list, selected, widget);
+				} else {
+					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(STR_ERROR_RESOLUTION_LIST_FAILED, INVALID_STRING_ID, WL_ERROR);
 				}
 				break;
 			}

@@ -100,7 +100,7 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 
 		/* Then find the MD5 checksum */
 		item = md5s->GetItem(filename, false);
-		if (item == NULL) {
+		if (item == NULL || item->value == NULL) {
 			DEBUG(grf, 0, "No MD5 checksum specified for: %s (in %s)", filename, full_filename);
 			return false;
 		}
