@@ -276,10 +276,8 @@ public:
 			}
 
 			case WID_RV_INFO_TAB: {
-				SetDParam(0, STR_REPLACE_NOT_REPLACING);
-				Dimension d = GetStringBoundingBox(STR_BLACK_STRING);
-				SetDParam(0, STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
-				d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
+				Dimension d = GetStringBoundingBox(STR_REPLACE_NOT_REPLACING);
+				d = maxdim(d, GetStringBoundingBox(STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED));
 				d.width += WD_FRAMETEXT_LEFT +  WD_FRAMETEXT_RIGHT;
 				d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				*size = maxdim(*size, d);
@@ -351,20 +349,21 @@ public:
 		switch (widget) {
 			case WID_RV_INFO_TAB: {
 				const Company *c = Company::Get(_local_company);
+				StringID str;
 				if (this->sel_engine[0] != INVALID_ENGINE) {
 					if (!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group)) {
-						SetDParam(0, STR_REPLACE_NOT_REPLACING);
+						str = STR_REPLACE_NOT_REPLACING;
 					} else {
 						bool when_old = false;
 						EngineID e = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group, &when_old);
-						SetDParam(0, when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME);
-						SetDParam(1, e);
+						str = when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME;
+						SetDParam(0, e);
 					}
 				} else {
-					SetDParam(0, STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
+					str = STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED;
 				}
 
-				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_BLACK_STRING, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_BLACK, SA_HOR_CENTER);
 				break;
 			}
 

@@ -134,9 +134,8 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 
 	/* Draw GRF info if it exists */
 	if (!StrEmpty(c->GetDescription())) {
-		SetDParam(0, STR_JUST_RAW_STRING);
-		SetDParamStr(1, c->GetDescription());
-		y = DrawStringMultiLine(x, right, y, bottom, STR_BLACK_STRING);
+		SetDParamStr(0, c->GetDescription());
+		y = DrawStringMultiLine(x, right, y, bottom, STR_BLACK_RAW_STRING);
 	} else {
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NO_INFO);
 	}

@@ -117,12 +117,10 @@ static int CDECL IndustryTypeNameSorter(const IndustryType *a, const IndustryTyp
 	static char industry_name[2][64];
 
 	const IndustrySpec *indsp1 = GetIndustrySpec(*a);
-	SetDParam(0, indsp1->name);
-	GetString(industry_name[0], STR_JUST_STRING, lastof(industry_name[0]));
+	GetString(industry_name[0], indsp1->name, lastof(industry_name[0]));
 
 	const IndustrySpec *indsp2 = GetIndustrySpec(*b);
-	SetDParam(0, indsp2->name);
-	GetString(industry_name[1], STR_JUST_STRING, lastof(industry_name[1]));
+	GetString(industry_name[1], indsp2->name, lastof(industry_name[1]));
 
 	int r = strnatcmp(industry_name[0], industry_name[1]); // Sort by name (natural sorting).
 
@@ -1669,8 +1667,7 @@ struct CargoesField {
 				ypos += (normal_height - FONT_HEIGHT_NORMAL) / 2;
 				if (this->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 					const IndustrySpec *indsp = GetIndustrySpec(this->u.industry.ind_type);
-					SetDParam(0, indsp->name);
-					DrawString(xpos, xpos2, ypos, STR_JUST_STRING, TC_WHITE, SA_HOR_CENTER);
+					DrawString(xpos, xpos2, ypos, indsp->name, TC_WHITE, SA_HOR_CENTER);
 
 					/* Draw the industry legend. */
 					int blob_left, blob_right;
