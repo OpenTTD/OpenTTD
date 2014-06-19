@@ -1142,11 +1142,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonų
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatinis išsaugojimas
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink, kaip dažnai išsaugoti žaidimą
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Išjungta
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Kiekvieną mėnesį
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Kas 3 mėnesius
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Kas 6 mėnesius
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kas 12 mėnesių
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
@@ -1452,21 +1454,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Rodyti miestų 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grafikų linijų storis: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikų linijų storis. Plonesnė linija yra tikslesnė, tačiau storesnę lengviau pastebėti bei atskirti jos spalvą
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :Sausumos kūrimas: {STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Standartinis
+STR_CONFIG_SETTING_LANDSCAPE                                    :Kraštovaizdis: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Skirtingi kraštovaizdžio tipai pasižymi skirtingomis tiek gamtinėmis (medžių, kalvų, jūrų, upių kiekis), tiek pramoninėmis (pramonės įmonės, miestų augimo greitis, transporto priemonės) savybėmis
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Žemėlapio generatorius: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originalus generatorius reikalauja bazinio grafinių failų rinkinio ir yra gana primityvus. TerraGenesis, and composes fixed landscape shapes. TerraGenesis žemėlapio generavimui naudoja Perlin'o triukšmą, beigi leidžia keisti daugiau įvairesnių parametrų.
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :originalus
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Kraštovaizdžio stilius: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(tik TerraGenesis only) Žemės paviršiaus kalvotumas
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Pramonės įmonių tankis: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Pramonės įmonių kiekis sugeneruotame žemėlapyje
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Didžiausias naftos perdirbimo įmonės atstumas nuo žemėlapio kraštų: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftos perdirbimo gamyklos statomos tik žemėlapio pakraščiuose, netoli kranto
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniego linijos aukštis: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paviršiaus nelygumas (tik TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Aukštis, virš kurio žemės paviršius padengiamas sniegu. Tai taip pat turi įtakos pramonės įmonių kūrimui ir mietų augimui.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paviršiaus lygumas (tik TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(tik TerraGenesis) Kuo lygesnis kraštovaizdis, tuo generuojamos kalvos bus žemesnės ir tuo jų bus mažiau.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Labai lygus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lygus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kalnuotas
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Labai kalnuotas
+STR_CONFIG_SETTING_VARIETY                                      :Kraštovaizdžio įvairovė: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Tik TerraGenesis) Tame pačiame žemėlapyje gali būti tiek kalvotų, tiek lygių regionų. Kuo didesnė įvairovė, tuo daugiau skirtingų regionų bus sugeneruota.
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Upių kiekis: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Upių kiekis sugeneruotame kraštovaizdyje
 STR_CONFIG_SETTING_TREE_PLACER                                  :Medžių sodinimo algoritmas: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Pasirinkite medžių sodinimo algoritmą. „Originalus“ paskirsto juos tolygiai, „Naujasis“ sodina grupėmis.
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Jokio
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalas
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Naujasis
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Automobilių eismas: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Eismo pusė
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Aukščių žemėlapio pasukimas: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Prieš laikrodžio rodyklę
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pagal laikrodžio rodyklę
@@ -1520,6 +1538,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Slinkti žemėlapį velkant jį nuspaudus kairįjį pelės klavišą. Naudinga, jei žaidžiama kompiuteriuose su lietimui jautriais ekranais
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Išsaugant žaidimą, pavadinimuose naudoti {STRING} datos formatą
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datos formatas išsaugoto žaidimo failo pavadinime
@@ -2985,6 +3004,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informac
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Atitinkamas failas nerastas
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Išjungta
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nesuderinamas su šia OpenTTD versija
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Pakeisti NewGRF parametrus
