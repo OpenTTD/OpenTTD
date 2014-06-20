@@ -471,68 +471,55 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar caixas
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Alterna a colorização dos blocos sujos
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
-STR_DAY_NUMBER_1ST                                              :1
 STR_ORDINAL_NUMBER_2ND                                          :2
-STR_DAY_NUMBER_2ND                                              :2
 STR_ORDINAL_NUMBER_3RD                                          :3
-STR_DAY_NUMBER_3RD                                              :3
 STR_ORDINAL_NUMBER_4TH                                          :4
-STR_DAY_NUMBER_4TH                                              :4
 STR_ORDINAL_NUMBER_5TH                                          :5
-STR_DAY_NUMBER_5TH                                              :5
 STR_ORDINAL_NUMBER_6TH                                          :6
-STR_DAY_NUMBER_6TH                                              :6
 STR_ORDINAL_NUMBER_7TH                                          :7
-STR_DAY_NUMBER_7TH                                              :7
 STR_ORDINAL_NUMBER_8TH                                          :8
-STR_DAY_NUMBER_8TH                                              :8
 STR_ORDINAL_NUMBER_9TH                                          :9
-STR_DAY_NUMBER_9TH                                              :9
 STR_ORDINAL_NUMBER_10TH                                         :10
-STR_DAY_NUMBER_10TH                                             :10
 STR_ORDINAL_NUMBER_11TH                                         :11
-STR_DAY_NUMBER_11TH                                             :11
 STR_ORDINAL_NUMBER_12TH                                         :12
-STR_DAY_NUMBER_12TH                                             :12
 STR_ORDINAL_NUMBER_13TH                                         :13
-STR_DAY_NUMBER_13TH                                             :13
 STR_ORDINAL_NUMBER_14TH                                         :14
-STR_DAY_NUMBER_14TH                                             :14
 STR_ORDINAL_NUMBER_15TH                                         :15
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
 STR_DAY_NUMBER_15TH                                             :15
-STR_ORDINAL_NUMBER_16TH                                         :16
 STR_DAY_NUMBER_16TH                                             :16
-STR_ORDINAL_NUMBER_17TH                                         :17
 STR_DAY_NUMBER_17TH                                             :17
-STR_ORDINAL_NUMBER_18TH                                         :18
 STR_DAY_NUMBER_18TH                                             :18
-STR_ORDINAL_NUMBER_19TH                                         :19
 STR_DAY_NUMBER_19TH                                             :19
-STR_ORDINAL_NUMBER_20TH                                         :20
 STR_DAY_NUMBER_20TH                                             :20
-STR_ORDINAL_NUMBER_21ST                                         :21
 STR_DAY_NUMBER_21ST                                             :21
-STR_ORDINAL_NUMBER_22ND                                         :22
 STR_DAY_NUMBER_22ND                                             :22
-STR_ORDINAL_NUMBER_23RD                                         :23
 STR_DAY_NUMBER_23RD                                             :23
-STR_ORDINAL_NUMBER_24TH                                         :24
 STR_DAY_NUMBER_24TH                                             :24
-STR_ORDINAL_NUMBER_25TH                                         :25
 STR_DAY_NUMBER_25TH                                             :25
-STR_ORDINAL_NUMBER_26TH                                         :26
 STR_DAY_NUMBER_26TH                                             :26
-STR_ORDINAL_NUMBER_27TH                                         :27
 STR_DAY_NUMBER_27TH                                             :27
-STR_ORDINAL_NUMBER_28TH                                         :28
 STR_DAY_NUMBER_28TH                                             :28
-STR_ORDINAL_NUMBER_29TH                                         :29
 STR_DAY_NUMBER_29TH                                             :29
-STR_ORDINAL_NUMBER_30TH                                         :30
 STR_DAY_NUMBER_30TH                                             :30
-STR_ORDINAL_NUMBER_31ST                                         :31
 STR_DAY_NUMBER_31ST                                             :31
 ############ range for days ends
 
@@ -968,11 +955,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalão
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecionar o intervalo entre jogos salvos automaticos
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desativado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :A cada mês
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :A cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :A cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :A cada 12 meses
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecionar o idioma da interface do jogo
@@ -1346,6 +1335,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Mover a tela com o botão esquerdo: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ativa rolamento do mapa por clique e arraste com o botão esquerdo. Especialmente útil ao usar um touchscreen para o rolamento
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Use o formato de data {STRING} para criar arquivos de salvamento
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos nomes dos jogos salvos
@@ -2797,6 +2787,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Sem info
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Arquivo correspondente não encontrado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desativado
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatível com esta versão de OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF

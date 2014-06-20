@@ -275,68 +275,55 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Яланхил�
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1мӗш
-STR_DAY_NUMBER_1ST                                              :1мӗш
 STR_ORDINAL_NUMBER_2ND                                          :2мӗш
-STR_DAY_NUMBER_2ND                                              :2мӗш
 STR_ORDINAL_NUMBER_3RD                                          :3-мӗш
-STR_DAY_NUMBER_3RD                                              :3-мӗш
 STR_ORDINAL_NUMBER_4TH                                          :4-мӗш
-STR_DAY_NUMBER_4TH                                              :4-мӗш
 STR_ORDINAL_NUMBER_5TH                                          :5-мӗш
-STR_DAY_NUMBER_5TH                                              :5-мӗш
 STR_ORDINAL_NUMBER_6TH                                          :6-мӗш
-STR_DAY_NUMBER_6TH                                              :6-мӗш
 STR_ORDINAL_NUMBER_7TH                                          :7-мӗш
-STR_DAY_NUMBER_7TH                                              :7-мӗш
 STR_ORDINAL_NUMBER_8TH                                          :8-мӗш
-STR_DAY_NUMBER_8TH                                              :8-мӗш
 STR_ORDINAL_NUMBER_9TH                                          :9-мӗш
-STR_DAY_NUMBER_9TH                                              :9-мӗш
 STR_ORDINAL_NUMBER_10TH                                         :10-мӗш
-STR_DAY_NUMBER_10TH                                             :10-мӗш
 STR_ORDINAL_NUMBER_11TH                                         :11-мӗш
-STR_DAY_NUMBER_11TH                                             :11-мӗш
 STR_ORDINAL_NUMBER_12TH                                         :12-мӗш
-STR_DAY_NUMBER_12TH                                             :12-мӗш
 STR_ORDINAL_NUMBER_13TH                                         :13-мӗш
-STR_DAY_NUMBER_13TH                                             :13-мӗш
 STR_ORDINAL_NUMBER_14TH                                         :14-мӗш
-STR_DAY_NUMBER_14TH                                             :14-мӗш
 STR_ORDINAL_NUMBER_15TH                                         :15-мӗш
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1мӗш
+STR_DAY_NUMBER_2ND                                              :2мӗш
+STR_DAY_NUMBER_3RD                                              :3-мӗш
+STR_DAY_NUMBER_4TH                                              :4-мӗш
+STR_DAY_NUMBER_5TH                                              :5-мӗш
+STR_DAY_NUMBER_6TH                                              :6-мӗш
+STR_DAY_NUMBER_7TH                                              :7-мӗш
+STR_DAY_NUMBER_8TH                                              :8-мӗш
+STR_DAY_NUMBER_9TH                                              :9-мӗш
+STR_DAY_NUMBER_10TH                                             :10-мӗш
+STR_DAY_NUMBER_11TH                                             :11-мӗш
+STR_DAY_NUMBER_12TH                                             :12-мӗш
+STR_DAY_NUMBER_13TH                                             :13-мӗш
+STR_DAY_NUMBER_14TH                                             :14-мӗш
 STR_DAY_NUMBER_15TH                                             :15-мӗш
-STR_ORDINAL_NUMBER_16TH                                         :16-мӗш
 STR_DAY_NUMBER_16TH                                             :16-мӗш
-STR_ORDINAL_NUMBER_17TH                                         :17-мӗш
 STR_DAY_NUMBER_17TH                                             :17-мӗш
-STR_ORDINAL_NUMBER_18TH                                         :18-мӗш
 STR_DAY_NUMBER_18TH                                             :18-мӗш
-STR_ORDINAL_NUMBER_19TH                                         :19-мӗш
 STR_DAY_NUMBER_19TH                                             :19-мӗш
-STR_ORDINAL_NUMBER_20TH                                         :20-мӗш
 STR_DAY_NUMBER_20TH                                             :20-мӗш
-STR_ORDINAL_NUMBER_21ST                                         :21-мӗш
 STR_DAY_NUMBER_21ST                                             :21-мӗш
-STR_ORDINAL_NUMBER_22ND                                         :22-мӗш
 STR_DAY_NUMBER_22ND                                             :22-мӗш
-STR_ORDINAL_NUMBER_23RD                                         :23-мӗш
 STR_DAY_NUMBER_23RD                                             :23-мӗш
-STR_ORDINAL_NUMBER_24TH                                         :24-мӗш
 STR_DAY_NUMBER_24TH                                             :24-мӗш
-STR_ORDINAL_NUMBER_25TH                                         :25-мӗш
 STR_DAY_NUMBER_25TH                                             :25-мӗш
-STR_ORDINAL_NUMBER_26TH                                         :26-мӗш
 STR_DAY_NUMBER_26TH                                             :26-мӗш
-STR_ORDINAL_NUMBER_27TH                                         :27-мӗш
 STR_DAY_NUMBER_27TH                                             :27-мӗш
-STR_ORDINAL_NUMBER_28TH                                         :28-мӗш
 STR_DAY_NUMBER_28TH                                             :28-мӗш
-STR_ORDINAL_NUMBER_29TH                                         :29-мӗш
 STR_DAY_NUMBER_29TH                                             :29-мӗш
-STR_ORDINAL_NUMBER_30TH                                         :30-мӗш
 STR_DAY_NUMBER_30TH                                             :30-мӗш
-STR_ORDINAL_NUMBER_31ST                                         :31-мӗш
 STR_DAY_NUMBER_31ST                                             :31-мӗш
 ############ range for days ends
 
@@ -517,7 +504,9 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Катталу�
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Сӳнтер
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Чӗлхи
 
@@ -597,6 +586,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Сӳнтер
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Сӳнтер
+
 
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :вӑрӑм (2008 раш 31меш)
@@ -1003,6 +993,8 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Объе
 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верси: {SILVER}{NUM}
 
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Хуп

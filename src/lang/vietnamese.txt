@@ -470,7 +470,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Bật/tắt hi�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Bật/tắt màu sắc trên các ô 'bẩn'
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -486,22 +486,9 @@ STR_ORDINAL_NUMBER_12TH                                         :12
 STR_ORDINAL_NUMBER_13TH                                         :13
 STR_ORDINAL_NUMBER_14TH                                         :14
 STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+############ range for ordinal numbers ends
+
+############ range for days starts
 ############ range for days ends
 
 ############ range for months starts

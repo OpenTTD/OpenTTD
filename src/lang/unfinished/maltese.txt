@@ -306,7 +306,10 @@ STR_FILE_MENU_SEPARATOR                                         :
 ############ range for about menu starts
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
+############ range for ordinal numbers ends
+
+############ range for days starts
 ############ range for days ends
 
 ############ range for months starts
@@ -400,6 +403,8 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 ############ end of townname region
 
 
+############ start of autosave dropdown
+############ end of autosave dropdown
 
 
 
@@ -456,6 +461,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Iddeċiedi kemm
 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jintilef il-vehikolu: {STRING}
+
 
 
 
@@ -703,6 +709,8 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorn
 
 
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ma jaqblux ma din il-verzjoni ta' OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 

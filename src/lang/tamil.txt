@@ -468,68 +468,55 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :எல்லை
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :அழுக்கான கட்டங்களின் நிறத்தை மாற்று
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1st
-STR_DAY_NUMBER_1ST                                              :1st
 STR_ORDINAL_NUMBER_2ND                                          :2nd
-STR_DAY_NUMBER_2ND                                              :2nd
 STR_ORDINAL_NUMBER_3RD                                          :3rd
-STR_DAY_NUMBER_3RD                                              :3rd
 STR_ORDINAL_NUMBER_4TH                                          :4th
-STR_DAY_NUMBER_4TH                                              :4th
 STR_ORDINAL_NUMBER_5TH                                          :5வது
-STR_DAY_NUMBER_5TH                                              :5வது
 STR_ORDINAL_NUMBER_6TH                                          :6வது
-STR_DAY_NUMBER_6TH                                              :6வது
 STR_ORDINAL_NUMBER_7TH                                          :7வது
-STR_DAY_NUMBER_7TH                                              :7வது
 STR_ORDINAL_NUMBER_8TH                                          :8வது
-STR_DAY_NUMBER_8TH                                              :8வது
 STR_ORDINAL_NUMBER_9TH                                          :9வது
-STR_DAY_NUMBER_9TH                                              :9வது
 STR_ORDINAL_NUMBER_10TH                                         :10வது
-STR_DAY_NUMBER_10TH                                             :10வது
 STR_ORDINAL_NUMBER_11TH                                         :11வது
-STR_DAY_NUMBER_11TH                                             :11வது
 STR_ORDINAL_NUMBER_12TH                                         :12வது
-STR_DAY_NUMBER_12TH                                             :12வது
 STR_ORDINAL_NUMBER_13TH                                         :13வது
-STR_DAY_NUMBER_13TH                                             :13வது
 STR_ORDINAL_NUMBER_14TH                                         :14வது
-STR_DAY_NUMBER_14TH                                             :14வது
 STR_ORDINAL_NUMBER_15TH                                         :15வது
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1st
+STR_DAY_NUMBER_2ND                                              :2nd
+STR_DAY_NUMBER_3RD                                              :3rd
+STR_DAY_NUMBER_4TH                                              :4th
+STR_DAY_NUMBER_5TH                                              :5வது
+STR_DAY_NUMBER_6TH                                              :6வது
+STR_DAY_NUMBER_7TH                                              :7வது
+STR_DAY_NUMBER_8TH                                              :8வது
+STR_DAY_NUMBER_9TH                                              :9வது
+STR_DAY_NUMBER_10TH                                             :10வது
+STR_DAY_NUMBER_11TH                                             :11வது
+STR_DAY_NUMBER_12TH                                             :12வது
+STR_DAY_NUMBER_13TH                                             :13வது
+STR_DAY_NUMBER_14TH                                             :14வது
 STR_DAY_NUMBER_15TH                                             :15வது
-STR_ORDINAL_NUMBER_16TH                                         :16வது
 STR_DAY_NUMBER_16TH                                             :16வது
-STR_ORDINAL_NUMBER_17TH                                         :17வது
 STR_DAY_NUMBER_17TH                                             :17வது
-STR_ORDINAL_NUMBER_18TH                                         :18வது
 STR_DAY_NUMBER_18TH                                             :18வது
-STR_ORDINAL_NUMBER_19TH                                         :19வது
 STR_DAY_NUMBER_19TH                                             :19வது
-STR_ORDINAL_NUMBER_20TH                                         :20வது
 STR_DAY_NUMBER_20TH                                             :20வது
-STR_ORDINAL_NUMBER_21ST                                         :21வது
 STR_DAY_NUMBER_21ST                                             :21வது
-STR_ORDINAL_NUMBER_22ND                                         :22வது
 STR_DAY_NUMBER_22ND                                             :22வது
-STR_ORDINAL_NUMBER_23RD                                         :23வது
 STR_DAY_NUMBER_23RD                                             :23வது
-STR_ORDINAL_NUMBER_24TH                                         :24வது
 STR_DAY_NUMBER_24TH                                             :24வது
-STR_ORDINAL_NUMBER_25TH                                         :25வது
 STR_DAY_NUMBER_25TH                                             :25வது
-STR_ORDINAL_NUMBER_26TH                                         :26வது
 STR_DAY_NUMBER_26TH                                             :26வது
-STR_ORDINAL_NUMBER_27TH                                         :27வது
 STR_DAY_NUMBER_27TH                                             :27வது
-STR_ORDINAL_NUMBER_28TH                                         :28வது
 STR_DAY_NUMBER_28TH                                             :28வது
-STR_ORDINAL_NUMBER_29TH                                         :29வது
 STR_DAY_NUMBER_29TH                                             :29வது
-STR_ORDINAL_NUMBER_30TH                                         :30வது
 STR_DAY_NUMBER_30TH                                             :30வது
-STR_ORDINAL_NUMBER_31ST                                         :31வது
 STR_DAY_NUMBER_31ST                                             :31வது
 ############ range for days ends
 
@@ -936,11 +923,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :கடலன்
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Off
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :ஒவ்வொரு மாதமும்
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :மூன்று மாதங்களுக்கு ஒரு முறை
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :ஆறு மாதங்களுக்கு ஒரு முறை
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :ஒவ்வொரு வருடமும்
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}மொழி
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}பயன்படுத்தப்போகும் மொழியினை தேர்ந்தெடு
@@ -1245,6 +1234,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :ஒரு அ�
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :அணை
+
 
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{STRING} தேதி வகையினை பதிவுஆட்டங்கள் பெயர்களுக்கு பயன்படுத்தவும்
@@ -2493,6 +2483,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}எந�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}பொருத்தமான கோப்பு கிடைக்கவில்லை
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}செயலிழக்க செய்யப்பட்டது
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}இந்த OpenTTD பதிப்புடன் பயன்படுத்த இயலாது
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF குணாதிசயங்களை மாற்று

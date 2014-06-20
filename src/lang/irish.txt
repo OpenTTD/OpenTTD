@@ -452,68 +452,55 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Scoránaigh bos
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Scor anaigh dath na mbloc salacha
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1ú
-STR_DAY_NUMBER_1ST                                              :1ú
 STR_ORDINAL_NUMBER_2ND                                          :2ú
-STR_DAY_NUMBER_2ND                                              :2ú
 STR_ORDINAL_NUMBER_3RD                                          :3ú
-STR_DAY_NUMBER_3RD                                              :3ú
 STR_ORDINAL_NUMBER_4TH                                          :4ú
-STR_DAY_NUMBER_4TH                                              :4ú
 STR_ORDINAL_NUMBER_5TH                                          :5ú
-STR_DAY_NUMBER_5TH                                              :5ú
 STR_ORDINAL_NUMBER_6TH                                          :6ú
-STR_DAY_NUMBER_6TH                                              :6ú
 STR_ORDINAL_NUMBER_7TH                                          :7ú
-STR_DAY_NUMBER_7TH                                              :7ú
 STR_ORDINAL_NUMBER_8TH                                          :8ú
-STR_DAY_NUMBER_8TH                                              :8ú
 STR_ORDINAL_NUMBER_9TH                                          :9ú
-STR_DAY_NUMBER_9TH                                              :9ú
 STR_ORDINAL_NUMBER_10TH                                         :10ú
-STR_DAY_NUMBER_10TH                                             :10ú
 STR_ORDINAL_NUMBER_11TH                                         :11ú
-STR_DAY_NUMBER_11TH                                             :11ú
 STR_ORDINAL_NUMBER_12TH                                         :12ú
-STR_DAY_NUMBER_12TH                                             :12ú
 STR_ORDINAL_NUMBER_13TH                                         :13ú
-STR_DAY_NUMBER_13TH                                             :13ú
 STR_ORDINAL_NUMBER_14TH                                         :14ú
-STR_DAY_NUMBER_14TH                                             :14ú
 STR_ORDINAL_NUMBER_15TH                                         :15ú
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1ú
+STR_DAY_NUMBER_2ND                                              :2ú
+STR_DAY_NUMBER_3RD                                              :3ú
+STR_DAY_NUMBER_4TH                                              :4ú
+STR_DAY_NUMBER_5TH                                              :5ú
+STR_DAY_NUMBER_6TH                                              :6ú
+STR_DAY_NUMBER_7TH                                              :7ú
+STR_DAY_NUMBER_8TH                                              :8ú
+STR_DAY_NUMBER_9TH                                              :9ú
+STR_DAY_NUMBER_10TH                                             :10ú
+STR_DAY_NUMBER_11TH                                             :11ú
+STR_DAY_NUMBER_12TH                                             :12ú
+STR_DAY_NUMBER_13TH                                             :13ú
+STR_DAY_NUMBER_14TH                                             :14ú
 STR_DAY_NUMBER_15TH                                             :15ú
-STR_ORDINAL_NUMBER_16TH                                         :16ú
 STR_DAY_NUMBER_16TH                                             :16ú
-STR_ORDINAL_NUMBER_17TH                                         :17ú
 STR_DAY_NUMBER_17TH                                             :17ú
-STR_ORDINAL_NUMBER_18TH                                         :18ú
 STR_DAY_NUMBER_18TH                                             :18ú
-STR_ORDINAL_NUMBER_19TH                                         :19ú
 STR_DAY_NUMBER_19TH                                             :19ú
-STR_ORDINAL_NUMBER_20TH                                         :20ú
 STR_DAY_NUMBER_20TH                                             :20ú
-STR_ORDINAL_NUMBER_21ST                                         :21ú
 STR_DAY_NUMBER_21ST                                             :21ú
-STR_ORDINAL_NUMBER_22ND                                         :22ú
 STR_DAY_NUMBER_22ND                                             :22ú
-STR_ORDINAL_NUMBER_23RD                                         :23ú
 STR_DAY_NUMBER_23RD                                             :23ú
-STR_ORDINAL_NUMBER_24TH                                         :24ú
 STR_DAY_NUMBER_24TH                                             :24ú
-STR_ORDINAL_NUMBER_25TH                                         :25ú
 STR_DAY_NUMBER_25TH                                             :25ú
-STR_ORDINAL_NUMBER_26TH                                         :26ú
 STR_DAY_NUMBER_26TH                                             :26ú
-STR_ORDINAL_NUMBER_27TH                                         :27ú
 STR_DAY_NUMBER_27TH                                             :27ú
-STR_ORDINAL_NUMBER_28TH                                         :28ú
 STR_DAY_NUMBER_28TH                                             :28ú
-STR_ORDINAL_NUMBER_29TH                                         :29ú
 STR_DAY_NUMBER_29TH                                             :29ú
-STR_ORDINAL_NUMBER_30TH                                         :30ú
 STR_DAY_NUMBER_30TH                                             :30ú
-STR_ORDINAL_NUMBER_31ST                                         :31ú
 STR_DAY_NUMBER_31ST                                             :31ú
 ############ range for days ends
 
@@ -933,11 +920,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalónach
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Uathshábháil
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Roghnaigh eatramh idir uathshábhálacha an chluiche
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :As
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Gach mí
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Gach 3 mí
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Gach 6 mí
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Gach 12 mí
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Teanga
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Roghnaigh an teanga comhéadain le húsáid
@@ -1175,6 +1164,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Cliceáil
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :As
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrollú le cléchliceáil: {STRING}
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Úsáid an formáid dáta {STRING} d'ainmneacha na gcluichí sábháilte
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :fada (31 Noll 2008)
@@ -2363,6 +2353,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Níl aon
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Níor aimsíodh comhad a mheaitseálann
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Díchumasaithe
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Neamhchomhoiriúnach leis an leagan seo de OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Athraigh na paraiméadair NewGRF

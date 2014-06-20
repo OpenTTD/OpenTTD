@@ -596,68 +596,55 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Переклю�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Подкрашивать блоки, требующие перерисовки
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1-е
-STR_DAY_NUMBER_1ST                                              :1-е
 STR_ORDINAL_NUMBER_2ND                                          :2-е
-STR_DAY_NUMBER_2ND                                              :2-е
 STR_ORDINAL_NUMBER_3RD                                          :3-е
-STR_DAY_NUMBER_3RD                                              :3-е
 STR_ORDINAL_NUMBER_4TH                                          :4-е
-STR_DAY_NUMBER_4TH                                              :4-е
 STR_ORDINAL_NUMBER_5TH                                          :5-е
-STR_DAY_NUMBER_5TH                                              :5-е
 STR_ORDINAL_NUMBER_6TH                                          :6-е
-STR_DAY_NUMBER_6TH                                              :6-е
 STR_ORDINAL_NUMBER_7TH                                          :7-е
-STR_DAY_NUMBER_7TH                                              :7-е
 STR_ORDINAL_NUMBER_8TH                                          :8-е
-STR_DAY_NUMBER_8TH                                              :8-е
 STR_ORDINAL_NUMBER_9TH                                          :9-е
-STR_DAY_NUMBER_9TH                                              :9-е
 STR_ORDINAL_NUMBER_10TH                                         :10-е
-STR_DAY_NUMBER_10TH                                             :10-е
 STR_ORDINAL_NUMBER_11TH                                         :11-е
-STR_DAY_NUMBER_11TH                                             :11-е
 STR_ORDINAL_NUMBER_12TH                                         :12-е
-STR_DAY_NUMBER_12TH                                             :12-е
 STR_ORDINAL_NUMBER_13TH                                         :13-е
-STR_DAY_NUMBER_13TH                                             :13-е
 STR_ORDINAL_NUMBER_14TH                                         :14-е
-STR_DAY_NUMBER_14TH                                             :14-е
 STR_ORDINAL_NUMBER_15TH                                         :15-е
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1-е
+STR_DAY_NUMBER_2ND                                              :2-е
+STR_DAY_NUMBER_3RD                                              :3-е
+STR_DAY_NUMBER_4TH                                              :4-е
+STR_DAY_NUMBER_5TH                                              :5-е
+STR_DAY_NUMBER_6TH                                              :6-е
+STR_DAY_NUMBER_7TH                                              :7-е
+STR_DAY_NUMBER_8TH                                              :8-е
+STR_DAY_NUMBER_9TH                                              :9-е
+STR_DAY_NUMBER_10TH                                             :10-е
+STR_DAY_NUMBER_11TH                                             :11-е
+STR_DAY_NUMBER_12TH                                             :12-е
+STR_DAY_NUMBER_13TH                                             :13-е
+STR_DAY_NUMBER_14TH                                             :14-е
 STR_DAY_NUMBER_15TH                                             :15-е
-STR_ORDINAL_NUMBER_16TH                                         :16-е
 STR_DAY_NUMBER_16TH                                             :16-е
-STR_ORDINAL_NUMBER_17TH                                         :17-е
 STR_DAY_NUMBER_17TH                                             :17-е
-STR_ORDINAL_NUMBER_18TH                                         :18-е
 STR_DAY_NUMBER_18TH                                             :18-е
-STR_ORDINAL_NUMBER_19TH                                         :19-е
 STR_DAY_NUMBER_19TH                                             :19-е
-STR_ORDINAL_NUMBER_20TH                                         :20-е
 STR_DAY_NUMBER_20TH                                             :20-е
-STR_ORDINAL_NUMBER_21ST                                         :21-е
 STR_DAY_NUMBER_21ST                                             :21-е
-STR_ORDINAL_NUMBER_22ND                                         :22-е
 STR_DAY_NUMBER_22ND                                             :22-е
-STR_ORDINAL_NUMBER_23RD                                         :23-е
 STR_DAY_NUMBER_23RD                                             :23-е
-STR_ORDINAL_NUMBER_24TH                                         :24-е
 STR_DAY_NUMBER_24TH                                             :24-е
-STR_ORDINAL_NUMBER_25TH                                         :25-е
 STR_DAY_NUMBER_25TH                                             :25-е
-STR_ORDINAL_NUMBER_26TH                                         :26-е
 STR_DAY_NUMBER_26TH                                             :26-е
-STR_ORDINAL_NUMBER_27TH                                         :27-е
 STR_DAY_NUMBER_27TH                                             :27-е
-STR_ORDINAL_NUMBER_28TH                                         :28-е
 STR_DAY_NUMBER_28TH                                             :28-е
-STR_ORDINAL_NUMBER_29TH                                         :29-е
 STR_DAY_NUMBER_29TH                                             :29-е
-STR_ORDINAL_NUMBER_30TH                                         :30-е
 STR_DAY_NUMBER_30TH                                             :30-е
-STR_ORDINAL_NUMBER_31ST                                         :31-е
 STR_DAY_NUMBER_31ST                                             :31-е
 ############ range for days ends
 

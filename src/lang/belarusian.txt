@@ -783,68 +783,55 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Пераклю�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Падфарбоўваць блёкі, якія патрабуюць перамалёўкі
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1-е
-STR_DAY_NUMBER_1ST                                              :1-е
 STR_ORDINAL_NUMBER_2ND                                          :2-е
-STR_DAY_NUMBER_2ND                                              :2-е
 STR_ORDINAL_NUMBER_3RD                                          :3-е
-STR_DAY_NUMBER_3RD                                              :3-е
 STR_ORDINAL_NUMBER_4TH                                          :4-е
-STR_DAY_NUMBER_4TH                                              :4-е
 STR_ORDINAL_NUMBER_5TH                                          :5-е
-STR_DAY_NUMBER_5TH                                              :5-е
 STR_ORDINAL_NUMBER_6TH                                          :6-е
-STR_DAY_NUMBER_6TH                                              :6-е
 STR_ORDINAL_NUMBER_7TH                                          :7-е
-STR_DAY_NUMBER_7TH                                              :7-е
 STR_ORDINAL_NUMBER_8TH                                          :8-е
-STR_DAY_NUMBER_8TH                                              :8-е
 STR_ORDINAL_NUMBER_9TH                                          :9-е
-STR_DAY_NUMBER_9TH                                              :9-е
 STR_ORDINAL_NUMBER_10TH                                         :10-е
-STR_DAY_NUMBER_10TH                                             :10-е
 STR_ORDINAL_NUMBER_11TH                                         :11-е
-STR_DAY_NUMBER_11TH                                             :11-е
 STR_ORDINAL_NUMBER_12TH                                         :12-е
-STR_DAY_NUMBER_12TH                                             :12-е
 STR_ORDINAL_NUMBER_13TH                                         :13-е
-STR_DAY_NUMBER_13TH                                             :13-е
 STR_ORDINAL_NUMBER_14TH                                         :14-е
-STR_DAY_NUMBER_14TH                                             :14-е
 STR_ORDINAL_NUMBER_15TH                                         :15-е
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1-е
+STR_DAY_NUMBER_2ND                                              :2-е
+STR_DAY_NUMBER_3RD                                              :3-е
+STR_DAY_NUMBER_4TH                                              :4-е
+STR_DAY_NUMBER_5TH                                              :5-е
+STR_DAY_NUMBER_6TH                                              :6-е
+STR_DAY_NUMBER_7TH                                              :7-е
+STR_DAY_NUMBER_8TH                                              :8-е
+STR_DAY_NUMBER_9TH                                              :9-е
+STR_DAY_NUMBER_10TH                                             :10-е
+STR_DAY_NUMBER_11TH                                             :11-е
+STR_DAY_NUMBER_12TH                                             :12-е
+STR_DAY_NUMBER_13TH                                             :13-е
+STR_DAY_NUMBER_14TH                                             :14-е
 STR_DAY_NUMBER_15TH                                             :15-е
-STR_ORDINAL_NUMBER_16TH                                         :16-е
 STR_DAY_NUMBER_16TH                                             :16-е
-STR_ORDINAL_NUMBER_17TH                                         :17-е
 STR_DAY_NUMBER_17TH                                             :17-е
-STR_ORDINAL_NUMBER_18TH                                         :18-е
 STR_DAY_NUMBER_18TH                                             :18-е
-STR_ORDINAL_NUMBER_19TH                                         :19-е
 STR_DAY_NUMBER_19TH                                             :19-е
-STR_ORDINAL_NUMBER_20TH                                         :20-е
 STR_DAY_NUMBER_20TH                                             :20-е
-STR_ORDINAL_NUMBER_21ST                                         :21-е
 STR_DAY_NUMBER_21ST                                             :21-е
-STR_ORDINAL_NUMBER_22ND                                         :22-е
 STR_DAY_NUMBER_22ND                                             :22-е
-STR_ORDINAL_NUMBER_23RD                                         :23-е
 STR_DAY_NUMBER_23RD                                             :23-е
-STR_ORDINAL_NUMBER_24TH                                         :24-е
 STR_DAY_NUMBER_24TH                                             :24-е
-STR_ORDINAL_NUMBER_25TH                                         :25-е
 STR_DAY_NUMBER_25TH                                             :25-е
-STR_ORDINAL_NUMBER_26TH                                         :26-е
 STR_DAY_NUMBER_26TH                                             :26-е
-STR_ORDINAL_NUMBER_27TH                                         :27-е
 STR_DAY_NUMBER_27TH                                             :27-е
-STR_ORDINAL_NUMBER_28TH                                         :28-е
 STR_DAY_NUMBER_28TH                                             :28-е
-STR_ORDINAL_NUMBER_29TH                                         :29-е
 STR_DAY_NUMBER_29TH                                             :29-е
-STR_ORDINAL_NUMBER_30TH                                         :30-е
 STR_DAY_NUMBER_30TH                                             :30-е
-STR_ORDINAL_NUMBER_31ST                                         :31-е
 STR_DAY_NUMBER_31ST                                             :31-е
 ############ range for days ends
 
@@ -1280,11 +1267,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталён�
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Аўтазахаваньне
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Інтэрвал паміж аўтаматычнымі захаваньнямі гульні
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Выключана
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Штомесяц
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Кожныя 3 месяцы
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Кожныя 6 месяцаў
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Кожныя 12 месяцаў
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Мова
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Выбраць мову інтэрфэйсу
@@ -1658,6 +1647,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :выключа�
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролінг па кліку левай кнопкай мышы: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Уключыць пракручваньне мапы цягненьнем з націснутай левай кнопкай мышы. Гэта асабліва зручна пры выкарыстоўваньні сэнсарнага экрана.
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Выкарыстоўваць {STRING} фармат даты для імёнаў захаваньняў
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Фармат даты ў назвах захаваных гульняў.
@@ -3117,6 +3107,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Няма
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл ня знойдзены
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Адключана
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несумяшчальна з дадзенай вэрсіяй OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Зьмяніць парамэтры NewGRF

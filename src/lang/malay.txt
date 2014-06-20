@@ -455,68 +455,55 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Papar atau pada
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Tukar warna blok kotor
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
-STR_DAY_NUMBER_1ST                                              :1
 STR_ORDINAL_NUMBER_2ND                                          :2
-STR_DAY_NUMBER_2ND                                              :2
 STR_ORDINAL_NUMBER_3RD                                          :3
-STR_DAY_NUMBER_3RD                                              :3
 STR_ORDINAL_NUMBER_4TH                                          :4
-STR_DAY_NUMBER_4TH                                              :4
 STR_ORDINAL_NUMBER_5TH                                          :5
-STR_DAY_NUMBER_5TH                                              :5
 STR_ORDINAL_NUMBER_6TH                                          :6
-STR_DAY_NUMBER_6TH                                              :6
 STR_ORDINAL_NUMBER_7TH                                          :7
-STR_DAY_NUMBER_7TH                                              :7
 STR_ORDINAL_NUMBER_8TH                                          :8
-STR_DAY_NUMBER_8TH                                              :8
 STR_ORDINAL_NUMBER_9TH                                          :9
-STR_DAY_NUMBER_9TH                                              :9
 STR_ORDINAL_NUMBER_10TH                                         :10
-STR_DAY_NUMBER_10TH                                             :10
 STR_ORDINAL_NUMBER_11TH                                         :11
-STR_DAY_NUMBER_11TH                                             :11
 STR_ORDINAL_NUMBER_12TH                                         :12
-STR_DAY_NUMBER_12TH                                             :12
 STR_ORDINAL_NUMBER_13TH                                         :13
-STR_DAY_NUMBER_13TH                                             :13
 STR_ORDINAL_NUMBER_14TH                                         :14
-STR_DAY_NUMBER_14TH                                             :14
 STR_ORDINAL_NUMBER_15TH                                         :15
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
 STR_DAY_NUMBER_15TH                                             :15
-STR_ORDINAL_NUMBER_16TH                                         :16
 STR_DAY_NUMBER_16TH                                             :16
-STR_ORDINAL_NUMBER_17TH                                         :17
 STR_DAY_NUMBER_17TH                                             :17
-STR_ORDINAL_NUMBER_18TH                                         :18
 STR_DAY_NUMBER_18TH                                             :18
-STR_ORDINAL_NUMBER_19TH                                         :19
 STR_DAY_NUMBER_19TH                                             :19
-STR_ORDINAL_NUMBER_20TH                                         :20
 STR_DAY_NUMBER_20TH                                             :20
-STR_ORDINAL_NUMBER_21ST                                         :21
 STR_DAY_NUMBER_21ST                                             :21
-STR_ORDINAL_NUMBER_22ND                                         :22
 STR_DAY_NUMBER_22ND                                             :22
-STR_ORDINAL_NUMBER_23RD                                         :23
 STR_DAY_NUMBER_23RD                                             :23
-STR_ORDINAL_NUMBER_24TH                                         :24
 STR_DAY_NUMBER_24TH                                             :24
-STR_ORDINAL_NUMBER_25TH                                         :25
 STR_DAY_NUMBER_25TH                                             :25
-STR_ORDINAL_NUMBER_26TH                                         :26
 STR_DAY_NUMBER_26TH                                             :26
-STR_ORDINAL_NUMBER_27TH                                         :27
 STR_DAY_NUMBER_27TH                                             :27
-STR_ORDINAL_NUMBER_28TH                                         :28
 STR_DAY_NUMBER_28TH                                             :28
-STR_ORDINAL_NUMBER_29TH                                         :29
 STR_DAY_NUMBER_29TH                                             :29
-STR_ORDINAL_NUMBER_30TH                                         :30
 STR_DAY_NUMBER_30TH                                             :30
-STR_ORDINAL_NUMBER_31ST                                         :31
 STR_DAY_NUMBER_31ST                                             :31
 ############ range for days ends
 
@@ -944,11 +931,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpanan automatik
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih tempoh untuk simpanan permainan automatik
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Matikan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Setiap bulan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Setiap 3 bulan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Setiap 6 bulan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Setiap 12 bulan
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Bahasa
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih bahasa antaramuka yang ingin digunakan
@@ -1266,6 +1255,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Matikan
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Skrol klik-kiri: {STRING}
+
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gunakan format tarikh {STRING} untuk simpanan permainan.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :panjang (31hb Dis 2008)
@@ -2518,6 +2508,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Tiada ma
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fail yang berpadanan tidak dijumpai
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahaktifkan
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak serasi dengan versi OpenTTD ini
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
