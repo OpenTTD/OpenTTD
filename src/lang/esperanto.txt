@@ -453,36 +453,67 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montr
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1a de
+STR_DAY_NUMBER_1ST                                              :1a de
 STR_ORDINAL_NUMBER_2ND                                          :2a de
+STR_DAY_NUMBER_2ND                                              :2a de
 STR_ORDINAL_NUMBER_3RD                                          :3a de
+STR_DAY_NUMBER_3RD                                              :3a de
 STR_ORDINAL_NUMBER_4TH                                          :4a de
+STR_DAY_NUMBER_4TH                                              :4a de
 STR_ORDINAL_NUMBER_5TH                                          :5a de
+STR_DAY_NUMBER_5TH                                              :5a de
 STR_ORDINAL_NUMBER_6TH                                          :6a de
+STR_DAY_NUMBER_6TH                                              :6a de
 STR_ORDINAL_NUMBER_7TH                                          :7a de
+STR_DAY_NUMBER_7TH                                              :7a de
 STR_ORDINAL_NUMBER_8TH                                          :8a de
+STR_DAY_NUMBER_8TH                                              :8a de
 STR_ORDINAL_NUMBER_9TH                                          :9a de
+STR_DAY_NUMBER_9TH                                              :9a de
 STR_ORDINAL_NUMBER_10TH                                         :10a de
+STR_DAY_NUMBER_10TH                                             :10a de
 STR_ORDINAL_NUMBER_11TH                                         :11a de
+STR_DAY_NUMBER_11TH                                             :11a de
 STR_ORDINAL_NUMBER_12TH                                         :12a de
+STR_DAY_NUMBER_12TH                                             :12a de
 STR_ORDINAL_NUMBER_13TH                                         :13a de
+STR_DAY_NUMBER_13TH                                             :13a de
 STR_ORDINAL_NUMBER_14TH                                         :14a de
+STR_DAY_NUMBER_14TH                                             :14a de
 STR_ORDINAL_NUMBER_15TH                                         :15a de
+STR_DAY_NUMBER_15TH                                             :15a de
 STR_ORDINAL_NUMBER_16TH                                         :16a de
+STR_DAY_NUMBER_16TH                                             :16a de
 STR_ORDINAL_NUMBER_17TH                                         :17a de
+STR_DAY_NUMBER_17TH                                             :17a de
 STR_ORDINAL_NUMBER_18TH                                         :18a de
+STR_DAY_NUMBER_18TH                                             :18a de
 STR_ORDINAL_NUMBER_19TH                                         :19a de
+STR_DAY_NUMBER_19TH                                             :19a de
 STR_ORDINAL_NUMBER_20TH                                         :20a de
+STR_DAY_NUMBER_20TH                                             :20a de
 STR_ORDINAL_NUMBER_21ST                                         :21a de
+STR_DAY_NUMBER_21ST                                             :21a de
 STR_ORDINAL_NUMBER_22ND                                         :22a de
+STR_DAY_NUMBER_22ND                                             :22a de
 STR_ORDINAL_NUMBER_23RD                                         :23a de
+STR_DAY_NUMBER_23RD                                             :23a de
 STR_ORDINAL_NUMBER_24TH                                         :24a de
+STR_DAY_NUMBER_24TH                                             :24a de
 STR_ORDINAL_NUMBER_25TH                                         :25a de
+STR_DAY_NUMBER_25TH                                             :25a de
 STR_ORDINAL_NUMBER_26TH                                         :26a de
+STR_DAY_NUMBER_26TH                                             :26a de
 STR_ORDINAL_NUMBER_27TH                                         :27a de
+STR_DAY_NUMBER_27TH                                             :27a de
 STR_ORDINAL_NUMBER_28TH                                         :28a de
+STR_DAY_NUMBER_28TH                                             :28a de
 STR_ORDINAL_NUMBER_29TH                                         :29a de
+STR_DAY_NUMBER_29TH                                             :29a de
 STR_ORDINAL_NUMBER_30TH                                         :30a de
+STR_DAY_NUMBER_30TH                                             :30a de
 STR_ORDINAL_NUMBER_31ST                                         :31a de
+STR_DAY_NUMBER_31ST                                             :31a de
 ############ range for days ends
 
 ############ range for months starts

@@ -472,36 +472,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :เปิด/�
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :วันที่ 1
+STR_DAY_NUMBER_1ST                                              :วันที่ 1
 STR_ORDINAL_NUMBER_2ND                                          :วันที่ 2
+STR_DAY_NUMBER_2ND                                              :วันที่ 2
 STR_ORDINAL_NUMBER_3RD                                          :วันที่ 3
+STR_DAY_NUMBER_3RD                                              :วันที่ 3
 STR_ORDINAL_NUMBER_4TH                                          :วันที่ 4
+STR_DAY_NUMBER_4TH                                              :วันที่ 4
 STR_ORDINAL_NUMBER_5TH                                          :วันที่ 5
+STR_DAY_NUMBER_5TH                                              :วันที่ 5
 STR_ORDINAL_NUMBER_6TH                                          :วันที่ 6
+STR_DAY_NUMBER_6TH                                              :วันที่ 6
 STR_ORDINAL_NUMBER_7TH                                          :วันที่ 7
+STR_DAY_NUMBER_7TH                                              :วันที่ 7
 STR_ORDINAL_NUMBER_8TH                                          :วันที่ 8
+STR_DAY_NUMBER_8TH                                              :วันที่ 8
 STR_ORDINAL_NUMBER_9TH                                          :วันที่ 9
+STR_DAY_NUMBER_9TH                                              :วันที่ 9
 STR_ORDINAL_NUMBER_10TH                                         :วันที่ 10
+STR_DAY_NUMBER_10TH                                             :วันที่ 10
 STR_ORDINAL_NUMBER_11TH                                         :วันที่ 11
+STR_DAY_NUMBER_11TH                                             :วันที่ 11
 STR_ORDINAL_NUMBER_12TH                                         :วันที่ 12
+STR_DAY_NUMBER_12TH                                             :วันที่ 12
 STR_ORDINAL_NUMBER_13TH                                         :วันที่ 13
+STR_DAY_NUMBER_13TH                                             :วันที่ 13
 STR_ORDINAL_NUMBER_14TH                                         :วันที่ 14
+STR_DAY_NUMBER_14TH                                             :วันที่ 14
 STR_ORDINAL_NUMBER_15TH                                         :วันที่ 15
+STR_DAY_NUMBER_15TH                                             :วันที่ 15
 STR_ORDINAL_NUMBER_16TH                                         :วันที่ 16
+STR_DAY_NUMBER_16TH                                             :วันที่ 16
 STR_ORDINAL_NUMBER_17TH                                         :วันที่ 17
+STR_DAY_NUMBER_17TH                                             :วันที่ 17
 STR_ORDINAL_NUMBER_18TH                                         :วันที่ 18
+STR_DAY_NUMBER_18TH                                             :วันที่ 18
 STR_ORDINAL_NUMBER_19TH                                         :วันที่ 19
+STR_DAY_NUMBER_19TH                                             :วันที่ 19
 STR_ORDINAL_NUMBER_20TH                                         :วันที่ 20
+STR_DAY_NUMBER_20TH                                             :วันที่ 20
 STR_ORDINAL_NUMBER_21ST                                         :วันที่ 21
+STR_DAY_NUMBER_21ST                                             :วันที่ 21
 STR_ORDINAL_NUMBER_22ND                                         :วันที่ 22
+STR_DAY_NUMBER_22ND                                             :วันที่ 22
 STR_ORDINAL_NUMBER_23RD                                         :วันที่ 23
+STR_DAY_NUMBER_23RD                                             :วันที่ 23
 STR_ORDINAL_NUMBER_24TH                                         :วันที่ 24
+STR_DAY_NUMBER_24TH                                             :วันที่ 24
 STR_ORDINAL_NUMBER_25TH                                         :วันที่ 25
+STR_DAY_NUMBER_25TH                                             :วันที่ 25
 STR_ORDINAL_NUMBER_26TH                                         :วันที่ 26
+STR_DAY_NUMBER_26TH                                             :วันที่ 26
 STR_ORDINAL_NUMBER_27TH                                         :วันที่ 27
+STR_DAY_NUMBER_27TH                                             :วันที่ 27
 STR_ORDINAL_NUMBER_28TH                                         :วันที่ 28
+STR_DAY_NUMBER_28TH                                             :วันที่ 28
 STR_ORDINAL_NUMBER_29TH                                         :วันที่ 29
+STR_DAY_NUMBER_29TH                                             :วันที่ 29
 STR_ORDINAL_NUMBER_30TH                                         :วันที่ 30
+STR_DAY_NUMBER_30TH                                             :วันที่ 30
 STR_ORDINAL_NUMBER_31ST                                         :วันที่ 31
+STR_DAY_NUMBER_31ST                                             :วันที่ 31
 ############ range for days ends
 
 ############ range for months starts

@@ -470,36 +470,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :அழுக்
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1st
+STR_DAY_NUMBER_1ST                                              :1st
 STR_ORDINAL_NUMBER_2ND                                          :2nd
+STR_DAY_NUMBER_2ND                                              :2nd
 STR_ORDINAL_NUMBER_3RD                                          :3rd
+STR_DAY_NUMBER_3RD                                              :3rd
 STR_ORDINAL_NUMBER_4TH                                          :4th
+STR_DAY_NUMBER_4TH                                              :4th
 STR_ORDINAL_NUMBER_5TH                                          :5வது
+STR_DAY_NUMBER_5TH                                              :5வது
 STR_ORDINAL_NUMBER_6TH                                          :6வது
+STR_DAY_NUMBER_6TH                                              :6வது
 STR_ORDINAL_NUMBER_7TH                                          :7வது
+STR_DAY_NUMBER_7TH                                              :7வது
 STR_ORDINAL_NUMBER_8TH                                          :8வது
+STR_DAY_NUMBER_8TH                                              :8வது
 STR_ORDINAL_NUMBER_9TH                                          :9வது
+STR_DAY_NUMBER_9TH                                              :9வது
 STR_ORDINAL_NUMBER_10TH                                         :10வது
+STR_DAY_NUMBER_10TH                                             :10வது
 STR_ORDINAL_NUMBER_11TH                                         :11வது
+STR_DAY_NUMBER_11TH                                             :11வது
 STR_ORDINAL_NUMBER_12TH                                         :12வது
+STR_DAY_NUMBER_12TH                                             :12வது
 STR_ORDINAL_NUMBER_13TH                                         :13வது
+STR_DAY_NUMBER_13TH                                             :13வது
 STR_ORDINAL_NUMBER_14TH                                         :14வது
+STR_DAY_NUMBER_14TH                                             :14வது
 STR_ORDINAL_NUMBER_15TH                                         :15வது
+STR_DAY_NUMBER_15TH                                             :15வது
 STR_ORDINAL_NUMBER_16TH                                         :16வது
+STR_DAY_NUMBER_16TH                                             :16வது
 STR_ORDINAL_NUMBER_17TH                                         :17வது
+STR_DAY_NUMBER_17TH                                             :17வது
 STR_ORDINAL_NUMBER_18TH                                         :18வது
+STR_DAY_NUMBER_18TH                                             :18வது
 STR_ORDINAL_NUMBER_19TH                                         :19வது
+STR_DAY_NUMBER_19TH                                             :19வது
 STR_ORDINAL_NUMBER_20TH                                         :20வது
+STR_DAY_NUMBER_20TH                                             :20வது
 STR_ORDINAL_NUMBER_21ST                                         :21வது
+STR_DAY_NUMBER_21ST                                             :21வது
 STR_ORDINAL_NUMBER_22ND                                         :22வது
+STR_DAY_NUMBER_22ND                                             :22வது
 STR_ORDINAL_NUMBER_23RD                                         :23வது
+STR_DAY_NUMBER_23RD                                             :23வது
 STR_ORDINAL_NUMBER_24TH                                         :24வது
+STR_DAY_NUMBER_24TH                                             :24வது
 STR_ORDINAL_NUMBER_25TH                                         :25வது
+STR_DAY_NUMBER_25TH                                             :25வது
 STR_ORDINAL_NUMBER_26TH                                         :26வது
+STR_DAY_NUMBER_26TH                                             :26வது
 STR_ORDINAL_NUMBER_27TH                                         :27வது
+STR_DAY_NUMBER_27TH                                             :27வது
 STR_ORDINAL_NUMBER_28TH                                         :28வது
+STR_DAY_NUMBER_28TH                                             :28வது
 STR_ORDINAL_NUMBER_29TH                                         :29வது
+STR_DAY_NUMBER_29TH                                             :29வது
 STR_ORDINAL_NUMBER_30TH                                         :30வது
+STR_DAY_NUMBER_30TH                                             :30வது
 STR_ORDINAL_NUMBER_31ST                                         :31வது
+STR_DAY_NUMBER_31ST                                             :31வது
 ############ range for days ends
 
 ############ range for months starts

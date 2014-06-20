@@ -660,36 +660,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toglaich dathad
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1ad
+STR_DAY_NUMBER_1ST                                              :1ad
 STR_ORDINAL_NUMBER_2ND                                          :2na
+STR_DAY_NUMBER_2ND                                              :2na
 STR_ORDINAL_NUMBER_3RD                                          :3a
+STR_DAY_NUMBER_3RD                                              :3a
 STR_ORDINAL_NUMBER_4TH                                          :4mh
+STR_DAY_NUMBER_4TH                                              :4mh
 STR_ORDINAL_NUMBER_5TH                                          :5mh
+STR_DAY_NUMBER_5TH                                              :5mh
 STR_ORDINAL_NUMBER_6TH                                          :6mh
+STR_DAY_NUMBER_6TH                                              :6mh
 STR_ORDINAL_NUMBER_7TH                                          :7mh
+STR_DAY_NUMBER_7TH                                              :7mh
 STR_ORDINAL_NUMBER_8TH                                          :8mh
+STR_DAY_NUMBER_8TH                                              :8mh
 STR_ORDINAL_NUMBER_9TH                                          :9mh
+STR_DAY_NUMBER_9TH                                              :9mh
 STR_ORDINAL_NUMBER_10TH                                         :10mh
+STR_DAY_NUMBER_10TH                                             :10mh
 STR_ORDINAL_NUMBER_11TH                                         :11ad
+STR_DAY_NUMBER_11TH                                             :11ad
 STR_ORDINAL_NUMBER_12TH                                         :12na
+STR_DAY_NUMBER_12TH                                             :12na
 STR_ORDINAL_NUMBER_13TH                                         :13s
+STR_DAY_NUMBER_13TH                                             :13s
 STR_ORDINAL_NUMBER_14TH                                         :14mh
+STR_DAY_NUMBER_14TH                                             :14mh
 STR_ORDINAL_NUMBER_15TH                                         :15mh
+STR_DAY_NUMBER_15TH                                             :15mh
 STR_ORDINAL_NUMBER_16TH                                         :16mh
+STR_DAY_NUMBER_16TH                                             :16mh
 STR_ORDINAL_NUMBER_17TH                                         :17mh
+STR_DAY_NUMBER_17TH                                             :17mh
 STR_ORDINAL_NUMBER_18TH                                         :18mh
+STR_DAY_NUMBER_18TH                                             :18mh
 STR_ORDINAL_NUMBER_19TH                                         :19mh
+STR_DAY_NUMBER_19TH                                             :19mh
 STR_ORDINAL_NUMBER_20TH                                         :20mh
+STR_DAY_NUMBER_20TH                                             :20mh
 STR_ORDINAL_NUMBER_21ST                                         :21ad
+STR_DAY_NUMBER_21ST                                             :21ad
 STR_ORDINAL_NUMBER_22ND                                         :22na
+STR_DAY_NUMBER_22ND                                             :22na
 STR_ORDINAL_NUMBER_23RD                                         :23s
+STR_DAY_NUMBER_23RD                                             :23s
 STR_ORDINAL_NUMBER_24TH                                         :24mh
+STR_DAY_NUMBER_24TH                                             :24mh
 STR_ORDINAL_NUMBER_25TH                                         :25mh
+STR_DAY_NUMBER_25TH                                             :25mh
 STR_ORDINAL_NUMBER_26TH                                         :26mh
+STR_DAY_NUMBER_26TH                                             :26mh
 STR_ORDINAL_NUMBER_27TH                                         :27mh
+STR_DAY_NUMBER_27TH                                             :27mh
 STR_ORDINAL_NUMBER_28TH                                         :28mh
+STR_DAY_NUMBER_28TH                                             :28mh
 STR_ORDINAL_NUMBER_29TH                                         :29mh
+STR_DAY_NUMBER_29TH                                             :29mh
 STR_ORDINAL_NUMBER_30TH                                         :30mh
+STR_DAY_NUMBER_30TH                                             :30mh
 STR_ORDINAL_NUMBER_31ST                                         :31mh
+STR_DAY_NUMBER_31ST                                             :31mh
 ############ range for days ends
 
 ############ range for months starts

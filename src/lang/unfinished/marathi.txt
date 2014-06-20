@@ -444,36 +444,67 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन �
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :१
+STR_DAY_NUMBER_1ST                                              :१
 STR_ORDINAL_NUMBER_2ND                                          :२
+STR_DAY_NUMBER_2ND                                              :२
 STR_ORDINAL_NUMBER_3RD                                          :३
+STR_DAY_NUMBER_3RD                                              :३
 STR_ORDINAL_NUMBER_4TH                                          :४
+STR_DAY_NUMBER_4TH                                              :४
 STR_ORDINAL_NUMBER_5TH                                          :५
+STR_DAY_NUMBER_5TH                                              :५
 STR_ORDINAL_NUMBER_6TH                                          :६
+STR_DAY_NUMBER_6TH                                              :६
 STR_ORDINAL_NUMBER_7TH                                          :७
+STR_DAY_NUMBER_7TH                                              :७
 STR_ORDINAL_NUMBER_8TH                                          :८
+STR_DAY_NUMBER_8TH                                              :८
 STR_ORDINAL_NUMBER_9TH                                          :९
+STR_DAY_NUMBER_9TH                                              :९
 STR_ORDINAL_NUMBER_10TH                                         :१०
+STR_DAY_NUMBER_10TH                                             :१०
 STR_ORDINAL_NUMBER_11TH                                         :११
+STR_DAY_NUMBER_11TH                                             :११
 STR_ORDINAL_NUMBER_12TH                                         :१२
+STR_DAY_NUMBER_12TH                                             :१२
 STR_ORDINAL_NUMBER_13TH                                         :१३
+STR_DAY_NUMBER_13TH                                             :१३
 STR_ORDINAL_NUMBER_14TH                                         :१४
+STR_DAY_NUMBER_14TH                                             :१४
 STR_ORDINAL_NUMBER_15TH                                         :१५
+STR_DAY_NUMBER_15TH                                             :१५
 STR_ORDINAL_NUMBER_16TH                                         :१६
+STR_DAY_NUMBER_16TH                                             :१६
 STR_ORDINAL_NUMBER_17TH                                         :१७
+STR_DAY_NUMBER_17TH                                             :१७
 STR_ORDINAL_NUMBER_18TH                                         :१८
+STR_DAY_NUMBER_18TH                                             :१८
 STR_ORDINAL_NUMBER_19TH                                         :१९
+STR_DAY_NUMBER_19TH                                             :१९
 STR_ORDINAL_NUMBER_20TH                                         :२०
+STR_DAY_NUMBER_20TH                                             :२०
 STR_ORDINAL_NUMBER_21ST                                         :२१
+STR_DAY_NUMBER_21ST                                             :२१
 STR_ORDINAL_NUMBER_22ND                                         :२२
+STR_DAY_NUMBER_22ND                                             :२२
 STR_ORDINAL_NUMBER_23RD                                         :२३
+STR_DAY_NUMBER_23RD                                             :२३
 STR_ORDINAL_NUMBER_24TH                                         :२४
+STR_DAY_NUMBER_24TH                                             :२४
 STR_ORDINAL_NUMBER_25TH                                         :२५
+STR_DAY_NUMBER_25TH                                             :२५
 STR_ORDINAL_NUMBER_26TH                                         :२६
+STR_DAY_NUMBER_26TH                                             :२६
 STR_ORDINAL_NUMBER_27TH                                         :२७
+STR_DAY_NUMBER_27TH                                             :२७
 STR_ORDINAL_NUMBER_28TH                                         :२८
+STR_DAY_NUMBER_28TH                                             :२८
 STR_ORDINAL_NUMBER_29TH                                         :२९
+STR_DAY_NUMBER_29TH                                             :२९
 STR_ORDINAL_NUMBER_30TH                                         :३०
+STR_DAY_NUMBER_30TH                                             :३०
 STR_ORDINAL_NUMBER_31ST                                         :३१
+STR_DAY_NUMBER_31ST                                             :३१
 ############ range for days ends
 
 ############ range for months starts

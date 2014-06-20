@@ -473,36 +473,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activa/desactiv
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1º
+STR_DAY_NUMBER_1ST                                              :1º
 STR_ORDINAL_NUMBER_2ND                                          :2º
+STR_DAY_NUMBER_2ND                                              :2º
 STR_ORDINAL_NUMBER_3RD                                          :3º
+STR_DAY_NUMBER_3RD                                              :3º
 STR_ORDINAL_NUMBER_4TH                                          :4º
+STR_DAY_NUMBER_4TH                                              :4º
 STR_ORDINAL_NUMBER_5TH                                          :5º
+STR_DAY_NUMBER_5TH                                              :5º
 STR_ORDINAL_NUMBER_6TH                                          :6º
+STR_DAY_NUMBER_6TH                                              :6º
 STR_ORDINAL_NUMBER_7TH                                          :7º
+STR_DAY_NUMBER_7TH                                              :7º
 STR_ORDINAL_NUMBER_8TH                                          :8º
+STR_DAY_NUMBER_8TH                                              :8º
 STR_ORDINAL_NUMBER_9TH                                          :9º
+STR_DAY_NUMBER_9TH                                              :9º
 STR_ORDINAL_NUMBER_10TH                                         :10º
+STR_DAY_NUMBER_10TH                                             :10º
 STR_ORDINAL_NUMBER_11TH                                         :11º
+STR_DAY_NUMBER_11TH                                             :11º
 STR_ORDINAL_NUMBER_12TH                                         :12º
+STR_DAY_NUMBER_12TH                                             :12º
 STR_ORDINAL_NUMBER_13TH                                         :13º
+STR_DAY_NUMBER_13TH                                             :13º
 STR_ORDINAL_NUMBER_14TH                                         :14º
+STR_DAY_NUMBER_14TH                                             :14º
 STR_ORDINAL_NUMBER_15TH                                         :15º
+STR_DAY_NUMBER_15TH                                             :15º
 STR_ORDINAL_NUMBER_16TH                                         :16º
+STR_DAY_NUMBER_16TH                                             :16º
 STR_ORDINAL_NUMBER_17TH                                         :17º
+STR_DAY_NUMBER_17TH                                             :17º
 STR_ORDINAL_NUMBER_18TH                                         :18º
+STR_DAY_NUMBER_18TH                                             :18º
 STR_ORDINAL_NUMBER_19TH                                         :19º
+STR_DAY_NUMBER_19TH                                             :19º
 STR_ORDINAL_NUMBER_20TH                                         :20º
+STR_DAY_NUMBER_20TH                                             :20º
 STR_ORDINAL_NUMBER_21ST                                         :21º
+STR_DAY_NUMBER_21ST                                             :21º
 STR_ORDINAL_NUMBER_22ND                                         :22º
+STR_DAY_NUMBER_22ND                                             :22º
 STR_ORDINAL_NUMBER_23RD                                         :23º
+STR_DAY_NUMBER_23RD                                             :23º
 STR_ORDINAL_NUMBER_24TH                                         :24º
+STR_DAY_NUMBER_24TH                                             :24º
 STR_ORDINAL_NUMBER_25TH                                         :25º
+STR_DAY_NUMBER_25TH                                             :25º
 STR_ORDINAL_NUMBER_26TH                                         :26º
+STR_DAY_NUMBER_26TH                                             :26º
 STR_ORDINAL_NUMBER_27TH                                         :27º
+STR_DAY_NUMBER_27TH                                             :27º
 STR_ORDINAL_NUMBER_28TH                                         :28º
+STR_DAY_NUMBER_28TH                                             :28º
 STR_ORDINAL_NUMBER_29TH                                         :29º
+STR_DAY_NUMBER_29TH                                             :29º
 STR_ORDINAL_NUMBER_30TH                                         :30º
+STR_DAY_NUMBER_30TH                                             :30º
 STR_ORDINAL_NUMBER_31ST                                         :31º
+STR_DAY_NUMBER_31ST                                             :31º
 ############ range for days ends
 
 ############ range for months starts

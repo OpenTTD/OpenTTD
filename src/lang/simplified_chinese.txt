@@ -472,36 +472,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :切换脏方块
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1号
+STR_DAY_NUMBER_1ST                                              :1号
 STR_ORDINAL_NUMBER_2ND                                          :2号
+STR_DAY_NUMBER_2ND                                              :2号
 STR_ORDINAL_NUMBER_3RD                                          :3号
+STR_DAY_NUMBER_3RD                                              :3号
 STR_ORDINAL_NUMBER_4TH                                          :4号
+STR_DAY_NUMBER_4TH                                              :4号
 STR_ORDINAL_NUMBER_5TH                                          :5号
+STR_DAY_NUMBER_5TH                                              :5号
 STR_ORDINAL_NUMBER_6TH                                          :6号
+STR_DAY_NUMBER_6TH                                              :6号
 STR_ORDINAL_NUMBER_7TH                                          :7号
+STR_DAY_NUMBER_7TH                                              :7号
 STR_ORDINAL_NUMBER_8TH                                          :8号
+STR_DAY_NUMBER_8TH                                              :8号
 STR_ORDINAL_NUMBER_9TH                                          :9号
+STR_DAY_NUMBER_9TH                                              :9号
 STR_ORDINAL_NUMBER_10TH                                         :10号
+STR_DAY_NUMBER_10TH                                             :10号
 STR_ORDINAL_NUMBER_11TH                                         :11号
+STR_DAY_NUMBER_11TH                                             :11号
 STR_ORDINAL_NUMBER_12TH                                         :12号
+STR_DAY_NUMBER_12TH                                             :12号
 STR_ORDINAL_NUMBER_13TH                                         :13号
+STR_DAY_NUMBER_13TH                                             :13号
 STR_ORDINAL_NUMBER_14TH                                         :14号
+STR_DAY_NUMBER_14TH                                             :14号
 STR_ORDINAL_NUMBER_15TH                                         :15号
+STR_DAY_NUMBER_15TH                                             :15号
 STR_ORDINAL_NUMBER_16TH                                         :16号
+STR_DAY_NUMBER_16TH                                             :16号
 STR_ORDINAL_NUMBER_17TH                                         :17号
+STR_DAY_NUMBER_17TH                                             :17号
 STR_ORDINAL_NUMBER_18TH                                         :18号
+STR_DAY_NUMBER_18TH                                             :18号
 STR_ORDINAL_NUMBER_19TH                                         :19号
+STR_DAY_NUMBER_19TH                                             :19号
 STR_ORDINAL_NUMBER_20TH                                         :20号
+STR_DAY_NUMBER_20TH                                             :20号
 STR_ORDINAL_NUMBER_21ST                                         :21号
+STR_DAY_NUMBER_21ST                                             :21号
 STR_ORDINAL_NUMBER_22ND                                         :22号
+STR_DAY_NUMBER_22ND                                             :22号
 STR_ORDINAL_NUMBER_23RD                                         :23号
+STR_DAY_NUMBER_23RD                                             :23号
 STR_ORDINAL_NUMBER_24TH                                         :24号
+STR_DAY_NUMBER_24TH                                             :24号
 STR_ORDINAL_NUMBER_25TH                                         :25号
+STR_DAY_NUMBER_25TH                                             :25号
 STR_ORDINAL_NUMBER_26TH                                         :26号
+STR_DAY_NUMBER_26TH                                             :26号
 STR_ORDINAL_NUMBER_27TH                                         :27号
+STR_DAY_NUMBER_27TH                                             :27号
 STR_ORDINAL_NUMBER_28TH                                         :28号
+STR_DAY_NUMBER_28TH                                             :28号
 STR_ORDINAL_NUMBER_29TH                                         :29号
+STR_DAY_NUMBER_29TH                                             :29号
 STR_ORDINAL_NUMBER_30TH                                         :30号
+STR_DAY_NUMBER_30TH                                             :30号
 STR_ORDINAL_NUMBER_31ST                                         :31号
+STR_DAY_NUMBER_31ST                                             :31号
 ############ range for days ends
 
 ############ range for months starts

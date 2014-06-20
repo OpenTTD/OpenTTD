@@ -472,36 +472,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Knaschteg block
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1ten
+STR_DAY_NUMBER_1ST                                              :1ten
 STR_ORDINAL_NUMBER_2ND                                          :2ten
+STR_DAY_NUMBER_2ND                                              :2ten
 STR_ORDINAL_NUMBER_3RD                                          :3ten
+STR_DAY_NUMBER_3RD                                              :3ten
 STR_ORDINAL_NUMBER_4TH                                          :4ten
+STR_DAY_NUMBER_4TH                                              :4ten
 STR_ORDINAL_NUMBER_5TH                                          :5ten
+STR_DAY_NUMBER_5TH                                              :5ten
 STR_ORDINAL_NUMBER_6TH                                          :6ten
+STR_DAY_NUMBER_6TH                                              :6ten
 STR_ORDINAL_NUMBER_7TH                                          :7ten
+STR_DAY_NUMBER_7TH                                              :7ten
 STR_ORDINAL_NUMBER_8TH                                          :8ten
+STR_DAY_NUMBER_8TH                                              :8ten
 STR_ORDINAL_NUMBER_9TH                                          :9ten
+STR_DAY_NUMBER_9TH                                              :9ten
 STR_ORDINAL_NUMBER_10TH                                         :10ten
+STR_DAY_NUMBER_10TH                                             :10ten
 STR_ORDINAL_NUMBER_11TH                                         :11ten
+STR_DAY_NUMBER_11TH                                             :11ten
 STR_ORDINAL_NUMBER_12TH                                         :12ten
+STR_DAY_NUMBER_12TH                                             :12ten
 STR_ORDINAL_NUMBER_13TH                                         :13ten
+STR_DAY_NUMBER_13TH                                             :13ten
 STR_ORDINAL_NUMBER_14TH                                         :14ten
+STR_DAY_NUMBER_14TH                                             :14ten
 STR_ORDINAL_NUMBER_15TH                                         :15ten
+STR_DAY_NUMBER_15TH                                             :15ten
 STR_ORDINAL_NUMBER_16TH                                         :16ten
+STR_DAY_NUMBER_16TH                                             :16ten
 STR_ORDINAL_NUMBER_17TH                                         :17ten
+STR_DAY_NUMBER_17TH                                             :17ten
 STR_ORDINAL_NUMBER_18TH                                         :18ten
+STR_DAY_NUMBER_18TH                                             :18ten
 STR_ORDINAL_NUMBER_19TH                                         :19ten
+STR_DAY_NUMBER_19TH                                             :19ten
 STR_ORDINAL_NUMBER_20TH                                         :20ten
+STR_DAY_NUMBER_20TH                                             :20ten
 STR_ORDINAL_NUMBER_21ST                                         :21ten
+STR_DAY_NUMBER_21ST                                             :21ten
 STR_ORDINAL_NUMBER_22ND                                         :22ten
+STR_DAY_NUMBER_22ND                                             :22ten
 STR_ORDINAL_NUMBER_23RD                                         :23ten
+STR_DAY_NUMBER_23RD                                             :23ten
 STR_ORDINAL_NUMBER_24TH                                         :24ten
+STR_DAY_NUMBER_24TH                                             :24ten
 STR_ORDINAL_NUMBER_25TH                                         :25ten
+STR_DAY_NUMBER_25TH                                             :25ten
 STR_ORDINAL_NUMBER_26TH                                         :26ten
+STR_DAY_NUMBER_26TH                                             :26ten
 STR_ORDINAL_NUMBER_27TH                                         :27ten
+STR_DAY_NUMBER_27TH                                             :27ten
 STR_ORDINAL_NUMBER_28TH                                         :28ten
+STR_DAY_NUMBER_28TH                                             :28ten
 STR_ORDINAL_NUMBER_29TH                                         :29ten
+STR_DAY_NUMBER_29TH                                             :29ten
 STR_ORDINAL_NUMBER_30TH                                         :30ten
+STR_DAY_NUMBER_30TH                                             :30ten
 STR_ORDINAL_NUMBER_31ST                                         :31ten
+STR_DAY_NUMBER_31ST                                             :31ten
 ############ range for days ends
 
 ############ range for months starts

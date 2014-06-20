@@ -470,36 +470,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Превклю�
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1-ви
+STR_DAY_NUMBER_1ST                                              :1-ви
 STR_ORDINAL_NUMBER_2ND                                          :2-ри
+STR_DAY_NUMBER_2ND                                              :2-ри
 STR_ORDINAL_NUMBER_3RD                                          :3-ти
+STR_DAY_NUMBER_3RD                                              :3-ти
 STR_ORDINAL_NUMBER_4TH                                          :4-ти
+STR_DAY_NUMBER_4TH                                              :4-ти
 STR_ORDINAL_NUMBER_5TH                                          :5-и
+STR_DAY_NUMBER_5TH                                              :5-и
 STR_ORDINAL_NUMBER_6TH                                          :6-и
+STR_DAY_NUMBER_6TH                                              :6-и
 STR_ORDINAL_NUMBER_7TH                                          :7-и
+STR_DAY_NUMBER_7TH                                              :7-и
 STR_ORDINAL_NUMBER_8TH                                          :8-и
+STR_DAY_NUMBER_8TH                                              :8-и
 STR_ORDINAL_NUMBER_9TH                                          :9-ти
+STR_DAY_NUMBER_9TH                                              :9-ти
 STR_ORDINAL_NUMBER_10TH                                         :10-ти
+STR_DAY_NUMBER_10TH                                             :10-ти
 STR_ORDINAL_NUMBER_11TH                                         :11-ти
+STR_DAY_NUMBER_11TH                                             :11-ти
 STR_ORDINAL_NUMBER_12TH                                         :12-ти
+STR_DAY_NUMBER_12TH                                             :12-ти
 STR_ORDINAL_NUMBER_13TH                                         :13-ти
+STR_DAY_NUMBER_13TH                                             :13-ти
 STR_ORDINAL_NUMBER_14TH                                         :14-ти
+STR_DAY_NUMBER_14TH                                             :14-ти
 STR_ORDINAL_NUMBER_15TH                                         :15-ти
+STR_DAY_NUMBER_15TH                                             :15-ти
 STR_ORDINAL_NUMBER_16TH                                         :16-ти
+STR_DAY_NUMBER_16TH                                             :16-ти
 STR_ORDINAL_NUMBER_17TH                                         :17-ти
+STR_DAY_NUMBER_17TH                                             :17-ти
 STR_ORDINAL_NUMBER_18TH                                         :18-ти
+STR_DAY_NUMBER_18TH                                             :18-ти
 STR_ORDINAL_NUMBER_19TH                                         :19-ти
+STR_DAY_NUMBER_19TH                                             :19-ти
 STR_ORDINAL_NUMBER_20TH                                         :20-ти
+STR_DAY_NUMBER_20TH                                             :20-ти
 STR_ORDINAL_NUMBER_21ST                                         :21-ви
+STR_DAY_NUMBER_21ST                                             :21-ви
 STR_ORDINAL_NUMBER_22ND                                         :22-ри
+STR_DAY_NUMBER_22ND                                             :22-ри
 STR_ORDINAL_NUMBER_23RD                                         :23-ти
+STR_DAY_NUMBER_23RD                                             :23-ти
 STR_ORDINAL_NUMBER_24TH                                         :24-ти
+STR_DAY_NUMBER_24TH                                             :24-ти
 STR_ORDINAL_NUMBER_25TH                                         :25-ти
+STR_DAY_NUMBER_25TH                                             :25-ти
 STR_ORDINAL_NUMBER_26TH                                         :26-ти
+STR_DAY_NUMBER_26TH                                             :26-ти
 STR_ORDINAL_NUMBER_27TH                                         :27-ми
+STR_DAY_NUMBER_27TH                                             :27-ми
 STR_ORDINAL_NUMBER_28TH                                         :28-и
+STR_DAY_NUMBER_28TH                                             :28-и
 STR_ORDINAL_NUMBER_29TH                                         :29-и
+STR_DAY_NUMBER_29TH                                             :29-и
 STR_ORDINAL_NUMBER_30TH                                         :30-ти
+STR_DAY_NUMBER_30TH                                             :30-ти
 STR_ORDINAL_NUMBER_31ST                                         :31-ви
+STR_DAY_NUMBER_31ST                                             :31-ви
 ############ range for days ends
 
 ############ range for months starts

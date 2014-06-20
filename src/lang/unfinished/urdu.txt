@@ -455,36 +455,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :گندے بلا
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :پھل
+STR_DAY_NUMBER_1ST                                              :پھل
 STR_ORDINAL_NUMBER_2ND                                          :دوسر
+STR_DAY_NUMBER_2ND                                              :دوسر
 STR_ORDINAL_NUMBER_3RD                                          :تیسر
+STR_DAY_NUMBER_3RD                                              :تیسر
 STR_ORDINAL_NUMBER_4TH                                          :چوتھ
+STR_DAY_NUMBER_4TH                                              :چوتھ
 STR_ORDINAL_NUMBER_5TH                                          :پانچھو
+STR_DAY_NUMBER_5TH                                              :پانچھو
 STR_ORDINAL_NUMBER_6TH                                          :چھٹ
+STR_DAY_NUMBER_6TH                                              :چھٹ
 STR_ORDINAL_NUMBER_7TH                                          :ساتو
+STR_DAY_NUMBER_7TH                                              :ساتو
 STR_ORDINAL_NUMBER_8TH                                          :آٹھو
+STR_DAY_NUMBER_8TH                                              :آٹھو
 STR_ORDINAL_NUMBER_9TH                                          :نو
+STR_DAY_NUMBER_9TH                                              :نو
 STR_ORDINAL_NUMBER_10TH                                         :دسو
+STR_DAY_NUMBER_10TH                                             :دسو
 STR_ORDINAL_NUMBER_11TH                                         :گیارھو
+STR_DAY_NUMBER_11TH                                             :گیارھو
 STR_ORDINAL_NUMBER_12TH                                         :بارھو
+STR_DAY_NUMBER_12TH                                             :بارھو
 STR_ORDINAL_NUMBER_13TH                                         :تیرھو
+STR_DAY_NUMBER_13TH                                             :تیرھو
 STR_ORDINAL_NUMBER_14TH                                         :چودھو
+STR_DAY_NUMBER_14TH                                             :چودھو
 STR_ORDINAL_NUMBER_15TH                                         :پندھرو
+STR_DAY_NUMBER_15TH                                             :پندھرو
 STR_ORDINAL_NUMBER_16TH                                         :سولھو
+STR_DAY_NUMBER_16TH                                             :سولھو
 STR_ORDINAL_NUMBER_17TH                                         :سترھو
+STR_DAY_NUMBER_17TH                                             :سترھو
 STR_ORDINAL_NUMBER_18TH                                         :اٹھارو
+STR_DAY_NUMBER_18TH                                             :اٹھارو
 STR_ORDINAL_NUMBER_19TH                                         :انیسو
+STR_DAY_NUMBER_19TH                                             :انیسو
 STR_ORDINAL_NUMBER_20TH                                         :بیسو
+STR_DAY_NUMBER_20TH                                             :بیسو
 STR_ORDINAL_NUMBER_21ST                                         :اکیسو
+STR_DAY_NUMBER_21ST                                             :اکیسو
 STR_ORDINAL_NUMBER_22ND                                         :بایئسو
+STR_DAY_NUMBER_22ND                                             :بایئسو
 STR_ORDINAL_NUMBER_23RD                                         :تیئسو
+STR_DAY_NUMBER_23RD                                             :تیئسو
 STR_ORDINAL_NUMBER_24TH                                         :چوبیسو
+STR_DAY_NUMBER_24TH                                             :چوبیسو
 STR_ORDINAL_NUMBER_25TH                                         :پچیسو
+STR_DAY_NUMBER_25TH                                             :پچیسو
 STR_ORDINAL_NUMBER_26TH                                         :چھبیسو
+STR_DAY_NUMBER_26TH                                             :چھبیسو
 STR_ORDINAL_NUMBER_27TH                                         :ستایئسو
+STR_DAY_NUMBER_27TH                                             :ستایئسو
 STR_ORDINAL_NUMBER_28TH                                         :اٹھایئسو
+STR_DAY_NUMBER_28TH                                             :اٹھایئسو
 STR_ORDINAL_NUMBER_29TH                                         :انتیسو
+STR_DAY_NUMBER_29TH                                             :انتیسو
 STR_ORDINAL_NUMBER_30TH                                         :تیسو
+STR_DAY_NUMBER_30TH                                             :تیسو
 STR_ORDINAL_NUMBER_31ST                                         :اکتیسو
+STR_DAY_NUMBER_31ST                                             :اکتیسو
 ############ range for days ends
 
 ############ range for months starts

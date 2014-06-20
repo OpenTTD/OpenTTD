@@ -473,36 +473,67 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta el colo
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1r
+STR_DAY_NUMBER_1ST                                              :1r
 STR_ORDINAL_NUMBER_2ND                                          :2n
+STR_DAY_NUMBER_2ND                                              :2n
 STR_ORDINAL_NUMBER_3RD                                          :3r
+STR_DAY_NUMBER_3RD                                              :3r
 STR_ORDINAL_NUMBER_4TH                                          :4t
+STR_DAY_NUMBER_4TH                                              :4t
 STR_ORDINAL_NUMBER_5TH                                          :5è
+STR_DAY_NUMBER_5TH                                              :5è
 STR_ORDINAL_NUMBER_6TH                                          :6è
+STR_DAY_NUMBER_6TH                                              :6è
 STR_ORDINAL_NUMBER_7TH                                          :7è
+STR_DAY_NUMBER_7TH                                              :7è
 STR_ORDINAL_NUMBER_8TH                                          :8è
+STR_DAY_NUMBER_8TH                                              :8è
 STR_ORDINAL_NUMBER_9TH                                          :9è
+STR_DAY_NUMBER_9TH                                              :9è
 STR_ORDINAL_NUMBER_10TH                                         :10è
+STR_DAY_NUMBER_10TH                                             :10è
 STR_ORDINAL_NUMBER_11TH                                         :11è
+STR_DAY_NUMBER_11TH                                             :11è
 STR_ORDINAL_NUMBER_12TH                                         :12è
+STR_DAY_NUMBER_12TH                                             :12è
 STR_ORDINAL_NUMBER_13TH                                         :13è
+STR_DAY_NUMBER_13TH                                             :13è
 STR_ORDINAL_NUMBER_14TH                                         :14è
+STR_DAY_NUMBER_14TH                                             :14è
 STR_ORDINAL_NUMBER_15TH                                         :15è
+STR_DAY_NUMBER_15TH                                             :15è
 STR_ORDINAL_NUMBER_16TH                                         :16è
+STR_DAY_NUMBER_16TH                                             :16è
 STR_ORDINAL_NUMBER_17TH                                         :17è
+STR_DAY_NUMBER_17TH                                             :17è
 STR_ORDINAL_NUMBER_18TH                                         :18è
+STR_DAY_NUMBER_18TH                                             :18è
 STR_ORDINAL_NUMBER_19TH                                         :19è
+STR_DAY_NUMBER_19TH                                             :19è
 STR_ORDINAL_NUMBER_20TH                                         :20è
+STR_DAY_NUMBER_20TH                                             :20è
 STR_ORDINAL_NUMBER_21ST                                         :21è
+STR_DAY_NUMBER_21ST                                             :21è
 STR_ORDINAL_NUMBER_22ND                                         :22è
+STR_DAY_NUMBER_22ND                                             :22è
 STR_ORDINAL_NUMBER_23RD                                         :23è
+STR_DAY_NUMBER_23RD                                             :23è
 STR_ORDINAL_NUMBER_24TH                                         :24è
+STR_DAY_NUMBER_24TH                                             :24è
 STR_ORDINAL_NUMBER_25TH                                         :25è
+STR_DAY_NUMBER_25TH                                             :25è
 STR_ORDINAL_NUMBER_26TH                                         :26è
+STR_DAY_NUMBER_26TH                                             :26è
 STR_ORDINAL_NUMBER_27TH                                         :27è
+STR_DAY_NUMBER_27TH                                             :27è
 STR_ORDINAL_NUMBER_28TH                                         :28è
+STR_DAY_NUMBER_28TH                                             :28è
 STR_ORDINAL_NUMBER_29TH                                         :29è
+STR_DAY_NUMBER_29TH                                             :29è
 STR_ORDINAL_NUMBER_30TH                                         :30è
+STR_DAY_NUMBER_30TH                                             :30è
 STR_ORDINAL_NUMBER_31ST                                         :31è
+STR_DAY_NUMBER_31ST                                             :31è
 ############ range for days ends
 
 ############ range for months starts
