@@ -157,7 +157,7 @@ public:
 	 * Gets the ID of the station where the cargo was loaded for the first time.
 	 * @return StationID.
 	 */
-	inline SourceID SourceStation() const
+	inline StationID SourceStation() const
 	{
 		return this->source;
 	}
