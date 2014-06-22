@@ -1192,6 +1192,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pasirink
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} sugadint{P a ų os} bylos
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Papildoma informacija apie bazinę muziką
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nepavyko gauti palaikomų ekrano raiškų sąrašo
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Viso ekrano nustatymas nepavyko
 
 # Custom currency window
@@ -1557,6 +1558,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Slinkti žemėlapį velkant jį nuspaudus kairįjį pelės klavišą. Naudinga, jei žaidžiama kompiuteriuose su lietimui jautriais ekranais
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Automatinis saugojimas: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Laiko tarpsnis tarp automatinių žaidimo išsaugojimų
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Išsaugant žaidimą, pavadinimuose naudoti {STRING} datos formatą
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datos formatas išsaugoto žaidimo failo pavadinime
@@ -2981,14 +2984,14 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Papild. 
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Išsami NewGRF informacija
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktyvios NewGRF bylos
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktyvios NewGRF bylos
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Pasirinkti nustatymus:
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Rinkinys:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Įrašo filtravimas:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Užkrauti parinktą nustatymą
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Išsaugoti nustatymą
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Išsaugoti esamą sąrašą kaip nuostatą
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Įkrauti pasirinktą nuostatų rinkinį
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Išsaugoti rinkinį
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Išsaugoti esamą sąrašą kaip rinkinį
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Įvesti vardą nuostatai
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Ištrinti nustatymus
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ištrinti dabar pasirinktas nuostatas
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Ištrinti rinkinį
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ištrinti pasirinktą nuostatų rinkinį
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pridėti
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Įtraukti pažymėtus Papild. grafikos failus į jūsų nustatymus
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Nuskaityti dar kartą failus
@@ -2999,6 +3002,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Aukštyn
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Perkelti pažymėtus Papild. grafikos failus sąraše aukštyn
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Žemyn
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Perkelti pažymėtus Papild. grafikos failus sąraše žemyn
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Atnaujinti
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Atnaujinti grafikos failus, jei yra įdiegta naujesnė versija
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Įdiegtų papild. grafikos failų sąrašas.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nustatyti parametrus
@@ -3024,6 +3029,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Išjungta
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nesuderinamas su šia OpenTTD versija
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Išsaugoti rinkinį
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Sąrašas visų rinkinių
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Įveskite rinkinio pavadinimą
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Šiuo metu pasirinktas rinkinio pavadinimas
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Atšaukti
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nieko nedaryti ir grįžti atgal
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Išsaugoti
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Iššsaugoti rinkinį pasiriktu pavadinimu
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Pakeisti NewGRF parametrus

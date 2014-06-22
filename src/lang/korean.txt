@@ -3695,7 +3695,7 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 �
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}통과 설정
-STR_ORDER_GO_TO                                                 :완행
+STR_ORDER_GO_TO                                                 :행선지 지정
 STR_ORDER_GO_NON_STOP_TO                                        :직행
 STR_ORDER_GO_VIA                                                :완행 경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유
