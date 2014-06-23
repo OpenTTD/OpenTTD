@@ -427,7 +427,7 @@ STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Pasirink
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Rikiavimo tvarka (didėjančiai/mažėjančiai)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Rikiavimo raktas
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filtravimo raktas
-STR_BUTTON_SORT_BY                                              :{BLACK}Rikiuoti
+STR_BUTTON_SORT_BY                                              :{BLACK}Rikiuoti pagal
 STR_BUTTON_LOCATION                                             :{BLACK}Vieta
 STR_BUTTON_RENAME                                               :{BLACK}Pervadinti
 
@@ -460,41 +460,41 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Sritis: 
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Vardą
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}vardą
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datą
 # These are used in dropdowns
-STR_SORT_BY_NAME                                                :Pavadinimą
-STR_SORT_BY_PRODUCTION                                          :Produkciją
-STR_SORT_BY_TYPE                                                :Tipą
-STR_SORT_BY_TRANSPORTED                                         :Pervežimus
-STR_SORT_BY_NUMBER                                              :Kiekį
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Pernai metų pelną
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Šių metų pelną
-STR_SORT_BY_AGE                                                 :Amžių
-STR_SORT_BY_RELIABILITY                                         :Patikimumą
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Bendrą produkcijos pervežimą
-STR_SORT_BY_MAX_SPEED                                           :Maksimalų greitį
-STR_SORT_BY_MODEL                                               :Modelį
-STR_SORT_BY_VALUE                                               :Vertę
+STR_SORT_BY_NAME                                                :pavadinimą
+STR_SORT_BY_PRODUCTION                                          :produkciją
+STR_SORT_BY_TYPE                                                :tipą
+STR_SORT_BY_TRANSPORTED                                         :pervežimus
+STR_SORT_BY_NUMBER                                              :kiekį
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :pernykštį pelną
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :šiųmetį pelną
+STR_SORT_BY_AGE                                                 :amžių
+STR_SORT_BY_RELIABILITY                                         :patikimumą
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :bendrą talpą
+STR_SORT_BY_MAX_SPEED                                           :didžiausią greitį
+STR_SORT_BY_MODEL                                               :modelį
+STR_SORT_BY_VALUE                                               :vertę
 STR_SORT_BY_LENGTH                                              :Ilgį
-STR_SORT_BY_LIFE_TIME                                           :Likusį naudojimo laiką
-STR_SORT_BY_TIMETABLE_DELAY                                     :Tvarkaraščio užtrukimą
-STR_SORT_BY_FACILITY                                            :Stoties tipą
-STR_SORT_BY_WAITING_TOTAL                                       :Visą laukiantį krovinį
-STR_SORT_BY_WAITING_AVAILABLE                                   :Prieinamą laukiantį krovinį
-STR_SORT_BY_RATING_MAX                                          :Didžiausias krovinio reitingas
-STR_SORT_BY_RATING_MIN                                          :Mažiausias krovinio reitingas
-STR_SORT_BY_ENGINE_ID                                           :VariklioID (numatytasis)
-STR_SORT_BY_COST                                                :Kainą
-STR_SORT_BY_POWER                                               :Galią
-STR_SORT_BY_TRACTIVE_EFFORT                                     :Traukos jėgą
-STR_SORT_BY_INTRO_DATE                                          :Atsiradimo datą
-STR_SORT_BY_RUNNING_COST                                        :Eksplotacijos išlaidas
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Galią/Eksplotacijos išlaidas
-STR_SORT_BY_CARGO_CAPACITY                                      :Vagono talpą
-STR_SORT_BY_RANGE                                               :Atstumas
-STR_SORT_BY_POPULATION                                          :Populiaciją
-STR_SORT_BY_RATING                                              :Reitingas
+STR_SORT_BY_LIFE_TIME                                           :likusį naudojimo laiką
+STR_SORT_BY_TIMETABLE_DELAY                                     :tvarkaraščio vėlavimą
+STR_SORT_BY_FACILITY                                            :stoties tipą
+STR_SORT_BY_WAITING_TOTAL                                       :visą laukiantį krovinį
+STR_SORT_BY_WAITING_AVAILABLE                                   :prieinamą laukiantį krovinį
+STR_SORT_BY_RATING_MAX                                          :didžiausią krovinio reitingą
+STR_SORT_BY_RATING_MIN                                          :mažiausią krovinio reitingą
+STR_SORT_BY_ENGINE_ID                                           :variklio ID (numatytasis)
+STR_SORT_BY_COST                                                :kainą
+STR_SORT_BY_POWER                                               :galią
+STR_SORT_BY_TRACTIVE_EFFORT                                     :traukos jėgą
+STR_SORT_BY_INTRO_DATE                                          :atsiradimo datą
+STR_SORT_BY_RUNNING_COST                                        :eksploatacijos išlaidas
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :galią/eksplotacijos išlaidas
+STR_SORT_BY_CARGO_CAPACITY                                      :vagono talpą
+STR_SORT_BY_RANGE                                               :atstumą
+STR_SORT_BY_POPULATION                                          :populiaciją
+STR_SORT_BY_RATING                                              :reitingą
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pristabdyti žaidimą
@@ -3163,9 +3163,9 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Įrašyk
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miestai
-STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nieko -
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}Nėra
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Miestų pavadinimai - spragtelėjus ant vardo, miestas rodomas ekrano centre. Ctrl+Paspaudimas atidaro naują langą su miesto vaizdu
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Spragtelėjus ant pavadinimo, miestas bus parodytas ekrano centre. Spragtelėjus laikant nuspaudus „Ctrl“ klavišą, bus atvertas papildomas peržiūros langas į pasirinktą miestą
 STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA}
 
 # Town view window
@@ -3391,10 +3391,10 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Sąskait
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Paskola
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimali paskola: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Skolintis{CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Skolintis daugiau. Ctrl+Paspaudimas pasiskolina daugiausiai kiek galima
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Gražinti{CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Grąžinti paskolos dalį. Ctrl+Paspaudimas grąžina daugiausiai kiek gali
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Skolintis {CURRENCY_LONG}
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Skolintis daugiau. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus pasiskolinta didžiausia įmanoma suma
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Grąžinti {CURRENCY_LONG}
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Grąžinti paskolos dalį. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus grąžinta didžiausia įmanoma suma
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktūra
 
 # Company view
@@ -4376,7 +4376,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Direktor
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... daugiausia pasiskolinti galima {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Daugiau skolintis negalima...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... visa paskola gražinta
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} reikia
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...reikia turėti {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Skolos grąžinti negalima...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Negalima dovanoti iš banko pasiskolintų pinigų...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Neįmanoma pirkti kompanijos...
