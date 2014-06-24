@@ -921,7 +921,7 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (I
 ############ start of measuring units region
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Køyreretning
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veg-køyrety
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vel køyreretning
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekøyring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrekøyring
@@ -988,6 +988,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel musi
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} øydelagd{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Tilleggsinformasjon om musikksettet
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Kunne ikkje henta liste over støtta oppløysingar
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermvising feila
 
 # Custom currency window
@@ -1248,6 +1249,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Bredde på linj
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskapsgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritetthet: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal avstand frå kartkanten for Oljeraffineri: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kor ulendt skal terrenget vere (kun TerraGenesis): {STRING}
@@ -1255,10 +1257,15 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Særs jamnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jamnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ulendt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Særs ulendt
+STR_CONFIG_SETTING_VARIETY                                      :Variasjonsdistrubusjon: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Elve-mengde: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Vel mengde elver å generera
 STR_CONFIG_SETTING_TREE_PLACER                                  :Treplasseringalgoritme: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ingen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbetra
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Veg-køyrety: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vel køyreside
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Høgdekartrotering: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
@@ -1304,6 +1311,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Venstreknapps-rulling: {STRING}
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Autolaging: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vel intervall for automatisk lagring av spel
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Bruk {STRING} datoformat for namning av lagra spel
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datoformat i namning av lagra spel
@@ -2674,6 +2683,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Flytt op
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Flytt den valde NewGRF-fila oppover lista
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Flytt ned
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytt den valde NewGRF-fila nedover lista
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Oppgrader
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Oppgrader NewGRF-filer der du har ein nyare versjon installert
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Ei liste over NewGRF-filene som er installert.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parametrar
@@ -2699,6 +2710,13 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivert
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ikkje kompatibel med denne versjonen av OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lagre førehandsinnstilling
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv inn eit namn for førehandsinnstillinga
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Vald namn for førehandsinnstillinga som skal lagrast
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ikkje endre førehandsinnstillinga
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Lagre
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lagra førehandsinnstillingane til valt namn
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Endre NewGRF-parametrar

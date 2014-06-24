@@ -952,7 +952,7 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :イタリア
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :カタラン
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動保存
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}オートセーブ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}自動保存の間隔を選択します
 
 ############ start of autosave dropdown
@@ -987,6 +987,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用�
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}個の破損ファイルがあります
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}基本音楽セットについての追加情報
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}サポートされている解像度リストの回復に失敗しました
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードでの実行に失敗しました
 
 # Custom currency window
@@ -1267,21 +1268,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :街の名前ラ
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :グラフ線の太さ: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :グラフ画面での折れ線の太さを設定します。細い線では値を精密に読み取りやすくなり、太い線ではグラフ自体が見やすくなり、線色の見分けがつきやすくなります
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :地形: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :地形は異なる貨物や街の成長要件の違いによって基本となるプレー法を左右します。但し、NewGRFやスクリプトにより条件が改良されることもあります
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形作成: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :オリジナルの地形ジェネレーターは基本グラフィックセットに依存し、ある程度固定された地形しか生成出来ません。TerraGenesisはパーリンノイズに基づいた地形ジェネレーターで、より細かい地形生成のパラメータを指定できます
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :オリジナル
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地形種類: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesisのみ) 地形における丘の度合い
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :産業の密度: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :どの程度の産業が開始時に生成され、ゲーム中にそのレベルを維持するようにするのかを設定します
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油精製所のマップ端からの距離: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :石油精製所はマップの外周付近にのみ建設されます。つまり、外周が海のマップでは海岸沿いに建設されるということです
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線の位置: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形の起伏(TerraGenesis のみ): {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :亜寒帯気候での雪線の高さを設定します。雪は産業と街の成長に影響があります
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形の起伏: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesisのみ) 地形の起伏度を設定します。なだらかな地形では丘陵の数は減り、裾野が長くなります。起伏が多い地形では丘陵が多くなりますが、似たり寄ったりな地形の繰り返しに見えることがあります
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :特になだらか
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :なだらか
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :起伏
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :特に起伏
+STR_CONFIG_SETTING_VARIETY                                      :地形特徴の分布: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesisのみ) マップに山岳地と平地の両方が含まれるかを調整します。この設定を使ってもマップがより平坦になってしまう場合は、他の設定を「山岳」に切り替えください
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :川の数: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :どの位の川が生成されるかを設定します
 STR_CONFIG_SETTING_TREE_PLACER                                  :植林アルゴリズム: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :マップでの木の分布を設定します。「オリジナル」では全ての樹種がマップ全域に散布するように植えられます。「改良」ではある程度のまとまりで植えられます
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :なし
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :オリジナル
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :改良版
+STR_CONFIG_SETTING_ROAD_SIDE                                    :道路車両: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :左側/右側通行を設定します
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :ハイトマップの回転方向: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :反時計回り
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :時計回り
@@ -1336,6 +1353,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :切
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :左ドラッグスクロール: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :有効にすると左ドラッグでマップのスクロールができるようになります。特にタッチスクリーンを利用しているときに便利です
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :オートセーブ: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :オートセーブの間隔を設定します
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :セーブ時の日付フォーマット: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :セーブデータ名にデフォルトで付けられる日付の表記法を指定します。注: 日本の場合、「短」と「ISO標準」に違いはありません
@@ -2764,6 +2783,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上へ
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}選択したNewGRFファイルを上へ移動します
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下へ
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}選択したNewGRFファイルを下へ移動します
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}アップグレード
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}より上位バージョンのNewGRFがインストールされている場合にアップグレードします
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}インストールされたNewGRFファイルのリストです
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}パラメータ設定
@@ -2789,6 +2810,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}このバージョンのOpenTTDでは使用できません
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}プリセットを保存
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}使用可能なプリセットの一覧です。選択すると下のセーブ名のプリセットに内容をコピーします
+STR_SAVE_PRESET_TITLE                                           :{BLACK}プリセット名を入力
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}現在選択している名前をプリセットの保存に使用します
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}キャンセル
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}プリセットを変更しません
+STR_SAVE_PRESET_SAVE                                            :{BLACK}セーブ
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}現在選択している名前でプリセットを保存します
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更

@@ -1480,7 +1480,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originalus gene
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :originalus
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Kraštovaizdžio stilius: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(tik TerraGenesis only) Žemės paviršiaus kalvotumas
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(tik TerraGenesis) Žemės paviršiaus kalvotumas
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Pramonės įmonių tankis: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Pramonės įmonių kiekis sugeneruotame žemėlapyje
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Didžiausias naftos perdirbimo įmonės atstumas nuo žemėlapio kraštų: {STRING}
