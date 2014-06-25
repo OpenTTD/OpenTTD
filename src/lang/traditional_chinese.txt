@@ -1270,6 +1270,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :設定圖像上
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形產生器：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原版
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工業密度: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :煉油廠與地圖邊緣之最遠距離： {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :僅於地圖邊緣建造煉油廠，在島嶼型地圖中它們將處於海邊
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線高度：{STRING}
@@ -1278,10 +1279,14 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常平滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :平滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :高低不平
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :河流數量: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :選擇欲產生的河流數量
 STR_CONFIG_SETTING_TREE_PLACER                                  :樹木分佈演算法：{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :無
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :原版
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :改進版
+STR_CONFIG_SETTING_ROAD_SIDE                                    :公路車輛: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :選擇行車方向
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :旋轉高度圖：{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆時針
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :順時針
@@ -1336,6 +1341,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :滑鼠左鍵捲動：{STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :容許以左撳並拖曳滑鼠捲動地圖。此選項對使用觸控螢幕進行捲動動作很有幫助
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :自動儲存: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :選擇自動存檔的週期
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 時間格式作為存檔檔名
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :在存檔的檔名中使用的日期格式
@@ -2752,6 +2759,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上移
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}將選定的 NewGRF 檔往清單上方移動
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下移
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}將選定的 NewGRF 檔往清單下方移動
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}更新
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}為您已經安裝的新版本更新NewGRF檔案
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已安裝的 NewGRF 檔案列表。
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}設定參數
@@ -2777,6 +2786,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}停用
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}與此版本的OpenTTD不相容
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}儲存設定值
+STR_SAVE_PRESET_TITLE                                           :{BLACK}輸入預設值名稱
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}取消
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}請勿修改預設值
+STR_SAVE_PRESET_SAVE                                            :{BLACK}存檔
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}儲存預設值到選擇的名稱
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數

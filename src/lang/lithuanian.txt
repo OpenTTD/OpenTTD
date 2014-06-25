@@ -1925,40 +1925,40 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nepavyko
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Naujas žaidimas
+STR_INTRO_NEW_GAME                                              :{BLACK}Pradėtį naują žaidimą
 STR_INTRO_LOAD_GAME                                             :{BLACK}Įkelti žaidimą
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Išbandyti scenarijų (žaisti)
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Žaisti papildomame žemėlapyje
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarijaus redaktorius
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Žaidimas tinkle
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Žaisti scenarijų
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Žaisti teminį žemėlapį
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Redaguoti scenarijų
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Žaisti tinkle
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Žaidimo nustatymai
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pagrindinės nuostatos
 STR_INTRO_HIGHSCORE                                             :{BLACK}Nugalėtojų lentelė
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Sudėtingesni nustatymai
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Papild. grafikos nustatymai
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Patikrinti interneto turinį
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}DI / Žaidimo nustatymai
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Išplėstinės nuostatos
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Plėtiniai
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Interneto turinys
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Dirbtinio intelekto nuostatos
 STR_INTRO_QUIT                                                  :{BLACK}Išeiti
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Pradėti naują žaidimą. Ctrl+Paspaudimas praleidžia žemėlapio nustatymus
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Pradėti naują žaidimą. Spragtelėjus laikant nuspaustą Ctrl klavišą, naujas žemėlapis bus sugeneruotas nedelsiant ir nieko nebeklausiant
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Įkelti išsaugotą žaidimą
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pradėti žaidimą naudojant papildomą žemėlapį ir žemtvarką
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pradėti žaidimą, sugeneruojant naują teminį žemėlapį
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Pradėti naują žaidimą pasirenkant scenarijų
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Sukurk savo žaidimo žemėlapį/scenarijų
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Pradėti keletos žaidėjų žaidimą
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Paleisti scenarijaus redaktorių
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Pradėti keleto žaidėjų žaidimą
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Pasirink vidutinį klimato tipą
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Pasirink sub-arktinį klimato tipą
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pasirink sub-tropinį klimato tipą
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pasirink žemėlapio tipą 'žaislų šalis'
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Vidutinio klimato žemėlapis
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Subarktinio klimato žemėlapis
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Subtropinio klimato žemėlapis
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Žaislinis žemėlapis
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rodyti žaidimo nustatymus
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rodyti pagrindines žaidimo nuostatas
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rodyti nugalėtojų lentelę
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rodyti sudėtingesnius nustatymus
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Atvaizduoti NewGRF nustatymus
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Patikrinti dėl naujų ir atnaujintą turinį atsisiuntimui
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rodyti DI ir žaidimo nustatymus
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti iš 'OpenTTD'
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rodyti sudėtingesnes žaidimo nuostatas
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rodyti parsisiųstus plėtinius ir jų nuostatas
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tikrinti, ar nėra naujų plėtinių arba atnaujinimų jau atsisiųstiems plėtiniams
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rodyti dirbtinio intelekto nuostatas
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti iš „OpenTTD“ žaidimo
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Šiam vertimui trūksta {NUM} eilu{P tės čių čių}. Padėkite išversti OpenTTD užsiregistruodami vertėju. Daugiau informacijos rasite faile readme.txt
 
@@ -2432,11 +2432,11 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... atsi
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Bazinė grafika
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_NEWGRF                                         :Plėtiniai
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :DI biblioteka
 STR_CONTENT_TYPE_SCENARIO                                       :Scenarijus
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Aukščio žemėlapis
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Teminis žemėlapis
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Baziniai garsai
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Bazinė muzika
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Žaidimo skriptas
@@ -2891,9 +2891,9 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Išsaugo
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Įkelti žaidimą
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Išsaugoti scenarijų
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Įkelti scenarijų
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Atverti aukščių žemėlapį
-STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Išsaugoti aukščių žemėlapį
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Spausti čia perėjimui į numatytąją saugojimo/įkrovimo direktoriją
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Įkelti teminį žemėlapį
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Išsaugoti teminį žemėlapį
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Šokti į numatytąjį saugojimo/įkėlimo katalogą
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} laisva
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Diskų, katalogų ir išsaugotu žaidimų sąrašas
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Pasirinktas žaidimas
@@ -2901,15 +2901,15 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Šalinti
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Ištrinti pasirinktą žaidimą
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Išsaugoti
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Išsaugoti žaidimą pasirinktu vardu
-STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Užkrauti
-STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Užkrauti pasirinktą žaidimą
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Įkelti
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Įkelti pasirinktą žaidimą
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Įkrauti pasirinktą žemėlapį
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Žaidimo ypatybės
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nėra informacijos
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
-STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Plėtiniai: {WHITE}{STRING}
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Įveskite Išsaugomo žaidimo vardą
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Įveskite išsaugomo žaidimo vardą
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pasaulio kūrimas
@@ -2917,34 +2917,34 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Žemėla
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pasirinkite žemėlapio dydį langeliais. Prieinamų langelių skaičius bus šiek tiek mažesnis.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Miestų kiekis:
-STR_MAPGEN_DATE                                                 :{BLACK}Data:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industrijų kiekis:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniego linija:
+STR_MAPGEN_DATE                                                 :{BLACK}Pradžios data:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Pramonės įmonių kiekis:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniego linijos aukštis:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaukštinti sniego liniją
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pažeminti sniego liniją
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Pasaulio kūrimas:
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generavimo algoritmas:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Medžių algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūros lygis:
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upių:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upių kiekis:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jautrumas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Įvairovės paskirstymas:
 STR_MAPGEN_GENERATE                                             :{WHITE}Sukurti
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Žemėlapio kraštai:
-STR_MAPGEN_NORTHWEST                                            :{BLACK}Šiaurės-vakarai
-STR_MAPGEN_NORTHEAST                                            :{BLACK}Šiaurės-rytai
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Šiaurės vakarai
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Šiaurės rytai
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Pietryčiai
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Pietvakariai
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Laisva forma
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vanduo
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Atsitiktinis
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Atsitiktinai
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Pasirinktinai
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Atsitiktiniai
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Pasirinktiniai
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Zemelapio rotacija:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Žemėlapio vardas:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Žemėlapio pasukimas:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Žemėlapio pavadinimas:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
@@ -3116,10 +3116,10 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Trūkst
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Paleidimas gali užlaužti OpenTTD. Neraportuokite šios rūšies gedimų!{}Ar norite paleisti toliau?
 
 # NewGRF status
-STR_NEWGRF_LIST_NONE                                            :Niekas
-STR_NEWGRF_LIST_ALL_FOUND                                       :Visos bylos rastos
-STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Rastos tinkamos bylos
-STR_NEWGRF_LIST_MISSING                                         :{RED}Trūkstamos bylos
+STR_NEWGRF_LIST_NONE                                            :Nėra
+STR_NEWGRF_LIST_ALL_FOUND                                       :Visi failai rasti
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Rasti suderinami failai
+STR_NEWGRF_LIST_MISSING                                         :{RED}Trūkstami failai
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF elgesys '{0:STRING}' gali desinchronizuoti ir/arba nutraukti žaidimą
@@ -4317,8 +4317,8 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nepa
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... paveikslėlis yra per didelis
 
-STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skales ispejimas
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Mastelio įspėjimas
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Pradines nuostas keisti pernelyg smarkiai nerekomenduojama. Tęsti generavimą?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Rasta tik fiktyvi garsų biblioteka. Jeigu norite garsų žaidime, įdiekite garsų rinkinį naudojant parsisiuntimų sistemą.
