@@ -1088,7 +1088,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy inst
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipe:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beperk die lys hier onder tot slegs veranderde verstellings
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beperk die lys hier onder deur voorafgestelde "filters" te gebruik slegs veranderde verstellings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basiese verstellings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gevorderde verstellings
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert verstellings / alle verstellings
@@ -2702,14 +2702,14 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario tipe
-STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Plat land
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Plat terrein
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereer 'n plat terrein
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Lukraake land
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van platte daal:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Beweeg die hoogte van platte daal een af
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Beweeg die hoogte van platte daal bo een
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van plat terrein:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Beweeg die hoogte van plat terrein een af
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Beweeg die hoogte van plat terrein een op
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Verander die hoogte van platte daal
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Verander die hoogte van plat terrein
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Wêreld word gevorm...
@@ -2722,7 +2722,7 @@ STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wêreld 
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivier generasie
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Boom generasie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Onbeweegbaar generasie
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ru en rotserig area ontwikkeling
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ru en rotserig area generasie
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Stel speletjie op
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Hardloop teël-herhaling
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Lopende skrif
@@ -2951,7 +2951,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Befonds plaasli
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bou standbeeld van maatskappy eienaar
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Befonds nuwe geboue
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Koop eksklusief vervoer regte
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Omkoop die plaaslike raad
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Koop die plaaslike raad om
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begin 'n klein plaaslik advertensie veldtog, om meer passasiers en vragte tot jou vervoer dienste te lok.{}Prys: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin 'n middlematige plaaslik advertensie veldtog, om meer passasiers en vragte tot jou vervoer dienste te lok.{}Prys: {CURRENCY_LONG}
@@ -3162,7 +3162,7 @@ STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bou HK
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bou maatskappy hoofkantore
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Wys HK
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vertoon maatskappy hoofkantore
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Beweeg HQ
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Beweeg HK
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Bou hoofkwartier elders teen 'n koste gelykstaande aan 1% van maatskappy se waarde. Shift+klik vir kwotasie
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Besonderhede
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Sien gedetaileerde infrastruktuur telling
@@ -4116,8 +4116,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te naby 
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stasie kan nie hernoem word nie...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... hierdie is 'n dorp besit pad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... pad teenoor in die verkeerde rigting
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... deurry stops kan nie hoeke hê nie
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... deurry stops kan nie aansluitings hê nie
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... deurry haltes kan nie hoeke hê nie
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... deurry haltes kan nie aansluitings hê nie
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan nie deel van stasie verwyder nie...
@@ -4211,7 +4211,7 @@ STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... daar
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan nie kanaale hier bou nie...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan nie sluite hier bou nie...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Can nie riviere hier plaas nie...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan nie riviere hier plaas nie...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... moet op water gebou word
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Kan nie op water bou nie
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kan nie op oop see bou nie
