@@ -108,7 +108,7 @@ STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} y
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} staal
 STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P "" ke} edelmetale
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kopererts
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} graan
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mielies
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} vrugte
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sak{P "" ke} diamante
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} kos
@@ -213,7 +213,7 @@ STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gelling{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
@@ -328,7 +328,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bou spoo
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bou paaie
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bou skip hawe
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou lughawens
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maak die landargitekteur nutsbalk oop om, land te verhoog/verlaag, boome beplant, ens.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maak die landargitektuur nutsbalk oop om, land te verhoog/verlaag, boome beplant, ens.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vertoon klank/musiek venster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vertoon laaste boodskap/nuus verslag, vertoon boodskap opsies
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land gebied informasie, konsole, skrip ontfouting, skermkiekie, omtrent OpenTTD
@@ -422,8 +422,8 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Konsolideer nuw
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoorweg konstruksie
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrifiseerde spoorweg konstruksie
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoorwegkonstruksie
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elekriese spoorwegkonstruksie
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monospoor konstruksie
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magneetsweeftrein konstruksie
 ############ range ends here
@@ -442,7 +442,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lughawe konstru
 ############ range ends here
 
 ############ range for landscaping menu starts
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Landargitekteur
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Landargitektuur
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant bome
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plaas teken
 ############ range ends here
@@ -841,7 +841,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} raak baie oud en benodig dringende vervanging.
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan nie 'n roete vind om aan te gaan nie.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} het verdwaal.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} se wins was verlede jaar {CURRENCY_LONG}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} se wins verlede jaar was {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan nie die volgende bestemmingpunt bereik nie want dis te ver
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} het gestop omdat 'n herbou opdrag gefaal het
@@ -2274,7 +2274,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aan
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Moenie die dekking area van die voorgestelde bouterrein verlig nie
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Verlig dekking area van die voorgestelde bouterrein
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aanvaar: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Voorraad: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Verskaf: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sluit by stasie aan
@@ -2285,7 +2285,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bou 'n 
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Spoorwegkonstruksie
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifiseerde Spoorweg Konstruksie
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektriese spoorwegkonstruksie
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monospoor Konstruksie
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magneetsweeftrein Konstruksie
 
@@ -2301,7 +2301,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Wissel b
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander die treinspoor tipe. Shift kies tussen bou/kwotasie
 
 STR_RAIL_NAME_RAILROAD                                          :Spoorweg
-STR_RAIL_NAME_ELRAIL                                            :Elektrifiseerde spoorweg
+STR_RAIL_NAME_ELRAIL                                            :Elektriese spoor
 STR_RAIL_NAME_MONORAIL                                          :Monospoor
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
@@ -2318,8 +2318,8 @@ STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Spoor St
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientasie
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Kies treinstasie orientasie
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Aantal spore
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Kies die aantal spore wat in die stasie gebou gaan word
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Verhoog lengte
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Kies die aantal peronne wat in die stasie gebou gaan word
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Perron lengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Kies treinstasie lengte
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sleep & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bou 'n stasie gebruikend sleep & drop
@@ -2358,11 +2358,11 @@ STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Kabelstut, Staal
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balk, Staal
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Vrydraer, Staal
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspensie, Beton
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Kabelstut, Beton
 STR_BRIDGE_NAME_WOODEN                                          :Houterig
 STR_BRIDGE_NAME_CONCRETE                                        :Beton
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Buisvormige, Staal
-STR_BRIDGE_TUBULAR_SILICON                                      :Buis, Silicon
+STR_BRIDGE_TUBULAR_SILICON                                      :Buis, Silikon
 
 
 # Road construction toolbar
@@ -2449,7 +2449,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter lugh
 STR_STATION_BUILD_NOISE                                         :{BLACK}Geraas gegenereer: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landargitekteur
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landargitektuur
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag 'n gedeelte. Klik en sleep om die gekose punt tot die gewenste vlak te verlaag. Druk Ctrl om 'n diagonale gedeelte te kies, Shift gee net 'n kwotasie
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog 'n gedeelte. Klik en sleep om die gekose punt tot die gewenste vlak te vehoog. Druk Ctrl om 'n diagonale gedeelte te kies, Shift gee net 'n kwotasie
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Klik op 'n area en sleep om die omliggende gedeelte tot dieselfde vlak te bring. Druk Ctrl om 'n diagonale gedeelte te kies, Shift gee net 'n kwotasie
@@ -2993,11 +2993,11 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Groot adverteer
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Befonds plaaslike pad heropbou
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bou standbeeld van maatskappy eienaar
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Befonds nuwe geboue
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Koop eksklusief vervoer regte
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Koop eksklusiewe vervoerregte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Koop die plaaslike raad om
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begin 'n klein plaaslik advertensie veldtog, om meer passasiers en vragte tot jou vervoer dienste te lok.{}Prys: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin 'n middlematige plaaslik advertensie veldtog, om meer passasiers en vragte tot jou vervoer dienste te lok.{}Prys: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin 'n middelmatige plaaslik advertensie veldtog, om meer passasiers en vrag te lok om jou diens te gebruik.{}Prys: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin 'n groot plaaslik advertensie veldtog, om meer passasiers en vragte tot jou vervoer dienste te lok.{}Prys: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansier herstel van stedelike paaie wat aansienlike verkeersprobleme sal veroorsaak.{}Koste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Bou 'n standbeeld in eer van u maatskappy.{} Prys: {CURRENCY_LONG}
@@ -3046,7 +3046,7 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Maak toe
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidies op aanbod vir diens opneming:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} van {STRING} tot {STRING}{YELLOW} (voor {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} van {STRING} na {STRING}{YELLOW} (voor {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Geen -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Dienste reeds gesubsidieer:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} van {STRING} tot {STRING}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
@@ -3246,8 +3246,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Nywerhede
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Geen -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% uitgevoer)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% uitgevoer)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% vervoer)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% vervoer)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nywerheidsname - klik op 'n naam om skerm na nywerheid te skuif. Ctrl+klik maak 'n nuwe venster vir die nywerheid oop
 
@@ -3297,7 +3297,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vertoon 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Bestuur lys
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Stuur instruksies na alle voertuie in die lys
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vervang voertuie
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Stuur vir Diens
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Stuur vir diens
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Stuur na Depot
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Stuur na Depot
@@ -3516,7 +3516,7 @@ STR_REPLACE_WAGONS                                              :Waens
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die soort spoor waarvoor lokomotiewe vervang moet word
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon aan watter enjin die linker gekose enjin mee vervang moet word , indien enige
 STR_REPLACE_RAIL_VEHICLES                                       :Treine
-STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifiseerde Spoor Voertuie
+STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriese treine
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monospoor voertuie
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Voertuie
 
@@ -3825,7 +3825,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Geen aflaai en
 STR_ORDER_AUTO_REFIT_ANY                                        :beskikbare vrag
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[naby einde]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middel]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[ver einde]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Volgende bestemming val buite die limiet)
@@ -4073,7 +4073,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ligg
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... alreeds gebou
 STR_ERROR_OWNED_BY                                              :{WHITE}... besit deur {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is besit deur 'n ander maatskappy
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... Landargitekteur beperking beryk
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landargitektuur beperking beryk
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... teël skoonmaak limiet bereik
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... bome se plant beperking bereik
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet unike wees
@@ -4574,7 +4574,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Graan Laai Bak
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Hout Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Yster Erts Laai Bak
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Staal Trok
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Gepantserde Wa
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :pantserwa
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Kos Wa
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Papier Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Koper Erts Laai Bak
@@ -4604,7 +4604,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Graan Laai Bak
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Hout Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Yster Erts Laai Bak
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Staal Trok
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Gepantserde Wa
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :pantserwa
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Kos Wa
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Papier Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Coper Erts Laai Bak
@@ -4636,7 +4636,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Graan Laai Bak
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Hout Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Yster Erts Laai Bak
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Staal Trok
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Gepantserde Wa
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :pantserwa
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Kos Wa
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Papier Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Koper Erts Laai Bak
@@ -4690,9 +4690,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Yster Er
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Staal Trok
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Staal Trok
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Staal Trok
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Gepantserde Trok
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Gepantserde Trok
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Gepantserde Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh pantsertrok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl pantsertrok
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster pantsertrok
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Kos Wa
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Kos Wa
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Kos Wa

@@ -871,8 +871,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponzoroval výstavbu nového mesta {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{G=s}{BIG_FONT}{BLACK}Nové {STRING} sa začína stavať neďaleko mesta {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{G=s}{BIG_FONT}{BLACK}Nové {STRING} bude postavené neďaleko mesta {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{G=s}{BIG_FONT}{BLACK}Nov{G "ý" "á" "é"} {STRING} sa začína stavať neďaleko mesta {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{G=s}{BIG_FONT}{BLACK}Nov{G "ý" "á" "é"} {STRING} bude postaven{G "ý" "á" "é"} neďaleko mesta {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} oznamuje skoré uzavretie!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Kvôli zásobovacím problémom {STRING} oznamuje skoré uzavretie!
@@ -883,8 +883,8 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Koniec kíizy!{}{}Očakáva sa vzostup predaja a posilnenie ekonomiky!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} zvyšuje produkciu!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nove nalezisko uhlia sa objavilo v {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nove nalezisko ropy sa objavilo na {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nové nálezisko uhlia sa objavilo v {INDUSTRY}!{}Očakáva sa zdvojnásobenie produkcie!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nové nálezisko ropy sa objavilo na {INDUSTRY}!{}Očakáva sa zdvojnásobenie produkcie!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Na {INDUSTRY} zlepsili pouzivane metody!Ocakava sa zdvojnasobenie produkcie!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY} zvyšuje produkciu {0:STRING.g} o {2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} znižuje produkciu o 50%
@@ -1238,7 +1238,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Strmosť svahu 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zakázať vlakom a lodiam otáčanie o 90°: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 stupňové zákruty vznikajú keď sa spojí horizontálna a vertikálna dráha. Týmto vznikne potreba vlaku "otočiť sa" o 90 stupňov pri prechode touto zákrutou namiesto 45 stupňovího prejazdu ako pri ostatných kombináciách trate. Toto isté platí aj pre lode.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Povoliť spájať stanice nepriamo hraničiace: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Povoluje pridanie časti stanice bez priamej manipulácie s existujúcimi časťami. Použite CTRL+CLICK na položenie novej časti.
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Povoľuje pridanie časti stanice bez priamej manipulácie s existujúcimi časťami. Použite Ctrl+Click na položenie novej časti.
 STR_CONFIG_SETTING_INFLATION                                    :Inflácia: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Povoluje infláciu v ekonomike, kedy náklady stúpaju rýchlejšie ako platby za prepravy.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximálna dĺžka mosta: {STRING}
@@ -1262,7 +1262,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Zobraziť rozpočet na konci roku: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ak zapnuté, okno s financiami sa ukáže na konci každého roku a umožňuje tak rýchly náhľad na stav financií spoločnosti.
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nové príkazy sú štandardne 'non-stop': {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálne, vlak vťdy zastaví v každej stanici cez ktorú prechádza. Povolením tohoto nastavenia, vlak bude pokračovať cez všetky stanice ktoré má v ceste až do svojej cieľovej stanice. Uvedomte si to, že toto nastavenie definuj "pôvodné" nastavenie LEN pre nové trasy. Samostatne zadávané cesty môžu byť nastavené aj inak.
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálne, vlak vždy zastaví v každej stanici cez ktorú prechádza. Povolením tohoto nastavenia, vlak bude pokračovať cez všetky stanice ktoré má v ceste až do svojej cieľovej stanice. Uvedomte si to, že toto nastavenie definuje "pôvodné" nastavenie LEN pre nové trasy. Samostatne zadávané cesty môžu byť nastavené aj inak.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Vlaky zastavujú štandardne {STRING} stanice.
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Zvoľte kde zastaví vlak po príjazde do stanice. "Blízky koniec" znamená že vlak zastaví najbližšie ku vstupnému bodu, "Stred" že zastaví v strede stanice a "daleký koniec" že zastaví čo najďalej od vstupného bodu.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začiatku
@@ -3405,11 +3405,11 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenov
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nove vlaky
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nové elektrické lokomotívy a vagóny
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové jednokoľajové vlaky
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nove magneticke vlaky
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nové magnetické vlaky
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Železnicne vozidlá
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nove automobily
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nove lode
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nové automobily
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nové lode
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Lietadlo
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Hmotnosť: {GOLD}{WEIGHT_SHORT}
