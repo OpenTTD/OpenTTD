@@ -531,7 +531,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Εναλλαγ�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Εναλλαγή χρωματισμού λερωμένων τετραγωνίδιων
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1ος
 STR_ORDINAL_NUMBER_1ST.date                                     :1η
 STR_ORDINAL_NUMBER_2ND                                          :2ος
@@ -562,38 +562,71 @@ STR_ORDINAL_NUMBER_14TH                                         :14ος
 STR_ORDINAL_NUMBER_14TH.date                                    :14η
 STR_ORDINAL_NUMBER_15TH                                         :15ος
 STR_ORDINAL_NUMBER_15TH.date                                    :15η
-STR_ORDINAL_NUMBER_16TH                                         :16ος
-STR_ORDINAL_NUMBER_16TH.date                                    :16η
-STR_ORDINAL_NUMBER_17TH                                         :17ος
-STR_ORDINAL_NUMBER_17TH.date                                    :17η
-STR_ORDINAL_NUMBER_18TH                                         :18ος
-STR_ORDINAL_NUMBER_18TH.date                                    :18η
-STR_ORDINAL_NUMBER_19TH                                         :19ος
-STR_ORDINAL_NUMBER_19TH.date                                    :19η
-STR_ORDINAL_NUMBER_20TH                                         :20ος
-STR_ORDINAL_NUMBER_20TH.date                                    :20η
-STR_ORDINAL_NUMBER_21ST                                         :21ος
-STR_ORDINAL_NUMBER_21ST.date                                    :21η
-STR_ORDINAL_NUMBER_22ND                                         :22ος
-STR_ORDINAL_NUMBER_22ND.date                                    :22η
-STR_ORDINAL_NUMBER_23RD                                         :23ος
-STR_ORDINAL_NUMBER_23RD.date                                    :23η
-STR_ORDINAL_NUMBER_24TH                                         :24ος
-STR_ORDINAL_NUMBER_24TH.date                                    :24η
-STR_ORDINAL_NUMBER_25TH                                         :25ος
-STR_ORDINAL_NUMBER_25TH.date                                    :25η
-STR_ORDINAL_NUMBER_26TH                                         :26ος
-STR_ORDINAL_NUMBER_26TH.date                                    :26η
-STR_ORDINAL_NUMBER_27TH                                         :27ος
-STR_ORDINAL_NUMBER_27TH.date                                    :27η
-STR_ORDINAL_NUMBER_28TH                                         :28ος
-STR_ORDINAL_NUMBER_28TH.date                                    :28η
-STR_ORDINAL_NUMBER_29TH                                         :29ος
-STR_ORDINAL_NUMBER_29TH.date                                    :29η
-STR_ORDINAL_NUMBER_30TH                                         :30ος
-STR_ORDINAL_NUMBER_30TH.date                                    :30η
-STR_ORDINAL_NUMBER_31ST                                         :31ος
-STR_ORDINAL_NUMBER_31ST.date                                    :31η
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1ος
+STR_DAY_NUMBER_1ST.date                                         :1η
+STR_DAY_NUMBER_2ND                                              :2ος
+STR_DAY_NUMBER_2ND.date                                         :2η
+STR_DAY_NUMBER_3RD                                              :3ος
+STR_DAY_NUMBER_3RD.date                                         :3η
+STR_DAY_NUMBER_4TH                                              :4ος
+STR_DAY_NUMBER_4TH.date                                         :4η
+STR_DAY_NUMBER_5TH                                              :5ος
+STR_DAY_NUMBER_5TH.date                                         :5η
+STR_DAY_NUMBER_6TH                                              :6ος
+STR_DAY_NUMBER_6TH.date                                         :6η
+STR_DAY_NUMBER_7TH                                              :7ος
+STR_DAY_NUMBER_7TH.date                                         :7η
+STR_DAY_NUMBER_8TH                                              :8ος
+STR_DAY_NUMBER_8TH.date                                         :8η
+STR_DAY_NUMBER_9TH                                              :9ος
+STR_DAY_NUMBER_9TH.date                                         :9η
+STR_DAY_NUMBER_10TH                                             :10ος
+STR_DAY_NUMBER_10TH.date                                        :10η
+STR_DAY_NUMBER_11TH                                             :11ος
+STR_DAY_NUMBER_11TH.date                                        :11η
+STR_DAY_NUMBER_12TH                                             :12ος
+STR_DAY_NUMBER_12TH.date                                        :12η
+STR_DAY_NUMBER_13TH                                             :13ος
+STR_DAY_NUMBER_13TH.date                                        :13η
+STR_DAY_NUMBER_14TH                                             :14ος
+STR_DAY_NUMBER_14TH.date                                        :14η
+STR_DAY_NUMBER_15TH                                             :15ος
+STR_DAY_NUMBER_15TH.date                                        :15η
+STR_DAY_NUMBER_16TH                                             :16ος
+STR_DAY_NUMBER_16TH.date                                        :16η
+STR_DAY_NUMBER_17TH                                             :17ος
+STR_DAY_NUMBER_17TH.date                                        :17η
+STR_DAY_NUMBER_18TH                                             :18ος
+STR_DAY_NUMBER_18TH.date                                        :18η
+STR_DAY_NUMBER_19TH                                             :19ος
+STR_DAY_NUMBER_19TH.date                                        :19η
+STR_DAY_NUMBER_20TH                                             :20ος
+STR_DAY_NUMBER_20TH.date                                        :20η
+STR_DAY_NUMBER_21ST                                             :21ος
+STR_DAY_NUMBER_21ST.date                                        :21η
+STR_DAY_NUMBER_22ND                                             :22ος
+STR_DAY_NUMBER_22ND.date                                        :22η
+STR_DAY_NUMBER_23RD                                             :23ος
+STR_DAY_NUMBER_23RD.date                                        :23η
+STR_DAY_NUMBER_24TH                                             :24ος
+STR_DAY_NUMBER_24TH.date                                        :24η
+STR_DAY_NUMBER_25TH                                             :25ος
+STR_DAY_NUMBER_25TH.date                                        :25η
+STR_DAY_NUMBER_26TH                                             :26ος
+STR_DAY_NUMBER_26TH.date                                        :26η
+STR_DAY_NUMBER_27TH                                             :27ος
+STR_DAY_NUMBER_27TH.date                                        :27η
+STR_DAY_NUMBER_28TH                                             :28ος
+STR_DAY_NUMBER_28TH.date                                        :28η
+STR_DAY_NUMBER_29TH                                             :29ος
+STR_DAY_NUMBER_29TH.date                                        :29η
+STR_DAY_NUMBER_30TH                                             :30ος
+STR_DAY_NUMBER_30TH.date                                        :30η
+STR_DAY_NUMBER_31ST                                             :31ος
+STR_DAY_NUMBER_31ST.date                                        :31η
 ############ range for days ends
 
 ############ range for months starts
@@ -1023,11 +1056,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Καταλαν�
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Αυτόματη αποθήκευση
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ανενεργό
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Κάθε μήνα
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Κάθε 3 μήνες
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Κάθε 6 μήνες
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Κάθε 12 μήνες
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσσα
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας του παιχνιδιού
@@ -2815,6 +2850,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Δεν �
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν βρέθηκε το ταυτοποιημένο αρχείο
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συμβατό με αυτήν την έκδοση του OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF

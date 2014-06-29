@@ -471,7 +471,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar caixas
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Alterna a colorização dos blocos sujos
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -487,22 +487,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12
 STR_ORDINAL_NUMBER_13TH                                         :13
 STR_ORDINAL_NUMBER_14TH                                         :14
 STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1º
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
+STR_DAY_NUMBER_15TH                                             :15
+STR_DAY_NUMBER_16TH                                             :16
+STR_DAY_NUMBER_17TH                                             :17
+STR_DAY_NUMBER_18TH                                             :18
+STR_DAY_NUMBER_19TH                                             :19
+STR_DAY_NUMBER_20TH                                             :20
+STR_DAY_NUMBER_21ST                                             :21
+STR_DAY_NUMBER_22ND                                             :22
+STR_DAY_NUMBER_23RD                                             :23
+STR_DAY_NUMBER_24TH                                             :24
+STR_DAY_NUMBER_25TH                                             :25
+STR_DAY_NUMBER_26TH                                             :26
+STR_DAY_NUMBER_27TH                                             :27
+STR_DAY_NUMBER_28TH                                             :28
+STR_DAY_NUMBER_29TH                                             :29
+STR_DAY_NUMBER_30TH                                             :30
+STR_DAY_NUMBER_31ST                                             :31
 ############ range for days ends
 
 ############ range for months starts
@@ -937,11 +955,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalão
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecionar o intervalo entre jogos salvos automaticos
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desativado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :A cada mês
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :A cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :A cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :A cada 12 meses
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecionar o idioma da interface do jogo
@@ -970,6 +990,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecion
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} arquivo{P "" s} corrompido{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de músicas base
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Falha ao obter a lista de resoluções suportadas
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de tela cheia falhou
 
 # Custom currency window
@@ -1270,7 +1291,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Dist máx da borda para Refinarias de Óleo: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias são construídas apenas nas bordas, ou no litoral, para ilhas
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude da linha de neve: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno (TerraGenesis apenas) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito Regular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Irregular
@@ -2795,6 +2816,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Arquivo co
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desativado
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatível com esta versão de OpenTTD
 
+# NewGRF save preset window
+
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
@@ -3819,7 +3842,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário
 STR_TIMETABLE_NO_TRAVEL                                         :Não viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viagem (automático; calendarizada pela próxima ordem manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não calendarizado)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viaje em até {2:VELOCITY} (sem plano de horário)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viagem a no máximo {2:VELOCITY} (sem plano de horário)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaje por {STRING} em até {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}

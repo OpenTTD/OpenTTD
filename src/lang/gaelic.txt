@@ -658,7 +658,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglaich bogsai
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toglaich dathadh nam blocaichean salach
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1ad
 STR_ORDINAL_NUMBER_2ND                                          :2na
 STR_ORDINAL_NUMBER_3RD                                          :3a
@@ -674,22 +674,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12na
 STR_ORDINAL_NUMBER_13TH                                         :13s
 STR_ORDINAL_NUMBER_14TH                                         :14mh
 STR_ORDINAL_NUMBER_15TH                                         :15mh
-STR_ORDINAL_NUMBER_16TH                                         :16mh
-STR_ORDINAL_NUMBER_17TH                                         :17mh
-STR_ORDINAL_NUMBER_18TH                                         :18mh
-STR_ORDINAL_NUMBER_19TH                                         :19mh
-STR_ORDINAL_NUMBER_20TH                                         :20mh
-STR_ORDINAL_NUMBER_21ST                                         :21ad
-STR_ORDINAL_NUMBER_22ND                                         :22na
-STR_ORDINAL_NUMBER_23RD                                         :23s
-STR_ORDINAL_NUMBER_24TH                                         :24mh
-STR_ORDINAL_NUMBER_25TH                                         :25mh
-STR_ORDINAL_NUMBER_26TH                                         :26mh
-STR_ORDINAL_NUMBER_27TH                                         :27mh
-STR_ORDINAL_NUMBER_28TH                                         :28mh
-STR_ORDINAL_NUMBER_29TH                                         :29mh
-STR_ORDINAL_NUMBER_30TH                                         :30mh
-STR_ORDINAL_NUMBER_31ST                                         :31mh
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1ad
+STR_DAY_NUMBER_2ND                                              :2na
+STR_DAY_NUMBER_3RD                                              :3a
+STR_DAY_NUMBER_4TH                                              :4mh
+STR_DAY_NUMBER_5TH                                              :5mh
+STR_DAY_NUMBER_6TH                                              :6mh
+STR_DAY_NUMBER_7TH                                              :7mh
+STR_DAY_NUMBER_8TH                                              :8mh
+STR_DAY_NUMBER_9TH                                              :9mh
+STR_DAY_NUMBER_10TH                                             :10mh
+STR_DAY_NUMBER_11TH                                             :11ad
+STR_DAY_NUMBER_12TH                                             :12na
+STR_DAY_NUMBER_13TH                                             :13s
+STR_DAY_NUMBER_14TH                                             :14mh
+STR_DAY_NUMBER_15TH                                             :15mh
+STR_DAY_NUMBER_16TH                                             :16mh
+STR_DAY_NUMBER_17TH                                             :17mh
+STR_DAY_NUMBER_18TH                                             :18mh
+STR_DAY_NUMBER_19TH                                             :19mh
+STR_DAY_NUMBER_20TH                                             :20mh
+STR_DAY_NUMBER_21ST                                             :21ad
+STR_DAY_NUMBER_22ND                                             :22na
+STR_DAY_NUMBER_23RD                                             :23s
+STR_DAY_NUMBER_24TH                                             :24mh
+STR_DAY_NUMBER_25TH                                             :25mh
+STR_DAY_NUMBER_26TH                                             :26mh
+STR_DAY_NUMBER_27TH                                             :27mh
+STR_DAY_NUMBER_28TH                                             :28mh
+STR_DAY_NUMBER_29TH                                             :29mh
+STR_DAY_NUMBER_30TH                                             :30mh
+STR_DAY_NUMBER_31ST                                             :31mh
 ############ range for days ends
 
 ############ range for months starts
@@ -1138,11 +1156,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanach
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Dheth
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Gach mìos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Gach 3s mìos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Gach 6mh mìos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Gach bliadhna
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Cànan
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Tagh cànan an eadar-aghaidh a chleachdas tu
@@ -1272,7 +1292,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Roghainnean na 
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Roinn-seòrsa:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Seòrsa:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach roghainnean air an atharrachadh
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal le criathradh ro-shocraichte
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Roghainnean bunasach
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Roghainnean adhartach
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Roghainnean an eòlaiche / na h-uile roghainn
@@ -1471,7 +1491,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Astar as motha eadar an oir is fìneadairean-ola: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Cha tèid fìneadairean-ola a thogail ach faisg air crìochan a' mhapa, seo an oirthir le mapaichean eilein
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Àirde an loidhne sneachda: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garbhachd a' chrutha-tìre (TerraGenesis a-mhàin): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garbhachd a' chrutha-tìre: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Glè rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garbh
@@ -3022,6 +3042,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Chan eil
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Cha deach faidhle a dh’freagras a lorg
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}À comas
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Neo-chòrdail ris an tionndadh seo dhe OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Atharraich paramadairean NewGRF

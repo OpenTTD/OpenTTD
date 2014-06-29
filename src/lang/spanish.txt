@@ -471,7 +471,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas d
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activar/Desactivar coloreado de bloques modificados
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1º
 STR_ORDINAL_NUMBER_2ND                                          :2º
 STR_ORDINAL_NUMBER_3RD                                          :3º
@@ -487,22 +487,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12º
 STR_ORDINAL_NUMBER_13TH                                         :13º
 STR_ORDINAL_NUMBER_14TH                                         :14º
 STR_ORDINAL_NUMBER_15TH                                         :15º
-STR_ORDINAL_NUMBER_16TH                                         :16º
-STR_ORDINAL_NUMBER_17TH                                         :17º
-STR_ORDINAL_NUMBER_18TH                                         :18º
-STR_ORDINAL_NUMBER_19TH                                         :19º
-STR_ORDINAL_NUMBER_20TH                                         :20º
-STR_ORDINAL_NUMBER_21ST                                         :21º
-STR_ORDINAL_NUMBER_22ND                                         :22º
-STR_ORDINAL_NUMBER_23RD                                         :23º
-STR_ORDINAL_NUMBER_24TH                                         :24º
-STR_ORDINAL_NUMBER_25TH                                         :25º
-STR_ORDINAL_NUMBER_26TH                                         :26º
-STR_ORDINAL_NUMBER_27TH                                         :27º
-STR_ORDINAL_NUMBER_28TH                                         :28º
-STR_ORDINAL_NUMBER_29TH                                         :29º
-STR_ORDINAL_NUMBER_30TH                                         :30º
-STR_ORDINAL_NUMBER_31ST                                         :31º
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1º
+STR_DAY_NUMBER_2ND                                              :2º
+STR_DAY_NUMBER_3RD                                              :3º
+STR_DAY_NUMBER_4TH                                              :4º
+STR_DAY_NUMBER_5TH                                              :5º
+STR_DAY_NUMBER_6TH                                              :6º
+STR_DAY_NUMBER_7TH                                              :7º
+STR_DAY_NUMBER_8TH                                              :8º
+STR_DAY_NUMBER_9TH                                              :9º
+STR_DAY_NUMBER_10TH                                             :10º
+STR_DAY_NUMBER_11TH                                             :11º
+STR_DAY_NUMBER_12TH                                             :12º
+STR_DAY_NUMBER_13TH                                             :13º
+STR_DAY_NUMBER_14TH                                             :14º
+STR_DAY_NUMBER_15TH                                             :15º
+STR_DAY_NUMBER_16TH                                             :16º
+STR_DAY_NUMBER_17TH                                             :17º
+STR_DAY_NUMBER_18TH                                             :18º
+STR_DAY_NUMBER_19TH                                             :19º
+STR_DAY_NUMBER_20TH                                             :20º
+STR_DAY_NUMBER_21ST                                             :21º
+STR_DAY_NUMBER_22ND                                             :22º
+STR_DAY_NUMBER_23RD                                             :23º
+STR_DAY_NUMBER_24TH                                             :24º
+STR_DAY_NUMBER_25TH                                             :25º
+STR_DAY_NUMBER_26TH                                             :26º
+STR_DAY_NUMBER_27TH                                             :27º
+STR_DAY_NUMBER_28TH                                             :28º
+STR_DAY_NUMBER_29TH                                             :29º
+STR_DAY_NUMBER_30TH                                             :30º
+STR_DAY_NUMBER_31ST                                             :31º
 ############ range for days ends
 
 ############ range for months starts
@@ -937,11 +955,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalán
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre guardados automáticos del juego
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desactivado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleccione el idioma a emplear para la interfaz del juego
@@ -1131,7 +1151,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir 
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir la construcción en cuestas y orillas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si se habilita, las vías y estaciones pueden construirse sobre pendiente. Si se deshabilita, las vías solamente pueden construirse sobre pendientes que sigan la misma dirección
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo carreteras, raíles, etc.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo edificios, raíles, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir modificar el terreno debajo de edificios y raíles sin eliminarlos
 STR_CONFIG_SETTING_CATCHMENT                                    :Tamaño del área de captación realista: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite tener diferentes áreas de captación para distintos tipos de estaciones y aeropuertos
@@ -1270,7 +1290,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías de petróleo solamente se construyen cerca del borde del mapa, el cual es costa para los mapas con borde de océano
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura línea nieve: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Aspereza del terreno (Sólo TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosidad del terreno: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Áspero
@@ -1305,7 +1325,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla la forma en la que la vista principal se mueve a una posición específica como resultado de hacer click en el mapa o al enviar la orden de moverse a un objeto determinado del mapa. Si se activa, la vista se mueve de forma suave. Si se desactiva, la vista se mueve directamente al destino
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas usando las herramientas de construcción: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Muestra distancias en número de casillas y las diferencias de altura al arrastrar durante operaciones de construcción
-STR_CONFIG_SETTING_LIVERIES                                     :Ver estaciones de la empresa: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Ver tipos específicos para cada vehículo: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla el uso de esquemas de color específicos para vehículos (en oposición a los específicos para compañías)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propia empresa
@@ -1584,7 +1604,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribu
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribución para la clase de carga BLINDADA: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La clase de carga BLINDADA contiene los objetos de valor del clima templado, los diamantes del clima subtropical o el oro del clima subártico. Los NewGRFs pueden modificar las cargas BLINDADAS presentes en una partida. En una distribución simétrica, se envía la misma cantidad de carga de la estación A a la B que de B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de carga en ambas direcciones. Manual significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribución a asimétrica o manual al jugar en subártico o subtropical. En el clima templado es posible escoger simétrica ya que los bancos pueden enviar de vuelta objetos de valor
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otras clases de carga: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :La clase de carga BLINDADA contiene los objetos de valor del clima templado, los diamantes del clima subtropical o el oro del clima subártico. Los NewGRFs pueden modificar las cargas BLINDADAS presentes en una partida. En una distribución simétrica, se envía la misma cantidad de carga de la estación A a la B que de B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de carga en ambas direcciones. Manual significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribución a asimétrica o manual al jugar en subártico o subtropical. En el clima templado es posible escoger simétrica ya que los bancos pueden enviar de vuelta objetos de valor
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrico" significa que se pueden mover cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no habrá distribución automática para estos tipos de carga.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de la distribución: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Este valor determina el tiempo de CPU empleado en calcular el grafo de distribución. Si es demasiado elevado puede producir ralentización en el juego. Si es demasiado bajo la distribución puede ser poco precisa, causando que ocasionalmente se produzcan errores en los lugares a los que va la carga
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
@@ -2795,6 +2815,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichero no
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible con esta versión de OpenTTD
 
+# NewGRF save preset window
+
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambiar parámetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cerrar
@@ -3819,7 +3841,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarios
 STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado por la próxima orden manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar a como máximo {2:VELOCITY} (sin horarios)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (sin horarios) a como máximo {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar a {STRING} con un límite de velocidad de {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}

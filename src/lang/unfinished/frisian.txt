@@ -470,7 +470,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Skeakel seleksj
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Kleurjen smoarge tegels oan/út
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1st
 STR_ORDINAL_NUMBER_2ND                                          :2e
 STR_ORDINAL_NUMBER_3RD                                          :3e
@@ -486,22 +486,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12e
 STR_ORDINAL_NUMBER_13TH                                         :13e
 STR_ORDINAL_NUMBER_14TH                                         :14e
 STR_ORDINAL_NUMBER_15TH                                         :15e
-STR_ORDINAL_NUMBER_16TH                                         :16e
-STR_ORDINAL_NUMBER_17TH                                         :17e
-STR_ORDINAL_NUMBER_18TH                                         :18e
-STR_ORDINAL_NUMBER_19TH                                         :19e
-STR_ORDINAL_NUMBER_20TH                                         :20e
-STR_ORDINAL_NUMBER_21ST                                         :21e
-STR_ORDINAL_NUMBER_22ND                                         :22e
-STR_ORDINAL_NUMBER_23RD                                         :23e
-STR_ORDINAL_NUMBER_24TH                                         :24e
-STR_ORDINAL_NUMBER_25TH                                         :25e
-STR_ORDINAL_NUMBER_26TH                                         :26e
-STR_ORDINAL_NUMBER_27TH                                         :27e
-STR_ORDINAL_NUMBER_28TH                                         :28e
-STR_ORDINAL_NUMBER_29TH                                         :29e
-STR_ORDINAL_NUMBER_30TH                                         :30e
-STR_ORDINAL_NUMBER_31ST                                         :31e
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1st
+STR_DAY_NUMBER_2ND                                              :2e
+STR_DAY_NUMBER_3RD                                              :3e
+STR_DAY_NUMBER_4TH                                              :4e
+STR_DAY_NUMBER_5TH                                              :5e
+STR_DAY_NUMBER_6TH                                              :6e
+STR_DAY_NUMBER_7TH                                              :7e
+STR_DAY_NUMBER_8TH                                              :8e
+STR_DAY_NUMBER_9TH                                              :9e
+STR_DAY_NUMBER_10TH                                             :10e
+STR_DAY_NUMBER_11TH                                             :11e
+STR_DAY_NUMBER_12TH                                             :12e
+STR_DAY_NUMBER_13TH                                             :13e
+STR_DAY_NUMBER_14TH                                             :14e
+STR_DAY_NUMBER_15TH                                             :15e
+STR_DAY_NUMBER_16TH                                             :16e
+STR_DAY_NUMBER_17TH                                             :17e
+STR_DAY_NUMBER_18TH                                             :18e
+STR_DAY_NUMBER_19TH                                             :19e
+STR_DAY_NUMBER_20TH                                             :20e
+STR_DAY_NUMBER_21ST                                             :21e
+STR_DAY_NUMBER_22ND                                             :22e
+STR_DAY_NUMBER_23RD                                             :23e
+STR_DAY_NUMBER_24TH                                             :24e
+STR_DAY_NUMBER_25TH                                             :25e
+STR_DAY_NUMBER_26TH                                             :26e
+STR_DAY_NUMBER_27TH                                             :27e
+STR_DAY_NUMBER_28TH                                             :28e
+STR_DAY_NUMBER_29TH                                             :29e
+STR_DAY_NUMBER_30TH                                             :30e
+STR_DAY_NUMBER_31ST                                             :31e
 ############ range for days ends
 
 ############ range for months starts
@@ -936,11 +954,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalaansk
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatysk opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selektearje de interval foar automatysk opslaan
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Eltse moanne
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Eltse 3 moannen
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Eltse 6 moannen
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Eltse 12 moannen
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selektearje de interfacetaal
@@ -2377,6 +2397,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}gjin ynf
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Keppelt bestând koe net fûn wurde
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Útskeakele
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Dat strykt net mei dizze ferzje fan OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Feroarje NewGRF-parameters

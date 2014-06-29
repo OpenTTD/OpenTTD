@@ -470,7 +470,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切换边界框
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :切换脏方块的颜色
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1号
 STR_ORDINAL_NUMBER_2ND                                          :2号
 STR_ORDINAL_NUMBER_3RD                                          :3号
@@ -486,22 +486,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12号
 STR_ORDINAL_NUMBER_13TH                                         :13号
 STR_ORDINAL_NUMBER_14TH                                         :14号
 STR_ORDINAL_NUMBER_15TH                                         :15号
-STR_ORDINAL_NUMBER_16TH                                         :16号
-STR_ORDINAL_NUMBER_17TH                                         :17号
-STR_ORDINAL_NUMBER_18TH                                         :18号
-STR_ORDINAL_NUMBER_19TH                                         :19号
-STR_ORDINAL_NUMBER_20TH                                         :20号
-STR_ORDINAL_NUMBER_21ST                                         :21号
-STR_ORDINAL_NUMBER_22ND                                         :22号
-STR_ORDINAL_NUMBER_23RD                                         :23号
-STR_ORDINAL_NUMBER_24TH                                         :24号
-STR_ORDINAL_NUMBER_25TH                                         :25号
-STR_ORDINAL_NUMBER_26TH                                         :26号
-STR_ORDINAL_NUMBER_27TH                                         :27号
-STR_ORDINAL_NUMBER_28TH                                         :28号
-STR_ORDINAL_NUMBER_29TH                                         :29号
-STR_ORDINAL_NUMBER_30TH                                         :30号
-STR_ORDINAL_NUMBER_31ST                                         :31号
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1号
+STR_DAY_NUMBER_2ND                                              :2号
+STR_DAY_NUMBER_3RD                                              :3号
+STR_DAY_NUMBER_4TH                                              :4号
+STR_DAY_NUMBER_5TH                                              :5号
+STR_DAY_NUMBER_6TH                                              :6号
+STR_DAY_NUMBER_7TH                                              :7号
+STR_DAY_NUMBER_8TH                                              :8号
+STR_DAY_NUMBER_9TH                                              :9号
+STR_DAY_NUMBER_10TH                                             :10号
+STR_DAY_NUMBER_11TH                                             :11号
+STR_DAY_NUMBER_12TH                                             :12号
+STR_DAY_NUMBER_13TH                                             :13号
+STR_DAY_NUMBER_14TH                                             :14号
+STR_DAY_NUMBER_15TH                                             :15号
+STR_DAY_NUMBER_16TH                                             :16号
+STR_DAY_NUMBER_17TH                                             :17号
+STR_DAY_NUMBER_18TH                                             :18号
+STR_DAY_NUMBER_19TH                                             :19号
+STR_DAY_NUMBER_20TH                                             :20号
+STR_DAY_NUMBER_21ST                                             :21号
+STR_DAY_NUMBER_22ND                                             :22号
+STR_DAY_NUMBER_23RD                                             :23号
+STR_DAY_NUMBER_24TH                                             :24号
+STR_DAY_NUMBER_25TH                                             :25号
+STR_DAY_NUMBER_26TH                                             :26号
+STR_DAY_NUMBER_27TH                                             :27号
+STR_DAY_NUMBER_28TH                                             :28号
+STR_DAY_NUMBER_29TH                                             :29号
+STR_DAY_NUMBER_30TH                                             :30号
+STR_DAY_NUMBER_31ST                                             :31号
 ############ range for days ends
 
 ############ range for months starts
@@ -936,11 +954,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :加泰罗尼亚
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}选择自动保存的周期
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :关闭
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :每月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :每 3 个月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :每 6 个月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :每 12 个月
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}语言
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}选择界面语言
@@ -1269,7 +1289,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :新算法
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :炼油厂距地图边缘的最大距离：{STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :炼油厂只能在地图边缘建设或者海岛海岸。
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限 TerraGenesis)：{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限生成地图时):{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
@@ -2793,6 +2813,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}没有�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找到对应的文件
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}与此版本OpenTTD不兼容
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数

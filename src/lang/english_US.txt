@@ -470,7 +470,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toggle bounding
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toggle coloring of dirty blocks
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1st
 STR_ORDINAL_NUMBER_2ND                                          :2nd
 STR_ORDINAL_NUMBER_3RD                                          :3rd
@@ -486,22 +486,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12th
 STR_ORDINAL_NUMBER_13TH                                         :13th
 STR_ORDINAL_NUMBER_14TH                                         :14th
 STR_ORDINAL_NUMBER_15TH                                         :15th
-STR_ORDINAL_NUMBER_16TH                                         :16th
-STR_ORDINAL_NUMBER_17TH                                         :17th
-STR_ORDINAL_NUMBER_18TH                                         :18th
-STR_ORDINAL_NUMBER_19TH                                         :19th
-STR_ORDINAL_NUMBER_20TH                                         :20th
-STR_ORDINAL_NUMBER_21ST                                         :21st
-STR_ORDINAL_NUMBER_22ND                                         :22nd
-STR_ORDINAL_NUMBER_23RD                                         :23rd
-STR_ORDINAL_NUMBER_24TH                                         :24th
-STR_ORDINAL_NUMBER_25TH                                         :25th
-STR_ORDINAL_NUMBER_26TH                                         :26th
-STR_ORDINAL_NUMBER_27TH                                         :27th
-STR_ORDINAL_NUMBER_28TH                                         :28th
-STR_ORDINAL_NUMBER_29TH                                         :29th
-STR_ORDINAL_NUMBER_30TH                                         :30th
-STR_ORDINAL_NUMBER_31ST                                         :31st
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1st
+STR_DAY_NUMBER_2ND                                              :2nd
+STR_DAY_NUMBER_3RD                                              :3rd
+STR_DAY_NUMBER_4TH                                              :4th
+STR_DAY_NUMBER_5TH                                              :5th
+STR_DAY_NUMBER_6TH                                              :6th
+STR_DAY_NUMBER_7TH                                              :7th
+STR_DAY_NUMBER_8TH                                              :8th
+STR_DAY_NUMBER_9TH                                              :9th
+STR_DAY_NUMBER_10TH                                             :10th
+STR_DAY_NUMBER_11TH                                             :11th
+STR_DAY_NUMBER_12TH                                             :12th
+STR_DAY_NUMBER_13TH                                             :13th
+STR_DAY_NUMBER_14TH                                             :14th
+STR_DAY_NUMBER_15TH                                             :15th
+STR_DAY_NUMBER_16TH                                             :16th
+STR_DAY_NUMBER_17TH                                             :17th
+STR_DAY_NUMBER_18TH                                             :18th
+STR_DAY_NUMBER_19TH                                             :19th
+STR_DAY_NUMBER_20TH                                             :20th
+STR_DAY_NUMBER_21ST                                             :21st
+STR_DAY_NUMBER_22ND                                             :22nd
+STR_DAY_NUMBER_23RD                                             :23rd
+STR_DAY_NUMBER_24TH                                             :24th
+STR_DAY_NUMBER_25TH                                             :25th
+STR_DAY_NUMBER_26TH                                             :26th
+STR_DAY_NUMBER_27TH                                             :27th
+STR_DAY_NUMBER_28TH                                             :28th
+STR_DAY_NUMBER_29TH                                             :29th
+STR_DAY_NUMBER_30TH                                             :30th
+STR_DAY_NUMBER_31ST                                             :31st
 ############ range for days ends
 
 ############ range for months starts
@@ -936,11 +954,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Off
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Every month
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Every 3 months
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Every 6 months
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Every 12 months
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Language
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Select the interface language to use
@@ -969,6 +989,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Select t
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} corrupted file{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Additional information about the base music set
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Failed to retrieve a list of supported resolutions
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullscreen mode failed
 
 # Custom currency window
@@ -1183,7 +1204,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :On the right
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Show finances window at the end of the year: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :If enabled, the finances window pops up at the end of each year to allow easy inspection of the financial status of the company
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :New orders are 'non-stop' by default: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normally, a vehicle will stop at every station it passes. By enabling this setting, it will drive through all station on the way to its final destination without stopping. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behavior nevertheless
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normally, a vehicle will stop at every station it passes. By enabling this setting, it will drive through all stations on the way to its final destination without stopping. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behavior nevertheless
 STR_CONFIG_SETTING_STOP_LOCATION                                :New train orders stop by default at the {STRING} of the platform
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Place where a train will stop at the platform by default. The 'near end' means close to the entry point, 'middle' means in the middle of the platform, and 'far end' means far away from the entry point. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behavior nevertheless
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :near end
@@ -1269,7 +1290,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil refineries: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oil refineries are only constructed near the map border, that is at the coast for island maps
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain (TerraGenesis only) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
@@ -2793,6 +2814,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No infor
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matching file not found
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabled
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible with this version of OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Change NewGRF parameters

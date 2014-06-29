@@ -471,7 +471,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :더러운 블록 색상 전환
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -487,22 +487,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12
 STR_ORDINAL_NUMBER_13TH                                         :13
 STR_ORDINAL_NUMBER_14TH                                         :14
 STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
+STR_DAY_NUMBER_15TH                                             :15
+STR_DAY_NUMBER_16TH                                             :16
+STR_DAY_NUMBER_17TH                                             :17
+STR_DAY_NUMBER_18TH                                             :18
+STR_DAY_NUMBER_19TH                                             :19
+STR_DAY_NUMBER_20TH                                             :20
+STR_DAY_NUMBER_21ST                                             :21
+STR_DAY_NUMBER_22ND                                             :22
+STR_DAY_NUMBER_23RD                                             :23
+STR_DAY_NUMBER_24TH                                             :24
+STR_DAY_NUMBER_25TH                                             :25
+STR_DAY_NUMBER_26TH                                             :26
+STR_DAY_NUMBER_27TH                                             :27
+STR_DAY_NUMBER_28TH                                             :28
+STR_DAY_NUMBER_29TH                                             :29
+STR_DAY_NUMBER_30TH                                             :30
+STR_DAY_NUMBER_31ST                                             :31
 ############ range for days ends
 
 ############ range for months starts
@@ -937,11 +955,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :카탈로니아
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안함
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}언어
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용하실 언어를 선택하세요.
@@ -970,6 +990,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용�
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일이 손상되었습니다.
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}지원되는 해상도 목록을 불러오는데 실패하였습니다.
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패
 
 # Custom currency window
@@ -1270,7 +1291,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :정유 공장의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장은 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :설선 고도: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도 ('천지창조' 전용): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
@@ -1582,7 +1603,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"균형"은 A�
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :우편에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"균형"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "불균형"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :장갑 화물에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :장갑 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 냉대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "균형"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 냉대 기후에서는 균형으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 불균형이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 균형을 선택해도 됩니다.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :장갑 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "균형"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대 기후에서는 균형으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 불균형이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 균형을 선택해도 됩니다.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "불균형"이나 "수동"으로 설정하십시오.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :분배 정확도: {STRING}
@@ -1713,7 +1734,7 @@ STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}사용�
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}멀티 플레이 게임을 시작합니다
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}온대 기후 선택
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}냉대 기후 선택
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}아한대 기후 선택
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열대 기후 선택
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
 
@@ -1759,10 +1780,10 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 건물 제거): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차 허용: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형 항공기가 소형 공항에서 (자주) 충돌하지 않게 함: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :냉대 기후
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감 나라
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후 지형
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :아한대 지형
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후 지형
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감나라 지형
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재의 연도를 변경
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}1차 산업시설 생산량 조절 허용: {ORANGE}{STRING}
@@ -2795,6 +2816,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}일치하�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용 안 함
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTTD 버전과 맞지 않습니다...
 
+# NewGRF save preset window
+
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 매개 변숫값 변경
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
@@ -3074,9 +3097,9 @@ STR_STATION_VIEW_WAITING_STATION                                :역: 대기
 STR_STATION_VIEW_WAITING_AMOUNT                                 :양: 대기
 STR_STATION_VIEW_PLANNED_STATION                                :역: 계획
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :양: 계획
-STR_STATION_VIEW_FROM                                           :{YELLOW}{1:STATION} 출발 {0:CARGO_SHORT}
-STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION} 경유 {0:CARGO_SHORT}
-STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION} 도착 {0:CARGO_SHORT}
+STR_STATION_VIEW_FROM                                           :{YELLOW}{1:STATION} 출발: {0:CARGO_SHORT}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION} 경유: {0:CARGO_SHORT}
+STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION} 도착: {0:CARGO_SHORT}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}알 수 없는 역에서 출발한 {CARGO_SHORT}
 STR_STATION_VIEW_TO_ANY                                         :{RED}아무 역에나 도착하는 {CARGO_SHORT}
 STR_STATION_VIEW_VIA_ANY                                        :{RED}어디든 경유하는 {CARGO_SHORT}
@@ -3377,7 +3400,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :차량기지 �
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}차량 {NUM}대{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하십시오. 두 기능을 해당 차량 뒤에 딸려오는 차량에 적용하고 싶다면 CTRL 키를 누르고 계십시오.
@@ -3668,7 +3691,7 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 �
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}통과 설정
-STR_ORDER_GO_TO                                                 :완행
+STR_ORDER_GO_TO                                                 :행선지 지정
 STR_ORDER_GO_NON_STOP_TO                                        :직행
 STR_ORDER_GO_VIA                                                :완행 경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유

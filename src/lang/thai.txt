@@ -470,7 +470,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :เปิด/�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :เปิด/เปิด สีของ dirty blocks
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :วันที่ 1
 STR_ORDINAL_NUMBER_2ND                                          :วันที่ 2
 STR_ORDINAL_NUMBER_3RD                                          :วันที่ 3
@@ -486,22 +486,40 @@ STR_ORDINAL_NUMBER_12TH                                         :วันที
 STR_ORDINAL_NUMBER_13TH                                         :วันที่ 13
 STR_ORDINAL_NUMBER_14TH                                         :วันที่ 14
 STR_ORDINAL_NUMBER_15TH                                         :วันที่ 15
-STR_ORDINAL_NUMBER_16TH                                         :วันที่ 16
-STR_ORDINAL_NUMBER_17TH                                         :วันที่ 17
-STR_ORDINAL_NUMBER_18TH                                         :วันที่ 18
-STR_ORDINAL_NUMBER_19TH                                         :วันที่ 19
-STR_ORDINAL_NUMBER_20TH                                         :วันที่ 20
-STR_ORDINAL_NUMBER_21ST                                         :วันที่ 21
-STR_ORDINAL_NUMBER_22ND                                         :วันที่ 22
-STR_ORDINAL_NUMBER_23RD                                         :วันที่ 23
-STR_ORDINAL_NUMBER_24TH                                         :วันที่ 24
-STR_ORDINAL_NUMBER_25TH                                         :วันที่ 25
-STR_ORDINAL_NUMBER_26TH                                         :วันที่ 26
-STR_ORDINAL_NUMBER_27TH                                         :วันที่ 27
-STR_ORDINAL_NUMBER_28TH                                         :วันที่ 28
-STR_ORDINAL_NUMBER_29TH                                         :วันที่ 29
-STR_ORDINAL_NUMBER_30TH                                         :วันที่ 30
-STR_ORDINAL_NUMBER_31ST                                         :วันที่ 31
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :วันที่ 1
+STR_DAY_NUMBER_2ND                                              :วันที่ 2
+STR_DAY_NUMBER_3RD                                              :วันที่ 3
+STR_DAY_NUMBER_4TH                                              :วันที่ 4
+STR_DAY_NUMBER_5TH                                              :วันที่ 5
+STR_DAY_NUMBER_6TH                                              :วันที่ 6
+STR_DAY_NUMBER_7TH                                              :วันที่ 7
+STR_DAY_NUMBER_8TH                                              :วันที่ 8
+STR_DAY_NUMBER_9TH                                              :วันที่ 9
+STR_DAY_NUMBER_10TH                                             :วันที่ 10
+STR_DAY_NUMBER_11TH                                             :วันที่ 11
+STR_DAY_NUMBER_12TH                                             :วันที่ 12
+STR_DAY_NUMBER_13TH                                             :วันที่ 13
+STR_DAY_NUMBER_14TH                                             :วันที่ 14
+STR_DAY_NUMBER_15TH                                             :วันที่ 15
+STR_DAY_NUMBER_16TH                                             :วันที่ 16
+STR_DAY_NUMBER_17TH                                             :วันที่ 17
+STR_DAY_NUMBER_18TH                                             :วันที่ 18
+STR_DAY_NUMBER_19TH                                             :วันที่ 19
+STR_DAY_NUMBER_20TH                                             :วันที่ 20
+STR_DAY_NUMBER_21ST                                             :วันที่ 21
+STR_DAY_NUMBER_22ND                                             :วันที่ 22
+STR_DAY_NUMBER_23RD                                             :วันที่ 23
+STR_DAY_NUMBER_24TH                                             :วันที่ 24
+STR_DAY_NUMBER_25TH                                             :วันที่ 25
+STR_DAY_NUMBER_26TH                                             :วันที่ 26
+STR_DAY_NUMBER_27TH                                             :วันที่ 27
+STR_DAY_NUMBER_28TH                                             :วันที่ 28
+STR_DAY_NUMBER_29TH                                             :วันที่ 29
+STR_DAY_NUMBER_30TH                                             :วันที่ 30
+STR_DAY_NUMBER_31ST                                             :วันที่ 31
 ############ range for days ends
 
 ############ range for months starts
@@ -936,11 +954,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :คาตาล
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}เลือกระยะห่างระหว่างการบันทึกเกมอัตโนมัติแต่ละครั้ง
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :ปิด
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :ทุกๆเดือน
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :ทุก 3 เดือน
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :ทุก 6 เดือน
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :ทุก 12 เดือน
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}ภาษา
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}เลือกภาษาที่จะใช้
@@ -2785,6 +2805,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}ไม�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}หาไฟล์ที่เข้ากันได้ไม่พบ
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}ไม่ใช้งาน
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}ไม่รองรับกับ OpenTTD เวอร์ชั่นนี้
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}เปลี่ยนแปลง NewGRF parameters

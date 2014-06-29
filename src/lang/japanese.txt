@@ -470,7 +470,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :バウンディ
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :ダーティーブロックの色付け切替
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -486,22 +486,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12
 STR_ORDINAL_NUMBER_13TH                                         :13
 STR_ORDINAL_NUMBER_14TH                                         :14
 STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
+STR_DAY_NUMBER_15TH                                             :15
+STR_DAY_NUMBER_16TH                                             :16
+STR_DAY_NUMBER_17TH                                             :17
+STR_DAY_NUMBER_18TH                                             :18
+STR_DAY_NUMBER_19TH                                             :19
+STR_DAY_NUMBER_20TH                                             :20
+STR_DAY_NUMBER_21ST                                             :21
+STR_DAY_NUMBER_22ND                                             :22
+STR_DAY_NUMBER_23RD                                             :23
+STR_DAY_NUMBER_24TH                                             :24
+STR_DAY_NUMBER_25TH                                             :25
+STR_DAY_NUMBER_26TH                                             :26
+STR_DAY_NUMBER_27TH                                             :27
+STR_DAY_NUMBER_28TH                                             :28
+STR_DAY_NUMBER_29TH                                             :29
+STR_DAY_NUMBER_30TH                                             :30
+STR_DAY_NUMBER_31ST                                             :31
 ############ range for days ends
 
 ############ range for months starts
@@ -933,14 +951,16 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :イタリア
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :カタラン
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動保存
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}オートセーブ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}自動保存の間隔を選択します
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :しない
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :毎月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3ヶ月毎
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6ヶ月毎
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12ヶ月毎
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}言語
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}ゲームの言語を選択します
@@ -969,6 +989,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用�
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}個の破損ファイルがあります
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}基本音楽セットについての追加情報
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}サポートされている解像度リストの回復に失敗しました
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードでの実行に失敗しました
 
 # Custom currency window
@@ -1269,7 +1290,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油精製所のマップ端からの距離: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :石油精製所はマップの外周付近にのみ建設されます。つまり、外周が海のマップでは海岸沿いに建設されるということです
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線の位置: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形の起伏(TerraGenesis のみ): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形の起伏: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :特になだらか
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :なだらか
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :起伏
@@ -2793,6 +2814,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}情報�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致するファイルが見つかりません
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}このバージョンのOpenTTDでは使用できません
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更

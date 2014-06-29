@@ -484,7 +484,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :הדלק/כבה
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :הפעל/כבה צביעת בלוקים לא מעודכנים
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -500,22 +500,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12
 STR_ORDINAL_NUMBER_13TH                                         :13
 STR_ORDINAL_NUMBER_14TH                                         :14
 STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
+STR_DAY_NUMBER_15TH                                             :15
+STR_DAY_NUMBER_16TH                                             :16
+STR_DAY_NUMBER_17TH                                             :17
+STR_DAY_NUMBER_18TH                                             :18
+STR_DAY_NUMBER_19TH                                             :19
+STR_DAY_NUMBER_20TH                                             :20
+STR_DAY_NUMBER_21ST                                             :21
+STR_DAY_NUMBER_22ND                                             :22
+STR_DAY_NUMBER_23RD                                             :23
+STR_DAY_NUMBER_24TH                                             :24
+STR_DAY_NUMBER_25TH                                             :25
+STR_DAY_NUMBER_26TH                                             :26
+STR_DAY_NUMBER_27TH                                             :27
+STR_DAY_NUMBER_28TH                                             :28
+STR_DAY_NUMBER_29TH                                             :29
+STR_DAY_NUMBER_30TH                                             :30
+STR_DAY_NUMBER_31ST                                             :31
 ############ range for days ends
 
 ############ range for months starts
@@ -950,11 +968,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :רומאית
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמירה אוטומטית
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :כבוי
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :מידי חודש
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :כל 3 חודשים
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :כל 6 חודשים
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :כל 12 חודשים
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}שפה
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}בחר את שפת הממשק
@@ -1084,7 +1104,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :הגדרת חב
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}קטגוריה:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}סוג:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}מגביל את הרשימה להלן כך שתציג רק הגדרות שהשתנו
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}מגביל את הרשימה להלן תוך שימוש בסינון שהוגדר מראש.
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :הגדרות בסיסיות
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :הגדרות מתקדמות
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :הגדרות מומחה / כל ההגדרות
@@ -1093,11 +1113,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :הגדרות ב
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}מגביל את הרשימה הבאה להגדרות מסוימות
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :כל ההגדרות
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :הגדרות משתמש(לא נמצא בשמורים; משפיע על כל המשחקים)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :הגדרות משחק (נמצא בשמורים; משפיע רק על משחקים חדשים)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :הגדרות משחק (נמצא בשמורים; משפיע רק על משחק נוכחי)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :הגדרות חברה (נמצא בשמורים; משפיע רק על משחקים חדשים)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :הגדרות חברה (נמצא בשמורים; משפיע רק על חברה נוכחית)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :הגדרות משתמש (לא מאוחסנות במשחקים שמורים; משפיעות על כל המשחקים)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :הגדרות משחק (מאוחסנות במשחקים שמורים; משפיעות רק על משחקים חדשים)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :הגדרות משחק (מאוחסנות במשחק שמור; משפיעות רק על משחק נוכחי)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :הגדרות חברה (מאוחסנות במשחקים שמורים; משפיעות רק על משחקים חדשים)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :הגדרות חברה (מאוחסנות במשחק שמור; משפיעות רק על חברה נוכחית)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הקטגוריה {} {BLACK} ל{WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הסוג {} {BLACK}ל{WHITE}כל סוגי ההגדרות
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}הצג את תוצאות החיפוש בהגדרת{SILVER}הקטגוריה{} {BLACK}ל{WHITE}{STRING} {BLACK}וגם את {SILVER}הסוג {BLACK}ל{WHITE}כל סוגי ההגדרות
@@ -1144,7 +1164,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :בחר באיז
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :אפשר לבנות על מידרונות וחופים: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :אם מאופשר, ניתן לבנות מסילות ותחנות על גבי רוב המדרונות. אם מבוטל, ניתן לבנות אותם רק על מדרונות המתאימים לכיוון המסילה וכך אינם דורשים יסודות
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{STRING} :'אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו
+STR_CONFIG_SETTING_AUTOSLOPE                                    :אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו': {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :אפשר שינוי פני השטח מתחת לבניינים ולמסילות ללא הסרתם
 STR_CONFIG_SETTING_CATCHMENT                                    :אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :אזורי אגירה בגדלים שונים עבור סוגים שונים של תחנות ונמלי תעופה
@@ -1277,13 +1297,13 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :הצג את א�
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :עובי קווים בגרפים: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :עובי הקו בגרפים. קו דק ניתן לקריאה באופן מדויק יותר, אולם קל יותר לראות קו עבה ולהבחין בין הצבעים של קוים עבים
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :יוצר אדמה: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :מחולל פני שטח: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :מקורי
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :בורא הקרקע
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :מרחק מירבי מן הקצה עבור מזקקות נפט: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :מזקקות נפט נבנות רק בקרבת גבול המפה, כלומר חוף הים עבור מפות בצורת אי
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :גובה קו השלג: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :רמת חספוס השטח (בבורא האדמה בלבד) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :רמת חספוס השטח: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :חלק מאוד
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :חלק
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :מחוספס
@@ -1301,7 +1321,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :אם מבוטל
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}לפחות משבצת אחת בקצה הצפוני אינה ריקה
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}לפחות משבצת אחת באחד הקצוות אינה מכוסה מים
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :התפרסות תחנה מירבית: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :פריסה מירבית לתחנה: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :שטח מירבי עליו יכולים להתפרס חלקיה השונים של תחנה בודדת. יש לשים לב כי ערכים גבוהים יאטו את המשחק
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{STRING}טיפול אוטומטי במסוקים במנחת
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :תחזק מסוקים אחרי כל נחיתה, אפילו אם אין מוסך בנמל התעופה
@@ -1318,7 +1338,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{STRING} :גל�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :שלוט כיצד התצוגה הראשית נגללת למיקום מסוים כאשר מקליקים על המפה הקטנה אן כאשר נותנים הוראה לגלול לעצם מסוים על גבי המפה. אם מאופשר, חלון התצוגה נגלל באופן חלק, אם מבוטל הוא מוקפץ ישירות אל נקודת המטרה
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{STRING} :'הצג מידות בעת בניית כבישים/מסילות וכיוב
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :הצג מרחק במשבצות והבדלי גבהים בעת גרירה תוך כדי פעולות בנייה
-STR_CONFIG_SETTING_LIVERIES                                     :{STRING} :הצג את צבעי החברה
+STR_CONFIG_SETTING_LIVERIES                                     :הצג צבעים מיוחדים לכלי רכב: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :שלוט בשימוש בצבעים ייחודיים לסוגי כלי רכב (בניגוד לצבעים ייחודיים לחברה)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :לא
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :החברה שלי
@@ -1367,7 +1387,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :שום פעול
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :כל הפעולות שאינן פעולות בנייה
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :כל הפעולות שאינן משנות את פני השטח
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :כל הפעולות
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :השתמש ברשימת כלי הרכב המתקדמת: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :השתמש בקבוצות ברשימת כלי הרכב: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :אפשר שימוש ברשימות כלי הרכב המתקדמות לצורך חלוקת כלי רכב לקבוצות
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{STRING} :הצג מצביעי הטענה
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :בחר האם מדדי טעינה יוצגו מעל רכבים בעת טעינתם או פריקתם
@@ -1382,7 +1402,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :סוג מסיל
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :הראשון הזמין
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :האחרון הזמין
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :הנפוץ ביותר
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{STRING} :הדגש מסלולים שבשימוש
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :הדגש מסלולים שבשימוש: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :תן צבע שונה למסילות שמורות כדי לסייע בבעיות עם רכבות המסרבות להיכנס לגושים מבוססי מסלול
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{STRING}: שמור על כלי הבנייה פעילים לאחר השימוש
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :השאר את כלי הבנייה עבור גשרים, מנהרות וכו' פתוחים אחרי השימוש
@@ -1408,13 +1428,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :השמע קול
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :מנע בניית תשתיות כאשר אין כלי רכב מתאימים זמינים: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :כאשר מאופשר, תשתיות זמינות רק כאשר ישנם גם כלי רכב זמינים, דבר המונע בזבוז זמן וכסף על תשתיות בלתי שמישות
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{STRING} :מספר רכבות מירבי לשחקן
+STR_CONFIG_SETTING_MAX_TRAINS                                   :מספר רכבות מירבי לשחקן: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :מספר מירבי של רכבות בהן חברה יכולה להחזיק
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{STRING} :מספר משאיות/אוטובוסים מירבי לשחקן
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :מספר משאיות/אוטובוסים מירבי לשחקן: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :מספר מירבי של רכבי כביש בהם חברה יכולה להחזיק
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{STRING} :מספר כלי טייס מירבי לשחקן
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :מספר כלי טייס מירבי לשחקן: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :מספר מירבי של מטוסים בהם חברה יכולה להחזיק
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{STRING} :מספר כלי שייט מירבי לשחקן
+STR_CONFIG_SETTING_MAX_SHIPS                                    :מספר כלי שייט מירבי לשחקן: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :מספר מירבי של אוניות בהן חברה יכולה להחזיק
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :מנע הפעלת רכבות ע”י שחקני המחשב: {STRING}
@@ -1926,13 +1946,13 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}קבע �
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}הגן על המשחק שלך עם סיסמה אם אתה לא רוצה שהוא יהיה זמין לכולם
 
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} לקוח{P "" "ות"}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}מקסימום לקוחות:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}מספר מקסימלי של לקוחות:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספר משתתפים מירבי
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} חבר{P "ה" "ות"}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}מקסימום חברות:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}מספר מקסימלי של חברות:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}הגבל את השרת למספר מסויים של חברות
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} צופ{P "ה" "ים"}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK} :מספר צופים מירבי
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}מספר צופים מירבי:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}הגבלת השרת למספר צופים מסויים
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}שפת דיבור:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנים אחרים ידעו איו שפה מדוברת בשרת
@@ -2678,7 +2698,7 @@ STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}הנמך
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK} :מספר אקראי
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}הכנס מספר אקראי כלשהוא
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}בחר מספר אקראי שישמש בסיס ליצירת הקרקע
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :יצירת קרקע
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :מחולל פני שטח
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}אלגוריתם העצים:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK} :כמות ימים/אגמים
@@ -2782,6 +2802,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}לא ק�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}לא נמצא קובץ מתאים
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}אינו תואם גרסא זו של OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}שנה/י פרמטרים של NewGRF
@@ -3658,8 +3680,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}שנה �
 
 STR_ORDER_REFIT                                                 :{BLACK}התאם מחדש
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}בחר את סוג המיטען אליו יותאם הכלי ביעד זה
-STR_ORDER_REFIT_AUTO                                            :{BLACK}אבזור מחדש אוטומטי
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}בחרלאיזה סוג מטען לאבזר מחדש בפקודה זו. הקלק בשילוב לחיצה על מקש Ctrl כדי להסיר את הוראת האבזור מחדש. אבזור מחדש יתרחש רק אם כלי הרכב מאפשר זאת
+STR_ORDER_REFIT_AUTO                                            :{BLACK}אבזור מחדש בתחנה
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}בחרלאיזה סוג מטען לאבזר מחדש בפקודה זו. Ctrl+לחיצה כדי להסיר את הוראת האבזור מחדש. אבזור מחדש יתרחש רק אם כלי הרכב מאפשר זאת
 STR_ORDER_DROP_REFIT_AUTO                                       :מטען קבוע
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :מטען זמין
 
@@ -3757,8 +3779,8 @@ STR_ORDER_UNLOAD_REFIT                                          :(פרוק וק�
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(פרוק והמתן למטען מלא עם אבזור מחדש אוטומטי ל-{STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(פרוק והמתן למטען מלא כלשהו עם אבזור מחדש אוטומטי ל-{STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(העבר וקח מטען עם אבזור מחדש אוטומטי ל-{STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(העבר ומתן למטען מלא עם אבזור מחדש אוטומטי ל-{STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(העבר ומתן למטען מלא כלשהו עם אבזור מחדש אוטומטי ל-{STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(העבר והמתן למטען מלא עם אבזור מחדש אוטומטי ל-{STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(העבר והמתן למטען מלא כלשהו עם אבזור מחדש אוטומטי ל-{STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(ללא פריקה וקח מטען עם אבזור מחדש אוטומטי ל-{STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(ללא פריקה והמתן למטען מלא עם אבזור מחדש אוטומטי ל-{STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(ללא פריקה והמתן למטען מלא כלשהו עם אבזור מחדש אוטומטי ל-{STRING})

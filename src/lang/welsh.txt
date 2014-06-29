@@ -470,7 +470,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglo bocsys ff
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toglo llwio blociau budr
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1af
 STR_ORDINAL_NUMBER_2ND                                          :2il
 STR_ORDINAL_NUMBER_3RD                                          :3ydd
@@ -486,22 +486,9 @@ STR_ORDINAL_NUMBER_12TH                                         :12fed
 STR_ORDINAL_NUMBER_13TH                                         :13eg
 STR_ORDINAL_NUMBER_14TH                                         :14eg
 STR_ORDINAL_NUMBER_15TH                                         :15fed
-STR_ORDINAL_NUMBER_16TH                                         :16eg
-STR_ORDINAL_NUMBER_17TH                                         :17eg
-STR_ORDINAL_NUMBER_18TH                                         :18fed
-STR_ORDINAL_NUMBER_19TH                                         :19fed
-STR_ORDINAL_NUMBER_20TH                                         :20fed
-STR_ORDINAL_NUMBER_21ST                                         :21ain
-STR_ORDINAL_NUMBER_22ND                                         :22ain
-STR_ORDINAL_NUMBER_23RD                                         :23ain
-STR_ORDINAL_NUMBER_24TH                                         :24ain
-STR_ORDINAL_NUMBER_25TH                                         :25ain
-STR_ORDINAL_NUMBER_26TH                                         :26ain
-STR_ORDINAL_NUMBER_27TH                                         :27ain
-STR_ORDINAL_NUMBER_28TH                                         :28ain
-STR_ORDINAL_NUMBER_29TH                                         :29ain
-STR_ORDINAL_NUMBER_30TH                                         :30ain
-STR_ORDINAL_NUMBER_31ST                                         :31ain
+############ range for ordinal numbers ends
+
+############ range for days starts
 ############ range for days ends
 
 ############ range for months starts
@@ -936,11 +923,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanaidd
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Diffodd Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Bob mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Bob 3 mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Bob 6 mis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Bob 12 mis
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Iaith
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Dewiswch yr iaith rhyngwyneb i'w defnyddio
@@ -969,6 +958,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Dewisiwc
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ffeil llygredig
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Gwybodaeth bellach am y set gerddoriaeth sylfaenol
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Methu nôl rhestr o cydraniadau cydnaws
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd y modd sgrin llawn
 
 # Custom currency window
@@ -1269,7 +1259,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd olew: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Codir purfeydd olew ger ymylon y map yn unig, h.y. ar yr arfordir mewn mapiau ynys
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd (TerraGenesis yn unig) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Llyfn Iawn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Llyfn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garw
@@ -2793,6 +2783,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Dim gwyb
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ddarganfuwyd ffeil sy'n cyfateb
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwyd
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Anghydnaws gyda'r fersiwn yma o OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Newid paramedrau NewGRF

@@ -849,7 +849,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłąc
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłącz kolorowanie brudnych bloków
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -865,22 +865,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12
 STR_ORDINAL_NUMBER_13TH                                         :13
 STR_ORDINAL_NUMBER_14TH                                         :14
 STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
+STR_DAY_NUMBER_15TH                                             :15
+STR_DAY_NUMBER_16TH                                             :16
+STR_DAY_NUMBER_17TH                                             :17
+STR_DAY_NUMBER_18TH                                             :18
+STR_DAY_NUMBER_19TH                                             :19
+STR_DAY_NUMBER_20TH                                             :20
+STR_DAY_NUMBER_21ST                                             :21
+STR_DAY_NUMBER_22ND                                             :22
+STR_DAY_NUMBER_23RD                                             :23
+STR_DAY_NUMBER_24TH                                             :24
+STR_DAY_NUMBER_25TH                                             :25
+STR_DAY_NUMBER_26TH                                             :26
+STR_DAY_NUMBER_27TH                                             :27
+STR_DAY_NUMBER_28TH                                             :28
+STR_DAY_NUMBER_29TH                                             :29
+STR_DAY_NUMBER_30TH                                             :30
+STR_DAY_NUMBER_31ST                                             :31
 ############ range for days ends
 
 ############ range for months starts
@@ -1316,11 +1334,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalońskie
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz okres pomiędzy autozapisami
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Wył.
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Co 1 miesiąc
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Co 3 miesiące
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Co 6 miesięcy
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Co 12 miesięcy
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Język
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Wybierz język interfejsu
@@ -1510,7 +1530,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wybierz jak bar
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Pozwól budować na pochyłym terenie i wybrzeżach: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Jeśli włączone, to tory i stacje można budować na większości stoków. Jeśli wyłączone, można je budować tylko na stokach w tym samym kierunku, co tory, tak, że nie potrzeba fundamentów
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmiany terenu pod budynkami, torami itp. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmiany terenu pod budynkami, torami itp.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Pozwalaj na modyfikowanie terenu pod budynkami i torami bez usuwania ich
 STR_CONFIG_SETTING_CATCHMENT                                    :Pozwól na bardziej realistyczny zasięg obejmowania: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Używaj różnych rozmiarów pokrywania obszaru dla różnych typów stacji i lotnisk
@@ -1649,7 +1669,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odległość od krawędzi dla rafinerii: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskich
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Wyboistość terenu (w TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Wyboistość terenu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Wyboisty
@@ -1692,7 +1712,7 @@ STR_CONFIG_SETTING_LIVERIES_ALL                                 :wszystkich firm
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferuj czat drużynowy po użyciu <ENTER> lub <T>: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Przypisz przyciski <ENTER> i <Ctrl+ENTER> odpowiednio do czatu firmowego i czatu publicznego
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcja rolki myszy: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Włączenie przewijania z użyciem dwu-wymiarowych rolek myszy
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Włączenie przewijania z użyciem dwuwymiarowych rolek myszy
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :powiększ widok
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :przesuń widok
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :wył.
@@ -1778,9 +1798,9 @@ STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. liczba po
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksymalna ilość pociągów, jakie firma może posiadać
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. liczba samochodów na firmę: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksymalna ilość pojazdów drogowych, jakie firma może posiadać
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks. liczba samolotów na firmę: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maksymalna liczba samolotów na firmę: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksymalna ilość maszyn latających, jakie firma może posiadać
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks. liczba statków na firmę: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Maksymalna liczba statków na firmę: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksymalna ilość statków, jakie firma może posiadać
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Pociągi niedostępne dla komputera: {STRING}
@@ -2307,13 +2327,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpie
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nie
 STR_NETWORK_START_SERVER_ADVERTISED                             :Tak
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna ilość klientów:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna liczba klientów:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} firm{P a y ""}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksymalna ilość firm:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksymalna liczba firm:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ogranicz serwer do określonej ilości firm
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} widz{P "" ów ów}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksymalna ilość widzów:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksymalna liczba widzów:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ogranicz serwer do określonej ilości widzów
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Używany język:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Inni gracze będą poinformowani jaki język jest używany na serwerze
@@ -3174,6 +3194,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nie znalez
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Niedostępny
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Niekompatybilne z tą wersją OpenTTD
 
+# NewGRF save preset window
+
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmień parametry NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zamknij
@@ -3333,7 +3355,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Skasuj t
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Zmień nazwę miasta
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} lokalne władze
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Lokalne władze m. {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ocena transportu firmy:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Możliwe działania:
@@ -3526,7 +3548,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Łącznie:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bilans bankowy
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pożyczka
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks. pożyczka: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksymalna pożyczka: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pożyczka {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zwiększ wielkość pożyczki. Ctrl+Klik spłaca maksymalną możliwą kwotę pożyczki
@@ -4204,7 +4226,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład
 STR_TIMETABLE_NO_TRAVEL                                         :Nie podróżuje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Podróż (automatycznie; zaplanowana przez następny ręczny rozkaz)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez ustalonego czasu)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Podróżuj z maksymalną prędkością {2:VELOCITY} (poza rozkładem)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Podróżuj (poza rozkładem) z maksymalną prędkością {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Podróżuj przez {STRING} z maksymalną prędkością {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
@@ -5191,18 +5213,18 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{TOWN} Boja
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Boja #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :Boja {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Boja {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Pkt. orientacyjny {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pkt. orientacyjny {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :Warsztaty w {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Warsztaty w {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia samochodowa w {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia samochodowa w {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Warsztaty {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Warsztaty {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia samochodowa {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia samochodowa {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Stocznia {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Stocznia {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar {STATION}

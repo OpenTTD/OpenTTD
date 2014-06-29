@@ -73,7 +73,7 @@ struct SetDateWindow : Window {
 
 			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
-					*list->Append() = new DropDownListStringItem(STR_ORDINAL_NUMBER_1ST + i, i + 1, false);
+					*list->Append() = new DropDownListStringItem(STR_DAY_NUMBER_1ST + i, i + 1, false);
 				}
 				selected = this->date.day;
 				break;
@@ -106,7 +106,7 @@ struct SetDateWindow : Window {
 
 			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
-					d = maxdim(d, GetStringBoundingBox(STR_ORDINAL_NUMBER_1ST + i));
+					d = maxdim(d, GetStringBoundingBox(STR_DAY_NUMBER_1ST + i));
 				}
 				break;
 
@@ -130,7 +130,7 @@ struct SetDateWindow : Window {
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case WID_SD_DAY:   SetDParam(0, this->date.day - 1 + STR_ORDINAL_NUMBER_1ST); break;
+			case WID_SD_DAY:   SetDParam(0, this->date.day - 1 + STR_DAY_NUMBER_1ST); break;
 			case WID_SD_MONTH: SetDParam(0, this->date.month + STR_MONTH_JAN); break;
 			case WID_SD_YEAR:  SetDParam(0, this->date.year); break;
 		}

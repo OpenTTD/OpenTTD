@@ -534,7 +534,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Prepnúť okraj
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Prepnutie zafarbenia blokov hliny
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3.
@@ -550,22 +550,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12.
 STR_ORDINAL_NUMBER_13TH                                         :13.
 STR_ORDINAL_NUMBER_14TH                                         :14.
 STR_ORDINAL_NUMBER_15TH                                         :15.
-STR_ORDINAL_NUMBER_16TH                                         :16.
-STR_ORDINAL_NUMBER_17TH                                         :17.
-STR_ORDINAL_NUMBER_18TH                                         :18.
-STR_ORDINAL_NUMBER_19TH                                         :19.
-STR_ORDINAL_NUMBER_20TH                                         :20.
-STR_ORDINAL_NUMBER_21ST                                         :21.
-STR_ORDINAL_NUMBER_22ND                                         :22.
-STR_ORDINAL_NUMBER_23RD                                         :23.
-STR_ORDINAL_NUMBER_24TH                                         :24.
-STR_ORDINAL_NUMBER_25TH                                         :25.
-STR_ORDINAL_NUMBER_26TH                                         :26.
-STR_ORDINAL_NUMBER_27TH                                         :27.
-STR_ORDINAL_NUMBER_28TH                                         :28.
-STR_ORDINAL_NUMBER_29TH                                         :29.
-STR_ORDINAL_NUMBER_30TH                                         :30.
-STR_ORDINAL_NUMBER_31ST                                         :31.
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1.
+STR_DAY_NUMBER_2ND                                              :2.
+STR_DAY_NUMBER_3RD                                              :3.
+STR_DAY_NUMBER_4TH                                              :4.
+STR_DAY_NUMBER_5TH                                              :5.
+STR_DAY_NUMBER_6TH                                              :6.
+STR_DAY_NUMBER_7TH                                              :7.
+STR_DAY_NUMBER_8TH                                              :8.
+STR_DAY_NUMBER_9TH                                              :9.
+STR_DAY_NUMBER_10TH                                             :10.
+STR_DAY_NUMBER_11TH                                             :11.
+STR_DAY_NUMBER_12TH                                             :12.
+STR_DAY_NUMBER_13TH                                             :13.
+STR_DAY_NUMBER_14TH                                             :14.
+STR_DAY_NUMBER_15TH                                             :15.
+STR_DAY_NUMBER_16TH                                             :16.
+STR_DAY_NUMBER_17TH                                             :17.
+STR_DAY_NUMBER_18TH                                             :18.
+STR_DAY_NUMBER_19TH                                             :19.
+STR_DAY_NUMBER_20TH                                             :20.
+STR_DAY_NUMBER_21ST                                             :21.
+STR_DAY_NUMBER_22ND                                             :22.
+STR_DAY_NUMBER_23RD                                             :23.
+STR_DAY_NUMBER_24TH                                             :24.
+STR_DAY_NUMBER_25TH                                             :25.
+STR_DAY_NUMBER_26TH                                             :26.
+STR_DAY_NUMBER_27TH                                             :27.
+STR_DAY_NUMBER_28TH                                             :28.
+STR_DAY_NUMBER_29TH                                             :29.
+STR_DAY_NUMBER_30TH                                             :30.
+STR_DAY_NUMBER_31ST                                             :31.
 ############ range for days ends
 
 ############ range for months starts
@@ -853,8 +871,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponzoroval výstavbu nového mesta {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{G=s}{BIG_FONT}{BLACK}Nové {STRING} sa začína stavať neďaleko mesta {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{G=s}{BIG_FONT}{BLACK}Nové {STRING} bude postavené neďaleko mesta {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{G=s}{BIG_FONT}{BLACK}Nov{G "ý" "á" "é"} {STRING} sa začína stavať neďaleko mesta {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{G=s}{BIG_FONT}{BLACK}Nov{G "ý" "á" "é"} {STRING} bude postaven{G "ý" "á" "é"} neďaleko mesta {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} oznamuje skoré uzavretie!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Kvôli zásobovacím problémom {STRING} oznamuje skoré uzavretie!
@@ -865,8 +883,8 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Koniec kíizy!{}{}Očakáva sa vzostup predaja a posilnenie ekonomiky!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} zvyšuje produkciu!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nove nalezisko uhlia sa objavilo v {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nove nalezisko ropy sa objavilo na {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nové nálezisko uhlia sa objavilo v {INDUSTRY}!{}Očakáva sa zdvojnásobenie produkcie!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nové nálezisko ropy sa objavilo na {INDUSTRY}!{}Očakáva sa zdvojnásobenie produkcie!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Na {INDUSTRY} zlepsili pouzivane metody!Ocakava sa zdvojnasobenie produkcie!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY} zvyšuje produkciu {0:STRING.g} o {2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} znižuje produkciu o 50%
@@ -1004,11 +1022,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanske
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukladanie
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vyber interval automatickeho ukladania
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnuté
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý mesiac
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Každé 3 mesiace
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Každých 6 mesiacov
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 mesiacov
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Výber jazyka rozhrania
@@ -1037,6 +1057,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Zvoľte 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} poškoden{P ý é ých} súbor{P "" y ov}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatočné informácie o základnej sade hudby
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nepodarilo sa načítať zoznam podporovaných rozlíšení
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
 
 # Custom currency window
@@ -1138,7 +1159,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavenia spol
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategória:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Obmedzuje zoznam nižšie len na nastavenia, ktoré boli zmenené
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Filtruje zoznam podľa definovaných nastavení
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základné nastavenia
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé nastavenia
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Odborné nastavenia / všetky nastavenia
@@ -1147,7 +1168,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavenia s od
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Obmedzuje zoznam nižšie na niektoré typy nastavení
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Všetky typy nastavení
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavenia klienta (nieje uložené v uložených hrách; ovplyvní všetky hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavenia klienta (nieje uložené; ovplyvní všetky hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavenia hry (uložené v uložených hrách; ovplyvní iba nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavenia hry (uložené v uložených hrách; ovplyvní iba aktuálnu hru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavenia spoločnosti (uložené v uložených hrách; ovplyvní iba nové hry)
@@ -1193,7 +1214,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zakázať otá�
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ak je povolené vlaky sa nebudú otáčať v staniciach, ktoré niesu na konci trate, aj keby sa im tým skrátila cesta do ďalšieho cieľa
 STR_CONFIG_SETTING_DISASTERS                                    :Havárie: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vypne alebo zapne katastrofy, ktoré môžu občas zablokovať alebo zničiť vozidlá alebo infraštruktúru
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj mestskej správy k zmenám v ich oblasti: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj mestskej správy k reštrukturalizácii v oblasti: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Zvoľte ako veľmi ovplyvňuje hluk a poškodzovanie prostredia spoločnosťami ich hodnotenie v meste a ich budúce možnosti výstavby v oblasti vlastnenej mestom
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Umožniť výstavbu na svahoch a na pobreží: {STRING}
@@ -1221,7 +1242,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Strmosť svahu 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zakázať vlakom a lodiam otáčanie o 90°: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 stupňové zákruty vznikajú keď sa spojí horizontálna a vertikálna dráha. Týmto vznikne potreba vlaku "otočiť sa" o 90 stupňov pri prechode touto zákrutou namiesto 45 stupňovího prejazdu ako pri ostatných kombináciách trate. Toto isté platí aj pre lode.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Povoliť spájať stanice nepriamo hraničiace: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Povoluje pridanie časti stanice bez priamej manipulácie s existujúcimi časťami. Použite CTRL+CLICK na položenie novej časti.
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Povoľuje pridanie časti stanice bez priamej manipulácie s existujúcimi časťami. Použite Ctrl+Click na položenie novej časti.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Použiť vylepšený algoritmus nakladania: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ak je zapnuté, viaceré vozidlá budú nakladané na na nakládke postupne. Nakládka daľšieho vozidla začne len ak je na nakládke dostatok nákladu pre predošlé vozidlo.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Postupné nakladanie vozidiel: {STRING}
@@ -1251,7 +1272,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Zobraziť rozpočet na konci roku: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ak zapnuté, okno s financiami sa ukáže na konci každého roku a umožňuje tak rýchly náhľad na stav financií spoločnosti.
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nové príkazy sú štandardne 'non-stop': {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálne, vlak vťdy zastaví v každej stanici cez ktorú prechádza. Povolením tohoto nastavenia, vlak bude pokračovať cez všetky stanice ktoré má v ceste až do svojej cieľovej stanice. Uvedomte si to, že toto nastavenie definuj "pôvodné" nastavenie LEN pre nové trasy. Samostatne zadávané cesty môžu byť nastavené aj inak.
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálne, vlak vždy zastaví v každej stanici cez ktorú prechádza. Povolením tohoto nastavenia, vlak bude pokračovať cez všetky stanice ktoré má v ceste až do svojej cieľovej stanice. Uvedomte si to, že toto nastavenie definuje "pôvodné" nastavenie LEN pre nové trasy. Samostatne zadávané cesty môžu byť nastavené aj inak.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Vlaky zastavujú štandardne {STRING} stanice.
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Zvoľte kde zastaví vlak po príjazde do stanice. "Blízky koniec" znamená že vlak zastaví najbližšie ku vstupnému bodu, "Stred" že zastaví v strede stanice a "daleký koniec" že zastaví čo najďalej od vstupného bodu.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začiatku
@@ -1337,7 +1358,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximálna vzdialenosť od okrajov mapy pre rafinérie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinérie ropy sú vybudované len na okrajoch mapy, tzn na pobreží pri ostrovných mapách
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Úroveň čiary snehu: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitosť terénu (len pre TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitosť terénu : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veľmi rovný
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rovný
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Členitý
@@ -1372,7 +1393,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posúv
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Nastaví ako bude reagovať posúvanie na špecifickú pozíciu po kliknutí na minimapu, alebo po zadaní príkazu na presun na zadaný objekt. Ak je zapnuté, pohľad sa presúva plynulo. Ak je vypnuté, pohľad skočí priamo na zadané miesto/objekt.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Zobraziť údaje o rozmeroch pri výstavbe: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zobrazí vzdialenosť v dieloch a prevýšenie pri konštrukcii ťahaním.
-STR_CONFIG_SETTING_LIVERIES                                     :Zobraziť farebné schémy spoločnosti: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Zobraziť farby vozidiel spoločnosti: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrola použitia vozidla-typ špecifických livrej vozidiel (v rozpore so špecificikami podniku)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :žiadne
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :vlastná spoločnosť
@@ -1586,7 +1607,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí mestám
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Mestá umožňujú stavbu železničných priecestí: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolením nastavenia umožní mestám stavať úrovňové križovania.
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Povoliť mestom určené hlukové limity pre letiská: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Vypnutím nastavenia povolí pre mesto maximálne 2 letiská. Zapnutím nastavenia umožní stavanie viacerých letísk s ohľadom na hluk, zaľudnenie a vzdialenosť od mesta.
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ak je nastavenie vypnuté, potom môžu byť dve letiská v jednom meste. Ak je nastavenie zapnuté, počet letísk je obmedzený prijateľnou hlučnosťou, ktorá závisí od počtu obyvateľov a veľkosti letiska a jeho vzdialenosti od mesta
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakladanie nových miest počas hry: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Povolením nastavenia umožní hráčom zakladať nové mestá na mape.
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázané
@@ -2862,6 +2883,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Príslušn
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Nedostupný
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nekompatibilné s touto verziou OpenTTD
 
+# NewGRF save preset window
+
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmeniť NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvoriť
@@ -3378,11 +3401,11 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenov
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nove vlaky
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nové elektrické lokomotívy a vagóny
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové jednokoľajové vlaky
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nove magneticke vlaky
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nové magnetické vlaky
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Železnicne vozidlá
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nove automobily
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nove lode
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nové automobily
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nové lode
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Lietadlo
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Hmotnosť: {GOLD}{WEIGHT_SHORT}
@@ -3757,7 +3780,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmeniť 
 
 STR_ORDER_REFIT                                                 :{BLACK}Prestavba
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaticky usporiadať
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaticky modernizovať
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vyber ktorý druh tovaru sa bude automaticky nakladať. Ctrl+Klik pre odstránenie automatického nakladania. Automatické nakladanie musí byť podporované vozidlom
 STR_ORDER_DROP_REFIT_AUTO                                       :Pevný náklad
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupný náklad
@@ -3852,15 +3875,15 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Žiadné vykl�
 STR_ORDER_AUTO_REFIT                                            :(Upraviť na {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Plné naloženie s automatickým nakladaním do {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Plné naloženie akéhokoľvek nákladu s automatickým nakladaním do {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Vyložiť a zobrať náklad s automatickým nakladaním do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Vyložiť a čakať pre plné naloženie s automatickým nakladaním do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Vylož a čakaj na akékoľvek plné naloženie s automatickým naložením do {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Prelož a zober náklad s automatickým naložením do {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Prelož a čakaj pre plné naloženie s automatickým naložením do {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Vyložiť a zobrať náklad automaticky do {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Vyložiť a čakať pre plné naloženie automaticky do {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Vylož a čakaj na akékoľvek plné naloženie automaticky do {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Presuň sa a zober náklad s automatickým naložením do {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Presuň sa a čakaj pre plné naloženie automaticky do {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Prelož a čakaj pre akékoľvek plné naloženie s automatickým nakladaním do {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Nevykladať a zobrať náklad s automatickým nakladaním do {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nevykladať a čakať pre plné naloženie s automatickým nakladaním od {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nevykladať a čakať pre akýkoľvek náklad s automatickým nakladaním do {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nevykladať a čakať pre plné naloženie s automatickým nakladaním do {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nevykladať a čakať na plné naloženie s nastavením do {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :dostupný náklad
 
@@ -3886,7 +3909,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Cestovn�
 STR_TIMETABLE_NO_TRAVEL                                         :Necestuj
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Cestovanie (automaticky; nastavené po ďalšom zadaní objednávky)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcený cas)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Cestovanie nanajvýš s {2:VELOCITY} (bez cestovného plánu)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Cestovanie (bez cestovného plánu) s najviac {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Cestovanie na {STRING} s {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}

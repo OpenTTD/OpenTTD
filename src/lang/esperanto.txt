@@ -451,7 +451,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montri limigujo
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1a de
 STR_ORDINAL_NUMBER_2ND                                          :2a de
 STR_ORDINAL_NUMBER_3RD                                          :3a de
@@ -467,22 +467,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12a de
 STR_ORDINAL_NUMBER_13TH                                         :13a de
 STR_ORDINAL_NUMBER_14TH                                         :14a de
 STR_ORDINAL_NUMBER_15TH                                         :15a de
-STR_ORDINAL_NUMBER_16TH                                         :16a de
-STR_ORDINAL_NUMBER_17TH                                         :17a de
-STR_ORDINAL_NUMBER_18TH                                         :18a de
-STR_ORDINAL_NUMBER_19TH                                         :19a de
-STR_ORDINAL_NUMBER_20TH                                         :20a de
-STR_ORDINAL_NUMBER_21ST                                         :21a de
-STR_ORDINAL_NUMBER_22ND                                         :22a de
-STR_ORDINAL_NUMBER_23RD                                         :23a de
-STR_ORDINAL_NUMBER_24TH                                         :24a de
-STR_ORDINAL_NUMBER_25TH                                         :25a de
-STR_ORDINAL_NUMBER_26TH                                         :26a de
-STR_ORDINAL_NUMBER_27TH                                         :27a de
-STR_ORDINAL_NUMBER_28TH                                         :28a de
-STR_ORDINAL_NUMBER_29TH                                         :29a de
-STR_ORDINAL_NUMBER_30TH                                         :30a de
-STR_ORDINAL_NUMBER_31ST                                         :31a de
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1a de
+STR_DAY_NUMBER_2ND                                              :2a de
+STR_DAY_NUMBER_3RD                                              :3a de
+STR_DAY_NUMBER_4TH                                              :4a de
+STR_DAY_NUMBER_5TH                                              :5a de
+STR_DAY_NUMBER_6TH                                              :6a de
+STR_DAY_NUMBER_7TH                                              :7a de
+STR_DAY_NUMBER_8TH                                              :8a de
+STR_DAY_NUMBER_9TH                                              :9a de
+STR_DAY_NUMBER_10TH                                             :10a de
+STR_DAY_NUMBER_11TH                                             :11a de
+STR_DAY_NUMBER_12TH                                             :12a de
+STR_DAY_NUMBER_13TH                                             :13a de
+STR_DAY_NUMBER_14TH                                             :14a de
+STR_DAY_NUMBER_15TH                                             :15a de
+STR_DAY_NUMBER_16TH                                             :16a de
+STR_DAY_NUMBER_17TH                                             :17a de
+STR_DAY_NUMBER_18TH                                             :18a de
+STR_DAY_NUMBER_19TH                                             :19a de
+STR_DAY_NUMBER_20TH                                             :20a de
+STR_DAY_NUMBER_21ST                                             :21a de
+STR_DAY_NUMBER_22ND                                             :22a de
+STR_DAY_NUMBER_23RD                                             :23a de
+STR_DAY_NUMBER_24TH                                             :24a de
+STR_DAY_NUMBER_25TH                                             :25a de
+STR_DAY_NUMBER_26TH                                             :26a de
+STR_DAY_NUMBER_27TH                                             :27a de
+STR_DAY_NUMBER_28TH                                             :28a de
+STR_DAY_NUMBER_29TH                                             :29a de
+STR_DAY_NUMBER_30TH                                             :30a de
+STR_DAY_NUMBER_31ST                                             :31a de
 ############ range for days ends
 
 ############ range for months starts
@@ -905,11 +923,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalune
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Aŭtomata konservado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elektu intervalon inter aŭtomataj konservadoj de la ludo
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Malaktiva
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Je ĉiu monato
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Je ĉiuj 3 monatoj
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Je ĉiuj 6 monatoj
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Je ĉiuj 12 monatoj
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingvo
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Elektu uzotan interfacan lingvon
@@ -2367,6 +2387,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ne haveb
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ne trovis apartenan dosieron
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Malaktiva
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Malkongrua ĉe ĉi tio versio de OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ŝanĝu parametroj de la NewGRF

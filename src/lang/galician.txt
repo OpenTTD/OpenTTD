@@ -471,7 +471,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activa/desactiv
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activa/desactiva o coloreado de bloques modificados
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1º
 STR_ORDINAL_NUMBER_2ND                                          :2º
 STR_ORDINAL_NUMBER_3RD                                          :3º
@@ -487,22 +487,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12º
 STR_ORDINAL_NUMBER_13TH                                         :13º
 STR_ORDINAL_NUMBER_14TH                                         :14º
 STR_ORDINAL_NUMBER_15TH                                         :15º
-STR_ORDINAL_NUMBER_16TH                                         :16º
-STR_ORDINAL_NUMBER_17TH                                         :17º
-STR_ORDINAL_NUMBER_18TH                                         :18º
-STR_ORDINAL_NUMBER_19TH                                         :19º
-STR_ORDINAL_NUMBER_20TH                                         :20º
-STR_ORDINAL_NUMBER_21ST                                         :21º
-STR_ORDINAL_NUMBER_22ND                                         :22º
-STR_ORDINAL_NUMBER_23RD                                         :23º
-STR_ORDINAL_NUMBER_24TH                                         :24º
-STR_ORDINAL_NUMBER_25TH                                         :25º
-STR_ORDINAL_NUMBER_26TH                                         :26º
-STR_ORDINAL_NUMBER_27TH                                         :27º
-STR_ORDINAL_NUMBER_28TH                                         :28º
-STR_ORDINAL_NUMBER_29TH                                         :29º
-STR_ORDINAL_NUMBER_30TH                                         :30º
-STR_ORDINAL_NUMBER_31ST                                         :31º
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1º
+STR_DAY_NUMBER_2ND                                              :2º
+STR_DAY_NUMBER_3RD                                              :3º
+STR_DAY_NUMBER_4TH                                              :4º
+STR_DAY_NUMBER_5TH                                              :5º
+STR_DAY_NUMBER_6TH                                              :6º
+STR_DAY_NUMBER_7TH                                              :7º
+STR_DAY_NUMBER_8TH                                              :8º
+STR_DAY_NUMBER_9TH                                              :9º
+STR_DAY_NUMBER_10TH                                             :10º
+STR_DAY_NUMBER_11TH                                             :11º
+STR_DAY_NUMBER_12TH                                             :12º
+STR_DAY_NUMBER_13TH                                             :13º
+STR_DAY_NUMBER_14TH                                             :14º
+STR_DAY_NUMBER_15TH                                             :15º
+STR_DAY_NUMBER_16TH                                             :16º
+STR_DAY_NUMBER_17TH                                             :17º
+STR_DAY_NUMBER_18TH                                             :18º
+STR_DAY_NUMBER_19TH                                             :19º
+STR_DAY_NUMBER_20TH                                             :20º
+STR_DAY_NUMBER_21ST                                             :21º
+STR_DAY_NUMBER_22ND                                             :22º
+STR_DAY_NUMBER_23RD                                             :23º
+STR_DAY_NUMBER_24TH                                             :24º
+STR_DAY_NUMBER_25TH                                             :25º
+STR_DAY_NUMBER_26TH                                             :26º
+STR_DAY_NUMBER_27TH                                             :27º
+STR_DAY_NUMBER_28TH                                             :28º
+STR_DAY_NUMBER_29TH                                             :29º
+STR_DAY_NUMBER_30TH                                             :30º
+STR_DAY_NUMBER_31ST                                             :31º
 ############ range for days ends
 
 ############ range for months starts
@@ -937,11 +955,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalán
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autogravado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona o intervalo entre autogravados
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Apagado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingua
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona a lingua para a interface
@@ -2771,6 +2791,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Non hai 
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Arquivo correspondente non atopado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible con esta versión de OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambiar os parámetros de NewGRF

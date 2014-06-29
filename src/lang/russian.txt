@@ -596,7 +596,7 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Переклю�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Подкрашивать блоки, требующие перерисовки
 ############ range ends here
 
-############ range for days starts (also used for the place in the highscore window)
+############ range for ordinal numbers used for the place in the highscore window
 STR_ORDINAL_NUMBER_1ST                                          :1-е
 STR_ORDINAL_NUMBER_2ND                                          :2-е
 STR_ORDINAL_NUMBER_3RD                                          :3-е
@@ -612,22 +612,40 @@ STR_ORDINAL_NUMBER_12TH                                         :12-е
 STR_ORDINAL_NUMBER_13TH                                         :13-е
 STR_ORDINAL_NUMBER_14TH                                         :14-е
 STR_ORDINAL_NUMBER_15TH                                         :15-е
-STR_ORDINAL_NUMBER_16TH                                         :16-е
-STR_ORDINAL_NUMBER_17TH                                         :17-е
-STR_ORDINAL_NUMBER_18TH                                         :18-е
-STR_ORDINAL_NUMBER_19TH                                         :19-е
-STR_ORDINAL_NUMBER_20TH                                         :20-е
-STR_ORDINAL_NUMBER_21ST                                         :21-е
-STR_ORDINAL_NUMBER_22ND                                         :22-е
-STR_ORDINAL_NUMBER_23RD                                         :23-е
-STR_ORDINAL_NUMBER_24TH                                         :24-е
-STR_ORDINAL_NUMBER_25TH                                         :25-е
-STR_ORDINAL_NUMBER_26TH                                         :26-е
-STR_ORDINAL_NUMBER_27TH                                         :27-е
-STR_ORDINAL_NUMBER_28TH                                         :28-е
-STR_ORDINAL_NUMBER_29TH                                         :29-е
-STR_ORDINAL_NUMBER_30TH                                         :30-е
-STR_ORDINAL_NUMBER_31ST                                         :31-е
+############ range for ordinal numbers ends
+
+############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1-е
+STR_DAY_NUMBER_2ND                                              :2-е
+STR_DAY_NUMBER_3RD                                              :3-е
+STR_DAY_NUMBER_4TH                                              :4-е
+STR_DAY_NUMBER_5TH                                              :5-е
+STR_DAY_NUMBER_6TH                                              :6-е
+STR_DAY_NUMBER_7TH                                              :7-е
+STR_DAY_NUMBER_8TH                                              :8-е
+STR_DAY_NUMBER_9TH                                              :9-е
+STR_DAY_NUMBER_10TH                                             :10-е
+STR_DAY_NUMBER_11TH                                             :11-е
+STR_DAY_NUMBER_12TH                                             :12-е
+STR_DAY_NUMBER_13TH                                             :13-е
+STR_DAY_NUMBER_14TH                                             :14-е
+STR_DAY_NUMBER_15TH                                             :15-е
+STR_DAY_NUMBER_16TH                                             :16-е
+STR_DAY_NUMBER_17TH                                             :17-е
+STR_DAY_NUMBER_18TH                                             :18-е
+STR_DAY_NUMBER_19TH                                             :19-е
+STR_DAY_NUMBER_20TH                                             :20-е
+STR_DAY_NUMBER_21ST                                             :21-е
+STR_DAY_NUMBER_22ND                                             :22-е
+STR_DAY_NUMBER_23RD                                             :23-е
+STR_DAY_NUMBER_24TH                                             :24-е
+STR_DAY_NUMBER_25TH                                             :25-е
+STR_DAY_NUMBER_26TH                                             :26-е
+STR_DAY_NUMBER_27TH                                             :27-е
+STR_DAY_NUMBER_28TH                                             :28-е
+STR_DAY_NUMBER_29TH                                             :29-е
+STR_DAY_NUMBER_30TH                                             :30-е
+STR_DAY_NUMBER_31ST                                             :31-е
 ############ range for days ends
 
 ############ range for months starts
@@ -1048,8 +1066,8 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ирански�
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Направление движения
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}По какой стороне дороги ездит автотранспорт
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Левостороннее
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Правостороннее
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :левостороннее
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :правостороннее
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Названия городов
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}На каком языке будут названы населённые пункты
@@ -1081,11 +1099,13 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталан�
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автосохранение
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервал автосохранения игры
 
+############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Отключено
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Каждый месяц
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Каждые 3 месяца
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Каждые 6 месяцев
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Каждый год
+############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Язык
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Язык пользовательского интерфейса
@@ -1115,6 +1135,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выбе
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} повреждённы{P й х х} файл{P 0 "" а ов}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дополнительная информация о наборе базовой музыки
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не удалось получить список поддерживаемых разрешений экрана
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Сбой полноэкранного режима
 
 # Custom currency window
@@ -1196,7 +1217,7 @@ STR_SUBSIDY_X4                                                  :x4
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Очень плоский
 STR_TERRAIN_TYPE_FLAT                                           :Плоский
 STR_TERRAIN_TYPE_HILLY                                          :Холмистый
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Гористый
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Горный
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :дозволяющее
 STR_CITY_APPROVAL_TOLERANT                                      :терпимое
@@ -1421,7 +1442,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Максимальное расстояние от края карты до нефтезаводов: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нефтеперерабатывающие заводы всегда строятся у краёв карты или на берегах островов, находящихся недалеко от края
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Высота снеговой линии: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Неровность земли (только для TerraGenesis): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Неровность ландшафта: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубый
@@ -1660,7 +1681,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Тип дорожной сети для новых городов: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Тип дорожной сети в новых городах
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :старый алгоритм
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :классический алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :улучшенный алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :решёткой 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
@@ -2837,7 +2858,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Сохр
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузить сценарий
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузить карту
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Сохранить карту высот
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Щёлкните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Переход в каталог загрузки и сохранения, установленный по умолчанию
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбранное название для сохранения игры
@@ -2973,6 +2994,8 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Нет �
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл не найден
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Отключено
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несовместимо с данной версией OpenTTD
+
+# NewGRF save preset window
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Изменить параметры NewGRF
