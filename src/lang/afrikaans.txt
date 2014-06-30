@@ -592,7 +592,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direkteur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Hoofbestuursleier
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Voorsitter
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnaat
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Aanwysend prestasie gradering
@@ -659,7 +659,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Kies 'Be
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Skakel musiek lys skommel aan/af
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vertoon musiek snit keuse venster
 
-STR_ERROR_NO_SONGS                                              :{WHITE}'n Musiek stel was gekies wat nie liedere bevat nie. Niks liedere sal gespel word nie
+STR_ERROR_NO_SONGS                                              :{WHITE}'n Musiek stel is gekies wat geen liedere bevat nie. Geen liedere sal gespeel word nie
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musiek Program Keuse
@@ -821,7 +821,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Verbeterde boerdery metodes by {INDUSTRY} sal produksie verdubbel!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} produksie by {INDUSTRY} vermeerder {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} produksie verminder 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insek vervuiling oorsaak verwoesting by {INDUSTRY}!{}Produksie verminder 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insek plaag veroorsaak verwoesting by {INDUSTRY}!{}Produksie verminder 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} produksie by {INDUSTRY} verminder {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} wag in depot
@@ -4279,7 +4279,7 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Brug kan
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Moet eers brug afbreek
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan nie in die selfde plek begin en eindig nie
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brug hoofde is nie op die selfde vlak nie
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag vie die daal
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag vir die terrein
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en einde moet in lyn wees
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... albei brug eindes moet op land wees
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brug te lank
@@ -4291,7 +4291,7 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Plek ong
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Moet eers tonnel afbreek
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Ander tonnel in die pad
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tonnel so op die einde van die kaart eindig
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan nie daal vir ander einde van tonnel te uitgrawe nie
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan nie die terrein aan die anderkant van die tonnel uitgrawe nie
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tonnel te lank
 
 # Object related errors

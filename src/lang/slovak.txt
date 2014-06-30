@@ -4488,79 +4488,79 @@ STR_BASEMUSIC_NONE_DESCRIPTION                                  :Sada hudby neob
 
 ##id 0x2000
 # Town building names
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Vysoká kancelárska budova
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Kancelarie
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Malý bytový blok
-STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Kostol
-STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Veľká kancelárska budova
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Mestske domy
-STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
-STR_TOWN_BUILDING_NAME_STATUE_1                                 :Socha
-STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fontana
-STR_TOWN_BUILDING_NAME_PARK_1                                   :Park
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :{G=z}Vysoká kancelárska budova
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Kancelárie
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :{G=m}Malý bytový blok
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :{G=m}Kostol
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :{G=z}Veľká kancelárska budova
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Mestské domy
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :{G=m}Hotel
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :{G=z}Socha
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :{G=z}Fontána
+STR_TOWN_BUILDING_NAME_PARK_1                                   :{G=m}Park
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Kancelarie
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Obchody a kancelárie
-STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Moderna administrativna budova
-STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Sklad
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Kancelarie
-STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadion
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Moderná administratívna budova
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :{G=m}Sklad
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Kancelárie
+STR_TOWN_BUILDING_NAME_STADIUM_1                                :{G=m}Stadión
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Stare domy
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Chaty
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Domy
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Byty
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Administrativa
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :{G=z}Administrativa
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Obchody a kancelarie
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Obchody a kancelarie
-STR_TOWN_BUILDING_NAME_THEATER_1                                :Divadlo
-STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadion
+STR_TOWN_BUILDING_NAME_THEATER_1                                :{G=s}Divadlo
+STR_TOWN_BUILDING_NAME_STADIUM_2                                :{G=m}Stadión
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Kancelárie
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Domy
-STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Kino
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Nákupné stredisko
-STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu
-STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Vigvam
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Kaviaren
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Malá Banka
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :{G=s}Kino
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :{G=s}Nákupné stredisko
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :{G=s}Iglu
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :{G=m}Vigvam
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :{G=z}Kaviareň
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :{G=z}Malá banka
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Uhoľná baňa
-STR_INDUSTRY_NAME_POWER_STATION                                 :Elektráreň
-STR_INDUSTRY_NAME_SAWMILL                                       :Píla
-STR_INDUSTRY_NAME_FOREST                                        :Lesy
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Ropná rafinéria
-STR_INDUSTRY_NAME_OIL_RIG                                       :Ropná plošina
-STR_INDUSTRY_NAME_FACTORY                                       :Továreň
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tlačiareň
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Oceliareň
-STR_INDUSTRY_NAME_FARM                                          :Farma
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Medená baňa
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Ropný vrt
-STR_INDUSTRY_NAME_BANK                                          :Banka
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Potravinársky podnik
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Papierne
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Zlatá baňa
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantová baňa
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Železorudná baňa
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Ovocný sad
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Kaučuková plantáž
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vodný zdroj
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodojem
-STR_INDUSTRY_NAME_FACTORY_2                                     :Továreň
-STR_INDUSTRY_NAME_FARM_2                                        :Farma
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Píla
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Les cukrovej vaty
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Cukríkáreň
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Baterková farma
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Kofolové studne
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Hračkárstvo
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Továreň na hračky
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Umelinové fontány
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Továreň na malinovku
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generátor bubliniek
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamelový lom
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukrová baňa
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=z}Uhoľná baňa
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=z}Elektráreň
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=z}Píla
+STR_INDUSTRY_NAME_FOREST                                        :{G=m}Les
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=z}Ropná rafinéria
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=z}Ropná plošina
+STR_INDUSTRY_NAME_FACTORY                                       :{G=z}Továreň
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=z}Tlačiareň
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=z}Oceliareň
+STR_INDUSTRY_NAME_FARM                                          :{G=z}Farma
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=z}Medená baňa
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Ropný vrt
+STR_INDUSTRY_NAME_BANK                                          :{G=z}Banka
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Potravinársky podnik
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=z}Papiereň
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=z}Zlatá baňa
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=z}Banka
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=z}Diamantová baňa
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=z}Železorudná baňa
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}Ovocný sad
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=z}Kaučuková plantáž
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Vodný zdroj
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Vodojem
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=z}Továreň
+STR_INDUSTRY_NAME_FARM_2                                        :{G=z}Farma
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=z}Píla
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Les cukrovej vaty
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=z}Cukríkáreň
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=z}Baterková farma
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=z}Kofolová studňa
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=s}Hračkárstvo
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=z}Továreň na hračky
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=z}Umelinová fontána
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=z}Továreň na malinovku
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generátor bubliniek
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Karamelový lom
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=z}Cukrová baňa
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
