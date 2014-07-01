@@ -670,7 +670,11 @@ static uint SlReadSimpleGamma()
 			if (HasBit(i, 5)) {
 				i &= ~0x20;
 				if (HasBit(i, 4)) {
-					SlErrorCorrupt("Unsupported gamma");
+					i &= ~0x10;
+					if (HasBit(i, 3)) {
+						SlErrorCorrupt("Unsupported gamma");
+					}
+					i = SlReadByte(); // 32 bits only.
 				}
 				i = (i << 8) | SlReadByte();
 			}
@@ -690,6 +694,11 @@ static uint SlReadSimpleGamma()
  * 10xxxxxx xxxxxxxx
  * 110xxxxx xxxxxxxx xxxxxxxx
  * 1110xxxx xxxxxxxx xxxxxxxx xxxxxxxx
+ * 11110--- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx
+ * We could extend the scheme ad infinum to support arbitrarily
+ * large chunks, but as sizeof(size_t) == 4 is still very common
+ * we don't support anything above 32 bits. That's why in the last
+ * case the 3 most significant bits are unused.
  * @param i Index being written
  */
 
@@ -698,8 +707,13 @@ static void SlWriteSimpleGamma(size_t i)
 	if (i >= (1 << 7)) {
 		if (i >= (1 << 14)) {
 			if (i >= (1 << 21)) {
-				assert(i < (1 << 28));
-				SlWriteByte((byte)(0xE0 | (i >> 24)));
+				if (i >= (1 << 28)) {
+					assert(i <= UINT32_MAX); // We can only support 32 bits for now.
+					SlWriteByte((byte)(0xF0));
+					SlWriteByte((byte)(i >> 24));
+				} else {
+					SlWriteByte((byte)(0xE0 | (i >> 24)));
+				}
 				SlWriteByte((byte)(i >> 16));
 			} else {
 				SlWriteByte((byte)(0xC0 | (i >> 16)));
@@ -715,7 +729,7 @@ static void SlWriteSimpleGamma(size_t i)
 /** Return how many bytes used to encode a gamma value */
 static inline uint SlGetGammaLength(size_t i)
 {
-	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21));
+	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21)) + (i >= (1 << 28));
 }
 
 static inline uint SlReadSparseIndex()
