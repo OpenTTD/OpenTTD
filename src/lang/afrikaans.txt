@@ -2965,7 +2965,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e} (befonds)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Dorp groei {RED}nie{BLACK}
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geraaas limit in dorp: {ORANGE}{COMMA}{BLACK}  Maks: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geraas limiet in dorp: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Skuif skerm na dorp toe. Ctrl+klik maak 'n nuwe venster vir die dorp oop
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Plaaslike raad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Vertoon informasie oor plaaslike raad
@@ -2987,9 +2987,9 @@ STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lys van 
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Doen dit
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Voeg die verlig aksie in die lys bo uit
 
-STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Klein adverteer kampeer
-STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Medium adverteer kampeer
-STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Groot adverteer kampeer
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Klein reklame veldtog
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Medium reklame veldtog
+STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Groot reklame veldtog
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Befonds plaaslike pad heropbou
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bou standbeeld van maatskappy eienaar
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Befonds nuwe geboue
