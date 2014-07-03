@@ -2785,7 +2785,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mou amun
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mou avall
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mou avall l'arxiu NewGRF seleccionat de la llista
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Actualitza
-STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Empra les versions més noves dels NewGRF d'aquesta configuració preestablerta si prèviament se n'han actualitzat els NewGRF corresponents
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Utiliza les versions més noves dels NewGRF que disposin de diverses versions instal·lades
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una llista de fitxers NewGRF que estan instal·lats
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establir paràmetres
