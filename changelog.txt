@@ -1,3 +1,16 @@
+1.4.2-RC1 (2014-07-03)
+------------------------------------------------------------------------
+- Fix: CargoPacket::SourceStation() returns a StationID (r26660)
+- Fix: Days in dates are not represented by ordinal numbers in all languages [FS#6047] (r26657)
+- Fix: Production cheat cannot be allowed to be active in multiplayer for desync reasons, even when activated in singleplayer previously [FS#6044] (r26656)
+- Fix: Make sure an 'abs' is used that supports int64 when using 'abs' on those variables (r26651)
+- Fix: Support save/load chunk lengths of up to (1 << 32) - 1 [FS#6041] (r26650)
+- Fix: Incorrect usage of string commands in the base language [FS#6037] (r26642, r26640, r26639, r26632)
+- Fix: Segmentation fault when encountering a .obg/.obs/.obm with empty string/zero length MD5 checksums [FS#6038] (r26637)
+- Fix: The 'Load' button was not properly enabled/disabled for old savegames without NewGRF information (r26634)
+- Fix: If the video driver fails to supply a list of resolutions, display an error message [FS#6012] (r26629)
+
+
 1.4.1 (2014-06-02)
 ------------------------------------------------------------------------
 - Fix: First send packages about new company, then clients joining it to admin port [FS#6025] (r26616)
