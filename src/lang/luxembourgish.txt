@@ -987,6 +987,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wiel de 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} korrupt Datei{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Méi Informatiounen iwwer d'Basis Musik Set
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Konnt keng Lësch vun net supportéiren Opléisungen fannen
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fehler beim Vollbild
 
 # Custom currency window
@@ -1273,7 +1274,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximal Distanz vum Kaartenenn bis zu enger Uelegraffinerie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Uelëgraffinerien ginn nëmmen um Rand gebaut, dat ass un der Küst fir Inselkaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schnéigrenz Héicht: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Knubbelegkeet vum terrain (nëmmen TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Knubbelegkeet vum Terrain (nëmmen TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ganz Flaach
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Flaach
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Fielseg
@@ -1282,6 +1283,8 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :Baamplanzalgori
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Keen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Stroossegefierer: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Wiel d'Säit op där gefuer gëtt
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Héichtenkaartrotatioun: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Géint d'Auer
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Matt der Auer
@@ -1336,6 +1339,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Lénksklickscroll: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Schalt d'Scrollen vun der Kaart un, wann se mat der lénker Maustast gezunn gëtt
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Autospäichern: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Setz den Interval tëschend automateschen Späicherstänn
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Benotz {STRING} Datumsformat fir Späichernimm
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format vum Datum am Numm vum Späicherstand
@@ -2764,6 +2769,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Rop
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Setzt d'NewGRF an der Lëscht erop
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Rof
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Setzt d'NewGRF an der Lëscht erof
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Upgrade
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Upgrade NewGRF Dateien fir déis du eng méi nei Versioun installéiert hues
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eng Lëscht vun NewGRF Dateien déi installéiert sinn.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
@@ -2789,6 +2796,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ausgeschal
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Onkompatibel mat dëser Versioun vun OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Preset späichern
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lëscht vun Presets, wiel een den op den Numm ënnendrënner kopéiert gëtt
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Wiel en Numm fir den Preset
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Grad ausgewielten Numm fir den Preset den gespäichert soll ginn
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Ofbriechen
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Den Preset net änneren
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Späichern
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Späicher den Preset op den grad ausgewielten Numm
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter änneren

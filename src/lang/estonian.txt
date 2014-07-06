@@ -890,6 +890,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Sõidukil {VEHICLE} on tühistatud ülesanne
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Sõidukil {VEHICLE} on topeltülesandeid
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Sõiduki «{VEHICLE}» ülesannetes on kõlbmatu jaam
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} lennugraafikus on lennujaam, mille maandumisrada on liiga lühike
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} on vanaks saamas
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} on väga vanaks saamas
@@ -1324,6 +1325,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näitab linna n
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafikujoone laius: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafikutes kasutatava joone laius. Peenem joon on täpsem, laiem joon on paremini näha ja värvid on selgemini eristatavad
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Maastik: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Igal maastikul on oma kaubatüübid ja nõuded linnade kasvamiseks. Täpsemaid muudatusi saab teha NewGRFi ja mänguskriptide abil.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maatekituse meetod: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
