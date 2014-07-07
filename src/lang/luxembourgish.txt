@@ -1268,18 +1268,32 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Weis d'Awunnerz
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Déckt vunn de Linnen vun den Graphen: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breed vun den Linnen an den Grafiken. Eng dënn Linn kann méi präzis gelies ginn, eng méi déck kann besser gesinn ginn an d'Faarwen sinn besser ze ënnerscheeden
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Landschaft: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landschaften definéiren basis Spillszenarien mat verschiddenen Wueren an Stiedwuesstumviraussetzungen. NewGRF an Gamescripter erlaben méi fein Astellungen.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den original Generator henkt vum basis grafikset of, an erstellt fixéiert Landschaftstypen. TerraGenesis ass en op Perlin noise baséierten Generator mat méi feinen Astellungen.
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terraintyp: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Nëmmen TerraGenesis) Hiwwelegkeet vun der Landschaft
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedicht: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Definéiert wéivill Industrien generéiert sollen ginn an wéivill der während dem Spill sollen behalen ginn.
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximal Distanz vum Kaartenenn bis zu enger Uelegraffinerie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Uelëgraffinerien ginn nëmmen um Rand gebaut, dat ass un der Küst fir Inselkaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schnéigrenz Héicht: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrolléiert ab welcher Héigt den Schnéi ufenkt an der subarktëscher Landschaft. Schnéi affektéiert och Industriegeneratioun an de Wuesstum vun Stied.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Knubbelegkeet vum Terrain (nëmmen TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Nëmmen TerraGenesis) Wiel d'Heefegkeet vun Hiwwelen: Mëll Landschafter hunn manner, breed verdeelten Hiwwelen. Rau Landschaften hunn méi Bierger déi repetitiv ausgesinn kënnen.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ganz Flaach
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Flaach
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Fielseg
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Ganz Fielseg
+STR_CONFIG_SETTING_VARIETY                                      :Vielfaltverdeelung: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Nëmmen TerraGenesis) Kontrolléiert op d'Kaart flaach Stécker an och Bierger huet. Wëll dëst d'Kaart méi flaach mescht, sollen aner Astellungen op Bierger gesat ginn
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Unzuel Flëss: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Wiel wéivill Flëss generéiert ginn
 STR_CONFIG_SETTING_TREE_PLACER                                  :Baamplanzalgorithmus: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Wiel d'Verdeelung vun den Beem op der Kaart: 'Orginal' setzt d'Beem uniform verspreet, 'Verbessert' setzt se an Gruppen
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Keen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
