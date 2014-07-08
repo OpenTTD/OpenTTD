@@ -1330,6 +1330,10 @@ STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Igal maastikul 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maatekituse meetod: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maapinna tüüp: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Maastiku mägisus
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Tööstustihedus: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määrab, kui palju tööstuseid tekib, ning kui palju neid mängu kestel olema peaks
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimaalne kaugus kaardi servast naftatöötlustehase jaoks: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftatöötlemistehased ehitatakse ainult kaardi piirile, see on rannikul saartega mängitaval kaardil.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumepiiri kõrgus: {STRING}
@@ -3868,6 +3872,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (sõi
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reisi kõike suurema {2:VELOCITY} (ei ole ajastatud)
 STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reisi selleks {STRING} kõige rohkema {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Sõit ({STRING}, ei ole ajastatud)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Sõit ({STRING}, ei ole ajastatud) kuni {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :({STRING} oode, ei ole ajastatud)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} sõidukestus, ei ole ajastatud)
 STR_TIMETABLE_STAY_FOR                                          :ja oota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja sõida {STRING} jaoks
 STR_TIMETABLE_DAYS                                              :{COMMA} päev{P "" a}
@@ -4321,6 +4329,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... see 
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ei saa rühma luua...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Seda rühma ei saa eemaldada...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Rühma nime ei saa vahetada...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Ülemrühma ei saa määrata...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ei saa kõiki sõidukeid sellest rühmast eemaldada...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Antud sõidukit ei saa sellesse rühma lisada...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Jagatud sõidukeid ei saa rühma lisada...
