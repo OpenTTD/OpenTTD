@@ -20,7 +20,7 @@
  * Pack a VehicleListIdentifier in a single uint32.
  * @return The packed identifier.
  */
-uint32 VehicleListIdentifier::Pack()
+uint32 VehicleListIdentifier::Pack() const
 {
 	byte c = this->company == OWNER_NONE ? 0xF : (byte)this->company;
 	assert(c             < (1 <<  4));
