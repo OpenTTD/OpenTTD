@@ -814,10 +814,10 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Iomlan:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}An àireamh dhe charbadan a rinn prothaid an-uiridh. Gabhaidh seo a-steach carbadan-rathaid, trèanaichean, longan is carbadan-adhair
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}An àireamh dhe stèiseanan a chaidh a fhrithealadh o chionn ghoirid. théid stèiseanan rèile, stèiseanan bus, stadan bus, puirt-adhair is mar sin air adhart a chunntadh fa leth fiù ’s ma bhuineas iad ris an aon stèisean
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Am prothaid aig a' charbad leis an teachd a-steach as lugha (cha tèid sùil a thoirt ach air carbadan a tha co-dhiù dà bhliadhna a dh'aois)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd san ràith leis a' phrothaid as lugha am measg an dusan ràith mu dheireadh
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd san ràidh leis a' phrothaid as motha am measg an dusan ràith mu dheireadh
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Na h-aonadan dhe charago air an lìbhrigeadh sna ceithir ràithean mu dheireadh
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}An àireamh dhe sheòrsaichean carago a chaidh a lìbhrigeadh san ràith mu dheireadh
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd sa chairteal leis a' phrothaid as lugha am measg an dusan cairteal mu dheireadh
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd sa chairteal leis a' phrothaid as motha am measg an dusan cairteal mu dheireadh
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Na h-aonadan dhe charago air an lìbhrigeadh sna ceithir cairtealan dheireadh
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}An àireamh dhe sheòrsaichean carago a chaidh a lìbhrigeadh sa chairteal mu dheireadh
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}An t-airgead a tha aig a' chompanaidh seo sa bhanca
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}An t-airgead a tha aig a' chompanaidh mar iosad
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Na puingean iomlan a-mach às na puingean comasach
