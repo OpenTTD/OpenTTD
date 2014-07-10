@@ -1323,6 +1323,9 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfa
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruado
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Navigado
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofoj / akcidentoj
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Mondgenerado
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Medio
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Urboj
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrioj
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurantoj
@@ -2362,6 +2365,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Malaktiva
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Malkongrua ĉe ĉi tio versio de OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Nuligu
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Konservu
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ŝanĝu parametroj de la NewGRF

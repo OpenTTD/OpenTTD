@@ -1199,9 +1199,9 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordre er 'd
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalt vil et kjøretøy stoppe på alle stasjoner det passerer. Ved å aktivere denne innstillingen, vil det kjøre gjennom alle stasjoner på vei til sin endelige destinasjon uten å stoppe. Merk at denne innstillingen bare definerer en standardverdi for nye ordre. Individuelle ordre kan uansett settes til begge atferder
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nye togordre stopper som standard ved {STRING} av plattformen
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plass hvor toget vil stoppe på plattformen som standard. Valget 'near end' betyr nær inngangspunktet og 'far end' betyr langt unna inngangspunktet. Merk at denne innstillingen bare definerer en standardverdi for nye ordre. Individuelle ordre kan uansett settes til begge atferder
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :nær slutten
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :nærenden
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enden
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :bortenden
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Når aktivert, vil synsfeltet begynne å rulle når musen er nær kanten av vinduet
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktivert
@@ -2444,7 +2444,7 @@ STR_AIRPORT_HELISTATION                                         :{G=masculine}He
 
 STR_AIRPORT_CLASS_SMALL                                         :Små flyplasser
 STR_AIRPORT_CLASS_LARGE                                         :Store flyplasser
-STR_AIRPORT_CLASS_HUB                                           :Sentrumsflyplasser
+STR_AIRPORT_CLASS_HUB                                           :Hovedflyplasser
 STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterplasser
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Støy generert: {GOLD}{COMMA}
@@ -2966,7 +2966,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}.{BLACK} dag
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}.{BLACK} dag (finansiert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Byen vokser {RED}ikke{BLACK}
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Byens støygrense: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Flystøy: {ORANGE}{COMMA}{BLACK}  støygrense: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Gå til by. Ctrl+klikk åpner et nytt tilleggsvindu over byen
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Bystyre
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Vis informasjon om bystyret
@@ -3825,9 +3825,9 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ingen lossing 
 
 STR_ORDER_AUTO_REFIT_ANY                                        :tilgjengelige varetyper
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[nær slutten]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[nærenden]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[enden]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[bortenden]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Neste destinasjon er utenfor rekkevidde)
 

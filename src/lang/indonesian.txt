@@ -833,6 +833,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Daftar p
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} memiliki perintah yang terabaikan
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} memiliki perintah ganda
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} memiliki perintah menuju stasiun yg salah
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} memiliki dalam perintahnya sebuah bandara berlandasan yang terlalu pendek
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} mulai menua
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} sudah sangat tua
@@ -986,6 +987,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih mu
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} berkas rusak
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informasi tambahan tentang musik dasar
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tidak bisa mendapatkan daftar resolusi layak
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus layar penuh gagal
 
 # Custom currency window
@@ -1187,7 +1189,7 @@ STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalnya, sebu
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Tunjukan sinyal: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Pilih sisi rel yang akan diletakkan sinyal
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Di kiri
-STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Di sisi pengemudi
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Di sisi mengemudi
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di kanan
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tampilkan laporan keuangan pada akhir tahun: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jika diaktifkan, jendela keuangan akan ditampilkan setiap akhir tahun untuk lebih mudah memeriksa keadaan keuangan
@@ -1266,21 +1268,37 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Tampilkan popul
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Ketebalan garis pada grafik: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Tebalnya garis pada grafis. Garis tipis akan mudah dibaca ,garis tipis juga lebih terlihat
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Bentang Darat: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Bentang darat akan menegaskan skenario bermain dasar dengan muatan berbeda dan kebutuhan pertumbuhan kota. Data NewGRF dan Game Script lain membolehkan lebih banyak pengaturan.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Pembangkit dataran: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Pembuat yang orisinil tergantung pada kelompok grafik yang dasar, dan membuat bentang darat yang tertentu. TerraGenesis adalah pembuat yang berbasis Perlin Noise, dengan pengaturan kuasa yang lebih spesifik
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Asli
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Jenis medan: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(hanya TerraGenesis) Kondisi pegunungan bentang darat
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Kepadatan industri: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mengatur berapa banyak industri seharusnya diperbuat and tingkat yang harus dipertahankan selama permainan
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Jarak maksimal kilang minyak dari batas: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Kilang minyak hanya dibangun pada tepi peta atau pantai
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Tinggi garis salju: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kekasaran daratan(hanya TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Mengatur ketinggian di mana salju akan muncul. Salju juga akan mempengaruhi pengembangan industri dan persyaratan untuk pertumbuhan kota
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kekasaran daratan: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(hanya TerraGenesis) Memilih frekuensi bukit: Bentang darat rata punya bukit yang lebih sedikit dan lebih lebar. Bentang darat bergunung punya lebih banyak bukit, dan ini mungkin akan terlihat lebih membosankan
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sangat Kasar
+STR_CONFIG_SETTING_VARIETY                                      :Variasi: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(hanya TerraGenesis) Menentukan apakah bentang darat berisi area bergunung dan rata. Karena ini hanya akan mengakibatkan bentang darat yang lebih rata, pengaturan yang lain seharusnya ditetap 'bergunung'
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Jumlahnya sungai: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Memilih berapa banyak sungai untuk membuat
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritma penempatan pepohonan: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Memilih distribusi pohon-pohon di bentang darat: 'Orisinil' menanam pohon-pohon tersebar rata-rata, 'Telah ditingkatkan' menanam pohon-pohon berkelompok-kelompok
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Tidak ada
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Orisinil
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Telah ditingkatkan
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Kendaraan jalan raya: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Memilih sisi mengemudi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Perputaran peta Heightmap: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Melawan arah jam
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Searah jam
@@ -1335,6 +1353,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Geser dgn klik-kiri: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Aktifkan penggeseran peta dengan menyeret menggunakan tombol kiri mouse. Hal ini sangat berguna apabila menggunakan layar sentuh.
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Simpan otomatis: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Memilih jarak waktu antara menyimpan data game
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gunakan format tanggal {STRING} untuk berkas simpanan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format tanggal di nama berkas permainan tersimpan
@@ -1625,11 +1645,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisasi
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efek suara
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Umum
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Jendela
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksi
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Berita / Penasihat
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Perusahaan
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Akuntansi
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kendaraan
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pengarahan
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Keterbatasan
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Bencana / Kecelakaan
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Pembuatan Bentang Darat
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Linkungan Dunia
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Berwenang
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kota
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi Kargo
@@ -2661,7 +2693,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Masukkan nama dari permainan tersimpan
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pembuatan peta
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pembuatan Bentang Darat
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Ukuran Peta:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pilih ukuran peta dalam petak. Jumlah dari petak yang tersedia akan sedikit lebih kecil
 STR_MAPGEN_BY                                                   :{BLACK}*
@@ -2714,11 +2746,11 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ubah ket
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Membuat Peta ...
 STR_GENERATION_ABORT                                            :{BLACK}Batalkan
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Membatalkan Pembuatan Peta
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Membatalkan Pembuatan Bentang Darat
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Apakah anda ingin membatalkan pembuatan?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% selesai
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Membuat dunia
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pembuatan Bentang Darat
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Pembuatan Sungai
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Membuat pepohonan
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Membuat objek tak bergerak
@@ -2751,6 +2783,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Keatas
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian atas daftar
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Kebawah
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian bawah daftar
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Memperbarukan
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Menatar data NewGRF bagi data yang sudah diperbarui
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Daftar file NewGRF yang terinstal
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Atur parameter
@@ -2776,6 +2810,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Non-aktifk
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak kompatibel dengan versi OpenTTD ini
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Menyimpan pengaturan
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Daftar pengaturan yang tersedia, memilih salah satu untuk menyalin kepada nama penyimpanan di bawah
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Memasukkan nama untuk pengaturan
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nama yang sedang dipilih bagi penyimpanan pengaturan
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Batal
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Jangan mengubah pengaturan awal
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Menyimpan
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Menyimpan presetnya pada nama yang sedang dipilih
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
@@ -3806,6 +3848,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Perjalanan belu
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Bergerak dengan kecepatan maks. {2:VELOCITY} (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Berjalan selama {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Bergerak {STRING} dengan maks. kecepatan {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Berjalan (untuk {STRING}, tidak berjadwal)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Berjalan (untuk {STRING}, tidak berjadwal) dengan {VELOCITY} maksimum
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(menetap untuk {STRING}, tidak berjadwal)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(perjalan untuk {STRING}, tidak berjadwal)
 STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :dan berjalan selama {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} hari
