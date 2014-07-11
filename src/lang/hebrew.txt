@@ -1285,10 +1285,16 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :מחולל פנ
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :המחולל המקורי מבוסס על הגרפיקה הבסיסית, ויוצר פני שטח אחידים. בורא הקרקע מבוסס על אלגוריתם רעש פרלין עם אפשרויות עריכה עדינות
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :מקורי
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :בורא הקרקע
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :סוג המשטח: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(בורא הקרקע בלבד) הרריות המשטח
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :צפיפות תעשיות: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :בחר כמה תעשיות יווצרו ומהי הרמה שתישמר לאורך המשחק
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :מרחק מירבי מן הקצה עבור מזקקות נפט: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :מזקקות נפט נבנות רק בקרבת גבול המפה, כלומר חוף הים עבור מפות בצורת אי
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :גובה קו השלג: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :בחר מהו הגובה בו מתחיל השלג באקלים קר. שלג משפיע גם על הדרישות ביצירת תעשייה וגידול ערים
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :רמת חספוס השטח: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(בורא הקרקע בלבד) בחר את תדירות הגבעות: למשטחים חלקים פחות גבעות שמפוזרות במרחב. למשטחים מחוספסים יש הרבה גבעות, שעלולות להיראות מחזוריות
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :חלק מאוד
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :חלק
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :מחוספס
