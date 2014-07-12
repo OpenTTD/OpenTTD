@@ -152,5 +152,6 @@ template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_
 template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator / (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return (OverflowSafeInt<T, T_MAX, T_MIN>)a / (int)b; }
 
 typedef OverflowSafeInt<int64, INT64_MAX, INT64_MIN> OverflowSafeInt64;
+typedef OverflowSafeInt<int32, INT32_MAX, INT32_MIN> OverflowSafeInt32;
 
 #endif /* OVERFLOWSAFE_TYPE_HPP */

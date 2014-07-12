@@ -16,6 +16,7 @@
 #include "company_func.h"
 #include "industry.h"
 #include "town.h"
+#include "core/overflowsafe_type.hpp"
 #include <map>
 
 struct Station;
@@ -31,7 +32,7 @@ struct Station;
 typedef uint32 CargoMonitorID; ///< Type of the cargo monitor number.
 
 /** Map type for storing and updating active cargo monitor numbers and their amounts. */
-typedef std::map<CargoMonitorID, uint32> CargoMonitorMap;
+typedef std::map<CargoMonitorID, OverflowSafeInt32> CargoMonitorMap;
 
 extern CargoMonitorMap _cargo_pickups;
 extern CargoMonitorMap _cargo_deliveries;
@@ -141,8 +142,8 @@ static inline TownID DecodeMonitorTown(CargoMonitorID num)
 
 void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);
 void ClearCargoDeliveryMonitoring(CompanyID company = INVALID_OWNER);
-uint32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
-uint32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
+int32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
+int32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
 void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32 amount, SourceType src_type, SourceID src, const Station *st);
 
 #endif /* CARGOMONITOR_H */
