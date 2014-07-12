@@ -19,11 +19,11 @@ CargoMonitorMap _cargo_pickups;    ///< Map of monitored pick-ups   to the amoun
 CargoMonitorMap _cargo_deliveries; ///< Map of monitored deliveries to the amount since last query/activation.
 
 /**
- * Helper method for ClearCargoPickupMonitoring and ClearCargoDeliveryMonitoring.
- * Clears all monitors that belong to the specified company or all if INVALID_OWNER
+ * Helper method for #ClearCargoPickupMonitoring and #ClearCargoDeliveryMonitoring.
+ * Clears all monitors that belong to the specified company or all if #INVALID_OWNER
  * is specified as company.
  * @param cargo_monitor_map reference to the cargo monitor map to operate on.
- * @param company company to clear cargo monitors for or INVALID_OWNER if all cargo monitors should be cleared.
+ * @param company company to clear cargo monitors for or #INVALID_OWNER if all cargo monitors should be cleared.
  */
 static void ClearCargoMonitoring(CargoMonitorMap &cargo_monitor_map, CompanyID company = INVALID_OWNER)
 {
@@ -44,7 +44,7 @@ static void ClearCargoMonitoring(CargoMonitorMap &cargo_monitor_map, CompanyID c
 
 /**
  * Clear all pick-up cargo monitors.
- * @param company clear all pick-up monitors for this company or if INVALID_OWNER
+ * @param company clear all pick-up monitors for this company or if #INVALID_OWNER
  * is passed, all pick-up monitors are cleared regardless of company.
  */
 void ClearCargoPickupMonitoring(CompanyID company)
@@ -54,7 +54,7 @@ void ClearCargoPickupMonitoring(CompanyID company)
 
 /**
  * Clear all delivery cargo monitors.
- * @param company clear all delivery monitors for this company or if INVALID_OWNER
+ * @param company clear all delivery monitors for this company or if #INVALID_OWNER
  * is passed, all delivery monitors are cleared regardless of company.
  */
 void ClearCargoDeliveryMonitoring(CompanyID company)
