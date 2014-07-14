@@ -914,9 +914,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Príkaz zmeňiť tovar po zlyhaní zastavil {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoobnovenie zlyhalo u {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nové {STRING} dostupné!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G "ý" "á" "é"} {STRING} dostupn{G "ý" "á" "é"}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nové {STRING} dostupné!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G "ý" "á" "é"} {STRING} dostupn{G "ý" "á" "é"}!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} už neprijíma {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} už neprijíma {STRING} alebo {STRING}
@@ -3540,13 +3540,13 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystá
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Správa od výrobcu dopravných prostriedkov
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Práve sme navrhli nový {STRING} - máte záujem o právo exkluzívneho používania na 1 rok? Chceme otestovať vlastnosti tohto modelu pred jeho uvedením na trh.
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :železničná lokomotíva
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobil
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :lietadlo
-STR_ENGINE_PREVIEW_SHIP                                         :loď
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednokoľajová lokomotíva
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnetická lokomotíva
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Práve sme navrhli nov{G "ý" "ú" "é"} {STRING} - máte záujem o právo exkluzívneho používania na 1 rok? Chceme otestovať vlastnosti tohto modelu pred jeho uvedením na trh.
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=z}železničná lokomotíva
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automobil
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=s}lietadlo
+STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=z}jednokoľajová lokomotíva
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=z}magnetická lokomotíva
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Výkon: {POWER}{}Prevádzkové náklady: {CURRENCY_LONG}/rok{}Kapacita: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Sila: {POWER}  Max. T.E.: {6:FORCE}{}Prevádzkové náklady: {4:CURRENCY_LONG}/yr{}Kapacita: {5:CARGO_LONG}

@@ -1649,7 +1649,9 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grubość linii
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grubość linii na wykresach. Cienka linia jest dokładniejsza, grubsza linia jest bardziej widoczna a kolory łatwiejsze do odróżnienia
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajobraz: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajobrazy określają podstawowe scenariusze gry, które różnią się przedsiębiorstwami, towarami i wymogami dla rozwoju miast. Pliki NewGRF i skrypty umożliwiają dokładniejszą kontrolę warunków rozgrywki
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator krajobrazu: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Oryginalny generator tworzy tylko proste kształty krajobrazu i jest zależny od podstawowego zestawu grafiki. TerraGenesis jest oparty na generatorze szumu Perlina, który umożliwia precyzyjną kontrolę parametrów
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Typ terenu: {STRING}
@@ -1659,14 +1661,19 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Określa liczb�
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odległość od krawędzi dla rafinerii: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskich
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Wyboistość terenu: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wysokość linii śniegu w klimacie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Gładkość terenu: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Tylko dla TerraGenesis) Określa liczbę wzgórz na mapie. Łagodne krajobrazy posiadają nieliczne, bardzo rozległe wzgórza, natomiast na terenach pofałdowanych jest ich znacznie więcej i mogą wyglądać podobnie
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Wyboisty
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo wyboisty
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Pofałdowany
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo pofałdowany
+STR_CONFIG_SETTING_VARIETY                                      :Różnorodność terenu: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Tylko dla TerraGenesis) Umożliwia jednoczesne występowanie obszarów górskich i płaskich. Działa na zasadzie obniżania powierzchni, dlatego inny parametr powinien definiować teren górzysty
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Liczba rzek: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Określa liczbę rzek na mapie
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorytm rozmieszczenia drzew: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Metoda generowania terenów zalesionych. Algorytm "Oryginalny" rozmieszcza drzewa równomiernie na całej mapie, a "Ulepszony" gromadzi je w skupiska
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Brak
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Oryginalny
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Ulepszony
