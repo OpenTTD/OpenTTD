@@ -914,7 +914,7 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Príkaz zmeňiť tovar po zlyhaní zastavil {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoobnovenie zlyhalo u {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G "ý" "á" "é"} {STRING} dostupn{G "ý" "á" "é"}!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G "ý" "á" "é"} {STRING} dostupn{G 0 "ý" "á" "é"}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G "ý" "á" "é"} {STRING} dostupn{G "ý" "á" "é"}!  -  {ENGINE}
 
