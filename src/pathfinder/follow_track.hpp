@@ -228,8 +228,6 @@ protected:
 			m_is_station = true;
 		} else if (IsRoadTT() && IsRoadStopTile(m_new_tile)) {
 			m_is_station = true;
-		} else {
-			m_is_station = false;
 		}
 	}
 
