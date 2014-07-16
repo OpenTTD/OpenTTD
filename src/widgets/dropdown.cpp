@@ -344,15 +344,8 @@ void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int b
 	/* The preferred width equals the calling widget */
 	uint width = wi_rect.right - wi_rect.left + 1;
 
+	/* Longest item in the list, if auto_width is enabled */
 	uint max_item_width = 0;
-
-	if (auto_width) {
-		/* Find the longest item in the list */
-		for (const DropDownListItem * const *it = list->Begin(); it != list->End(); ++it) {
-			const DropDownListItem *item = *it;
-			max_item_width = max(max_item_width, item->Width() + 5);
-		}
-	}
 
 	/* Total length of list */
 	int height = 0;
@@ -360,6 +353,7 @@ void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int b
 	for (const DropDownListItem * const *it = list->Begin(); it != list->End(); ++it) {
 		const DropDownListItem *item = *it;
 		height += item->Height(width);
+		if (auto_width) max_item_width = max(max_item_width, item->Width() + 5);
 	}
 
 	/* Check if the status bar is visible, as we don't want to draw over it */
