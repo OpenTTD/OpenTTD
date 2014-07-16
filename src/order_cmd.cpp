@@ -1870,7 +1870,19 @@ restart:
 					break;
 				}
 
+				/* Clear wait time */
+				v->orders.list->UpdateTotalDuration(-order->GetWaitTime());
+				if (order->IsWaitTimetabled()) {
+					v->orders.list->UpdateTimetableDuration(-order->GetTimetabledWait());
+					order->SetWaitTimetabled(false);
+				}
+				order->SetWaitTime(0);
+
+				/* Clear order, preserving travel time */
+				bool travel_timetabled = order->IsTravelTimetabled();
 				order->MakeDummy();
+				order->SetTravelTimetabled(travel_timetabled);
+
 				for (const Vehicle *w = v->FirstShared(); w != NULL; w = w->NextShared()) {
 					/* In GUI, simulate by removing the order and adding it back */
 					InvalidateVehicleOrder(w, id | (INVALID_VEH_ORDER_ID << 8));
