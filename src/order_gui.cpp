@@ -410,7 +410,8 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		return order;
 	}
 
-	if ((IsBuoyTile(tile) && v->type == VEH_SHIP) || (IsRailWaypointTile(tile) && v->type == VEH_TRAIN)) {
+	/* check buoy (no ownership) */
+	if (IsBuoyTile(tile) && v->type == VEH_SHIP) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
 		return order;
 	}
