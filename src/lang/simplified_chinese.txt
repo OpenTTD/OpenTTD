@@ -987,6 +987,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}选择�
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} 文件已损坏
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}有关基础音乐组的附加信息
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}无法撷取可用的屏幕分辨率清单
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
 
 # Custom currency window
@@ -1268,7 +1269,9 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :图表曲线宽
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :图表中曲线的宽度，细线清晰易读，粗线容易分辨颜色
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :景观: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :此设置决定基本的游戏场景、有什么货物可供运输，以及城镇发展的所需条件。然而，NewGRF 及游戏脚本可以比此设置更加细致地设置游戏场景
 STR_CONFIG_SETTING_LAND_GENERATOR                               :生成地形：{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :使用原始算法时，系统会依赖基础图形组去生成固定的地形。新算法则是一个建基于 Perlin 噪声原理的地形生成程序，并支援较为细致的地形设置
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原始算法
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :新算法
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地貌类型: {STRING}
@@ -1280,11 +1283,13 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :炼油厂只能
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :控制在寒带气候中雪线高度.大雪会影响工业和城镇发展需求.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限生成地图时):{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(仅限新算法) 选择在地图上的山丘密度。光滑的地形会包含较少、相互之间较分散的山丘。粗糙的地形的山丘较密集，但可能会使地图显得重复
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 STR_CONFIG_SETTING_VARIETY                                      :多样的分发: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(仅限新算法) 此设置控制地图是否同时包含多山及平坦的地带。由于此设置只会使地图的一部份変得较平坦，请把其他相关设置（如 "地形特点"）的值设为 "山地"
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :河流数量: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :选择生成河流的数量
 STR_CONFIG_SETTING_TREE_PLACER                                  :森林算法：{STRING}
@@ -3843,6 +3848,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶 (无时�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :途中行驶 {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :开往{STRING} ，限速为 {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行驶 ({STRING}, 无时间表)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :前往 {STRING},以最大速度 {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(停靠 {STRING}, 无时间表)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(驶往 {STRING}, 无时间表)
