@@ -961,6 +961,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} має недійсне завдання
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} має подвоєння завдань
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} має невірну станцію в завданнях
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE} Один із пунктів призначення {VEHICLE} має закоротку злітну смугу
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} застарів
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} дуже застарів
@@ -1215,7 +1216,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Налашту�
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Категорія:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Тип:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Показати лише налаштування, які було змінено
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Показати лише відфільтровані налаштування
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основні налаштування
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Розширені налаштування
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Всі / експертні налаштування
@@ -1373,7 +1374,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспо�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включенні будь-яка модель транспортного засобу буде доступна для придбання безстроково після її впровадження.
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автозаміна зношених транспортних засобів: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :При включенні транспортні засоби з вичерпаним строком служби автоматично замінюються на нові (при виконанні умов автозаміни).
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автозаміна транспрорту {STRING} закінчення строку експлуатаціі
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автозаміна транспрорту {STRING} закінчення строку експлуатації
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Момент з якого транспортний засіб підлягає автоматичній заміні.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} місяц{P ь я ів} до
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} місяц{P ь я ів} після
@@ -1391,21 +1392,32 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Відобра�
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Товщина ліній на графіках: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Товщина ліній на графіках. Тонкі лінії дають більш точне відображення, а товстіші - більш розбірливі.
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Ландшафт: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор ландшафту: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :стандартний
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Тип ландшафту: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Тільки TerraGenesis) Горбистість ландшафту
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Густота підприємств: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Макс. відстань від краю карти до нафтопереробних заводів: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нафтопереробні заводи завжди будуються не далеко від краю карти або узбережжя.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Рівень снігової шапки: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Грубість ландшафту (TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Сніг впливає на генерування підприємств та на умови росту міст
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Грубість ландшафту: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :дуже плавний
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :плавний
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :грубий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :дуже грубий
+STR_CONFIG_SETTING_VARIETY                                      :Розподіл різноманітності: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Кількість річок: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Виберіть кількість річок
 STR_CONFIG_SETTING_TREE_PLACER                                  :Алгоритм розміщення дерев: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Виберіть модель розподілу дерев на карті: "Оригінальна" розподіляє дерева рівномірно, "Покращена" розташовує їх групами
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :немає
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :стандартний
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :покращений
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Автотранспорт: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Виберіть сторону, по якій рухається автотранспорт
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Поворот карти висот: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :проти годинникової стрілки
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :за годинниковою стрілкою
@@ -1460,6 +1472,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :не емулю
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Прокрутка по лівому кліку: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Дозволяє "тягати" карту утримуючи ліву кнопку миші, що дає можливість використовувати сенсорні екрани природнім способом..
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Автозбереження: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Формат дати в іменах файлів збереження: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат дати в іменах файлів збереження
@@ -1747,11 +1760,14 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метричн�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локалізація
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукові ефекти
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звук
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтерфейс
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будівництво
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Фізика
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрути
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Обмеження
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Катастрофи
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Міста
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Підприємства
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Розподіл вантажів
@@ -2769,6 +2785,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Збер
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Зберегти поточну гру, використовуючи вибране ім'я файлу
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Завантажити
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Завантажити обрану гру
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Завантажити вибрану карту висот
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Деталі гри
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Інформація відсутня
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2867,6 +2884,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Вище
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Перемістити вибрані файли вверх по списку
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Нижче
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перемістити вибрані файли вниз по списку
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Оновити
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список встановлених файлів NewGRF
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Встановлення параметрів
@@ -2892,6 +2910,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкн
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несумісне з поточною версією OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Скасувати
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Зберегти
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змінити параметри NewGRF
@@ -3376,12 +3396,13 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Незгруп�
 STR_GROUP_DEFAULT_SHIPS                                         :Незгруповані кораблі
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Незгруповані літаки
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Групи - клікніть на групі, щоб побачити список транспорту цієї групи
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Групи - клікніть на групі, щоб побачити список транспорту цієї групи. Перетягуйте групи, щоб змінити ієрархію.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Клікніть, щоб створити групу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Стерти вибрану групу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перейменувати вибрану групу
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Клікніть, щоб захистити групу від глобальної автозаміни
 
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Ви впевнені, що хочете видалити цю групу та всі вкладені групи?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Додати спільний транспорт
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбутися всього транспорту
@@ -3900,9 +3921,12 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Розк
 STR_TIMETABLE_NO_TRAVEL                                         :Не прямувати
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В дорозі (час руху враховано в наступному не автоматичному наказі)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В дорозі (час не вказано)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :В дорозі зі швидкістю, що не перевищує {2:VELOCITY} (час не вказано)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Прямувати (без розкладу) зі швидкістю, що не перевищує {2:VELOCITY} (час не вказано)
 STR_TIMETABLE_TRAVEL_FOR                                        :В дорозі {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :В дорозі {STRING} зі швидкістю, що не перевищує {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Їхати (протягом {STRING}, без розкладу) зі швидкістю не більше {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(стояти протягом {STRING}, без розкладу)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(їхати протягом {STRING}, без розкладу)
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :і прямувати до {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ні нів}
