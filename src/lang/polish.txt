@@ -2259,7 +2259,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Reklamowany
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Publiczny
 STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Tak
@@ -4937,7 +4937,7 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} Transf
 STR_SV_STNAME_HALT                                              :Przedmieścia {STRING}
 STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Wzgórza
-STR_SV_STNAME_WOODS                                             :{STRING} Las
+STR_SV_STNAME_WOODS                                             :{STRING} Podlesie
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Wymiana
 STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRING}
@@ -5228,8 +5228,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :Boja {TOWN} #{C
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :Pkt. orientacyjny {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pkt. orientacyjny {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Post. {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Post. {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Warsztaty {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Warsztaty {TOWN} #{COMMA}
