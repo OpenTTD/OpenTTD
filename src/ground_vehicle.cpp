@@ -108,15 +108,30 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 {
 	/* Templated class used for function calls for performance reasons. */
 	const T *v = T::From(this);
-	int32 speed = v->GetCurrentSpeed(); // [km/h-ish]
+	/* Speed is used squared later on, so U16 * U16, and then multiplied by other values. */
+	int64 speed = v->GetCurrentSpeed(); // [km/h-ish]
 
 	/* Weight is stored in tonnes. */
 	int32 mass = this->gcache.cached_weight;
 
-	/* Power is stored in HP, we need it in watts. */
-	int32 power = this->gcache.cached_power * 746;
+	/* Power is stored in HP, we need it in watts.
+	 * Each vehicle can have U16 power, 128 vehicles, HP -> watt
+	 * and km/h to m/s conversion below result in a maxium of
+	 * about 1.1E11, way more than 4.3E9 of int32. */
+	int64 power = this->gcache.cached_power * 746ll;
 
-	int32 resistance = 0;
+	/* This is constructed from:
+	 *  - axle resistance:  U16 power * 10 for 128 vehicles.
+	 *     * 8.3E7
+	 *  - rolling friction: U16 power * 144 for 128 vehicles.
+	 *     * 1.2E9
+	 *  - slope resistance: U16 weight * 100 * 10 (steepness) for 128 vehicles.
+	 *     * 8.4E9
+	 *  - air drag: 28 * (U8 drag + 3 * U8 drag * 128 vehicles / 20) * U16 speed * U16 speed
+	 *     * 6.2E14 before dividing by 1000
+	 * Sum is 6.3E11, more than 4.3E9 of int32, so int64 is needed.
+	 */
+	int64 resistance = 0;
 
 	bool maglev = v->GetAccelerationType() == 2;
 
@@ -136,7 +151,9 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	AccelStatus mode = v->GetAccelerationStatus();
 
 	const int max_te = this->gcache.cached_max_te; // [N]
-	int force;
+	/* Constructued from power, with need to multiply by 18 and assuming
+	 * low speed, it needs to be a 64 bit integer too. */
+	int64 force;
 	if (speed > 0) {
 		if (!maglev) {
 			/* Conversion factor from km/h to m/s is 5/18 to get [N] in the end. */
@@ -160,10 +177,10 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 		 * down hill will never slow down enough, and a vehicle that came up
 		 * a hill will never speed up enough to (eventually) get back to the
 		 * same (maximum) speed. */
-		int accel = (force - resistance) / (mass * 4);
+		int accel = ClampToI32((force - resistance) / (mass * 4));
 		return force < resistance ? min(-1, accel) : max(1, accel);
 	} else {
-		return min(-force - resistance, -10000) / mass;
+		return ClampToI32(min(-force - resistance, -10000) / mass);
 	}
 }
 
