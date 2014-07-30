@@ -75,10 +75,10 @@ $(BIN_DIR)/%.obm: $(BASESET_DIR)/%.obm $(OBJS_DIR)/langfiles.tmp $(BASESET_DIR)/
 	$(Q) awk -v langfiles='$(OBJS_DIR)/langfiles.tmp' -f $(BASESET_DIR)/translations.awk $< >$@
 
 # Compile extra grf
-$(BIN_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
+$(BIN_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites $(GRF_DIR)/assemble_nfo.awk
 	$(E) '$(STAGE) Assembling openttd.nfo'
 	$(Q)-cp $(PNG_FILES) $(OBJS_DIR)/sprites 2> /dev/null
-	$(Q) $(CC_BUILD) -nostdinc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttd.nfo
+	$(Q) awk -f $(GRF_DIR)/assemble_nfo.awk $(GRF_DIR)/openttd.nfo > $(OBJS_DIR)/sprites/openttd.nfo
 	$(Q) $(NFORENUM) -s $(OBJS_DIR)/sprites/openttd.nfo
 	$(E) '$(STAGE) Compiling openttd.grf'
 	$(Q) $(GRFCODEC) -n -s -e -p1 $(OBJS_DIR)/openttd.grf
