@@ -231,7 +231,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلا
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
 STR_TOOLTIP_SHADE                                               :{BLACK}نافذة الظل - تعرض العنوان فقط
 STR_TOOLTIP_DEBUG                                               :{BLACK}اظهر معلومات صائد اخطاء الاضافات الجديدة.
-STR_TOOLTIP_STICKY                                              :{BLACK}خصص هذا الاطار بان يبقى مفتوح عند اغلاق كافة الاطارات
+STR_TOOLTIP_STICKY                                              :{BLACK}علم هذه النافذة كغير قابلة للإقفال باستخدام زر إغلاق كل النوافذ, اضغط مع Ctrl لجعل الأمر إفتراضيا
 STR_TOOLTIP_RESIZE                                              :{BLACK}اضغط واسحب لتعديل حجم الاطار
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تبديل حجم الاطار كبير / صغير
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}شريط العرض- فوق /تحت
@@ -954,6 +954,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}اختر
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ملف غير صالح{P ""}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}معلومات اضافية عن الموسيقى الاساسية
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}فشل في استرداد قائمة الدقة المدعومة
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}فشل تشغيل نمط الشاشة الكاملة
 
 # Custom currency window
@@ -1125,15 +1126,20 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :مولد الأ
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :الأصلي
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :مرتفعات منزلقة
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط الثلج: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :خشونة التضاريس (سفر التكوين فقط ) :({STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :خشونة التضاريس (صفر التكوين فقط ) :({STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ناعم جدا
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :خشن جدا
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :حجم النهر: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :اختر عدد الأنهر لتكوينها
 STR_CONFIG_SETTING_TREE_PLACER                                  :طريقة وضع الاشجار: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :إختر توزيع الشجر على الخريطة: 'Original' تبعثر الشجر عشوائيا. 'Improved' زرعهم في مجموعات
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :بدون
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :الأصلي
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :المحسن
+STR_CONFIG_SETTING_ROAD_SIDE                                    :السيارات: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :إختر جهة القيادة
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اتجاة خريطة المرتفعات: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :عكس عقارب الساعة
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :مع عقارب الساعة
@@ -1168,6 +1174,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :عدم استخ
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :تصفح بالزر الايسر: {STRING}
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :حفظ تلقائي : {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :اختر الوقت بين كل عملية حفظ اتوماتيكية
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :استخدم {STRING} نمط التاريخ لاسم اللعبة المحفوظة
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 ديسمبر 2008
@@ -1211,10 +1219,10 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :مؤثرات: {
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :شغل مؤثرات صوتية في المناظر و المصانع و المدن
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :عطل ادوات البناء عند عدم وجود عربات متاحة لها: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل لاعب: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل لاعب: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل لاعب: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :الحد الأعلى لعدد السفن لكل لاعب: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :الحد الأعلى لعدد السفن لكل شركة: {STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :حظر القطارات على الحاسوب: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :حظر العربات على الكمبيوتر: {STRING}
@@ -1584,7 +1592,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ضع ك�
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}احم لعبتك برقم سري حتى لا تصبح لعبتك مفتوحة للجميع
 
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}عميل
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}اقصى عدد عملاء:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}اقصى عدد للعملاء:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}أختر أقصى عدد للعملاء
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM}شركة
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}أقصى عدد شركات:
@@ -2389,6 +2397,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}تحري
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}حرك الملف المختار الى الأعلى
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}تحريك للأسفل
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}حرك الملف المختار الى الاسفل في القائمة
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}ترقية
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK} ترقية ملفات NewGRF التي لديك نسخه جديده منها
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}قائمة ملفات NewGRF المركبة. اضغط على الملف لتغييرة.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}اضبط الاعدادات
@@ -2413,6 +2423,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}معطل
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}متعارض مع هذا اللإصدار من Openttd
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{BLACK}حفظ الإعداد المسبق
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}لائحة الإعدادات المسبقة. اختر واحدة لنسخها للإسم المحفوظ بالإسفل
+STR_SAVE_PRESET_TITLE                                           :{BLACK}أدخل اسم للإعداد المسبق
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}الإسم المختار لحفظ الإعداد المسبق
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}إلغاء
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}لا تغير الإعداد المسبق
+STR_SAVE_PRESET_SAVE                                            :{BLACK}إحفظ
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK} احفظ الإعدادات للإسم المختار حاليا
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}غير خصائص الاضافات الجديدة
@@ -3324,7 +3342,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}جدول
 STR_TIMETABLE_NO_TRAVEL                                         :لا رحيل
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادرة (ذاتي: بواسطة الامر اليدوي التالي)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (غير مجدوله)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر بمعدل {2:VELOCITY} (بدون جدوله)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر(بدون جدول زمني) مع تقريبا {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}

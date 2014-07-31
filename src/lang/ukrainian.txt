@@ -1394,7 +1394,9 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Товщина 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Товщина ліній на графіках. Тонкі лінії дають більш точне відображення, а товстіші - більш розбірливі.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Ландшафт: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Пейзажі визначають базові ігрові сценарії з різними вантажами, необхідними для зростання міст. NewGRF'и й ігрові скрипти дозволяють тонший контроль
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор ландшафту: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Стандартний залежить від базового набору графіки і створює стандартні форми ландшафту. TerraGenesis базується на генераторі шумів Перлина з тоншими налаштуваннями управління
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :стандартний
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Тип ландшафту: {STRING}
