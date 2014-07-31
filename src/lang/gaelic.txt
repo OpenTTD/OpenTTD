@@ -814,10 +814,10 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Iomlan:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}An àireamh dhe charbadan a rinn prothaid an-uiridh. Gabhaidh seo a-steach carbadan-rathaid, trèanaichean, longan is carbadan-adhair
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}An àireamh dhe stèiseanan a chaidh a fhrithealadh o chionn ghoirid. théid stèiseanan rèile, stèiseanan bus, stadan bus, puirt-adhair is mar sin air adhart a chunntadh fa leth fiù ’s ma bhuineas iad ris an aon stèisean
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Am prothaid aig a' charbad leis an teachd a-steach as lugha (cha tèid sùil a thoirt ach air carbadan a tha co-dhiù dà bhliadhna a dh'aois)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd san ràith leis a' phrothaid as lugha am measg an dusan ràith mu dheireadh
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd san ràidh leis a' phrothaid as motha am measg an dusan ràith mu dheireadh
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Na h-aonadan dhe charago air an lìbhrigeadh sna ceithir ràithean mu dheireadh
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}An àireamh dhe sheòrsaichean carago a chaidh a lìbhrigeadh san ràith mu dheireadh
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd sa chairteal leis a' phrothaid as lugha am measg an dusan cairteal mu dheireadh
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd sa chairteal leis a' phrothaid as motha am measg an dusan cairteal mu dheireadh
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Na h-aonadan dhe charago air an lìbhrigeadh sna ceithir cairtealan dheireadh
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}An àireamh dhe sheòrsaichean carago a chaidh a lìbhrigeadh sa chairteal mu dheireadh
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}An t-airgead a tha aig a' chompanaidh seo sa bhanca
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}An t-airgead a tha aig a' chompanaidh mar iosad
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Na puingean iomlan a-mach às na puingean comasach
@@ -1191,6 +1191,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Tagh an 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} {P fhaidhle fhaidhle faidhlichean faidhle} coirbte
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Barrachd fiosrachaidh mun t-seata chiùil bhunasach
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Cha deach leinn liosta dhe na dùmhlaidhean-breacaidh ris an cuirear taic fhaighinn
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Dh'fhàillig leis a' mhodh làn-sgrìn
 
 # Custom currency window
@@ -1352,7 +1353,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Tagh am meud dh
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Ceadaich gun tèid togail air slèibhtean is an oirthir: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ma tha seo air, faodar slighean is stèiseanan a thogail air a' mhòr chuid dhe shlèibhtean. Ma tha seo dheth, chan fhaodar an togail ach air slèibhtean leis an aon chomhair ’s a tha aig an t-slighe is aig nach eil feum air bonn togalaich
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaich atharrachadh crutha-tìre fo thogalaichean, slighean agus msaa. (fèin-sliabh): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaich atharrachadh crutha-tìre fo thogalaichean, slighean agus msaa.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ceadaich atharrachadh crutha-tìre fo thogalaichean is slighean gun a bhith gan toirt air falbh
 STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaich raointean tionail le meud a tha nas fhìor-riochdail: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Bi meud eadar-dhealaichte aig raointean tionail a-rèir seòrsa an stèisein no puirt-adhair
@@ -1526,7 +1527,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgroladh mìn n
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Tagh mar a ghluaiseas am prìomh-shealladh gu ionad sònraichte. Ma tha seo dheth, thèid leum dhan ionad a chaidh a thaghadh sa bhad
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Seall gliocasan-sgrìn tomhais le innealan togail: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Seall faide eadar leacan is diofar an àirde nuair a nì thu slaodadh fhad ’s a bhios tu a' togail rudeigin
-STR_CONFIG_SETTING_LIVERIES                                     :Seall dathan na companaidh: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Seall dathan a-rèir seòrsa a' charbaid: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Stiùirich cleachdadh nan dathan a-rèir seòrsa a' charbaid (seach a-rèir na companaidh)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Na seall idir
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Aig a' chompanaidh agam fhèin
@@ -1575,7 +1576,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Na ceadaich gn�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :A h-uile gnìomh ach togail
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :A h-uile gnìomh ach atharrachadh a' chrutha-tìre
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Na h-uile gnìomh
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Cleachd liosta nan carbadan adhartach: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Cleachd buidhnean air liosta nan carbadan: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cuir liostaichean adhartach nan carbadan an comas gus carbadan a chur ann am buidhnean
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Seall taisbeanairean luchdaidh: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Tagh an tèid taisbeanairean luchdaidh a shealltainn os cionn charbadan a bhios a' luchdadh no dì-luchdadh
@@ -1590,7 +1591,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An seòrsa rèi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Seòrsa as sine
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Seòrsa as ùire
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ga chleachdadh mar as trice
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Seall slighean glèidhte: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Seall slighean-rèile glèidhte: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Cuiridh seo dath eile air slighean glèidhte gus cuideachadh le duilgheadasan gun diùlt trèan dol a-steach dha bhlocaichean stèidhichte air slighean
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Cùm innealan togail gnìomhach an dèidh an cleachdaidh: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Cùm na h-innealan togail airson drochaidean, tunailean agus msaa. fosgailte nuair a chaidh an cleachdadh
@@ -3940,8 +3941,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Atharrai
 
 STR_ORDER_REFIT                                                 :{BLACK}Mùth
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Tagh an seòrsa dhe charago ’s tu airson mùthadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an t-òrdugh mùthaidh a thoirt air falbh
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Fèin-mhùth
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Tagh an seòrsa dhe charago ’s tu airson fèin-mhùthadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an t-òrdugh mùthaidh a thoirt air falbh. Cha tèid fèin-mhùthadh a dhèanamh ach ma tha an carbad comasach
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Mùth aig stèisean
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Tagh an seòrsa dhe charago ’s tu airson mùthadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an t-òrdugh mùthaidh a thoirt air falbh. Cha tèid mùthadh a dhèanamh aig stèisean ach ma tha an carbad comasach air
 STR_ORDER_DROP_REFIT_AUTO                                       :Carago stèidhichte
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carago ri làimh
 
@@ -4032,15 +4033,15 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Na dì-luchdai
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Na dì-luchdaich is feitheamh air carago sam bith iomlan)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Na dì-luchdaich is na luchdaich)
 
-STR_ORDER_AUTO_REFIT                                            :(Fèin-mhùth airson {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Luchdadh iomlan le fèin-mhùthadh airson {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Luchdadh iomlan aig carago sam bith le fèin-mhùthadh airson {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Dì-luchdaich is gabh ri carago le fèin-mhùthadh airson {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Dì-luchdaich is feitheamh air luchdadh iomlan le fèin-mhùthadh airson {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Dì-luchdaich is feitheamh air luchdadh sam bith iomlan le fèin-mhùthadh airson {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Tar-aisig is gabh ri carago le fèin-mhùthadh airson {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Tar-aisig is feitheamh air carago iomlan le fèin-mhùthadh airson {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Tar-aisig is feitheamh air carago sam bith iomlan le fèin-mhùthadh airson {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Mùth airson {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Luchdadh iomlan le mùthadh airson {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Luchdadh iomlan aig carago sam bith le mùthadh airson {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Dì-luchdaich is gabh ri carago le mùthadh airson {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Dì-luchdaich is feitheamh air luchdadh iomlan le mùthadh airson {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Dì-luchdaich is feitheamh air luchdadh sam bith iomlan le mùthadh airson {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Tar-aisig is gabh ri carago le mùthadh airson {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Tar-aisig is feitheamh air carago iomlan le mùthadh airson {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Tar-aisig is feitheamh air carago sam bith iomlan le mùthadh airson {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Na dì-luchdaich is gabh ri carago le fèin-mhùthadh airson {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Na dì-luchdaich is feitheamh air carago iomlan le fèin-mhùthadh airson {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Na dì-luchdaich is feitheamh air carago sam bith iomlan le fèin-mhùthadh airson {STRING})

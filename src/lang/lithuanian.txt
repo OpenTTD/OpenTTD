@@ -4310,7 +4310,7 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nepa
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... paveikslėlis yra per didelis
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Mastelio įspėjimas
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Pradines nuostas keisti pernelyg smarkiai nerekomenduojama. Tęsti generavimą?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Per daug keisti pradinio žemėlapio dydį nerekomenduojama. Tęsti generavimą?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Rasta tik fiktyvi garsų biblioteka. Jeigu norite garsų žaidime, įdiekite garsų rinkinį naudojant parsisiuntimų sistemą.

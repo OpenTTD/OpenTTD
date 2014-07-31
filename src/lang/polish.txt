@@ -850,21 +850,21 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłąc
 ############ range ends here
 
 ############ range for ordinal numbers used for the place in the highscore window
-STR_ORDINAL_NUMBER_1ST                                          :1
-STR_ORDINAL_NUMBER_2ND                                          :2
-STR_ORDINAL_NUMBER_3RD                                          :3
-STR_ORDINAL_NUMBER_4TH                                          :4
-STR_ORDINAL_NUMBER_5TH                                          :5
-STR_ORDINAL_NUMBER_6TH                                          :6
-STR_ORDINAL_NUMBER_7TH                                          :7
-STR_ORDINAL_NUMBER_8TH                                          :8
-STR_ORDINAL_NUMBER_9TH                                          :9
-STR_ORDINAL_NUMBER_10TH                                         :10
-STR_ORDINAL_NUMBER_11TH                                         :11
-STR_ORDINAL_NUMBER_12TH                                         :12
-STR_ORDINAL_NUMBER_13TH                                         :13
-STR_ORDINAL_NUMBER_14TH                                         :14
-STR_ORDINAL_NUMBER_15TH                                         :15
+STR_ORDINAL_NUMBER_1ST                                          :1.
+STR_ORDINAL_NUMBER_2ND                                          :2.
+STR_ORDINAL_NUMBER_3RD                                          :3.
+STR_ORDINAL_NUMBER_4TH                                          :4.
+STR_ORDINAL_NUMBER_5TH                                          :5.
+STR_ORDINAL_NUMBER_6TH                                          :6.
+STR_ORDINAL_NUMBER_7TH                                          :7.
+STR_ORDINAL_NUMBER_8TH                                          :8.
+STR_ORDINAL_NUMBER_9TH                                          :9.
+STR_ORDINAL_NUMBER_10TH                                         :10.
+STR_ORDINAL_NUMBER_11TH                                         :11.
+STR_ORDINAL_NUMBER_12TH                                         :12.
+STR_ORDINAL_NUMBER_13TH                                         :13.
+STR_ORDINAL_NUMBER_14TH                                         :14.
+STR_ORDINAL_NUMBER_15TH                                         :15.
 ############ range for ordinal numbers ends
 
 ############ range for days starts
@@ -1300,7 +1300,7 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial irański (
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pojazdy drogowe
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wybierz stronę po której mają jeździć samochody
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wybierz stronę, po której będą jeździć samochody
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazda po lewej
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jazda po prawej
 
@@ -1332,7 +1332,7 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalońskie
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz okres pomiędzy autozapisami
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Częstotliwość automatycznego zapisu stanu gry
 
 ############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Wył.
@@ -1369,6 +1369,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wybierz 
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} plik{P "" i ów} uszkodzony
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatkowe informacje o muzyce podstawowej
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nie udało się pobrać listy obsługiwanych rozdzielczości
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomienie trybu pełnoekranowego nie powiodło się
 
 # Custom currency window
@@ -1401,7 +1402,7 @@ STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksyma
 
 STR_NONE                                                        :Brak
 STR_FUNDING_ONLY                                                :Tylko sponsorowanie
-STR_MINIMAL                                                     :Minimalna
+STR_MINIMAL                                                     :Minimum
 STR_NUM_VERY_LOW                                                :Bardzo mało
 STR_NUM_LOW                                                     :Mało
 STR_NUM_NORMAL                                                  :Średnio
@@ -1429,10 +1430,10 @@ STR_SEA_LEVEL_HIGH                                              :Wysoki
 STR_SEA_LEVEL_CUSTOM                                            :Własny
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Własny ({NUM}%)
 
-STR_RIVERS_NONE                                                 :Żaden
-STR_RIVERS_FEW                                                  :Kilka
-STR_RIVERS_MODERATE                                             :Średni
-STR_RIVERS_LOT                                                  :Sporo
+STR_RIVERS_NONE                                                 :Brak
+STR_RIVERS_FEW                                                  :Mało
+STR_RIVERS_MODERATE                                             :Średnio
+STR_RIVERS_LOT                                                  :Dużo
 
 STR_DISASTER_NONE                                               :Brak
 STR_DISASTER_REDUCED                                            :Zredukowane
@@ -1669,11 +1670,11 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odległość od krawędzi dla rafinerii: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskich
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Wyboistość terenu: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Gładkość terenu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Wyboisty
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo wyboisty
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Pofałdowany
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo pofałdowany
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorytm rozmieszczenia drzew: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Brak
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Oryginalny
@@ -2262,7 +2263,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Reklamowany
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Publiczny
 STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Tak
@@ -3080,9 +3081,9 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzeni
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar mapy:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Wybierz rozmiar mapy w kwadratach. Liczba dostępnych kwadratów będzie nieco mniejsza
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Ilość miast:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Liczba miast:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ilość przedsiębiorstw
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Liczba przedsiębiorstw:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Śnieg od wysokości:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Podnieś wysokość śniegu o jeden w górę
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Obniż wysokość śniegu o jeden w dół
@@ -3093,7 +3094,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generato
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorytm drzew:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Poziom wody:
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rzeki:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Liczba rzek:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gładkość:
 STR_MAPGEN_VARIETY                                              :{BLACK}Różnorodność:
 STR_MAPGEN_GENERATE                                             :{WHITE}Stwórz
@@ -4097,8 +4098,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmień s
 
 STR_ORDER_REFIT                                                 :{BLACK}Przebudowa
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przebudowy. Ctrl+klik usuwa polecenie
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatyczna przebudowa
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do automatycznej przebudowy. Ctrl+klik usuwa polecenie. Automatyczna przebudowa zostanie wykonana jedynie, jeśli dany pojazd na to pozwala
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Przebudowa na stacji
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do przebudowy. Ctrl+klik usuwa polecenie. Przebudowa na stacji zostanie wykonana jedynie, jeśli dany pojazd na to pozwala i nie powoduje to zmiany jego wyglądu
 STR_ORDER_DROP_REFIT_AUTO                                       :Ustalony ładunek
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostępny ładunek
 
@@ -4927,7 +4928,7 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} Transf
 STR_SV_STNAME_HALT                                              :Przedmieścia {STRING}
 STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Wzgórza
-STR_SV_STNAME_WOODS                                             :{STRING} Las
+STR_SV_STNAME_WOODS                                             :{STRING} Podlesie
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Wymiana
 STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRING}
@@ -5218,8 +5219,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :Boja {TOWN} #{C
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :Pkt. orientacyjny {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pkt. orientacyjny {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Post. {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Post. {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Warsztaty {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Warsztaty {TOWN} #{COMMA}

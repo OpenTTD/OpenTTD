@@ -989,6 +989,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}选择�
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} 文件已损坏
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}有关基础音乐组的附加信息
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}无法撷取可用的屏幕分辨率清单
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
 
 # Custom currency window

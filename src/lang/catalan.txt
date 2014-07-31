@@ -412,7 +412,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifes de paga
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Taula de la lliga d'empreses
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detall de ratis de rendiment
-STR_GRAPH_MENU_HIGHSCORE                                        :Taula de rècords
+STR_GRAPH_MENU_HIGHSCORE                                        :Taula de Puntuacions
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1715,15 +1715,15 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova Partida
 STR_INTRO_LOAD_GAME                                             :{BLACK}Carrega una Partida
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Juga un Escenari
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Juga un mapa d'alçades
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Juga un Mapa d'Alçades
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d'Escenaris
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijugador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcions del Joc
 STR_INTRO_HIGHSCORE                                             :{BLACK}Taula de rècords
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Paràmetres avançats
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Paràmetres Avançats
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Extensions NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en línia
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en Línia
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Paràmetres de les IA/Script de la Partida
 STR_INTRO_QUIT                                                  :{BLACK}Surt
 

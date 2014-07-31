@@ -783,7 +783,7 @@ STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLAC
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}{STATION}에서 체펠린이 추락했습니다!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}체펠린 비행선이 {STATION}에 추락했습니다!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}'UFO'의 폭격으로 차량이 파괴되었습니다!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} 근처의 정유 공장에서 폭발 사고가 발생하였습니다!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}{TOWN} 근처의 공장이 의심스러운 정황으로 인해 파괴되었습니다!

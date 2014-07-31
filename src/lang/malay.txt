@@ -966,6 +966,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih se
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fail sudah rosak
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Maklumat lebih tentang set muzik asas
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Gagal untuk mendapat senarai resolusi yang disokong
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mod skrin penuh gagal dilakukan
 
 # Custom currency window
@@ -1065,7 +1066,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Tetapan permain
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Tetapan syarikat (disimpan di simpanan; berkesan hanya permainan baru)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Tetapan syarikat (disimpan di penyimpanan; hanya berkesan kepada syarikat semasa)
 
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hadkan senarai di bawah hanya ditunjukkan tetapan ditukar
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hadkan senarai di bawah menggunakan penapis yang telah ditetapkan
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tetapan asas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tetapan tambahan
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pakar tetapan / semua tetapan
@@ -1302,10 +1303,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Perbelanjaan ku
 
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Nyahaktif infrastruktur bangunan apabila tiada kenderaan yang sesuai: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks keretapi setiap syarikat: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks kenderaan jalanraya setiap syarikat: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks pesawat setiap syarikat: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks kapal setiap syarikat: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Amaun maksimum kereta api setiap syarikat: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Amaun maksimum kenderaan jalanraya setiap syarikat: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Amaun maksimum pesawat setiap syarikat: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Amaun maksimum kapal setiap syarikat: {STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Nafikan keretapi untuk komputer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Nafikan kenderaan jalanraya untuk komputer: {STRING}
@@ -1689,13 +1690,13 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Tetapkan
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan anda dengan kata laluan jika anda tidak mahu ianya diakses awam
 
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} pelanggan
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Klien maks:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Amaun maksimum pemain:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tentukan bilangan klien maks. Tidak perlu semua slot diisi
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} syarikat
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks syarikat:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Amaun maksimum syarikat:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Hadkan bilangan syarikat dalam pelayan
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} penyaksi
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks penyaksi:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Amaun maxsimum penyaksi:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Hadkan bilangan penyaksi dalam pelayan
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa yang digunakan:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Pemain lain akan tahu bahasa apa yang digunakan di pelayan ini
@@ -2850,7 +2851,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Jumlah:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Baki Bank
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman Maks: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman Maksimum: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pinjam {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Tinggikan nilai pinjaman. Ctrl+Klik untuk meminjam sebanyak mungkin

@@ -989,6 +989,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih mu
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} berkas rusak
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informasi tambahan tentang musik dasar
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tidak bisa mendapatkan daftar resolusi layak
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus layar penuh gagal
 
 # Custom currency window
@@ -1198,7 +1199,7 @@ STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalnya, sebu
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Tunjukan sinyal: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Pilih sisi rel yang akan diletakkan sinyal
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Di kiri
-STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Di sisi pengemudi
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Di sisi mengemudi
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di kanan
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tampilkan laporan keuangan pada akhir tahun: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jika diaktifkan, jendela keuangan akan ditampilkan setiap akhir tahun untuk lebih mudah memeriksa keadaan keuangan
@@ -1289,7 +1290,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Jarak maksimal kilang minyak dari batas: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Kilang minyak hanya dibangun pada tepi peta atau pantai
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Tinggi garis salju: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kekasaran daratan(hanya TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kekasaran daratan: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
@@ -2696,7 +2697,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Masukkan nama dari permainan tersimpan
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pembuatan peta
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pembuatan Bentang Darat
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Ukuran Peta:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pilih ukuran peta dalam petak. Jumlah dari petak yang tersedia akan sedikit lebih kecil
 STR_MAPGEN_BY                                                   :{BLACK}*
@@ -2753,11 +2754,11 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ubah ket
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Membuat Peta ...
 STR_GENERATION_ABORT                                            :{BLACK}Batalkan
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Membatalkan Pembuatan Peta
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Membatalkan Pembuatan Bentang Darat
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Apakah anda ingin membatalkan pembuatan?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% selesai
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Membuat dunia
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pembuatan Bentang Darat
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Pembuatan Sungai
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Membuat pepohonan
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Membuat objek tak bergerak

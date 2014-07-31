@@ -757,7 +757,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Visa all
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Visa senaste meddelande eller nyhet
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSAD  *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPARNING
+STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPARA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPARAR SPEL  *  *
 
 # News message history
@@ -989,6 +989,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vi
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fil{P "" er} korrupt{P "" a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yttligare information om musikpaketet
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Det gick inte att hämta en lista över upplösningar som stöds
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskärmsläge misslyckades
 
 # Custom currency window
@@ -1090,7 +1091,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Företagsinstä
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begränsar listan till att endast visa ändrade inställningar
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begränsar listan nedan med fördefinierade filter
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundläggande inställningar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerade inställningar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertinställningar / alla inställningar
@@ -1145,12 +1146,12 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Förbjud tåg a
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Om det är aktiverat så kommer tågen inte vända på genomfartsstationer, ens om vägen till deras destination skulle ha blivit kortare ifall de vände
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på katastrofer vilka då och då kan blockera eller förstöra fordon och infrastruktur
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggantion av områden: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggnation av områden: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Välj hur mycket ett företags oväsen och miljöpåverkan ska påverka dess anseende och möjlighet till vidare byggnationer i området
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillåt konstruktion på sluttningar och kuster: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Om det är aktiverat kan räls och stationer byggas på de flesta sluttningar. Om det är inaktiverat är de bara tillåtna att bygga på sluttningar som motsvarar spårens riktning och därför inte kräver någon grund
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillåt landskapsarkitektur under byggnader, spår, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillåt landskapsarkitektur under byggnader och spår utan att ta bort dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillåt mer realistiska uppsamlingsområden för stationer: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ha olika stora uppsamlingsområden för olika typer av stationer och flygplatser
@@ -1289,7 +1290,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeraffinaderier och kartans kant: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oljeraffinaderier byggs bara nära kartans kanter, alltså vid kusten om det är en ö-karta
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snölinjeshöjd: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad (TerraGenesis endast) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Svår
@@ -1324,7 +1325,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjuk scrollning
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrollera hur huvudvyn skrollar till en specifik position vid klick på minikartan eller när ett kommando används för att skrolla till ett specifikt objekt på kartan. Om det är aktiverat skrollar vyn mjukt, om det är inaktiverat hoppar den direkt till målet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Visa måtthjälptext vid användning av byggverktyg: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Visa rutavstånd och höjdskillnader vid dragning med musen under byggoperationer
-STR_CONFIG_SETTING_LIVERIES                                     :Visa färgschema för företag: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Visa fordonstypsspecifika färgscheman för företag: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrollera användning av fordonstyp-specifika färgscheman för fordon (till skillnad från företagsspecifika)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Inga
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Egna företaget
@@ -1373,7 +1374,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Inga åtgärder
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Allt förutom att bygga
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Allt förutom landskapsarkitektur
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alla åtgärder
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Använd den avancerade fordonslistan: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Använd grupper i fordonslistan: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Möjliggör användning av avancerade fordonslistor för gruppering av fordon
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Använd lastningsindikatorer: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Välj om lastningsindikatorer visas ovanför lastande och avlastande fordon, eller ej
@@ -1950,7 +1951,7 @@ STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kl
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} företag{P y ies}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max företag:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max antal företag:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begränsa antalet företag på servern
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} åskådare{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max antal åskådare:
@@ -3711,8 +3712,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändra a
 
 STR_ORDER_REFIT                                                 :{BLACK}Anpassa
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. Ctrl-klick för att ta bort anpassningsordern
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-anpassning
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Välj vilket lasttyp att auto-anpassa till i den här ordern. Ctrl+klicka för att ta bort anpassningsinstruktionen. Auto-anpassning kommer enbart att utföras om fordonet tillåter det
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-anpassning vid station
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Välj vilket lasttyp att auto-anpassa till i den här ordningen. Ctrl+klicka för att ta bort anpassningsinstruktionen. Auto-anpassning vid stationer kommer enbart att utföras om fordonet tillåter det
 STR_ORDER_DROP_REFIT_AUTO                                       :Fast lasttyp
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tillgängliga lasttyper
 
@@ -3840,7 +3841,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidtabel
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen resa
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Restid (automatisk; tidtabellen baseras på nästa manuella order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Restid (inte angiven)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Res högst i {2:VELOCITY} (not timetabled)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Res (utan tidtabell) högst i {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Res i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Res i {STRING} med högsta hastighet {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}

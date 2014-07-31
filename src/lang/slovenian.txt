@@ -1104,7 +1104,7 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italijanska
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonska
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Samo-shrani
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Samodejno shrani
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izberi časovni interval samodejnega shranjevanja igre
 
 ############ start of autosave dropdown
@@ -1241,6 +1241,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavitve igre
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavitve podjetja (shranjeno v igrah, vpliva samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavitve podjetja (shranjeno v igrah, vpliva samo na trenutno podjetje)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omeji seznam na prikaz le spremenjenih nastavitev
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne nastavitve
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne nastavitve
@@ -1255,6 +1256,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavitve igre
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavitve igre (zapisane ob shranjevanju; vplivajo le na trenutno igro)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavitve podjetja (zapisane ob shranjevanju; vplivajo le na nove igre)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavitve podjetja (zapisane ob shranjevanju; vplivajo le na trenutno podjetje)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Brez -
 
 STR_CONFIG_SETTING_OFF                                          :Izklopi
 STR_CONFIG_SETTING_ON                                           :Vklopi
@@ -2834,6 +2836,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Shrani
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Shrani trenutno igro z izbranim imenom
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Naloži
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Naloži izbrano igro
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Naloži višinsko karto
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Podrobnosti igre
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ni informacij na voljo
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
