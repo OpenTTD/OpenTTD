@@ -1213,10 +1213,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat Licin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Licin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sangat Kasar
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Jumlah sungai: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Pilih jumlah sungai untuk dijanakan
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritma letakan pokok: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Tiada
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Asal
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Diperbaiki
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Kenderaan: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Putaran heightmap: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Lawan jam
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pusingan jam
@@ -2513,6 +2516,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahakti
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak serasi dengan versi OpenTTD ini
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Simpan pratetapan
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Masukkan nama untuk pratetapan
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF

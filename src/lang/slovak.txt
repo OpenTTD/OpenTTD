@@ -880,7 +880,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLAC
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Európska Menová Únia!{}{}Euro bolo uvedené ako hlavná mena pre bežné používanie v tejto krajine!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Svetová kríza!{}{}Finanční experti majú obavy z prepadu ekonomiky!
-STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Koniec kíizy!{}{}Očakáva sa vzostup predaja a posilnenie ekonomiky!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Koniec krízy!{}{}Očakáva sa vzostup predaja a posilnenie ekonomiky!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} zvyšuje produkciu!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nové nálezisko uhlia sa objavilo v {INDUSTRY}!{}Očakáva sa zdvojnásobenie produkcie!
