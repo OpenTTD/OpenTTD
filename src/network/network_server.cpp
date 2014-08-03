@@ -596,6 +596,20 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 
 		sent_packets = 4; // We start with trying 4 packets
 
+		/* The order backups are broken in 1.4, so that joining clients cannot
+		 * restore orders backupped before they joined.
+		 *
+		 * When loading the game on the new client, we have to drop all order backups.
+		 * As such this client will desync, in case an order backup is actually restored.
+		 *
+		 * To lower the desync chance, the server resets all order backups when a client
+		 * joins, so a desync is only possible when the restore command is queued at the server
+		 * while the saving is executed. */
+		NetworkClientSocket *cs;
+		FOR_ALL_CLIENT_SOCKETS(cs) {
+			OrderBackup::ResetUser(cs->client_id);
+		}
+
 		/* Make a dump of the current game */
 		if (SaveWithFilter(this->savegame, true) != SL_OK) usererror("network savedump failed");
 	}

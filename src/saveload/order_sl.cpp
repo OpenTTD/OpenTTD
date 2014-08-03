@@ -13,6 +13,7 @@
 #include "../order_backup.h"
 #include "../settings_type.h"
 #include "../network/network.h"
+#include "../network/network_server.h"
 
 #include "saveload_internal.h"
 
@@ -247,9 +248,9 @@ const SaveLoad *GetOrderBackupDescription()
 		     SLE_VAR(OrderBackup, user,                     SLE_UINT32),
 		     SLE_VAR(OrderBackup, tile,                     SLE_UINT32),
 		     SLE_VAR(OrderBackup, group,                    SLE_UINT16),
-		     SLE_VAR(OrderBackup, service_interval,         SLE_UINT32),
+		     SLE_VAR(OrderBackup, service_interval,         SLE_FILE_U32 | SLE_VAR_U16),
 		     SLE_STR(OrderBackup, name,                     SLE_STR, 0),
-		     SLE_VAR(OrderBackup, clone,                    SLE_UINT16),
+		    SLE_NULL(2), // clone (2 bytes of pointer, i.e. garbage)
 		     SLE_VAR(OrderBackup, cur_real_order_index,     SLE_UINT8),
 		 SLE_CONDVAR(OrderBackup, cur_implicit_order_index, SLE_UINT8,                 176, SL_MAX_VERSION),
 		 SLE_CONDVAR(OrderBackup, current_order_time,       SLE_UINT32,                176, SL_MAX_VERSION),
@@ -289,10 +290,11 @@ void Load_BKOR()
 	}
 
 	/* Only load order-backups for network clients.
-	 * If we are a network server or not networking, then we just loaded
-	 * a previously saved-by-server savegame. There are
-	 * no clients with a backup anymore, so clear it. */
-	if (!_networking || _network_server) {
+	 * If we are a network server or not networking, then we just loaded a previously
+	 * saved-by-server savegame. There are no clients with a backup, so clear it.
+	 * Furthermore before savegame version 192 the actual content was always corrupt.
+	 */
+	if (!_networking || _network_server || IsSavegameVersionBefore(192)) {
 		_order_backup_pool.CleanPool();
 	}
 }
