@@ -199,12 +199,14 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}حصان
 STR_UNITS_POWER_METRIC                                          :{COMMA}حصان
 STR_UNITS_POWER_SI                                              :{COMMA}ك واط
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ت
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}طن
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}كجم
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} طن
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}كجم
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}غال
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ل
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}م3
 
@@ -808,6 +810,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} لديها امر غير صالح
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} لديها امر مكرر
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} لديها محطة غير صالحة في القائمة
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} لدبها ضمن الطلبات مطارا قصير المدرج
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} اصبحت قديمة
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} اصبحت قديمة جدا
@@ -1045,6 +1048,8 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}إعدا
 STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK} فئة:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :اﻹعدادات الاساسيه
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}احصر القائمة على انواع اعدادات محددة
@@ -1054,6 +1059,8 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :اعدادات 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :اعدادات اللعبة (مخزن في المحفوظات, يؤثر على اللعبة الحالية فقط)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :اعدادات الشركة (مخزن في المحفوظات, يؤثر على الالعاب الجديدة فقط)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :اعدادات الشركة (مخزن في المحفوظات: يؤثر على الشركة الحالية فقط)
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}عرض جميع النتائج بالنسبة للإعداد {}{SILVER} الفئة {BLACK} إلى {WHITE}{STRING} {BLACK}و{SILVER}نوع {BLACK} إلى{WHITE} جميع انواع الإعدادات
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE} - بدون -
 
 STR_CONFIG_SETTING_OFF                                          :قفل
 STR_CONFIG_SETTING_ON                                           :فتح
@@ -1122,15 +1129,25 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :التجديد 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :أعرض عدد السكان مع الاسم على العلامة: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :سمك الخطوط في العرض: {STRING}
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :الارض: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :مولد الأرض: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :المكون الاصلي يعتمد على قواعد الجرفكس,ويشكل اراض ثابته,مكوون تيراجنسس يعتمد على المكون الأساسي مع متحكمات اسلس
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :الأصلي
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :مرتفعات منزلقة
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :نوع الارض: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) مستوى الهضبات في الارض
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :الكثافة الصناعية: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :إختر مقدار الصناعات التي يجب تكوينها وعلى اي مستوى يجب ان تكون خلال اللعبة
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط الثلج: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :تحكم على اي ارتفاع يبدأ نزول الثلج في المناطق القطبية,تؤثر الثلوج على مستوى تطور القطاع الصناعي ونمو المدن
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :خشونة التضاريس (صفر التكوين فقط ) :({STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only)إختر تكرار الهضبات: الاراض المستويه تحتوي على البضع منها,هضبات موزعه عرضيا اكثر,الاراض الوعرة تحتوي الكثير من الهضاب,التي من الممكن ان تكون متكررة
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ناعم جدا
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :خشن جدا
+STR_CONFIG_SETTING_VARIETY                                      :توزيع منوع: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only)التحكم بالخريطة هل تحتوي علىجبال ومناطق مسطحه, لأن هذا الإعداد يجعل الخارطة مستوية, هنالك إعدادات أخرى يجب ان تغير إلى الجبال
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :حجم النهر: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :اختر عدد الأنهر لتكوينها
 STR_CONFIG_SETTING_TREE_PLACER                                  :طريقة وضع الاشجار: {STRING}
@@ -1324,13 +1341,26 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف ال
 
 
 
+STR_CONFIG_SETTING_GRAPHICS                                     :رسوميات {ORANGE}
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}الصوت
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}النظام البيني
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :عموم{ORANGE}
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :مجالات رؤية {ORANGE}
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}البناء
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}أخبار\ مستشارون
+STR_CONFIG_SETTING_COMPANY                                      :شركة{ORANGE}
+STR_CONFIG_SETTING_ACCOUNTING                                   :حسابات{ORANGE}
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}المركبات
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :فيزياء{ORANGE}
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} المسارات
+STR_CONFIG_SETTING_LIMITATIONS                                  :حدود {ORANGE}
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE} كوارث\حوادث
+STR_CONFIG_SETTING_GENWORLD                                     :تكوين عالم {ORANGE}
+STR_CONFIG_SETTING_ENVIRONMENT                                  :بيئة {ORANGE}
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :سلطات {ORANGE}
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE} مدن
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE} مصانع
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزيع البضائع{ORANGE}
 STR_CONFIG_SETTING_AI                                           :{ORANGE}المتنافسين
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
 
@@ -2186,6 +2216,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}الشحنة المقبولة: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA} /8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}حدود سرعة سكة الحديد: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}حدود سرعه الطريق: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :صخور
@@ -2301,6 +2332,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}حفظ
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}احفظ اللعبة الحالية، بواسطة الاسم المختار
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}تحميل
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}تحميل اللعبة المختارة
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK} حمل خارطة التضاريس
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}تفاصيل اللعبة
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}لا توجد معلومات متاحة
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2525,6 +2557,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<موديل ا�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<المصنع غير صالح>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<مركبه غير صالحه>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}بحث اضافات جديدة
@@ -2839,6 +2872,8 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}أحذف
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}أعد تسمية المجموعة المختارة
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}اضغط لحماية المجموعة من التغيير الكلي للعربات
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :حذف المجموعه{WHITE}
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}هل انت واثق من حذف هذه المجموعه مع كل أحفادها
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :اضافة عربات مشتركة
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :أزل جميع المركبات
@@ -3345,6 +3380,8 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (غ�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر(بدون جدول زمني) مع تقريبا {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :سافر(إلى {STRING}, بدون جدول زمني)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :سافر (إلى {STRING}, بدون الجدول الزمني) مع تقريبا {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ويسافر لـ {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}يوم
@@ -3767,6 +3804,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}هذه �
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}لايمكن إنشاء مجموعة
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}لايمكن حذف المجموعة
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}لايمكن إعادة تسمية المجموعة
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}تعذر ربط المجموعه الرئيسية
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}لايمكن إزالة جميع المركبات من هذه المجموعة
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}لا يمكن اضافة المركبة للمجموعة ...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}لا يمكن اضافة مركبات مشتركة للمجموعة ...
