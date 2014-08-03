@@ -248,7 +248,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdForceTrainProceed,                              0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_FORCE_TRAIN_PROCEED
 	DEF_CMD(CmdReverseTrainDirection,                          0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_REVERSE_TRAIN_DIRECTION
 
-	DEF_CMD(CmdClearOrderBackup,                   CMD_CLIENT_ID, CMDT_ROUTE_MANAGEMENT      ), // CMD_CLEAR_ORDER_BACKUP
+	DEF_CMD(CmdClearOrderBackup,                   CMD_CLIENT_ID, CMDT_SERVER_SETTING        ), // CMD_CLEAR_ORDER_BACKUP
 	DEF_CMD(CmdModifyOrder,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_MODIFY_ORDER
 	DEF_CMD(CmdSkipToOrder,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_SKIP_TO_ORDER
 	DEF_CMD(CmdDeleteOrder,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_DELETE_ORDER
