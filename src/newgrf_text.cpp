@@ -1060,6 +1060,16 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 				*argv = MapGRFStringID(_newgrf_textrefstack.grffile->grfid, _newgrf_textrefstack.PopUnsignedWord());
 				break;
 		}
+	} else {
+		/* Consume additional parameter characters */
+		switch (scc) {
+			default: break;
+
+			case SCC_NEWGRF_PUSH_WORD:
+			case SCC_NEWGRF_UNPRINT:
+				Utf8Consume(str);
+				break;
+		}
 	}
 
 	switch (scc) {
