@@ -31,7 +31,7 @@
 #endif
 
 /* printf format specification for 32/64-bit addresses. */
-#if __LP64__
+#ifdef __LP64__
 #define PRINTF_PTR "0x%016lx"
 #else
 #define PRINTF_PTR "0x%08lx"

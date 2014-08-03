@@ -46,24 +46,14 @@
 #define __STDC_LIMIT_MACROS
 #include <stdint.h>
 
-/* We need to include this first as that "depends" on the compiler's setting
- * of __LP64__. So before we define __LP64__ so it can be used. */
-#include <sys/cdefs.h>
-#include <unistd.h>
-
 /* Some gcc versions include assert.h via this header. As this would interfere
  * with our own assert redefinition, include this header first. */
 #if !defined(__clang__) && defined(__GNUC__) && (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 3))
 #	include <debug/debug.h>
 #endif
 
-/* __LP64__ only exists in 10.5 and higher */
-#if defined(__APPLE__) && !defined(__LP64__)
-#	define __LP64__ 0
-#endif
-
 /* Check for mismatching 'architectures' */
-#if !defined(STRGEN) && !defined(SETTINGSGEN) && ((__LP64__ && !defined(_SQ64)) || (!__LP64__ && defined(_SQ64)))
+#if !defined(STRGEN) && !defined(SETTINGSGEN) && ((defined(__LP64__) && !defined(_SQ64)) || (!defined(__LP64__) && defined(_SQ64)))
 #	error "Compiling 64 bits without _SQ64 set! (or vice versa)"
 #endif
 
@@ -99,7 +89,7 @@
 
 /* NSInteger and NSUInteger are part of 10.5 and higher. */
 #ifndef NSInteger
-#if __LP64__
+#ifdef __LP64__
 typedef long NSInteger;
 typedef unsigned long NSUInteger;
 #else
@@ -109,7 +99,7 @@ typedef unsigned int NSUInteger;
 #endif /* NSInteger */
 
 #ifndef CGFLOAT_DEFINED
-#if __LP64__
+#ifdef __LP64__
 typedef double CGFloat;
 #else
 typedef float CGFloat;

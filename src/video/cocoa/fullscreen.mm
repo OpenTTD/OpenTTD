@@ -70,7 +70,7 @@ struct OTTD_QuartzGammaTable {
 - (void) setFrame:(NSRect)frame
 {
 /* The 64 bits libraries don't seem to know about _frame, so this hack won't work. */
-#if !__LP64__
+#ifndef __LP64__
 	_frame = frame;
 #endif
 }
