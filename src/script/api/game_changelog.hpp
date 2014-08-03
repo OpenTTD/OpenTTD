@@ -15,6 +15,12 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.4.2
+ *
+ * Other changes:
+ * \li GSCargoMonitor delivery and pickup monitor functions have improved boundary checking for
+ *     their parameters, and return \c -1 if they are found out of bounds.
+ *
  * \b 1.4.1
  *
  * No changes

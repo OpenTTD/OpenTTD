@@ -67,7 +67,7 @@ void ClearCargoDeliveryMonitoring(CompanyID company)
  * @param keep_monitoring After returning from this call, continue monitoring.
  * @return Amount collected since last query/activation for the monitored combination.
  */
-static uint32 GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, bool keep_monitoring)
+static int32 GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, bool keep_monitoring)
 {
 	CargoMonitorMap::iterator iter = monitor_map.find(monitor);
 	if (iter == monitor_map.end()) {
@@ -77,7 +77,7 @@ static uint32 GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, bo
 		}
 		return 0;
 	} else {
-		uint32 result = iter->second;
+		int32 result = iter->second;
 		iter->second = 0;
 		if (!keep_monitoring) monitor_map.erase(iter);
 		return result;
@@ -90,7 +90,7 @@ static uint32 GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, bo
  * @param keep_monitoring After returning from this call, continue monitoring.
  * @return Amount of delivered cargo for the monitored combination.
  */
-uint32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring)
+int32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring)
 {
 	return GetAmount(_cargo_deliveries, monitor, keep_monitoring);
 }
@@ -102,7 +102,7 @@ uint32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring)
  * @return Amount of picked up cargo for the monitored combination.
  * @note Cargo pick up is counted on final delivery, to prevent users getting credit for picking up cargo without delivering it.
  */
-uint32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring)
+int32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring)
 {
 	return GetAmount(_cargo_pickups, monitor, keep_monitoring);
 }

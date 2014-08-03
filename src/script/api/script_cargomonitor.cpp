@@ -10,29 +10,52 @@
 /** @file script_cargomonitor.cpp Code to monitor cargo pickup and deliveries by companies. */
 
 #include "../../stdafx.h"
+#include "script_cargo.hpp"
 #include "script_cargomonitor.hpp"
+#include "../../town.h"
+#include "../../industry.h"
 
-/* static */ uint32 ScriptCargoMonitor::GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
+/* static */ int32 ScriptCargoMonitor::GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
 {
-	CargoMonitorID monitor = EncodeCargoTownMonitor(static_cast<CompanyID>(company), cargo, town_id);
+	CompanyID cid = static_cast<CompanyID>(company);
+	if (cid < OWNER_BEGIN || cid >= MAX_COMPANIES) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
+	if (!::Town::IsValidID(town_id)) return -1;
+
+	CargoMonitorID monitor = EncodeCargoTownMonitor(cid, cargo, town_id);
 	return GetDeliveryAmount(monitor, keep_monitoring);
 }
 
-/* static */ uint32 ScriptCargoMonitor::GetIndustryDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
+/* static */ int32 ScriptCargoMonitor::GetIndustryDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
 {
-	CargoMonitorID monitor = EncodeCargoIndustryMonitor(static_cast<CompanyID>(company), cargo, industry_id);
+	CompanyID cid = static_cast<CompanyID>(company);
+	if (cid < OWNER_BEGIN || cid >= MAX_COMPANIES) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
+	if (!::Industry::IsValidID(industry_id)) return -1;
+
+	CargoMonitorID monitor = EncodeCargoIndustryMonitor(cid, cargo, industry_id);
 	return GetDeliveryAmount(monitor, keep_monitoring);
 }
 
-/* static */ uint32 ScriptCargoMonitor::GetTownPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
+/* static */ int32 ScriptCargoMonitor::GetTownPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
 {
-	CargoMonitorID monitor = EncodeCargoTownMonitor(static_cast<CompanyID>(company), cargo, town_id);
+	CompanyID cid = static_cast<CompanyID>(company);
+	if (cid < OWNER_BEGIN || cid >= MAX_COMPANIES) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
+	if (!::Town::IsValidID(town_id)) return -1;
+
+	CargoMonitorID monitor = EncodeCargoTownMonitor(cid, cargo, town_id);
 	return GetPickupAmount(monitor, keep_monitoring);
 }
 
-/* static */ uint32 ScriptCargoMonitor::GetIndustryPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
+/* static */ int32 ScriptCargoMonitor::GetIndustryPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
 {
-	CargoMonitorID monitor = EncodeCargoIndustryMonitor(static_cast<CompanyID>(company), cargo, industry_id);
+	CompanyID cid = static_cast<CompanyID>(company);
+	if (cid < OWNER_BEGIN || cid >= MAX_COMPANIES) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
+	if (!::Industry::IsValidID(industry_id)) return -1;
+
+	CargoMonitorID monitor = EncodeCargoIndustryMonitor(cid, cargo, industry_id);
 	return GetPickupAmount(monitor, keep_monitoring);
 }
 

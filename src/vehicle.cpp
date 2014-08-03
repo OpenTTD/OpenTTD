@@ -233,6 +233,9 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	const Engine *e = Engine::Get(engine);
 	GRFConfig *grfconfig = GetGRFConfig(e->GetGRFID());
 
+	/* Missing GRF. Nothing useful can be done in this situation. */
+	if (grfconfig == NULL) return;
+
 	if (!HasBit(grfconfig->grf_bugs, bug_type)) {
 		SetBit(grfconfig->grf_bugs, bug_type);
 		SetDParamStr(0, grfconfig->GetName());

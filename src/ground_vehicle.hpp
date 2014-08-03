@@ -113,9 +113,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * Calculates the total slope resistance for this vehicle.
 	 * @return Slope resistance.
 	 */
-	inline int32 GetSlopeResistance() const
+	inline int64 GetSlopeResistance() const
 	{
-		int32 incl = 0;
+		int64 incl = 0;
 
 		for (const T *u = T::From(this); u != NULL; u = u->Next()) {
 			if (HasBit(u->gv_flags, GVF_GOINGUP_BIT)) {
