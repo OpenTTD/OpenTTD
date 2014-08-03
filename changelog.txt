@@ -1,3 +1,17 @@
+1.4.2-RC2 (2014-08-03)
+------------------------------------------------------------------------
+- Change: Use awk instead of trying to convince cpp to preprocess nfo files (r26708)
+- Fix: CMD_CLEAR_ORDER_BACKUP should not be suppressed by pause modes (r26716)
+- Fix: [NewGRF] Parameters to SCC_NEWGRF_PUSH_WORD and SCC_NEWGRF_UNPRINT were not skipped during drawing (r26713)
+- Fix: [OSX] Compilation fails with some lzo2 versions, if __LP64__ is defined to 0 instead of checking whether it is defined [FS#6069] (r26709)
+- Fix: Wrong breakdown sound was played for ships [FS#6015] (r26706)
+- Fix: Integer overflows in acceleration code causing either too low acceleration or too high acceleration [FS#6067] (r26702)
+- Fix: Discard incorrectly saved order backups when clients join [FS#6066] (r26700)
+- Fix: Do not crash when trying to show an error about vehicle in a NewGRF and the NewGRF was not loaded at all (r26699)
+- Fix: Slovak uses space as group separator in numbers [FS#6064] (r26695)
+- Fix: Tighten parameter bound checks on GSCargoMonitor functions, and return -1 on out-of-bound parameters (r26685)
+
+
 1.4.2-RC1 (2014-07-03)
 ------------------------------------------------------------------------
 - Fix: CargoPacket::SourceStation() returns a StationID (r26660)
