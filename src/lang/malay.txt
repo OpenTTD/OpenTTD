@@ -2491,6 +2491,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Gerak Ke
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Gerakkan ke atas senarai NewGRF yang terpilih
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Gerak Ke Bawah
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Gerakkan ke bawah senarai NewGRF yang terpilih
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Naik Taraf
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Senarai fail NewGRF yang telah dipasang.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Tetapkan parameter
@@ -2518,6 +2519,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak sera
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Simpan pratetapan
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Masukkan nama untuk pratetapan
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Simpan
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
@@ -3463,7 +3465,7 @@ STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Pindah dan tun
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Pindah dan tunggu sebarang kargo sehingga penuh dengan ubahsuai secara auto ke {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :Tiada muat turun dan ambil kargo dengan ubahsuai secara auto ke {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Tiada muat turun dan tunggu sehingga muatan penuh dengan ubahsuai secara auto ke {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Tiada muat turun dan tunggu sebarang kargo penuh dengan ubahsuai secara auto ke {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Tiada muat turun dan tunggu sebarang kargo dengan kapasiti penuh dengan ubahsuai secara automatik ke {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :kargo sedia ada
 
