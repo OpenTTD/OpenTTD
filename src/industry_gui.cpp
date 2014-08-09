@@ -2002,7 +2002,7 @@ struct CargoesRow {
 					if (!hs->enabled) continue;
 
 					for (uint j = 0; j < lengthof(hs->accepts_cargo); j++) {
-						if (cargo_fld->u.cargo.vertical_cargoes[i] == hs->accepts_cargo[j]) {
+						if (hs->cargo_acceptance[j] > 0 && cargo_fld->u.cargo.vertical_cargoes[i] == hs->accepts_cargo[j]) {
 							cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], false);
 							goto next_cargo;
 						}
@@ -2194,7 +2194,7 @@ struct IndustryCargoesWindow : public Window {
 				if (!hs->enabled || !(hs->building_availability & climate_mask)) continue;
 
 				for (uint j = 0; j < lengthof(hs->accepts_cargo); j++) {
-					if (cargoes[i] == hs->accepts_cargo[j]) return true;
+					if (hs->cargo_acceptance[j] > 0 && cargoes[i] == hs->accepts_cargo[j]) return true;
 				}
 			}
 		}
