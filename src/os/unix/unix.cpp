@@ -368,10 +368,10 @@ void OSOpenBrowser(const char *url)
 	if (child_pid != 0) return;
 
 	const char *args[3];
-	args[0] = "/usr/bin/xdg-open";
+	args[0] = "xdg-open";
 	args[1] = url;
 	args[2] = NULL;
-	execv(args[0], const_cast<char * const *>(args));
+	execvp(args[0], const_cast<char * const *>(args));
 	DEBUG(misc, 0, "Failed to open url: %s", url);
 	exit(0);
 }
