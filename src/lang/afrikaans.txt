@@ -3289,9 +3289,9 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Vliegtui
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Wins die jaar: {CURRENCY_LONG} (verlede jaar: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beskikbare treine
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beskikbaar Voertuie
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beskikbaar Skepe
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Beskikbaar Vliegtuie
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beskikbare Voertuie
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beskikbare Skepe
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Beskikbare Vliegtuie
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vertoon 'n lys van beskikbare enjins vir hierdie voertiug.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Bestuur lys
@@ -3954,7 +3954,7 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigur
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigureer die parameters van skrif
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Beskikbaar {STRING}
+STR_AI_LIST_CAPTION                                             :{WHITE}Beskikbare {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Speletjie Skrifte
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om 'n skrip te kies
