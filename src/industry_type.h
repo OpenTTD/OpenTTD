@@ -37,4 +37,6 @@ static const IndustryGfx  INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES; ///< one a
 
 static const int INDUSTRY_COMPLETED = 3; ///< final stage of industry construction.
 
+void CheckIndustries();
+
 #endif /* INDUSTRY_TYPE_H */
