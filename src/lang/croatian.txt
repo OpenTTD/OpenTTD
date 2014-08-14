@@ -4239,6 +4239,9 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šum
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... moguće graditi samo iznad razine snijega
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... moguće graditi samo ispod razine snijega
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nije bilo odgovarajućih mjesta za '{STRING}' industrije
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Izmijenite parametre za generaciju mape kako bi dobili bolju mapu
+
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ovdje nije moguće izgraditi željezničku postaju...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nije moguće izgraditi autobusnu postaju...

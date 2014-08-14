@@ -4418,6 +4418,9 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... miš
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... gali būti statoma tik aukščiau sniego linijos
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... gali būti statoma tik žemiau sniego linijos
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nėra tinkamos vietos '{STRING.kam}' pramonės įmonėms
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Pakeisti generavimo parametrus geresniam žemėlapiui sukurti
+
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Geležinkelio stoties čia statyti negalima...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Čia autobusų stotelės statyti negalima...
