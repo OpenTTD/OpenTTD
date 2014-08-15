@@ -303,7 +303,7 @@ STR_SORT_BY_POPULATION                                          :Bevolking
 STR_SORT_BY_RATING                                              :Waardering
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pouseer spel
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Onderbreek spel
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Vinnig vooruit die spel
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opsies
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Stoor spel, verlaat spel, verlaat
@@ -1364,8 +1364,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Outomaties pouse wanneer om te begin 'n nuwe speletjie: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :As hierdie opsie geaktiveer is, sal die spel gepousseer wees wanneer die spel begin.
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Wanneer gepouseer laat toe: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :As hierdie opsie geaktiveer is, sal die spel geonderbreek wees wanneer die spel begin.
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Wanneer geonderbreek laat die toe: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selekteer watter aksies mag gedoen word terwyl die speletjie onderbreek word
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Geen aksies
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle nie-konstruksie aksies
@@ -4120,7 +4120,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te n
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te naby aan 'n ander dorp
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel dorpe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daar is nie meer spasie oor op die kaart nie
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Die dorp gaan nie paaie bou nie. Gaan na Gevorderde Verstellings->Ekonomie->Dorpe om dit te verander
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Die dorp gaan nie paaie bou nie. Gaan na Gevorderde Verstellings->Omgewing->Dorpe om dit te verander
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Pad werke in verloop
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan nie die dorp verwyder nie... {}'n Stasie of depot verwys na die dorp of die blok wat deur die dorp besit word kan nie verwyder word nie.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... daar is geen plek vir 'n standbeeld in die middel van die dorp
@@ -4144,6 +4144,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... woud
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan slegs bo sneeu-lyn gebou word
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan slegs onder sneeu-lyn gebou word
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Daar was geen geskikte plek vir '{STRING}' nywerhede
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Verander die kaart generasie parameter om 'n beter kaart te kry
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan nie treinstasie hier bou nie...

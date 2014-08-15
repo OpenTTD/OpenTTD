@@ -4472,7 +4472,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... за
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... занадта блізка да іншага горада
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... занадта шмат гарадоў
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма месца на мапе
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады ня будуць будаваць дарогі. Вы можаце ўключыць будаўніцтва дарог у мэню: Пашыр. наладкi->Эканоміка->Гарады.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады ня будуць будаваць дарогі. Вы можаце ўключыць будаўніцтва дарог у мэню: Пашыр. наладкi->Навак. асяроддзе->Гарады.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Ідуць дарожныя работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Немагчыма зьнішчыць горад:{}да яго адносіцца станцыя або дэпо, альбо немагчыма ачысьціць адну з занятых ім клетак.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... у цэнтры горада няма месца для статуі
@@ -4495,6 +4495,9 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... мо
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй за сьнегавую лiнiю
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... магчыма пабудаваць толькi вышэй за сьнегавую лiнiю
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... магчыма пабудаваць толькi нiжэй за сьнегавую лiнiю
+
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Няма прыдатных месцаў для прамысловасьці "{STRING}"
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Змяніце наладкі стварэньня мапы для атрыманьня лепшай мапы
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тут немагчыма пабудаваць чыгуначную станцыю...
