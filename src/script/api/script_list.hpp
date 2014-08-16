@@ -84,15 +84,15 @@ public:
 	bool HasItem(int32 item);
 
 	/**
-	 * Go to the beginning of the list.
-	 * @return the item value of the first item.
+	 * Go to the beginning of the list and return the item. To get the value use list.GetValue(list.Begin()).
+	 * @return the first item.
 	 * @note returns 0 if beyond end-of-list. Use IsEnd() to check for end-of-list.
 	 */
 	int32 Begin();
 
 	/**
-	 * Go to the next item in the list.
-	 * @return the item value of the next item.
+	 * Go to the next item in the list and return the item. To get the value use list.GetValue(list.Next()).
+	 * @return the next item.
 	 * @note returns 0 if beyond end-of-list. Use IsEnd() to check for end-of-list.
 	 */
 	int32 Next();
