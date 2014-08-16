@@ -1450,7 +1450,7 @@ make_cflags_and_ldflags() {
 			LDFLAGS="$LDFLAGS -noixemul"
 		fi
 
-		if [ "$enable_profiling" == "0" ]; then
+		if [ "$enable_profiling" = "0" ]; then
 			# -fomit-frame-pointer and -pg do not go well together (gcc errors they are incompatible)
 			CFLAGS="-fomit-frame-pointer $CFLAGS"
 		fi
