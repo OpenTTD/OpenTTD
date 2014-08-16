@@ -151,9 +151,9 @@ public:
  */
 class ScriptListSorterValueDescending : public ScriptListSorter {
 private:
-	ScriptList::ScriptListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
-	ScriptList::ScriptItemList *bucket_list;               ///< The current bucket list we're iterator over.
-	ScriptList::ScriptItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
+	ScriptList::ScriptListBucket::reverse_iterator bucket_iter;    ///< The iterator over the list to find the buckets.
+	ScriptList::ScriptItemList *bucket_list;                       ///< The current bucket list we're iterator over.
+	ScriptList::ScriptItemList::reverse_iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
 	/**
@@ -172,13 +172,11 @@ public:
 		this->has_no_more_items = false;
 
 		/* Go to the end of the bucket-list */
-		this->bucket_iter = this->list->buckets.begin();
-		for (size_t i = this->list->buckets.size(); i > 1; i--) this->bucket_iter++;
+		this->bucket_iter = this->list->buckets.rbegin();
 		this->bucket_list = &(*this->bucket_iter).second;
 
 		/* Go to the end of the items in the bucket */
-		this->bucket_list_iter = this->bucket_list->begin();
-		for (size_t i = this->bucket_list->size(); i > 1; i--) this->bucket_list_iter++;
+		this->bucket_list_iter = this->bucket_list->rbegin();
 		this->item_next = *this->bucket_list_iter;
 
 		int32 item_current = this->item_next;
@@ -203,18 +201,15 @@ public:
 			return;
 		}
 
-		if (this->bucket_list_iter == this->bucket_list->begin()) {
-			if (this->bucket_iter == this->list->buckets.begin()) {
+		this->bucket_list_iter++;
+		if (this->bucket_list_iter == this->bucket_list->rend()) {
+			this->bucket_iter++;
+			if (this->bucket_iter == this->list->buckets.rend()) {
 				this->bucket_list = NULL;
 				return;
 			}
-			this->bucket_iter--;
 			this->bucket_list = &(*this->bucket_iter).second;
-			/* Go to the end of the items in the bucket */
-			this->bucket_list_iter = this->bucket_list->begin();
-			for (size_t i = this->bucket_list->size(); i > 1; i--) this->bucket_list_iter++;
-		} else {
-			this->bucket_list_iter--;
+			this->bucket_list_iter = this->bucket_list->rbegin();
 		}
 		this->item_next = *this->bucket_list_iter;
 	}
@@ -315,7 +310,7 @@ public:
  */
 class ScriptListSorterItemDescending : public ScriptListSorter {
 private:
-	ScriptList::ScriptListMap::iterator item_iter; ///< The iterator over the items in the map.
+	ScriptList::ScriptListMap::reverse_iterator item_iter; ///< The iterator over the items in the map.
 
 public:
 	/**
@@ -333,8 +328,7 @@ public:
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
 
-		this->item_iter = this->list->items.begin();
-		for (size_t i = this->list->items.size(); i > 1; i--) this->item_iter++;
+		this->item_iter = this->list->items.rbegin();
 		this->item_next = (*this->item_iter).first;
 
 		int32 item_current = this->item_next;
@@ -352,12 +346,12 @@ public:
 	 */
 	void FindNext()
 	{
-		if (this->item_iter == this->list->items.end()) {
+		if (this->item_iter == this->list->items.rend()) {
 			this->has_no_more_items = true;
 			return;
 		}
-		this->item_iter--;
-		if (this->item_iter != this->list->items.end()) item_next = (*this->item_iter).first;
+		this->item_iter++;
+		if (this->item_iter != this->list->items.rend()) item_next = (*this->item_iter).first;
 	}
 
 	int32 Next()
