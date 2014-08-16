@@ -175,13 +175,13 @@ public:
 		this->has_no_more_items = false;
 
 		/* Go to the end of the bucket-list */
-		this->bucket_iter = this->list->buckets.begin();
-		for (size_t i = this->list->buckets.size(); i > 1; i--) this->bucket_iter++;
+		this->bucket_iter = this->list->buckets.end();
+		--this->bucket_iter;
 		this->bucket_list = &(*this->bucket_iter).second;
 
 		/* Go to the end of the items in the bucket */
-		this->bucket_list_iter = this->bucket_list->begin();
-		for (size_t i = this->bucket_list->size(); i > 1; i--) this->bucket_list_iter++;
+		this->bucket_list_iter = this->bucket_list->end();
+		--this->bucket_list_iter;
 		this->item_next = *this->bucket_list_iter;
 
 		int32 item_current = this->item_next;
@@ -214,8 +214,8 @@ public:
 			this->bucket_iter--;
 			this->bucket_list = &(*this->bucket_iter).second;
 			/* Go to the end of the items in the bucket */
-			this->bucket_list_iter = this->bucket_list->begin();
-			for (size_t i = this->bucket_list->size(); i > 1; i--) this->bucket_list_iter++;
+			this->bucket_list_iter = this->bucket_list->end();
+			--this->bucket_list_iter;
 		} else {
 			this->bucket_list_iter--;
 		}
@@ -339,8 +339,8 @@ public:
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
 
-		this->item_iter = this->list->items.begin();
-		for (size_t i = this->list->items.size(); i > 1; i--) this->item_iter++;
+		this->item_iter = this->list->items.end();
+		--this->item_iter;
 		this->item_next = (*this->item_iter).first;
 
 		int32 item_current = this->item_next;
