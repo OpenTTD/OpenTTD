@@ -4148,6 +4148,9 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan kun bygges over snøgrensen
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan kun bygges under snøgrensen
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Det var ingen egnede steder for '{STRING}' bransjer
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Endre parametrene for kart-generering for å få et bedre kart
+
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikke bygge jernbanestasjon her...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan ikke bygge busstasjon...

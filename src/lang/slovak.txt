@@ -3914,7 +3914,7 @@ STR_TIMETABLE_NO_TRAVEL                                         :Necestuj
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Cestovanie (automaticky; nastavené po ďalšom zadaní objednávky)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcený cas)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Cestovanie (bez cestovného plánu) s najviac {2:VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Cesta {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Cestovanie na {STRING} s {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Cesta ({STRING}, nerozvrhnuté)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Cesta (for {STRING}, nerozvrhnuté) pri najviac {VELOCITY}
@@ -4210,6 +4210,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{G=s}{WHITE}...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les sa môže sadiť len nad čiarou snehu
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... môže byť postavené len nad čiarou snehu
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... môže byť postavené len pod čiarou snehu
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nemôžeš tu postaviť železničnú stanicu...

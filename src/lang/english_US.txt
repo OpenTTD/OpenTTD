@@ -95,30 +95,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Fizzy Drink
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passenger{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passenger{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} of coal
-STR_QUANTITY_MAIL                                               :{COMMA} bag{P "" s} of mail
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}bag{P "" s} of mail
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} of oil
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} of livestock
-STR_QUANTITY_GOODS                                              :{COMMA} crate{P "" s} of goods
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}item{P "" s} of livestock
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}crate{P "" s} of goods
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} of grain
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} of wood
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} of iron ore
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} of steel
-STR_QUANTITY_VALUABLES                                          :{COMMA} bag{P "" s} of valuables
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}bag{P "" s} of valuables
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} of copper ore
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} of maize
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} of fruit
-STR_QUANTITY_DIAMONDS                                           :{COMMA} bag{P "" s} of diamonds
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}bag{P "" s} of diamonds
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} of food
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} of paper
-STR_QUANTITY_GOLD                                               :{COMMA} bag{P "" s} of gold
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}bag{P "" s} of gold
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} of water
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} of wheat
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} of rubber
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} of sugar
-STR_QUANTITY_TOYS                                               :{COMMA} toy{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} bag{P "" s} of candy
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}toy{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}bag{P "" s} of candy
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} of cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} of cotton candy
 STR_QUANTITY_BUBBLES                                            :{COMMA} bubble{P "" s}
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NO
 STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passenger{P "" s}
-STR_BAGS                                                        :{COMMA} bag{P "" s}
-STR_TONS                                                        :{COMMA} tonne{P "" s}
-STR_LITERS                                                      :{COMMA} liter{P "" s}
-STR_ITEMS                                                       :{COMMA} item{P "" s}
-STR_CRATES                                                      :{COMMA} crate{P "" s}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passenger{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}bag{P "" s}
+STR_TONS                                                        :{COMMA}{NBSP}tonne{P "" s}
+STR_LITERS                                                      :{COMMA}{NBSP}liter{P "" s}
+STR_ITEMS                                                       :{COMMA}{NBSP}item{P "" s}
+STR_CRATES                                                      :{COMMA}{NBSP}crate{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dark Blue
@@ -191,37 +191,37 @@ STR_COLOUR_GREY                                                 :Gray
 STR_COLOUR_WHITE                                                :White
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonne{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litre{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
@@ -1444,7 +1444,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Maintenance int
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choose whether maintenance of vehicles is triggered by the time passed since last maintenance or by reliability dropping by a certain percentage of the maximum reliability
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Default maintenance interval for trains: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Set the default maintenance interval for new rail vehicles, if no explicit maintenance interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} day{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}day{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabled
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Default maintenance interval for road vehicles: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Set the default maintenance interval for new road vehicles, if no explicit maintenance interval is set for the vehicle
@@ -1584,9 +1584,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :None
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial city size multiplier: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of cities relative to normal towns at start of the game
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Update distribution graph every {STRING} day{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Update distribution graph every {STRING}{NBSP}day{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X days. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Take {STRING} day{P 0:2 "" s} for recalculation of distribution graph
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Take {STRING}{NBSP}day{P 0:2 "" s} for recalculation of distribution graph
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Time taken for each recalculation of a link graph component. When a recalculation is started, a thread is spawned which is allowed to run for this number of days. The shorter you set this the more likely it is that the thread is not finished when it's supposed to. Then the game stops until it is ("lag"). The longer you set it the longer it takes for the distribution to be updated when routes change.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetric
@@ -2961,8 +2961,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} delivered
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (still required)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (delivered)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK} day{P "" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK} day{P "" s} (funded)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK}{NBSP}day{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK}{NBSP}day{P "" s} (funded)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Town is {RED}not{BLACK} growing
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center the main view on town location. Ctrl+Click opens a new viewport on town location
@@ -3618,7 +3618,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacity
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Maintenance interval: {LTBLUE}{COMMA}days{BLACK}   Last maintenance: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Maintenance interval: {LTBLUE}{COMMA}{NBSP}days{BLACK}   Last maintenance: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Maintenance interval: {LTBLUE}{COMMA}%{BLACK}   Last maintenance: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Increase maintenance interval by 10. Ctrl+Click increases maintenance interval by 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrease maintenance interval by 10. Ctrl+Click decreases maintenance interval by 5
@@ -3854,8 +3854,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stay for {STRI
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(travel for {STRING}, not timetabled)
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} day{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}day{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}This timetable will take {STRING} to complete
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}This timetable will take at least {STRING} to complete (not all timetabled)
@@ -4142,6 +4142,9 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... can 
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... forest can only be planted above snow-line
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... can only be built above the snow-line
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... can only be built below the snow-line
+
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}There were no suitable places for '{STRING}' industries
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Change the map generation parameters to get a better map
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Can't build railroad station here...

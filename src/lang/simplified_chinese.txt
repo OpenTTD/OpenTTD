@@ -95,30 +95,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :汽水
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} 位旅客
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}位旅客
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} 煤炭
-STR_QUANTITY_MAIL                                               :{COMMA} 包邮件
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}包邮件
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} 原油
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} 头牲畜
-STR_QUANTITY_GOODS                                              :{COMMA} 件货物
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}头牲畜
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}件货物
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} 谷物
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} 木材
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} 铁矿石
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} 钢材
-STR_QUANTITY_VALUABLES                                          :{COMMA} 包贵重品
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}包贵重品
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} 铜矿石
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} 玉米
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} 水果
-STR_QUANTITY_DIAMONDS                                           :{COMMA} 包钻石
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}包钻石
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} 食品
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} 纸张
-STR_QUANTITY_GOLD                                               :{COMMA} 包黄金
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}包黄金
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} 饮用水
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} 小麦
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} 橡胶
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} 蔗糖
-STR_QUANTITY_TOYS                                               :{COMMA} 件玩具
-STR_QUANTITY_SWEETS                                             :{COMMA} 包糖果
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}件玩具
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}包糖果
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} 可乐
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} 棉花糖
 STR_QUANTITY_BUBBLES                                            :{COMMA} 个泡泡
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}无
 STR_ABBREV_ALL                                                  :{TINY_FONT}全
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} 旅客
-STR_BAGS                                                        :{COMMA} 包
-STR_TONS                                                        :{COMMA} 英吨
-STR_LITERS                                                      :{COMMA} 升
-STR_ITEMS                                                       :{COMMA} 件
-STR_CRATES                                                      :{COMMA} 件
+STR_PASSENGERS                                                  :{COMMA}{NBSP}旅客
+STR_BAGS                                                        :{COMMA}{NBSP}包
+STR_TONS                                                        :{COMMA}{NBSP}英吨
+STR_LITERS                                                      :{COMMA}{NBSP}升
+STR_ITEMS                                                       :{COMMA}{NBSP}头
+STR_CRATES                                                      :{COMMA}{NBSP}件
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :深蓝色
@@ -191,37 +191,37 @@ STR_COLOUR_GREY                                                 :浅灰色
 STR_COLOUR_WHITE                                                :白　色
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/小时
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 千米/小时
-STR_UNITS_VELOCITY_SI                                           :{COMMA} 米/秒
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}英里/小时
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}千米/小时
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}米/秒
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}马力
-STR_UNITS_POWER_METRIC                                          :{COMMA}马力
-STR_UNITS_POWER_SI                                              :{COMMA}千瓦
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}匹马力
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}匹马力
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}千瓦
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}英吨
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}吨
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}千克
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}英吨
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}吨
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}千克
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}英吨
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 吨
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}千克
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}英吨
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}吨
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}千克
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}加仑
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}升
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}立方米
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}加仑
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}升
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}立方米
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}加仑
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}升
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}立方米
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}加仑
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}升
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}立方米
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}磅力
-STR_UNITS_FORCE_METRIC                                          :{COMMA}千克力
-STR_UNITS_FORCE_SI                                              :{COMMA}千牛
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}磅力
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}千克力
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}千牛
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}英尺
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA}米
-STR_UNITS_HEIGHT_SI                                             :{COMMA}米
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}英尺
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}米
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}米
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}过滤字串:
@@ -1444,7 +1444,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :保养周期(�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :选择触发车辆保养的条件，距离上一次保养的时间或者与最高可靠性的百分比
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :火车默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :如果没有为火车直接指定保养周期，设定默认火车保养周期
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}天(%)
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}天/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :关闭
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :汽车默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :如果没有为汽车指定保养周期，设定汽车的默认保养周期
@@ -1584,9 +1584,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :没有
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市规模因子：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时，城市的平均规模相对于普通城镇的比值
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每 {STRING} 天更新一次统计图
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每 {STRING}{NBSP}天刷新一次分配图
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次计算货物分配图之间的时间。由于每次重新计算只会处理一个货物分配图元件，因此本设定不代表“每若干日重新计算整个货物分配图”。{}如果此设定赋值越小，則系统需要使用更多处理器时间计算货物分配图。相反，如果此设定赋值越大，則货物被派往新路线所需的时间越长。
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :每次刷新货物分配图持续 {STRING} 天
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :容许系统用 {STRING}{NBSP}天时间刷新货物分配图
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :當刷新货物分配图时，系统會衍生一条线程。本设定的值即为线程的持续时间。{}这设定赋值越小，线程越有可能在应当停止的时候还未完成，游戏会暂停运作至线程完成工作。相反，这设定赋值越大，則货物分配功能需要较长时间反映线路网変动的影晌。
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手动
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不对称
@@ -2961,8 +2961,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}已运输 {GREEN}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}已运输：{CARGO_TINY} /{RED}总需求： {CARGO_LONG}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (已运输)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK} 天成长一次
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK} 天成长一次(加速中)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK}{NBSP}天成长一次
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK}{NBSP}天成长一次 (正接受资助)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK} 城镇发展正在 {RED}停滞 {BLACK}！
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
@@ -3618,7 +3618,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}运载�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运成本： {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养日期：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}减少检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
@@ -3854,8 +3854,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(停靠 {STRING
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(驶往 {STRING}, 无时间表)
 STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} 天
-STR_TIMETABLE_TICKS                                             :{COMMA} 个时间标记
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}天
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}个时间标记
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}该时间表需要 {STRING} 完成
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}该时间表至少需要 {STRING} 完成（并非全部计划的时间）
@@ -4119,7 +4119,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}太靠�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}太靠近另一个城镇了
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}城镇太多了
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图上没有多余的地方了
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个城镇不会修建道路{}请在在"高级设置->经济->城镇"处{}设置允许城镇建设道路
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个城镇不会修建道路{}您可以在"高级设置->环境->城镇"进行设定{}允许城镇建设道路
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城市中心没有合适的地方放置公司塑像
@@ -4142,6 +4142,9 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}只能�
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}林场只能设置在雪线以上的地方……
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 只能在雪线以上建造
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 只能在雪线以下建造
+
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}没有合适的地方建设 “{STRING}” 工业设施
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}请更改参数以生成较好的场景
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}不能在这里建设火车站……

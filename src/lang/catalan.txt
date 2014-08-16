@@ -96,30 +96,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=Femenin}Begu
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{G=Masculin}{COMMA} passatger{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{G=Masculin}{COMMA}{NBSP}passatger{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carbó
-STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" s} de correu
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sac{P "" s} de correu
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petroli
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P "" s} de bestiar
-STR_QUANTITY_GOODS                                              :{COMMA} palet{P "" s} de mercaderies
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cap{P "" s} de bestiar
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}palet{P "" s} de mercaderies
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de gra
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de fusta
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de mineral de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d'acer
-STR_QUANTITY_VALUABLES                                          :{G=Masculin}{COMMA} sac{P "" s} de valors
+STR_QUANTITY_VALUABLES                                          :{G=Masculin}{COMMA}{NBSP}sac{P "" s} de valors
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de mineral de coure
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de blat de moro
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruita
-STR_QUANTITY_DIAMONDS                                           :{COMMA} boss{P a es} de diamants
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}boss{P a es} de diamants
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de queviures
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de paper
-STR_QUANTITY_GOLD                                               :{G=Femenin}{COMMA} sa{P ca ques} d'or
+STR_QUANTITY_GOLD                                               :{G=Femenin}{COMMA}{NBSP}sa{P ca ques} d'or
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} d'aigua
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de blat
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de cautxú
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de sucre
-STR_QUANTITY_TOYS                                               :{COMMA} joguin{P a es}
-STR_QUANTITY_SWEETS                                             :{G=Femenin}{COMMA} boss{P a es} de dolços
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}joguin{P a es}
+STR_QUANTITY_SWEETS                                             :{G=Femenin}{COMMA}{NBSP}boss{P a es} de dolços
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de refrescs
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de cotó de sucre
 STR_QUANTITY_BUBBLES                                            :{COMMA} bomboll{P a es}
@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NO
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{G=Masculin}{COMMA} passatger{P "" s}
-STR_BAGS                                                        :{G=Masculin}{COMMA} sac{P "" s}
-STR_TONS                                                        :{G=Femenin}{COMMA} ton{P a es}
-STR_LITERS                                                      :{G=Masculin}{COMMA} litre{P "" s}
-STR_ITEMS                                                       :{G=Masculin}{COMMA} cap{P "" s}
-STR_CRATES                                                      :{G=Masculin}{COMMA} palet{P "" s}
+STR_PASSENGERS                                                  :{G=Masculin}{COMMA}{NBSP}passatger{P "" s}
+STR_BAGS                                                        :{G=Masculin}{COMMA}{NBSP}sac{P "" s}
+STR_TONS                                                        :{G=Femenin}{COMMA}{NBSP}ton{P a es}
+STR_LITERS                                                      :{G=Masculin}{COMMA}{NBSP}litre{P "" s}
+STR_ITEMS                                                       :{G=Masculin}{COMMA}{NBSP}cap{P "" s}
+STR_CRATES                                                      :{G=Masculin}{COMMA}{NBSP}palet{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :{G=Masculin}Blau Fosc
@@ -1445,7 +1445,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals d
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escull si les revisions dels vehicles depenen del temps passat des de la darrera revisió o de la caiguda d'un cert percentatge de la fiabilitat màxima
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval per defecte de servei per als trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Estableix l'interval de revisió predeterminat pels nous ferrocarrils, si no hi ha un interval de revisió explícit pel vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} di{P 0 a es}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval per defecte de servei per als vehicles: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Estableix l'interval de revisió predeterminat pels nous vehicles de caretera, si no hi ha un interval de revisió explícit pel vehicle
@@ -1585,9 +1585,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING} di{P 0 a es}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING}{NBSP}di{P 0 a es}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de distribució. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING} di{P 0 a es} per al recàlcul del graf de distribució
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING}{NBSP}di{P 0 a es} per al recàlcul del graf de distribució
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Temps dedicat a cada recàlcul d'un component del graf de connexions. Quan un recàlcul s'inicia, el programa crea un fil que pot executar-se durant aquest nombre de dies. Com més curt el valor, més probable que el fil no hagi acabat quan s'espera. Aleshores el programa s'atura fins que el fil acaba ("ralentització"). Com més llarg el valor, més temps requereix l'actualització de la distribució quan les rutes canvien.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimètric
@@ -2962,8 +2962,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregat
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (encara requerit)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregat)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK} di{P a es}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK} di{P a es} (finançat)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK}{NBSP}di{P a es}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK}{NBSP}di{P a es} (finançant edificis nous)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La població {RED}no {BLACK} està creixent
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  màx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal a la població. Ctrl+Clic obre una nova vista al lloc de la població
@@ -3619,7 +3619,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferir Crèdits: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de les revisions: {LTBLUE}{COMMA} dies{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de les revisions: {LTBLUE}{COMMA}{NBSP}dies{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval de les revisions: {LTBLUE}{COMMA}%{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenta l'interval de les revisions en 10. Ctrl+Clic augmenta l'interval de les revisions en 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Disminueix l'interval de les revisions en 10. Ctrl+Clic disminueix l'interval de les revisions en 5
@@ -3855,8 +3855,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(quedar-s'hi du
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viatja durant {STRING}, sense horari)
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} di{P a es}
-STR_TIMETABLE_TICKS                                             :{COMMA} mar{P ca ques}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}di{P a es}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}mar{P ca ques}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}L'horari tardarà {STRING} a complir-se
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}L'horari tardarà almenys {STRING} a complir-se (no tot està planificat)
