@@ -96,30 +96,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gaskoeldrank
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passasier{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passasier{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} steenkool
-STR_QUANTITY_MAIL                                               :{COMMA} sak{P "" ke} pos
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sak{P "" ke} pos
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} lewendehawe
-STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" te} goedere
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}item{P "" s} lewendehawe
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}krat{P "" te} goedere
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} hout
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} ystererts
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} staal
-STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P "" ke} edelmetale
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}sak{P "" ke} edelmetale
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kopererts
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mielies
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} vrugte
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sak{P "" ke} diamante
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}sak{P "" ke} diamante
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} kos
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papier
-STR_QUANTITY_GOLD                                               :{COMMA} sak{P "" ke} goud
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}sak{P "" ke} goud
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} water
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} koring
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} rubber
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} suiker
-STR_QUANTITY_TOYS                                               :{COMMA} ton speelgoed
-STR_QUANTITY_SWEETS                                             :{COMMA} sak{P "" ke} lekkers
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}ton speelgoed
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sak{P "" ke} lekkers
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} spookasem
 STR_QUANTITY_BUBBLES                                            :{COMMA} borrel{P "" s}
@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NS
 STR_ABBREV_ALL                                                  :{TINY_FONT}ALMAL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passasier{P "" s}
-STR_BAGS                                                        :{COMMA} sak{P "" ke}
-STR_TONS                                                        :{COMMA} ton
-STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} item{P "" s}
-STR_CRATES                                                      :{COMMA} krat{P "" te}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passasier{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}sak{P "" ke}
+STR_TONS                                                        :{COMMA}{NBSP}ton
+STR_LITERS                                                      :{COMMA}{NBSP}liter
+STR_ITEMS                                                       :{COMMA}{NBSP}item{P "" s}
+STR_CRATES                                                      :{COMMA}{NBSP}krat{P "" te}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkerblou
@@ -192,37 +192,37 @@ STR_COLOUR_GREY                                                 :Grys
 STR_COLOUR_WHITE                                                :Wit
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mpu
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mpu
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}pk
-STR_UNITS_POWER_METRIC                                          :{COMMA}pk
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}pk
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}pk
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}ton
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gelling
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gelling
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gelling{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gelling{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} vt
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}vt
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
@@ -1445,7 +1445,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Diens pouse is 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kies of voertuie gediens word gebasseer op tydsduur vanaf vorige diens of as die voertuig se betroubaarheid met 'n sekere persentasie geval het van die maksimum
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard diens interval vir treine: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Kies die standaard diensskedule vir nuwe treine as geen diensskedule aangedui is nie
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} da{P g e}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}da{P g e}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Gedeaktiveer
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standaard diens interval vir pad voertuie: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Kies die standaard diensskedule vir nuwe padvoertuie as geen diensskedule aangedui is nie
@@ -1585,9 +1585,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Normale stede groote relatief na normale dorpe aan die begin van speletjie
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Herreken die verspreingskaart elke {STRING} da{P 0:2 g e}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Herreken die verspreingskaart elke {STRING}{NBSP}da{P 0:2 g e}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tyd tussen daaropvolgende herrekeninge van die verspreidingskaart. Elke herrekening is vir een komponent van die hele kaart, so net 'n gedeelte is dan op datum, nie die hele kaart nie. Hoe korter hierdie stelling is, hoe meer verwerkingskrag word benodig, hoe langer hierdie stelling is, hoe langer vat dit vir die vrag om op nuwe roetes te versprei.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Neem {STRING} da{P 0:2 g e} om verspreidingskaart te herreken
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Neem {STRING}{NBSP}da{P 0:2 g e} om verspreidingskaart te herreken
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tyd benodig vir die herrekening van elke komponent van die verspreidingskaart. Elke berekening kan vir hierdie aantal dae hardloop, as hierdie stelling te kort is en die berekening is nie klaar nie, dan kan die spel stop tot die berekening klaar gedoen is. Hoe meer tyd toegelaat word vir hierdie berekeninge, hoe langer vat dit vir die verspreidingskaart om te verander as roetes verander.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :handmatig
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimmetries
@@ -2962,8 +2962,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} afgelewer
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (steeds benodig)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (afgelewer)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e} (befonds)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK}{NBSP}da{P g e}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK}{NBSP}da{P g e} (befonds)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Dorp groei {RED}nie{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geraas limiet in dorp: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Skuif skerm na dorp toe. Ctrl+klik maak 'n nuwe venster vir die dorp oop
@@ -3619,7 +3619,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Oordragkrediet: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Diens tussentyd: {LTBLUE}{COMMA}dae{BLACK}   Laaste diens: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Diens tussentyd: {LTBLUE}{COMMA}{NBSP}dae{BLACK}   Laaste diens: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Diens tussentyd: {LTBLUE}{COMMA}%{BLACK}   Laaste diens: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vermeeder diensinterval met 10 dae. Ctrl+klik om interval met 5 dae te vermeerder
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verminder diensinterval met 10. Ctrl+klik om interval met 5 dae te verminder
@@ -3855,8 +3855,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(wag vir {STRIN
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reis vir {STRING}, nie volgens tydrooster nie)
 STR_TIMETABLE_STAY_FOR                                          :en bly vir {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en reis vir {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} da{P g e}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" e}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}da{P g e}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P "" ke}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Die rooster sal {STRING} neem om te voltooi
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Die rooster sal te minste {STRING} vat om te voltooi (nie alles gerooster nie)
