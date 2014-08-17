@@ -2406,19 +2406,7 @@ void Vehicle::ShowVisualEffect() const
 			continue;
 		}
 
-		/* The effect offset is relative to a point 4 units behind the vehicle's
-		 * front (which is the center of an 8/8 vehicle). Shorter vehicles need a
-		 * correction factor. */
-		if (v->type == VEH_TRAIN) effect_offset += (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
-
-		int x = _vehicle_smoke_pos[v->direction] * effect_offset;
-		int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
-
-		if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
-			x = -x;
-			y = -y;
-		}
-
+		EffectVehicleType evt = EV_END;
 		switch (effect_type) {
 			case VE_TYPE_STEAM:
 				/* Steam smoke - amount is gradually falling until vehicle reaches its maximum speed, after that it's normal.
@@ -2427,8 +2415,7 @@ void Vehicle::ShowVisualEffect() const
 				 * REGULATION:
 				 * - instead of 1, 4 / 2^smoke_amount (max. 2) is used to provide sufficient regulation to steam puffs' amount. */
 				if (GB(v->tick_counter, 0, ((4 >> _settings_game.vehicle.smoke_amount) + ((this->cur_speed * 3) / max_speed))) == 0) {
-					CreateEffectVehicleRel(v, x, y, 10, EV_STEAM_SMOKE);
-					sound = true;
+					evt = EV_STEAM_SMOKE;
 				}
 				break;
 
@@ -2450,8 +2437,7 @@ void Vehicle::ShowVisualEffect() const
 				}
 				if (this->cur_speed < (max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
 						Chance16((64 - ((this->cur_speed << 5) / max_speed) + power_weight_effect), (512 >> _settings_game.vehicle.smoke_amount))) {
-					CreateEffectVehicleRel(v, x, y, 10, EV_DIESEL_SMOKE);
-					sound = true;
+					evt = EV_DIESEL_SMOKE;
 				}
 				break;
 			}
@@ -2465,13 +2451,31 @@ void Vehicle::ShowVisualEffect() const
 				 * - in Chance16 the last value is 360 / 2^smoke_amount (max. sparks when 90 = smoke_amount of 2). */
 				if (GB(v->tick_counter, 0, 2) == 0 &&
 						Chance16((6 - ((this->cur_speed << 2) / max_speed)), (360 >> _settings_game.vehicle.smoke_amount))) {
-					CreateEffectVehicleRel(v, x, y, 10, EV_ELECTRIC_SPARK);
-					sound = true;
+					evt = EV_ELECTRIC_SPARK;
 				}
 				break;
 
 			default:
 				break;
+		}
+
+		if (evt != EV_END) {
+			sound = true;
+
+			/* The effect offset is relative to a point 4 units behind the vehicle's
+			 * front (which is the center of an 8/8 vehicle). Shorter vehicles need a
+			 * correction factor. */
+			if (v->type == VEH_TRAIN) effect_offset += (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
+
+			int x = _vehicle_smoke_pos[v->direction] * effect_offset;
+			int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
+
+			if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
+				x = -x;
+				y = -y;
+			}
+
+			CreateEffectVehicleRel(v, x, y, 10, evt);
 		}
 	} while ((v = v->Next()) != NULL);
 
