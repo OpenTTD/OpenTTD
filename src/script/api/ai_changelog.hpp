@@ -22,6 +22,14 @@
  * API additions:
  * \li AIStation::GetCargoWaitingFromVia
  *
+ * \b 1.4.2
+ *
+ * No changes
+ *
+ * \b 1.4.1
+ *
+ * No changes
+ *
  * \b 1.4.0
  *
  * API additions:

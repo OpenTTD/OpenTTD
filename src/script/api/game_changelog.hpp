@@ -22,9 +22,15 @@
  * API additions:
  * \li GSStation::GetCargoWaitingFromVia
  *
+ * \b 1.4.2
+ *
  * Other changes:
  * \li GSCargoMonitor delivery and pickup monitor functions have improved boundary checking for
  *     their parameters, and return \c -1 if they are found out of bounds.
+ *
+ * \b 1.4.1
+ *
+ * No changes
  *
  * \b 1.4.0
  *

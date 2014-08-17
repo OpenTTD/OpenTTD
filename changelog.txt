@@ -1,3 +1,77 @@
+1.4.2 (2014-08-16)
+------------------------------------------------------------------------
+(None)
+
+
+1.4.2-RC2 (2014-08-03)
+------------------------------------------------------------------------
+- Change: Use awk instead of trying to convince cpp to preprocess nfo files (r26708)
+- Fix: CMD_CLEAR_ORDER_BACKUP should not be suppressed by pause modes (r26716)
+- Fix: [NewGRF] Parameters to SCC_NEWGRF_PUSH_WORD and SCC_NEWGRF_UNPRINT were not skipped during drawing (r26713)
+- Fix: [OSX] Compilation fails with some lzo2 versions, if __LP64__ is defined to 0 instead of checking whether it is defined [FS#6069] (r26709)
+- Fix: Wrong breakdown sound was played for ships [FS#6015] (r26706)
+- Fix: Integer overflows in acceleration code causing either too low acceleration or too high acceleration [FS#6067] (r26702)
+- Fix: Discard incorrectly saved order backups when clients join [FS#6066] (r26700)
+- Fix: Do not crash when trying to show an error about vehicle in a NewGRF and the NewGRF was not loaded at all (r26699)
+- Fix: Slovak uses space as group separator in numbers [FS#6064] (r26695)
+- Fix: Tighten parameter bound checks on GSCargoMonitor functions, and return -1 on out-of-bound parameters (r26685)
+
+
+1.4.2-RC1 (2014-07-03)
+------------------------------------------------------------------------
+- Fix: CargoPacket::SourceStation() returns a StationID (r26660)
+- Fix: Days in dates are not represented by ordinal numbers in all languages [FS#6047] (r26657)
+- Fix: Production cheat cannot be allowed to be active in multiplayer for desync reasons, even when activated in singleplayer previously [FS#6044] (r26656)
+- Fix: Make sure an 'abs' is used that supports int64 when using 'abs' on those variables (r26651)
+- Fix: Support save/load chunk lengths of up to (1 << 32) - 1 [FS#6041] (r26650)
+- Fix: Incorrect usage of string commands in the base language [FS#6037] (r26642, r26640, r26639, r26632)
+- Fix: Segmentation fault when encountering a .obg/.obs/.obm with empty string/zero length MD5 checksums [FS#6038] (r26637)
+- Fix: The 'Load' button was not properly enabled/disabled for old savegames without NewGRF information (r26634)
+- Fix: If the video driver fails to supply a list of resolutions, display an error message [FS#6012] (r26629)
+
+
+1.4.1 (2014-06-02)
+------------------------------------------------------------------------
+- Fix: First send packages about new company, then clients joining it to admin port [FS#6025] (r26616)
+
+
+1.4.1-RC2 (2014-05-18)
+------------------------------------------------------------------------
+- Fix: Save/load issues on big endian machines (r26593, r26590, r26589)
+- Fix: Consider multiheaded trains in station refits [FS#5995] (r26586)
+- Fix: Game script could be changed in game by double clicking [FS#5974] (r26583)
+- Fix: Transfer stations also should have a cargo rating [FS#5989] (r26581, r26580)
+- Fix: [Network] AIs would not reset certain network state information upon creation of their company [FS#6003] (r26578, r26576)
+- Fix: [Network] Client of non-dedicated server was not correctly put into the first company for all state variables [FS#6001] (r26577)
+
+
+1.4.1-RC1 (2014-05-04)
+------------------------------------------------------------------------
+- Change: Remove demand calculation based on tiles (r26484)
+- Change: Use pkg-config for libpng as well (r26435, r26433, r26432)
+- Change: Use better distance metric for link graph [FS#5941] (r26411)
+- Fix: [Windows] Crash when the operating system performs the "paint" callback during window creation [FS#5994] (r26539, r26538)
+- Fix: OpenBSD compilation [FS#5992] (r26523)
+- Fix: prevent from ever reading huge (or negative) amounts of data in strgen (r26521)
+- Fix: Severity rating of dedicated server messages during world generation (r26518)
+- Fix: Buffer overruns in handling of symbolic links inside tars (r26514)
+- Fix: Incorrect usage of strecpy (r26505, r26485)
+- Fix: Reading console input on dedicated server relied on unspecified behaviour (r26496)
+- Fix: Allow single-vehicle consists to station-refit in a meaningful way (r26483)
+- Fix: Prevent comparing to NULL when strndup could not allocate memory (r26476)
+- Fix: Potentially undefined shifts in NewGRF code (r26475)
+- Fix: Make sure there is no uninitialised sprite data (r26473)
+- Fix: Draw text shadow for ellipses (r26467)
+- Fix: Add special handling for PALETTE_CRASH to work for non-8bpp-mapped sprites (r26463)
+- Fix: Avoid division by 0 when scaling flow values [FS#5970] (r26448)
+- Fix: Draw links to match _settings_game.vehicle.road_side [FS#5961] (r26445)
+- Fix: Load button for heightmap list was missing [FS#5953] (r26428)
+- Fix: Do not crash when supplying an invalid filename without extension to cmd parameter -q (r26423)
+- Fix: Some road constructions used the rail sound effect [FS#5946] (r26422)
+- Fix: Goal GUI failed to shade [FS#5948] (r26420)
+- Fix: Shares button state was not appropriately updated when switching setting or company [FS#5947] (r26416)
+
+
 1.4.0 (2014-04-01)
 ------------------------------------------------------------------------
 (None)

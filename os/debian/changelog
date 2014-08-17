@@ -1,3 +1,39 @@
+openttd (1.4.2-0) unstable; urgency=low
+
+  * New upstream release 1.4.2
+
+ -- OpenTTD <info@openttd.org>  Sat, 16 Aug 2014 21:00:00 +0200
+
+openttd (1.4.2~RC2-0) unstable; urgency=low
+
+  * New upstream release 1.4.2-RC2
+
+ -- OpenTTD <info@openttd.org>  Sun, 03 Aug 2014 18:00:00 +0200
+
+openttd (1.4.2~RC1-0) unstable; urgency=low
+
+  * New upstream release 1.4.2-RC1
+
+ -- OpenTTD <info@openttd.org>  Thu, 03 Jul 2014 21:00:00 +0200
+
+openttd (1.4.1-0) unstable; urgency=low
+
+  * New upstream release 1.4.1
+
+ -- OpenTTD <info@openttd.org>  Mon, 02 Jun 2014 21:00:00 +0200
+
+openttd (1.4.1~RC2-0) unstable; urgency=low
+
+  * New upstream release 1.4.1-RC2
+
+ -- OpenTTD <info@openttd.org>  Sun, 18 May 2014 21:00:00 +0200
+
+openttd (1.4.1~RC1-0) unstable; urgency=low
+
+  * New upstream release 1.4.1-RC1
+
+ -- OpenTTD <info@openttd.org>  Sun, 04 May 2014 21:00:00 +0200
+
 openttd (1.4.0-0) unstable; urgency=low
 
   * New upstream release 1.4.0
