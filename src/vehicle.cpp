@@ -2345,6 +2345,62 @@ static const int8 _vehicle_smoke_pos[8] = {
 };
 
 /**
+ * Call CBID_VEHICLE_SPAWN_VISUAL_EFFECT and spawn requested effects.
+ * @param v Vehicle to create effects for.
+ */
+static void SpawnAdvancedVisualEffect(const Vehicle *v)
+{
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_SPAWN_VISUAL_EFFECT, 0, Random(), v->engine_type, v);
+	if (callback == CALLBACK_FAILED) return;
+
+	uint count = GB(callback, 0, 2);
+	bool auto_center = HasBit(callback, 13);
+	bool auto_rotate = !HasBit(callback, 14);
+
+	int8 l_center = 0;
+	if (auto_center) {
+		/* For road vehicles: Compute offset from vehicle position to vehicle center */
+		if (v->type == VEH_ROAD) l_center = -(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
+	} else {
+		/* For trains: Compute offset from vehicle position to sprite position */
+		if (v->type == VEH_TRAIN) l_center = (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
+	}
+
+	Direction l_dir = v->direction;
+	if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) l_dir = ReverseDir(l_dir);
+	Direction t_dir = ChangeDir(l_dir, DIRDIFF_90RIGHT);
+
+	int8 x_center = _vehicle_smoke_pos[l_dir] * l_center;
+	int8 y_center = _vehicle_smoke_pos[t_dir] * l_center;
+
+	for (uint i = 0; i < count; i++) {
+		uint32 reg = GetRegister(0x100 + i);
+		uint type = GB(reg,  0, 8);
+		int8 x    = GB(reg,  8, 8);
+		int8 y    = GB(reg, 16, 8);
+		int8 z    = GB(reg, 24, 8);
+
+		if (auto_rotate) {
+			int8 l = x;
+			int8 t = y;
+			x = _vehicle_smoke_pos[l_dir] * l + _vehicle_smoke_pos[t_dir] * t;
+			y = _vehicle_smoke_pos[t_dir] * l - _vehicle_smoke_pos[l_dir] * t;
+		}
+
+		if (type >= 0xF0) {
+			switch (type) {
+				case 0xF1: CreateEffectVehicleRel(v, x_center + x, y_center + y, z, EV_STEAM_SMOKE); break;
+				case 0xF2: CreateEffectVehicleRel(v, x_center + x, y_center + y, z, EV_DIESEL_SMOKE); break;
+				case 0xF3: CreateEffectVehicleRel(v, x_center + x, y_center + y, z, EV_ELECTRIC_SPARK); break;
+				case 0xF6: CreateEffectVehicleRel(v, x_center + x, y_center + y, z, EV_BREAKDOWN_SMOKE); break;
+				case 0xFA: CreateEffectVehicleRel(v, x_center + x, y_center + y, z, EV_BREAKDOWN_SMOKE_AIRCRAFT); break;
+				default: break;
+			}
+		}
+	}
+}
+
+/**
  * Draw visual effects (smoke and/or sparks) for a vehicle chain.
  * @pre this->IsPrimaryVehicle()
  */
@@ -2385,10 +2441,14 @@ void Vehicle::ShowVisualEffect() const
 	const Vehicle *v = this;
 
 	do {
+		bool advanced = HasBit(v->vcache.cached_vis_effect, VE_ADVANCED_EFFECT);
 		int effect_offset = GB(v->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT) - VE_OFFSET_CENTRE;
 		VisualEffectSpawnModel effect_model = VESM_NONE;
-
-		if (!HasBit(v->vcache.cached_vis_effect, VE_DISABLE_EFFECT)) {
+		if (advanced) {
+			effect_offset = VE_OFFSET_CENTRE;
+			effect_model = (VisualEffectSpawnModel)GB(v->vcache.cached_vis_effect, 0, VE_ADVANCED_EFFECT);
+			if (effect_model >= VESM_END) effect_model = VESM_NONE; // unknown spawning model
+		} else {
 			effect_model = (VisualEffectSpawnModel)GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT);
 			assert(effect_model != (VisualEffectSpawnModel)VE_TYPE_DEFAULT); // should have been resolved by UpdateVisualEffect
 			assert_compile((uint)VESM_STEAM    == (uint)VE_TYPE_STEAM);
@@ -2466,7 +2526,10 @@ void Vehicle::ShowVisualEffect() const
 				NOT_REACHED();
 		}
 
-		if (evt != EV_END) {
+		if (evt != EV_END && advanced) {
+			sound = true;
+			SpawnAdvancedVisualEffect(v);
+		} else if (evt != EV_END) {
 			sound = true;
 
 			/* The effect offset is relative to a point 4 units behind the vehicle's

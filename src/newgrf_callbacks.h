@@ -278,6 +278,9 @@ enum CallbackID {
 
 	/** Called when industry is built to set initial production level. */
 	CBID_INDUSTRY_PROD_CHANGE_BUILD      = 0x15F, // 15 bit callback
+
+	/** Called to spawn visual effects for vehicles. */
+	CBID_VEHICLE_SPAWN_VISUAL_EFFECT     = 0x160, // 15 bit callback
 };
 
 /**
