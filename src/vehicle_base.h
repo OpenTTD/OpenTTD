@@ -92,6 +92,16 @@ enum VisualEffect {
 	VE_DEFAULT = 0xFF,          ///< Default value to indicate that visual effect should be based on engine class
 };
 
+/** Models for spawning visual effects. */
+enum VisualEffectSpawnModel {
+	VESM_NONE              = 0, ///< No visual effect
+	VESM_STEAM,                 ///< Steam model
+	VESM_DIESEL,                ///< Diesel model
+	VESM_ELECTRIC,              ///< Electric model
+
+	VESM_END
+};
+
 /**
  * Enum to handle ground vehicle subtypes.
  * This is defined here instead of at #GroundVehicle because some common function require access to these flags.

@@ -2386,8 +2386,15 @@ void Vehicle::ShowVisualEffect() const
 
 	do {
 		int effect_offset = GB(v->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT) - VE_OFFSET_CENTRE;
-		byte effect_type = GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT);
-		bool disable_effect = HasBit(v->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
+		VisualEffectSpawnModel effect_model = VESM_NONE;
+
+		if (!HasBit(v->vcache.cached_vis_effect, VE_DISABLE_EFFECT)) {
+			effect_model = (VisualEffectSpawnModel)GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT);
+			assert(effect_model != (VisualEffectSpawnModel)VE_TYPE_DEFAULT); // should have been resolved by UpdateVisualEffect
+			assert_compile((uint)VESM_STEAM    == (uint)VE_TYPE_STEAM);
+			assert_compile((uint)VESM_DIESEL   == (uint)VE_TYPE_DIESEL);
+			assert_compile((uint)VESM_ELECTRIC == (uint)VE_TYPE_ELECTRIC);
+		}
 
 		/* Show no smoke when:
 		 * - Smoke has been disabled for this vehicle
@@ -2396,7 +2403,7 @@ void Vehicle::ShowVisualEffect() const
 		 * - The vehicle is on a depot tile
 		 * - The vehicle is on a tunnel tile
 		 * - The vehicle is a train engine that is currently unpowered */
-		if (disable_effect ||
+		if (effect_model == VESM_NONE ||
 				v->vehstatus & VS_HIDDEN ||
 				(MayHaveBridgeAbove(v->tile) && IsBridgeAbove(v->tile)) ||
 				IsDepotTile(v->tile) ||
@@ -2407,8 +2414,8 @@ void Vehicle::ShowVisualEffect() const
 		}
 
 		EffectVehicleType evt = EV_END;
-		switch (effect_type) {
-			case VE_TYPE_STEAM:
+		switch (effect_model) {
+			case VESM_STEAM:
 				/* Steam smoke - amount is gradually falling until vehicle reaches its maximum speed, after that it's normal.
 				 * Details: while vehicle's current speed is gradually increasing, steam plumes' density decreases by one third each
 				 * third of its maximum speed spectrum. Steam emission finally normalises at very close to vehicle's maximum speed.
@@ -2419,7 +2426,7 @@ void Vehicle::ShowVisualEffect() const
 				}
 				break;
 
-			case VE_TYPE_DIESEL: {
+			case VESM_DIESEL: {
 				/* Diesel smoke - thicker when vehicle is starting, gradually subsiding till it reaches its maximum speed
 				 * when smoke emission stops.
 				 * Details: Vehicle's (max.) speed spectrum is divided into 32 parts. When max. speed is reached, chance for smoke
@@ -2442,7 +2449,7 @@ void Vehicle::ShowVisualEffect() const
 				break;
 			}
 
-			case VE_TYPE_ELECTRIC:
+			case VESM_ELECTRIC:
 				/* Electric train's spark - more often occurs when train is departing (more load)
 				 * Details: Electric locomotives are usually at least twice as powerful as their diesel counterparts, so spark
 				 * emissions are kept simple. Only when starting, creating huge force are sparks more likely to happen, but when
@@ -2456,7 +2463,7 @@ void Vehicle::ShowVisualEffect() const
 				break;
 
 			default:
-				break;
+				NOT_REACHED();
 		}
 
 		if (evt != EV_END) {
