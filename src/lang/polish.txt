@@ -468,30 +468,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.w                                :napoju gazowany
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} pasażer{P "" ów ów}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pasażer{P "" ów ów}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} węgla
-STR_QUANTITY_MAIL                                               :{COMMA} pacz{P ka ki ek} poczty
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}pacz{P ka ki ek} poczty
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} ropy
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} sztuk{P a i ""} żywca
-STR_QUANTITY_GOODS                                              :{COMMA} skrzy{P nia nie ń} towarów
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}sztuk{P a i ""} żywca
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}skrzy{P nia nie ń} towarów
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} zboża
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} drewna
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} rudy żelaza
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} stali
-STR_QUANTITY_VALUABLES                                          :{COMMA} pacz{P ka ki ek} kosztowności
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}pacz{P ka ki ek} kosztowności
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} rudy miedzi
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} kukurydzy
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} owoców
-STR_QUANTITY_DIAMONDS                                           :{COMMA} pacz{P ka ki ek} diamentów
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}pacz{P ka ki ek} diamentów
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} żywności
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papieru
-STR_QUANTITY_GOLD                                               :{COMMA} wor{P ek ki ków} złota
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}wor{P ek ki ków} złota
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} wody
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} pszenicy
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kauczuku
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} cukru
-STR_QUANTITY_TOYS                                               :{COMMA} zabaw{P ka ki ek}
-STR_QUANTITY_SWEETS                                             :{COMMA} pacz{P ka ki ek} słodyczy
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}zabaw{P ka ki ek}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}pacz{P ka ki ek} słodyczy
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} coli
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} waty cukrowej
 STR_QUANTITY_BUBBLES                                            :{COMMA} bąbel{P ek ki ków}
@@ -538,18 +538,18 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}0
 STR_ABBREV_ALL                                                  :{TINY_FONT}+
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} pasażer{P "" ów ów}
-STR_BAGS                                                        :{COMMA} wor{P ek ki ków}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}pasażer{P "" ów ów}
+STR_BAGS                                                        :{COMMA}{NBSP}wor{P ek ki ków}
 STR_BAGS.d                                                      :{COMMA} worków
 STR_BAGS.c                                                      :{COMMA} workom
 STR_BAGS.b                                                      :{COMMA} worki
 STR_BAGS.n                                                      :{COMMA} workami
 STR_BAGS.m                                                      :{COMMA} workach
 STR_BAGS.w                                                      :{COMMA} worki
-STR_TONS                                                        :{COMMA} ton{P a y ""}
-STR_LITERS                                                      :{COMMA} litr{P "" y ów}
-STR_ITEMS                                                       :{COMMA} sztuk{P a i ""}
-STR_CRATES                                                      :{COMMA} skrzy{P nia nie ń}
+STR_TONS                                                        :{COMMA}{NBSP}ton{P a y ""}
+STR_LITERS                                                      :{COMMA}{NBSP}litr{P "" y ów}
+STR_ITEMS                                                       :{COMMA}{NBSP}sztuk{P a i ""}
+STR_CRATES                                                      :{COMMA}{NBSP}skrzy{P nia nie ń}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Ciemnoniebieski
@@ -570,37 +570,37 @@ STR_COLOUR_GREY                                                 :Szary
 STR_COLOUR_WHITE                                                :Biały
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}KM
-STR_UNITS_POWER_METRIC                                          :{COMMA}KM
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}KM
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}KM
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P a y ""}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a y ""}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton{P a y ""}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}ton{P a y ""}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ów}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ów}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}galon{P "" y ów}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litr{P "" y ów}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa opy óp}
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}st{P opa opy óp}
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
@@ -1703,7 +1703,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Wygładź przes
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Zdecyduj, jak główny widok przesuwa się do konkretnej lokacji, gdy klikasz na mini-mapie lub gdy używasz komendy do przesunięcia do danego obiektu na mapie. Kiedy włączone, widok przesuwa się płynnie, kiedy wyłączone, następuje skok bezpośrednio do wybranego miejsca
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaż dymek z pomiarem podczas używania różnych narzędzi: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Wyświetlaj długość budowanych odcinków i różnicę wysokości przy przeciąganiu w trakcie operacji budowlanych
-STR_CONFIG_SETTING_LIVERIES                                     :Pokaż barwy firm: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Pokaż barwy firm wg typu pojazdu: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrolka stosowania schematu kolorów pojazdów specyficznych dla typów pojazdów (w przeciwieństwie do specyfiki firmy)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :brak
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :własnej firmy
@@ -1824,7 +1824,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Okres między s
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wybierz, czy serwisowanie pojazdów odbywa się na podstawie czasu od ostatniego serwisu, czy sprawności malejącej o pewien procent maksymalnej sprawności
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Domyślny interwał serwisowania pociągów: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ustaw domyślny okres serwisowania dla nowych pojazdów kolejowych, jeśli takowy nie istnieje dla określonego pojazdu
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P zień ni ni}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}d{P zień ni ni}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Wyłączone
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Domyślny interwał serwisowania pojazdów: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Ustaw domyślny okres serwisowania dla nowych pojazdów drogowych, jeśli takowy nie istnieje dla określonego pojazdu
@@ -1964,9 +1964,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar dużych miast w porównaniu do normalnych miast na początku gry
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizuj wykres dystrybucji co {STRING} {P dzień dni dni}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizuj wykres dystrybucji co {STRING}{NBSP}{P dzień dni dni}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Czas pomiędzy kolejnymi rekalkulacjami komonentów wykresu połączeń. Każda rekalkulacja oblicza plany dla jednego komponentu wykresu. To oznacza, że wartość X dla tego ustawienia nie oznacza, że cały wykres będzie aktualizowany co X dni, tylko że niektóre komponenty będą. Im krótszy czas ustawisz, tym więcej czasu obliczeniowego (CPU) będzie potrzebne na te obliczenia. Im dłuższy czas ustawisz, tym więcej czasu minie zanim dystrybucja towarów rozpocznie się na nowych trasach.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Przekalkulowanie wykresu dystrybucji zajmuje {STRING} {P dzień dni dni}
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Przekalkulowanie wykresu dystrybucji zajmuje {STRING}{NBSP}{P dzień dni dni}
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Czas potrzebny na każdą rekalkulację komponentu wykresu połączeń. Kiedy rekalkulacja startuje, powstaje proces, który może trwać określoną liczbę dni. Im krótszy czas ustawisz, tym większe prawdopodobieństwo, że ten proces nie zakończy się wtedy, kiedy powinien. Wtedy gra zatrzymuje się do czasu jego zakończenia ("lag"). Im dłuższy czas ustawisz, tym dłużej trwa aktualizacja dystrybucji, gdy zmieniają się trasy.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manualnie
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetrycznie
@@ -3341,8 +3341,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{G=f}{ORANGE}{STRING}{GREEN} dostarczona
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (wciąż wymagany)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostarczony)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK} {P dzień dni dni}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK} {P dzień dni dni} (ufundowane)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK}{NBSP}{P dzień dni dni}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK}{NBSP}{P dzień dni dni} (ufundowane)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miasto {RED}nie{BLACK} rośnie
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na mieście. Ctrl+klik otwiera nowy podgląd na lokację miasta
@@ -4004,7 +4004,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowno
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość ładunku: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}{NBSP}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniami o 10. Ctrl+klik zwiększa okres między serwisowaniami o 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniami o 10. Ctrl+klik zmniejsza okres między serwisowaniami o 5
@@ -4240,8 +4240,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(postój w {STR
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(przejazd przez {STRING} poza rozkładem)
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i podróżuje przez{STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} d{P zień ni ni}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" i ów}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}d{P zień ni ni}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" i ów}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ten rozkład jazdy zajmie {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ten rozkład jazdy zajmie przynajmniej {STRING} (nie wszystkie stacje są na rozkładzie)
@@ -4528,6 +4528,9 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... moż
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... las może być posadzony tylko powyżej linii śniegu
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... można zbudować tylko powyżej linii śniegu
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... można zbudować tylko poniżej linii śniegu
+
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nie ma odpowiednich miejsc dla przedsiębiorstw '{STRING}'
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Zmień parametry tworzenia map, żeby uzyskać lepsze mapy
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nie można tutaj wybudować stacji...

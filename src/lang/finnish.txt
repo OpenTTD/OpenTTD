@@ -97,28 +97,28 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sihijuoma
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}matkustaja{P "" a}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kivihiiltä
-STR_QUANTITY_MAIL                                               :{COMMA} säkki{P "" ä} postia
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}säkki{P "" ä} postia
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} öljyä
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} erä{P "" ä} karjaa
-STR_QUANTITY_GOODS                                              :{COMMA} laatikko{P "" a} tavaraa
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}erä{P "" ä} karjaa
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}laatikko{P "" a} tavaraa
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} viljaa
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} raakapuuta
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} rautamalmia
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} terästä
-STR_QUANTITY_VALUABLES                                          :{COMMA} säkki{P "" ä} arvotavaraa
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}säkki{P "" ä} arvotavaraa
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kuparimalmia
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} maissia
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} hedelmiä
-STR_QUANTITY_DIAMONDS                                           :{COMMA} säkki{P "" ä} timantteja
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}säkki{P "" ä} timantteja
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} ruokaa
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} paperia
-STR_QUANTITY_GOLD                                               :{COMMA} säkki{P "" ä} kultaa
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}säkki{P "" ä} kultaa
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} vettä
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} vehnää
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kumia
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} sokeria
-STR_QUANTITY_TOYS                                               :{COMMA} lelu{P "" a}
-STR_QUANTITY_SWEETS                                             :{COMMA} säkki{P "" ä} karkkia
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}lelu{P "" a}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}säkki{P "" ä} karkkia
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} limsaa
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} hattaraa
 STR_QUANTITY_BUBBLES                                            :{COMMA} kupla{P "" a}
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}EI
 STR_ABBREV_ALL                                                  :{TINY_FONT}KAIKKI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} matkustaja{P "" a}
-STR_BAGS                                                        :{COMMA} säkki{P "" ä}
-STR_TONS                                                        :{COMMA} tonni{P "" a}
-STR_LITERS                                                      :{COMMA} litra{P "" a}
-STR_ITEMS                                                       :{COMMA} erä{P "" ä}
-STR_CRATES                                                      :{COMMA} laatikko{P "" a}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}matkustaja{P "" a}
+STR_BAGS                                                        :{COMMA}{NBSP}säkki{P "" ä}
+STR_TONS                                                        :{COMMA}{NBSP}tonni{P "" a}
+STR_LITERS                                                      :{COMMA}{NBSP}litra{P "" a}
+STR_ITEMS                                                       :{COMMA}{NBSP}erä{P "" ä}
+STR_CRATES                                                      :{COMMA}{NBSP}laatikko{P "" a}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tummansininen
@@ -191,20 +191,20 @@ STR_COLOUR_GREY                                                 :Harmaa
 STR_COLOUR_WHITE                                                :Valkoinen
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hv
-STR_UNITS_POWER_METRIC                                          :{COMMA}hv
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hv
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hv
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonni{P "" a}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonni{P "" a}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonni{P "" a}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonni{P "" a}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
