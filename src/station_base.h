@@ -48,12 +48,13 @@ public:
 	 * Create a FlowStat with an initial entry.
 	 * @param st Station the initial entry refers to.
 	 * @param flow Amount of flow for the initial entry.
+	 * @param restricted If the flow to be added is restricted.
 	 */
-	inline FlowStat(StationID st, uint flow)
+	inline FlowStat(StationID st, uint flow, bool restricted = false)
 	{
 		assert(flow > 0);
 		this->shares[flow] = st;
-		this->unrestricted = flow;
+		this->unrestricted = restricted ? 0 : flow;
 	}
 
 	/**
