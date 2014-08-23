@@ -2360,7 +2360,7 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 	int8 l_center = 0;
 	if (auto_center) {
 		/* For road vehicles: Compute offset from vehicle position to vehicle center */
-		if (v->type == VEH_ROAD) l_center = -(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
+		if (v->type == VEH_ROAD) l_center = -(int)(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
 	} else {
 		/* For trains: Compute offset from vehicle position to sprite position */
 		if (v->type == VEH_TRAIN) l_center = (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
