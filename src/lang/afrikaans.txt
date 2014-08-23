@@ -1380,7 +1380,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Wys die rystye 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Toon aankoms en vertrek in tydroosters: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vertoon verwagte aankoms en vertrek tye in tydroosters
 STR_CONFIG_SETTING_QUICKGOTO                                    :Vinnige skepping van voertuig opdragte: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selekteer die "gaan na wyser" wanneer didie bevele venster oop gemaak word
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selekteer die "gaan na wyser" wanneer die bevele venster oop gemaak word
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Verstek spoor tipe (na nuwe spel/spel laai): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spoortipe om te kies wanneer 'n nuwe spel begin. 'Eers beskikbaar' kies die oudste tipe spoor, 'Laas beskikbaar' kies die nuutste tipe spoor, 'Meeste gebruik' kies die spoor wat die meeste in gebruik is.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Eers beskikbaar

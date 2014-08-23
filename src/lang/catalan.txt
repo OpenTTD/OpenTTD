@@ -811,7 +811,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemes de subministrament fan que {STRING} anunciï el seu imminent tancament!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}La falta d'arbres propers fa que {STRING} anunciï el seu imminent tancament!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Unió Monetària Europea!{}{}S'introdueix l'euro com a moneda única per les transaccions diàries del teu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Recessió Mundial!{}{}Economistes experts temen que l'economia es desplomi!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}S'ha acabat la recessió!{}{}La millora als negocis dóna confiança a les indústries i l'economia s'enforteix!
 
