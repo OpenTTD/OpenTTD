@@ -96,30 +96,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refresco
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} pasajero{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pasajero{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carbón
-STR_QUANTITY_MAIL                                               :{COMMA} bolsa{P "" s} de correo
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}bolsa{P "" s} de correo
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeza{P "" s} de ganado
-STR_QUANTITY_GOODS                                              :{COMMA} caja{P "" s} de mercancías
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cabeza{P "" s} de ganado
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caja{P "" s} de mercancías
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de grano
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de madera
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de mineral de hierro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de acero
-STR_QUANTITY_VALUABLES                                          :{COMMA} bolsa{P "" s} de objetos de valor
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}bolsa{P "" s} de objetos de valor
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de mineral de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de maíz
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} bolsa{P "" s} de diamantes
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}bolsa{P "" s} de diamantes
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimento
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papel
-STR_QUANTITY_GOLD                                               :{COMMA} bolsa{P "" s} de oro
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}bolsa{P "" s} de oro
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} de agua
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de caucho
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de azúcar
-STR_QUANTITY_TOYS                                               :{COMMA} juguete{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} bolsa{P "" s} de dulces
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}juguete{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}bolsa{P "" s} de dulces
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodón dulce
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NO
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOD
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} pasajero{P "" s}
-STR_BAGS                                                        :{COMMA} bolsa{P "" s}
-STR_TONS                                                        :{COMMA} tonelada{P "" s}
-STR_LITERS                                                      :{COMMA} litro{P "" s}
-STR_ITEMS                                                       :{COMMA} artículo{P "" s}
-STR_CRATES                                                      :{COMMA} caja{P "" s}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}pasajero{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}bolsa{P "" s}
+STR_TONS                                                        :{COMMA}{NBSP}tonelada{P "" s}
+STR_LITERS                                                      :{COMMA}{NBSP}litro{P "" s}
+STR_ITEMS                                                       :{COMMA}{NBSP}artículo{P "" s}
+STR_CRATES                                                      :{COMMA}{NBSP}caja{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul oscuro
@@ -192,37 +192,37 @@ STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanco
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
-STR_UNITS_POWER_METRIC                                          :{COMMA}cv
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}cv
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonelada{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonelada{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" es}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P ón ones}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litro{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kp
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kp
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pies
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}pies
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Patrón de filtrado:
@@ -308,7 +308,7 @@ STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance r
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opciones
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar juego, abandonar juego, salir
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostrar mapa
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostrar guía de pueblos
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostrar guía de municipios
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostrar subvenciones
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostrar lista de estaciones
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Mostrar información financiera de la empresa
@@ -341,9 +341,9 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retrocede la fecha de inicio en un año
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avanza la fecha de inicio en un año
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Click para fijar el año inicial
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Mostrar mapa, guía de pueblos
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Mostrar mapa, guía de municipios
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generación de terreno
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Creación de pueblos
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Creación de municipios
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generación de industria
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcción de carreteras
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Shift permite mostrar una estimación del precio
@@ -366,7 +366,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opciones avanza
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuración de scripts
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de pueblos
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de municipios
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Ver nombres de estaciones
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ver puntos de ruta
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Ver carteles
@@ -392,8 +392,8 @@ STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de Movi
 STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
 
 ############ range for town menu starts
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de pueblos
-STR_TOWN_MENU_FOUND_TOWN                                        :Fundar pueblo
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de municipios
+STR_TOWN_MENU_FOUND_TOWN                                        :Fundar municipio
 ############ range ends here
 
 ############ range for subsidies menu starts
@@ -732,12 +732,12 @@ STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rocas
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Agua
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Sin propietario
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Pueblos
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Municipios
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industrias
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Desierto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nieve
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar/ocultar nombres de pueblos en el mapa
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar/ocultar nombres de municipios en el mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar mapa en la posición actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -802,7 +802,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}¡{STRING} ha sido adquirida por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Presidente)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}¡{STRING} patrocina la construcción del nuevo pueblo {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}¡{STRING} patrocina la construcción del nuevo municipio {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} en construcción cerca de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} está siendo plantad{G o a} cerca de {TOWN}!
@@ -926,8 +926,8 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Seleccio
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducir por la izquierda
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducir por la derecha
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de pueblos
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selección del estilo del nombre de las poblaciones
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de municipios
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selección del estilo del nombre de los municipios
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglés
@@ -1145,15 +1145,15 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prohibir cambio
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, los trenes no se darán la vuelta en estaciones no finales en el caso de que haya un camino más cercano si se dan la vuelta
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructuras
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los pueblos frente a reestructuraciones en su zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir la medida en la que el ruido y el daño ambiental causado por las compañías afecta a su calificación local en los pueblos
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los municipios frente a reestructuraciones en su zona: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir la medida en la que el ruido y el daño ambiental causado por las compañías afecta a su calificación local en los municipios
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo edificios, raíles, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir modificar el terreno debajo de edificios y raíles sin eliminarlos
 STR_CONFIG_SETTING_CATCHMENT                                    :Tamaño del área de captación realista: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite tener diferentes áreas de captación para distintos tipos de estaciones y aeropuertos
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir eliminar más propiedades de pueblos: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hace que sea más fácil eliminar infraestructuras y edificios de pueblos
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir eliminar más propiedades de los municipios: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hace que sea más fácil eliminar infraestructuras y edificios de los municipios
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud máxima de trenes: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Permite cambiar la longitud máxima de trenes
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casilla{P 0 "" s}
@@ -1185,8 +1185,8 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Como las otras 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospección
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana alrededor de industrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cantidad de espacio plano alrededor de las industrias. Esto permite que haya espacio libre alrededor de las industrias para construir
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :Construcción de más de una industria similar por pueblo: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, no se permite más de una industria del mismo tipo por pueblo. Con esta opción, se permiten múltiples industrias del mismo tipo en el mismo pueblo
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Construcción de más de una industria similar por municipio: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, no se permite más de una industria del mismo tipo por municipio. Con esta opción, se permiten múltiples industrias del mismo tipo en el mismo municipio
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar señales: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selecciona en qué lado de la vía se colocarán las señales
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A la izquierda
@@ -1208,13 +1208,13 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas las vistas
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos a la autoridad local: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las compañías intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la compañía no podrá actuar en el pueblo durante seis meses
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las compañías intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la compañía no podrá actuar en el municipio durante seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar derechos de transporte exclusivos: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una compañía compra derechos de transporte exclusivos en un pueblo, las estaciones de sus oponentes (pasajeros o carga) no recibirán nada para transportar durante un año
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una compañía compra derechos de transporte exclusivos en un municipio, las estaciones de sus oponentes (pasajeros o carga) no recibirán nada para transportar durante un año
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la construcción de nuevos edificios: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite a las compañías dar dinero a los pueblos para crear nuevas casas
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite a las compañías dar dinero a los municipios para crear nuevas casas
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir pagar la reconstrucción de las carreteras locales: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite a las compañías dar dinero a los pueblos para que reconstruyan sus carreteras, saboteando los servicios de carretera en la zona
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite a las compañías dar dinero a los municipios para que reconstruyan sus carreteras, saboteando los servicios de carretera en la zona
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinero a otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite la transferencia de dinero entre compañías en modo multijugador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular trenes pesados: {STRING}
@@ -1227,8 +1227,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Fija la probabi
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construir paradas sobre carreteras de pueblo: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de pueblos
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construir paradas sobre carreteras de los municipios: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de municipios
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir pasar a través de las paradas de carretera de los competidores: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de otras compañías
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cambiar esta opción no es posible cuando ya existen vehículos
@@ -1264,13 +1264,13 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar mensaje
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo que hace falta mantener el ratón encima de un elemento de la interfaz para mostrar su mensaje de ayuda. De forma alternativa, se puede escoger mostrar estos mensajes al pulsar el botón derecho
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Mantener ratón durante {COMMA} segundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click derecho
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Muestra la población de un pueblo en su etiqueta: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Muestra el número de habitantes de los pueblos en su etiqueta sobre el mapa
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Muestra la población de un municipio en su etiqueta: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Muestra la población de los municipios en su etiqueta sobre el mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las líneas en los gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las líneas en los gráficos. Una línea fina es más precisa, una línea más gruesa es más fácil de distinguir
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen escenarios con diferentes tipos de carga y requisitos de crecimiento de pueblos. Es posible modificarlos empleando NewGRF y scripts de juego
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen escenarios con diferentes tipos de carga y requisitos de crecimiento de municipios. Es posible modificarlos empleando NewGRF y scripts de juego
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :El generador original depende del tipo de gráficos base, y crea formas de terreno fijas. TerraGenesis es un generador basado en ruido Perlin que permite un mayor control de configuración
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1282,7 +1282,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Permite fijar e
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías de petróleo solamente se construyen cerca del borde del mapa, el cual es costa para los mapas con borde de océano
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura línea nieve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Permite escoger la altura a la cual la nieve comienza en el clima subártico. La nieve también afecta a la generación de industrias y a los requisitos de crecimiento de pueblos
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Permite escoger la altura a la cual la nieve comienza en el clima subártico. La nieve también afecta a la generación de industrias y a los requisitos de crecimiento de municipios
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosidad del terreno: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Sólo TerraGenesis) Permite elegir la frecuencia de colinas: los terrenos más planos tienen un número menor de colinas, agrupadas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetitivo
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
@@ -1408,7 +1408,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reproducir efec
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehículos: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efectos de sonido de vehículos
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiental: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir sonidos ambientales de terreno, industrias y pueblos
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir sonidos ambientales de terreno, industrias y municipios
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deshabilitar construcción de infraestructuras cuando no haya vehículos apropiados disponibles: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cuando se activa, solamente se pueden construir infraestructuras si hay vehículos disponibles para ellas, previniendo un gasto innecesario de tiempo y dinero
@@ -1445,7 +1445,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalo de ma
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Permite escoger si el mantenimiento de vehículos comenzará debido al tiempo pasado desde el último mantenimiento o por una reducción de la fiabilidad más allá de un porcentaje determinado
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantenimiento por defecto para trenes: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Fija el intervalo de mantenimiento por defecto para vehículos de ferrocarril nuevos, que se empleará si no se define un intervalo de forma explícita para ese vehículo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}día{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deshabilitado
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento por defecto para vehículos de carretera: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Fija el intervalo de mantenimiento por defecto para vehículos de carretera nuevos, que se empleará si no se define un intervalo de forma explícita para ese vehículo
@@ -1524,21 +1524,21 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales d
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Patrón de carreteras para los nuevos pueblos: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Patrón de carreteras a usar para las redes de transporte de los pueblos
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Patrón de carreteras para los nuevos municipios: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Patrón de carreteras a usar para las redes de transporte de los municipios
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Mejorado
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatorio
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir que los pueblos construyan carreteras: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite a los pueblos construir carreteras para crecer. Si se deshabilita, las autoridades del pueblo no podrán construir ninguna carretera
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir que los municipios construyan carreteras: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite a los municipios construir carreteras para crecer. Si se deshabilita, las autoridades municipales no podrán construir ninguna carretera
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir a las ciudades construir pasos a nivel: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Permite a los pueblos construir pasos a nivel
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir al pueblo controlar el nivel de ruido de los aeropuertos: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Con esta opción desactivada, solamente puede haber dos aeropuertos por pueblo. Si se activa, el número de aeropuertos en un pueblo depende del nivel de aceptación de ruido del mismo, el cual depende de la población, del tamaño de los aeropuertos y de la distancia a la que estén
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar pueblos: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Permite a los jugadores crear nuevos pueblos durante la partida
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Permite a los municipios construir pasos a nivel
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir al municipio controlar el nivel de ruido de los aeropuertos: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Con esta opción desactivada, solamente puede haber dos aeropuertos por municipio. Si se activa, el número de aeropuertos en el municipio depende del nivel de aceptación de ruido del mismo, el cual depende de la población, del tamaño de los aeropuertos y de la distancia a la que estén
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar municipios: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Permite a los jugadores crear nuevos municipios durante la partida
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, patrón de carreteras personalizado
@@ -1571,23 +1571,23 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidad crecimiento pueblo: {STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidad de crecimiento de los pueblos
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidad crecimiento población: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidad de crecimiento de los municipios
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguna
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápida
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muy rápida
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de pueblos que se convertirán en ciudades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de municipios que se convertirán en ciudades: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Número de pueblos que se convertirán en ciudades. Las ciudades comienzan siendo más grandes y crecen más rápido
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguna
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades en relación a los pueblos normales al comienzo de la partida
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el grafo de distribución cada {STRING} día{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el grafo de distribución cada {STRING}{NBSP}día{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Periodo de tiempo entre cálculos del grafo de distribución consecutivos. Esta opción se refiere a los cálculos para cada uno de los componentes del grafo, por lo cual fijar un valor no quiere decir que el grafo completo se actualizará tras ese número de días. Cuanto menor sea, mayor tiempo de CPU será necesario para calcular el grafo de distribución. Cuanto mayor sea, más tardará el grafo de distribución en adaptarse a nuevas rutas
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING} día{P 0:2 "" s} para el cálculo del grafo de distribución
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING}{NBSP}día{P 0:2 "" s} para el cálculo del grafo de distribución
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo a emplear en el cálculo de cada uno de los componentes del grafo de distribución. Cuanto menor sea este valor, más probable es que se produzca ralentización en el juego. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se producen cambios en las rutas
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrico
@@ -1663,7 +1663,7 @@ STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastr
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generación de mundo
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambiente
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pueblos
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Municipios
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución de carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
@@ -2488,31 +2488,31 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reinicia
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Está seguro de querer eliminar todas las propiedades de empresas?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Creación de Pueblos
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nuevo Pueblo
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nuevo pueblo. Shift+Click muestra una estimación del precio
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Pueblo al Azar
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar pueblo en lugar aleatorio
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Varios pueblos al azar
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubre el mapa con pueblos colocados al azar
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Creación de Municipios
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nuevo Municipio
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nuevo municipio. Shift+Click muestra una estimación del precio
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Municipio al Azar
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar municipio en lugar aleatorio
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Varios municipios al azar
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubre el mapa con municipios colocados al azar
 
-STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nombre del pueblo:
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introducir nombre de pueblo
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Click para introducir nombre de pueblo
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nombre del municipio:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introducir nombre de municipio
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Click para introducir nombre del municipio
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nombre aleatorio
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generar nuevo nombre
 
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamaño pueblo:
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamaño municipio:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequeña
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Mediana
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Grande
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aleatorio
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleccione el tamaño del pueblo
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleccione el tamaño del municipio
 STR_FOUND_TOWN_CITY                                             :{BLACK}Ciudad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Las ciudades crecen más rápido que los pueblos{}Dependiendo de los ajustes, son mayores al ser fundadas
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Patrón de carretera:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Seleccionar patrón de carreteras para este pueblo
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Seleccionar patrón de carreteras para este municipio
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Mejorado
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Rejilla de 2x2
@@ -2698,7 +2698,7 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generaci
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Tamaño del mapa:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Permite seleccionar el tamaño del mapa en casillas. El número de casillas disponible en el mapa será ligeramente inferior
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de pueblos:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de municipios:
 STR_MAPGEN_DATE                                                 :{BLACK}Fecha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de industrias:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altura línea nieve:
@@ -2944,10 +2944,10 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir al an
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introduce un nombre para el cartel
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pueblos
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Municipios
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguna -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de pueblo - click sobre un nombre para centrar la vista principal en el pueblo. Ctrl+Click abre un punto de vista en dicha posición
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de los municipios - click sobre un nombre para centrar la vista principal en él. Ctrl+Click abre una ventana de visualización en dicha posición
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
 # Town view window
@@ -2956,34 +2956,34 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasajeros último mes: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Correo último mes: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento del pueblo:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento del municipio:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregado
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (todavía requerido)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregado)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}El pueblo crece cada {ORANGE}{COMMA}{BLACK} día{P "" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}El pueblo crece cada {ORANGE}{COMMA}{BLACK} días{P "" s} (edificios fundados)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}El pueblo {RED}no{BLACK} está creciendo
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivel de ruido en pueblo: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el pueblo. Ctrl+Click abre un punto de vista en dicha posición
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}El municipio crece cada {ORANGE}{COMMA}{BLACK}{NBSP}día{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}El municipio crece cada {ORANGE}{COMMA}{BLACK}{NBSP}días{P "" s} (edificios fundados)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}El municipio {RED}no{BLACK} está creciendo
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivel de ruido en municipio: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el municipio. Ctrl+Click abre un punto de vista en dicha posición
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridad local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostrar información sobre autoridades locales
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre del pueblo
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre del municipio
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Aumentar
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar tamaño del pueblo
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Aumentar la población del municipio
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Borrar
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Borrar este pueblo completamente
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Borrar este municipio completamente
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renombrar pueblo
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renombrar Municipio
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} autoridad local
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Calificación de empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Acciones disponibles:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de acciones posibles en este pueblo - Click sobre cada línea para obtener más detalles
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de acciones posibles en este municipio - Click sobre cada línea para obtener más detalles
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Hágalo
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Hacer lo que se ha marcado en la opción anterior
 
@@ -3001,8 +3001,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagar la reconstrucción de las carreteras locales. Provoca considerables complicaciones del tráfico durante 6 meses.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construye una estatua en honor a su empresa.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el pueblo.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar en exclusiva los derechos de transporte en este pueblo durante un año. Las autoridades solo permitirán el uso de las estaciones de su empresa.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar en exclusiva los derechos de transporte en este municipio durante un año. Las autoridades solo permitirán el uso de las estaciones de su empresa.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar a las autoridades locales para aumentar su calificación, con el riesgo de una severa penalización si es descubierto.{}Coste: {CURRENCY_LONG}
 
 # Goal window
@@ -3015,7 +3015,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- No ap
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de la compañía:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click en una meta para centrar la vista principal en la casilla, industria o pueblo. Ctrl+Click abre una nueva vista en esa localización
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click en una meta para centrar la vista principal en la casilla, industria o municipio. Ctrl+Click abre una nueva vista en esa localización
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
@@ -3050,7 +3050,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ninguno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Líneas ya subvencionadas:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click sobre el servicio para centrar la vista principal en esta industria/pueblo. Ctrl+Click abre un punto de vista en dicha posición
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click sobre el servicio para centrar la vista principal en esta industria/municipio. Ctrl+Click abre un punto de vista en dicha posición
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Historial de {COMPANY}
@@ -3085,8 +3085,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de carga aceptada
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acepta: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene derechos de transporte exclusivos en este pueblo.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró derechos de transporte exclusivo en este pueblo.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene derechos de transporte exclusivos en este municipio.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró derechos de transporte exclusivo en este municipio.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Calificación
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver calificación de la estación
@@ -3619,7 +3619,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferencia: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}días{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}{NBSP}días{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}%{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementar intervalo de mantenimiento en 10. Ctrl+Click incrementa el intervalo de mantenimiento en 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reducir intervalo de mantenimiento en 10. Ctrl+Click reduce el intervalo de mantenimiento en 5
@@ -3855,8 +3855,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permaneciendo 
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajando a {STRING}, sin horarios)
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} tic{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}día{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tic{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos horarios tomarán {STRING} para completarse (no todos los horarios)
@@ -4030,8 +4030,8 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El juego ha sido guardado en una versión sin soporte para tranvías. Todos los tranvías serán eliminados
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}... no hay localizaciones apropiadas para pueblos
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hay pueblos en el escenario
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}... no hay localizaciones apropiadas para municipios
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hay municipios en el escenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}No se pudo cargar mapa de alturas PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fichero no encontrado
@@ -4082,7 +4082,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No permi
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Las autoridades locales de {TOWN} rechazan esto
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Las autoridades locales de {TOWN} rechazan la construcción de otro aeropuerto en este pueblo
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Las autoridades locales de {TOWN} rechazan la construcción de otro aeropuerto en este municipio
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Las autoridades locales de {TOWN} rechazan el permiso para el aeropuerto debido a su preocupación por el ruido
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Su intento de soborno ha sido descubierto por un investigador regional
 
@@ -4112,18 +4112,18 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}No se pu
 STR_ERROR_PROTECTED                                             :{WHITE}Esta empresa es demasiado reciente como para comerciar con acciones...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede construir ningún pueblo
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No se puede renombrar pueblo...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No se puede construir pueblo aquí...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No se puede expandir pueblo...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede construir ningún municipio
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No se puede renombrar el municipio...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No se puede construir un municipio aquí...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No se puede expandir municipio...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... demasiado cercano al borde del mapa
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cercano a otro pueblo
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiados pueblos
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cercano a otro municipio
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiados municipios
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no hay más espacio en el mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El pueblo no construirá carreteras. Puedes activar la función de construcción de carreteras en Opciones Avanzadas->Economía->Pueblos
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El municipio no construirá carreteras. Puedes activar la función de construcción de carreteras en Opciones Avanzadas->Ambiente->Municipios
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabajos de carretera en progreso
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este pueblo...{}Quedan estaciones o depósitos relacionados con la ciudad, o una propiedad del pueblo no puede ser retirada
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no existe un lugar apropiado para una estatua en el centro de este pueblo
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este municipio...{}Quedan estaciones o depósitos relacionados con él, o una propiedad suya no puede ser retirada
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no existe un lugar apropiado para una estatua en el centro de este municipio
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas industrias
@@ -4131,18 +4131,19 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}No se puede construir {STRING} aquí...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}No se puede construir este tipo de industria aquí...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... demasiado cerca de otra industria
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... debe construirse un pueblo primero
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... solo se permite uno por pueblo
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... sólo puede ser construido en pueblos con población superior a 1200
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... debe construirse un municipio primero
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... solo se permite uno por municipio
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... sólo puede ser construido en municipios de al menos 1.200 habitantes
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... sólo se puede construir en áreas de selva
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... sólo se puede construir en áreas desérticas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... solo puede ser construido en pueblos (reemplazando casas)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... solamente puede construirse cerca del centro de un pueblo
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... solo puede ser construido en municipios (reemplazando casas)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... solamente puede construirse cerca del centro de un municipio
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... solo puede construirse en zonas bajas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sólo se puede colocar cerca de los bordes del mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... sólo se puede plantar bosques sobre la nieve
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solamente puede construirse por encima de la línea de nieve
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solamente puede construirse por debajo de la línea de nieve
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}No se puede construir estación de tren aquí...
@@ -4163,7 +4164,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiad
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca de otro muelle
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca de otro aeropuerto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No se puede renombrar estación...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta carretera es propiedad de un pueblo
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta carretera es propiedad de un municipio
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... carretera en la dirección incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones de autobús de paso no pueden tener esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones de autobús de paso no pueden tener intersecciones
@@ -4426,7 +4427,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Bloque de ofici
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Bloque de viviendas pequeño
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Iglesia
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Gran bloque de oficinas
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas del pueblo
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas del municipio
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estatua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fuente
