@@ -290,6 +290,17 @@ static bool QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 				VideoDriver::GetInstance()->ToggleFullscreen(!_fullscreen);
 			}
 			break;
+
+		case QZ_v:
+			if (down && EditBoxInGlobalFocus() && (_current_mods & (NSCommandKeyMask | NSControlKeyMask))) {
+				HandleKeypress(WKC_CTRL | 'V', unicode);
+			}
+			break;
+		case QZ_u:
+			if (down && EditBoxInGlobalFocus() && (_current_mods & (NSCommandKeyMask | NSControlKeyMask))) {
+				HandleKeypress(WKC_CTRL | 'U', unicode);
+			}
+			break;
 	}
 
 	if (down) {
@@ -310,7 +321,7 @@ static bool QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 		console = false;
 
 		/* Don't handle normal characters if an edit box has the focus. */
-		if (!EditBoxInGlobalFocus() || ((pressed_key & ~WKC_SPECIAL_KEYS) <= WKC_TAB) || IsInsideMM(pressed_key & ~WKC_SPECIAL_KEYS, WKC_F1, WKC_PAUSE + 1)) {
+		if (!EditBoxInGlobalFocus() || IsInsideMM(pressed_key & ~WKC_SPECIAL_KEYS, WKC_F1, WKC_PAUSE + 1)) {
 			HandleKeypress(pressed_key, unicode);
 		}
 		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);

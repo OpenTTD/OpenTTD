@@ -1088,6 +1088,92 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	return 0;
 }
 
+/** Delete single character left of the cursor. */
+- (void)deleteBackward:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_BACKSPACE, 0);
+}
+
+/** Delete word left of the cursor. */
+- (void)deleteWordBackward:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_BACKSPACE | WKC_CTRL, 0);
+}
+
+/** Delete single character right of the cursor. */
+- (void)deleteForward:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DELETE, 0);
+}
+
+/** Delete word right of the cursor. */
+- (void)deleteWordForward:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DELETE | WKC_CTRL, 0);
+}
+
+/** Move cursor one character left. */
+- (void)moveLeft:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_LEFT, 0);
+}
+
+/** Move cursor one word left. */
+- (void)moveWordLeft:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_LEFT | WKC_CTRL, 0);
+}
+
+/** Move cursor one character right. */
+- (void)moveRight:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_RIGHT, 0);
+}
+
+/** Move cursor one word right. */
+- (void)moveWordRight:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_RIGHT | WKC_CTRL, 0);
+}
+
+/** Move cursor to the start of the line. */
+- (void)moveToBeginningOfLine:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_HOME, 0);
+}
+
+/** Move cursor to the end of the line. */
+- (void)moveToEndOfLine:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_END, 0);
+}
+
+/** Scroll to the beginning of the document. */
+- (void)scrollToBeginningOfDocument:(id)sender
+{
+	/* For compatibility with OTTD on Win/Linux. */
+	[ self moveToBeginningOfLine:sender ];
+}
+
+/** Scroll to the end of the document. */
+- (void)scrollToEndOfDocument:(id)sender
+{
+	/* For compatibility with OTTD on Win/Linux. */
+	[ self moveToEndOfLine:sender ];
+}
+
+/** Return was pressed. */
+- (void)insertNewline:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_RETURN, '\r');
+}
+
+/** Escape was pressed. */
+- (void)cancelOperation:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_ESC, 0);
+}
+
 /** Invoke the selector if we implement it. */
 - (void)doCommandBySelector:(SEL)aSelector
 {

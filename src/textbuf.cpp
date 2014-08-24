@@ -477,16 +477,10 @@ HandleKeyPressResult Textbuf::HandleKeyPress(WChar key, uint16 keycode)
 
 		case WKC_RETURN: case WKC_NUM_ENTER: return HKPR_CONFIRM;
 
-#ifdef WITH_COCOA
-		case (WKC_META | 'V'):
-#endif
 		case (WKC_CTRL | 'V'):
 			edited = this->InsertClipboard();
 			break;
 
-#ifdef WITH_COCOA
-		case (WKC_META | 'U'):
-#endif
 		case (WKC_CTRL | 'U'):
 			this->DeleteAll();
 			edited = true;
