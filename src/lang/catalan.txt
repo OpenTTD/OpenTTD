@@ -3954,9 +3954,9 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configur
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura els paràmetres de l'script
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Disponible {STRING}
+STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} Disponibles
 STR_AI_LIST_CAPTION_AI                                          :IA
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Script de la Partida
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de la Partida
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clica per a seleccionar un script
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
@@ -3969,9 +3969,9 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancel·
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canvïis l'script
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paràmetres
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de la Partida
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres {STRING}
+STR_AI_SETTINGS_CAPTION_AI                                      :de la IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :de l'Script de la Partida
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Restableix
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
