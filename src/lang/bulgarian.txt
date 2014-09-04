@@ -978,6 +978,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Избе
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} повреден файл{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допълнителна информация за пакетът базовата музика
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Неуспешно извличане на списък с поддържаните резолюции
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Проблем при включване на режим "цял екран"
 
 # Custom currency window
@@ -1330,6 +1331,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключе�
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролиране с ляв бутон: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Позволява да "скролнете" картата, чрез влачене на левия бутон на мишката. Това и изключително полезно ако ползвате тъч-скрийн
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Автоматично запазване: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Изберете интервал между автоматично запаметяване на играта
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Използвай {STRING} формат на датата за имена на записаните игри.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат на датата във файловете за запис на играта
@@ -2710,6 +2713,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Наго
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Премества избрания NewGRF файл нагоре в списъка
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Надолу
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Премества избрания NewGRF файл надолу в списъка
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Ъпгрейд
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Подобрете NewGRF файлове, за които имате по-нова версия инсталирана
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Списък на инсталираните NewGRF файлове
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Настройване на параметрите
@@ -2735,6 +2740,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изклю
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Несъвместимо с тази версия на OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Запис
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промени параметрите на новите графики (NewGRF)
@@ -4017,6 +4023,9 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... мо
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... гора може да се засажда само над линията на снега
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... може да бъде построено само над снежната линия
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... може да бъде построено само под снежната линия
+
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Няма подходящо място за '{STRING}' индустрия
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Промяна на параметрите за генериране на карта, за да получите по-добра карта
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тук не може да бъде построена ЖП гара...
