@@ -1072,7 +1072,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron IAs apropiadas...{}Puedes descargar IAs a través del sistema de 'Contenido Online'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron IA apropiadas...{}Puedes descargar IA a través del sistema de 'Contenido Online'
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opciones avanzadas
@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de i
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costes de operación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Permite fijar el nivel de los costes de mantenimiento y operación de vehículos e infraestructuras
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de construcción: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la velocidad de las acciones de construcción para las IAs
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la velocidad de las acciones de construcción para las IA
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Averías de vehículos: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla la frecuencia con la que los vehículos que no hayan tenido un mantenimiento adecuado se rompen
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador por subsidio: {STRING}
@@ -1422,21 +1422,21 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Número máximo
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de barcos que una compañía puede tener
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactivar trenes para el ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activar esta opción deshabilita la construcción de trenes para IAs
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activar esta opción deshabilita la construcción de trenes para las IA
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactivar vehículos de carretera para el ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activar esta opción deshabilita la construcción de vehículos de carretra para IAs
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activar esta opción deshabilita la construcción de vehículos de carretra para las IA
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactivar aeroplanos para el ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activar esta opción deshabilita la construcción de aeronaves para IAs
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activar esta opción deshabilita la construcción de aeronaves para las IA
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barcos para el ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activar esta opción deshabilita la construcción de barcos para IAs
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activar esta opción deshabilita la construcción de barcos para las IA
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil por defecto: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Permite decidir el perfil a emplear para IAs aleatorias o para los valores iniciales al añadir una nueva IA o un script de juego
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Permite decidir el perfil a emplear para IA aleatorias o para los valores iniciales al añadir una nueva IA o un script de juego
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Intermedio
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IAs en multijugador: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA en multijugador: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite a los jugadores controlados por el ordenador participar en partidas multijugador
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de que los scripts sean suspendidos: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de operaciones de computación que un script puede realizar por turno
@@ -1667,7 +1667,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Municip
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución de carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores de la CPU (IAs)
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores de la CPU (IA)
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -2216,7 +2216,7 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ¡No
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}Gráficos base
 STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
 STR_CONTENT_TYPE_AI                                             :{G=f}IA
-STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Librería de IAs
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Librería de IA
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Escenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=m}Mapa de alturas
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Sonidos base
@@ -3925,14 +3925,14 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar 
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de Juego
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comprobar el registro del Script de Juego
 
-STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Esta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IAs mediante el sistema de 'Contenido Online'
+STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Ésta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IA mediante el sistema de 'Contenido Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, reporte el fallo al autor del script con una captura de la ventana de depuración de IA / Script
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de Scripts
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de Juego que será cargado en la próxima partida
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IAs que serán cargadas en la próxima partida
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Las IA que serán cargadas en la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador Humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
 STR_AI_CONFIG_NONE                                              :(ninguna)
@@ -3943,7 +3943,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mover ha
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover la IA seleccionada hacia abajo
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de Juego
-STR_AI_CONFIG_AI                                                :{SILVER}IAs
+STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Seleccionar {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
@@ -3955,7 +3955,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibles
-STR_AI_LIST_CAPTION_AI                                          :IAs
+STR_AI_LIST_CAPTION_AI                                          :IA
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de Juego
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Click para seleccionar un script
 
@@ -3969,9 +3969,9 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No cambiar de script
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parámetros
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Juego
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros {STRING}
+STR_AI_SETTINGS_CAPTION_AI                                      :de la IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :del Script de Juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4144,6 +4144,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... sól
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solamente puede construirse por encima de la línea de nieve
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solamente puede construirse por debajo de la línea de nieve
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No había sitios apropiados disponibles para industrias '{STRING}'
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Cambia los parámetros de generación del mapa para obtener un mapa mejor
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}No se puede construir estación de tren aquí...
