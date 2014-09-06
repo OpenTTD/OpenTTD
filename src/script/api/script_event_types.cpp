@@ -171,7 +171,7 @@ char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, char *p)
 	}
 
 	*p = '\0';
-	sq_pushstring(vm, OTTD2SQ(value), -1);
+	sq_pushstring(vm, value, -1);
 	*p++ = '"';
 
 	return p;

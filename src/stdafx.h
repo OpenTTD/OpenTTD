@@ -301,14 +301,10 @@
 
 		const char *FS2OTTD(const TCHAR *name);
 		const TCHAR *OTTD2FS(const char *name, bool console_cp = false);
-		#define SQ2OTTD(name) (name)
-		#define OTTD2SQ(name) (name)
 	#else
 		#define fopen(file, mode) fopen(OTTD2FS(file), mode)
 		const char *FS2OTTD(const char *name);
 		const char *OTTD2FS(const char *name);
-		#define SQ2OTTD(name) (name)
-		#define OTTD2SQ(name) (name)
 	#endif /* WIN32 */
 #endif /* STRGEN || SETTINGSGEN */
 

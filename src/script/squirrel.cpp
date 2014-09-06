@@ -38,7 +38,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {
-		DEBUG(misc, 0, "[Squirrel] Compile error: %s", SQ2OTTD(buf));
+		DEBUG(misc, 0, "[Squirrel] Compile error: %s", buf);
 	} else {
 		(*func)(true, buf);
 	}
@@ -121,7 +121,7 @@ void Squirrel::PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 
 void Squirrel::AddMethod(const char *method_name, SQFUNCTION proc, uint nparam, const char *params, void *userdata, int size)
 {
-	sq_pushstring(this->vm, OTTD2SQ(method_name), -1);
+	sq_pushstring(this->vm, method_name, -1);
 
 	if (size != 0) {
 		void *ptr = sq_newuserdata(vm, size);
@@ -129,21 +129,21 @@ void Squirrel::AddMethod(const char *method_name, SQFUNCTION proc, uint nparam, 
 	}
 
 	sq_newclosure(this->vm, proc, size != 0 ? 1 : 0);
-	if (nparam != 0) sq_setparamscheck(this->vm, nparam, OTTD2SQ(params));
-	sq_setnativeclosurename(this->vm, -1, OTTD2SQ(method_name));
+	if (nparam != 0) sq_setparamscheck(this->vm, nparam, params);
+	sq_setnativeclosurename(this->vm, -1, method_name);
 	sq_newslot(this->vm, -3, SQFalse);
 }
 
 void Squirrel::AddConst(const char *var_name, int value)
 {
-	sq_pushstring(this->vm, OTTD2SQ(var_name), -1);
+	sq_pushstring(this->vm, var_name, -1);
 	sq_pushinteger(this->vm, value);
 	sq_newslot(this->vm, -3, SQTrue);
 }
 
 void Squirrel::AddConst(const char *var_name, bool value)
 {
-	sq_pushstring(this->vm, OTTD2SQ(var_name), -1);
+	sq_pushstring(this->vm, var_name, -1);
 	sq_pushbool(this->vm, value);
 	sq_newslot(this->vm, -3, SQTrue);
 }
@@ -151,15 +151,15 @@ void Squirrel::AddConst(const char *var_name, bool value)
 void Squirrel::AddClassBegin(const char *class_name)
 {
 	sq_pushroottable(this->vm);
-	sq_pushstring(this->vm, OTTD2SQ(class_name), -1);
+	sq_pushstring(this->vm, class_name, -1);
 	sq_newclass(this->vm, SQFalse);
 }
 
 void Squirrel::AddClassBegin(const char *class_name, const char *parent_class)
 {
 	sq_pushroottable(this->vm);
-	sq_pushstring(this->vm, OTTD2SQ(class_name), -1);
-	sq_pushstring(this->vm, OTTD2SQ(parent_class), -1);
+	sq_pushstring(this->vm, class_name, -1);
+	sq_pushstring(this->vm, parent_class, -1);
 	if (SQ_FAILED(sq_get(this->vm, -3))) {
 		DEBUG(misc, 0, "[squirrel] Failed to initialize class '%s' based on parent class '%s'", class_name, parent_class);
 		DEBUG(misc, 0, "[squirrel] Make sure that '%s' exists before trying to define '%s'", parent_class, class_name);
@@ -181,7 +181,7 @@ bool Squirrel::MethodExists(HSQOBJECT instance, const char *method_name)
 	/* Go to the instance-root */
 	sq_pushobject(this->vm, instance);
 	/* Find the function-name inside the script */
-	sq_pushstring(this->vm, OTTD2SQ(method_name), -1);
+	sq_pushstring(this->vm, method_name, -1);
 	if (SQ_FAILED(sq_get(this->vm, -2))) {
 		sq_settop(this->vm, top);
 		return false;
@@ -232,7 +232,7 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	/* Go to the instance-root */
 	sq_pushobject(this->vm, instance);
 	/* Find the function-name inside the script */
-	sq_pushstring(this->vm, OTTD2SQ(method_name), -1);
+	sq_pushstring(this->vm, method_name, -1);
 	if (SQ_FAILED(sq_get(this->vm, -2))) {
 		DEBUG(misc, 0, "[squirrel] Could not find '%s' in the class", method_name);
 		sq_settop(this->vm, top);
@@ -293,9 +293,9 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 		char *class_name2 = (char *)alloca(len);
 		seprintf(class_name2, class_name2 + len - 1, "%s%s", engine->GetAPIName(), class_name);
 
-		sq_pushstring(vm, OTTD2SQ(class_name2), -1);
+		sq_pushstring(vm, class_name2, -1);
 	} else {
-		sq_pushstring(vm, OTTD2SQ(class_name), -1);
+		sq_pushstring(vm, class_name, -1);
 	}
 
 	if (SQ_FAILED(sq_get(vm, -2))) {
@@ -515,7 +515,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 				break;
 		}
 
-		if (SQ_SUCCEEDED(sq_compile(vm, func, &f, OTTD2SQ(filename), printerror))) {
+		if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename, printerror))) {
 			FioFCloseFile(file);
 			return SQ_OK;
 		}

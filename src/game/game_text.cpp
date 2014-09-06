@@ -361,7 +361,7 @@ void RegisterGameTranslation(Squirrel *engine)
 
 	int idx = 0;
 	for (const char * const *p = _current_data->string_names.Begin(); p != _current_data->string_names.End(); p++, idx++) {
-		sq_pushstring(vm, OTTD2SQ(*p), -1);
+		sq_pushstring(vm, *p, -1);
 		sq_pushinteger(vm, idx);
 		sq_rawset(vm, -3);
 	}

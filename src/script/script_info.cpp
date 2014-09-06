@@ -125,15 +125,14 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	/* Read the table, and find all properties we care about */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-		const SQChar *sqkey;
-		if (SQ_FAILED(sq_getstring(vm, -2, &sqkey))) return SQ_ERROR;
-		const char *key = SQ2OTTD(sqkey);
+		const SQChar *key;
+		if (SQ_FAILED(sq_getstring(vm, -2, &key))) return SQ_ERROR;
 		ValidateString(key);
 
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
-			char *name = stredup(SQ2OTTD(sqvalue));
+			char *name = stredup(sqvalue);
 			char *s;
 			ValidateString(name);
 
@@ -146,7 +145,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (strcmp(key, "description") == 0) {
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
-			config.description = stredup(SQ2OTTD(sqdescription));
+			config.description = stredup(sqdescription);
 			ValidateString(config.description);
 			items |= 0x002;
 		} else if (strcmp(key, "min_value") == 0) {
@@ -230,9 +229,8 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 
 SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 {
-	const SQChar *sq_setting_name;
-	if (SQ_FAILED(sq_getstring(vm, -2, &sq_setting_name))) return SQ_ERROR;
-	const char *setting_name = SQ2OTTD(sq_setting_name);
+	const SQChar *setting_name;
+	if (SQ_FAILED(sq_getstring(vm, -2, &setting_name))) return SQ_ERROR;
 	ValidateString(setting_name);
 
 	ScriptConfigItem *config = NULL;
@@ -253,15 +251,13 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 	/* Read the table and find all labels */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-		const SQChar *sq_key;
-		const SQChar *sq_label;
-		if (SQ_FAILED(sq_getstring(vm, -2, &sq_key))) return SQ_ERROR;
-		if (SQ_FAILED(sq_getstring(vm, -1, &sq_label))) return SQ_ERROR;
+		const SQChar *key_string;
+		const SQChar *label;
+		if (SQ_FAILED(sq_getstring(vm, -2, &key_string))) return SQ_ERROR;
+		if (SQ_FAILED(sq_getstring(vm, -1, &label))) return SQ_ERROR;
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
-		const char *key_string = SQ2OTTD(sq_key);
 		int key = atoi(key_string + 1);
-		const char *label = SQ2OTTD(sq_label);
 		ValidateString(label);
 
 		/* !Contains() prevents stredup from leaking. */

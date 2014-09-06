@@ -37,12 +37,9 @@
 		}
 
 		case OT_STRING: {
-			const SQChar *res;
-			sq_getstring(vm, index, &res);
+			const SQChar *buf;
+			sq_getstring(vm, index, &buf);
 
-			/* @bug if a string longer than 512 characters is given to SQ2OTTD, the
-			 *  internal buffer overflows. */
-			const char *buf = SQ2OTTD(res);
 			size_t len = strlen(buf) + 1;
 			if (len >= 255) {
 				ScriptLog::Error("Maximum string length is 254 chars. No data sent.");

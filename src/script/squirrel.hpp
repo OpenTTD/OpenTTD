@@ -199,7 +199,7 @@ public:
 	/**
 	 * Convert a Squirrel-object to a string.
 	 */
-	static const char *ObjectToString(HSQOBJECT *ptr) { return SQ2OTTD(sq_objtostring(ptr)); }
+	static const char *ObjectToString(HSQOBJECT *ptr) { return sq_objtostring(ptr); }
 
 	/**
 	 * Convert a Squirrel-object to an integer.
@@ -230,7 +230,7 @@ public:
 	/**
 	 * Throw a Squirrel error that will be nicely displayed to the user.
 	 */
-	void ThrowError(const char *error) { sq_throwerror(this->vm, OTTD2SQ(error)); }
+	void ThrowError(const char *error) { sq_throwerror(this->vm, error); }
 
 	/**
 	 * Release a SQ object.
