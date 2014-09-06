@@ -2,6 +2,6 @@
 #ifndef _SQSTD_SYSTEMLIB_H_
 #define _SQSTD_SYSTEMLIB_H_
 
-SQUIRREL_API SQInteger sqstd_register_systemlib(HSQUIRRELVM v);
+SQInteger sqstd_register_systemlib(HSQUIRRELVM v);
 
 #endif /* _SQSTD_SYSTEMLIB_H_ */
