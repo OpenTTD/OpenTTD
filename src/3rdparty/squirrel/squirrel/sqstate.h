@@ -123,8 +123,6 @@ private:
 #define _instance_ddel	_table(_sharedstate->_instance_default_delegate)
 #define _weakref_ddel	_table(_sharedstate->_weakref_default_delegate)
 
-#define rsl(l) (l)
-
 extern SQObjectPtr _null_;
 extern SQObjectPtr _true_;
 extern SQObjectPtr _false_;

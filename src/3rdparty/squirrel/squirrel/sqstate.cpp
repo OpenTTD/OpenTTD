@@ -522,13 +522,13 @@ SQString *SQStringTable::Add(const SQChar *news,SQInteger len)
 	SQHash h = ::_hashstr(news,(size_t)len)&(_numofslots-1);
 	SQString *s;
 	for (s = _strings[h]; s; s = s->_next){
-		if(s->_len == len && (!memcmp(news,s->_val,(size_t)rsl(len))))
+		if(s->_len == len && (!memcmp(news,s->_val,(size_t)len)))
 			return s; //found
 	}
 
-	SQString *t=(SQString *)SQ_MALLOC(rsl(len)+sizeof(SQString));
+	SQString *t=(SQString *)SQ_MALLOC(len+sizeof(SQString));
 	new (t) SQString;
-	memcpy(t->_val,news,(size_t)rsl(len));
+	memcpy(t->_val,news,(size_t)len);
 	t->_val[len] = '\0';
 	t->_len = len;
 	t->_hash = ::_hashstr(news,(size_t)len);
@@ -573,7 +573,7 @@ void SQStringTable::Remove(SQString *bs)
 			_slotused--;
 			SQInteger slen = s->_len;
 			s->~SQString();
-			SQ_FREE(s,sizeof(SQString) + rsl(slen));
+			SQ_FREE(s,sizeof(SQString) + slen);
 			return;
 		}
 		prev = s;
