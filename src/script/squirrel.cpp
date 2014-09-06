@@ -31,7 +31,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 {
 	SQChar buf[1024];
 
-	scsnprintf(buf, lengthof(buf), _SC("Error %s:") SQ_PRINTF64 _SC("/") SQ_PRINTF64 _SC(": %s"), source, line, column, desc);
+	seprintf(buf, lastof(buf), "Error %s:" SQ_PRINTF64 "/" SQ_PRINTF64 ": %s", source, line, column, desc);
 
 	/* Check if we have a custom print function */
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
@@ -70,7 +70,7 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 
 	/* Check if we have a custom print function */
 	SQChar buf[1024];
-	scsnprintf(buf, lengthof(buf), _SC("Your script made an error: %s\n"), error);
+	seprintf(buf, lastof(buf), "Your script made an error: %s\n", error);
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {

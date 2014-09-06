@@ -89,9 +89,9 @@ struct SQClass;
 struct SQInstance;
 struct SQDelegable;
 
-#ifdef _UNICODE
-#define SQUNICODE
-#endif
+//#ifdef _UNICODE
+//#define SQUNICODE
+//#endif
 
 #ifdef SQUNICODE
 #if (defined(_MSC_VER) && _MSC_VER >= 1400) // 1400 = VS8

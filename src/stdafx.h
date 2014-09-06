@@ -301,8 +301,8 @@
 
 		const char *FS2OTTD(const TCHAR *name);
 		const TCHAR *OTTD2FS(const char *name, bool console_cp = false);
-		#define SQ2OTTD(name) FS2OTTD(name)
-		#define OTTD2SQ(name) OTTD2FS(name)
+		#define SQ2OTTD(name) (name)
+		#define OTTD2SQ(name) (name)
 	#else
 		#define fopen(file, mode) fopen(OTTD2FS(file), mode)
 		const char *FS2OTTD(const char *name);
