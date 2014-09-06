@@ -14,13 +14,17 @@ struct SQLexer
 	const SQChar *Tok2Str(SQInteger tok);
 private:
 	SQInteger GetIDType(SQChar *s);
-	SQInteger ReadString(SQChar ndelim,bool verbatim);
+	SQInteger ReadString(LexChar ndelim,bool verbatim);
 	SQInteger ReadNumber();
 	void LexBlockComment();
 	SQInteger ReadID();
 	void Next();
 	SQInteger _curtoken;
 	SQTable *_keywords;
+	void INIT_TEMP_STRING() { _longstr.resize(0); }
+	void APPEND_CHAR(LexChar c);
+	void TERMINATE_BUFFER() { _longstr.push_back(_SC('\0')); }
+
 public:
 	SQInteger _prevtoken;
 	SQInteger _currentline;

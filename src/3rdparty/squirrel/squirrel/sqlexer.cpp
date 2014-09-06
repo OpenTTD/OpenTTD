@@ -9,19 +9,28 @@
 #include "sqcompiler.h"
 #include "sqlexer.h"
 
+#include "../../../stdafx.h"
+#include "../../../string_func.h"
+
 #define CUR_CHAR (_currdata)
 #define RETURN_TOKEN(t) { _prevtoken = _curtoken; _curtoken = t; return t;}
 #define IS_EOB() (CUR_CHAR <= SQUIRREL_EOB)
 #define NEXT() {Next();_currentcolumn++;}
-#define INIT_TEMP_STRING() { _longstr.resize(0);}
-#define APPEND_CHAR(c) { _longstr.push_back(c);}
-#define TERMINATE_BUFFER() {_longstr.push_back(_SC('\0'));}
 #define ADD_KEYWORD(key,id) _keywords->NewSlot( SQString::Create(ss, _SC(#key)) ,SQInteger(id))
 
 SQLexer::SQLexer(){}
 SQLexer::~SQLexer()
 {
 	_keywords->Release();
+}
+
+void SQLexer::APPEND_CHAR(LexChar c)
+{
+	char buf[4];
+	int chars = Utf8Encode(buf, c);
+	for (int i = 0; i < chars; i++) {
+		_longstr.push_back(buf[i]);
+	}
 }
 
 void SQLexer::Init(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up,CompilerErrorFunc efunc,void *ed)
@@ -273,7 +282,7 @@ SQInteger SQLexer::GetIDType(SQChar *s)
 }
 
 
-SQInteger SQLexer::ReadString(SQChar ndelim,bool verbatim)
+SQInteger SQLexer::ReadString(LexChar ndelim,bool verbatim)
 {
 	INIT_TEMP_STRING();
 	NEXT();
