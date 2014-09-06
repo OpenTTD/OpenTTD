@@ -1,6 +1,9 @@
 /*
 	see copyright notice in squirrel.h
 */
+
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #include "sqvm.h"
 #include "sqstring.h"
@@ -10,6 +13,8 @@
 #include "sqfuncproto.h"
 #include "sqclass.h"
 #include "sqclosure.h"
+
+#include "../../../safeguards.h"
 
 
 const SQChar *IdType2Name(SQObjectType type)

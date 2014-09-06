@@ -1,6 +1,9 @@
 /*
 	see copyright notice in squirrel.h
 */
+
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #include "sqcompiler.h"
 #include "sqfuncproto.h"
@@ -8,6 +11,8 @@
 #include "sqtable.h"
 #include "sqopcodes.h"
 #include "sqfuncstate.h"
+
+#include "../../../safeguards.h"
 
 #ifdef _DEBUG_DUMP
 SQInstructionDesc g_InstrDesc[]={

@@ -1,11 +1,16 @@
 /*
 see copyright notice in squirrel.h
 */
+
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #include "sqvm.h"
 #include "sqtable.h"
 #include "sqfuncproto.h"
 #include "sqclosure.h"
+
+#include "../../../safeguards.h"
 
 SQTable::SQTable(SQSharedState *ss,SQInteger nInitialSize)
 {

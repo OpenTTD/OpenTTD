@@ -1,8 +1,13 @@
 /* see copyright notice in squirrel.h */
+
+#include "../../../stdafx.h"
+
 #include <squirrel.h>
 #include <math.h>
 #include <stdlib.h>
 #include <sqstdmath.h>
+
+#include "../../../safeguards.h"
 
 #define SINGLE_ARG_FUNC(_funcname, num_ops) static SQInteger math_##_funcname(HSQUIRRELVM v){ \
 	SQFloat f; \

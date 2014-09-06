@@ -3,6 +3,9 @@
 */
 /* Needs to be first due to a squirrel header defining type() and type()
  * being used in some versions of the headers included by algorithm. */
+
+#include "../../../stdafx.h"
+
 #include <algorithm>
 #include "sqpcheader.h"
 #include "sqvm.h"
@@ -15,6 +18,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <ctype.h>
+
+#include "../../../safeguards.h"
 
 bool str2num(const SQChar *s,SQObjectPtr &res)
 {

@@ -1,6 +1,9 @@
 /*
 	see copyright notice in squirrel.h
 */
+
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #include <ctype.h>
 #include <stdlib.h>
@@ -9,8 +12,9 @@
 #include "sqcompiler.h"
 #include "sqlexer.h"
 
-#include "../../../stdafx.h"
 #include "../../../string_func.h"
+
+#include "../../../safeguards.h"
 
 #define CUR_CHAR (_currdata)
 #define RETURN_TOKEN(t) { _prevtoken = _curtoken; _curtoken = t; return t;}

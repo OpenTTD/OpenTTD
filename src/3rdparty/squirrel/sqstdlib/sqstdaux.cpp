@@ -1,8 +1,13 @@
 /* see copyright notice in squirrel.h */
+
+#include "../../../stdafx.h"
+
 #include <squirrel.h>
 #include <sqstdaux.h>
 #include <assert.h>
 #include <string.h>
+
+#include "../../../safeguards.h"
 
 void sqstd_printcallstack(HSQUIRRELVM v)
 {

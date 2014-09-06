@@ -1,6 +1,9 @@
 /*
 	see copyright notice in squirrel.h
 */
+
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #include "sqopcodes.h"
 #include "sqvm.h"
@@ -11,6 +14,8 @@
 #include "sqarray.h"
 #include "squserdata.h"
 #include "sqclass.h"
+
+#include "../../../safeguards.h"
 
 SQObjectPtr _null_;
 SQObjectPtr _true_(true);

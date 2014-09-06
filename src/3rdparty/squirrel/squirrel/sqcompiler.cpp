@@ -1,6 +1,9 @@
 /*
 	see copyright notice in squirrel.h
 */
+
+#include "../../../stdafx.h"
+
 #include <squirrel.h>
 #include "sqpcheader.h"
 #include <stdarg.h>
@@ -12,6 +15,10 @@
 #include "sqlexer.h"
 #include "sqvm.h"
 #include "sqtable.h"
+
+#include "../../../string_func.h"
+
+#include "../../../safeguards.h"
 
 #define DEREF_NO_DEREF	-1
 #define DEREF_FIELD		-2
@@ -66,7 +73,7 @@ public:
 		static SQChar temp[256];
 		va_list vl;
 		va_start(vl, s);
-		vsnprintf(temp, sizeof(temp), s, vl);
+		vseprintf(temp, lastof(temp), s, vl);
 		va_end(vl);
 		throw temp;
 	}
