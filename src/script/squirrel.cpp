@@ -21,7 +21,8 @@
 
 /* Due to the different characters for Squirrel, the scsnprintf might be a simple
  * snprint which triggers the safeguard. But it isn't always a simple snprintf.
- * Likewise for scvsnprintf and scstrcat. */
+ * Likewise for scvsnprintf and scstrcat.
+ * TODO: use properly safe functions now that Squirrel uses chars exclusively. */
 #include "../safeguards.h"
 #undef snprintf
 #undef vsnprintf
@@ -50,13 +51,13 @@ void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 	SQChar buf[1024];
 
 	va_start(arglist, s);
-	scvsnprintf(buf, lengthof(buf), s, arglist);
+	vsnprintf(buf, lengthof(buf), s, arglist);
 	va_end(arglist);
 
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == NULL) {
-		scfprintf(stderr, "%s", buf);
+		fprintf(stderr, "%s", buf);
 	} else {
 		(*func)(true, buf);
 	}
@@ -74,7 +75,7 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {
-		scfprintf(stderr, "%s", buf);
+		fprintf(stderr, "%s", buf);
 	} else {
 		(*func)(true, buf);
 	}
@@ -106,14 +107,14 @@ void Squirrel::PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 	SQChar buf[1024];
 
 	va_start(arglist, s);
-	scvsnprintf(buf, lengthof(buf) - 2, s, arglist);
+	vsnprintf(buf, lengthof(buf) - 2, s, arglist);
 	va_end(arglist);
-	scstrcat(buf, "\n");
+	strcat(buf, "\n");
 
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == NULL) {
-		scprintf("%s", buf);
+		printf("%s", buf);
 	} else {
 		(*func)(false, buf);
 	}

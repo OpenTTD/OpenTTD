@@ -60,7 +60,7 @@ void SQVM::Raise_Error(const SQChar *s, ...)
 {
 	va_list vl;
 	va_start(vl, s);
-	scvsprintf(_sp(rsl((SQInteger)scstrlen(s)+(NUMBER_MAX_CHAR*2))), s, vl);
+	vsprintf(_sp(rsl((SQInteger)strlen(s)+(NUMBER_MAX_CHAR*2))), s, vl);
 	va_end(vl);
 	_lasterror = SQString::Create(_ss(this),_spval,-1);
 }
@@ -75,11 +75,11 @@ SQString *SQVM::PrintObjVal(const SQObject &o)
 	switch(type(o)) {
 	case OT_STRING: return _string(o);
 	case OT_INTEGER:
-		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)), SQ_PRINTF64, _integer(o));
+		sprintf(_sp(rsl(NUMBER_MAX_CHAR+1)), SQ_PRINTF64, _integer(o));
 		return SQString::Create(_ss(this), _spval);
 		break;
 	case OT_FLOAT:
-		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)), "%.14g", _float(o));
+		sprintf(_sp(rsl(NUMBER_MAX_CHAR+1)), "%.14g", _float(o));
 		return SQString::Create(_ss(this), _spval);
 		break;
 	default:

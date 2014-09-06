@@ -19,14 +19,14 @@
 bool str2num(const SQChar *s,SQObjectPtr &res)
 {
 	SQChar *end;
-	if(scstrstr(s,".")){
-		SQFloat r = SQFloat(scstrtod(s,&end));
+	if(strstr(s,".")){
+		SQFloat r = SQFloat(strtod(s,&end));
 		if(s == end) return false;
 		res = r;
 		return true;
 	}
 	else{
-		SQInteger r = SQInteger(scstrtol(s,&end,10));
+		SQInteger r = SQInteger(strtol(s,&end,10));
 		if(s == end) return false;
 		res = r;
 		return true;
@@ -651,7 +651,7 @@ static SQInteger string_find(HSQUIRRELVM v)
 	if(((top=sq_gettop(v))>1) && SQ_SUCCEEDED(sq_getstring(v,1,&str)) && SQ_SUCCEEDED(sq_getstring(v,2,&substr))){
 		if(top>2)sq_getinteger(v,3,&start_idx);
 		if((sq_getsize(v,1)>start_idx) && (start_idx>=0)){
-			ret=scstrstr(&str[start_idx],substr);
+			ret=strstr(&str[start_idx],substr);
 			if(ret){
 				sq_pushinteger(v,(SQInteger)(ret-str));
 				return 1;

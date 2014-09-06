@@ -27,8 +27,8 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 				 * Since the path only reaches NoAI code in a formatted string we have
 				 * to strip it here. Let's hope nobody installs openttd in a subdirectory
 				 * of a directory named /ai/. */
-				src = scstrstr(si.source, "\\ai\\");
-				if (!src) src = scstrstr(si.source, "/ai/");
+				src = strstr(si.source, "\\ai\\");
+				if (!src) src = strstr(si.source, "/ai/");
 				if (src) {
 					src += 4;
 				} else {

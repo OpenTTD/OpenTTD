@@ -78,11 +78,11 @@ SQInstructionDesc g_InstrDesc[]={
 void DumpLiteral(SQObjectPtr &o)
 {
 	switch(type(o)){
-		case OT_STRING:	scprintf("\"%s\"",_stringval(o));break;
-		case OT_FLOAT: scprintf("{%f}",_float(o));break;
-		case OT_INTEGER: scprintf("{" SQ_PRINTF64 "}",_integer(o));break;
-		case OT_BOOL: scprintf("%s",_integer(o)?"true":"false");break;
-		default: scprintf("(%s %p)",GetTypeName(o),(void*)_rawval(o));break; break; //shut up compiler
+		case OT_STRING:	printf("\"%s\"",_stringval(o));break;
+		case OT_FLOAT: printf("{%f}",_float(o));break;
+		case OT_INTEGER: printf("{" SQ_PRINTF64 "}",_integer(o));break;
+		case OT_BOOL: printf("%s",_integer(o)?"true":"false");break;
+		default: printf("(%s %p)",GetTypeName(o),(void*)_rawval(o));break; break; //shut up compiler
 	}
 }
 
@@ -115,11 +115,11 @@ void SQFuncState::Dump(SQFunctionProto *func)
 {
 	SQUnsignedInteger n=0,i;
 	SQInteger si;
-	scprintf("SQInstruction sizeof %d\n",sizeof(SQInstruction));
-	scprintf("SQObject sizeof %d\n",sizeof(SQObject));
-	scprintf("--------------------------------------------------------------------\n");
-	scprintf("*****FUNCTION [%s]\n",type(func->_name)==OT_STRING?_stringval(func->_name):"unknown");
-	scprintf("-----LITERALS\n");
+	printf("SQInstruction sizeof %d\n",sizeof(SQInstruction));
+	printf("SQObject sizeof %d\n",sizeof(SQObject));
+	printf("--------------------------------------------------------------------\n");
+	printf("*****FUNCTION [%s]\n",type(func->_name)==OT_STRING?_stringval(func->_name):"unknown");
+	printf("-----LITERALS\n");
 	SQObjectPtr refidx,key,val;
 	SQInteger idx;
 	SQObjectPtrVec templiterals;
@@ -129,43 +129,43 @@ void SQFuncState::Dump(SQFunctionProto *func)
 		templiterals[_integer(val)]=key;
 	}
 	for(i=0;i<templiterals.size();i++){
-		scprintf("[%d] ",n);
+		printf("[%d] ",n);
 		DumpLiteral(templiterals[i]);
-		scprintf("\n");
+		printf("\n");
 		n++;
 	}
-	scprintf("-----PARAMS\n");
+	printf("-----PARAMS\n");
 	if(_varparams)
-		scprintf("<<VARPARAMS>>\n");
+		printf("<<VARPARAMS>>\n");
 	n=0;
 	for(i=0;i<_parameters.size();i++){
-		scprintf("[%d] ",n);
+		printf("[%d] ",n);
 		DumpLiteral(_parameters[i]);
-		scprintf("\n");
+		printf("\n");
 		n++;
 	}
-	scprintf("-----LOCALS\n");
+	printf("-----LOCALS\n");
 	for(si=0;si<func->_nlocalvarinfos;si++){
 		SQLocalVarInfo lvi=func->_localvarinfos[si];
-		scprintf("[%d] %s \t%d %d\n",lvi._pos,_stringval(lvi._name),lvi._start_op,lvi._end_op);
+		printf("[%d] %s \t%d %d\n",lvi._pos,_stringval(lvi._name),lvi._start_op,lvi._end_op);
 		n++;
 	}
-	scprintf("-----LINE INFO\n");
+	printf("-----LINE INFO\n");
 	for(i=0;i<_lineinfos.size();i++){
 		SQLineInfo li=_lineinfos[i];
-		scprintf("op [%d] line [%d] \n",li._op,li._line);
+		printf("op [%d] line [%d] \n",li._op,li._line);
 		n++;
 	}
-	scprintf("-----dump\n");
+	printf("-----dump\n");
 	n=0;
 	for(i=0;i<_instructions.size();i++){
 		SQInstruction &inst=_instructions[i];
 		if(inst.op==_OP_LOAD || inst.op==_OP_DLOAD || inst.op==_OP_PREPCALLK || inst.op==_OP_GETK ){
 
 			SQInteger lidx = inst._arg1;
-			scprintf("[%03d] %15s %d ",n,g_InstrDesc[inst.op].name,inst._arg0);
+			printf("[%03d] %15s %d ",n,g_InstrDesc[inst.op].name,inst._arg0);
 			if(lidx >= 0xFFFFFFFF)
-				scprintf("null");
+				printf("null");
 			else {
 				SQInteger refidx;
 				SQObjectPtr val,key,refo;
@@ -175,13 +175,13 @@ void SQFuncState::Dump(SQFunctionProto *func)
 				DumpLiteral(key);
 			}
 			if(inst.op != _OP_DLOAD) {
-				scprintf(" %d %d \n",inst._arg2,inst._arg3);
+				printf(" %d %d \n",inst._arg2,inst._arg3);
 			}
 			else {
-				scprintf(" %d ",inst._arg2);
+				printf(" %d ",inst._arg2);
 				lidx = inst._arg3;
 				if(lidx >= 0xFFFFFFFF)
-					scprintf("null");
+					printf("null");
 				else {
 					SQInteger refidx;
 					SQObjectPtr val,key,refo;
@@ -189,23 +189,23 @@ void SQFuncState::Dump(SQFunctionProto *func)
 						refo = refidx;
 				}
 				DumpLiteral(key);
-				scprintf("\n");
+				printf("\n");
 			}
 			}
 		}
 		else if(inst.op==_OP_LOADFLOAT) {
-			scprintf("[%03d] %15s %d %f %d %d\n",n,g_InstrDesc[inst.op].name,inst._arg0,*((SQFloat*)&inst._arg1),inst._arg2,inst._arg3);
+			printf("[%03d] %15s %d %f %d %d\n",n,g_InstrDesc[inst.op].name,inst._arg0,*((SQFloat*)&inst._arg1),inst._arg2,inst._arg3);
 		}
 		else if(inst.op==_OP_ARITH){
-			scprintf("[%03d] %15s %d %d %d %c\n",n,g_InstrDesc[inst.op].name,inst._arg0,inst._arg1,inst._arg2,inst._arg3);
+			printf("[%03d] %15s %d %d %d %c\n",n,g_InstrDesc[inst.op].name,inst._arg0,inst._arg1,inst._arg2,inst._arg3);
 		}
 		else
-			scprintf("[%03d] %15s %d %d %d %d\n",n,g_InstrDesc[inst.op].name,inst._arg0,inst._arg1,inst._arg2,inst._arg3);
+			printf("[%03d] %15s %d %d %d %d\n",n,g_InstrDesc[inst.op].name,inst._arg0,inst._arg1,inst._arg2,inst._arg3);
 		n++;
 	}
-	scprintf("-----\n");
-	scprintf("stack size[%d]\n",func->_stacksize);
-	scprintf("--------------------------------------------------------------------\n\n");
+	printf("-----\n");
+	printf("stack size[%d]\n",func->_stacksize);
+	printf("--------------------------------------------------------------------\n\n");
 }
 #endif
 

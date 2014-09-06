@@ -22,7 +22,7 @@ static SQInteger validate_format(HSQUIRRELVM v, SQChar *fmt, const SQChar *src, 
 	SQInteger start = n;
 	fmt[0] = '%';
 	while (scstrchr("-+ #0", src[n])) n++;
-	while (scisdigit(src[n])) {
+	while (isdigit(src[n])) {
 		swidth[wc] = src[n];
 		n++;
 		wc++;
@@ -31,7 +31,7 @@ static SQInteger validate_format(HSQUIRRELVM v, SQChar *fmt, const SQChar *src, 
 	}
 	swidth[wc] = '\0';
 	if(wc > 0) {
-		width = scatoi(swidth);
+		width = atoi(swidth);
 	}
 	else
 		width = 0;
@@ -39,7 +39,7 @@ static SQInteger validate_format(HSQUIRRELVM v, SQChar *fmt, const SQChar *src, 
 	    n++;
 
 		wc = 0;
-		while (scisdigit(src[n])) {
+		while (isdigit(src[n])) {
 			swidth[wc] = src[n];
 			n++;
 			wc++;
@@ -48,7 +48,7 @@ static SQInteger validate_format(HSQUIRRELVM v, SQChar *fmt, const SQChar *src, 
 		}
 		swidth[wc] = '\0';
 		if(wc > 0) {
-			width += scatoi(swidth);
+			width += atoi(swidth);
 		}
 	}
 	if (n-start > MAX_FORMAT_LEN )
@@ -69,7 +69,7 @@ static void _append_string(SQInteger &i, SQChar *dest, SQInteger allocated, cons
 {
 	va_list va;
 	va_start(va, fmt);
-	i += scvsnprintf(&dest[i],allocated-i,fmt,va);
+	i += vsnprintf(&dest[i],allocated-i,fmt,va);
 	va_end(va);
 }
 
@@ -156,7 +156,7 @@ static SQInteger _string_format(HSQUIRRELVM v)
 static void __strip_l(const SQChar *str,const SQChar **start)
 {
 	const SQChar *t = str;
-	while(((*t) != '\0') && scisspace(*t)){ t++; }
+	while(((*t) != '\0') && isspace(*t)){ t++; }
 	*start = t;
 }
 
@@ -167,7 +167,7 @@ static void __strip_r(const SQChar *str,SQInteger len,const SQChar **end)
 		return;
 	}
 	const SQChar *t = &str[len-1];
-	while(t != str && scisspace(*t)) { t--; }
+	while(t != str && isspace(*t)) { t--; }
 	*end = t+1;
 }
 

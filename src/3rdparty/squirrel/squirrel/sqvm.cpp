@@ -185,7 +185,7 @@ bool SQVM::ObjCmp(const SQObjectPtr &o1,const SQObjectPtr &o2,SQInteger &result)
 		SQObjectPtr res;
 		switch(type(o1)){
 		case OT_STRING:
-			_RET_SUCCEED(scstrcmp(_stringval(o1),_stringval(o2)));
+			_RET_SUCCEED(strcmp(_stringval(o1),_stringval(o2)));
 		case OT_INTEGER:
 			/* FS#3954: wrong integer comparison */
 			_RET_SUCCEED((_integer(o1)<_integer(o2))?-1:(_integer(o1)==_integer(o2))?0:1);
@@ -256,13 +256,13 @@ void SQVM::ToString(const SQObjectPtr &o,SQObjectPtr &res)
 		res = o;
 		return;
 	case OT_FLOAT:
-		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),"%g",_float(o));
+		sprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),"%g",_float(o));
 		break;
 	case OT_INTEGER:
-		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),SQ_PRINTF64,_integer(o));
+		sprintf(_sp(rsl(NUMBER_MAX_CHAR+1)),SQ_PRINTF64,_integer(o));
 		break;
 	case OT_BOOL:
-		scsprintf(_sp(rsl(6)),_integer(o)?"true":"false");
+		sprintf(_sp(rsl(6)),_integer(o)?"true":"false");
 		break;
 	case OT_TABLE:
 	case OT_USERDATA:
@@ -276,7 +276,7 @@ void SQVM::ToString(const SQObjectPtr &o,SQObjectPtr &res)
 			}
 		}
 	default:
-		scsprintf(_sp(rsl(sizeof(void*)+20)),"(%s : 0x%p)",GetTypeName(o),(void*)_rawval(o));
+		sprintf(_sp(rsl(sizeof(void*)+20)),"(%s : 0x%p)",GetTypeName(o),(void*)_rawval(o));
 	}
 	res = SQString::Create(_ss(this),_spval);
 }
@@ -735,7 +735,7 @@ exception_restore:
 
 			const SQInstruction &_i_ = *ci->_ip++;
 			//dumpstack(_stackbase);
-			//scprintf("%s %d %d %d %d\n",g_InstrDesc[_i_.op].name,arg0,arg1,arg2,arg3);
+			//printf("%s %d %d %d %d\n",g_InstrDesc[_i_.op].name,arg0,arg1,arg2,arg3);
 			switch(_i_.op)
 			{
 			case _OP_LINE:
@@ -1554,37 +1554,37 @@ void SQVM::dumpstack(SQInteger stackbase,bool dumpall)
 {
 	SQInteger size=dumpall?_stack.size():_top;
 	SQInteger n=0;
-	scprintf("\n>>>>stack dump<<<<\n");
+	printf("\n>>>>stack dump<<<<\n");
 	CallInfo &ci=_callsstack[_callsstacksize-1];
-	scprintf("IP: %p\n",ci._ip);
-	scprintf("prev stack base: %d\n",ci._prevstkbase);
-	scprintf("prev top: %d\n",ci._prevtop);
+	printf("IP: %p\n",ci._ip);
+	printf("prev stack base: %d\n",ci._prevstkbase);
+	printf("prev top: %d\n",ci._prevtop);
 	for(SQInteger i=0;i<size;i++){
 		SQObjectPtr &obj=_stack[i];
-		if(stackbase==i)scprintf(">");else scprintf(" ");
-		scprintf("[%d]:",n);
+		if(stackbase==i)printf(">");else printf(" ");
+		printf("[%d]:",n);
 		switch(type(obj)){
-		case OT_FLOAT:			scprintf("FLOAT %.3f",_float(obj));break;
-		case OT_INTEGER:		scprintf("INTEGER %d",_integer(obj));break;
-		case OT_BOOL:			scprintf("BOOL %s",_integer(obj)?"true":"false");break;
-		case OT_STRING:			scprintf("STRING %s",_stringval(obj));break;
-		case OT_NULL:			scprintf("NULL");	break;
-		case OT_TABLE:			scprintf("TABLE %p[%p]",_table(obj),_table(obj)->_delegate);break;
-		case OT_ARRAY:			scprintf("ARRAY %p",_array(obj));break;
-		case OT_CLOSURE:		scprintf("CLOSURE [%p]",_closure(obj));break;
-		case OT_NATIVECLOSURE:	scprintf("NATIVECLOSURE");break;
-		case OT_USERDATA:		scprintf("USERDATA %p[%p]",_userdataval(obj),_userdata(obj)->_delegate);break;
-		case OT_GENERATOR:		scprintf("GENERATOR %p",_generator(obj));break;
-		case OT_THREAD:			scprintf("THREAD [%p]",_thread(obj));break;
-		case OT_USERPOINTER:	scprintf("USERPOINTER %p",_userpointer(obj));break;
-		case OT_CLASS:			scprintf("CLASS %p",_class(obj));break;
-		case OT_INSTANCE:		scprintf("INSTANCE %p",_instance(obj));break;
-		case OT_WEAKREF:		scprintf("WEAKERF %p",_weakref(obj));break;
+		case OT_FLOAT:			printf("FLOAT %.3f",_float(obj));break;
+		case OT_INTEGER:		printf("INTEGER %d",_integer(obj));break;
+		case OT_BOOL:			printf("BOOL %s",_integer(obj)?"true":"false");break;
+		case OT_STRING:			printf("STRING %s",_stringval(obj));break;
+		case OT_NULL:			printf("NULL");	break;
+		case OT_TABLE:			printf("TABLE %p[%p]",_table(obj),_table(obj)->_delegate);break;
+		case OT_ARRAY:			printf("ARRAY %p",_array(obj));break;
+		case OT_CLOSURE:		printf("CLOSURE [%p]",_closure(obj));break;
+		case OT_NATIVECLOSURE:	printf("NATIVECLOSURE");break;
+		case OT_USERDATA:		printf("USERDATA %p[%p]",_userdataval(obj),_userdata(obj)->_delegate);break;
+		case OT_GENERATOR:		printf("GENERATOR %p",_generator(obj));break;
+		case OT_THREAD:			printf("THREAD [%p]",_thread(obj));break;
+		case OT_USERPOINTER:	printf("USERPOINTER %p",_userpointer(obj));break;
+		case OT_CLASS:			printf("CLASS %p",_class(obj));break;
+		case OT_INSTANCE:		printf("INSTANCE %p",_instance(obj));break;
+		case OT_WEAKREF:		printf("WEAKERF %p",_weakref(obj));break;
 		default:
 			assert(0);
 			break;
 		};
-		scprintf("\n");
+		printf("\n");
 		++n;
 	}
 }

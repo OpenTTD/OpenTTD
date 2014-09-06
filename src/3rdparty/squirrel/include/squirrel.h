@@ -90,30 +90,6 @@ struct SQInstance;
 struct SQDelegable;
 
 typedef char SQChar;
-#define	scstrcmp	strcmp
-#define scsprintf	sprintf
-#define scsnprintf	snprintf
-#define scstrlen	strlen
-#define scstrtod	strtod
-#define scstrtol	strtol
-#define scatoi		atoi
-#define scstrtoul	strtoul
-#define scvsprintf	vsprintf
-#define scstrstr	strstr
-#define scisspace	isspace
-#define scisdigit	isdigit
-#define scisxdigit	isxdigit
-#define sciscntrl	iscntrl
-#define scisalpha	isalpha
-#define scisalnum	isalnum
-#define scprintf	printf
-#define scfprintf	fprintf
-#define scvprintf	vprintf
-#define scvfprintf	vfprintf
-#define scvsnprintf	vsnprintf
-#define scstrdup	strdup
-#define scstrrchr	strrchr
-#define scstrcat	strcat
 #define MAX_CHAR 0xFFFF
 
 #if defined(_MSC_VER) || defined(__MINGW32__)

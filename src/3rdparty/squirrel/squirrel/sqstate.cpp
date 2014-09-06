@@ -513,7 +513,7 @@ void SQStringTable::AllocNodes(SQInteger size)
 SQString *SQStringTable::Add(const SQChar *news,SQInteger len)
 {
 	if(len<0)
-		len = (SQInteger)scstrlen(news);
+		len = (SQInteger)strlen(news);
 	SQHash h = ::_hashstr(news,(size_t)len)&(_numofslots-1);
 	SQString *s;
 	for (s = _strings[h]; s; s = s->_next){
