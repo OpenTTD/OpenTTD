@@ -2,10 +2,6 @@
 #ifndef _SQSTD_STRING_H_
 #define _SQSTD_STRING_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef unsigned int SQRexBool;
 typedef struct SQRex SQRex;
 
@@ -25,9 +21,5 @@ SQUIRREL_API SQBool sqstd_rex_getsubexp(SQRex* exp, SQInteger n, SQRexMatch *sub
 SQUIRREL_API SQRESULT sqstd_format(HSQUIRRELVM v,SQInteger nformatstringidx,SQInteger *outlen,SQChar **output);
 
 SQUIRREL_API SQRESULT sqstd_register_stringlib(HSQUIRRELVM v);
-
-#ifdef __cplusplus
-} /*extern "C"*/
-#endif
 
 #endif /*_SQSTD_STRING_H_*/

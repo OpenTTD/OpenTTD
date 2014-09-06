@@ -2,8 +2,6 @@
 #ifndef _SQSTDIO_H_
 #define _SQSTDIO_H_
 
-#ifdef __cplusplus
-
 #define SQSTD_STREAM_TYPE_TAG 0x80000000
 
 struct SQStream {
@@ -17,9 +15,6 @@ struct SQStream {
 	virtual bool IsValid() = 0;
 	virtual bool EOS() = 0;
 };
-
-extern "C" {
-#endif
 
 #define SQ_SEEK_CUR 0
 #define SQ_SEEK_END 1
@@ -45,10 +40,6 @@ SQUIRREL_API SQRESULT sqstd_dofile(HSQUIRRELVM v,const SQChar *filename,SQBool r
 SQUIRREL_API SQRESULT sqstd_writeclosuretofile(HSQUIRRELVM v,const SQChar *filename);
 
 SQUIRREL_API SQRESULT sqstd_register_iolib(HSQUIRRELVM v);
-
-#ifdef __cplusplus
-} /*extern "C"*/
-#endif
 
 #endif /*_SQSTDIO_H_*/
 

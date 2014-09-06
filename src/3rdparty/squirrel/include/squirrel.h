@@ -31,10 +31,6 @@ to the following restrictions:
 #ifndef _SQUIRREL_H_
 #define _SQUIRREL_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #if defined(_MSC_VER)
 # define inline __forceinline
 #endif /* _MSC_VER */
@@ -394,9 +390,5 @@ SQUIRREL_API void sq_setdebughook(HSQUIRRELVM v);
 
 #define SQ_FAILED(res) (res<0)
 #define SQ_SUCCEEDED(res) (res>=0)
-
-#ifdef __cplusplus
-} /*extern "C"*/
-#endif
 
 #endif /*_SQUIRREL_H_*/
