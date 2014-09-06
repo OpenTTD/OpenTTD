@@ -4,8 +4,6 @@
 
 #include <squirrel.h>
 #include <sqstdaux.h>
-#include <assert.h>
-#include <string.h>
 
 #include "../../../safeguards.h"
 

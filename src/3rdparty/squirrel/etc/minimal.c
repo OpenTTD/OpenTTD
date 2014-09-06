@@ -2,7 +2,6 @@
 #include <stdio.h>
 
 #include <squirrel.h>
-#include <sqstdio.h>
 #include <sqstdaux.h>
 
 #ifdef _MSC_VER

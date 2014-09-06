@@ -31,20 +31,6 @@ to the following restrictions:
 #ifndef _SQUIRREL_H_
 #define _SQUIRREL_H_
 
-#if defined(_MSC_VER)
-# define inline __forceinline
-#endif /* _MSC_VER */
-
-#if defined(_MSC_VER) && _MSC_VER >= 1400 // MSVC 2005 safety checks
-# pragma warning(disable: 4996)   // '_wfopen' was declared deprecated
-# define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
-# define _CRT_NON_CONFORMING_SWPRINTFS // another deprecated stuff
-#endif /* _MSC_VER >= 1400 */
-
-#if defined(__GNUC__)
-	#define __int64 long long
-#endif
-
 typedef __int64 SQInteger;
 typedef unsigned __int64 SQUnsignedInteger;
 typedef unsigned __int64 SQHash; /*should be the same size of a pointer*/
@@ -83,12 +69,6 @@ struct SQDelegable;
 
 typedef char SQChar;
 #define MAX_CHAR 0xFFFF
-
-#if defined(_MSC_VER) || defined(__MINGW32__)
-	#define SQ_PRINTF64 "%I64d"
-#else
-	#define SQ_PRINTF64 "%lld"
-#endif
 
 #define SQUIRREL_VERSION	"Squirrel 2.2.5 stable - With custom OpenTTD modifications"
 #define SQUIRREL_COPYRIGHT	"Copyright (C) 2003-2010 Alberto Demichelis"

@@ -6,7 +6,6 @@
 
 #include <squirrel.h>
 #include "sqpcheader.h"
-#include <stdarg.h>
 #include "sqvm.h"
 #include "sqfuncproto.h"
 #include "sqclosure.h"
@@ -87,7 +86,7 @@ SQString *SQVM::PrintObjVal(const SQObject &o)
 	switch(type(o)) {
 	case OT_STRING: return _string(o);
 	case OT_INTEGER:
-		seprintf(buf, lastof(buf), SQ_PRINTF64, _integer(o));
+		seprintf(buf, lastof(buf), OTTD_PRINTF64, _integer(o));
 		return SQString::Create(_ss(this), buf);
 	case OT_FLOAT:
 		seprintf(buf, lastof(buf), "%.14g", _float(o));

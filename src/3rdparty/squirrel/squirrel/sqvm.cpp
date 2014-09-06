@@ -7,7 +7,6 @@
 #include <squirrel.h>
 #include "sqpcheader.h"
 #include <math.h>
-#include <stdlib.h>
 #include "sqopcodes.h"
 #include "sqfuncproto.h"
 #include "sqvm.h"
@@ -267,7 +266,7 @@ void SQVM::ToString(const SQObjectPtr &o,SQObjectPtr &res)
 		seprintf(buf, lastof(buf),"%g",_float(o));
 		break;
 	case OT_INTEGER:
-		seprintf(buf, lastof(buf),SQ_PRINTF64,_integer(o));
+		seprintf(buf, lastof(buf),OTTD_PRINTF64,_integer(o));
 		break;
 	case OT_BOOL:
 		seprintf(buf, lastof(buf),_integer(o)?"true":"false");

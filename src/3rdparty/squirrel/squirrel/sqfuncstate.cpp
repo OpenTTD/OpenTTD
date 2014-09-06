@@ -85,7 +85,7 @@ void DumpLiteral(SQObjectPtr &o)
 	switch(type(o)){
 		case OT_STRING:	printf("\"%s\"",_stringval(o));break;
 		case OT_FLOAT: printf("{%f}",_float(o));break;
-		case OT_INTEGER: printf("{" SQ_PRINTF64 "}",_integer(o));break;
+		case OT_INTEGER: printf("{" OTTD_PRINTF64 "}",_integer(o));break;
 		case OT_BOOL: printf("%s",_integer(o)?"true":"false");break;
 		default: printf("(%s %p)",GetTypeName(o),(void*)_rawval(o));break; break; //shut up compiler
 	}

@@ -1,7 +1,5 @@
 /* see copyright notice in squirrel.h */
 #include <squirrel.h>
-#include <string.h>
-#include <ctype.h>
 #include <exception>
 #include "sqstdstring.h"
 
@@ -12,7 +10,6 @@
 #endif
 
 #ifdef _DEBUG
-#include <stdio.h>
 
 static const SQChar *g_nnames[] =
 {

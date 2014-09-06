@@ -4,7 +4,6 @@
 
 #include <squirrel.h>
 #include <math.h>
-#include <stdlib.h>
 #include <sqstdmath.h>
 
 #include "../../../safeguards.h"

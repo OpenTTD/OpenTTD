@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <squirrel.h>
 #include <new>
-#include <sqstdio.h>
 #include "sqstdstream.h"
 
 #define SQSTD_FILE_TYPE_TAG (SQSTD_STREAM_TYPE_TAG | 0x00000001)

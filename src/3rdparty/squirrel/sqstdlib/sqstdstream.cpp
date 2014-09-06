@@ -1,8 +1,5 @@
 /* see copyright notice in squirrel.h */
-#include <stdio.h>
 #include <new>
-#include <stdlib.h>
-#include <string.h>
 #include <squirrel.h>
 #include <sqstdio.h>
 #include <sqstdblob.h>

@@ -1,8 +1,6 @@
 /* see copyright notice in squirrel.h */
 #include <squirrel.h>
 #include <time.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <sqstdsystem.h>
 
 #define scgetenv getenv
