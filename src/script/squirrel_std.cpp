@@ -18,12 +18,7 @@
 #include "../core/math_func.hpp"
 #include "../string_func.h"
 
-/* Due to the different characters for Squirrel, the scstrcat might be a simple
- * strcat which triggers the safeguard. But it isn't always a simple strcat.
- * TODO: use properly safe functions now that Squirrel uses chars exclusively. */
 #include "../safeguards.h"
-#undef strcat
-#undef strdup
 
 
 SQInteger SquirrelStd::min(HSQUIRRELVM vm)
@@ -50,7 +45,6 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 {
 	SQInteger top = sq_gettop(vm);
 	const SQChar *filename;
-	SQChar *real_filename;
 
 	sq_getstring(vm, 2, &filename);
 
@@ -61,31 +55,26 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 		DEBUG(misc, 0, "[squirrel] Couldn't detect the script-name of the 'require'-caller; this should never happen!");
 		return SQ_ERROR;
 	}
-	real_filename = strdup(si.source);
+
+	char path[MAX_PATH];
+	strecpy(path, si.source, lastof(path));
 	/* Keep the dir, remove the rest */
-	SQChar *s = strrchr(real_filename, PATHSEPCHAR);
+	SQChar *s = strrchr(path, PATHSEPCHAR);
 	if (s != NULL) {
 		/* Keep the PATHSEPCHAR there, remove the rest */
 		s++;
 		*s = '\0';
 	}
-	/* And now we concat, so we are relative from the current script
-	 * First, we have to make sure we have enough space for the full path */
-	real_filename = ReallocT(real_filename, strlen(real_filename) + strlen(filename) + 1);
-	strcat(real_filename, filename);
-	/* Tars dislike opening files with '/' on Windows.. so convert it to '\\' ;) */
-	char *filen = stredup(real_filename);
+	strecat(path, filename, lastof(path));
 #if (PATHSEPCHAR != '/')
-	for (char *n = filen; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
+	for (char *n = path; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
 #endif
 
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
-	bool ret = engine->LoadScript(vm, filen);
+	bool ret = engine->LoadScript(vm, path);
 
 	/* Reset the top, so the stack stays correct */
 	sq_settop(vm, top);
-	free(real_filename);
-	free(filen);
 
 	return ret ? 0 : SQ_ERROR;
 }
