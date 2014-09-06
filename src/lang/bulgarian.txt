@@ -3012,7 +3012,27 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейт
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Месечни доставки и местен рейтинг:
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}По група
+STR_STATION_VIEW_WAITING_STATION                                :Станция: Изчакване
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Сума: Изчакване
+STR_STATION_VIEW_PLANNED_STATION                                :Станция: Планирано
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Количество: Планирано
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} от {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} посредством {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} до {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} от неизвестна станция
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} за която и да е гара
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} посредством която и да е гара
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} от тази гара
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} спиране на тази гара
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} до тази станция
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} без прекъсване
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Източник-Чрез-Дестинация
+STR_STATION_VIEW_GROUP_S_D_V                                    :Източник-Дестинация-Посредством
+STR_STATION_VIEW_GROUP_V_S_D                                    :Посредством-Източник-Дестинация
+STR_STATION_VIEW_GROUP_V_D_S                                    :Посредством-Дестинация-Източник
+STR_STATION_VIEW_GROUP_D_S_V                                    :Дестинация-Източник-Посредством
 STR_STATION_VIEW_GROUP_D_V_S                                    :Посока-през-Източника
 
 ############ range for rating starts
