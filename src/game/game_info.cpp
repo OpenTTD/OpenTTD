@@ -55,7 +55,7 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 {
 	/* Get the GameInfo */
 	SQUserPointer instance = NULL;
-	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == NULL) return sq_throwerror(vm, _SC("Pass an instance of a child class of GameInfo to RegisterGame"));
+	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == NULL) return sq_throwerror(vm, "Pass an instance of a child class of GameInfo to RegisterGame");
 	GameInfo *info = (GameInfo *)instance;
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);

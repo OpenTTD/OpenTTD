@@ -56,7 +56,7 @@ void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == NULL) {
-		scfprintf(stderr, _SC("%s"), buf);
+		scfprintf(stderr, "%s", buf);
 	} else {
 		(*func)(true, buf);
 	}
@@ -74,7 +74,7 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {
-		scfprintf(stderr, _SC("%s"), buf);
+		scfprintf(stderr, "%s", buf);
 	} else {
 		(*func)(true, buf);
 	}
@@ -96,7 +96,7 @@ SQInteger Squirrel::_RunError(HSQUIRRELVM vm)
 		}
 	}
 
-	Squirrel::RunError(vm, _SC("unknown error"));
+	Squirrel::RunError(vm, "unknown error");
 	return 0;
 }
 
@@ -108,12 +108,12 @@ void Squirrel::PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 	va_start(arglist, s);
 	scvsnprintf(buf, lengthof(buf) - 2, s, arglist);
 	va_end(arglist);
-	scstrcat(buf, _SC("\n"));
+	scstrcat(buf, "\n");
 
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == NULL) {
-		scprintf(_SC("%s"), buf);
+		scprintf("%s", buf);
 	} else {
 		(*func)(false, buf);
 	}
@@ -478,14 +478,14 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 			case SQ_BYTECODE_STREAM_TAG: { // BYTECODE
 				if (fseek(file, -2, SEEK_CUR) < 0) {
 					FioFCloseFile(file);
-					return sq_throwerror(vm, _SC("cannot seek the file"));
+					return sq_throwerror(vm, "cannot seek the file");
 				}
 				if (SQ_SUCCEEDED(sq_readclosure(vm, _io_file_read, &f))) {
 					FioFCloseFile(file);
 					return SQ_OK;
 				}
 				FioFCloseFile(file);
-				return sq_throwerror(vm, _SC("Couldn't read bytecode"));
+				return sq_throwerror(vm, "Couldn't read bytecode");
 			}
 			case 0xFFFE:
 				/* Either this file is encoded as big-endian and we're on a little-endian
@@ -498,11 +498,11 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 			case 0xEFBB: // UTF-8 on big-endian machine
 				if (fread(&uc, 1, sizeof(uc), file) == 0) {
 					FioFCloseFile(file);
-					return sq_throwerror(vm, _SC("I/O error"));
+					return sq_throwerror(vm, "I/O error");
 				}
 				if (uc != 0xBF) {
 					FioFCloseFile(file);
-					return sq_throwerror(vm, _SC("Unrecognized encoding"));
+					return sq_throwerror(vm, "Unrecognized encoding");
 				}
 				func = _io_file_lexfeed_UTF8;
 				break;
@@ -510,7 +510,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 				func = _io_file_lexfeed_ASCII;
 				if (fseek(file, -2, SEEK_CUR) < 0) {
 					FioFCloseFile(file);
-					return sq_throwerror(vm, _SC("cannot seek the file"));
+					return sq_throwerror(vm, "cannot seek the file");
 				}
 				break;
 		}
@@ -522,7 +522,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 		FioFCloseFile(file);
 		return SQ_ERROR;
 	}
-	return sq_throwerror(vm, _SC("cannot open the file"));
+	return sq_throwerror(vm, "cannot open the file");
 }
 
 bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)

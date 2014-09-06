@@ -16,25 +16,25 @@ const SQChar *IdType2Name(SQObjectType type)
 {
 	switch(_RAW_TYPE(type))
 	{
-	case _RT_NULL:return _SC("null");
-	case _RT_INTEGER:return _SC("integer");
-	case _RT_FLOAT:return _SC("float");
-	case _RT_BOOL:return _SC("bool");
-	case _RT_STRING:return _SC("string");
-	case _RT_TABLE:return _SC("table");
-	case _RT_ARRAY:return _SC("array");
-	case _RT_GENERATOR:return _SC("generator");
+	case _RT_NULL:return "null";
+	case _RT_INTEGER:return "integer";
+	case _RT_FLOAT:return "float";
+	case _RT_BOOL:return "bool";
+	case _RT_STRING:return "string";
+	case _RT_TABLE:return "table";
+	case _RT_ARRAY:return "array";
+	case _RT_GENERATOR:return "generator";
 	case _RT_CLOSURE:
 	case _RT_NATIVECLOSURE:
-		return _SC("function");
+		return "function";
 	case _RT_USERDATA:
 	case _RT_USERPOINTER:
-		return _SC("userdata");
-	case _RT_THREAD: return _SC("thread");
-	case _RT_FUNCPROTO: return _SC("function");
-	case _RT_CLASS: return _SC("class");
-	case _RT_INSTANCE: return _SC("instance");
-	case _RT_WEAKREF: return _SC("weakref");
+		return "userdata";
+	case _RT_THREAD: return "thread";
+	case _RT_FUNCPROTO: return "function";
+	case _RT_CLASS: return "class";
+	case _RT_INSTANCE: return "instance";
+	case _RT_WEAKREF: return "weakref";
 	default:
 		return NULL;
 	}
@@ -130,8 +130,8 @@ bool SQDelegable::SetDelegate(SQTable *mt)
 
 bool SQGenerator::Yield(SQVM *v)
 {
-	if(_state==eSuspended) { v->Raise_Error(_SC("internal vm error, yielding dead generator"));  return false;}
-	if(_state==eDead) { v->Raise_Error(_SC("internal vm error, yielding a dead generator")); return false; }
+	if(_state==eSuspended) { v->Raise_Error("internal vm error, yielding dead generator");  return false;}
+	if(_state==eDead) { v->Raise_Error("internal vm error, yielding a dead generator"); return false; }
 	SQInteger size = v->_top-v->_stackbase;
 	_ci=*v->ci;
 	_stack.resize(size);
@@ -156,8 +156,8 @@ bool SQGenerator::Yield(SQVM *v)
 bool SQGenerator::Resume(SQVM *v,SQInteger target)
 {
 	SQInteger size=_stack.size();
-	if(_state==eDead){ v->Raise_Error(_SC("resuming dead generator")); return false; }
-	if(_state==eRunning){ v->Raise_Error(_SC("resuming active generator")); return false; }
+	if(_state==eDead){ v->Raise_Error("resuming dead generator"); return false; }
+	if(_state==eRunning){ v->Raise_Error("resuming active generator"); return false; }
 	SQInteger prevtop=v->_top-v->_stackbase;
 	PUSH_CALLINFO(v,_ci);
 	SQInteger oldstackbase=v->_stackbase;
@@ -184,7 +184,7 @@ bool SQGenerator::Resume(SQVM *v,SQInteger target)
 	v->ci->_prevstkbase = (SQInt32)(v->_stackbase - oldstackbase);
 	_state=eRunning;
 	if (type(v->_debughook) != OT_NULL && _rawval(v->_debughook) != _rawval(v->ci->_closure))
-		v->CallDebugHook(_SC('c'));
+		v->CallDebugHook('c');
 
 	return true;
 }
@@ -232,7 +232,7 @@ SQInteger SQFunctionProto::GetLine(SQInstruction *curr)
 bool SafeWrite(HSQUIRRELVM v,SQWRITEFUNC write,SQUserPointer up,SQUserPointer dest,SQInteger size)
 {
 	if(write(up,dest,size) != size) {
-		v->Raise_Error(_SC("io error (write function failure)"));
+		v->Raise_Error("io error (write function failure)");
 		return false;
 	}
 	return true;
@@ -241,7 +241,7 @@ bool SafeWrite(HSQUIRRELVM v,SQWRITEFUNC write,SQUserPointer up,SQUserPointer de
 bool SafeRead(HSQUIRRELVM v,SQWRITEFUNC read,SQUserPointer up,SQUserPointer dest,SQInteger size)
 {
 	if(size && read(up,dest,size) != size) {
-		v->Raise_Error(_SC("io error, read function failure, the origin stream could be corrupted/trucated"));
+		v->Raise_Error("io error, read function failure, the origin stream could be corrupted/trucated");
 		return false;
 	}
 	return true;
@@ -257,7 +257,7 @@ bool CheckTag(HSQUIRRELVM v,SQWRITEFUNC read,SQUserPointer up,SQInteger tag)
 	SQInteger t;
 	_CHECK_IO(SafeRead(v,read,up,&t,sizeof(t)));
 	if(t != tag){
-		v->Raise_Error(_SC("invalid or corrupted closure stream"));
+		v->Raise_Error("invalid or corrupted closure stream");
 		return false;
 	}
 	return true;
@@ -278,7 +278,7 @@ bool WriteObject(HSQUIRRELVM v,SQUserPointer up,SQWRITEFUNC write,SQObjectPtr &o
 	case OT_NULL:
 		break;
 	default:
-		v->Raise_Error(_SC("cannot serialize a %s"),GetTypeName(o));
+		v->Raise_Error("cannot serialize a %s",GetTypeName(o));
 		return false;
 	}
 	return true;
@@ -308,7 +308,7 @@ bool ReadObject(HSQUIRRELVM v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &o)
 		o=_null_;
 		break;
 	default:
-		v->Raise_Error(_SC("cannot serialize a %s"),IdType2Name(t));
+		v->Raise_Error("cannot serialize a %s",IdType2Name(t));
 		return false;
 	}
 	return true;

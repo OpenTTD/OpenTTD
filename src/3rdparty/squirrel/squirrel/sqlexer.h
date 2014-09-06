@@ -23,7 +23,7 @@ private:
 	SQTable *_keywords;
 	void INIT_TEMP_STRING() { _longstr.resize(0); }
 	void APPEND_CHAR(LexChar c);
-	void TERMINATE_BUFFER() { _longstr.push_back(_SC('\0')); }
+	void TERMINATE_BUFFER() { _longstr.push_back('\0'); }
 
 public:
 	SQInteger _prevtoken;

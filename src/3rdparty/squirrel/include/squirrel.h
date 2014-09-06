@@ -90,7 +90,6 @@ struct SQInstance;
 struct SQDelegable;
 
 typedef char SQChar;
-#define _SC(a) a
 #define	scstrcmp	strcmp
 #define scsprintf	sprintf
 #define scsnprintf	snprintf
@@ -118,14 +117,14 @@ typedef char SQChar;
 #define MAX_CHAR 0xFFFF
 
 #if defined(_MSC_VER) || defined(__MINGW32__)
-	#define SQ_PRINTF64 _SC("%I64d")
+	#define SQ_PRINTF64 "%I64d"
 #else
-	#define SQ_PRINTF64 _SC("%lld")
+	#define SQ_PRINTF64 "%lld"
 #endif
 
-#define SQUIRREL_VERSION	_SC("Squirrel 2.2.5 stable - With custom OpenTTD modifications")
-#define SQUIRREL_COPYRIGHT	_SC("Copyright (C) 2003-2010 Alberto Demichelis")
-#define SQUIRREL_AUTHOR		_SC("Alberto Demichelis")
+#define SQUIRREL_VERSION	"Squirrel 2.2.5 stable - With custom OpenTTD modifications"
+#define SQUIRREL_COPYRIGHT	"Copyright (C) 2003-2010 Alberto Demichelis"
+#define SQUIRREL_AUTHOR		"Alberto Demichelis"
 #define SQUIRREL_VERSION_NUMBER	225
 
 #define SQ_VMSTATE_IDLE			0

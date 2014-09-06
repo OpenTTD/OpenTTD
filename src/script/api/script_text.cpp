@@ -34,13 +34,13 @@ ScriptText::ScriptText(HSQUIRRELVM vm) :
 {
 	int nparam = sq_gettop(vm) - 1;
 	if (nparam < 1) {
-		throw sq_throwerror(vm, _SC("You need to pass at least a StringID to the constructor"));
+		throw sq_throwerror(vm, "You need to pass at least a StringID to the constructor");
 	}
 
 	/* First resolve the StringID. */
 	SQInteger sqstring;
 	if (SQ_FAILED(sq_getinteger(vm, 2, &sqstring))) {
-		throw sq_throwerror(vm, _SC("First argument must be a valid StringID"));
+		throw sq_throwerror(vm, "First argument must be a valid StringID");
 	}
 	this->string = sqstring;
 
@@ -51,7 +51,7 @@ ScriptText::ScriptText(HSQUIRRELVM vm) :
 
 		if (SQ_FAILED(this->_SetParam(i, vm))) {
 			this->~ScriptText();
-			throw sq_throwerror(vm, _SC("Invalid parameter"));
+			throw sq_throwerror(vm, "Invalid parameter");
 		}
 
 		/* Pop the parameter again. */
@@ -104,7 +104,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 
 			/* Validate if it is a GSText instance */
 			sq_pushroottable(vm);
-			sq_pushstring(vm, _SC("GSText"), -1);
+			sq_pushstring(vm, "GSText", -1);
 			sq_get(vm, -2);
 			sq_pushobject(vm, instance);
 			if (sq_instanceof(vm) != SQTrue) return SQ_ERROR;

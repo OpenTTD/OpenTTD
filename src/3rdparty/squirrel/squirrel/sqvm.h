@@ -203,7 +203,7 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 	if(v->_callsstacksize == v->_alloccallsstacksize) { \
 		if (v->_callsstacksize > 65535 && !v->_in_stackoverflow) {\
 			v->_in_stackoverflow = true; \
-			v->Raise_Error(_SC("stack overflow"));\
+			v->Raise_Error("stack overflow");\
 			v->CallErrorHandler(v->_lasterror);\
 			return false;\
 		}\

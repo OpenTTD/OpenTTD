@@ -126,10 +126,10 @@
 
 /* static */ SQInteger ScriptAdmin::Send(HSQUIRRELVM vm)
 {
-	if (sq_gettop(vm) - 1 != 1) return sq_throwerror(vm, _SC("wrong number of parameters"));
+	if (sq_gettop(vm) - 1 != 1) return sq_throwerror(vm, "wrong number of parameters");
 
 	if (sq_gettype(vm, 2) != OT_TABLE) {
-		return sq_throwerror(vm, _SC("ScriptAdmin::Send requires a table as first parameter. No data sent."));
+		return sq_throwerror(vm, "ScriptAdmin::Send requires a table as first parameter. No data sent.");
 	}
 
 	std::string json;

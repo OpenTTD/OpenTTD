@@ -758,7 +758,7 @@ SQInteger ScriptList::_set(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 	if (sq_gettype(vm, 3) != OT_INTEGER && sq_gettype(vm, 3) != OT_NULL) {
-		return sq_throwerror(vm, _SC("you can only assign integers to this list"));
+		return sq_throwerror(vm, "you can only assign integers to this list");
 	}
 
 	SQInteger idx, val;
@@ -810,7 +810,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 	int nparam = sq_gettop(vm) - 1;
 
 	if (nparam < 1) {
-		return sq_throwerror(vm, _SC("You need to give a least a Valuator as parameter to ScriptList::Valuate"));
+		return sq_throwerror(vm, "You need to give a least a Valuator as parameter to ScriptList::Valuate");
 	}
 
 	/* Make sure the valuator function is really a function, and not any
@@ -818,7 +818,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 	 * first parameter they give. */
 	SQObjectType valuator_type = sq_gettype(vm, 2);
 	if (valuator_type != OT_CLOSURE && valuator_type != OT_NATIVECLOSURE) {
-		return sq_throwerror(vm, _SC("parameter 1 has an invalid type (expected function)"));
+		return sq_throwerror(vm, "parameter 1 has an invalid type (expected function)");
 	}
 
 	/* Don't allow docommand from a Valuator, as we can't resume in
@@ -867,7 +867,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 				sq_pop(vm, nparam + 4);
 
 				ScriptObject::SetAllowDoCommand(backup_allow);
-				return sq_throwerror(vm, _SC("return value of valuator is not valid (not integer/bool)"));
+				return sq_throwerror(vm, "return value of valuator is not valid (not integer/bool)");
 			}
 		}
 
@@ -877,7 +877,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 			sq_pop(vm, nparam + 4);
 
 			ScriptObject::SetAllowDoCommand(backup_allow);
-			return sq_throwerror(vm, _SC("modifying valuated list outside of valuator function"));
+			return sq_throwerror(vm, "modifying valuated list outside of valuator function");
 		}
 
 		this->SetValue((*iter).first, value);

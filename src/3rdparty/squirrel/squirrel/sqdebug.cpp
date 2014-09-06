@@ -18,12 +18,12 @@ SQRESULT sq_getfunctioninfo(HSQUIRRELVM v,SQInteger level,SQFunctionInfo *fi)
 			SQClosure *c = _closure(ci._closure);
 			SQFunctionProto *proto = _funcproto(c->_function);
 			fi->funcid = proto;
-			fi->name = type(proto->_name) == OT_STRING?_stringval(proto->_name):_SC("unknown");
-			fi->source = type(proto->_name) == OT_STRING?_stringval(proto->_sourcename):_SC("unknown");
+			fi->name = type(proto->_name) == OT_STRING?_stringval(proto->_name):"unknown";
+			fi->source = type(proto->_name) == OT_STRING?_stringval(proto->_sourcename):"unknown";
 			return SQ_OK;
 		}
 	}
-	return sq_throwerror(v,_SC("the object is not a closure"));
+	return sq_throwerror(v,"the object is not a closure");
 }
 
 SQRESULT sq_stackinfos(HSQUIRRELVM v, SQInteger level, SQStackInfos *si)
@@ -43,8 +43,8 @@ SQRESULT sq_stackinfos(HSQUIRRELVM v, SQInteger level, SQStackInfos *si)
 						}
 			break;
 		case OT_NATIVECLOSURE:
-			si->source = _SC("NATIVE");
-			si->funcname = _SC("unknown");
+			si->source = "NATIVE";
+			si->funcname = "unknown";
 			if(type(_nativeclosure(ci._closure)->_name) == OT_STRING)
 				si->funcname = _stringval(_nativeclosure(ci._closure)->_name);
 			si->line = -1;
@@ -79,7 +79,7 @@ SQString *SQVM::PrintObjVal(const SQObject &o)
 		return SQString::Create(_ss(this), _spval);
 		break;
 	case OT_FLOAT:
-		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)), _SC("%.14g"), _float(o));
+		scsprintf(_sp(rsl(NUMBER_MAX_CHAR+1)), "%.14g", _float(o));
 		return SQString::Create(_ss(this), _spval);
 		break;
 	default:
@@ -90,28 +90,28 @@ SQString *SQVM::PrintObjVal(const SQObject &o)
 void SQVM::Raise_IdxError(const SQObject &o)
 {
 	SQObjectPtr oval = PrintObjVal(o);
-	Raise_Error(_SC("the index '%.50s' does not exist"), _stringval(oval));
+	Raise_Error("the index '%.50s' does not exist", _stringval(oval));
 }
 
 void SQVM::Raise_CompareError(const SQObject &o1, const SQObject &o2)
 {
 	SQObjectPtr oval1 = PrintObjVal(o1), oval2 = PrintObjVal(o2);
-	Raise_Error(_SC("comparsion between '%.50s' and '%.50s'"), _stringval(oval1), _stringval(oval2));
+	Raise_Error("comparsion between '%.50s' and '%.50s'", _stringval(oval1), _stringval(oval2));
 }
 
 
 void SQVM::Raise_ParamTypeError(SQInteger nparam,SQInteger typemask,SQInteger type)
 {
-	SQObjectPtr exptypes = SQString::Create(_ss(this), _SC(""), -1);
+	SQObjectPtr exptypes = SQString::Create(_ss(this), "", -1);
 	SQInteger found = 0;
 	for(SQInteger i=0; i<16; i++)
 	{
 		SQInteger mask = 0x00000001 << i;
 		if(typemask & (mask)) {
-			if(found>0) StringCat(exptypes,SQString::Create(_ss(this), _SC("|"), -1), exptypes);
+			if(found>0) StringCat(exptypes,SQString::Create(_ss(this), "|", -1), exptypes);
 			found ++;
 			StringCat(exptypes,SQString::Create(_ss(this), IdType2Name((SQObjectType)mask), -1), exptypes);
 		}
 	}
-	Raise_Error(_SC("parameter %d has an invalid type '%s' ; expected: '%s'"), nparam, IdType2Name((SQObjectType)type), _stringval(exptypes));
+	Raise_Error("parameter %d has an invalid type '%s' ; expected: '%s'", nparam, IdType2Name((SQObjectType)type), _stringval(exptypes));
 }

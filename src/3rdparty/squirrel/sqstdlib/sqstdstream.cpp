@@ -12,9 +12,9 @@
 #define SETUP_STREAM(v) \
 	SQStream *self = NULL; \
 	if(SQ_FAILED(sq_getinstanceup(v,1,(SQUserPointer*)&self,(SQUserPointer)SQSTD_STREAM_TYPE_TAG))) \
-		return sq_throwerror(v,_SC("invalid type tag")); \
+		return sq_throwerror(v,"invalid type tag"); \
 	if(!self->IsValid())  \
-		return sq_throwerror(v,_SC("the stream is invalid"));
+		return sq_throwerror(v,"the stream is invalid");
 
 SQInteger _stream_readblob(HSQUIRRELVM v)
 {
@@ -28,14 +28,14 @@ SQInteger _stream_readblob(HSQUIRRELVM v)
 	data = sq_getscratchpad(v,size);
 	res = self->Read(data,size);
 	if(res <= 0)
-		return sq_throwerror(v,_SC("no data left to read"));
+		return sq_throwerror(v,"no data left to read");
 	blobp = sqstd_createblob(v,res);
 	memcpy(blobp,data,res);
 	return 1;
 }
 
 #define SAFE_READN(ptr,len) { \
-	if(self->Read(ptr,len) != len) return sq_throwerror(v,_SC("io error")); \
+	if(self->Read(ptr,len) != len) return sq_throwerror(v,"io error"); \
 	}
 SQInteger _stream_readn(HSQUIRRELVM v)
 {
@@ -92,7 +92,7 @@ SQInteger _stream_readn(HSQUIRRELVM v)
 			  }
 		break;
 	default:
-		return sq_throwerror(v, _SC("invalid format"));
+		return sq_throwerror(v, "invalid format");
 	}
 	return 1;
 }
@@ -103,10 +103,10 @@ SQInteger _stream_writeblob(HSQUIRRELVM v)
 	SQInteger size;
 	SETUP_STREAM(v);
 	if(SQ_FAILED(sqstd_getblob(v,2,&data)))
-		return sq_throwerror(v,_SC("invalid parameter"));
+		return sq_throwerror(v,"invalid parameter");
 	size = sqstd_getblobsize(v,2);
 	if(self->Write(data,size) != size)
-		return sq_throwerror(v,_SC("io error"));
+		return sq_throwerror(v,"io error");
 	sq_pushinteger(v,size);
 	return 1;
 }
@@ -175,7 +175,7 @@ SQInteger _stream_writen(HSQUIRRELVM v)
 			  }
 		break;
 	default:
-		return sq_throwerror(v, _SC("invalid format"));
+		return sq_throwerror(v, "invalid format");
 	}
 	return 0;
 }
@@ -192,7 +192,7 @@ SQInteger _stream_seek(HSQUIRRELVM v)
 			case 'b': origin = SQ_SEEK_SET; break;
 			case 'c': origin = SQ_SEEK_CUR; break;
 			case 'e': origin = SQ_SEEK_END; break;
-			default: return sq_throwerror(v,_SC("invalid origin"));
+			default: return sq_throwerror(v,"invalid origin");
 		}
 	}
 	sq_pushinteger(v, self->Seek(offset, origin));
@@ -234,24 +234,24 @@ SQInteger _stream_eos(HSQUIRRELVM v)
 }
 
 static SQRegFunction _stream_methods[] = {
-	_DECL_STREAM_FUNC(readblob,2,_SC("xn")),
-	_DECL_STREAM_FUNC(readn,2,_SC("xn")),
-	_DECL_STREAM_FUNC(writeblob,-2,_SC("xx")),
-	_DECL_STREAM_FUNC(writen,3,_SC("xnn")),
-	_DECL_STREAM_FUNC(seek,-2,_SC("xnn")),
-	_DECL_STREAM_FUNC(tell,1,_SC("x")),
-	_DECL_STREAM_FUNC(len,1,_SC("x")),
-	_DECL_STREAM_FUNC(eos,1,_SC("x")),
-	_DECL_STREAM_FUNC(flush,1,_SC("x")),
+	_DECL_STREAM_FUNC(readblob,2,"xn"),
+	_DECL_STREAM_FUNC(readn,2,"xn"),
+	_DECL_STREAM_FUNC(writeblob,-2,"xx"),
+	_DECL_STREAM_FUNC(writen,3,"xnn"),
+	_DECL_STREAM_FUNC(seek,-2,"xnn"),
+	_DECL_STREAM_FUNC(tell,1,"x"),
+	_DECL_STREAM_FUNC(len,1,"x"),
+	_DECL_STREAM_FUNC(eos,1,"x"),
+	_DECL_STREAM_FUNC(flush,1,"x"),
 	{0,0,0,0}
 };
 
 void init_streamclass(HSQUIRRELVM v)
 {
 	sq_pushregistrytable(v);
-	sq_pushstring(v,_SC("std_stream"),-1);
+	sq_pushstring(v,"std_stream",-1);
 	if(SQ_FAILED(sq_get(v,-2))) {
-		sq_pushstring(v,_SC("std_stream"),-1);
+		sq_pushstring(v,"std_stream",-1);
 		sq_newclass(v,SQFalse);
 		sq_settypetag(v,-1,(SQUserPointer)SQSTD_STREAM_TYPE_TAG);
 		SQInteger i = 0;
@@ -265,8 +265,8 @@ void init_streamclass(HSQUIRRELVM v)
 		}
 		sq_createslot(v,-3);
 		sq_pushroottable(v);
-		sq_pushstring(v,_SC("stream"),-1);
-		sq_pushstring(v,_SC("std_stream"),-1);
+		sq_pushstring(v,"stream",-1);
+		sq_pushstring(v,"std_stream",-1);
 		sq_get(v,-4);
 		sq_createslot(v,-3);
 		sq_pop(v,1);
@@ -280,13 +280,13 @@ void init_streamclass(HSQUIRRELVM v)
 SQRESULT declare_stream(HSQUIRRELVM v,const SQChar* name,SQUserPointer typetag,const SQChar* reg_name,SQRegFunction *methods,SQRegFunction *globals)
 {
 	if(sq_gettype(v,-1) != OT_TABLE)
-		return sq_throwerror(v,_SC("table expected"));
+		return sq_throwerror(v,"table expected");
 	SQInteger top = sq_gettop(v);
 	//create delegate
     init_streamclass(v);
 	sq_pushregistrytable(v);
 	sq_pushstring(v,reg_name,-1);
-	sq_pushstring(v,_SC("std_stream"),-1);
+	sq_pushstring(v,"std_stream",-1);
 	if(SQ_SUCCEEDED(sq_get(v,-3))) {
 		sq_newclass(v,SQTrue);
 		sq_settypetag(v,-1,typetag);

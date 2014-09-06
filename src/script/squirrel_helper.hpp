@@ -125,7 +125,7 @@ namespace SQConvert {
 	template <> inline Array      *GetParam(ForceType<Array *>,      HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
 	{
 		/* Sanity check of the size. */
-		if (sq_getsize(vm, index) > UINT16_MAX) throw sq_throwerror(vm, _SC("an array used as parameter to a function is too large"));
+		if (sq_getsize(vm, index) > UINT16_MAX) throw sq_throwerror(vm, "an array used as parameter to a function is too large");
 
 		SQObject obj;
 		sq_getstackobj(vm, index, &obj);
@@ -140,7 +140,7 @@ namespace SQConvert {
 				*data.Append() = (int32)tmp;
 			} else {
 				sq_pop(vm, 4);
-				throw sq_throwerror(vm, _SC("a member of an array used as parameter to a function is not numeric"));
+				throw sq_throwerror(vm, "a member of an array used as parameter to a function is not numeric");
 			}
 
 			sq_pop(vm, 2);
@@ -752,14 +752,14 @@ namespace SQConvert {
 		sq_pushstring(vm, className, -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
-		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, _SC("class method is non-static"));
+		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, "class method is non-static");
 		sq_pop(vm, 3);
 
 		/* Get the 'real' instance of this class */
 		sq_getinstanceup(vm, 1, &real_instance, 0);
 		/* Get the real function pointer */
 		sq_getuserdata(vm, nparam, &ptr, 0);
-		if (real_instance == NULL) return sq_throwerror(vm, _SC("couldn't detect real instance of class for non-static call"));
+		if (real_instance == NULL) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 
@@ -794,14 +794,14 @@ namespace SQConvert {
 		sq_pushstring(vm, className, -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
-		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, _SC("class method is non-static"));
+		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, "class method is non-static");
 		sq_pop(vm, 3);
 
 		/* Get the 'real' instance of this class */
 		sq_getinstanceup(vm, 1, &real_instance, 0);
 		/* Get the real function pointer */
 		sq_getuserdata(vm, nparam, &ptr, 0);
-		if (real_instance == NULL) return sq_throwerror(vm, _SC("couldn't detect real instance of class for non-static call"));
+		if (real_instance == NULL) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 

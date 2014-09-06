@@ -106,7 +106,7 @@ private:
 
 static SQInteger _file__typeof(HSQUIRRELVM v)
 {
-	sq_pushstring(v,_SC("file"),-1);
+	sq_pushstring(v,"file",-1);
 	return 1;
 }
 
@@ -127,27 +127,27 @@ static SQInteger _file_constructor(HSQUIRRELVM v)
 		sq_getstring(v, 2, &filename);
 		sq_getstring(v, 3, &mode);
 		newf = sqstd_fopen(filename, mode);
-		if(!newf) return sq_throwerror(v, _SC("cannot open file"));
+		if(!newf) return sq_throwerror(v, "cannot open file");
 	} else if(sq_gettype(v,2) == OT_USERPOINTER) {
 		owns = !(sq_gettype(v,3) == OT_NULL);
 		sq_getuserpointer(v,2,&newf);
 	} else {
-		return sq_throwerror(v,_SC("wrong parameter"));
+		return sq_throwerror(v,"wrong parameter");
 	}
 	f = new SQFile(newf,owns);
 	if(SQ_FAILED(sq_setinstanceup(v,1,f))) {
 		delete f;
-		return sq_throwerror(v, _SC("cannot create blob with negative size"));
+		return sq_throwerror(v, "cannot create blob with negative size");
 	}
 	sq_setreleasehook(v,1,_file_releasehook);
 	return 0;
 }
 
 //bindings
-#define _DECL_FILE_FUNC(name,nparams,typecheck) {_SC(#name),_file_##name,nparams,typecheck}
+#define _DECL_FILE_FUNC(name,nparams,typecheck) {#name,_file_##name,nparams,typecheck}
 static SQRegFunction _file_methods[] = {
-	_DECL_FILE_FUNC(constructor,3,_SC("x")),
-	_DECL_FILE_FUNC(_typeof,1,_SC("x")),
+	_DECL_FILE_FUNC(constructor,3,"x"),
+	_DECL_FILE_FUNC(_typeof,1,"x"),
 	{0,0,0,0},
 };
 
@@ -157,7 +157,7 @@ SQRESULT sqstd_createfile(HSQUIRRELVM v, SQFILE file,SQBool own)
 {
 	SQInteger top = sq_gettop(v);
 	sq_pushregistrytable(v);
-	sq_pushstring(v,_SC("std_file"),-1);
+	sq_pushstring(v,"std_file",-1);
 	if(SQ_SUCCEEDED(sq_get(v,-2))) {
 		sq_remove(v,-2); //removes the registry
 		sq_pushroottable(v); // push the this
@@ -184,7 +184,7 @@ SQRESULT sqstd_getfile(HSQUIRRELVM v, SQInteger idx, SQFILE *file)
 		*file = fileobj->GetHandle();
 		return SQ_OK;
 	}
-	return sq_throwerror(v,_SC("not a file"));
+	return sq_throwerror(v,"not a file");
 }
 
 
@@ -269,7 +269,7 @@ SQInteger file_write(SQUserPointer file,SQUserPointer p,SQInteger size)
 
 SQRESULT sqstd_loadfile(HSQUIRRELVM v,const SQChar *filename,SQBool printerror)
 {
-	SQFILE file = sqstd_fopen(filename,_SC("rb"));
+	SQFILE file = sqstd_fopen(filename,"rb");
 	SQInteger ret;
 	unsigned short us;
 	unsigned char uc;
@@ -296,11 +296,11 @@ SQRESULT sqstd_loadfile(HSQUIRRELVM v,const SQChar *filename,SQBool printerror)
 				case 0xBBEF:
 					if(sqstd_fread(&uc,1,sizeof(uc),file) == 0) {
 						sqstd_fclose(file);
-						return sq_throwerror(v,_SC("io error"));
+						return sq_throwerror(v,"io error");
 					}
 					if(uc != 0xBF) {
 						sqstd_fclose(file);
-						return sq_throwerror(v,_SC("Unrecognozed ecoding"));
+						return sq_throwerror(v,"Unrecognozed ecoding");
 					}
 					func = _io_file_lexfeed_UTF8;
 					break;//UTF-8 ;
@@ -315,7 +315,7 @@ SQRESULT sqstd_loadfile(HSQUIRRELVM v,const SQChar *filename,SQBool printerror)
 		sqstd_fclose(file);
 		return SQ_ERROR;
 	}
-	return sq_throwerror(v,_SC("cannot open the file"));
+	return sq_throwerror(v,"cannot open the file");
 }
 
 SQRESULT sqstd_dofile(HSQUIRRELVM v,const SQChar *filename,SQBool retval,SQBool printerror)
@@ -333,8 +333,8 @@ SQRESULT sqstd_dofile(HSQUIRRELVM v,const SQChar *filename,SQBool retval,SQBool 
 
 SQRESULT sqstd_writeclosuretofile(HSQUIRRELVM v,const SQChar *filename)
 {
-	SQFILE file = sqstd_fopen(filename,_SC("wb+"));
-	if(!file) return sq_throwerror(v,_SC("cannot open the file"));
+	SQFILE file = sqstd_fopen(filename,"wb+");
+	if(!file) return sq_throwerror(v,"cannot open the file");
 	if(SQ_SUCCEEDED(sq_writeclosure(v,file_write,file))) {
 		sqstd_fclose(file);
 		return SQ_OK;
@@ -379,11 +379,11 @@ SQInteger _g_io_dofile(HSQUIRRELVM v)
 	return SQ_ERROR; //propagates the error
 }
 
-#define _DECL_GLOBALIO_FUNC(name,nparams,typecheck) {_SC(#name),_g_io_##name,nparams,typecheck}
+#define _DECL_GLOBALIO_FUNC(name,nparams,typecheck) {#name,_g_io_##name,nparams,typecheck}
 static SQRegFunction iolib_funcs[]={
-	_DECL_GLOBALIO_FUNC(loadfile,-2,_SC(".sb")),
-	_DECL_GLOBALIO_FUNC(dofile,-2,_SC(".sb")),
-	_DECL_GLOBALIO_FUNC(writeclosuretofile,3,_SC(".sc")),
+	_DECL_GLOBALIO_FUNC(loadfile,-2,".sb"),
+	_DECL_GLOBALIO_FUNC(dofile,-2,".sb"),
+	_DECL_GLOBALIO_FUNC(writeclosuretofile,3,".sc"),
 	{0,0,0,0}
 };
 
@@ -391,14 +391,14 @@ SQRESULT sqstd_register_iolib(HSQUIRRELVM v)
 {
 	SQInteger top = sq_gettop(v);
 	//create delegate
-	declare_stream(v,_SC("file"),(SQUserPointer)SQSTD_FILE_TYPE_TAG,_SC("std_file"),_file_methods,iolib_funcs);
-	sq_pushstring(v,_SC("stdout"),-1);
+	declare_stream(v,"file",(SQUserPointer)SQSTD_FILE_TYPE_TAG,"std_file",_file_methods,iolib_funcs);
+	sq_pushstring(v,"stdout",-1);
 	sqstd_createfile(v,stdout,SQFalse);
 	sq_createslot(v,-3);
-	sq_pushstring(v,_SC("stdin"),-1);
+	sq_pushstring(v,"stdin",-1);
 	sqstd_createfile(v,stdin,SQFalse);
 	sq_createslot(v,-3);
-	sq_pushstring(v,_SC("stderr"),-1);
+	sq_pushstring(v,"stderr",-1);
 	sqstd_createfile(v,stderr,SQFalse);
 	sq_createslot(v,-3);
 	sq_settop(v,top);

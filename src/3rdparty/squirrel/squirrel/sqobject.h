@@ -32,24 +32,24 @@ enum SQMetaMethod{
 	MT_LAST = 18
 };
 
-#define MM_ADD		_SC("_add")
-#define MM_SUB		_SC("_sub")
-#define MM_MUL		_SC("_mul")
-#define MM_DIV		_SC("_div")
-#define MM_UNM		_SC("_unm")
-#define MM_MODULO	_SC("_modulo")
-#define MM_SET		_SC("_set")
-#define MM_GET		_SC("_get")
-#define MM_TYPEOF	_SC("_typeof")
-#define MM_NEXTI	_SC("_nexti")
-#define MM_CMP		_SC("_cmp")
-#define MM_CALL		_SC("_call")
-#define MM_CLONED	_SC("_cloned")
-#define MM_NEWSLOT	_SC("_newslot")
-#define MM_DELSLOT	_SC("_delslot")
-#define MM_TOSTRING	_SC("_tostring")
-#define MM_NEWMEMBER _SC("_newmember")
-#define MM_INHERITED _SC("_inherited")
+#define MM_ADD		"_add"
+#define MM_SUB		"_sub"
+#define MM_MUL		"_mul"
+#define MM_DIV		"_div"
+#define MM_UNM		"_unm"
+#define MM_MODULO	"_modulo"
+#define MM_SET		"_set"
+#define MM_GET		"_get"
+#define MM_TYPEOF	"_typeof"
+#define MM_NEXTI	"_nexti"
+#define MM_CMP		"_cmp"
+#define MM_CALL		"_call"
+#define MM_CLONED	"_cloned"
+#define MM_NEWSLOT	"_newslot"
+#define MM_DELSLOT	"_delslot"
+#define MM_TOSTRING	"_tostring"
+#define MM_NEWMEMBER "_newmember"
+#define MM_INHERITED "_inherited"
 
 #define MINPOWER2 4
 

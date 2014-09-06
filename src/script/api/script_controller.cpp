@@ -161,7 +161,7 @@ ScriptController::~ScriptController()
 	sq_pushroottable(vm);
 	sq_pushstring(vm, fake_class, -1);
 	if (SQ_FAILED(sq_get(vm, -2))) {
-		throw sq_throwerror(vm, _SC("internal error assigning library class"));
+		throw sq_throwerror(vm, "internal error assigning library class");
 	}
 	sq_pushstring(vm, lib->GetInstanceName(), -1);
 	if (SQ_FAILED(sq_get(vm, -2))) {
