@@ -89,46 +89,6 @@ struct SQClass;
 struct SQInstance;
 struct SQDelegable;
 
-//#ifdef _UNICODE
-//#define SQUNICODE
-//#endif
-
-#ifdef SQUNICODE
-#if (defined(_MSC_VER) && _MSC_VER >= 1400) // 1400 = VS8
-
-#ifndef _WCHAR_T_DEFINED //this is if the compiler considers wchar_t as native type
-typedef unsigned short wchar_t;
-#endif
-#endif
-
-typedef wchar_t SQChar;
-#define _SC(a) L##a
-#define	scstrcmp	wcscmp
-#define scsprintf	swprintf
-#define scsnprintf	_snwprintf
-#define scstrlen	wcslen
-#define scstrtod	wcstod
-#define scstrtol	wcstol
-#define scatoi		_wtoi
-#define scstrtoul	wcstoul
-#define scvsprintf	vswprintf
-#define scstrstr	wcsstr
-#define scisspace	iswspace
-#define scisdigit	iswdigit
-#define scisxdigit	iswxdigit
-#define scisalpha	iswalpha
-#define sciscntrl	iswcntrl
-#define scisalnum	iswalnum
-#define scprintf	wprintf
-#define scfprintf	fwprintf
-#define scvprintf	vwprintf
-#define scvfprintf	vfwprintf
-#define scvsnprintf	_vsnwprintf
-#define scstrdup	_wcsdup
-#define scstrrchr	wcsrchr
-#define scstrcat	wcscat
-#define MAX_CHAR 0xFFFF
-#else
 typedef char SQChar;
 #define _SC(a) a
 #define	scstrcmp	strcmp
@@ -156,7 +116,6 @@ typedef char SQChar;
 #define scstrrchr	strrchr
 #define scstrcat	strcat
 #define MAX_CHAR 0xFFFF
-#endif
 
 #if defined(_MSC_VER) || defined(__MINGW32__)
 	#define SQ_PRINTF64 _SC("%I64d")

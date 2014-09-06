@@ -17,15 +17,9 @@
 #include <sqstdstring.h>
 #include <sqstdaux.h>
 
-#ifdef SQUNICODE
-#define scfprintf fwprintf
-#define scfopen	_wfopen
-#define scvprintf vwprintf
-#else
 #define scfprintf fprintf
 #define scfopen	fopen
 #define scvprintf vprintf
-#endif
 
 
 void PrintVersionInfos();
@@ -131,12 +125,7 @@ int getargs(HSQUIRRELVM v,int argc, char* argv[])
 
 		if(arg<argc) {
 			const SQChar *filename=NULL;
-#ifdef SQUNICODE
-			mbstowcs(temp,argv[arg],strlen(argv[arg]));
-			filename=temp;
-#else
 			filename=argv[arg];
-#endif
 
 			arg++;
 			sq_pushroottable(v);
@@ -145,14 +134,7 @@ int getargs(HSQUIRRELVM v,int argc, char* argv[])
 			for(i=arg;i<argc;i++)
 			{
 				const SQChar *a;
-#ifdef SQUNICODE
-				int alen=(int)strlen(argv[i]);
-				a=sq_getscratchpad(v,(int)(alen*sizeof(SQChar)));
-				mbstowcs(sq_getscratchpad(v,-1),argv[i],alen);
-				sq_getscratchpad(v,-1)[alen] = _SC('\0');
-#else
 				a=argv[i];
-#endif
 				sq_pushstring(v,a,-1);
 
 				sq_arrayappend(v,-2);
@@ -163,13 +145,7 @@ int getargs(HSQUIRRELVM v,int argc, char* argv[])
 				if(SQ_SUCCEEDED(sqstd_loadfile(v,filename,SQTrue))){
 					SQChar *outfile = _SC("out.cnut");
 					if(output) {
-#ifdef SQUNICODE
-						int len = (int)(strlen(output)+1);
-						mbstowcs(sq_getscratchpad(v,len*sizeof(SQChar)),output,len);
-						outfile = sq_getscratchpad(v,-1);
-#else
 						outfile = output;
-#endif
 					}
 					if(SQ_SUCCEEDED(sqstd_writeclosuretofile(v,outfile)))
 						return _DONE;

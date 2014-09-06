@@ -9,11 +9,7 @@
 //basic API
 SQFILE sqstd_fopen(const SQChar *filename ,const SQChar *mode)
 {
-#ifndef SQUNICODE
 	return (SQFILE)fopen(filename,mode);
-#else
-	return (SQFILE)_wfopen(filename,mode);
-#endif
 }
 
 SQInteger sqstd_fread(void* buffer, SQInteger size, SQInteger count, SQFILE file)
