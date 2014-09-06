@@ -25,7 +25,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 {
 	SQChar buf[1024];
 
-	seprintf(buf, lastof(buf), "Error %s:" SQ_PRINTF64 "/" SQ_PRINTF64 ": %s", source, line, column, desc);
+	seprintf(buf, lastof(buf), "Error %s:" OTTD_PRINTF64 "/" OTTD_PRINTF64 ": %s", source, line, column, desc);
 
 	/* Check if we have a custom print function */
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);

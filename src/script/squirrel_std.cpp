@@ -9,9 +9,9 @@
 
 /** @file squirrel_std.cpp Implements the Squirrel Standard Function class */
 
+#include "../stdafx.h"
 #include <squirrel.h>
 #include <sqstdmath.h>
-#include "../stdafx.h"
 #include "../debug.h"
 #include "squirrel_std.hpp"
 #include "../core/alloc_func.hpp"

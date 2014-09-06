@@ -9,8 +9,8 @@
 
 /** @file script_info_dummy.cpp Implementation of a dummy Script. */
 
-#include <squirrel.h>
 #include "../stdafx.h"
+#include <squirrel.h>
 
 #include "../string_func.h"
 #include "../strings_func.h"
