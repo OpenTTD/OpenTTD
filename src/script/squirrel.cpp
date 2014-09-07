@@ -382,7 +382,7 @@ public:
 
 static WChar _io_file_lexfeed_ASCII(SQUserPointer file)
 {
-	char c;
+	unsigned char c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return c;
 	return 0;
 }
