@@ -247,6 +247,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrolbre
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrolbreto - skrolas la liston dekstren/maldekstren
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Detruu konstruaĵojn ktp. sur landkvadrato. Stir elektas diagonale la areon. Shift aktivas/malaktivas la konstruaĵon/montraĵon estiman koston
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Normo
 STR_BUTTON_CANCEL                                               :{BLACK}Nuligu
@@ -2830,6 +2833,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Alinomi 
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Alinomi ŝiptipon
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Alinomi aviadiltipon
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Alinomi trajnan veturiltipon
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Alinomi stratveturilan tipon
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Alinomi ŝiptipon
@@ -2931,6 +2937,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Trajno
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stratveturilo
 STR_REPLACE_VEHICLE_SHIP                                        :Ŝipo
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aviadilo
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Elektu maŝinon por anstataŭi
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Elektu novan maŝinon por uzi anstataŭ la maldekstre elektitan
@@ -4240,6 +4247,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
