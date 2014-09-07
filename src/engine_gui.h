@@ -35,6 +35,7 @@ void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID en
 extern bool _engine_sort_direction;
 extern byte _engine_sort_last_criteria[];
 extern bool _engine_sort_last_order[];
+extern bool _engine_sort_show_hidden_engines[];
 extern const StringID _engine_sort_listing[][12];
 extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
 

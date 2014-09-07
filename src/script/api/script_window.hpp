@@ -978,10 +978,12 @@ public:
 		WID_BV_SORT_ASSENDING_DESCENDING             = ::WID_BV_SORT_ASSENDING_DESCENDING,             ///< Sort direction.
 		WID_BV_SORT_DROPDOWN                         = ::WID_BV_SORT_DROPDOWN,                         ///< Criteria of sorting dropdown.
 		WID_BV_CARGO_FILTER_DROPDOWN                 = ::WID_BV_CARGO_FILTER_DROPDOWN,                 ///< Cargo filter dropdown.
+		WID_BV_SHOW_HIDDEN_ENGINES                   = ::WID_BV_SHOW_HIDDEN_ENGINES,                   ///< Toggle whether to display the hidden vehicles.
 		WID_BV_LIST                                  = ::WID_BV_LIST,                                  ///< List of vehicles.
 		WID_BV_SCROLLBAR                             = ::WID_BV_SCROLLBAR,                             ///< Scrollbar of list.
 		WID_BV_PANEL                                 = ::WID_BV_PANEL,                                 ///< Button panel.
 		WID_BV_BUILD                                 = ::WID_BV_BUILD,                                 ///< Build panel.
+		WID_BV_SHOW_HIDE                             = ::WID_BV_SHOW_HIDE,                             ///< Button to hide or show the selected engine.
 		WID_BV_BUILD_SEL                             = ::WID_BV_BUILD_SEL,                             ///< Build button.
 		WID_BV_RENAME                                = ::WID_BV_RENAME,                                ///< Rename button.
 	};

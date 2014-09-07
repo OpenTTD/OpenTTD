@@ -242,10 +242,12 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_SORT_ASSENDING_DESCENDING,          "WID_BV_SORT_ASSENDING_DESCENDING");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_SORT_DROPDOWN,                      "WID_BV_SORT_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_CARGO_FILTER_DROPDOWN,              "WID_BV_CARGO_FILTER_DROPDOWN");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_SHOW_HIDDEN_ENGINES,                "WID_BV_SHOW_HIDDEN_ENGINES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_LIST,                               "WID_BV_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_SCROLLBAR,                          "WID_BV_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_PANEL,                              "WID_BV_PANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_BUILD,                              "WID_BV_BUILD");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_SHOW_HIDE,                          "WID_BV_SHOW_HIDE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_BUILD_SEL,                          "WID_BV_BUILD_SEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BV_RENAME,                             "WID_BV_RENAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_C_PANEL,                               "WID_C_PANEL");

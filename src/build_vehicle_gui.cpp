@@ -58,13 +58,13 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_SORT_ASSENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
-				NWidget(NWID_SPACER), SetFill(1, 1),
-			EndContainer(),
-			NWidget(NWID_VERTICAL),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_SORT_ASSENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDDEN_ENGINES),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_FILTER_CRITERIA),
 			EndContainer(),
 		EndContainer(),
@@ -81,6 +81,7 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BV_BUILD_SEL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_BUILD), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDE), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_NULL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_RENAME), SetResize(1, 0), SetFill(1, 0),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
@@ -93,6 +94,7 @@ static const CargoID CF_NONE = CT_INVALID;  ///< Show only vehicles which do not
 bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.
 byte _engine_sort_last_criteria[]       = {0, 0, 0, 0};                 ///< Last set sort criteria, for each vehicle type.
 bool _engine_sort_last_order[]          = {false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
+bool _engine_sort_show_hidden_engines[] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
 static CargoID _engine_sort_last_cargo_criteria[] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY}; ///< Last set filter criteria, for each vehicle type.
 
 /**
@@ -915,8 +917,13 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
 		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, engine);
 
+		const Engine *e = Engine::Get(engine);
+		bool hidden = HasBit(e->company_hidden, _local_company);
+		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
+		TextColour tc = (engine == selected_id) ? TC_WHITE : (TC_NO_SHADE | (hidden ? TC_GREY : TC_BLACK));
+
 		SetDParam(0, engine);
-		DrawString(text_left, text_right, y + normal_text_y_offset, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK);
+		DrawString(text_left, text_right, y + normal_text_y_offset, str, tc);
 		DrawVehicleEngine(l, r, sprite_x, y + sprite_y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company), EIT_PURCHASE);
 		if (show_count) {
 			SetDParam(0, num_engines);
@@ -958,6 +965,7 @@ struct BuildVehicleWindow : Window {
 	} filter;                                   ///< Filter to apply.
 	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
 	byte sort_criteria;                         ///< Current sort criterium.
+	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
 	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
 	EngineID rename_engine;                     ///< Engine being renamed.
@@ -977,6 +985,7 @@ struct BuildVehicleWindow : Window {
 
 		this->sort_criteria         = _engine_sort_last_criteria[type];
 		this->descending_sort_order = _engine_sort_last_order[type];
+		this->show_hidden_engines   = _engine_sort_show_hidden_engines[type];
 
 		switch (type) {
 			default: NOT_REACHED();
@@ -1006,6 +1015,9 @@ struct BuildVehicleWindow : Window {
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_LIST);
 		widget->tool_tip = STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + type;
 
+		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDE);
+		widget->tool_tip = STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP + type;
+
 		widget = this->GetWidget<NWidgetCore>(WID_BV_BUILD);
 		widget->widget_data = STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + type;
 		widget->tool_tip    = STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP + type;
@@ -1013,6 +1025,11 @@ struct BuildVehicleWindow : Window {
 		widget = this->GetWidget<NWidgetCore>(WID_BV_RENAME);
 		widget->widget_data = STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON + type;
 		widget->tool_tip    = STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP + type;
+
+		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDDEN_ENGINES);
+		widget->widget_data = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + type;
+		widget->tool_tip    = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + type;
+		widget->SetLowered(this->show_hidden_engines);
 
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
@@ -1110,6 +1127,7 @@ struct BuildVehicleWindow : Window {
 		 * when engines become obsolete and are removed */
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			const RailVehicleInfo *rvi = &e->u.rail;
 
@@ -1153,6 +1171,7 @@ struct BuildVehicleWindow : Window {
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
@@ -1171,6 +1190,7 @@ struct BuildVehicleWindow : Window {
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
+			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 			*this->eng_list.Append() = eid;
@@ -1195,6 +1215,7 @@ struct BuildVehicleWindow : Window {
 		 * when planes become obsolete and are removed */
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
+			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
@@ -1248,12 +1269,24 @@ struct BuildVehicleWindow : Window {
 				this->SetDirty();
 				break;
 
+			case WID_BV_SHOW_HIDDEN_ENGINES:
+				this->show_hidden_engines ^= true;
+				_engine_sort_show_hidden_engines[this->vehicle_type] = this->show_hidden_engines;
+				this->eng_list.ForceRebuild();
+				this->SetWidgetLoweredState(widget, this->show_hidden_engines);
+				this->SetDirty();
+				break;
+
 			case WID_BV_LIST: {
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BV_LIST);
 				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();
-				if (click_count > 1 && !this->listview_mode) this->OnClick(pt, WID_BV_BUILD, 1);
+				if (_ctrl_pressed) {
+					this->OnClick(pt, WID_BV_SHOW_HIDE, 1);
+				} else if (click_count > 1 && !this->listview_mode) {
+					this->OnClick(pt, WID_BV_BUILD, 1);
+				}
 				break;
 			}
 
@@ -1264,6 +1297,14 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
 				ShowDropDownMenu(this, this->cargo_filter_texts, this->cargo_filter_criteria, WID_BV_CARGO_FILTER_DROPDOWN, 0, 0);
 				break;
+
+			case WID_BV_SHOW_HIDE: {
+				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? NULL : Engine::Get(this->sel_engine);
+				if (e != NULL) {
+					DoCommandP(0, 0, this->sel_engine | (e->IsHidden(_current_company) ? 0 : (1u << 31)), CMD_SET_VEHICLE_VISIBILITY);
+				}
+				break;
+			}
 
 			case WID_BV_BUILD: {
 				EngineID sel_eng = this->sel_engine;
@@ -1323,6 +1364,16 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_CARGO_FILTER_DROPDOWN:
 				SetDParam(0, this->cargo_filter_texts[this->cargo_filter_criteria]);
 				break;
+
+			case WID_BV_SHOW_HIDE: {
+				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? NULL : Engine::Get(this->sel_engine);
+				if (e != NULL && e->IsHidden(_local_company)) {
+					SetDParam(0, STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
+				} else {
+					SetDParam(0, STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
+				}
+				break;
+			}
 		}
 	}
 
@@ -1345,6 +1396,13 @@ struct BuildVehicleWindow : Window {
 				*size = maxdim(*size, d);
 				break;
 			}
+
+			case WID_BV_SHOW_HIDE:
+				*size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
+				*size = maxdim(*size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type));
+				size->width += padding.width;
+				size->height += padding.height;
+				break;
 		}
 	}
 
@@ -1365,6 +1423,8 @@ struct BuildVehicleWindow : Window {
 	{
 		this->GenerateBuildList();
 		this->vscroll->SetCount(this->eng_list.Length());
+
+		this->SetWidgetDisabledState(WID_BV_SHOW_HIDE, this->sel_engine == INVALID_ENGINE);
 
 		this->DrawWidgets();
 
