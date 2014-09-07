@@ -951,16 +951,16 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
-	VehicleType vehicle_type;
+	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
 	union {
-		RailTypeByte railtype;
-		RoadTypes roadtypes;
-	} filter;
-	bool descending_sort_order;
-	byte sort_criteria;
-	bool listview_mode;
-	EngineID sel_engine;
-	EngineID rename_engine;
+		RailTypeByte railtype;              ///< Rail type to show, or #RAILTYPE_END.
+		RoadTypes roadtypes;                ///< Road type to show, or #ROADTYPES_ALL.
+	} filter;                                   ///< Filter to apply.
+	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
+	byte sort_criteria;                         ///< Current sort criterium.
+	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
+	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
+	EngineID rename_engine;                     ///< Engine being renamed.
 	GUIEngineList eng_list;
 	CargoID cargo_filter[NUM_CARGO + 2];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE
 	StringID cargo_filter_texts[NUM_CARGO + 3]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID

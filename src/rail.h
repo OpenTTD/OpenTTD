@@ -150,16 +150,16 @@ struct RailtypeInfo {
 		CursorID depot;      ///< Cursor for building a depot
 		CursorID tunnel;     ///< Cursor for building a tunnel
 		CursorID convert;    ///< Cursor for converting track
-	} cursor;
+	} cursor;                    ///< Cursors associated with the rail type.
 
 	struct {
-		StringID name;
-		StringID toolbar_caption;
-		StringID menu_text;
-		StringID build_caption;
-		StringID replace_text;
-		StringID new_loco;
-	} strings;
+		StringID name;            ///< Name of this rail type.
+		StringID toolbar_caption; ///< Caption in the construction toolbar GUI for this rail type.
+		StringID menu_text;       ///< Name of this rail type in the main toolbar dropdown.
+		StringID build_caption;   ///< Caption of the build vehicle GUI for this rail type.
+		StringID replace_text;    ///< Text used in the autoreplace GUI.
+		StringID new_loco;        ///< Name of an engine for this type of rail in the engine preview GUI.
+	} strings;                        ///< Strings associated with the rail type.
 
 	/** sprite number difference between a piece of track on a snowy ground and the corresponding one on normal ground */
 	SpriteID snow_offset;
