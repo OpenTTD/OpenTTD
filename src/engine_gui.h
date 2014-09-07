@@ -32,4 +32,13 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
 void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
 void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
 
+extern bool _engine_sort_direction;
+extern byte _engine_sort_last_criteria[];
+extern bool _engine_sort_last_order[];
+extern const StringID _engine_sort_listing[][12];
+extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
+
+uint GetEngineListHeight(VehicleType type);
+void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, int button);
+
 #endif /* ENGINE_GUI_H */
