@@ -981,6 +981,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Избе
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} повреден файл{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допълнителна информация за пакетът базовата музика
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Неуспешно извличане на списък с поддържаните резолюции
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Проблем при включване на режим "цял екран"
 
 # Custom currency window
@@ -2226,8 +2227,14 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Вклу
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Направи обектите невидими вместо прозрачни
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Всички
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Николко
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Изберете компании, който да се показват
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}неизползван
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}наситен
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}претоварен
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Маркиране на Отбелязаната зона
@@ -2959,11 +2966,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Пок�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Подкупването на местната власт за да увеличи рейтинга носи огромен риск ако бъдете хванати.{} Цена: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Цели
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобални цели
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Основни цели:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
 STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Неприложимо-
+STR_GOALS_PROGRESS                                              :{ORANGE}напредък{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цели на компанията:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликни на задачата за да центрирате камерата на фабрика/град/плочка. Ctrl+Click отваря нов прозорец центриран на фабрика/град/плочка
 
@@ -2974,7 +2983,7 @@ STR_GOAL_QUESTION_CAPTION_WARNING                               :Внимани�
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Грешка
 
 ### Start of Goal Question button list
-STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Недобре
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Откажи
 STR_GOAL_QUESTION_BUTTON_OK                                     :Добре
 STR_GOAL_QUESTION_BUTTON_NO                                     :Не
 STR_GOAL_QUESTION_BUTTON_YES                                    :Да
@@ -3003,6 +3012,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисни върху услугата за да се фокусира върху индустрията/града. Ctrl отваря нов изглед към индустрията/града
 
 # Story book window
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Следваща
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Отиди на следващата страница
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невалидна цел
 
 # Station list window
@@ -3032,8 +3043,29 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Месечни доставки и местен рейтинг:
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}По група
+STR_STATION_VIEW_WAITING_STATION                                :Станция: Изчакване
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Сума: Изчакване
+STR_STATION_VIEW_PLANNED_STATION                                :Станция: Планирано
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Количество: Планирано
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} от {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} посредством {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} до {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} от неизвестна станция
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} за която и да е гара
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} посредством която и да е гара
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} от тази гара
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} спиране на тази гара
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} до тази станция
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} без прекъсване
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Източник-Чрез-Дестинация
+STR_STATION_VIEW_GROUP_S_D_V                                    :Източник-Дестинация-Посредством
+STR_STATION_VIEW_GROUP_V_S_D                                    :Посредством-Източник-Дестинация
+STR_STATION_VIEW_GROUP_V_D_S                                    :Посредством-Дестинация-Източник
+STR_STATION_VIEW_GROUP_D_S_V                                    :Дестинация-Източник-Посредством
 STR_STATION_VIEW_GROUP_D_V_S                                    :Посока-през-Източника
 
 ############ range for rating starts

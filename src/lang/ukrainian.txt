@@ -220,30 +220,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.z                                :газован�
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} пасажир{P "" и iв}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}пасажир{P "" и iв}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} вугілля
-STR_QUANTITY_MAIL                                               :{COMMA} сум{P ка ки ок} пошти
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}міш{P ок ка ків} пошти
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} нафти
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} гол{P ова ови ів} худоби
-STR_QUANTITY_GOODS                                              :{COMMA} ящи{P к ки ків} товарів
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}гол{P ова ови ів} худоби
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}ящи{P к ки ків} товарів
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} зерна
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} деревини
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} залізної руди
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} сталі
-STR_QUANTITY_VALUABLES                                          :{COMMA} сум{P ка ки ок} коштовностей
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}міш{P ок ка ків} коштовностей
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} мідної руди
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} кукурудзи
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} фруктів
-STR_QUANTITY_DIAMONDS                                           :{COMMA} сум{P ка ки ок} діамантів
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}міш{P ок ки ків} діамантів
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} продуктів
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} паперу
-STR_QUANTITY_GOLD                                               :{COMMA} міш{P ок ки ків} золота
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}міш{P ок ки ків} золота
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} води
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} пшениці
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} каучуку
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} цукру
-STR_QUANTITY_TOYS                                               :{COMMA} іграш{P ка ки ок}
-STR_QUANTITY_SWEETS                                             :{COMMA} пакун{P ок ки ків} цукерок
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}іграш{P ка ки ок}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}пакун{P ок ки ків} цукерок
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} Коли
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} солодкої вати
 STR_QUANTITY_BUBBLES                                            :{COMMA} бульбаш{P ка ки ок}
@@ -290,12 +290,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}НІ
 STR_ABBREV_ALL                                                  :{TINY_FONT}Все
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} пасажир{P "" и ів}
-STR_BAGS                                                        :{COMMA} міш{P ок ка ків}
-STR_TONS                                                        :{COMMA} тон{P а и ""}
-STR_LITERS                                                      :{COMMA} літр{P "" а ів}
-STR_ITEMS                                                       :{COMMA} штук{P а и ""}
-STR_CRATES                                                      :{COMMA} ящик{P "" а ів}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}пасажир{P "" и ів}
+STR_BAGS                                                        :{COMMA}{NBSP}міш{P ок ка ків}
+STR_TONS                                                        :{COMMA}{NBSP}тон{P "а" "и" ""}
+STR_LITERS                                                      :{COMMA}{NBSP}літр{P "" "а" "ів"}
+STR_ITEMS                                                       :{COMMA}{NBSP}штук{P "а" "и" ""}
+STR_CRATES                                                      :{COMMA}{NBSP}ящик{P "" а ів}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Темно-синій
@@ -316,37 +316,37 @@ STR_COLOUR_GREY                                                 :Сірий
 STR_COLOUR_WHITE                                                :Білий
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} миль/год
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/год
-STR_UNITS_VELOCITY_SI                                           :{COMMA} м/с
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}миль/год
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}км/год
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}м/с
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}к.с.
-STR_UNITS_POWER_METRIC                                          :{COMMA}к.с.
-STR_UNITS_POWER_SI                                              :{COMMA}кВт
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}к.с.
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}к.с.
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}кВт
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}т
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}т
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}кг
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}т
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}т
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}кг
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тонн{P "а" "и" ""}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P а и ""}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}тонн{P "а" "и" ""}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}тон{P а и ""}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}кг
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} гал
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}л
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}м³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}гал
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}л
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}м³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" и ів}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} літр{P "" а ів}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}галон{P "" и ів}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}літр{P "" "а" "ів"}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}м³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} фунт-сили
-STR_UNITS_FORCE_METRIC                                          :{COMMA} кгс
-STR_UNITS_FORCE_SI                                              :{COMMA} кН
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}фунт-сила
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}кгс
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}кН
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фт
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} м
-STR_UNITS_HEIGHT_SI                                             :{COMMA} м
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}фт
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}м
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}м
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
@@ -1573,7 +1573,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Інтерва�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Налаштування способу визначення необхідності проведення техогляду: через вказаний проміжок часу після попереднього техогляду чи коли поточна надійність транспортного засобу стане нижчою від максимальної його надійності на вказаний процент.
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Інтервал техогляду залізничного транспорту: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Налаштування інтервалу техогляду для нового залізничного транспорту (встановлений інтервал може бути змінено окремо для кожного транспортного засобу в його інтерфейсі).
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} д{P ень ні нів}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}д{P 0 "ень" "ні" "нів"}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Відключено
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Інтервал техогляду дорожнього транспорту: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Налаштування інтервалу техогляду для нового дорожнього транспорту (встановлений інтервал може бути змінено окремо для кожного транспортного засобу в його інтерфейсі).
@@ -1715,9 +1715,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Середнь�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Прибрати безглузді елементи доріг під час їх будівництва: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Дозволяє видаляти тупіки на дорогах міста під час рекострукції доріг.
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Оновлювати графік доставки раз на {STRING} д{P 0:2 "ень" "ні" "нів"}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Оновлювати графік доставки раз на {STRING}{NBSP}д{P 0:2 "ень" "ні" "нів"}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Час між послідовними обрахунками зв'язків на графіку. Кожен обрахунок здійснюється для одного параметра графіку. Тобто значення Х у налаштуваннях не означає, що графік оновлюється кожні Х днів. Лише деякі складові. При виборі параметру "часто" ЦП потрібно більше часу для обрахунку. При виборі параметру "рідко" наступний обрахунок почнеться після запуску доставки за новим маршрутом.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Обраховувати графік доставки раз на {STRING} д{P 0:2 "ень" "ні" "нів"}
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Обраховувати графік доставки раз на {STRING}{NBSP}д{P 0:2 "ень" "ні" "нів"}
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :ручний
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :асиметричний
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :симетричний
@@ -3075,8 +3075,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставлено
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (потрібно ще)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставлено)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Місто зростає кожен {ORANGE}{COMMA}{BLACK} день
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Місто зростає кожен {ORANGE}{COMMA}{BLACK} день (профінансовано)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Місто зростає раз на {ORANGE}{COMMA}{BLACK} д{P ень ні нів}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Місто зростає раз на {ORANGE}{COMMA}{BLACK}{NBSP}д{P ень ні нів} (профінансовано)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Місто {RED}не{BLACK} зростає
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Ліміт шуму в місті: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати місто у центрі екрану. Утримання Ctrl відкриє нове вікно з видом на місто
@@ -3714,7 +3714,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Міст
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA} днів{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}{NBSP}днів{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Збільшити інтервал техогляду на 10. Ctrl+клік збільшує інтервал техогляду на 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зменшити період техогляду на 10. Ctrl+клік зменшує інтервал техогляду на 5
@@ -3946,8 +3946,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :В дорозі
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :В дорозі {STRING} зі швидкістю, що не перевищує {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :і прямувати до {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ні нів}
-STR_TIMETABLE_TICKS                                             :{COMMA} одиниц{P я і ь}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}д{P ень ні нів}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}одиниц{P я і ь}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Цей розклад займе {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Цей розклад займе якнайменше {STRING} (не все враховано)

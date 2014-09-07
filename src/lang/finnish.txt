@@ -95,30 +95,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sihijuoma
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} matkustaja{P "" a}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}matkustaja{P "" a}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kivihiiltä
-STR_QUANTITY_MAIL                                               :{COMMA} säkki{P "" ä} postia
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}säkki{P "" ä} postia
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} öljyä
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} erä{P "" ä} karjaa
-STR_QUANTITY_GOODS                                              :{COMMA} laatikko{P "" a} tavaraa
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}erä{P "" ä} karjaa
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}laatikko{P "" a} tavaraa
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} viljaa
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} raakapuuta
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} rautamalmia
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} terästä
-STR_QUANTITY_VALUABLES                                          :{COMMA} säkki{P "" ä} arvotavaraa
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}säkki{P "" ä} arvotavaraa
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kuparimalmia
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} maissia
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} hedelmiä
-STR_QUANTITY_DIAMONDS                                           :{COMMA} säkki{P "" ä} timantteja
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}säkki{P "" ä} timantteja
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} ruokaa
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} paperia
-STR_QUANTITY_GOLD                                               :{COMMA} säkki{P "" ä} kultaa
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}säkki{P "" ä} kultaa
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} vettä
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} vehnää
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kumia
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} sokeria
-STR_QUANTITY_TOYS                                               :{COMMA} lelu{P "" a}
-STR_QUANTITY_SWEETS                                             :{COMMA} säkki{P "" ä} karkkia
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}lelu{P "" a}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}säkki{P "" ä} karkkia
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} limsaa
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} hattaraa
 STR_QUANTITY_BUBBLES                                            :{COMMA} kupla{P "" a}
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}EI
 STR_ABBREV_ALL                                                  :{TINY_FONT}KAIKKI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} matkustaja{P "" a}
-STR_BAGS                                                        :{COMMA} säkki{P "" ä}
-STR_TONS                                                        :{COMMA} tonni{P "" a}
-STR_LITERS                                                      :{COMMA} litra{P "" a}
-STR_ITEMS                                                       :{COMMA} erä{P "" ä}
-STR_CRATES                                                      :{COMMA} laatikko{P "" a}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}matkustaja{P "" a}
+STR_BAGS                                                        :{COMMA}{NBSP}säkki{P "" ä}
+STR_TONS                                                        :{COMMA}{NBSP}tonni{P "" a}
+STR_LITERS                                                      :{COMMA}{NBSP}litra{P "" a}
+STR_ITEMS                                                       :{COMMA}{NBSP}erä{P "" ä}
+STR_CRATES                                                      :{COMMA}{NBSP}laatikko{P "" a}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tummansininen
@@ -191,37 +191,37 @@ STR_COLOUR_GREY                                                 :Harmaa
 STR_COLOUR_WHITE                                                :Valkoinen
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hv
-STR_UNITS_POWER_METRIC                                          :{COMMA}hv
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hv
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hv
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonni{P "" a}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonni{P "" a}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonni{P "" a}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonni{P "" a}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallona{P "" a}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litra{P "" a}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallona{P "" a}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litra{P "" a}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatinteksti:
@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Huoltovälit ov
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Määritä, aiheuttaako edellisestä huollosta kulunut aika vai luotettavuuden laskeminen kulkuneuvon huoltamisen
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Junien huoltoväli oletuksena: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määritä oletushuoltoväli uusille junille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} päivä{P 0 "" ä}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}päivä{P 0 "" ä}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Pois käytöstä
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Ajoneuvojen huoltoväli oletuksena: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Määritä oletushuoltoväli uusille ajoneuvoille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
@@ -1590,9 +1590,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Suurkaupunkien 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Poista turhat tie-elementit tienrakennuksen aikana: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Poista turhat tien loppuosat tieverkon uudelleenrakentamisen yhteydessä
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Päivitä rahdin jakautuminen {STRING} päivän välein
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Päivitä rahdin jakautuminen {STRING}{NBSP}päivän välein
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Yhteyskuvaajan uudelleenlaskujen välinen aika. Kukin uudelleenlasku laskee yhden kuvaajan komponentin. Tämä tarkoittaa sitä, että koko kuvaajaa ei lasketa uudelleen määrittämäsi ajan välein, vaan ainoastaan yksi komponentti. Mitä lyhyemmäksi määrität asetuksen, sitä enemmän prosessoriaikaa komponentin laskemiseen vaaditaan. Mitä pidemmäksi määrität sen, sitä pidempi aika kuluu, kunnes rahdin jakaminen alkaa uusilla reiteillä.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Käytä {STRING} päivä{P 0:2 "" ä} rahtijakauman päivittämiseen
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Käytä {STRING}{NBSP}päivä{P 0:2 "" ä} rahtijakauman päivittämiseen
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Jokaisen yhteyskuvaajan komponentin uudelleenlaskemiseen käytettävä aika. Uudelleenlaskun alkaessa käynnistetään uusi säie, jonka annetaan toimia näin monta päivää. Mitä lyhyemmäksi määrität tämän, sitä todennäköisempää on, että säie ei ole valmis ajoissa. Tällöin peli pysähtyy kunnes lasku on suoritettu loppuun (peli pätkii). Mitä pidemmäksi määrität asetuksen, sitä pitempään rahdin jakauman päivittämiseen kuluu aikaa reittien muuttuessa.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuaalinen
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :epäsymmetrinen
@@ -2959,8 +2959,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} kuljetettu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (tarvitaan lisää)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (kuljetettu)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK} päivän{P "" ""} välein
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK} päivän{P "" ""} välein (rahoitettu)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein (rahoitettu)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kaupunki {RED}ei{BLACK} kasva
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Meluraja kaupungissa: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä näkymä kaupungin sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
@@ -3614,7 +3614,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Siirron arvo: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Huoltoväli: {LTBLUE}{COMMA} päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}%{BLACK}   Viime huolto: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kasvata huoltoväliä kymmenellä. Ctrl+Klik kasvattaa huoltoväliä viidellä
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pienennä huoltoväliä kymmenellä. Ctrl+Klik vähentää huoltoväliä viidellä
@@ -3846,8 +3846,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteesee
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Kulje kohteeseen {STRING} enintään {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} päivä{P "" ä}
-STR_TIMETABLE_TICKS                                             :{COMMA} tunti{P "" a}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}päivä{P "" ä}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" iä}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Aikataulun kesto on {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Aikataulun kesto on vähintään {STRING}

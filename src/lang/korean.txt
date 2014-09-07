@@ -96,30 +96,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음�
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :승객 {COMMA}명
+STR_QUANTITY_PASSENGERS                                         :승객{NBSP}{COMMA}명
 STR_QUANTITY_COAL                                               :석탄 {WEIGHT_LONG}
-STR_QUANTITY_MAIL                                               :우편 {COMMA}자루
+STR_QUANTITY_MAIL                                               :{G=f}우편 {COMMA}{NBSP}자루
 STR_QUANTITY_OIL                                                :석유 {VOLUME_LONG}
-STR_QUANTITY_LIVESTOCK                                          :가축 {COMMA}마리
-STR_QUANTITY_GOODS                                              :상품 {COMMA}상자
+STR_QUANTITY_LIVESTOCK                                          :{G=f}가축 {COMMA}{NBSP}마리
+STR_QUANTITY_GOODS                                              :{G=f}상품 {COMMA}{NBSP}상자
 STR_QUANTITY_GRAIN                                              :곡물 {WEIGHT_LONG}
 STR_QUANTITY_WOOD                                               :목재 {WEIGHT_LONG}
 STR_QUANTITY_IRON_ORE                                           :철광석 {WEIGHT_LONG}
 STR_QUANTITY_STEEL                                              :철 {WEIGHT_LONG}
-STR_QUANTITY_VALUABLES                                          :귀금속 {COMMA}자루
+STR_QUANTITY_VALUABLES                                          :{G=f}귀금속 {COMMA}{NBSP}자루
 STR_QUANTITY_COPPER_ORE                                         :구리 광석 {WEIGHT_LONG}
 STR_QUANTITY_MAIZE                                              :옥수수 {WEIGHT_LONG}
 STR_QUANTITY_FRUIT                                              :과일 {WEIGHT_LONG}
-STR_QUANTITY_DIAMONDS                                           :다이아몬드 {COMMA}자루
+STR_QUANTITY_DIAMONDS                                           :{G=f}다이아몬드 {COMMA}{NBSP}자루
 STR_QUANTITY_FOOD                                               :식품 {WEIGHT_LONG}
 STR_QUANTITY_PAPER                                              :종이 {WEIGHT_LONG}
-STR_QUANTITY_GOLD                                               :금 {COMMA}자루
+STR_QUANTITY_GOLD                                               :{G=f}금 {COMMA}{NBSP}자루
 STR_QUANTITY_WATER                                              :물 {VOLUME_LONG}
 STR_QUANTITY_WHEAT                                              :밀 {WEIGHT_LONG}
 STR_QUANTITY_RUBBER                                             :고무 {VOLUME_LONG}
 STR_QUANTITY_SUGAR                                              :설탕 {WEIGHT_LONG}
-STR_QUANTITY_TOYS                                               :장난감 {COMMA}상자
-STR_QUANTITY_SWEETS                                             :사탕 {COMMA}자루
+STR_QUANTITY_TOYS                                               :{G=f}장난감 {COMMA}{NBSP}상자
+STR_QUANTITY_SWEETS                                             :{G=f}사탕 {COMMA}{NBSP}자루
 STR_QUANTITY_COLA                                               :콜라 {VOLUME_LONG}
 STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}X
 STR_ABBREV_ALL                                                  :{TINY_FONT}모두
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{G=m}승객 {COMMA}명
-STR_BAGS                                                        :{G=f}{COMMA} 자루
-STR_TONS                                                        :{G=m}{COMMA} 톤
-STR_LITERS                                                      :{G=f}{COMMA} 리터
-STR_ITEMS                                                       :{G=m}{COMMA} 마리
-STR_CRATES                                                      :{G=f}{COMMA} 상자
+STR_PASSENGERS                                                  :{G=m}승객 {COMMA}{NBSP}명
+STR_BAGS                                                        :{G=f}{COMMA}{NBSP}자루
+STR_TONS                                                        :{G=m}{COMMA}{NBSP}톤
+STR_LITERS                                                      :{G=f}{COMMA}{NBSP}리터
+STR_ITEMS                                                       :{G=m}{COMMA}{NBSP}마리
+STR_CRATES                                                      :{G=f}{COMMA}{NBSP}상자
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :어두운 파랑
@@ -192,36 +192,36 @@ STR_COLOUR_GREY                                                 :회색
 STR_COLOUR_WHITE                                                :흰색
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA}km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA}m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}마력
-STR_UNITS_POWER_METRIC                                          :{COMMA}마력
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}마력
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}마력
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} 톤
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}톤
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}톤
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}톤
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}갤런
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}갤런
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} 갤런
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}리터
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}갤런
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}리터
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} 파운드중
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kg중
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}파운드중
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kg중
 STR_UNITS_FORCE_SI                                              :{COMMA}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}피트
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}m
 
 # Common window strings
@@ -863,7 +863,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 보수공사 프로그램이 운전자들에게 6개월간의 고통을 가져다 줄 것입니다!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의해 실시된 도로 보수공사 프로그램으로 인해 6개월 동안 운전자들이 불편을 겪을 것입니다!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}독점 수송!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{0:TOWN} 지역 당국이 {1:STRING}과 1년 간의 수송 독점권 계약을 체결하였습니다!
 
@@ -1449,7 +1449,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도에 �
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :차량 점검 방식을 "마지막 점검 이후 지난 시간 (또는) 최대 신뢰도에 대한 차량 신뢰도의 일정 퍼센트 하락 여부" 중에 하나로 선택합니다.
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :열차에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :열차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 일/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}일/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :차량에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :차량 정비 설정을 하지 않은 경우, 기본값으로 사용할 정비 주기를 설정합니다.
@@ -1593,7 +1593,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :도로 재건�
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :분배 상태를 매 {STRING}일 마다 갱신
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :다음 연결 상태를 재계산하기까지의 시간입니다. 한 번의 재계산할 때마다 그래프의 한 요소를 위한 계획을 계산합니다. 이는 이 설정의 X값에 따라 모든 그래프가 매 X일마다 갱신되는 것이 아니라는 것을 뜻합니다. 일부 요소만 재계산된다는 뜻입니다. 값이 작으면 작을 수록 CPU가 계산해야 할 횟수가 늘어납니다. 값을 크게 설정할 수록 화물 분배 상태가 새롭게 지정되는 데 더 오랜 시간이 걸립니다.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :분배 상태 재계산 주기: {STRING}일
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :화물 분배 연결 상태를 {STRING}일마다 다시 계산
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :각 연결 상태 요소의 재계산을 위해 필요한 시간입니다. 재계산이 시작될 때, 이 날짜만큼 작동하는 스레드가 생성됩니다. 이 값이 작으면 작을수록, 스레드가 끝나야할 때에 스레드가 끝나지 않게 됩니다. 그러면 게임이 랙에 걸려 멈추게 됩니다. 값을 크게 설정할수록 경로가 바뀔 때 분배 상태가 업데이트 되는 시간이 오래 걸리게 됩니다.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :수동
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :불균형
@@ -2956,12 +2956,12 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}지난 �
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난달 우편수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED}{G 0 "이" "가"} 필요함
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :겨울에는 {ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요합니다.
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :겨울에는 {ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요함
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 수송됨
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (화물이 더 필요함)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (수송됨)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{1:CARGO_LONG} ＼ {0:CARGO_TINY}{RED} (더 필요함)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{1:CARGO_LONG} ＼ {0:CARGO_TINY}{GREEN} (수송됨)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다.
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다. (투자 중)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다. (투자됨)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}현재 소음 수준: {ORANGE}{COMMA}{BLACK}  최대 허용 수준: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. CTRL+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다.
@@ -3691,7 +3691,7 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 �
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}통과 설정
-STR_ORDER_GO_TO                                                 :행선지 지정
+STR_ORDER_GO_TO                                                 :완행
 STR_ORDER_GO_NON_STOP_TO                                        :직행
 STR_ORDER_GO_VIA                                                :완행 경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유

@@ -199,12 +199,14 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}حصان
 STR_UNITS_POWER_METRIC                                          :{COMMA}حصان
 STR_UNITS_POWER_SI                                              :{COMMA}ك واط
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ت
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}طن
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}كجم
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} طن
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}كجم
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}غال
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ل
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}م3
 
@@ -231,7 +233,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلا
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
 STR_TOOLTIP_SHADE                                               :{BLACK}نافذة الظل - تعرض العنوان فقط
 STR_TOOLTIP_DEBUG                                               :{BLACK}اظهر معلومات صائد اخطاء الاضافات الجديدة.
-STR_TOOLTIP_STICKY                                              :{BLACK}خصص هذا الاطار بان يبقى مفتوح عند اغلاق كافة الاطارات
+STR_TOOLTIP_STICKY                                              :{BLACK}علم هذه النافذة كغير قابلة للإقفال باستخدام زر إغلاق كل النوافذ, اضغط مع Ctrl لجعل الأمر إفتراضيا
 STR_TOOLTIP_RESIZE                                              :{BLACK}اضغط واسحب لتعديل حجم الاطار
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تبديل حجم الاطار كبير / صغير
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}شريط العرض- فوق /تحت
@@ -957,6 +959,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}اختر
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ملف غير صالح{P ""}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}معلومات اضافية عن الموسيقى الاساسية
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}فشل في استرداد قائمة الدقة المدعومة
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}فشل تشغيل نمط الشاشة الكاملة
 
 # Custom currency window
@@ -1047,6 +1050,8 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}إعدا
 STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK} فئة:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :اﻹعدادات الاساسيه
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}احصر القائمة على انواع اعدادات محددة
@@ -1056,6 +1061,8 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :اعدادات 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :اعدادات اللعبة (مخزن في المحفوظات, يؤثر على اللعبة الحالية فقط)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :اعدادات الشركة (مخزن في المحفوظات, يؤثر على الالعاب الجديدة فقط)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :اعدادات الشركة (مخزن في المحفوظات: يؤثر على الشركة الحالية فقط)
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}عرض جميع النتائج بالنسبة للإعداد {}{SILVER} الفئة {BLACK} إلى {WHITE}{STRING} {BLACK}و{SILVER}نوع {BLACK} إلى{WHITE} جميع انواع الإعدادات
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE} - بدون -
 
 STR_CONFIG_SETTING_OFF                                          :قفل
 STR_CONFIG_SETTING_ON                                           :فتح
@@ -1135,7 +1142,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :مولد الأ
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :الأصلي
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :مرتفعات منزلقة
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط الثلج: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :خشونة التضاريس (سفر التكوين فقط ) :({STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :خشونة التضاريس (صفر التكوين فقط ) :({STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ناعم جدا
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
@@ -1223,10 +1230,10 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :مؤثرات: {
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :شغل مؤثرات صوتية في المناظر و المصانع و المدن
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :عطل ادوات البناء عند عدم وجود عربات متاحة لها: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل لاعب: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل لاعب: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل لاعب: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :الحد الأعلى لعدد السفن لكل لاعب: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :الحد الأعلى لعدد السفن لكل شركة: {STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :حظر القطارات على الحاسوب: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :حظر العربات على الكمبيوتر: {STRING}
@@ -1607,7 +1614,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ضع ك�
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}احم لعبتك برقم سري حتى لا تصبح لعبتك مفتوحة للجميع
 
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}عميل
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}اقصى عدد عملاء:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}اقصى عدد للعملاء:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}أختر أقصى عدد للعملاء
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM}شركة
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}أقصى عدد شركات:
@@ -2201,6 +2208,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}الشحنة المقبولة: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA} /8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}حدود سرعة سكة الحديد: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}حدود سرعه الطريق: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :صخور
@@ -2316,6 +2324,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}حفظ
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}احفظ اللعبة الحالية، بواسطة الاسم المختار
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}تحميل
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}تحميل اللعبة المختارة
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK} حمل خارطة التضاريس
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}تفاصيل اللعبة
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}لا توجد معلومات متاحة
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2534,6 +2543,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<موديل ا�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<المصنع غير صالح>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
+STR_INVALID_VEHICLE                                             :<مركبه غير صالحه>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}بحث اضافات جديدة
@@ -3351,7 +3361,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}جدول
 STR_TIMETABLE_NO_TRAVEL                                         :لا رحيل
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادرة (ذاتي: بواسطة الامر اليدوي التالي)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (غير مجدوله)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر بمعدل {2:VELOCITY} (بدون جدوله)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر(بدون جدول زمني) مع تقريبا {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}

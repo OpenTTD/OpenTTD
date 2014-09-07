@@ -3489,7 +3489,7 @@ STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Pindah dan tun
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Pindah dan tunggu sebarang kargo sehingga penuh dengan ubahsuai secara auto ke {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :Tiada muat turun dan ambil kargo dengan ubahsuai secara auto ke {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Tiada muat turun dan tunggu sehingga muatan penuh dengan ubahsuai secara auto ke {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Tiada muat turun dan tunggu sebarang kargo penuh dengan ubahsuai secara auto ke {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Tiada muat turun dan tunggu sebarang kargo dengan kapasiti penuh dengan ubahsuai secara automatik ke {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :kargo sedia ada
 

@@ -96,30 +96,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=Femenin}Begu
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{G=Masculin}{COMMA} passatger{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{G=Masculin}{COMMA}{NBSP}passatger{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carbó
-STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" s} de correu
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sac{P "" s} de correu
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petroli
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P "" s} de bestiar
-STR_QUANTITY_GOODS                                              :{COMMA} palet{P "" s} de mercaderies
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cap{P "" s} de bestiar
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}palet{P "" s} de mercaderies
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de gra
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de fusta
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de mineral de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d'acer
-STR_QUANTITY_VALUABLES                                          :{G=Masculin}{COMMA} sac{P "" s} de valors
+STR_QUANTITY_VALUABLES                                          :{G=Masculin}{COMMA}{NBSP}sac{P "" s} de valors
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de mineral de coure
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de blat de moro
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruita
-STR_QUANTITY_DIAMONDS                                           :{COMMA} boss{P a es} de diamants
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}boss{P a es} de diamants
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de queviures
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de paper
-STR_QUANTITY_GOLD                                               :{G=Femenin}{COMMA} sa{P ca ques} d'or
+STR_QUANTITY_GOLD                                               :{G=Femenin}{COMMA}{NBSP}sa{P ca ques} d'or
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} d'aigua
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de blat
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de cautxú
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de sucre
-STR_QUANTITY_TOYS                                               :{COMMA} joguin{P a es}
-STR_QUANTITY_SWEETS                                             :{G=Femenin}{COMMA} boss{P a es} de dolços
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}joguin{P a es}
+STR_QUANTITY_SWEETS                                             :{G=Femenin}{COMMA}{NBSP}boss{P a es} de dolços
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de refrescs
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de cotó de sucre
 STR_QUANTITY_BUBBLES                                            :{COMMA} bomboll{P a es}
@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NO
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{G=Masculin}{COMMA} passatger{P "" s}
-STR_BAGS                                                        :{G=Masculin}{COMMA} sac{P "" s}
-STR_TONS                                                        :{G=Femenin}{COMMA} ton{P a es}
-STR_LITERS                                                      :{G=Masculin}{COMMA} litre{P "" s}
-STR_ITEMS                                                       :{G=Masculin}{COMMA} cap{P "" s}
-STR_CRATES                                                      :{G=Masculin}{COMMA} palet{P "" s}
+STR_PASSENGERS                                                  :{G=Masculin}{COMMA}{NBSP}passatger{P "" s}
+STR_BAGS                                                        :{G=Masculin}{COMMA}{NBSP}sac{P "" s}
+STR_TONS                                                        :{G=Femenin}{COMMA}{NBSP}ton{P a es}
+STR_LITERS                                                      :{G=Masculin}{COMMA}{NBSP}litre{P "" s}
+STR_ITEMS                                                       :{G=Masculin}{COMMA}{NBSP}cap{P "" s}
+STR_CRATES                                                      :{G=Masculin}{COMMA}{NBSP}palet{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :{G=Masculin}Blau Fosc
@@ -277,7 +277,7 @@ STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Benefici darrer any
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Benefici aquest any
 STR_SORT_BY_AGE                                                 :Antiguitat
-STR_SORT_BY_RELIABILITY                                         :Rendibilitat
+STR_SORT_BY_RELIABILITY                                         :Fiabilitat
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capac. total per tipus de càrrega
 STR_SORT_BY_MAX_SPEED                                           :Velocitat màxima
 STR_SORT_BY_MODEL                                               :Model
@@ -811,7 +811,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemes de subministrament fan que {STRING} anunciï el seu imminent tancament!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}La falta d'arbres propers fa que {STRING} anunciï el seu imminent tancament!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Unió Monetària Europea!{}{}S'introdueix l'euro com a moneda única per les transaccions diàries del teu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Recessió Mundial!{}{}Economistes experts temen que l'economia es desplomi!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}S'ha acabat la recessió!{}{}La millora als negocis dóna confiança a les indústries i l'economia s'enforteix!
 
@@ -1009,11 +1009,11 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Establei
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Estableix el sufix de text per a la moneda
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Canvia a l'Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Canvia a l'Euro: {ORANGE}mai
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Estableix l'any d'introducció de l'Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Canvia a l'Euro més aviat
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Canvia a l'Euro més tard
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Canvia a l'euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Canvia a l'euro: {ORANGE}mai
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Estableix l'any d'introducció de l'euro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Canvia a l'euro més aviat
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Canvia a l'euro més tard
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista prèvia: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Lliures (£) en aquesta moneda
@@ -1450,7 +1450,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals d
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escull si les revisions dels vehicles depenen del temps passat des de la darrera revisió o de la caiguda d'un cert percentatge de la fiabilitat màxima
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval per defecte de servei per als trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Estableix l'interval de revisió predeterminat pels nous ferrocarrils, si no hi ha un interval de revisió explícit pel vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} di{P 0 a es}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval per defecte de servei per als vehicles: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Estableix l'interval de revisió predeterminat pels nous vehicles de caretera, si no hi ha un interval de revisió explícit pel vehicle
@@ -1592,9 +1592,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària m
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Treu els elements de carretera absurds durant la reconstrucció de carretera: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina les carreteres sense sortida durant les reconstruccions de carreteres finançades
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING} di{P 0 a es}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING}{NBSP}di{P 0 a es}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de distribució. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING} di{P 0 a es} per al recàlcul del graf de distribució
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING}{NBSP}di{P 0 a es} per al recàlcul del graf de distribució
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Temps dedicat a cada recàlcul d'un component del graf de connexions. Quan un recàlcul s'inicia, el programa crea un fil que pot executar-se durant aquest nombre de dies. Com més curt el valor, més probable que el fil no hagi acabat quan s'espera. Aleshores el programa s'atura fins que el fil acaba ("ralentització"). Com més llarg el valor, més temps requereix l'actualització de la distribució quan les rutes canvien.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimètric
@@ -2087,15 +2087,15 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Establei
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Envia
-STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equip] :
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] {STRING}:
-STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Tothom] :
 
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] a {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Equip] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Equip] a {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] A {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] a {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Tothom] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Posa el text pel xat de xarxa
 
 # Network messages
@@ -2232,9 +2232,9 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Llibreria GS
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarregant contingut...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Demanant arxius...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Actualment descarregant {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Actualment descarregant {STRING} ({NUM} de {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descàrrega completa
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} of {BYTES} descarregats ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descarregats ({NUM} %)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No s'ha pogut connectar amb el servidor de continguts...
@@ -2822,7 +2822,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Versió in
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Canvia els paràmetres NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tanca
-STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reseteja
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Restableix
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Estableix tots els paràmetres al seu valor predeterminat
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paràmetre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -2961,8 +2961,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregat
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (encara requerit)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregat)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK} di{P a es}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK} di{P a es} (finançat)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK}{NBSP}di{P a es}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La població creix cada {ORANGE}{COMMA}{BLACK}{NBSP}di{P a es} (finançant edificis nous)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La població {RED}no {BLACK} està creixent
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  màx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal a la població. Ctrl+Clic obre una nova vista al lloc de la població
@@ -3351,7 +3351,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost d'u
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitat: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(remodelable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} any{P "" s}
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Màx. Rendiment: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Màx. Fiabilitat: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Velocitat: {GOLD}{VELOCITY}
@@ -3616,7 +3616,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferir Crèdits: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de les revisions: {LTBLUE}{COMMA}dies{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de les revisions: {LTBLUE}{COMMA}{NBSP}dies{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval de les revisions: {LTBLUE}{COMMA}%{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenta l'interval de les revisions en 10. Ctrl+Clic augmenta l'interval de les revisions en 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Disminueix l'interval de les revisions en 10. Ctrl+Clic disminueix l'interval de les revisions en 5
@@ -3848,8 +3848,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRIN
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viatja durant {STRING} com a molt a {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} di{P a es}
-STR_TIMETABLE_TICKS                                             :{COMMA} mar{P ca ques}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}di{P a es}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}mar{P ca ques}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}L'horari tardarà {STRING} a complir-se
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}L'horari tardarà almenys {STRING} a complir-se (no tot està planificat)
@@ -3875,8 +3875,8 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Canvia l
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Esborra el límit de velocitat
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset. control de retard
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseteja el comptador de retards, de manera que el vehicle serà puntual
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Restablir Retard
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restableix el comptador de retards, de manera que el vehicle serà puntual
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del proper viatge (CTRL+clic per intentar mantenir els temps d'espera)
@@ -3947,9 +3947,9 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configur
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura els paràmetres de l'script
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Disponible {STRING}
+STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} Disponibles
 STR_AI_LIST_CAPTION_AI                                          :IA
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Script de la Partida
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de la Partida
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clica per a seleccionar un script
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
@@ -3962,11 +3962,11 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancel·
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canvïis l'script
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paràmetres
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de la Partida
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres {STRING}
+STR_AI_SETTINGS_CAPTION_AI                                      :de la IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :de l'Script de la Partida
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
-STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
+STR_AI_SETTINGS_RESET                                           :{BLACK}Restableix
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Número de dies per començar aquesta IA després de l'anterior (aproximadament): {ORANGE}{STRING}
 

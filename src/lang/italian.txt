@@ -97,30 +97,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Bevande fr
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passegger{P o i}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passegger{P o i}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} di carbone
-STR_QUANTITY_MAIL                                               :{COMMA} sacc{P o hi} postal{P e i}
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sacc{P o hi} postal{P e i}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} di petrolio
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P o i} di bestiame
-STR_QUANTITY_GOODS                                              :{COMMA} cass{P a e} di beni
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cap{P o i} di bestiame
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}cass{P a e} di beni
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} di grano
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} di legname
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} di ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} di acciaio
-STR_QUANTITY_VALUABLES                                          :{COMMA} bors{P a e} di valori
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}bors{P a e} di valori
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} di rame
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} di mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} di frutta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sacc{P o hi} di diamanti
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}sacc{P o hi} di diamanti
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} di cibo
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} di carta
-STR_QUANTITY_GOLD                                               :{COMMA} sacc{P o hi} di oro
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}sacc{P o hi} di oro
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} di acqua
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} di frumento
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} di gomma
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} di zucchero
-STR_QUANTITY_TOYS                                               :{COMMA} giocattol{P o i}
-STR_QUANTITY_SWEETS                                             :{COMMA} sacc{P o hi} di caramelle
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}giocattol{P o i}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sacc{P o hi} di caramelle
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} di Cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} di zucchero filato
 STR_QUANTITY_BUBBLES                                            :{COMMA} bollicin{P a e}
@@ -167,12 +167,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NO
 STR_ABBREV_ALL                                                  :{TINY_FONT}TUT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passegger{P o i}
-STR_BAGS                                                        :{COMMA} sacc{P o hi}
-STR_TONS                                                        :{COMMA} tonnellat{P a e}
-STR_LITERS                                                      :{COMMA} litr{P o i}
-STR_ITEMS                                                       :{COMMA} oggett{P o i}
-STR_CRATES                                                      :{COMMA} cass{P a e}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passegger{P o i}
+STR_BAGS                                                        :{COMMA}{NBSP}sacc{P o hi}
+STR_TONS                                                        :{COMMA}{NBSP}tonnellat{P a e}
+STR_LITERS                                                      :{COMMA}{NBSP}litr{P o i}
+STR_ITEMS                                                       :{COMMA}{NBSP}oggett{P o i}
+STR_CRATES                                                      :{COMMA}{NBSP}cass{P a e}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu scuro
@@ -193,37 +193,37 @@ STR_COLOUR_GREY                                                 :Grigio
 STR_COLOUR_WHITE                                                :Bianco
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} hp
-STR_UNITS_POWER_METRIC                                          :{COMMA} hp
-STR_UNITS_POWER_SI                                              :{COMMA} kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonnellat{P a e}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonnellat{P a e}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P e i}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P o i}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P e i}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litr{P o i}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} piedi
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}piedi
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
@@ -1472,7 +1472,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Gli intervalli 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Determina se la manutenzione dei veicoli è controllata dal tempo trascorso dall'ultima manutenzione piuttosto che dalla riduzione dell'affidabilità di una certa frazione di quella massima
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervallo manutenzione predefinito treni: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Imposta l'intervallo di manutenzione predefinito per i nuovi veicoli ferroviari, quando non viene impostato nessun intervallo esplicito
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} giorn{P 0 o i}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}giorn{P 0 o i}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabilitato
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervallo manutenzione predefinito automezzi: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Imposta l'intervallo di manutenzione predefinito per i nuovi automezzi, quando non viene impostato nessun intervallo esplicito
@@ -1614,9 +1614,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensione medi
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Rimuovi segmenti isolati con la ricostruzione delle strade cittadine: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Rimuove i segmenti di strada abbandonati come parte di una ricostruzione finanziata delle strade
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aggiorna il grafo di distribuzione ogni {STRING} giorn{P 0:2 o i}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aggiorna il grafo di distribuzione ogni {STRING}{NBSP}giorn{P 0:2 o i}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tempo fra due ricalcoli consecutivi del grafo delle rotte. Ad ogni ricalcolo vengono generati i piani per una sola componente del grafo. Ciò significa che una valore X per questa impostazione non causa il ricalcolo dell'intero grafo ogni X giorni, ma solo di una componente. Più breve l'intervallo impostato, più tempo la CPU consuma per calcolare il grafo. Più lungo l'intervallo, più a lungo bisogna attendere prima che la distribuzione abbia inizio su nuovi percorsi.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Impiega {STRING} giorn{P 0:2 o i} per il ricalcolo del grafo di distribuzione
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Impiega {STRING}{NBSP}giorn{P 0:2 o i} per il ricalcolo del grafo di distribuzione
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tempo impiegato per il ricalcolo di una singola componente del grafo. All'avvio di un ricalcolo viene creato un thread che è mantenuto in esecuzione per il numero di giorni impostato. Più corto è l'intervallo impostato, più è probabile che il thread non termini in tempo. In questo caso, il gioco si interrompe attendendo la fine del thread (causando un rallentamento). Più l'intervallo impostato è lungo, più tempo è necessario affinché la distribuzione venga aggiornata quando le rotte cambiano.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manuale
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asimmetrica
@@ -2989,8 +2989,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} consegnato
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ancora richiest{G 1 o o a})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (consegnat{G 1 o o a})
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La città cresce ogni {ORANGE}{COMMA}{BLACK} giorn{P o i}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La città cresce ogni {ORANGE}{COMMA}{BLACK} giorn{P o i} (finanziata)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La città cresce ogni {ORANGE}{COMMA}{BLACK}{NBSP}giorn{P o i}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La città cresce ogni {ORANGE}{COMMA}{BLACK}{NBSP}giorn{P o i} (finanziata)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La città {RED}non{BLACK} sta crescendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della città. CTRL+clic la mostra in una mini visuale.
@@ -3644,7 +3644,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crediti di trasferimento: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Manutenzione ogni: {LTBLUE}{COMMA} giorni{BLACK}   Ultima volta: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Manutenzione ogni: {LTBLUE}{COMMA}{NBSP}giorni{BLACK}   Ultima volta: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervallo manutenzione: {LTBLUE}{COMMA}%{BLACK}   Ultima il: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumenta l'intervallo di manutenzione di 10. CTRL+clic lo aumenta di 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Riduce l'intervallo di manutenzione di 10. CTRL+clic lo riduce di 5.
@@ -3876,8 +3876,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viaggia per {ST
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaggia per {STRING} a non più di {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :e sosta per {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaggia per {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} giorn{P o i}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}giorn{P o i}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Gli ordini richiedono complessivamente {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Gli ordini richiedono almeno {STRING} (non tutti i tempi specificati)

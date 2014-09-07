@@ -95,30 +95,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :汽水
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} 名乘客
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}名乘客
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} 煤碳
-STR_QUANTITY_MAIL                                               :{COMMA} 包郵件
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}包郵件
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} 石油
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} 頭牲畜
-STR_QUANTITY_GOODS                                              :{COMMA} 箱商品
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}頭牲畜
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}箱商品
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} 穀物
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} 木材
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} 鐵礦
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} 鋼鐵
-STR_QUANTITY_VALUABLES                                          :{COMMA} 包貴重物品
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}包貴重物品
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} 銅礦
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} 玉米
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} 水果
-STR_QUANTITY_DIAMONDS                                           :{COMMA} 包鑽石
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}包鑽石
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} 食物
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} 紙張
-STR_QUANTITY_GOLD                                               :{COMMA} 包黃金
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}包黃金
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} 淡水
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} 小麥
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} 橡膠
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} 砂糖
-STR_QUANTITY_TOYS                                               :{COMMA} 件玩具
-STR_QUANTITY_SWEETS                                             :{COMMA} 包甜點
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}件玩具
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}包糖果
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} 可樂
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} 棉花糖
 STR_QUANTITY_BUBBLES                                            :{COMMA} 個泡泡
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}無
 STR_ABBREV_ALL                                                  :{TINY_FONT}全
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} 乘客
-STR_BAGS                                                        :{COMMA} 包
-STR_TONS                                                        :{COMMA} 噸
-STR_LITERS                                                      :{COMMA} 公升
-STR_ITEMS                                                       :{COMMA} 件
-STR_CRATES                                                      :{COMMA} 箱
+STR_PASSENGERS                                                  :{COMMA}{NBSP}名乘客
+STR_BAGS                                                        :{COMMA}{NBSP}包
+STR_TONS                                                        :{COMMA}{NBSP}噸
+STR_LITERS                                                      :{COMMA}{NBSP}公升
+STR_ITEMS                                                       :{COMMA}{NBSP}頭
+STR_CRATES                                                      :{COMMA}{NBSP}箱
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :暗藍
@@ -191,37 +191,37 @@ STR_COLOUR_GREY                                                 :灰
 STR_COLOUR_WHITE                                                :白
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/小時
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 公里/小時
-STR_UNITS_VELOCITY_SI                                           :{COMMA} 米/秒
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}英里/小時
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}公里/小時
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}米/秒
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}匹
-STR_UNITS_POWER_METRIC                                          :{COMMA}匹
-STR_UNITS_POWER_SI                                              :{COMMA}千瓦
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}匹
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}匹
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}千瓦
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} 短噸
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}噸
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}短噸
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}噸
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}公斤
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} 短噸
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}公噸
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} 千克
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}短噸
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}公噸
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}公斤
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} 加侖
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}升
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}米³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}加侖
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}升
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}米³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} 加侖
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} 公升
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} 立方米
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}加侖
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}公升
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}立方米
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} 磅力
-STR_UNITS_FORCE_METRIC                                          :{COMMA} 公斤力
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}磅力
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}公斤力
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}千牛頓
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} 英呎
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} 米
-STR_UNITS_HEIGHT_SI                                             :{COMMA} 公尺
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}英呎
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}米
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}公尺
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}篩選字串：
@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :維護間隔以
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :選擇啟動運輸工具自動前往維修設施進行維護的條件：要麼以上次進行維修的時距決定，要麼以可靠度下降的百分比（相對於其最大可靠度而言）決定
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :預設的列車維護作業時距： {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :設定預設的列車維護作業時距。所有沒有指定維護作業時距的列車都會使用這個預設值
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 日/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}日/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :停用
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :預設的公路車輛維護作業時距： {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :設定預設的公路車輛維護作業時距。所有沒有指定維護作業時距的公路車輛都會使用這個預設值
@@ -1592,7 +1592,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :設定是否在
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每{STRING}日更新貨物分配圖
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次計算貨物分配圖之間的時間。由於每次重新計算只會處理一個貨物分配圖元件，因此本設定不代表「每若干日重新計算整個貨物分配圖」。{}如果此設定賦值越小，則系統需要使用更多處理器時間計算貨物分配圖。相反，如果此設定賦值越大，則貨物被派往新路線所需的時間越長。
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :每次更新貨物分配圖持續 {STRING} 天
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :用 {STRING}{NBSP}天更新貨物分配圖
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :當更新貨物分配圖時，系統會衍生一條執行緒。本設定的值即為執行緒的持續時間。{}這設定賦值越小，執行緒越有可能在應當停止的時候仍未完成運算，遊戲會暫停運行至執行緒完成工作。相反，這設定賦值越大，則貨物分配功能需要較長時間反映路線網絡變動的影響。
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手動
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不對稱
@@ -2959,8 +2959,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 已運送
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (仍然需要)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN}（已運送）
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}該市鎮每隔 {ORANGE}{COMMA}{BLACK} 天擴張一次
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}該市鎮每隔 {ORANGE}{COMMA}{BLACK} 天擴張一次 (有資金協助)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}該市鎮每隔 {ORANGE}{COMMA}{BLACK}{NBSP}天擴張一次
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}該市鎮每隔 {ORANGE}{COMMA}{BLACK}{NBSP}天擴張一次 (正接受資助)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}市鎮{RED}不在{BLACK}成長
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}市鎮噪音限制：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市鎮置於畫面中央。按住 Ctrl 點選可於市鎮位置開啟新視窗視野
@@ -3614,7 +3614,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}容量�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}轉運潛在收入：{LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}維護間隔：{LTBLUE}{COMMA} 天{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}每隔 {LTBLUE}{COMMA}{NBSP}天進行維護{BLACK}   上次維護日期：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}維護間隔：{LTBLUE}{COMMA}%{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位延長維護間隔。 按住 Ctrl 點選可以 5 為單位
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位縮短維護間隔。 按住 Ctrl 點選可以 5 為單位
@@ -3846,8 +3846,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :運行需時 {S
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :以不超過 {1:VELOCITY} 的速度運行 {0:STRING}
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :並運行 {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} 日
-STR_TIMETABLE_TICKS                                             :{COMMA} tick
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}日
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}個時間標記
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
