@@ -2,8 +2,6 @@
 #ifndef _SQLEXER_H_
 #define _SQLEXER_H_
 
-typedef unsigned short LexChar;
-
 struct SQLexer
 {
 	SQLexer();
@@ -14,7 +12,7 @@ struct SQLexer
 	const SQChar *Tok2Str(SQInteger tok);
 private:
 	SQInteger GetIDType(SQChar *s);
-	SQInteger ReadString(LexChar ndelim,bool verbatim);
+	SQInteger ReadString(WChar ndelim,bool verbatim);
 	SQInteger ReadNumber();
 	void LexBlockComment();
 	SQInteger ReadID();
@@ -22,7 +20,7 @@ private:
 	SQInteger _curtoken;
 	SQTable *_keywords;
 	void INIT_TEMP_STRING() { _longstr.resize(0); }
-	void APPEND_CHAR(LexChar c);
+	void APPEND_CHAR(WChar c);
 	void TERMINATE_BUFFER() { _longstr.push_back('\0'); }
 
 public:
@@ -35,7 +33,7 @@ public:
 	SQFloat _fvalue;
 	SQLEXREADFUNC _readf;
 	SQUserPointer _up;
-	LexChar _currdata;
+	WChar _currdata;
 	SQSharedState *_sharedstate;
 	sqvector<SQChar> _longstr;
 	CompilerErrorFunc _errfunc;

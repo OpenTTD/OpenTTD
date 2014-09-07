@@ -380,14 +380,14 @@ public:
 	}
 };
 
-static SQInteger _io_file_lexfeed_ASCII(SQUserPointer file)
+static WChar _io_file_lexfeed_ASCII(SQUserPointer file)
 {
 	char c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return c;
 	return 0;
 }
 
-static SQInteger _io_file_lexfeed_UTF8(SQUserPointer file)
+static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
 {
 	static const SQInteger utf8_lengths[16] =
 	{
@@ -399,7 +399,7 @@ static SQInteger _io_file_lexfeed_UTF8(SQUserPointer file)
 	};
 	static unsigned char byte_masks[5] = {0, 0, 0x1F, 0x0F, 0x07};
 	unsigned char inchar;
-	SQInteger c = 0;
+	WChar c = 0;
 	if (((SQFile *)file)->Read(&inchar, sizeof(inchar), 1) != 1) return 0;
 	c = inchar;
 
@@ -419,19 +419,19 @@ static SQInteger _io_file_lexfeed_UTF8(SQUserPointer file)
 	return c;
 }
 
-static SQInteger _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
+static WChar _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
 {
-	wchar_t c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (SQChar)c;
+	unsigned short c;
+	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (WChar)c;
 	return 0;
 }
 
-static SQInteger _io_file_lexfeed_UCS2_swap(SQUserPointer file)
+static WChar _io_file_lexfeed_UCS2_swap(SQUserPointer file)
 {
 	unsigned short c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) {
 		c = ((c >> 8) & 0x00FF)| ((c << 8) & 0xFF00);
-		return (SQChar)c;
+		return (WChar)c;
 	}
 	return 0;
 }
