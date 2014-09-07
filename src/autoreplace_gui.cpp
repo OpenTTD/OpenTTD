@@ -84,6 +84,8 @@ class ReplaceVehicleWindow : public Window {
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right (#update_left and/or #update_right) and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
 	int details_height;           ///< Minimal needed height of the details panels (found so far).
+	byte sort_criteria;           ///< Criteria of sorting vehicles.
+	bool descending_sort_order;   ///< Order of sorting vehicles.
 	RailType sel_railtype;        ///< Type of rail tracks selected.
 	Scrollbar *vscroll[2];
 
@@ -140,7 +142,12 @@ class ReplaceVehicleWindow : public Window {
 			if (eid == this->sel_engine[side]) selected_engine = eid; // The selected engine is still in the list
 		}
 		this->sel_engine[side] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
-		EngList_Sort(list, &EngineNumberSorter);
+		if (draw_left) {
+			EngList_Sort(list, &EngineNumberSorter);
+		} else {
+			_engine_sort_direction = this->descending_sort_order;
+			EngList_Sort(list, _engine_sort_functions[this->window_number][this->sort_criteria]);
+		}
 	}
 
 	/** Generate the lists */
@@ -233,6 +240,8 @@ public:
 		this->vscroll[1] = this->GetScrollbar(WID_RV_RIGHT_SCROLLBAR);
 		this->FinishInitNested(vehicletype);
 
+		this->sort_criteria = _engine_sort_last_criteria[vehicletype];
+		this->descending_sort_order = _engine_sort_last_order[vehicletype];
 		this->owner = _local_company;
 		this->sel_group = id_g;
 	}
@@ -240,6 +249,14 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
+			case WID_RV_SORT_ASSENDING_DESCENDING: {
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX:
 				resize->height = GetEngineListHeight((VehicleType)this->window_number);
@@ -332,6 +349,10 @@ public:
 				}
 				break;
 
+			case WID_RV_SORT_DROPDOWN:
+				SetDParam(0, _engine_sort_listing[this->window_number][this->sort_criteria]);
+				break;
+
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
 				const Company *c = Company::Get(_local_company);
 				SetDParam(0, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
@@ -347,6 +368,10 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
+			case WID_RV_SORT_ASSENDING_DESCENDING:
+				this->DrawSortButtonState(WID_RV_SORT_ASSENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+				break;
+
 			case WID_RV_INFO_TAB: {
 				const Company *c = Company::Get(_local_company);
 				StringID str;
@@ -431,6 +456,17 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
+			case WID_RV_SORT_ASSENDING_DESCENDING:
+				this->descending_sort_order ^= true;
+				_engine_sort_last_order[this->window_number] = this->descending_sort_order;
+				this->engines[1].ForceRebuild();
+				this->SetDirty();
+				break;
+
+			case WID_RV_SORT_DROPDOWN:
+				DisplayVehicleSortDropDown(this, static_cast<VehicleType>(this->window_number), this->sort_criteria, WID_RV_SORT_DROPDOWN);
+				break;
+
 			case WID_RV_TRAIN_ENGINEWAGON_TOGGLE:
 				this->replace_engines  = !(this->replace_engines);
 				this->engines[0].ForceRebuild();
@@ -490,6 +526,15 @@ public:
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
+			case WID_RV_SORT_DROPDOWN:
+				if (this->sort_criteria != index) {
+					this->sort_criteria = index;
+					_engine_sort_last_criteria[this->window_number] = this->sort_criteria;
+					this->engines[1].ForceRebuild();
+					this->SetDirty();
+				}
+				break;
+
 			case WID_RV_TRAIN_RAILTYPE_DROPDOWN: {
 				RailType temp = (RailType)index;
 				if (temp == sel_railtype) return; // we didn't select a new one. No need to change anything
@@ -542,6 +587,13 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASSENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_MATRIX, COLOUR_GREY, WID_RV_LEFT_MATRIX), SetMinimalSize(216, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_REPLACE_HELP_LEFT_ARRAY), SetResize(1, 1), SetScrollbar(WID_RV_LEFT_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_RV_LEFT_SCROLLBAR),
 		NWidget(WWT_MATRIX, COLOUR_GREY, WID_RV_RIGHT_MATRIX), SetMinimalSize(216, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_REPLACE_HELP_RIGHT_ARRAY), SetResize(1, 1), SetScrollbar(WID_RV_RIGHT_SCROLLBAR),
@@ -581,6 +633,13 @@ static const NWidgetPart _nested_replace_vehicle_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASSENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_MATRIX, COLOUR_GREY, WID_RV_LEFT_MATRIX), SetMinimalSize(216, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_REPLACE_HELP_LEFT_ARRAY), SetResize(1, 1), SetScrollbar(WID_RV_LEFT_SCROLLBAR),

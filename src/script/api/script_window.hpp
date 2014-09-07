@@ -923,6 +923,10 @@ public:
 	enum ReplaceVehicleWidgets {
 		WID_RV_CAPTION                               = ::WID_RV_CAPTION,                               ///< Caption of the window.
 
+		/* Sort dropdown at the right. */
+		WID_RV_SORT_ASSENDING_DESCENDING             = ::WID_RV_SORT_ASSENDING_DESCENDING,             ///< Ascending/descending sort order button.
+		WID_RV_SORT_DROPDOWN                         = ::WID_RV_SORT_DROPDOWN,                         ///< Dropdown for the sort criteria.
+
 		/* Left and right matrix + details. */
 		WID_RV_LEFT_MATRIX                           = ::WID_RV_LEFT_MATRIX,                           ///< The matrix on the left.
 		WID_RV_LEFT_SCROLLBAR                        = ::WID_RV_LEFT_SCROLLBAR,                        ///< The scrollbar for the matrix on the left.
