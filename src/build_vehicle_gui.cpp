@@ -948,7 +948,7 @@ struct BuildVehicleWindow : Window {
 		this->vehicle_type = type;
 		this->window_number = tile == INVALID_TILE ? (int)type : tile;
 
-		this->sel_engine      = INVALID_ENGINE;
+		this->sel_engine = INVALID_ENGINE;
 
 		this->sort_criteria         = _last_sort_criteria[type];
 		this->descending_sort_order = _last_sort_order[type];
@@ -1311,6 +1311,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
 				SetDParam(0, this->cargo_filter_texts[this->cargo_filter_criteria]);
+				break;
 		}
 	}
 

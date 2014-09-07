@@ -393,16 +393,12 @@ public:
 		 *    Either engines list is empty
 		 * or The selected replacement engine has a replacement (to prevent loops). */
 		this->SetWidgetDisabledState(WID_RV_START_REPLACE,
-										this->sel_engine[0] == INVALID_ENGINE ||
-										this->sel_engine[1] == INVALID_ENGINE ||
-										EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != INVALID_ENGINE);
+				this->sel_engine[0] == INVALID_ENGINE || this->sel_engine[1] == INVALID_ENGINE || EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != INVALID_ENGINE);
 
 		/* Disable the "Stop Replacing" button if:
 		 *   The left engines list (existing vehicle) is empty
 		 *   or The selected vehicle has no replacement set up */
-		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE,
-										this->sel_engine[0] == INVALID_ENGINE ||
-										!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
+		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE, this->sel_engine[0] == INVALID_ENGINE || !EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
 
 		if (this->window_number == VEH_TRAIN) {
 			/* sets the colour of that art thing */
