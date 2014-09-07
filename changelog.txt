@@ -1,3 +1,16 @@
+1.4.3-RC1 (2014-09-07)
+------------------------------------------------------------------------
+- Fix: TC_NO_SHADE did not work for 32bpp text rendering (r26792)
+- Fix: Loading a game with order backups leaked Orders and left unreachable items in the pool (r26787)
+- Fix: Buffer overrun in SQCompiler::Error (r26764)
+- Fix: Desync due to not always properly restoring game state from the savegame (r26753)
+- Fix: [Script] Crashes and infinite loops when using lists in item-descending order [FS#6085] (r26744)
+- Fix: Incorrect CFLAGS when enabling gprof profiling (r26737, r26735)
+- Fix: Do not reset the last selected airport or layout, unless it is really necessary [FS#6083] (r26732)
+- Fix: Use the normal search path to look for xdg-open at Unix [FS#6077] (r26724)
+- Fix: Properly check for cargo acceptance of houses [FS#5997] (r26723)
+
+
 1.4.2 (2014-08-16)
 ------------------------------------------------------------------------
 (None)
