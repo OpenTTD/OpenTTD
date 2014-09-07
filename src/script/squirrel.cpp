@@ -389,33 +389,20 @@ static WChar _io_file_lexfeed_ASCII(SQUserPointer file)
 
 static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
 {
-	static const SQInteger utf8_lengths[16] =
-	{
-		1, 1, 1, 1, 1, 1, 1, 1, /* 0000 to 0111 : 1 byte (plain ASCII) */
-		0, 0, 0, 0,             /* 1000 to 1011 : not valid */
-		2, 2,                   /* 1100, 1101 : 2 bytes */
-		3,                      /* 1110 : 3 bytes */
-		4                       /* 1111 : 4 bytes */
-	};
-	static unsigned char byte_masks[5] = {0, 0, 0x1F, 0x0F, 0x07};
-	unsigned char inchar;
-	WChar c = 0;
-	if (((SQFile *)file)->Read(&inchar, sizeof(inchar), 1) != 1) return 0;
-	c = inchar;
+	char buffer[5];
 
-	if (c >= 0x80) {
-		SQInteger tmp;
-		SQInteger codelen = utf8_lengths[c >> 4];
-		if (codelen == 0) return 0;
+	/* Read the first character, and get the length based on UTF-8 specs. If invalid, bail out. */
+	if (((SQFile *)file)->Read(buffer, sizeof(buffer[0]), 1) != 1) return 0;
+	uint len = Utf8EncodedCharLen(buffer[0]);
+	if (len == 0) return -1;
 
-		tmp = c & byte_masks[codelen];
-		for (SQInteger n = 0; n < codelen - 1; n++) {
-			tmp <<= 6;
-			if (((SQFile *)file)->Read(&inchar, sizeof(inchar), 1) != 1) return 0;
-			tmp |= inchar & 0x3F;
-		}
-		c = tmp;
-	}
+	/* Read the remaining bits. */
+	if (len > 1 && ((SQFile *)file)->Read(buffer + 1, sizeof(buffer[0]), len - 1) != len - 1) return 0;
+
+	/* Convert the character, and when definitely invalid, bail out as well. */
+	WChar c;
+	if (Utf8Decode(&c, buffer) != len) return -1;
+
 	return c;
 }
 
