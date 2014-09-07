@@ -925,6 +925,7 @@ public:
 
 		/* Sort dropdown at the right. */
 		WID_RV_SORT_ASSENDING_DESCENDING             = ::WID_RV_SORT_ASSENDING_DESCENDING,             ///< Ascending/descending sort order button.
+		WID_RV_SHOW_HIDDEN_ENGINES                   = ::WID_RV_SHOW_HIDDEN_ENGINES,                   ///< Toggle whether to display the hidden vehicles.
 		WID_RV_SORT_DROPDOWN                         = ::WID_RV_SORT_DROPDOWN,                         ///< Dropdown for the sort criteria.
 
 		/* Left and right matrix + details. */

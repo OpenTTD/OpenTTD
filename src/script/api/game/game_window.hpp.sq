@@ -214,6 +214,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AP_BTN_DOHILIGHT,                      "WID_AP_BTN_DOHILIGHT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_CAPTION,                            "WID_RV_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_SORT_ASSENDING_DESCENDING,          "WID_RV_SORT_ASSENDING_DESCENDING");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_SHOW_HIDDEN_ENGINES,                "WID_RV_SHOW_HIDDEN_ENGINES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_SORT_DROPDOWN,                      "WID_RV_SORT_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_LEFT_MATRIX,                        "WID_RV_LEFT_MATRIX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_LEFT_SCROLLBAR,                     "WID_RV_LEFT_SCROLLBAR");
