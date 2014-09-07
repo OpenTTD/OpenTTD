@@ -929,10 +929,12 @@ void NetworkGameLoop()
 				p += 2;
 			}
 
-			if (strncmp(p, "cmd: ", 5) == 0) {
+			if (strncmp(p, "cmd: ", 5) == 0 || strncmp(p, "cmdf: ", 6) == 0) {
+				p += 5;
+				if (*p == ' ') p++;
 				cp = CallocT<CommandPacket>(1);
 				int company;
-				int ret = sscanf(p + 5, "%x; %x; %x; %x; %x; %x; %x; \"%[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %x; \"%[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
 				/* There are 8 pieces of data to read, however the last is a
 				 * string that might or might not exist. Ignore it if that
 				 * string misses because in 99% of the time it's not used. */
