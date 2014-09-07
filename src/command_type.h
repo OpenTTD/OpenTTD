@@ -216,6 +216,7 @@ enum Commands {
 	CMD_SELL_VEHICLE,                 ///< sell a vehicle
 	CMD_REFIT_VEHICLE,                ///< refit the cargo space of a vehicle
 	CMD_SEND_VEHICLE_TO_DEPOT,        ///< send a vehicle to a depot
+	CMD_SET_VEHICLE_VISIBILITY,       ///< hide or unhide a vehicle in the build vehicle and autoreplace GUIs
 
 	CMD_MOVE_RAIL_VEHICLE,            ///< move a rail vehicle (in the depot)
 	CMD_FORCE_TRAIN_PROCEED,          ///< proceed a train to pass a red signal

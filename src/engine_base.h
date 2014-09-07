@@ -37,6 +37,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	CompanyByte preview_company;///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
 	byte preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	CompanyMask company_avail;  ///< Bit for each company whether the engine is available for that company.
+	CompanyMask company_hidden; ///< Bit for each company whether the engine is normally hidden in the build gui for that company.
 	uint8 original_image_index; ///< Original vehicle image index, thus the image index of the overridden vehicle
 	VehicleType type;           ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
 
@@ -110,6 +111,16 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint GetDisplayMaxTractiveEffort() const;
 	Date GetLifeLengthInDays() const;
 	uint16 GetRange() const;
+
+	/**
+	 * Check whether the engine is hidden in the GUI for the given company.
+	 * @param c Company to check.
+	 * @return \c true iff the engine is hidden in the GUI for the given company.
+	 */
+	inline bool IsHidden(CompanyByte c) const
+	{
+		return c < MAX_COMPANIES && HasBit(this->company_hidden, c);
+	}
 
 	/**
 	 * Check if the engine is a ground vehicle.

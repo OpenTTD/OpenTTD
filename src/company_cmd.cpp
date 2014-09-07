@@ -41,6 +41,8 @@
 
 #include "safeguards.h"
 
+void ClearEnginesHiddenFlagOfCompany(CompanyID cid);
+
 CompanyByte _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyByte _current_company; ///< Company currently doing an action.
 Colours _company_colours[MAX_COMPANIES];  ///< NOSAVE: can be determined from company structs.
@@ -558,6 +560,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false); // create a random company manager face
 
 	SetDefaultCompanySettings(c->index);
+	ClearEnginesHiddenFlagOfCompany(c->index);
 
 	GeneratePresidentName(c);
 

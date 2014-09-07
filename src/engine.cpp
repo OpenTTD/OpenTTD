@@ -655,6 +655,7 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	e->age = 0;
 	e->flags = 0;
 	e->company_avail = 0;
+	e->company_hidden = 0;
 
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
@@ -851,6 +852,41 @@ void EnginesDailyLoop()
 			}
 		}
 	}
+}
+
+/**
+ * Clear the 'hidden' flag for all engines of a new company.
+ * @param cid Company being created.
+ */
+void ClearEnginesHiddenFlagOfCompany(CompanyID cid)
+{
+	Engine *e;
+	FOR_ALL_ENGINES(e) {
+		SB(e->company_hidden, cid, 1, 0);
+	}
+}
+
+/**
+ * Set the visibility of an engine.
+ * @param tile Unused.
+ * @param flags Operation to perform.
+ * @param p1 Unused.
+ * @param p2 Bit 31: 0=visible, 1=hidden, other bits for the #EngineID.
+ * @param text Unused.
+ * @return The cost of this operation or an error.
+ */
+CommandCost CmdSetVehicleVisibility(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	Engine *e = Engine::GetIfValid(GB(p2, 0, 31));
+	if (e == NULL || _current_company >= MAX_COMPANIES) return CMD_ERROR;
+	if ((e->flags & ENGINE_AVAILABLE) == 0 || !HasBit(e->company_avail, _current_company)) return CMD_ERROR;
+
+	if ((flags & DC_EXEC) != 0) {
+		SB(e->company_hidden, _current_company, 1, GB(p2, 31, 1));
+		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
+	}
+
+	return CommandCost();
 }
 
 /**
