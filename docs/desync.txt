@@ -194,6 +194,7 @@ Table of contents
    - Get the same version of OpenTTD as the original server was running.
    - Uncomment/enable the define 'DEBUG_DUMP_COMMANDS' in
      'src/network/network_func.h'.
+     (DEBUG_FAILED_DUMP_COMMANDS is explained later)
    - Put the 'commands-out.log' into the root save folder, and rename
       it to 'commands.log'.
    - Run 'openttd -D -d desync=3 -g startsavegame.sav'.
@@ -216,6 +217,11 @@ Table of contents
    - If one of those replays fails, you have located the Desync between
      the last dmp_cmds that reproduces the replay and the first one
      that fails.
+
+  If the replay does not succeed without mismatch, you can check the logs
+  whether there were failed commands. Then you may try to replay with
+  DEBUG_FAILED_DUMP_COMMANDS enabled. If the replay then fails, the
+  command test-run of the failed command modified the game state.
 
   If you have the original 'dmp_cmds_*.sav', you can also compare those
   savegames with your own ones from the replay. You can also comment/disable

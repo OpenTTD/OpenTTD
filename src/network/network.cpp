@@ -929,7 +929,11 @@ void NetworkGameLoop()
 				p += 2;
 			}
 
-			if (strncmp(p, "cmd: ", 5) == 0 || strncmp(p, "cmdf: ", 6) == 0) {
+			if (strncmp(p, "cmd: ", 5) == 0
+#ifdef DEBUG_FAILED_DUMP_COMMANDS
+				|| strncmp(p, "cmdf: ", 6) == 0
+#endif
+				) {
 				p += 5;
 				if (*p == ' ') p++;
 				cp = CallocT<CommandPacket>(1);
@@ -958,6 +962,10 @@ void NetworkGameLoop()
 			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||
 						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0) {
 				/* A message that is not very important to the log playback, but part of the log. */
+#ifndef DEBUG_FAILED_DUMP_COMMANDS
+			} else if (strncmp(p, "cmdf: ", 6) == 0) {
+				DEBUG(net, 0, "Skipping replay of failed command: %s", p + 6);
+#endif
 			} else {
 				/* Can't parse a line; what's wrong here? */
 				DEBUG(net, 0, "trying to parse: %s", p);

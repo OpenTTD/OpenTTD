@@ -17,6 +17,7 @@
  * See docs/desync.txt for details.
  */
 // #define DEBUG_DUMP_COMMANDS
+// #define DEBUG_FAILED_DUMP_COMMANDS
 
 #include "core/address.h"
 #include "network_type.h"
