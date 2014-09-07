@@ -226,8 +226,27 @@ public:
 		this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->OnInvalidateData();
 
-		this->vscroll->SetCount(AirportClass::Get(_selected_airport_class)->GetSpecCount());
-		this->SelectFirstAvailableAirport(true);
+		/* Ensure airport class is valid (changing NewGRFs). */
+		_selected_airport_class = Clamp(_selected_airport_class, APC_BEGIN, (AirportClassID)(AirportClass::GetClassCount() - 1));
+		const AirportClass *ac = AirportClass::Get(_selected_airport_class);
+		this->vscroll->SetCount(ac->GetSpecCount());
+
+		/* Ensure the airport index is valid for this class (changing NewGRFs). */
+		_selected_airport_index = Clamp(_selected_airport_index, -1, ac->GetSpecCount() - 1);
+
+		/* Only when no valid airport was selected, we want to select the first airport. */
+		bool selectFirstAirport = true;
+		if (_selected_airport_index != -1) {
+			const AirportSpec *as = ac->GetSpec(_selected_airport_index);
+			if (as->IsAvailable()) {
+				/* Ensure the airport layout is valid. */
+				_selected_airport_layout = Clamp(_selected_airport_layout, 0, as->num_table - 1);
+				selectFirstAirport = false;
+				this->UpdateSelectSize();
+			}
+		}
+
+		if (selectFirstAirport) this->SelectFirstAvailableAirport(true);
 	}
 
 	virtual ~BuildAirportWindow()

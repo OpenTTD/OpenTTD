@@ -1450,7 +1450,11 @@ make_cflags_and_ldflags() {
 			LDFLAGS="$LDFLAGS -noixemul"
 		fi
 
-		CFLAGS="-O2 -fomit-frame-pointer $CFLAGS"
+		if [ "$enable_profiling" = "0" ]; then
+			# -fomit-frame-pointer and -pg do not go well together (gcc errors they are incompatible)
+			CFLAGS="-fomit-frame-pointer $CFLAGS"
+		fi
+		CFLAGS="-O2 $CFLAGS"
 	else
 		OBJS_SUBDIR="debug"
 
@@ -1494,7 +1498,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ "$enable_profiling" != "0" ]; then
-		CFLAGS="$CFLAGS -p"
+		CFLAGS="$CFLAGS -pg"
 		LDFLAGS="$LDFLAGS -pg"
 	fi
 
