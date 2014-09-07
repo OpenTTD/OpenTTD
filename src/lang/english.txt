@@ -3494,6 +3494,11 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Road Vehicle
 STR_REPLACE_VEHICLE_SHIP                                        :Ship
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aircraft
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Vehicles in use
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Column with vehicles that you own
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Available vehicles
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Column with vehicles available for replacement
+
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Select the engine type to replace
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Select the new engine type you would like to use in place of the left selected engine type
 
