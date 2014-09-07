@@ -591,7 +591,7 @@ bool ScriptInstance::IsPaused()
 
 		case SQSL_BOOL: {
 			SlObject(NULL, _script_byte);
-			if (vm != NULL) sq_pushinteger(vm, (SQBool)(_script_sl_byte != 0));
+			if (vm != NULL) sq_pushbool(vm, (SQBool)(_script_sl_byte != 0));
 			return true;
 		}
 
