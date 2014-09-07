@@ -66,7 +66,7 @@ public:
 		static SQChar temp[256];
 		va_list vl;
 		va_start(vl, s);
-		scvsprintf(temp, s, vl);
+		scvsnprintf(temp, sizeof(temp), s, vl);
 		va_end(vl);
 		throw temp;
 	}
