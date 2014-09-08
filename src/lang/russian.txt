@@ -374,6 +374,17 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прок
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка влево/вправо
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Полная очистка прямоугольного участка земли. Ctrl - выбор области по диагонали. При нажатом Shift - оценка стоимости очистки.
 
+# Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Показать скрытые
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Показать скрытые
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Показать скрытые
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Показать скрытые
+
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Если эта кнопка нажата, скрытые локомотивы и вагоны также будут показаны
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Если эта кнопка нажата, скрытые модели автомобилей также будут показаны
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Если эта кнопка нажата, скрытые модели кораблей также будут показаны
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если эта кнопка нажата, скрытые воздушные суда также будут показаны
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
 STR_BUTTON_CANCEL                                               :{BLACK}Отмена
@@ -3545,10 +3556,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кро�
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список локомотивов и вагонов - щёлкните для получения информации
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автотранспорта - щёлкните для получения информации
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список кораблей - щёлкните для получения информации
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список воздушных судов - щёлкните для получения информации
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список локомотивов и вагонов - щёлкните для получения информации. Ctrl+щелчок скроет/покажет ТС.
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автотранспорта - щёлкните для получения информации. Ctrl+щелчок скроет/покажет выбранный автомобиль.
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список кораблей - щёлкните для получения информации. Ctrl+щелчок скроет/покажет выбранный корабль.
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список воздушных судов - щёлкните для получения информации. Ctrl+щелчок скроет/покажет ТС.
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купить
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купить
@@ -3569,6 +3580,21 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Изме
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Изменить название модели автомобиля
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Изменить название модели корабля
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Изменить название модели возд. судна
+
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Скрыть
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Скрыть
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Скрыть
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Скрыть
+
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Показать
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Показать
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Показать
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Показать
+
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Переключить скрытие/отображение выбранного локомотива/вагона
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Переключить скрытие/отображение выбранной модели автомобиля
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Переключить скрытие/отображение выбранной модели корабля
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Переключить скрытие/отображение выбранной модели воздушного судна
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Название модели поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Название модели автомобиля
@@ -3683,6 +3709,11 @@ STR_REPLACE_VEHICLE_SHIP                                        :Корабль
 STR_REPLACE_VEHICLE_SHIP.gen                                    :кораблей
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Авиатранспорт
 STR_REPLACE_VEHICLE_AIRCRAFT.gen                                :воздушного транспорта
+
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Имеющиеся ТС
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Здесь перечислены модели используемых транспортных средств
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Доступные ТС
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Здесь перечислены модели транспортных средств, доступных для замены
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбор типа транспорта для замены
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
@@ -5073,6 +5104,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (скрыт)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

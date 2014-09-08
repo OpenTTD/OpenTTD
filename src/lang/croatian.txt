@@ -344,6 +344,17 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Klizna t
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Klizna traka - lista lijevo/desno
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sruši građevine itd. na kvadratu zemlje. Ctrl selektira područje dijagonalno. Shift mijenja prikaz građenje/procjena troškova.
 
+# Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Prikaži sakrivene
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Prikaži sakrivene
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Prikaži sakrivene
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Prikaži sakrivene
+
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Uključivanjem ove opcije, prikazani su i sakriveni vlakovi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Uključivanjem ove opcije, prikazana su i sakrivena cestovna vozila
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Uključivanjem ove opcije, prikazani su i sakriveni brodovi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Uključivanjem ove opcije, prikazani su i sakriveni zrakoplovi
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Zadano
 STR_BUTTON_CANCEL                                               :{BLACK}Odustani
@@ -3461,10 +3472,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Sve osim {CARGO
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK} Maks. vučni napor: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} pločica
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Popis izabranih vlakova - klikni na vlak za informacije
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Popis izabranih cestovnih vozila - klikni na vozilo za informacije
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Popis izabranih brodova - klikni na brod za informacije
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Popis izabranih zrakoplova - klikni na zrakoplov za informacije
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Popis vlakova za odabir. Klikni na vozilo za informacije. Ctrl+klik za uključivanje ili isključivanje prikaza vrste vozila
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Popis cestovnih vozila za odabir. Klikni na vozilo za informacije. Ctrl+klik za uključivanje ili isključivanje prikaza vrste cestovnog vozila
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Popis brodova za odabir. Klikni na vozilo za informacije. Ctrl+klik za uključivanje ili isključivanje prikaza vrste broda
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Popis zrakoplova za odabir. Klikni na vozilo za informacije. Ctrl+klik za uključivanje ili isključivanje prikaza vrste zrakoplova
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kupi vozilo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kupi vozilo
@@ -3485,6 +3496,21 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Preimenu
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Preimenuj vrstu cestovnog vozila
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Preimenuj vrstu broda
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Preimenuj vrstu zrakoplova
+
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Sakrij
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Sakrij
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Sakrij
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Sakrij
+
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Prikaži
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Prikaži
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Prikaži
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Prikaži
+
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Prebacivanje skrivanja/prikazivanja vrste vlakova
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Prebacivanje skrivanja/prikazivanja vrste cestovnog vozila
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Prebacivanje skrivanja/prikazivanja vrste broda
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Prebacivanje skrivanja/prikazivanja vrste zrakoplova
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Preimenuj vrstu vagona
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Preimenuj vrstu cestovnog vozila
@@ -3589,6 +3615,11 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Vlak
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Cestovno vozilo
 STR_REPLACE_VEHICLE_SHIP                                        :Brod
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Zrakoplov
+
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Vozila u uporabi
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Stupac s vozilima koje posjedujete
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Dostupna vozila
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Stupac sa vozilima dostupnim za zamjenjivanje
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberi vrstu motora koju želiš zamijeniti
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Odaberite novu vrstu lokomotive koji želite koristiti umjesto lijevo odabrane vrste lokomotive
@@ -4979,6 +5010,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (sakriveno)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

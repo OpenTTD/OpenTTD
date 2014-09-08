@@ -249,6 +249,12 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament - desplaça la llista dreta/esquerra
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Enderroca edificis, etc. en un quadre de terreny. Ctrl selecciona l'àrea en diagonal. Shift commuta construir/mostrar el cost estimat
 
+# Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Mostrar ocults
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Mostrar ocults
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Mostrar ocults
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Predeterminat
 STR_BUTTON_CANCEL                                               :{BLACK}Cancel·la
@@ -3366,10 +3372,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tots menys {CAR
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Màx. Esforç de Tracció: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Abast: {GOLD}{COMMA} cel·les
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Llista de selecció de vehicles ferroviaris - clica al vehicle per més informació
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Llista de selecció de vehicles ferroviaris. Clica al vehicle per més informació. Ctrl+Click per a alternar entre mostrar/ocultar el vehicle ferroviari
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per més informació
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Llista de selecció de Vaixells. Clica en un vaixell per més informació. Ctrl+Click per a alternar entre mostrar/ocultar el vaixell
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Llista de selecció d'Avions. Clica sobre l'avió per més informació. Ctrl+Click per a alternar entre mostrar/ocultar l'aeronau
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Compra Vehicle
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra Vehicle
@@ -3390,6 +3396,17 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Canvia e
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Canvia el nom del model d'automòbil
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Canvia el nom del model de vaixell
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Canvia el nom del model d'avió
+
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Amagar
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Amagar
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Amagar
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Ocultar
+
+
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Alterna mostrar/ocultar el vehicle ferroviari
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Alterna mostrar/ocultar l'automòbil
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Alterna mostrar/ocultar el vaixell
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Alterna mostrar/amagar l'aeronau
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Canvia el nom del model de vehicle ferroviari
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Canvia el nom del model d'automòbil
@@ -3494,6 +3511,10 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Tren
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehicle
 STR_REPLACE_VEHICLE_SHIP                                        :Vaixell
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Avió
+
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Vehicles en ús
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Columna amb vehicles que estàs emprant
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Vehicles disponibles
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el model a substituir
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona el nou model que vols fer servir en lloc del seleccionat
@@ -4847,6 +4868,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (ocult)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

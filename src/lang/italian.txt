@@ -250,6 +250,17 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco a sinistra/destra
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolisce edifici etc. su un riquadro di terra. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
 
+# Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Mostra nascosti
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Mostra nascosti
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Mostra nascosti
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Mostra nascosti
+
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Mostra anche i tipi di veicolo ferroviario che sono stati nascosti
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Mostra anche i tipi di automezzo che sono stati nascosti
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Mostra anche i tipi di nave che sono stati nascosti
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Mostra anche i tipi di aeromobile che sono stati nascosti
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Predefinito
 STR_BUTTON_CANCEL                                               :{BLACK}Annulla
@@ -3395,10 +3406,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {C
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} riquadr{P o i}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Elenco di selezione dei veicoli ferroviari - fare clic su un veicolo per informazioni
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Elenco selezione automezzi - fare clic su un veicolo per informazioni
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Elenco selezione navi - fare clic su una nave per informazioni
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Elenco selezione aeromobili - fare clic su un aeromobile per informazioni
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Elenco di selezione dei veicoli ferroviari - fare clic su un veicolo per informazioni. CTRL+clic mostra/nasconde il tipo di veicolo
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Elenco selezione automezzi - fare clic su un veicolo per informazioni. CTRL+clic mostra/nasconde il tipo di automezzo
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Elenco selezione navi - fare clic su una nave per informazioni. CTRL+clic mostra/nasconde il tipo di nave
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Elenco selezione aeromobili - fare clic su un aeromobile per informazioni. CTRL+clic mostra/nasconde il tipo di aeromobile
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Compra veicolo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra veicolo
@@ -3419,6 +3430,21 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Rinomina
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Rinomina il tipo di automezzo
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Rinomina il tipo di nave
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Rinomina il tipo di aeromobile
+
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Nascondi
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Nascondi
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Nascondi
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Nascondi
+
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Mostra
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Mostra
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Mostra
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Mostra
+
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Mosta/nasconde il tipo di veicolo ferroviario
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Mosta/nasconde il tipo di automezzo
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Mosta/nasconde il tipo di nave
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Mosta/nasconde il tipo di aeromobile
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Rinomina tipo di veicolo ferroviario
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Rinomina tipo automezzo
@@ -3523,6 +3549,11 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Treno
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Automezzo
 STR_REPLACE_VEHICLE_SHIP                                        :Nave
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeromobile
+
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Veicoli in uso
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Colonna dei veicoli posseduti
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Veicoli disponibili
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Colonna dei veicoli disponibili per il rimpiazzo
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selezionare il tipo di locomotiva da rimpiazzare
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selezionare il nuovo modello di locomotiva che si desidera usare al posto di quello selezionato a sinistra
@@ -4876,6 +4907,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (nascosto)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

@@ -249,6 +249,13 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento - mueve la lista izquierda/derecha
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demoler edificios, etc. en un área de terreno. Ctrl permite seleccionar un área diagonalmente. Shift permite mostrar una estimación del precio
 
+# Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Mostrar ocultos
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Mostrar ocultos
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Mostrar ocultos
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Mostrar ocultos
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Por defecto
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
@@ -3366,10 +3373,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {C
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T máxima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} casillas
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículos de raíl - Click en vehículo para información
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera - Click en vehículo para información
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos - Click en barco para información
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de aeronaves- Click en aeronave para información
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de los vehículos de raíl - Click en el vehículo para más información - Ctrl+Click para mostrar/ocultar el tipo del vehículo
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera - Click en el vehículo para más información - Ctrl+Click para mostrar/ocultar el tipo del vehículo
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos - Click en el barco para más información - Ctrl+Click para mostrar/ocultar el tipo del barco
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de aeronaves - Click en la aeronave para más información - Ctrl+Click para mostrar/ocultar el tipo de la aeronave
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Comprar vehículo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar vehículo
@@ -3390,6 +3397,13 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renombra
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renombrar tipo de vehículo
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renombrar tipo de barco
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renombrar tipo de aeronave
+
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Ocultar
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Ocultar
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Ocultar
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Ocultar
+
+
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renombrar tipo de vehículo de raíl
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renombrar tipo de vehículo de carretera
@@ -3494,6 +3508,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Tren
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehículo de carretera
 STR_REPLACE_VEHICLE_SHIP                                        :Barco
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleccione tipo de vehículo a reemplazar
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Seleccione nuevo tipo de vehículo a usar en vez del vehículo seleccionado a la izquierda
