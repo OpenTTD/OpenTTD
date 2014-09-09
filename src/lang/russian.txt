@@ -3713,7 +3713,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT.gen                                :воздушн�
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Имеющиеся ТС
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Здесь перечислены модели используемых транспортных средств
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Доступные ТС
-STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Здесь перечислены модели транспортных средств, доступных для замены
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Здесь перечислены модели транспортных средств, доступные для замены
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбор типа транспорта для замены
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
