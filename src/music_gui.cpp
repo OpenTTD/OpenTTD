@@ -202,12 +202,17 @@ static void SelectSongToPlay()
 
 	memset(_cur_playlist, 0, sizeof(_cur_playlist));
 	do {
-		const char *filename = BaseMusic::GetUsedSet()->files[_playlists[_settings_client.music.playlist][i] - 1].filename;
-		/* We are now checking for the existence of that file prior
-		 * to add it to the list of available songs */
-		if (!StrEmpty(filename) && FioCheckFileExists(filename, BASESET_DIR)) {
-			_cur_playlist[j] = _playlists[_settings_client.music.playlist][i];
-			j++;
+		/* File is the index into the file table of the music set. The play list uses 0 as 'no entry',
+		 * so we need to subtract 1. In case of 'no entry' (file = -1), just skip adding it outright. */
+		int file = _playlists[_settings_client.music.playlist][i] - 1;
+		if (file >= 0) {
+			const char *filename = BaseMusic::GetUsedSet()->files[file].filename;
+			/* We are now checking for the existence of that file prior
+			* to add it to the list of available songs */
+			if (!StrEmpty(filename) && FioCheckFileExists(filename, BASESET_DIR)) {
+				_cur_playlist[j] = _playlists[_settings_client.music.playlist][i];
+				j++;
+			}
 		}
 	} while (_playlists[_settings_client.music.playlist][++i] != 0 && j < lengthof(_cur_playlist) - 1);
 
