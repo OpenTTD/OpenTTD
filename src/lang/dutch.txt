@@ -95,30 +95,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Frisdrank
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passagier{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passagier{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kolen
-STR_QUANTITY_MAIL                                               :{COMMA} zak{P "" ken} post
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}zak{P "" ken} post
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} stuk{P "" s} vee
-STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" ten} goederen
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}stuk{P "" s} vee
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}krat{P "" ten} goederen
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} hout
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} ijzererts
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} staal
-STR_QUANTITY_VALUABLES                                          :{COMMA} zak{P "" ken} kostbaarheden
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}zak{P "" ken} kostbaarheden
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kopererts
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fruit
-STR_QUANTITY_DIAMONDS                                           :{COMMA} zak{P "" ken} diamanten
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}zak{P "" ken} diamanten
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} voedsel
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papier
-STR_QUANTITY_GOLD                                               :{COMMA} zak{P "" ken} goud
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}zak{P "" ken} goud
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} water
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} tarwe
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} rubber
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} suiker
-STR_QUANTITY_TOYS                                               :{COMMA} stuk{P "" ken} speelgoed
-STR_QUANTITY_SWEETS                                             :{COMMA} zak{P "" ken} snoep
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}stuk{P "" ken} speelgoed
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}zak{P "" ken} snoep
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} suikerspinnen
 STR_QUANTITY_BUBBLES                                            :{COMMA} bel{P "" len}
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}GEEN
 STR_ABBREV_ALL                                                  :{TINY_FONT}ALLES
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passagier{P "" s}
-STR_BAGS                                                        :{COMMA} zak{P "" ken}
-STR_TONS                                                        :{COMMA} ton
-STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} stuk{P "" s}
-STR_CRATES                                                      :{COMMA} krat{P "" ten}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passagier{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}zak{P "" ken}
+STR_TONS                                                        :{COMMA}{NBSP}ton
+STR_LITERS                                                      :{COMMA}{NBSP}liter
+STR_ITEMS                                                       :{COMMA}{NBSP}stuk{P "" s}
+STR_CRATES                                                      :{COMMA}{NBSP}krat{P "" ten}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkerblauw
@@ -191,37 +191,37 @@ STR_COLOUR_GREY                                                 :Grijs
 STR_COLOUR_WHITE                                                :Wit
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/u
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/u
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} pk
-STR_UNITS_POWER_METRIC                                          :{COMMA} pk
-STR_UNITS_POWER_SI                                              :{COMMA} kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}pk
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}pk
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}ton
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter tekst:
@@ -247,6 +247,17 @@ STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakel 
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - scroll verticaal door de lijst
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - scroll horizontaal door de lijst
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sloop gebouwen etc. op een stuk land. Ctrl selecteert het gebied diagonaal. Shift schakelt tussen bouwen/inschatting van de kosten
+
+# Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Toon verborgen
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Toon verborgen
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Toon verborgen
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Toon verborgen
+
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Door het inschakelen van deze knop, worden de verborgen treinen ook weergegeven
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :Door het inschakelen van deze knop, worden de verborgen wegvoertuigen ook weergegeven
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Door het inschakelen van deze knop, worden de verborgen schepen ook weergegeven
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Door het inschakelen van deze knop, worden de verborgen vliegtuig ook weergegeven
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
@@ -1444,7 +1455,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Interval tussen
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kies of onderhoud van de voertuigen wordt geactiveerd door verstreken tijd sinds het laatste onderhoud of door het zakken van de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard onderhoudsinterval voor treinen: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Stel de standaard service-interval voor nieuwe railvoertuigen, als er geen expliciete service-interval is ingesteld voor het voertuig
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" en}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" en}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standaard onderhoudsinterval voor wegvoertuigen: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Stel de standaard service-interval voor nieuwe wegvoertuigen, als er geen expliciete service-interval is ingesteld voor het voertuig
@@ -1584,9 +1595,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Stadsgroei-indicator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Bijwerken distributie grafiek elke {STRING} dag{P 0:2 "" en}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Bijwerken distributie grafiek elke {STRING}{NBSP}dag{P 0:2 "" en}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tijd tussen opeenvolgende herberekeningen van de link grafiek. Elke herberekening berekent de plannen voor een component van de grafiek. Dat betekent dat een waarde X voor deze instelling betekent niet dat de hele grafiek wordt elke X dagen worden bijgewerkt. Slechts een component wil. Hoe korter u instellen hoe meer CPU-tijd nodig is om het te berekenen zal zijn. Hoe langer je instellen hoe langer het zal duren totdat de lading distributie start op nieuwe routes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Neem {STRING} dag{P 0:2 "" en} voor de herberekening van de distributie grafiek
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Neem {STRING}{NBSP}dag{P 0:2 "" en} voor de herberekening van de distributie grafiek
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tijd gebruikt voor elke herberekening van een link grafiek component. Wanneer een herberekening wordt gestart, wordt een thread voortgebracht die mag lopen voor dit aantal dagen. Hoe korter u dit instelt des te waarschijnlijker het is dat de draad niet is voltooid als het zou moeten. Dan stopt het spel totdat het is ("lag"). Hoe langer je instellen hoe langer het duurt voor de distributie aan te passen wanneer routes te wijzigen.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :handmatig
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
@@ -2961,8 +2972,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} afgeleverd
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (nog nodig)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (afgeleverd)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK} dag{P "" en}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK} dag{P "" en} (gefinancierd)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" en}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" en} (gefinancierd)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stad groeit {RED}niet{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
@@ -3365,10 +3376,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. trekkracht: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Bereik: {GOLD}{COMMA} tegels
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Railvoertuigkeuzelijst - klik op een railvoertuig voor informatie
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Wegvoertuigkeuzelijst - klik op een wegvoertuig voor informatie
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schipkeuzelijst - klik op een schip voor informatie
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Vliegtuigkeuzelijst - klik op een vliegtuig voor informatie
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Railvoertuigkeuzelijst. Klik op een railvoertuig voor informatie. Ctrl+klik voor wijzigen verbergen voertuig type
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Wegvoertuigkeuzelijst. Klik op een wegvoertuig voor informatie. Ctrl+klik voor wijzigen verbergen voertuig type
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schipkeuzelijst. Klik op een schip voor informatie. Ctrl+klik voor wijzigen verbergen schip type
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Vliegtuigkeuzelijst. Klik op een vliegtuig voor informatie. Ctrl+clik voor Wijzigen voor verbergenvlieftuig type
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Koop spoorvoertuig
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koop wegvoertuig
@@ -3389,6 +3400,21 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Hernoem 
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Hernoem type van wegvoertuig
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Hernoem type van schip
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Hernoem type van vliegtuig
+
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Verberg
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Verberg
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Verberg
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Verberg
+
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Toon
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Toon
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Toon
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Toon
+
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Wijzig verberg/toon van treintype
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Wijzig verberg/toon van wegvoertuigtype
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Wijzig verberg/toon van schiptype
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Wijzig verberg/toon van vliegtuigtype
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Hernoem type van railvoertuig
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem type van wegvoertuig
@@ -3493,6 +3519,11 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Trein
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Wegvoertuig
 STR_REPLACE_VEHICLE_SHIP                                        :Schip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Vliegtuig
+
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Voertuigen in gebruik
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Kolom met voertuigen die je bezig
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Beschikbare voertuigen
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Kolom met voertuigen beschikbaar voor vervanging
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Kies het type locomotief om te vervangen
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies een nieuw type locomotief die je wilt gebruiken om de links geselecteerde type locomotief te vervangen
@@ -3618,7 +3649,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Onderhoudsinterval: {LTBLUE}{COMMA}dagen{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Onderhoudsinterval: {LTBLUE}{COMMA}{NBSP}dagen{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Onderhoudsinterval: {LTBLUE}{COMMA}%{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot onderhoudsinterval met 10. Ctrl+klik verhoogt interval met 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein onderhoudsinterval met 10. Ctrl+klik verlaagt interval met 5
@@ -3854,8 +3885,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(wacht gedurend
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reis gedurende {STRING}, geen tijdschema)
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd naar {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}
-STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" ken}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" en}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P "" ken}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dit tijdschema duurt {STRING} om te volbrengen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dit tijdschema duurt minstens {STRING} om te volbrengen (niet alles geselecteerd)
@@ -4846,6 +4877,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (verborgen)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

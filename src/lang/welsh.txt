@@ -248,6 +248,17 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar sgro
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar sgrolio - sgrolio'r rhestr i'r chwith neu i'r dde
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Dymchwel adeiladau ayb. ar sgwâr o dir. Mae Ctrl yn dewis ardal deiagonal. Mae Shift yn toglo adeiladu/dangos amcangyfrif cost
 
+# Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Dangos rhai cudd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Dangos rhai cudd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Dangos rhai cudd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Dangos rhai cudd
+
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Drwy alluogi'r botwm yma, fe ddangosir y cerbydau rheilffordd cudd hefyd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Drwy alluogi'r botwm yma, fe ddangosir y cerbydau ffordd cudd hefyd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Drwy alluogi'r botwm yma, fe ddangosir y llongau cudd hefyd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Drwy alluogi'r botwm yma, fe ddangosir yr awyrennau cudd hefyd
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Rhagosodiad
 STR_BUTTON_CANCEL                                               :{BLACK}Diddymu
@@ -489,6 +500,7 @@ STR_ORDINAL_NUMBER_15TH                                         :15fed
 ############ range for ordinal numbers ends
 
 ############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1af
 ############ range for days ends
 
 ############ range for months starts
@@ -3325,10 +3337,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Popeth ond{CARG
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Grym Tynnu Uchaf: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Pellter cyrhaeddiad: {GOLD}{COMMA} teil
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Rhestr dewis trenau - cliciwch ar cerbyd am wybodaeth
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Rhestr dewis cerbydau ffordd - cliciwch ar gerbyd am wybodaeth
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Rhestr ddewis llongau - cliciwch ar long am wybodaeth
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Rhestr ddewis awyrennau - cliciwch ar awyren am wybodaeth
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Rhestr dewis trenau. Cliciwch ar gerbyd am wybodaeth. Mae Ctrl+Clicio'n toglu cuddio'r math cerbyd
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Rhestr dewis cerbydau ffordd. Cliciwch ar gerbyd am wybodaeth. Mae Ctrl+Clicio'n toglu cuddio'r math cerbyd
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Rhestr ddewis llongau. Cliciwch ar long am wybodaeth. Mae Ctrl+Clicio'n toglu cuddio'r math llong
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Rhestr ddewis awyrennau. Cliciwch ar awyren am wybodaeth. Mae Ctrl+Clicio'n toglu cuddio'r math awyren
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Prynu Cerbyd
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Prynu Cerbyd
@@ -3349,6 +3361,21 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Ailenwi 
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Ailenwi'r math cerbyd ffordd
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Ailenwi'r math llong
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ailenwi'r math awyren
+
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Cuddio
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Cuddio
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Cuddio
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Cuddio
+
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Dangos
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Dangos
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Dangos
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Dangos
+
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Toglu cuddio/arddangos math y cerbyd rheilffordd
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Toglu cuddio/arddangos math y cerbyd ffordd
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Toglu cuddio/arddangos math y llong
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Toglu cuddio/arddangos math yr awyren
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ailenwi math y cerbyd trên
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ailenwi'r math cerbyd ffordd
@@ -3453,6 +3480,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Trên
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Mae Cerbyd Ffordd
 STR_REPLACE_VEHICLE_SHIP                                        :Mae Llong
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Mae Awyren
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Dewiswch y math injan i'w ddisodli
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Dewiswch y math injan newydd yr hoffech chi ei ddefnyddio yn lle'r math injan ar y chwith
@@ -4804,6 +4832,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY}{COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (cudd)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

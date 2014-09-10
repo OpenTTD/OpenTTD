@@ -95,30 +95,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Läsk
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passagerare
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passagerare
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kol
-STR_QUANTITY_MAIL                                               :{COMMA} postsäck{P "" ar}
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}postsäck{P "" ar}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olja
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} boskap
-STR_QUANTITY_GOODS                                              :{COMMA} låd{P a or} gods
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}boskap
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}låd{P a or} gods
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} spannmål
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} timmer
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} järnmalm
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} stål
-STR_QUANTITY_VALUABLES                                          :{COMMA} värdesäck{P "" ar}
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}värdesäck{P "" ar}
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kopparmalm
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} majs
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} frukt
-STR_QUANTITY_DIAMONDS                                           :{COMMA} diamantsäck{P "" ar}
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}diamantsäck{P "" ar}
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} mat
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papper
-STR_QUANTITY_GOLD                                               :{COMMA} guldsäck{P "" ar}
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}guldsäck{P "" ar}
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} vatten
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} vete
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gummi
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} socker
-STR_QUANTITY_TOYS                                               :{COMMA} leksak{P "" er}
-STR_QUANTITY_SWEETS                                             :{COMMA} godispås{P e ar}
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}leksak{P "" er}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}godispås{P e ar}
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} sockervadd
 STR_QUANTITY_BUBBLES                                            :{COMMA} bubbl{P a or}
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NEJ
 STR_ABBREV_ALL                                                  :{TINY_FONT}ALLA
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passagerare
-STR_BAGS                                                        :{COMMA} väsk{P a or}
-STR_TONS                                                        :{COMMA} ton
-STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} föremål
-STR_CRATES                                                      :{COMMA} låd{P a or}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passagerare
+STR_BAGS                                                        :{COMMA}{NBSP}väsk{P a or}
+STR_TONS                                                        :{COMMA}{NBSP}ton
+STR_LITERS                                                      :{COMMA}{NBSP}liter
+STR_ITEMS                                                       :{COMMA}{NBSP}föremål
+STR_CRATES                                                      :{COMMA}{NBSP}låd{P a or}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mörkblå
@@ -191,37 +191,37 @@ STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Vit
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
-STR_UNITS_POWER_METRIC                                          :{COMMA}hk
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hk
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hk
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}ton
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}fot
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilter:
@@ -247,6 +247,9 @@ STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla s
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan upp/ned
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan höger/vänster
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta. Ctrl väljer yta diagonalt. Shift växlar mellan att riva/visa beräknad kostnad
+
+# Show engines button
+
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
@@ -1444,7 +1447,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceint
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Välj om fordonsservice ska triggas av hur lång tid som har gått sedan senaste service eller av att tillförlitligheten faller med en viss procentsats av den maximala tillförlitligheten
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Normalt serviceintervall för tåg: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Välj vilket serviceintervall som normalt sett ska användas för nya tåg, om inget annat serviceintervall uttryckligen anges
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" ar}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" ar}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Inaktiverat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Normalt serviceintervall för vägfordon: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Välj vilket serviceintervall som normalt sett ska användas för nya vägfordon, om inget annat serviceintervall uttryckligen anges
@@ -1584,9 +1587,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Uppdatera distributionsgrafen var {STRING}:e dag{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Uppdatera distributionsgrafen var {STRING}:e{NBSP}dag{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planer för en komponent i grafen. Det medför att ett värde X för den här inställningen inte innebär att hela grafen uppdateras var X:e dag, bara vissa komponenter. Ju lägre värde du ställer in desto mer processorkraft kommer att behövas för beräkningarna. Ju högre värde du ställer in desto längre tid kommer det att ta innan distributionen av last börjar använda nya rutter.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Avsätt {STRING} dag{P 0:2 "" ar} för omberäkning av distributionsgraf
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Avsätt {STRING}{NBSP}dag{P 0:2 "" ar} för omberäkning av distributionsgraf
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Den tid varje omberäkning av en länkgrafkomponent tillåts ta. När en omberäkning startas skapas en tråd som tillåts löpa detta antal dagar. Ju kortare du sätter denna, desto mer troligt är det att tråden inte är hinner bli färdig i tid. Då kommer spelet att stanna tills den är klar (vilket gör att det laggar). Ju längre du sätter denna, desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
@@ -2961,8 +2964,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levererat
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (återstår)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levererat)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK} dag
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK} dag (bekostad tillväxt)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK}{NBSP}dag
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK}{NBSP}dag (bekostad tillväxt)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Orten växer {RED}inte{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Bullernivågräns i stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på staden. Ctrl+klick öppnar en ny vy över stadens läge
@@ -3365,10 +3368,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Allt utom {CARG
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximal Dragkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Räckvidd: {GOLD}{COMMA} rutor
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista av tågvagnar - klicka på tågvagn för information
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Vägfordonslista - klicka på fordon för information
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skeppslista - klicka på skepp för information
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flygplanslista - Klicka på flygplan för information
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista av tågvagnar. Klicka på tågvagn för information. Ctrl+klick visar eller döljer vagnstypen
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Vägfordonslista. Klicka på fordon för information. Ctrl+klick visar eller döljer fordonstypen
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skeppslista. Klicka på skepp för information. Ctrl+klick visar eller döljer skeppstypen
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flygplanslista. Klicka på flygplan för information. Ctrl+klick visar eller döljer flygplanstypen
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Köp fordon
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Köp Fordon
@@ -3389,6 +3392,9 @@ STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Byt namn
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Byt namn på vägfordonstyp
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Byt namn på skeppstyp
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Byt namn på flygplanstyp
+
+
+
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Byt namn på tågets fordonstyp
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Byt namn på vägfordonstyp
@@ -3493,6 +3499,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Tåg
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vägfordon
 STR_REPLACE_VEHICLE_SHIP                                        :Skepp
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flygplan
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Välj fordonstyp att byta ut
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Välj den nya fordonstyp du vill använda i stället för den till vänster valda typen
@@ -3618,7 +3625,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK} Överför kredit: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceintervall: {LTBLUE}{COMMA}dagar{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceintervall: {LTBLUE}{COMMA}{NBSP}dagar{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}%{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Öka serviceintervall med 10. Ctrl+klick ökar serviceintervall med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minska serviceintervall med 10. Ctrl+klick minskar servinceintervall med 5
@@ -3854,8 +3861,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stanna {STRING
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(resor för {STRING}, ej schemalagd)
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" ar}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer ta {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
