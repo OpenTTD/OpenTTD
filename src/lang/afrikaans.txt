@@ -249,6 +249,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolstaaf
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolstaaf - rol die lys links/regs
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Vernietig geboue ens. op 'n vierkant van land
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Gewone
 STR_BUTTON_CANCEL                                               :{BLACK}Kanselleer
@@ -3391,6 +3394,17 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Hernoem 
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Hernoem skip tipe
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Hernoem vliegtuig tipe
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Vertoon
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Vertoon
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Vertoon
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Vertoon
+
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Vertoon
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Vertoon
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Vertoon
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Vertoon
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Hernoem trein voertuig tipe
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem pad voertuig tipe
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Hernoem skip tipe
@@ -3494,6 +3508,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Trein
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Pad voertuig
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Vliegtuig
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Kies die enjin tipe om te vervang
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies die nuwe enjin tipe wat jy wil gebruik in plaas van die linker gekose enjin tipe
@@ -4847,6 +4862,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (weggesteek)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
