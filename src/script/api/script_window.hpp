@@ -924,7 +924,7 @@ public:
 		WID_RV_CAPTION                               = ::WID_RV_CAPTION,                               ///< Caption of the window.
 
 		/* Sort dropdown at the right. */
-		WID_RV_SORT_ASSENDING_DESCENDING             = ::WID_RV_SORT_ASSENDING_DESCENDING,             ///< Ascending/descending sort order button.
+		WID_RV_SORT_ASCENDING_DESCENDING             = ::WID_RV_SORT_ASCENDING_DESCENDING,             ///< Ascending/descending sort order button.
 		WID_RV_SHOW_HIDDEN_ENGINES                   = ::WID_RV_SHOW_HIDDEN_ENGINES,                   ///< Toggle whether to display the hidden vehicles.
 		WID_RV_SORT_DROPDOWN                         = ::WID_RV_SORT_DROPDOWN,                         ///< Dropdown for the sort criteria.
 
@@ -976,7 +976,7 @@ public:
 	/** Widgets of the #BuildVehicleWindow class. */
 	enum BuildVehicleWidgets {
 		WID_BV_CAPTION                               = ::WID_BV_CAPTION,                               ///< Caption of window.
-		WID_BV_SORT_ASSENDING_DESCENDING             = ::WID_BV_SORT_ASSENDING_DESCENDING,             ///< Sort direction.
+		WID_BV_SORT_ASCENDING_DESCENDING             = ::WID_BV_SORT_ASCENDING_DESCENDING,             ///< Sort direction.
 		WID_BV_SORT_DROPDOWN                         = ::WID_BV_SORT_DROPDOWN,                         ///< Criteria of sorting dropdown.
 		WID_BV_CARGO_FILTER_DROPDOWN                 = ::WID_BV_CARGO_FILTER_DROPDOWN,                 ///< Cargo filter dropdown.
 		WID_BV_SHOW_HIDDEN_ENGINES                   = ::WID_BV_SHOW_HIDDEN_ENGINES,                   ///< Toggle whether to display the hidden vehicles.

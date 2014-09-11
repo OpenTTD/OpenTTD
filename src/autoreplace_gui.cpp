@@ -257,7 +257,7 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case WID_RV_SORT_ASSENDING_DESCENDING: {
+			case WID_RV_SORT_ASCENDING_DESCENDING: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
@@ -376,8 +376,8 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case WID_RV_SORT_ASSENDING_DESCENDING:
-				this->DrawSortButtonState(WID_RV_SORT_ASSENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+			case WID_RV_SORT_ASCENDING_DESCENDING:
+				this->DrawSortButtonState(WID_RV_SORT_ASCENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
 				break;
 
 			case WID_RV_INFO_TAB: {
@@ -464,7 +464,7 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case WID_RV_SORT_ASSENDING_DESCENDING:
+			case WID_RV_SORT_ASCENDING_DESCENDING:
 				this->descending_sort_order ^= true;
 				_engine_sort_last_order[this->window_number] = this->descending_sort_order;
 				this->engines[1].ForceRebuild();
@@ -614,7 +614,7 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASSENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 1),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASCENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 1),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
@@ -676,7 +676,7 @@ static const NWidgetPart _nested_replace_vehicle_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASSENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASCENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
