@@ -1272,8 +1272,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duració del mi
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duració dels missatges d'error mostrats en finestres vermelles. Alguns missatges d'error (crítics) no es tanquen automàticament i s'han de tancar manualment
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segon{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra descripcions emergents: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Retard abans que les descripcions emergents siguin mostrades quan el ratolí sigui sobre algun element de l'interfície. Alternativament les descripcions emergents poden ser vinculades al botó dret del ratolí
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Manté durant {COMMA} segon{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Retard abans que les descripcions emergents siguin mostrades quan el ratolí sigui sobre algun element de l'interfície. Alternativament les descripcions emergents poden ser vinculades al botó dret del ratolí si aquest paràmetre s'estableix en 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Manté durant {COMMA} milisegon{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botó dret
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra els habitants a l'etiqueta del nom de la població: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostra els habitants a les etiquetes dels noms de les poblacions al mapa
@@ -2854,11 +2854,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paràmet
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alineant sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite següent
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procedeix cap al següent sprite normal, saltant qualsevol sprite pseudo/recolor/font i ajustant el voltant al final
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procedeix cap al següent sprite normal, saltant qualsevol sprite pseudo/recolor/font i passant de l'últim sprite al primer
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Anar a l'sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Anar cap a l'sprite donat. Si l'sprite no és un sprite normal, procedir cap al següent sprite normal
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procedeix cap a l'sprite normal anterior, saltant qualsevol sprite pseudo/recolor/font i ajustant el voltant al començament
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procedeix cap a l'sprite normal anterior, saltant qualsevol sprite pseudo/recolor/font i passant del primer sprite a l'últim
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representació de l'sprite seleccionat actualment. L'alineació s'ignora quan es dibuixa aquest sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mou l'sprite al voltant, canviant els desplaçaments en X i Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desplaçament X: {NUM}, Desplaçament Y: {NUM}

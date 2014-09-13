@@ -96,7 +96,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=w}Limonade
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} Passagier{P "" e}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}Passagier{P "" e}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} Kohle
 STR_QUANTITY_MAIL                                               :{COMMA} Posts{P ack äcke}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} Öl
@@ -1272,8 +1272,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Anzeigedauer f�
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Anzeigedauer für Fehlermeldungen in einem roten Fenster. Bedenke, dass einige (kritische) Fehlermeldungen nicht automatisch nach dieser Dauer geschlossen werden sondern manuell geschlossen werden müssen
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} Sekunde{P 0 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Zeige kurzen Hilfetext: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Einstellen, wie lange man zum Aufruf von Hilfetexten zur Erklärung der Funktionen im Spiel mit dem Mauszeiger über der gewünschten Stelle stehenbleiben muss, oder, als Alternative, dass die Hilfetexte bei einem Rechtsklick sofort angezeigt werden sollen
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Nach {COMMA} Sekunde{P 0 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Einstellen, wie lange man zum Aufruf von Hilfetexten zur Erklärung der Funktionen im Spiel mit dem Mauszeiger über der gewünschten Stelle stehenbleiben muss. Alternativ werden die Hilfetexte bei einem Rechtsklick sofort angezeigt, wenn dieser Wert auf 0 gesetzt wird.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Nach {COMMA} Millisekunde{P 0 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zeige die Einwohnerzahl von Städten neben ihrem Namen: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zeige die Einwohneranzahl neben den Städtenamen auf der Karte an

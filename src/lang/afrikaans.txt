@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug le
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van bruë
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel lengte: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van tonnels
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primêre nywerheid konstruksie metode: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Handmatige primêre nywerheid konstruksie metode: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metode van befondsing van 'n primêre bedryf."Niks" beteken dit nie moontlik is om enige bedryf te finansier, "prospekteer" beteken befondsing is moontlik, maar konstruksie vind plaas in 'n toevallige plek op die kaart en dit kan ook misluk, "ander nywerhede" beteken rou bedrywe kan opgerig word deur ander maatskappye soos verwerking nywerhede.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :As ander nywerhede
@@ -2734,7 +2734,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vryeform
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Water
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Lukraak
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Lukraak
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handmatig
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Reliëfkaart orientasie:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Reliëfkaart naam:
