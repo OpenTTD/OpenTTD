@@ -1467,7 +1467,7 @@ static SettingsContainer &GetSettingsTree()
 			SettingsPage *general = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_GENERAL));
 			{
 				general->Add(new SettingEntry("gui.osk_activation"));
-				general->Add(new SettingEntry("gui.hover_delay"));
+				general->Add(new SettingEntry("gui.hover_delay_ms"));
 				general->Add(new SettingEntry("gui.errmsg_duration"));
 				general->Add(new SettingEntry("gui.window_snap_radius"));
 				general->Add(new SettingEntry("gui.window_soft_limit"));
