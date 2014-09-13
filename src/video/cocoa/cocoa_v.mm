@@ -1136,6 +1136,30 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_RIGHT | WKC_CTRL, 0);
 }
 
+/** Move cursor one line up. */
+- (void)moveUp:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_UP, 0);
+}
+
+/** Move cursor one line down. */
+- (void)moveDown:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DOWN, 0);
+}
+
+/** MScroll one line up. */
+- (void)moveUpAndModifySelection:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_UP | WKC_SHIFT, 0);
+}
+
+/** Scroll one line down. */
+- (void)moveDownAndModifySelection:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_DOWN | WKC_SHIFT, 0);
+}
+
 /** Move cursor to the start of the line. */
 - (void)moveToBeginningOfLine:(id)sender
 {
@@ -1146,6 +1170,30 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 - (void)moveToEndOfLine:(id)sender
 {
 	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_END, 0);
+}
+
+/** Scroll one page up. */
+- (void)scrollPageUp:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEUP, 0);
+}
+
+/** Scroll one page down. */
+- (void)scrollPageDown:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEDOWN, 0);
+}
+
+/** Move cursor (and selection) one page up. */
+- (void)pageUpAndModifySelection:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEUP | WKC_SHIFT, 0);
+}
+
+/** Move cursor (and selection) one page down. */
+- (void)pageDownAndModifySelection:(id)sender
+{
+	if (EditBoxInGlobalFocus()) HandleKeypress(WKC_PAGEDOWN | WKC_SHIFT, 0);
 }
 
 /** Scroll to the beginning of the document. */
