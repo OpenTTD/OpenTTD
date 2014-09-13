@@ -13,7 +13,7 @@
 #include "saveload_internal.h"
 #include "../engine_base.h"
 #include "../string_func.h"
-#include <map>
+#include <vector>
 
 #include "../safeguards.h"
 
@@ -48,11 +48,24 @@ static const SaveLoad _engine_desc[] = {
 	SLE_END()
 };
 
-static std::map<EngineID, Engine> _temp_engine;
+static std::vector<Engine> _temp_engine;
 
 Engine *GetTempDataEngine(EngineID index)
 {
-	return &_temp_engine[index];
+	if (index < _temp_engine.size()) {
+		return &_temp_engine[index];
+	} else if (index == _temp_engine.size()) {
+		uint8 zero[sizeof(Engine)];
+		memset(zero, 0, sizeof(zero));
+		Engine *engine = new (zero) Engine();
+
+		/* Adding 'engine' to the vector makes a shallow copy, so we do not want to destruct 'engine' */
+		_temp_engine.push_back(*engine);
+
+		return &_temp_engine[index];
+	} else {
+		NOT_REACHED();
+	}
 }
 
 static void Save_ENGN()
