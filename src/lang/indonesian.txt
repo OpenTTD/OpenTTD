@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Batang G
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Batang Geser - Geser daftar ke kiri/kanan
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Runtuhkan bangunan, dll dalam area kotak. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standar
 STR_BUTTON_CANCEL                                               :{BLACK}Batal

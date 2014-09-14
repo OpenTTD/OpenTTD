@@ -238,6 +238,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Поме
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лизгач - свитоци листата лево / десно
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Уривање згради итн. на квадратна област
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Зададено
 STR_BUTTON_CANCEL                                               :{BLACK}Откажи

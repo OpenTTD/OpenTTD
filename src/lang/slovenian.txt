@@ -248,7 +248,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.t                                :Gazirano pijač
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} potnik{P "" a i ov}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}potnik{P "" a i ov}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} premoga
 STR_QUANTITY_MAIL                                               :{COMMA} vreč{P a i e ""} pošte
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} nafte
@@ -400,6 +400,9 @@ STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Preklopi
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsnik - premakne seznam gor/dol
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsnik - premakne seznam levo/desno
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Poruši zgradbe itd. na kvadratku zemlje. Ctrl izbere diagonalno območje. Shift preklaplja med izgradnjo in predvidenimi stroški
+
+# Show engines button
+
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Privzeto

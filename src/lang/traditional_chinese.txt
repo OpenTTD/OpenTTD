@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 -
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 - 左右捲動清單
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆卸建築物等。在格子裡的土地。按Ctrl以對角選擇區域。Shift切換建築或顯示預估成本。
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}預設值
 STR_BUTTON_CANCEL                                               :{BLACK}取消

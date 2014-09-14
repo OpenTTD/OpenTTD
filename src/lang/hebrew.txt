@@ -262,6 +262,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}כפתו
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}פס הגלילה - גלילה של רשימות ימינה\שמאלה
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}הסרת בניינים וכו' במשבצת קרקע. מקש Ctrl מסמן את האזור באופן אלכנסוני. מקש Shift מעביר בין בנייה לבין הצגה של הערכת העלות
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}בחירת מחדל
 STR_BUTTON_CANCEL                                               :{BLACK}ביטול

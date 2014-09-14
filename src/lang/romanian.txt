@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de 
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - stânga/dreapta
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrățel de teren. Ctrl pentru selectare pe diagonală. Shift comută construcție/estimare cost
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prestabilit(e)
 STR_BUTTON_CANCEL                                               :{BLACK}Anulează

@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar sgro
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar sgrolio - sgrolio'r rhestr i'r chwith neu i'r dde
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Dymchwel adeiladau ayb. ar sgwâr o dir. Mae Ctrl yn dewis ardal deiagonal. Mae Shift yn toglo adeiladu/dangos amcangyfrif cost
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Rhagosodiad
 STR_BUTTON_CANCEL                                               :{BLACK}Diddymu
@@ -489,6 +492,7 @@ STR_ORDINAL_NUMBER_15TH                                         :15fed
 ############ range for ordinal numbers ends
 
 ############ range for days starts
+STR_DAY_NUMBER_1ST                                              :1af
 ############ range for days ends
 
 ############ range for months starts

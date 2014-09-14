@@ -374,6 +374,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прок
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка влево/вправо
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Полная очистка прямоугольного участка земли. Ctrl - выбор области по диагонали. При нажатом Shift - оценка стоимости очистки.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
 STR_BUTTON_CANCEL                                               :{BLACK}Отмена
@@ -3020,11 +3023,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Пара
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Выравнивание спрайта {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Следующий спрайт
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перейти к следующему нормальному спрайту, пропуская псевдоспрайты, а также изм.{NBSP}цвета/шрифтовые.
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перейти к следующему нормальному спрайту, пропуская изменяющие цвет, шрифтовые, псевдоспрайты. Переход из конца списка к первому спрайту.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Перейти к спрайту
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Перейти к заданному спрайту. Если спрайт не нормальный, переход пройзойдет к следующему нормальному.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Предыдущий спрайт
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Перейти к предыдущему нормальному спрайту, пропуская псевдоспрайты, а также изм.{NBSP}цвета/шрифтовые.
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Перейти к предыдущему нормальному спрайту, пропуская изменяющие цвет, шрифтовые, псевдоспрайты. Переход из начала списка к последнему спрайту.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Представление выбранного спрайта. Выравнивание не учитывается при прорисовке этого спрайта.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Двигайте спрайт, изменяя смещение по X и по Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Смещение по X: {NUM}, Смещение по Y: {NUM}

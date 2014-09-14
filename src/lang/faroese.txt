@@ -240,6 +240,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skriðu 
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skriðu bjálki - drag listan til vinstru/høgru
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Ríva bygning niður etc. á einum fýrakanti av jørð. Ctrl velur økji á skrá. Shift skiftur millum at vísa Bygning og hvat tað kostar.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Vanligt
 STR_BUTTON_CANCEL                                               :{BLACK}Angra

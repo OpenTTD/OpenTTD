@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollba
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - flytter listen mod venstre/højre
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nedriv bygninger osv. på et stykke land. Ctrl vælger arealet diagonalt. Shift skifter mellem at bygge og vise prisoverslag.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuller

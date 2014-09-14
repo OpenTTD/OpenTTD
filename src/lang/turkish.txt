@@ -249,6 +249,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kaydırm
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kaydırma çubuğu - listeyi sağa/sola kaydır
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Bir arazi üzerinde bulunan binaları ve benzeri yapıları yık. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Varsayılan
 STR_BUTTON_CANCEL                                               :{BLACK}İptal

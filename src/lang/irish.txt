@@ -238,6 +238,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbh
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbharraí - déantar liosta a scrollú ar dheis/ar chlé
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Leag foirgnimh msh. ar chearnóg talún
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Réamhshocrú
 STR_BUTTON_CANCEL                                               :{BLACK}Cealaigh

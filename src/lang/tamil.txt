@@ -247,6 +247,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll b
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list left/right
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}சதுர நிலப்பகுதியில் கட்டிடம் போன்றவற்றை இடிக்க. Ctrl தேர்வுசெய்திட. Shift உத்தேச செலவை/கட்டிடத்தை காட்டிட
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Default
 STR_BUTTON_CANCEL                                               :{BLACK}தவிர்

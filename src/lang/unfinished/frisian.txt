@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skowbalk
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skowbalke - skow list links/rjochts
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Brek gebouen ensafierder ôf op in stikje lân. Ctrl selektearet it gebiet diagonaal. Shift skeakelt tusken bouwe/taksearje fan de kosten
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standert
 STR_BUTTON_CANCEL                                               :{BLACK}Annulearje

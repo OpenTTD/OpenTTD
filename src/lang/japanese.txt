@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スク�
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバーです。リストを横にスクロールします
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}建物などを範囲指定して撤去します。Ctrlを押すと、範囲が斜めになります。Shiftを押しながら決定すると、費用を見積もります
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}デフォルト
 STR_BUTTON_CANCEL                                               :{BLACK}キャンセル

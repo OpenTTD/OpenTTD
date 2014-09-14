@@ -240,6 +240,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}نوار
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}نوار اسکرول - لیست را چپ و راست می کند
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین.با فشردن همزمان دکمه Ctrl به طور مورب می توانید تخریب کنید.فشردن همزمان دکمه Shift برآورد هزینه را نمایش می دهد.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}حالت قراردادی
 STR_BUTTON_CANCEL                                               :{BLACK}لغو
