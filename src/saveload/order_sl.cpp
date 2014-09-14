@@ -295,20 +295,6 @@ void Load_BKOR()
 		OrderBackup *ob = new (index) OrderBackup();
 		SlObject(ob, GetOrderBackupDescription());
 	}
-
-	/* Only load order-backups for network clients.
-	 * If we are a network server or not networking, then we just loaded a previously
-	 * saved-by-server savegame. There are no clients with a backup, so clear it.
-	 * Furthermore before savegame version 192 the actual content was always corrupt.
-	 */
-	if (!_networking || _network_server || IsSavegameVersionBefore(192)) {
-		/* Note: We cannot use CleanPool since that skips part of the destructor
-		 * and then leaks un-reachable Orders in the order pool. */
-		OrderBackup *ob;
-		FOR_ALL_ORDER_BACKUPS(ob) {
-			delete ob;
-		}
-	}
 }
 
 static void Ptrs_BKOR()
