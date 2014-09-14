@@ -1,3 +1,9 @@
+1.4.3-RC2 (2014-09-14)
+------------------------------------------------------------------------
+- Fix: Crashes on joining a server with pending order backups [FS#6112] (r26819)
+- Fix: Crashes on start due to dereferencing the -1 index of the file names array of music files (r26809)
+
+
 1.4.3-RC1 (2014-09-07)
 ------------------------------------------------------------------------
 - Fix: TC_NO_SHADE did not work for 32bpp text rendering (r26792)
