@@ -1482,7 +1482,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An ùine a mhai
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Seall gliocasan-sgrìn: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Dèan dàil mus tèid gliocasan-sgrìn a shealltainn nuair a chumas mi an luchag os cionn eileamaid na h-eadar-aghaidh. Mar roghainn eile, thèid gliocasan-sgrìn nasgadh ri putan deas na luchaige ma chuireas tu an luach air 0.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Cùm an luchag os a chionn fad {COMMA} {P 0 mhille-dhiog mhille-dhiog mille-dhiogan mille-dhiog}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Cùm an luchag os a chionn fad {COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Briogadh deas
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Seall àireamh-shluaigh ann an leubail a' bhaile: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Seall àireamh-shluaigh aig bailtean san leubail aca air a' mhapa

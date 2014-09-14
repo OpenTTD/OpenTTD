@@ -1379,7 +1379,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Διάρκει�
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} δευτερόλεπτ{P 0 ο α}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Εμφάνιση αναδυόμενων μηνυμάτων: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Καθυστέρηση πριν την εμφάνιση των επεξηγήσεων όταν ο δείκτης του ποντικιού βρίσκεται πάνω από κάποιο στοιχείο της διεπαφής. Εναλλακτικά, οι επεξηγήσεις συνδέονται με το δεξί κουμπί του ποντικιού όταν η τιμή αυτού του πεδίου είναι 0.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ο δείκτης του ποντικιού να βρίσκεται από πάνω για {COMMA} δευτερόλεπτ{P 0 ο α}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ο κέρσορας βρίσκεται από πάνω για {COMMA} δευτερόλεπτ{P 0 ο α}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Δεξί κουμπί
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Εμφάνιση του πληθυσμού των πόλεων στην ετικέτα τους πάνω στο χάρτη
