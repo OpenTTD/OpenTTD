@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cu
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn sang trái/phải
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Phá hủy các tòa nhà v.v... trên 1 lô đất. Ctrl để chọn vùng theo đường chéo. Shift để chọn hiển thị chi phí xây dựng/phá hủy
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
 STR_BUTTON_CANCEL                                               :{BLACK}Thôi
@@ -3330,6 +3333,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Thay tê
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Thay tên loại tàu
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Thay tên loại máy bay
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Đổi tên kiểu của đầu/toa tàu
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Đổi tên kiểu của ôtô
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Đổi tên kiểu của tàu thuỷ
@@ -3433,6 +3439,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Tàu
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Xe cộ
 STR_REPLACE_VEHICLE_SHIP                                        :Tàu thủy
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Máy bay
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Lựa chọn đầu máy để thay thế
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Lựa chọn đầu máy mới để thay thế đầu máy đã chọn
@@ -4078,6 +4085,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... ch�
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... rừng này chỉ đặt ở trên vùng núi cao có tuyết
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía trên núi cao có tuyết
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía dưới núi cao có tuyết
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Không thể xây ga tàu hoả ở đây...

@@ -171,6 +171,9 @@ STR_BUTTON_RENAME                                               :{BLACK}Ята �
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Чӳречене хуп
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Пӳрнӗ пек
 STR_BUTTON_CANCEL                                               :{BLACK}Улӑштар
@@ -1140,6 +1143,9 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 
+
+
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
@@ -1166,6 +1172,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 # Autoreplace window
+
 
 
 
@@ -1326,6 +1333,7 @@ STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Пӗл�
 # Town related errors
 
 # Industry related errors
+
 
 # Station construction related errors
 

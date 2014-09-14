@@ -238,6 +238,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}स्�
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}स्क्रोल पट्टी - स्क्रोल यादी डाव्या/उजव्या
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}जमिनीच्या एका चौकोनावरील इमारत नष्ट करणे इ. Ctrl ने तिरका प्रदेश निवडता येतो. Shift नं इमारती किंवा किंमतीचा अंदाज दिसणं चालू/बंद होतं.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}स्थिर
 STR_BUTTON_CANCEL                                               :{BLACK}रद्द करा
@@ -1328,6 +1331,9 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}कि�
 
 
 
+
+
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
@@ -1358,6 +1364,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :जहाज
 # Autoreplace window
 STR_REPLACE_VEHICLE_SHIP                                        :जहाज
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :विमान
+
 
 
 
@@ -1528,6 +1535,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE} स्�
 # Town related errors
 
 # Industry related errors
+
 
 # Station construction related errors
 

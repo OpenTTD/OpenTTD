@@ -238,6 +238,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbh
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbharraí - déantar liosta a scrollú ar dheis/ar chlé
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Leag foirgnimh msh. ar chearnóg talún
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Réamhshocrú
 STR_BUTTON_CANCEL                                               :{BLACK}Cealaigh
@@ -2816,6 +2819,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Athainmn
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Athainmnigh an cineál loinge
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Athainmnigh an cineál aerárthaigh
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Athainmnigh an cineál feithicle traenach
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Athainmnigh an cineál feithicle bóthair
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Athainmnigh an cineál loinge
@@ -2917,6 +2923,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Traein
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Feithicil Bóthair
 STR_REPLACE_VEHICLE_SHIP                                        :Long
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aerárthach
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Roghnaigh an cineál innill le hathsholáthar
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Roghnaigh an cineál nua innill is mian leat a úsáid in ionad an chineáil innill atá roghnaithe ar chlé
@@ -3508,6 +3515,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... ní 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... ní féidir é a thógáil ach i gceantar íseal
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... ní féidir é a chur ach in aice le taobhanna na léarscáile
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... ní féidir foraois a chur ach taobh thuas den líne sneachta amháin
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ní féidir stáisiún iarnróid a thógáil anseo...

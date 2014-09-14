@@ -224,6 +224,9 @@ STR_BUTTON_RENAME                                               :{BLACK}Rinomiza
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Klozas fenestro
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Baskulas granda/mikra fenestro grandeso
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_CANCEL                                               :{BLACK}Anular
 STR_BUTTON_OK                                                   :{BLACK}OK
@@ -974,6 +977,9 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupigita aer
 
 
 
+
+
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
@@ -1006,6 +1012,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Treno
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Voy-vehilo
 STR_REPLACE_VEHICLE_SHIP                                        :Navo
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronavo
+
 
 
 
@@ -1182,6 +1189,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... tro 
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... tro multa industrii
+
 
 # Station construction related errors
 

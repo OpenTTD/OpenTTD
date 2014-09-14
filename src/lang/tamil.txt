@@ -247,6 +247,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll b
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list left/right
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}சதுர நிலப்பகுதியில் கட்டிடம் போன்றவற்றை இடிக்க. Ctrl தேர்வுசெய்திட. Shift உத்தேச செலவை/கட்டிடத்தை காட்டிட
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Default
 STR_BUTTON_CANCEL                                               :{BLACK}தவிர்
@@ -3001,6 +3004,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}சா�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}கப்பல் வகையின் பெயரினை மாற்றவும்
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}விமான வகையின் பெயரினை மாற்றவும்
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}இரயில் வாகன வகையின் பெயரினை மாற்றவும்
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}சாலை வாகன வகையின் பெயரினை மாற்றவும்
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}கப்பல் வகையின் பெயரினை மாற்றவும்
@@ -3094,6 +3100,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :இரயில
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :சாலை வாகனம்
 STR_REPLACE_VEHICLE_SHIP                                        :கப்பல்
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :விமானம்
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}மாற்றியமைக்க பொறி வகையினை தேர்ந்தெடுக்க
 
@@ -3707,6 +3714,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... ப�
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... பனி-கோடிற்கு மேலேயே காடுகளை நட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... பனி-கோடின் மேலே மட்டுமே கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... பனி-கோடின் கீழே மட்டுமே கட்ட முடியும்
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}இங்கே இரயில் நிலையம் கட்ட முடியாது...

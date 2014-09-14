@@ -238,6 +238,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Поме
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лизгач - свитоци листата лево / десно
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Уривање згради итн. на квадратна област
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Зададено
 STR_BUTTON_CANCEL                                               :{BLACK}Откажи
@@ -1464,6 +1467,9 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Преи
 
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Преименувај го типот на авиони
 
+
+
+
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименувај го типот на авиони
 
 # Depot window
@@ -1505,6 +1511,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Воз
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Патно возило
 STR_REPLACE_VEHICLE_SHIP                                        :Брод
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Летало
+
 
 
 
@@ -1731,6 +1738,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... пр
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... не постои такво место за статуа во центарот на градот
 
 # Industry related errors
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не може да се изгради аеродром на оваа локација...

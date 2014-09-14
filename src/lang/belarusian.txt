@@ -561,6 +561,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прак
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка налева/направа
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Поўная ачыстка прамавугольнага ўчастку зямлі. Ctrl — выбар вобласьці па дыяганалі. Пры націснутым Shift — ацэнка кошту ачысткі.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Па змоўчаньнi
 STR_BUTTON_CANCEL                                               :{BLACK}Скасаваць
@@ -3723,6 +3726,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Зьмя
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Зьмяніць назву мадэлі карабля
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Зьмяніць назву мадэлі паветр. судна
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Назва мадэлі цягнiка
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Назва мадэлі аўтамабiля
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Назва мадэлі карабля
@@ -3846,6 +3852,7 @@ STR_REPLACE_VEHICLE_SHIP.acc                                    :карабел�
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=m}Паветраны транспарт
 STR_REPLACE_VEHICLE_AIRCRAFT.gen                                :паветранага транспарту
 STR_REPLACE_VEHICLE_AIRCRAFT.acc                                :паветраны транспарт
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбар тыпу транспарту для замены
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбар тыпу транспарту, на які варта замяніць

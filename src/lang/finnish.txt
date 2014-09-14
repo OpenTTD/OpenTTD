@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vieritys
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia jne. ruudulta. Ctrl valitsee alueen vinottain. Shift vaihtaa tuhoamistilan ja kustannearvion välillä
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Oletus
 STR_BUTTON_CANCEL                                               :{BLACK}Peruuta
@@ -3390,6 +3393,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Nimeä a
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Nimeä laivatyyppi uudelleen.
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Nimeä lentokonetyyppi uudelleen.
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Nimeä juna(vaunu)n tyyppi uudelleen.
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Nimeä ajoneuvon tyyppi uudelleen
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Nimeä laivatyyppi uudelleen.
@@ -3493,6 +3499,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Juna
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Ajoneuvo
 STR_REPLACE_VEHICLE_SHIP                                        :Laiva
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lentokone
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Valitse korvattava veturityyppi.
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.

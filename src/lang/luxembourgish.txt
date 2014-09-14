@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollba
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbar - scrollt d'Lëscht no lénks/riets
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Objekter op engem Stëck Land zerstéieren. Ctrl wielt d'Land diagonal. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Ofbriechen
@@ -3390,6 +3393,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Gefierty
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Schëffstyp ëmbenennen
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Fligertyp ëmbenennen
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zuchgefiertyp ëmbenennen
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Gefierertyp ëmbenennen
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Schëffstyp ëmbenennen
@@ -3493,6 +3499,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Zuch
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stroossegefier
 STR_REPLACE_VEHICLE_SHIP                                        :Schëff
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fliger
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wielt den Maschinentyp fir auszetauschen
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wielt den neien Typ den benotzt soll ginn amplaz vun der lénks gewielter Maschin
@@ -4142,6 +4149,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Bësch kann nëmmen iwwert der Schnéilinn geplanzt ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann nëmmen iwwert der Schnéilinn gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann net ënnert der Schnéilinn bauen
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kann d'Gare hei net bauen...

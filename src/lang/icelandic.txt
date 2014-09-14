@@ -240,6 +240,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrunsl�
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rennislá - rennir lista til vinstri/hægri
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eyða byggingum o.s.frv. á lóðarreiti. Ctrl velur svæðið skáhalt. Haldið Shift inni til að sýna áætlaðan kostnað
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Sjálfgildi
 STR_BUTTON_CANCEL                                               :{BLACK}Hætta við
@@ -3212,6 +3215,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Endurnef
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Endurnefna skipategund
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endurnefna tegund flugvélar
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Endurskíra lestargerð
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endurnefna tegund bifreiðar
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Endurnefna skipategund
@@ -3315,6 +3321,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Lest
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Bifreið
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flugvél
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Veldu vagntegund til að skipta út
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Velja vagntegund sem þú myndir vilja nota í staðin fyrir vagntegundina sem valinn er vinstra megin
@@ -3957,6 +3964,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... getu
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skógur getur aðeins verið gróðursettur yfir snjólínu
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... er aðeins hægt að byggja fyrir ofan snælínu
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... er aðeins hægt að byggja fyrir neðan snælínu
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Get ekki byggt lestarstöð hér...

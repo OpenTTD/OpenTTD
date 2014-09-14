@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スク�
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバーです。リストを横にスクロールします
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}建物などを範囲指定して撤去します。Ctrlを押すと、範囲が斜めになります。Shiftを押しながら決定すると、費用を見積もります
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}デフォルト
 STR_BUTTON_CANCEL                                               :{BLACK}キャンセル
@@ -3390,6 +3393,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}車両�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}船舶の名称を変更
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}航空機の名称を変更
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}列車の機種名を変更
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}車両の機種名を変更
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}船舶の機種名を変更
@@ -3493,6 +3499,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :列車
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :車両
 STR_REPLACE_VEHICLE_SHIP                                        :船舶
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :航空機
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}置換対象を選択
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}左で選択した輸送機器を置き換える輸送機器を選択します
@@ -4142,6 +4149,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}マッ�
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}雪線上のみに植林できます
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}降雪線より上にのみ建設できます
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}降雪線より下にのみ建設できます
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}ここには駅を建設できません

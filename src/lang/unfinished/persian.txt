@@ -240,6 +240,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}نوار
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}نوار اسکرول - لیست را چپ و راست می کند
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین.با فشردن همزمان دکمه Ctrl به طور مورب می توانید تخریب کنید.فشردن همزمان دکمه Shift برآورد هزینه را نمایش می دهد.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}حالت قراردادی
 STR_BUTTON_CANCEL                                               :{BLACK}لغو
@@ -2963,6 +2966,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}تغیی
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}نام گذاری مجدد نوع کشتی
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}نامگذاری مجدد نوع هواپیما
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}نام گذاری مجدد نوع کشتی
@@ -3023,6 +3029,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :قطار
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ماشین
 STR_REPLACE_VEHICLE_SHIP                                        :کشتی
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :هواپیما
+
 
 
 
@@ -3349,6 +3356,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... فق
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... جنگل باید بالای خط برف کاشته شود
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... فقط روی خط برف می توان ساخت
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... فقط زیر خط برف می توان ساخت
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}اینجا نمی شود ایستگاه راه آهن ساخت

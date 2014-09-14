@@ -240,6 +240,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skriðu 
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skriðu bjálki - drag listan til vinstru/høgru
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Ríva bygning niður etc. á einum fýrakanti av jørð. Ctrl velur økji á skrá. Shift skiftur millum at vísa Bygning og hvat tað kostar.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Vanligt
 STR_BUTTON_CANCEL                                               :{BLACK}Angra
@@ -3049,6 +3052,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Navngev 
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Navngev slagi av skipi
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Navngev slagi av flogfari
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Navngev slagi av tok flutningstóli
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Navngev slagi av akfari
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Navngev slagi av skipi
@@ -3152,6 +3158,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Tok
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=n}Akfar
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=n}Flogfar
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vel slagi av motori at býta um
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vel ta nýggja slagi av motori tú vil nýta ið staðin fyri tann tú valdi til vinstru
@@ -3711,6 +3718,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skógur kann einans plantast omanfyri kava-linjuna
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann einans byggjast omanfyri kava-linjuna
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann einans byggjast niðanfyri kava-linjuna
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kann ikki byggja tok støð her...

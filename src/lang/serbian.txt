@@ -436,6 +436,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrol - 
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Klizač - pomera spisak levo/desno
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Uklanja građevinu i dr. na kvadratu tla. Ctrl obeležava dijagonalno područje. Shift prebacuje između izgradnje i prikaza procene troškova
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prvobitno
 STR_BUTTON_CANCEL                                               :{BLACK}Otkaži
@@ -3440,6 +3443,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Promenit
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Promenite naziv vrste broda
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Promenite naziv vrste letilice
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Promena naziva vrste šinskog vozila
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Naziv vrste drumskog vozila
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Promena naziva vrste broda
@@ -3559,6 +3565,7 @@ STR_REPLACE_VEHICLE_SHIP.gen                                    :broda
 STR_REPLACE_VEHICLE_SHIP.aku                                    :brod
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :letelica
 STR_REPLACE_VEHICLE_AIRCRAFT.aku                                :letelicu
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberite vrstu lokomotive za zamenu
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izaberite novu vrstu lokomotive koju biste želeli da koristite umesto obeležene s leve strane
@@ -4202,6 +4209,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... mož
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šuma može biti posađena samo iznad linije snega
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... može biti izgrađena samo iznad linije snega
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... može biti izgrađena samo ispod linije snega
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Izgradnja železničke stanice ovde nije moguća...

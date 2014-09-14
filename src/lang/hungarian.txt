@@ -311,6 +311,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görget�
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - jobbra/balra görgeti a listát
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Építmények lerombolása egy mezőről. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült költséget
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Alapértelmezett
 STR_BUTTON_CANCEL                                               :{BLACK}Mégsem
@@ -3454,6 +3457,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}A közú
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}A hajó márkanevének megváltoztatása
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}A repülőgép márkanevének megváltoztatása
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Márkanév megváltoztatása
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Márkanév megváltoztatása
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Márkanév megváltoztatása
@@ -3557,6 +3563,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Vonatok
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Közúti járművek
 STR_REPLACE_VEHICLE_SHIP                                        :Hajók
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Repülőgépek
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Cserélendő járműtípus kiválasztása
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}A bal oldalon kiválasztott járműtípus helyett kívánt új járműtípus kiválasztása

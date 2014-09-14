@@ -249,6 +249,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크�
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤 바 - 목록을 좌/우로 스크롤하세요.
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}직사각형 모양의 영역에 있는 건물과 땅 등을 부숩니다. CTRL 키를 누른 채로 사용하면 대각선 영역 선택이 가능합니다. SHIFT 키를 누른채로 사용하면 예상 가격을 볼 수 있습니다.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}기본값
 STR_BUTTON_CANCEL                                               :{BLACK}취소
@@ -3391,6 +3394,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}차량�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박의 차량 이름을 변경합니다.
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기의 차량 이름을 변경합니다.
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차의 차량 이름을 변경합니다.
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}차종명을 변경합니다.
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박의 차량 이름을 변경합니다.
@@ -3494,6 +3500,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :{G=f}열차
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차/전차
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=f}항공기
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체할 기관차 종류를 선택하십시오.
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}새로 교체될 기관차를 선택하십시오.

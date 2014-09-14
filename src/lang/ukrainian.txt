@@ -373,6 +373,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуг
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуга прокрутки - прокручує список вліво/вправо
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Зруйнувати будинки, дороги і т.п. Утримуйте Ctrl для виділення клітинок по діагоналі, або Shift - для показу витрат на руйнування
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Стандартно
 STR_BUTTON_CANCEL                                               :{BLACK}Відміна
@@ -3490,6 +3493,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Пере
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Перейменувати тип корабля
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Перейменувати тип літака
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Перейменувати тип поїзда
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Перейменувати тип авто
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Перейменувати тип корабля
@@ -3593,6 +3599,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Поїзд
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Авто
 STR_REPLACE_VEHICLE_SHIP                                        :Корабель
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Літак
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Виберіть транспорт для оновлення
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Виберіть новий транспорт, яким ви бажаєте замінити старий

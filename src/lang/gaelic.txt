@@ -437,7 +437,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bàr sgr
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Leag togalaichean agus msaa. air ceàrnag dhe thìr. Taghaidh Ctrl an roinn gu trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Seall an fheadhainn fhalaichte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Seall an fheadhainn fhalaichte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Seall an fheadhainn fhalaichte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Seall an fheadhainn fhalaichte
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Ma chuireas tu am putan seo an comas, thèid na carbadan-rèile falaichte a shealltainn cuideachd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Ma chuireas tu am putan seo an comas, thèid na carbadan-rathaid falaichte a shealltainn cuideachd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ma chuireas tu am putan seo an comas, thèid na longan falaichte a shealltainn cuideachd
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ma chuireas tu am putan seo an comas, thèid na carbadan-adhair falaichte a shealltainn cuideachd
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Bunaiteach
@@ -1465,8 +1473,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :An ùine a mhai
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An ùine a mhaireas brath mearachd ann an uinneag dearg. Thoir an aire nach dùin cuid dhe na brathan as cudromaiche leotha fhèin is gum feum thu an toirt air falbh a làimh.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Seall gliocasan-sgrìn: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Dèan dàil mus tèid gliocasan-sgrìn a shealltainn nuair a chumas mi an luchag os cionn eileamaid na h-eadar-aghaidh. Mar roghainn eile, gabhaidh gliocasan-sgrìn nasgadh ri putan deas na luchaige
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Cùm an luchag os a chionn fad {COMMA} {P 0 diog dhiog diogan diog}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Dèan dàil mus tèid gliocasan-sgrìn a shealltainn nuair a chumas mi an luchag os cionn eileamaid na h-eadar-aghaidh. Mar roghainn eile, thèid gliocasan-sgrìn nasgadh ri putan deas na luchaige ma chuireas tu an luach air 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Cùm an luchag os a chionn fad {COMMA} {P 0 mhille-dhiog mhille-dhiog mille-dhiogan mille-dhiog}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Briogadh deas
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Seall àireamh-shluaigh ann an leubail a' bhaile: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Seall àireamh-shluaigh aig bailtean san leubail aca air a' mhapa
@@ -3074,11 +3082,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramada
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A' co-thaobhachadh sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}An t-ath sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Lean air adhart dhan ath sprite àbhaisteach, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an deireadh
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Lean air adhart dhan ath sprite àbhaisteach, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an deireadh gun chiad sprite
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Rach dhan sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Rach dhan sprite a thagh thu. Mura h-e sprite àbhaisteach a th' ann, lean air adhart dhan ath-sprite àbhaisteach
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}An sprite roimhe
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Lean air adhart dhan sprite àbhaisteach roimhe, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an toiseach
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Lean air adhart dhan sprite àbhaisteach roimhe, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an toiseach gun sprite mu dheireadh
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Riochdachadh air an sprite a thagh thu an-dràsta. Thèid an co-thaobhadh a chur dhan dàrna taobh nuair a thèid an sprite a tharraing
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Gluais an sprite mu thimcheall, ag atharrachadh nam frith-àireamhan aig X is Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Frith-àireamh X: {NUM}, frith-àireamh Y: {NUM}
@@ -3597,10 +3605,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Na h-uile ach {
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Spàirn tàirnge as motha: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Astar: {GOLD}{COMMA} {P leac leac leacan leac}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Roghainn nan carbadan-rèile - briog air carbad airson fiosrachaidh
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Roghainn nan carbadan-rathaid - briog air carbad airson fiosrachaidh
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Roghainn nan long - briog air long airson fiosrachaidh
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Roghainn nan carbadan-adhair - briog air carbad airson fiosrachaidh
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liosta airson carbadan-rèile a thaghadh. Briog air carbad airson fiosrachaidh. Ctrl+briog gus toglachadh an tèid seòrsa a’ charbaid fhalach gus nach tèid
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liosta airson carbadan-rathaid a thaghadh. Briog air carbad airson fiosrachaidh. Ctrl+briog gus toglachadh an tèid seòrsa a’ charbaid fhalach gus nach tèid
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Liosta airson longan a thaghadh. Briog air long airson fiosrachaidh. Ctrl+briog gus toglachadh an tèid seòrsa na luinge fhalach gus nach tèid
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Liosta airson carbadan-adhair a thaghadh. Briog air carbad airson fiosrachaidh. Ctrl+briog gus toglachadh an tèid seòrsa a’ charbaid fhalach gus nach tèid
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Ceannaich carbad
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Ceannaich carbad
@@ -3622,8 +3630,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Thoir ai
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Thoir ainm ùr air an t-seòrsa dhe long
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Thoir ainm ùr air an t-seòrsa dhe charbad-adhair
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Falaich
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Falaich
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Falaich
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Falaich
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Seall
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Seall
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Seall
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Seall
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Toglaich falach/sealltainn seòrsa a’ charbaid-rèile
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Toglaich falach/sealltainn seòrsa a’ charbaid-rathaid
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Toglaich falach/sealltainn seòrsa na luinge
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Toglaich falach/sealltainn seòrsa a’ charbaid-adhair
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Thoir ainm ùr air an t-seòrsa dhe charbad-rèile
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Thoir ainm ùr air an t-seòrsa dhe charbad-rathaid
@@ -3729,6 +3749,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Carbad-rathaid
 STR_REPLACE_VEHICLE_SHIP                                        :{G=f}Long
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Carbad-adhair
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Carbadan ’gan cleachdadh
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Colbh le carbadan a tha leatsa
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Carbadan ri làimh
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Colbh le carbadan ri làimh airson cur ’na àite
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Tagh seòrsa an einnsein airson leasachadh
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Tagh an seòrsa ùr dhen einnsean a bu toil leat a chleachdadh an àite an fhir a thagh thu air an taobh chlì
@@ -5238,6 +5262,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (falaichte)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

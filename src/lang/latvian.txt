@@ -249,6 +249,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla - ritina sarakstu pa kreisi/pa labi
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nojaukt celtnes u.c. objektus no zemes platības. Ctrl iezīmē diagonālu laukumu. Shift pārslēdz nojaukšanu/izmaksu tāmes attēlošanu
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Noklusējums
 STR_BUTTON_CANCEL                                               :{BLACK}Atcelt
@@ -3288,6 +3291,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Pārdēv
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Pārdēvēt kuģa tipu
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Pārdēvēt lidaparāta tipu
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pārdēvēt vilciena vagona tipu
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pārdēvēt autotransporta līdzekļa tipu
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Pārdēvēt kuģa tipu
@@ -3391,6 +3397,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Vilciens
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autotransporta līdzeklis
 STR_REPLACE_VEHICLE_SHIP                                        :Kuģis
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lidaparāts
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izvēlēties lokomotīves veidu, kuru vēlaties mainīt
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izvēlēties jaunu lokomotīves veidu, kuru vēlaties lietot kreisajā pusē atlasītās lokomotīves vietā
@@ -4031,6 +4038,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... var 
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... mežus var stādīt tikai virs sniega līnijas
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... var būvēt tikai sniegotajos apgabalos
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... var būvēt tikai bezsniega apgabalos
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Šeit nevar būvēt dzelzceļa staciju...

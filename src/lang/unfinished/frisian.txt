@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skowbalk
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skowbalke - skow list links/rjochts
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Brek gebouen ensafierder ôf op in stikje lân. Ctrl selektearet it gebiet diagonaal. Shift skeakelt tusken bouwe/taksearje fan de kosten
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standert
 STR_BUTTON_CANCEL                                               :{BLACK}Annulearje
@@ -2761,6 +2764,9 @@ STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Jow boat
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Jow fleantúg type in nije namme
 
 
+
+
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
@@ -2793,6 +2799,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Trein
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Auto
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fleanmasine
+
 
 
 
@@ -3073,6 +3080,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kin 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kin allinnich yn lege plakken bout wurde
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kin allinich pleatse wurde by de rân fan'e kaart
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bosk kin allinich boppe snieline boud wurde
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kin hjir gjin treinstasjon boue...

@@ -248,6 +248,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лент
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Превъртаща ивица - превърта списъка на ляво/дясно
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Разруши постройки и др. върху квадрат от картата. Ctrl маркира по диагонал. Shift показва евентуалната цена на разрушението.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По подразбиране
 STR_BUTTON_CANCEL                                               :{BLACK}Отказ
@@ -3308,6 +3311,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Преи
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Промяна името на кораб
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Смяна името на самолета
 
+
+
+
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Преименуване на влак
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Преименувай МПС-то
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Промяна името на кораба
@@ -3411,6 +3417,7 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Влак
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Автобус/камион
 STR_REPLACE_VEHICLE_SHIP                                        :Кораб
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Самолет
+
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Избор на нов двигател за замяната
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Изберете нов двигател, който бихте желали да поставите на мястото на избрания в ляво двигател

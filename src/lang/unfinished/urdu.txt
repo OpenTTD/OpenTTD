@@ -239,6 +239,9 @@ STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھر�
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھرستی پٹی - فھرست کو دایئں بایئں کرنے کے لیے
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گرائیں. Ctrl ترچھے انداز میں علاقے کا انتخاب کرتا ہے. عمارتیں یا انکی لاگت تخمینہ دیکھنے کے لئے Shift کا استعمال کیجیے.
 
+# Show engines button
+
+
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}طے شدہ
 STR_BUTTON_CANCEL                                               :{BLACK} ترک کیجیئے
@@ -2339,6 +2342,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ
 
 
 
+
+
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
@@ -2369,6 +2375,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}قیم�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}قیمت: {CURRENCY_LONG} حد رفتار: {VELOCITY} پہنچ: {COMMA} ٹائلیں{} گنجائش: {CARGO_LONG}{}چلانے کا خرچہ: {CURRENCY_LONG} سالانہ
 
 # Autoreplace window
+
 
 
 
@@ -2561,6 +2568,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} �
 
 # Industry related errors
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}... صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
+
 
 # Station construction related errors
 
