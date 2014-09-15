@@ -946,6 +946,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Το {VE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Το {VEHICLE} έχει μη έγκυρη εντολή
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Το {VEHICLE} έχει διπλή εντολή
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Το {VEHICLE} έχει μη έγκυρο σταθμό στις εντολές του
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}Το όχημα {VEHICLE} έχει στους προορισμούς του ένα αεροδρόμιο με πολύ μικρό αεροδιάδρομο
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Το {VEHICLE} αρχίζει να παλιώνει
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Το {VEHICLE} ξεπερνά το όριο ηλικίας
@@ -1099,6 +1100,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλ
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} κατεστραμμέν{P ο α} αρχεί{P ο α}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ μουσικής
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Αποτυχία ανάκτησης λίστας υποστηριζόμενων αναλύσεων
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Θέση του παιχνιδιού σε λειτουργία πλήρης οθόνης απέτυχε
 
 # Custom currency window

@@ -1367,8 +1367,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poruke
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trajanje prikaza poruke s greškom u crvenom prozoru. Uzmite u obzir da se neke (kritične) poruke s greškom ne zatvaraju automatski nakon isteka ovog vremena, nego ih je potrebno zatvoriti ručno
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaži pojašnjenja alata: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Odgoda prije prikaza objašnjenja alata kada se miš postavi iznad nekog elementa sučelja. Alternativno, objašnjena alata se mogu vezati uz desnu tipku na mišu
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Lebdi na {COMMA} sekundi
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Odgoda prije prikaza objašnjenja alata kada se miš postavi iznad nekog elementa sučelja. Alternativno, objašnjena alata se mogu vezati uz desnu tipku na mišu kada je ova vrijednost postavljena na 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Lebdi na {COMMA} milisekund{P 0 u i i}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaži broj stanovnika u oznaci imena grada: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Prikaži populaciju gradova u njihovim oznakama na mapi
@@ -2949,11 +2949,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Poravnanje sprite-a {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sljedeći sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon kraja kreni od početka
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon dolaska na zadnjeg prebaci na prvi
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Otiđi na sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Otiđi na određeni sprite. Ako sprite nije normalni sprite, otiđi na slijedeći normalni sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prethodni sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Otiđi na prethodni normalni sprite, preskačući svaki pseudo/prebojani/font sprite i kreni od kraja ako se dođe na početak
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Otiđi na prethodni normalni sprite, preskačući svaki pseudo/prebojani/font sprite i {BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon dolaska na prvi prebaci na zadnjeg
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prikaz trenutno odabranog spritea. Poravnjanje se ignorira kod crtanja ovog spritea.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pomakni sprite mijenjajući X i Y pomake
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X pomak: {NUM}, Y pomak: {NUM}

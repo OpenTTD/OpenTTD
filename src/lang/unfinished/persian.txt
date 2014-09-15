@@ -241,7 +241,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}نوار
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین.با فشردن همزمان دکمه Ctrl به طور مورب می توانید تخریب کنید.فشردن همزمان دکمه Shift برآورد هزینه را نمایش می دهد.
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK} نمایش مخفی ها
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK} نمایش مخفی ها
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK} نمایش مخفی ها
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK} نمایش مخفی ها
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}با فعال کردن این دکمه قطارهای مخفی نیز نمایش داده می شوند
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}با فعال کردن این دکمه خودروهای مخفی نیز نمایش داده می شوند
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}با فعال کردن این دکمه کشتی های مخفی نیز نمایش داده می شوند
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}با فعال کردن این دکمه هواپیماهای مخفی نیز نمایش داده می شوند
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}حالت قراردادی
@@ -979,6 +987,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}بسته
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} فایل خراب است
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}اطلاعات اضافه درباره بسته ی موسیقی پایه
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}ناتوان در گرفتن تنظیمات نمایش
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}حالت تمام صفحه با شکست مواجه شد
 
 # Custom currency window
@@ -1180,6 +1189,9 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :صخامت خط
 STR_CONFIG_SETTING_LAND_GENERATOR                               :طراح زمین: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :پیدایش زمین
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :نوع زمین: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :تراکم مراکز تولید: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :چند کارخانه باید ایجاد شود و در چه درجه ای باید در بازی نگهداری شود
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :تمام پالایشگاه ها در لبه های تقشه ساخته می شوند که ساحل جزیره است
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط برف: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :پستی و بلندی های زمین: {STRING}
@@ -1187,6 +1199,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بسیار هم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :هموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :ناهموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :بسیار ناهموار
+STR_CONFIG_SETTING_VARIETY                                      :توضیع انواع : {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(فقط TerraGenesis) کنترل آب و هوای نقشه شامل کوه و مناطق هموار می باشد. این فقط نقشه را هموارتر می سازد.تغییرات دیگر مربوط به کوه ها است
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :تعداد رودخانه ها: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :تعداد رودخانه ها برای ساخت را مشخص نمایید
 STR_CONFIG_SETTING_TREE_PLACER                                  :الگوریتم قرار دهنده مکان درخت‌ها: {STRING}
@@ -2549,7 +2563,7 @@ STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}نمای
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}رفتن به تصویر
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}رفتن به تصویر بعد. اگر تصویر معمولی نیست به تصویر معمولی بعدی می رود
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}تصویر قبلی
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نمایش تصویر عادی قبلی، بدون انجام دادن هر گونه تغییرات بر آخر
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نمایش تصویر عادی قبلی، بدون انجام دادن هر گونه تغییرات
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}نمایش تصویر انتخاب شده. تغییر مکان تصویر در زمان بارگزاری اعمال نمی شود
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}تغییر مکان تصویر، تغییر مقدار اضافه شونده به X و Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}مقدار اضافه شونده به X: {NUM}, مقدار اضافه شونده به Y: {NUM}
@@ -2966,8 +2980,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}تغیی
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}نام گذاری مجدد نوع کشتی
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}نامگذاری مجدد نوع هواپیما
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}مخفی
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}مخفی
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}مخفی
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}مخفی
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}نمایش
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}نمایش
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}نمایش
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}نمایش
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}میخ مخفی کردن/ نمایش دادن مدل قطار ها
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}میخ مخفی کردن/ نمایش دادن مدل خودرو ها
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}میخ مخفی کردن/ نمایش دادن مدل کشتی ها
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :میخ مخفی کردن/نمایش دادن مدل های هواپیما
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
@@ -3030,6 +3056,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ماشین
 STR_REPLACE_VEHICLE_SHIP                                        :کشتی
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :هواپیما
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}وسیله در حال استفاده است
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}ستون وسیله های شما
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}وسیله های موجود
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK} ستون با وسیله نقلیه آماده جایگزینی می باشد
 
 
 
@@ -3357,6 +3387,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... جن
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... فقط روی خط برف می توان ساخت
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... فقط زیر خط برف می توان ساخت
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}این منطقه مکان خوبی برای ایجاد '{STRING}' نمی باشد
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}تنظیمات نقشه را برای بهتر کردن آن تغییر دهید
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}اینجا نمی شود ایستگاه راه آهن ساخت
@@ -4003,6 +4035,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (مخفی)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

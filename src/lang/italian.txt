@@ -1295,8 +1295,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata dei mess
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata di visualizzazione dei messaggi d'errore nelle finestre rosse. Note: alcuni messaggi d'errore (critici) non sono chiusi automaticamente anche allo scadere del tempo, ma devono essere chiusi manualmente
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 o i}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra suggerimenti: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Ritardo con cui i suggerimenti sono mostrati al passaggio del mouse su un elemento del'interfaccia. In alternativa, i messaggi possono essere attivati col pulsante destro del mouse
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Al passaggio del mouse dopo {COMMA} second{P 0 o i}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Ritardo con cui i suggerimenti sono mostrati al passaggio del mouse su un elemento del'interfaccia. In alternativa, i messaggi possono essere attivati col pulsante destro del mouse impostando questo valore a 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Al passaggio del mouse dopo {COMMA} millisecond{P 0 o i}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Al clic col pulsante destro
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra la popolazione di una città nell'etichetta del nome: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mosta la popolazione delle città nella loro etichetta sulla mappa
@@ -2883,11 +2883,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametr
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Allineamento sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Successivo
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procede al successivo sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando al primo se viene raggiunta la fine
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procede al successivo sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando al primo se viene raggiunto l'ultimo della lista
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Vai a
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Va allo sprite specificato. Se lo sprite non è uno sprite normale, procede allo sprite normale immediatamente successivo
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Precedente
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procede al precedente sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando all'ultimo se viene raggiunto l'inizio
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procede al precedente sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando all'ultimo se viene raggiunto il primo della lista
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Rappresentazione dello sprite corrente. L'allineamento viene ignorato in questa casella.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando i posizionamenti X e Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Posizionamento X: {NUM}, Y: {NUM}

@@ -250,7 +250,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크�
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}직사각형 모양의 영역에 있는 건물과 땅 등을 부숩니다. CTRL 키를 누른 채로 사용하면 대각선 영역 선택이 가능합니다. SHIFT 키를 누른채로 사용하면 예상 가격을 볼 수 있습니다.
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}숨겨진 차량 보기
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}숨겨진 차량 보기
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}숨겨진 차량 보기
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}숨겨진 차량 보기
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}이 버튼을 누르면 숨겨진 열차 차량도 구매 목록에 모두 표시합니다.
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}이 버튼을 누르면 숨겨진 자동차/전차 차량도 구매 목록에 모두 표시합니다.
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}이 버튼을 누르면 숨겨진 선박도 구매 목록에 모두 표시합니다.
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}이 버튼을 누르면 숨겨진 항공기도 구매 목록에 모두 표시합니다.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}기본값
@@ -1265,7 +1273,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :오류 메시�
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}초 동안
 STR_CONFIG_SETTING_HOVER_DELAY                                  :도움말 보이기: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :마우스를 올려놓았을 때 도움말이 뜨는데 걸리는 시간을 설정합니다. 마우스 오른쪽 클릭으로 바로 뜨도록 할 수도 있습니다.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :마우스를 {COMMA}초간 올려놓기
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :마우스를 {COMMA}밀리초 동안 올려놓기 (1밀리초 = 1/1000초)
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :마우스 오른쪽 클릭
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시 이름 옆에 도시의 인구 수를 표시함: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시 이름 옆에 도시의 인구 수를 표시합니다.
@@ -2846,11 +2854,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF �
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}스프라이트 정렬 {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}다음 스프라이트
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}모조/재색상/글씨 스프라이트는 건너뛰고 다음 번호의 일반 스프라이트로 이동합니다. 마지막 번호에 다다르면 다시 처음으로 돌아옵니다.
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 다음 보통 스프라이트로 이동하고, 마지막 스프라이트에 다다르면 다시 처음으로 돌아갑니다.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트 번호 입력
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}입력한 스프라이트 번호로 이동합니다. 만약 입력한 번호의 스프라이트가 일반 스프라이트가 아닐경우, 그 다음으로 오는 일반 스프라이트로 이동합니다.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 스프라이트
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}모조/재색상/글씨 스프라이트는 건너뛰고 이전 번호의 정상 스프라이트로 이동합니다. 처음 번호에 다다르면 마지막 번호로 돌아옵니다.
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X축: {NUM}, Y축: {NUM}
@@ -3369,10 +3377,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} �
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}열차 선택 목록 - 차량 정보를 보려면 클릭
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}차량 목록 - 차량 정보를 보려면 클릭
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}열차 차량 구매 목록입니다. 차량의 정보를 보려면 클릭하세요. CTRL + 클릭하면 해당 차량을 숨김/표시 처리할 수 있습니다.
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}자동차/전차 구매 목록입니다. 차량의 정보를 보려면 클릭하세요. CTRL + 클릭하면 해당 차량을 숨김/표시 처리할 수 있습니다.
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}선박 구매 목록입니다. 선박의 정보를 보려면 선박을 클릭하세요. CTRL + 클릭하면 해당 선박을 숨김/표시 처리할 수 있습니다.
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}항공기 구매 목록입니다. 항공기의 정보를 보려면 클릭하세요. CTRL + 클릭하면 해당 항공기를 숨김/표시 처리할 수 있습니다.
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}차량 구입
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}차량 구입
@@ -3394,8 +3402,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}차량�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박의 차량 이름을 변경합니다.
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기의 차량 이름을 변경합니다.
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}숨김
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}숨김
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}숨김
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}숨김
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}보이기
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}보이기
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}보이기
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}보이기
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}숨김 처리한 열차 차량을 목록에 보여주거나 숨깁니다.
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}숨김 처리한 자동차/전차 차량을 목록에 보여주거나 숨깁니다.
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}숨김 처리한 선박을 목록에 보여주거나 숨깁니다.
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}숨김 처리한 항공기를 목록에 보여주거나 숨깁니다.
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차의 차량 이름을 변경합니다.
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}차종명을 변경합니다.
@@ -3501,6 +3521,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차/
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=f}항공기
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}사용 중인 차량
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}이 열은 현재 사용 중인 차량 목록입니다.
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}교체할 수 있는 차량
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}이 열은 교체할 수 있는 차량 목록입니다.
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체할 기관차 종류를 선택하십시오.
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}새로 교체될 기관차를 선택하십시오.
@@ -4854,6 +4878,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (숨김)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
