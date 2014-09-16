@@ -23,14 +23,6 @@ SQObjectPtr _false_(false);
 SQObjectPtr _one_((SQInteger)1);
 SQObjectPtr _minusone_((SQInteger)-1);
 
-SQSharedState::SQSharedState()
-{
-	_compilererrorhandler = NULL;
-	_printfunc = NULL;
-	_debuginfo = false;
-	_notifyallexceptions = false;
-}
-
 #define newsysstring(s) {	\
 	_systemstrings->push_back(SQString::Create(this,s));	\
 	}
@@ -99,8 +91,12 @@ SQTable *CreateDefaultDelegate(SQSharedState *ss,SQRegFunction *funcz)
 	return t;
 }
 
-void SQSharedState::Init()
+SQSharedState::SQSharedState()
 {
+	_compilererrorhandler = NULL;
+	_printfunc = NULL;
+	_debuginfo = false;
+	_notifyallexceptions = false;
 	_scratchpad=NULL;
 	_scratchpadsize=0;
 #ifndef NO_GARBAGE_COLLECTOR

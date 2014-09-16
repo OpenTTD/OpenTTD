@@ -58,7 +58,6 @@ struct SQSharedState
 {
 	SQSharedState();
 	~SQSharedState();
-	void Init();
 public:
 	SQChar* GetScratchPad(SQInteger size);
 	SQInteger GetMetaMethodIdxByName(const SQObjectPtr &name);

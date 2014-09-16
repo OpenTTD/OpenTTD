@@ -57,7 +57,6 @@ HSQUIRRELVM sq_open(SQInteger initialstacksize)
 	SQSharedState *ss;
 	SQVM *v;
 	sq_new(ss, SQSharedState);
-	ss->Init();
 	v = (SQVM *)SQ_MALLOC(sizeof(SQVM));
 	new (v) SQVM(ss);
 	ss->_root_vm = v;
