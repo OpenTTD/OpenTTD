@@ -92,8 +92,7 @@ struct SQInstructionDesc {
 
 struct SQInstruction
 {
-	SQInstruction(){};
-	SQInstruction(SQOpcode _op,SQInteger a0=0,SQInteger a1=0,SQInteger a2=0,SQInteger a3=0)
+	SQInstruction(SQOpcode _op=_OP_SCOPE_END,SQInteger a0=0,SQInteger a1=0,SQInteger a2=0,SQInteger a3=0)
 	{	op = _op;
 		_arg0 = (unsigned char)a0;_arg1 = (SQInt32)a1;
 		_arg2 = (unsigned char)a2;_arg3 = (unsigned char)a3;

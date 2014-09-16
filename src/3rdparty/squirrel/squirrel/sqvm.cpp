@@ -115,6 +115,11 @@ SQVM::SQVM(SQSharedState *ss)
 	_can_suspend = false;
 	_in_stackoverflow = false;
 	_ops_till_suspend = 0;
+	_callsstack = NULL;
+	_callsstacksize = 0;
+	_alloccallsstacksize = 0;
+	_top = 0;
+	_stackbase = 0;
 	ci = NULL;
 	INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);
 }
