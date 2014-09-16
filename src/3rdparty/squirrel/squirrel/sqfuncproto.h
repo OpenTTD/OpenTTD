@@ -7,13 +7,13 @@
 enum SQOuterType {
 	otLOCAL = 0,
 	otSYMBOL = 1,
-	otOUTER = 2
+	otOUTER = 2,
 };
 
 struct SQOuterVar
 {
 
-	SQOuterVar(){}
+	SQOuterVar() : _type(otLOCAL) {}
 	SQOuterVar(const SQObjectPtr &name,const SQObjectPtr &src,SQOuterType t)
 	{
 		_name = name;
@@ -33,7 +33,7 @@ struct SQOuterVar
 
 struct SQLocalVarInfo
 {
-	SQLocalVarInfo():_start_op(0),_end_op(0){}
+	SQLocalVarInfo():_start_op(0),_end_op(0), _pos(0){}
 	SQLocalVarInfo(const SQLocalVarInfo &lvi)
 	{
 		_name=lvi._name;
@@ -73,9 +73,36 @@ typedef sqvector<SQLineInfo> SQLineInfoVec;
 struct SQFunctionProto : public SQRefCounted
 {
 private:
-	SQFunctionProto(){
-	_stacksize=0;
-	_bgenerator=false;}
+	SQFunctionProto(SQInteger ninstructions,
+		SQInteger nliterals,SQInteger nparameters,
+		SQInteger nfunctions,SQInteger noutervalues,
+		SQInteger nlineinfos,SQInteger nlocalvarinfos,SQInteger ndefaultparams)
+	{
+		_stacksize=0;
+		_bgenerator=false;
+		_ninstructions = ninstructions;
+		_literals = (SQObjectPtr*)&_instructions[ninstructions];
+		_nliterals = nliterals;
+		_parameters = (SQObjectPtr*)&_literals[nliterals];
+		_nparameters = nparameters;
+		_functions = (SQObjectPtr*)&_parameters[nparameters];
+		_nfunctions = nfunctions;
+		_outervalues = (SQOuterVar*)&_functions[nfunctions];
+		_noutervalues = noutervalues;
+		_lineinfos = (SQLineInfo *)&_outervalues[noutervalues];
+		_nlineinfos = nlineinfos;
+		_localvarinfos = (SQLocalVarInfo *)&_lineinfos[nlineinfos];
+		_nlocalvarinfos = nlocalvarinfos;
+		_defaultparams = (SQInteger *)&_localvarinfos[nlocalvarinfos];
+		_ndefaultparams = ndefaultparams;
+
+		_CONSTRUCT_VECTOR(SQObjectPtr,_nliterals,_literals);
+		_CONSTRUCT_VECTOR(SQObjectPtr,_nparameters,_parameters);
+		_CONSTRUCT_VECTOR(SQObjectPtr,_nfunctions,_functions);
+		_CONSTRUCT_VECTOR(SQOuterVar,_noutervalues,_outervalues);
+		//_CONSTRUCT_VECTOR(SQLineInfo,_nlineinfos,_lineinfos); //not required are 2 integers
+		_CONSTRUCT_VECTOR(SQLocalVarInfo,_nlocalvarinfos,_localvarinfos);
+	}
 public:
 	static SQFunctionProto *Create(SQInteger ninstructions,
 		SQInteger nliterals,SQInteger nparameters,
@@ -85,29 +112,7 @@ public:
 		SQFunctionProto *f;
 		//I compact the whole class and members in a single memory allocation
 		f = (SQFunctionProto *)sq_vm_malloc(_FUNC_SIZE(ninstructions,nliterals,nparameters,nfunctions,noutervalues,nlineinfos,nlocalvarinfos,ndefaultparams));
-		new (f) SQFunctionProto;
-		f->_ninstructions = ninstructions;
-		f->_literals = (SQObjectPtr*)&f->_instructions[ninstructions];
-		f->_nliterals = nliterals;
-		f->_parameters = (SQObjectPtr*)&f->_literals[nliterals];
-		f->_nparameters = nparameters;
-		f->_functions = (SQObjectPtr*)&f->_parameters[nparameters];
-		f->_nfunctions = nfunctions;
-		f->_outervalues = (SQOuterVar*)&f->_functions[nfunctions];
-		f->_noutervalues = noutervalues;
-		f->_lineinfos = (SQLineInfo *)&f->_outervalues[noutervalues];
-		f->_nlineinfos = nlineinfos;
-		f->_localvarinfos = (SQLocalVarInfo *)&f->_lineinfos[nlineinfos];
-		f->_nlocalvarinfos = nlocalvarinfos;
-		f->_defaultparams = (SQInteger *)&f->_localvarinfos[nlocalvarinfos];
-		f->_ndefaultparams = ndefaultparams;
-
-		_CONSTRUCT_VECTOR(SQObjectPtr,f->_nliterals,f->_literals);
-		_CONSTRUCT_VECTOR(SQObjectPtr,f->_nparameters,f->_parameters);
-		_CONSTRUCT_VECTOR(SQObjectPtr,f->_nfunctions,f->_functions);
-		_CONSTRUCT_VECTOR(SQOuterVar,f->_noutervalues,f->_outervalues);
-		//_CONSTRUCT_VECTOR(SQLineInfo,f->_nlineinfos,f->_lineinfos); //not required are 2 integers
-		_CONSTRUCT_VECTOR(SQLocalVarInfo,f->_nlocalvarinfos,f->_localvarinfos);
+		new (f) SQFunctionProto(ninstructions, nliterals, nparameters, nfunctions, noutervalues, nlineinfos, nlocalvarinfos, ndefaultparams);
 		return f;
 	}
 	void Release(){
