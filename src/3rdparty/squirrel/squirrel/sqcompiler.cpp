@@ -429,7 +429,7 @@ public:
 	void LogicalOrExp()
 	{
 		LogicalAndExp();
-		for(;;) if(_token == TK_OR) {
+		if(_token == TK_OR) {
 			SQInteger first_exp = _fs->PopTarget();
 			SQInteger trg = _fs->PushTarget();
 			_fs->AddInstruction(_OP_OR, trg, 0, first_exp, 0);
@@ -441,8 +441,7 @@ public:
 			if(trg != second_exp) _fs->AddInstruction(_OP_MOVE, trg, second_exp);
 			_fs->SnoozeOpt();
 			_fs->SetIntructionParam(jpos, 1, (_fs->GetCurrentPos() - jpos));
-			break;
-		}else return;
+		}
 	}
 	void LogicalAndExp()
 	{

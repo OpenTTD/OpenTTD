@@ -988,9 +988,6 @@ SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror,
 		v->Pop(params);
 		return SQ_ERROR;
 	}
-	if(!v->_suspended)
-		v->Pop(params);
-	return sq_throwerror(v,"call failed");
 }
 
 SQRESULT sq_suspendvm(HSQUIRRELVM v)
