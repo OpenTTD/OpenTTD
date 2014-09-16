@@ -68,7 +68,7 @@ public:
 		SQCompiler *c = (SQCompiler *)ud;
 		c->Error(s);
 	}
-	void Error(const SQChar *s, ...)
+	NORETURN void Error(const SQChar *s, ...)
 	{
 		static SQChar temp[256];
 		va_list vl;
