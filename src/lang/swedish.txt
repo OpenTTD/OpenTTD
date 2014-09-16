@@ -249,10 +249,10 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullning
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta. Ctrl väljer yta diagonalt. Shift växlar mellan att riva/visa beräknad kostnad
 
 # Show engines button
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Visa dold{P 0 "" a}
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Visa dold{P 0 "" a}
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Visa dold{P 0 "" a}
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Visa dold{P 0 "" a}
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Visa dolda
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Visa dolda
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Visa dolda
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Visa dolda
 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}När denna knapp aktiveras visas även dolda lok och vagnar
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}När denna knapp aktiveras visas även dolda vägfordon
