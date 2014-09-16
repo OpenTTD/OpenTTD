@@ -357,7 +357,6 @@ SQRESULT sq_arrayinsert(HSQUIRRELVM v,SQInteger idx,SQInteger destpos)
 void sq_newclosure(HSQUIRRELVM v,SQFUNCTION func,SQUnsignedInteger nfreevars)
 {
 	SQNativeClosure *nc = SQNativeClosure::Create(_ss(v), func);
-	nc->_nparamscheck = 0;
 	for(SQUnsignedInteger i = 0; i < nfreevars; i++) {
 		nc->_outervalues.push_back(v->Top());
 		v->Pop();

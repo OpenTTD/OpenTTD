@@ -80,7 +80,7 @@ public:
 struct SQNativeClosure : public CHAINABLE_OBJ
 {
 private:
-	SQNativeClosure(SQSharedState *ss,SQFUNCTION func){_function=func;INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);	}
+	SQNativeClosure(SQSharedState *ss,SQFUNCTION func) : _nparamscheck(0) {_function=func;INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);	}
 public:
 	static SQNativeClosure *Create(SQSharedState *ss,SQFUNCTION func)
 	{
