@@ -534,6 +534,7 @@ bool SQVM::FOREACH_OP(SQObjectPtr &o1,SQObjectPtr &o2,SQObjectPtr
 			_generator(o1)->Resume(this, arg_2+1);
 			_FINISH(0);
 		}
+		/* FALL THROUGH */
 	default:
 		Raise_Error("cannot iterate %s", GetTypeName(o1));
 	}
@@ -763,6 +764,7 @@ exception_restore:
 					ct_stackbase = _stackbase;
 					goto common_call;
 				}
+				/* FALL THROUGH */
 			case _OP_CALL: {
 					ct_tailcall = false;
 					ct_target = arg0;
@@ -1018,7 +1020,7 @@ common_call:
 				}
 							  }
 				continue;
-			case _OP_THROW:	Raise_Error(TARGET); SQ_THROW(); continue;
+			case _OP_THROW:	Raise_Error(TARGET); SQ_THROW();
 			case _OP_CLASS: _GUARD(CLASS_OP(TARGET,arg1,arg2)); continue;
 			case _OP_NEWSLOTA:
 				bool bstatic = (arg0&NEW_SLOT_STATIC_FLAG)?true:false;
