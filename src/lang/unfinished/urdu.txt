@@ -206,7 +206,7 @@ STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} من
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
+STR_UNITS_VOLUME_SHORT_METRIC                                   :I{NBSP}{COMMA}
 STR_UNITS_VOLUME_SHORT_SI                                       :{NBSP}{COMMA}کیوبک میٹر
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{NBSP}{COMMA} لیٹر
@@ -240,7 +240,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھر�
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گرائیں. Ctrl ترچھے انداز میں علاقے کا انتخاب کرتا ہے. عمارتیں یا انکی لاگت تخمینہ دیکھنے کے لئے Shift کا استعمال کیجیے.
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}پوشیدہ دکهایں
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}پوشیدہ دکهایں
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}پوشیدہ دکهایں
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}پوشیدہ دکهایں
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}اس بٹن سے پوشیدہ ٹرینیں نظر آیں گی
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}اس بٹن سے پوشیدہ گاڑیاں نظر آیں گی
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}اس بٹن سے پوشیدہ بہری جہاز نظر آیں گے
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}اس بٹن سے پوشیدہ طیارے نظر آیں گے
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}طے شدہ
@@ -314,9 +322,9 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}بڑا �
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}چھوٹا کر کے دکھاو
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل کی پٹری بچھاو
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}سڑکیں بناو
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بناو
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK} منظر کشی ٹول بآر کھولیئے اور زمین اوپر نیچے، درخت لگایئے، وغیرھ
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بنایں
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بنایں
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}منظر کشی ٹول بآر کھولیئے اور زمین اوپر نیچےکریں، درخت لگایئے، وغیره
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK} آواز/موسیقی ونڈو دکھایئے
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK} آخری پیغام/ خبر دکھایئے، پیغام کے اختیارات کھولیئے
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات، کانسول،AI debug ،اسکرین شاٹس، Open TTD کے بارے میں
@@ -1169,6 +1177,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :آف
 
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Autosave: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :گیم بچانے کا وقفا چنیں
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :کھیل کو محفوظ کرنے کے لئے تاریخ کا {STRING} طریقہ استعمال کریں
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
@@ -2144,12 +2154,16 @@ STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE} غیر 
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK} منتخب NewGRF فائل اپنے configuration میں شامل کیجئے
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK} فائلوں کو دوبارھ اسکین کیجئے
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK} نئی دستیاب NewGRF فائلوں کی فھرست حاصل کیجئے
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}اپگریڈ
 
 
 
 
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}منسوخ
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}پریسیٹ تبدیل نہ کریں
+STR_SAVE_PRESET_SAVE                                            :{BLACK}بچایں
 
 # NewGRF parameters window
 
@@ -2272,9 +2286,9 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 
 # Company view
 
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ریل کے ٹکڑے
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} سڑک کے ٹکڑے
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} پانی کی ٹائلیں
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA}پٹڑی { "کا" "کے" P} { "ٹکڑا" "ٹکڑے" P}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} سڑک { "کا" "کے" P} { "ٹکڑا" "ٹکڑے" P}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} پانی { "کا" "کے" P} { "ٹکڑا" "ٹکڑے" P}
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} اسٹیشن کی ٹائلیں
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{COMMA}{WHITE} ہوائی اڈے
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}کوئی نہیں
@@ -2341,11 +2355,24 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ
 
 
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}چهپایں
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}چهپایں
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}چهپایں
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}چهپایں
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}دکهایں
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}دکهایں
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}دکهایں
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}دکهایں
 
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}سمندری جہاز کا قسم دکحایں یه نا
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{G=f}{BLACK}ہوائی جہاز کا ٹایپ دکحایں یه نا
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}ٹرین کا قسم دکهایں یه نا
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}گاڑی کا قسم دکهایں یه نا
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}سمندری جہاز کا قسم دکهایں یه نا
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}ہوائی جہاز کا قسم دکهایں یه نا
 
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}ٹرین کےقسم کا نام تبدیل کریں
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}گاڑی کےقسم کا نام تبدیل کریں
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}بہری جہاز کےقسم کا نام تبدیل کریں
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -2378,6 +2405,8 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}قیمت
 
 # Autoreplace window
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}استعمالکردہ گاڑیاں
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}میسر گاڑیاں
 
 
 
@@ -2711,17 +2740,57 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh کوئلے کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl کوئلے کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW کوئلے کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS ڈاک کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard ڈاک کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry ڈاک کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover ڈاک کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught ڈاک کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow ڈاک کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe تیل کا ٹینکر
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster تیل کا ٹینکر
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry تیل کا ٹینکر
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott مویشی وین
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl مویشی وین
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster مویشی وین
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh عام اشیاء کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead عام اشیاء کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss عام اشیاء کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford اناج کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas اناج کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss اناج کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe لکڑی کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster لکڑی کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland لکڑی کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS لوہے کی دھات کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl لوہے کی دھات کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy لوہے کی دھات کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh فولاد کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl فولاد کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling فولاد کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh بکتربند ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl بکتربند ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster بکتربند ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster خوراک کی ویگن
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry خوراک کی ویگن
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy خوراک کی ویگن
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl کاغذ کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh کاغذ کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS کاغذ کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS تانبے کی دهات کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl تانبے کی دهات کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss تانبے کی دهات کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl پانی کا ٹینکر
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh پانی کا ٹینکر
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS پانی کا ٹینکر
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh پھلوں کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl پھلوں کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling پھلوں کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh کہریا(ربر) کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl کہریا(ربر) کا ٹرک
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT کہریا(ربر) کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover چینی کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught چینی کا ٹرک
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow چینی کا ٹرک
@@ -2853,7 +2922,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
-STR_HIDDEN_ENGINE_NAME                                          :{ENGINE}پوشیدہ
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE}(پوشیدہ)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
@@ -2923,4 +2992,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :({STRING} ({VELOCITY}

@@ -249,7 +249,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullning
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta. Ctrl väljer yta diagonalt. Shift växlar mellan att riva/visa beräknad kostnad
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Visa dold{P 0 "" a}
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Visa dold{P 0 "" a}
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Visa dold{P 0 "" a}
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Visa dold{P 0 "" a}
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}När denna knapp aktiveras visas även dolda lok och vagnar
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}När denna knapp aktiveras visas även dolda vägfordon
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}När denna knapp aktiveras visas även dolda fartyg
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}När denna knapp aktiveras visas även dolda flygfarkoster
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
@@ -1263,8 +1271,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid fö
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Håll muspekaren i {COMMA} sekund{P 0 "" er}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Håll muspekaren i {COMMA} millisekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånarantal i stadsnamnet: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Visa antal invånare efter stadsnamnen på kartan
@@ -2845,11 +2853,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Justera spriteobjekt {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nästa spriteobjekt
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsätt till nästa nomala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om vid slutet
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsätt till nästa nomala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om efter sista spriteobjektet
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå till spriteobjekt
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå till angivet spriteobjekt. Om objektet inte är ett normalt spriteobjekt, fortsätt till nästa normala spriteobjekt
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidigare spriteobjekt
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till nästa normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om vid början
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till föregående normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om från slutet efter första spriteobjektet
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation av det valda objektet. Justeringen ignoreras när objektet ritas.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet, ändrar X och Y offsets
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
@@ -3393,8 +3401,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Byt namn
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Byt namn på skeppstyp
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Byt namn på flygplanstyp
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Dölj
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Dölj
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Dölj
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Dölj
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Visa
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Visa
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Visa
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Visa
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Växla mellan att dölja och visa lok- och vagntyp
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Växla mellan att dölja och visa fordonstyp
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Växla mellan att dölja och visa fartygstyp
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Växla mellan att dölja och visa flygfarkoststyp
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Byt namn på tågets fordonstyp
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Byt namn på vägfordonstyp
@@ -3500,6 +3520,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vägfordon
 STR_REPLACE_VEHICLE_SHIP                                        :Skepp
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flygplan
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Fordon i bruk
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Kolumn med fordon du äger
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Tillgängliga fordon
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Kolumn med fordon tillgängliga för att bytas ut
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Välj fordonstyp att byta ut
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Välj den nya fordonstyp du vill använda i stället för den till vänster valda typen
@@ -4150,6 +4174,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan endast byggas ovanför snögränsen
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan endast byggas nedanför snögränsen
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Det fanns inga lämpliga platser för '{STRING}'-industrier
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Ändra parametrarna för kartgenereringen för att skapa en bättre karta
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan inte bygga järnvägsstation här...
@@ -4851,6 +4877,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (dold)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

@@ -501,6 +501,36 @@ STR_ORDINAL_NUMBER_15TH                                         :15fed
 
 ############ range for days starts
 STR_DAY_NUMBER_1ST                                              :1af
+STR_DAY_NUMBER_2ND                                              :2il
+STR_DAY_NUMBER_3RD                                              :3ydd
+STR_DAY_NUMBER_4TH                                              :4ydd
+STR_DAY_NUMBER_5TH                                              :5ed
+STR_DAY_NUMBER_6TH                                              :6ed
+STR_DAY_NUMBER_7TH                                              :7ed
+STR_DAY_NUMBER_8TH                                              :8ed
+STR_DAY_NUMBER_9TH                                              :9ed
+STR_DAY_NUMBER_10TH                                             :10ed
+STR_DAY_NUMBER_11TH                                             :11eg
+STR_DAY_NUMBER_12TH                                             :12ed
+STR_DAY_NUMBER_13TH                                             :13eg
+STR_DAY_NUMBER_14TH                                             :14eg
+STR_DAY_NUMBER_15TH                                             :15ed
+STR_DAY_NUMBER_16TH                                             :16eg
+STR_DAY_NUMBER_17TH                                             :17eg
+STR_DAY_NUMBER_18TH                                             :18ed
+STR_DAY_NUMBER_19TH                                             :19eg
+STR_DAY_NUMBER_20TH                                             :20ed
+STR_DAY_NUMBER_21ST                                             :21ain
+STR_DAY_NUMBER_22ND                                             :22ain
+STR_DAY_NUMBER_23RD                                             :23ain
+STR_DAY_NUMBER_24TH                                             :24ain
+STR_DAY_NUMBER_25TH                                             :25ain
+STR_DAY_NUMBER_26TH                                             :26ain
+STR_DAY_NUMBER_27TH                                             :27ain
+STR_DAY_NUMBER_28TH                                             :28ain
+STR_DAY_NUMBER_29TH                                             :29ain
+STR_DAY_NUMBER_30TH                                             :30ain
+STR_DAY_NUMBER_31ST                                             :31ain
 ############ range for days ends
 
 ############ range for months starts
@@ -1241,8 +1271,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Ystod neges gwa
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Amser i ddangos negeseuon gwall mewn ffenestr coch. Sylwer ni gaiff rhai negeseuon gwall (difrifol) eu cau'n ddiofyn
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} eiliad
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Dangos cynghorion: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oediad cyn y dangosir cynghorion wrth ddal y cyrchydd dros rhyw elfen rhyngwyneb. Fel arall gellir rhwymo cynghorion at botwm dde'r llygoden
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Oedi am {COMMA} eiliad
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oediad cyn y dangosir cynghorion wrth ddal y cyrchydd dros rhyw elfen rhyngwyneb. Fel arall rhwymir cynghorion at botwm dde'r llygoden pan fo'r gwerth yma'n 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Oedi am {COMMA} milfed o eiliad
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :De glicio
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Dangos poblogaeth tref yn label y dref: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Dangos poblogaeth trefi yn eu label ar y map
@@ -1255,7 +1285,9 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd olew: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Codir purfeydd olew ger ymylon y map yn unig, h.y. ar yr arfordir mewn mapiau ynys
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Rheoli'r uchder y mae eira'n ymddangos mewn tirwedd is-arctig. Mae eira hefyd yn effeitiho ar gynhyrchu diwydiannau a gofynion twf trefi
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis yn unig) Dewis amlder bryniau: Mae gan tirwedd llyfn nifer isel o fryniau bylchedig. Mae gan dirwedd garw llawer o fryniau, a all edrych yn undonog
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Llyfn Iawn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Llyfn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garw
@@ -2814,11 +2846,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramedr
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinio corlun {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Corlun nesaf
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mynd i'r corlun cyffredin nesaf, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio ar y diwedd
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mynd i'r corlun cyffredin nesaf, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio o'r corlun olaf i'r gyntaf
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mynd i gorlun
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mynd i'r corlun a ddynodir. Os nad yw'r corlun yn gorlun cyffredin, mynd i'r corlun gyffredin nesaf
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Corlun blaenorol
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mynd i'r corlun cyffredin blaenorol, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio ar y diwedd
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mynd i'r corlun cyffredin blaenorol, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio o'r corlun cyntaf i'r olaf
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Cynrychioliad o'r corlun a ddewiswyd. Fe anwybyddir yr aliniad wrth lunio'r corlun
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Symud y corlun, gan newid yr atredau X ac Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Atred X: {NUM}, Atred Y: {NUM}
@@ -3481,6 +3513,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Mae Cerbyd Ffor
 STR_REPLACE_VEHICLE_SHIP                                        :Mae Llong
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Mae Awyren
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Cerbydau mewn defnydd
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Colofn gyda cherbydau rydych yn berchen
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Cerbydau ar gael
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Colofn gyda cherbydau ar gael ar gyfer disodli
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Dewiswch y math injan i'w ddisodli
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Dewiswch y math injan newydd yr hoffech chi ei ddefnyddio yn lle'r math injan ar y chwith
@@ -4131,6 +4167,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... dim 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... gellir ei adeiladu uwchben yr eirlin yn unig
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... gellir ei adeiladu islaw i'r eirlin yn unig
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nid oedd manau addas ar gyfer diwydiannau '{STRING}'
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Newidwch y paramedrau cynhyrchu map er mwyn cael map gwell
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Methu adeiladu gorsaf reilffordd yma...

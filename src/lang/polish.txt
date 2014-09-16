@@ -1651,8 +1651,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Czas wyświetla
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Czas wyświetlania komunikatów o błędach w czerwonym oknie. Niektóre (krytyczne) komunikaty o błędach nie zamykają się automatycznie po tym czasie, tylko muszą zostać zamknięte ręcznie
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a y ""}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż wskazówki: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Opóźnienie, zanim wskazówka zostanie wyświetlona po najechaniu myszką na element interfejsu. Alternatywnie wskazówki mogą zostać przypisane do prawego przycisku myszki
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :po zatrzymaniu kursora przez {COMMA} sekund{P ę y ""}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Opóźnienie, zanim wskazówka zostanie wyświetlona po najechaniu myszką na element interfejsu. Alternatywnie wskazówki mogą zostać przypisane do prawego przycisku myszki, kiedy ta wartość jest ustawiona na 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Zatrzymaj kursor przez {COMMA} milisekund{P ę y ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :prawy klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaż populację miasta w jego nazwie: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Wyświetlaj populację miast w ich etykietach na mapie
@@ -3233,11 +3233,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR z
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Dostosowanie obrazka {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Następny obrazek
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Idź do następnego obrazka, pomijając pseudo/kolorowe/znakowe obrazki i przenieś je na koniec
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Idź do następnego normalnego obrazka, pomijając jakiekolwiek pseudo/kolorowe/znakowe obrazki i zawijaj je od ostatniego do pierwszego
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Idź do obrazka
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Idź do danego obrazka. Jeśli dany obrazek nie jest normalnym obrazkiem, idź do następnego normalnego obrazka
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Poprzedni obrazek
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idź do poprzedniego obrazka, pomijając wszystkie pseudo/kolorowe/znakowe obrazki i przenieś je na początek
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idź do poprzedniego normalnego obrazka, pomijając jakiekolwiek pseudo/kolorowe/znakowe obrazki i zawijaj je od pierwszego do ostatniego
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Przedstawienie wybranego orbazka. Dostosowanie jest ignorowane podczas rysowania tego obrazka
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj obrazkiem, zmieniając przesunięcia X i Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Przesunięcie X: {NUM}, Przesunięcie Y: {NUM}
