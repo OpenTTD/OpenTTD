@@ -21,7 +21,6 @@
 #define NEXT() {Next();_currentcolumn++;}
 #define ADD_KEYWORD(key,id) _keywords->NewSlot( SQString::Create(ss, #key) ,SQInteger(id))
 
-SQLexer::SQLexer(){}
 SQLexer::~SQLexer()
 {
 	_keywords->Release();
@@ -36,7 +35,7 @@ void SQLexer::APPEND_CHAR(WChar c)
 	}
 }
 
-void SQLexer::Init(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up,CompilerErrorFunc efunc,void *ed)
+SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up,CompilerErrorFunc efunc,void *ed)
 {
 	_errfunc = efunc;
 	_errtarget = ed;

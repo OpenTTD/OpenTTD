@@ -4,9 +4,8 @@
 
 struct SQLexer
 {
-	SQLexer();
 	~SQLexer();
-	void Init(SQSharedState *ss,SQLEXREADFUNC rg,SQUserPointer up,CompilerErrorFunc efunc,void *ed);
+	SQLexer(SQSharedState *ss,SQLEXREADFUNC rg,SQUserPointer up,CompilerErrorFunc efunc,void *ed);
 	NORETURN void Error(const SQChar *err);
 	SQInteger Lex();
 	const SQChar *Tok2Str(SQInteger tok);
