@@ -840,7 +840,7 @@ STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Mae {VEH
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Mae {VEHICLE} yn aros yn yr awrendy
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Mae gan {VEHICLE} rhy ddiffyg gorchmynion yn ei amserlen
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Nid oes gan {VEHICLE} ddigon o orchmynion yn ei amserlen
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Mae gan {VEHICLE} orchymyn gwallus
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Mae gan {VEHICLE} orchmynion dyblyg
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Mae gan {VEHICLE} orsaf annilys yn ei orchmynion
@@ -1279,9 +1279,16 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Dangos poblogae
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Trwch llinellau graff: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Lled y linell mewn graffiau. Bydd llinell fain yn fwy manwl, tra y bydd llinell trwchus yn haws i'w weld gyda lliwiau'n fwy amlwg
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Tirwedd: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Mae tirweddau'n diffinio senario sylfaenol gydag amryw fathau o gargo ac anghenion twf trefi. Mae NewGRF a Sgriptiau Gêm yn cynnig rheolaeth mannach, fodd bynnag
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Cynhyrchydd Tir: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Mae'r crewr gwreiddiol yn ddibynol ar y set graffeg sylfaenol, ac yn creu siapiau tirwedd gosodedig. Mae TerraGenesis yn seiliedig ar generadur said Perlin, gyda gosodiadau manylach
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gwreiddiol
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Math tirwedd: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis yn unig) Llyfnder y tirwedd
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Dwysedd diwydiant: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Gosod faint o ddiwydiannau y dylid eu creu a pha lefel caiff eu cynnal drwy'r gêm
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd olew: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Codir purfeydd olew ger ymylon y map yn unig, h.y. ar yr arfordir mewn mapiau ynys
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
