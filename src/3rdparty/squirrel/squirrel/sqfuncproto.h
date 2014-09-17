@@ -80,6 +80,7 @@ private:
 	{
 		_stacksize=0;
 		_bgenerator=false;
+		_varparams = false;
 		_ninstructions = ninstructions;
 		_literals = (SQObjectPtr*)&_instructions[ninstructions];
 		_nliterals = nliterals;

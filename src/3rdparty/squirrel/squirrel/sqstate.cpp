@@ -539,6 +539,7 @@ SQString::SQString(const SQChar *news, SQInteger len)
 	_len = len;
 	_hash = ::_hashstr(news,(size_t)len);
 	_next = NULL;
+	_sharedstate = NULL;
 }
 
 void SQStringTable::Resize(SQInteger size)

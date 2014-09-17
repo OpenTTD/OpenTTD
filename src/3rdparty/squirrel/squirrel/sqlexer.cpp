@@ -85,6 +85,12 @@ SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up,CompilerE
 	_lasttokenline = _currentline = 1;
 	_currentcolumn = 0;
 	_prevtoken = -1;
+	_curtoken = -1;
+
+	_svalue = NULL;
+	_nvalue = 0;
+	_fvalue = 0;
+
 	Next();
 }
 
