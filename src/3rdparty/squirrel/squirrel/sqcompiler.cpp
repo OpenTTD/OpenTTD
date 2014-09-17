@@ -63,7 +63,7 @@ public:
 		_sourcename = SQString::Create(_ss(v), sourcename);
 		_lineinfo = lineinfo;_raiseerror = raiseerror;
 	}
-	static void ThrowError(void *ud, const SQChar *s) {
+	NORETURN static void ThrowError(void *ud, const SQChar *s) {
 		SQCompiler *c = (SQCompiler *)ud;
 		c->Error(s);
 	}
