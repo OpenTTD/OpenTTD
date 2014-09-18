@@ -1516,7 +1516,11 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 
 	/* Refit if given a valid cargo. */
 	if (new_cid < NUM_CARGO && new_cid != v_start->cargo_type) {
-		IterateVehicleParts(v_start, ReturnCargoAction(st, StationIDStack(next_station).Pop()));
+		/* INVALID_STATION because in the DT_MANUAL case that's correct and in the DT_(A)SYMMETRIC
+		 * cases the next hop of the vehicle doesn't really tell us anything if the cargo had been
+		 * "via any station" before reserving. We rather produce some more "any station" cargo than
+		 * misrouting it. */
+		IterateVehicleParts(v_start, ReturnCargoAction(st, INVALID_STATION));
 		CommandCost cost = DoCommand(v_start->tile, v_start->index, new_cid | 1U << 6 | 0xFF << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 		if (cost.Succeeded()) v->First()->profit_this_year -= cost.GetCost() << 8;
 	}
