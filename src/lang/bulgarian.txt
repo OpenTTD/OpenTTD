@@ -211,19 +211,19 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}гал
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} л.
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} м³
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}м³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" и}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лит{P ър ри}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} куб. м.
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}галон{P "" и}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}лит{P ър ри}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}куб. м.
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} м
-STR_UNITS_HEIGHT_SI                                             :{COMMA} м
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}фут
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}м
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}м
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Филтриращ низ:
@@ -249,7 +249,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прев
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Разруши постройки и др. върху квадрат от картата. Ctrl маркира по диагонал. Shift показва евентуалната цена на разрушението.
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Покажи скрити
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Покажи скрити
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Покажи скрити
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Покажи скрити
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}С активирането на бутона всички скрити влакове също се показват
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}С активирането на бутона всички скрити автомобили също се показват
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}С активирането на бутона всички скрити кораби също се показват
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}С активирането на бутона всички скрити самолети също се показват
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По подразбиране
@@ -1257,7 +1265,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Продълж�
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Време през което съобщенията за грешки се показват в червен прозорец. Някой (критичните) съобщения за грешки не се затварят автоматично след това време, а трябва да бъдат затворени ръчно.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} секунд{P 0 а и}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Покажи съвети: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Изкачване преди съветът да се покаже, когато мишката е върху елемент от интерфейса. Алтернативно съветите могат да бъдат активирани с десния бутон на мишката
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Изкачване преди съветът да се покаже, когато мишката е върху елемент от интерфейса. Алтернативно съветите могат да бъдат активирани с десния бутон на мишката ако стойността е 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Изчакай за {COMMA} секунд{P 0 а и}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Десен бутон
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Население в табелата на града: {STRING.n}
@@ -1425,7 +1433,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интерва�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Изберете дали обслужването на превозните средства е предизвикано от времето изминало от последното им обслужване, или от падането на надеждността им под даден процент от максималната им надеждност
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Интервал на обслужване за влакове: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Задайте интервала за обслужване на новите влакове по подразбиране, ако такъв интервал не е зададен за превозното средство
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} д{P 0 ен ни}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}д{P 0 ен ни}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Изключен
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Интервал на обслужване за автомобили: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Задайте интервала за обслужване на новите пътни превозни средства по подразбиране, ако такъв интервал не е зададен за превозното средство
@@ -2749,8 +2757,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изклю
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Несъвместимо с тази версия на OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Въведи име за шаблона
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Текущо избраното име за именуване на шаблона
 STR_SAVE_PRESET_CANCEL                                          :Отказ
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Не променяй шаблона
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Запис
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Запази шаблона за текущо избраното име
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промени параметрите на новите графики (NewGRF)
@@ -2893,8 +2905,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставено
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (все още трява)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставено)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Града нараства всеги {ORANGE}{COMMA}{BLACK} д{P ен ни}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Града нараства всеки {ORANGE}{COMMA}{BLACK} д{P ен ни} (субсидиран)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Града нараства всеги {ORANGE}{COMMA}{BLACK}{NBSP}д{P ен ни}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Града нараства всеки {ORANGE}{COMMA}{BLACK}{NBSP}д{P ен ни} (субсидиран)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Града {RED}не{BLACK} расте
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Лимит на шумът в градът: {ORANGE}{COMMA}{BLACK}  най-много: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Фиксиране на главния изглед върху града. Ctrl+Click отваря прозорец на нов изглед върху града.
@@ -3311,8 +3323,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Преи
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Промяна името на кораб
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Смяна името на самолета
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Скрий
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Скрий
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Скрий
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Скрий
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Покажи
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Покажи
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Покажи
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Покажи
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Превключи показването на типа на локомотива
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Превключи показването на типа на автомобила
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Превключи показването на типа на кораба
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Превключи показването на типа на самолета
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Преименуване на влак
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Преименувай МПС-то
@@ -3418,6 +3442,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Автобус/
 STR_REPLACE_VEHICLE_SHIP                                        :Кораб
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Самолет
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Използвани автомобили
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Колона с автомобили, които притежавате
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Готови автомобили
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Колона с готови за подмяна автомобили
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Избор на нов двигател за замяната
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Изберете нов двигател, който бихте желали да поставите на мястото на избрания в ляво двигател
@@ -3543,7 +3571,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Капа
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Сума за преместване: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Дни на обслужване: {LTBLUE}{COMMA}дни{BLACK}   Последно облужване: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Дни на обслужване: {LTBLUE}{COMMA}{NBSP}дни{BLACK}   Последно облужване: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал на сервиз: {LTBLUE}{COMMA}%{BLACK}   Последен сервиз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Удължава периода за сервиз с 10. Ctrl-click удължава периода за сервиз с 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Намалява периода за сервиз с 10. Ctrl-click намалява периода за сервиз с 5
@@ -3775,8 +3803,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Пътувай 
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Пътувай за {STRING} с не повече от {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :и остани за {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :и отпътувай към {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} ден{P "" а}
-STR_TIMETABLE_TICKS                                             :{COMMA} щракане{P "" та}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}ден{P "" а}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}щракане{P "" та}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ще трябва {STRING} за това разписание да бъде приключено
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Това разписание ще вземе най-малко {STRING} за да приклучи (не всичко е планирано)
@@ -4765,6 +4793,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (скрит)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
