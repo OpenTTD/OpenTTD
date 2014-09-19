@@ -3116,31 +3116,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdblob.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\3rdparty\squirrel\sqstdlib\sqstdblobimpl.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdio.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdmath.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\3rdparty\squirrel\sqstdlib\sqstdstream.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdstring.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdsystem.h"
 				>
 			</File>
 			<File

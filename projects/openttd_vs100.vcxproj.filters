@@ -2082,25 +2082,7 @@
     <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdaux.h">
       <Filter>Squirrel headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdblob.h">
-      <Filter>Squirrel headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\3rdparty\squirrel\sqstdlib\sqstdblobimpl.h">
-      <Filter>Squirrel headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdio.h">
-      <Filter>Squirrel headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdmath.h">
-      <Filter>Squirrel headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\3rdparty\squirrel\sqstdlib\sqstdstream.h">
-      <Filter>Squirrel headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdstring.h">
-      <Filter>Squirrel headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdsystem.h">
       <Filter>Squirrel headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqstring.h">

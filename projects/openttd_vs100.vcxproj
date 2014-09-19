@@ -951,13 +951,7 @@
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqpcheader.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqstate.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdaux.h" />
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdblob.h" />
-    <ClInclude Include="..\src\3rdparty\squirrel\sqstdlib\sqstdblobimpl.h" />
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdio.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdmath.h" />
-    <ClInclude Include="..\src\3rdparty\squirrel\sqstdlib\sqstdstream.h" />
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdstring.h" />
-    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdsystem.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqstring.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqtable.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\include\squirrel.h" />
