@@ -433,7 +433,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Ariannu diwydia
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Adeiladu rheilffordd
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Adeiladu Rheilffordd Drydan
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Adeiladu rheilffordd drydan
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Adeiladu monoreilffordd
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Adeiladu maglef
 ############ range ends here
@@ -1156,7 +1156,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Os y galluogir,
 STR_CONFIG_SETTING_DISASTERS                                    :Trychinebau: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglo trychinebau a all rhwystro neu ddinistrio cerbydau neu tanadeiledd
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Agwedd y cyngor tref at ailstrwythuro'r ardal: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niewd amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niwed amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, ayyb.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Caniatáu tirffurfio o dan adeiladau a thraciau heb eu chwalu
@@ -1204,7 +1204,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Ar yr ochr gyrr
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Ar y dde
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Os y galluogir, bydd y ffenestr gyllid yn agor ar ddiwedd y flwyddyn i hwyluso archwilio sefyllfa ariannol y cwmni
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Fel rheol, bydd cerbyd yn aros wrth pob gorsaf yr aiff drwyddo. Bydd y gosodiad yma yn peri i'r cerbyd yrru'n syth drwy pob gorsaf ar ei ffordd at ei gyrchfan olaf heb aros. Sylwer fod y gosodiad yma'n diffinio rhagosodiad ar gyfer gorchmynion newydd. Gellir newid gorchmynion penodol at unrhyw ddull a fynnir
 STR_CONFIG_SETTING_STOP_LOCATION                                :Gorchmynion trenau newydd yn nodi aros ar y {STRING} o'r platfform fel rhagosodiad
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Y man lle y daw trên at aros wrth blatfform fel rheol. Mae'r 'ochr agos' yn cyfeirio at y pen lle mae'r trên yn myned, 'canol' at ganol y platfform, ac 'ochr bell' yn bell o'r mynedfa. Sylwer fod y gosodiad yma'n diffinio rhagosodiad ar gyfer gorchmynion newydd. Gellir newid gorchmynion penodol at unrhyw ddull a fynnir
@@ -2310,7 +2310,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Adeiladu
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau, signalau, a pwyntiau llwybro. Wrth ddal Ctrl, caiff cledrau pwyntiau llwybro a gorsafoedd eu tynnu hefyd
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trosi/Diweddaru math y rheilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 
-STR_RAIL_NAME_RAILROAD                                          :rheilffordd
+STR_RAIL_NAME_RAILROAD                                          :Rheilffordd
 STR_RAIL_NAME_ELRAIL                                            :rheilffordd drydan
 STR_RAIL_NAME_MONORAIL                                          :monoreilffordd
 STR_RAIL_NAME_MAGLEV                                            :maglef

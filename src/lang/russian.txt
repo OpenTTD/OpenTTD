@@ -380,10 +380,10 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Пока
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Показать скрытые
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Показать скрытые
 
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Если эта кнопка нажата, скрытые локомотивы и вагоны также будут показаны
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Если эта кнопка нажата, скрытые модели локомотивов и вагонов также будут показаны
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Если эта кнопка нажата, скрытые модели автомобилей также будут показаны
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Если эта кнопка нажата, скрытые модели кораблей также будут показаны
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если эта кнопка нажата, скрытые воздушные суда также будут показаны
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если эта кнопка нажата, скрытые модели воздушных судов также будут показаны
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
