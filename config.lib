@@ -1441,6 +1441,7 @@ make_cflags_and_ldflags() {
 	make_compiler_cflags "$cc_host" "CFLAGS" "CXXFLAGS" "LDFLAGS" "FEATURES"
 
 	CFLAGS="$CFLAGS -D$os"
+	CFLAGS_BUILD="$CFLAGS_BUILD -D$os"
 
 	if [ "$enable_debug" = "0" ]; then
 		# No debug, add default stuff
