@@ -432,30 +432,30 @@ struct GenerateLandscapeWindow : public Window {
 		switch (widget) {
 			case WID_GL_START_DATE_TEXT:
 				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
-				*size = GetStringBoundingBox(STR_BLACK_DATE_LONG);
+				*size = maxdim(*size, GetStringBoundingBox(STR_BLACK_DATE_LONG));
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN:
 			case WID_GL_MAPSIZE_Y_PULLDOWN:
 				SetDParamMaxValue(0, MAX_MAP_SIZE);
-				*size = GetStringBoundingBox(STR_JUST_INT);
+				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
 				break;
 
 			case WID_GL_SNOW_LEVEL_TEXT:
 				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
-				*size = GetStringBoundingBox(STR_JUST_INT);
+				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
 				break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
 				SetDParam(0, this->x);
 				SetDParam(1, this->y);
-				*size = GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE);
+				*size = maxdim(*size, GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE));
 				break;
 
 			case WID_GL_TOWN_PULLDOWN:
 				strs = _num_towns;
 				SetDParamMaxValue(0, CUSTOM_TOWN_MAX_NUMBER);
-				*size = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
+				*size = maxdim(*size, GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER));
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN:   strs = _num_inds; break;
@@ -465,7 +465,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_WATER_PULLDOWN:
 				strs = _sea_lakes;
 				SetDParamMaxValue(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
-				*size = GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
+				*size = maxdim(*size, GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE));
 				break;
 
 			case WID_GL_RIVER_PULLDOWN:      strs = _rivers; break;
@@ -496,7 +496,7 @@ struct GenerateLandscapeWindow : public Window {
 			}
 		}
 		size->width += padding.width;
-		size->height = FONT_HEIGHT_NORMAL + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM;
+		size->height = max(size->height, (uint)(FONT_HEIGHT_NORMAL + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM));
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -904,7 +904,7 @@ struct CreateScenarioWindow : public Window
 			default:
 				return;
 		}
-		*size = GetStringBoundingBox(str);
+		*size = maxdim(*size, GetStringBoundingBox(str));
 		size->width += padding.width;
 		size->height += padding.height;
 	}
