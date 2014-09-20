@@ -1347,36 +1347,93 @@ static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft,
  * @tparam Taction Class of action to be applied. Must implement bool operator()([const] Vehicle *).
  * @param v First articulated part.
  * @param action Instance of Taction.
+ * @param abort_on_false If set, don't iterate other parts if one has returned false.
  * @return false if any of the action invocations returned false, true otherwise.
  */
 template<class Taction>
-bool IterateVehicleParts(Vehicle *v, Taction action)
+bool IterateVehicleParts(Vehicle *v, Taction action, bool abort_on_false = false)
 {
+	bool result = true;
 	for (Vehicle *w = v; w != NULL;
 			w = w->HasArticulatedPart() ? w->GetNextArticulatedPart() : NULL) {
-		if (!action(w)) return false;
+		if (!action(w)) {
+			if (abort_on_false) return false;
+			result = false;
+		}
 		if (w->type == VEH_TRAIN) {
 			Train *train = Train::From(w);
-			if (train->IsMultiheaded() && !action(train->other_multiheaded_part)) return false;
+			if (train->IsMultiheaded() && !action(train->other_multiheaded_part)) {
+				if (abort_on_false) return false;
+				result = false;
+			}
 		}
 	}
-	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft()) return action(v->Next());
-	return true;
+	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft() &&
+			!action(v->Next())) {
+		return false;
+	}
+	return result;
 }
 
 /**
- * Action to check if a vehicle has no stored cargo.
+ * Action to reserve cargo.
  */
-struct IsEmptyAction
+struct ReserveAction {
+	CargoArray &consist_capleft;  ///< Capacities left in the consist.
+	Station *st;                  ///< Station to reserve cargo from.
+	StationIDStack &next_station; ///< Next hops to reserve cargo for.
+	bool do_reserve;              ///< If we want cargo to be reserved at all.
+
+	/**
+	 * Create a reserve action.
+	 * @param consist_capleft Capacities left in the consist.
+	 * @param st Station to reserve cargo from.
+	 * @param next_station Next hops to reserve cargo for.
+	 */
+	ReserveAction(CargoArray &consist_capleft, Station *st, StationIDStack &next_station,
+			bool do_reserve) :
+		consist_capleft(consist_capleft), st(st), next_station(next_station),
+		do_reserve(do_reserve)
+	{}
+
+	uint operator()(Vehicle *v)
+	{
+		if (!do_reserve) return 0;
+		return this->st->goods[v->cargo_type].cargo.Reserve(
+					v->cargo_cap - v->cargo.RemainingCount(),
+					&v->cargo, this->st->xy, this->next_station);
+	}
+};
+
+/**
+ * Action to check if a vehicle has no stored cargo or otherwise reserve for it if Treserve is set.
+ * @tparam Treserve If true do reserve if vehicle has cargo, otherwise don't.
+ */
+struct CheckOrReserveAction : public ReserveAction
 {
 	/**
-	 * Checks if the vehicle has stored cargo.
+	 * Create a check/reserve action.
+	 * @param consist_capleft Capacities left in the consist.
+	 * @param st Station to reserve cargo from.
+	 * @param next_station Next hops to reserve cargo for.
+	 */
+	CheckOrReserveAction(CargoArray &consist_capleft, Station *st, StationIDStack &next_station,
+			bool do_reserve) :
+		ReserveAction(consist_capleft, st, next_station, do_reserve) {}
+
+	/**
+	 * Checks if the vehicle has stored cargo and if yes, reserves more cargo for it.
 	 * @param v Vehicle to be checked.
 	 * @return true if v is either empty or has only reserved cargo, false otherwise.
 	 */
-	bool operator()(const Vehicle *v)
+	bool operator()(Vehicle *v)
 	{
-		return v->cargo.StoredCount() == 0;
+		if (v->cargo.StoredCount() == 0) {
+			return true;
+		} else {
+			this->consist_capleft[v->cargo_type] -= ReserveAction::operator()(v);
+			return false;
+		}
 	}
 };
 
@@ -1440,20 +1497,17 @@ struct ReturnCargoAction
 /**
  * Action for finalizing a refit.
  */
-struct FinalizeRefitAction
+struct FinalizeRefitAction : public ReserveAction
 {
-	CargoArray &consist_capleft;  ///< Capacities left in the consist.
-	Station *st;                  ///< Station to reserve cargo from.
-	StationIDStack &next_station; ///< Next hops to reserve cargo for.
-
 	/**
 	 * Create a finalizing action.
 	 * @param consist_capleft Capacities left in the consist.
 	 * @param st Station to reserve cargo from.
 	 * @param next_station Next hops to reserve cargo for.
 	 */
-	FinalizeRefitAction(CargoArray &consist_capleft, Station *st, StationIDStack &next_station) :
-		consist_capleft(consist_capleft), st(st), next_station(next_station) {}
+	FinalizeRefitAction(CargoArray &consist_capleft, Station *st, StationIDStack &next_station,
+			bool do_reserve) :
+		ReserveAction(consist_capleft, st, next_station, do_reserve) {}
 
 	/**
 	 * Reserve cargo from the station and update the remaining consist capacities with the
@@ -1463,8 +1517,7 @@ struct FinalizeRefitAction
 	 */
 	bool operator()(Vehicle *v)
 	{
-		this->st->goods[v->cargo_type].cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
-				&v->cargo, st->xy, next_station);
+		ReserveAction::operator()(v);
 		this->consist_capleft[v->cargo_type] += v->cargo_cap - v->cargo.RemainingCount();
 		return true;
 	}
@@ -1477,11 +1530,17 @@ struct FinalizeRefitAction
  * @param st Station the vehicle is loading at.
  * @param next_station Possible next stations the vehicle can travel to.
  * @param new_cid Target cargo for refit.
+ * @param full_load If the order we're currently following has a full load modifier.
  */
-static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station *st, StationIDStack next_station, CargoID new_cid)
+static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station *st,
+		StationIDStack next_station, CargoID new_cid, bool full_load)
 {
+	bool reserve = full_load || new_cid == CT_AUTO_REFIT;
 	Vehicle *v_start = v->GetFirstEnginePart();
-	if (!IterateVehicleParts(v_start, IsEmptyAction())) return;
+	if (!IterateVehicleParts(v_start,
+			CheckOrReserveAction(consist_capleft, st, next_station, reserve), reserve)) {
+		return;
+	}
 
 	Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
 
@@ -1526,7 +1585,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	}
 
 	/* Add new capacity to consist capacity and reserve cargo */
-	IterateVehicleParts(v_start, FinalizeRefitAction(consist_capleft, st, next_station));
+	IterateVehicleParts(v_start, FinalizeRefitAction(consist_capleft, st, next_station, reserve));
 
 	cur_company.Restore();
 }
@@ -1564,12 +1623,17 @@ static void LoadUnloadVehicle(Vehicle *front)
 	Station *st = Station::Get(last_visited);
 
 	StationIDStack next_station = front->GetNextStoppingStation();
-	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CT_AUTO_REFIT;
+	bool use_stationrefit = front->current_order.IsRefit();
 	CargoArray consist_capleft;
-	if (_settings_game.order.improved_load &&
-			((front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0 || use_autorefit)) {
-		ReserveConsist(st, front,
-				(use_autorefit && front->load_unload_ticks != 0) ? &consist_capleft : NULL,
+	bool do_reserve = _settings_game.order.improved_load &&
+			(front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0;
+
+	/* Refitting to a fixed cargo will most likely invalidate any reservations, so we
+	 * shouldn't do them here. HandleStationRefit reserves after refitting, or instead of
+	 * refitting if the vehicle isn't empty. */
+	if (do_reserve && !use_stationrefit) {
+		ReserveConsist(st, front, (use_stationrefit && front->load_unload_ticks != 0) ?
+				&consist_capleft : NULL,
 				next_station);
 	}
 
@@ -1679,8 +1743,9 @@ static void LoadUnloadVehicle(Vehicle *front)
 		if (front->current_order.GetLoadType() & OLFB_NO_LOAD || HasBit(front->vehicle_flags, VF_STOP_LOADING)) continue;
 
 		/* This order has a refit, if this is the first vehicle part carrying cargo and the whole vehicle is empty, try refitting. */
-		if (front->current_order.IsRefit() && artic_part == 1) {
-			HandleStationRefit(v, consist_capleft, st, next_station, front->current_order.GetRefitCargo());
+		if (use_stationrefit && artic_part == 1) {
+			HandleStationRefit(v, consist_capleft, st, next_station,
+					front->current_order.GetRefitCargo(), do_reserve);
 			ge = &st->goods[v->cargo_type];
 		}
 
