@@ -186,7 +186,7 @@ STR_COLOUR_CREAM                                                :Hufen
 STR_COLOUR_MAUVE                                                :Porffor Golau
 STR_COLOUR_PURPLE                                               :Porffor
 STR_COLOUR_ORANGE                                               :Oren
-STR_COLOUR_BROWN                                                :Frown
+STR_COLOUR_BROWN                                                :Brown
 STR_COLOUR_GREY                                                 :Llwyd
 STR_COLOUR_WHITE                                                :Gwyn
 
@@ -857,9 +857,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd achos methiant hefo trefnu ailffitio {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Methwyd ag adnewyddu {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} newydd yn awr ar gael!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Mae {STRING} newydd yn awr ar gael!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} ar gael yn awr!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Mae {STRING} newydd yn awr ar gael!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Nid yw {STATION} bellach yn derbyn {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Nid yw {STATION} bellach yn derbyn {STRING} na {STRING}
@@ -1328,7 +1328,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Lliw y tirwedd 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gwyrdd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Gwyrdd tywyll
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fioled
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :gwrthdroi'r cyfeiriad sgrolio: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Gwrthdroi'r cyfeiriad sgrolio: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Ymddygiad pan yn sgrolio gyda botwm dde y llygoden. Pan yr analluogir, bydd y llygoden yn symyd y camera. Pan y galluogir, bydd y llygoden yn symyd y map
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgrolio prif ffenestr llyfn: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Rheoli syt y mae'r prif olygfa'n sgrolio at leoliad penodol pan yn clicio ar y map bychan neu yn rhoi gorchymyn i sgrolio at wrthrych penodol
@@ -2670,7 +2670,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Traphont
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Darlledydd
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Goleudy
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Pencadlys Cwmni
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tir mae cwmni berchen
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tir cwmni
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Gwybodaeth am OpenTTD
@@ -3010,7 +3010,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Dechrau
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Dechrau ymgyrch hysbyseb gymhedrol yn yr ardal, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd.{} Côst: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Dechrau ymgyrch hysbyseb fawr yn yr adral, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd .{} Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Ariannu gwaith ffordd ar y rhwydwaith ffyrdd trefol. Bydd yn amharu'n fawr ar drafnidiaeth y dref am hyd at 6 mis .{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Adeiladu a statue in honour o your company.{} Côst: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Adeiladu cerflun er clod eich cwmni.{} Côst: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Ariannu adeiladu adeiladau masnachol newydd yn y dref.{} Côst: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Prynu'r hawl i fod yr unig gyflenwr cludiant yn y dref am flwyddyn. Bydd awdurdod y dref ond yn caniatáy i deithwyr a chargo ddefnyddio eich gorsafoedd chi {} Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY_LONG}
@@ -3578,7 +3578,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ailffiti
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ailffitio llong i gario llwyth o fath gwahanol
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ailffitio awyren i gario llwyth o fath gwahanol
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}gwrthdroi cyfeiriad trên
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Gwrthdroi cyfeiriad trên
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Gorfodi cerbyd i droi rownd
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Dangos gorchmynion trên. Mae Ctrl+Clic yn ddangos amserlen y trên
@@ -4240,10 +4240,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Methu ad
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Methu ailenwi depo...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... wedi'i stopio mewn depo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... rhaid iddo stopio mewn depo
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... fod wedi'i stopio mewn depo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... fod wedi'i stopio mewn awyrendâi
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... nid yw wedi'i stopio mewn depo
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... nid yw wedi'i stopio mewn depo
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... nid yw wedi'i stopio mewn depo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... nid yw wedi'i stopio mewn awyrendy
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Gellir newid trenau yn unig pan fyddan nhw wedi stopio tu mewn i ddepo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trên yn rhy hir
