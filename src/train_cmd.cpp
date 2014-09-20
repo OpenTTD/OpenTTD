@@ -642,7 +642,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 
 		_new_vehicle_id = v->index;
 
-		VehicleUpdatePosition(v);
+		v->UpdatePosition();
 		v->First()->ConsistChanged(CCF_ARRANGE);
 		UpdateTrainGroupID(v->First());
 
@@ -705,7 +705,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	v->SetMultiheaded();
 	u->SetMultiheaded();
 	v->SetNext(u);
-	VehicleUpdatePosition(u);
+	u->UpdatePosition();
 
 	/* Now we need to link the front and rear engines together */
 	v->other_multiheaded_part = u;
@@ -777,7 +777,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->SetFrontEngine();
 		v->SetEngine();
 
-		VehicleUpdatePosition(v);
+		v->UpdatePosition();
 
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
 			AddRearEngineToMultiheadedTrain(v);
@@ -1565,14 +1565,14 @@ static void UpdateStatusAfterSwap(Train *v)
 				/* We have just left the wormhole, possibly set the
 				 * "goingdown" bit. UpdateInclination() can be used
 				 * because we are at the border of the tile. */
-				VehicleUpdatePosition(v);
+				v->UpdatePosition();
 				v->UpdateInclination(true, true);
 				return;
 			}
 		}
 	}
 
-	VehicleUpdatePosition(v);
+	v->UpdatePosition();
 	v->UpdateViewport(true, true);
 }
 
@@ -2183,7 +2183,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	v->cur_speed = 0;
 
 	v->UpdateViewport(true, true);
-	VehicleUpdatePosition(v);
+	v->UpdatePosition();
 	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	v->UpdateAcceleration();
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -3334,8 +3334,8 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 			} else {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
-				VehicleUpdatePosition(v);
-				if ((v->vehstatus & VS_HIDDEN) == 0) VehicleUpdateViewport(v, true);
+				v->UpdatePosition();
+				if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
 				continue;
 			}
 		}
@@ -3345,7 +3345,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
-		VehicleUpdatePosition(v);
+		v->UpdatePosition();
 
 		/* update the Z position of the vehicle */
 		int old_z = v->UpdateInclination(gp.new_tile != gp.old_tile, false);
@@ -3515,7 +3515,7 @@ static void ChangeTrainDirRandomly(Train *v)
 			 * a bridge, because UpdateInclination() will put the vehicle under
 			 * the bridge in that case */
 			if (v->track != TRACK_BIT_WORMHOLE) {
-				VehicleUpdatePosition(v);
+				v->UpdatePosition();
 				v->UpdateInclination(false, false);
 			}
 		}

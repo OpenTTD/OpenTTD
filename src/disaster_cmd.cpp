@@ -151,7 +151,7 @@ static void InitializeDisasterVehicle(DisasterVehicle *v, int x, int y, int z, D
 	v->current_order.Free();
 
 	DisasterVehicleUpdateImage(v);
-	VehicleUpdatePositionAndViewport(v);
+	v->UpdatePositionAndViewport();
 }
 
 static void SetDisasterVehiclePos(DisasterVehicle *v, int x, int y, int z)
@@ -162,7 +162,7 @@ static void SetDisasterVehiclePos(DisasterVehicle *v, int x, int y, int z)
 	v->tile = TileVirtXY(x, y);
 
 	DisasterVehicleUpdateImage(v);
-	VehicleUpdatePositionAndViewport(v);
+	v->UpdatePositionAndViewport();
 
 	DisasterVehicle *u = v->Next();
 	if (u != NULL) {
@@ -176,13 +176,13 @@ static void SetDisasterVehiclePos(DisasterVehicle *v, int x, int y, int z)
 		u->direction = v->direction;
 
 		DisasterVehicleUpdateImage(u);
-		VehicleUpdatePositionAndViewport(u);
+		u->UpdatePositionAndViewport();
 
 		if ((u = u->Next()) != NULL) {
 			u->x_pos = x;
 			u->y_pos = y;
 			u->z_pos = z + 5;
-			VehicleUpdatePositionAndViewport(u);
+			u->UpdatePositionAndViewport();
 		}
 	}
 }
@@ -476,7 +476,7 @@ static bool DisasterTick_Helicopter_Rotors(DisasterVehicle *v)
 
 	if (++v->cur_image > SPR_ROTOR_MOVING_3) v->cur_image = SPR_ROTOR_MOVING_1;
 
-	VehicleUpdatePositionAndViewport(v);
+	v->UpdatePositionAndViewport();
 
 	return true;
 }

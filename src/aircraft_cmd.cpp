@@ -337,8 +337,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 
 		UpdateAircraftCache(v, true);
 
-		VehicleUpdatePosition(v);
-		VehicleUpdatePosition(u);
+		v->UpdatePosition();
+		u->UpdatePosition();
 
 		/* Aircraft with 3 vehicles (chopper)? */
 		if (v->subtype == AIR_HELICOPTER) {
@@ -359,7 +359,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 			w->UpdateDeltaXY(INVALID_DIR);
 
 			u->SetNext(w);
-			VehicleUpdatePosition(w);
+			w->UpdatePosition();
 		}
 	}
 
@@ -487,7 +487,7 @@ static void HelicopterTickHandler(Aircraft *v)
 
 	u->cur_image = img;
 
-	VehicleUpdatePositionAndViewport(u);
+	u->UpdatePositionAndViewport();
 }
 
 /**
@@ -503,7 +503,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	v->y_pos = y;
 	v->z_pos = z;
 
-	VehicleUpdatePosition(v);
+	v->UpdatePosition();
 	v->UpdateViewport(true, false);
 	if (v->subtype == AIR_HELICOPTER) v->Next()->Next()->cur_image = GetRotorImage(v, EIT_ON_MAP);
 
@@ -518,7 +518,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	u->z_pos = GetSlopePixelZ(safe_x, safe_y);
 	u->cur_image = v->cur_image;
 
-	VehicleUpdatePositionAndViewport(u);
+	u->UpdatePositionAndViewport();
 
 	u = u->Next();
 	if (u != NULL) {
@@ -526,7 +526,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 		u->y_pos = y;
 		u->z_pos = z + ROTOR_Z_OFFSET;
 
-		VehicleUpdatePositionAndViewport(u);
+		u->UpdatePositionAndViewport();
 	}
 }
 

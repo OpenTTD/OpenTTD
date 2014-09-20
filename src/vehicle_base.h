@@ -696,6 +696,11 @@ public:
 	void UpdateVisualEffect(bool allow_power_change = true);
 	void ShowVisualEffect() const;
 
+	void UpdatePosition();
+	void UpdateViewport(bool dirty);
+	void UpdatePositionAndViewport();
+	void MarkAllViewportsDirty() const;
+
 	inline uint16 GetServiceInterval() const { return this->service_interval; }
 
 	inline void SetServiceInterval(uint16 interval) { this->service_interval = interval; }
@@ -1067,14 +1072,12 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	inline void UpdateViewport(bool force_update, bool update_delta)
 	{
-		extern void VehicleUpdateViewport(Vehicle *v, bool dirty);
-
 		/* Explicitly choose method to call to prevent vtable dereference -
 		 * it gives ~3% runtime improvements in games with many vehicles */
 		if (update_delta) ((T *)this)->T::UpdateDeltaXY(this->direction);
 		SpriteID old_image = this->cur_image;
 		this->cur_image = ((T *)this)->T::GetImage(this->direction, EIT_ON_MAP);
-		if (force_update || this->cur_image != old_image) VehicleUpdateViewport(this, true);
+		if (force_update || this->cur_image != old_image) this->Vehicle::UpdateViewport(true);
 	}
 };
 
