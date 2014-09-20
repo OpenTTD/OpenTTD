@@ -805,8 +805,8 @@ NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y) : 
  */
 void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
 {
-	this->min_x = min_x;
-	this->min_y = min_y;
+	this->min_x = max(this->min_x, min_x);
+	this->min_y = max(this->min_y, min_y);
 }
 
 /**
@@ -2100,7 +2100,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 {
 	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEFSIZEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);
-	this->SetMinimalSize(0, 0);
+	this->min_x = 0;
+	this->min_y = 0;
 	this->SetResize(0, 0);
 
 	switch (tp) {
