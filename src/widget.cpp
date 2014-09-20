@@ -344,10 +344,10 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 
 	/* draw up/down buttons */
 	DrawFrameRect(r.left, r.top, r.right, r.top + height - 1, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
-	DrawString(r.left + up_clicked, r.right + up_clicked, r.top + up_clicked, UPARROW, TC_BLACK, SA_HOR_CENTER);
+	DrawSprite(SPR_ARROW_UP, PAL_NONE, r.left + 1 + up_clicked, r.top + 1 + up_clicked);
 
 	DrawFrameRect(r.left, r.bottom - (height - 1), r.right, r.bottom, colour, (down_clicked) ? FR_LOWERED : FR_NONE);
-	DrawString(r.left + down_clicked, r.right + down_clicked, r.bottom - (height - 1) + down_clicked, DOWNARROW, TC_BLACK, SA_HOR_CENTER);
+	DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.left + 1 + down_clicked, r.bottom - (height - 2) + down_clicked);
 
 	int c1 = _colour_gradient[colour & 0xF][3];
 	int c2 = _colour_gradient[colour & 0xF][7];
