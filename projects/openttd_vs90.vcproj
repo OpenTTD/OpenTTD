@@ -512,6 +512,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\disaster_vehicle.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\driver.cpp"
 				>
 			</File>
@@ -1017,6 +1021,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\direction_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\disaster_vehicle.h"
 				>
 			</File>
 			<File
@@ -2505,10 +2513,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\depot_cmd.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\disaster_cmd.cpp"
 				>
 			</File>
 			<File

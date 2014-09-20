@@ -19,6 +19,7 @@
 #include "../effectvehicle_base.h"
 #include "../company_base.h"
 #include "../company_func.h"
+#include "../disaster_vehicle.h"
 
 #include "saveload.h"
 

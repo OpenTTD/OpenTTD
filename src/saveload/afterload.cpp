@@ -53,6 +53,7 @@
 #include "../news_func.h"
 #include "../order_backup.h"
 #include "../error.h"
+#include "../disaster_vehicle.h"
 
 
 #include "saveload_internal.h"

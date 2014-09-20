@@ -19,6 +19,7 @@ date.cpp
 debug.cpp
 dedicated.cpp
 depot.cpp
+disaster_vehicle.cpp
 driver.cpp
 economy.cpp
 effectvehicle.cpp
@@ -172,6 +173,7 @@ depot_map.h
 depot_type.h
 direction_func.h
 direction_type.h
+disaster_vehicle.h
 music/dmusic.h
 driver.h
 economy_base.h
@@ -563,7 +565,6 @@ autoreplace_cmd.cpp
 clear_cmd.cpp
 company_cmd.cpp
 depot_cmd.cpp
-disaster_cmd.cpp
 group_cmd.cpp
 industry_cmd.cpp
 misc_cmd.cpp

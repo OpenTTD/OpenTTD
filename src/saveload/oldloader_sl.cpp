@@ -27,6 +27,7 @@
 #include "../effectvehicle_base.h"
 #include "../engine_func.h"
 #include "../company_base.h"
+#include "../disaster_vehicle.h"
 #include "saveload_internal.h"
 #include "oldloader.h"
 

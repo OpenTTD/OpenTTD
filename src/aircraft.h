@@ -30,6 +30,7 @@ enum VehicleAirFlags {
 	VAF_DEST_TOO_FAR = 0, ///< Next destination is too far away.
 };
 
+static const int ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.
 
 void HandleAircraftEnterHangar(Aircraft *v);
 void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);

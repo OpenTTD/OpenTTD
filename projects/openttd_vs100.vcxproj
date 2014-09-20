@@ -311,6 +311,7 @@
     <ClCompile Include="..\src\debug.cpp" />
     <ClCompile Include="..\src\dedicated.cpp" />
     <ClCompile Include="..\src\depot.cpp" />
+    <ClCompile Include="..\src\disaster_vehicle.cpp" />
     <ClCompile Include="..\src\driver.cpp" />
     <ClCompile Include="..\src\economy.cpp" />
     <ClCompile Include="..\src\effectvehicle.cpp" />
@@ -437,6 +438,7 @@
     <ClInclude Include="..\src\depot_type.h" />
     <ClInclude Include="..\src\direction_func.h" />
     <ClInclude Include="..\src\direction_type.h" />
+    <ClInclude Include="..\src\disaster_vehicle.h" />
     <ClInclude Include="..\src\music\dmusic.h" />
     <ClInclude Include="..\src\driver.h" />
     <ClInclude Include="..\src\economy_base.h" />
@@ -805,7 +807,6 @@
     <ClCompile Include="..\src\clear_cmd.cpp" />
     <ClCompile Include="..\src\company_cmd.cpp" />
     <ClCompile Include="..\src\depot_cmd.cpp" />
-    <ClCompile Include="..\src\disaster_cmd.cpp" />
     <ClCompile Include="..\src\group_cmd.cpp" />
     <ClCompile Include="..\src\industry_cmd.cpp" />
     <ClCompile Include="..\src\misc_cmd.cpp" />
