@@ -1137,6 +1137,13 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
+			case WID_SCMF_FACE: {
+				Dimension face_size = GetSpriteSize(SPR_GRADIENT);
+				size->width  = max(size->width,  face_size.width);
+				size->height = max(size->height, face_size.height);
+				break;
+			}
+
 			case WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT:
 			case WID_SCMF_TIE_EARRING_TEXT: {
 				int offset = (widget - WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT) * 2;
@@ -2074,6 +2081,13 @@ struct CompanyWindow : Window
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
+			case WID_C_FACE: {
+				Dimension face_size = GetSpriteSize(SPR_GRADIENT);
+				size->width  = max(size->width,  face_size.width);
+				size->height = max(size->height, face_size.height);
+				break;
+			}
+
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
 				Point offset;
 				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
