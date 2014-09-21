@@ -1,0 +1,37 @@
+
+--StationList--
+  Count():             2
+  Location ListDump:
+    5 => 33421
+    4 => 33411
+  CargoWaiting(0) ListDump:
+    5 => 0
+    4 => 0
+  CargoWaiting(1) ListDump:
+    5 => 0
+    4 => 0
+
+--StationList_Vehicle--
+  Count():             2
+  Location ListDump:
+    5 => 33421
+    4 => 33411
+  CargoWaiting(0) ListDump:
+    5 => 0
+    4 => 0
+  CargoWaiting(1) ListDump:
+    5 => 0
+    4 => 0
+  CargoRating(1) ListDump:
+    5 => -1
+    4 => -1
+  DistanceManhattanToTile(30000) ListDump:
+    5 => 106
+    4 => 96
+  DistanceSquareToTile(30000) ListDump:
+    5 => 8818
+    4 => 7058
+  IsWithinTownInfluence(0) ListDump:
+    5 => 0
+    4 => 0
+ERROR: The script died unexpectedly.
