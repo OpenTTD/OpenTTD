@@ -364,8 +364,16 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 				assert(img_row < img_height);
 				assert(img_col < img_width);
 
-				/* Colour scales from 0 to 255, OpenTTD height scales from 0 to 15 */
-				SetTileHeight(tile, map[img_row * img_width + img_col] / 16);
+				/* The height in 1/255ths. */
+				uint heightmap_height = map[img_row * img_width + img_col];
+
+				/* The height in 1/255ths of the maximum height. */
+				heightmap_height *= _settings_game.construction.max_heightlevel;
+
+				/* Scaling should not alter the coastline, thus values in the interval ]0..1] result in a heightlevel of 1 */
+				if (IsInsideMM(heightmap_height, 1, UINT8_MAX)) heightmap_height = UINT8_MAX;
+
+				SetTileHeight(tile, heightmap_height / UINT8_MAX);
 			}
 			/* Only clear the tiles within the map area. */
 			if (IsInnerTile(tile)) {
