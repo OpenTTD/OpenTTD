@@ -25,6 +25,14 @@
  * \li AIStation::GetCargoPlannedFromVia
  * \li AIStation::GetCargoPlannedVia
  * \li AIStation::GetCargoWaitingFromVia
+ * \li AIStationList_CargoPlannedByFrom
+ * \li AIStationList_CargoPlannedByVia
+ * \li AIStationList_CargoPlannedFromByVia
+ * \li AIStationList_CargoPlannedViaByFrom
+ * \li AIStationList_CargoWaitingByFrom
+ * \li AIStationList_CargoWaitingByVia
+ * \li AIStationList_CargoWaitingFromByVia
+ * \li AIStationList_CargoWaitingViaByFrom
  *
  * \b 1.4.2
  *
