@@ -1494,7 +1494,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Cyngor / gwybod
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Dangos negeseuon am gerbydau sydd angen sylw
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Cerbydau Newydd: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Dangos papur newydd pan fo math newydd o gerbyd ar gael
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Newidiadau i'r llwythi sy'n cael eu derbyn: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Newidiadau i'r llwythi a dderbynir: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Dangos negeseuon am orsafoedd yn newid y nwyddau y maent yn derbyn
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Cymorthdaliadau: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Dangos papur newydd am ddigwyddiadau ynghylch cymorthdaliadau
@@ -2576,7 +2576,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Dosbarth
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Enw'r maes awyr: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Enw teil maes awyr: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Llwythi sy'n cael eu derbyn: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Llwythi a dderbynir: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Terfyn cyflymder rheilffordd: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Terfyn cyflymder ffordd: {LTBLUE}{VELOCITY}
@@ -3727,8 +3727,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Diwedd y Go
 STR_ORDER_NON_STOP                                              :{BLACK}Heb stop
 STR_ORDER_GO_TO                                                 :Mynd i
 STR_ORDER_GO_NON_STOP_TO                                        :Mynd heb stop i
-STR_ORDER_GO_VIA                                                :Galw heibio
-STR_ORDER_GO_NON_STOP_VIA                                       :Myn heb stop gan alw heibio
+STR_ORDER_GO_VIA                                                :Mynd trwy
+STR_ORDER_GO_NON_STOP_VIA                                       :Mynd heb stop trwy
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Newid ymddygiad stopio o'r gorchymyn a amlygwyd
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn, unrhyw gargo
@@ -3802,7 +3802,7 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Dangos p
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Mynd trwy {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mynd heb stopio drwy {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mynd heb stop trwy {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Gwasanaethu yn
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Gwasanaethu heb stopio yn
