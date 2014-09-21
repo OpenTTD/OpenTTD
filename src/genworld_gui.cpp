@@ -24,7 +24,6 @@
 #include "widgets/dropdown_func.h"
 #include "querystring_gui.h"
 #include "town.h"
-#include "settings_func.h"
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
 #include "progress.h"
@@ -733,20 +732,11 @@ struct GenerateLandscapeWindow : public Window {
 					SetDParam(0, _settings_newgame.game_creation.custom_town_number);
 					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, QSF_NONE);
 				}
-				IConsoleSetSetting("difficulty.number_towns", index);
+				_settings_newgame.difficulty.number_towns = index;
 				break;
 
-			case WID_GL_INDUSTRY_PULLDOWN:
-				IConsoleSetSetting("difficulty.industry_density", index);
-				break;
-
-			case WID_GL_TERRAIN_PULLDOWN: {
-				GameMode old_gm = _game_mode;
-				_game_mode = GM_MENU;
-				IConsoleSetSetting("difficulty.terrain_type", index);
-				_game_mode = old_gm;
-				break;
-			}
+			case WID_GL_INDUSTRY_PULLDOWN: _settings_newgame.difficulty.industry_density = index; break;
+			case WID_GL_TERRAIN_PULLDOWN:  _settings_newgame.difficulty.terrain_type     = index; break;
 
 			case WID_GL_WATER_PULLDOWN: {
 				if ((uint)index == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
@@ -754,10 +744,7 @@ struct GenerateLandscapeWindow : public Window {
 					SetDParam(0, _settings_newgame.game_creation.custom_sea_level);
 					ShowQueryString(STR_JUST_INT, STR_MAPGEN_QUANTITY_OF_SEA_LAKES, 3, this, CS_NUMERAL, QSF_NONE);
 				}
-				GameMode old_gm = _game_mode;
-				_game_mode = GM_MENU;
-				IConsoleSetSetting("difficulty.quantity_sea_lakes", index);
-				_game_mode = old_gm;
+				_settings_newgame.difficulty.quantity_sea_lakes = index;
 				break;
 			}
 		}
