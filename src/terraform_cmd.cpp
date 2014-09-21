@@ -254,10 +254,20 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 			if (pass == 0) {
 				/* Check if bridge would take damage */
-				if (direction == 1 && IsBridgeAbove(tile) &&
-						GetBridgeHeight(GetSouthernBridgeEnd(tile)) <= z_max) {
-					_terraform_err_tile = tile; // highlight the tile under the bridge
-					return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+				if (IsBridgeAbove(tile)) {
+					int bridge_height = GetBridgeHeight(GetSouthernBridgeEnd(tile));
+
+					/* Check if bridge would take damage. */
+					if (direction == 1 && bridge_height <= z_max) {
+						_terraform_err_tile = tile; // highlight the tile under the bridge
+						return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+					}
+
+					/* Is the bridge above not too high afterwards? */
+					if (direction == -1 && bridge_height > (z_min + _settings_game.construction.max_bridge_height)) {
+						_terraform_err_tile = tile;
+						return_cmd_error(STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND);
+					}
 				}
 				/* Check if tunnel would take damage */
 				if (direction == -1 && IsTunnelInWay(tile, z_min)) {
