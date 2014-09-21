@@ -461,6 +461,9 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_TOWN_PULLDOWN,                      "WID_GL_TOWN_PULLDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_INDUSTRY_PULLDOWN,                  "WID_GL_INDUSTRY_PULLDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_GENERATE_BUTTON,                    "WID_GL_GENERATE_BUTTON");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_MAX_HEIGHTLEVEL_DOWN,               "WID_GL_MAX_HEIGHTLEVEL_DOWN");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_MAX_HEIGHTLEVEL_TEXT,               "WID_GL_MAX_HEIGHTLEVEL_TEXT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_MAX_HEIGHTLEVEL_UP,                 "WID_GL_MAX_HEIGHTLEVEL_UP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_START_DATE_DOWN,                    "WID_GL_START_DATE_DOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_START_DATE_TEXT,                    "WID_GL_START_DATE_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_START_DATE_UP,                      "WID_GL_START_DATE_UP");
