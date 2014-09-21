@@ -764,7 +764,7 @@ int GetAircraftFlightLevel(T *v, bool takeoff)
 	return z;
 }
 
-template int GetAircraftFlightLevel(DisasterVehicle *v, bool takeoff = false);
+template int GetAircraftFlightLevel(DisasterVehicle *v, bool takeoff);
 
 /**
  * Find the entry point to an airport depending on direction which
