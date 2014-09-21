@@ -81,18 +81,21 @@ LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_mer
 
 /**
  * Handle refit orders by updating capacities and refit_capacities.
- * @param next Order to be processed.
+ * @param refit_cargo Cargo to refit to.
+ * @return True if any vehicle was refit; false if none was.
  */
-void LinkRefresher::HandleRefit(const Order *next)
+bool LinkRefresher::HandleRefit(CargoID refit_cargo)
 {
-	this->cargo = next->GetRefitCargo();
+	this->cargo = refit_cargo;
 	RefitList::iterator refit_it = this->refit_capacities.begin();
+	bool any_refit = false;
 	for (Vehicle *v = this->vehicle; v != NULL; v = v->Next()) {
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!HasBit(e->info.refit_mask, this->cargo)) {
 			++refit_it;
 			continue;
 		}
+		any_refit = true;
 
 		/* Back up the vehicle's cargo type */
 		CargoID temp_cid = v->cargo_type;
@@ -130,6 +133,7 @@ void LinkRefresher::HandleRefit(const Order *next)
 			break; // aircraft have only one vehicle
 		}
 	}
+	return any_refit;
 }
 
 /**
@@ -253,15 +257,20 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flag
 {
 	while (next != NULL) {
 
-		/* If the refit cargo is CT_AUTO_REFIT, we're optimistic and assume the
-		 * cargo will stay the same. The point of this method is to avoid
-		 * deadlocks due to vehicles waiting for cargo that isn't being routed,
-		 * yet. That situation will not occur if the vehicle is actually
-		 * carrying a different cargo in the end. */
-		if ((next->IsType(OT_GOTO_DEPOT) || next->IsType(OT_GOTO_STATION)) &&
-				next->IsRefit() && !next->IsAutoRefit()) {
+		if ((next->IsType(OT_GOTO_DEPOT) || next->IsType(OT_GOTO_STATION)) && next->IsRefit()) {
 			SetBit(flags, WAS_REFIT);
-			this->HandleRefit(next);
+			if (!next->IsAutoRefit()) {
+				this->HandleRefit(next->GetRefitCargo());
+			} else if (!HasBit(flags, IN_AUTOREFIT)) {
+				SetBit(flags, IN_AUTOREFIT);
+				LinkRefresher backup(*this);
+				for (CargoID c = 0; c != NUM_CARGO; ++c) {
+					if (CargoSpec::Get(c)->IsValid() && this->HandleRefit(c)) {
+						this->RefreshLinks(cur, next, flags, num_hops);
+						*this = backup;
+					}
+				}
+			}
 		}
 
 		/* Only reset the refit capacities if the "previous" next is a station,

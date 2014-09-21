@@ -31,10 +31,11 @@ protected:
 	 * an influence on the next one.
 	 */
 	enum RefreshFlags {
-		USE_NEXT,   ///< There was a conditional jump. Try to use the given next order when looking for a new one.
-		HAS_CARGO,  ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
-		WAS_REFIT,  ///< Consist was refit since the last stop where it could interact with cargo.
-		RESET_REFIT ///< Consist had a chance to load since the last refit and the refit capacities can be reset.
+		USE_NEXT,     ///< There was a conditional jump. Try to use the given next order when looking for a new one.
+		HAS_CARGO,    ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
+		WAS_REFIT,    ///< Consist was refit since the last stop where it could interact with cargo.
+		RESET_REFIT,  ///< Consist had a chance to load since the last refit and the refit capacities can be reset.
+		IN_AUTOREFIT, ///< Currently doing an autorefit loop. Ignore the first autorefit order.
 	};
 
 	/**
@@ -92,7 +93,7 @@ protected:
 
 	LinkRefresher(Vehicle *v, HopSet *seen_hops, bool allow_merge, bool is_full_loading);
 
-	void HandleRefit(const Order *next);
+	bool HandleRefit(CargoID refit_cargo);
 	void ResetRefit();
 	void RefreshStats(const Order *cur, const Order *next);
 	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
