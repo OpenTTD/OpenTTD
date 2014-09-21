@@ -40,6 +40,7 @@ void SQGSList_Register(Squirrel *engine)
 	SQGSList.DefSQMethod(engine, &ScriptList::SetValue,           "SetValue",           3, "xii");
 	SQGSList.DefSQMethod(engine, &ScriptList::Sort,               "Sort",               3, "xib");
 	SQGSList.DefSQMethod(engine, &ScriptList::AddList,            "AddList",            2, "xx");
+	SQGSList.DefSQMethod(engine, &ScriptList::SwapList,           "SwapList",           2, "xx");
 	SQGSList.DefSQMethod(engine, &ScriptList::RemoveAboveValue,   "RemoveAboveValue",   2, "xi");
 	SQGSList.DefSQMethod(engine, &ScriptList::RemoveBelowValue,   "RemoveBelowValue",   2, "xi");
 	SQGSList.DefSQMethod(engine, &ScriptList::RemoveBetweenValue, "RemoveBetweenValue", 3, "xii");

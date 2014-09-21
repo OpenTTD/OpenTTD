@@ -20,6 +20,7 @@
  * 1.5.0 is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li GSList::SwapList
  * \li GSStation::GetCargoPlanned
  * \li GSStation::GetCargoPlannedFrom
  * \li GSStation::GetCargoPlannedFromVia

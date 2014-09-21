@@ -58,6 +58,17 @@ public:
 	 * Callback from the list if an item gets removed.
 	 */
 	virtual void Remove(int item) = 0;
+
+	/**
+	 * Attach the sorter to a new list. This assumes the content of the old list has been moved to
+	 * the new list, too, so that we don't have to invalidate any iterators. Note that std::swap
+	 * doesn't invalidate iterators on lists and maps, so that should be safe.
+	 * @param target New list to attach to.
+	 */
+	virtual void Retarget(ScriptList *new_list)
+	{
+		this->list = new_list;
+	}
 };
 
 /**
@@ -547,6 +558,19 @@ void ScriptList::AddList(ScriptList *list)
 		this->AddItem((*iter).first);
 		this->SetValue((*iter).first, (*iter).second);
 	}
+}
+
+void ScriptList::SwapList(ScriptList *list)
+{
+	this->items.swap(list->items);
+	this->buckets.swap(list->buckets);
+	Swap(this->sorter, list->sorter);
+	Swap(this->sorter_type, list->sorter_type);
+	Swap(this->sort_ascending, list->sort_ascending);
+	Swap(this->initialized, list->initialized);
+	Swap(this->modifications, list->modifications);
+	this->sorter->Retarget(this);
+	list->sorter->Retarget(list);
 }
 
 void ScriptList::RemoveAboveValue(int32 value)

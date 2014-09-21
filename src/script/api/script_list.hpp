@@ -153,6 +153,12 @@ public:
 	void AddList(ScriptList *list);
 
 	/**
+	 * Swap the contents of two lists.
+	 * @param list The list that will be swapped with.
+	 */
+	void SwapList(ScriptList *list);
+
+	/**
 	 * Removes all items with a higher value than 'value'.
 	 * @param value the value above which all items are removed.
 	 */
