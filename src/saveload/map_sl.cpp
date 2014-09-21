@@ -56,7 +56,7 @@ static void Load_MAPT()
 
 	for (TileIndex i = 0; i != size;) {
 		SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT8);
-		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) _m[i++].type_height = buf[j];
+		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) _m[i++].type = buf[j];
 	}
 }
 
@@ -67,7 +67,30 @@ static void Save_MAPT()
 
 	SlSetLength(size);
 	for (TileIndex i = 0; i != size;) {
-		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = _m[i++].type_height;
+		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = _m[i++].type;
+		SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT8);
+	}
+}
+
+static void Load_MAPH()
+{
+	SmallStackSafeStackAlloc<byte, MAP_SL_BUF_SIZE> buf;
+	TileIndex size = MapSize();
+
+	for (TileIndex i = 0; i != size;) {
+		SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT8);
+		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) _m[i++].height = buf[j];
+	}
+}
+
+static void Save_MAPH()
+{
+	SmallStackSafeStackAlloc<byte, MAP_SL_BUF_SIZE> buf;
+	TileIndex size = MapSize();
+
+	SlSetLength(size);
+	for (TileIndex i = 0; i != size;) {
+		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = _m[i++].height;
 		SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT8);
 	}
 }
@@ -252,6 +275,7 @@ static void Save_MAP7()
 extern const ChunkHandler _map_chunk_handlers[] = {
 	{ 'MAPS', Save_MAPS, Load_MAPS, NULL, Check_MAPS, CH_RIFF },
 	{ 'MAPT', Save_MAPT, Load_MAPT, NULL, NULL,       CH_RIFF },
+	{ 'MAPH', Save_MAPH, Load_MAPH, NULL, NULL,       CH_RIFF },
 	{ 'MAPO', Save_MAP1, Load_MAP1, NULL, NULL,       CH_RIFF },
 	{ 'MAP2', Save_MAP2, Load_MAP2, NULL, NULL,       CH_RIFF },
 	{ 'M3LO', Save_MAP3, Load_MAP3, NULL, NULL,       CH_RIFF },

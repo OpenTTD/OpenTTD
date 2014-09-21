@@ -1510,7 +1510,7 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 	uint i;
 
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_m[i].type_height = ReadByte(ls);
+		_m[i].type = ReadByte(ls);
 	}
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
 		_m[i].m5 = ReadByte(ls);

@@ -31,7 +31,7 @@
 static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return GB(_m[tile].type_height, 0, 4);
+	return _m[tile].height;
 }
 
 uint TileHeightOutsideMap(int x, int y);
@@ -50,7 +50,7 @@ static inline void SetTileHeight(TileIndex tile, uint height)
 {
 	assert(tile < MapSize());
 	assert(height <= MAX_TILE_HEIGHT);
-	SB(_m[tile].type_height, 0, 4, height);
+	_m[tile].height = height;
 }
 
 /**
@@ -76,7 +76,7 @@ static inline uint TilePixelHeight(TileIndex tile)
 static inline TileType GetTileType(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return (TileType)GB(_m[tile].type_height, 4, 4);
+	return (TileType)GB(_m[tile].type, 4, 4);
 }
 
 /**
@@ -115,7 +115,7 @@ static inline void SetTileType(TileIndex tile, TileType type)
 	 * edges of the map. If _settings_game.construction.freeform_edges is true,
 	 * the upper edges of the map are also VOID tiles. */
 	assert(IsInnerTile(tile) == (type != MP_VOID));
-	SB(_m[tile].type_height, 4, 4, type);
+	SB(_m[tile].type, 4, 4, type);
 }
 
 /**

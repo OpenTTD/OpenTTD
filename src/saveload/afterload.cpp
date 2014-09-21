@@ -570,6 +570,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(194)) {
+		/* In old savegame versions, the heightlevel was coded in bits 0..3 of the type field */
+		for (TileIndex t = 0; t < map_size; t++) {
+			_m[t].height = GB(_m[t].type, 0, 4);
+		}
+	}
+
 	/* in version 2.1 of the savegame, town owner was unified. */
 	if (IsSavegameVersionBefore(2, 1)) ConvertTownOwner();
 
