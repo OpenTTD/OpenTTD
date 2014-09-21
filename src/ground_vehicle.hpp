@@ -231,9 +231,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * @param update_delta Indicates to also update the delta.
 	 * @return Old height of the vehicle.
 	 */
-	inline byte UpdateInclination(bool new_tile, bool update_delta)
+	inline int UpdateInclination(bool new_tile, bool update_delta)
 	{
-		byte old_z = this->z_pos;
+		int old_z = this->z_pos;
 
 		if (new_tile) {
 			this->UpdateZPositionAndInclination();

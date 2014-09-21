@@ -847,7 +847,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	v->overtaking = RVSB_DRIVE_SIDE;
 }
 
-static void RoadZPosAffectSpeed(RoadVehicle *v, byte old_z)
+static void RoadZPosAffectSpeed(RoadVehicle *v, int old_z)
 {
 	if (old_z == v->z_pos || _settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) return;
 
