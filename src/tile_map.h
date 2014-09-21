@@ -34,6 +34,8 @@ static inline uint TileHeight(TileIndex tile)
 	return GB(_m[tile].type_height, 0, 4);
 }
 
+uint TileHeightOutsideMap(int x, int y);
+
 /**
  * Sets the height of a tile.
  *
@@ -262,6 +264,8 @@ static inline Slope GetTilePixelSlope(TileIndex tile, int *h)
 	return s;
 }
 
+Slope GetTilePixelSlopeOutsideMap(int x, int y, int *h);
+
 /**
  * Get bottom height of the tile
  * @param tile Tile to compute height of
@@ -272,6 +276,8 @@ static inline int GetTilePixelZ(TileIndex tile)
 	return GetTileZ(tile) * TILE_HEIGHT;
 }
 
+int GetTilePixelZOutsideMap(int x, int y);
+
 /**
  * Get top height of the tile
  * @param t Tile to compute height of
@@ -281,6 +287,8 @@ static inline int GetTileMaxPixelZ(TileIndex tile)
 {
 	return GetTileMaxZ(tile) * TILE_HEIGHT;
 }
+
+int GetTileMaxPixelZOutsideMap(int x, int y);
 
 
 /**
