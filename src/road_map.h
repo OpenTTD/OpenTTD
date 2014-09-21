@@ -461,7 +461,7 @@ enum Roadside {
  */
 static inline Roadside GetRoadside(TileIndex tile)
 {
-	return (Roadside)GB(_m[tile].m6, 3, 3);
+	return (Roadside)GB(_me[tile].m6, 3, 3);
 }
 
 /**
@@ -471,7 +471,7 @@ static inline Roadside GetRoadside(TileIndex tile)
  */
 static inline void SetRoadside(TileIndex tile, Roadside s)
 {
-	SB(_m[tile].m6, 3, 3, s);
+	SB(_me[tile].m6, 3, 3, s);
 }
 
 /**
@@ -558,7 +558,7 @@ static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, Tow
 	_m[t].m3 = (HasBit(rot, ROADTYPE_TRAM) ? bits : 0);
 	_m[t].m4 = 0;
 	_m[t].m5 = (HasBit(rot, ROADTYPE_ROAD) ? bits : 0) | ROAD_TILE_NORMAL << 6;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = rot << 6;
 	SetRoadOwner(t, ROADTYPE_TRAM, tram);
 }
@@ -582,7 +582,7 @@ static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner r
 	_m[t].m3 = rat;
 	_m[t].m4 = 0;
 	_m[t].m5 = ROAD_TILE_CROSSING << 6 | roaddir;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = rot << 6 | road;
 	SetRoadOwner(t, ROADTYPE_TRAM, tram);
 }
@@ -603,7 +603,7 @@ static inline void MakeRoadDepot(TileIndex t, Owner owner, DepotID did, DiagDire
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = ROAD_TILE_DEPOT << 6 | dir;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = RoadTypeToRoadTypes(rt) << 6 | owner;
 	SetRoadOwner(t, ROADTYPE_TRAM, owner);
 }

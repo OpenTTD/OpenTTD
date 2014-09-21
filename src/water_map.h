@@ -360,7 +360,7 @@ static inline void MakeShore(TileIndex t)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = WBL_TYPE_NORMAL << WBL_TYPE_BEGIN | 1 << WBL_COAST_FLAG;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 
@@ -380,7 +380,7 @@ static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_b
 	_m[t].m3 = 0;
 	_m[t].m4 = random_bits;
 	_m[t].m5 = WBL_TYPE_NORMAL << WBL_TYPE_BEGIN;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 
@@ -433,7 +433,7 @@ static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart pa
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = WBL_TYPE_DEPOT << WBL_TYPE_BEGIN | part << WBL_DEPOT_PART | a << WBL_DEPOT_AXIS;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 
@@ -455,7 +455,7 @@ static inline void MakeLockTile(TileIndex t, Owner o, LockPart part, DiagDirecti
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = WBL_TYPE_LOCK << WBL_TYPE_BEGIN | part << WBL_LOCK_PART_BEGIN | dir << WBL_LOCK_ORIENT_BEGIN;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 

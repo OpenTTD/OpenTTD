@@ -68,7 +68,7 @@ static inline bool IsBridgeAbove(TileIndex t)
 static inline BridgeType GetBridgeType(TileIndex t)
 {
 	assert(IsBridgeTile(t));
-	return GB(_m[t].m6, 2, 4);
+	return GB(_me[t].m6, 2, 4);
 }
 
 /**
@@ -146,7 +146,7 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, D
 	_m[t].m3 = rt;
 	_m[t].m4 = 0;
 	_m[t].m5 = 1 << 7 | tt << 2 | d;
-	SB(_m[t].m6, 2, 4, bridgetype);
+	SB(_me[t].m6, 2, 4, bridgetype);
 	_me[t].m7 = 0;
 }
 

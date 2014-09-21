@@ -279,7 +279,7 @@ static inline void MakeTree(TileIndex t, TreeType type, uint count, uint growth,
 	_m[t].m3 = type;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	_m[t].m5 = count << 6 | growth;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 

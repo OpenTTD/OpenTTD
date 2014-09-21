@@ -127,7 +127,7 @@ static inline void SetIndustryConstructionStage(TileIndex tile, byte value)
 static inline IndustryGfx GetCleanIndustryGfx(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
-	return _m[t].m5 | (GB(_m[t].m6, 2, 1) << 8);
+	return _m[t].m5 | (GB(_me[t].m6, 2, 1) << 8);
 }
 
 /**
@@ -152,7 +152,7 @@ static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
 	_m[t].m5 = GB(gfx, 0, 8);
-	SB(_m[t].m6, 2, 1, GB(gfx, 8, 1));
+	SB(_me[t].m6, 2, 1, GB(gfx, 8, 1));
 }
 
 /**
@@ -252,7 +252,7 @@ static inline void SetIndustryRandomBits(TileIndex tile, byte bits)
 static inline byte GetIndustryTriggers(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	return GB(_m[tile].m6, 3, 3);
+	return GB(_me[tile].m6, 3, 3);
 }
 
 
@@ -266,7 +266,7 @@ static inline byte GetIndustryTriggers(TileIndex tile)
 static inline void SetIndustryTriggers(TileIndex tile, byte triggers)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	SB(_m[tile].m6, 3, 3, triggers);
+	SB(_me[tile].m6, 3, 3, triggers);
 }
 
 /**

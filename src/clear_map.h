@@ -228,7 +228,7 @@ static inline uint GetFence(TileIndex t, DiagDirection side)
 		case DIAGDIR_SE: return GB(_m[t].m4, 2, 3);
 		case DIAGDIR_SW: return GB(_m[t].m4, 5, 3);
 		case DIAGDIR_NE: return GB(_m[t].m3, 5, 3);
-		case DIAGDIR_NW: return GB(_m[t].m6, 2, 3);
+		case DIAGDIR_NW: return GB(_me[t].m6, 2, 3);
 	}
 }
 
@@ -247,7 +247,7 @@ static inline void SetFence(TileIndex t, DiagDirection side, uint h)
 		case DIAGDIR_SE: SB(_m[t].m4, 2, 3, h); break;
 		case DIAGDIR_SW: SB(_m[t].m4, 5, 3, h); break;
 		case DIAGDIR_NE: SB(_m[t].m3, 5, 3, h); break;
-		case DIAGDIR_NW: SB(_m[t].m6, 2, 3, h); break;
+		case DIAGDIR_NW: SB(_me[t].m6, 2, 3, h); break;
 	}
 }
 
@@ -287,7 +287,7 @@ static inline void MakeField(TileIndex t, uint field_type, IndustryID industry)
 	_m[t].m3 = field_type;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	SetClearGroundDensity(t, CLEAR_FIELDS, 3);
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 

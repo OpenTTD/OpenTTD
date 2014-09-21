@@ -82,7 +82,7 @@ static inline void MakeObject(TileIndex t, Owner o, ObjectID index, WaterClass w
 	_m[t].m3 = random;
 	_m[t].m4 = 0;
 	_m[t].m5 = index >> 16;
-	SB(_m[t].m6, 2, 4, 0);
+	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }
 

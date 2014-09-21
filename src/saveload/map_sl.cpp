@@ -223,16 +223,16 @@ static void Load_MAP6()
 			/* 1024, otherwise we overflow on 64x64 maps! */
 			SlArray(buf, 1024, SLE_UINT8);
 			for (uint j = 0; j != 1024; j++) {
-				_m[i++].m6 = GB(buf[j], 0, 2);
-				_m[i++].m6 = GB(buf[j], 2, 2);
-				_m[i++].m6 = GB(buf[j], 4, 2);
-				_m[i++].m6 = GB(buf[j], 6, 2);
+				_me[i++].m6 = GB(buf[j], 0, 2);
+				_me[i++].m6 = GB(buf[j], 2, 2);
+				_me[i++].m6 = GB(buf[j], 4, 2);
+				_me[i++].m6 = GB(buf[j], 6, 2);
 			}
 		}
 	} else {
 		for (TileIndex i = 0; i != size;) {
 			SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT8);
-			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) _m[i++].m6 = buf[j];
+			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) _me[i++].m6 = buf[j];
 		}
 	}
 }
@@ -244,7 +244,7 @@ static void Save_MAP6()
 
 	SlSetLength(size);
 	for (TileIndex i = 0; i != size;) {
-		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = _m[i++].m6;
+		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = _me[i++].m6;
 		SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT8);
 	}
 }
