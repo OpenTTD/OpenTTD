@@ -40,13 +40,24 @@
 }
 
 template<bool Tfrom, bool Tvia>
+/* static */ bool ScriptStation::IsCargoRequestValid(StationID station_id,
+		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+{
+	if (!IsValidStation(station_id)) return false;
+	if (Tfrom && !IsValidStation(from_station_id) && from_station_id != STATION_INVALID) return false;
+	if (Tvia && !IsValidStation(via_station_id) && via_station_id != STATION_INVALID) return false;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return false;
+	return true;
+}
+
+template<bool Tfrom, bool Tvia>
 /* static */ int32 ScriptStation::CountCargoWaiting(StationID station_id,
 		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
 {
-	if (!IsValidStation(station_id)) return -1;
-	if (Tfrom && !IsValidStation(from_station_id) && from_station_id != STATION_INVALID) return -1;
-	if (Tvia && !IsValidStation(via_station_id) && via_station_id != STATION_INVALID) return -1;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id,
+			via_station_id, cargo_id)) {
+		return -1;
+	}
 
 	const StationCargoList &cargo_list = ::Station::Get(station_id)->goods[cargo_id].cargo;
 	if (!Tfrom && !Tvia) return cargo_list.TotalCount();
@@ -85,6 +96,47 @@ template<bool Tfrom, bool Tvia>
 		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
 {
 	return CountCargoWaiting<true, true>(station_id, from_station_id, via_station_id, cargo_id);
+}
+
+template<bool Tfrom, bool Tvia>
+/* static */ int32 ScriptStation::CountCargoPlanned(StationID station_id,
+		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+{
+	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id,
+			via_station_id, cargo_id)) {
+		return -1;
+	}
+
+	const FlowStatMap &flows = ::Station::Get(station_id)->goods[cargo_id].flows;
+	if (Tfrom) {
+		return Tvia ? flows.GetFlowFromVia(from_station_id, via_station_id) :
+					  flows.GetFlowFrom(from_station_id);
+	} else {
+		return Tvia ? flows.GetFlowVia(via_station_id) : flows.GetFlow();
+	}
+}
+
+/* static */ int32 ScriptStation::GetCargoPlanned(StationID station_id, CargoID cargo_id)
+{
+	return CountCargoPlanned<false, false>(station_id, STATION_INVALID, STATION_INVALID, cargo_id);
+}
+
+/* static */ int32 ScriptStation::GetCargoPlannedFrom(StationID station_id,
+		StationID from_station_id, CargoID cargo_id)
+{
+	return CountCargoPlanned<true, false>(station_id, from_station_id, STATION_INVALID, cargo_id);
+}
+
+/* static */ int32 ScriptStation::GetCargoPlannedVia(StationID station_id,
+		StationID via_station_id, CargoID cargo_id)
+{
+	return CountCargoPlanned<false, true>(station_id, STATION_INVALID, via_station_id, cargo_id);
+}
+
+/* static */ int32 ScriptStation::GetCargoPlannedFromVia(StationID station_id,
+		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+{
+	return CountCargoPlanned<true, true>(station_id, from_station_id, via_station_id, cargo_id);
 }
 
 /* static */ bool ScriptStation::HasCargoRating(StationID station_id, CargoID cargo_id)

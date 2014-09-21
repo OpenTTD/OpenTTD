@@ -128,6 +128,58 @@ public:
 	static int32 GetCargoWaitingFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoID cargo_id);
 
 	/**
+	 * See how much cargo was planned to pass (including production and consumption) this station per month.
+	 * @param station_id The station to get the planned flow for.
+	 * @param cargo_id The cargo type to get the planned flow for.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidCargo(cargo_id).
+	 * @return The amount of cargo units planned to pass the station per month.
+	 */
+	static int32 GetCargoPlanned(StationID station_id, CargoID cargo_id);
+
+	/**
+	 * See how much cargo from the specified origin was planned to pass (including production and consumption) this station per month.
+	 * @param station_id The station to get the planned flow for.
+	 * @param from_station_id The station the cargo originates at.
+	 * @param cargo_id The cargo type to get the planned flow for.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidStation(from_station_id) || from_station_id == STATION_INVALID.
+	 * @pre IsValidCargo(cargo_id).
+	 * @return The amount of cargo units from the specified origin planned to pass the station per month.
+	 */
+	static int32 GetCargoPlannedFrom(StationID station_id, StationID from_station_id, CargoID cargo_id);
+
+	/**
+	 * See how much cargo was planned to pass (including production and consumption) this station per month, heading for the specified next hop.
+	 * @param station_id The station to get the planned flow for.
+	 * @param via_station_id The next station the cargo will go on to.
+	 * @param cargo_id The cargo type to get the planned flow for.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidStation(via_station_id) || via_station_id == STATION_INVALID.
+	 * @pre IsValidCargo(cargo_id).
+	 * @return The amount of cargo units planned to pass the station per month, going via the specified next hop.
+	 * @note Cargo planned to go "via" the same station that's being queried is actually planned to be consumed there.
+	 */
+	static int32 GetCargoPlannedVia(StationID station_id, StationID via_station_id, CargoID cargo_id);
+
+	/**
+	 * See how much cargo from the specified origin was planned to pass this station per month,
+	 * heading for the specified next hop.
+	 * @param station_id The station to get the planned flow for.
+	 * @param from_station_id The station the cargo originates at.
+	 * @param via_station_id The next station the cargo will go on to.
+	 * @param cargo_id The cargo type to get the planned flow for.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidStation(from_station_id) || from_station_id == STATION_INVALID.
+	 * @pre IsValidStation(via_station_id) || via_station_id == STATION_INVALID.
+	 * @pre IsValidCargo(cargo_id).
+	 * @return The amount of cargo units from the specified origin planned to pass the station per month, going via the specified next hop.
+	 * @note Cargo planned to go "via" the same station that's being queried is actually planned to be consumed there.
+	 * @note Cargo planned to pass "from" the same station that's being queried is actually produced there.
+	 */
+	static int32 GetCargoPlannedFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoID cargo_id);
+
+	/**
 	 * Check whether the given cargo at the given station a rating.
 	 * @param station_id The station to get the cargo-rating state of.
 	 * @param cargo_id The cargo to get the cargo-rating state of.
@@ -245,7 +297,15 @@ public:
 
 private:
 	template<bool Tfrom, bool Tvia>
+	static bool IsCargoRequestValid(StationID station_id, StationID from_station_id,
+			StationID via_station_id, CargoID cargo_id);
+
+	template<bool Tfrom, bool Tvia>
 	static int32 CountCargoWaiting(StationID station_id, StationID from_station_id,
+			StationID via_station_id, CargoID cargo_id);
+
+	template<bool Tfrom, bool Tvia>
+	static int32 CountCargoPlanned(StationID station_id, StationID from_station_id,
 			StationID via_station_id, CargoID cargo_id);
 
 };

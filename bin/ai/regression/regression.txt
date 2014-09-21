@@ -7539,6 +7539,44 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetCargoWaitingFromVia(1000, 1000, 0, 1000): -1
   GetCargoWaitingFromVia(1000, 1000, 1000, 1000): -1
 
+--CargoPlanned--
+  GetCargoPlanned(0, 0): 0
+  GetCargoPlannedFrom(0, 0, 0): 0
+  GetCargoPlannedVia(0, 0, 0): 0
+  GetCargoPlannedFromVia(0, 0, 0, 0): 0
+  GetCargoPlannedFromVia(0, 0, 1000, 0): -1
+  GetCargoPlannedFrom(0, 1000, 0): -1
+  GetCargoPlannedVia(0, 1000, 0): -1
+  GetCargoPlannedFromVia(0, 1000, 0, 0): -1
+  GetCargoPlannedFromVia(0, 1000, 1000, 0): -1
+  GetCargoPlanned(1000, 0): -1
+  GetCargoPlannedFrom(1000, 0, 0): -1
+  GetCargoPlannedVia(1000, 0, 0): -1
+  GetCargoPlannedFromVia(1000, 0, 0, 0): -1
+  GetCargoPlannedFromVia(1000, 0, 1000, 0): -1
+  GetCargoPlannedFrom(1000, 1000, 0): -1
+  GetCargoPlannedVia(1000, 1000, 0): -1
+  GetCargoPlannedFromVia(1000, 1000, 0, 0): -1
+  GetCargoPlannedFromVia(1000, 1000, 1000, 0): -1
+  GetCargoPlanned(0, 1000): -1
+  GetCargoPlannedFrom(0, 0, 1000): -1
+  GetCargoPlannedVia(0, 0, 1000): -1
+  GetCargoPlannedFromVia(0, 0, 0, 1000): -1
+  GetCargoPlannedFromVia(0, 0, 1000, 1000): -1
+  GetCargoPlannedFrom(0, 1000, 1000): -1
+  GetCargoPlannedVia(0, 1000, 1000): -1
+  GetCargoPlannedFromVia(0, 1000, 0, 1000): -1
+  GetCargoPlannedFromVia(0, 1000, 1000, 1000): -1
+  GetCargoPlanned(1000, 1000): -1
+  GetCargoPlannedFrom(1000, 0, 1000): -1
+  GetCargoPlannedVia(1000, 0, 1000): -1
+  GetCargoPlannedFromVia(1000, 0, 0, 1000): -1
+  GetCargoPlannedFromVia(1000, 0, 1000, 1000): -1
+  GetCargoPlannedFrom(1000, 1000, 1000): -1
+  GetCargoPlannedVia(1000, 1000, 1000): -1
+  GetCargoPlannedFromVia(1000, 1000, 0, 1000): -1
+  GetCargoPlannedFromVia(1000, 1000, 1000, 1000): -1
+
 --StationList--
   Count():             2
   Location ListDump:

@@ -1269,6 +1269,25 @@ function Regression::Station()
 		}
 	}
 
+	print("");
+	print("--CargoPlanned--");
+	for (local cargo = 0; cargo <= 1000; cargo += 1000) {
+		for (local station0 = 0; station0 <= 1000; station0 += 1000) {
+			print("  GetCargoPlanned(" + station0 + ", " + cargo + "): " +
+					AIStation.GetCargoPlanned(station0, cargo));
+			for (local station1 = 0; station1 <= 1000; station1 += 1000) {
+				print("  GetCargoPlannedFrom(" + station0 + ", " + station1 + ", " + cargo + "): " +
+						AIStation.GetCargoPlannedFrom(station0, station1, cargo));
+				print("  GetCargoPlannedVia(" + station0 + ", " + station1 + ", " + cargo + "): " +
+						AIStation.GetCargoPlannedFrom(station0, station1, cargo));
+				for (local station2 = 0; station2 <= 1000; station2 += 1000) {
+					print("  GetCargoPlannedFromVia(" + station0 + ", " + station1 + ", " + station2 + ", " + cargo + "): " +
+							AIStation.GetCargoPlannedFromVia(station0, station1, station2, cargo));
+				}
+			}
+		}
+	}
+
 	local list = AIStationList(AIStation.STATION_BUS_STOP + AIStation.STATION_TRUCK_STOP);
 
 	print("");

@@ -20,6 +20,10 @@
  * 1.5.0 is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li AIStation::GetCargoPlanned
+ * \li AIStation::GetCargoPlannedFrom
+ * \li AIStation::GetCargoPlannedFromVia
+ * \li AIStation::GetCargoPlannedVia
  * \li AIStation::GetCargoWaitingFromVia
  *
  * \b 1.4.2
