@@ -398,8 +398,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 								MarkTileDirtyByTileOutsideMap(cx, cy);
 							}
 						}
-				  }
-			  }
+					}
+				}
 			}
 		}
 
