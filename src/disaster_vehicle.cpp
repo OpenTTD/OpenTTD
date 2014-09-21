@@ -55,8 +55,6 @@
 /** Delay counter for considering the next disaster. */
 uint16 _disaster_delay;
 
-static const uint INITIAL_DISASTER_VEHICLE_ZPOS = 135; ///< Initial Z position of flying disaster vehicles.
-
 static void DisasterClearSquare(TileIndex tile)
 {
 	if (EnsureNoVehicleOnGround(tile).Failed()) return;
@@ -137,11 +135,12 @@ DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubT
 		case ST_HELICOPTER:
 		case ST_BIG_UFO:
 		case ST_BIG_UFO_DESTROYER:
-			this->z_pos = INITIAL_DISASTER_VEHICLE_ZPOS;
+			GetAircraftFlightLevelBounds(this, &this->z_pos, NULL);
 			break;
 
 		case ST_HELICOPTER_ROTORS:
-			this->z_pos = INITIAL_DISASTER_VEHICLE_ZPOS + ROTOR_Z_OFFSET;
+			GetAircraftFlightLevelBounds(this, &this->z_pos, NULL);
+			this->z_pos += ROTOR_Z_OFFSET;
 			break;
 
 		case ST_SMALL_SUBMARINE:
@@ -229,7 +228,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
-		v->UpdatePosition(gp.x, gp.y, v->z_pos);
+		v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
 		if (v->current_order.GetDestination() == 1) {
 			if (++v->age == 38) {
@@ -267,7 +266,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 			AI::NewEvent(GetTileOwner(v->tile), new ScriptEventDisasterZeppelinerCleared(st->index));
 		}
 
-		v->UpdatePosition(v->x_pos, v->y_pos, v->z_pos);
+		v->UpdatePosition(v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
 		delete v;
 		return false;
 	}
@@ -323,7 +322,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= (int)TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-			v->UpdatePosition(gp.x, gp.y, v->z_pos);
+			v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 			return true;
 		}
 		if (++v->age < 6) {
@@ -426,7 +425,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 	v->image_override = (v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? image_override : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-	v->UpdatePosition(gp.x, gp.y, v->z_pos);
+	v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
 	if ((leave_at_top && gp.x < (-10 * (int)TILE_SIZE)) || (!leave_at_top && gp.x > (int)(MapSizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1)) {
 		delete v;
@@ -523,7 +522,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			v->direction = GetDirectionTowards(v, x, y);
 
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-			v->UpdatePosition(gp.x, gp.y, v->z_pos);
+			v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 			return true;
 		}
 
@@ -568,7 +567,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= (int)TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-			v->UpdatePosition(gp.x, gp.y, v->z_pos);
+			v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 			return true;
 		}
 
@@ -603,7 +602,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 	v->tick_counter++;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-	v->UpdatePosition(gp.x, gp.y, v->z_pos);
+	v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
 	if (gp.x > (int)(MapSizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1) {
 		delete v;
@@ -965,7 +964,7 @@ void ReleaseDisastersTargetingVehicle(VehicleID vehicle)
 				/* Revert to target-searching */
 				v->current_order.SetDestination(0);
 				v->dest_tile = RandomTile();
-				v->z_pos = INITIAL_DISASTER_VEHICLE_ZPOS;
+				GetAircraftFlightLevelBounds(v, &v->z_pos, NULL);
 				v->age = 0;
 			}
 		}

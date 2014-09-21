@@ -845,6 +845,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(DisasterVehicle, image_override,            SLE_UINT32,                 191, SL_MAX_VERSION),
 		 SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_FILE_U16 | SLE_VAR_U32,   0, 190),
 		 SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 191, SL_MAX_VERSION),
+		 SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  194, SL_MAX_VERSION),
 
 		SLE_CONDNULL(16,                                                           2, 143), // old reserved space
 

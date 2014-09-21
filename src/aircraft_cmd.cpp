@@ -36,6 +36,7 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "zoom_func.h"
+#include "disaster_vehicle.h"
 
 #include "table/strings.h"
 
@@ -762,6 +763,8 @@ int GetAircraftFlightLevel(T *v, bool takeoff)
 
 	return z;
 }
+
+template int GetAircraftFlightLevel(DisasterVehicle *v, bool takeoff = false);
 
 /**
  * Find the entry point to an airport depending on direction which
