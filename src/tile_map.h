@@ -206,7 +206,7 @@ static inline void SetTropicZone(TileIndex tile, TropicZone type)
 {
 	assert(tile < MapSize());
 	assert(!IsTileType(tile, MP_VOID) || type == TROPICZONE_NORMAL);
-	SB(_m[tile].m6, 0, 2, type);
+	SB(_m[tile].type, 0, 2, type);
 }
 
 /**
@@ -218,7 +218,7 @@ static inline void SetTropicZone(TileIndex tile, TropicZone type)
 static inline TropicZone GetTropicZone(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return (TropicZone)GB(_m[tile].m6, 0, 2);
+	return (TropicZone)GB(_m[tile].type, 0, 2);
 }
 
 /**
