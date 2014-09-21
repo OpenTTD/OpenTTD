@@ -407,7 +407,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		 * Remove those (simply by ANDing with allowed, since these markers are never allowed) */
 		if ((PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
 
-		if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
+		if (IsBridgeAbove(ti->tile)) {
 			Track bridgetrack = GetBridgeAxis(ti->tile) == AXIS_X ? TRACK_X : TRACK_Y;
 			int height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
@@ -446,7 +446,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	if (IsTunnelTile(ti->tile)) return;
 
 	/* Don't draw a wire under a low bridge */
-	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_BRIDGES)) {
+	if (IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_BRIDGES)) {
 		int height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
 		if (height <= GetTileMaxZ(ti->tile) + 1) return;

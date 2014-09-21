@@ -109,8 +109,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 	}
 
-	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
-		(MayHaveBridgeAbove(tile2) && IsBridgeAbove(tile2))) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	if (!IsTileFlat(tile) || !IsTileFlat(tile2)) {
 		/* Prevent depots on rapids */
@@ -289,9 +288,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
-	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
-	    (MayHaveBridgeAbove(tile - delta) && IsBridgeAbove(tile - delta)) ||
-	    (MayHaveBridgeAbove(tile + delta) && IsBridgeAbove(tile + delta))) {
+	if (IsBridgeAbove(tile) || IsBridgeAbove(tile - delta) || IsBridgeAbove(tile + delta)) {
 		return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 	}
 

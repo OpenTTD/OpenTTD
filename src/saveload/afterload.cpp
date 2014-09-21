@@ -506,6 +506,18 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 }
 
 /**
+ * Checks for the possibility that a bridge may be on this tile
+ * These are in fact all the tile types on which a bridge can be found
+ * @param t The tile to analyze
+ * @return True if a bridge might have been present prior to savegame 194.
+ */
+static inline bool MayHaveBridgeAbove(TileIndex t)
+{
+	return IsTileType(t, MP_CLEAR) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_ROAD) ||
+			IsTileType(t, MP_WATER) || IsTileType(t, MP_TUNNELBRIDGE) || IsTileType(t, MP_OBJECT);
+}
+
+/**
  * Perform a (large) amount of savegame conversion *magic* in order to
  * load older savegames and to fill the caches for various purposes.
  * @return True iff conversion went without a problem.

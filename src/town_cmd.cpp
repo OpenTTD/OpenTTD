@@ -868,7 +868,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 	if (DistanceFromEdge(tile) == 0) return false;
 
 	/* Prevent towns from building roads under bridges along the bridge. Looks silly. */
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) && GetBridgeAxis(tile) == DiagDirToAxis(dir)) return false;
+	if (IsBridgeAbove(tile) && GetBridgeAxis(tile) == DiagDirToAxis(dir)) return false;
 
 	/* Check if there already is a road at this point? */
 	if (GetTownRoadBits(tile) == ROAD_NONE) {
@@ -2018,7 +2018,7 @@ static inline bool CanBuildHouseHere(TileIndex tile, TownID town, bool noslope)
 	if ((noslope && slope != SLOPE_FLAT) || IsSteepSlope(slope)) return false;
 
 	/* building under a bridge? */
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
+	if (IsBridgeAbove(tile)) return false;
 
 	/* do not try to build over house owned by another town */
 	if (IsTileType(tile, MP_HOUSE) && GetTownIndex(tile) != town) return false;
@@ -2790,7 +2790,7 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
 	if (IsSteepSlope(GetTileSlope(tile))) return false;
 	/* Don't build statues under bridges. */
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
+	if (IsBridgeAbove(tile)) return false;
 
 	/* A clear-able open space is always preferred. */
 	if ((IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) && TryClearTile(tile)) {

@@ -254,7 +254,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 			if (pass == 0) {
 				/* Check if bridge would take damage */
-				if (direction == 1 && MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) &&
+				if (direction == 1 && IsBridgeAbove(tile) &&
 						GetBridgeHeight(GetSouthernBridgeEnd(tile)) <= z_max) {
 					_terraform_err_tile = tile; // highlight the tile under the bridge
 					return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
