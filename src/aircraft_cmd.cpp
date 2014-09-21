@@ -725,7 +725,7 @@ int GetAircraftHoldMaxAltitude(const Aircraft *v)
 }
 
 template <class T>
-int GetAircraftFlightLevel(T *v, bool takeoff = false)
+int GetAircraftFlightLevel(T *v, bool takeoff)
 {
 	/* Aircraft is in flight. We want to enforce it being somewhere
 	 * between the minimum and the maximum allowed altitude. */
