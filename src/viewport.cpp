@@ -1046,38 +1046,28 @@ static void ViewportAddLandscape()
 
 	direction = false;
 
+	int min_xy = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
+
 	do {
 		int width_cur = width;
-		uint x_cur = x;
-		uint y_cur = y;
+		int x_cur = x;
+		int y_cur = y;
 
 		do {
-			TileType tt = MP_VOID;
-
+			TileType tt;
 			ti.x = x_cur;
 			ti.y = y_cur;
 
-			ti.z = 0;
-
-			ti.tileh = SLOPE_FLAT;
-			ti.tile = INVALID_TILE;
-
-			if (x_cur < MapMaxX() * TILE_SIZE &&
-					y_cur < MapMaxY() * TILE_SIZE) {
-				TileIndex tile = TileVirtXY(x_cur, y_cur);
-
-				if (!_settings_game.construction.freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0)) {
-					if (x_cur == ((int)MapMaxX() - 1) * TILE_SIZE || y_cur == ((int)MapMaxY() - 1) * TILE_SIZE) {
-						uint maxh = max<uint>(TileHeight(tile), 1);
-						for (uint h = 0; h < maxh; h++) {
-							AddTileSpriteToDraw(SPR_SHADOW_CELL, PAL_NONE, ti.x, ti.y, h * TILE_HEIGHT);
-						}
-					}
-
-					ti.tile = tile;
-					ti.tileh = GetTilePixelSlope(tile, &ti.z);
-					tt = GetTileType(tile);
-				}
+			if (IsInsideMM(x_cur, min_xy, MapMaxX() * TILE_SIZE) &&
+					IsInsideMM(y_cur, min_xy, MapMaxY() * TILE_SIZE)) {
+				ti.tile = TileVirtXY(x_cur, y_cur);
+				ti.tileh = GetTilePixelSlope(ti.tile, &ti.z);
+				tt = GetTileType(ti.tile);
+			} else {
+				/* We are outside the map => paint black. */
+				ti.tile = 0;
+				ti.tileh = GetTilePixelSlopeOutsideMap(x_cur / (int)TILE_SIZE, y_cur / (int)TILE_SIZE, &ti.z);
+				tt = MP_VOID;
 			}
 
 			_vd.foundation_part = FOUNDATION_PART_NONE;
@@ -1088,8 +1078,8 @@ static void ViewportAddLandscape()
 
 			_tile_type_procs[tt]->draw_tile_proc(&ti);
 
-			if ((x_cur == (int)MapMaxX() * TILE_SIZE && IsInsideMM(y_cur, 0, MapMaxY() * TILE_SIZE + 1)) ||
-					(y_cur == (int)MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE + 1))) {
+			if (((uint)x_cur == MapMaxX() * TILE_SIZE && IsInsideMM(y_cur, 0, MapMaxY() * TILE_SIZE + 1)) ||
+					((uint)y_cur == MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE + 1))) {
 				TileIndex tile = TileVirtXY(x_cur, y_cur);
 				ti.tile = tile;
 				ti.tileh = GetTilePixelSlope(tile, &ti.z);

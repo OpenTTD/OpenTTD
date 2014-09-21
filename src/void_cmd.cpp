@@ -13,6 +13,7 @@
 #include "tile_cmd.h"
 #include "command_func.h"
 #include "viewport_func.h"
+#include "slope_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -21,7 +22,7 @@
 
 static void DrawTile_Void(TileInfo *ti)
 {
-	DrawGroundSprite(SPR_SHADOW_CELL, PAL_NONE);
+	DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh), PALETTE_ALL_BLACK);
 }
 
 
