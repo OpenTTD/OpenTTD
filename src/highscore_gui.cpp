@@ -46,17 +46,20 @@ struct EndGameHighScoreBaseWindow : Window {
 
 		this->DrawWidgets();
 
-		Point pt = this->GetTopLeft640x480();
+		/* Standard background slices are 50 pixels high, but it's designed
+		 * for 480 pixels total. 96% of 500 is 480. */
+		Dimension dim = GetSpriteSize(this->background_img);
+		Point pt = this->GetTopLeft(dim.width, dim.height * 96 / 10);
 		/* Center Highscore/Endscreen background */
 		for (uint i = 0; i < 10; i++) { // the image is split into 10 50px high parts
-			DrawSprite(this->background_img + i, PAL_NONE, pt.x, pt.y + (i * 50));
+			DrawSprite(this->background_img + i, PAL_NONE, pt.x, pt.y + (i * dim.height));
 		}
 	}
 
 	/** Return the coordinate of the screen such that a window of 640x480 is centered at the screen. */
-	Point GetTopLeft640x480()
+	Point GetTopLeft(int x, int y)
 	{
-		Point pt = {max(0, (_screen.width  / 2) - (640 / 2)), max(0, (_screen.height / 2) - (480 / 2))};
+		Point pt = {max(0, (_screen.width / 2) - (x / 2)), max(0, (_screen.height / 2) - (y / 2))};
 		return pt;
 	}
 
@@ -129,7 +132,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 	virtual void OnPaint()
 	{
 		this->SetupHighScoreEndWindow();
-		Point pt = this->GetTopLeft640x480();
+		Point pt = this->GetTopLeft(640, 480);
 
 		const Company *c = Company::GetIfValid(_local_company);
 		if (c == NULL) return;
@@ -179,7 +182,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		const HighScore *hs = _highscore_table[this->window_number];
 
 		this->SetupHighScoreEndWindow();
-		Point pt = this->GetTopLeft640x480();
+		Point pt = this->GetTopLeft(640, 480);
 
 		SetDParam(0, ORIGINAL_END_YEAR);
 		DrawStringMultiLine(pt.x + 70, pt.x + 570, pt.y, pt.y + 140, !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
