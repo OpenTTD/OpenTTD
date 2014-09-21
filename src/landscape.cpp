@@ -892,6 +892,7 @@ static void CreateDesertOrRainForest()
 {
 	TileIndex update_freq = MapSize() / 4;
 	const TileIndexDiffC *data;
+	uint max_desert_height = CeilDiv(_settings_game.construction.max_heightlevel, 4);
 
 	for (TileIndex tile = 0; tile != MapSize(); ++tile) {
 		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
@@ -901,7 +902,7 @@ static void CreateDesertOrRainForest()
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
 			TileIndex t = AddTileIndexDiffCWrap(tile, *data);
-			if (t != INVALID_TILE && (TileHeight(t) >= 4 || IsTileType(t, MP_WATER))) break;
+			if (t != INVALID_TILE && (TileHeight(t) >= max_desert_height || IsTileType(t, MP_WATER))) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data)) {
 			SetTropicZone(tile, TROPICZONE_DESERT);
