@@ -15,6 +15,17 @@
 #include "station_map.h"
 #include "vehicle_base.h"
 
+/**
+ * Base values for flight levels above ground level for 'normal' flight and holding patterns.
+ * Due to speed and direction, the actual flight level may be higher.
+ */
+enum AircraftFlyingAltitude {
+	AIRCRAFT_MIN_FLYING_ALTITUDE        = 120, ///< Minimum flying altitude above tile.
+	AIRCRAFT_MAX_FLYING_ALTITUDE        = 360, ///< Maximum flying altitude above tile.
+	PLANE_HOLD_MAX_FLYING_ALTITUDE      = 150, ///< holding flying altitude above tile of planes.
+	HELICOPTER_HOLD_MAX_FLYING_ALTITUDE = 184  ///< holding flying altitude above tile of helicopters.
+};
+
 struct Aircraft;
 
 /** An aircraft can be one of those types. */
@@ -25,9 +36,15 @@ enum AircraftSubType {
 	AIR_ROTOR      = 6, ///< rotor of an helicopter
 };
 
-/** Aircraft flags. */
-enum VehicleAirFlags {
-	VAF_DEST_TOO_FAR = 0, ///< Next destination is too far away.
+/** Flags for air vehicles; shared with disaster vehicles. */
+enum AirVehicleFlags {
+	VAF_DEST_TOO_FAR             = 0, ///< Next destination is too far away.
+
+	/* The next two flags are to prevent stair climbing of the aircraft. The idea is that the aircraft
+	 * will ascend or descend multiple flight levels at a time instead of following the contours of the
+	 * landscape at a fixed altitude. This only has effect when there are more than 15 height levels. */
+	VAF_IN_MAX_HEIGHT_CORRECTION = 1, ///< The vehicle is currently lowering its altitude because it hit the upper bound.
+	VAF_IN_MIN_HEIGHT_CORRECTION = 2, ///< The vehicle is currently raising its altitude because it hit the lower bound.
 };
 
 static const int ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.
@@ -40,7 +57,10 @@ void UpdateAircraftCache(Aircraft *v, bool update_range = false);
 void AircraftLeaveHangar(Aircraft *v, Direction exit_dir);
 void AircraftNextAirportPos_and_Order(Aircraft *v);
 void SetAircraftPosition(Aircraft *v, int x, int y, int z);
-int GetAircraftFlyingAltitude(const Aircraft *v);
+
+void GetAircraftFlightLevelBounds(const Vehicle *v, int *min, int *max);
+template <class T>
+int GetAircraftFlightLevel(T *v, bool takeoff = false);
 
 /** Variables that are cached to improve performance and such. */
 struct AircraftCache {
@@ -60,7 +80,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	DirectionByte last_direction;
 	byte number_consecutive_turns; ///< Protection to prevent the aircraft of making a lot of turns in order to reach a specific point.
 	byte turn_counter;             ///< Ticks between each turn to prevent > 45 degree turns.
-	byte flags;                    ///< Aircraft flags. @see VehicleAirFlags
+	byte flags;                    ///< Aircraft flags. @see AirVehicleFlags
 
 	AircraftCache acache;
 

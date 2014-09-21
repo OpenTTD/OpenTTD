@@ -567,7 +567,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 
 			{
 				const Vehicle *w = v->Next();
-				uint16 altitude = v->z_pos - w->z_pos; // Aircraft height - shadow height
+				uint16 altitude = ClampToU16(v->z_pos - w->z_pos); // Aircraft height - shadow height
 				byte airporttype = ATP_TTDP_LARGE;
 
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));

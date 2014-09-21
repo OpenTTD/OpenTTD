@@ -41,10 +41,6 @@
 
 #include "safeguards.h"
 
-static const int PLANE_HOLDING_ALTITUDE = 150;  ///< Altitude of planes in holding pattern (= lowest flight altitude).
-static const int HELI_FLIGHT_ALTITUDE   = 184;  ///< Normal flight altitude of helicopters.
-
-
 void Aircraft::UpdateDeltaXY(Direction direction)
 {
 	this->x_offs = -1;
@@ -663,20 +659,35 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 }
 
 /**
- * Gets the cruise altitude of an aircraft.
- * The cruise altitude is determined by the velocity of the vehicle
- * and the direction it is moving
- * @param v The vehicle. Should be an aircraft
- * @returns Altitude in pixel units
+ * Get the tile height below the aircraft.
+ * This function is needed because aircraft can leave the mapborders.
+ *
+ * @param v The vehicle to get the height for.
+ * @return The height in pixels from 'z_pos' 0.
  */
-int GetAircraftFlyingAltitude(const Aircraft *v)
+int GetTileHeightBelowAircraft(const Vehicle *v)
 {
-	if (v->subtype == AIR_HELICOPTER) return HELI_FLIGHT_ALTITUDE;
+	int safe_x = Clamp(v->x_pos, 0, MapMaxX() * TILE_SIZE);
+	int safe_y = Clamp(v->y_pos, 0, MapMaxY() * TILE_SIZE);
+	return TileHeight(TileVirtXY(safe_x, safe_y)) * TILE_HEIGHT;
+}
 
-	/* Make sure Aircraft fly no lower so that they don't conduct
-	 * CFITs (controlled flight into terrain)
-	 */
-	int base_altitude = PLANE_HOLDING_ALTITUDE;
+/**
+ * Get the 'flight level' bounds, in pixels from 'z_pos' 0 for a particular
+ * vehicle for normal flight situation.
+ * When the maximum is reached the vehicle should consider descending.
+ * When the minimum is reached the vehicle should consider ascending.
+ *
+ * @param v               The vehicle to get the flight levels for.
+ * @param [out] min_level The minimum bounds for flight level.
+ * @param [out] max_level The maximum bounds for flight level.
+ */
+void GetAircraftFlightLevelBounds(const Vehicle *v, int *min_level, int *max_level)
+{
+	int base_altitude = GetTileHeightBelowAircraft(v);
+	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->subtype == AIR_HELICOPTER) {
+		base_altitude += HELICOPTER_HOLD_MAX_FLYING_ALTITUDE - PLANE_HOLD_MAX_FLYING_ALTITUDE;
+	}
 
 	/* Make sure eastbound and westbound planes do not "crash" into each
 	 * other by providing them with vertical separation
@@ -693,9 +704,63 @@ int GetAircraftFlyingAltitude(const Aircraft *v)
 	}
 
 	/* Make faster planes fly higher so that they can overtake slower ones */
-	base_altitude += min(20 * (v->vcache.cached_max_speed / 200), 90);
+	base_altitude += min(20 * (v->vcache.cached_max_speed / 200) - 90, 0);
 
-	return base_altitude;
+	if (min_level != NULL) *min_level = base_altitude + AIRCRAFT_MIN_FLYING_ALTITUDE;
+	if (max_level != NULL) *max_level = base_altitude + AIRCRAFT_MAX_FLYING_ALTITUDE;
+}
+
+/**
+ * Gets the maximum 'flight level' for the holding pattern of the aircraft,
+ * in pixels 'z_pos' 0, depending on terrain below..
+ *
+ * @param v The aircraft that may or may not need to decrease its altitude.
+ * @return Maximal aircraft holding altitude, while in normal flight, in pixels.
+ */
+int GetAircraftHoldMaxAltitude(const Aircraft *v)
+{
+	int tile_height = GetTileHeightBelowAircraft(v);
+
+	return tile_height + ((v->subtype == AIR_HELICOPTER) ? HELICOPTER_HOLD_MAX_FLYING_ALTITUDE : PLANE_HOLD_MAX_FLYING_ALTITUDE);
+}
+
+template <class T>
+int GetAircraftFlightLevel(T *v, bool takeoff = false)
+{
+	/* Aircraft is in flight. We want to enforce it being somewhere
+	 * between the minimum and the maximum allowed altitude. */
+	int aircraft_min_altitude;
+	int aircraft_max_altitude;
+	GetAircraftFlightLevelBounds(v, &aircraft_min_altitude, &aircraft_max_altitude);
+	int aircraft_middle_altitude = (aircraft_min_altitude + aircraft_max_altitude) / 2;
+
+	/* If those assumptions would be violated, aircrafts would behave fairly strange. */
+	assert(aircraft_min_altitude < aircraft_middle_altitude);
+	assert(aircraft_middle_altitude < aircraft_max_altitude);
+
+	int z = v->z_pos;
+	if (z < aircraft_min_altitude ||
+			(HasBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION) && z < aircraft_middle_altitude)) {
+		/* Ascend. And don't fly into that mountain right ahead.
+		 * And avoid our aircraft become a stairclimber, so if we start
+		 * correcting altitude, then we stop correction not too early. */
+		SetBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION);
+		z += takeoff ? 2 : 1;
+	} else if (!takeoff && (z > aircraft_max_altitude ||
+			(HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z > aircraft_middle_altitude))) {
+		/* Descend lower. You are an aircraft, not an space ship.
+		 * And again, don't stop correcting altitude too early. */
+		SetBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION);
+		z--;
+	} else if (HasBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION) && z >= aircraft_middle_altitude) {
+		/* Now, we have corrected altitude enough. */
+		ClrBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION);
+	} else if (HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z <= aircraft_middle_altitude) {
+		/* Now, we have corrected altitude enough. */
+		ClrBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION);
+	}
+
+	return z;
 }
 
 /**
@@ -710,7 +775,7 @@ int GetAircraftFlyingAltitude(const Aircraft *v)
  * @param v   The vehicle that is approaching the airport
  * @param apc The Airport Class being approached.
  * @param rotation The rotation of the airport.
- * @returns   The index of the entry point
+ * @return   The index of the entry point
  */
 static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc, Direction rotation)
 {
@@ -787,7 +852,7 @@ static bool AircraftController(Aircraft *v)
 			UpdateAircraftCache(v);
 			AircraftNextAirportPos_and_Order(v);
 			/* get aircraft back on running altitude */
-			SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlyingAltitude(v));
+			SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
 			return false;
 		}
 	}
@@ -815,7 +880,9 @@ static bool AircraftController(Aircraft *v)
 			count = UpdateAircraftSpeed(v);
 			if (count > 0) {
 				v->tile = 0;
-				int z_dest = GetAircraftFlyingAltitude(v);
+
+				int z_dest;
+				GetAircraftFlightLevelBounds(v, &z_dest, NULL);
 
 				/* Reached altitude? */
 				if (v->z_pos >= z_dest) {
@@ -972,11 +1039,13 @@ static bool AircraftController(Aircraft *v)
 		int z = v->z_pos;
 
 		if (amd.flag & AMED_TAKEOFF) {
-			z = min(z + 2, GetAircraftFlyingAltitude(v));
+			z = GetAircraftFlightLevel(v, true);
+		} else if (amd.flag & AMED_HOLD) {
+			/* Let the plane drop from normal flight altitude to holding pattern altitude */
+			if (z > GetAircraftHoldMaxAltitude(v)) z--;
+		} else if ((amd.flag & AMED_SLOWTURN) && (amd.flag & AMED_NOSPDCLAMP)) {
+			z = GetAircraftFlightLevel(v);
 		}
-
-		/* Let the plane drop from normal flight altitude to holding pattern altitude */
-		if ((amd.flag & AMED_HOLD) && (z > PLANE_HOLDING_ALTITUDE)) z--;
 
 		if (amd.flag & AMED_LAND) {
 			if (st->airport.tile == INVALID_TILE) {
@@ -985,7 +1054,7 @@ static bool AircraftController(Aircraft *v)
 				UpdateAircraftCache(v);
 				AircraftNextAirportPos_and_Order(v);
 				/* get aircraft back on running altitude */
-				SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
+				SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlightLevel(v));
 				continue;
 			}
 
