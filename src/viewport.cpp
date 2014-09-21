@@ -26,6 +26,48 @@
  * \endverbatim
  */
 
+/**
+ * @defgroup vp_column_row Rows and columns in the viewport
+ *
+ * Columns are vertical sections of the viewport that are half a tile wide.
+ * The origin, i.e. column 0, is through the northern and southern most tile.
+ * This means that the column of e.g. Tile(0, 0) and Tile(100, 100) are in
+ * column number 0. The negative columns are towards the left of the screen,
+ * or towards the west, whereas the positive ones are towards respectively
+ * the right and east.
+ * With half a tile wide is meant that the next column of tiles directly west
+ * or east of the centre line are respectively column -1 and 1. Their tile
+ * centers are only half a tile from the center of their adjoining tile when
+ * looking only at the X-coordinate.
+ *
+ * \verbatim
+ *        ╳        *
+ *       ╱ ╲       *
+ *      ╳ 0 ╳      *
+ *     ╱ ╲ ╱ ╲     *
+ *    ╳-1 ╳ 1 ╳    *
+ *   ╱ ╲ ╱ ╲ ╱ ╲   *
+ *  ╳-2 ╳ 0 ╳ 2 ╳  *
+ *   ╲ ╱ ╲ ╱ ╲ ╱   *
+ *    ╳-1 ╳ 1 ╳    *
+ *     ╲ ╱ ╲ ╱     *
+ *      ╳ 0 ╳      *
+ *       ╲ ╱       *
+ *        ╳        *
+ * \endverbatim
+ *
+ *
+ * Rows are horizontal sections of the viewport, also half a tile wide.
+ * This time the nothern most tile on the map at height level 0 defines 0 and
+ * everything south of that has a positive number. In theory this works the
+ * same as for columns with the massive difference that due to the isometric
+ * projection the actual row where the tile is visible differs from the row
+ * where the tile would be if it were at height level 0. Strictly speaking,
+ * if you know the row of the tile at height level 0, then the row number
+ * where it is actually drawn is tile height / 2 lower than the row number
+ * of the same tile at height level 0.
+ */
+
 #include "stdafx.h"
 #include "landscape.h"
 #include "viewport_func.h"
@@ -47,6 +89,9 @@
 #include "window_gui.h"
 #include "linkgraph/linkgraph_gui.h"
 #include "viewport_sprite_sorter.h"
+#include "bridge_map.h"
+
+#include <map>
 
 #include "table/strings.h"
 #include "table/palettes.h"
@@ -1022,81 +1067,473 @@ draw_inner:
 	}
 }
 
-static void ViewportAddLandscape()
+/**
+ * Given a screen coordinate (x,y) as e.g. stored in _vd.dpi, this function
+ * returns the tile coordinate of the tile which would be painted at (x,y)
+ * if one assumes height zero at that position.
+ * @param x Some x screen coordinate
+ * @param y Some y screen coordinate
+ * @return Tile coordinate assuming height zero as described
+ */
+static inline Point GetTileCoordFromScreenCoord(int x, int y)
 {
-	int x, y, width, height;
-	TileInfo ti;
-	bool direction;
+	/* First convert from the screen coordinate system (where the width of tiles
+	 * is twice their height) to the tile coordinate system. That means, turn
+	 * around by 45 degrees and make the tiles quadratic. */
+	Point tile_coord = InverseRemapCoords(x, y);
 
-	_cur_ti = &ti;
+	/* Scale from a 16x16-grid to a 1x1-grid as returned by TileX/TileY. */
+	tile_coord.x /= (int)TILE_SIZE;
+	tile_coord.y /= (int)TILE_SIZE;
 
-	/* Transform into tile coordinates and round to closest full tile */
-	x = ((_vd.dpi.top >> (1 + ZOOM_LVL_SHIFT)) - (_vd.dpi.left >> (2 + ZOOM_LVL_SHIFT))) & ~TILE_UNIT_MASK;
-	y = ((_vd.dpi.top >> (1 + ZOOM_LVL_SHIFT)) + (_vd.dpi.left >> (2 + ZOOM_LVL_SHIFT)) - TILE_SIZE) & ~TILE_UNIT_MASK;
+	return tile_coord;
+}
 
-	/* determine size of area */
-	{
-		Point pt = RemapCoords(x, y, 241);
-		width = (_vd.dpi.left + _vd.dpi.width - pt.x + 96 * ZOOM_LVL_BASE - 1) >> (6 + ZOOM_LVL_SHIFT);
-		height = (_vd.dpi.top + _vd.dpi.height - pt.y) >> (5 + ZOOM_LVL_SHIFT) << 1;
+/**
+ * Assume a region, given by screen coordinates (x1,y1,x2,y2), as defined in _vd.dpi.
+ * This function basically takes (x1,y1) (i.e. the upper left corner of that region)
+ * and returns the tile coordinate of the tile, which would be painted at (x1,y1)
+ * if one assumes height zero at that position.
+ *
+ * However, in detail: Imagine tiles being split up into their upper left,upper right,
+ * etc. isometric sections.  We return a tile where the upper left corner of the
+ * mentioned region is either in its lower right section or in a neighbor tile
+ * below / right of that section. By doing so, we want to enforce that we can
+ * travel to east or south from that point without leaving the region again.
+ *
+ * @param x Some x screen coordinate, x1 in terms of the description above
+ * @param y Some y screen coordinate, y1 in terms of the description above
+ * @return Upper left corner of the region as tile coordinates.
+ */
+static Point GetMinTileCoordsIgnoringHeight(int x, int y)
+{
+	Point tile_coord = GetTileCoordFromScreenCoord(x, y);
+
+	/* Expand area to be painted in order to avoid situations
+	 * where south or east of the to be painted point in dpi are tiles
+	 * which will not be painted. */
+	tile_coord.y--;
+
+	return tile_coord;
+}
+
+/**
+ * Assume a region, given by screen coordinates (x1,y1,x2,y2), as defined in _vd.dpi.
+ * This function basically takes (x2,y2) (i.e. the lower right corner of that region)
+ * and returns the tile coordinate of the tile, which would be painted at (x2,y2)
+ * if one assumes height zero at that position.
+ *
+ * However, in detail: Imagine tiles being split up into their upper left,upper right,
+ * etc. isometric sections.  We return a tile where the lower right corner of the
+ * mentioned region is either in its upper left section or in a neighbor tile
+ * above / left of that section. By doing so, we want to enforce that we can
+ * travel to north or west from that point without leaving the region again.
+ *
+ * @param x Some x screen coordinate, x2 in terms of the description above
+ * @param y Some y screen coordinate, y2 in terms of the description above
+ * @return Upper left corner of the region as tile coordinates.
+ */
+static Point GetMaxTileCoordsIgnoringHeight(int x, int y)
+{
+	Point tile_coord = GetTileCoordFromScreenCoord(x, y);
+
+	/* Expand area to be painted to southeast in order to avoid situations
+	 * where north or east of the given to be painted point in dpi are
+	 * tiles which will not be repainted. */
+	tile_coord.y++;
+
+	return tile_coord;
+}
+
+/**
+ * Returns the y coordinate in the viewport coordinate system where the given
+ * tile is painted.
+ * @param tile Any tile.
+ * @return The viewport y coordinate where the tile is painted.
+ */
+static int GetViewportY(Point tile)
+{
+	return (tile.y * TILE_SIZE + tile.x * TILE_SIZE - GetTileMaxPixelZOutsideMap(tile.x, tile.y)) << ZOOM_LVL_SHIFT;
+}
+
+/**
+ * Given a tile coordinate as returned by TileX / TileY, this returns its column.
+ *
+ * @param tile_coord The coordinate of the tile.
+ * @return The column index.
+ * @ingroup vp_column_row
+ */
+static int GetTileColumnFromTileCoord(Point tile_coord)
+{
+	return tile_coord.y - tile_coord.x;
+}
+
+/**
+ * Returns the position of the tile at the northern end of the column of the
+ * given tile.
+ * @param tile Any tile.
+ * @return Position of the tile at the northern end of the column as described.
+ * @ingroup vp_column_row
+ */
+static Point GetNorthernEndOfColumn(Point tile)
+{
+	Point northern_end;
+
+	if (tile.x < tile.y) {
+		northern_end.x = 0;
+		northern_end.y = tile.y - tile.x;
+	} else {
+		northern_end.x = tile.x - tile.y;
+		northern_end.y = 0;
 	}
 
-	assert(width > 0);
-	assert(height > 0);
+	return northern_end;
+}
 
-	direction = false;
+/**
+ * Returns the position of the tile at the southern end of the column of the
+ * given tile, if it is within the given limit expressed in number of tiles
+ * @param tile Any tile.
+ * @param limit Number of tiles to go to south at most, if the southern end is
+ *              further away, stop after that number of tiles
+ * @return Position of the tile at the soutern end of the column as described.
+ * @ingroup vp_column_row
+ */
+static Point GetSouthernEndOfColumnWithLimit(Point tile, uint limit)
+{
+	Point distance_to_end;
+	distance_to_end.x = (int)MapMaxX() - tile.x;
+	distance_to_end.y = (int)MapMaxY() - tile.y;
 
-	int min_xy = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
+	Point southern_end;
+	if (distance_to_end.x < distance_to_end.y) {
+		int number_of_steps = min(limit, distance_to_end.x);
+		southern_end.x = tile.x + number_of_steps;
+		southern_end.y = tile.y + number_of_steps;
+	} else {
+		int number_of_steps = min(limit, distance_to_end.y);
+		southern_end.x = tile.x + number_of_steps;
+		southern_end.y = tile.y + number_of_steps;
+	}
+
+	return southern_end;
+}
+
+/**
+ * Returns the position of the tile at the southern end of the column of the
+ * given tile.
+ * @param tile Any tile.
+ * @return Position of the tile at the soutern end of the column as described.
+ * @ingroup vp_column_row
+ */
+static Point GetSouthernEndOfColumn(Point tile)
+{
+	return GetSouthernEndOfColumnWithLimit(tile, UINT32_MAX);
+}
+
+/**
+ * Returns the tile exactly in the middle between two given tiles.
+ *
+ * @param tile Point upper_tile, any tile.
+ * @param tile Point lower_tile, any tile.
+ * @return The tile in the middle of Point upper_tile and Point lower_tile.
+ */
+static Point GetMiddleTile(Point upper_tile, Point lower_tile)
+{
+	Point middle_tile;
+	middle_tile.x = (lower_tile.x + upper_tile.x) / 2;
+	middle_tile.y = (lower_tile.y + upper_tile.y) / 2;
+	return middle_tile;
+}
+
+/**
+ * Given a tile coordinate assuming height zero, this returns the row actually
+ * painted at this tile coordinate if one recognizes height.
+ *
+ * The problem concerning this calculation is that we have not enough
+ * information to calculate this in one closed formula. Which row we
+ * search rather depends on the height distribution on the map. So
+ * we have to search.
+ *
+ * First, the searched tile may be located outside map. Then, we know
+ * that we are not too far outside map, so we can step tile by tile,
+ * starting at the given tile, until we have passed the searched tile.
+ *
+ * If the searched tile is inside map, searching is more difficult. A
+ * linear search on some thousand tiles would be not that efficient. But,
+ * we can solve the problem by interval intersection. We know for sure,
+ * that the searched tile is south of the given tile, simply because
+ * mountains of height > 0 (and we have only such mountains) are always
+ * painted north of their tile. So we choose a tile half way between the
+ * given tile and the southern end of the map, have a look whether it is
+ * north or south of the given position, and intersect again. Until
+ * our interval has length 1, then we take the upper one.
+ *
+ * @param viewport_y The viewport y corresponding to tile, if one assumes height zero for that tile
+ * @param tile Some tile coordinate assuming height zero.
+ * @param bridge_correct If true, consider bridges south of the calculated tile, and if the bridge
+ *                       visually intersect the calculated tile, shift it southwards.
+ * @return The row which is painted at this coordinate, according to the discussion above.
+ * @ingroup vp_column_row
+ */
+int GetRowAtTile(int viewport_y, Point tile, bool bridge_correct)
+{
+	Point northern_tile = GetNorthernEndOfColumn(tile);
+	Point southern_tile = GetSouthernEndOfColumn(tile);
+
+	int northern_tile_viewport_y = GetViewportY(northern_tile);
+	int southern_tile_viewport_y = GetViewportY(southern_tile);
+
+	if (northern_tile_viewport_y >= viewport_y) {
+		/* We are north of the map, search tile by tile with direction north. */
+		while (northern_tile_viewport_y >= viewport_y) {
+			northern_tile.x--;
+			northern_tile.y--;
+			northern_tile_viewport_y = GetViewportY(northern_tile);
+		}
+		return northern_tile.x + northern_tile.y;
+	}
+
+	if (southern_tile_viewport_y <= viewport_y) {
+		/* We are south of the map, search tile by tile with direction south. */
+		while (southern_tile_viewport_y <= viewport_y) {
+			southern_tile.x++;
+			southern_tile.y++;
+			southern_tile_viewport_y = GetViewportY(southern_tile);
+		}
+		return southern_tile.x + southern_tile.y;
+	}
+
+	/*
+	 * We are inside the map.  The searched tile is at most
+	 * <maximum heightlevel / 4> tiles south of the given tile (as one tile
+	 * painted on the screen needs as much vertical space as painting a tile
+	 * by 4 heightlevels ascended).  Add one to avoid rounding errors to the
+	 * wrong side.
+	 *
+	 * Invariant in the code below: The searched tile shown at viewport_y
+	 * always is between upper_tile and lower_tile.
+	 */
+	Point upper_tile = tile;
+	Point lower_tile = GetSouthernEndOfColumnWithLimit(upper_tile, _settings_game.construction.max_heightlevel / 4 + 1);
+	int middle_bound;
 
 	do {
-		int width_cur = width;
-		int x_cur = x;
-		int y_cur = y;
+		Point middle_tile = GetMiddleTile(upper_tile, lower_tile);
+		middle_bound = GetViewportY(middle_tile);
 
-		do {
-			TileType tt;
-			ti.x = x_cur;
-			ti.y = y_cur;
-
-			if (IsInsideMM(x_cur, min_xy, MapMaxX() * TILE_SIZE) &&
-					IsInsideMM(y_cur, min_xy, MapMaxY() * TILE_SIZE)) {
-				ti.tile = TileVirtXY(x_cur, y_cur);
-				ti.tileh = GetTilePixelSlope(ti.tile, &ti.z);
-				tt = GetTileType(ti.tile);
-			} else {
-				/* We are outside the map => paint black. */
-				ti.tile = 0;
-				ti.tileh = GetTilePixelSlopeOutsideMap(x_cur / (int)TILE_SIZE, y_cur / (int)TILE_SIZE, &ti.z);
-				tt = MP_VOID;
-			}
-
-			_vd.foundation_part = FOUNDATION_PART_NONE;
-			_vd.foundation[0] = -1;
-			_vd.foundation[1] = -1;
-			_vd.last_foundation_child[0] = NULL;
-			_vd.last_foundation_child[1] = NULL;
-
-			_tile_type_procs[tt]->draw_tile_proc(&ti);
-
-			if (((uint)x_cur == MapMaxX() * TILE_SIZE && IsInsideMM(y_cur, 0, MapMaxY() * TILE_SIZE + 1)) ||
-					((uint)y_cur == MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE + 1))) {
-				TileIndex tile = TileVirtXY(x_cur, y_cur);
-				ti.tile = tile;
-				ti.tileh = GetTilePixelSlope(tile, &ti.z);
-				tt = GetTileType(tile);
-			}
-			if (ti.tile != INVALID_TILE) DrawTileSelection(&ti);
-
-			y_cur += 0x10;
-			x_cur -= 0x10;
-		} while (--width_cur);
-
-		if ((direction ^= 1) != 0) {
-			y += 0x10;
+		if (middle_bound >= viewport_y) {
+			/* The tile shown at viewport_y is somewhere in the upper half of
+			 * the currently observed section. */
+			lower_tile = middle_tile;
 		} else {
-			x += 0x10;
+			/* The tile shown at viewport_y is somewhere in the lower half of
+			 * the currently observed section. */
+			upper_tile = middle_tile;
 		}
-	} while (--height);
+	}
+	while (lower_tile.y - upper_tile.y > 1);
+
+	/* Now our interval has length 1, so only contains two tiles, and we take the upper one.
+	 * However, there is one problem left: Tiles being located southwards, containing a high bridge.
+	 * They may, though not high enough in terms of landscape, intersect the drawing area with parts
+	 * of the bridge.
+	 * Luckily, there is a guaranteed upper bound for bridge height, thus we know how far we have to
+	 * search southwards whether such a bridge exists.
+	 */
+	int correction_step = 0;
+	if (bridge_correct) {
+		/* Calculate, how many tiles below upper_tile, a worst case bridge intersecting upper_tile in
+		 * terms of painting can be located.  Lets inspect that formula in detail:
+		 * ... - 5: The magic constant near the beginning of ViewportAddLandscape accounts for 5 harmless heightlevels a bridge can have.  Thus subtract them.
+		 * ... / 2: Four heightlevels account for one tile height.  On the other hand, if landscape ascends from upper_tile southwards, this can account for
+		 *           as many additional heightlevels as we step southwards.  In combination: A division by two gains the number of tiles to step southwards.
+		 * ... + 1: Avoid rounding errors, and fall back to the safe side.
+		 */
+		int worst_case_steps_southwards = max(0, ((int)_settings_game.construction.max_bridge_height - 5) / 2 + 1);
+		for (int n = 0; n < worst_case_steps_southwards; n++) {
+			TileIndex potential_bridge_tile = TileXY(upper_tile.x + n, upper_tile.y + n);
+			if (IsValidTile(potential_bridge_tile) && IsBridgeAbove(potential_bridge_tile)) {
+				/* There is a bridge. */
+				TileIndex bridge_start = GetNorthernBridgeEnd(potential_bridge_tile);
+				int bridge_height = GetBridgeHeight(bridge_start);
+				int upper_tile_height = GetTileZ(TileXY(upper_tile.x, upper_tile.y));
+
+				/* Start at the bridge level, descend by the number of heightlevels equivalent to our steps southwards (in worst case), subtract the harmless
+				 * bridge heightlevels, and compare whether we are still above the height of the upper_tile.  If yes, we need to paint that tile, to avoid glitches.
+				 */
+				if (bridge_height - 2 * n - 1 > upper_tile_height) {
+					correction_step = n;
+				}
+			}
+		}
+	}
+
+	/* The biggest recorded correction_step defines, which tile we actually return. */
+	upper_tile.x += correction_step;
+	upper_tile.y += correction_step;
+
+	/* Returns its row. */
+	return upper_tile.x + upper_tile.y;
+}
+
+/**
+ * Returns the bottom tile of the column of upper_tile shown on the viewport,
+ * given upper_tile and the lower right tile shown on the viewport.
+ *
+ * @param upper_tile Sny tile inside the map.
+ * @param lower_right_tile The tile shown at the southeast edge of the viewport
+ *                          (ignoring height). Note that this tile may be located
+ *                          northeast of the upper_tile, because upper_tile is usually
+ *                          calculated by shifting a tile southwards until we reach
+ *                          the northern map border.
+ * @return The lowest existing tile located in the column defined by upper_tile,
+ *                 which is in the same row as lower_right_tile or above that row
+ *                 If lower_right_tile was northeast of upper_tile, (-1,-1) is returned.
+ * @ingroup vp_column_row
+ */
+static Point GetBottomTileOfColumn(Point upper_tile, Point lower_right_tile)
+{
+	int upper_row = upper_tile.x + upper_tile.y;
+	int lower_row = lower_right_tile.x + lower_right_tile.y;
+
+	assert(upper_row <= lower_row);
+
+	int number_of_rows = lower_row - upper_row;
+
+	if (number_of_rows % 2 != 0) {
+		/* Avoid 0.5 being rounded down to zero; painting too much is better than
+		 * painting too little. */
+		number_of_rows++;
+	}
+
+	Point bottom_tile;
+	bottom_tile.x = upper_tile.x + number_of_rows / 2;
+	bottom_tile.y = upper_tile.y + number_of_rows / 2;
+
+	int bottom_row = bottom_tile.x + bottom_tile.y;
+
+	assert(bottom_row >= lower_row);
+
+	return bottom_tile;
+}
+
+/**
+ * Add the landscape to the viewport, i.e. all ground tiles and buildings.
+ */
+static void ViewportAddLandscape()
+{
+	assert(_vd.dpi.top <= _vd.dpi.top + _vd.dpi.height);
+	assert(_vd.dpi.left <= _vd.dpi.left + _vd.dpi.width);
+
+	/* The upper and lower edge of the viewport part to paint. Add some number
+	 * of pixels to the lower end in order to ensure that we also take tiles
+	 * south of the given area, but with high buildings intersecting the area.
+	 * Subtract some pixels from the upper end in order to avoid glitches at the
+	 * upper end of the top be painted area. */
+	int viewport_top = _vd.dpi.top - 16;
+	int viewport_bottom = _vd.dpi.top + _vd.dpi.height + 116;
+
+	/* First get the position of the tile at the upper left / lower right edge,
+	 * for now ignoring the height. (i.e. assuming height zero.) */
+	Point upper_left_tile = GetMinTileCoordsIgnoringHeight(_vd.dpi.left, viewport_top);
+	Point lower_right_tile = GetMaxTileCoordsIgnoringHeight(_vd.dpi.left + _vd.dpi.width, viewport_bottom);
+
+	/* Calculate the bounding columns. We won't need to draw anything
+	 * left / right of them. */
+	int left_column = GetTileColumnFromTileCoord(upper_left_tile);
+	/* Correction to avoid glitches when approaching the left edge of the map. */
+	left_column--;
+	int right_column = GetTileColumnFromTileCoord(lower_right_tile);
+	right_column++;
+
+	/* For each column, calculate the top and the bottom row. These are the
+	 * bounding rows for that specific column. */
+	int *top_row = AllocaM(int, right_column - left_column + 1); // Pre-allocate memory for visual studio/express to be able to compile.
+	int *bottom_row = AllocaM(int, right_column - left_column + 1); // Pre-allocate memory for visual studio/express to be able to compile.
+	int min_top_row = MapMaxX() + MapMaxY();
+	int max_bottom_row = 0;
+	Point top_tile_of_column = upper_left_tile;
+
+	/* And now for each column, determine the top and the bottom row we must paint. */
+	bool south_east_direction = false;
+	for (int x = left_column; x <= right_column; x++) {
+		Point bottom_tile_of_column = GetBottomTileOfColumn(top_tile_of_column, lower_right_tile);
+
+		/* And then actually find out the top and the bottom row. Note that
+		 * top_tile_of_column and bottom_tile_of_column may be outside the map here.
+		 * This possibility is needed, otherwise we couldn't paint the black area
+		 * outside the map (and in particular the edge of map) properly.
+		 * Subtract three / add one to avoid glitches. */
+		top_row[x - left_column] = GetRowAtTile(viewport_top, top_tile_of_column, false);
+
+		top_row[x - left_column] -= 3;
+		bottom_row[x - left_column] = GetRowAtTile(viewport_bottom, bottom_tile_of_column, true);
+		bottom_row[x - left_column]++;
+
+		/* We never paint things in rows < min_top_row or > max_bottom_row. */
+		min_top_row = min(min_top_row, top_row[x - left_column]);
+		max_bottom_row = max(max_bottom_row, bottom_row[x - left_column]);
+
+		/* Go to next column in the east. */
+		if (south_east_direction) {
+			top_tile_of_column.y++;
+		} else {
+			top_tile_of_column.x--;
+		}
+
+		/* Switch between directions southeast and northeast. */
+		south_east_direction = !south_east_direction;
+	}
+
+	for (int row = min_top_row; row <= max_bottom_row; row++) {
+		for (int column = left_column; column <= right_column; column++) {
+			/* For each column, we only paint the interval top_row .. bottom_row.
+			 * Due to the division by two below, even and odd values of row + column map to
+			 * the same (x,y) combinations. Thus, we only paint one of them. */
+			if (((row + column) % 2 == 0) &&
+					(top_row[column - left_column] <= row) &&
+					(row <= bottom_row[column - left_column])) {
+				TileType tile_type;
+				TileInfo tile_info;
+				_cur_ti = &tile_info;
+
+				/* column = y - x; row = x + y; now solve the equation system
+				 * for x and y. */
+				int x = (row - column) / 2;
+				int y = (row + column) / 2;
+				tile_info.x = x;
+				tile_info.y = y;
+
+				/* For some strange reason, those fields inside tile_info are uints. However,
+				 * in the old code their copies in an int variable where compared against zero. */
+				if (0 < x && x < (int)MapMaxX() && 0 < y && y < (int)MapMaxY()) {
+					/* We are inside the map => paint landscape. */
+					tile_info.tile = TileXY(tile_info.x, tile_info.y);
+					tile_info.tileh = GetTilePixelSlope(tile_info.tile, &tile_info.z);
+					tile_type = GetTileType(tile_info.tile);
+				} else {
+					/* We are outside the map => paint black. */
+					tile_info.tile = INVALID_TILE;
+					tile_info.tileh = GetTilePixelSlopeOutsideMap(tile_info.x, tile_info.y, &tile_info.z);
+					tile_type = MP_VOID;
+				}
+
+				/* Scale to 16x16 tiles, needed for the drawing procedures called below. */
+				tile_info.x *= TILE_SIZE;
+				tile_info.y *= TILE_SIZE;
+
+				_vd.foundation_part = FOUNDATION_PART_NONE;
+				_vd.foundation[0] = -1;
+				_vd.foundation[1] = -1;
+				_vd.last_foundation_child[0] = NULL;
+				_vd.last_foundation_child[1] = NULL;
+
+				_tile_type_procs[tile_type]->draw_tile_proc(&tile_info);
+				DrawTileSelection(&tile_info);
+			}
+		}
+	}
 }
 
 /**

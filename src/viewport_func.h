@@ -79,6 +79,8 @@ extern Point _tile_fract_coords;
 
 void MarkTileDirtyByTile(TileIndex tile);
 
+int GetRowAtTile(int viewport_y, Point tile, bool bridge_correct);
+
 Point GetViewportStationMiddle(const ViewPort *vp, const Station *st);
 
 #endif /* VIEWPORT_FUNC_H */
