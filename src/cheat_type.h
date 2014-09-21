@@ -36,7 +36,7 @@ struct Cheats {
 	Cheat change_date;      ///< changes date ingame
 	Cheat setup_prod;       ///< setup raw-material production in game
 	Cheat dummy3;           ///< empty cheat (enable running el-engines on normal rail)
-	Cheat edit_max_hl;      ///< edit the maximum heightlevel
+	Cheat edit_max_hl;      ///< edit the maximum heightlevel; this is a cheat because of the fact that it needs to reset NewGRF game state and doing so as a simple configuration breaks the expectation of many
 };
 
 extern Cheats _cheats;

@@ -25,6 +25,10 @@
 #include "settings_gui.h"
 #include "company_gui.h"
 #include "linkgraph/linkgraphschedule.h"
+#include "map_func.h"
+#include "tile_map.h"
+#include "newgrf.h"
+#include "error.h"
 
 #include "widgets/cheat_widget.h"
 
@@ -114,6 +118,32 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	return _cur_year;
 }
 
+/**
+ * Allow (or disallow) a change of the maximum allowed heightlevel.
+ * @param p1 new value
+ * @param p2 unused
+ * @return New value (or unchanged old value) of the maximum
+ *         allowed heightlevel value.
+ */
+static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2) {
+	p1 = Clamp(p1, MIN_MAX_HEIGHTLEVEL, MAX_MAX_HEIGHTLEVEL);
+
+	/* Check if at least one mountain on the map is higher than the new value.
+	 * If yes, disallow the change. */
+	for (TileIndex t = 0; t < MapSize(); t++) {
+		if ((int32)TileHeight(t) > p1) {
+			ShowErrorMessage(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN, INVALID_STRING_ID, WL_ERROR);
+			/* Return old, unchanged value */
+			return _settings_game.construction.max_heightlevel;
+		}
+	}
+
+	/* Execute the change and reload GRF Data */
+	_settings_game.construction.max_heightlevel = p1;
+	ReloadNewGRFData();
+	return _settings_game.construction.max_heightlevel;
+}
+
 /** Available cheats. */
 enum CheatNumbers {
 	CHT_MONEY,           ///< Change amount of money.
@@ -122,6 +152,7 @@ enum CheatNumbers {
 	CHT_CROSSINGTUNNELS, ///< Allow tunnels to cross each other.
 	CHT_NO_JETCRASH,     ///< Disable jet-airplane crashes.
 	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
+	CHT_EDIT_MAX_HL,     ///< Edit maximum allowed heightlevel
 	CHT_CHANGE_DATE,     ///< Do time traveling.
 
 	CHT_NUM_CHEATS,      ///< Number of cheats.
@@ -154,6 +185,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, NULL                     },
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      NULL                     },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
+	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.max_heightlevel, &_cheats.edit_max_hl.been_used, &ClickChangeMaxHlCheat   },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
 
@@ -174,6 +206,7 @@ static const NWidgetPart _nested_cheat_widgets[] = {
 struct CheatWindow : Window {
 	int clicked;
 	int header_height;
+	int clicked_widget;
 
 	CheatWindow(WindowDesc *desc) : Window(desc)
 	{
@@ -298,8 +331,14 @@ struct CheatWindow : Window {
 
 		if (btn == CHT_CHANGE_DATE && x >= 20 + SETTING_BUTTON_WIDTH) {
 			/* Click at the date text directly. */
+			clicked_widget = CHT_CHANGE_DATE;
 			SetDParam(0, value);
 			ShowQueryString(STR_JUST_INT, STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+			return;
+		} else if (btn == CHT_EDIT_MAX_HL && x >= 20 + SETTING_BUTTON_WIDTH) {
+			clicked_widget = CHT_EDIT_MAX_HL;
+			SetDParam(0, value);
+			ShowQueryString(STR_JUST_INT, STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 			return;
 		}
 
@@ -341,7 +380,7 @@ struct CheatWindow : Window {
 		/* Was 'cancel' pressed or nothing entered? */
 		if (str == NULL || StrEmpty(str)) return;
 
-		const CheatEntry *ce = &_cheats_ui[CHT_CHANGE_DATE];
+		const CheatEntry *ce = &_cheats_ui[clicked_widget];
 		int oldvalue = (int32)ReadValue(ce->variable, ce->type);
 		int value = atoi(str);
 		*ce->been_used = true;
