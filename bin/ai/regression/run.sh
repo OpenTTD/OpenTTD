@@ -30,7 +30,7 @@ fi
 
 ret=0
 for tst in $tests; do
-	echo "running $tst"
+	echo -n "Running $tst... "
 
 	# Make sure that only one info.nut is present for each test run. Otherwise openttd gets confused.
 	cp ai/regression/regression_info.nut $tst/info.nut
@@ -47,25 +47,18 @@ for tst in $tests; do
 	fi
 
 	if [ -z "$gdb" ]; then
-		# Ugly newline insertion, but it says /bin/sh above ...
-		res="$res
-`diff -ub $tst/result.txt tmp.regression`"
+		res="`diff -ub $tst/result.txt tmp.regression`"
+		if [ -z "$res" ]; then
+			echo "passed!"
+		else
+			echo "failed! Difference:"
+			echo "$res"
+			ret=1
+		fi
 	fi
 
 	rm $tst/info.nut
 done
-
-if [ -z "$gdb" ]; then
-	if [ -z "$res" ]; then
-		echo "Regression test passed!"
-	else
-		echo "Regression test failed! Difference:"
-		echo "$res"
-		ret=1
-	fi
-	echo ""
-	echo "Regression test done"
-fi
 
 if [ -f scripts/game_start.scr.regression ]; then
 	mv scripts/game_start.scr.regression scripts/game_start.scr
