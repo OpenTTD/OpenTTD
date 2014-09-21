@@ -52,13 +52,11 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 /**
  * checks if a bridge is set above the ground of this tile
  * @param t The tile to analyze
- * @pre MayHaveBridgeAbove(t)
  * @return true if a bridge is detected above
  */
 static inline bool IsBridgeAbove(TileIndex t)
 {
-	assert(MayHaveBridgeAbove(t));
-	return GB(_m[t].m6, 6, 2) != 0;
+	return GB(_m[t].type, 2, 2) != 0;
 }
 
 /**
@@ -82,7 +80,7 @@ static inline BridgeType GetBridgeType(TileIndex t)
 static inline Axis GetBridgeAxis(TileIndex t)
 {
 	assert(IsBridgeAbove(t));
-	return (Axis)(GB(_m[t].m6, 6, 2) - 1);
+	return (Axis)(GB(_m[t].type, 2, 2) - 1);
 }
 
 TileIndex GetNorthernBridgeEnd(TileIndex t);
@@ -104,18 +102,15 @@ static inline int GetBridgePixelHeight(TileIndex tile)
  * Remove the bridge over the given axis.
  * @param t the tile to remove the bridge from
  * @param a the axis of the bridge to remove
- * @pre MayHaveBridgeAbove(t)
  */
 static inline void ClearSingleBridgeMiddle(TileIndex t, Axis a)
 {
-	assert(MayHaveBridgeAbove(t));
-	ClrBit(_m[t].m6, 6 + a);
+	ClrBit(_m[t].type, 2 + a);
 }
 
 /**
  * Removes bridges from the given, that is bridges along the X and Y axis.
  * @param t the tile to remove the bridge from
- * @pre MayHaveBridgeAbove(t)
  */
 static inline void ClearBridgeMiddle(TileIndex t)
 {
@@ -127,12 +122,10 @@ static inline void ClearBridgeMiddle(TileIndex t)
  * Set that there is a bridge over the given axis.
  * @param t the tile to add the bridge to
  * @param a the axis of the bridge to add
- * @pre MayHaveBridgeAbove(t)
  */
 static inline void SetBridgeMiddle(TileIndex t, Axis a)
 {
-	assert(MayHaveBridgeAbove(t));
-	SetBit(_m[t].m6, 6 + a);
+	SetBit(_m[t].type, 2 + a);
 }
 
 /**

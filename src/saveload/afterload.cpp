@@ -576,6 +576,12 @@ bool AfterLoadGame()
 			_m[t].height = GB(_m[t].type, 0, 4);
 			SB(_m[t].type, 0, 2, GB(_m[t].m6, 0, 2));
 			SB(_m[t].m6, 0, 2, 0);
+			if (MayHaveBridgeAbove(t)) {
+				SB(_m[t].type, 2, 2, GB(_m[t].m6, 6, 2));
+				SB(_m[t].m6, 6, 2, 0);
+			} else {
+				SB(_m[t].type, 2, 2, 0);
+			}
 		}
 	}
 

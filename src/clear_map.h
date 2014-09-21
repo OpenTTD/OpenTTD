@@ -260,10 +260,6 @@ static inline void SetFence(TileIndex t, DiagDirection side, uint h)
  */
 static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 {
-	/* If this is a non-bridgeable tile, clear the bridge bits while the rest
-	 * of the tile information is still here. */
-	if (!MayHaveBridgeAbove(t)) SB(_m[t].m6, 6, 2, 0);
-
 	SetTileType(t, MP_CLEAR);
 	_m[t].m1 = 0;
 	SetTileOwner(t, OWNER_NONE);
@@ -271,7 +267,7 @@ static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	SetClearGroundDensity(t, g, density); // Sets m5
-	SB(_m[t].m6, 2, 4, 0); // Other bits are "tropic zone" and "bridge above"
+	_m[t].m6 = 0;
 	_me[t].m7 = 0;
 }
 
