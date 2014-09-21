@@ -3183,9 +3183,9 @@ detect_grfcodec() {
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "949" ]; then
-		if [ -n "$version" ] && [ "$version" -lt "949" ]; then
-			log 1 "checking grfcodec... needs at least version 6.0.2 (r949), disabled"
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "985" ]; then
+		if [ -n "$version" ] && [ "$version" -lt "985" ]; then
+			log 1 "checking grfcodec... needs at least version 6.0.5 (r985), disabled"
 		else
 			log 1 "checking grfcodec... not found"
 		fi
@@ -3225,9 +3225,9 @@ detect_nforenum() {
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "949" ]; then
-		if [ -n "$version" ] && [ "$version" -lt "949" ]; then
-			log 1 "checking nforenum... needs at least version 6.0.2 (r949), disabled"
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "985" ]; then
+		if [ -n "$version" ] && [ "$version" -lt "985" ]; then
+			log 1 "checking nforenum... needs at least version 6.0.5 (r985), disabled"
 		else
 			log 1 "checking nforenum... not found"
 		fi

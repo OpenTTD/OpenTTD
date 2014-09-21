@@ -104,3 +104,4 @@
 #include "rivers/tropic.nfo"
 #include "rivers/toyland.nfo"
 #include "tunnel_portals.nfo"
+#include "palette.nfo"
