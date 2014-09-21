@@ -155,6 +155,7 @@ protected:
 	void DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter) const;
 	void DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter) const;
 	void DrawTowns(const DrawPixelInfo *dpi) const;
+	Point GetSmallMapCoordIncludingHeight(Point viewport_coord) const;
 	void DrawSmallMap(DrawPixelInfo *dpi) const;
 
 	Point RemapTile(int tile_x, int tile_y) const;
