@@ -4457,17 +4457,55 @@ void FlowStatMap::ReleaseFlows(StationID via)
 }
 
 /**
- * Get the sum of flows via a specific station from this GoodsEntry.
- * @param via Remote station to look for.
- * @return a FlowStat with all flows for 'via' added up.
+ * Get the sum of all flows from this FlowStatMap.
+ * @return sum of all flows.
  */
-uint GoodsEntry::GetSumFlowVia(StationID via) const
+uint FlowStatMap::GetFlow() const
 {
 	uint ret = 0;
-	for (FlowStatMap::const_iterator i = this->flows.begin(); i != this->flows.end(); ++i) {
+	for (FlowStatMap::const_iterator i = this->begin(); i != this->end(); ++i) {
+		ret += (--(i->second.GetShares()->end()))->first;
+	}
+	return ret;
+}
+
+/**
+ * Get the sum of flows via a specific station from this FlowStatMap.
+ * @param via Remote station to look for.
+ * @return all flows for 'via' added up.
+ */
+uint FlowStatMap::GetFlowVia(StationID via) const
+{
+	uint ret = 0;
+	for (FlowStatMap::const_iterator i = this->begin(); i != this->end(); ++i) {
 		ret += i->second.GetShare(via);
 	}
 	return ret;
+}
+
+/**
+ * Get the sum of flows from a specific station from this FlowStatMap.
+ * @param from Origin station to look for.
+ * @return all flows from 'from' added up.
+ */
+uint FlowStatMap::GetFlowFrom(StationID from) const
+{
+	FlowStatMap::const_iterator i = this->find(from);
+	if (i == this->end()) return 0;
+	return (--(i->second.GetShares()->end()))->first;
+}
+
+/**
+ * Get the flow from a specific station via a specific other station.
+ * @param from Origin station to look for.
+ * @param via Remote station to look for.
+ * @return flow share originating at 'from' and going to 'via'.
+ */
+uint FlowStatMap::GetFlowFromVia(StationID from, StationID via) const
+{
+	FlowStatMap::const_iterator i = this->find(from);
+	if (i == this->end()) return 0;
+	return i->second.GetShare(via);
 }
 
 extern const TileTypeProcs _tile_type_station_procs = {

@@ -149,6 +149,11 @@ private:
 /** Flow descriptions by origin stations. */
 class FlowStatMap : public std::map<StationID, FlowStat> {
 public:
+	uint GetFlow() const;
+	uint GetFlowVia(StationID via) const;
+	uint GetFlowFrom(StationID from) const;
+	uint GetFlowFromVia(StationID from, StationID via) const;
+
 	void AddFlow(StationID origin, StationID via, uint amount);
 	void PassOnFlow(StationID origin, StationID via, uint amount);
 	StationIDStack DeleteFlows(StationID via);
@@ -267,8 +272,6 @@ struct GoodsEntry {
 	{
 		return HasBit(this->status, GES_RATING);
 	}
-
-	uint GetSumFlowVia(StationID via) const;
 
 	/**
 	 * Get the best next hop for a cargo packet from station source.
