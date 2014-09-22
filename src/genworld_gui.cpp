@@ -1002,7 +1002,7 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT: // Height level text
 				this->widget_id = WID_CS_FLAT_LAND_HEIGHT_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.se_flat_world_height);
-				ShowQueryString(STR_JUST_INT, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_NONE);
 				break;
 		}
 	}
