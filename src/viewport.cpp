@@ -1990,8 +1990,97 @@ void Window::DrawViewport() const
 	dpi->top -= this->top;
 }
 
+/**
+ * Continue criteria for the SearchMapEdge function.
+ * @param iter       Value to check.
+ * @param iter_limit Maximum value for the iter
+ * @param sy         Screen y coordinate calculated for the tile at hand
+ * @param sy_limit   Limit to the screen y coordinate
+ * @return True when we should continue searching.
+ */
+typedef bool ContinueMapEdgeSearch(int iter, int iter_limit, int sy, int sy_limit);
+
+/** Continue criteria for searching a no-longer-visible tile in negative direction, starting at some tile. */
+static inline bool ContinueLowerMapEdgeSearch(int iter, int iter_limit, int sy, int sy_limit) { return iter > 0          && sy > sy_limit; }
+/** Continue criteria for searching a no-longer-visible tile in positive direction, starting at some tile. */
+static inline bool ContinueUpperMapEdgeSearch(int iter, int iter_limit, int sy, int sy_limit) { return iter < iter_limit && sy < sy_limit; }
+
+/**
+ * Searches, starting at the given tile, by applying the given offset to iter, for a no longer visible tile.
+ * The whole sense of this function is keeping the to-be-written code small, thus it is a little bit abstracted
+ * so the same function can be used for both the X and Y locations. As such a reference to one of the elements
+ * in curr_tile was needed.
+ * @param curr_tile  A tile
+ * @param iter       Reference to either the X or Y of curr_tile.
+ * @param iter_limit Upper search limit for the iter value.
+ * @param offset     Search in steps of this size
+ * @param sy_limit   Search limit to be passed to the criteria
+ * @param continue_criteria Search as long as this criteria is true
+ * @return The final value of iter.
+ */
+static int SearchMapEdge(Point &curr_tile, int &iter, int iter_limit, int offset, int sy_limit, ContinueMapEdgeSearch continue_criteria)
+{
+	int sy;
+	do {
+		iter = Clamp(iter + offset, 0, iter_limit);
+		sy = GetViewportY(curr_tile);
+	} while (continue_criteria(iter, iter_limit, sy, sy_limit));
+
+	return iter;
+}
+
+/**
+ * Determine the clamping of either the X or Y coordinate to the map.
+ * @param curr_tile   A tile
+ * @param iter        Reference to either the X or Y of curr_tile.
+ * @param iter_limit  Upper search limit for the iter value.
+ * @param start       Start value for the iteration.
+ * @param other_ref   Reference to the opposite axis in curr_tile than of iter.
+ * @param other_value Start value for of the opposite axis
+ * @param vp_value    Value of the viewport location in the opposite axis as for iter.
+ * @param other_limit Limit for the other value, so if iter is X, then other_limit is for Y.
+ * @param vp_top      Top of the viewport.
+ * @param vp_bottom   Bottom of the viewport.
+ * @return Clamped version of vp_value.
+ */
+static inline int ClampXYToMap(Point &curr_tile, int &iter, int iter_limit, int start, int &other_ref, int other_value, int vp_value, int other_limit, int vp_top, int vp_bottom)
+{
+	bool upper_edge = other_value < _settings_game.construction.max_heightlevel / 4;
+
+	/*
+	 * First get an estimate of the tiles relevant for us at that edge.  Relevant in the sense
+	 * "at least close to the visible area".Thus, we don´t look at exactly each tile, inspecting
+	 * e.g. every tenth should be enough. After all, the desired screen limit is set such that
+	 * the bordermost tiles are painted in the middle of the screen when one hits the limit,
+	 * i.e. it is no harm if there is some small error in that calculation
+	 */
+
+	other_ref = upper_edge ? 0 : other_limit;
+	iter = start;
+	int min_iter = SearchMapEdge(curr_tile, iter, iter_limit, upper_edge ? -10 : +10, vp_top,    upper_edge ? ContinueLowerMapEdgeSearch : ContinueUpperMapEdgeSearch);
+	iter = start;
+	int max_iter = SearchMapEdge(curr_tile, iter, iter_limit, upper_edge ? +10 : -10, vp_bottom, upper_edge ? ContinueUpperMapEdgeSearch : ContinueLowerMapEdgeSearch);
+
+	max_iter = min(max_iter + _settings_game.construction.max_heightlevel / 4, iter_limit);
+	min_iter = min(min_iter, max_iter);
+
+	/* Now, calculate the highest heightlevel of these tiles. Again just as an estimate. */
+	int max_heightlevel_at_edge = 0;
+	for (iter = min_iter; iter <= max_iter; iter += 10) {
+		max_heightlevel_at_edge = max(max_heightlevel_at_edge, (int)TileHeight(TileXY(curr_tile.x, curr_tile.y)));
+	}
+
+	/* Based on that heightlevel, calculate the limit. For the upper edge a tile with height zero would
+	 * get a limit of zero, on the other side it depends on the number of tiles along the axis. */
+	return upper_edge ?
+			max(vp_value, -max_heightlevel_at_edge * (int)(TILE_HEIGHT * 2 * ZOOM_LVL_BASE)) :
+			min(vp_value, (other_limit * TILE_SIZE * 4 - max_heightlevel_at_edge * TILE_HEIGHT * 2) * ZOOM_LVL_BASE);
+}
+
 static inline void ClampViewportToMap(const ViewPort *vp, int &x, int &y)
 {
+	int original_y = y;
+
 	/* Centre of the viewport is hot spot */
 	x += vp->virtual_width / 2;
 	y += vp->virtual_height / 2;
@@ -2001,9 +2090,14 @@ static inline void ClampViewportToMap(const ViewPort *vp, int &x, int &y)
 	int vx = -x + y * 2;
 	int vy =  x + y * 2;
 
-	/* clamp to size of map */
-	vx = Clamp(vx, 0, MapMaxX() * TILE_SIZE * 4 * ZOOM_LVL_BASE);
-	vy = Clamp(vy, 0, MapMaxY() * TILE_SIZE * 4 * ZOOM_LVL_BASE);
+	/* Find out which tile corresponds to (vx,vy) if one assumes height zero.  The cast is necessary to prevent C++ from
+	 * converting the result to an uint, which gives an overflow instead of a negative result... */
+	int tx = vx / (int)(TILE_SIZE * 4 * ZOOM_LVL_BASE);
+	int ty = vy / (int)(TILE_SIZE * 4 * ZOOM_LVL_BASE);
+
+	Point curr_tile;
+	vx = ClampXYToMap(curr_tile, curr_tile.y, MapMaxY(), ty, curr_tile.x, tx, vx, MapMaxX(), original_y, original_y + vp->virtual_height);
+	vy = ClampXYToMap(curr_tile, curr_tile.x, MapMaxX(), tx, curr_tile.y, ty, vy, MapMaxY(), original_y, original_y + vp->virtual_height);
 
 	/* Convert map coordinates to viewport coordinates */
 	x = (-vx + vy) / 2;
@@ -2450,7 +2544,14 @@ void RebuildViewportOverlay(Window *w)
 bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
-	if (z == -1) z = GetSlopePixelZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1));
+	if (z == -1) {
+		if ( x >= 0 && x <= (int)MapSizeX() * (int)TILE_SIZE - 1
+				&& y >= 0 && y <= (int)MapSizeY() * (int)TILE_SIZE - 1) {
+			z = GetSlopePixelZ(x, y);
+		} else {
+			z = TileHeightOutsideMap(x / TILE_SIZE, y / TILE_SIZE);
+		}
+	}
 
 	Point pt = MapXYZToViewport(w->viewport, x, y, z);
 	w->viewport->follow_vehicle = INVALID_VEHICLE;
