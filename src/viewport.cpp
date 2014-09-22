@@ -419,11 +419,13 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	a = y - x;
 	b = y + x;
 
-	/* we need to move variables in to the valid range, as the
-	 * GetTileZoomCenterWindow() function can call here with invalid x and/or y,
-	 * when the user tries to zoom out along the sides of the map */
-	a = Clamp(a, -4 * (int)TILE_SIZE, (int)(MapMaxX() * TILE_SIZE) - 1);
-	b = Clamp(b, -4 * (int)TILE_SIZE, (int)(MapMaxY() * TILE_SIZE) - 1);
+	/* Bring the coordinates near to a valid range. This is mostly due to the
+	 * tiles on the north side of the map possibly being drawn too high due to
+	 * the extra height levels. So at the top we allow a number of extra tiles.
+	 * This number is based on the tile height and pixels. */
+	int extra_tiles = CeilDiv(_settings_game.construction.max_heightlevel * TILE_HEIGHT, TILE_PIXELS);
+	a = Clamp(a, -extra_tiles * TILE_SIZE, MapMaxX() * TILE_SIZE - 1);
+	b = Clamp(b, -extra_tiles * TILE_SIZE, MapMaxY() * TILE_SIZE - 1);
 
 	/* (a, b) is the X/Y-world coordinate that belongs to (x,y) if the landscape would be completely flat on height 0.
 	 * Now find the Z-world coordinate by fix point iteration.
