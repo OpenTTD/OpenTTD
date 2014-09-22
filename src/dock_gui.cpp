@@ -26,6 +26,7 @@
 #include "company_base.h"
 #include "hotkeys.h"
 #include "gui.h"
+#include "zoom_func.h"
 
 #include "widgets/dock_widget.h"
 
@@ -498,14 +499,30 @@ public:
 		UpdateDocksDirection();
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		switch (widget) {
+			case WID_BDD_X:
+			case WID_BDD_Y:
+				size->width  = UnScaleByZoom(96 * 4, ZOOM_LVL_GUI) + 2;
+				size->height = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
+				break;
+		}
+	}
+
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
 
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + 64, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + 18, AXIS_X, DEPOT_PART_NORTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + 32, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + 34, AXIS_X, DEPOT_PART_SOUTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + 32, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + 18, AXIS_Y, DEPOT_PART_NORTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + 64, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + 34, AXIS_Y, DEPOT_PART_SOUTH);
+		int x1 = UnScaleByZoom(63 * 4, ZOOM_LVL_GUI) + 1;
+		int x2 = UnScaleByZoom(31 * 4, ZOOM_LVL_GUI) + 1;
+		int y1 = UnScaleByZoom(17 * 4, ZOOM_LVL_GUI) + 1;
+		int y2 = UnScaleByZoom(33 * 4, ZOOM_LVL_GUI) + 1;
+
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + x1, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + y1, AXIS_X, DEPOT_PART_NORTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + x2, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + y2, AXIS_X, DEPOT_PART_SOUTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + x2, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + y1, AXIS_Y, DEPOT_PART_NORTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + x1, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + y2, AXIS_Y, DEPOT_PART_SOUTH);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

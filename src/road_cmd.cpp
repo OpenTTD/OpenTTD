@@ -1415,9 +1415,6 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *dts = (rt == ROADTYPE_TRAM) ? &_tram_depot[dir] : &_road_depot[dir];
 
-	x += 33;
-	y += 17;
-
 	DrawSprite(dts->ground.sprite, PAL_NONE, x, y);
 	DrawOrigTileSeqInGUI(x, y, dts, palette);
 }

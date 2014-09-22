@@ -28,6 +28,7 @@
 #include "company_base.h"
 #include "hotkeys.h"
 #include "road_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/road_widget.h"
 
@@ -862,11 +863,19 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 		this->FinishInitNested(TRANSPORT_ROAD);
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
+
+		size->width  = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
+		size->height = UnScaleByZoom(48 * 4, ZOOM_LVL_GUI) + 2;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
 
-		DrawRoadDepotSprite(r.left - 1, r.top, (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
+		DrawRoadDepotSprite(r.left + 1 + UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), r.bottom - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -990,12 +999,20 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		}
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
+
+		size->width  = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
+		size->height = UnScaleByZoom(48 * 4, ZOOM_LVL_GUI) + 2;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
 
 		StationType st = (this->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
-		StationPickerDrawSprite(r.left + TILE_PIXELS, r.bottom - TILE_PIXELS, st, INVALID_RAILTYPE, widget < WID_BROS_STATION_X ? ROADTYPE_ROAD : _cur_roadtype, widget - WID_BROS_STATION_NE);
+		StationPickerDrawSprite(r.left + 1 + UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), r.bottom - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), st, INVALID_RAILTYPE, widget < WID_BROS_STATION_X ? ROADTYPE_ROAD : _cur_roadtype, widget - WID_BROS_STATION_NE);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

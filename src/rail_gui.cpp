@@ -1072,6 +1072,13 @@ public:
 				break;
 			}
 
+			case WID_BRAS_PLATFORM_DIR_X:
+			case WID_BRAS_PLATFORM_DIR_Y:
+			case WID_BRAS_IMAGE:
+				size->width  = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
+				size->height = UnScaleByZoom(58 * 4, ZOOM_LVL_GUI) + 2;
+				break;
+
 			case WID_BRAS_COVERAGE_TEXTS:
 				size->height = this->coverage_height;
 				break;
@@ -1093,8 +1100,10 @@ public:
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					if (!DrawStationTile(32, 28, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
-						StationPickerDrawSprite(32, 28, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2);
+					int x = UnScaleByZoom(31 * 4, ZOOM_LVL_GUI) + 1;
+					int y = r.bottom - r.top - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI);
+					if (!DrawStationTile(x, y, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
+						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2);
 					}
 					_cur_dpi = old_dpi;
 				}
@@ -1105,8 +1114,10 @@ public:
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					if (!DrawStationTile(32, 28, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
-						StationPickerDrawSprite(32, 28, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 3);
+					int x = UnScaleByZoom(31 * 4, ZOOM_LVL_GUI) + 1;
+					int y = r.bottom - r.top - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI);
+					if (!DrawStationTile(x, y, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
+						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 3);
 					}
 					_cur_dpi = old_dpi;
 				}
@@ -1141,8 +1152,10 @@ public:
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					if (!DrawStationTile(32, 28, _cur_railtype, _railstation.orientation, _railstation.station_class, type)) {
-						StationPickerDrawSprite(32, 28, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2 + _railstation.orientation);
+					int x = UnScaleByZoom(31 * 4, ZOOM_LVL_GUI) + 1;
+					int y = r.bottom - r.top - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI);
+					if (!DrawStationTile(x, y, _cur_railtype, _railstation.orientation, _railstation.station_class, type)) {
+						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2 + _railstation.orientation);
 					}
 					_cur_dpi = old_dpi;
 				}
@@ -1676,11 +1689,19 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 		this->LowerWidget(_build_depot_direction + WID_BRAD_DEPOT_NE);
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
+
+		size->width  = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
+		size->height = UnScaleByZoom(48 * 4, ZOOM_LVL_GUI) + 2;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
 
-		DrawTrainDepotSprite(r.left - 1, r.top, widget - WID_BRAD_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
+		DrawTrainDepotSprite(r.left + 1 + UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), r.bottom - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), widget - WID_BRAD_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1768,6 +1789,11 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				/* Resizing in X direction only at blob size, but at pixel level in Y. */
 				resize->height = 1;
 				break;
+
+			case WID_BRW_WAYPOINT:
+				size->width  = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
+				size->height = UnScaleByZoom(58 * 4, ZOOM_LVL_GUI) + 2;
+				break;
 		}
 	}
 
@@ -1777,7 +1803,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 			case WID_BRW_WAYPOINT: {
 				byte type = GB(widget, 16, 16);
 				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(type);
-				DrawWaypointSprite(r.left + TILE_PIXELS, r.bottom - TILE_PIXELS, type, _cur_railtype);
+				DrawWaypointSprite(r.left + 1 + UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), r.bottom - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), type, _cur_railtype);
 
 				if (!IsStationAvailable(statspec)) {
 					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
