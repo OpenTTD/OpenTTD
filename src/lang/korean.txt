@@ -1159,6 +1159,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :블록이나 �
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :최대 지형 높이: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :지도에 생성되는 산이 가질 수 있는 최대 높이를 설정합니다.
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}이 값을 최대 지형 높이로 설정할 수 없습니다. 이 값보다 고도가 높은 산이 최소 한 개 이상 존재합니다.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
 STR_CONFIG_SETTING_CATCHMENT                                    :더 현실적인 역세권 지정: {STRING}
@@ -1187,6 +1190,8 @@ STR_CONFIG_SETTING_INFLATION                                    :인플레이션
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :비용이 지불하는 것보다 약간 더 빠르게 성장하고 있는 경제가 되면 인플레이션을 활성화합니다.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :다리의 최대 건설 길이: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :다리의 최대 길이를 제한할 수 있습니다.
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :최대 다리 건설 높이: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :다리를 건설할 수 있는 최대 높이입니다.
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :터널의 최대 길이: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :터널의 최대 길이를 제한할 수 있습니다.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :1차 산업시설 건설 방법: {STRING}
@@ -1572,10 +1577,10 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :고정하지 �
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :새로운 창을 열었을 때 공간 확보를 위해 열림 상태를 고정시키지 않은 창이 열려있을 수 있는 개수를 설정합니다.
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :제한 없음
-STR_CONFIG_SETTING_ZOOM_MIN                                     :최대 줌 인 배율: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :게임 화면의 최대 줌 인 배율을 설정합니다. 줌 인 배율이 커질 수록 메모리가 더 필요합니다.
-STR_CONFIG_SETTING_ZOOM_MAX                                     :최대 줌 아웃 배율: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :게임 화면의 최대 줌 아웃 배율을 설정합니다. 줌 아웃 배율이 커질 수록 게임이 버벅거릴 수 있습니다.
+STR_CONFIG_SETTING_ZOOM_MIN                                     :최대 확대 수준: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :게임 화면의 최대 확대 수준을 설정합니다. 화면을 더 크게 확대할 수록 더 많은 메모리가 필요합니다.
+STR_CONFIG_SETTING_ZOOM_MAX                                     :최대 축소 수준: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :게임 화면의 최대 축소 수준을 설정합니다. 화면을 더 작게 축소할 수록 게임이 더 버벅거리게 될 수도 있습니다.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :기본값
@@ -1787,6 +1792,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 건물 제거): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차 허용: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형 항공기가 소형 공항에서 (자주) 충돌하지 않게 함: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}최대 지형 고도값 수정: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}최대 지형 높이값을 수정합니다.
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후 지형
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :아한대 지형
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후 지형
@@ -2712,6 +2719,9 @@ STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업시설 수:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}최대 지형 높이:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}최대 지형 높이를 1칸 높입니다.
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}최대 지형 높이를 1칸 낮춥니다.
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}설선 고도:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}설선 고도를 1칸 높입니다
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}설선 고도를 1칸 낮춥니다
@@ -2741,6 +2751,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}크기:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}최대 지형 고도값 변경
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}설선 고도를 변경
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}시작 연도를 변경합니다.
 
@@ -4125,6 +4136,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}터널 �
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}이미 해수면에 도달했습니다
 STR_ERROR_TOO_HIGH                                              :{WHITE}너무 높습니다!
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 이미 평평합니다.
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}다리가 끝나는 부분의 높이가 너무 높습니다.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}회사 이름을 바꿀 수 없습니다...
@@ -4314,6 +4326,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}다리�
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}같은 위치에서 시작하고 끝낼 수 없습니다
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}다리는 같은 높이를 연결해야 합니다
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}그 지형은 다리를 건설하기에 너무 낮습니다
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}이 지형에 다리를 설치하기에는 고도가 너무 높습니다.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}시작과 끝은 한 줄 위에 있어야 합니다
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 다리의 양 끝은 모두 땅이어야합니다.
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 다리가 너무 깁니다!

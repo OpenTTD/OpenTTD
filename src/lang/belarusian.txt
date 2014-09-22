@@ -1471,6 +1471,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Пераклю�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Стаўленьне гарадзкой рады да рэструктурызацыі навакольляў: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберыце ўзровень шуму й забруджваньня навакольнага асяроддзя кампаніямі, які ўплывае на іх рэйтынґ у гарадах і магчымасьць далейшага будаўніцтва каля гарадоў
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Максімальная вышыня: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Усталёўка максімальна дапушчальнай вышыні гор на мапе
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Немагчыма зьмяніць максімальную вышыню. На мапе ёсць горы вышэй гэтага значэньня.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Дазволіць зьмену ляндшафту пад будынкамі й рэйкамi, не выдаляючы іx
 STR_CONFIG_SETTING_CATCHMENT                                    :Зона пакрыцьця залежыць ад тыпу станцыі: {STRING}
@@ -1499,6 +1502,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Уключыц�
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Уключыць інфляцыю ў эканоміцы, калі кошты растуць нязначна хутчэй за выплаты
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максымальная даўжыня мастоў: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Максымальная даўжыня мастоў, якія вы можаце пабудаваць
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Максімальная вышыня мастоў: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Максімальная дапушчальная вышыня мастоў
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максымальная даўжыня тунэляў: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Максымальная даўжыня тунэляў, якія вы можаце пабудаваць
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Мэтад стварэньня сыравінных прадпрыемстваў: {STRING}
@@ -2099,6 +2104,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Гул�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Чароўны дынамiт (знос УСЯГО): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунэлi могуць перасякацца: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Вялікія самалёты радзей разьбіваюцца ў малых аэрапортах: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Зьмяніць макс. вышыню мапы: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Зьмяніць максімальную вышыню гор на мапе
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :умераны ляндшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :субарктычны ляндшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :субтрапічны ляндшафт
@@ -3044,6 +3051,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Колькасьць гарадоў:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Колькасьць прадпрыемстваў:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Макс. вышыня мапы:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Павялічыць максімальную вышыню мапы на 1
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Паменшыць максімальную вышыню мапы на 1
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Вышыня сьнегавой лініі:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Падняць сьнегавую лінію
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Апусьціць сьнегавую лінію
@@ -3073,6 +3083,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назв
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Памер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Максімальная вышыня мапы
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Зьмяніць вышыню сьнегавой лініі
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Зьмяніць год пачатку гульні
 
@@ -4477,6 +4488,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Земл
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ужо на ўзроўні мора
 STR_ERROR_TOO_HIGH                                              :{WHITE}Занадта высока
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ужо роўна
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Пасля гэтага вышыня моста будзе недапушчальна вялікай
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Немагчыма зьмяніць назву кампаніі...
@@ -4666,6 +4678,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Спач
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ня можа пачынацца й заканчвацца ў той жа кропцы
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Апоры моста павінны быць на адным узроўні
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Занадта нізкі мост
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Масты такой вышыні будаваць нельга.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Пачатак і канец павінны быць на адной лініі
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... абодва канца моста павінны абапірацца на зямлю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост занадта доўгі

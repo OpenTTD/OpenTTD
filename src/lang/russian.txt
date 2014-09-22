@@ -1310,6 +1310,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включен�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Отношение городского совета к реструктуризации окрестностей: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберите уровень влияния шума и загрязнения окружающей среды компаниями на их рейтинг в городах и возможность дальнейшего строительства около городов
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Максимальная высота: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Установка максимально допустимой высоты гор на карте
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Невозможно изменить максимальную высоту. На карте есть горы выше этого значения.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Разрешить изменение ландшафта под домами и дорогами, не требуя их сноса
 STR_CONFIG_SETTING_CATCHMENT                                    :Зона покрытия зависит от типа станции: {STRING}
@@ -1338,6 +1341,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Включит�
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Включить инфляцию, при которой затраты растут немного быстрее, чем доходы
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максимальная длина моста: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Ограничение на длину строящихся мостов
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Максимальная высота мостов: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Максимальная допустимая высота мостов
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максимальная длина туннеля: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Ограничение на длину строящихся туннелей
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Способ создания сырьевых предприятий: {STRING}
@@ -1938,6 +1943,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Игр�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос ВСЕГО): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Туннели могут пересекаться: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Большие самолёты реже разбиваются в малых аэропортах: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Изменить макс. высоту карты: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Изменить максимальную высоту гор на карте
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Умеренный ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Субарктический ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Субтропический ландшафт
@@ -2891,6 +2898,9 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Количество городов:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кол-во предпр.:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Макс. высота карты:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Увеличить максимальную высоту карты на 1
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Уменьшить максимальную высоту карты на 1
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снеговая линия:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Поднять снеговую линию
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Опустить снеговую линию
@@ -2920,6 +2930,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назв
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Максимальная высота карты
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Изменить высоту снеговой линии
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Изменить год начала игры
 
@@ -4314,6 +4325,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Земл
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Уже на уровне моря
 STR_ERROR_TOO_HIGH                                              :{WHITE}Слишком высоко
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... уже ровно
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}После этого высота моста будет недопустимо большой
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Невозможно изменить название компании...
@@ -4503,6 +4515,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Снач
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Не может начинаться и заканчиваться в той же точке
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Опоры моста должны быть на одном уровне
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Слишком низкий мост
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Мосты такой высоты строить нельзя.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Начало и конец должны быть на одной линии
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный

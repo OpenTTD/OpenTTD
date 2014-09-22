@@ -1158,6 +1158,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disaster
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Town council's attitude towards area restructuring: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximum map height: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Set the maximum allowed height for mountains on the map
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}You can't set the maximum map height to this value. At least one mountain on the map is higher
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow terraforming under buildings, tracks, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow terraforming under buildings and tracks without removing them
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING}
@@ -1186,6 +1189,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Enable inflation in the economy, where costs are slightly faster rising than payments
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum bridge length: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum length for building bridges
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maximum bridge height: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maximum height for building bridges
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel length: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum length for building tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primary industry construction method: {STRING}
@@ -1522,7 +1527,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Select the beha
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatically build semaphores before: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year when electric signals will be used for tracks. Before this year, non-electric signals will be used (which have the exact same function, but different looks)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Enable the signal GUI: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Display a window for choosing signal types to build, instead of only window-less signal-type rotation with Ctrl+clicking on build signals
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Display a window for choosing signal types to build, instead of only window-less signal-type rotation with Ctrl+clicking on built signals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signal type to build by default: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Default signal type to use
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Block signals
@@ -1786,6 +1791,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Playing
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovable objects): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edit the maximum map height: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edit the maximum height of mountains on the map
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperate landscape
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arctic landscape
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropical landscape
@@ -2259,7 +2266,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toggle t
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toggle transparency for trees. Ctrl+Click to lock
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toggle transparency for houses. Ctrl+Click to lock
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toggle transparency for industries. Ctrl+Click to lock
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toggle transparency for buildables like stations, depots and waypoints. Ctrl+Click to lock
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toggle transparency for buildables like stations, depots, and waypoints. Ctrl+Click to lock
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toggle transparency for bridges. Ctrl+Click to lock
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toggle transparency for structures like lighthouses and antennas. Ctrl+Click to lock
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toggle transparency for catenary. Ctrl+Click to lock
@@ -2711,6 +2718,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. of towns:
 STR_MAPGEN_DATE                                                 :{BLACK}Date:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of industries:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximum map height:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Increase the maximum height of mountains on the map by one
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Decrease the maximum height of mountains on the map by one
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snow line height:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Move the snow line height up one
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Move the snow line height down one
@@ -2740,6 +2750,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Heightma
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Size:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Change maximum map height
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Change snow line height
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
 
@@ -4124,6 +4135,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Excavati
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... already at sea level
 STR_ERROR_TOO_HIGH                                              :{WHITE}... too high
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... already flat
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Afterwards the bridge above it would be too high.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Can't change company name...
@@ -4313,6 +4325,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Must dem
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Can't start and end in the same spot
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bridge heads not at the same level
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bridge is too low for the terrain
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Bridge is too high for this terrain.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start and end must be in line
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ends of bridge must both be on land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... bridge too long
