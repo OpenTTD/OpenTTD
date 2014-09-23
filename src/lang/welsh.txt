@@ -1158,6 +1158,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglo trychineb
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Agwedd y cyngor tref at ailstrwythuro'r ardal: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niwed amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Uchder map uchafsymol: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Gosod yr uchder uchafsymol a ganiateir ar gyfer mynyddoedd ar y map
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ni allwch osod uchder uchafsymol y map i'r gwerth yma. Mae o leiaf un mynydd ar y map yn uwch
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, ayyb.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Caniatáu tirffurfio o dan adeiladau a thraciau heb eu chwalu
 STR_CONFIG_SETTING_CATCHMENT                                    :Caniatáu ardaloedd dalgylch mwy realistig eu maint: {STRING}
@@ -1186,6 +1189,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Chwyddiant: {ST
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Galluogi chwyddiant yn yr economi, lle y bydd costau'n codi ychydig yn gyflymach na thaliadau
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hyd pont uchafsymol: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Hyd uchafsymol ar gyfer adeiladu pontydd
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Uchder pontydd uchafsymol: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Uchder uchafsymol ar gyfer adeiladu pontydd
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Hyd twnel uchafsymol: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Hyd uchafsymol ar gyfer adeiladu twneli
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Prif ddull adeiladu diwydiannau cynradd: {STRING}
@@ -1522,7 +1527,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Adeiladu semafforau cyn: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Gosod y flwyddyn pan y defnyddir signalau trydan ar draciau. Cyn y flwyddyn hon, fe ddefnyddir signalau semaffor (sydd â gweithred unfath, ond edrychiad gwahanol)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Galluogi'r GUI signalau: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Dangos ffenestr ar gyfer dewis y math o signalau i ddewis, yn hytrach na chylchu drwy mathau signal wrth Ctrl+clicio heb ffenest pan yn adeiladu signalau
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Dangos ffenestr ar gyfer dewis y math o signalau i ddewis, yn hytrach na chylchu drwy mathau signal heb ffenest wrth Ctrl+clicio ar signalau eisoes wedi'u hadeiladu
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Y math o signal i'w adeiladu fel rhagosodiad: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Signal rhagosodedig i'w ddefnyddio
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signalau Bloc
@@ -1786,6 +1791,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Chwarae
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tarw Dur Hud (chwalu diwydiannau, gwrthrychau nad oes modd eu chwalu): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Caiff twneli groesi eu gilydd: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Ni fydd awyrennau jet yn crashio (yn aml) ar feysydd awyr bychain: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Golygu uchder uchafsymol y map: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Golygu uchder uchafsymol mynyddoedd ar y map
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tirwedd Tymherus
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Tirwedd Is-arctig
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tirwedd trofannol
@@ -2711,6 +2718,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nifer trefi:
 STR_MAPGEN_DATE                                                 :{BLACK}Dyddiad:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nifer diwydiannau:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Uchder map uchafsymol:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Cynyddu uchder uchafsymol mynyddoedd ar y map un uned
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Lleihau uchder uchafsymol mynyddoedd ar y map un uned
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Uchder Llinell Eira:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Symud y llinell eira un yn uwch
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Symud y llinell eira un yn is
@@ -2740,6 +2750,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Enw'r Ma
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Maint:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Newid uchder uchafsymol y map
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Newid uchder Llinell Eira
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Newid y flwyddyn gychwyn
 
@@ -4124,6 +4135,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Byddai c
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... eisoes ar lefel y môr
 STR_ERROR_TOO_HIGH                                              :{WHITE}Rhy uchel
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... mae eisoes yn fflat
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Byddai'r bont wedyn yn rhy uchel.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Does dim modd newid enw'r cwmni...
@@ -4313,6 +4325,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Rhaid dy
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Does dim modd cychwyn a gorffen yn yr un man
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Nid yw dau ben y bont ar yr un lefel
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Mae'r bont yn rhy isel ar gyfer y tirwedd
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Pont rhy uchel ar gyfer y tirwedd yma.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Rhaid i'r cychwyn a'r diwedd fod mewn llinell
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... rhaid i ddau ben y bont orffwys ar y tir
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont rhy hir

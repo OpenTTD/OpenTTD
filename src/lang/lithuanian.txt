@@ -566,8 +566,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Žaidimo nustatymai
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Sudėtingesni nustatymai
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pagrindinės nuostatos
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Išplėstinės nuostatos
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :DI / Žaidimo nustatymai
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Papild. grafikos nustatymai (NewGRF)
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Permatomumo nustatymai
@@ -1290,7 +1290,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nerasta tinkamų DI... {}Galite parsisiųsti keletą DI naudonat 'Turinio internete' sistemą
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Išplėstinės nuostatos
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtras:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Išskleisti viską
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Suskleisti viską
@@ -1363,6 +1363,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Įgalinti atsit
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Miestų gyventojų požiūris į triukšmą ir aplinkos darkymą: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nustatyti miestų požiūrį į statybas, triukšmą ir kraštovaizdžio keitimą. Nuo to priklauso kompanijos reitingas bei leidimasstatyti įvairius objektus
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Didžiausias žemėlapio aukštis: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Didžiausias galimas kalnų žemėlapyje aukštis
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Negalima nustatyti tokio kalnų aukščio, nes žemėlapyje jau yra bent vienas aukštesnis kalnas
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leisti keisti reljefą po pastatais ir bėgiais, jų nepašalinant
 STR_CONFIG_SETTING_CATCHMENT                                    :Aptarnaujamos teritorijos dydis priklauso nuo stotelė tipo: {STRING}
@@ -1391,6 +1394,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Infliacija: {ST
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Įjungti/išjungti infliaciją (išlaidos augs truputį greičiau už atlygius)
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Didžiausias tilto ilgis: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Didžiausias galimas tilto ilgis
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Didžiausias tilto aukštis: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Didžiausias aukštis, kuriame dar galima statyti tiltus
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Didžiausias tunelio ilgis: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Didžiausias galimas tunelio ilgis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Pirminių pramonės įmonių statybos būdas: {STRING}
@@ -1965,7 +1970,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Žaislin
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rodyti pagrindines žaidimo nuostatas
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rodyti nugalėtojų lentelę
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rodyti sudėtingesnes žaidimo nuostatas
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rodyti išplėstines nuostatas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rodyti parsisiųstus plėtinius ir jų nuostatas
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tikrinti, ar nėra naujų plėtinių arba atnaujinimų jau atsisiųstiems plėtiniams
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rodyti dirbtinio intelekto nuostatas
@@ -2005,6 +2010,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Žaidia
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiškas buldozeris (pašalina gamyklas ir nepajudinamus objektus): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneliai gali susikirsti: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktyviniai lėktuvai neduš (dažnai) mažuose oro uostuose: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Didžiausias kalnų aukštis: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Keisti didžiausią leistiną kalnų aukštį
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Normalus klimatas
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arktinis klimatas
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropinis klimatas
@@ -2930,6 +2937,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Miestų kiekis:
 STR_MAPGEN_DATE                                                 :{BLACK}Pradžios data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Pramonės įmonių kiekis:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Didžiausias leistinas aukštis:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Padidinti didžiausią leistiną aukštį vienetu
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Sumažinti didžiausią leistiną aukštį vienetu
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniego linijos aukštis:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaukštinti sniego liniją
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pažeminti sniego liniją
@@ -2959,6 +2969,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Žemėla
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Keisti didžiausią leistiną aukštį
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Pakeisti sniego linijos aukštį
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradžios metus
 
@@ -4399,6 +4410,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Kasinėj
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Jau siekia jūros lygį
 STR_ERROR_TOO_HIGH                                              :{WHITE}Per aukštai
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... jau plokščia
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Tiltas bus per aukštai.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kompanijos vardo pakeisti negalima...
@@ -4425,7 +4437,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... per 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... per arti kito miesto
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... per daug miestų
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daugiau nera vietos zemelapyje
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miestas nestatys kelių. Jūs galite įjungti kelių statybą per Sudėtingesni nustatymai>Aplinka>Miestai.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miestas nestatys kelių. Jūs galite įjungti kelių statybą per „Išplėstinės nuostatos>Aplinka>Miestai“.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vyksta kelio darbai
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotis arba depas, arba miestui priklausantis vienas iš laukelių negali būti ištrintas.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nėra tinkamos vietos statulai šio miesto centre
@@ -4588,6 +4600,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Pirmiau 
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Negalima pradeti ir baigti tuo paciu metu
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Tilto pirminės atramos turi būti tame pačiame aukštyje
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tiltas per žemas reljefui
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Tiltas per aukštas šiam kraštovaizdžiui.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Pradžia ir pabaiga turi būti vienoje linijoje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abu tilto galai turi būti ant žemės
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... tiltas per ilgas

@@ -1237,6 +1237,8 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Katastrofy, kte
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj městské rady k úpravám v oblasti: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vyber jak moc hluku a změn prostředí poškozuje hodnocení společnosti u města a tak dále komplikuje budoucí stavbu na jeho území
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximální výška mapy: {STRING}
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nemůžete změnit maximální výšku mapy na tuto hodnotu. Alespoň jedna hora na mapě je vyšší.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Povolit srovnání terénu pod budovami, kolejemi atd. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Povoluje změnu terénu pod budovami a tratěmi bez jejich odstranění
 STR_CONFIG_SETTING_CATCHMENT                                    :Povolit u oblasti pokrytí realističtější velikost: {STRING}
@@ -1245,7 +1247,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Povolit bourán
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Usnadňuje odstranění městských staveb a silnic
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximální délka vlaků: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Určuje maximální délku vlaků
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pole{P e e í}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pol{P e e í}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :množství kouře/jisker u stroje: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Množštví kouře či jisker emitovaných vozidly
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerace vlaků: {STRING}
@@ -1265,6 +1267,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflace: {STRIN
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Povolit inflaci. Ceny se časem zvyšují mírně rychleji než platby.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximální délka mostu: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Určuje maximální délku mostů
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maximální výška mostu: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maximální výška pro stavění mostů
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximální délka tunelu: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Určuje maximální délku tunelů
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Způsob manuálního budování primárního průmyslu: {STRING}
@@ -2796,6 +2800,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Množství měst:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Množství průmyslu:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximální výška mapy:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Výška sněžné čáry:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšit sněžnou čáru o jednu úroveň
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Snížit sněžnou čáru o jednu úroveň
@@ -3486,8 +3491,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Přejmen
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Přejmenovat typ lodi
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Přejmenovat typ letadla
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Schovat
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Schovat
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Schovat
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Schovat
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Zobrazit
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Zobrazit
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Zobrazit
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Zobrazit
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Přepnout zobrazení/schování typu vlaku
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Přepnout zobrazení/schování typu silničního vozidla
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Přepnout zobrazení/schování typu lodi
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Přepnout zobrazení/schování typu letadla
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Přejmenovat typ železničního vozidla
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Přejmenovat typ silničního vozidla
@@ -4199,6 +4216,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Úprava 
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... již na úrovni moře
 STR_ERROR_TOO_HIGH                                              :{WHITE}... příliš vysoko
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... už je plochý
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Most by po této úpravě byl příliš vysoko.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nelze přejmenovat společnost...
@@ -4386,6 +4404,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Je nutn�
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nelze začít a skončit na stejném místě
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Nájezdy na most nejsou ve stejné výšce
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je pro terén moc nízký
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Most je příliš vysoko na tento terén.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začátek a konec musí být ve stejné výšce
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba konce mostu musí být na zemi
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... most je příliš dlouhý
@@ -5072,6 +5091,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (schováno)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_INDUSTRY_NAME.gen                                           :{INDUSTRY.gen}
