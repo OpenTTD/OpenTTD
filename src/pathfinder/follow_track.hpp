@@ -311,7 +311,7 @@ protected:
 				return false;
 			}
 		}
-		if (IsRailTT() && IsDepotTypeTile(m_new_tile, TT())) {
+		if (IsRailTT() && IsStandardRailDepotTile(m_new_tile)) {
 			DiagDirection exitdir = GetRailDepotDirection(m_new_tile);
 			if (ReverseDiagDir(exitdir) != m_exitdir) {
 				m_err = EC_NO_WAY;
