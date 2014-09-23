@@ -2972,6 +2972,7 @@ static const int8_t _deltacoord_leaveoffset[8] = {
  */
 int TicksToLeaveDepot(const Train *v)
 {
+	assert(IsStandardRailDepotTile(v->tile));
 	DiagDirection dir = GetRailDepotDirection(v->tile);
 	int length = v->CalcNextVehicleOffset();
 
