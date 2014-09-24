@@ -1159,6 +1159,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skakel rampe aa
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsraad se gesindheid teenoor omgewings-konstruksie: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel invloed klank en skade aan die omgewing deur maatskappye aan die stadswaardering het en verderde bouwerk in die stad.
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimum kaarthoogte: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Stel die maksimum toegelate berghoogte
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kan nie die berghoogte verander nie - daar is hoër berge as hierdie op die kaart
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Laat landargitektuur toe onder geboue, spore, ens.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat Landargitektuur onder geboue en spore sonder om dit te verwyder
 STR_CONFIG_SETTING_CATCHMENT                                    :Laat meer realisties grootte opvangsgebied toe: {STRING}
@@ -1187,6 +1190,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflasie: {STRI
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiveer inflasie in die ekonomie, waar die kostes vinniger styg as betalings
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van bruë
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimum brughoogte: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimum hoogte om brûe te bou
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel lengte: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van tonnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Handmatige primêre nywerheid konstruksie metode: {STRING}
@@ -1787,6 +1792,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speel a
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (verwyder nywerhede, onbeweegbare voorwerpe): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tonnels mag vir mekaar kruis: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Straalvliegtuie sal nie (dikwels) op klein lughawe bots nie: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Verander die maksimum kaarthoogte: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Verander die maksimum berghoogte
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Matige klimaat
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-artiese landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropiese landskap
@@ -2712,6 +2719,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Hoev. dorpe:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Hoev. nywerhede:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimum kaarthoogte
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Verhoog berge met een teël
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Verminder berghoogte met een teël
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sneeu lyn hoogte:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg die sneeu lyn een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweeg die sneeu lyn een af
@@ -2741,6 +2751,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Reliëfk
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Verander maksimum kaarthoogte
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander sneeu lyn hoogte
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander begin jaar
 
@@ -4125,6 +4136,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Uitgrawi
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... reeds op seevlak
 STR_ERROR_TOO_HIGH                                              :{WHITE}... te hoog
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... klaar gelyk
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Die brug bo hierdie een gaan te hoog wees as jy voortgaan
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Maatskappy naam kan nie verander word nie...
@@ -4314,6 +4326,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Moet eer
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan nie in die selfde plek begin en eindig nie
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brug hoofde is nie op die selfde vlak nie
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag vir die terrein
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Die brug is te hoog
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en einde moet in lyn wees
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... albei brug eindes moet op land wees
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brug te lank
