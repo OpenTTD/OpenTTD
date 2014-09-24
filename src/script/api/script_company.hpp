@@ -192,6 +192,7 @@ public:
 	 * @param company The company to change the bank balance of.
 	 * @param delta Amount of money to give or take from the bank balance. A positive value adds money to the bank balance.
 	 * @param expenses_type The account in the finances window that will register the cost.
+	 * @return True, if the bank balance was changed.
 	 * @game @pre No ScriptCompanyMode active in scope.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre delta >= -2**31

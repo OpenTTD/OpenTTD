@@ -232,10 +232,10 @@ public:
 	/**
 	 * Set the goal of a cargo for this town.
 	 * @param town_id The index of the town.
-	 * @param towneffect_id The index of the cargo.
+	 * @param towneffect_id The index of the towneffect.
 	 * @param goal The new goal.
 	 * @pre IsValidTown(town_id).
-	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
+	 * @pre ScriptCargo::IsValidTownEffect(towneffect_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
 	 */
@@ -247,7 +247,7 @@ public:
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the towneffect.
 	 * @pre IsValidTown(town_id).
-	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
+	 * @pre ScriptCargo::IsValidTownEffect(towneffect_id).
 	 * @return The goal of the cargo.
 	 * @note Goals can change over time. For example with a changing snowline, or
 	 *  with a growing town.
@@ -263,6 +263,7 @@ public:
 	 * @return True if the action succeeded.
 	 * @note Even when setting a growth rate, towns only grow when the conditions for growth (SetCargoCoal) are met,
 	 *       and the game settings (economy.town_growth_rate) allow town growth at all.
+	 * @note When changing the growth rate, the relative progress is preserved and scaled to the new rate.
 	 * @api -ai
 	 */
 	static bool SetGrowthRate(TownID town_id, uint32 days_between_town_growth);
