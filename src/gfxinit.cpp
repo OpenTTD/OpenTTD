@@ -18,6 +18,7 @@
 #include "transparency.h"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
+#include "window_func.h"
 
 /* The type of set we're replacing */
 #define SET_TYPE "graphics"
@@ -304,6 +305,7 @@ void CheckBlitter()
 
 	ClearFontCache();
 	GfxClearSpriteCache();
+	ReInitAllWindows();
 }
 
 /** Initialise and load all the sprites. */
