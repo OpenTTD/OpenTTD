@@ -96,30 +96,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Boisson gazeuse
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passager{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passager{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de charbon
-STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" s} posta{P l ux}
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sac{P "" s} posta{P l ux}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de pétrole
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} tête{P "" s} de bétail
-STR_QUANTITY_GOODS                                              :{COMMA} caisse{P "" s} de biens
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}tête{P "" s} de bétail
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caisse{P "" s} de biens
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de céréales
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de bois
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minerai de fer
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d'acier
-STR_QUANTITY_VALUABLES                                          :{COMMA} sac{P "" s} d'objets de valeur
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}sac{P "" s} d'objets de valeur
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de cuivre
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de maïs
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruits
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sac{P "" s} de diamants
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}sac{P "" s} de diamants
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de nourriture
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papier
-STR_QUANTITY_GOLD                                               :{COMMA} sac{P "" s} d'or
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}sac{P "" s} d'or
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} d'eau
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de blé
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de caoutchouc
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de sucre
-STR_QUANTITY_TOYS                                               :{COMMA} jouet{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" s} de bonbons
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}jouet{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sac{P "" s} de bonbons
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de barbe à papa
 STR_QUANTITY_BUBBLES                                            :{COMMA} bulle{P "" s}
@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NO
 STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passager{P "" s}
-STR_BAGS                                                        :{COMMA} sac{P "" s}
-STR_TONS                                                        :{COMMA} tonne{P "" s}
-STR_LITERS                                                      :{COMMA} litre{P "" s}
-STR_ITEMS                                                       :{COMMA} unité{P "" s}
-STR_CRATES                                                      :{COMMA} caisse{P "" s}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passager{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}sac{P "" s}
+STR_TONS                                                        :{COMMA}{NBSP}tonne{P "" s}
+STR_LITERS                                                      :{COMMA}{NBSP}litre{P "" s}
+STR_ITEMS                                                       :{COMMA}{NBSP}unité{P "" s}
+STR_CRATES                                                      :{COMMA}{NBSP}caisse{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Bleu foncé
@@ -200,28 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ch
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonne{P "" s} courte{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonne{P "" s}{NBSP}courte{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonne{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litre{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
 STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
@@ -250,7 +250,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barre de
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Démolir les constructions sur un carré de terrain.{}Ctrl pour sélectionner en diagonale.{}Shift pour afficher seulement le coût estimé.
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Montrer les cachés
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Montrer les cachés
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Montrer les cachés
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Montrer les cachés
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}En activant ce bouton, les véhicules ferroviaires cachés sont également affichés
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}En activant ce bouton, les véhicules routiers cachés sont également affichés
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}En activant ce bouton, les navires cachés sont également affichés
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}En activant ce bouton, les aéronefs cachés sont également affichés
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Défaut
@@ -1151,6 +1159,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désact
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude du conseil municipal envers la restructuration de la zone{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Définit comment le bruit et les dommages environnementaux des compagnies affectent leur réputation et leurs prochaines actions de constructions dans la zone
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altitude maximum de la carte{NBSP}: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Définir l'altitude maximum autorisée pour les montagnes sur la carte
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Vous ne pouvez pas régler l'altitude maximum de la carte sur cette valeur. Au moins une montagne sur la carte est plus haute
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc.{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Autoriser le terrassement sous les bâtiments et les voies sans les retirer
 STR_CONFIG_SETTING_CATCHMENT                                    :Autoriser des zones de desserte plus réalistes{NBSP}: {STRING}
@@ -1179,6 +1190,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflation{NBSP}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Activer l'inflation dans l'économie, où les coûts augmentent légèrement plus vite que les revenus.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Longueur maximum des ponts{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longueur maximum pour la construction des ponts
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altitude maximum des ponts{NBSP}: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altitude maximum pour construire des ponts
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longueur maximum des tunnels{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longueur maximum pour la construction des tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Méthode de construction manuelle des industries primaires{NBSP}: {STRING}
@@ -1264,8 +1277,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Temps d'afficha
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durée pour l'affichage des messages d'erreur dans une fenêtre rouge. Noter que certains messages d'erreur (critique) ne sont pas fermés automatiquement après ce délai, mais doivent être fermés manuellement
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Affichage des infobulles{NBSP}: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Délai avant que les infobulles soient affichées lorsque la souris survole certains éléments de l'interface. Les infobulles peuvent également être affectées au bouton droit de la souris
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Survoler pendant {COMMA} seconde{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Délai avant que les infobulles soient affichées lorsque la souris survole certains éléments de l'interface. Les infobulles peuvent également être affectées au bouton droit de la souris en réglant cette valeur à 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Survoler pendant {COMMA} milliseconde{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Clic droit
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afficher la population d'une ville dans son label{NBSP}: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Afficher la population des villes dans leur label sur la carte
@@ -1448,7 +1461,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Les intervalles
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choisir si l'entretien des véhicule est activé par le temps passé depuis le dernier entretien ou par la fiabilité passant sous un pourcentage de la fiabilité maximum
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalle d'entretien par défaut pour les trains{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Défini l'intervalle d'entretien par défaut des nouveaux véhicules ferroviaires, si aucun intervalle d'entretien n'est définit pour le véhicule
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} jour{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}jour{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Désactivé
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalle d'entretien par défaut pour les véhicules routiers{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Défini l'intervalle d'entretien par défaut des nouveaux véhicules routiers, si aucun intervalle d'entretien n'est définit pour le véhicule
@@ -1588,9 +1601,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne des métropoles par rapport aux villes normales au début de la partie
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Réactualiser le graphique de la distribution tous les {STRING} jour{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Réactualiser le graphique de la distribution tous les {STRING}{NBSP}jour{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Intervalle entre la recalculation des liens du graphique. À chaque itération, une seule composante du graphique est recalculée. Donc, une valeur X pour ce réglage ne signifie pas que le graphique est réactualisé entièrement tous les X jours. Plus l'intervalle est court, plus de temps CPU est nécessaire pour la recalculation. Plus il est long, et plus de temps sera nécessaire pour que la distribution s'effectue sur de nouvelles routes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Prendre {STRING} jour{P 0:2 "" s} pour recalculer le graphe de distribution
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Prendre {STRING}{NBSP}jour{P 0:2 "" s} pour recalculer le graphe de distribution
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Durée maximale (en jours) de la réactualisation d'une composante du graphique. À chaque itération, un thread est initié, qui a une durée maximale définie par ce réglage. Plus celui-ci est court, plus la probabilité que le thread ne termine pas sa tâche à temps est élevée. Le jeu s'interrompt alors jusqu'à la fin de la recalculation ("lag"). Plus le réglage est long, et moins rapidement la distribution sera réactualisée en cas de changement de routes.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymétrique
@@ -1779,6 +1792,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer e
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement des industries et des objets fixes){NBSP}: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Les tunnels peuvent se croiser{NBSP}: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jets ne s'écraseront plus (aussi fréquemment) sur les petits aéroports{NBSP}: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Modifier l'altitude maximum de la carte{NBSP}: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Modifier l'altitude maximum des montagnes sur la carte
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Environnement «{NBSP}Tempéré{NBSP}»
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Environnement «{NBSP}Arctique{NBSP}»
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Environnement «{NBSP}Tropical{NBSP}»
@@ -2704,6 +2719,9 @@ STR_MAPGEN_BY                                                   :{BLACK}{NBSP}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nb. de villes{NBSP}:
 STR_MAPGEN_DATE                                                 :{BLACK}Date{NBSP}:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'industries{NBSP}:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Altitude maximum de la carte
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Augmenter l'altitude maximum des montagnes sur la carte de 1
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Réduire l'altitude maximum des montagne sur la carte de 1
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alt. d'enneigement{NBSP}:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Augmenter l'altitude d'enneigement
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baisser l'altitude d'enneigement
@@ -2733,6 +2751,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de l
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Taille{NBSP}:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}{NBSP}×{NBSP}{NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Modifier l'altitude maximum de la carte
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifier l'altitude d'enneigement
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année de départ
 
@@ -2846,11 +2865,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramèt
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alignement du sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite suivant
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Se rendre au prochain sprite normal, en ignorant les pseudo-sprites et les sprites de recoloration et de police, et en bouclant
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Se rendre au prochain sprite normal, en ignorant les pseudo-sprites et les sprites de recoloration et de police, et en bouclant du dernier vers le premier
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Aller au sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Se rendre au sprite indiqué. Si ce n'est pas un sprite normal, aller au prochain sprite normal
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite précédent
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Se rendre au précédent sprite normal, en ignorant les pseudo-sprites et les sprites de recoloration et de police, et en bouclant
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Se rendre au précédent sprite normal, en ignorant les pseudo-sprites et les sprites de recoloration et de police, et en bouclant du premier vers le dernier
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation du sprite actuellement séléctionné. L'alignement est ignoré lors de l'affichage de ce sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Déplacer le sprite, en modifiant les décalages X et Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Décalage X{NBSP}: {NUM}, décalage Y{NBSP}: {NUM}
@@ -2965,8 +2984,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} livré
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (encore nécessaires)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (livrés)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK} jour{P "" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK} jour{P "" s} (financé)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK}{NBSP}jour{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK}{NBSP}jour{P "" s} (financé)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La ville {RED}ne croît pas{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nuisances sonores en ville{NBSP}: {ORANGE}{COMMA}{BLACK} − max.{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville.
@@ -3369,10 +3388,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {CARG
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.{NBSP}: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'action{NBSP}: {GOLD}{COMMA}{NBSP}cases
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Choix du véhicule - Cliquer sur un véhicule pour obtenir des informations
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule routier - Cliquer sur un véhicule pour obtenir des informations
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Choix du navire - Cliquer sur un navire pour obtenir des informations
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Choix de l'aéronef - Cliquer sur un aéronef pour obtenir des informations
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Choix du véhicule. Cliquer sur un véhicule pour obtenir des informations. Ctrl-clic pour basculer le masquage du type de véhicule
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule routier. Cliquer sur un véhicule pour obtenir des informations. Ctrl-clic pour basculer le masquage du type de véhicule
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Choix du navire. Cliquer sur un navire pour obtenir des informations. Ctrl-clic pour basculer le masquage du type de navire
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Choix de l'aéronef. Cliquer sur un aéronef pour obtenir des informations. Ctrl-clic pour basculer le masquage du type d'aéronef
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Acheter
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Acheter
@@ -3394,8 +3413,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renommer
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renommer le type de navire
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renommer le type d'aéronef
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Cacher
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Cacher
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Cacher
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Cacher
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Afficher
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Afficher
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Afficher
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Afficher
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Basculer cacher/afficher le type de véhicule ferroviaire
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Basculer cacher/afficher le type de véhicule routier
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Basculer cacher/afficher le type de navire
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Basculer cacher/afficher le type d'aéronef
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renommer le type de véhicule ferroviaire
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renommer le type de véhicule routier
@@ -3501,6 +3532,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Véhicule routi
 STR_REPLACE_VEHICLE_SHIP                                        :Navire
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aéronef
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Véhicules utilisés
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Colonne avec les véhicules que vous possédez
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Véhicules disponibles
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Colonne avec les véhicules disponibles pour le remplacement
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisir le type de véhicule à remplacer
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisir le nouveau type de véhicule devant remplacer celui sélectionné à gauche
@@ -3626,7 +3661,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA} jours{BLACK} − Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}jours{BLACK}   Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenter l'intervalle d'entretien de 10.{}Ctrl-clic pour l'augmenter de 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuer l'intervalle d'entretien de 10.{}Ctrl-clic pour le diminuer de 5.
@@ -3862,8 +3897,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(rester pendant
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(voyager pendant {STRING}, non planifié)
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} jour{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}jour{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Cet horaire prendra {STRING} pour s'achever
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Cet horaire prendra au moins {STRING} pour s'achever (horaire incomplet)
@@ -4101,6 +4136,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}L'excava
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... déjà au niveau de la mer
 STR_ERROR_TOO_HIGH                                              :{WHITE}... trop élevé
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... déjà à niveau
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Le pont au dessus de lui serait ensuite trop haut.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Impossible de changer le nom de compagnie...
@@ -4127,7 +4163,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... trop
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... trop près d'une autre ville
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... trop de villes
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... il n'y a plus d'emplacement sur la carte
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Options avancées->Économie->Villes
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Options avancées->Environnement->Villes
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Route en travaux
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}Une station ou un dépôt fait référence à cette ville ou une propriété municipale ne peut pas être supprimée.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... aucun emplacement convenable disponible pour une statue dans ce centre-ville
@@ -4151,6 +4187,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... peut seulement être construit au dessus de l'altitude d'enneigement
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... peut seulement être construit en dessous de l'altitude d'enneigement
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Il n'y avait pas d'emplacements appropriés pour les industries '{STRING}'
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifier les paramètres de la génération de la carte pour obtenir une meilleure carte
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Impossible de construire la gare ici...
@@ -4288,6 +4326,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Vous dev
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Impossible de commencer et de terminer au même endroit
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Les extrémités du pont ne sont pas au même niveau
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Le pont est trop bas pour le terrain
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Le pont est trop haut pour ce terrain.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Le début et la fin doivent être alignés
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... les deux extrémités du pont doivent être sur la terre ferme
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont trop long
@@ -4852,6 +4891,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (caché)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

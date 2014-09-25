@@ -95,7 +95,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :குளிர
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} பயணி{P "" கள்}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP} பயணி{P "" கள்}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} நிலக்கரி
 STR_QUANTITY_MAIL                                               :{COMMA} அஞ்சல் பை{P "" கள்}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} எண்ணெய்
@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :காலாவ
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :பிழை செய்திக்கான கால அளவு: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} விநாடி{P 0 "" கள்}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :tooltips இனை காட்டு: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :காட்டவும் {COMMA} விநாடி{P 0 "" கள்}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} விநாடி{P 0 "" கள்} காட்டவும்
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :வலது சொடுக்கு
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :நகரத்தின் மக்கள்த் தொகையினை அதன் பெயருடன் காட்டு: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :நகரத்தின் மக்கள்தொகையினை வரைபடத்தில் காட்டவும்
