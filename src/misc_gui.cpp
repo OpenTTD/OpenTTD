@@ -1168,8 +1168,8 @@ static const NWidgetPart _nested_query_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_RED), SetPIP(8, 15, 8),
 		NWidget(WWT_TEXT, COLOUR_RED, WID_Q_TEXT), SetMinimalSize(200, 12),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(20, 29, 20),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_NO), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_YES), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_NO), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_QUIT_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_YES), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_QUIT_YES, STR_NULL),
 		EndContainer(),
 	EndContainer(),
 };
