@@ -1188,6 +1188,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflación: {ST
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Activa la inflación económica, lo cual hace que los costes aumenten ligeramente más rápido que los beneficios
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Longitud máxima de puentes: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Máxima longitud permitida para puentes
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altura máxima de puentes: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altura máxima permitida al construir puentes
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longitud máxima de túneles: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Máxima longitud permitida para túneles
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de construcción de industria primaria: {STRING}

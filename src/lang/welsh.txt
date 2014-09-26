@@ -1868,7 +1868,7 @@ STR_FACE_EUROPEAN                                               :{BLACK}Ewropeia
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Dewis gwyneb Ewropeaidd
 STR_FACE_AFRICAN                                                :{BLACK}Affricanaidd
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Dewis gwyneb Affricanaidd
-STR_FACE_YES                                                    :Iawn
+STR_FACE_YES                                                    :Ie
 STR_FACE_NO                                                     :Na
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Galluogi mwstásh neu glustdlws
 STR_FACE_HAIR                                                   :Gwallt:
@@ -2623,7 +2623,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo trên {STR
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ffordd gyda goleuadau stryd
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ffordd gyda coed wedi'i plannu
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ffordd gyda coed wedi'u plannu
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depo cerbyd ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Croesfan wastad ffordd/rheilffordd
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramffordd
@@ -3658,7 +3658,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Cynhwyse
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosi: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosglwyddo: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}{NBSP}diwrnod{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rhwng gwasanaethu: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
