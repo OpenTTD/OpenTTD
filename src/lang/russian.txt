@@ -2899,8 +2899,8 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Коли
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кол-во предпр.:
 STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Макс. высота карты:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Увеличить максимальную высоту карты на 1
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Уменьшить максимальную высоту карты на 1
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Увеличить максимальную высоту гор на карте на 1
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Уменьшить максимальную высоту гор на карте на 1
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снеговая линия:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Поднять снеговую линию
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Опустить снеговую линию
@@ -4325,7 +4325,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Земл
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Уже на уровне моря
 STR_ERROR_TOO_HIGH                                              :{WHITE}Слишком высоко
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... уже ровно
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}После этого высота моста будет недопустимо большой
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}После этого высота моста будет недопустимо большой.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Невозможно изменить название компании...
