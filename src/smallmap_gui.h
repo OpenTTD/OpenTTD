@@ -63,6 +63,7 @@ protected:
 
 	static SmallMapType map_type; ///< Currently displayed legends.
 	static bool show_towns;       ///< Display town names in the smallmap.
+	static int max_heightlevel;   ///< Currently used/cached maximum heightlevel.
 
 	static const uint LEGEND_BLOB_WIDTH = 8;              ///< Width of the coloured blob in front of a line text in the #WID_SM_LEGEND widget.
 	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #WID_SM_LEGEND widget for the #SMT_INDUSTRY legend.
@@ -146,6 +147,7 @@ protected:
 		return Company::IsValidID(_local_company) ? 1U << _local_company : 0xffffffff;
 	}
 
+	void RebuildColourIndexIfNecessary();
 	uint GetNumberRowsLegend(uint columns) const;
 	void SelectLegendItem(int click_pos, LegendAndColour *legend, int end_legend_item, int begin_legend_item = 0);
 	void SwitchMapType(SmallMapType map_type);

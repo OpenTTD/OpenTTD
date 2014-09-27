@@ -30,7 +30,6 @@ static const uint32 _green_map_heights[] = {
 	MKCOLOUR_XXXX(0x27),
 	MKCOLOUR_XXXX(0x27),
 };
-assert_compile(lengthof(_green_map_heights) == MAX_TILE_HEIGHT + 1);
 
 /** Height map colours for the dark green colour scheme, ordered by height. */
 static const uint32 _dark_green_map_heights[] = {
@@ -51,7 +50,6 @@ static const uint32 _dark_green_map_heights[] = {
 	MKCOLOUR_XXXX(0x67),
 	MKCOLOUR_XXXX(0x67),
 };
-assert_compile(lengthof(_dark_green_map_heights) == MAX_TILE_HEIGHT + 1);
 
 /** Height map colours for the violet colour scheme, ordered by height. */
 static const uint32 _violet_map_heights[] = {
@@ -72,4 +70,3 @@ static const uint32 _violet_map_heights[] = {
 	MKCOLOUR_XXXX(0x87),
 	MKCOLOUR_XXXX(0x87),
 };
-assert_compile(lengthof(_violet_map_heights) == MAX_TILE_HEIGHT + 1);

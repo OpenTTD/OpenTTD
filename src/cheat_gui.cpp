@@ -141,6 +141,10 @@ static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2) {
 	/* Execute the change and reload GRF Data */
 	_settings_game.construction.max_heightlevel = p1;
 	ReloadNewGRFData();
+
+	/* The smallmap uses an index from heightlevels to colours. Trigger rebuilding it. */
+	InvalidateWindowClassesData(WC_SMALLMAP, 2);
+
 	return _settings_game.construction.max_heightlevel;
 }
 
