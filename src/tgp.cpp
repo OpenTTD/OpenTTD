@@ -773,7 +773,7 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	int ed; // coast distance from edge
 	int depth;
 
-	height_t h_prev = 16;
+	height_t h_prev = I2H(1);
 	height_t h;
 
 	assert(IsValidXY(org_x, org_y));
@@ -781,7 +781,7 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	/* Search for the coast (first non-water tile) */
 	for (x = org_x, y = org_y, ed = 0; IsValidXY(x, y) && ed < max_coast_dist_from_edge; x += dir_x, y += dir_y, ed++) {
 		/* Coast found? */
-		if (_height_map.height(x, y) > 15) break;
+		if (_height_map.height(x, y) >= I2H(1)) break;
 
 		/* Coast found in the neighborhood? */
 		if (IsValidXY(x + dir_y, y + dir_x) && _height_map.height(x + dir_y, y + dir_x) > 0) break;
@@ -986,13 +986,12 @@ void GenerateTerrainPerlin()
 		for (x = 0; x < _height_map.size_x;     x++) MakeVoid(x);
 	}
 
+	int max_height = _settings_game.construction.max_heightlevel;
+
 	/* Transfer height map into OTTD map */
 	for (y = 0; y < _height_map.size_y; y++) {
 		for (x = 0; x < _height_map.size_x; x++) {
-			int height = H2I(_height_map.height(x, y));
-			if (height < 0) height = 0;
-			if (height > 15) height = 15;
-			TgenSetTileHeight(TileXY(x, y), height);
+			TgenSetTileHeight(TileXY(x, y), Clamp(H2I(_height_map.height(x, y)), 0, max_height));
 		}
 	}
 
