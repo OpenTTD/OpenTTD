@@ -50,7 +50,7 @@ static const uint8 PC_WATER           = 0xCA; ///< Dark blue palette colour for 
 #define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, false, false}
 
 /** Macro for a height legend entry with configurable colour. */
-#define MC(height)  {0, STR_TINY_BLACK_HEIGHT, INVALID_INDUSTRYTYPE, height, INVALID_COMPANY, true, false, false}
+#define MC(col_break)  {0, STR_TINY_BLACK_HEIGHT, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, false, col_break}
 
 /** Macro for non-company owned property entry of LegendAndColour */
 #define MO(a, b) {a, b, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, false, false}
@@ -69,18 +69,27 @@ static const uint8 PC_WATER           = 0xCA; ///< Dark blue palette colour for 
 
 /** Legend text giving the colours to look for on the minimap */
 static LegendAndColour _legend_land_contours[] = {
-	/* The colours for the following values are set at BuildLandLegend() based on each colour scheme. */
-	MC(0),
-	MC(4),
-	MC(8),
-	MC(12),
-	MC(14),
-
-	MS(PC_BLACK,           STR_SMALLMAP_LEGENDA_ROADS),
+	MK(PC_BLACK,           STR_SMALLMAP_LEGENDA_ROADS),
 	MK(PC_GREY,            STR_SMALLMAP_LEGENDA_RAILROADS),
 	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS),
 	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
 	MK(PC_WHITE,           STR_SMALLMAP_LEGENDA_VEHICLES),
+
+	/* Placeholders for the colours and heights of the legend.
+	 * The following values are set at BuildLandLegend() based
+	 * on each colour scheme and the maximum map height. */
+	MC(true),
+	MC(false),
+	MC(false),
+	MC(false),
+	MC(false),
+	MC(false),
+	MC(true),
+	MC(false),
+	MC(false),
+	MC(false),
+	MC(false),
+	MC(false),
 	MKEND()
 };
 
@@ -270,9 +279,47 @@ static SmallMapColourScheme _heightmap_schemes[] = {
  */
 void BuildLandLegend()
 {
-	for (LegendAndColour *lc = _legend_land_contours; lc->legend == STR_TINY_BLACK_HEIGHT; lc++) {
-		lc->colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[lc->height];
+	/*
+	 * The general idea of this function is to fill the legend with an appropriate evenly spaced
+	 * selection of height levels. All entries with STR_TINY_BLACK_HEIGHT are reserved for this.
+	 * At the moment there are twelve of these.
+	 *
+	 * The table below defines up to which height level a particular delta in the legend should be
+	 * used. One could opt for just dividing the maximum height and use that as delta, but that
+	 * creates many "ugly" legend labels, e.g. once every 950 meter. As a result, this table will
+	 * reduce the number of deltas to 7: every 100m, 200m, 300m, 500m, 750m, 1000m and 1250m. The
+	 * deltas are closer together at the lower numbers because going from 12 entries to just 4, as
+	 * would happen when replacing 200m and 300m by 250m, would mean the legend would be short and
+	 * that might not be considered appropriate.
+	 *
+	 * The current method yields at least 7 legend entries and at most 12. It can be increased to
+	 * 8 by adding a 150m and 400m option, but especially 150m creates ugly heights.
+	 *
+	 * It tries to evenly space the legend items over the two columns that are there for the legend.
+	 */
+
+	/* Table for delta; if max_height is less than the first column, use the second column as value. */
+	uint deltas[][2] = { { 24, 2 }, { 48, 4 }, { 72, 6 }, { 120, 10 }, { 180, 15 }, { 240, 20 }, { MAX_TILE_HEIGHT + 1, 25 }};
+	uint i = 0;
+	for (; _settings_game.construction.max_heightlevel >= deltas[i][0]; i++) {
+		/* Nothing to do here. */
 	}
+	uint delta = deltas[i][1];
+
+	int total_entries = (_settings_game.construction.max_heightlevel / delta) + 1;
+	int rows = CeilDiv(total_entries, 2);
+	int j = 0;
+
+	for (i = 0; i < lengthof(_legend_land_contours) - 1 && j < total_entries; i++) {
+		if (_legend_land_contours[i].legend != STR_TINY_BLACK_HEIGHT) continue;
+
+		_legend_land_contours[i].col_break = j % rows == 0;
+		_legend_land_contours[i].end = false;
+		_legend_land_contours[i].height = j * delta;
+		_legend_land_contours[i].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[j * delta];
+		j++;
+	}
+	_legend_land_contours[i].end = true;
 }
 
 /**
@@ -1025,7 +1072,6 @@ SmallMapWindow::SmallMapWindow(WindowDesc *desc, int window_number) : Window(des
 
 	this->RebuildColourIndexIfNecessary();
 
-	BuildLandLegend();
 	this->SetWidgetLoweredState(WID_SM_SHOW_HEIGHT, _smallmap_show_heightmap);
 
 	this->SetWidgetLoweredState(WID_SM_TOGGLETOWNNAME, this->show_towns);
@@ -1059,6 +1105,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 	}
 
 	SmallMapWindow::max_heightlevel = _settings_game.construction.max_heightlevel;
+	BuildLandLegend();
 }
 
 /* virtual */ void SmallMapWindow::SetStringParameters(int widget) const
