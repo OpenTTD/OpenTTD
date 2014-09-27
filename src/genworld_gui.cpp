@@ -994,7 +994,7 @@ struct CreateScenarioWindow : public Window
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 
-					_settings_newgame.game_creation.se_flat_world_height = Clamp(_settings_newgame.game_creation.se_flat_world_height + widget - WID_CS_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);
+					_settings_newgame.game_creation.se_flat_world_height = Clamp(_settings_newgame.game_creation.se_flat_world_height + widget - WID_CS_FLAT_LAND_HEIGHT_TEXT, 0, _settings_game.construction.max_heightlevel);
 				}
 				_left_button_clicked = false;
 				break;
@@ -1040,7 +1040,7 @@ struct CreateScenarioWindow : public Window
 
 				case WID_CS_FLAT_LAND_HEIGHT_TEXT:
 					this->SetWidgetDirty(WID_CS_FLAT_LAND_HEIGHT_TEXT);
-					_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, MAX_TILE_HEIGHT);
+					_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, _settings_game.construction.max_heightlevel);
 					break;
 			}
 
