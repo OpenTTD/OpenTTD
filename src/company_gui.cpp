@@ -35,6 +35,7 @@
 #include "road_func.h"
 #include "water.h"
 #include "station_func.h"
+#include "zoom_func.h"
 
 #include "widgets/company_widget.h"
 
@@ -528,7 +529,7 @@ public:
 
 	uint Height(uint width) const
 	{
-		return max(FONT_HEIGHT_NORMAL, 14);
+		return max(FONT_HEIGHT_NORMAL, UnScaleByZoom(4 * 12, ZOOM_LVL_GUI) + 2);
 	}
 
 	bool Selectable() const
@@ -539,8 +540,11 @@ public:
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, rtl ? right - 16 : left + 16, top + 7);
-		DrawString(rtl ? left + 2 : left + 32, rtl ? right - 32 : right - 2, top + max(0, 13 - FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
+		int height = bottom - top;
+		int icon_y_offset = height / 2;
+		int text_y_offset = (height - FONT_HEIGHT_NORMAL) / 2 + 1;
+		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, rtl ? right - 2 - UnScaleByZoom(4 * 14, ZOOM_LVL_GUI) : left + UnScaleByZoom(4 * 14, ZOOM_LVL_GUI) + 2, top + icon_y_offset);
+		DrawString(rtl ? left + 2 : left + UnScaleByZoom(4 * 28, ZOOM_LVL_GUI) + 4, rtl ? right - UnScaleByZoom(4 * 28, ZOOM_LVL_GUI) - 4 : right - 2, top + text_y_offset, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
