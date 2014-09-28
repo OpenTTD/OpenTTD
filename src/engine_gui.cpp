@@ -20,6 +20,10 @@
 #include "company_func.h"
 #include "rail.h"
 #include "settings_type.h"
+#include "train.h"
+#include "roadveh.h"
+#include "ship.h"
+#include "aircraft.h"
 
 #include "widgets/engine_widget.h"
 
@@ -61,7 +65,7 @@ static const NWidgetPart _nested_engine_preview_widgets[] = {
 };
 
 struct EnginePreviewWindow : Window {
-	static const int VEHICLE_SPACE = 40; // The space to show the vehicle image
+	int vehicle_space = 40; // The space to show the vehicle image
 
 	EnginePreviewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
@@ -75,9 +79,25 @@ struct EnginePreviewWindow : Window {
 	{
 		if (widget != WID_EP_QUESTION) return;
 
+		/* Get size of engine sprite, on loan from depot_gui.cpp */
 		EngineID engine = this->window_number;
+		EngineImageType image_type = EIT_PURCHASE;
+		uint x, y;
+		int x_offs, y_offs;
+
+		const Engine *e = Engine::Get(engine);
+		switch (e->type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:    GetTrainSpriteSize(   engine, x, y, x_offs, y_offs, image_type); break;
+			case VEH_ROAD:     GetRoadVehSpriteSize( engine, x, y, x_offs, y_offs, image_type); break;
+			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
+			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+		}
+		this->vehicle_space = max<int>(this->vehicle_space, y - y_offs);
+
+		size->width = max(size->width, x - x_offs);
 		SetDParam(0, GetEngineCategoryName(engine));
-		size->height = GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, size->width) + WD_PAR_VSEP_WIDE + FONT_HEIGHT_NORMAL + VEHICLE_SPACE;
+		size->height = GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, size->width) + WD_PAR_VSEP_WIDE + FONT_HEIGHT_NORMAL + this->vehicle_space;
 		SetDParam(0, engine);
 		size->height += GetStringHeight(GetEngineInfoString(engine), size->width);
 	}
@@ -95,9 +115,9 @@ struct EnginePreviewWindow : Window {
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_ENGINE_NAME, TC_BLACK, SA_HOR_CENTER);
 		y += FONT_HEIGHT_NORMAL;
 
-		DrawVehicleEngine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, this->width >> 1, y + VEHICLE_SPACE / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
+		DrawVehicleEngine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 
-		y += VEHICLE_SPACE;
+		y += this->vehicle_space;
 		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
 	}
 
