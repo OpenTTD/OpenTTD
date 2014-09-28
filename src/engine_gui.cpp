@@ -65,7 +65,7 @@ static const NWidgetPart _nested_engine_preview_widgets[] = {
 };
 
 struct EnginePreviewWindow : Window {
-	int vehicle_space = 40; // The space to show the vehicle image
+	int vehicle_space; // The space to show the vehicle image
 
 	EnginePreviewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
@@ -93,7 +93,7 @@ struct EnginePreviewWindow : Window {
 			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
 			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
 		}
-		this->vehicle_space = max<int>(this->vehicle_space, y - y_offs);
+		this->vehicle_space = max<int>(40, y - y_offs);
 
 		size->width = max(size->width, x - x_offs);
 		SetDParam(0, GetEngineCategoryName(engine));
