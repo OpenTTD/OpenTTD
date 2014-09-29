@@ -281,11 +281,8 @@ static inline void FreeHeightMap()
  */
 static inline height_t RandomHeight(amplitude_t rMax)
 {
-	amplitude_t ra = (Random() << 16) | (Random() & 0x0000FFFF);
-	height_t rh;
 	/* Spread height into range -rMax..+rMax */
-	rh = A2H(ra % (2 * rMax + 1) - rMax);
-	return rh;
+	return A2H(RandomRange(2 * rMax + 1) - rMax);
 }
 
 /**
