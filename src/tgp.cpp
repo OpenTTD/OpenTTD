@@ -203,7 +203,7 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 #define FOR_ALL_TILES_IN_HEIGHT(h) for (h = _height_map.h; h < &_height_map.h[_height_map.total_size]; h++)
 
 /** Maximum index into array of noise amplitudes */
-static const int TGP_FREQUENCY_MAX = 6;
+static const uint TGP_FREQUENCY_MAX = 6;
 
 /**
  * Noise amplitudes (multiplied by 1024)
