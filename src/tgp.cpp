@@ -269,7 +269,6 @@ static inline bool AllocHeightMap()
 /** Free height map */
 static inline void FreeHeightMap()
 {
-	if (_height_map.h == NULL) return;
 	free(_height_map.h);
 	_height_map.h = NULL;
 }
@@ -773,15 +772,14 @@ static void HeightMapSmoothCoasts(uint8 water_borders)
  */
 static void HeightMapSmoothSlopes(height_t dh_max)
 {
-	int x, y;
-	for (y = 0; y <= (int)_height_map.size_y; y++) {
-		for (x = 0; x <= (int)_height_map.size_x; x++) {
+	for (int y = 0; y <= (int)_height_map.size_y; y++) {
+		for (int x = 0; x <= (int)_height_map.size_x; x++) {
 			height_t h_max = min(_height_map.height(x > 0 ? x - 1 : x, y), _height_map.height(x, y > 0 ? y - 1 : y)) + dh_max;
 			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
-	for (y = _height_map.size_y; y >= 0; y--) {
-		for (x = _height_map.size_x; x >= 0; x--) {
+	for (int y = _height_map.size_y; y >= 0; y--) {
+		for (int x = _height_map.size_x; x >= 0; x--) {
 			height_t h_max = min(_height_map.height((uint)x < _height_map.size_x ? x + 1 : x, y), _height_map.height(x, (uint)y < _height_map.size_y ? y + 1 : y)) + dh_max;
 			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
@@ -882,9 +880,8 @@ static double interpolated_noise(const double x, const double y, const int prime
 static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime)
 {
 	double total = 0.0;
-	int i;
 
-	for (i = 0; i < 6; i++) {
+	for (int i = 0; i < 6; i++) {
 		const double frequency = (double)(1 << i);
 		const double amplitude = pow(p, (double)i);
 
@@ -915,8 +912,6 @@ static void TgenSetTileHeight(TileIndex tile, int height)
  */
 void GenerateTerrainPerlin()
 {
-	uint x, y;
-
 	if (!AllocHeightMap()) return;
 	GenerateWorldSetAbortCallback(FreeHeightMap);
 
@@ -930,15 +925,15 @@ void GenerateTerrainPerlin()
 
 	/* First make sure the tiles at the north border are void tiles if needed. */
 	if (_settings_game.construction.freeform_edges) {
-		for (y = 0; y < _height_map.size_y - 1; y++) MakeVoid(_height_map.size_x * y);
-		for (x = 0; x < _height_map.size_x;     x++) MakeVoid(x);
+		for (uint y = 0; y < _height_map.size_y - 1; y++) MakeVoid(_height_map.size_x * y);
+		for (uint x = 0; x < _height_map.size_x;     x++) MakeVoid(x);
 	}
 
 	int max_height = _settings_game.construction.max_heightlevel;
 
 	/* Transfer height map into OTTD map */
-	for (y = 0; y < _height_map.size_y; y++) {
-		for (x = 0; x < _height_map.size_x; x++) {
+	for (uint y = 0; y < _height_map.size_y; y++) {
+		for (uint x = 0; x < _height_map.size_x; x++) {
 			TgenSetTileHeight(TileXY(x, y), Clamp(H2I(_height_map.height(x, y)), 0, max_height));
 		}
 	}
