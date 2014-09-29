@@ -289,109 +289,60 @@ static inline height_t RandomHeight(amplitude_t rMax)
 }
 
 /**
- * One interpolation and noise round
+ * Base Perlin noise generator - fills height map with raw Perlin noise.
  *
- * The heights on the map are generated in an iterative process.
- * We start off with a frequency of 1 (log_frequency == 0), and generate heights only for corners on the most coarsest mesh
- * (i.e. only for x/y coordinates which are multiples of the minimum edge length).
- *
- * After this initial step the frequency is doubled (log_frequency incremented) each iteration to generate corners on the next finer mesh.
- * The heights of the newly added corners are first set by interpolating the heights from the previous iteration.
- * Finally noise with the given amplitude is applied to all corners of the new mesh.
- *
- * Generation terminates, when the frequency has reached the map size. I.e. the mesh is as fine as the map, and every corner height
- * has been set.
- *
- * @param log_frequency frequency (logarithmic) to apply noise for
- * @param amplitude Amplitude for the noise
- * @return false if we are finished (reached the minimal step size / highest frequency)
+ * This runs several iterations with increasing precision; the last iteration looks at areas
+ * of 1 by 1 tiles, the second to last at 2 by 2 tiles and the initial 2**TGP_FREQUENCY_MAX
+ * by 2**TGP_FREQUENCY_MAX tiles.
  */
-static bool ApplyNoise(uint log_frequency, amplitude_t amplitude)
+static void HeightMapGenerate()
 {
-	uint size_min = min(_height_map.size_x, _height_map.size_y);
-	uint step = size_min >> log_frequency;
-	uint x, y;
-
 	/* Trying to apply noise to uninitialized height map */
 	assert(_height_map.h != NULL);
 
-	/* Are we finished? */
-	if (step == 0) return false;
+	for (uint frequency = 0; frequency <= TGP_FREQUENCY_MAX; frequency++) {
+		const amplitude_t amplitude = _amplitudes_by_smoothness_and_frequency[_settings_game.game_creation.tgen_smoothness][frequency];
+		const uint step = 1 << (TGP_FREQUENCY_MAX - frequency);
 
-	if (log_frequency == 0) {
-		/* This is first round, we need to establish base heights with step = size_min */
-		for (y = 0; y <= _height_map.size_y; y += step) {
-			for (x = 0; x <= _height_map.size_x; x += step) {
-				height_t height = (amplitude > 0) ? RandomHeight(amplitude) : 0;
-				_height_map.height(x, y) = height;
+		if (frequency == 0) {
+			/* This is first round, we need to establish base heights with step = size_min */
+			for (uint y = 0; y <= _height_map.size_y; y += step) {
+				for (uint x = 0; x <= _height_map.size_x; x += step) {
+					height_t height = (amplitude > 0) ? RandomHeight(amplitude) : 0;
+					_height_map.height(x, y) = height;
+				}
+			}
+			continue;
+		}
+
+		/* It is regular iteration round.
+		* Interpolate height values at odd x, even y tiles */
+		for (uint y = 0; y <= _height_map.size_y; y += 2 * step) {
+			for (uint x = 0; x < _height_map.size_x; x += 2 * step) {
+				height_t h00 = _height_map.height(x + 0 * step, y);
+				height_t h02 = _height_map.height(x + 2 * step, y);
+				height_t h01 = (h00 + h02) / 2;
+				_height_map.height(x + 1 * step, y) = h01;
 			}
 		}
-		return true;
-	}
 
-	/* It is regular iteration round.
-	 * Interpolate height values at odd x, even y tiles */
-	for (y = 0; y <= _height_map.size_y; y += 2 * step) {
-		for (x = 0; x < _height_map.size_x; x += 2 * step) {
-			height_t h00 = _height_map.height(x + 0 * step, y);
-			height_t h02 = _height_map.height(x + 2 * step, y);
-			height_t h01 = (h00 + h02) / 2;
-			_height_map.height(x + 1 * step, y) = h01;
+		/* Interpolate height values at odd y tiles */
+		for (uint y = 0; y < _height_map.size_y; y += 2 * step) {
+			for (uint x = 0; x <= _height_map.size_x; x += step) {
+				height_t h00 = _height_map.height(x, y + 0 * step);
+				height_t h20 = _height_map.height(x, y + 2 * step);
+				height_t h10 = (h00 + h20) / 2;
+				_height_map.height(x, y + 1 * step) = h10;
+			}
+		}
+
+		/* Add noise for next higher frequency (smaller steps) */
+		for (uint y = 0; y <= _height_map.size_y; y += step) {
+			for (uint x = 0; x <= _height_map.size_x; x += step) {
+				_height_map.height(x, y) += RandomHeight(amplitude);
+			}
 		}
 	}
-
-	/* Interpolate height values at odd y tiles */
-	for (y = 0; y < _height_map.size_y; y += 2 * step) {
-		for (x = 0; x <= _height_map.size_x; x += step) {
-			height_t h00 = _height_map.height(x, y + 0 * step);
-			height_t h20 = _height_map.height(x, y + 2 * step);
-			height_t h10 = (h00 + h20) / 2;
-			_height_map.height(x, y + 1 * step) = h10;
-		}
-	}
-
-	/* Add noise for next higher frequency (smaller steps) */
-	for (y = 0; y <= _height_map.size_y; y += step) {
-		for (x = 0; x <= _height_map.size_x; x += step) {
-			_height_map.height(x, y) += RandomHeight(amplitude);
-		}
-	}
-
-	return (step > 1);
-}
-
-/** Base Perlin noise generator - fills height map with raw Perlin noise */
-static void HeightMapGenerate()
-{
-	uint size_min = min(_height_map.size_x, _height_map.size_y);
-	uint iteration_round = 0;
-	amplitude_t amplitude;
-	bool continue_iteration;
-	int log_size_min, log_frequency_min;
-	int log_frequency;
-
-	/* Find first power of two that fits, so that later log_frequency == TGP_FREQUENCY_MAX in the last iteration */
-	for (log_size_min = TGP_FREQUENCY_MAX; (1U << log_size_min) < size_min; log_size_min++) { }
-	log_frequency_min = log_size_min - TGP_FREQUENCY_MAX;
-
-	/* Zero must be part of the iteration, else initialization will fail. */
-	assert(log_frequency_min >= 0);
-
-	/* Keep increasing the frequency until we reach the step size equal to one tile */
-	do {
-		log_frequency = iteration_round - log_frequency_min;
-		if (log_frequency >= 0) {
-			/* Apply noise for the next frequency */
-			assert(log_frequency <= TGP_FREQUENCY_MAX);
-			amplitude = _amplitudes_by_smoothness_and_frequency[_settings_game.game_creation.tgen_smoothness][log_frequency];
-		} else {
-			/* Amplitude for the low frequencies on big maps is 0, i.e. initialise with zero height */
-			amplitude = 0;
-		}
-		continue_iteration = ApplyNoise(iteration_round, amplitude);
-		iteration_round++;
-	} while (continue_iteration);
-	assert(log_frequency == TGP_FREQUENCY_MAX);
 }
 
 /** Returns min, max and average height from height map */
