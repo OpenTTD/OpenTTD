@@ -829,8 +829,8 @@ struct SpriteAlignerWindow : Window {
 
 			case WID_SA_OFFSETS: {
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
-				SetDParam(0, spr->x_offs / ZOOM_LVL_BASE);
-				SetDParam(1, spr->y_offs / ZOOM_LVL_BASE);
+				SetDParam(0, spr->x_offs);
+				SetDParam(1, spr->y_offs);
 				break;
 			}
 
@@ -950,10 +950,10 @@ struct SpriteAlignerWindow : Window {
 				 */
 				Sprite *spr = const_cast<Sprite *>(GetSprite(this->current_sprite, ST_NORMAL));
 				switch (widget) {
-					case WID_SA_UP:    spr->y_offs -= ZOOM_LVL_BASE; break;
-					case WID_SA_DOWN:  spr->y_offs += ZOOM_LVL_BASE; break;
-					case WID_SA_LEFT:  spr->x_offs -= ZOOM_LVL_BASE; break;
-					case WID_SA_RIGHT: spr->x_offs += ZOOM_LVL_BASE; break;
+					case WID_SA_UP:    spr->y_offs--; break;
+					case WID_SA_DOWN:  spr->y_offs++; break;
+					case WID_SA_LEFT:  spr->x_offs--; break;
+					case WID_SA_RIGHT: spr->x_offs++; break;
 				}
 				/* Of course, we need to redraw the sprite, but where is it used?
 				 * Everywhere is a safe bet. */
