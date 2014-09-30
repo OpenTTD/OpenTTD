@@ -19,6 +19,7 @@
 #include "strings_func.h"
 #include "textbuf_gui.h"
 #include "vehicle_gui.h"
+#include "zoom_func.h"
 
 #include "engine_base.h"
 #include "industry.h"
@@ -857,15 +858,15 @@ struct SpriteAlignerWindow : Window {
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
 				int width  = r.right  - r.left + 1;
 				int height = r.bottom - r.top  + 1;
-				int x = r.left - spr->x_offs / ZOOM_LVL_BASE + (width  - spr->width / ZOOM_LVL_BASE) / 2;
-				int y = r.top  - spr->y_offs / ZOOM_LVL_BASE + (height - spr->height / ZOOM_LVL_BASE) / 2;
+				int x = r.left - UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI) + (width  - UnScaleByZoom(spr->width, ZOOM_LVL_GUI)) / 2;
+				int y = r.top  - UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI) + (height - UnScaleByZoom(spr->height, ZOOM_LVL_GUI)) / 2;
 
 				/* And draw only the part within the sprite area */
 				SubSprite subspr = {
-					spr->x_offs + (spr->width  - width  * ZOOM_LVL_BASE) / 2 + 1,
-					spr->y_offs + (spr->height - height * ZOOM_LVL_BASE) / 2 + 1,
-					spr->x_offs + (spr->width  + width  * ZOOM_LVL_BASE) / 2 - 1,
-					spr->y_offs + (spr->height + height * ZOOM_LVL_BASE) / 2 - 1,
+					spr->x_offs + (spr->width  - ScaleByZoom(width,  ZOOM_LVL_GUI)) / 2 + 1,
+					spr->y_offs + (spr->height - ScaleByZoom(height, ZOOM_LVL_GUI)) / 2 + 1,
+					spr->x_offs + (spr->width  + ScaleByZoom(width,  ZOOM_LVL_GUI)) / 2 - 1,
+					spr->y_offs + (spr->height + ScaleByZoom(height, ZOOM_LVL_GUI)) / 2 - 1,
 				};
 
 				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr, ZOOM_LVL_GUI);
