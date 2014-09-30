@@ -1045,7 +1045,7 @@ static bool AllocateDibSection(int w, int h, bool force)
 {
 	BITMAPINFO *bi;
 	HDC dc;
-	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+	uint bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	w = max(w, 64);
 	h = max(h, 64);
@@ -1105,7 +1105,7 @@ static void FindResolutions()
 	DEVMODEA dm;
 
 	/* Check modes for the relevant fullscreen bpp */
-	int bpp = _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+	uint bpp = _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	/* XXX - EnumDisplaySettingsW crashes with unicows.dll on Windows95
 	 * Doesn't really matter since we don't pass a string anyways, but still
