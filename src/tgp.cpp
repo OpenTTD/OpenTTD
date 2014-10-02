@@ -513,8 +513,8 @@ static void HeightMapCurves(uint level)
 
 	/* Set up a grid to choose curve maps based on location; attempt to get a somewhat square grid */
 	float factor = sqrt((float)_height_map.size_x / (float)_height_map.size_y);
-	uint sx = Clamp(round((1 << level) * factor), 1, 128);
-	uint sy = Clamp(round((1 << level) / factor), 1, 128);
+	uint sx = Clamp((int)(((1 << level) * factor) + 0.5), 1, 128);
+	uint sy = Clamp((int)(((1 << level) / factor) + 0.5), 1, 128);
 	byte *c = AllocaM(byte, sx * sy);
 
 	for (uint i = 0; i < sx * sy; i++) {
