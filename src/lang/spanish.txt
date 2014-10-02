@@ -1161,6 +1161,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir 
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altura máxima del mapa: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Establece la altura máxima permitida para las montañas en el mapa
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No se puede establecer la altura máxima del mapa en el valor indicado. Al menos una montaña ya es más alta
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo edificios, raíles, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir modificar el terreno debajo de edificios y raíles sin eliminarlos
 STR_CONFIG_SETTING_CATCHMENT                                    :Tamaño del área de captación realista: {STRING}

@@ -3610,8 +3610,8 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions 
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregant / Descarregant
-STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Deixant
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Sortint
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Vehicle sinistrat!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariat
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parat
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Parant, a {VELOCITY}
