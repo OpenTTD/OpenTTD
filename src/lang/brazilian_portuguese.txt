@@ -1159,6 +1159,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Alterna desastr
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação local: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolhe como a poluição sonoroa e ambiental afeta a classificação na cidade e as ações futuras naquela área
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altura máx. do mapa: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Define a altitude máxima para montanhas no mapa
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Impossível definir a altitude máx. do mapa para esse valor. Há ao menos uma montanha mais alta que isso
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, trilhos, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-las
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista das áreas de abrangência: {STRING}
@@ -1187,6 +1190,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflação: {ST
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativa inflação na economia, de forma que custos sobem um pouco mais do que recebidos
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo de pontes: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Tamanho máximo para construção de pontes
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altura máxima de pontes: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altura máxima para a construção de pontes
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tamanho máximo de túneis: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tamanho máximo para construção de túneis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método manual de constução de indústria primária: {STRING}
@@ -1292,7 +1297,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade de in
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e o nível que deve ser mantido durante o jogo
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Dist máx da borda para Refinarias de Óleo: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias são construídas apenas nas bordas, ou no litoral, para ilhas
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude da linha de neve: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a que altitude a neve começa nos climas sub-árticos. Neve também afeta geração de indústrias e necessidades para o crescimento das cidades
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis apenas) Escolhe a frequência de colinas: Terrenos planos têm menos colinas, mais espalhadas. Montanhosos tem mais colinas, que pode se tornar repetitivo
@@ -1633,25 +1638,25 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (cv)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unidades de peso: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Sempre que pesos forem exibidos na interface de usuário, serão exibidos na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Sempre que pesos forem exibidos na interface de usuário, exiba-os na unidade selecionada
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (ton. curta)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Métrico (ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unidades volumétricas: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Sempre que volumes forem exibidos na interface de usuário, serão exibidos na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Sempre que volumes forem exibidos na interface de usuário, exiba-os na unidade selecionada
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidade de tração: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Sempre que tração, ou efeito trator, é exibido na interface de usuário, será exibido na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Sempre que tração, ou efeito trator, é exibido na interface de usuário, exiba na unidade selecionada
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unidade de altitude: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Sempre que altitudes são exibidas na interface do usuário, será exibida na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Sempre que altitudes são exibidas na interface do usuário, exiba na unidade selecionada
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -1787,6 +1792,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (destrói indústrias, objetos estáticos): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão se acidentar (frequentemente) em aeroportos pequenos: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar a altitude máx do mapa: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a altitude máx das montanhas no mapa
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :terreno temperado
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :terreno subártico
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :terreno subtropical
@@ -2305,7 +2312,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito (para compra e manutenção de trens). Shift altera construção/preço estimado
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de controle. Ctrl permite a união de pontos de controle. Shift altera construção/preço estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite a união de estações. Shift altera construção/preço estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna a construção de semáforos/sinais{}Clicar e arrastar constroi sinais até a próxima junção{}Ctrl+Clique alterna a janela de seleção de sinais. Shift altera construção/preço estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna a construção de semáforos/sinais{}Clicar e arrastar constroi sinais até a próxima junção ou sinal{}Ctrl+Clique alterna a janela de seleção de sinais. Shift alterna construção/preço estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift altera construção/preço estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift altera construção/preço estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar construir/remover ferrovias, sinais, pontos de controle e estações. Segure ctrl para remover os trilhos de estações e pontos de controle.
@@ -2712,6 +2719,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de cidades:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de indústrias:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Altitude máx. do mapa:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Aumenta a altitude máxima das montanhas no mapa em uma unidade
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Diminui a altitude máxima das montanhas no mapa em uma unidade
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Linha da neve
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Aumentar a linha da neve em um ponto
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Diminuir a linha da neve em um ponto
@@ -2741,6 +2751,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Alterar a altitude máxima do mapa
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mudar linha da neve
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mudar data de início
 
@@ -4125,6 +4136,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}A escava
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Já está ao nível do mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}Muito alto
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já está plano
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}A ponte acima ficaria muito alta.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Impossível alterar o nome da empresa...
@@ -4314,6 +4326,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Remova a
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Impossível iniciar e terminar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremidades da ponte não estão no mesmo nível
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponte é muito baixa para o terreno
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A ponte está muito alta para esse terreno.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inicio e fim devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte muito longa

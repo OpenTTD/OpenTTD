@@ -1277,7 +1277,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración de me
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración de los mensajes de error mostrados en ventanas rojas. Algunos mensajes de error críticos no se cierran automáticamente, y deben de ser cerrados manualmente
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar mensajes de ayuda: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo que hace falta mantener el ratón encima de un elemento de la interfaz para mostrar su mensaje de ayuda. De forma alternativa, se puede escoger mostrar estos mensajes al pulsar el botón derecho
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo necesario con el ratón sobre un elemento de la interfaz para que esta muestre su mensaje de ayuda. De forma alternativa, se puede escoger mostrar estos mensajes al pulsar el botón derecho cuando el valor de esta opción ha sido establecido a 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Mantener ratón durante {COMMA} milisegundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click derecho
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Muestra la población de un municipio en su etiqueta: {STRING}
@@ -4136,6 +4136,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}La excav
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ya está al nivel del mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}... demasiado alto
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ya está llano
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Después del cambio, el puente sobre este terreno será demasiado alto.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}No se puede cambiar el nombre de la empresa...

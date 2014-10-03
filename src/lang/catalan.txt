@@ -1650,7 +1650,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Mètric (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unitats de força de tracció: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Quan es mostri força de tracció a la interfície d'usuari, presenta-la en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Quan es mostrin forces de tracció a la interfície d'usuari, presenta-les en les unitats seleccionades
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Mètric (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
@@ -2312,7 +2312,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per construir i revisar trens). Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteix una via en un punt de control. Ctrl permet ajuntar punts de control. Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta entre semàfors mecànics i elèctrics{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals. Shift commuta construir/mostrar el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta entre semàfors mecànics i elèctrics{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció o senyal{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals. Shift commuta construir/mostrar el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix un pont de tren. Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix un túnel per a trens. Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta construeix/treu per vies de tren, senyals, punts de control i estacions. Mantingueu Ctrl per treure també les vies dels punts de control i de les estacions
