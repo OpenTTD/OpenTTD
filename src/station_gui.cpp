@@ -31,6 +31,7 @@
 #include "vehiclelist.h"
 #include "town.h"
 #include "linkgraph/linkgraph.h"
+#include "zoom_func.h"
 
 #include "widgets/station_widget.h"
 
@@ -802,15 +803,16 @@ static const NWidgetPart _nested_station_view_widgets[] = {
  */
 static void DrawCargoIcons(CargoID i, uint waiting, int left, int right, int y)
 {
-	uint num = min((waiting + 5) / 10, (right - left) / 10); // maximum is width / 10 icons so it won't overflow
+	int width = UnScaleByZoom(4 * 10, ZOOM_LVL_GUI);
+	uint num = min((waiting + (width / 2)) / width, (right - left) / width); // maximum is width / 10 icons so it won't overflow
 	if (num == 0) return;
 
 	SpriteID sprite = CargoSpec::Get(i)->GetCargoIcon();
 
-	int x = _current_text_dir == TD_RTL ? left : right - num * 10;
+	int x = _current_text_dir == TD_RTL ? left : right - num * width;
 	do {
 		DrawSprite(sprite, PAL_NONE, x, y);
-		x += 10;
+		x += width;
 	} while (--num);
 }
 
