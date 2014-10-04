@@ -249,7 +249,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スク�
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}建物などを範囲指定して撤去します。Ctrlを押すと、範囲が斜めになります。Shiftを押しながら決定すると、費用を見積もります
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}非表示を表示
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}非表示を表示
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}非表示を表示
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}非表示を表示
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}このボタンを押すと、非表示の列車も全て表示されます
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}このボタンを押すと、非表示の車両も全て表示されます
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}このボタンを押すと、非表示の船舶も全て表示されます
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}このボタンを押すと、非表示の航空機も全て表示されます
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}デフォルト
@@ -1150,6 +1158,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :設定を有効
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地域の再編に対する町の姿勢: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :会社が街域で引き起こした騒音(主に空港)や環境破壊がどの程度、街での評価や同じ地域での更なる建設行為に影響するかを設定します
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :マップの最高高度: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :マップの最高地点の高さを設定します
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}マップの最高高さをこの値には設定出来ません。少なくとも1箇所以上この値より高い山があります。
 STR_CONFIG_SETTING_AUTOSLOPE                                    :建物/路線の自動地形追従: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :撤去を行わないで建物や路線がある土地の地形を変更することを可能にします。建物/路線は変更された地形に自動で追従します。
 STR_CONFIG_SETTING_CATCHMENT                                    :現実的な受入範囲: {STRING}
@@ -1176,8 +1187,10 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :非隣接駅の
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :直接繋がっていない近隣の駅/停留所などを一つとして扱えるかを設定します。有効にした場合、新設する際にCtrl+クリックで統合先の選択が可能になります。
 STR_CONFIG_SETTING_INFLATION                                    :インフレ: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :インフレを有効にします。経費の方が収入よりわずかに早く上昇していきます。
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋の最大長:{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :橋の最大長を設定できます
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋梁の最大長:{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :橋梁の最大長を設定できます
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :橋梁の高度: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :橋梁の建設出来る高さを設定出来ます
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :トンネルの最大長：{STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :トンネルの最大長を設定できます
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :一次産業の開設法: {STRING}
@@ -1263,7 +1276,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :エラーメッ
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :赤地のエラーメッセージが表示されている時間を設定します。注: 致命的なエラーの場合はこの時間を経過しても自動では閉じません。
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}秒
 STR_CONFIG_SETTING_HOVER_DELAY                                  :ツールチップ表示: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :カーソルをインターフェイス要素に乗せた場合にツールチップが表示されるまでの時間を決定します。この設定でツールチップを右クリックで表示するようにもできます
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :カーソルをインターフェイス要素に乗せた場合にツールチップが表示されるまでの時間を決定します。"0"に設定するとツールチップは右クリックで表示されるようになります
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :マウスオーバー {COMMA}秒後
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右クリック
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :街名ラベルに人口を表示: {STRING}
@@ -1642,7 +1655,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :メートル法
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :国際単位系 (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :距離単位: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :ゲーム中の長さをいずれの単位系で表すか決定します
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :ゲーム中の高度をいずれの単位系で表すか決定します
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ヤード・ポンド法 (フィート(ft))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :メートル法 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国際単位系 (m)
@@ -1778,6 +1791,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社:
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルの平面交差を許容: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ジェット機の小型空港での墜落率を減少: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}マップの最高高度を変更: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}マップの最大高度
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :温帯
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :亜寒帯
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亜熱帯
@@ -2296,7 +2311,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}自動�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}列車庫を建設します(列車の購入・整備施設になります)。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}線路に通過点を設置します。Ctrlを押しながら決定すると通過点同士を結合できます。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}駅を建設します。Ctrlを押しながら決定すると離れた駅等と結合可能です。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}鉄道信号を建設します。Ctrlで腕木式と色灯式を切り替えられます。{}ドラックして決定するとその区間に一定間隔で信号が配置されます。このときCtrlを押しておくと、その先分岐に行き着くまで信号を配置していきます。{}Ctrl+クリックで信号種類を選ぶウィンドウが出ます(「信号のGUIを使用」設定オフ時のみ)。Shiftを押しながら決定すると費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}鉄道信号を建設します。Ctrlで腕木式と色灯式を切り替えられます。{}ドラックして決定するとその区間に一定間隔で信号が配置されます。このときCtrlを押しておくと、その先分岐か信号に行き着くまで連続配置します。{}Ctrl+クリックで信号種類を選ぶウィンドウが出ます(「信号のGUIを使用」設定オフ時のみ)。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}鉄道橋を建設します。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}鉄道トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路・信号・駅・中継駅の建設/撤去を切り替えます。{}Ctrlを押したままにすると駅・通過点の撤去時に線路ごと撤去されます
@@ -2703,6 +2718,9 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}街数:
 STR_MAPGEN_DATE                                                 :{BLACK}日付:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}産業数:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}マップ最高高度:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}マップの最高高度を1ずつ増やします
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}マップの最高高度を1ずつ減らします
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線の位置:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}雪線を上げる
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}雪線を下げる
@@ -2732,6 +2750,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ハイ�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}サイズ:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}マップの最高高度を変更
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}雪線の位置を変更
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}開始年の変更
 
@@ -2845,11 +2864,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF�
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}スプライト{COMMA} 配列 ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}次のスプライト
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進みます。疑似/リカラー/フォントスプライトはスキップし、終端まで行を送ります
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進みます。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}スプライトへ飛ぶ
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}所定のスプライトへ飛びます。指定のスプライトがノーマルスプライトでなければ、次のノーマルスプライトに進みます
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}前のスプライト
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。疑似/リカラー/フォントスプライトはスキップし、始端まで行を送ります
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在選択されているスプライトの代表絵を示します。この配列はスプライトを描画するときには無視されます
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオフセットを変更し、スプライトを移動します
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Xオフセット: {NUM}, Yオフセット: {NUM}
@@ -2959,8 +2978,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口: 
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}旅客数(先月): {ORANGE}{COMMA}人{BLACK}　最大: {ORANGE}{COMMA}人
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}郵便袋(先月): {ORANGE}{COMMA}袋{BLACK}　最大: {ORANGE}{COMMA}袋
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}街の成長に必要な物資:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} が必要です
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} が冬に必要です
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}が{RED}必要です
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}が{BLACK}冬に必要です
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} は配送されています
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {RED}(更なる配送が必要)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {GREEN}(需要充足)
@@ -3368,10 +3387,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST}を
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}航続距離: {GOLD}{COMMA} タイル
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車リスト - 個々の情報を見るには列車をクリックします
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}車両リスト - 個々の情報を見るには車両をクリックします
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶リスト - 個々の情報を見るには船舶をクリックします
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}航空機リスト - 個々の情報を見るには航空機をクリックします
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車リスト - 個々の情報を見るには列車をクリックします。Ctrl+クリックでその列車種の表示/非表示を切り替えます
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}車両リスト - 個々の情報を見るには車両をクリックします。Ctrl+クリックでその車両種の表示/非表示を切り替えます
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶リスト - 個々の情報を見るには船舶をクリックします。Ctrl+クリックでその船舶機種の表示/非表示を切り替えます
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}航空機リスト - 個々の情報を見るには航空機をクリックします。Ctrl+クリックでその航空機種の表示/非表示を切り替えます
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}列車を購入
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}車両を購入
@@ -3393,8 +3412,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}車両�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}船舶の名称を変更
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}航空機の名称を変更
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}非表示
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}非表示
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}非表示
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}非表示
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}表示
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}表示
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}表示
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}表示
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}指定の列車機種の非表示/表示を切り替えます
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}指定の車両機種の非表示/表示を切り替えます
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}指定の船舶機種の非表示/表示を切り替えます
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}指定の航空機種の非表示/表示を切り替えます
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}列車の機種名を変更
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}車両の機種名を変更
@@ -3500,6 +3531,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :車両
 STR_REPLACE_VEHICLE_SHIP                                        :船舶
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :航空機
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}使用中の輸送機器
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}現在使用している輸送機器の一覧です
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}利用可能な輸送機器
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}置換に使用可能な輸送機器の一覧です
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}置換対象を選択
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}左で選択した輸送機器を置き換える輸送機器を選択します
@@ -4100,6 +4135,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}ここ�
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}すでに海水位です
 STR_ERROR_TOO_HIGH                                              :{WHITE}高すぎます
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}すでに平坦になっています
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}地形を変更すると上を走る橋梁を支えられなくなります
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}会社名を変更できません
@@ -4126,7 +4162,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}マッ�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}他の街に近すぎます
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}街数の制限を超えています
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}マップに空きスペースがありません
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}この街は自動では道路を建設しません。詳細設定の「経済->街」で道路の建設を許可できます
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}この街は自動では道路を建設しません。「詳細設定→環境→街」から道路の建設を許可できます
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路補修工事中です
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}街を削除できません{}この街名を参照する停留施設・車庫か、街が所有するタイルが除去できません
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}街の中心部に像を建てるのに適した場所がありません
@@ -4150,6 +4186,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}雪線�
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}降雪線より上にのみ建設できます
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}降雪線より下にのみ建設できます
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}産業「{STRING}」を建設するのに適切な土地がありません
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}よりよいマップを作成するため、生成パラメーターを変更します
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}ここには駅を建設できません
@@ -4287,6 +4325,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}先に�
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}開始点と終了点が同じです
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}橋端が同じ高さではありません
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋が低く、途中の起伏を越えられません
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}橋が地面から高すぎます
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}橋は直線である必要があります
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}橋の先端は両方地面である必要があります
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}橋が長すぎます
@@ -4851,6 +4890,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} （非表示）
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
