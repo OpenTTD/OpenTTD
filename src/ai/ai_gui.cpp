@@ -346,7 +346,7 @@ struct AISettingsWindow : public Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget == WID_AIS_BACKGROUND) {
-			this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+			this->line_height = max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 
 			resize->width = 1;
 			resize->height = this->line_height;
@@ -371,6 +371,7 @@ struct AISettingsWindow : public Window {
 
 		int y = r.top;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
+		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 		for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
 			const ScriptConfigItem &config_item = **it;
 			int current_value = config->GetSetting((config_item).name);
@@ -412,7 +413,7 @@ struct AISettingsWindow : public Window {
 				}
 			}
 
-			DrawString(text_left, text_right, y + WD_MATRIX_TOP, str, colour);
+			DrawString(text_left, text_right, y + text_y_offset, str, colour);
 			y += this->line_height;
 		}
 	}
