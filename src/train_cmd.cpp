@@ -464,10 +464,10 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	}
 
 	if (offset != NULL) {
-		offset->x = reference_width / 2;
-		offset->y = vehicle_pitch;
+		offset->x = UnScaleByZoom(2 * reference_width, ZOOM_LVL_GUI);
+		offset->y = UnScaleByZoom(4 * vehicle_pitch, ZOOM_LVL_GUI);
 	}
-	return this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH;
+	return UnScaleByZoom(4 * this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH, ZOOM_LVL_GUI);
 }
 
 static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
@@ -514,7 +514,7 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImage
 		SpriteID sprite = GetCustomVehicleIcon(engine, dir, image_type);
 		if (sprite != 0) {
 			if (e->GetGRF() != NULL) {
-				y += e->GetGRF()->traininfo_vehicle_pitch;
+				y += UnScaleByZoom(4 * e->GetGRF()->traininfo_vehicle_pitch, ZOOM_LVL_GUI);
 			}
 			return sprite;
 		}

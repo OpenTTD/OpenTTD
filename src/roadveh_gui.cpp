@@ -15,6 +15,7 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "string_func.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
@@ -30,7 +31,7 @@
  */
 void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 {
-	uint y_offset = v->HasArticulatedPart() ? 15 : 0; // Draw the first line below the sprite of an articulated RV instead of after it.
+	uint y_offset = v->HasArticulatedPart() ? UnScaleByZoom(4 * 15, ZOOM_LVL_GUI) : 0; // Draw the first line below the sprite of an articulated RV instead of after it.
 	StringID str;
 	Money feeder_share = 0;
 
@@ -136,7 +137,7 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	int max_width = right - left + 1;
 
-	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, 14)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, UnScaleByZoom(4 * 14, ZOOM_LVL_GUI))) return;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
@@ -148,14 +149,14 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 
 		if (rtl ? px + width > 0 : px - width < max_width) {
 			PaletteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-			DrawSprite(u->GetImage(dir, image_type), pal, px + (rtl ? -offset.x : offset.x), 6 + offset.y);
+			DrawSprite(u->GetImage(dir, image_type), pal, px + (rtl ? -offset.x : offset.x), UnScaleByZoom(4 * 6, ZOOM_LVL_GUI) + offset.y);
 		}
 
 		px += rtl ? -width : width;
 	}
 
 	if (v->index == selection) {
-		DrawFrameRect((rtl ? px : 0), 0, (rtl ? max_width : px) - 1, 12, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect((rtl ? px : 0), 0, (rtl ? max_width : px) - 1, UnScaleByZoom(4 * 13, ZOOM_LVL_GUI) - 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 
 	_cur_dpi = old_dpi;

@@ -107,10 +107,10 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 	int reference_width = ROADVEHINFO_DEFAULT_VEHICLE_WIDTH;
 
 	if (offset != NULL) {
-		offset->x = reference_width / 2;
+		offset->x = UnScaleByZoom(2 * reference_width, ZOOM_LVL_GUI);
 		offset->y = 0;
 	}
-	return this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH;
+	return UnScaleByZoom(4 * this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH, ZOOM_LVL_GUI);
 }
 
 static SpriteID GetRoadVehIcon(EngineID engine, EngineImageType image_type)

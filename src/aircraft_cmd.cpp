@@ -207,7 +207,7 @@ void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID en
 	if (!(AircraftVehInfo(engine)->subtype & AIR_CTOL)) {
 		SpriteID rotor_sprite = GetCustomRotorIcon(engine, image_type);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
-		DrawSprite(rotor_sprite, PAL_NONE, preferred_x, y - 5);
+		DrawSprite(rotor_sprite, PAL_NONE, preferred_x, y - UnScaleByZoom(4 * 5, ZOOM_LVL_GUI));
 	}
 }
 

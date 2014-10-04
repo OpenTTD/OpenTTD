@@ -91,17 +91,21 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 	int x = rtl ? right - width - x_offs : left - x_offs;
 	bool helicopter = v->subtype == AIR_HELICOPTER;
 
+	int y_offs = UnScaleByZoom(4 * 10, ZOOM_LVL_GUI);
+	int heli_offs = 0;
+
 	PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	DrawSprite(sprite, pal, x, y + 10);
+	DrawSprite(sprite, pal, x, y + y_offs);
 	if (helicopter) {
 		const Aircraft *a = Aircraft::From(v);
 		SpriteID rotor_sprite = GetCustomRotorSprite(a, true, image_type);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
-		DrawSprite(rotor_sprite, PAL_NONE, x, y + 5);
+		heli_offs = UnScaleByZoom(4 * 5, ZOOM_LVL_GUI);
+		DrawSprite(rotor_sprite, PAL_NONE, x, y + y_offs - heli_offs);
 	}
 	if (v->index == selection) {
 		x += x_offs;
-		y += UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI) + 10 - (helicopter ? 5 : 0);
-		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI) + (helicopter ? 5 : 0) + 1, COLOUR_WHITE, FR_BORDERONLY);
+		y += UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI) + y_offs - heli_offs;
+		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI) + heli_offs + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }

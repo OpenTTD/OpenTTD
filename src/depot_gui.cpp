@@ -190,16 +190,19 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 		if ((int)x + x_offs > max_extend_right) max_extend_right = x + x_offs;
 	}
 
+	int min_extend = UnScaleByZoom(16 * 4, ZOOM_LVL_GUI);
+	int max_extend = UnScaleByZoom(98 * 4, ZOOM_LVL_GUI);
+
 	switch (image_type) {
 		case EIT_IN_DEPOT:
-			_base_block_sizes_depot[type].height       = max(GetVehicleHeight(type), max_height);
-			_base_block_sizes_depot[type].extend_left  = Clamp(max_extend_left, 16, 98);
-			_base_block_sizes_depot[type].extend_right = Clamp(max_extend_right, 16, 98);
+			_base_block_sizes_depot[type].height       = max<uint>(UnScaleByZoom(4 * GetVehicleHeight(type), ZOOM_LVL_GUI), max_height);
+			_base_block_sizes_depot[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
+			_base_block_sizes_depot[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
 		case EIT_PURCHASE:
-			_base_block_sizes_purchase[type].height       = max(GetVehicleHeight(type), max_height);
-			_base_block_sizes_purchase[type].extend_left  = Clamp(max_extend_left, 16, 98);
-			_base_block_sizes_purchase[type].extend_right = Clamp(max_extend_right, 16, 98);
+			_base_block_sizes_purchase[type].height       = max<uint>(UnScaleByZoom(4 * GetVehicleHeight(type), ZOOM_LVL_GUI), max_height);
+			_base_block_sizes_purchase[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
+			_base_block_sizes_purchase[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
 
 		default: NOT_REACHED();
@@ -274,7 +277,7 @@ struct DepotWindow : Window {
 	void DrawVehicleInDepot(const Vehicle *v, int left, int right, int y) const
 	{
 		bool free_wagon = false;
-		int sprite_y = y + (this->resize.step_height - GetVehicleHeight(v->type)) / 2;
+		int sprite_y = y + (this->resize.step_height - UnScaleByZoom(4 * GetVehicleHeight(v->type), ZOOM_LVL_GUI)) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		int image_left  = rtl ? left  + this->count_width  : left  + this->header_width;
@@ -285,7 +288,7 @@ struct DepotWindow : Window {
 				const Train *u = Train::From(v);
 				free_wagon = u->IsFreeWagon();
 
-				uint x_space = free_wagon ? TRAININFO_DEFAULT_VEHICLE_WIDTH : 0;
+				uint x_space = free_wagon ? UnScaleByZoom(4 * TRAININFO_DEFAULT_VEHICLE_WIDTH, ZOOM_LVL_GUI) : 0;
 				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1,
 						this->sel, EIT_IN_DEPOT, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
@@ -298,13 +301,7 @@ struct DepotWindow : Window {
 
 			case VEH_ROAD:     DrawRoadVehImage( v, image_left, image_right, sprite_y, this->sel, EIT_IN_DEPOT); break;
 			case VEH_SHIP:     DrawShipImage(    v, image_left, image_right, sprite_y, this->sel, EIT_IN_DEPOT); break;
-			case VEH_AIRCRAFT: {
-				const Sprite *spr = GetSprite(v->GetImage(DIR_W, EIT_IN_DEPOT), ST_NORMAL);
-				DrawAircraftImage(v, image_left, image_right,
-									y + max(UnScaleByZoom(spr->height, ZOOM_LVL_GUI) + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI) - 14, 0), // tall sprites needs an y offset
-									this->sel, EIT_IN_DEPOT);
-				break;
-			}
+			case VEH_AIRCRAFT: DrawAircraftImage(v, image_left, image_right, sprite_y, this->sel, EIT_IN_DEPOT); break;
 			default: NOT_REACHED();
 		}
 
@@ -627,7 +624,7 @@ struct DepotWindow : Window {
 				resize->height = max<uint>(GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).height, min_height);
 				if (this->type == VEH_TRAIN) {
 					resize->width = 1;
-					size->width = base_width + 2 * 29; // about 2 parts
+					size->width = base_width + 2 * UnScaleByZoom(29 * 4, ZOOM_LVL_GUI); // about 2 parts
 					size->height = resize->height * 6;
 				} else {
 					resize->width = base_width + GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).extend_left + GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).extend_right;
