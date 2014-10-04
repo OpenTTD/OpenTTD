@@ -720,13 +720,7 @@ script/squirrel_std.hpp
 3rdparty/squirrel/squirrel/sqpcheader.h
 3rdparty/squirrel/squirrel/sqstate.h
 3rdparty/squirrel/include/sqstdaux.h
-3rdparty/squirrel/include/sqstdblob.h
-3rdparty/squirrel/sqstdlib/sqstdblobimpl.h
-3rdparty/squirrel/include/sqstdio.h
 3rdparty/squirrel/include/sqstdmath.h
-3rdparty/squirrel/sqstdlib/sqstdstream.h
-3rdparty/squirrel/include/sqstdstring.h
-3rdparty/squirrel/include/sqstdsystem.h
 3rdparty/squirrel/squirrel/sqstring.h
 3rdparty/squirrel/squirrel/sqtable.h
 3rdparty/squirrel/include/squirrel.h
