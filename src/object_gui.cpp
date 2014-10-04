@@ -18,6 +18,7 @@
 #include "viewport_func.h"
 #include "window_gui.h"
 #include "window_func.h"
+#include "zoom_func.h"
 
 #include "widgets/object_widget.h"
 
@@ -164,8 +165,8 @@ public:
 
 				/* Determine the pixel heights. */
 				for (size_t i = 0; i < lengthof(height); i++) {
-					height[i] *= TILE_HEIGHT;
-					height[i] += TILE_PIXELS + 2 * OBJECT_MARGIN;
+					height[i] *= UnScaleByZoom(4 * TILE_HEIGHT, ZOOM_LVL_GUI);
+					height[i] += UnScaleByZoom(4 * TILE_PIXELS, ZOOM_LVL_GUI) + 2 * OBJECT_MARGIN;
 				}
 
 				/* Now determine the size of the minimum widgets. When there are two columns, then
@@ -174,9 +175,9 @@ public:
 				 * of widgets, or just the twice the widget height of the two row ones. */
 				size->height = max(height[0], height[1] * 2 + 2);
 				if (two_wide) {
-					size->width  = (3 * TILE_PIXELS + 2 * OBJECT_MARGIN) * 2 + 2;
+					size->width  = (3 * UnScaleByZoom(4 * TILE_PIXELS, ZOOM_LVL_GUI) + 2 * OBJECT_MARGIN) * 2 + 2;
 				} else {
-					size->width  = 4 * TILE_PIXELS + 2 * OBJECT_MARGIN;
+					size->width  = 4 * UnScaleByZoom(4 * TILE_PIXELS, ZOOM_LVL_GUI) + 2 * OBJECT_MARGIN;
 				}
 
 				/* Get the right size for the single widget based on the current spec. */
@@ -195,6 +196,11 @@ public:
 			case WID_BO_SELECT_MATRIX:
 				fill->height = 1;
 				resize->height = 1;
+				break;
+
+			case WID_BO_SELECT_IMAGE:
+				size->width  = UnScaleByZoom(4 * 64, ZOOM_LVL_GUI) + 2;
+				size->height = UnScaleByZoom(4 * 58, ZOOM_LVL_GUI) + 2;
 				break;
 
 			default: break;
@@ -237,9 +243,9 @@ public:
 					if (spec->grf_prop.grffile == NULL) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - TILE_PIXELS, dts, PAL_NONE);
+						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - UnScaleByZoom(4 * TILE_PIXELS, ZOOM_LVL_GUI), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - TILE_PIXELS, spec, GB(widget, 16, 16));
+						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - UnScaleByZoom(4 * TILE_PIXELS, ZOOM_LVL_GUI), spec, GB(widget, 16, 16));
 					}
 					_cur_dpi = old_dpi;
 				}
@@ -264,9 +270,9 @@ public:
 					if (spec->grf_prop.grffile == NULL) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, dts, PAL_NONE);
+						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - UnScaleByZoom(4 * TILE_PIXELS, ZOOM_LVL_GUI), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, spec,
+						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - UnScaleByZoom(4 * TILE_PIXELS, ZOOM_LVL_GUI), spec,
 								min(_selected_object_view, spec->views - 1));
 					}
 					_cur_dpi = old_dpi;
