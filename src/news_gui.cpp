@@ -138,10 +138,7 @@ static const NWidgetPart _nested_company_news_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPadding(0, 1, 1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MGR_FACE), SetMinimalSize(93, 119), SetPadding(2, 6, 2, 1),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MGR_NAME), SetMinimalSize(93, 24), SetPadding(0, 0, 0, 1),
-					NWidget(NWID_SPACER), SetFill(1, 0),
-				EndContainer(),
+				NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MGR_NAME), SetMinimalSize(93, 24), SetPadding(0, 0, 0, 1),
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 			NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_COMPANY_MSG), SetFill(1, 1), SetMinimalSize(328, 150),
@@ -316,6 +313,10 @@ struct NewsWindow : Window {
 	{
 		StringID str = STR_NULL;
 		switch (widget) {
+			case WID_N_MGR_FACE:
+				*size = maxdim(*size, GetSpriteSize(SPR_GRADIENT));
+				break;
+
 			case WID_N_MESSAGE:
 				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
 				str = this->ni->string_id;
@@ -374,7 +375,7 @@ struct NewsWindow : Window {
 			case WID_N_MGR_FACE: {
 				const CompanyNewsInformation *cni = (const CompanyNewsInformation*)this->ni->free_data;
 				DrawCompanyManagerFace(cni->face, cni->colour, r.left, r.top);
-				GfxFillRect(r.left + 1, r.top, r.left + 1 + 91, r.top + 118, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_MGR_NAME: {
