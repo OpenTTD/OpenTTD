@@ -1989,24 +1989,6 @@ NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : N
 {
 	assert(tp == NWID_HSCROLLBAR || tp == NWID_VSCROLLBAR);
 	this->SetIndex(index);
-
-	switch (this->type) {
-		case NWID_HSCROLLBAR:
-			this->SetMinimalSize(0, NWidgetScrollbar::GetHorizontalDimension().height);
-			this->SetResize(1, 0);
-			this->SetFill(1, 0);
-			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
-			break;
-
-		case NWID_VSCROLLBAR:
-			this->SetMinimalSize(NWidgetScrollbar::GetVerticalDimension().width, 0);
-			this->SetResize(0, 1);
-			this->SetFill(0, 1);
-			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
-			break;
-
-		default: NOT_REACHED();
-	}
 }
 
 void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
@@ -2015,6 +1997,27 @@ void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
 		assert(w->nested_array_size > (uint)this->index);
 		w->nested_array[this->index] = this;
 	}
+	this->min_x = 0;
+	this->min_y = 0;
+
+	switch (this->type) {
+		case NWID_HSCROLLBAR:
+			this->SetMinimalSize(NWidgetScrollbar::GetHorizontalDimension().width * 3, NWidgetScrollbar::GetHorizontalDimension().height);
+			this->SetResize(1, 0);
+			this->SetFill(1, 0);
+			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+			break;
+
+		case NWID_VSCROLLBAR:
+			this->SetMinimalSize(NWidgetScrollbar::GetVerticalDimension().width, NWidgetScrollbar::GetVerticalDimension().height * 3);
+			this->SetResize(0, 1);
+			this->SetFill(0, 1);
+			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
+			break;
+
+		default: NOT_REACHED();
+	}
+
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
 }
