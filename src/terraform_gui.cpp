@@ -32,6 +32,7 @@
 #include "hotkeys.h"
 #include "engine_base.h"
 #include "terraform_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/terraform_widget.h"
 
@@ -554,6 +555,14 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		}
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget != WID_ETT_DOTS) return;
+
+		size->width  = max<uint>(size->width,  UnScaleByZoom(4 * 59, ZOOM_LVL_GUI));
+		size->height = max<uint>(size->height, UnScaleByZoom(4 * 31, ZOOM_LVL_GUI));
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != WID_ETT_DOTS) return;
@@ -566,7 +575,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 		assert(n != 0);
 		do {
-			DrawSprite(SPR_WHITE_POINT, PAL_NONE, center_x + coords[0], center_y + coords[1]);
+			DrawSprite(SPR_WHITE_POINT, PAL_NONE, center_x + UnScaleByZoom(4 * coords[0], ZOOM_LVL_GUI), center_y + UnScaleByZoom(4 * coords[1], ZOOM_LVL_GUI));
 			coords += 2;
 		} while (--n);
 	}
