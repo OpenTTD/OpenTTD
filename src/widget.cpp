@@ -26,9 +26,6 @@
 
 #include "safeguards.h"
 
-static const char *UPARROW   = "\xEE\x8A\xA0"; ///< String containing an upwards pointing arrow.
-static const char *DOWNARROW = "\xEE\x8A\xAA"; ///< String containing a downwards pointing arrow.
-
 /**
  * Compute the vertical position of the draggable part of scrollbar
  * @param sb     Scrollbar list data
@@ -644,11 +641,22 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	assert(this->nested_array != NULL);
 	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 
+	/* Sort button uses the same sprites as vertical scrollbar */
+	Dimension dim = NWidgetScrollbar::GetVerticalDimension();
 	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	int base = offset + nwid->pos_x + (_current_text_dir == TD_LTR ? nwid->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
-	int top = nwid->pos_y;
+	int x = offset + nwid->pos_x + (_current_text_dir == TD_LTR ? nwid->current_x - dim.width : 0);
+	int y = offset + nwid->pos_y + (nwid->current_y - dim.height) / 2;
 
-	DrawString(base, base + WD_SORTBUTTON_ARROW_WIDTH, top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_HOR_CENTER);
+	DrawSprite(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, x, y);
+}
+
+/**
+ * Get width of up/down arrow of sort button state.
+ * @return Width of space required by sort button arrow.
+ */
+int Window::SortButtonWidth()
+{
+	return NWidgetScrollbar::GetVerticalDimension().width + 1;
 }
 
 

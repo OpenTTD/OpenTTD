@@ -136,8 +136,6 @@ enum WidgetDrawDistances {
 	WD_DROPDOWNTEXT_TOP    = 1,  ///< Top offset of the dropdown widget string.
 	WD_DROPDOWNTEXT_BOTTOM = 1,  ///< Bottom offset of the dropdown widget string.
 
-	WD_SORTBUTTON_ARROW_WIDTH = 11, ///< Width of up/down arrow of sort button state.
-
 	WD_PAR_VSEP_NORMAL = 2,      ///< Normal amount of vertical space between two paragraphs of text.
 	WD_PAR_VSEP_WIDE   = 8,      ///< Large amount of vertical space between two paragraphs of text.
 };
@@ -509,6 +507,7 @@ public:
 	void DrawWidgets() const;
 	void DrawViewport() const;
 	void DrawSortButtonState(int widget, SortButtonState state) const;
+	static int SortButtonWidth();
 
 	void DeleteChildWindows(WindowClass wc = WC_INVALID) const;
 

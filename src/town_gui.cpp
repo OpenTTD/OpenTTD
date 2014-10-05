@@ -797,7 +797,7 @@ public:
 		switch (widget) {
 			case WID_TD_SORT_ORDER: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
-				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;

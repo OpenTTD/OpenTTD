@@ -523,11 +523,11 @@ public:
 				break;
 
 			case WID_NG_NAME:
-				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
+				size->width += 2 * Window::SortButtonWidth(); // Make space for the arrow
 				break;
 
 			case WID_NG_CLIENTS:
-				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
+				size->width += 2 * Window::SortButtonWidth(); // Make space for the arrow
 				SetDParamMaxValue(0, MAX_CLIENTS);
 				SetDParamMaxValue(1, MAX_CLIENTS);
 				SetDParamMaxValue(2, MAX_COMPANIES);
@@ -536,7 +536,7 @@ public:
 				break;
 
 			case WID_NG_MAPSIZE:
-				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
+				size->width += 2 * Window::SortButtonWidth(); // Make space for the arrow
 				SetDParamMaxValue(0, MAX_MAP_SIZE);
 				SetDParamMaxValue(1, MAX_MAP_SIZE);
 				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT));
@@ -544,7 +544,7 @@ public:
 
 			case WID_NG_DATE:
 			case WID_NG_YEARS:
-				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
+				size->width += 2 * Window::SortButtonWidth(); // Make space for the arrow
 				SetDParamMaxValue(0, 5);
 				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
 				break;

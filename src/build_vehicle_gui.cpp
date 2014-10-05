@@ -1391,7 +1391,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_SORT_ASCENDING_DESCENDING: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
-				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;
