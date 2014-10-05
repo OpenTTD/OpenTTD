@@ -1163,6 +1163,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :אפשר/מנע
 STR_CONFIG_SETTING_CITY_APPROVAL                                :יחס מועצת העיר כלפי שינוי מבנה אזורי: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :בחר באיזו מידה רעש ונזק סביבתי ע"י חברות משפיעים על הדירוג העירוני שלהן ופעולות בנייה עתידיות באזור
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :גובה מפה מקסימלי: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :קבע את הגובה המקסימלי להרים במפה
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}לא ניתן לקבוע את הגובה המקסימלי במפה לערך זה. קיים לפחות הר אחד גבוה יותר
 STR_CONFIG_SETTING_AUTOSLOPE                                    :אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו': {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :אפשר שינוי פני השטח מתחת לבניינים ולמסילות ללא הסרתם
 STR_CONFIG_SETTING_CATCHMENT                                    :אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {STRING}
@@ -1768,6 +1771,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}טרקטור אימתני (הסרת מפעלים, רכיבים שאי אפשר להזיז): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{ORANGE}{STRING}{LTBLUE} :מנהרות יכולות לחצות זו את זו
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}מטוסי סילון לא יתרסקו (לעיתים קרובות) בשדות תעופה קטנים: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}ערוך את הגובה המקסימלי במפה: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :ערוך את הגובה המקסימלי של הרים במפה
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :אקלים ממוזג
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :אקלים קר
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :אקלים טרופי
@@ -2677,6 +2682,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK} :מספר העיירות
 STR_MAPGEN_DATE                                                 :{BLACK} :תאריך
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK} :מספר התעשיות
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}גובה מפה מקסימלי:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}הגדל את הגובה המקסימלי של הרים במפה ביחידה אחת
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}הקטן את הגובה המקסימלי במפה ביחידה אחת
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}גובה קו השלג
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}הגבה את קו השלג
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}הנמך את קו השלג
@@ -2706,6 +2714,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK} :שם �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}גודל:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} על {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}שינוי הגובה המקסימלי במפה
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}שנה את גובה קו השלג
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}שנה את שנת הפתיחה
 
@@ -4233,6 +4242,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}יש ל�
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}לא ניתן להתחיל ולסיים באותה הנקודה
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}צדדי הגשר לא באותו הגובה
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}גשר נמוך מידי עבור השטח
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}גשר גבוה מדי עבור פני השטח.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}התחלה וסיום חייבים להיות באותו הקו
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... קצות הגשר צריכים להיות על קרקע
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... גשר ארוך מידי

@@ -97,7 +97,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Mineralvann
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passasjer{P "" er}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passasjer{P "" er}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kull
 STR_QUANTITY_MAIL                                               :{COMMA} postsekk{P "" er}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olje
@@ -251,7 +251,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefel
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv bygninger osv. på et landområde. Ctrl velger område diagonalt. Shift slår av/på kostnadsestimat
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Vis skjulte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Vis skjulte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Vis skjulte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Vis skjulte
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Ved å aktivere denne knappen, blir de skjulte tog også vist
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Ved å aktivere denne knappen, blir de skjulte kjøretøy også vist
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ved å aktivere denne knappen, blir de skjulte skip også vist
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ved å aktivere denne knappen, blir de skjulte fly også vist
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
@@ -1152,6 +1160,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Aktiver/inaktiv
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Bystyrets holdning til restrukturering av området: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Velg hvor mye støy og miljøskader forårsaket av selskaper påvirker deres anseelse i byen og muligheter for ytterligere utbygging i nærområdet
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimal karthøyde: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Still inn maksimal tillatt høyde for fjellene på kartet
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan ikke sette den maksimale karthøyden til denne verdien. Minst ett fjell på kartet er høyere
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillat endring av landskap under bygninger, spor, osv.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillat endring av landskapet under bygninger og spor uten å fjerne dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Mer realistisk størrelse på oppfangingsområder: {STRING}
@@ -1180,6 +1191,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflasjon: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiver inflasjon i økonomien, der kostnader stiger litt raskere enn betalinger
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimal brolengde: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal lengde for broer
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimal brohøyde: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimal høyde for å bygge broer
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnellengde: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal lengde for tunneller
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Konstruksjonsmetode for primærindustri: {STRING}
@@ -1781,6 +1794,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krysse hverandre: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke krasje (regelmessig) på små flyplasser: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Rediger den maksimale karthøyden: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Rediger den maksimale fjellhøyden på kartet
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperert landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktisk landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropisk landskap
@@ -2707,6 +2722,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antall byer:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antall industrier:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimal karthøyde:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Øk den maksimale fjellhøyden på kartet med én
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Redusér den maksimale fjellhøyden på kartet med én
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høyde på snøgrensen:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høyden på snøgrensen ett hakk opp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høyden på snøgrensen ett hakk ned
@@ -2736,6 +2754,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydeka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Endre maksimal karthøyde
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Endre høyden på snøgrensen
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Endre startår
 
@@ -3397,8 +3416,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Gi nytt 
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Gi nytt navn til skipstypen
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Gi nytt navn til luftfartøytypen
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Skjul
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Skjul
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Skjul
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Skjul
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Vis
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Vis
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Vis
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Vis
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Veksle mellom å skjule/vise typen av jernbanekjøretøy
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Veksle mellom å skjule/vise kjøretøystypen
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Veksle mellom å skjule/vise skipstypen
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Bytte mellom å skjule/vise flytypen
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Gi tog/vogntype nytt navn
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Gi kjøretøytypen nytt navn
@@ -3504,6 +3535,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Kjøretøy
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=neuter}Luftfartøy
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Kjøretøy i bruk
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Kolonne med kjøretøy som du eier
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Tilgjengelige kjøretøy
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Kolonne med kjøretøy tilgjengelig for utskiftning
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Velg lokomotivtype som skal erstattes
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Velg lokomotivtypen du ønsker at skal erstatte den du har valgt til venstre
@@ -4105,6 +4140,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Utgravin
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... allerede på havnivå
 STR_ERROR_TOO_HIGH                                              :{WHITE}... for høyt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allerede flatt
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Etterpå vil broen over den være for høy.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikke endre firmaets navn...
@@ -4294,6 +4330,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Må rive
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikke starte og slutte på samme felt
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broender er ikke på samme nivå
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er for lav for terrenget
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Bro er for høy for dette terrenget.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og slutt må være på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...{NBSP}broens ender må være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
@@ -4858,6 +4895,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (skjult)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
