@@ -85,6 +85,8 @@ static const SpriteID SPR_SHARED_ORDERS_ICON = SPR_OPENTTD_BASE + 50;
 static const SpriteID SPR_PIN_UP             = SPR_OPENTTD_BASE + 51;  // pin icon
 static const SpriteID SPR_PIN_DOWN           = SPR_OPENTTD_BASE + 52;
 
+static const SpriteID SPR_CLOSEBOX           = 143;
+
 static const SpriteID SPR_CIRCLE_FOLDED      = SPR_OPENTTD_BASE + 147; // (+) icon
 static const SpriteID SPR_CIRCLE_UNFOLDED    = SPR_OPENTTD_BASE + 148; // (-) icon
 
@@ -1479,10 +1481,14 @@ static const CursorID ANIMCURSOR_BUILDSIGNALS = ANIMCURSOR_FLAG | 4; ///< 1292 -
  * bits used for the recolouring process. For transparency, it must be 0x322.</li></ul>
  */
 enum SpriteSetup {
+	/* These bits are applied to sprite ID */
 	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite
 	RECOLOUR_BIT = 30,          ///< toggles recolouring in the sprite
 	CUSTOM_BIT = 29,
 	OPAQUE_BIT = 28,
+
+	/* This bit is applied to palette ID */
+	PALETTE_TEXT_RECOLOUR = 31, ///< Set if palette is actually a magic text recolour
 
 	PALETTE_WIDTH = 24,         ///< number of bits of the sprite containing the recolour palette
 	SPRITE_WIDTH = 24,          ///< number of bits for the sprite number

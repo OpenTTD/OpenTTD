@@ -522,13 +522,11 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
  * Draw a close box.
  * @param r      Rectangle of the box.
  * @param colour Colour of the close box.
- * @param str    Cross to draw (#STR_BLACK_CROSS or #STR_SILVER_CROSS).
  */
-static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
+static inline void DrawCloseBox(const Rect &r, Colours colour)
 {
-	assert(str == STR_BLACK_CROSS || str == STR_SILVER_CROSS); // black or silver cross
-	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
-	DrawString(r.left, r.right, r.top + WD_CLOSEBOX_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
+	if (colour != COLOUR_WHITE) DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
+	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1 << PALETTE_TEXT_RECOLOUR), r.left + WD_CLOSEBOX_LEFT, r.top + WD_CLOSEBOX_TOP);
 }
 
 /**
@@ -2182,7 +2180,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_CLOSEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WD_CLOSEBOX_WIDTH, WD_CAPTION_HEIGHT);
-			this->SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW);
+			this->SetDataTip(STR_NULL, STR_TOOLTIP_CLOSE_WINDOW);
 			break;
 
 		case WWT_DROPDOWN:
@@ -2320,7 +2318,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			static const Dimension extra = {WD_CLOSEBOX_LEFT + WD_CLOSEBOX_RIGHT, WD_CLOSEBOX_TOP + WD_CLOSEBOX_BOTTOM};
 			padding = &extra;
 			if (NWidgetLeaf::closebox_dimension.width == 0) {
-				NWidgetLeaf::closebox_dimension = maxdim(GetStringBoundingBox(STR_BLACK_CROSS), GetStringBoundingBox(STR_SILVER_CROSS));
+				NWidgetLeaf::closebox_dimension = GetSpriteSize(SPR_CLOSEBOX);
 				NWidgetLeaf::closebox_dimension.width += extra.width;
 				NWidgetLeaf::closebox_dimension.height += extra.height;
 			}
@@ -2490,7 +2488,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_CLOSEBOX:
-			DrawCloseBox(r, this->colour, this->widget_data);
+			DrawCloseBox(r, this->colour);
 			break;
 
 		case WWT_DROPDOWN:
