@@ -2138,12 +2138,9 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			this->SetFill(0, 0);
 			break;
 
-		case WWT_EDITBOX: {
-			Dimension sprite_size = GetSpriteSize(_current_text_dir == TD_RTL ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
-			this->SetMinimalSize(30 + sprite_size.width, sprite_size.height);
+		case WWT_EDITBOX:
 			this->SetFill(0, 0);
 			break;
-		}
 
 		case WWT_CAPTION:
 			this->SetFill(1, 0);
@@ -2285,9 +2282,12 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			size = maxdim(size, NWidgetLeaf::resizebox_dimension);
 			break;
 		}
-		case WWT_EDITBOX:
-			size.height = max(size.height, GetStringBoundingBox("_").height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		case WWT_EDITBOX: {
+			Dimension sprite_size = GetSpriteSize(_current_text_dir == TD_RTL ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+			size.width = 30 + sprite_size.width;
+			size.height = max(sprite_size.height, GetStringBoundingBox("_").height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 			/* FALL THROUGH */
+		}
 		case WWT_PUSHBTN: {
 			static const Dimension extra = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM};
 			padding = &extra;
