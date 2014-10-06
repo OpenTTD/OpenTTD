@@ -21,6 +21,7 @@
 	#include <unistd.h>
 	#define _GNU_SOURCE
 	#define TROUBLED_INTS
+	#include <strings.h>
 #elif defined(__NDS__)
 	#include <nds/jtypes.h>
 	#define TROUBLED_INTS
