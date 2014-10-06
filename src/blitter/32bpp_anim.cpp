@@ -180,8 +180,8 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					do {
 						*dst++ = Colour(0, 0, 0);
 						*anim++ = 0;
-						anim++;
-						dst++;
+						src_px++;
+						src_n++;
 					} while (--n != 0);
 					break;
 
