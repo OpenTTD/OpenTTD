@@ -1763,6 +1763,11 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 				Company::Get(new_owner)->infrastructure.road[rt] += 2;
 
 				SetTileOwner(tile, new_owner);
+				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
+					if (GetRoadOwner(tile, rt) == old_owner) {
+						SetRoadOwner(tile, rt, new_owner);
+					}
+				}
 			}
 		}
 		return;
