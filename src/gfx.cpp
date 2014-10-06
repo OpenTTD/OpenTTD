@@ -783,6 +783,21 @@ Dimension GetSpriteSize(SpriteID sprid, Point *offset, ZoomLevel zoom)
 }
 
 /**
+ * Helper function to get the blitter mode for different types of palettes.
+ * @param pal The palette to get the blitter mode for.
+ * @return The blitter mode associated with the palette.
+ */
+static BlitterMode GetBlitterMode(PaletteID pal)
+{
+	switch (pal) {
+		case PAL_NONE:          return BM_NORMAL;
+		case PALETTE_CRASH:     return BM_CRASH_REMAP;
+		case PALETTE_ALL_BLACK: return BM_BLACK_REMAP;
+		default:                return BM_COLOUR_REMAP;
+	}
+}
+
+/**
  * Draw a sprite in a viewport.
  * @param img  Image number to draw
  * @param pal  Palette to use.
@@ -802,7 +817,7 @@ void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSpri
 		} else {
 			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
 		}
-		GfxMainBlitterViewport(GetSprite(real_sprite, ST_NORMAL), x, y, pal == PALETTE_CRASH ? BM_CRASH_REMAP : BM_COLOUR_REMAP, sub, real_sprite);
+		GfxMainBlitterViewport(GetSprite(real_sprite, ST_NORMAL), x, y, GetBlitterMode(pal), sub, real_sprite);
 	} else {
 		GfxMainBlitterViewport(GetSprite(real_sprite, ST_NORMAL), x, y, BM_NORMAL, sub, real_sprite);
 	}
@@ -829,7 +844,7 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
 		} else {
 			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
 		}
-		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, pal == PALETTE_CRASH ? BM_CRASH_REMAP : BM_COLOUR_REMAP, sub, real_sprite, zoom);
+		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, GetBlitterMode(pal), sub, real_sprite, zoom);
 	} else {
 		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, BM_NORMAL, sub, real_sprite, zoom);
 	}

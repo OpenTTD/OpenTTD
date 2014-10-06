@@ -334,6 +334,19 @@ bmcr_alpha_blend_single:
 					anim++;
 				}
 				break;
+
+			case BM_BLACK_REMAP:
+				for (uint x = (uint) bp->width; x > 0; x--) {
+					if (src->a != 0) {
+						*dst = Colour(0, 0, 0);
+						*anim = 0;
+					}
+					src_mv++;
+					dst++;
+					src++;
+					anim++;
+				}
+				break;
 		}
 
 next_line:
@@ -395,6 +408,7 @@ bm_normal:
 			break;
 		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
+		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 	}
 }
 

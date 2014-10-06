@@ -21,6 +21,7 @@ enum BlitterMode {
 	BM_COLOUR_REMAP, ///< Perform a colour remapping.
 	BM_TRANSPARENT,  ///< Perform transparency colour remapping.
 	BM_CRASH_REMAP,  ///< Perform a crash remapping.
+	BM_BLACK_REMAP,  ///< Perform remapping to a completely blackened sprite
 };
 
 /**

@@ -58,6 +58,12 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					}
 					break;
 
+				case BM_BLACK_REMAP:
+					if (src->a != 0) {
+						*dst = Colour(0, 0, 0);
+					}
+					break;
+
 				case BM_TRANSPARENT:
 					/* TODO -- We make an assumption here that the remap in fact is transparency, not some colour.
 					 *  This is never a problem with the code we produce, but newgrfs can make it fail... or at least:
