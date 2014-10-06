@@ -1733,13 +1733,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrički (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jedinice mase: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Uvijek kada su mase prikazane u korisničkom sučelju, prikaži ih u odabranim jedinicama
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Uvijek kada je masa prikazana u korisničkom sučelju, prikaži je u odabranim jedinicama
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperijalni (short t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrički (t/tonne)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jedinice volumena: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Uvijek kada su volumeni prikazani u korisničkom sučelju, prikaži ih u odabranim jedinicama
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Uvijek kada je volumen prikazan u korisničkom sučelju, prikaži ga u odabranim jedinicama
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperijalni (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrički (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
@@ -1751,7 +1751,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrički (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jedinice visine: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Uvijek kada su visine prikazane u korisničkom sučelju, prikaži ih u odabranim jedinicama
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Uvijek kada je visina prikazana u korisničkom sučelju, prikaži je u odabranim jedinicama
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperijalni (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrički (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2407,7 +2407,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Izgradi 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Izgradi spremište vlakova (za kupnju i servisiranje vlakova). Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori prugu u čvorište. Ctrl omogućava spajanje čvorišta. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradi željezničku postaju. Ctrl omogućava spajanje postaja. Shift mijenja prikaz građenje/procjena troškova.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale. Ctrl aktivira semafore/svjetlosne signale{}Povlačenjem će se izgraditi signali uzduž ravnog dijela pruge. Ctrl će izgraditi signale do sljedećeg križanja.{}Ctrl+klik aktivira otvaranje prozora za odabir signala. Shift mijenja prikaz građenje/procjena troškova.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale. Ctrl aktivira semafore/svjetlosne signale{}Povlačenjem će se izgraditi signali uzduž ravnog dijela pruge. Ctrl će izgraditi signale do sljedećeg križanja ili signala.{}Ctrl+klik aktivira otvaranje prozora za odabir signala. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradi željeznički most. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi željeznički tunel. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge, signala, čvorišta i postaja. Držanjem tipke Ctrl također se uklanjaju tračnice na čvorištima i postajama.
