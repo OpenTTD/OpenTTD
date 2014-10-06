@@ -140,14 +140,8 @@ void ShowEnginePreviewWindow(EngineID engine)
  */
 uint GetTotalCapacityOfArticulatedParts(EngineID engine)
 {
-	uint total = 0;
-
 	CargoArray cap = GetCapacityOfArticulatedParts(engine);
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		total += cap[c];
-	}
-
-	return total;
+	return cap.GetSum<uint>();
 }
 
 static StringID GetTrainEngineInfoString(const Engine *e)

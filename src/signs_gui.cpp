@@ -158,7 +158,6 @@ struct SignListWindow : Window, SignList {
 
 		/* Initialize the text edit widget */
 		this->querystrings[WID_SIL_FILTER_TEXT] = &this->filter_editbox;
-		this->filter_editbox.ok_button = WID_SIL_FILTER_ENTER_BTN;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		/* Initialize the filtering variables */
