@@ -953,7 +953,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
-	DEBUG(desync, 1, "client: %08x; %02x; %02x; %04x", _date, _date_fract, (int)ci->client_playas, ci->index);
+	DEBUG(desync, 1, "client: %08x; %02x; %02x; %02x", _date, _date_fract, (int)ci->client_playas, (int)ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
