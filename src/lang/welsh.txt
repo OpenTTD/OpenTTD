@@ -186,7 +186,7 @@ STR_COLOUR_CREAM                                                :Hufen
 STR_COLOUR_MAUVE                                                :Porffor Golau
 STR_COLOUR_PURPLE                                               :Porffor
 STR_COLOUR_ORANGE                                               :Oren
-STR_COLOUR_BROWN                                                :Frown
+STR_COLOUR_BROWN                                                :Brown
 STR_COLOUR_GREY                                                 :Llwyd
 STR_COLOUR_WHITE                                                :Gwyn
 
@@ -425,7 +425,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Ariannu diwydia
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Adeiladu rheilffordd
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Adeiladu Rheilffordd Drydan
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Adeiladu rheilffordd drydan
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Adeiladu monoreilffordd
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Adeiladu maglef
 ############ range ends here
@@ -493,6 +493,36 @@ STR_ORDINAL_NUMBER_15TH                                         :15fed
 
 ############ range for days starts
 STR_DAY_NUMBER_1ST                                              :1af
+STR_DAY_NUMBER_2ND                                              :2il
+STR_DAY_NUMBER_3RD                                              :3ydd
+STR_DAY_NUMBER_4TH                                              :4ydd
+STR_DAY_NUMBER_5TH                                              :5ed
+STR_DAY_NUMBER_6TH                                              :6ed
+STR_DAY_NUMBER_7TH                                              :7ed
+STR_DAY_NUMBER_8TH                                              :8ed
+STR_DAY_NUMBER_9TH                                              :9ed
+STR_DAY_NUMBER_10TH                                             :10ed
+STR_DAY_NUMBER_11TH                                             :11eg
+STR_DAY_NUMBER_12TH                                             :12ed
+STR_DAY_NUMBER_13TH                                             :13eg
+STR_DAY_NUMBER_14TH                                             :14eg
+STR_DAY_NUMBER_15TH                                             :15ed
+STR_DAY_NUMBER_16TH                                             :16eg
+STR_DAY_NUMBER_17TH                                             :17eg
+STR_DAY_NUMBER_18TH                                             :18ed
+STR_DAY_NUMBER_19TH                                             :19eg
+STR_DAY_NUMBER_20TH                                             :20ed
+STR_DAY_NUMBER_21ST                                             :21ain
+STR_DAY_NUMBER_22ND                                             :22ain
+STR_DAY_NUMBER_23RD                                             :23ain
+STR_DAY_NUMBER_24TH                                             :24ain
+STR_DAY_NUMBER_25TH                                             :25ain
+STR_DAY_NUMBER_26TH                                             :26ain
+STR_DAY_NUMBER_27TH                                             :27ain
+STR_DAY_NUMBER_28TH                                             :28ain
+STR_DAY_NUMBER_29TH                                             :29ain
+STR_DAY_NUMBER_30TH                                             :30ain
+STR_DAY_NUMBER_31ST                                             :31ain
 ############ range for days ends
 
 ############ range for months starts
@@ -802,7 +832,7 @@ STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Mae {VEH
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Mae {VEHICLE} yn aros yn yr awrendy
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Mae gan {VEHICLE} rhy ddiffyg gorchmynion yn ei amserlen
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Nid oes gan {VEHICLE} ddigon o orchmynion yn ei amserlen
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Mae gan {VEHICLE} orchymyn gwallus
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Mae gan {VEHICLE} orchmynion dyblyg
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Mae gan {VEHICLE} orsaf annilys yn ei orchmynion
@@ -818,9 +848,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd achos methiant hefo trefnu ailffitio {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Methwyd ag adnewyddu {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} newydd yn awr ar gael!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Mae {STRING} newydd yn awr ar gael!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} ar gael yn awr!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Mae {STRING} newydd yn awr ar gael!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Nid yw {STATION} bellach yn derbyn {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Nid yw {STATION} bellach yn derbyn {STRING} na {STRING}
@@ -1120,7 +1150,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Os y galluogir,
 STR_CONFIG_SETTING_DISASTERS                                    :Trychinebau: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglo trychinebau a all rhwystro neu ddinistrio cerbydau neu tanadeiledd
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Agwedd y cyngor tref at ailstrwythuro'r ardal: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niewd amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niwed amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Caniatáu adeiladu a'r lethrau ac arfordiroedd {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Os y galluogir, gellir adeiladu traciau a gorsafoedd ar y rhan helaeth o lethrau. Os yr analluogir, feu caniateir ar lethrau sy'n gweddu at lwybr y trac yn unig (h.y. heb angen eu tanseilio)
@@ -1176,7 +1206,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Ar yr ochr gyrr
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Ar y dde
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Os y galluogir, bydd y ffenestr gyllid yn agor ar ddiwedd y flwyddyn i hwyluso archwilio sefyllfa ariannol y cwmni
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Fel rheol, bydd cerbyd yn aros wrth pob gorsaf yr aiff drwyddo. Bydd y gosodiad yma yn peri i'r cerbyd yrru'n syth drwy pob gorsaf ar ei ffordd at ei gyrchfan olaf heb aros. Sylwer fod y gosodiad yma'n diffinio rhagosodiad ar gyfer gorchmynion newydd. Gellir newid gorchmynion penodol at unrhyw ddull a fynnir
 STR_CONFIG_SETTING_STOP_LOCATION                                :Gorchmynion trenau newydd yn nodi aros ar y {STRING} o'r platfform fel rhagosodiad
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Y man lle y daw trên at aros wrth blatfform fel rheol. Mae'r 'ochr agos' yn cyfeirio at y pen lle mae'r trên yn myned, 'canol' at ganol y platfform, ac 'ochr bell' yn bell o'r mynedfa. Sylwer fod y gosodiad yma'n diffinio rhagosodiad ar gyfer gorchmynion newydd. Gellir newid gorchmynion penodol at unrhyw ddull a fynnir
@@ -1249,7 +1279,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Ystod neges gwa
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Amser i ddangos negeseuon gwall mewn ffenestr coch. Sylwer ni gaiff rhai negeseuon gwall (difrifol) eu cau'n ddiofyn
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} eiliad
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Dangos cynghorion: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oediad cyn y dangosir cynghorion wrth ddal y cyrchydd dros rhyw elfen rhyngwyneb. Fel arall gellir rhwymo cynghorion at botwm dde'r llygoden
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oediad cyn y dangosir cynghorion wrth ddal y cyrchydd dros rhyw elfen rhyngwyneb. Fel arall rhwymir cynghorion at botwm dde'r llygoden pan fo'r gwerth yma'n 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Oedi am {COMMA} eiliad
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :De glicio
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Dangos poblogaeth tref yn label y dref: {STRING}
@@ -1292,7 +1322,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Lliw y tirwedd 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gwyrdd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Gwyrdd tywyll
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fioled
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :gwrthdroi'r cyfeiriad sgrolio: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Gwrthdroi'r cyfeiriad sgrolio: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Ymddygiad pan yn sgrolio gyda botwm dde y llygoden. Pan yr analluogir, bydd y llygoden yn symyd y camera. Pan y galluogir, bydd y llygoden yn symyd y map
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgrolio prif ffenestr llyfn: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Rheoli syt y mae'r prif olygfa'n sgrolio at leoliad penodol pan yn clicio ar y map bychan neu yn rhoi gorchymyn i sgrolio at wrthrych penodol
@@ -1460,7 +1490,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Cyngor / gwybod
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Dangos negeseuon am gerbydau sydd angen sylw
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Cerbydau Newydd: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Dangos papur newydd pan fo math newydd o gerbyd ar gael
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Newidiadau i'r llwythi sy'n cael eu derbyn: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Newidiadau i'r llwythi a dderbynir: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Dangos negeseuon am orsafoedd yn newid y nwyddau y maent yn derbyn
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Cymorthdaliadau: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Dangos papur newydd am ddigwyddiadau ynghylch cymorthdaliadau
@@ -1488,7 +1518,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Adeiladu semafforau cyn: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Gosod y flwyddyn pan y defnyddir signalau trydan ar draciau. Cyn y flwyddyn hon, fe ddefnyddir signalau semaffor (sydd â gweithred unfath, ond edrychiad gwahanol)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Galluogi'r GUI signalau: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Dangos ffenestr ar gyfer dewis y math o signalau i ddewis, yn hytrach na chylchu drwy mathau signal wrth Ctrl+clicio heb ffenest pan yn adeiladu signalau
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Dangos ffenestr ar gyfer dewis y math o signalau i ddewis, yn hytrach na chylchu drwy mathau signal heb ffenest wrth Ctrl+clicio ar signalau eisoes wedi'u hadeiladu
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Y math o signal i'w adeiladu fel rhagosodiad: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Signal rhagosodedig i'w ddefnyddio
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signalau Bloc
@@ -1827,7 +1857,7 @@ STR_FACE_EUROPEAN                                               :{BLACK}Ewropeia
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Dewis gwyneb Ewropeaidd
 STR_FACE_AFRICAN                                                :{BLACK}Affricanaidd
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Dewis gwyneb Affricanaidd
-STR_FACE_YES                                                    :Iawn
+STR_FACE_YES                                                    :Ie
 STR_FACE_NO                                                     :Na
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Galluogi mwstásh neu glustdlws
 STR_FACE_HAIR                                                   :Gwallt:
@@ -2276,7 +2306,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Adeiladu
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau, signalau, a pwyntiau llwybro. Wrth ddal Ctrl, caiff cledrau pwyntiau llwybro a gorsafoedd eu tynnu hefyd
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trosi/Diweddaru math y rheilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 
-STR_RAIL_NAME_RAILROAD                                          :rheilffordd
+STR_RAIL_NAME_RAILROAD                                          :Rheilffordd
 STR_RAIL_NAME_ELRAIL                                            :rheilffordd drydan
 STR_RAIL_NAME_MONORAIL                                          :monoreilffordd
 STR_RAIL_NAME_MAGLEV                                            :maglef
@@ -2542,7 +2572,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Dosbarth
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Enw'r maes awyr: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Enw teil maes awyr: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Llwythi sy'n cael eu derbyn: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Llwythi a dderbynir: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Terfyn cyflymder rheilffordd: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Terfyn cyflymder ffordd: {LTBLUE}{VELOCITY}
@@ -2582,7 +2612,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo trên {STR
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ffordd gyda goleuadau stryd
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ffordd gyda coed wedi'i plannu
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ffordd gyda coed wedi'u plannu
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depo cerbyd ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Croesfan wastad ffordd/rheilffordd
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramffordd
@@ -2636,7 +2666,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Traphont
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Darlledydd
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Goleudy
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Pencadlys Cwmni
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tir mae cwmni berchen
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tir cwmni
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Gwybodaeth am OpenTTD
@@ -2813,11 +2843,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramedr
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinio corlun {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Corlun nesaf
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mynd i'r corlun cyffredin nesaf, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio ar y diwedd
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mynd i'r corlun cyffredin nesaf, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio o'r corlun olaf i'r gyntaf
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mynd i gorlun
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mynd i'r corlun a ddynodir. Os nad yw'r corlun yn gorlun cyffredin, mynd i'r corlun gyffredin nesaf
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Corlun blaenorol
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mynd i'r corlun cyffredin blaenorol, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio ar y diwedd
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mynd i'r corlun cyffredin blaenorol, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio o'r corlun cyntaf i'r olaf
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Cynrychioliad o'r corlun a ddewiswyd. Fe anwybyddir yr aliniad wrth lunio'r corlun
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Symud y corlun, gan newid yr atredau X ac Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Atred X: {NUM}, Atred Y: {NUM}
@@ -2970,7 +3000,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Dechrau
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Dechrau ymgyrch hysbyseb gymhedrol yn yr ardal, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd.{} Côst: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Dechrau ymgyrch hysbyseb fawr yn yr adral, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd .{} Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Ariannu gwaith ffordd ar y rhwydwaith ffyrdd trefol. Bydd yn amharu'n fawr ar drafnidiaeth y dref am hyd at 6 mis .{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Adeiladu a statue in honour o your company.{} Côst: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Adeiladu cerflun er clod eich cwmni.{} Côst: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Ariannu adeiladu adeiladau masnachol newydd yn y dref.{} Côst: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Prynu'r hawl i fod yr unig gyflenwr cludiant yn y dref am flwyddyn. Bydd awdurdod y dref ond yn caniatáy i deithwyr a chargo ddefnyddio eich gorsafoedd chi {} Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY_LONG}
@@ -3516,7 +3546,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ailffiti
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ailffitio llong i gario llwyth o fath gwahanol
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ailffitio awyren i gario llwyth o fath gwahanol
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}gwrthdroi cyfeiriad trên
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Gwrthdroi cyfeiriad trên
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Gorfodi cerbyd i droi rownd
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Dangos gorchmynion trên. Mae Ctrl+Clic yn ddangos amserlen y trên
@@ -3585,7 +3615,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Cynhwyse
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosi: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosglwyddo: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}{NBSP}diwrnod{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rhwng gwasanaethu: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
@@ -3665,8 +3695,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Diwedd y Go
 STR_ORDER_NON_STOP                                              :{BLACK}Heb stop
 STR_ORDER_GO_TO                                                 :Mynd i
 STR_ORDER_GO_NON_STOP_TO                                        :Mynd heb stop i
-STR_ORDER_GO_VIA                                                :Galw heibio
-STR_ORDER_GO_NON_STOP_VIA                                       :Myn heb stop gan alw heibio
+STR_ORDER_GO_VIA                                                :Mynd trwy
+STR_ORDER_GO_NON_STOP_VIA                                       :Mynd heb stop trwy
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Newid ymddygiad stopio o'r gorchymyn a amlygwyd
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn, unrhyw gargo
@@ -3740,7 +3770,7 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Dangos p
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Mynd trwy {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mynd heb stopio drwy {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mynd heb stop trwy {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Gwasanaethu yn
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Gwasanaethu heb stopio yn
@@ -4171,10 +4201,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Methu ad
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Methu ailenwi depo...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... wedi'i stopio mewn depo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... rhaid iddo stopio mewn depo
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... fod wedi'i stopio mewn depo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... fod wedi'i stopio mewn awyrendâi
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... nid yw wedi'i stopio mewn depo
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... nid yw wedi'i stopio mewn depo
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... nid yw wedi'i stopio mewn depo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... nid yw wedi'i stopio mewn awyrendy
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Gellir newid trenau yn unig pan fyddan nhw wedi stopio tu mewn i ddepo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trên yn rhy hir

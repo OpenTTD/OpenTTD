@@ -95,7 +95,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Đồ uống c�
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} hành khách
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}hành khách
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} than đá
 STR_QUANTITY_MAIL                                               :{COMMA} túi bưu kiện
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} dầu thô

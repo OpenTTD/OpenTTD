@@ -1568,10 +1568,10 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :고정하지 �
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :새로운 창을 열었을 때 공간 확보를 위해 열림 상태를 고정시키지 않은 창이 열려있을 수 있는 개수를 설정합니다.
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :제한 없음
-STR_CONFIG_SETTING_ZOOM_MIN                                     :최대 줌 인 배율: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :게임 화면의 최대 줌 인 배율을 설정합니다. 줌 인 배율이 커질 수록 메모리가 더 필요합니다.
-STR_CONFIG_SETTING_ZOOM_MAX                                     :최대 줌 아웃 배율: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :게임 화면의 최대 줌 아웃 배율을 설정합니다. 줌 아웃 배율이 커질 수록 게임이 버벅거릴 수 있습니다.
+STR_CONFIG_SETTING_ZOOM_MIN                                     :최대 확대 수준: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :게임 화면의 최대 확대 수준을 설정합니다. 화면을 더 크게 확대할 수록 더 많은 메모리가 필요합니다.
+STR_CONFIG_SETTING_ZOOM_MAX                                     :최대 축소 수준: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :게임 화면의 최대 축소 수준을 설정합니다. 화면을 더 작게 축소할 수록 게임이 더 버벅거리게 될 수도 있습니다.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :기본값
@@ -1619,7 +1619,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :다음으로 �
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :종종 두 역 사이에는 여러 가지 경로가 존재할 수 있습니다. 이 경우, 화물 분배 기능은 먼저 가장 짧은 경로로 화물을 보내고, 그 경로가 포화 상태에 이르면 그 다음으로 짧은 경로를 사용하는 식으로 화물을 분배합니다. 포화도는 경로의 수송 능력과 예정 사용량을 추정하여 계산됩니다. 일단 모든 경로가 포화 상태가 되었는데 아직 수요가 남아있다면, 수송 능력이 높은 경로를 사용하면서 모든 경로를 과부하 상태로 만들게 됩니다. 하지만, 이 알고리즘은 수송량을 대부분 정확히 추정하지는 않습니다. 이 설정을 이용해서, 화물 분배 기능이 짧은 경로의 포화 상태가 몇 퍼센트가 되어야 다음으로 짧은 경로에 화물을 분배할 것인지를 지정할 수 있습니다. 과대평가된 수송량의 경우 너무 붐비는 역이 생기지 않도록 하기 위해서는 이 값을 100%보다 작게 설정하십시오.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :속력 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :출력할 속력 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :속력를 표시할 때 선택한 단위를 사용하여 나타냅니다.
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :임페리얼법 (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :미터법 (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :국제표준규격 (m/s)
@@ -1631,25 +1631,25 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :미터법 (마�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :국제표준규격 (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :무게 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :출력할 무게 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :무게를 표시할 때 선택한 단위를 사용하여 나타냅니다.
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :임페리얼법 (미국 톤)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :미터법 (톤)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :국제표준규격 (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :부피 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :출력할 부피 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :부피를 표시할 때 선택한 단위를 사용하여 나타냅니다.
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :임페리얼법 (갤런)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :미터법 (리터)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :국제표준규격 (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :견인 효과 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :출력할 견인 효과(견인력) 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :견인 효과(견인력)를 표시할 때 선택한 단위를 사용하여 나타냅니다.
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :임페리얼법 (파운드중)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :미터법 (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :국제표준규격 (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :높이 단위: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :출력할 높이 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :높이를 표시할 때 선택한 단위를 사용하여 나타냅니다.
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :임페리얼법 (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :미터법 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :국제표준규격 (m)
@@ -2241,8 +2241,8 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}콘텐츠 서버에 접속할 수 없습니다...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}다운로드 실패...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접속 손실
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기 실패
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접속이 끊겼습니다.
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기가 불가능합니다.
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드한 파일의 압축을 풀 수 없습니다
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}그래픽 없음
@@ -2301,7 +2301,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다. 차량을 구입하거나 정비를 할 수 있습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}선로에 경유지를 설치합니다. CTRL 키를 사용하면 같은 이름의 경유지를 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누르면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. CTRL 키를 사용하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}신호기를 설치합니다. CTRL 키를 누르면 구식/전자식으로 전환합니다.{}선로를 따라 드래그해서 설치할 수 있습니다. CTRL을 누른채 드래그하면 다음 분기점까지 신호기를 설치합니다.{}CTRL 키를 누른 채 클릭하면 신호기 선택 창을 전환합니다. SHIFT 키를 누르면 예상 가격을 볼 수 있습니다.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}신호기를 설치합니다. CTRL 키를 누르면 구식/전자식으로 전환합니다.{}선로를 따라 드래그해서 설치할 수 있습니다. CTRL을 누른채 드래그하면 다음 분기점이나 다음 신호기까지 신호기를 설치합니다.{}CTRL 키를 누른 채 클릭하면 신호기 선택 창을 전환합니다. SHIFT 키를 누르면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교를 짓습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널을 짓습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}선로, 신호기, 경유지, 역 등의 철도 시설 건설/철거 모드를 켜거나 끌 수 있습니다. CTRL 키를 누르고 있어도 선로에서 경유지와 역을 제거할 수 있습니다.
@@ -2844,11 +2844,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF �
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}스프라이트 정렬 {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}다음 스프라이트
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}모조/재색상/글씨 스프라이트는 건너뛰고 다음 번호의 일반 스프라이트로 이동합니다. 마지막 번호에 다다르면 다시 처음으로 돌아옵니다.
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 다음 보통 스프라이트로 이동하고, 마지막 스프라이트에 다다르면 다시 처음으로 돌아갑니다.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트 번호 입력
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}입력한 스프라이트 번호로 이동합니다. 만약 입력한 번호의 스프라이트가 일반 스프라이트가 아닐경우, 그 다음으로 오는 일반 스프라이트로 이동합니다.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 스프라이트
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}모조/재색상/글씨 스프라이트는 건너뛰고 이전 번호의 정상 스프라이트로 이동합니다. 처음 번호에 다다르면 마지막 번호로 돌아옵니다.
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X축: {NUM}, Y축: {NUM}

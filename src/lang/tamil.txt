@@ -95,7 +95,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :குளிர
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} பயணி{P "" கள்}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP} பயணி{P "" கள்}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} நிலக்கரி
 STR_QUANTITY_MAIL                                               :{COMMA} அஞ்சல் பை{P "" கள்}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} எண்ணெய்

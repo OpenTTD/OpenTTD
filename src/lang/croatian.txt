@@ -1375,7 +1375,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poruke
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trajanje prikaza poruke s greškom u crvenom prozoru. Uzmite u obzir da se neke (kritične) poruke s greškom ne zatvaraju automatski nakon isteka ovog vremena, nego ih je potrebno zatvoriti ručno
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaži pojašnjenja alata: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Odgoda prije prikaza objašnjenja alata kada se miš postavi iznad nekog elementa sučelja. Alternativno, objašnjena alata se mogu vezati uz desnu tipku na mišu
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Odgoda prije prikaza objašnjenja alata kada se miš postavi iznad nekog elementa sučelja. Alternativno, objašnjena alata se mogu vezati uz desnu tipku na mišu kada je ova vrijednost postavljena na 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Lebdi na {COMMA} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaži broj stanovnika u oznaci imena grada: {STRING}
@@ -1614,7 +1614,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Odabire ponaša
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatski izgradi semafore prije: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Postavi godinu kada će se koristiti električni signali za pruge. Prije ove godine, koristiti će se ne-električni signali (imaju iste funkcije samo izgledaju drugačije)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Omogući signalni GUI: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Prikaži prozor za odabir tipova signala za gradnju, umjesto samo prikaza tipa signala bez prozora sa Ctrl+klikanjem kod gradnje
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Prikaži prozor za odabir tipova signala za gradnju, umjesto samo rotacije tipa signala bez prozora sa Ctrl+klik na sagrađenim signalima
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Predodređeni signal za izgradnju: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Osnovni tip signala za korištenje
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokirajući signali
@@ -1726,13 +1726,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrički (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jedinice mase: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Uvijek kada su mase prikazane u korisničkom sučelju, prikaži ih u odabranim jedinicama
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Uvijek kada je masa prikazana u korisničkom sučelju, prikaži je u odabranim jedinicama
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperijalni (short t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrički (t/tonne)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jedinice volumena: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Uvijek kada su volumeni prikazani u korisničkom sučelju, prikaži ih u odabranim jedinicama
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Uvijek kada je volumen prikazan u korisničkom sučelju, prikaži ga u odabranim jedinicama
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperijalni (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrički (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
@@ -1744,7 +1744,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrički (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jedinice visine: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Uvijek kada su visine prikazane u korisničkom sučelju, prikaži ih u odabranim jedinicama
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Uvijek kada je visina prikazana u korisničkom sučelju, prikaži je u odabranim jedinicama
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperijalni (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrički (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2396,7 +2396,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Izgradi 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Izgradi spremište vlakova (za kupnju i servisiranje vlakova). Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori prugu u čvorište. Ctrl omogućava spajanje čvorišta. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradi željezničku postaju. Ctrl omogućava spajanje postaja. Shift mijenja prikaz građenje/procjena troškova.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale. Ctrl aktivira semafore/svjetlosne signale{}Povlačenjem će se izgraditi signali uzduž ravnog dijela pruge. Ctrl će izgraditi signale do sljedećeg križanja.{}Ctrl+klik aktivira otvaranje prozora za odabir signala. Shift mijenja prikaz građenje/procjena troškova.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale. Ctrl aktivira semafore/svjetlosne signale{}Povlačenjem će se izgraditi signali uzduž ravnog dijela pruge. Ctrl će izgraditi signale do sljedećeg križanja ili signala.{}Ctrl+klik aktivira otvaranje prozora za odabir signala. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradi željeznički most. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi željeznički tunel. Shift mijenja prikaz građenje/procjena troškova.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge, signala, čvorišta i postaja. Držanjem tipke Ctrl također se uklanjaju tračnice na čvorištima i postajama.
@@ -2939,11 +2939,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Poravnanje sprite-a {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sljedeći sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon kraja kreni od početka
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon dolaska na zadnjeg prebaci na prvi
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Otiđi na sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Otiđi na određeni sprite. Ako sprite nije normalni sprite, otiđi na slijedeći normalni sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prethodni sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Otiđi na prethodni normalni sprite, preskačući svaki pseudo/prebojani/font sprite i kreni od kraja ako se dođe na početak
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Otiđi na prethodni normalni sprite, preskačući svaki pseudo/prebojani/font sprite i {BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon dolaska na prvi prebaci na zadnjeg
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prikaz trenutno odabranog spritea. Poravnjanje se ignorira kod crtanja ovog spritea.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pomakni sprite mijenjajući X i Y pomake
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X pomak: {NUM}, Y pomak: {NUM}

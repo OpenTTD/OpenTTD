@@ -1190,7 +1190,7 @@ STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Només entregar
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud dels ponts: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de ponts
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud dels túnels: {STRING}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud màxima per a construir tunels
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de túnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mètode de construcció de la indústria primària manual: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Mètode de finançament d'indústria primària. 'cap' significa que no serà possible fundar-ne cap, 'prospecció' significa que serà possible fundar-ne, però la construcció succeirà en un lloc aleatori del mapa i també podria passar que fracassi, 'com les altre indústries' significa que les indústries de matèries primeres poden ser construides a qualsevol lloc per les companyies igual que les indústries manufactureres
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Cap
@@ -1293,7 +1293,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màxima des de la vora a les refineries de petroli: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Les refineries de petroli només es construeixen a prop de les vores del mapa, això és a la costa en els mapes d'illes
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada de la cota de neu: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada dels estatges amb neu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Geografia del terreny: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suau
@@ -1306,7 +1306,7 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Millorat
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotació del mapa d'alçades: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Alçada que un escenari pla pren: {STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Alçada que pren un escenari pla: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Activa modelar el terreny de les cel·les a les vores del mapa: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Si està desactivat, les vores del mapa sempre seran oceans
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el c
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors mecànics automàticament abans de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any per utilitzar semàfors elèctrics. Abans d'aquest any s'utilitzaran senyals mecànics (que tenen exactament la mateixa funció, però amb diferent aspecte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa la interfície de senyals: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostra una finestra per escollir els tipus de senyals a construir, en lloc de només la rotació sense finestra de tipus de senyals amb Ctrl+clic sobre els senyals
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostra una finestra per escollir els tipus de senyals a construir, en lloc de només la rotació de tipus de senyals sense finestra amb Ctrl+clic sobre els senyals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipus de senyal a construir predeterminada: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipus de senyal predeterminat a utilitzar
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
@@ -1644,7 +1644,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Mètric (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unitats de força de tracció: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Quan es mostri força de tracció a la interfície d'usuari, presenta-la en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Quan es mostrin forces de tracció a la interfície d'usuari, presenta-les en les unitats seleccionades
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Mètric (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
@@ -2302,7 +2302,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per construir i revisar trens). Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteix una via en un punt de control. Ctrl permet ajuntar punts de control. Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta entre semàfors mecànics i elèctrics{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals. Shift commuta construir/mostrar el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta entre semàfors mecànics i elèctrics{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció o senyal{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals. Shift commuta construir/mostrar el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix un pont de tren. Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix un túnel per a trens. Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta construeix/treu per vies de tren, senyals, punts de control i estacions. Mantingueu Ctrl per treure també les vies dels punts de control i de les estacions
@@ -2709,9 +2709,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nombre de poblacions:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nombre d'indústries:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alçada de la neu:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mou la línia de neu un pas amunt
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mou la línia de neu un pas avall
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alçada dels estatges amb neu:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mou els estatges amb neu un pas amunt
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mou els estatges amb neu un pas avall
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nombre aleatori:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Clica per introduir un nombre aleatori
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Canvia el nombre aleatori utilitzat pel Generador de Terrenys
@@ -2742,7 +2742,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Mida:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Posa un valor aleatori
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Canviar alçada de la línia de neu
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Canvia l'alçada d'inici d'estatges amb neu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Canviar l'any inicial
 
 # SE Map generation
@@ -2754,7 +2754,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Alçada 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mou l'alçada del terreny pla un pas avall
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mou l'alçada del terreny pla un pas amunt
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Canvia alçada del terreny pla
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Canvia l'alçada del terreny pla
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Generant món...
@@ -3568,8 +3568,8 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions 
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregant / Descarregant
-STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Deixant
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Sortint
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Vehicle sinistrat!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariat
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parat
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Parant, a {VELOCITY}
@@ -4136,9 +4136,10 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... nom�
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... només es pot construir prop del centre de les poblacions
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... només pot ser construït en zones baixes
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... només es pot situar prop dels límits del mapa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... els boscos només es poden plantar sota la cota de neu
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... només es pot construir per sobre la cota de neu
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... només es pot construir per sota la cota de neu
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... el bosc només es pot plantar en estatges amb neu
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... només es pot construir en estatges amb neu
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... només es pot construir en estatges sense neu
+
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Aquí no es pot construir una estació de tren...

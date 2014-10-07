@@ -1279,7 +1279,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duration of err
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duration for displaying error messages in a red window. Note that some (critical) error messages are not closed automatically after this time, but must be closed manually
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Show tooltips: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay before tooltips are displayed when hovering the mouse over some interface element. Alternatively tooltips can be bound to the right mouse button
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay before tooltips are displayed when hovering the mouse over some interface element. Alternatively tooltips are bound to the right mouse button when this value is set to 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover for {COMMA} second{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Right click
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Show town population in the town name label: {STRING}
@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION                               :On screen keybo
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Select the method to open the on screen keyboard for entering text into editboxes only using the pointing device. This is meant for small devices without actual keyboard
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Disabled
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Double click
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Single click (when focussed)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Single click (when focused)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Single click (immediately)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Right-click emulation: {STRING}
@@ -1519,7 +1519,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Select the beha
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatically build semaphores before: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year when electric signals will be used for tracks. Before this year, non-electric signals will be used (which have the exact same function, but different looks)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Enable the signal GUI: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Display a window for choosing signal types to build, instead of only window-less signal-type rotation with Ctrl+clicking on build signals
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Display a window for choosing signal types to build, instead of only window-less signal-type rotation with Ctrl+clicking on built signals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signal type to build by default: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Default signal type to use
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Block signals
@@ -1631,25 +1631,25 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metric (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Weights units: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Whenever weights are shown in the user interface, show it in the selected units
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Whenever a weight is shown in the user interface, show it in the selected units
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metric (t/tonne)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volumes units: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Whenever volumes are shown in the user interface, show it in the selected units
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Whenever a volume is shown in the user interface, show it in the selected units
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metric (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Tractive effort units: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Whenever tractive effort, also known as tractive force, is shown in the user interface, show it in the selected units
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Whenever a tractive effort (also known as tractive force) is shown in the user interface, show it in the selected units
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metric (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Heights units: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Whenever heights are shown in the user interface, show it in the selected units
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Whenever a height is shown in the user interface, show it in the selected units
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2256,7 +2256,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toggle t
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toggle transparency for trees. Ctrl+Click to lock
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toggle transparency for houses. Ctrl+Click to lock
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toggle transparency for industries. Ctrl+Click to lock
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toggle transparency for buildables like stations, depots and waypoints. Ctrl+Click to lock
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toggle transparency for buildables like stations, depots, and waypoints. Ctrl+Click to lock
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toggle transparency for bridges. Ctrl+Click to lock
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toggle transparency for structures like lighthouses and antennas. Ctrl+Click to lock
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toggle transparency for catenary. Ctrl+Click to lock
@@ -2301,7 +2301,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build ra
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for buying and maintaining trains). Shift toggles building/showing cost estimate
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convert rail to waypoint. Ctrl enables joining waypoints. Shift toggles building/showing cost estimate
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Build railroad station. Ctrl enables joining stations. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build railroad signals. Ctrl toggles semaphore/light signals{}Dragging builds signals along a straight stretch of track. Ctrl builds signals until the next junction{}Ctrl+Click toggles opening the signal selection window. Shift toggles building/showing cost estimate
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build railroad signals. Ctrl toggles semaphore/light signals{}Dragging builds signals along a straight stretch of track. Ctrl builds signals up to the next junction or signal{}Ctrl+Click toggles opening the signal selection window. Shift toggles building/showing cost estimate
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Build railroad bridge. Shift toggles building/showing cost estimate
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Build railroad tunnel. Shift toggles building/showing cost estimate
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toggle build/remove for railroad track, signals, waypoints and stations. Hold Ctrl to also remove the rail of waypoints and stations
@@ -2844,11 +2844,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Next sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceed to the next normal sprite, skipping any pseudo/recolor/font sprites and wrapping around at the end
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceed to the next normal sprite, skipping any pseudo/recolour/font sprites and wrapping around from the last sprite to the first
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Go to sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Go to the given sprite. If the sprite is not a normal sprite, proceed to the next normal sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Previous sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceed to the previous normal sprite, skipping any pseudo/recolor/font sprites and wrapping around at the begin
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceed to the previous normal sprite, skipping any pseudo/recolour/font sprites and wrapping around from the first sprite to the last
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation of the currently selected sprite. The alignment is ignored when drawing this sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move the sprite around, changing the X and Y offsets
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
@@ -3443,7 +3443,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clone Ve
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clone Ship
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clone Aircraft
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}This will buy a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click share the orders. Shift+Click shows estimated cost without purchase
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}This will buy a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}This will buy a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}This will buy a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}This will buy a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
@@ -3765,7 +3765,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest d
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest hangar
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_SHARE                                                 :Share orders
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl makes station orders 'full load any cargo', waypoint orders 'non-stop' and depot orders 'maintenance'. 'Share orders' or Ctrl lets this vehicle share orders with the selected vehicle. Clicking a vehicle copies the orders from that vehicle. A depot order disables automatic maintenance of the vehicle
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl makes station orders 'full load any cargo', waypoint orders 'non-stop', and depot orders 'maintenance'. 'Share orders' or Ctrl lets this vehicle share orders with the selected vehicle. Clicking a vehicle copies the orders from that vehicle. A depot order disables automatic maintenance of the vehicle
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Show all vehicles that share this schedule
 
@@ -3862,7 +3862,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}This veh
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}This timetable has not yet started
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}This timetable will start at {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start date
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start Date
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Select a date as starting point of this timetable. Ctrl+Click sets the starting point of this timetable and distributes all vehicles sharing this order evenly based on their relative order, if the order is completely timetabled
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time

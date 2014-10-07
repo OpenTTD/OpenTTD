@@ -1186,8 +1186,8 @@ STR_CONFIG_SETTING_INFLATION                                    :インフレ: {
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :インフレを有効にします。経費の方が収入よりわずかに早く上昇していきます。
 STR_CONFIG_SETTING_SELECTGOODS                                  :必要貨物のみ集荷: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :到着した運搬車両が積み込もうとする貨物のみ停留施設に集荷されるようにします。搬送扱いのない貨物が停留施設で山積みになることでの悪評を防げます。
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋の最大長:{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :橋の最大長を設定できます
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋梁の最大長:{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :橋梁の最大長を設定できます
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :トンネルの最大長：{STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :トンネルの最大長を設定できます
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :一次産業の開設法: {STRING}
@@ -1279,7 +1279,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :エラーメッ
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :赤地のエラーメッセージが表示されている時間を設定します。注: 致命的なエラーの場合はこの時間を経過しても自動では閉じません。
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}秒
 STR_CONFIG_SETTING_HOVER_DELAY                                  :ツールチップ表示: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :カーソルをインターフェイス要素に乗せた場合にツールチップが表示されるまでの時間を決定します。この設定でツールチップを右クリックで表示するようにもできます
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :カーソルをインターフェイス要素に乗せた場合にツールチップが表示されるまでの時間を決定します。"0"に設定するとツールチップは右クリックで表示されるようになります
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :マウスオーバー {COMMA}秒後
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右クリック
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :街名ラベルに人口を表示: {STRING}
@@ -1648,7 +1648,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :メートル法
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :国際単位系 (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :距離単位: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :ゲーム中の長さをいずれの単位系で表すか決定します
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :ゲーム中の高度をいずれの単位系で表すか決定します
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ヤード・ポンド法 (フィート(ft))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :メートル法 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国際単位系 (m)
@@ -2300,7 +2300,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}自動�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}列車庫を建設します(列車の購入・整備施設になります)。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}線路に通過点を設置します。Ctrlを押しながら決定すると通過点同士を結合できます。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}駅を建設します。Ctrlを押しながら決定すると離れた駅等と結合可能です。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}鉄道信号を建設します。Ctrlで腕木式と色灯式を切り替えられます。{}ドラックして決定するとその区間に一定間隔で信号が配置されます。このときCtrlを押しておくと、その先分岐に行き着くまで信号を配置していきます。{}Ctrl+クリックで信号種類を選ぶウィンドウが出ます(「信号のGUIを使用」設定オフ時のみ)。Shiftを押しながら決定すると費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}鉄道信号を建設します。Ctrlで腕木式と色灯式を切り替えられます。{}ドラックして決定するとその区間に一定間隔で信号が配置されます。このときCtrlを押しておくと、その先分岐か信号に行き着くまで連続配置します。{}Ctrl+クリックで信号種類を選ぶウィンドウが出ます(「信号のGUIを使用」設定オフ時のみ)。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}鉄道橋を建設します。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}鉄道トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路・信号・駅・中継駅の建設/撤去を切り替えます。{}Ctrlを押したままにすると駅・通過点の撤去時に線路ごと撤去されます
@@ -2843,11 +2843,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF�
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}スプライト{COMMA} 配列 ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}次のスプライト
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進みます。疑似/リカラー/フォントスプライトはスキップし、終端まで行を送ります
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進みます。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}スプライトへ飛ぶ
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}所定のスプライトへ飛びます。指定のスプライトがノーマルスプライトでなければ、次のノーマルスプライトに進みます
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}前のスプライト
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。疑似/リカラー/フォントスプライトはスキップし、始端まで行を送ります
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在選択されているスプライトの代表絵を示します。この配列はスプライトを描画するときには無視されます
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオフセットを変更し、スプライトを移動します
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Xオフセット: {NUM}, Yオフセット: {NUM}
@@ -2957,8 +2957,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口: 
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}旅客数(先月): {ORANGE}{COMMA}人{BLACK}　最大: {ORANGE}{COMMA}人
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}郵便袋(先月): {ORANGE}{COMMA}袋{BLACK}　最大: {ORANGE}{COMMA}袋
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}街の成長に必要な物資:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} が必要です
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} が冬に必要です
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}が{RED}必要です
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}が{BLACK}冬に必要です
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} は配送されています
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {RED}(更なる配送が必要)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {GREEN}(需要充足)

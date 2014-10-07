@@ -1279,7 +1279,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid fö
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Håll muspekaren i {COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånarantal i stadsnamnet: {STRING}
@@ -2843,11 +2843,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Justera spriteobjekt {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nästa spriteobjekt
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsätt till nästa nomala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om vid slutet
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsätt till nästa nomala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om efter sista spriteobjektet
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå till spriteobjekt
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå till angivet spriteobjekt. Om objektet inte är ett normalt spriteobjekt, fortsätt till nästa normala spriteobjekt
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidigare spriteobjekt
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till nästa normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om vid början
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till föregående normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om från slutet efter första spriteobjektet
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation av det valda objektet. Justeringen ignoreras när objektet ritas.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet, ändrar X och Y offsets
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}

@@ -97,7 +97,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Mineralvann
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passasjer{P "" er}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passasjer{P "" er}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kull
 STR_QUANTITY_MAIL                                               :{COMMA} postsekk{P "" er}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olje
