@@ -1,3 +1,17 @@
+1.4.4-RC1 (2014-10-08)
+------------------------------------------------------------------------
+- Fix: Image widgets stored 32bit SpriteID in uint16 (r26971)
+- Fix: Owner of road depot road types were not properly changed upon bankruptcy [FS#6126] (r26955)
+- Fix: Compilation on HAIKU (r26922)
+- Fix: Crash when enabling 'Full animation' if multiplayer chat text is on screen [FS#6096] (r26919)
+- Fix: Height computation of game script text in town GUI did not consider margins [FS#6119] (r26859)
+- Fix: [Squirrel] Debian lintian issues (r26853)
+- Fix: Compilation of strgen on various platforms like Solaris (r26850)
+- Fix: Better display of refit information for articulated vehicles [FS#6113] (r26849, r26848)
+- Fix: Do not assign a next hop when returning cargo [FS#6110] (r26847)
+- Fix: The ok-button in the OSK for the signs list should just close the OSK [FS#6116] (r26827)
+
+
 1.4.3 (2014-09-23)
 ------------------------------------------------------------------------
 (None)
