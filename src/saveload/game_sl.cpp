@@ -83,10 +83,10 @@ static void Load_GSDT()
 			if (!config->HasScript()) {
 				if (strcmp(_game_saveload_name, "%_dummy") != 0) {
 					DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name, _game_saveload_version);
-					DEBUG(script, 0, "This game wil continue to run without GameScript.");
+					DEBUG(script, 0, "This game will continue to run without GameScript.");
 				} else {
 					DEBUG(script, 0, "The savegame had no GameScript available at the time of saving.");
-					DEBUG(script, 0, "This game wil continue to run without GameScript.");
+					DEBUG(script, 0, "This game will continue to run without GameScript.");
 				}
 			} else {
 				DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name, _game_saveload_version);
