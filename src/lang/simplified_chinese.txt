@@ -249,7 +249,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}滚动�
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆除地块上的建筑物等设施，按住Ctrl键选择对角线区域，按住Shift键操作只提示预计成本
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}显示被隐藏的
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}显示被隐藏的
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}显示被隐藏的
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}显示被隐藏的
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}如启用此按键，被隐藏的铁路列车也会被显示出来
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}如启用此按键，被隐藏的路面车辆也会被显示出来
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}如启用此按键，被隐藏的船泊也会被显示出来
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}如启用此按键，被隐藏的飞机也会被显示出来
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}默认
@@ -1150,6 +1158,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :灾难可能引
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地区政府对区域改造的态度: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :设置相关参数以决定各公司造成的噪音及环境破坏时，各城镇对该公司的评价及未来区域建设的影响。
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :最高地面高度：{STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :此设置决定地图上的山丘最高可以到达什么高度
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}您不能把最高地面高度设为这个值，因为地图上至少有一座山丘的高度比这个值还大
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :允许在建筑和轨道下方改变地形而不需要拆除他们
 STR_CONFIG_SETTING_CATCHMENT                                    :允许更真实的客源范围：{STRING}
@@ -1178,6 +1189,8 @@ STR_CONFIG_SETTING_INFLATION                                    :通货膨胀：
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :“打开”通货膨胀时，支出比收入增长得稍快
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :桥梁的最大长度: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建设桥梁时允许的最大长度
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :最高桥梁高度：{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :可建造桥梁的最高高度
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道最大长度: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :建设隧道时允许的最大长度
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :原料工业建设方式： {STRING}
@@ -1263,7 +1276,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :错误信息持
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :红色窗口显示错误信息的持续时间，在这个时间内一些紧急的错误信息不会自动关闭，必须手动关闭
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} 秒
 STR_CONFIG_SETTING_HOVER_DELAY                                  :显示提示信息：{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :设置当鼠标停留在某些界面时显示相应提示信息的延迟时间
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :此设置决定鼠标停留在图标、按键或功能时显示提示信息的时间。如果此设置被赋值为 0，您必须揿住鼠标右键来显示图标、按键或功能的提示信息。
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :停留{COMMA} 秒
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右键点击
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :在城镇名称的标签中同时显示人口：{STRING}
@@ -1778,6 +1791,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施和其他不可移除物)： {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}隧道可以相交：{ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}喷气式飞机不会(经常)在小机场坠毁：{ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}修改最高地面高度：{ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}修改地图上山丘的最高高度
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :温带景观
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :寒带景观
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :沙漠景观
@@ -2703,6 +2718,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}城镇数量：
 STR_MAPGEN_DATE                                                 :{BLACK}日期:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工业数量：
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}最高地面高度：
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}把地图上山丘的最高高度加 1
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}把地图上山丘的最高高度减 1
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪线高度：
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}提高雪线高度
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}降低雪线高度
@@ -2732,6 +2750,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}地图尺寸：
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}改変地图上的最高地面高度
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}改变雪线高度
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}改变游戏开始的日期
 
@@ -3393,8 +3412,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}重命�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}重命名船只型号
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}重命名飞机型号
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}隐藏
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}隐藏
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}隐藏
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}隐藏
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}显示
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}显示
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}显示
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}显示
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}切换隐藏还是显示有关的铁路列车类型
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}切换隐藏还是显示有关的路面车辆类型
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}切换隐藏还是显示有关的船舶类型
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}切换隐藏还是显示有关的飞机类型
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重命名车辆的类型
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}重命名汽车型号
@@ -3500,6 +3531,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :汽车
 STR_REPLACE_VEHICLE_SHIP                                        :船只
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :飞机
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}正在使用的运输工具
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}此行显示您拥有的运输工具
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}可用的运输工具
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}此行显示可供替换的运输工具
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}选择要更新的车辆类型
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}选择用来替换左侧指定车辆的新车辆
@@ -4100,6 +4135,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}挖掘�
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}已经是海平面了
 STR_ERROR_TOO_HIGH                                              :{WHITE}太高了
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已经平了
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}赋这个值的话，在上面的桥梁会太高
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}不能为公司更名……
@@ -4289,6 +4325,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}必须�
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}起止点不能相同
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}桥梁起止点不在同一水平高度
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}桥梁对于现有地形来说位置太低了
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}这桥梁对这个地形而言太高了
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}起止两端必须在一条线上
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}桥的两端必须都位于地面上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 桥梁太长
@@ -4853,6 +4890,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (隐藏)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
