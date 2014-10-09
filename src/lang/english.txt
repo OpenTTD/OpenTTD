@@ -1101,9 +1101,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Category:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below using predefined filters
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic settings
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced settings
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert settings / all settings
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic (show only important settings)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced (show most settings)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (show all settings, including weird ones)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Settings with a different value than the default
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Settings with a different value than your new-game settings
 
