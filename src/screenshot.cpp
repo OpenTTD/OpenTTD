@@ -783,7 +783,7 @@ static void HeightmapCallback(void *userdata, void *buffer, uint y, uint pitch, 
 	while (n > 0) {
 		TileIndex ti = TileXY(MapMaxX(), y);
 		for (uint x = MapMaxX(); true; x--) {
-			*buf = 16 * TileHeight(ti);
+			*buf = 256 * TileHeight(ti) / (1 + _settings_game.construction.max_heightlevel);
 			buf++;
 			if (x == 0) break;
 			ti = TILE_ADDXY(ti, -1, 0);
