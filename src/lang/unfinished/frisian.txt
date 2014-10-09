@@ -364,7 +364,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ofslute
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spulopsjes
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Wiidweidiche ynstellings
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spulskriptynstellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-ynstellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Trochsichtigensopsjes
@@ -1075,7 +1074,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fijannich
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin brûkbere AIs beskikber...{}jo kinne ferskillende AIs downloade fia it 'Online Content' systeem
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansearre ynstellings
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtertekst:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles útklappe
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles ynklappe
@@ -1597,7 +1595,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Lânskip
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispiler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spul Opsjes
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avansearre ynstellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF ynstellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sikje online ynhâld
 STR_INTRO_QUIT                                                  :{BLACK}Ôfslúte
@@ -1615,7 +1612,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selektea
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selektear 'boartersguodlân' lânskip
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Lit spul opsjes sjen
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Lit avansearre ynstellings sjen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Lit NewGRF ynstellings sjen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Strún ynternet ôf om nije ynhâld del te heljen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Slút 'OpenTTD' ôf

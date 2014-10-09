@@ -365,7 +365,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opções Avançadas
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Definições de IA / Scripts de Jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
@@ -1076,7 +1075,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não existem IA utilizáveis...{}Pode encontrar IAs disponiveis pelo sistema 'Verificar conteúdo online'
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opções Avançadas
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar frase:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todas
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar todas
@@ -1687,7 +1685,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jo
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções do Jogo
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de Classificações
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opções Avançadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Definições NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Verificar Conteúdo Online
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Definições de IA / Script de Jogo
@@ -1707,7 +1704,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Seleccio
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostrar opções de jogo
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabela de classificações
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostrar opções avançadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar definições de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar definições de IA e de script de jogo

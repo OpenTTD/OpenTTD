@@ -685,7 +685,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Пашыраныя наладкі
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Наладкі ШІ / скрыпту
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Наладкі NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Наладкі празрыстасьці
@@ -1398,7 +1397,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Варожае
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модулі штучнага інтэлекту (ШІ/AI) адсутнічаюць.{}Іх можна спампаваць праз сістэму праверкі "анлайн-кантэнту".
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашыраныя наладкі
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтар:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Разгарнуць усё
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згарнуць усё
@@ -2044,7 +2042,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Сетк
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Наладкі гульні
 STR_INTRO_HIGHSCORE                                             :{BLACK}Табліца рэкордаў
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Пашыраныя наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Наладкі ШІ / скрыпту
@@ -2064,7 +2061,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбр
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Паказаць наладкі гульні
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Паказаць табліцу рэкордаў
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Паказаць пашыраныя наладкі
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы й абноўлены кантэнт, каб спампаваць
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Зьмяніць наладкі ШІ ды гульнёвага скрыпту

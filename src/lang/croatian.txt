@@ -468,7 +468,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izlaz
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Postavke igre
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne postavke
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Postavke UI-ja/Skripte igre
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke za NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Postavke prozirnosti
@@ -1181,7 +1180,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Agresivan
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Odgovarajuća UI nije dostupna...{}Možete preuzeti nekoliko UI pomoću sustava 'Online sadržaja'
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne postavke
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj slijed:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otvori sve
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zatvori sve
@@ -1827,7 +1825,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Više ig
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Postavke igre
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tablica najboljih rezultata
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne postavke
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Postavke
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provjeri online sadržaj
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Postavke UI-ja/Skripte igre
@@ -1847,7 +1844,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Odaberi 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži postavke igre
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tablicu najboljih rezultata
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaži napredne postavke
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži postavke NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži postavke UI-ja/Skripte igre

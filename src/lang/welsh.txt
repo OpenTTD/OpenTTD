@@ -372,7 +372,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gadael
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Gêm
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gosodiadau uwch
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gosodiadau AI / sgript Gêm
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Gosodiadau NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Dewisiadau tryloywder
@@ -1085,7 +1084,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Gwrthwynebus
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Dim AI addas ar gael...{}Gallwch llawrlwytho sawl AI drwy'r system 'Cynnwys Ar-lein'
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ffurfweddu Addasiadau
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Llinyn hidlo:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ehangu oll
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Cywasgu oll
@@ -1731,7 +1729,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Amlchwar
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Dewisiadau Gêm
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabl Sgôr Uchaf
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ffurfweddu Addasiadau
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Gosodiadau NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Gwirio Cynnwys Ar-lein
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Gosodiadau AI / Sgript Gêm
@@ -1751,7 +1748,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Dewis ti
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Dangos dewisiadau'r gêm
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Dangos y tabl sgôr uchaf
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ffurfweddu'r Addasiadau
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Dangos gosodiadau NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Gwirio am gynnwys newydd neu wedi'i ddiweddaru i'w lwytho i lawr
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Dangos gosodiadau AI a sgript Gêm

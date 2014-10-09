@@ -364,7 +364,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilvalg
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerede indstillinger
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/spilscript-indstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
@@ -1075,7 +1074,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerede indstillinger
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter streng:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Udvid alle
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
@@ -1683,7 +1681,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværk
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilvalg
 STR_INTRO_HIGHSCORE                                             :{BLACK} Topresultater
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerede indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spilscript indstillinger
@@ -1703,7 +1700,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vælg 'l
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vis spilvalg
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis topscoreliste
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Vis avancerede indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis computerspiller/spilscript indstillinger

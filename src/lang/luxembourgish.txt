@@ -364,7 +364,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Eraus
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Erweidert Astellungen
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :KI / Spill-Script Astellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Astellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenz Optiounen
@@ -1077,7 +1076,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keng KI fonnt...{}KI kënnen iwwert den 'Online Content' system downgeload gin
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Astellungen
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter-String:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles erweideren
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles reduzéiren
@@ -1718,7 +1716,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilloptiounen
 STR_INTRO_HIGHSCORE                                             :{BLACK}Beschtenlëscht
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweidert Astellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Astellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Inhalt
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}KI / Spill-Script Astellungen
@@ -1738,7 +1735,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wielt de
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spilloptiounen
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Beschtenlëscht uweisen
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Weist erweidert Astellungen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF Astellungen uweisen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann downgeload gin
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Weis KI an Spill-Script-Astellungen

@@ -362,7 +362,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :تنظیمات پیشرفته
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :هوش مصنوعی / تنظیمات بازی
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :گزینه های شفافیت
@@ -1075,7 +1074,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :دشمنانه
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ بسته هوش مصنوعی موجود نیست...{}شما می توانید چندین بسته هوش مصنوعی(AI) را از قسمت محتویات برخط بارگیری کنید
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}تنظیمات پیشرفته
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}متن فیلتر:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}نمایش همه
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}جمع کردن همه
@@ -1456,7 +1454,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}ساخت
 STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی چند نفره
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}تنظیمات پیشرفته
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}تنظیمات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK} تنظیمات هوش مصنوعی / اسکریپت
@@ -1475,7 +1472,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}انتخ
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}انتخاب «سرزمین اسباب بازی‌ها» برای سبک بازی
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}نشان دادن تنظیمات بازی
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}نمایش تنظیمات پیشرفته
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}نمایش تنظیمات NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}نمایش تنظیمات هوش مصنوعی و اسکریپت های بازی

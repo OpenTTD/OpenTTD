@@ -372,7 +372,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Game script instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
@@ -1085,7 +1084,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AIs beschikbaar...{}U kunt diverse AI's downloaden via het 'Online Content' systeem
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavanceerde instellingen
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtertekst:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles uitvouwen
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles inklappen
@@ -1726,7 +1724,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelopties
 STR_INTRO_HIGHSCORE                                             :{BLACK}Score tabel
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spel script Instellingen
@@ -1746,7 +1743,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies spe
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Toon spelopties
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Toon score tabel
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon geavanceerde instellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon NewGRF-instellingen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Toon AI/Game script instellingen

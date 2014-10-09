@@ -497,7 +497,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Розширені налаштування
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Налаштування AI / Ігрового скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Налаштування прозорості
@@ -1213,7 +1212,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :вороже
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Немає відповідних AI...{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернеті'
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Розширені налаштування
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтр:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Розгорнути всі
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згорнути всі
@@ -1847,7 +1845,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Мере
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблиця рекордів
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / GS
@@ -1867,7 +1864,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Вибр
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Показати налаштування гри
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показати таблицю рекордів
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового Скрипта

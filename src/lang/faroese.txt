@@ -352,7 +352,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spæl møguleikar
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Víðkaðir innstillingar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spæl script innstillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF innstillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjøgnumskygnis møguleikar
@@ -1056,7 +1055,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fíggjindaligir
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann heinta niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Víðkaðir innstillingar
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtur strongur:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Víðka alt
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Toga alt saman
@@ -1564,7 +1562,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Hópspæ
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spæli møguleikar
 STR_INTRO_HIGHSCORE                                             :{BLACK}Hástigs yvirlit
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Víðkaðir innstillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kanna online tilfar
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spæli script innstillingar
@@ -1584,7 +1581,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vel 'toy
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vís spæli møguleikar
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vís hástigs yvirlit
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Vís víðkaðar innstillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vís NewGRF innstillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kanna um nýtt og betra tilfar er klárt at heinta niður
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vís AI/Spæli script innstillingar

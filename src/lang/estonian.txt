@@ -421,7 +421,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :V채lju
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :M채ngu seadistus
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :P천hjalik seadistus
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tehism천istuse / M채ngu skriptide seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-i seadistus
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :L채bipaistvuse seadistus
@@ -1134,7 +1133,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv tehism천istus puudub...{}Tehism천istuseid v천ib laadida Internetisisu laadimise aknast.
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}P천hjalik seadistus
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtri tekst:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ava k천ik
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulge k천ik
@@ -1753,7 +1751,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mitmikm�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Liidese seadistus
 STR_INTRO_HIGHSCORE                                             :{BLACK}Punktitabel
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}P천hjalik seadistus
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-i seadistus
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Aineste allalaadimine
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Arvuti seadistus
@@ -1773,7 +1770,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vali 'm�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Ava liidese seadistamine
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Ava punktitabel
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ava p천hjalik seadistamine
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ava NewGRF-i seadistamine
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uusi ja uuendatud aineseid
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Ava arvuti seadistamine

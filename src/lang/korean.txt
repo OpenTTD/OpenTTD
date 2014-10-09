@@ -373,7 +373,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :인공지능/게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
@@ -1086,7 +1085,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :싫어함
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용할 수 있는 인공지능이 없습니다...{}'온라인 콘텐츠' 시스템을 통해 인공지능을 다운로드받을 수 있습니다.
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}검색할 문자열:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}모두 펼치기
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}모두 접기
@@ -1732,7 +1730,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 �
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
 STR_INTRO_HIGHSCORE                                             :{BLACK}고득점 순위표
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}인공지능/게임 스크립트 설정
@@ -1752,7 +1749,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다.
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득점 순위표를 보여줍니다.
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}인공지능/게임 스크립트 설정창을 엽니다.

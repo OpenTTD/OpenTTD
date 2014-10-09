@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghanna an chluiche
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ardsocruithe
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Socruithe scripte AI/Cluiche
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruithe NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghanna trédhearcachta
@@ -1041,7 +1040,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Naimhdeach
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon AI oiriúnach ar fáil...{}Is féidir leat roinnt AI a íoslódáil tríd an gcóras 'Inneachar Ar Líne'
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocruithe
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Catagóir:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Cineál:
@@ -1340,7 +1338,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eagarth�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Ilimreoirí
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Roghanna an Chluiche
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ardsocruithe
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Socruithe NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Seiceáil Inneachar Ar Líne
 STR_INTRO_QUIT                                                  :{BLACK}Scoir
@@ -1358,7 +1355,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Roghnaig
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Roghnaigh stíl tírdhreacha 'tír na mbréagán'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Taispeáin roghanna an chluiche
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Taispeáin ardsocruithe
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Taispeáin socruithe NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Seiceáil le haghaidh inneachar nua agus nuashonruithe le híoslódáil
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Téigh amach as 'OpenTTD'

@@ -364,7 +364,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :進階設定
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 遊戲腳本設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度選項
@@ -1077,7 +1076,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可使用...{}您可以從「線上內容」系統中下載各種 AI。
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階設定
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}篩選字串：
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展開所有選項
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}折疊所有選項
@@ -1718,7 +1716,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}多人�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}遊戲選項
 STR_INTRO_HIGHSCORE                                             :{BLACK}積分排行榜
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}進階設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 遊戲腳本設定
@@ -1738,7 +1735,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}選擇�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}顯示遊戲選項
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}顯示積分排行榜
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}顯示進階設定
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}顯示 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}顯示AI和遊戲腳本設定

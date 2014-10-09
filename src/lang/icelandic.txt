@@ -352,7 +352,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ítarlegar stillingar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gervigreind/leikjaforskrift
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar
@@ -1056,7 +1055,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin nothæf gervigreind í boði...{}Þú getur hlaðið niður mörgum gervigreindum í gegnum 'Ná í viðbætur af netinu' viðmótið
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ítarlegar stillingar
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sía:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Þenja út
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Draga saman
@@ -1606,7 +1604,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Fjölspi
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Stillingar
 STR_INTRO_HIGHSCORE                                             :{BLACK}Stigatafla
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ítarlegar stillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}GG/forskriftar stillingar
@@ -1626,7 +1623,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Leikfang
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Stilla OpenTTD
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Birta stigatöflu
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Birta ítarlegar stillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Birta stillingar fyrir gervigreind/forskrift
