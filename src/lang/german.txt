@@ -373,6 +373,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Beenden
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spieleinstellungen
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Einstellungen
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :KI- / Skripteinstellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
@@ -1084,7 +1085,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Gering
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine KI gefunden...{}Verschiedene KI sind via 'Erweiterungen herunterladen' verfügbar
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Einstellungen
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Suchtext:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles ausklappen
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles einklappen
@@ -1100,9 +1102,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmen-Einstell
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Art:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Vordefinierte Filter auf die untenstehende Liste anwenden
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundlegende Einstellungen
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweiterte Einstellungen
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Alle Einstellungen
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundlegend (Zeigt nur die wichtigsten Einstellungen)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweitert (Zeigt die meisten Einstellungen)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Alle (Zeigt alle Einstellungen, auch die abwegigen)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Einstellungen mit Werten verschieden von OpenTTDs Standardwerten
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Einstellungen mit einem Wert verschieden von den eigenen Einstellungen für neue Spiele
 
@@ -1730,6 +1732,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mehrspie
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spieleinstellungen
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bestenliste
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Einstellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-Einstellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Erweiterungen herunterladen
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}KI- / Skripteinstellungen
@@ -1749,6 +1752,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Spielzeu
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen anzeigen und/oder ändern
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zeige die Bestenliste
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Einstellungen anzeigen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen anzeigen und/oder ändern
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe, ob neue oder aktualisierte Erweiterungen zum Herunterladen bereitstehen
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zeige KI- und Skripteinstellungen
@@ -3477,7 +3481,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Fahrzeug
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schiff kopieren
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Flugzeug kopieren
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kauft eine Kopie des Zuges mit allen Waggons. Klicke diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan. Shift schaltet zwischen Bauen und Kostenvoranschlag um
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kauft eine Kopie des Zuges mit allen Wagons. Klicke diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Kauft eine Kopie des Fahrzeuges. Klicke auf diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kauft eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kauft eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan. Shift schaltet zwischen Bauen und Kostenvoranschlag um
@@ -4159,7 +4163,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zu d
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zu dicht an einer anderen Stadt
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu viele Städte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es ist kein Platz mehr auf dem Spielfeld
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Erweiterte Einstellungen->Umgebung->Städte eingestellt werden
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Einstellungen->Umgebung->Städte eingestellt werden
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gange
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Stadt kann nicht gelöscht werden...{}Eine Station oder ein Depot bezieht sich auf diese Stadt oder ein Feld im städtischen Besitz kann nicht entfernt werden.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... es gibt keinen geeigneten Standort für die Statue im Zentrum dieser Stadt

@@ -373,6 +373,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :설정
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :인공지능/게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
@@ -886,7 +887,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}외부 화면에 저장된 장소로 이동합니다.
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 설정
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 기본 설정
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
 
@@ -1084,7 +1085,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :싫어함
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용할 수 있는 인공지능이 없습니다...{}'온라인 콘텐츠' 시스템을 통해 인공지능을 다운로드받을 수 있습니다.
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}설정
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}검색할 문자열:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}모두 펼치기
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}모두 접기
@@ -1100,9 +1102,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}분류:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}종류:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}미리 지정한 검색어에 해당하는 설정 목록에 표시하도록 할 수 있습니다.
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :기본 설정
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :고급 설정
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :전문가 설정 / 모든 설정
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :기본 설정 (일부 중요한 설정만 보임)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :고급 설정 (대부분의 설정을 보여줌)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :전문가 설정 / 모든 설정 (모든 설정을 보여줌)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :기본값과 다른 값을 가진 설정
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :이 게임 내에서 다른 값을 가진 설정
 
@@ -1730,6 +1732,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 �
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
 STR_INTRO_HIGHSCORE                                             :{BLACK}고득점 순위표
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}인공지능/게임 스크립트 설정
@@ -1747,8 +1750,9 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}아한�
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열대 기후 선택
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다.
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 기본 설정 창을 보여줍니다.
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득점 순위표를 보여줍니다.
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}설정 창을 엽니다.
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}인공지능/게임 스크립트 설정창을 엽니다.
@@ -4159,7 +4163,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 지�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 다른 도시와 너무 가깝습니다!
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도시가 너무 많습니다!
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지도에 더이상 공간이 없습니다!
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정→환경→도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [설정→환경→도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시나 도시 소유의 땅에 역, 정류장, 항구, 공항 또는 차량기지, 차고지, 정박소 등이 존재하면 도시를 삭제할 수 없습니다.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다.

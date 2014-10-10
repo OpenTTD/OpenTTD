@@ -372,6 +372,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Settings
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Game script settings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF settings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
@@ -1083,7 +1084,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Settings
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter string:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expand all
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Collapse all
@@ -1099,9 +1101,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Category:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below using predefined filters
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic settings
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced settings
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert settings / all settings
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic (show only important settings)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced (show most settings)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (show all settings, including weird ones)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Settings with a different value than the default
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Settings with a different value than your new-game settings
 
@@ -1729,6 +1731,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Game Options
 STR_INTRO_HIGHSCORE                                             :{BLACK}Highscore Table
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Settings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Game Script Settings
@@ -1748,6 +1751,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Select '
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Display game options
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Display highscore table
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Display settings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Display AI/Game script settings
@@ -4158,7 +4162,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... too 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... too close to another town
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... too many towns
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... there is no more space on the map
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}The town will not build roads. You can enable building of roads via Advanced Settings->Environment->Towns
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}The town will not build roads. You can enable building of roads via Settings->Environment->Towns
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road work in progress
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Can't delete this town...{}A station or depot is referring to the town or a town owned tile can't be removed
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... there is no suitable place for a statue in the center of this town

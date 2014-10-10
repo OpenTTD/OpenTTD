@@ -498,6 +498,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выход
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Настройки игры
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Настройки
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Настройки ИИ / скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
@@ -1233,7 +1234,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :отрицат�
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}Их можно скачать через систему проверки онлайн-контента.
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Настройки
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фильтр:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Развернуть всё
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Свернуть всё
@@ -1249,9 +1251,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Настрой�
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Категория:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Тип:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Отображать в списке только настройки, соответствующие выбранной категории
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основные настройки
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Расширенные настройки
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Специальные настройки / все настройки
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основные настройки (только самые важные)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Расширенные настройки (практически все)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Специальные настройки (все, включая самые непонятные)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Настройки со значениями, отличающимися от значений по умолчанию
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Настройки со значениями, отличающимися от настроек новой игры
 
@@ -1881,6 +1883,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Сете
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки игры
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица рекордов
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Настройки ИИ / скрипта
@@ -1900,6 +1903,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбр
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Открыть настройки игры
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показать таблицу рекордов
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Окно настроек
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Изменить настройки ИИ / игрового скрипта
@@ -4348,7 +4352,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... сл
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... слишком близко к другому городу
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... слишком много городов
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... нет места на карте
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не будут строить дороги. Вы можете включить строительство дорог в расш.{NBSP}настройках (Окр.{NBSP}среда -> Города)
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не будут строить дороги сами. Вы можете включить строительство дорог в разделе «Настройки -> Окр.{NBSP}среда -> Города».
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}...в центре города нет места для статуи
