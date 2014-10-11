@@ -374,6 +374,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Esci
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opzioni gioco
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Impostazioni
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Impostazioni IA e Script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Impostazioni NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opzioni trasparenza
@@ -985,6 +986,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Risoluzi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleziona la risoluzione dello schermo da utilizzare
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pacchetto grafico di base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleziona il pacchetto grafico di base da utilizzare
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} file mancant{P e i}/corrott{P o i}
@@ -1085,7 +1088,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Ostile
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nessuna IA adatta disponibile...{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Impostazioni
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtro:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Espandi tutti
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Comprimi tutti
@@ -1101,9 +1105,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione de
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante usando i filtri predefiniti
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Impostazioni di base
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Impostazioni avanzate
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impostazioni (utenti esperti)
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Di base (solo le impostazioni principali)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanzate (la maggior parte delle impostazioni)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Per esperti (tutte le impostazioni, incluse quelle speciali)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Impostazioni con un valore diverso da quello predefinito
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Impostazioni con un valore diverso di quello impostato a inizio partita
 
@@ -1753,6 +1757,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multigio
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opzioni di gioco
 STR_INTRO_HIGHSCORE                                             :{BLACK}Punteggi migliori
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Impostazioni
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Impostazioni NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenuti online
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Impostazioni IA e Script
@@ -1772,6 +1777,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selezion
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra le opzioni di gioco
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra la tabella dei punteggi migliori
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostra le impostazioni
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra le impostazioni NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla la disponibilità di contenuti nuovi o aggiornati da scaricare
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra le impostazioni delle IA e degli Script
@@ -4188,7 +4194,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... trop
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... troppo vicino ad un'altra città
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... troppe città
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non c'è altro spazio sulla mappa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Ambiente -> Città
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni -> Ambiente -> Città
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lavori stradali in corso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossibile eliminare la città...{}Una stazione o un deposito fa ancora riferimento alla città o un riquadro di proprietà della città non può essere rimosso
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non ci sono spazi adeguati per una statua nel centro di questa città

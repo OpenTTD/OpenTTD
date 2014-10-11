@@ -374,6 +374,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Innstillinger
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI-/Spillskript-innstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Instillinger for gjennomsiktighet
@@ -985,6 +986,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Velg skjermoppløsningen som skal brukes
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglende/ødelagt{P "" e} fil{P "" er}
@@ -1085,7 +1088,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen egnet AI tilgjengelig...{}Du kan laste ned flere AIer fra nettet med spillets nedlastingssystem.
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Innstillinger
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrer streng:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Vis alle
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
@@ -1732,6 +1736,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flerspil
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spillinnstillinger
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tavle med høyeste poengsummer
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Innstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Se etter innhold på nettet
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spillskript-innstillinger
@@ -1751,6 +1756,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Velg lek
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vis spillinnstillinger
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vise tavle over høyeste poengsummer
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Vis innstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-instillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Se etter nytt og oppdatert innhold for nedlasting
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis AI/Spillskript-innstillinger

@@ -373,6 +373,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Paramètres
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration des scripts
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
@@ -984,6 +985,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Résolut
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Sélectionner la résolution d'écran à utiliser
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :autre
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Graphiques de base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Sélectionner les graphiques de base à utiliser
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fichier{P "" s} manquant{P "" s}/corrompu{P "" s}
@@ -1084,7 +1087,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Paramètres
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtre{NBSP}:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Tout développer
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tout réduire
@@ -1100,9 +1104,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de c
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Catégorie{NBSP}:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type{NBSP}:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restreint la liste ci-dessous en utilisant des filtres prédéfinis
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Options de base
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Options avancées
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paramètres expert / Tous les paramètres
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basique (n'afficher que les paramètres importants)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancé (afficher la plupart des paramètres)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (afficher tous les paramètres, même les plus bizarres)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paramètres avec une valeur différente du défaut
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paramètres avec une valeur différente des paramètres de nouvelle partie
 
@@ -1654,7 +1658,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrique (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unité de hauteur{NBSP}: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quand des hauteurs sont affichées dans l'interface utilisateur, utiliser l'unité sélectionnée
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quand une hauteur est affichée dans l'interface utilisateur, utiliser l'unité sélectionnée
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impérial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrique (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -1730,6 +1734,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mode mul
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options
 STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleurs scores
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuration des scripts
@@ -1749,6 +1754,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Sélecti
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afficher les options du jeu
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afficher le tableau des meilleurs scores
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Afficher les paramètres
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afficher la configuration des scripts
@@ -2308,7 +2314,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construire un dépôt ferroviaire (pour acheter et entretenir des trains).{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construire un point de contrôle sur les rails.{}Ctrl pour joindre des points de contrôle entre eux.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construire une gare.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux.{}Ctrl pour inverser le type des signaux (sémaphore/lumineux).{}Faire glisser pour construire le long d'une section de voie linéaire.{}Ctrl-glisser pour construire des signaux jusqu'à la prochaine jonction.{}Ctrl-clic pour inverser le mode d'ouverture de la fenêtre de sélection des signaux.{}Shift pour afficher seulement le coût estimé.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux. Ctrl pour inverser le type des signaux (sémaphore/lumineux).{}Faire glisser pour construire le long d'une section de voie linéaire.{}Ctrl-glisser pour construire des signaux jusqu'à la prochaine jonction ou le prochain signal{}Ctrl-clic pour inverser le mode d'ouverture de la fenêtre de sélection des signaux.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construire un pont ferroviaire.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construire un tunnel ferroviaire.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterner entre construire et retirer des voies, des signaux, des points de contrôle et des gares.{}Ctrl pour retirer également la voie lors du retrait des points de contrôle et des gares.
@@ -4159,7 +4165,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... trop
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... trop près d'une autre ville
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... trop de villes
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... il n'y a plus d'emplacement sur la carte
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Options avancées->Environnement->Villes
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Paramètres->Environnement->Villes
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Route en travaux
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}Une station ou un dépôt fait référence à cette ville ou une propriété municipale ne peut pas être supprimée.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... aucun emplacement convenable disponible pour une statue dans ce centre-ville

@@ -983,6 +983,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skärmup
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj skärmupplösning att använda
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad{P "" e}/trasig{P "" a} fil{P "" er}
@@ -1083,7 +1085,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande datorspelare finns tillgänglig...{}Du kan ladda ner ett flertal datorspelare via 'Online Content'-systemet
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sökfilter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utöka alla
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Stäng alla
@@ -1099,9 +1101,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Företagsinstä
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begränsar listan nedan med fördefinierade filter
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundläggande inställningar
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerade inställningar
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertinställningar / alla inställningar
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundläggande (visa endast viktiga inställningar)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerat (visa de flesta inställningarna)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (visa alla inställningar, inklusive de konstiga)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Inställningar med annat värde än standardvärdet
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Inställningar med annat värde än dina inställningar för nytt spel
 

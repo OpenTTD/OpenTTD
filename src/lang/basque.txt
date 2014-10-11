@@ -95,30 +95,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Edari Burbuilat
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} bidaiari
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}bidaiari{P "" ak}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} ikatz
-STR_QUANTITY_MAIL                                               :{COMMA} posta zaku
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}posta zaku
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} petroleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} abere buru
-STR_QUANTITY_GOODS                                              :{COMMA} merkantzia kaxa
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}abere buru
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}merkantzia kaxa
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} garau
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} egur
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} burdin mea
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} altzairu
-STR_QUANTITY_VALUABLES                                          :{COMMA} baliozko objektu zaku
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}baliozko objektu zaku
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kobre mea
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} arto
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} diamante zaku
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}diamante zaku
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} janari
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} paper
-STR_QUANTITY_GOLD                                               :{COMMA} urre zaku
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}urre zaku
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} urarena
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} gari
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gomarena
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} azukre
-STR_QUANTITY_TOYS                                               :{COMMA} jostailu
-STR_QUANTITY_SWEETS                                             :{COMMA} gozoki zaku
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}jostailu
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}gozoki zaku
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} kotoi azukre
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuil
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}EZ
 STR_ABBREV_ALL                                                  :{TINY_FONT}DEN
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} bidaiari
-STR_BAGS                                                        :{COMMA} zaku
-STR_TONS                                                        :{COMMA} tona
-STR_LITERS                                                      :{COMMA} litro
-STR_ITEMS                                                       :{COMMA} elementu
-STR_CRATES                                                      :{COMMA} kaxa
+STR_PASSENGERS                                                  :{COMMA}{NBSP}bidaiari{P "" ak}
+STR_BAGS                                                        :{COMMA}{NBSP}zaku{P "" ak}
+STR_TONS                                                        :{COMMA}{NBSP}tona{P "" k}
+STR_LITERS                                                      :{COMMA}{NBSP}litro{P "" ak}
+STR_ITEMS                                                       :{COMMA}{NBSP}objektu{P "" ak}
+STR_CRATES                                                      :{COMMA}{NBSP}kaxa{P "" k}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Urdin Iluna
@@ -191,35 +191,35 @@ STR_COLOUR_GREY                                                 :Grisa
 STR_COLOUR_WHITE                                                :Zuria
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tona{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tona
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tona{P "" k}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tona{P "" k}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}galoi
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galoi{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}galoi{P "" ak}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litro{P "" ak}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Lokarri iragazkia:
@@ -291,10 +291,10 @@ STR_SORT_BY_ENGINE_ID                                           :MotoreID (orden
 STR_SORT_BY_COST                                                :Kostua
 STR_SORT_BY_POWER                                               :Potentzia
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Trakzio indarra
-STR_SORT_BY_INTRO_DATE                                          :Introdukzio Data
-STR_SORT_BY_RUNNING_COST                                        :Mantenimendu kosteak
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potentzia/Mantenimendu kosteak
-STR_SORT_BY_CARGO_CAPACITY                                      :Zama Edukiera
+STR_SORT_BY_INTRO_DATE                                          :Sarrera data
+STR_SORT_BY_RUNNING_COST                                        :Funtzionamendu kostuak
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potentzia/Funtzionamendu kostuak
+STR_SORT_BY_CARGO_CAPACITY                                      :Zama edukiera
 STR_SORT_BY_RANGE                                               :Irismena
 STR_SORT_BY_POPULATION                                          :Biztanleria
 STR_SORT_BY_RATING                                              :Balorazioa
@@ -961,6 +961,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantaila
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} galdutako/hautsitako artxiboa{P "" k}
@@ -1060,7 +1062,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Kontrakoa
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ez dago IA egokirik aukeratzeko..{}IA asko jaitsi ditzakezu 'Online edukiera' sistemaren bidez
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lokarri iragazkia:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Guztia haunditu
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Guztia kolapsatu
@@ -1076,9 +1078,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Konpainia ezarp
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Mota:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beheko zerrenda laburtu bakarrik aldatutako ezarpenak erakutsiz
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Oinarrizko ezarpenak
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ezarpen aurreratuak
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Adituentzako ezarpenak / Ezarpen guztiak
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Oinarrizkoa (ezarpen garrantzitsuak bakarrik erakutsi)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Aurreratua (ezarpen gehienak erakutsi)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Aditua (ezarpen guztiak erakutsi, arraroak barne)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ezarpenak lehenetsitakoen balio ezberdinarekin
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Balio ezberdinak dituzten ezarpenak zure joko berriaren ezarpenekin alderatuta
 
@@ -1247,10 +1249,10 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikoen marre
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Lur sortzailea: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Jatorrizkoa
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo Findegitik maparen ertzera dagoen gehienezko distantzia: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo findegietatik maparen ertzera dagoen gehienezko distantzia: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Elur garaiera: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paisaiaren malkartasun maila (TerraGenesis erabiltzean soilik) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Eremuaren malkartasun maila: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
@@ -1386,7 +1388,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Mantenimendurak
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Aukeratu ibilgailuen mantenimendua azken zerbitzutik pasatutako denboragatik aktibatzea edo fidegarritasun ehunekoaren gutxiengo jakin batera iristeagatik aktibatzea
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Trenen mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ezarri tren berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} egun/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}egun{P 0 "" ak}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desgaitua
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Errepide ibilgailuen mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Ezarri errepide ibilgailu berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
@@ -1545,7 +1547,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Kokapena
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikoak
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinu efektuak
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinua
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfazea
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Orokorra
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Eraikuntza
@@ -1560,7 +1562,7 @@ STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ingurug
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Agintariak
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Herriak
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriak
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama Banaketa
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama banaketa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
 
@@ -2217,7 +2219,7 @@ STR_STATION_CLASS_WAYP                                          :Bidepuntuak
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinale aukerak
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK} Blokeo seinalea (mekanikoa){}Oinarrizkoena den seinale mota, bloke berdinean tren bakarra egotea ahalbidetzen duena
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sarrera seinalea (mekanikoa){}Berde egongo da hurrengo sekzioan irteera seinale bat edo bat baino gehiago berde badago. Bestela gorria egongo da
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sarrera Seinalea (semaforoa){}Berde egongo da hurrengo sekzioan irteera seinale bat edo bat baino gehiago berde badago. Bestela gorria egongo da
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Irteera seinalea (mekanikoa){} Blokeo seinalea bezala funtzionatzen du, baina beharrezkoa da sarrera seinaleak eta konbo aurre-seinaleak kolore egokia edukitzea
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Konbo seinalea (semaforoa){}Sarrera seinale eta irteera seinale bezala funtzionatzen du. Honek aurre-seinale "zuhaitz" handiak eraikitzea ahalbidetzen du
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Bide seinalea (mekanikoa){}Bide seinalea bloke batean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko bide egokia erreserbatu badezake. Oinarrizko bide seinaleak atzekaldetik pasa daitezke
@@ -2832,8 +2834,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregatua
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (beharrezkoa)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregatua)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Herria {ORANGE}{COMMA}{BLACK} egunero hazten da
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Herria {ORANGE}{COMMA}{BLACK} egunero hazten da (sortutako eraikuntzak)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Herria {ORANGE}{COMMA}{BLACK}{NBSP}egunetan hazten da
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Herria {ORANGE}{COMMA}{BLACK}{NBSP}egunero hazten da (sortutako eraikuntzak)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Herria {RED}ez da {BLACK} hazten ari
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Gehienezko soinua herrian: {ORANGE}{COMMA}{BLACK}  gehienez: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Lehio nagusia herriaren kokapenean zentratzeko. Ktrl+Klik ikuspegi lehio berria irekiko du
@@ -2944,7 +2946,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ez dago 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {STATION}tik garraiatua)
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {STATION}-(e)tik garraiatua)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Onartu
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Onartzen diren zamen zerrenda
@@ -3032,7 +3034,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Guztira:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balantzea
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Mailegua
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Gehienezko mailegua: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Gehienezko Mailegua: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} eskatu
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Mailegua handitu. Ktrl+Klik gehienezko mailegua eskatu
@@ -3225,7 +3227,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Guztia {CARGO_L
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Gehienezko trakzio indarra: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Irismena: {GOLD}{COMMA} lauki
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trenak aukeratzeko zerrenda - Klik xehetasunak ikusteko
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trenak aukeratzeko zerrenda - Klik xehetasunak ikusteko. Ctrl+Klik ibilgailu motaren ezkutapenaren artean aukeratzeko
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Errepide ibilbideak aukeratzeko zerrenda - Klik xehetasunak ikusteko
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Itsasontzi aukeratzeko zerrenda - Klik xehetasunak ikusteko
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Hegazkinak aukeratzeko zerrenda - Klik xehetasunak ikusteko
@@ -3306,7 +3308,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Errepide
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Itsasontzia klonatu
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Hegazkina klonatu
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Trena eta bagoiaren kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen tren batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Trena eta bagoi guztien kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen tren batean klikatu. Ctrl+klik aginduak konpartitzeko. Mayus+Klik batez besteko kostua erakusten du, erosi gabe
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Errepide ibilgauaren kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen ibilgailu batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Itsasontzi kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen itsasontzi batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hegazkinaren kopia erosiko du. Klikatu botoia eta gero hangar barnean edo kanpoan dagoen hegazkin batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
@@ -3482,7 +3484,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Edukiera
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferentzia kredituak: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Mantenimendu tartea: {LTBLUE}{COMMA}days{BLACK}   Azken mantenimendua: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Mantenimendu tartea: {LTBLUE}{COMMA}egun{BLACK}   Azken mantenimendua: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Mantenimendu tartea: {LTBLUE}{COMMA}%{BLACK}   Azken mantenimendua: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan igo. Ktrl+klik mantenimendu tartea 5 puntutan igo
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan gutxitu. Ktrl+klik mantenimendu tartea 5 puntutan gutxitu
@@ -3674,7 +3676,7 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ez deskargatu 
 STR_ORDER_AUTO_REFIT                                            :(Automatikoki birmoldatu {STRING}-(e)ra)
 STR_ORDER_FULL_LOAD_REFIT                                       :(Osorik kargatu eta automatikoki birmoldatu {STRING}-(e)ra)
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Edozein zama osorik kargatu eta automatikoki birmoldatu {STRING}-(e)ra)
-STR_ORDER_UNLOAD_REFIT                                          :(Deskargatu eta karga artu automatikoki birmoldatuz {STRING}-(e)ra)
+STR_ORDER_UNLOAD_REFIT                                          :(Deskargatu eta karga hartu automatikoki birmoldatuz {STRING}-(e)ra)
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Deskargatu eta osorik kargatu automatikoki birmoldatuz {STRING}-(e)ra)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Deskargatu eta edozein zama osorik kargatu arte itxaron automatikoki birmoldatuz {STRING}-(e)ra)
 STR_ORDER_TRANSFER_REFIT                                        :(Transferitu eta kargatu automatikoki birmoldatuz {STRING}-(e)ra)
@@ -3713,8 +3715,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} bidaia
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING}-ra bidaiatu gehienez {VELOCITY}ra
 STR_TIMETABLE_STAY_FOR                                          :{STRING} gelditu
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :{STRING} bidaiatu
-STR_TIMETABLE_DAYS                                              :{COMMA} egun
-STR_TIMETABLE_TICKS                                             :{COMMA} tick
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}egun{P "" ak}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" ak}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ordutegi honek {STRING} beharko du betetzeko
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ordutegi honek gutxienez {STRING} beharko du (ez ordutegi guztiak)
