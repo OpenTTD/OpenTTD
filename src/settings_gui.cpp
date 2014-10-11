@@ -57,6 +57,13 @@ static const StringID _autosave_dropdown[] = {
 	INVALID_STRING_ID,
 };
 
+static const StringID _gui_zoom_dropdown[] = {
+	STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL,
+	STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM,
+	STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM,
+	INVALID_STRING_ID,
+};
+
 int _nb_orig_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1; ///< Number of original town names.
 static StringID *_grf_names = NULL; ///< Pointer to town names defined by NewGRFs.
 static int _nb_grf_names = 0;       ///< Number of town names defined by NewGRFs.
@@ -279,6 +286,16 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
+			case WID_GO_GUI_ZOOM_DROPDOWN: {
+				list = new DropDownList();
+				*selected_index = ZOOM_LVL_OUT_4X - _gui_zoom;
+				const StringID *items = _gui_zoom_dropdown;
+				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
+					*list->Append() = new DropDownListStringItem(*items, i, _settings_client.gui.zoom_min > ZOOM_LVL_OUT_4X - i);
+				}
+				break;
+			}
+
 			case WID_GO_BASE_GRF_DROPDOWN:
 				list = BuiltSetDropDownList<BaseGraphics>(selected_index);
 				break;
@@ -307,6 +324,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
 			case WID_GO_LANG_DROPDOWN:       SetDParamStr(0, _current_language->own_name); break;
 			case WID_GO_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
+			case WID_GO_GUI_ZOOM_DROPDOWN:   SetDParam(0, _gui_zoom_dropdown[ZOOM_LVL_OUT_4X - _gui_zoom]); break;
 			case WID_GO_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case WID_GO_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
 			case WID_GO_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
@@ -509,6 +527,12 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
+			case WID_GO_GUI_ZOOM_DROPDOWN:
+				_gui_zoom = (ZoomLevel)(ZOOM_LVL_OUT_4X - index);
+				UpdateCursorSize();
+				ReInitAllWindows();
+				break;
+
 			case WID_GO_BASE_GRF_DROPDOWN:
 				this->SetMediaSet<BaseGraphics>(index);
 				break;
@@ -567,6 +591,9 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP),
 					EndContainer(),
+				EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GUI_ZOOM_FRAME, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_GUI_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 

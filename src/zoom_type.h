@@ -33,7 +33,6 @@ enum ZoomLevel {
 
 	/* Here we define in which zoom viewports are */
 	ZOOM_LVL_VIEWPORT = ZOOM_LVL_OUT_4X, ///< Default zoom level for viewports.
-	ZOOM_LVL_GUI      = ZOOM_LVL_OUT_4X, ///< Default zoom level for GUI sprites.
 	ZOOM_LVL_NEWS     = ZOOM_LVL_OUT_4X, ///< Default zoom level for the news messages.
 	ZOOM_LVL_INDUSTRY = ZOOM_LVL_OUT_8X, ///< Default zoom level for the industry view.
 	ZOOM_LVL_TOWN     = ZOOM_LVL_OUT_8X, ///< Default zoom level for the town view.
@@ -52,5 +51,7 @@ DECLARE_POSTFIX_INCREMENT(ZoomLevel)
 
 /** Type for storing the zoom level in a byte. */
 typedef SimpleTinyEnumT<ZoomLevel, byte> ZoomLevelByte;
+
+#define ZOOM_LVL_GUI (_gui_zoom)
 
 #endif /* ZOOM_TYPE_H */

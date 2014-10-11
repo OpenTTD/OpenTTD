@@ -9092,8 +9092,6 @@ static void FinalisePriceBaseMultipliers()
 	}
 }
 
-void InitDepotWindowBlockSizes();
-
 extern void InitGRFTownGeneratorNames();
 
 /** Finish loading NewGRFs and execute needed post-processing */
@@ -9121,9 +9119,6 @@ static void AfterLoadGRFs()
 
 	/* Set the actually used Canal properties */
 	FinaliseCanals();
-
-	/* Set the block size in the depot windows based on vehicle sprite sizes */
-	InitDepotWindowBlockSizes();
 
 	/* Add all new houses to the house array. */
 	FinaliseHouseArray();
