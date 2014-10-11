@@ -227,6 +227,12 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\lang\korean.lng;%(Outputs)</Outputs>
     </CustomBuild>
+    <CustomBuild Include="..\src\lang\latin.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating latin language file</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\lang\latin.lng;%(Outputs)</Outputs>
+    </CustomBuild>
     <CustomBuild Include="..\src\lang\latvian.txt">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating latvian language file</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang "%(FullPath)"</Command>

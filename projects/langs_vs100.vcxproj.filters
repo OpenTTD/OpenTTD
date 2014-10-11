@@ -97,6 +97,9 @@
     <CustomBuild Include="..\src\lang\korean.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\src\lang\korean.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
     <CustomBuild Include="..\src\lang\latvian.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
