@@ -883,6 +883,7 @@
     <ClInclude Include="..\src\table\elrail_data.h" />
     <ClInclude Include="..\src\table\engines.h" />
     <ClInclude Include="..\src\table\genland.h" />
+    <ClInclude Include="..\src\table\heightmap_colours.h" />
     <ClInclude Include="..\src\table\industry_land.h" />
     <ClInclude Include="..\src\table\landscape_sprite.h" />
     <ClInclude Include="..\src\table\newgrf_debug_data.h" />
@@ -953,6 +954,7 @@
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqstate.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdaux.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdmath.h" />
+    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdstring.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqstring.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqtable.h" />
     <ClInclude Include="..\src\3rdparty\squirrel\include\squirrel.h" />

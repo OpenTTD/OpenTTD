@@ -2828,6 +2828,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\heightmap_colours.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\table\industry_land.h"
 				>
 			</File>
@@ -3121,6 +3125,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdmath.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdstring.h"
 				>
 			</File>
 			<File

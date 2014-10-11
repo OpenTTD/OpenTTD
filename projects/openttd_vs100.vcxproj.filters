@@ -1878,6 +1878,9 @@
     <ClInclude Include="..\src\table\genland.h">
       <Filter>Tables</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\table\heightmap_colours.h">
+      <Filter>Tables</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\table\industry_land.h">
       <Filter>Tables</Filter>
     </ClInclude>
@@ -2086,6 +2089,9 @@
       <Filter>Squirrel headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdmath.h">
+      <Filter>Squirrel headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\3rdparty\squirrel\include\sqstdstring.h">
       <Filter>Squirrel headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\3rdparty\squirrel\squirrel\sqstring.h">
