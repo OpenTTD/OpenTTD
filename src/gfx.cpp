@@ -1139,6 +1139,7 @@ void LoadStringWidthTable(bool monospace)
 		}
 	}
 
+	ClearFontCache();
 	ReInitAllWindows();
 }
 

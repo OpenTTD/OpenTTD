@@ -230,7 +230,7 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
 	if (type == 0xFF) return 0;
 
-	ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
+	ZoomLevel zoom_lvl = (sprite_type != ST_MAPGEN) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
 
 	sprite[zoom_lvl].height = FioReadByte();
 	sprite[zoom_lvl].width  = FioReadWord();
@@ -275,8 +275,8 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 		byte colour = type & SCC_MASK;
 		byte zoom = FioReadByte();
 
-		if (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL) && (sprite_type == ST_NORMAL ? zoom < lengthof(zoom_lvl_map) : zoom == 0)) {
-			ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? zoom_lvl_map[zoom] : ZOOM_LVL_NORMAL;
+		if (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL) && (sprite_type != ST_MAPGEN ? zoom < lengthof(zoom_lvl_map) : zoom == 0)) {
+			ZoomLevel zoom_lvl = (sprite_type != ST_MAPGEN) ? zoom_lvl_map[zoom] : ZOOM_LVL_NORMAL;
 
 			if (HasBit(loaded_sprites, zoom_lvl)) {
 				/* We already have this zoom level, skip sprite. */

@@ -528,9 +528,10 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_GUI_ZOOM_DROPDOWN:
+				GfxClearSpriteCache();
 				_gui_zoom = (ZoomLevel)(ZOOM_LVL_OUT_4X - index);
 				UpdateCursorSize();
-				ReInitAllWindows();
+				LoadStringWidthTable();
 				break;
 
 			case WID_GO_BASE_GRF_DROPDOWN:

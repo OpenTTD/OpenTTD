@@ -18,6 +18,7 @@
 #include "strings_func.h"
 #include "zoom_type.h"
 #include "gfx_layout.h"
+#include "zoom_func.h"
 
 #include "table/sprites.h"
 #include "table/control_codes.h"
@@ -80,6 +81,7 @@ public:
 	virtual void ClearFontCache();
 	virtual const Sprite *GetGlyph(GlyphID key);
 	virtual uint GetGlyphWidth(GlyphID key);
+	virtual int GetHeight() const;
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key) { assert(IsPrintable(key)); return SPRITE_GLYPH | key; }
 	virtual const void *GetFontTable(uint32 tag, size_t &length) { length = 0; return NULL; }
@@ -182,6 +184,11 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
 	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + (this->fs != FS_NORMAL) : 0;
+}
+
+int SpriteFontCache::GetHeight() const
+{
+	return UnScaleByZoom(4 * this->height, ZOOM_LVL_GUI);
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()
