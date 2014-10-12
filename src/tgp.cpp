@@ -165,10 +165,12 @@ static const int amplitude_decimal_bits = 10;
 struct HeightMap
 {
 	height_t *h;         //< array of heights
-	uint     dim_x;      //< height map size_x MapSizeX() + 1
-	uint     total_size; //< height map total size
-	uint     size_x;     //< MapSizeX()
-	uint     size_y;     //< MapSizeY()
+	/* Even though the sizes are always positive, there are many cases where
+	 * X and Y need to be signed integers due to subtractions. */
+	int      dim_x;      //< height map size_x MapSizeX() + 1
+	int      total_size; //< height map total size
+	int      size_x;     //< MapSizeX()
+	int      size_y;     //< MapSizeY()
 
 	/**
 	 * Height map accessor
@@ -238,9 +240,9 @@ static const int8 _max_height[4] = {
  * @param y coordinate y
  * @return true if within the map
  */
-static inline bool IsValidXY(uint x, uint y)
+static inline bool IsValidXY(int x, int y)
 {
-	return ((int)x) >= 0 && x < _height_map.size_x && ((int)y) >= 0 && y < _height_map.size_y;
+	return x >= 0 && x < _height_map.size_x && y >= 0 && y < _height_map.size_y;
 }
 
 
@@ -298,12 +300,12 @@ static void HeightMapGenerate()
 
 	for (uint frequency = 0; frequency <= TGP_FREQUENCY_MAX; frequency++) {
 		const amplitude_t amplitude = _amplitudes_by_smoothness_and_frequency[_settings_game.game_creation.tgen_smoothness][frequency];
-		const uint step = 1 << (TGP_FREQUENCY_MAX - frequency);
+		const int step = 1 << (TGP_FREQUENCY_MAX - frequency);
 
 		if (frequency == 0) {
 			/* This is first round, we need to establish base heights with step = size_min */
-			for (uint y = 0; y <= _height_map.size_y; y += step) {
-				for (uint x = 0; x <= _height_map.size_x; x += step) {
+			for (int y = 0; y <= _height_map.size_y; y += step) {
+				for (int x = 0; x <= _height_map.size_x; x += step) {
 					height_t height = (amplitude > 0) ? RandomHeight(amplitude) : 0;
 					_height_map.height(x, y) = height;
 				}
@@ -313,8 +315,8 @@ static void HeightMapGenerate()
 
 		/* It is regular iteration round.
 		* Interpolate height values at odd x, even y tiles */
-		for (uint y = 0; y <= _height_map.size_y; y += 2 * step) {
-			for (uint x = 0; x < _height_map.size_x; x += 2 * step) {
+		for (int y = 0; y <= _height_map.size_y; y += 2 * step) {
+			for (int x = 0; x <= _height_map.size_x - 2 * step; x += 2 * step) {
 				height_t h00 = _height_map.height(x + 0 * step, y);
 				height_t h02 = _height_map.height(x + 2 * step, y);
 				height_t h01 = (h00 + h02) / 2;
@@ -323,8 +325,8 @@ static void HeightMapGenerate()
 		}
 
 		/* Interpolate height values at odd y tiles */
-		for (uint y = 0; y < _height_map.size_y; y += 2 * step) {
-			for (uint x = 0; x <= _height_map.size_x; x += step) {
+		for (int y = 0; y <= _height_map.size_y - 2 * step; y += 2 * step) {
+			for (int x = 0; x <= _height_map.size_x; x += step) {
 				height_t h00 = _height_map.height(x, y + 0 * step);
 				height_t h20 = _height_map.height(x, y + 2 * step);
 				height_t h10 = (h00 + h20) / 2;
@@ -333,8 +335,8 @@ static void HeightMapGenerate()
 		}
 
 		/* Add noise for next higher frequency (smaller steps) */
-		for (uint y = 0; y <= _height_map.size_y; y += step) {
-			for (uint x = 0; x <= _height_map.size_x; x += step) {
+		for (int y = 0; y <= _height_map.size_y; y += step) {
+			for (int x = 0; x <= _height_map.size_x; x += step) {
 				_height_map.height(x, y) += RandomHeight(amplitude);
 			}
 		}
@@ -522,7 +524,7 @@ static void HeightMapCurves(uint level)
 	}
 
 	/* Apply curves */
-	for (uint x = 0; x < _height_map.size_x; x++) {
+	for (int x = 0; x < _height_map.size_x; x++) {
 
 		/* Get our X grid positions and bi-linear ratio */
 		float fx = (float)(sx * x) / _height_map.size_x + 1.0f;
@@ -539,7 +541,7 @@ static void HeightMapCurves(uint level)
 			if (x2 >= sx) x2--;
 		}
 
-		for (uint y = 0; y < _height_map.size_y; y++) {
+		for (int y = 0; y < _height_map.size_y; y++) {
 
 			/* Get our Y grid position and bi-linear ratio */
 			float fy = (float)(sy * y) / _height_map.size_y + 1.0f;
@@ -660,7 +662,7 @@ static void HeightMapCoastLines(uint8 water_borders)
 {
 	int smallest_size = min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
 	const int margin = 4;
-	uint y, x;
+	int y, x;
 	double max_x;
 	double max_y;
 
@@ -751,7 +753,7 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 /** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
 static void HeightMapSmoothCoasts(uint8 water_borders)
 {
-	uint x, y;
+	int x, y;
 	/* First Smooth NW and SE coasts (y close to 0 and y close to size_y) */
 	for (x = 0; x < _height_map.size_x; x++) {
 		if (HasBit(water_borders, BORDER_NW)) HeightMapSmoothCoastInDirection(x, 0, 0, 1);
@@ -781,7 +783,7 @@ static void HeightMapSmoothSlopes(height_t dh_max)
 	}
 	for (int y = _height_map.size_y; y >= 0; y--) {
 		for (int x = _height_map.size_x; x >= 0; x--) {
-			height_t h_max = min(_height_map.height((uint)x < _height_map.size_x ? x + 1 : x, y), _height_map.height(x, (uint)y < _height_map.size_y ? y + 1 : y)) + dh_max;
+			height_t h_max = min(_height_map.height(x < _height_map.size_x ? x + 1 : x, y), _height_map.height(x, y < _height_map.size_y ? y + 1 : y)) + dh_max;
 			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
@@ -926,15 +928,15 @@ void GenerateTerrainPerlin()
 
 	/* First make sure the tiles at the north border are void tiles if needed. */
 	if (_settings_game.construction.freeform_edges) {
-		for (uint y = 0; y < _height_map.size_y - 1; y++) MakeVoid(_height_map.size_x * y);
-		for (uint x = 0; x < _height_map.size_x;     x++) MakeVoid(x);
+		for (int y = 0; y < _height_map.size_y - 1; y++) MakeVoid(_height_map.size_x * y);
+		for (int x = 0; x < _height_map.size_x;     x++) MakeVoid(x);
 	}
 
 	int max_height = _settings_game.construction.max_heightlevel;
 
 	/* Transfer height map into OTTD map */
-	for (uint y = 0; y < _height_map.size_y; y++) {
-		for (uint x = 0; x < _height_map.size_x; x++) {
+	for (int y = 0; y < _height_map.size_y; y++) {
+		for (int x = 0; x < _height_map.size_x; x++) {
 			TgenSetTileHeight(TileXY(x, y), Clamp(H2I(_height_map.height(x, y)), 0, max_height));
 		}
 	}
