@@ -335,7 +335,7 @@ static void HeightMapGenerate()
 		}
 
 		/* It is regular iteration round.
-		* Interpolate height values at odd x, even y tiles */
+		 * Interpolate height values at odd x, even y tiles */
 		for (int y = 0; y <= _height_map.size_y; y += 2 * step) {
 			for (int x = 0; x <= _height_map.size_x - 2 * step; x += 2 * step) {
 				height_t h00 = _height_map.height(x + 0 * step, y);

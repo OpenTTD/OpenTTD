@@ -78,7 +78,7 @@ static void Load_GSDT()
 		config->Change(_game_saveload_name, _game_saveload_version, false, _game_saveload_is_random);
 		if (!config->HasScript()) {
 			/* No version of the GameScript available that can load the data. Try to load the
-				* latest version of the GameScript instead. */
+			 * latest version of the GameScript instead. */
 			config->Change(_game_saveload_name, -1, false, _game_saveload_is_random);
 			if (!config->HasScript()) {
 				if (strcmp(_game_saveload_name, "%_dummy") != 0) {
@@ -93,7 +93,7 @@ static void Load_GSDT()
 				DEBUG(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 			}
 			/* Make sure the GameScript doesn't get the saveload data, as he was not the
-				*  writer of the saveload data in the first place */
+			 *  writer of the saveload data in the first place */
 			_game_saveload_version = -1;
 		}
 	}

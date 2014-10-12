@@ -2790,9 +2790,9 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 
 			/* TTD/TTO savegames have no NewGRFs, TTDP savegame have them
-			* and if so a new NewGRF list will be made in LoadOldSaveGame.
-			* Note: this is done here because AfterLoadGame is also called
-			* for OTTD savegames which have their own NewGRF logic. */
+			 * and if so a new NewGRF list will be made in LoadOldSaveGame.
+			 * Note: this is done here because AfterLoadGame is also called
+			 * for OTTD savegames which have their own NewGRF logic. */
 			ClearGRFConfigList(&_grfconfig);
 			GamelogReset();
 			if (!LoadOldSaveGame(filename)) return SL_REINIT;

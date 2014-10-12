@@ -208,7 +208,7 @@ static void SelectSongToPlay()
 		if (file >= 0) {
 			const char *filename = BaseMusic::GetUsedSet()->files[file].filename;
 			/* We are now checking for the existence of that file prior
-			* to add it to the list of available songs */
+			 * to add it to the list of available songs */
 			if (!StrEmpty(filename) && FioCheckFileExists(filename, BASESET_DIR)) {
 				_cur_playlist[j] = _playlists[_settings_client.music.playlist][i];
 				j++;

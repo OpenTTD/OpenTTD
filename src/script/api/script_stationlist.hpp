@@ -202,10 +202,10 @@ public:
 class ScriptStationList_CargoWaitingFromByVia : public ScriptStationList_CargoWaiting {
 public:
 	/**
-	* @param station_id Station to query for waiting cargo.
-	* @param cargo Cargo type to query for.
-	* @param from Origin station to restrict the query with.
-	*/
+	 * @param station_id Station to query for waiting cargo.
+	 * @param cargo Cargo type to query for.
+	 * @param from Origin station to restrict the query with.
+	 */
 	ScriptStationList_CargoWaitingFromByVia(StationID station_id, CargoID cargo, StationID from);
 };
 
@@ -233,10 +233,10 @@ public:
 class ScriptStationList_CargoPlannedViaByFrom : public ScriptStationList_CargoPlanned {
 public:
 	/**
-	* @param station_id Station to query for planned flows.
-	* @param cargo Cargo type to query for.
-	* @param via Next hop to restrict the query with.
-	*/
+	 * @param station_id Station to query for planned flows.
+	 * @param cargo Cargo type to query for.
+	 * @param via Next hop to restrict the query with.
+	 */
 	ScriptStationList_CargoPlannedViaByFrom(StationID station_id, CargoID cargo, StationID via);
 };
 
@@ -266,10 +266,10 @@ public:
 class ScriptStationList_CargoPlannedFromByVia : public ScriptStationList_CargoPlanned {
 public:
 	/**
-	* @param station_id Station to query for planned flows.
-	* @param cargo Cargo type to query for.
-	* @param from Origin station to restrict the query with.
-	*/
+	 * @param station_id Station to query for planned flows.
+	 * @param cargo Cargo type to query for.
+	 * @param from Origin station to restrict the query with.
+	 */
 	ScriptStationList_CargoPlannedFromByVia(StationID station_id, CargoID cargo, StationID from);
 };
 

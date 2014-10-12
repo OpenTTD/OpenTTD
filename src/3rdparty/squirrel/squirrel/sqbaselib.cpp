@@ -1,8 +1,10 @@
 /*
-	see copyright notice in squirrel.h
-*/
-/* Needs to be first due to a squirrel header defining type() and type()
- * being used in some versions of the headers included by algorithm. */
+ * see copyright notice in squirrel.h
+ */
+/*
+ * Needs to be first due to a squirrel header defining type() and type()
+ * being used in some versions of the headers included by algorithm.
+ */
 
 #include "../../../stdafx.h"
 

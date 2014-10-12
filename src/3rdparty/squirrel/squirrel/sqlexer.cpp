@@ -1,6 +1,6 @@
 /*
-	see copyright notice in squirrel.h
-*/
+ * see copyright notice in squirrel.h
+ */
 
 #include "../../../stdafx.h"
 

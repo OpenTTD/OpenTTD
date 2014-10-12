@@ -141,8 +141,8 @@ void SpriteFontCache::InitializeUnicodeGlyphMap()
 		byte key = _default_unicode_map[i].key;
 		if (key == CLRA) {
 			/* Clear the glyph. This happens if the glyph at this code point
-				* is non-standard and should be accessed by an SCC_xxx enum
-				* entry only. */
+			 * is non-standard and should be accessed by an SCC_xxx enum
+			 * entry only. */
 			this->SetUnicodeGlyph(_default_unicode_map[i].code, 0);
 		} else {
 			SpriteID sprite = base + key - ASCII_LETTERSTART;

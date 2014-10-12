@@ -2,10 +2,10 @@
 #ifndef _SQTABLE_H_
 #define _SQTABLE_H_
 /*
-* The following code is based on Lua 4.0 (Copyright 1994-2002 Tecgraf, PUC-Rio.)
-* http://www.lua.org/copyright.html#4
-* http://www.lua.org/source/4.0.1/src_ltable.c.html
-*/
+ * The following code is based on Lua 4.0 (Copyright 1994-2002 Tecgraf, PUC-Rio.)
+ * http://www.lua.org/copyright.html#4
+ * http://www.lua.org/source/4.0.1/src_ltable.c.html
+ */
 
 #include "sqstring.h"
 
