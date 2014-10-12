@@ -2612,7 +2612,7 @@ static const char * const _name_swiss_real[] = {
 	"Sursee",
 	"Schwyz",
 	"Thalwil",
-	"Thônex",
+	"Th\xC3\xB4nex",
 	"Thun",
 	"Uster",
 	"Uzwil",

@@ -125,7 +125,7 @@ public:
  * this sets demands in both directions.
  * @param job The link graph job.
  * @param from_id The supplying node.
- * @þaram to_id The receiving node.
+ * @param to_id The receiving node.
  * @param demand_forw Demand calculated for the "forward" direction.
  */
 void SymmetricScaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id, uint demand_forw)
@@ -148,7 +148,7 @@ void SymmetricScaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id
  * this only sets demand in the "forward" direction.
  * @param job The link graph job.
  * @param from_id The supplying node.
- * @þaram to_id The receiving node.
+ * @param to_id The receiving node.
  * @param demand_forw Demand calculated for the "forward" direction.
  */
 inline void Scaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id, uint demand_forw)

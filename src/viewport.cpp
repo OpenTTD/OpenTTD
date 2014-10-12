@@ -2049,7 +2049,7 @@ static inline int ClampXYToMap(Point &curr_tile, int &iter, int iter_limit, int 
 
 	/*
 	 * First get an estimate of the tiles relevant for us at that edge.  Relevant in the sense
-	 * "at least close to the visible area".Thus, we don´t look at exactly each tile, inspecting
+	 * "at least close to the visible area". Thus, we don't look at exactly each tile, inspecting
 	 * e.g. every tenth should be enough. After all, the desired screen limit is set such that
 	 * the bordermost tiles are painted in the middle of the screen when one hits the limit,
 	 * i.e. it is no harm if there is some small error in that calculation
