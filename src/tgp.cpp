@@ -226,13 +226,34 @@ static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][TGP_FREQUENC
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
 static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
 
-/** Desired maximum height - indexed by _settings_game.difficulty.terrain_type */
-static const int8 _max_height[4] = {
-	6,       ///< Very flat
-	9,       ///< Flat
-	12,      ///< Hilly
-	15,      ///< Mountainous
-};
+/**
+ * Gets the maximum allowed height while generating a map based on
+ * mapsize, terraintype, and the maximum height level.
+ * @return The maximum height for the map generation.
+ */
+static height_t TGPGetMaxHeight()
+{
+	/**
+	 * Desired maximum height - indexed by:
+	 *  - _settings_game.difficulty.terrain_type
+	 *  - min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS
+	 *
+	 * It is indexed by map size as well as terrain type since the map size limits the height of
+	 * a usable mountain. For example, on a 64x64 map a 24 high single peak mountain (as if you
+	 * raised land 24 times in the center of the map) will leave only a ring of about 10 tiles
+	 * around the mountain to build on. On a 4096x4096 map, it won't cover any major part of the map.
+	 */
+	static const int max_height[4][MAX_MAP_SIZE_BITS - MIN_MAP_SIZE_BITS + 1] = {
+		/* 64  128  256  512 1024 2048 4096 */
+		{   3,   3,   5,   5,   5,   5,   5 }, ///< Very flat
+		{   4,   4,   6,  10,  10,  10,  10 }, ///< Flat
+		{   6,   9,  15,  25,  31,  31,  31 }, ///< Hilly
+		{   7,  12,  23,  42,  78,  85,  85 }, ///< Mountainous
+	};
+
+	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS];
+	return I2H(min(max_height_from_table, _settings_game.construction.max_heightlevel));
+}
 
 /**
  * Check if a X/Y set are within the map.
@@ -623,7 +644,7 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 	 * Transform the height map into new (normalized) height map:
 	 *   values from range: h_min..h_water_level will become negative so it will be clamped to 0
 	 *   values from range: h_water_level..h_max are transformed into 0..h_max_new
-	 *   where h_max_new is 4, 8, 12 or 16 depending on terrain type (very flat, flat, hilly, mountains)
+	 *   where h_max_new is depending on terrain type and map size.
 	 */
 	FOR_ALL_TILES_IN_HEIGHT(h) {
 		/* Transform height from range h_water_level..h_max into 0..h_max_new range */
@@ -800,7 +821,7 @@ static void HeightMapNormalize()
 {
 	int sea_level_setting = _settings_game.difficulty.quantity_sea_lakes;
 	const amplitude_t water_percent = sea_level_setting != (int)CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[sea_level_setting] : _settings_game.game_creation.custom_sea_level * 1024 / 100;
-	const height_t h_max_new = I2H(_max_height[_settings_game.difficulty.terrain_type]);
+	const height_t h_max_new = TGPGetMaxHeight();
 	const height_t roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
@@ -932,7 +953,7 @@ void GenerateTerrainPerlin()
 		for (int x = 0; x < _height_map.size_x;     x++) MakeVoid(x);
 	}
 
-	int max_height = _settings_game.construction.max_heightlevel;
+	int max_height = H2I(TGPGetMaxHeight());
 
 	/* Transfer height map into OTTD map */
 	for (int y = 0; y < _height_map.size_y; y++) {
