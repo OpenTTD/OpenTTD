@@ -479,7 +479,8 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 	}
 }
 
-/* Additional map variety is provided by applying different curve maps
+/**
+ * Additional map variety is provided by applying different curve maps
  * to different parts of the map. A randomized low resolution grid contains
  * which curve map to use on each part of the make. This filtered non-linearly
  * to smooth out transitions between curves, so each tile could have between
@@ -492,46 +493,38 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
  * The level parameter dictates the resolution of the grid. A low resolution
  * grid will result in larger continuous areas of a land style, a higher
  * resolution grid splits the style into smaller areas.
- *
- * At this point in map generation, all height data has been normalized to 0
- * to 239.
+ * @param level Rough indication of the size of the grid sections to style. Small level means large grid sections.
  */
-struct control_point_t {
-	height_t x;
-	height_t y;
-};
-
-struct control_point_list_t {
-	size_t length;
-	const control_point_t *list;
-};
-
-static const control_point_t _curve_map_1[] = {
-	{ 0, 0 }, { 48, 24 }, { 192, 32 }, { 240, 96 }
-};
-
-static const control_point_t _curve_map_2[] = {
-	{ 0, 0 }, { 16, 24 }, { 128, 32 }, { 192, 64 }, { 240, 144 }
-};
-
-static const control_point_t _curve_map_3[] = {
-	{ 0, 0 }, { 16, 24 }, { 128, 64 }, { 192, 144 }, { 240, 192 }
-};
-
-static const control_point_t _curve_map_4[] = {
-	{ 0, 0 }, { 16, 24 }, { 96, 72 }, { 160, 192 }, { 220, 239 }, { 240, 239 }
-};
-
-static const control_point_list_t _curve_maps[] = {
-	{ lengthof(_curve_map_1), _curve_map_1 },
-	{ lengthof(_curve_map_2), _curve_map_2 },
-	{ lengthof(_curve_map_3), _curve_map_3 },
-	{ lengthof(_curve_map_4), _curve_map_4 },
-};
-
 static void HeightMapCurves(uint level)
 {
-	height_t ht[lengthof(_curve_maps)];
+	int mh = TGPGetMaxHeight();
+
+	/** Basically scale height X to height Y. Everything in between is interpolated. */
+	struct control_point_t {
+		height_t x; ///< The height to scale from.
+		height_t y; ///< The height to scale to.
+	};
+	/* Scaled curve maps; value is in height_ts. */
+#define F(fraction) (fraction * mh * I2H(1))
+	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) }, { F(0.6 / 3), F(0.1) }, { F(2.4 / 3), F(0.4 / 3) },                                                       { F(1.0), F(0.4)  } };
+	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.4 / 3) }, { F(2.4 / 3), F(0.8 / 3) },                           { F(1.0), F(0.6)  } };
+	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.8 / 3) }, { F(2.4 / 3), F(1.8 / 3) },                           { F(1.0), F(0.8)  } };
+	const control_point_t curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.2 / 3), F(0.9 / 3) }, { F(2.0 / 3), F(2.4 / 3) } , { F(5.5 / 6), F(0.99) }, { F(1.0), F(0.99) } };
+#undef F
+
+	/** Helper structure to index the different curve maps. */
+	struct control_point_list_t {
+		size_t length;               ///< The length of the curve map.
+		const control_point_t *list; ///< The actual curve map.
+	};
+	const control_point_list_t curve_maps[] = {
+		{ lengthof(curve_map_1), curve_map_1 },
+		{ lengthof(curve_map_2), curve_map_2 },
+		{ lengthof(curve_map_3), curve_map_3 },
+		{ lengthof(curve_map_4), curve_map_4 },
+	};
+
+	height_t ht[lengthof(curve_maps)];
 	MemSetT(ht, 0, lengthof(ht));
 
 	/* Set up a grid to choose curve maps based on location; attempt to get a somewhat square grid */
@@ -541,7 +534,7 @@ static void HeightMapCurves(uint level)
 	byte *c = AllocaM(byte, sx * sy);
 
 	for (uint i = 0; i < sx * sy; i++) {
-		c[i] = Random() % lengthof(_curve_maps);
+		c[i] = Random() % lengthof(curve_maps);
 	}
 
 	/* Apply curves */
@@ -595,11 +588,11 @@ static void HeightMapCurves(uint level)
 			height_t *h = &_height_map.height(x, y);
 
 			/* Apply all curve maps that are used on this tile. */
-			for (uint t = 0; t < lengthof(_curve_maps); t++) {
+			for (uint t = 0; t < lengthof(curve_maps); t++) {
 				if (!HasBit(corner_bits, t)) continue;
 
-				const control_point_t *cm = _curve_maps[t].list;
-				for (uint i = 0; i < _curve_maps[t].length - 1; i++) {
+				const control_point_t *cm = curve_maps[t].list;
+				for (uint i = 0; i < curve_maps[t].length - 1; i++) {
 					const control_point_t &p1 = cm[i];
 					const control_point_t &p2 = cm[i + 1];
 
