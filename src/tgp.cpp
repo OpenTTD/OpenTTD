@@ -227,12 +227,13 @@ static height_t TGPGetMaxHeight()
 	 * raised land 24 times in the center of the map) will leave only a ring of about 10 tiles
 	 * around the mountain to build on. On a 4096x4096 map, it won't cover any major part of the map.
 	 */
-	static const int max_height[4][MAX_MAP_SIZE_BITS - MIN_MAP_SIZE_BITS + 1] = {
+	static const int max_height[5][MAX_MAP_SIZE_BITS - MIN_MAP_SIZE_BITS + 1] = {
 		/* 64  128  256  512 1024 2048 4096 */
 		{   3,   3,   5,   5,   5,   5,   5 }, ///< Very flat
 		{   4,   4,   6,  10,  10,  10,  10 }, ///< Flat
 		{   6,   9,  15,  25,  31,  31,  31 }, ///< Hilly
 		{   7,  12,  23,  42,  78,  85,  85 }, ///< Mountainous
+		{  12,  21,  36,  73, 146, 170, 170 }  ///< Alpinist
 	};
 
 	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS];
