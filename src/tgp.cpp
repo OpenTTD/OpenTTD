@@ -204,8 +204,8 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 /** Walk through all items of _height_map.h */
 #define FOR_ALL_TILES_IN_HEIGHT(h) for (h = _height_map.h; h < &_height_map.h[_height_map.total_size]; h++)
 
-/** Maximum index into array of noise amplitudes */
-static const uint TGP_FREQUENCY_MAX = 6;
+/** Maximum number of TGP noise frequencies. */
+static const int MAX_TGP_FREQUENCIES = 7;
 
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
 static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
@@ -316,19 +316,21 @@ static inline height_t RandomHeight(amplitude_t rMax)
  * Base Perlin noise generator - fills height map with raw Perlin noise.
  *
  * This runs several iterations with increasing precision; the last iteration looks at areas
- * of 1 by 1 tiles, the second to last at 2 by 2 tiles and the initial 2**TGP_FREQUENCY_MAX
- * by 2**TGP_FREQUENCY_MAX tiles.
+ * of 1 by 1 tiles, the second to last at 2 by 2 tiles and the initial 2**MAX_TGP_FREQUENCIES
+ * by 2**MAX_TGP_FREQUENCIES tiles.
  */
 static void HeightMapGenerate()
 {
 	/* Trying to apply noise to uninitialized height map */
 	assert(_height_map.h != NULL);
 
-	for (uint frequency = 0; frequency <= TGP_FREQUENCY_MAX; frequency++) {
-		const amplitude_t amplitude = GetAmplitude(frequency);
-		const int step = 1 << (TGP_FREQUENCY_MAX - frequency);
+	int start = max(MAX_TGP_FREQUENCIES - (int)min(MapLogX(), MapLogY()), 0);
 
-		if (frequency == 0) {
+	for (int frequency = start; frequency < MAX_TGP_FREQUENCIES; frequency++) {
+		const amplitude_t amplitude = GetAmplitude(frequency);
+		const int step = 1 << (MAX_TGP_FREQUENCIES - frequency - 1);
+
+		if (frequency == start) {
 			/* This is first round, we need to establish base heights with step = size_min */
 			for (int y = 0; y <= _height_map.size_y; y += step) {
 				for (int x = 0; x <= _height_map.size_x; x += step) {
