@@ -505,7 +505,7 @@ static void HeightMapCurves(uint level)
 		height_t y; ///< The height to scale to.
 	};
 	/* Scaled curve maps; value is in height_ts. */
-#define F(fraction) ((height_t)(fraction * mh * I2H(1)))
+#define F(fraction) ((height_t)(fraction * mh)))
 	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) }, { F(0.6 / 3), F(0.1) }, { F(2.4 / 3), F(0.4 / 3) },                                                       { F(1.0), F(0.4)  } };
 	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.4 / 3) }, { F(2.4 / 3), F(0.8 / 3) },                           { F(1.0), F(0.6)  } };
 	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.8 / 3) }, { F(2.4 / 3), F(1.8 / 3) },                           { F(1.0), F(0.8)  } };
