@@ -207,22 +207,6 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 /** Maximum index into array of noise amplitudes */
 static const uint TGP_FREQUENCY_MAX = 6;
 
-/**
- * Noise amplitudes (multiplied by 1024)
- * - indexed by "smoothness setting" and log2(frequency)
- */
-static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][TGP_FREQUENCY_MAX + 1] = {
-	/* lowest frequncy....  ...highest (every corner) */
-	/* Very smooth */
-	{16000,  5600,  1968,   688,   240,    16,    16},
-	/* Smooth */
-	{16000, 16000,  6448,  3200,  1024,   128,    16},
-	/* Rough */
-	{16000, 19200, 12800,  8000,  3200,   256,    64},
-	/* Very Rough */
-	{24000, 16000, 19200, 16000,  8000,   512,   320},
-};
-
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
 static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
 
@@ -253,6 +237,27 @@ static height_t TGPGetMaxHeight()
 
 	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS];
 	return I2H(min(max_height_from_table, _settings_game.construction.max_heightlevel));
+}
+
+/**
+ * Get the amplitude associated with the currently selected
+ * smoothness and maximum height level.
+ * @param frequency The frequency to get the amplitudes for
+ * @return The amplitudes to apply to the map.
+ */
+static amplitude_t GetAmplitude(int frequency)
+{
+	/* Base noise amplitudes (multiplied by 1024) and indexed by "smoothness setting" and log2(frequency). */
+	static const amplitude_t amplitudes[][7] = {
+		/* lowest frequency ...... highest (every corner) */
+		{16000,  5600,  1968,   688,   240,    16,    16}, ///< Very smooth
+		{24000, 12800,  6400,  2700,  1024,   128,    16}, ///< Smooth
+		{32000, 19200, 12800,  8000,  3200,   256,    64}, ///< Rough
+		{48000, 24000, 19200, 16000,  8000,   512,   320}, ///< Very rough
+	};
+
+	int smoothness = _settings_game.game_creation.tgen_smoothness;
+	return amplitudes[smoothness][frequency];
 }
 
 /**
@@ -320,7 +325,7 @@ static void HeightMapGenerate()
 	assert(_height_map.h != NULL);
 
 	for (uint frequency = 0; frequency <= TGP_FREQUENCY_MAX; frequency++) {
-		const amplitude_t amplitude = _amplitudes_by_smoothness_and_frequency[_settings_game.game_creation.tgen_smoothness][frequency];
+		const amplitude_t amplitude = GetAmplitude(frequency);
 		const int step = 1 << (TGP_FREQUENCY_MAX - frequency);
 
 		if (frequency == 0) {
@@ -505,7 +510,7 @@ static void HeightMapCurves(uint level)
 		height_t y; ///< The height to scale to.
 	};
 	/* Scaled curve maps; value is in height_ts. */
-#define F(fraction) ((height_t)(fraction * mh)))
+#define F(fraction) ((height_t)(fraction * mh))
 	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) }, { F(0.6 / 3), F(0.1) }, { F(2.4 / 3), F(0.4 / 3) },                                                       { F(1.0), F(0.4)  } };
 	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.4 / 3) }, { F(2.4 / 3), F(0.8 / 3) },                           { F(1.0), F(0.6)  } };
 	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.8 / 3) }, { F(2.4 / 3), F(1.8 / 3) },                           { F(1.0), F(0.8)  } };
