@@ -250,7 +250,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nojaukt celtnes u.c. objektus no zemes platības. Ctrl iezīmē diagonālu laukumu. Shift pārslēdz nojaukšanu/izmaksu tāmes attēlošanu
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Parādīt paslēptos
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Parādīt paslēptos
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Parādīt paslēptos
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Parādīt paslēptos
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Ieslēdzot šo iestatījumu tiks parādīti arī paslēptie vilcieni
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Ieslēdzot šo iestatījumu tiks parādīti arī paslēptie autotransporta līdzekļi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ieslēdzot šo iestatījumu tiks parādīti arī paslēptie kuģi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ieslēdzot šo iestatījumu tiks parādīti arī paslēptie lidaparāti
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Noklusējums
@@ -365,6 +373,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Iestatījumi
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI/spēles skriptu iestatījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF iestatījumi
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības opcijas
@@ -969,6 +978,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrāna 
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekrāna izšķirtspējas izvēle
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Cita
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Lietotāja saskarnes izmērs
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Izvēlaties lietotāja saskarnes elementu izmēru
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Standarta
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Divkāršs izmērs
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kvadranta izmērs
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pamata grafikas kopa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Atlasīt lietošanai pamata grafikas kopu
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} iztrūkstošs/bojāts fail{P s i ""}
@@ -1068,7 +1084,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :naidīga
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot sistēmu 'Tiešsaistes saturs'
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Iestatījumi
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtra virkne:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Izvērst visu
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sakļaut visu
@@ -1082,9 +1099,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :uzņēmuma iest
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :uzņēmuma iestatījums (tiek iekļauts saglabājumā, ietekmē tikai pašreizējo uzņēmumu)
 
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ierobežo turpmāko sarakstu, rādot tikai izmainītos iestatījumus
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pamatiestatījumi
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Papildu iestatījumi
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Lietpratēju iestatījumi / visi iestatījumi
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pamatiestatījumi (parādīt tikai svarīgākos iestatījumus)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Papildu iestatījumi (parādīt iestatījumu vairākumu)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Lietpratēju iestatījumi (parādīt visus iestatījumus, tai skaitā arī nestandarta)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Iestatījumi ar atšķirīgu vērtību nekā noklusējuma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Iestatījumi ar atšķirīgu vērtību nekā jūsu jaunajai spēlei
 
@@ -1125,6 +1142,9 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Neatļaut vilci
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofas: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Pilsētu domju attieksme pret platības pārstrukturēšanu: {STRING}
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimālais kartes augstums: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Uzstādīt maksimālo atļauto kalnu augstumu kartē
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Jūs nevarat izmantot šo maksimālo kartes augstumu. Vismaz viens kalns uz kartes ir augstāks.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Atļauj ainavas veidošanu zem ekām un ceļiem bez to nojaukšanas
 STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
@@ -1153,6 +1173,7 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflācija: {ST
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Atļaut inflāciju ekonomikā, kur izmaksu celšanās nedaudz apsteidz ienākumus
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimālais tiltu garums: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Būvējamo tiltu maksimālais garums
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimālais tiltu augstums: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimālais tuneļu garums: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Būvējamo tuneļu maksimālais garums
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Izejvielu ražotņu manuālā būvniecības metode: {STRING}
@@ -1551,13 +1572,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :metriskās (ZS)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI, starptautiskās (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Svara mērvienības: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Vai lietotāja saskarnē rāda svaru, rādīt norādītajās mērvienībās
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kad lietotāja saskarnē rāda svaru, uzrādīt to norādītajās mērvienībās
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :impērijas, britu (t/tonna)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :metriskās (t/tonna)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI, starptautiskās (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Tilpuma mērvienības: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Vai lietotāja saskarnē rāda tilpumu, rādīt norādītajās mērvienībās
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Kad lietotāja saskarnē rāda tilpumu, uzrādīt to norādītajās mērvienībās
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :impērijas, britu (galons)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :metriskās (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI, starptautiskās (m³)
@@ -1565,13 +1586,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI.kas             :SI, starptautis
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Vilces spēka mērvienības: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE.kas                 :Vilces spēka mērvienības: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Vai lietotāja saskarnē rāda vilcējspēku, rādīt norādītajās mērvienībās
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Kad lietotāja saskarnē rāda vilcējspēku, uzrādīt to norādītajās mērvienībās
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :impērijas, britu (mārciņa)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :metriskās (spēka kilograms)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI, starptautiskās (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Augstuma mērvienības: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Vai lietotāja saskarnē rāda augstumu, rādīt norādītajās mērvienībās
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kad lietotāja saskarnē rāda augstumu, uzrādīt to norādītajās mērvienībās
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :impērijas, britu (pēda)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriskās (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI, starptautiskās (m)
@@ -1634,6 +1655,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Vairāks
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles opcijas
 STR_INTRO_HIGHSCORE                                             :{BLACK}Sasniegumu tabula
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešsaistes saturu
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}MI/spēles skriptu iestatījumi
@@ -1653,6 +1675,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izvēlē
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rādīt spēles opcijas
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rādīt sasniegumu tabulu
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Displeja iestatījumi
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rādīt NewGRF iestatījumus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai lejupielādei nav pieejams jauns un atjaunināts saturs
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rādīt MI un spēles skriptu iestatījumus
@@ -1692,6 +1715,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlē
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Burvju buldozers (nojauc ražotnes, nepārvietojamus objektus): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneļi drīkst krustoties: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktīvās lidmašīnas mazajās lidostās neavarēs (bieži): {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Izmainīt maksimālo kartes augstumu: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Izmainīt kalnu maksimālo augstumu kartē
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Mērena klimata ainava
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktikas klimata ainava
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropu klimata ainava
@@ -2202,7 +2227,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Būvēt vilcienu depo (vilcienu pirkšanai un apkopei). Shift pārslēdz būvi/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pārveidot sliedes par pieturas punktu. Ctrl iespējo pieturas punktu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt dzelzceļa signālus. Ctrl pārslēdz semaforus/luksoforus{}Vilkšana uzbūvē signālus uz taisna sliežu posma. Ctrl uzbūvē signālus līdz nākamajam sazarojumam{}Ctrl+klikšķis pārslēdz signālu izvēles loga atvēršanu. Shift pārslēdz būve/rādīt izmaksu tāmi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt dzelzceļa signālus. Ctrl pārslēdz semaforus/luksoforus{}Vilkšana uzbūvē signālus uz taisna sliežu posma. Ctrl uzbūvē signālus līdz nākamajam sazarojumam vai signālam{}Ctrl+Klikšķis pārslēdz signālu izvēles loga atvēršanu. Shift pārslēdz starp būvet/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Būvēt dzelzceļa tuneli. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Pārslēgties starp sliežu, signālierīču, pieturas punktu būvēšanu/noņemšanu. Aizturēt Ctrl, lai noņemtu arī sliedes no pieturas punktiem un stacijām
@@ -2608,6 +2633,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Pilsētu daudzums:
 STR_MAPGEN_DATE                                                 :{BLACK}Datums:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ražotņu daudzums:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimālais kartes augstums
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Palielināt kalnu maksimālo augstumu kartē par vienu vienību
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Samazināt kalnu maksimālu augstumu kartē par vienu vienību
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniega līnijas augstums
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaugstināt sniega līnijas augstumu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pazemināt sniega līnijas augstumu
@@ -2637,6 +2665,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Augstumu
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Lielums:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Mainīt kartes maksimālo augstumu
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mainīt sniega līnijas augstumu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mainīt sākuma gadu
 
@@ -3287,8 +3316,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Pārdēv
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Pārdēvēt kuģa tipu
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Pārdēvēt lidaparāta tipu
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Paslēpt
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Paslēpt
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Paslēpt
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Paslēpt
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Rādīt
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Rādīt
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Rādīt
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Rādīt
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Pārslēgt starp rādīt/nerādīt vilciena tipu
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Pārslēgt starp rādīt/nerādīt autotransporta līdzekļu tipu
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Pārslēgt starp rādīt/nerādīt kuģa tipu
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Pārslēgt starp rādīt/nerādīt lidaparāta tipu
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pārdēvēt vilciena vagona tipu
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pārdēvēt autotransporta līdzekļa tipu
@@ -3343,7 +3384,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonēt 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonēt kuģi
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonēt lidaparātu
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tas nopirks vilciena kopiju ar visiem vagoniem. Spiediet šo pogu un pēc tam uz vilciena, kas atrodas depo vai ārpus tā. Ctrl+klikšķis, lai koplietotu rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Nopirkt vilciena kopiju ar visiem vagoniem. Spiediet šo pogu, un pēc tam uz vilciena, kas atrodas depo vai ārpus tā. Ctrl+Klikšķis, lai koplietotu rīkojumus. Shift+Klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tas nopirks autotransporta kopiju. Spiediet uz pogas un pēc tam uz autotransporta, kas atrodas depo vai ārpus tā. Ctrl+klikšķis, lai koplietotu rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Tas nopirks kuģa kopiju. Spiediet šo pogu un pēc tam uz kuģa, kas atrodas depo vai ārpus tā. Ctrl+klikšķis, lai koplietotu rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Tas pirks lidaparāta kopiju. Spiediet uz pogas un pēc tam uz lidaparāta, kas atrodas angārā vai ārpus tā. Ctrl+klikšķis, lai koplietotu rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
@@ -4172,6 +4213,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Vispirms
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nevar sākties un beigties tajā paša vietā
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Tilta gali nav vienā līmenī
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tilts ir pārāk zems šim zemes apvidum
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Tilts ir pārāk augsts priekš šī vilciena.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Sākumam un beigām jābūt uz vienas līnijas
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abiem tilta galiem jābūt uz zemes
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... tilts ir pārāk garš
@@ -4729,6 +4771,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (paslēpts)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
