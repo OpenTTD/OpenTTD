@@ -205,7 +205,7 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 #define FOR_ALL_TILES_IN_HEIGHT(h) for (h = _height_map.h; h < &_height_map.h[_height_map.total_size]; h++)
 
 /** Maximum number of TGP noise frequencies. */
-static const int MAX_TGP_FREQUENCIES = 7;
+static const int MAX_TGP_FREQUENCIES = 10;
 
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
 static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
@@ -255,9 +255,35 @@ static amplitude_t GetAmplitude(int frequency)
 		{32000, 19200, 12800,  8000,  3200,   256,    64}, ///< Rough
 		{48000, 24000, 19200, 16000,  8000,   512,   320}, ///< Very rough
 	};
+	/*
+	 * Extrapolation factors for ranges before the table.
+	 * The extrapolation is needed to account for the higher map heights. They need larger
+	 * areas with a particular gradient so that we are able to create maps without too
+	 * many steep slopes up to the wanted height level. It's definitely not perfect since
+	 * it will bring larger rectangles with similar slopes which makes the rectangular
+	 * behaviour of TGP more noticable. However, these height differentiations cannot
+	 * happen over much smaller areas; we basically double the "range" to give a similar
+	 * slope for every doubling of map height.
+	 */
+	static const double extrapolation_factors[] = { 3.3, 2.8, 2.3, 1.8 };
 
 	int smoothness = _settings_game.game_creation.tgen_smoothness;
-	return amplitudes[smoothness][frequency];
+
+	/* Get the table index, and return that value if possible. */
+	int index = frequency - MAX_TGP_FREQUENCIES + lengthof(amplitudes[smoothness]);
+	amplitude_t amplitude = amplitudes[smoothness][max(0, index)];
+	if (index >= 0) return amplitude;
+
+	/* We need to extrapolate the amplitude. */
+	double extrapolation_factor = extrapolation_factors[smoothness];
+	int height_range = 16;
+	do {
+		amplitude = (amplitude_t)(extrapolation_factor * (double)amplitude);
+		height_range <<= 1;
+		index++;
+	} while (index < 0);
+
+	return Clamp((TGPGetMaxHeight() - height_range) / height_range, 0, 1) * amplitude;
 }
 
 /**
