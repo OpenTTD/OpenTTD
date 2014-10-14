@@ -231,6 +231,7 @@ struct DepotWindow : Window {
 	bool generate_list;
 	VehicleList vehicle_list;
 	VehicleList wagon_list;
+	uint unitnumber_digits;
 	uint num_columns;       ///< Number of columns.
 	Scrollbar *hscroll;     ///< Only for trains.
 	Scrollbar *vscroll;
@@ -244,6 +245,7 @@ struct DepotWindow : Window {
 		this->generate_list = true;
 		this->type = type;
 		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
+		this->unitnumber_digits = 2;
 
 		this->CreateNestedTree();
 		this->hscroll = (this->type == VEH_TRAIN ? this->GetScrollbar(WID_D_H_SCROLL) : NULL);
@@ -607,7 +609,8 @@ struct DepotWindow : Window {
 					this->count_width = 0;
 				}
 
-				Dimension unumber = { GetDigitWidth() * 4, FONT_HEIGHT_NORMAL };
+				SetDParamMaxDigits(0, this->unitnumber_digits);
+				Dimension unumber = GetStringBoundingBox(STR_BLACK_COMMA);
 				const Sprite *spr = GetSprite(SPR_FLAG_VEH_STOPPED, ST_NORMAL);
 				this->flag_width  = UnScaleByZoom(spr->width, ZOOM_LVL_GUI) + WD_FRAMERECT_RIGHT;
 				this->flag_height = UnScaleByZoom(spr->height, ZOOM_LVL_GUI);
@@ -656,6 +659,12 @@ struct DepotWindow : Window {
 			BuildDepotVehicleList(this->type, this->window_number, &this->vehicle_list, &this->wagon_list);
 			this->generate_list = false;
 			DepotSortList(&this->vehicle_list);
+
+			uint new_unitnumber_digits = GetUnitNumberDigits(this->vehicle_list);
+			if (this->unitnumber_digits != new_unitnumber_digits) {
+				this->unitnumber_digits = new_unitnumber_digits;
+				this->ReInit();
+			}
 		}
 
 		/* determine amount of items for scroller */
