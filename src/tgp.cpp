@@ -277,7 +277,7 @@ static amplitude_t GetAmplitude(int frequency)
 
 	/* We need to extrapolate the amplitude. */
 	double extrapolation_factor = extrapolation_factors[smoothness];
-	int height_range = 16;
+	int height_range = I2H(16);
 	do {
 		amplitude = (amplitude_t)(extrapolation_factor * (double)amplitude);
 		height_range <<= 1;
@@ -352,12 +352,18 @@ static void HeightMapGenerate()
 	assert(_height_map.h != NULL);
 
 	int start = max(MAX_TGP_FREQUENCIES - (int)min(MapLogX(), MapLogY()), 0);
+	bool first = true;
 
 	for (int frequency = start; frequency < MAX_TGP_FREQUENCIES; frequency++) {
 		const amplitude_t amplitude = GetAmplitude(frequency);
+
+		/* Ignore zero amplitudes; it means our map isn't height enough for this
+		 * amplitude, so ignore it and continue with the next set of amplitude. */
+		if (amplitude == 0) continue;
+
 		const int step = 1 << (MAX_TGP_FREQUENCIES - frequency - 1);
 
-		if (frequency == start) {
+		if (first) {
 			/* This is first round, we need to establish base heights with step = size_min */
 			for (int y = 0; y <= _height_map.size_y; y += step) {
 				for (int x = 0; x <= _height_map.size_x; x += step) {
@@ -365,6 +371,7 @@ static void HeightMapGenerate()
 					_height_map.height(x, y) = height;
 				}
 			}
+			first = false;
 			continue;
 		}
 
