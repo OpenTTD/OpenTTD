@@ -98,6 +98,30 @@ const StringID BaseVehicleListWindow::vehicle_depot_name[] = {
 	STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR
 };
 
+/**
+ * Get the number of digits the biggest unit number of a set of vehicles has.
+ * @param vehicles The list of vehicles.
+ * @return The number of digits to allocate space for.
+ */
+uint GetUnitNumberDigits(VehicleList &vehicles)
+{
+	uint unitnumber = 0;
+	for (const Vehicle **v = vehicles.Begin(); v != vehicles.End(); v++) {
+		unitnumber = max<uint>(unitnumber, (*v)->unitnumber);
+	}
+
+	if (unitnumber >= 10000) return 5;
+	if (unitnumber >=  1000) return 4;
+	if (unitnumber >=   100) return 3;
+
+	/*
+	 * When the smallest unit number is less than 10, it is
+	 * quite likely that it will expand to become more than
+	 * 10 quite soon.
+	 */
+	return 2;
+}
+
 void BaseVehicleListWindow::BuildVehicleList()
 {
 	if (!this->vehicles.NeedRebuild()) return;
@@ -106,21 +130,7 @@ void BaseVehicleListWindow::BuildVehicleList()
 
 	GenerateVehicleSortList(&this->vehicles, this->vli);
 
-	uint unitnumber = 0;
-	for (const Vehicle **v = this->vehicles.Begin(); v != this->vehicles.End(); v++) {
-		unitnumber = max<uint>(unitnumber, (*v)->unitnumber);
-	}
-
-	/* Because 111 is much less wide than e.g. 999 we use the
-	 * wider numbers to determine the width instead of just
-	 * the random number that it seems to be. */
-	if (unitnumber >= 1000) {
-		this->unitnumber_digits = 4;
-	} else if (unitnumber >= 100) {
-		this->unitnumber_digits = 3;
-	} else {
-		this->unitnumber_digits = 2;
-	}
+	this->unitnumber_digits = GetUnitNumberDigits(this->vehicles);
 
 	this->vehicles.RebuildDone();
 	this->vscroll->SetCount(this->vehicles.Length());
