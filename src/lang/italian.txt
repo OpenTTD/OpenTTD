@@ -1086,6 +1086,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Molto pianeggia
 STR_TERRAIN_TYPE_FLAT                                           :Pianeggiante
 STR_TERRAIN_TYPE_HILLY                                          :Collinare
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montuoso
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpino
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tollerante

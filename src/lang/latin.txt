@@ -1272,6 +1272,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Planissimus
 STR_TERRAIN_TYPE_FLAT                                           :Planus
 STR_TERRAIN_TYPE_HILLY                                          :Clivosus
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montanus
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinus
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Longe
 STR_CITY_APPROVAL_TOLERANT                                      :Breviter
@@ -1979,7 +1980,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esne ce
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Tricae
-STR_CHEATS_TOOLTIP                                              :{BLACK}Quadra signi plena indicat trica iam a te usa est
+STR_CHEATS_TOOLTIP                                              :{BLACK}Quadrum signi plenum indicat trica iam a te usa est
 STR_CHEATS_WARNING                                              :{BLACK}Cave! Competitores tuas falsurus es! Memento tantam infamiam memoria omnium in aeternum teneri!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augere pecuniam {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludens es in loco societatis: {ORANGE}{COMMA}
@@ -2890,9 +2891,9 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terra societati
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}De OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Privilegium impressorium originale {COPYRIGHT} 1995 Chris Sawyer, Omnia proprietatis iura reservantur
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Privilegium impressorium originale {COPYRIGHT} MCMXCV Chris Sawyer, Omnia proprietatis iura reservantur
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD editio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2014 Manus OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} MMII-MMXIV Manus OpenTTD
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Servare Ludum
@@ -3163,7 +3164,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Fasciculos comp
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Index Signorum - {COMMA} Sign{P um a}
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Sequere casum litterarum
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Sequi casum litterarum
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Mutare secutionem casus litterarum cum signa comparantur seriei colanti
 
 # Sign window
@@ -4169,7 +4170,7 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Sinere/v
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Frangere:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Frangere
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cum nuntium IA idem est huic seriei, ludus intermittitur
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Sequere casum litterarum
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Sequi casum litterarum
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Eligere si sit casus litterarum sequendus cum nuntia IA componuntur seriei frangendi
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pergere
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Resumere ludum et IA pergere

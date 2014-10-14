@@ -983,6 +983,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Cydrania
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Dewiswch y cydraniad sgrin i'w defnyddio
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set raffeg sylfaenol
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ffeil ar goll/llygredig
@@ -1076,6 +1078,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Gwastad Iawn
 STR_TERRAIN_TYPE_FLAT                                           :Gwastad
 STR_TERRAIN_TYPE_HILLY                                          :Bryniog
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mynyddig
+STR_TERRAIN_TYPE_ALPINIST                                       :Mynyddwr
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Bodlon
 STR_CITY_APPROVAL_TOLERANT                                      :Hapus
@@ -1083,7 +1086,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Gwrthwynebus
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Dim AI addas ar gael...{}Gallwch llawrlwytho sawl AI drwy'r system 'Cynnwys Ar-lein'
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Llinyn hidlo:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ehangu oll
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Cywasgu oll
@@ -1099,9 +1102,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Math:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Yn cyfyngu'r rhestr isod drwy hidlau rhagosodedig
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gosodiadau sylfaenol
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gosodiadau uwch
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Gosodiadau arbenigwyr / pob gosodiad
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Sylfaenol (gosodiadau pwysig yn unig)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Uwch (y rhan helaeth o'r gosodiadau)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Arbennigwyr (gosodiadau arbennigol, gan gynnwys rhai rhyfedd)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Gosodiadau sy'n wahanol i'r rhagosodiad
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Gosodiadau gyda gwerth gwahanol i'ch gosodiadau gêm newydd chi
 
@@ -1610,7 +1613,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Mae "cymesur" y
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Dull dosrannu ar gyfer post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Mae "cymesur" yn golygu y bydd tua'r un faint o bost yn cael ei yrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer post.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Dull dosrannu ar gyfer llwythi ARFOG: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARFOG yn cynnwys trysorau mewn ardaloedd tymherus, diemwntau yn y trofannau, ac aur yn yr is-arctig. Mae modd y bydd NewGRFau yn newid hyn, Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Fe argymhellir eich bod yn dewis anghymesur neu â llaw pan yn chwarae mewn ardal is-arctig, gan na fydd banciau'n gyrru aur yn ôl i gloddfeydd aur. Ar gyfer ardaloedd tymherus neu trofannol gallwch hefyd ddewis cymesur gan y bydd banciau'n gyrru trysorau'n ôl i'r banciau tardd.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARFOG yn cynnwys trysorau mewn ardaloedd tymherus, diemwntau yn y trofannau, ac aur yn yr is-arctig. Gall NewGRFau newid hyn, Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Fe argymhellir eich bod yn dewis anghymesur neu â llaw pan yn chwarae mewn ardal is-arctig, gan na fydd banciau'n gyrru aur yn ôl i gloddfeydd aur. Ar gyfer ardaloedd tymherus neu trofannol gallwch hefyd ddewis cymesur gan y bydd banciau'n gyrru trysorau'n ôl i rai banciau tardd.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Dull dosrannu ar gyfer llwythi eraill: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi hyn.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Manylder dosrannu: {STRING}
@@ -1635,7 +1638,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrig (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unedau pwysau: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Pan y dangosir pwysau yn y rhyngwyneb defnyddiwr, eu dangos yn yr unedau a ddewiswyd
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Pan y dangosir pwysau yn y rhyngwyneb defnyddiwr, ei ddangos yn yr unedau a ddewiswyd
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (t/tunnell byr)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrig (t/tunell)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
@@ -3476,7 +3479,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Dyblygu 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Dyblygu Llong
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Dyblygu Awyren
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Bydd hyn yn prynu copi o'r trên gan gynnwys pob cerbyd. Cliciwch ar y botwm hwn ac yna ar drên sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Bydd hyn yn prynu copi o'r trên gan gynnwys pob cerbyd. Cliciwch ar y botwm hwn ac yna ar drên sydd tu fewn neu tu allan i'r depo. Bydd Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Bydd hyn yn adeiladu copi o gerbyd ffordd. Cliciwch ar y botwm hwn ac yna ar gerbyd sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost heb brynnu
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Bydd hyn yn adeiladu copi o long. Cliciwch ar y botwm hwn ac yna ar long sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Bydd hyn yn adeiladu copi o awyren. Cliciwch ar y botwm hwn ac yna ar awyren sydd tu fewn neu tu allan i'r awyrendy. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
@@ -4158,7 +4161,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... rhy 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... rhy agos i dref arall
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... gormod o drefi
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nid oes mwy o le ar y map
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ni fydd y dref yn adeiladu ffyrdd. Gallwch alluogi adeiladu ffyrdd yn Gosodiadau Uwch->Amgylchedd->Trefi
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ni fydd y dref yn adeiladu ffyrdd. Gallwch alluogi adeiladu ffyrdd yn Gosodiadau->Amgylchedd->Trefi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Mae gwaith yn cael ei wneud ar y ffordd
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Methu dileu'r dref...{}Mae gorsaf neu depo sy'n cyfeirio i'r dref neu deil ym mherchnogaeth y dref na ellir ei ddileu
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nid oes man addas i'r cerflun yn nghanol y ddinas yma
