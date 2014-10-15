@@ -364,6 +364,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieşire din joc
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Setări
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Setări IA / Script Joc
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opţiuni transparenţă
@@ -974,6 +975,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rezoluţ
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Alege rezoluţia dorită pentru joc
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mărime interfată
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Alege mărimea elementelor de interfaţa
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normală
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Mărime dublă
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime împătrită
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectează setul grafic de bază utilizat în joc
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fişier{P "" "e"} lipsă/corupt{P "" e}
@@ -1073,7 +1081,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Ostilă
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligenţă Artificială...{}Puteţi descărca diferite module de Inteligenţă Artificială prin sistemul de 'Resurse Online'
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Setări
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtru:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Extinde toate
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsează toate
@@ -1663,6 +1672,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opţiuni
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela cu scoruri maxime
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Setări
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Setări IA / Scripturi Joc
@@ -1682,6 +1692,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Alege pe
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afişează opţiunile jocului
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afișează tabela cu scoruri maxime
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Setări afişare
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afişează setările pentru Inteligența Artificială şi pentru Scripturi Joc
@@ -1721,6 +1732,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joacă 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii şi lucruri amovibile): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Avioanele cu reacţie nu se vor prăbuşi (frecvent) pe aeroporturile mici: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Schimbă înălţimea maximă a harţii: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Schimbă înălţimea maxima a munţilor pe hartă
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :peisajul temperat
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :peisajul sub-arctic
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :peisajul sub-tropical
@@ -2644,6 +2657,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de oraşe:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de industrii:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Înălţimea maximă a harţii:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Măreşte înălţimea maximă a munţilor pe hartă cu unu
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Reduce înălţimea maximă a munţilor pe hartă cu unu
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Înălţimea zăpezii:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mută linia zăpezii cu un punct în sus
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mută linia zăpezii cu un punct în jos
@@ -2673,6 +2689,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume har
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Modifică înălţimea maximă a harţi
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifică înălţimea zăpezii
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifică anul de început
 
@@ -3024,7 +3041,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluăr
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afişează evaluările staţiei
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
-STR_STATION_VIEW_GROUP                                          :{BLACK}Grupare după
+STR_STATION_VIEW_GROUP                                          :{BLACK}Grupează după
 STR_STATION_VIEW_WAITING_STATION                                :Staţie: Aşteptare
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Sumă: Aşteptare
 STR_STATION_VIEW_PLANNED_STATION                                :Staţie: Planificat
@@ -3257,6 +3274,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Şterge 
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Redenumeşte grupul selectat
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click aici pentru a proteja acest grup de la înlocuirile automate globale
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Şterge Grup
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adaugă vehicule partajate
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Elimină toate vehiculele
@@ -4232,7 +4250,8 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... este
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nu pot crea grup...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nu pot şterge grup...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nu se poate redenumi grupul...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nu pot redenumi grup...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nu pot seta grupul predecesor...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nu pot elimina toate vehiculele din acest grup...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nu pot adauga vehiculul in acest grup...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nu pot adauga vehicule partajate in grup...

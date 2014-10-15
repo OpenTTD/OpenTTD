@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :No
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sí, excepte vehicles parats
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tots els vehicles
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el benefici del vehicle és negatiu: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està activat, un missatge de noticia és enviat quan un vehicle no ha tingut beneficis durant l'any
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està activat, un missatge de notícia és enviat quan un vehicle no ha tingut beneficis durant l'any
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quan està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
@@ -1300,7 +1300,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :L'algorisme gen
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipus de terreny: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Només TerraGenesis) Escollir el tipus de terreny: des de molt pla fins a muntanyós
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Només TerraGenesis) Escollir el tipus de terreny: des de molt pla fins a escarpat
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitat d'indústries: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Fixa el nombre d'indústries que s'haurien de generar i mantenir durant la partida
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màxima des de la vora a les refineries de petroli: {STRING}
@@ -1345,7 +1345,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violat
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Comportament quan es desplaci el mapa amb el botó dret del ratolí. Quan està desactivat, el ratolí mou la càmera. Quan està activat, el ratolí mou el mapa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplaçament suau de la vista: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla com la vista principal es desplaça a una posició específica quan es clica al mapa petit o quan s'envia una ordre de desplaçar-se a un objecte específic al mapa. Si està activat, la vista es desplaça suaument, si està desactivat salta directament al punt assenyalat
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla com la vista principal es desplaça a una posició específica quan es clica al mapa petit o quan s'envia una ordre de desplaçar-se a un objecte específic al mapa. Si està activat, la vista es desplaça suaument; si està desactivat, salta directament al punt assenyalat
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra les distàncies-cel·la i les diferències d'alçada quan s'arrossegui durant la construcció
 STR_CONFIG_SETTING_LIVERIES                                     :Mostra la decoració específica del tipus de vehicle: {STRING}

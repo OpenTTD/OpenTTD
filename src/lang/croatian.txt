@@ -1180,6 +1180,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Vrlo ravno
 STR_TERRAIN_TYPE_FLAT                                           :Ravno
 STR_TERRAIN_TYPE_HILLY                                          :Brežuljkasto
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Brdovito
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan

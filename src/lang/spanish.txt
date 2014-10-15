@@ -1085,6 +1085,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Muy llano
 STR_TERRAIN_TYPE_FLAT                                           :Llano
 STR_TERRAIN_TYPE_HILLY                                          :Accidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montañoso
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpino
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
@@ -1759,6 +1760,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir e
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Muestra las opciones del juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabla de puntuaciones
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostrar configuración
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Muestra ajustes de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar configuración de scripts de IA y Juego
