@@ -644,7 +644,7 @@ public:
 			size_t idx = s - string_base;
 
 			WChar c = Utf8Consume(&s);
-			if (c <	0x10000) {
+			if (c < 0x10000) {
 				*this->utf16_str.Append() = (UChar)c;
 			} else {
 				/* Make a surrogate pair. */

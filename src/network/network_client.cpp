@@ -210,7 +210,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
  * when that's the case handle it appropriately.
  * @return true when everything went okay.
  */
-/*static */ bool ClientNetworkGameSocketHandler::Receive()
+/* static */ bool ClientNetworkGameSocketHandler::Receive()
 {
 	if (my_client->CanSendReceive()) {
 		NetworkRecvStatus res = my_client->ReceivePackets();
@@ -225,7 +225,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 }
 
 /** Send the packets of this socket handler. */
-/*static */ void ClientNetworkGameSocketHandler::Send()
+/* static */ void ClientNetworkGameSocketHandler::Send()
 {
 	my_client->SendPackets();
 	my_client->CheckConnection();

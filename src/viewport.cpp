@@ -250,8 +250,8 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->overlay = NULL;
 
 	w->viewport = vp;
-	vp->virtual_left = 0;//pt.x;
-	vp->virtual_top = 0;//pt.y;
+	vp->virtual_left = 0; // pt.x;
+	vp->virtual_top = 0;  // pt.y;
 }
 
 static Point _vp_move_offs;

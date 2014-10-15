@@ -159,7 +159,7 @@ static inline __m128i AdjustBrightnessOfTwoPixels(__m128i from, uint32 brightnes
 	__m128i briAB = _mm_cvtsi32_si128(brightness);
 	briAB = _mm_shuffle_epi8(briAB, BRIGHTNESS_LOW_CONTROL_MASK); // DEFAULT_BRIGHTNESS in 0, 0x00 in 2.
 	colAB = _mm_mullo_epi16(colAB, briAB);
-	__m128i colAB_ob = _mm_srli_epi16(colAB, 8+7);
+	__m128i colAB_ob = _mm_srli_epi16(colAB, 8 + 7);
 	colAB = _mm_srli_epi16(colAB, 7);
 
 	/* Sum overbright.

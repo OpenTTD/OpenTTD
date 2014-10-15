@@ -311,7 +311,7 @@ void MultiCommodityFlow::CleanupPaths(NodeID source_id, PathVector &paths)
  * @param path End of the path the flow should be pushed on.
  * @param accuracy Accuracy of the calculation.
  * @param max_saturation If < UINT_MAX only push flow up to the given
- * 	                     saturation, otherwise the path can be "overloaded".
+ *                       saturation, otherwise the path can be "overloaded".
  */
 uint MultiCommodityFlow::PushFlow(Edge &edge, Path *path, uint accuracy,
 		uint max_saturation)

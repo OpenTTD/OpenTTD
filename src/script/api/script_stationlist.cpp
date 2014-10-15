@@ -41,7 +41,7 @@ ScriptStationList_Cargo::ScriptStationList_Cargo(ScriptStationList_Cargo::CargoM
 		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo,
 		StationID other_station)
 {
-	switch(mode) {
+	switch (mode) {
 		case CM_WAITING:
 			ScriptStationList_CargoWaiting(selector, station_id, cargo, other_station).SwapList(this);
 			break;
@@ -57,7 +57,7 @@ ScriptStationList_CargoWaiting::ScriptStationList_CargoWaiting(
 		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo,
 		StationID other_station)
 {
-	switch(selector) {
+	switch (selector) {
 		case CS_BY_FROM:
 			ScriptStationList_CargoWaitingByFrom(station_id, cargo).SwapList(this);
 			break;
@@ -79,7 +79,7 @@ ScriptStationList_CargoPlanned::ScriptStationList_CargoPlanned(
 		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo,
 		StationID other_station)
 {
-	switch(selector) {
+	switch (selector) {
 		case CS_BY_FROM:
 			ScriptStationList_CargoPlannedByFrom(station_id, cargo).SwapList(this);
 			break;

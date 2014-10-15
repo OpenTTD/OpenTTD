@@ -1439,7 +1439,7 @@ void Train::UpdateDeltaXY(Direction direction)
 	if (!IsDiagonalDirection(direction)) {
 		static const int _sign_table[] =
 		{
-			// x, y
+			/* x, y */
 			-1, -1, // DIR_N
 			-1,  1, // DIR_E
 			 1,  1, // DIR_S

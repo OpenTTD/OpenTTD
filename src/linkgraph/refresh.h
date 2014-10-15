@@ -101,4 +101,4 @@ protected:
 	void RefreshLinks(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
 };
 
-#endif // REFRESH_H
+#endif /* REFRESH_H */

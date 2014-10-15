@@ -568,10 +568,10 @@ public:
 		if (widget != WID_SB_SEL_PAGE && widget != WID_SB_PAGE_PANEL) return;
 
 		Dimension d;
-		d.height= FONT_HEIGHT_NORMAL;
+		d.height = FONT_HEIGHT_NORMAL;
 		d.width = 0;
 
-		switch(widget) {
+		switch (widget) {
 			case WID_SB_SEL_PAGE: {
 
 				/* Get max title width. */

@@ -34,4 +34,4 @@ enum QueryEditSignWidgets {
 	WID_QES_NEXT,     ///< Next button.
 };
 
-#endif /* */
+#endif /* SIGN_WIDGET_H */
