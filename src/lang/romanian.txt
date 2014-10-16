@@ -1096,9 +1096,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setări compani
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setări companie (stocate în fişierul de salvare; afectează doar compania curentă)
 
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Arată în lista de mai jos doar setările modificate
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Setări de bază
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Setări avansate
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Setări expert / toate setările
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Setări de bază (afişează numai setări importante)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Setări avansate (afişează majoritatea setărilor)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Setări expert (afişează toate setările)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Setări cu altă valoare decît cea prestabilită
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Setări cu valori diferite față de cele setate de tine pentru joc nou
 
@@ -1149,6 +1149,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Comută dezastr
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitudinea consiliului orașului cu privire la restructurarea zonei: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce măsură poluarea fonică si deranjamentul local provocat de o companie va afecta impresia orașului despre aceasta, si viitoarele planuri de construcție in zonă
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Înălţimea maximă a harţii: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Setează înălţimea maxim permisă a munţilor pe hartă
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nu poţi seta înălţimea maxima a hărţii la aceasta valoare. Cel puţin un munte pe hartă are o înălţime mai mare.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite terraformarea sub clădiri şi şine fără eliminarea acestora
 STR_CONFIG_SETTING_CATCHMENT                                    :Permite arii de cuprindere mai realiste: {STRING}
@@ -1177,6 +1180,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflaţia: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Activează inflaţia în economie, unde costurile cresc ceva mai rapid decât plăţile
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Lungimea maximă a podurilor: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de poduri
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Întăltimea maximă a podurilor: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Întăltimea maximă pentru construcţia de poduri
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lungimea maximă a tunelurilor: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de tuneluri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metoda manuală de construcţie a industriilor primare: {STRING}
@@ -1494,7 +1499,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din care se vor folosi semnale electrice pe calea feroviară. Înainte de acest an, se vor folosi semnale non-electrice care au aceeasi funcționalitate dar arată diferit
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activare GUI pentru semnale: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Afişează o fereastră pentru alegerea tipului de semnal de contruit, în loc sa se selecteze tipul de semnal prin cliclare folosind Ctrl+Click
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Afişează o fereastră pentru alegerea tipului de semnal de construit, în loc de Ctrl+Click
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tip semnal implicit: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipul de semnal implicit
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Semnal de bloc
@@ -1596,7 +1601,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metric (t/tonă
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unitate volum: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Afişează volumele din interfaţă folosind unităţile selectate
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Afişează volumele în interfaţă folosind unităţile selectate
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metric (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
@@ -1608,7 +1613,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metric (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unitate înălţime: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Afişează înălţimile din interfaţă folosind unităţile selectate
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Afişează înălţimile în interfaţă folosind unităţile selectate
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3340,6 +3345,9 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Redenume
 
 
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Comutator pentru afişarea tipului de autovehicul
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Comutator pentru afişarea tipului de navă
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Comutator pentru afişarea tipului de aeronavă
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Redenumeşte modelul de autovehicul
@@ -4038,6 +4046,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Săpătu
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Deja la nivelul mării
 STR_ERROR_TOO_HIGH                                              :{WHITE}Prea înalt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... este deja plat
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}După aceea podul deasupra ar deveni prea înalt.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nu se poate schimba numele companiei...
@@ -4225,6 +4234,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Mai înt
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Cele două capete nu se pot situa în acelaşi loc
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Capetele podului nu sunt la acelasi nivel
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Podul este prea jos pentru terenul corespunzator
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Podul este prea înalt pentru acest teren.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Cele două capete trebuie să se situeze în linie
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambele capete ale podului trebuie să se situeze pe uscat
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... podul este prea lung
@@ -4789,6 +4799,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (ascuns)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
