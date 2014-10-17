@@ -1285,7 +1285,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tyd wat fout bo
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tydsduur vir die vertoning van foutboodskappe. Kritiese foutboodskappe word nie outomaties toegemaak nie.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekonde{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :wys sleutel-leidraad: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tydsduur voor nutswenke vertoon words as die muis oor koppelvlakelemente gehou word. Nutswenke kan ook aan die regter-muisknoppie verbind word.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tydsduur voor nutswenke vertoon words as die muis oor koppelvlakelemente gehou word. Alternatiewelik kan die nutswenke ook aan die regter-muisknoppie verbind word indien die stelling na 0 gestel word.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sweef vir {COMMA} sekonde{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Regsklik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Toon stadsbevolking in die naametiket: {STRING}
@@ -3489,7 +3489,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloon Vo
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloon Skip
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloon Vliegtuig
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Klik hier en dan op 'n bestaande trein om 'n spieëlbeeld van die bestaande trein te koop. Shift+klik vir kwotasie
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Klik hier en dan op 'n bestaande trein om 'n spieëlbeeld van die bestaande trein te koop. Ctrl+Klik om die opdragte tel deel. Shift+klik vir kwotasie
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Klik hier en dan op 'n bestaande voertuig om 'n spieëlbeeld van die bestaande voertuig te koop. Shift+klik vir kwotasie
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Klik hier en dan op 'n bestaande skip om 'n spieëlbeeld van die bestaande skip te koop. Shift+klik vir kwotasie
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Klik hier en dan op 'n bestaande vliegtuig om 'n spieëlbeeld van die bestaande vliegtuig te koop. Shift+klik vir kwotasie
