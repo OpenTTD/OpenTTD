@@ -1288,6 +1288,9 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, Veh
 	const Order *order = v->GetOrder(start);
 	if (order == NULL) return;
 
+	bool rtl = _current_text_dir == TD_RTL;
+	int l_offset = rtl ? 0 : UnScaleByZoom(4 * 6, ZOOM_LVL_GUI);
+	int r_offset = rtl ? UnScaleByZoom(4 * 6, ZOOM_LVL_GUI) : 0;
 	int i = 0;
 	VehicleOrderID oid = start;
 
@@ -1296,7 +1299,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, Veh
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			SetDParam(0, order->GetDestination());
-			DrawString(left + 6, right - 6, y, STR_TINY_BLACK_STATION);
+			DrawString(left + l_offset, right - r_offset, y, STR_TINY_BLACK_STATION);
 
 			y += FONT_HEIGHT_SMALL;
 			if (++i == 4) break;
