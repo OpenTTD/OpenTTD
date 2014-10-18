@@ -986,7 +986,12 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Velg skjermoppløsningen som skal brukes
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Grensesnitt-størrelse
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Velg grensesnitt-størrelsen som skal benyttes
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2 ganger størrelse
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4 ganger størrelse
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes
@@ -1081,6 +1086,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Veldig flatt
 STR_TERRAIN_TYPE_FLAT                                           :Flatt
 STR_TERRAIN_TYPE_HILLY                                          :Åslendt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Berglendt
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant

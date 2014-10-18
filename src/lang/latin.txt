@@ -40,7 +40,7 @@ STR_CARGO_PLURAL_COAL.dat                                       :{G=m}Carboni
 STR_CARGO_PLURAL_MAIL                                           :{G=fp}Epistulae
 STR_CARGO_PLURAL_MAIL.gen                                       :{G=fp}epistularum
 STR_CARGO_PLURAL_MAIL.acc                                       :{G=fp}Epistulas
-STR_CARGO_PLURAL_MAIL.dat                                       :{G=fp}epistulis
+STR_CARGO_PLURAL_MAIL.dat                                       :{G=fp}Epistulis
 STR_CARGO_PLURAL_OIL                                            :{G=n}Petroleum
 STR_CARGO_PLURAL_OIL.gen                                        :{G=n}petrolei
 STR_CARGO_PLURAL_OIL.acc                                        :{G=n}Petroleum
@@ -118,7 +118,7 @@ STR_CARGO_PLURAL_SUGAR.gen                                      :{G=n}sacchari
 STR_CARGO_PLURAL_SUGAR.acc                                      :{G=n}Saccharum
 STR_CARGO_PLURAL_SUGAR.dat                                      :{G=n}Saccharo
 STR_CARGO_PLURAL_TOYS                                           :{G=np}Ludicra
-STR_CARGO_PLURAL_TOYS.gen                                       :{G=np}Ludicrorum
+STR_CARGO_PLURAL_TOYS.gen                                       :{G=np}ludicrorum
 STR_CARGO_PLURAL_TOYS.acc                                       :{G=np}Ludicra
 STR_CARGO_PLURAL_TOYS.dat                                       :{G=np}Ludicris
 STR_CARGO_PLURAL_CANDY                                          :{G=np}Bellaria
@@ -167,7 +167,7 @@ STR_CARGO_SINGULAR_COAL.dat                                     :{G=m}Carboni
 STR_CARGO_SINGULAR_MAIL                                         :{G=fp}Epistulae
 STR_CARGO_SINGULAR_MAIL.gen                                     :{G=fp}epistularum
 STR_CARGO_SINGULAR_MAIL.acc                                     :{G=fp}Epistulas
-STR_CARGO_SINGULAR_MAIL.dat                                     :{G=fp}epistulis
+STR_CARGO_SINGULAR_MAIL.dat                                     :{G=fp}Epistulis
 STR_CARGO_SINGULAR_OIL                                          :{G=n}Petroleum
 STR_CARGO_SINGULAR_OIL.gen                                      :{G=n}petrolei
 STR_CARGO_SINGULAR_OIL.acc                                      :{G=n}Petroleum
@@ -245,7 +245,7 @@ STR_CARGO_SINGULAR_SUGAR.gen                                    :{G=n}sacchari
 STR_CARGO_SINGULAR_SUGAR.acc                                    :{G=n}Saccharum
 STR_CARGO_SINGULAR_SUGAR.dat                                    :{G=n}Saccharo
 STR_CARGO_SINGULAR_TOY                                          :{G=np}Ludicra
-STR_CARGO_SINGULAR_TOY.gen                                      :{G=np}Ludicrorum
+STR_CARGO_SINGULAR_TOY.gen                                      :{G=np}ludicrorum
 STR_CARGO_SINGULAR_TOY.acc                                      :{G=np}Ludicra
 STR_CARGO_SINGULAR_TOY.dat                                      :{G=np}Ludicris
 STR_CARGO_SINGULAR_CANDY                                        :{G=np}Bellaria
@@ -434,12 +434,12 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Preme tr
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intermutare magnitudinem fenestrae magnae parvaeve
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ansa vagationis - indicem sursum deorsumve movet
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ansa vagationis - indicem ad sinistram dextramve movet
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Destruere aedificia etc. quae in terrae quadro sunt. Ctrl diagonaliter eligit. Shift mutat inter constructionem et aestimationem monstrandam
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Destruere aedificia etc. quae in terrae quadro sunt. Ctrl diagonaliter eligit. Shift mutat inter detructionem et aestimationem monstrandam
 
 # Show engines button
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Monstrare celata
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Monstrare celata
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Monstrare celata
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Monstrare celatas
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Monstrare celata
 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Electa, vehicula ferriviaria celata etiam monstrantur
@@ -646,7 +646,7 @@ STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Ponere signum
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :Sonus/musica
+STR_TOOLBAR_SOUND_MUSIC                                         :Sonus musicave
 ############ range ends here
 
 ############ range for message menu starts
@@ -657,7 +657,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historia nuntio
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terrae regionis indicia
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Monstrare/celare consolam
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Monstrare celareve consolam
 STR_ABOUT_MENU_AI_DEBUG                                         :Emendatio IA/Ludi scriptorum
 STR_ABOUT_MENU_SCREENSHOT                                       :Imago conspectus
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Imago conspectus maxime amplificata

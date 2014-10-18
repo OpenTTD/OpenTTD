@@ -1085,6 +1085,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :매우 평탄�
 STR_TERRAIN_TYPE_FLAT                                           :평탄함
 STR_TERRAIN_TYPE_HILLY                                          :언덕
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :산
+STR_TERRAIN_TYPE_ALPINIST                                       :매우 험한 산지
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안씀
 STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
