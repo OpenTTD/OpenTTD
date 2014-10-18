@@ -25,6 +25,7 @@
 #include "querystring_gui.h"
 #include "core/geometry_func.hpp"
 #include "newgrf_debug.h"
+#include "zoom_func.h"
 
 #include "widgets/misc_widget.h"
 
@@ -683,7 +684,7 @@ struct TooltipsWindow : public Window
 		/* There is only one widget. */
 		for (uint i = 0; i != this->paramcount; i++) SetDParam(i, this->params[i]);
 
-		size->width  = min(GetStringBoundingBox(this->string_id).width, 194);
+		size->width  = min(GetStringBoundingBox(this->string_id).width, UnScaleByZoom(4 * 194, ZOOM_LVL_GUI));
 		size->height = GetStringHeight(this->string_id, size->width);
 
 		/* Increase slightly to have some space around the box. */
