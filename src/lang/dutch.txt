@@ -1084,6 +1084,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Zeer Vlak
 STR_TERRAIN_TYPE_FLAT                                           :Vlak
 STR_TERRAIN_TYPE_HILLY                                          :Heuvelachtig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergachtig
+STR_TERRAIN_TYPE_ALPINIST                                       :Berglandschap
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1644,7 +1645,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisch (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Gewichten eenheden: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Telkens als gewichten worden weergegeven in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Wanneer er gewichten worden weergegeven in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisch (t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)

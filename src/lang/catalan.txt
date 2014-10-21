@@ -1865,7 +1865,7 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecci�
 STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carrega la cara preferida
 STR_FACE_LOAD_DONE                                              :{WHITE}La teva cara preferida ha estat carregada des de l'arxiu de configuració d'OpenTTD
-STR_FACE_FACECODE                                               :{BLACK}Cara jugador nu.
+STR_FACE_FACECODE                                               :{BLACK}Número de la cara
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna el número de la cara del president
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna el número de la cara del president
 STR_FACE_FACECODE_SET                                           :{WHITE}El número de la nova cara ha estat assignat
@@ -1882,7 +1882,7 @@ STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activa el bigoti o les arracades
 STR_FACE_HAIR                                                   :Cabell:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Canvia el cabell
-STR_FACE_EYEBROWS                                               :Celles
+STR_FACE_EYEBROWS                                               :Celles:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Canvia les celles
 STR_FACE_EYECOLOUR                                              :Color dels ulls:
 STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Canvia el color dels ulls
