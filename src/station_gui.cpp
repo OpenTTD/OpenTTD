@@ -1303,17 +1303,15 @@ struct StationViewWindow : public Window {
 		this->SelectSortBy(_settings_client.gui.station_gui_sort_by);
 		this->sort_orders[0] = SO_ASCENDING;
 		this->SelectSortOrder((SortOrder)_settings_client.gui.station_gui_sort_order);
-		Owner owner = Station::Get(window_number)->owner;
-		if (owner != OWNER_NONE) this->owner = owner;
+		this->owner = Station::Get(window_number)->owner;
 	}
 
 	~StationViewWindow()
 	{
-		Owner owner = Station::Get(this->window_number)->owner;
-		DeleteWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    owner, this->window_number).Pack(), false);
-		DeleteWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     owner, this->window_number).Pack(), false);
-		DeleteWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     owner, this->window_number).Pack(), false);
-		DeleteWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, owner, this->window_number).Pack(), false);
+		DeleteWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->window_number).Pack(), false);
+		DeleteWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     this->owner, this->window_number).Pack(), false);
+		DeleteWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     this->owner, this->window_number).Pack(), false);
+		DeleteWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, this->owner, this->window_number).Pack(), false);
 	}
 
 	/**

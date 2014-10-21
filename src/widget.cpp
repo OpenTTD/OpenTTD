@@ -538,10 +538,12 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
  */
 void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
 {
-	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_BORDERONLY);
-	DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour, (owner == INVALID_OWNER) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
+	bool company_owned = owner < MAX_COMPANIES;
 
-	if (owner != INVALID_OWNER) {
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_BORDERONLY);
+	DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour, company_owned ? FR_LOWERED | FR_DARKENED | FR_BORDERONLY : FR_LOWERED | FR_DARKENED);
+
+	if (company_owned) {
 		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[owner]][4]);
 	}
 
