@@ -290,7 +290,7 @@ struct GameOptionsWindow : Window {
 				list = new DropDownList();
 				*selected_index = ZOOM_LVL_OUT_4X - _gui_zoom;
 				const StringID *items = _gui_zoom_dropdown;
-				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
+				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
 					*list->Append() = new DropDownListStringItem(*items, i, _settings_client.gui.zoom_min > ZOOM_LVL_OUT_4X - i);
 				}
 				break;

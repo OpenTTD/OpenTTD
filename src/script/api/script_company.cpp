@@ -230,8 +230,8 @@
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(false, expenses_type < (ExpensesType)::EXPENSES_END);
-	EnforcePrecondition(false, delta >= INT32_MIN);
-	EnforcePrecondition(false, delta <= INT32_MAX);
+	EnforcePrecondition(false, (int64)delta >= INT32_MIN);
+	EnforcePrecondition(false, (int64)delta <= INT32_MAX);
 
 	company = ResolveCompanyID(company);
 	EnforcePrecondition(false, company != COMPANY_INVALID);
