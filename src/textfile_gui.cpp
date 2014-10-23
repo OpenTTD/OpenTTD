@@ -264,12 +264,19 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 	char *slash = strrchr(file_path, PATHSEPCHAR);
 	if (slash == NULL) return NULL;
 
-	seprintf(slash + 1, lastof(file_path), "%s_%s.txt", prefix, GetCurrentLanguageIsoCode());
-	if (FioCheckFileExists(file_path, dir)) return file_path;
+	static const char * const exts[] = {
+		"txt",
+	};
 
-	seprintf(slash + 1, lastof(file_path), "%s_%.2s.txt", prefix, GetCurrentLanguageIsoCode());
-	if (FioCheckFileExists(file_path, dir)) return file_path;
+	for (size_t i = 0; i < lengthof(exts); i++) {
+		seprintf(slash + 1, lastof(file_path), "%s_%s.%s", prefix, GetCurrentLanguageIsoCode(), exts[i]);
+		if (FioCheckFileExists(file_path, dir)) return file_path;
 
-	seprintf(slash + 1, lastof(file_path), "%s.txt", prefix);
-	return FioCheckFileExists(file_path, dir) ? file_path : NULL;
+		seprintf(slash + 1, lastof(file_path), "%s_%.2s.%s", prefix, GetCurrentLanguageIsoCode(), exts[i]);
+		if (FioCheckFileExists(file_path, dir)) return file_path;
+
+		seprintf(slash + 1, lastof(file_path), "%s.%s", prefix, exts[i]);
+		if (FioCheckFileExists(file_path, dir)) return file_path;
+	}
+	return NULL;
 }
