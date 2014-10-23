@@ -267,7 +267,7 @@ static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	SetClearGroundDensity(t, g, density); // Sets m5
-	_m[t].m6 = 0;
+	_me[t].m6 = 0;
 	_me[t].m7 = 0;
 }
 

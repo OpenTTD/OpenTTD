@@ -24,7 +24,6 @@ struct Tile {
 	byte   m3;          ///< General purpose
 	byte   m4;          ///< General purpose
 	byte   m5;          ///< General purpose
-	byte   m6;          ///< General purpose
 };
 
 /**
