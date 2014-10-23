@@ -279,6 +279,9 @@ static SmallMapColourScheme _heightmap_schemes[] = {
  */
 void BuildLandLegend()
 {
+	/* The smallmap window has never been initialized, so no need to change the legend. */
+	if (_heightmap_schemes[0].height_colours == NULL) return;
+
 	/*
 	 * The general idea of this function is to fill the legend with an appropriate evenly spaced
 	 * selection of height levels. All entries with STR_TINY_BLACK_HEIGHT are reserved for this.
