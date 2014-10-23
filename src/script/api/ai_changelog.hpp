@@ -35,6 +35,14 @@
  * \li AIStationList_CargoWaitingFromByVia
  * \li AIStationList_CargoWaitingViaByFrom
  *
+ * \b 1.4.4
+ *
+ * No changes
+ *
+ * \b 1.4.3
+ *
+ * No changes
+ *
  * \b 1.4.2
  *
  * No changes

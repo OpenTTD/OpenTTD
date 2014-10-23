@@ -35,6 +35,14 @@
  * \li GSStationList_CargoWaitingFromByVia
  * \li GSStationList_CargoWaitingViaByFrom
  *
+ * \b 1.4.4
+ *
+ * No changes
+ *
+ * \b 1.4.3
+ *
+ * No changes
+ *
  * \b 1.4.2
  *
  * Other changes:
