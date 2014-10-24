@@ -97,30 +97,30 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Limonāde
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} pasažier{P is i u}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pasažier{P is i u}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} ogļu
-STR_QUANTITY_MAIL                                               :{COMMA} pasta mais{P s i u}
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}pasta mais{P s i u}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} naftas
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} mājlop{P s i u}
-STR_QUANTITY_GOODS                                              :{COMMA} preču kast{P e es u}
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}mājlop{P s i u}
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}preču kast{P e es u}
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graudu
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} kokmateriālu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} dzelzsrūdas
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} tērauda
-STR_QUANTITY_VALUABLES                                          :{COMMA} mais{P s i u} ar vērtslietām
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}mais{P s i u} ar vērtslietām
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} vara rūdas
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} kukurūzas
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} augļu
-STR_QUANTITY_DIAMONDS                                           :{COMMA} maisi ar dimantiem
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}mais{P s i u} ar dimantiem
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} pārtikas preču
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papīra
-STR_QUANTITY_GOLD                                               :{COMMA} zelta mais{P s i u}
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}zelta mais{P s i u}
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} ūdens
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} kviešu
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kaučuka
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} cukura
-STR_QUANTITY_TOYS                                               :{COMMA} rotaļliet{P a as u}
-STR_QUANTITY_SWEETS                                             :{COMMA} saldumu mais{P s i u}
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}rotaļliet{P a as u}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}saldumu mais{P s i u}
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kolas
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} cukurvates
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbu{P lis ļi ļu}
@@ -167,12 +167,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NAV
 STR_ABBREV_ALL                                                  :{TINY_FONT}VISI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} pasažier{P is i u}
-STR_BAGS                                                        :{COMMA} mais{P s i u}
-STR_TONS                                                        :{COMMA} tonn{P a as u}
-STR_LITERS                                                      :{COMMA} litr{P s i u}
-STR_ITEMS                                                       :{COMMA} vienīb{P a as u}
-STR_CRATES                                                      :{COMMA} kast{P e es u}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}pasažier{P is i u}
+STR_BAGS                                                        :{COMMA}{NBSP}mais{P s i u}
+STR_TONS                                                        :{COMMA}{NBSP}tonn{P a as u}
+STR_LITERS                                                      :{COMMA}{NBSP}litr{P s i u}
+STR_ITEMS                                                       :{COMMA}{NBSP}vienīb{P a as u}
+STR_CRATES                                                      :{COMMA}{NBSP}kast{P e es u}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tumši zila
@@ -193,37 +193,37 @@ STR_COLOUR_GREY                                                 :Pelēka
 STR_COLOUR_WHITE                                                :Balta
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} jūdzes stundā
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}jūdzes stundā
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ZS
-STR_UNITS_POWER_METRIC                                          :{COMMA} ZS
-STR_UNITS_POWER_SI                                              :{COMMA} kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}ZS
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ZS
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn{P a as u}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn{P a as u}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonn{P a as u}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonn{P a as u}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P s i u}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P s i u}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}galon{P s i u}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litr{P s i u}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pēdas
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}pēdas
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtra virkne:
@@ -1077,6 +1077,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Ļoti līdzens
 STR_TERRAIN_TYPE_FLAT                                           :Līdzens
 STR_TERRAIN_TYPE_HILLY                                          :Paugurains
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Kalnains
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpu
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :pieļaujoša
 STR_CITY_APPROVAL_TOLERANT                                      :iecietīga
@@ -1112,6 +1113,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spēles iestat�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spēles iestatījumi (tiek iekļauti saglabājumā, ietekmē tikai pašreizējo spēli)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Uzņēmuma iestatījumi (tiek iekļauti saglabājumos, ietekmē tikai jaunās spēles)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Uzņēmuma iestatījumi (tiek iekļauti saglabājumā, ietekmē tikai pašreizējo uzņēmumu)
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}-Nav-
 
 STR_CONFIG_SETTING_OFF                                          :izslēgts
 STR_CONFIG_SETTING_ON                                           :ieslēgts
@@ -1266,13 +1268,14 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Rāda pilsētu 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līniju platums: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Diagrammu līniju platums. Šauras līnijas ir precīzāk nolasāmas, platākas vieglāk saskatīt un atšķirt to krāsas
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Ainava: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Zemes radītājs: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Sākotnējais
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimālais attālums no kartes malas naftas pārstrādes rūpnīcām: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftas pārstrādes rūpnīcas ir būvējamas tikai kartes malu tuvumā, salu kartēm tas ir pie krasta
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums (tikai TerraGenesis): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti gluda
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Gluda
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Nelīdzena
@@ -1281,6 +1284,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :Koku izvietoša
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nav
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Sākotnējais
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Uzlabotais
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Autotransporta līdzekļi: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Augstumu kartes pagriešana: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Pret pulksteņa rādītāja virzienu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pulksteņa rādītāja virzienā
@@ -1331,6 +1335,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Kreisā klikšķa ritināšana: {STRING}
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Automātiskā saglabāšana: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Lietot {STRING} datuma formātu saglabāto spēļu nosaukumos
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datuma formāts spēļu saglabājuma failu nosaukumos
@@ -1416,7 +1421,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#darbību kodi,
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiki procentos: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Vilcienu apkopju noklusējuma starplaiks: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Izvēlēties jaunajiem sliežu transportlīdzekļiem apkopju noklusējuma starplaiku, ja tiem tas nav noteikts
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dien{P 0 a as u}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dien{P 0 a as u}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Autotransporta līdzekļu apkopju noklusējuma starplaiks: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Izvēlēties jauniem autotransporta līdzekļiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
@@ -1598,11 +1603,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriskās (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI, starptautiskās (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizēšana
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņas efekti
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņa
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Saskarne
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Vispārīgi
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Skatvietas
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Būvniecība
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Avīžu raksti / padomnieki
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Uzņēmums
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Grāmatvedība
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transportlīdzekļi
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pārvietošanās
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ierobežojumi
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofas / negadījumi
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Pasaules radīšana
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Apkārtējā vide
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Pašvaldības
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pilsētas
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ražotnes
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kravu sadale
@@ -1885,13 +1902,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsarg�
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nē
 STR_NETWORK_START_SERVER_ADVERTISED                             :Jā
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} spēlētāj{P s i u}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. spēlētāju skaits:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimālais spēlētāju skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlēties maksimālo spēlētāju skaitu. Ne visiem slotiem ir jābūt aizpildītiem
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} uzņēmum{P s i u}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. uzņēmumu skaits:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimālais uzņēmumu skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ierobežo serveri noteiktam uzņēmumu skaitam
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} novērotāj{P s i u}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. novērotāju skaits:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimālais novērotāju skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ierobežo serveri noteiktam novērotāju skaitam
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Valoda, kurā runā:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lietotāji zinās, kurā valodā tiek runāts uz servera
@@ -2619,6 +2636,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Saglabā
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Saglabāt šo spēli izmantojot izvēlēto nosaukumu
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ielādēt
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ielādēt izvēlēto spēli
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ielādēt atlasīto augstumu karti
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spēles īpašības
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nav pieejamas informācijas
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2745,6 +2763,11 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Atspējots
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nav savietojams ar šo OpenTTD versiju
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Iepriekšiestatījuma saglabāšana
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Pašlaik izvēlētā iepriekšiestatījuma nosaukums saglabāšanai
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Atcelt
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nemainīt iepriekšiestatījumu
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Saglabāt
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mainīt NewGRF parametrus
@@ -2889,8 +2912,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} piegādāts
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (joprojām pieprasīts)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (piegādāts)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u} (finansēta)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK}{NBSP}dien{P u as u}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK}{NBSP}dien{P u as u} (finansēta)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}neattīstās{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Trokšņu ierobežojums pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz pilsētu. Ctrl+klikšķis atvērs skatu uz pilsētu jaunā skatlaukā
@@ -3098,7 +3121,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Kopā:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankas bilance
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Aizdevums
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Pieejamais aizdevums: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimālais aizdevums: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Aizņemties {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Palielināt aizdevuma apmēru. Ctrl+klikšķis lai aizņemtos cik daudz vien iespējams
@@ -3253,6 +3276,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dzēst i
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Pārdēvēt izvēlēto grupu
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikšķināt, lai pasargātu šo grupu no vispārējās automātiskās aizstāšanas
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grupas dzēšana
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pievienot kopīgos transportlīdzekļus
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Novākt visus transportlīdzekļus
@@ -3435,6 +3459,8 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autotransporta 
 STR_REPLACE_VEHICLE_SHIP                                        :Kuģis
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lidaparāts
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Lietošanā esošie transportlīdzekļi
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Pieejamie transportlīdzekļi
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izvēlēties lokomotīves veidu, kuru vēlaties mainīt
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izvēlēties jaunu lokomotīves veidu, kuru vēlaties lietot kreisajā pusē atlasītās lokomotīves vietā
@@ -3560,7 +3586,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ietilpī
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Pārvadājumu ieņēmumi: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Apkopes starplaiks: {LTBLUE}{COMMA}dienas{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Apkopes starplaiks: {LTBLUE}{COMMA}{NBSP}dienas{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Apkopes starplaiks: {LTBLUE}{COMMA}%{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielināt apkopes starplaiku par 10. Ctrl+klikšķis palielina apkopes starplaiku par 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes starplaiku par 10. Ctrl+klikšķis samazina apkopes starplaiku par 5
@@ -3792,8 +3818,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Braukt līdz {S
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Braukt uz {STRING} ar ne vairāk kā {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :un palikt līdz {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :un braukt līdz {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dien{P a as u}
-STR_TIMETABLE_TICKS                                             :{COMMA} tik{P s i u}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dien{P a as u}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P s i u}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Šis saraksts aizņems {STRING}, lai pabeigtu
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Šis saraksts aizņems vismaz {STRING} lai pabeigtu (nav viss pēc saraksta)
