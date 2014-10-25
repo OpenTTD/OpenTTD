@@ -498,12 +498,16 @@ static inline void free(const void *ptr)
 	#define HELPER0(x) #x
 	#define HELPER1(x) HELPER0(GCC diagnostic ignored x)
 	#define HELPER2(y) HELPER1(#y)
+#if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
 	#define IGNORE_UNINITIALIZED_WARNING_START \
 		_Pragma("GCC diagnostic push") \
 		_Pragma(HELPER2(-Wuninitialized)) \
 		_Pragma(HELPER2(-Wmaybe-uninitialized))
 	#define IGNORE_UNINITIALIZED_WARNING_STOP _Pragma("GCC diagnostic pop")
-#else
+#endif
+#endif
+
+#ifndef IGNORE_UNINITIALIZED_WARNING_START
 	#define IGNORE_UNINITIALIZED_WARNING_START
 	#define IGNORE_UNINITIALIZED_WARNING_STOP
 #endif
