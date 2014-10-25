@@ -634,7 +634,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SNOW_LEVEL_TEXT: // Snow line text
 				this->widget_id = WID_GL_SNOW_LEVEL_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.snow_line_height);
-				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 3, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case WID_GL_TREE_PULLDOWN: // Tree placer
