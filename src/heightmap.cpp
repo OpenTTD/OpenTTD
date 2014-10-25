@@ -364,16 +364,16 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 				assert(img_row < img_height);
 				assert(img_col < img_width);
 
-				/* The height in 1/256ths. */
 				uint heightmap_height = map[img_row * img_width + img_col];
 
-				/* The height in 1/256ths of the maximum height. */
-				heightmap_height *= (1 + _settings_game.construction.max_heightlevel);
+				if (heightmap_height > 0) {
+					/* 0 is sea level.
+					 * Other grey scales are scaled evenly to the available height levels > 0.
+					 * (The coastline is independent from the number of height levels) */
+					heightmap_height = 1 + (heightmap_height - 1) * _settings_game.construction.max_heightlevel / 255;
+				}
 
-				/* Scaling should not alter the coastline, thus values in the interval ]0..1] result in a heightlevel of 1 */
-				if (IsInsideMM(heightmap_height, 1, 256)) heightmap_height = 256;
-
-				SetTileHeight(tile, heightmap_height / 256);
+				SetTileHeight(tile, heightmap_height);
 			}
 			/* Only clear the tiles within the map area. */
 			if (IsInnerTile(tile)) {
