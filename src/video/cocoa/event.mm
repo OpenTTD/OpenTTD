@@ -308,7 +308,8 @@ static bool QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 
 		static bool console = false;
 
-		if (pressed_key == WKC_BACKQUOTE && unicode == 0) {
+		/* The second backquote may have a character, which we don't want to interpret. */
+		if (pressed_key == WKC_BACKQUOTE && (console || unicode == 0)) {
 			if (!console) {
 				/* Backquote is a dead key, require a double press for hotkey behaviour (i.e. console). */
 				console = true;
@@ -538,7 +539,7 @@ static bool QZ_PollEvent()
 			break;
 #endif
 
-		case NSKeyDown:
+		case NSKeyDown: {
 			/* Quit, hide and minimize */
 			switch ([ event keyCode ]) {
 				case QZ_q:
@@ -550,22 +551,20 @@ static bool QZ_PollEvent()
 					break;
 			}
 
+			chars = [ event characters ];
+			unsigned short unicode = [ chars length ] > 0 ? [ chars characterAtIndex:0 ] : 0;
 			if (EditBoxInGlobalFocus()) {
-				if (QZ_KeyEvent([ event keyCode ], 0, YES)) {
+				if (QZ_KeyEvent([ event keyCode ], unicode, YES)) {
 					[ _cocoa_subdriver->cocoaview interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
 				}
 			} else {
-				chars = [ event characters ];
-				if ([ chars length ] == 0) {
-					QZ_KeyEvent([ event keyCode ], 0, YES);
-				} else {
-					QZ_KeyEvent([ event keyCode ], [ chars characterAtIndex:0 ], YES);
-					for (uint i = 1; i < [ chars length ]; i++) {
-						QZ_KeyEvent(0, [ chars characterAtIndex:i ], YES);
-					}
+				QZ_KeyEvent([ event keyCode ], unicode, YES);
+				for (uint i = 1; i < [ chars length ]; i++) {
+					QZ_KeyEvent(0, [ chars characterAtIndex:i ], YES);
 				}
 			}
 			break;
+		}
 
 		case NSKeyUp:
 			/* Quit, hide and minimize */
