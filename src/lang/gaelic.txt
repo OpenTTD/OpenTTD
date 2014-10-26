@@ -1286,6 +1286,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Glè rèidh
 STR_TERRAIN_TYPE_FLAT                                           :Rèidh
 STR_TERRAIN_TYPE_HILLY                                          :Cnuic
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Beanntan
+STR_TERRAIN_TYPE_ALPINIST                                       :Mòr-bheanntan
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Coibhneil
 STR_CITY_APPROVAL_TOLERANT                                      :Ceadachail

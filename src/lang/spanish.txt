@@ -1110,7 +1110,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empr
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Muestra solamente las opciones modificadas en la lista
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opciones básicas (solo muestra los ajustes de configuración más importantes e imprescindibles)
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opciones básicas (solo muestra los ajustes de configuración más importantes)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanzado (muestra la mayoría de las opciones)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Experto (muestra todas las opciones, incluidas las más extrañas)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un valor diferente al valor por defecto
@@ -1664,7 +1664,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unidades de altura: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Cada vez que se muestren alturas en el interfaz de usuario, se emplearán estas medidas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Cada vez que se muestre una altura en la interfaz de usuario, se mostrará en su unidad preestablecida
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (pies)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
