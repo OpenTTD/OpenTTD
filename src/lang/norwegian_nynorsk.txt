@@ -251,7 +251,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefel
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv bygningar o.a. i eit firkanta område. Ctrl vel området diagonalt. Shift syner estimert rivingskostnad
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Syn skjulte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Syn skjulte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Syn skjulte
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Syn skjulte
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Ved å slå på denne knappen, vert skjulte tok også syna
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Ved å slå på denne knappen, vert skjulte køyretøy også syna
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ved å slå på denne knappen, vert skjulte skip også syna
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ved å slå på denne knappen, vert skjulte luftfartøy også syna
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
@@ -366,6 +374,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinstillingar
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Innstillinger
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI- / Spelscript-innstillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjennomsiktigheitsinnstillingar
@@ -976,6 +985,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel skjermoppløysinga som skal nyttast
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Grensesnittstorleik
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vel storleik å bruke på grensesnittet
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobbel størrelse
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Firedobbel størrelse
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel grafikksett som skal nyttast
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd{P "" e} fil{P "" er}
@@ -1069,6 +1085,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Særs flatt
 STR_TERRAIN_TYPE_FLAT                                           :Flatt
 STR_TERRAIN_TYPE_HILLY                                          :Åslendt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Berglendt
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatande
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1076,7 +1093,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fiendsleg
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AIer tilgjengeleg...{}Du kan lasta ned fleire AI'ar frå nettet med spelets nedlastingssystem.
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Søkefilter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utvid alle
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
@@ -1149,6 +1166,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skru av/på kat
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Haldninga til bystyra når det gjeld ombygging: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vel kor mykje vurderinga frå bystyra og høvet for meir bygging i området vert påverka av støy og øydelegging frå eit firma.
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimal høgd på kart: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Sett maksimal høgd for fjell på kartet
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan ikkje sette maksimal høgd på kartet til denne verdien. Minst eit fjell på kartet er høgare
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillet landskapsendringar under bygningar, spor o.s.b.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillet å endre landskapet under bygningar, vegar og jernbanespor, utan å måtte fjerne dei fyrst.
 STR_CONFIG_SETTING_CATCHMENT                                    :Meir realistisk storleik på oppfangingsområde: {STRING}
@@ -1175,6 +1195,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflasjon: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Skrur på inflasjon, kor kostnader aukar noko fortare enn innbetalingar
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Største brolengde: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal lengde for brubygging
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimal høgd på bru: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimal høgd for å bygge bruer
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Største tunnellengde: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal lengde for tunnelbygging
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Konstruksjonsmetode for primærindustri: {STRING}
@@ -1248,20 +1270,28 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Syn befolknings
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Bredde på linjer i grafar: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskapsgenerator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den originale generatoren avhenger av basisgrafikk som er satt, og lagar faste figurar i landskapet. TerraGenesis er ein Perlin støygenerator med finare konroll på innstillingane
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrengtype: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Berre TerraGenesis) Grad av fjell i landskapet
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritetthet: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set kor månge industriar som skal lagast og på kva nivå dei skal haldas gjennom spelet
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal avstand frå kartkanten for Oljeraffineri: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontroller i kva høgde snøen startar i arktis-liknande landskap. Snøen påverkar også kor industri kjem og krava for vekst i byar
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kor ulendt skal terrenget vere (kun TerraGenesis): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Berre TerraGenesis) Endre hyppigheit på høgder: Mjuke landskap he færre, meir spredde høgder. Tøffe landskap har månge høgdre, som kan sjå repeterande ut
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Særs jamnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jamnt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ulendt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Særs ulendt
 STR_CONFIG_SETTING_VARIETY                                      :Variasjonsdistrubusjon: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Berre TerraGenesis) Kontroller om kartet inneheld både høge og flate område. Sidan dette berre gjer kartet flatare, bør andre innstillingar setjast til høge
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Elve-mengde: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Vel mengde elver å generera
 STR_CONFIG_SETTING_TREE_PLACER                                  :Treplasseringalgoritme: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Vel fordelinga av tre på kartet: 'Original' plantar trea likt utover, 'Forbedra' plantar dei i grupper
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ingen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbetra
@@ -1617,6 +1647,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Fleirspe
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinnstillingar
 STR_INTRO_HIGHSCORE                                             :{BLACK}Poengtavle
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Innstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sjå etter innhald på nett
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI- / Spelscriptinnstillingar
@@ -1636,6 +1667,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vel leik
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Syne spelinstillingar
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Syn poengtavla
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skjerminnstillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne NewGRF-instillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis AI- og spelscriptinnstillingar
@@ -1675,6 +1707,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speler 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industriar, uflyttbare ting): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelar kan krysse kvarandre: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikkje krasje (ofte) på små flyplassar: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Endre maksimal høgd på kart: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Endre maksimal høgd på fjell på kartet
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperert landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :subarktisk landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :subtropisk landskap
@@ -2599,6 +2633,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byar:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industriar:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimal høgd på kart:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Auk maksimal høgd på fjell på kartet med ein
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Minsk maksimal høgd på fjell på kartet med ein
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høgd på snøgrensa:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høgda på snøgrensa eitt hakk opp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høgda på snøgrensa eitt hakk ned
@@ -2628,6 +2665,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høgdeka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storleik:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Endre maksimal høgd på kartet
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Byt høgda på snøgrensa
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Byt startår
 
@@ -2710,6 +2748,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ikkje komp
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lagre førehandsinnstilling
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liste av tilgjengelege førval, vel ein for å kopiera han til same navn nedanfor
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv inn eit namn for førehandsinnstillinga
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Vald namn for førehandsinnstillinga som skal lagrast
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
@@ -3286,8 +3325,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Endre na
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Endre namnet til skipstypen
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endre namn til luftfartøytype
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Skjul
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Skjul
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Skjul
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Skjul
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Syne
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Syne
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Syne
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Syne
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Bytt skjul/vis type tog
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Bytt skjul/vis type køyretøy
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Bytt skjul/vis type skip
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Bytt skjul/vis type luftfartøy
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Gje tog/vogn nytt namn
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endre namnet til køyretøytypen
@@ -3393,6 +3444,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Køyretøy
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Luftfartøy
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Køyretøy i bruk
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Kolonne med køyretøy som du eig
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Tilgjengelege køyretøy
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Kolonne med køyretøy som kan erstattast
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vel lokomotivtype å byte ut
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vel den nye typen lokomotiv du vil at skal ta over for den du har vald til venstre
@@ -3989,6 +4044,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Utgravin
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Allereie på havnivå
 STR_ERROR_TOO_HIGH                                              :{WHITE}For høgt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allereie flatt
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Etterpå vil brua over det bli for høg.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikkje byta firmanamn...
@@ -4039,6 +4095,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan berre byggjast over snøgrensa
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan berre byggjast under snøgrensa
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Der er ingen egna plass for '{STRING}' industriar
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Byt innstillingar for å generera eit betre kart
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikkje byggje jernbanestasjon her...
@@ -4176,6 +4234,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Må rive
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikkje starte og slutte på same felt
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bruhovud er ikkje på same nivå
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brua er for låg for terrenget
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Brua er for høg for terrenget.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og slutt må vere på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... endane på brua må vere på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brua er for lang
@@ -4739,6 +4798,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (skjult)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}

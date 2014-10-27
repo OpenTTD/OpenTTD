@@ -96,7 +96,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gazlı İçecek
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} yolcu
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}yolcu
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kömür
 STR_QUANTITY_MAIL                                               :{COMMA} çanta posta
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} petrol
@@ -975,6 +975,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Ç
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} kayıp/bozuk dosya
@@ -1074,7 +1076,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Düşman
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Süzgeç metni:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Tümünü genişlet
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tümünü kısalt
@@ -1090,9 +1092,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarlar
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tür:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi önceden tanımlı filtreler kullanarak sınırlandırır
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel ayarlar
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş ayarlar
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman ayarları / tüm ayarlar
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel (sadece önemli ayarları göster)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş (çoğu ayarı göster)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman (garip olanlar dahil tüm ayarları göster)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Geçerli değerden farklı bir değere sahip ayarlama
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Yeni oyun ayarlarınızdan farklı bir değere sahip ayarlar
 
@@ -1261,7 +1263,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Kırmızı penc
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} saniye
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Araçlara dair bilgileri göster: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fare bir arayüz elemanının üzerine getirildiğinde o araca dair bilgilerin gösterilmesi için geçmesi gereken süre. Alternatif olarak bu işlem için sağ fare tuşu da kullanılabilir.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Fareyi {COMMA} saniye boyunca üzerinde bekletin
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Fareyi {COMMA} milisaniye üzerinde tutun
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Sağ tıklama
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Şehir nüfusunu isminin yanına yaz: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Haritadaki şehir etiketlerinde nüfus bilgisini görüntüle
@@ -1603,25 +1605,25 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrik (hp/beyg
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (Uluslararası Ölçüm Sistemi) (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Ağırlık ölçü birimi: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kullanıcı arayüzünde ağırlıklar görüntülendiğinde, bunları seçili ölçü biriminde göster.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kullanıcı arayüzünde ağırlıklar görüntülendiğinde, bunları seçili ölçü biriminde göster
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (Ingiliz ölçü birimleri) (kısa t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrik (t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (Uluslararası Ölçüm Sistemi) (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Hacim ölçü birimi: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Kullanıcı arayüzünde hacimler görüntülendiğinde, bunları seçili ölçü biriminde göster.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Kullanıcı arayüzünde hacimler görüntülendiğinde, bunları seçili ölçü biriminde göster
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (Ingiliz ölçü birimleri) (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrik (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (Uluslararası Ölçüm Sistemi) (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Çekici güç ölçü birimi: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Kullanıcı arayüzünde çekici güç görüntülendiğinde, bunları seçili ölçü biriminde göster.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Kullanıcı arayüzünde çekici güç görüntülendiğinde (çekici yük olarak da bilinir), bunları seçili ölçü biriminde göster
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (Ingiliz ölçü birimleri) (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrik (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (Uluslararası Ölçüm Sistemi) (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Yükseklik ölçü birimi: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kullanıcı arayüzünde yükseklikler görüntülendiğinde, bunları seçili ölçü biriminde göster.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kullanıcı arayüzünde yükseklikler görüntülendiğinde, bunları seçili ölçü biriminde göster
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (Ingiliz ölçü birimleri) (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (Uluslararası Ölçüm Sistemi) (m)
@@ -3404,7 +3406,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Aracı K
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gemiyi kopyala
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Uçağı kopyala
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. Ctrl-tıklama talimatları paylaştırır. Shift ile tıklama satın almadan tahmini maliyeti gösterir.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir trene tıklayın. Ctrl+tıklama talimatları paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Karayolu aracının bir kopyasını yapar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. Ctrl+Tıklama talimatları paylaştırır. Shift+Tıklama satın almadan tahmini maliyeti gösterir
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Geminin bir kopyasını oluşturur. Önce bu düğmeye sonra da tersanenin içindeki veya dışındaki bir gemiye tıklayın. Ctrl-tıklama talimatları paylaştırır. Shift ile tıklama satın almadan tahmini maliyeti gösterir
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. Ctrl-tıklama talimatları paylaştırır. Shift ile tıklama satın almadan tahmini maliyeti gösterir
