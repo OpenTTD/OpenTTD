@@ -1145,7 +1145,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 (계좌에 인플레이션을 고려하지 않고 들어오는) 대출금의 양을 조절할 수 있습니다.
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 대출금의 양을 조절할 수 있습니다. (여기서 설정한 값은 인플레이션에 의한 효과를 적용하지 않은 값입니다.)
 STR_CONFIG_SETTING_INTEREST_RATE                                :대출 금리: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 설정이 켜져있는 경우 인플레이션의 영향을 받습니다.
 STR_CONFIG_SETTING_RUNNING_COSTS                                :유지비: {STRING}
