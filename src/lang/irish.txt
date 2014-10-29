@@ -1508,6 +1508,8 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :gach áit
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Suíomh an phríomhbharra uirlisí: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Suíomh an bharra stádais: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Suíomh cothrománach an bharra stádais ag bun an scáileáin
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ga léime na bhfuinneog: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :An fad idir fhuinneoga sula ndéanfar an fhuinneog atá á bogadh a ailíniú le fuinneoga in aice léi go huathoibríoch
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} {P ph ph ph bp p}icteilín
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Díchumasaithe
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Uaslíon na bhfuinneog neamh-ghreamaitheach: {STRING}
@@ -1547,11 +1549,13 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :An tionchar at�
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Méid den lastas a thagann ar ais don mhód siméadrach: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Aonaid luais: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Aon áit a thaispeántar luas sa chomhéadan úsáideora, taispeain sna haonaid roghnaithe é
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Impiriúil (msu)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Méadrach (km/u)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Aonaid chumhachta feithiclí: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Aon áit a thaispeántar cumhacht feithicle sa chomhéadan úsáideora, taispeain sna haonaid roghnaithe í
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Impiriúil (ec)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Méadrach (ec)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
@@ -1677,6 +1681,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Seiceái
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Taispeáin socruithe AI/Script cluiche
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Téigh amach as 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Tá {NUM} {P th th th dt t}eaghrán in easnamh san aistriúchán seo. Is féidir leat cabhrú chun OpenTTD a fheabhsú má chláraíonn tú mar aistritheoir. Féach léighmé.txt chun mionsonraí a fháil.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Scoir
@@ -2122,6 +2127,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marcáil
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cuardaigh suíomhanna gréasáin seachtracha
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cuardaigh inneachar nach bhfuil ar fáil ar sheirbhís inneachair OpenTTD ar shuíomhanna gréasáin nach bhfuil baint acu le OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Tá tú ag imeacht ó OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Bíonn téarmaí agus cionníolacha éagsúla i bhfeidhm maidir le hinneachar a íoslódáil ó shuíomhanna gréasáin seachtracha.{}Beidh ort féachaint sna suíomhanna seachtracha chun treoracha a fháil conas an t-inneachar a shuiteáil in OpenTTD.{}An mian leat leanúint ar aghaidh?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Scagaire clibe/ainm:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Tabhair cuairt ar an suíomh gréasáin
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Tabhair cuairt ar an suíomh gréasáin don inneachar seo
@@ -2753,9 +2759,11 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Neamhchomh
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Sábháil réamhshocrú
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liosta de na réamhshocraithe atá ar fáil, roghnaigh ceann chun é a chóipeáil chuig an t-ainm sábháilte thíos
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Iontráil ainm don réamhshocrú
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}An t-ainm atá roghnaithe faoi láthair don réamhshocrú a shábhálfar
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cuir ar ceal
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ná hathraigh an réamhshocrú
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Sábháil
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sábháil an réamhshocrú faoin ainm atá roghnaithe faoi láthair
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Athraigh na paraiméadair NewGRF
@@ -2816,6 +2824,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tá spr
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálacha iolraccha Ghníomhaíocht 8 ann (sprid {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Léadh tar éis deireadh an pseudo-sprid (sprid {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Tá roinnt sprite in easnamh sa tsraith bhunúsach grafaicí atá in úsáid faoi láthair.{}Déan úasghrádú ar an tsraith bhunúsach grafaicí le do thoil
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Tá roinnt sprideanna in easnamh sa tacar bunghraificí atá in úsáid faoi láthair.{}Nuashonraigh an tacar bunghraificí.{}Toisc go bhfuil tú ag imirt ar {YELLOW}roghbhlúire forbróirí (development snapshot) OpenTTD{WHITE}, seans go mbeidh {YELLOW}roghbhlúire forbróirí de na bunghraificí{WHITE} ag teastáil uait
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Níl na hacmhainní GRF a iarradh ar fáil (sprid {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Bhí {1:STRING} díchumasaithe ag {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formáid neamhbhailí/anaithnid do leagan amach na spride (sprid {3:NUM})
@@ -2843,6 +2852,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Comhaid ar
 STR_NEWGRF_BROKEN                                               :{WHITE}Tá seans maith ann go mbeidh díshioncronú agus/nó tuairteálacha de thoradh ar iompar an NewGRF '{0:STRING}'.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}D'athraigh sé an staid vaigín cumhachtaithe le haghaidh '{1:ENGINE}' nuair nach bhfuil sé in iosta.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}D'athraigh sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}D'athraigh sé toilleadh na feithicle i gcomhair '{1:ENGINE}' nuair nach raibh sí laistigh d'iosta ná á hathfheistiú
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Cuireann an NewGRF '{0:STRING}' faisnéis mícheart ar fáil.
@@ -2862,6 +2872,9 @@ STR_INVALID_VEHICLE                                             :<feithicil neam
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFanna á scanadh
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFanna á scanadh. Ag brath ar an líon acu atá ann, seans go dtógfaidh sé tamall...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Scanadh {NUM} NewGRF as líon measta {NUM} NewGRF{P "" anna anna anna anna}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Cartlanna á scanadh
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta Comhartaí - {COMMA} {P Ch Ch Ch gC C}omhartha
@@ -2947,6 +2960,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Neamh
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Spriocanna na cuideachta:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliceáil ar an sprioc chun an príomhamharc a lárú ar an tionscal/baile/tíle. Ctrl+Cliceáil chun fuinneog amhairc nua a oscailt ar shuíomh an tionscail/an bhaile/na tíle
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ceist
@@ -3669,6 +3683,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Athraigh
 STR_ORDER_REFIT                                                 :{BLACK}Athfheistigh
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Roghnaigh an cineál lastais le hathfheistiú chuig san ordú seo. Bainfear an t-ordú athfheistithe le Ctrl+Cliceáil
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Athfheistigh ag stáisiún
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Roghnaigh an cineál lastais a ndéanfar athfeistiú chuige san ordú seo. Ctrl+Cliceáil chun an t-ordú athfheistithe a bhaint. Ní dhéanfar athfheistiú ag stáisiún ach amháin má cheadaíonn an fheithicil sin
 STR_ORDER_DROP_REFIT_AUTO                                       :Lastas seasta
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Lastas atá ar fáil
 
