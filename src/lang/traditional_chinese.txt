@@ -364,6 +364,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 遊戲腳本設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度選項
@@ -975,6 +976,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}螢幕�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其它
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}介面大小
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}選擇使用的介面元素大小
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :正常大小
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :兩倍大小
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :四倍大小
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
@@ -1068,6 +1076,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :非常平坦
 STR_TERRAIN_TYPE_FLAT                                           :平坦
 STR_TERRAIN_TYPE_HILLY                                          :丘陵
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :高山
+STR_TERRAIN_TYPE_ALPINIST                                       :多山
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :寬容
 STR_CITY_APPROVAL_TOLERANT                                      :能忍受
@@ -1075,7 +1084,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可使用...{}您可以從「線上內容」系統中下載各種 AI。
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}顯示設定
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}篩選字串：
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展開所有選項
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}折疊所有選項
@@ -1148,6 +1158,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :切換那些有
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地方政府對地區結構重組的態度： {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :選擇公司所製造的噪音和環境傷害對其在市鎮的評比及未來的建設行動會造成多大影響
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :最大地圖高度： {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :設定該地圖上山丘最多能有多高
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}您不能把地圖的最高高度設成此值。至少有一座山比這個高度更高。
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允許在建築物或軌道底下改變地形斜度 (autoslope)：{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :可以在建築物或軌道底下改變地形而不需移除它們
 STR_CONFIG_SETTING_CATCHMENT                                    :容許更真實的服務範圍設定：{STRING}
@@ -1716,6 +1729,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}多人�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}遊戲選項
 STR_INTRO_HIGHSCORE                                             :{BLACK}積分排行榜
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 遊戲腳本設定
@@ -1735,6 +1749,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}選擇�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}顯示遊戲選項
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}顯示積分排行榜
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}顯示設定
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}顯示 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}顯示AI和遊戲腳本設定
@@ -1774,6 +1789,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}切換�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土機 (可摧毀工業、無法移除的物件)：{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}允許隧道互相交叉：{ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}噴射機不會 (經常) 在小機場墜毀：{ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}修改地圖最高高度： {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}修改地圖上山丘的最高高度
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :溫帶
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :寒帶
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亞熱帶
@@ -2699,6 +2716,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}地圖最高高度
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}將地圖上山丘的最高高度加 1
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}將地圖上山丘的最高高度減去 1
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線高度：
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}將雪線高度上移一層
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}將雪線高度下移一層
@@ -2728,6 +2748,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}大小：
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}改變地圖最高高度
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}修改雪線高度
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}修改開始年份
 

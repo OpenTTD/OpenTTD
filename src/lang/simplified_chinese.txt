@@ -372,6 +372,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :退出
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :设置
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 游戏脚本设定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 设置
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明选项
@@ -983,6 +984,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}屏幕�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}选择要使用的屏幕分辨率
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}界面大小
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}选择使用的界面元素大小
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :正常大小
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :两倍大小
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :四倍大小
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基础图形组
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}选择要使用的基础图形组
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 文件{}未找到或不正确
@@ -1076,6 +1084,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :非常平整
 STR_TERRAIN_TYPE_FLAT                                           :平整
 STR_TERRAIN_TYPE_HILLY                                          :丘陵
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :山地
+STR_TERRAIN_TYPE_ALPINIST                                       :多山
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :宽容
 STR_CITY_APPROVAL_TOLERANT                                      :隐忍
@@ -1083,7 +1092,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :对立
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合适的 AI 可用...{}你可以在线下载各种 AI 。
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}设置
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}关键字过滤:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展开全部
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}关闭全部
@@ -1099,9 +1109,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :当前公司设
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}筛选设定：
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}适用范围：
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}仅显示修改过的选项
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :基础设置
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :高级设置
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :高级设置/全部设置
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本 (仅显示重要设置)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :进階 (显示大部份设置)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :专业 (显示所有设置)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :修改默认值
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :设置一个与当前游戏设置不同的值
 
@@ -1525,7 +1535,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :选择以Ctrl+�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :在 {STRING} 年前自动设置悬臂信号
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :设置电子信号灯出现的时间，在此之前，使用悬臂信号灯（功能相同，外观不同）
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :使用信号GUI： {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :显示一个供选择信号灯的窗口，取代用Ctrl加点击的方式在各种形式信号灯之间切换的方法
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :此设置让您在建造铁路信号灯时，看到一个包括所有信号灯种类的窗口，从而毋须按住 Ctrl 键再点击信号灯多次去更换信号灯的种类
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :默认建造的信号灯类型： {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :默认信号灯类型
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :通过信号灯
@@ -1610,7 +1620,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :邮件分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的邮件数量與乙站往甲站的邮件数量大致相同。“不对称”指任何一站往另一站的邮件数量皆由系统随意决定。“手动”指系统不会自动分配邮件的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲货物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :依原有设定，“装甲货物”包括溫带景观的“贵重品”、寒带景观的“金块”及沙漠景观的“钻石”。一些NewGRF可能有不同设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议的设定：在溫带景观应使用“对称”，因为银行会互相运送贵重品；而在寒带及沙漠景观应使用“不对称”，因为银行不会把金块或钻石送回矿场。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :“装甲货物”包括溫带场景的“贵重品”、寒带场景的“金块”及沙漠场景的“钻石”。NewGRF 有可能改変以上设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议在溫带及沙漠场景使用“对称”，因为银行之间会相互发送贵重品或钻石；在寒带则应使用“不对称”，因为银行不会把金块送回金矿。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他货物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如为此设置赋值“不对称”，则任何一站往另一站的货物数量皆由系统随意决定。如为此设置赋值“手动”，则系统不会依据交通路线分配货物的目的地。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精确度：{STRING}
@@ -1729,6 +1739,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}联机�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}游戏选项
 STR_INTRO_HIGHSCORE                                             :{BLACK}高分榜
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 脚本 设定
@@ -1748,6 +1759,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}选择 '
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}显示游戏选项
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}显示高分榜
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}显示设置
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GRF设定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}查看AI和脚本设定
@@ -2307,7 +2319,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台。按住 Shift 键显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/电子式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口{}按住 Shift 键显示预计费用
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建造铁路信号。{} 按住 Ctrl 键点选铁路，系统会切换悬臂式/电子式信号灯，或者更改被点选信号灯的种类{} 在一段直线铁路上拖拽，系统会依照设置的信号间距，沿铁路建立信号灯。如果按住 Ctrl 键拖拽，系统会建造信号灯至拖拽方向前的下一个分歧点{} 如果按住 Shift 键点击铁路或在铁路上拖拽，系统会显示建置成本但不设置信号灯{} 如果按住 Ctrl 键点击此键，系统会切换信号灯选择窗口的显示状态
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除轨道、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除轨道。
@@ -2860,11 +2872,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}定位 sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}下一个 sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}继续处理下个正常的 sprite，略过任何伪 (pseudo)／重新着色／文字 sprite 及结尾的换行标记。
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}继续处理下个正常的图形元素，略过任何虚位／重新着色／文字字型相关的图形元素；并且在处理到最后的图形元素后，返回第一个图形元素继续处理。
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}前往 sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}前往选定的sprite。若其不正常，则继续前进到下个sprite。
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一个 sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}继续处理上一个正常的 sprite，略过任何伪 (pseudo)／重新着色／文字 sprite 及开头的换行标记。
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}继续处理上一个正常的图形元素，略过任何虚位／重新着色／文字字型相关的图形元素；并且在处理到第一个图形元素后，返回最后的图形元素继续处理。
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}显示目前选取的 sprite。当 sprite 正在描绘时会忽略其定位。
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移动 sprite 到指定的 X 与 Y 座标位移
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X 座标位移: {NUM}, Y 座标位移: {NUM}
@@ -3383,10 +3395,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :除了 {CARGO_L
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牵引力：{GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}航行距离: {GOLD}{COMMA} 格
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列车选择列表 - 点击可以查看详细信息
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}汽车列表 - 点击可以查看详细信息
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船只列表 - 点击可以查看详细信息
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飞机列表 - 点击可以查看详细信息
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列车车辆选择列表。点击车辆查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏车辆的种类
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}路面车辆选择列表。点击车辆查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏车辆的种类
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶选择列表。点击船舶查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏船舶的种类
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飞行器选择列表。点击飞行器查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏飞行器的种类
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}购买车头/车厢
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}购买汽车
@@ -3476,7 +3488,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}克隆�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}克隆船只
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}克隆飞机
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}复制列车。按此按钮后{}点击一辆在车库内或外面的列车即可{}按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}点击此键后，再点击任何列车，即会购买一列跟它一样的列车。{}如果点击此键后，按住 Ctrl 键点击列车，则新列车会与旧列车共享调度计划。{}如果点击此键后，按住 Shift 键点击列车，系统会显示购买复制列车的所需资金，但不会建造新列车。
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}复制汽车。按此按钮后{}点击一辆在车库内或外面的汽车即可{}按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}复制船只。按此按钮后{}点击一个在船坞内或外面的船只即可。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}复制飞机。按此按钮后{}点击一个在机库内或外面的飞机即可。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
@@ -4158,7 +4170,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}太靠�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}太靠近另一个城镇了
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}城镇太多了
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图上没有多余的地方了
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个城镇不会修建道路{}您可以在"高级设置->环境->城镇"进行设定{}允许城镇建设道路
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}该城镇不会修建道路{}您可以经由“高级设置->环境->城镇”开启建设道路的功能
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城市中心没有合适的地方放置公司塑像

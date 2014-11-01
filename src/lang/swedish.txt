@@ -372,6 +372,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Inställningar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Inställningar för AI / spelskript
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Inställningar för NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Inställningar för genomskinlighet
@@ -983,7 +984,12 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skärmup
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj skärmupplösning att använda
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Gränssnittstorlek
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Välj vilken gränssnittsstorlek som används
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dubbel storlek
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Fyrdubbel storlek
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
@@ -1078,6 +1084,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Väldigt platt
 STR_TERRAIN_TYPE_FLAT                                           :Platt
 STR_TERRAIN_TYPE_HILLY                                          :Kullig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergig
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Eftergiven
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1086,6 +1093,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande datorspelare finns tillgänglig...{}Du kan ladda ner ett flertal datorspelare via 'Online Content'-systemet
 
 # Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Inställningar
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sökfilter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utöka alla
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Stäng alla
@@ -1158,6 +1166,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på ka
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggnation av områden: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Välj hur mycket ett företags oväsen och miljöpåverkan ska påverka dess anseende och möjlighet till vidare byggnationer i området
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximal karthöjd: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Välj maximala tillåtna höjd för berg på kartan
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan inte ändra maximal karthöjd till detta värde. Åtminstone ett berg på kartan är högre
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillåt landskapsarkitektur under byggnader, spår, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillåt landskapsarkitektur under byggnader och spår utan att ta bort dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillåt mer realistiska uppsamlingsområden för stationer: {STRING}
@@ -1186,6 +1197,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktivera inflation i ekonomin. Kostnaderna stiger något fortare än inkomsterna.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal brolängd: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal längd för broar
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maximal brohöjd: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maximal höjd för att bygga broar
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal tunnellängd: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximal längd för tunnlar
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metod för manuell konstruktion av primära industrier: {STRING}
@@ -1726,6 +1739,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera sp
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinställningar
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bästa spelresultat
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Inställningar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-inställningar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera online-innehåll
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / spelskript-inställningar
@@ -1745,6 +1759,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Välj 'l
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Visa spelinställningar
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Visar en topplista över de bästa spelresultaten
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skärminställningar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Visa inställningar för NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Visa inställningar för datorspelare och spelskript
@@ -1784,6 +1799,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelar 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk Bulldozer (ta bort industrier, oflyttbara objekt etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplan kommer inte att störta (frekvent) på små flygplatser: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Ändra maximal karthöjd: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Ändra maximal höjd för berg på kartan
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tempererat landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arktiskt landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropiskt landskap
@@ -2709,6 +2726,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal städer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximal karthöjd:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Öka maximal bergshöjd med ett
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Minska maximal bergshöjd med ett
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snögränsens höjd:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snögränsens höjd ett upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett ner
@@ -2738,6 +2758,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namn på
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storlek:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Ändra maximal karthöjd
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ändra snögränsens höjd
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ändra Startår
 
@@ -4122,6 +4143,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Utgrävn
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Redan på havsnivå
 STR_ERROR_TOO_HIGH                                              :{WHITE}För hög
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... redan platt
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Efteråt skulle bron ovanför vara för hög.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan inte ändra företagsnamn...
@@ -4311,6 +4333,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Måste r
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan inte börja och sluta på samma plats
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broändar ej på samma höjd
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bro är för låg för terrängen
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Bro är för hög för denna terräng.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- och slutpunkt måste ligga i linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... brons båda ändar måste vara på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... för lång bro
