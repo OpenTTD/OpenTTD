@@ -2007,7 +2007,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Monstrar
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Monstrare schemata coloris aeroplanorum
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Eligere colorem primarium schematis electi. Ctrl+Preme ut color omnibus schematibus sit primarius
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Eligere colorem secundum schematis electi. Ctrl+Preme ut color omnibus schematibus sit secundus
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Eligere schema mutandum, sive schemata plura (Ctrl pressa). Preme in quadrum ut mutetur usum schematis
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Eligere schema mutandum, sive schemata plura (Ctrl pressa). Preme in quadrum ut usus schematis mutetur
 
 STR_LIVERY_DEFAULT                                              :Schema Solitum
 STR_LIVERY_STEAM                                                :Hamaxa Vaporaria
@@ -2092,7 +2092,7 @@ STR_FACE_EARRING                                                :Inauris:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mutare focale vel inaurem
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Plures Lusores
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Modus Plurium Lusorum
 STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Ostensum
 STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Eligere servatrum ostensum (interretis) aut non ostensum (LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Non
