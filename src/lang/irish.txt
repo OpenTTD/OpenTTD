@@ -1238,21 +1238,29 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féi
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cothabháil bonneagair: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Ní imíonn aerfoirt as dáta riamh: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Má dhéantar an socrú seo a chumasú beidh gach cineál aerfoirt ar fáil go deo tar éis é a thabhairt isteach
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Tabhair rabhadh má tá an fheithicil caillte: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Taispeáin teachtaireachtaí maidir le feithiclí nach bhfuil in ann bealach a aimsiú chuig an gceann scríbe ar ordaíodh dóibh dul ann
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Féach ar orduithe feithicile: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Má dhéantar é a chumasú, déantear orduithe na bhfeithiclí a sheiceáil go tráthrialta, agus tuairiscítear fadhbanna soiléire i dteachtaireacht nuachta má aimsítear iad
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Níl
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Déan é, ach ná tóg feiticlí stoptha san áireamh
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ar gach feithicil
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Tabhair rabhadh má tá ioncam feithicile diúltach: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Má dhéantar é a chumasú, seoltar teachtaireacht nuachta más rud é nach ndearna feithicil brabús ar bith i mbliain féilire
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ní imíonn feithiclí as dáta riamh: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Má dhéantar é a chumasú beidh gach cineál feithicle ar fáil go deo tar éis é a thabhairt isteach
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Má tá sé cumasaithe, déantar feithicil atá ag teacht chuig deireadh a ré a ionadú go huathoibríoch má tá na coinníollacha athnuachana comhlíonta
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Uath-athnuaigh nuair atá feithicil {STRING} den aois uasta
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :An aois choibhneasta nuair is ceart feithicil a chur san áireamh chun uath-athnuachan a dhéanamh uirthi
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} {P mh mh mh m m}í roimh
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} {P mh mh mh m m}í tar éis
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Uathathnuachan: uasmhéid airgead a theastaíonn le hathnuachan: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :An t-íosmhéid airgead nach mór a bheith sa bhanc fós sula seiceálfar ar cheart feithiclí a athnuachan
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Fad ama na teachtaireachta earráide: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An fad a thaispeánfar teachtaireachtaí earráide i bhfuinneog dhearg. Tabhair faoi deara nach ndúnfar teachtaireachtaí (criticiúla) áirithe go huathoibríoch tar éis an fad ama se, agus nach mór iad a dhúnadh de láimh
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P sh sh sh s s}oicind
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Taispeáin leideanna uirlise: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :An mhoill sula dtaispeántar leideanna uirlise agus an luchóg os cionn eilimint den chomhéadan. Mar mhalairt, ceanglaítear leideanna uirlise don deaschlic luchóige má shocraítear an luach seo ag 0.
@@ -1261,6 +1269,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Deaschlic
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Taispéain daonra an bhaile i lipéad ainm an bhaile: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Taispeáin daonra bailte sa lipéad atá acu ar an léarscáil
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tiús na línte sna graif: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Leithead na líne sna graif. Is féidir líne thanaí a léamh go beacht, agus tá líne níos tiubhe níos éasca le feiceáil agus tá sé níos éasca na dathanna a idirdhealú óna gcéile
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Tírdhreach: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gineadóir talún: {STRING}

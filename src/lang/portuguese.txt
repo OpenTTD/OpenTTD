@@ -250,6 +250,10 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios, etc. num quadrado de terreno. Ctrl selecciona a área na diagonal. Shift alterna construção/mostrando estimativa de custos
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Mostrar escondido
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Mostrar escondido
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Mostrar escondido
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Mostrar escondido
 
 
 # Query window
@@ -365,6 +369,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Definições
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Definições de IA / Scripts de Jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
@@ -975,6 +980,12 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluç
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccione a resolução do ecrã que deseja utilizar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamanho interface
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleccionar tamanho do elemento de interface a usar
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobro do tamanho
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccione o conjunto de gráficos base a usar
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ficheiro{P "" s} que falta{P "" m} / corrupto{P "" s}
@@ -1067,6 +1078,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Muito Plano
 STR_TERRAIN_TYPE_FLAT                                           :Plano
 STR_TERRAIN_TYPE_HILLY                                          :Acidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montanhoso
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinista
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
@@ -1074,7 +1086,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não existem IA utilizáveis...{}Pode encontrar IAs disponiveis pelo sistema 'Verificar conteúdo online'
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Definições
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar frase:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todas
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar todas
@@ -1147,6 +1160,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastre
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da do Concelho Municipal em relação a reestruturação de áreas: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolha quanto ruído e estragos ambientais causados pelas empresas afecta o rating da povoação e futuras acções de construção na área
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altura máxima do mapa: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Define altura máxima permitida para montanhas no mapa
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Pode aumentar a altura máxima do mapa para este valor. Pelo menos uma montanha no mapa é mais alta
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir formação de terras debaixo de edifícios e linhas sem os remover
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista de áreas de abrangência: {STRING}
@@ -1175,6 +1191,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflação: {ST
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativar inflação na economia, para que os preços subam ligeiramente mais rápido do que os pagamentos
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo de ponte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Tamanho máximo para construção de pontes
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altura máxima de ponte: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altura máxima para construir pontes
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tamanho máximo de túneis: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tamanho máximo para construção de túneis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de financiamento de indústrias primárias: {STRING}
@@ -1337,6 +1355,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Deslocar com botão esquerdo: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activar deslocamento do mapa através de arrastamento com o botão esquerdo do rato. Esta opção é particularmente útil quando é usado um ecran de toque para deslocamento
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Guardar automaticamente: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de data {STRING} para jogos gravados.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos ficheiros de jogos gravados
@@ -1685,6 +1704,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jo
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções do Jogo
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de Classificações
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Definições
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Definições NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Verificar Conteúdo Online
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Definições de IA / Script de Jogo
@@ -1704,6 +1724,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Seleccio
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostrar opções de jogo
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabela de classificações
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Definições de Display
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar definições de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar definições de IA e de script de jogo
@@ -1743,6 +1764,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, objectos amovíveis etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aviões a jacto não irão ter acidentes (frequentes) em aeroportos pequenos: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar altura máxima do mapa: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar altura máxima de montanhas no mapa
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Terreno temperado
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Terreno subárctico
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Terreno subtropical
@@ -2265,7 +2288,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Fixar o Ctrl também remove a linha férrea de pontos de passagem e estações
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Actualizar tipo de linha. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de linha. Shift alterna contruir/mostrar custo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Caminhos-de-ferro
 STR_RAIL_NAME_ELRAIL                                            :Caminhos-de-ferro elétricos
@@ -2652,6 +2675,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Guardar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guardar o jogo actual, usando o nome escolhido
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carregar
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carregar o jogo selecionado
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar mapa de alturas seleccionado
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2667,6 +2691,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Num. de cidades:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Num. de indústrias:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Altura máxima do mapa:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Aumentar altura máxima das montanhas no mapa em um
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Diminuir altura máxima das montanhas no mapa em um
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altura linha neve:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mover a linha de neve um nível acima
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mover a linha de neve um nível abaixo
@@ -2696,6 +2723,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome map
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Mudar altura máxima do mapa
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mudar a altura da linha de neve
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mudar ano de início
 
@@ -3282,6 +3310,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Remover 
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Mudar o nome do grupo seleccionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da autosubstituição global
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Apagar Grupo
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adic. veíc. partilh.
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
@@ -3345,8 +3374,14 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renomear
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renomear tipo de barco
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renomear tipo de aeronave
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Esconder
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Esconder
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Esconder
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Esconder
 
 
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Define mostrar/esconder tipo de barco
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Define mostrar/esconder tipo de aeronave
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomear tipo de veículo ferroviário
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renomear tipo de veículo rodoviário
@@ -3452,6 +3487,8 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Veículo rodovi
 STR_REPLACE_VEHICLE_SHIP                                        :Barco
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Veículos em utilização
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Veículos disponiveis
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleccione o tipo de motor a substituir
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Seleccione o novo tipo de motor para substituir o que seleccionou à esquerda
@@ -4048,6 +4085,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}A escava
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... já está ao nível do mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}... demasiado alto
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já plano
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ponte acima seria demasiado alta.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Não é possível alterar o nome da empresa...
@@ -4235,6 +4273,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Deverá 
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e finalizar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremos da ponte não estão ao mesmo nível
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponte muito baixa para o terreno
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Ponte é demasiado alta para este terreno.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Início e fim devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambos os extremos da ponte devem estar em terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte demasiado longa
@@ -4261,6 +4300,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... já 
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossível criar grupo...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Impossível remover este grupo...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Impossível renomear o grupo...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Não é possível definir grupo parente...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Não é possível remover todos os veículos deste grupo...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Impossível adicionar o veículo a este grupo...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossível adicionar veículos com ordens partilhadas ao grupo...
@@ -4798,6 +4838,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (escondido)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
