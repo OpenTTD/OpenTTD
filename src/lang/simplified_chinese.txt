@@ -256,7 +256,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}显示�
 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}如启用此按键，被隐藏的铁路列车也会被显示出来
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}如启用此按键，被隐藏的路面车辆也会被显示出来
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}如启用此按键，被隐藏的船泊也会被显示出来
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}如启用此按键，被隐藏的船舶也会被显示出来
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}如启用此按键，被隐藏的飞机也会被显示出来
 
 # Query window
@@ -1198,7 +1198,7 @@ STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :“打开”通
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :桥梁的最大长度: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建设桥梁时允许的最大长度
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :最高桥梁高度：{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :可建造桥梁的最高高度
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :桥梁与地面之间的最大高度
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道最大长度: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :建设隧道时允许的最大长度
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :原料工业建设方式： {STRING}
@@ -1620,7 +1620,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :邮件分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的邮件数量與乙站往甲站的邮件数量大致相同。“不对称”指任何一站往另一站的邮件数量皆由系统随意决定。“手动”指系统不会自动分配邮件的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲货物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :“装甲货物”包括溫带场景的“贵重品”、寒带场景的“金块”及沙漠场景的“钻石”。NewGRF 有可能改変以上设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议在溫带及沙漠场景使用“对称”，因为银行之间会相互发送贵重品或钻石；在寒带则应使用“不对称”，因为银行不会把金块送回金矿。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :“装甲货物”包括溫带场景的“贵重品”、寒带场景的“金块”及沙漠场景的“钻石”。使用 NewGRF 可能会改変以上设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议在溫带及沙漠场景使用“对称”，因为银行之间会相互发送贵重品或钻石；在寒带则应使用“不对称”，因为银行不会把金块送回金矿。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他货物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如为此设置赋值“不对称”，则任何一站往另一站的货物数量皆由系统随意决定。如为此设置赋值“手动”，则系统不会依据交通路线分配货物的目的地。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精确度：{STRING}
@@ -3433,7 +3433,7 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}显示
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}切换隐藏还是显示有关的铁路列车类型
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}切换隐藏还是显示有关的路面车辆类型
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}切换隐藏还是显示有关的船舶类型
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}切换隐藏还是显示有关的飞机类型
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}切换是否显示飞行器类型
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重命名车辆的类型
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}重命名汽车型号
@@ -4143,7 +4143,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}挖掘�
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}已经是海平面了
 STR_ERROR_TOO_HIGH                                              :{WHITE}太高了
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已经平了
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}赋这个值的话，在上面的桥梁会太高
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}这样的话，在它上面的桥梁会太高
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}不能为公司更名……
@@ -4170,7 +4170,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}太靠�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}太靠近另一个城镇了
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}城镇太多了
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图上没有多余的地方了
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}该城镇不会修建道路{}您可以经由“高级设置->环境->城镇”开启建设道路的功能
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}城镇不会修建道路{}您可以经由“高级设置->环境->城镇”开启建设道路的功能
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城市中心没有合适的地方放置公司塑像

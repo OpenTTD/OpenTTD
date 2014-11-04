@@ -249,7 +249,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 -
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆卸建築物等。在格子裡的土地。按Ctrl以對角選擇區域。Shift切換建築或顯示預估成本。
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}顯示被隱藏的
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}顯示被隱藏的
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}顯示被隱藏的
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}顯示被隱藏的
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}如啟用此按鈕，系統會顯示本應被隱藏的機車或車廂
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}如啟用此按鈕，系統會顯示本應被隱藏的車輛
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}如啟用此按鈕，系統會顯示本應被隱藏的船舶
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}如啟用此按鈕，系統會顯示本應被隱藏的飛機
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}預設值
@@ -468,7 +476,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :最近鏡截圖
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :在預設的縮放範圍截圖
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :擷取全場景畫面
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :關於「OpenTTD」
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 定位工具
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :子畫面定位工具
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切換邊界框
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :切換骯髒區塊的配色
 ############ range ends here
@@ -1101,9 +1109,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :公司設定 (�
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}篩選設定：
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}適用範圍：
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}限制以下列表僅顯示曾被更改的設定
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :進階設定
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :專業設定 / 所有設定
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本 (僅顯示重要設定)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :進階 (顯示大部份設定)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :專業 (顯示所有設定)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :與預設值有所不同的設定
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :與您開始新遊戲時所選擇的值有所不同的設定
 
@@ -1189,6 +1197,8 @@ STR_CONFIG_SETTING_INFLATION                                    :通貨膨脹：
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :啟用通貨膨脹，而且成本的增長會稍為比收入的增長快
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋樑長度上限： {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建造橋樑長度的上限
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :橋樑高度上限： {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :橋樑與地面之間的最大高度
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道長度上限： {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :設定建造隧道長度的上限
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :修改基礎工業的建造方式：{STRING}
@@ -1274,7 +1284,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :錯誤訊息持
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :設定所有以紅色對話窗顯示的錯誤訊息之持續時間。請注意有些較嚴重的錯誤訊息必須手動關閉
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} 秒
 STR_CONFIG_SETTING_HOVER_DELAY                                  :顯示工具提示： {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :設定是否在游標處於工具按鈕之上時顯示工具使用提示。如停用此選項，玩家仍可在工具按鈕上右撳鼠键以顯示工具使用提示
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :設定游標需在工具按鈕之上停留多久才會顯示工具使用提示。如此選項的值為 0，您需在工具按鈕上右撳鼠键以顯示工具使用提示
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :游標在按鈕之上停留 {COMMA} 秒
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右撳
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :於標籤顯示市鎮人口：{STRING}
@@ -1525,7 +1535,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :選擇當進行
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :自動在指定年份前建造懸臂號誌：{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :設定使用燈號號誌的年份。在遊戲進行到那一年之前，系統會預設豎立懸臂號誌
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :啟用號誌介面：{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :設定是否顯示「號誌工具列」。如否，玩家須按下 Ctrl 鍵並同時單撳已建置的號誌以更換號誌類型
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :此設定讓您在興建號誌時，看到一個包括所有號誌種類的窗口，從而毋需按住 Ctrl 鍵再反覆點選已建置的號誌以更換號誌類型
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :預設的號誌種類：{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :預設建造的號誌種類
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :閉塞號誌
@@ -1610,7 +1620,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :設使有交通
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :郵件分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的郵件數量大致相同。「不對稱」指任何一站往另一站的郵件數量皆由系統隨意決定。「手動」指系統不會自動分配郵件的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :裝甲貨物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :依原有設定，「裝甲貨物」包括溫帶場景的「貴重物品」、寒帶場景的「金塊」及亞熱帶場景的「鑽石」。一些 NewGRF 可能有不同設定。{} 設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的裝甲貨物數量大致相同。「不對稱」指任何一站往另一站的裝甲貨物數量皆由系統隨意決定。「手動」指系統不會自動分配裝甲貨物的目的地。{} 建議的設定：在溫帶場景應使用「對稱」，因為銀行會互相運送貴重物品；而在寒帶場景及亞熱帶場景應使用「不對稱」，因為銀行不會把金塊或鑽石送回礦場。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :「裝甲貨物」包括溫帶場景的「貴重物品」、寒帶場景的「金塊」及亞熱帶場景的「鑽石」。使用 NewGRF 可能會改變以上設定。{} 設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的裝甲貨物數量大致相同。「不對稱」指任何一站往另一站的裝甲貨物數量皆由系統隨意決定。「手動」指系統不會自動分配裝甲貨物的目的地。{} 建議在溫帶及亞熱帶場景應使用「對稱」，因為銀行會互相發送貴重物品或鑽石；而在寒帶場景應使用「不對稱」，因為銀行不會把金塊送回礦場。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他貨物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如設定此值為「不對稱」，則任何一站往另一站的貨物數量皆由系統隨意決定。如設定此值為「手動」，則系統不會自動分配貨物的目的地。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精確度：{STRING}
@@ -2309,7 +2319,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置及維修列車)。按Shift可切換建築/顯示預估成本。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站。 按住 Ctrl 可興建相鄰車站。按Shift可切換建築/顯示預估成本。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站。 按住 Ctrl 可興建相鄰車站。按Shift可切換建築/顯示預估成本。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌。 按住 Ctrl 點選可切換懸臂／燈號號誌{} 於直線鐵路上拖曳可興建多個號誌。 按住 Ctrl 拖曳則只興建號誌至下個岔道{} 於選單按鈕。按住 Ctrl 點選可切換顯示號誌選擇視窗。按Shift可切換建築/顯示預估成本。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌。{} 按住 Ctrl 鍵再點選鐵路，系統會切換懸臂／燈號號誌，或者更改被點選號誌的種類{} 在直線鐵路上拖曳，系統會依照設定的號誌間距，沿路興建多個號誌。按住 Ctrl 鍵再拖曳，系統會興建號誌至下個岔道{} 如果按住 Shift 鍵再點選鐵路或在鐵路上拖曳，系統會顯示興建號誌所需成本，但不會建造號誌{} 如果按住 Ctrl 再點選此鍵，系統會切換號誌選擇視窗的顯示狀態。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵路橋樑。按Shift可切換建築/顯示預估成本。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道。按Shift可切換建築/顯示預估成本。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌、號誌站及車站。 按住 Ctrl 點選可移除號誌站及車站中的鐵軌
@@ -2861,19 +2871,19 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}定位 Sprite {COMMA} ({STRING})
-STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}下一個 Sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}繼續處理下個正常的 sprite，略過任何偽 (pseudo)／重新著色／文字 sprite 及結尾的換行標記
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}前往 Sprite
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}下一個子畫面
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}繼續處理下個正常的子畫面，略過任何虛位／重新著色／文字字型相關的子畫面，並在到達最後的子畫面後，返回第一個子畫面繼續進行處理。
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}前往子畫面
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}前往選定的 sprite。若該 sprite 不是正常的 sprite，則繼續前進到下個 sprite
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一個 Sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}繼續處理上個正常的 sprite，略過任何偽 (pseudo)／重新著色／文字 sprite 及開頭的換行標記
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一個子畫面
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}繼續處理上一個正常的子畫面，略過任何虛位／重新著色／文字字型相關的子畫面，並在到達第一個子畫面後，返回最後的子畫面繼續進行處理。
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}顯示目前選取的 sprite。當 sprite 正在描繪時會忽略其定位
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移動 sprite 到指定的 X 及 Y 座標位移
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X 座標位移：{NUM}, Y 座標位移：{NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}選取 Sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}請從畫面中任意選取一個 sprite
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}前往 Sprite
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}前往子畫面
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -3385,10 +3395,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :所有貨物（
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}範圍： {GOLD}{COMMA} 方格
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車選單 - 點選列車檢視資訊
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}車輛清單 - 點選車輛可看到詳細資料
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶清單 - 點選船舶顯示詳細資料
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飛機清單 - 點選飛機檢視詳細資料
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車選單。點選機車或車卡檢視詳細資訊，或者按住 Ctrl 鍵再點選機車或車卡以切換是否顯示機車或車卡的種類
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}車輛選單。點選車輛檢視詳細資訊，或者按住 Ctrl 鍵再點選車輛以切換是否顯示車輛的種類
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶選單。點選船舶檢視詳細資訊，或者按住 Ctrl 鍵再點選船舶以切換是否顯示船舶的種類
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飛機選單。點選飛機檢視詳細資訊，或者按住 Ctrl 鍵再點選飛機以切換是否顯示飛機的種類
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}購買運具
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}購買車輛
@@ -3410,8 +3420,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}重新�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}重新命名船舶種類
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}重新命名飛機種類
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}隱藏
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}隱藏
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}隱藏
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}隱藏
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}顯示
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}顯示
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}顯示
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}顯示
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}切換是否顯示列車類型
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}切換是否顯示車輛類型
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}切換是否顯示船舶類型
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}切換是否顯示飛機類型
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重新命名列車種類
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}重新命名車輛種類
@@ -3466,7 +3488,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}複製�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}複製船舶
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}複製飛機
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}這會購買一列相同的列車，包含所有車廂。按下按鈕之後再點選機廠内外的其他列車，按住 CTRL 點選還可共享指令，按住 Shift 點選則只會顯示預估的購買費用
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}點選此按鈕，然後再點選列車，系統會建造一列跟它一樣的列車。{}如果點選此按鈕之後，按住 Ctrl 鍵點選列車，則新列車會與舊列車共享指令。{}如果點選此按鈕之後，按住 Shift 鍵點選列車，系統會顯示建造新列車的費用，而不建造列車。
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}點選此按鈕，然後點選任何一部於車廠内或外的車輛，會購買一部屬性與指令清單皆相同的車輛。如按住 Ctrl 掣點選車輛，新車輛會與原有車輛共享指令；如按住 Shift 掣點選車輛，系統會顯示預估的購買費用但不作任何購買
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}這會購買一艘相同的船舶。按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令，按住 Shift 點選則只會顯示預估的購買費用
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}這會購買一架相同的飛機。按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令，按住 Shift 點選則只會顯示預估的購買費用
@@ -3517,6 +3539,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :車輛
 STR_REPLACE_VEHICLE_SHIP                                        :船舶
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :飛機
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}使用中的運輸工具
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}此行顯示您正在擁有的運輸工具
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}可用的運輸工具
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}此行顯示可供替換的運輸工具
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}選擇要替換的車頭種類
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}選擇您想替換左方選定車頭的新車頭種類
@@ -4117,6 +4143,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}挖掘�
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}已到海平面
 STR_ERROR_TOO_HIGH                                              :{WHITE}... 太高
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已經平了
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}這樣做的話，在它上面的橋樑會太高
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}無法修改公司名稱...
@@ -4143,7 +4170,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 太�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 太接近另一個市鎮
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 已有太多市鎮
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地圖沒有足夠空間
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}此市鎮不會自動興建道路。你可以到 [進階設定] -> [環境] -> [市鎮] 中啟用 [市鎮可以興建道路] 選項。
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}市鎮不會自動興建道路。你可以在 [設定] -> [環境] -> [市鎮] 啟用市鎮自行興建道路的功能。
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路施工中
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}無法刪除此市鎮...{}市鎮範圍內還有車站或機廠或無法移除的區塊
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 市中心沒有適合的空間建造雕像
@@ -4306,6 +4333,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}必須�
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}開始與結束的位置必須不同
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}橋樑兩端不在同個海拔
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋樑太接近地面
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}這座橋對這個地形而言太高了
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}開始與結束位置必須在同一直線上
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋樑的兩端應在陸地上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 橋樑過長
@@ -4870,6 +4898,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (隱藏)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
