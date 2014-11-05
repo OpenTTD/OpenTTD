@@ -96,7 +96,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Bebidas Gasosas
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carvão
 STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correio
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
@@ -1103,9 +1103,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configurações
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringe a lista abaixo para mostrar apenas opções modificadas
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opções Básicas
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Opções Avançadas
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Opções Avançadas / Todas as Opções
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opções Básicas (mostra apenas definições importantes)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avançado (mostra grande parte das definições)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Avançado (mostra todas as definições, incluindo as estranhas)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opções com um valor diferente das de origem
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Preferências com um valor diferente das preferências para novos jogos
 
