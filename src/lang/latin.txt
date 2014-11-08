@@ -81,10 +81,10 @@ STR_CARGO_PLURAL_MAIZE                                          :{G=n}Maizium
 STR_CARGO_PLURAL_MAIZE.gen                                      :{G=n}maizii
 STR_CARGO_PLURAL_MAIZE.acc                                      :{G=n}Maizium
 STR_CARGO_PLURAL_MAIZE.dat                                      :{G=n}Maizio
-STR_CARGO_PLURAL_FRUIT                                          :{G=m}Fructus
-STR_CARGO_PLURAL_FRUIT.gen                                      :{G=m}fructus
-STR_CARGO_PLURAL_FRUIT.acc                                      :{G=m}Fructum
-STR_CARGO_PLURAL_FRUIT.dat                                      :{G=m}Fructui
+STR_CARGO_PLURAL_FRUIT                                          :{G=mp}Fructus
+STR_CARGO_PLURAL_FRUIT.gen                                      :{G=mp}fructuum
+STR_CARGO_PLURAL_FRUIT.acc                                      :{G=m}Fructus
+STR_CARGO_PLURAL_FRUIT.dat                                      :{G=m}Fructibus
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=mp}Adamantes
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :{G=mp}adamantum
 STR_CARGO_PLURAL_DIAMONDS.acc                                   :{G=mp}Adamantes
@@ -208,10 +208,10 @@ STR_CARGO_SINGULAR_MAIZE                                        :{G=n}Maizium
 STR_CARGO_SINGULAR_MAIZE.gen                                    :{G=n}maizii
 STR_CARGO_SINGULAR_MAIZE.acc                                    :{G=n}Maizium
 STR_CARGO_SINGULAR_MAIZE.dat                                    :{G=n}Maizio
-STR_CARGO_SINGULAR_FRUIT                                        :{G=m}Fructus
-STR_CARGO_SINGULAR_FRUIT.gen                                    :{G=m}fructus
-STR_CARGO_SINGULAR_FRUIT.acc                                    :{G=m}Fructum
-STR_CARGO_SINGULAR_FRUIT.dat                                    :{G=m}Fructui
+STR_CARGO_SINGULAR_FRUIT                                        :{G=mp}Fructus
+STR_CARGO_SINGULAR_FRUIT.gen                                    :{G=mp}fructuum
+STR_CARGO_SINGULAR_FRUIT.acc                                    :{G=m}Fructus
+STR_CARGO_SINGULAR_FRUIT.dat                                    :{G=m}Fructibus
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=mp}Adamantes
 STR_CARGO_SINGULAR_DIAMOND.gen                                  :{G=mp}adamantum
 STR_CARGO_SINGULAR_DIAMOND.acc                                  :{G=mp}Adamantes
@@ -296,7 +296,7 @@ STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} c
 STR_QUANTITY_VALUABLES                                          :{G=mp}{COMMA}{NBSP}sacc{P us i} rerum pretiosarum
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} aeris
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} maizii
-STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fructus
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fructuum
 STR_QUANTITY_DIAMONDS                                           :{G=mp}{COMMA}{NBSP}sacc{P us i} adamantum
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} cibi
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} chartae
@@ -320,7 +320,7 @@ STR_QUANTITY_N_A                                                :N/A
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINY_FONT}VC
 STR_ABBREV_COAL                                                 :{TINY_FONT}CA
-STR_ABBREV_MAIL                                                 :{TINY_FONT}CP
+STR_ABBREV_MAIL                                                 :{TINY_FONT}EP
 STR_ABBREV_OIL                                                  :{TINY_FONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}PC
 STR_ABBREV_GOODS                                                :{TINY_FONT}ME
@@ -3119,7 +3119,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Irrita/ignota d
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Maxime Cavendum Est!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ludum euntem mutaturus es. Igitur, ludum corruatur sive OpenTTD frangatur. Noli queri de mendis harum rerum.{}Esne valde certus te pergere velle?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Addere fasciculum non licet propter agnoscamentum GRF duplicatum
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Addere fasciculum non licet nam adest agnoscamentum GRF duplicatum
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fasciculus congruus lectus (nam fasciculus idem non inventum fuit)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Addere fasciculum non licet; nimis NewGRF adsunt
 
