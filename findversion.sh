@@ -106,12 +106,12 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 	fi
 elif [ -d "$ROOT_DIR/.hg" ]; then
 	# We are a hg checkout
-	if [ -n "`hg status | grep -v '^?'`" ]; then
+	if [ -n "`HGPLAIN= hg status | grep -v '^?'`" ]; then
 		MODIFIED="2"
 	fi
-	HASH=`LC_ALL=C hg id -i | cut -c1-12`
+	HASH=`LC_ALL=C HGPLAIN= hg id -i | cut -c1-12`
 	REV="h`echo $HASH | cut -c1-8`"
-	BRANCH="`hg branch | sed 's@^default$@@'`"
+	BRANCH="`HGPLAIN= hg branch | sed 's@^default$@@'`"
 	TAG="`hg id -t | grep -v 'tip$'`"
 	if [ -n "$TAG" ]; then
 		BRANCH=""
