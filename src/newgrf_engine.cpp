@@ -56,11 +56,6 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, Eng
 {
 	const Engine *e = Engine::Get(engine);
 
-	/* XXX: This could turn out to be a timesink on profiles. We could
-	 * always just dedicate 65535 bytes for an [engine][train] trampoline
-	 * for O(1). Or O(logMlogN) and searching binary tree or smt. like
-	 * that. --pasky */
-
 	for (uint i = 0; i < e->overrides_count; i++) {
 		const WagonOverride *wo = &e->overrides[i];
 
