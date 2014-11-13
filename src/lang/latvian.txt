@@ -1948,7 +1948,7 @@ STR_NETWORK_LANG_TURKISH                                        :Turku
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukraiņu
 STR_NETWORK_LANG_AFRIKAANS                                      :Āfrikāņu
 STR_NETWORK_LANG_CROATIAN                                       :Horvātu
-STR_NETWORK_LANG_CATALAN                                        :Katalāņu
+STR_NETWORK_LANG_CATALAN                                        :Kataloņu
 STR_NETWORK_LANG_ESTONIAN                                       :Igauņu
 STR_NETWORK_LANG_GALICIAN                                       :Galisiešu
 STR_NETWORK_LANG_GREEK                                          :Grieķu

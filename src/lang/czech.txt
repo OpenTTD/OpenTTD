@@ -1171,6 +1171,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :velmi plochá
 STR_TERRAIN_TYPE_FLAT                                           :plochá
 STR_TERRAIN_TYPE_HILLY                                          :kopcovitá
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :hornatá
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpské
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :nezaujatý
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantní
