@@ -715,7 +715,7 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
 	const GRFConfig *c1 = *p1;
 	const GRFConfig *c2 = *p2;
 
-	return strcasecmp(c1->GetName(), c2->GetName());
+	return strnatcmp(c1->GetName(), c2->GetName());
 }
 
 /**

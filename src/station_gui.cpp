@@ -19,6 +19,7 @@
 #include "cargotype.h"
 #include "station_gui.h"
 #include "strings_func.h"
+#include "string_func.h"
 #include "window_func.h"
 #include "viewport_func.h"
 #include "widgets/dropdown_func.h"
@@ -222,7 +223,9 @@ protected:
 			GetString(buf_cache, STR_STATION_NAME, lastof(buf_cache));
 		}
 
-		return strcmp(buf, buf_cache);
+		int r = strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
+		if (r == 0) return (*a)->index - (*b)->index;
+		return r;
 	}
 
 	/** Sort stations by their type */
@@ -1186,7 +1189,7 @@ bool CargoSorter::SortStation(StationID st1, StationID st2) const
 	SetDParam(0, st2);
 	GetString(buf2, STR_STATION_NAME, lastof(buf2));
 
-	int res = strcmp(buf1, buf2);
+	int res = strnatcmp(buf1, buf2); // Sort by name (natural sorting).
 	if (res == 0) {
 		return this->SortId(st1, st2);
 	} else {
