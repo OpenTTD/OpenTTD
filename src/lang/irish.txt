@@ -165,7 +165,7 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}TD
 STR_ABBREV_ALL                                                  :{TINY_FONT}GACH
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} {P ph ph ph bp p}aisinéir
+STR_PASSENGERS                                                  :{COMMA}{NBSP}{P ph ph ph bp p}aisinéir
 STR_BAGS                                                        :{COMMA}{NBSP}{P m mh m m m}álaí
 STR_TONS                                                        :{COMMA}{NBSP}{P th th th dt t}ona
 STR_LITERS                                                      :{COMMA}{NBSP}lítear
@@ -204,24 +204,24 @@ STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tona
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tona{P "" "" "" "" ""}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}{P "th" "th" "th" "dt" "th"}ona
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}galún
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítear{P "" "" "" "" ""}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}lítear
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} tr
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}tr
 STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Teaghrán scagtha:
@@ -241,7 +241,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Teideal 
 STR_TOOLTIP_SHADE                                               :{BLACK}Cuir fuinneog faoi scáth - ná taispeáin ach an barra teidil
 STR_TOOLTIP_DEBUG                                               :{BLACK}Taispeáin faisnéis dífhabhtaithe NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Athraigh méid na fuinneoige chuig an méid réamhshocraithe. Ctrl+Cliceáil chun an méid reatha a stóráil mar réamhshocrú
-STR_TOOLTIP_STICKY                                              :{BLACK}Marcáil an fhuinneog seo mar cheann nach féidir a dhúnadh leis an eochair 'Dún gach fuinneog'
+STR_TOOLTIP_STICKY                                              :{BLACK}Marcáil an fhuinneog seo mar cheann nach féidir a dhúnadh leis an eochair 'Dún gach fuinneog'. Ctrl+Cliceáil chun an staid a shábháil mar réamhshocrú freisin
 STR_TOOLTIP_RESIZE                                              :{BLACK}Cliceáil agus tarraing chun méid na fuinneoige seo a athrú
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Scoránaigh méid fuinneoige mór/beag
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbharraí - déantar liosta a scrollú suas/síos
@@ -1164,6 +1164,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Má tá sé cum
 STR_CONFIG_SETTING_DISASTERS                                    :Tubaistí: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Cuir tubaistí, ar féidir leo feithiclí nó bonneagar a bhlocáil nó a scriosadh anois is arís, ar siúl nó as
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Dearcadh chomhairle an bhaile i leith athstruchtúrú limistéir: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Roghnaigh a mhéid a mbeidh tionchar ag torann agus damáiste don chomhshaol a dhéanann cuideachtaí ar a rátáil sa bhaile agus ar imeachtaí tógála eile sa cheantar
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Airde uasta na léarscáile: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Socraigh an airde uasta atá ceadaithe do shléibhte ar an léarscáil
@@ -1172,12 +1173,16 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaigh athrú
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ceadaigh tírdhreachú faoi fhoirgneamh agus ráillí gan iad a bhaint
 STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Ceadaigh tuilleadh bóithre, droichid agus tolláin ar le baile iad a bhaint: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Fág go mbeidh sé níos éasca bonneagar agus foirgnimh ar le bailte iad a bhaint
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Uasfhad na dtraenacha: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Socraigh uasfhad na dtraenacha
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tíl
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Méid deataigh/splancacha na bhfeithiclí: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Socraigh cé mhéid deataigh nó líon na splancacha a thabharfaidh feithiclí uathu
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Samhail luasghéaraithe do thraenacha: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Roghnaigh samhail fisice do luasghéarú na dtraenacha. Faoin mód 'bunaidh', gearrtar an pionós céanna ar fhánaí do gach feithicil. Faoin mód 'réalaíoch' bíonn an pionós a ghearrtar as fánaí agus cuair ag brath ar airíonna éagsúla, amhail fad agus iarracht na tarraingthe
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Samhail luasghéaraithe d'fheithiclí bóthair: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Roghnaigh samhail fisice do luasghéarú na bhfeithiclí bóthair. Faoin mód 'bunaidh' gearrtar an pionós céanna ar gach feithicil ar fhánaí. Faoin mód 'réalaíoch' bíonn an pionós a ghearrtar ar fhánaí ag brath ar airíonna éagsúla an innill, 'iarracht na tarraingthe' mar shampla
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Géire na fána i gcás traenacha: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :A ghéire agus atá tíl ar a bhfuil fána i gcás traenach. Fagfaidh luachanna níos airde go mbeidh sé níos deacra cnoc a dhreapadh
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%

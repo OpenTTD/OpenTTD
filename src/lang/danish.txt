@@ -364,6 +364,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilvalg
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Indstillinger
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/spilscript-indstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
@@ -974,6 +975,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skærmop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vælg ønsket skærmopløsning
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}grænseflade størrelse
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vælg den grænseflade størrelse du ønsker at benytte
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobbelt størrelse
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quad (4x) størrelse
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafiksæt
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det basis-grafiksæt der skal bruges
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
@@ -1073,7 +1081,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Indstillinger
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter streng:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Udvid alle
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
@@ -1143,6 +1152,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofe
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til omstrukturering: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vælg hvor meget selskaber støj og miljømæssige skader påvirker byvurdering og fremtidige byggeretigheder i området
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimal map højde: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Indstil den maksimale tilladte højde for bjerge på kortet
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan ikke sætte den maksimale kortet højde for denne værdi. Mindst et bjerg på kortet er højere
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillad landskabsformning under bygninger, spor, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillad landskabsformning under bygninger og spor uden at fjerne dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillad mere realistisk størrelse på stationernes opland: {STRING}
@@ -1171,6 +1183,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiver inflation i økonomien, hvor omkostningerne er lidt hurtigere stigende end betalinger
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimal bro længde: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal længde af broer
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimal bro højde: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimal højde for at bygge bro
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnel længde: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal længde af tunneler
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metode til manuel opførsel af primær industri: {STRING}
@@ -1256,7 +1270,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighed af fej
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Varighed for visning fejlmeddelelser i en rød vindue. Bemærk, at nogle (kritisk) fejlmeddelelser ikke lukkes automatisk efter dette tidspunkt, men skal lukkes manuelt
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vis værktøjstip: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse før tooltips vises, når musen er over et brugerflade element. Alternativt kan tooltips bindes til højre museknap
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse inden tooltips vises, når musen føres over nogle den grænseflade . Alternativt tooltips er bundet til den højre museknap, når denne værdi er sat til 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hold markøren i {COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Højre klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byens indbyggertal i bynavnet: {STRING}
@@ -1489,7 +1503,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Vælg opførsle
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Byg automatisk semaforer før: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Sæt året hvor elektriske signaler vil blive brugt på spor. Før dette år vil ikke-elektriske signaler blive brugt (hvilket har den fuldstændig same funktion, men anderledes udseende)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Vis signalvælgeren som standard: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Vis et vindue til at vælge signal typer at bygge, i stedet for kun vindue-løs signal-type skift med Ctrl+klik på byg-signal
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Vis et vindue til at vælge den signaltype du vil bygge, i stedet for kun vindue-løs signal-type skift med Ctrl+klik på byg-signal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signaltype der bygges som standard: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Standard signaltype
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
@@ -1599,13 +1613,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisk (hk)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Vægtenheder: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når vægte er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når en vægt vises i brugergrænsefladen, vise det i de udvalgte enheder
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperisk (kort t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisk (t/ton)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Rumfangsenheder: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Når rumfang er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Når en volumen vises i brugergrænsefladen, vise det i de udvalgte enheder
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperisk (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisk (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
@@ -1617,7 +1631,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisk (kp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Højdeenheder: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når højder er vist i brugergrænsefladen, så vis dem i de valgte enheder
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når højde er vist i brugergrænsefladen, så vis dem i de valgte enheder
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fod)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -1681,6 +1695,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværk
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilvalg
 STR_INTRO_HIGHSCORE                                             :{BLACK} Topresultater
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spilscript indstillinger
@@ -1700,6 +1715,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vælg 'l
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vis spilvalg
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis topscoreliste
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skærm indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis computerspiller/spilscript indstillinger
@@ -1739,6 +1755,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke styrte (ofte) i små lufthavne: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Rediger den maksimale map højde: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Rediger den maksimale højde af bjerge på kortet
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tempereret klima
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktisk klima
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropisk klima
@@ -2663,6 +2681,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byer:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimal map højde:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Øge den maksimale højde af bjerge på kortet med en
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Formindsk den maksimale højde af bjerge på kortet med en
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snegrænse
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt snegrænsen een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt snegrænsen een ned
@@ -2692,6 +2713,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdeko
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Skift maksimal kort højde
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ændre snegrænsen
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ændre startår
 
@@ -2799,7 +2821,7 @@ STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsæt
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til grafikelement
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå til det givne grafikelement. Hvis den ikke er et normalt grafikelement, fortsæt til næste normale element
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidligere grafikelement
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gå til forrige normale grafikelement, spring pseudo/omfarvede/skrift-elementer og omsvøb fra begyndelsen.
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsæt til den forrige normal sprite, springe over nogen pseudo / recolour / FONT sprites og indpakning rundt fra den første sprite til det sidste
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Repræsentation af den markerede sprite. Justeringen ignoreres når denne sprite tegnes.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flyt spriten rundt for at ændre X- og Y-forskydningen
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM}
@@ -3317,8 +3339,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rækkevi
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Togvalgsliste - klik på et køretøj for mere information
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liste over køretøjstyper - klik på køretøj for information
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skibstypeliste - klik på skibstype for information
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flytypeliste - klik på en flytype for mere information
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skib valgliste. Klik på skib for information. Ctrl + Klik for at skifte skjule skibstypen
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Luftfartøj valgliste. Klik på fly til orientering. Ctrl + Klik for at skifte skjule flytypen
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Køb køretøj
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Køb køretøj
@@ -3341,7 +3363,12 @@ STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Omdøb s
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ømdøb flytypen
 
 
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Display
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Toggle skjule / vise af tog type
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Toggle skjule / vise af kørtøjstype
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Toggle skjule / vise af skibstype
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Toggle skjule / vise af flytype
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Omdøb tog-/togvognstypen
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Omdøb køretøjstypen
@@ -4043,6 +4070,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Udgravni
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... allerede ved havoverfladen
 STR_ERROR_TOO_HIGH                                              :{WHITE}... for højt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allerede fladt
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Bagefter vil broen over dette ville være for høj.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikke ændre selskabets navn...
@@ -4230,6 +4258,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Det er n
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikke starte og slutte på samme position
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brohoveder er ikke i samme niveau
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er for lav til terrænet
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Broen er for høj for dette terræn.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- og slutposition skal være på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... begge ender af en bro skal være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
