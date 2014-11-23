@@ -751,6 +751,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcje gry
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ustawienia
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Ustawienia SI / Game Script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
@@ -1363,6 +1364,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozdziel
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wybierz rozdzielczość ekranu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Rozmiar interfejsu
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz rozmiar elementów interfejsu
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalne
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Podwójny
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Poczwórny
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Podstawowy zestaw grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wybierz podstawowy zestaw grafik do użycia
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} brak/uszkodzony plik{P "" i ów}
@@ -1456,6 +1464,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Bardzo płaski
 STR_TERRAIN_TYPE_FLAT                                           :Płaski
 STR_TERRAIN_TYPE_HILLY                                          :Pagórkowaty
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górzysty
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpejski
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
@@ -1463,7 +1472,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez system "Zawartości online"
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ustawienia
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrowanie po frazie:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otwórz wszystko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zamknij wszystko
@@ -1479,9 +1489,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ustawienie firm
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicza poniższą listę używając zdefiniowanych filtrów
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Ustawienia podstawowe
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ustawienia zaawansowane
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ustawienia eksperta / wszystkie ustawienia
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Podstawowe (pokaż tylko ważne opcje)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Zaawansowane (pokaż większość opcji)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert (pokaż wszystkie opcje, włącznie z dziwnymi)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ustawienie z inną wartością niż domyślna
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wartościami innymi niż twoje ustawienia dla nowej gry
 
@@ -1905,7 +1915,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wybierz sposób
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie buduj semafory przed: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w którym semafory świetlne będą używane. Przed tym rokiem w użyciu będą semafory kształtowe (które mają te same właściwości, tylko inny wygląd)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Uaktywnij okno budowania sygnałów: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Wyświetlaj okno wyboru typu semaforów do budowy, zamiast samego przełączania typu semafora z Ctrl+klik bez okna
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Wyświetlaj okno wyboru typu semaforów do budowy, zamiast samego przełączania typu semafora bez okna z Ctrl+klik na zbudowanym semaforze
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Domyślny typ sygnalizatorów: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Domyślny typ semaforów
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :sygnalizatory bloku
@@ -2015,19 +2025,19 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metryczne (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednostki wagi: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kiedy ciężar jest pokazywany w interfejsie użytkownika, wyświetl go w wybranych jednostkach
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Jeśli kiedykolwiek waga jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperialne (skrót t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metryczne (t/tony)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednostki objętości: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Kiedy objętość pokazywana jest w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Jeśli kiedykolwiek objętość jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperialne (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metryczne (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Jednostka siły napędowej: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Pokaż siłę napędową w wybranych jednostkach
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Jeśli kiedykolwiek siła napędowa jest pokazana w interfejsie użytkownika, pokaż ją w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperialna (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metryczna (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
@@ -2109,6 +2119,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra wiel
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje gry
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela wyników
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ustawienia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sprawdź dodatki online
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ustawienia SI/Game Script
@@ -2128,6 +2139,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wybierz 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Wyświetl opcje gry
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Wyświetl tabelę wyników
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ustawienia wyświetlania
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wyświetl ustawienia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych lub zaktualizowanych dodatków do pobrania
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Pokaż ustawienia SI / Game Script
@@ -2687,7 +2699,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj t
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa warsztatów (do kupowania i serwisowania pociągów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na pkt. orientacyjny. Ctrl umożliwia łączenie pkt. orientacyjnych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały kolejowe. Ctrl przełącza semafory/sygnały świetlne{}Przeciągnięcie pozwala na budowę sygnałów wzdłuż prostej linii torów. Ctrl pozwala na budowę sygnałów do następnego skrzyżowania{}Ctrl+klik przełącza do okna wyboru sygnałów. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały kolejowe. Ctrl przełącza semafory/sygnały świetlne{}Przeciągnięcie pozwala na budowę sygnałów wzdłuż prostej linii torów. Ctrl pozwala na budowę sygnałów do następnego skrzyżowania{}Ctrl+klik przełącza do okna wyboru sygnałów. Shift przełącza pomiędzy budowaniem a szacowaniem kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, pkt. orientacyjnych i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z pkt. orientacyjnych i stacji
@@ -4544,7 +4556,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zbyt
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zbyt blisko innego miasta
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zbyt wiele miast
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie ma więcej miejsca na mapie
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miasto nie będzie budować dróg. Możesz zezwolić na budowę dróg poprzez Ustawienia zaawansowane->Ekonomia->Miasta
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miasto nie będzie budować dróg. Możesz zezwolić na budowę dróg poprzez Ustawienia->Środowisko->Miasta
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trwają roboty drogowe
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}Stacja lub zajezdnia przynależy do tego miasta lub obszar miasta nie może być usunięty
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... w centrum tego miasta nie ma odpowiedniego miejsca na pomnik
