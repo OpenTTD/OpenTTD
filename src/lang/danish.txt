@@ -1004,6 +1004,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg ba
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} beskadiget fil{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Det lykkedes ikke at hente en liste over understøttede opløsninger
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fuldskærmstilstand fejlede
 
 # Custom currency window
@@ -1289,18 +1290,29 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Bredde af linje
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskabs generator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terræn type: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industri tæthed: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angiv hvor mange industrier skal genereres og hvilket niveau der bevares i løbet af spillet
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand fra kant til olieraffinaderier: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderier er kun opføres nær kortets grænse, det er ved kysten for kort med øer
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snelinjehøjden: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrol med på hvilket højde sneen begynder i sub-arktiske landskab. Sne påvirker også industrien generation og betingelser by vækst
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Tærrenets hårdhed (kun TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis kun) Vælg frekvensen af bakkerne: Glatte landskaber har færre, mere udbredt bakker. Ujævne landskaber har mange bakker, der kan se gentaget ud
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Meget blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Råt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Meget råt
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis kun) Kontrollere, om kortet indeholder både bjerg- og flade områder. Da dette kun gør kortet fladere bør andre indstillinger sættes til bjergrigt
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Floder antal: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Vælg, hvor mange floder at skabe
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritme ved placering af træer: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Vælg fordelingen af træer på kortet: "Original" planter træer ensartet spredt, "forbedret" planter dem i grupper
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ingen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbedret
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Vejkøretøjer: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vælg køre side
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotér højdekort: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mod uret
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med uret
@@ -1355,6 +1367,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Venstreklik-scrolling: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Aktiver rulle kortet ved at trække den med venstre museknap. Dette er især nyttigt, når du bruger en touch-screen til at rulle
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Auto gem: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vælg interval mellem automatisk gemte spil
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Brug {STRING} datoformat til navne på gemte spil.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formatet af datoen i gemte spil filnavne
@@ -2776,6 +2790,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Flyt op
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Flyt det valgte NewGRF sæt op i listen
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Flyt ned
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flyt det valgte NewGRF sæt ned i listen
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Opgradering
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Opgrader NewGRF filer, som har en nyere version installeret
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En liste over de NewGRF sæt der er installeret.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Indstil parameter
@@ -2801,6 +2817,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivere
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ikke kompatibel med denne version af OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Gem forudindstilling
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK} Liste over tilgængelige presets, skal du vælge en til at kopiere det til gemte navn nedenfor
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Indtast et navn til den forudindstillede
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktuelt valgte navn til den forudindstillede at gemme
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annuller
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Du må ikke ændre den forudindstillede
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Gem
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Gem forudindstilling til den aktuelle valgte navn
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ændre NewGRF parameterne
@@ -3489,6 +3513,8 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vejkøretøj
 STR_REPLACE_VEHICLE_SHIP                                        :Skib
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fly
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Køretøjer i brug
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Kolonne med køretøjer, som du ejer
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Tilgængelige køretøjer
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Kolonne med køretøjer til rådighed til udskiftning
 
@@ -4138,6 +4164,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skov
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE} ... kan kun bygges over snegrænsen
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE} ... kan kun bygges under snegrænsen
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Der var ingen egnede steder for '{STRING}' industrier
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Skift kort generations parametre for at få et bedre kort
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikke bygge en banegård her...
