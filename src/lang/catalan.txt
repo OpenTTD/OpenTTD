@@ -1220,7 +1220,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostra la fines
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si està activat, la finestra de finances apareix al final de cada any per permetre una inspecció fàcil de l'estat financer de la companyia
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les noves ordres predeterminades són 'sense parada': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalment, un vehicle pararà a cada estació que passi. Activant aquest paràmetre no pararà a cap estació fins arribar a la seu destí. Nota, aquest paràmetre només defineix el valor predeterminat per les noves ordres. De totes maneres les ordres individuals poden establir explícitament qualsevol dels comportaments
-STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres del tren parar per defecte a {STRING} de la plataforma
+STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres del tren: parar per defecte {STRING} de la plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Situa en quin lloc de la plataforma el tren pararà per defecte. 'Extrem més proper' significa a prop del punt d'entrada, 'al mig' significa al mig de la plataforma, i 'extrem més llunyà' significa lluny del punt d'entrada. Nota, aquest paràmetre només defineix el valor predeterminat per les noves ordres. De totes maneres les ordres individuals poden establir explícitament qualsevol dels comportaments
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a l'extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat

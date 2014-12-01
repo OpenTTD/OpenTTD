@@ -1221,10 +1221,10 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, l
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nuevas órdenes son 'sin parada' por defecto: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, un vehículo se detendrá en todas las estaciones por las que pase. Si se activa esta opción, pasará sin detenerse a través de todas las estaciones hasta llegar a su destino. Esta opción solamente cambia el comportamiento por defecto de las órdenes nuevas. Es posible especificar para cada orden el comportamiento que se desea
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nuevos trenes paran por defecto en el {STRING} de la plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Permite seleccionar en que parte de la plataforma se detendrán los trenes por defecto. 'cerca del fin' significa cerca del punto de entrada, 'centro' significa en el punto medio de la estación y 'lejos del fin' significa el punto más lejano de la estación. Esta opción solamente cambia el comportamiento por defecto de las órdenes nuevas. Es posible especificar para cada orden el comportamiento que se desea
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :principio
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Permite seleccionar en qué parte de la plataforma se detendrán los trenes por defecto. 'extremo cercano' para parar cerca del punto de entrada, 'centro' para parar en el punto medio de la estación y 'extremo lejano' para parar lo más lejos posible del punto de entrada. Esta opción solamente cambia el comportamiento por defecto de las órdenes nuevas. Es posible especificar para cada orden el comportamiento que se desea
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :extremo cercano
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :centro
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lejos del fin
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :extremo lejano
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Desplazar ventana mediante el cursor en los bordes: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Cuando esta opción está activa, las vistas empezarán a desplazarse cuando el ratón esté cerca del borde de la ventana
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivado
