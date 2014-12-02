@@ -3874,9 +3874,9 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y
 
 STR_ORDER_AUTO_REFIT_ANY                                        :carga disponible
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[cerca del fin]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[extremo cercano]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[centro]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[lejos del fin]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[extremo lejano]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (El próximo destino está fuera de alcance)
 
