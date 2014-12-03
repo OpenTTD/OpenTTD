@@ -844,6 +844,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har dublerede ordrer
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en ugyldig station i sine ordrer
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har i sine ordrer en lufthavn, hvis bane er for kort
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er gammel
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er meget gammel
@@ -1287,7 +1288,10 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis befolkninge
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetykkelse i grafer: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Bredde af linjerne i graferne. En tynd linie er mere læsbar, en tykkere linje er nemmere at se og det er lettere at skelne mellem farverne
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Landskab: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landskaber definerer grundlæggende gameplay-scenarier med forskellige laster og krav by vækst. NewGRF og spil Scripts tillader finere kontrol selv
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskabs generator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den oprindelige generator afhænger af basen grafik sæt, og komponerer faste landskab former. TerraGenesis er en Perlin baseret generator med finere kontrol indstillinger
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terræn type: {STRING}
@@ -1303,6 +1307,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Meget blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Råt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Meget råt
+STR_CONFIG_SETTING_VARIETY                                      :Forskelligheds fordeling: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis kun) Kontrollere, om kortet indeholder både bjerg- og flade områder. Da dette kun gør kortet fladere bør andre indstillinger sættes til bjergrigt
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Floder antal: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Vælg, hvor mange floder at skabe
@@ -3397,7 +3402,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ømdøb 
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}skjule
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}skjule
 STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Skjul
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}skjule
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}skjul
 
 STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Vis
 STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Vis
@@ -3872,6 +3877,8 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Rejs med højst {2:VELOCITY} (ikke skemalagt)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Rejs mod {STRING} med højst {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ophold for {STRING}, ikke skemalagt)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(rejse for {STRING}, ikke skemalagt)
 STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og rejs i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" e}

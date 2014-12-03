@@ -438,6 +438,9 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Uklanja 
 
 # Show engines button
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Omugućavanjem ovog dogmeta, sakrivena drumska vozila će takođe biti prikazan
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Omugućavanjem ovog dogmeta, sakriveni brod će takođe biti prikazan
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Omugućavanjem ovog dogmeta, sakriveni avion će takođe biti prikazan
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prvobitno
@@ -551,6 +554,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Podešavanja
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Podešavanja VI/Skripte partije
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcije transparentnosti
@@ -1165,6 +1169,11 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Veličin
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Odaberite željenu veličinu ekrana
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veličina interfejsa
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalno
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Uvećaj 2 puta
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni skup grafika
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberite željeni skup osnovnih grafika
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} datotek{P a e a} nedostaj{P e u e}/neispravn{P a o o}
@@ -1257,6 +1266,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Ravničarski
 STR_TERRAIN_TYPE_FLAT                                           :Brdski
 STR_TERRAIN_TYPE_HILLY                                          :Brdsko-planinski
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Planinski
+STR_TERRAIN_TYPE_ALPINIST                                       :Planinar
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
@@ -1264,7 +1274,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Neprijateljski
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dostupne odgovarajuće VI...{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Podešavanja
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj po:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Proširi sve
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skupi sve
@@ -1331,6 +1342,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključuje i is
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stav gradskog odbora u pogledu restrukturiranja zone: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izbor koliko će buka i zagađenje koje proizvode kompanije uticati na njihov gradski rejting i dalje građevinske akcije u toj zoni
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimalna visina mape: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Namestite dozvoljen maksimum visine planina na ovoj mapi
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ne mozete namestiti maksimalnu visinu mape ovoj vrednosti. Barem još jedna planina je veća
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Dozvoli iskopavanja ispod građevina i pruge bez da se uklone
 STR_CONFIG_SETTING_CATCHMENT                                    :Realističnije veličine prihvatnih površina: {STRING}
@@ -1359,6 +1373,7 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflacija: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Omogućuje inflaciju tako da troškovi rastu malo brže od isplata
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Najveća dužina mosta: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimalna dužina za podizanje mostova
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimalna visina za dradjenje mostova
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Najveća dužina tunela: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimalna dužina za iskopavanje tunela
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metod izgradnje finansiranih primarnih industrija: {STRING}
@@ -1798,6 +1813,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Partija 
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljih rezultata
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Podešavanja
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Podešavanja
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak Dodataka na Mreži
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Podešavanja VI/Skripte Partije
@@ -1856,6 +1872,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Upravlj
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklanja fabrike, nepokretnosti): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli mogu da se ukrštaju: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Veliki avioni se neće (često) rušiti kod malih aerodorma: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Promenite maksimalnu visinu mape: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Promenite maksimalnu visinu planina na mapi
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Umereni klimatski pojas
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subpolarni klimatski pojas
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Suptropski klimatski pojas
@@ -2766,6 +2784,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Broj naselja:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fabrika:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimalna visina mape
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Povećaj maksimalnu visinu planina na mapi za jedan
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Smanji maksimalnu visinu planina na mapi za jedan
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivo snežnog pokrivača:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sužava snežni pokrivač naviše za jedan
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširuje snežni pojas naniže za jedan
@@ -2795,6 +2816,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naziv el
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veličina:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Promenite maksimalnu visinu mape
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Promena donjeg nivoa snežnog pojasa
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Promena početne godine
 
@@ -4343,6 +4365,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Potrebno
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ne može da se završava na istom mestu gde i počinje
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Krajevi mosta nisu na istom nivou
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je nizak u odnosu na teren
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Most je previše visok zaovaj teren
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Početak i kraj moraju biti u istoj liniji
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba kraja mosta moraju biti na čvrstom tlu
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... most je previše dugačak
@@ -4906,6 +4929,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (sakriveno)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
