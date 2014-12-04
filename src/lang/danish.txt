@@ -1664,11 +1664,21 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiksæt / Manglende grafik
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyheder / Rådgivere
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Regnskab
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysik / Tilstand
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Begrænsninger
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofer / Ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Verden generation
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Myndigheder
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
@@ -3336,6 +3346,8 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Slet den
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Omdøb den valgte gruppe
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik for at beskytte denne gruppe mod global auto-udskiftning
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Slet gruppe
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Er du sikker på at du vil slette denne gruppe og eventuelle under grupper?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tilføj delte køretøjer
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køretøjer
@@ -3877,6 +3889,8 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Rejs med højst {2:VELOCITY} (ikke skemalagt)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Rejs mod {STRING} med højst {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Køreplan (for {STRING}, ikke skemalagt)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Køreplan (for {STRING}, ikke skemalagt) med på de fleste {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ophold for {STRING}, ikke skemalagt)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(rejse for {STRING}, ikke skemalagt)
 STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}
