@@ -372,6 +372,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプション設定
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/ゲームスクリプト設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透過表示設定
@@ -983,6 +984,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}画面�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}ゲーム画面の解像度を選択します
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :その他
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}インターフェイスのサイズ
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}インターフェイス上の単位サイズを指定します
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :通常
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2倍
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4倍
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本グラフィックセット
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}使用するグラフィックセットを選択します
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}見つからないか破損しているファイルが{NUM}個あります
@@ -1076,6 +1084,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :特に平地
 STR_TERRAIN_TYPE_FLAT                                           :平地
 STR_TERRAIN_TYPE_HILLY                                          :丘陵地
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :山岳地
+STR_TERRAIN_TYPE_ALPINIST                                       :山脈地帯
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
 STR_CITY_APPROVAL_TOLERANT                                      :寛容
@@ -1083,7 +1092,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :対立
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}適切なAIがありません...{}AIは「オンライン項目を確認」からダウンロード可能です
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}設定
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}フィルター設定:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}全てを開く
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}全てを折りたたむ
@@ -1099,9 +1109,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :会社設定(�
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}カテゴリ:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}種類:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}定義されたフィルタでリストをフィルタリングします。
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :詳細設定
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :拡張設定(全設定)
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定（重要な設定のみ表示）
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :詳細設定（より多くの設定を表示）
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :拡張設定(変なものも含めて全設定を表示)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :既定とは異なる設定
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :新規ゲーム開始時とは異なる設定
 
@@ -1610,7 +1620,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :旅客がどの
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :郵便物の行先分配法: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :郵便がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう郵便とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう郵便数は独立に決められます。「無効」では行き先別分配をしなくなります
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲車輸送品の行先分配法: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :装甲車輸送品とは貴重品(温帯)、金(亜寒帯)、ダイヤモンド(亜熱帯)のことです(NewGRFの導入状況よっては変わることがあります)。これらの品目ががどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう輸送品とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう輸送品数は独立に決められます。「無効」では行き先別分配をしなくなります。温帯では銀行同士で貴重品のやりとりがあるので「対称」を選択しても問題ありませんが、金やダイヤモンドが銀行から鉱山に送られるようなことはないので、亜寒帯・亜熱帯では「非対称」か「無効」にすることをお勧めします。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :装甲車輸送品とは貴重品(温帯)、金(亜寒帯)、ダイヤモンド(亜熱帯)のことです(NewGRFの導入状況よっては変わることがあります)。これらの品目ががどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう輸送品とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう輸送品数は独立に決められます。「手動」では自動での行き先別分配をしなくなります。亜熱帯・温帯では銀行同士で貴重品のやりとりがあるので「対称」を選択しても問題ありませんが、金やダイヤモンドが銀行から鉱山に送られるようなことはないので、亜寒帯では「非対称」か「手動」にすることをお勧めします。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :一般貨物の行先分配法: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :一般的な貨物がどのように行き先別に分配されるかを設定します。「非対称」ではそれぞれの方向に向かう貨物数はプログラムの任意に決められます。「無効」では行き先別分配をしなくなります。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精度: {STRING}
@@ -1729,6 +1739,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}マル�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}基本設定
 STR_INTRO_HIGHSCORE                                             :{BLACK}ハイスコア
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRFの設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}オンラインコンテンツの確認
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/ゲームスクリプトの設定
@@ -1748,6 +1759,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}地域�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}ゲームの設定を表示します
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}ハイスコアを表示します
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}設定を表示
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRFの有効/無効化、各パラメータの設定ができます
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}公式オンラインコンテンツのデータベースからデータの確認・追加・更新ができます
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI/ゲームスクリプトの設定を行います
@@ -3476,7 +3488,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}道路�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}船舶を複製
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}航空機を複製
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}列車を複製します。このボタンを押してから列車庫内/外の列車をクリックして下さい。Ctrl+クリックすると、複製相手は元列車と指令を共有します。Shift+クリックで金額の概算が出ます
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}牽引車両も含め、当該の列車を複製します。このボタンを押してから列車庫内/外の列車をクリックして下さい。Ctrl+クリックすると、複製相手は元列車と指令を共有します。Shift+クリックで金額の概算が出ます
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}車両を複製します。このボタンを押してから車庫内/外の車両をクリックして下さい。Ctrl+クリックすると、複製相手は元車両と指令を共有します。Shift+クリックで金額の概算が出ます
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}船舶を複製します。このボタンを押してから造船所内/外の船舶をクリックして下さい。Ctrl+クリックすると、複製相手は元船舶と指令を共有します。Shift+クリックで金額の概算が出ます
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}航空機を複製します。このボタンを押してから格納庫内/外の航空機をクリックして下さい。Ctrl+クリックすると、複製相手は元航空機と指令を共有します。Shift+クリックで金額の概算が出ます
@@ -4158,7 +4170,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}マッ�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}他の街に近すぎます
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}街数の制限を超えています
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}マップに空きスペースがありません
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}この街は自動では道路を建設しません。「詳細設定→環境→街」から道路の建設を許可できます
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}この街は自動では道路を建設しません。「設定→環境→街」から道路の建設を許可できます
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路補修工事中です
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}街を削除できません{}この街名を参照する停留施設・車庫か、街が所有するタイルが除去できません
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}街の中心部に像を建てるのに適した場所がありません
