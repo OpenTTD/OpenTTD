@@ -945,6 +945,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}دقة �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر دقة الشاشة
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK} الواجهة الرسومية الاساسية
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK} اختر مجموعة الواجهة الرسومية
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ملف مفقود او غير صالح
@@ -1045,7 +1047,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :معاد
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايوجد ذكاء اصطناعي متاح ...{}تستطيع تجميل العديد من الذكاء الاصطناعي عن طريق اللانترنت
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
 
@@ -4250,7 +4252,7 @@ STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :شيفرشيك 
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :ناقلة ياتي
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :ناقلة باكويل
 STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :ناقلة مايتي
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :ناقلة بور
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut سفينة شحن
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :سامسون 52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :كولمان كونت
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :سهم اف اف بي
