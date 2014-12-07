@@ -540,9 +540,14 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			/* The cargo translation is specific to the accessing GRF, and thus cannot be cached. */
 			CargoID common_cargo_type = (v->grf_cache.consist_cargo_information >> 8) & 0xFF;
 
-			/* Unlike everywhere else the cargo translation table is only used since grf version 8, not 7.
-			 * Note: The grffile == NULL case only happens if this function is called for default vehicles.
-			 *       And this is only done by CheckCaches(). */
+			/* Note:
+			 *  - Unlike everywhere else the cargo translation table is only used since grf version 8, not 7.
+			 *  - For translating the cargo type we need to use the GRF which is resolving the variable, which
+			 *    is object->ro.grffile.
+			 *    In case of CBID_TRAIN_ALLOW_WAGON_ATTACH this is not the same as v->GetGRF().
+			 *  - The grffile == NULL case only happens if this function is called for default vehicles.
+			 *    And this is only done by CheckCaches().
+			 */
 			const GRFFile *grffile = object->ro.grffile;
 			uint8 common_bitnum = (common_cargo_type == CT_INVALID) ? 0xFF :
 				(grffile == NULL || grffile->grf_version < 8) ? CargoSpec::Get(common_cargo_type)->bitnum : grffile->cargo_map[common_cargo_type];
@@ -605,7 +610,12 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			 */
 			const CargoSpec *cs = CargoSpec::Get(v->cargo_type);
 
-			return (cs->classes << 16) | (cs->weight << 8) | v->GetGRF()->cargo_map[v->cargo_type];
+			/* Note:
+			 * For translating the cargo type we need to use the GRF which is resolving the variable, which
+			 * is object->ro.grffile.
+			 * In case of CBID_TRAIN_ALLOW_WAGON_ATTACH this is not the same as v->GetGRF().
+			 */
+			return (cs->classes << 16) | (cs->weight << 8) | object->ro.grffile->cargo_map[v->cargo_type];
 		}
 
 		case 0x48: return v->GetEngine()->flags; // Vehicle Type Info
@@ -897,7 +907,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 				CargoID cargo_type = e->GetDefaultCargoType();
 				if (cargo_type != CT_INVALID) {
 					const CargoSpec *cs = CargoSpec::Get(cargo_type);
-					return (cs->classes << 16) | (cs->weight << 8) | e->GetGRF()->cargo_map[cargo_type];
+					return (cs->classes << 16) | (cs->weight << 8) | this->ro.grffile->cargo_map[cargo_type];
 				} else {
 					return 0x000000FF;
 				}
