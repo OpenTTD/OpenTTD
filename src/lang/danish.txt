@@ -1084,6 +1084,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Meget fladt
 STR_TERRAIN_TYPE_FLAT                                           :Fladt
 STR_TERRAIN_TYPE_HILLY                                          :Bakket
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bjergrigt
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1121,6 +1122,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spil indstillin
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spil indstilling (lagret i gemt spil, påvirker kun det aktuelt spil)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma indstilling (lagret i gemt spil; påvirker kun nye spil)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma indstilling (lagret i gemt spil; påvirker kun aktuelt selskab)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Kategori {BLACK}to {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Indtast {BLACK}til {WHITE}Alle Indstillingstyper
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Vis alle søgeresultater ved at sætte {} {SILVER}Kategori {BLACK}til {WHITE} {STRING} {BLACK}og {SILVER} Indtast {BLACK}til {WHITE}Alle Indstillingstyper
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 
 STR_CONFIG_SETTING_OFF                                          :Fra
@@ -1295,6 +1299,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den oprindelige
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terræn type: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Hilliness af landskabet
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industri tæthed: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angiv hvor mange industrier skal genereres og hvilket niveau der bevares i løbet af spillet
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand fra kant til olieraffinaderier: {STRING}
@@ -1667,6 +1672,8 @@ STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalis
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiksæt / Manglende grafik
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerflade
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Viewports
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyheder / Rådgivere
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
@@ -2703,6 +2710,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Gem
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Gem det nuværende spil, med det valgte navn
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Åbn
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Åbn det markerede spil
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Indlæs valgte højdemap
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spil Detaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information til rådighed
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2928,6 +2936,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende 
 STR_NEWGRF_BROKEN                                               :{WHITE}Denne NewGRFs opførsel '{0:STRING}' vil sandsynligvis forårsage at spillet går ned.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Den ændrer status for '{1:ENGINE}' når den ikke er i depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det ændrede køretøj kapacitet til '{1:ENGINE}' når det ikke er inde i et depot eller genmontering
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra firmaet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Spillet går muligvis ned.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information
@@ -4351,6 +4360,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du e
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan ikke oprette gruppe...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kan ikke slette denne gruppe...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kan ikke omdøbe gruppe...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan ikke sætte overordnede gruppe ...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kan ikke fjerne alle køretøjer fra denne gruppe...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kan ikke tilføje køretøjet til denne gruppe...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kan ikke tilføje delte køretøjer til gruppe...
