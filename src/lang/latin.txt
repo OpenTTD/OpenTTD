@@ -82,9 +82,9 @@ STR_CARGO_PLURAL_MAIZE.gen                                      :{G=n}maizii
 STR_CARGO_PLURAL_MAIZE.acc                                      :{G=n}Maizium
 STR_CARGO_PLURAL_MAIZE.dat                                      :{G=n}Maizio
 STR_CARGO_PLURAL_FRUIT                                          :{G=mp}Fructus
-STR_CARGO_PLURAL_FRUIT.gen                                      :{G=m}fructus
-STR_CARGO_PLURAL_FRUIT.acc                                      :{G=m}Fructus
-STR_CARGO_PLURAL_FRUIT.dat                                      :{G=m}Fructibus
+STR_CARGO_PLURAL_FRUIT.gen                                      :{G=mp}fructuum
+STR_CARGO_PLURAL_FRUIT.acc                                      :{G=mp}fructus
+STR_CARGO_PLURAL_FRUIT.dat                                      :{G=mp}fructibus
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=mp}Adamantes
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :{G=mp}adamantum
 STR_CARGO_PLURAL_DIAMONDS.acc                                   :{G=mp}Adamantes
@@ -209,9 +209,9 @@ STR_CARGO_SINGULAR_MAIZE.gen                                    :{G=n}maizii
 STR_CARGO_SINGULAR_MAIZE.acc                                    :{G=n}Maizium
 STR_CARGO_SINGULAR_MAIZE.dat                                    :{G=n}Maizio
 STR_CARGO_SINGULAR_FRUIT                                        :{G=mp}Fructus
-STR_CARGO_SINGULAR_FRUIT.gen                                    :{G=m}fructus
-STR_CARGO_SINGULAR_FRUIT.acc                                    :{G=m}Fructus
-STR_CARGO_SINGULAR_FRUIT.dat                                    :{G=m}Fructibus
+STR_CARGO_SINGULAR_FRUIT.gen                                    :{G=mp}fructuum
+STR_CARGO_SINGULAR_FRUIT.acc                                    :{G=mp}fructus
+STR_CARGO_SINGULAR_FRUIT.dat                                    :{G=mp}fructibus
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=mp}Adamantes
 STR_CARGO_SINGULAR_DIAMOND.gen                                  :{G=mp}adamantum
 STR_CARGO_SINGULAR_DIAMOND.acc                                  :{G=mp}Adamantes
@@ -285,7 +285,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.dat                              :{G=fp}Potionibu
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{G=mp}{COMMA}{NBSP}vector{P "" es}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} carbonis
-STR_QUANTITY_MAIL                                               :{G=mp}{COMMA}{NBSP}sacc{P us i} cursorii
+STR_QUANTITY_MAIL                                               :{G=mp}{COMMA}{NBSP}sacc{P us i} epistularum
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} petrolei
 STR_QUANTITY_LIVESTOCK                                          :{G=np}{COMMA}{NBSP}pec{P us ora}
 STR_QUANTITY_GOODS                                              :{G=fp}{COMMA}{NBSP}capsa{P "" e} mercium
@@ -4934,7 +4934,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Electr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Electrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Electrica)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Currus Vectoralis
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Currus Cursorius
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Currus Cursualis
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Plaustrum Carbonarium
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Cisterna Petrolearia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Currus Pecorum
@@ -4964,7 +4964,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Electr
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Electrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Currus Vectoralis
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Currus Cursorius
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Currus Cursualis
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Plaustrum Carbonarium
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Cisterna Petrolearia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Currus Pecorum
@@ -4996,7 +4996,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' 
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Electrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Currus Vectoralis
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Currus Cursorius
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Currus Cursualis
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Plaustrum Carbonarium
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Cisterna Petrolearia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Currus Pecorum
@@ -5032,12 +5032,12 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Laophorium Plod
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Autoplaustrum Carbonarium Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Autoplaustrum Carbonarium Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Autoplaustrum Carbonarium DW
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Autoplaustrum Cursorium MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Autoplaustrum Cursorium Reynard
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Autoplaustrum Cursorium Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Autoplaustrum Cursorium MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Autoplaustrum Cursorium Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Autoplaustrum Cursorium Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Autoplaustrum Cursuale MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Autoplaustrum Cursuale Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Autoplaustrum Cursuale Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Autoplaustrum Cursuale MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Autoplaustrum Cursuale Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Autoplaustrum Cursuale Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Autoplaustrum Petrolearium Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Autoplaustrum Petrolearium Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Autoplaustrum Petrolearium Perry
