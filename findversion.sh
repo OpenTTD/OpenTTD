@@ -112,15 +112,15 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 	HASH=`LC_ALL=C HGPLAIN= hg id -i | cut -c1-12`
 	REV="h`echo $HASH | cut -c1-8`"
 	BRANCH="`HGPLAIN= hg branch | sed 's@^default$@@'`"
-	TAG="`hg id -t | grep -v 'tip$'`"
+	TAG="`HGPLAIN= hg id -t | grep -v 'tip$'`"
 	if [ -n "$TAG" ]; then
 		BRANCH=""
 		REV="$TAG"
 	fi
-	REV_NR=`LC_ALL=C hg log -f -k "(svn r" -l 1 --template "{desc|firstline}\n" | grep "^(svn r[0-9]*)" | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	REV_NR=`LC_ALL=C HGPLAIN= hg log -f -k "(svn r" -l 1 --template "{desc|firstline}\n" | grep "^(svn r[0-9]*)" | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 	if [ -z "$REV_NR" ]; then
 		# No rev? Maybe it is a custom hgsubversion clone
-		REV_NR=`LC_ALL=C hg parent --template="{svnrev}"`
+		REV_NR=`LC_ALL=C HGPLAIN= hg parent --template="{svnrev}"`
 	fi
 elif [ -f "$ROOT_DIR/.ottdrev" ]; then
 	# We are an exported source bundle
