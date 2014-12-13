@@ -567,6 +567,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pagrindinės nuostatos
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Išplėstinės nuostatos
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :DI / Žaidimo nustatymai
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Papild. grafikos nustatymai (NewGRF)
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Permatomumo nustatymai
@@ -1182,11 +1183,18 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Per visą ekraną
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visu ekranu
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visame ekrane
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrano raiška
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pasirinkite ekrano raišką
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Kita
+
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Sąsajos elementų dydis
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pasirinkite vartotojo sąsajos elementų santykinį dydį
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalus
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvigubas
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Trigubas
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Bazinis grafikos rinkinys
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
@@ -1281,6 +1289,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Tik lygumos
 STR_TERRAIN_TYPE_FLAT                                           :Lygumos
 STR_TERRAIN_TYPE_HILLY                                          :Kalvos
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Kalnai
+STR_TERRAIN_TYPE_ALPINIST                                       :Statūs kalnai
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
@@ -1288,7 +1297,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nerasta tinkamų DI... {}Galite parsisiųsti keletą DI naudonat 'Turinio internete' sistemą
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Išplėstinės nuostatos
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtras:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Išskleisti viską
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Suskleisti viską
@@ -1948,6 +1958,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Žaisti 
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pagrindinės nuostatos
 STR_INTRO_HIGHSCORE                                             :{BLACK}Nugalėtojų lentelė
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Išplėstinės nuostatos
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Plėtiniai
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Interneto turinys
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Dirbtinio intelekto nuostatos
@@ -1967,6 +1978,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Žaislin
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rodyti pagrindines žaidimo nuostatas
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rodyti nugalėtojų lentelę
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Rodyti išplėstines nuostatas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rodyti parsisiųstus plėtinius ir jų nuostatas
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tikrinti, ar nėra naujų plėtinių arba atnaujinimų jau atsisiųstiems plėtiniams
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rodyti dirbtinio intelekto nuostatas
