@@ -1091,7 +1091,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Įkelti 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Įkelti esamą padėtį į pagrindinį langą
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Žaidimo nustatymai
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pagrindinės nuostatos
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valiuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valiutos pasirinkimas
 
@@ -1136,10 +1136,10 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano Rialas (I
 ############ start of measuring units region
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automobiliai
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automobilių eismas
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pasirinkite, kuria kelio puse važiuoja automobiliai
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Eismas kaire puse
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Eismas dešine puse
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kaire puse
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Dešine puse
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Miestų pavadinimai
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pasirink miestų pavadinimų tipą
