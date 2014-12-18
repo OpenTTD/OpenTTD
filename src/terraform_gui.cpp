@@ -361,7 +361,7 @@ static WindowDesc _terraform_desc(
 /**
  * Show the toolbar for terraforming in the game.
  * @param link The toolbar we might want to link to.
- * @return The allocated toolbar.
+ * @return The allocated toolbar if the window was newly opened, else \c NULL.
  */
 Window *ShowTerraformToolbar(Window *link)
 {
@@ -763,7 +763,7 @@ static WindowDesc _scen_edit_land_gen_desc(
 
 /**
  * Show the toolbar for terraforming in the scenario editor.
- * @return The allocated toolbar.
+ * @return The allocated toolbar if the window was newly opened, else \c NULL.
  */
 Window *ShowEditorTerraformToolbar()
 {

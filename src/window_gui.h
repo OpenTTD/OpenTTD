@@ -848,9 +848,10 @@ Window *FindWindowFromPt(int x, int y);
 
 /**
  * Open a new window.
+ * @tparam Wcls %Window class to use if the window does not exist.
  * @param desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
- * @return see Window pointer of the newly created window
+ * @return %Window pointer of the newly created window, or \c NULL.
  */
 template <typename Wcls>
 Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number)

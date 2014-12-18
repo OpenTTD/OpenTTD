@@ -841,7 +841,7 @@ static WindowDesc _build_road_scen_desc(
 
 /**
  * Show the road building toolbar in the scenario editor.
- * @return The just opened toolbar.
+ * @return The just opened toolbar, or \c NULL if the toolbar was already open.
  */
 Window *ShowBuildRoadScenToolbar()
 {
