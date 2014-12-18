@@ -758,13 +758,15 @@ static WindowDesc _story_book_desc(
 	_nested_story_book_widgets, lengthof(_nested_story_book_widgets)
 );
 
+/**
+ * Raise or create the story book window for \a company, at page \a page_id.
+ * @param company 'Owner' of the story book, may be #INVALID_COMPANY.
+ * @param page_id Page to open, may be #INVALID_STORY_PAGE.
+ */
 void ShowStoryBook(CompanyID company, uint16 page_id)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 
-	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(&_story_book_desc, company);
-	if (page_id != INVALID_STORY_PAGE) {
-		if (w == NULL) w = (StoryBookWindow *)FindWindowById(WC_STORY_BOOK, company);
-		w->SetSelectedPage(page_id);
-	}
+	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(&_story_book_desc, company, true);
+	if (page_id != INVALID_STORY_PAGE) w->SetSelectedPage(page_id);
 }
