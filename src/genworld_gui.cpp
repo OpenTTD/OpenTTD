@@ -837,7 +837,8 @@ static void _ShowGenerateLandscape(GenenerateLandscapeWindowMode mode)
 		if (!GetHeightmapDimensions(_file_to_saveload.name, &x, &y)) return;
 	}
 
-	GenerateLandscapeWindow *w = AllocateWindowDescFront<GenerateLandscapeWindow>((mode == GLWM_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
+	WindowDesc *desc = (mode == GLWM_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc;
+	GenerateLandscapeWindow *w = AllocateWindowDescFront<GenerateLandscapeWindow>(desc, mode, true);
 
 	if (mode == GLWM_HEIGHTMAP) {
 		w->x = x;

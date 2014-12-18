@@ -851,12 +851,14 @@ Window *FindWindowFromPt(int x, int y);
  * @tparam Wcls %Window class to use if the window does not exist.
  * @param desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
- * @return %Window pointer of the newly created window, or \c NULL.
+ * @param return_existing If set, also return the window if it already existed.
+ * @return %Window pointer of the newly created window, or the existing one if \a return_existing is set, or \c NULL.
  */
 template <typename Wcls>
-Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number)
+Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number, bool return_existing = false)
 {
-	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
+	Wcls *w = static_cast<Wcls *>(BringWindowToFrontById(desc->cls, window_number));
+	if (w != NULL) return return_existing ? w : NULL;
 	return new Wcls(desc, window_number);
 }
 
