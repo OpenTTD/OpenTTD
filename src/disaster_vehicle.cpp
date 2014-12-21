@@ -126,6 +126,8 @@ void DisasterVehicle::UpdateImage()
 DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target) :
 		SpecializedVehicleBase(), big_ufo_destroyer_target(big_ufo_destroyer_target)
 {
+	this->vehstatus = VS_UNCLICKABLE;
+
 	this->x_pos = x;
 	this->y_pos = y;
 	switch (subtype) {
@@ -164,7 +166,6 @@ DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubT
 	this->subtype = subtype;
 	this->UpdateDeltaXY(INVALID_DIR);
 	this->owner = OWNER_NONE;
-	this->vehstatus = VS_UNCLICKABLE;
 	this->image_override = 0;
 	this->current_order.Free();
 
