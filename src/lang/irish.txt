@@ -1189,8 +1189,11 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Géire na fána i gcás feithiclí bóthair: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :A ghéire agus atá tíl ar a bhfuil fána i gcás feithicle bóthair. Fagfaidh luachanna níos airde go mbeidh sé níos deacra cnoc a dhreapadh
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tarlaíonn casadh 90 céim nuair atá píosa iarnróid ingearach ag teacht díreach tar éis píosa iarnróid cothrománach ar an tíl in aice leis, rud a chiallaíonn go gcasann an traein 90 céim ag dul thar thaobh na tíle, seachas 45 céim mar a dhéantar nuair a chuirtea tíleanna le chéile ar chaíonna eile. Bíonn sé seo i gceist maidir leis an spás a thógann sé ar longa casadh freisin
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ceadaigh stáisiúin a changal nach bhfuil taobh lena gcéile: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tabhair cead codanna a chur le stáisiún gan teagmháil dhíreach a bheith acu leis na codanna atá ann cheana. Is gá Ctrl+Cliceáil a dhéanamh agus na codanna nua á gcur síos
 STR_CONFIG_SETTING_INFLATION                                    :Boilsciú: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Cumasaigh boilsciú sa gheilleagar, áit ina mbeidh costais ag méadú beagán níos tapúla ná íocaíochtaí
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Uasfhad na ndroichead: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Uasfhad i dtaca le droichid a thógáil
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Airde uasta na ndroichead: {STRING}
@@ -1204,6 +1207,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Cuardach (mianr
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Limistéar réidh thart ar thionscail: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Méid na talún réidh thart timpeall ar thionscal. Cinntíonn sé seo go mbeidh spás folamh ann fós thart timpeall ar thionscal chun ráillí, srl. a thógáil
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Ceadaigh tionscail cosúla iolracha in aon bhaile amháin: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Go hiondúil, ní bhíonn comhairle baile ag iarraidh go mbeidh níos mó ná tionscal amháin de gach cineál ann. Leis an socrú seo, ceadófar roinnt tionscail den chineál céanna a bheith in aon bhaile amháin
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Taispeáin comharthaí: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Roghnaigh cén taobh den iarnród ar a chuirfear comharthaí
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Ar chlé
@@ -1213,6 +1217,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Taispeáin an f
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Má tá sé cumasaithe, preabann an fhuinneog airgeadais aníos ag deireadh gach bliana le gur féidir stádas airgeadais na cuideachta a scrúdú go héasca
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Bíonn orduithe nua 'gan-stad' mar réamhshocrú: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Stopann orduithe traenach nua ag {STRING} an ardáin mar reamhshocrú
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :An áit ag a stopfaidh traein ar an ardán mar réamhshocrú. Ciallaíonn 'taobh is gaire' in aice leis an pointe iontrála, ciallaíonn 'an lár' lár an ardáin, agus ciallaíonn 'taobh is faide' an áit is faide ón bpointe iontrála. Tabhair faoi deara nach bhfuil i gceist leis an socrú seo ach réamhshocrú d'orduithe nua. Is féidir orduithe aonair a shocrú go sainráite ag aon cheann de na socruithe
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :taobh abhus
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :lár
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :taobh thall
@@ -1223,10 +1228,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Príomhfhuinneo
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Gach fuinneog amhairc
 STR_CONFIG_SETTING_BRIBE                                        :Ceadaigh breabanna a thabhairt don údarás áitiúil: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ceadaigh cearta eisiach iompair a cheannach: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Má cheannaíonn cuideachta cearta eisiacha iompair i mbaile, ní gheobhaidh stáisiúin iomaitheoirí (idir stáisiúin phaisinéirí agus lastais) lastas ar bith ar feadh bliain iomlán
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Ceadaigh maoiniú foirgneamh: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tabhair cead do chuideachtaí airgead a thabhairt do bhailte chun tithe nua a mhaoiniú
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Ceadaigh maoiniú do thógáil bóithre áitiúla: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Ceadaigh airgead a sheoladh chuig cuideachtaí eile: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tabhair cead airgead a aistriú idir chuideachtaí sa mhód ilimreoirí
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Iolraitheoir meáchain don lastas le traenacha troma a ionsamhladh: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fachtóir luais na n-eitleán: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Socraigh luas coimhneasta na n-aerárthach i gcomparáid le cineálacha eile feithiclí, chun an méid ioncaim ó iompar aerárthaigh a laghdú
@@ -1370,22 +1377,28 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Gach gníomh
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Úsáid grúpaí i liosta na bhfeithiclí {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Úsáid táscairí lódála: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Taispeáin an t-amchlár i dticeanna seachas i laethanta: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Taispeáin amanna taistil i dtáblaí ama i dticeanna cluiche seachas laethanta
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Taispeáin am teacht isteach agus fágála in amchláir: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Taispeáin na hamanna teacht isteach agus imeachta a bhfuiltear ag súil leo sna hamchláir
 STR_CONFIG_SETTING_QUICKGOTO                                    :Orduithe feithiclí a chruthú go scioptha: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Réamh-roghnaigh 'téigh chuig cursóir' nuair a dhéantar fuinneog na n-orduithe a oscailt
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Cineál ráille réamhshocraithe (tar éis cluiche nua/cluiche a lódáil): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An cineál iarnróid a roghnófar tar éis cluiche a thosú nó a lodáil. 'an chéad cheann atá ar fáil': roghnaíonn seo an cineál iarnróid is sine. 'an ceann deireanach atá ar fáil': roghnaíonn seo an cineál iarnróid is nuaí. 'an ceann is mó úsáide': roghnaíonn seo an cineál is mó atá in úsáid faoi láthair
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :An chéad cheann atá ar fáil
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :An cheann deiridh atá ar fáil
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ceann is mó a úsáidtear
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Taispeáin cosáin forchoimeádta iarnróid: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Fág uirlisí tógála gníomhach i ndiaidh úsáide: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Coinnigh na huirlisí tógála do dhroichid, tolláin srl. oscailte tar éis a n-úsáide
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Sainigh an leagan amach a bheidh ar fhuinneog speansais chuideachta
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Ticear nuachta: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Seinn fuaim do na teachtaireachtaí nuachta achomair
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Nuachtán: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Seinn fuiam nuair a thaispeántar nuachtáin
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Deireadh na bliana: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Seinn fuaim ag deireadh na bliana nuair a thugtar achoimre ar fheidhmíocht cuideachta i rith na bliana sin i gcomparáid leis an mbliain roimhe
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :foirgníochta: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Seinn éifeacht fuaime ar tógálacha rathúil nó gníomhartha eile
 STR_CONFIG_SETTING_SOUND_CLICK                                  :cnaipe brúite: {STRING}
@@ -1427,6 +1440,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :tá #opcodes ro
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Uaslíon na gcéimeanna ríofa is féidir le script a dhéanamh in aon chasadh amháin
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Eatraimh seirbhísithe i gcéatadán: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Roghnaigh an ndéanfar seirbhísiú feithiclí bunaithe ar an am atá imithe thart ón seirbhísiú deireanach nó bunaithe ar iontaofacht a bheith tite céatadán áirithe ón iontaofacht uasta
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Eatramh seirbhísithe réamhshocraithe do thraenacha: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Socraigh an t-eatramh seirbhísithe réamhshocraithe d'fheithiclí iarnróid nua, mura bhfuil eatramh seirbhísithe sainráite socraithe don fheithicil
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}lá/%
@@ -1468,6 +1482,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Taispeáin teac
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Feithiclí nua: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Taispeáin nuachtán nuair a bhíonn cineál nua feithicle ar fáil den chéad uair
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Athruithe ar an lastas a nglactar leis: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Taispeáin teachtaireachtaí maidir le stáisiúin a athraíonn na lastais a nglacann siad leo
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Fóirdheontais: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Taispeáin nuachtáin maidir le cúrsaí a bhaineann le fóirdheontais
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Faisnéis ghinearálta: {STRING}
@@ -1481,12 +1496,14 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bíonn nuacht d
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :An bhliain a thosaítear ar fhógraí nuachtáin daite a chlóbhualadh. Roimh an bhliain sin, úsáidtear dubh/bán monacrómach
 STR_CONFIG_SETTING_STARTING_YEAR                                :Bliain tosaigh: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cumasaigh geilleagar níos míne (tuilleadh athruithe, agus iad níos lú): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Má dhéantar é a chumasú, athraíonn táirgeadh na dtionscal níos minice, agus i gcéimeanna níos lú. Is iondúil nach mbíonn aon tionchar ag an socrú seo má chuirtear na cineálacha tioinscail ar fáil in NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :An céatadán den bhrabús a íocfar ar chuid den turas i gcórais fhriothálacha: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Agus tú ag tarraingt, cuir síos comharthaí gach: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P thíl thíl thíl dtíl tíl}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Agus tú ag tarraingt, coinnigh fad seasta idir comharthaí: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Tóg séamafóir go huathoibríoch roimh: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Socraigh an bliain ina n-úsáidfear comharthaí leictreacha ar iarnróid. Roimh an bhliain sin, úsáidfear comharthaí nach comharthaí leictreacha iad (tá an fheidhm cheanainn céanna acu, ach cuma dhifriúil orthu)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Cumasaigh GUI na gcomharthaí: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Cineál comhartha le tógáil mar réamhshocrú: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :An cineál comharthaí a úsáidfear mar réamhshocrú
@@ -1507,6 +1524,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :greille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :randamach
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Ceadaítear do bhailte bóithre a thógáil: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaítear do bhailte crosairí comhréidh a thógáil: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Má dhéantar an socrú seo a chumasú, beidh bailte in ann crosairí comhréidh a thógáil
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ceadaigh leibhéal fuaime rialaithe ag an mbaile d'aerfoirt: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Bailte a bhunú sa chluiche: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Má dhéantar an socrú seo a chumasú beidh imreoirí in ann bailte nua a bhunú sa chluiche
@@ -1520,6 +1538,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :i bhforaois bh�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :gach áit
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Suíomh an phríomhbharra uirlisí: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Suíomh cothrománach an phríomhbharra uirlise ag barr an scáileáin
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Suíomh an bharra stádais: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Suíomh cothrománach an bharra stádais ag bun an scáileáin
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ga léime na bhfuinneog: {STRING}
@@ -1527,6 +1546,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :An fad idir fhu
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} {P ph ph ph bp p}icteilín
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Díchumasaithe
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Uaslíon na bhfuinneog neamh-ghreamaitheach: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Líon na bhfuinneog neamhghreamaitheach is féidir a bheith oscailte sula ndúnfar seanfhuinneoga go huathoibríoch chun spás a dhéanamh d'fhuinneoga nua
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :díchumasaithe
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Zúmáil uasta i leibhéil: {STRING}
