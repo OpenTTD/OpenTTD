@@ -38,7 +38,7 @@ public:
 		param(param),
 		self_destruct(self_destruct)
 	{
-		thread = _beginthread(stThreadProc, NULL, 32768, this);
+		thread = _beginthread(stThreadProc, NULL, 1048576, this);
 	}
 
 	/* virtual */ bool Exit()

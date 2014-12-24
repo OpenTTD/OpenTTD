@@ -239,11 +239,38 @@ static inline void OTTDfreeaddrinfo(struct addrinfo *ai)
 #	include <netdb.h>
 #	include <nerrno.h>
 #	define INADDR_NONE 0xffffffff
+#	include "../../3rdparty/os2/getaddrinfo.h"
+#	include "../../3rdparty/os2/getnameinfo.h"
+
+#define IPV6_V6ONLY 27
+
+/*
+ * IPv6 address
+ */
+struct in6_addr {
+	union {
+		uint8_t  __u6_addr8[16];
+		uint16_t __u6_addr16[8];
+		uint32_t __u6_addr32[4];
+	} __u6_addr; /* 128-bit IP6 address */
+};
+
+#define s6_addr   __u6_addr.__u6_addr8
+
+struct sockaddr_in6 {
+	uint8_t         sin6_len;       /* length of this struct */
+	sa_family_t     sin6_family;    /* AF_INET6 */
+	in_port_t       sin6_port;      /* Transport layer port # */
+	uint32_t        sin6_flowinfo;  /* IP6 flow information */
+	struct in6_addr sin6_addr;      /* IP6 address */
+	uint32_t        sin6_scope_id;  /* scope zone index */
+};
 
 typedef int socklen_t;
 #if !defined(__INNOTEK_LIBC__)
 typedef unsigned long in_addr_t;
 #endif /* __INNOTEK_LIBC__ */
+
 #endif /* OS/2 */
 
 /* MorphOS and Amiga stuff */

@@ -99,6 +99,10 @@ townname.cpp
 	#else
 		#if OS2
 			os/os2/os2.cpp
+			3rdparty/os2/getaddrinfo.c
+			3rdparty/os2/getaddrinfo.h
+			3rdparty/os2/getnameinfo.c
+			3rdparty/os2/getnameinfo.h
 		#else
 			#if OSX
 				os/macosx/crashlog_osx.cpp
