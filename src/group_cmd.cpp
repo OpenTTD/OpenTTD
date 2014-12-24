@@ -404,11 +404,7 @@ CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			/* Ensure request parent isn't child of group.
 			 * This is the only place that infinite loops are prevented. */
-			const Group *looptest = pg;
-			while (looptest->parent != INVALID_GROUP) {
-				if (looptest->parent == g->index) return CMD_ERROR;
-				looptest = Group::Get(looptest->parent);
-			}
+			if (GroupIsInGroup(pg->index, g->index)) return CMD_ERROR;
 		}
 
 		if (flags & DC_EXEC) {
@@ -688,7 +684,7 @@ void UpdateTrainGroupID(Train *v)
 
 /**
  * Get the number of engines with EngineID id_e in the group with GroupID
- * id_g
+ * id_g and its sub-groups.
  * @param company The company the group belongs to
  * @param id_g The GroupID of the group used
  * @param id_e The EngineID of the engine to count
@@ -723,10 +719,7 @@ void RemoveAllGroupsForCompany(const CompanyID company)
  */
 bool GroupIsInGroup(GroupID search, GroupID group)
 {
-	if (search == NEW_GROUP ||
-	    search == ALL_GROUP ||
-	    search == DEFAULT_GROUP ||
-	    search == INVALID_GROUP) return search == group;
+	if (!Group::IsValidID(search)) return search == group;
 
 	do {
 		if (search == group) return true;
