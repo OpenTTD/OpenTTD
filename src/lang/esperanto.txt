@@ -1145,6 +1145,8 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meza
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fora fino
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ŝovu fenestron se la muso estas ĉe la rando: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Malaktiva
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Ĉefa vidujo
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Ĉiu vidujo
 STR_CONFIG_SETTING_BRIBE                                        :Permesu subaĉeti la lokajn estrojn: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permesu aĉeti ekskluzivajn transportrajtojn: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permesi fondusante lokan stratan rekonstruo: {STRING}
@@ -1169,6 +1171,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de ĉiuj veturi
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertu se gajno de veturilo negativas: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veturiloj neniam eluziĝas: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Aŭtomate anstataŭu veturilon se malnoviĝas: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} monato{P 0 "" j} antaŭe
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} monato{P 0 "" j} post
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimuma mono por anstataŭado: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Montru enloĝantaron en urbnomindikilo: {STRING}
 
