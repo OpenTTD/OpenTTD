@@ -19,14 +19,14 @@
 
 
 ##id 0x0000
-STR_NULL                                                        :
-STR_EMPTY                                                       :
+STR_NULL                                                        :无效
+STR_EMPTY                                                       :空
 STR_UNDEFINED                                                   :(未定义字符串)
 STR_JUST_NOTHING                                                :无
 
 # Cargo related strings
 # Plural cargo name
-STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_NOTHING                                        :无
 STR_CARGO_PLURAL_PASSENGERS                                     :旅客
 STR_CARGO_PLURAL_COAL                                           :煤炭
 STR_CARGO_PLURAL_MAIL                                           :邮件
@@ -60,7 +60,7 @@ STR_CARGO_PLURAL_PLASTIC                                        :塑料块
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :汽水
 
 # Singular cargo name
-STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_NOTHING                                      :无
 STR_CARGO_SINGULAR_PASSENGER                                    :旅客
 STR_CARGO_SINGULAR_COAL                                         :煤炭
 STR_CARGO_SINGULAR_MAIL                                         :邮件

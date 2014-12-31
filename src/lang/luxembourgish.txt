@@ -298,8 +298,8 @@ STR_SORT_BY_TIMETABLE_DELAY                                     :Zäitplang Vers
 STR_SORT_BY_FACILITY                                            :Statiounstyp
 STR_SORT_BY_WAITING_TOTAL                                       :Gesamt waardend Gidder
 STR_SORT_BY_WAITING_AVAILABLE                                   :Verfügbar waardend Gidder
-STR_SORT_BY_RATING_MAX                                          :Héchsten Luedungsbewertung
-STR_SORT_BY_RATING_MIN                                          :Nidregsten Luedungsbewertung
+STR_SORT_BY_RATING_MAX                                          :Héchste Luedungsbewäertung
+STR_SORT_BY_RATING_MIN                                          :Niddregst Luedungsbewäertung
 STR_SORT_BY_ENGINE_ID                                           :ID (klassësch Sortéierung)
 STR_SORT_BY_COST                                                :Käschten
 STR_SORT_BY_POWER                                               :Kraaft
@@ -415,13 +415,13 @@ STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafik: Operati
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafik: Akommes
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafik: Geliwwert Luedungen
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Grafik: Performance
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafik: Betriebswert
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafik: Betriebswäert
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Luedungs Bezuelraten
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Betriebsranglëscht
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailéiert Performancebewertung
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailéiert Performancebewäertung
 STR_GRAPH_MENU_HIGHSCORE                                        :Beschtenlëscht
 ############ range ends here
 
@@ -572,7 +572,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik: Betriibsgewënn
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik: Akommes
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eenheeten vun Luedung geliwwert
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Firmen Preformancebewertung (max bewertung=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Firmen Performancebewäertung (max Bewäertung=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwäert
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten
@@ -605,7 +605,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailéiert Leeschtungsbewertung
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailéiert Leeschtungsbewäertung
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -1144,7 +1144,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Zentréiert
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Riets
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalen Ufanksloun: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwert den eng Firma kann léinen (ouni Inflatioun matzerechnen)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwäert den eng Firma kann léinen (ouni Inflatioun matzerechnen)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Zënssaz: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zënssaz; kontrolléiert och d'Inflatioun wann ugeschalt
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Betriebskäschten: {STRING}
@@ -1164,7 +1164,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Wann ugeschalt 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Stelle Katastrophen un oder aus déi eventuell Gefierer an Industrien blockéiren oder zerstéiren
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Dem Stadrot seng Astellung zum Embauen vun der Landschaft: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wielt aus, wéivill vun der Firma verursachten Kaméidi an Emweltschiedegung sech op d'Stadbewertung auswierkt an op weider Bauaktiounen
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wielt aus, wéivill vun der Firma verursachten Kaméidi an Emweltschiedegung sech op d'Stadbewäertung auswierkt an op weider Bauaktiounen
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximal Kaartenhéicht: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Setzt déi maximal erlabten Héicht fir Bierger op dëser Kaart
@@ -1188,7 +1188,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Hangsteigung fi
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steigung vun engem Hang fir Zich. Méi grouss Wäerter mëscht et méi schwéier den Hang ropzefueren
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hangsteigung fir Stroossegefierer: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steigung vun engem Hang fir Stroossegefierer. Méi grouss Werter mëscht et méi schwéier den Hang ropzefueren
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steigung vun engem Hang fir Stroossegefierer. Méi grouss Wäerter mëscht et méi schwéier den Hang ropzefueren
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbidd Zich an Schëffer fir 90 Grad Kéieren ze maachen: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90gradkéiren entstinn wann eng horizontal Spur direkt op eng vertikal trëfft, sou dass den Zuch misst ëm 90 Grad dréinen fir op dat nächst Stéck ze kommen, amplaz vun den üblechen 45 Grad. Dëst zielt och fir d'Weeër vun Schëffer
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {STRING}
@@ -1454,7 +1454,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schëffer fir d
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Schëffer bauen
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Standard Astellungsprofil: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wielt aus wellechen Astellungsprofil benotzt gëtt fir d'zoufälleg KI oder fir Ufankswerter wann eng nei KI oder Spillscript ugeschalt gëtt
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wielt aus wellechen Astellungsprofil benotzt gëtt fir d'zoufälleg KI oder fir Ufankswäerter wann eng nei KI oder Spillscript ugeschalt gëtt
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Einfach
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Normal
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Schwéier
@@ -1620,7 +1620,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrësch" 
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributiounsmodus fir Post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrësch" heescht, dass ongeféier d'selwecht vill vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt fir Post
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributiounsmodus fir d'GEPANZERT Wuereklass: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :D'GEPANZERT Wuereklass huet Wäertsaachen am geméissegte Klima, Diamanten am Sub-Tropenklima an Gold am sub-arktësche Klima. NewGRFen kënnen dat änneren. "Symmetrësch" heescht, dass ongeféier d'selwecht vill vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Et gëtt emfuelen dëst op asymmetrësch oder manuell ze loossen wann een sub-arktësch spillt, well Banken keen Gold zréck an d’Minen liwweren. Fir geméissegt Klima an sub-tropësch Klima kann eng Bank mat der anerer Wertsachen zréckschécken.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :D'GEPANZERT Wuereklass huet Wäertsaachen am geméissegte Klima, Diamanten am Sub-Tropenklima an Gold am sub-arktësche Klima. NewGRFen kënnen dat änneren. "Symmetrësch" heescht, dass ongeféier d'selwecht vill vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Et gëtt emfuelen dëst op asymmetrësch oder manuell ze loossen wann een sub-arktësch spillt, well Banken keen Gold zréck an d’Minen liwweren. Fir geméissegt Klima an sub-tropësch Klima kann eng Bank mat der anerer Wäertsachen zréckschécken.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributiounsmodus fir aner Wuerenklassen: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrësch" heescht dass eng beléiweg Unzuel un Wueren an béid Richtungen verschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymmetrësch" oder manuell gewielt.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributiounsgenauegkeet: {STRING}
@@ -1628,7 +1628,7 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Wat de Wäert m
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Afloss vun der Distanz op d'Nofro: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Wann's de en méi héichen Wäert wéi 0 wiels, huet d'Differenz tëscht 2 Statiounen A an B en Afloss dorop wéivill Wueren geschéckt ginn. Wat B méi wäit ewech vun A ass, wat manner Wueren geschéckt ginn. Wat de Wäert méi héich gesat gëtt, wat manner Wueren op eng Statioun wait ewech an méi Wueren op eng Statioun méi no geschéckt ginn.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Unzuel vun zréckgeschéckten Wueren fir de symmetrëschen Modus: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wann een dëst op manner wéi 100% setzt, gëtt déi symmetrësch Distributioun méi wéi eng asymmetrësch behandelt. Manner Wueren ginn zréckgeschéckt wann en bestëmmten Wert op eng Statioun geschéckt gouf. Bei 0% verhält sech d'symmetrësch Distributioun wéi eng asymmetrësch
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wann een dëst op manner wéi 100% setzt, gëtt déi symmetrësch Distributioun méi wéi eng asymmetrësch behandelt. Manner Wueren ginn zréckgeschéckt wann en bestëmmten Wäert op eng Statioun geschéckt gouf. Bei 0% verhält sech d'symmetrësch Distributioun wéi eng asymmetrësch
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Sättegung vun kuerzen Weeër befier grouss Weeër benotzt ginn: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Oft gëtt et e puer Weeër tëscht zwou Statiounen. Cargodist siedegt fir d'éischt de kierzten, dann den zweetkierzten a.s.w. Siedegung gëtt bestemmt durch Kapazitéit an geplangten Notzung. Wann all Wee gesiedegt ass, an nach emmer eng Nofro do ass, ginn all d'Weeër iwwersiedegt, mat Präferenz déi mat grousser Kapazitéit. Gréissten Deel vun der Zäit rechent den Algorithmus d'Kapazitéit allerdéngs net richteg. Des Astellung erlabt engem en Prozentsaz ze bestëmmen fir den éischten Wee befier en zweeten Wee benotzt gëtt. Setz en enner 100% fir iwwerfëllten Statiounen ze vermeide wann d'Kapazitéit iwwerschat gouf.
 
@@ -3009,7 +3009,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Stad ëmbenenne
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Gemeng {TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportfirmen Bewertung:
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportfirmen Bewäertung:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Verfügbar Optiounen:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lëscht vun Saachen déi an der Stad gemaach kënnen ginn - klick op eng Optioun fir méi Informatiounen
@@ -3117,9 +3117,9 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepté
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dës Statioun huet exklusiv Transportrechter an dëser Stad
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} huet exklusiv Transportrechter an dëser Stad kaf.
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertungen
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewertungen
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Lokal Bewertung an Liwwerung pro Mount
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewäertungen
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewäertungen
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Lokal Bewäertung an Liwwerung pro Mount
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppéier no
@@ -3660,7 +3660,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewiicht
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit dëst Joer: {LTBLUE}{CURRENCY_LONG} (lescht Joer: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit leschter Revisioun: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wäert: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapazitéit: {LTBLUE}Keng{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapazitéit: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapazitéit: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
