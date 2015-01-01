@@ -21,9 +21,9 @@
  */
 class ScriptListSorter {
 protected:
-	ScriptList *list;           ///< The list that's being sorted.
+	ScriptList *list;       ///< The list that's being sorted.
 	bool has_no_more_items; ///< Whether we have more items to iterate over.
-	int32 item_next;        ///< The next item we will show.
+	int64 item_next;        ///< The next item we will show.
 
 public:
 	/**
@@ -34,7 +34,7 @@ public:
 	/**
 	 * Get the first item of the sorter.
 	 */
-	virtual int32 Begin() = 0;
+	virtual int64 Begin() = 0;
 
 	/**
 	 * Stop iterating a sorter.
@@ -44,7 +44,7 @@ public:
 	/**
 	 * Get the next item of the sorter.
 	 */
-	virtual int32 Next() = 0;
+	virtual int64 Next() = 0;
 
 	/**
 	 * See if the sorter has reached the end.
@@ -91,7 +91,7 @@ public:
 		this->End();
 	}
 
-	int32 Begin()
+	int64 Begin()
 	{
 		if (this->list->buckets.empty()) return 0;
 		this->has_no_more_items = false;
@@ -101,7 +101,7 @@ public:
 		this->bucket_list_iter = this->bucket_list->begin();
 		this->item_next = *this->bucket_list_iter;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -136,11 +136,11 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	int32 Next()
+	int64 Next()
 	{
 		if (this->IsEnd()) return 0;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -180,7 +180,7 @@ public:
 		this->End();
 	}
 
-	int32 Begin()
+	int64 Begin()
 	{
 		if (this->list->buckets.empty()) return 0;
 		this->has_no_more_items = false;
@@ -195,7 +195,7 @@ public:
 		--this->bucket_list_iter;
 		this->item_next = *this->bucket_list_iter;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -233,11 +233,11 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	int32 Next()
+	int64 Next()
 	{
 		if (this->IsEnd()) return 0;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -272,7 +272,7 @@ public:
 		this->End();
 	}
 
-	int32 Begin()
+	int64 Begin()
 	{
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
@@ -280,7 +280,7 @@ public:
 		this->item_iter = this->list->items.begin();
 		this->item_next = (*this->item_iter).first;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -303,11 +303,11 @@ public:
 		if (this->item_iter != this->list->items.end()) item_next = (*this->item_iter).first;
 	}
 
-	int32 Next()
+	int64 Next()
 	{
 		if (this->IsEnd()) return 0;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -345,7 +345,7 @@ public:
 		this->End();
 	}
 
-	int32 Begin()
+	int64 Begin()
 	{
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
@@ -354,7 +354,7 @@ public:
 		--this->item_iter;
 		this->item_next = (*this->item_iter).first;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -382,11 +382,11 @@ public:
 		if (this->item_iter != this->list->items.end()) item_next = (*this->item_iter).first;
 	}
 
-	int32 Next()
+	int64 Next()
 	{
 		if (this->IsEnd()) return 0;
 
-		int32 item_current = this->item_next;
+		int64 item_current = this->item_next;
 		FindNext();
 		return item_current;
 	}
@@ -420,7 +420,7 @@ ScriptList::~ScriptList()
 	delete this->sorter;
 }
 
-bool ScriptList::HasItem(int32 item)
+bool ScriptList::HasItem(int64 item)
 {
 	return this->items.count(item) == 1;
 }
@@ -434,7 +434,7 @@ void ScriptList::Clear()
 	this->sorter->End();
 }
 
-void ScriptList::AddItem(int32 item, int32 value)
+void ScriptList::AddItem(int64 item, int64 value)
 {
 	this->modifications++;
 
@@ -446,13 +446,13 @@ void ScriptList::AddItem(int32 item, int32 value)
 	this->SetValue(item, value);
 }
 
-void ScriptList::RemoveItem(int32 item)
+void ScriptList::RemoveItem(int64 item)
 {
 	this->modifications++;
 
 	if (!this->HasItem(item)) return;
 
-	int32 value = this->GetValue(item);
+	int64 value = this->GetValue(item);
 
 	this->sorter->Remove(item);
 	this->buckets[value].erase(item);
@@ -460,13 +460,13 @@ void ScriptList::RemoveItem(int32 item)
 	this->items.erase(item);
 }
 
-int32 ScriptList::Begin()
+int64 ScriptList::Begin()
 {
 	this->initialized = true;
 	return this->sorter->Begin();
 }
 
-int32 ScriptList::Next()
+int64 ScriptList::Next()
 {
 	if (this->initialized == false) {
 		DEBUG(script, 0, "Next() is invalid as Begin() is never called");
@@ -494,20 +494,20 @@ int32 ScriptList::Count()
 	return (int32)this->items.size();
 }
 
-int32 ScriptList::GetValue(int32 item)
+int64 ScriptList::GetValue(int64 item)
 {
 	if (!this->HasItem(item)) return 0;
 
 	return this->items[item];
 }
 
-bool ScriptList::SetValue(int32 item, int32 value)
+bool ScriptList::SetValue(int64 item, int64 value)
 {
 	this->modifications++;
 
 	if (!this->HasItem(item)) return false;
 
-	int32 value_old = this->GetValue(item);
+	int64 value_old = this->GetValue(item);
 	if (value_old == value) return true;
 
 	this->sorter->Remove(item);
@@ -573,7 +573,7 @@ void ScriptList::SwapList(ScriptList *list)
 	list->sorter->Retarget(list);
 }
 
-void ScriptList::RemoveAboveValue(int32 value)
+void ScriptList::RemoveAboveValue(int64 value)
 {
 	this->modifications++;
 
@@ -583,7 +583,7 @@ void ScriptList::RemoveAboveValue(int32 value)
 	}
 }
 
-void ScriptList::RemoveBelowValue(int32 value)
+void ScriptList::RemoveBelowValue(int64 value)
 {
 	this->modifications++;
 
@@ -593,7 +593,7 @@ void ScriptList::RemoveBelowValue(int32 value)
 	}
 }
 
-void ScriptList::RemoveBetweenValue(int32 start, int32 end)
+void ScriptList::RemoveBetweenValue(int64 start, int64 end)
 {
 	this->modifications++;
 
@@ -603,7 +603,7 @@ void ScriptList::RemoveBetweenValue(int32 start, int32 end)
 	}
 }
 
-void ScriptList::RemoveValue(int32 value)
+void ScriptList::RemoveValue(int64 value)
 {
 	this->modifications++;
 
@@ -697,7 +697,7 @@ void ScriptList::RemoveList(ScriptList *list)
 	}
 }
 
-void ScriptList::KeepAboveValue(int32 value)
+void ScriptList::KeepAboveValue(int64 value)
 {
 	this->modifications++;
 
@@ -707,7 +707,7 @@ void ScriptList::KeepAboveValue(int32 value)
 	}
 }
 
-void ScriptList::KeepBelowValue(int32 value)
+void ScriptList::KeepBelowValue(int64 value)
 {
 	this->modifications++;
 
@@ -717,7 +717,7 @@ void ScriptList::KeepBelowValue(int32 value)
 	}
 }
 
-void ScriptList::KeepBetweenValue(int32 start, int32 end)
+void ScriptList::KeepBetweenValue(int64 start, int64 end)
 {
 	this->modifications++;
 
@@ -727,7 +727,7 @@ void ScriptList::KeepBetweenValue(int32 start, int32 end)
 	}
 }
 
-void ScriptList::KeepValue(int32 value)
+void ScriptList::KeepValue(int64 value)
 {
 	this->modifications++;
 

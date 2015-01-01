@@ -44,9 +44,9 @@ private:
 	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
 
 public:
-	typedef std::set<int32> ScriptItemList;                   ///< The list of items inside the bucket
-	typedef std::map<int32, ScriptItemList> ScriptListBucket; ///< The bucket list per value
-	typedef std::map<int32, int32> ScriptListMap;             ///< List per item
+	typedef std::set<int64> ScriptItemList;                   ///< The list of items inside the bucket
+	typedef std::map<int64, ScriptItemList> ScriptListBucket; ///< The bucket list per value
+	typedef std::map<int64, int64> ScriptListMap;             ///< List per item
 
 	ScriptListMap items;           ///< The items in the list
 	ScriptListBucket buckets;      ///< The items in the list, sorted by value
@@ -60,16 +60,16 @@ public:
 	 * @param item the item to add. Should be unique, otherwise it is ignored.
 	 * @param value the value to assign.
 	 */
-	void AddItem(int32 item, int32 value);
+	void AddItem(int64 item, int64 value);
 #else
-	void AddItem(int32 item, int32 value = 0);
+	void AddItem(int64 item, int64 value = 0);
 #endif /* DOXYGEN_API */
 
 	/**
 	 * Remove a single item from the list.
 	 * @param item the item to remove. If not existing, it is ignored.
 	 */
-	void RemoveItem(int32 item);
+	void RemoveItem(int64 item);
 
 	/**
 	 * Clear the list, making Count() returning 0 and IsEmpty() returning true.
@@ -81,21 +81,21 @@ public:
 	 * @param item the item to check for.
 	 * @return true if the item is in the list.
 	 */
-	bool HasItem(int32 item);
+	bool HasItem(int64 item);
 
 	/**
 	 * Go to the beginning of the list and return the item. To get the value use list.GetValue(list.Begin()).
 	 * @return the first item.
 	 * @note returns 0 if beyond end-of-list. Use IsEnd() to check for end-of-list.
 	 */
-	int32 Begin();
+	int64 Begin();
 
 	/**
 	 * Go to the next item in the list and return the item. To get the value use list.GetValue(list.Next()).
 	 * @return the next item.
 	 * @note returns 0 if beyond end-of-list. Use IsEnd() to check for end-of-list.
 	 */
-	int32 Next();
+	int64 Next();
 
 	/**
 	 * Check if a list is empty.
@@ -121,7 +121,7 @@ public:
 	 * @param item the item to get the value from
 	 * @return the value that belongs to this item.
 	 */
-	int32 GetValue(int32 item);
+	int64 GetValue(int64 item);
 
 	/**
 	 * Set a value of an item directly.
@@ -131,7 +131,7 @@ public:
 	 * @note Changing values of items while looping through a list might cause
 	 *  entries to be skipped. Be very careful with such operations.
 	 */
-	bool SetValue(int32 item, int32 value);
+	bool SetValue(int64 item, int64 value);
 
 	/**
 	 * Sort this list by the given sorter and direction.
@@ -162,26 +162,26 @@ public:
 	 * Removes all items with a higher value than 'value'.
 	 * @param value the value above which all items are removed.
 	 */
-	void RemoveAboveValue(int32 value);
+	void RemoveAboveValue(int64 value);
 
 	/**
 	 * Removes all items with a lower value than 'value'.
 	 * @param value the value below which all items are removed.
 	 */
-	void RemoveBelowValue(int32 value);
+	void RemoveBelowValue(int64 value);
 
 	/**
 	 * Removes all items with a value above start and below end.
 	 * @param start the lower bound of the to be removed values (exclusive).
 	 * @param end   the upper bound of the to be removed values (exclusive).
 	 */
-	void RemoveBetweenValue(int32 start, int32 end);
+	void RemoveBetweenValue(int64 start, int64 end);
 
 	/**
 	 * Remove all items with this value.
 	 * @param value the value to remove.
 	 */
-	void RemoveValue(int32 value);
+	void RemoveValue(int64 value);
 
 	/**
 	 * Remove the first count items.
@@ -206,26 +206,26 @@ public:
 	 * Keep all items with a higher value than 'value'.
 	 * @param value the value above which all items are kept.
 	 */
-	void KeepAboveValue(int32 value);
+	void KeepAboveValue(int64 value);
 
 	/**
 	 * Keep all items with a lower value than 'value'.
 	 * @param value the value below which all items are kept.
 	 */
-	void KeepBelowValue(int32 value);
+	void KeepBelowValue(int64 value);
 
 	/**
 	 * Keep all items with a value above start and below end.
 	 * @param start the lower bound of the to be kept values (exclusive).
 	 * @param end   the upper bound of the to be kept values (exclusive).
 	 */
-	void KeepBetweenValue(int32 start, int32 end);
+	void KeepBetweenValue(int64 start, int64 end);
 
 	/**
 	 * Keep all items with this value.
 	 * @param value the value to keep.
 	 */
-	void KeepValue(int32 value);
+	void KeepValue(int64 value);
 
 	/**
 	 * Keep the first count items, i.e. remove everything except the first count items.
