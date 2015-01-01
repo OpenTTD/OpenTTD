@@ -129,7 +129,7 @@ public:
 private:
 	StringID string;
 	char *params[SCRIPT_TEXT_MAX_PARAMETERS];
-	int parami[SCRIPT_TEXT_MAX_PARAMETERS];
+	int64 parami[SCRIPT_TEXT_MAX_PARAMETERS];
 	ScriptText *paramt[SCRIPT_TEXT_MAX_PARAMETERS];
 	int paramc;
 

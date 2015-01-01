@@ -201,7 +201,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 			p = this->paramt[i]->_GetEncodedText(p, lastofp, param_count);
 			continue;
 		}
-		p += seprintf(p, lastofp,":%X", (uint32)this->parami[i]);
+		p += seprintf(p, lastofp,":" OTTD_PRINTFHEX64, this->parami[i]);
 		param_count++;
 	}
 

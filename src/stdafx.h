@@ -322,6 +322,7 @@
 	#define OTTD_PRINTF64 "%I64d"
 	#define OTTD_PRINTFHEX64 "%I64x"
 	#define PRINTF_SIZE "%Iu"
+	#define strtoull _strtoui64
 #else
 	#define OTTD_PRINTF64 "%lld"
 	#define OTTD_PRINTFHEX64 "%llx"
