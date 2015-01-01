@@ -91,7 +91,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	uint16 time_until_rebuild;     ///< time until we rebuild a house
 
-	uint16 grow_counter;           ///< counter to count when to grow
+	uint16 grow_counter;           ///< counter to count when to grow, value is smaller than or equal to growth_rate
 	uint16 growth_rate;            ///< town growth rate
 
 	byte fund_buildings_months;    ///< fund buildings program in action?
