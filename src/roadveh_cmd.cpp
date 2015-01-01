@@ -806,12 +806,6 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	od.v = v;
 	od.u = u;
 
-	if (u->vcache.cached_max_speed >= v->vcache.cached_max_speed &&
-			!(u->vehstatus & VS_STOPPED) &&
-			u->cur_speed != 0) {
-		return;
-	}
-
 	/* Trams can't overtake other trams */
 	if (v->roadtype == ROADTYPE_TRAM) return;
 
@@ -826,6 +820,15 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
 	if (v->state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->state & RVSB_TRACKDIR_MASK))) return;
+
+	/* Can't overtake a vehicle that is moving faster than us. If the vehicle in front is
+	 * accelerating, take the maximum speed for the comparison, else the current speed. */
+	int u_speed = u->GetAcceleration() > 0 ? u->GetCurrentMaxSpeed() : u->cur_speed;
+	if (u_speed >= v->GetCurrentMaxSpeed() &&
+			!(u->vehstatus & VS_STOPPED) &&
+			u->cur_speed != 0) {
+		return;
+	}
 
 	od.trackdir = DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
