@@ -1536,7 +1536,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Fija el comport
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecánicas por defecto antes de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Fija el año a partir del cual se usarán señales eléctricas. Antes de ese año se usarán señales mecánicas (tienen la misma funcionalidad pero distinto aspecto)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar la GUI de señales: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Muestra una ventana para escoger los tipos de señales a construir, en lugar de no usar ventana y permitir cambiar de tipo de señal solamente mediante Ctrl+Click
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Muestra una ventana para escoger los tipos de señales a construir, en lugar de no usar ventana y únicamente permitir el cambio de tipo de señal por rotación mediante Ctrl+Click sobre las señales ya construidas
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal a construir por defecto: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal a usar por defecto
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de bloque
@@ -3489,7 +3489,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar v
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar barco
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar aeronave
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto comprará una copia del tren incluyendo sus vagones. Pulse este botón y después en el tren dentro o fuera del depósito. Ctrl+Click compartirá las ordenes. Shift+Click muestra una estimación del precio sin realizar la compra
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto comprará una copia del tren incluyendo todos sus vagones. Pulse este botón y después en el tren dentro o fuera del depósito. Ctrl+Click compartirá las ordenes. Shift+Click muestra el precio estimado sin realizar la compra
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto comprará una copia del vehículo de carretera. Pulse este botón y después en el vehículo dentro o fuera del depósito. Ctrl+Click compartirá las ordenes. Shift+Click muestra una estimación del precio sin realizar la compra
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará una copia del barco. Pulse este botón y después el barco dentro o fuera del muelle. Ctrl+Click compartirá las ordenes. Shift+Click muestra una estimación del precio sin realizar la compra
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará una copia de la aeronave. Pulse este botón y después en la aeronave dentro o fuera del hangar. Ctrl+Click compartirá las ordenes. Shift+Click muestra una estimación del precio sin realizar la compra
