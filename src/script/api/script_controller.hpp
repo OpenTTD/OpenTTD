@@ -18,8 +18,32 @@
 
 /**
  * The Controller, the class each Script should extend. It creates the Script,
- *  makes sure the logic kicks in correctly, and that GetTick() has a valid
+ *  makes sure the logic kicks in correctly, and that #GetTick() has a valid
  *  value.
+ *
+ * When starting a new game, or when loading a game, OpenTTD tries to match a
+ *  script that matches to the specified version as close as possible. It tries
+ *  (from first to last, stopping as soon as the attempt succeeds)
+ *
+ *  - load the exact same version of the same script,
+ *  - load the latest version of the same script that supports loading data from
+ *    the saved version (the version of saved data must be equal or greater
+ *    than ScriptInfo::MinVersionToLoad),
+ *  - load the latest version of the same script (ignoring version requirements),
+ *  - (for AIs) load a random AI, and finally
+ *  - (for AIs) load the dummy AI.
+ *
+ * After determining the script to use, starting it is done as follows
+ *
+ * - An instance is constructed of the class derived from ScriptController
+ *   (class name is retrieved from ScriptInfo::CreateInstance).
+ * - If there is script data available in the loaded game and if the data is
+ *   loadable according to ScriptInfo::MinVersionToLoad, #Load is called with the
+ *   data from the loaded game.
+ * - Finally, #Start is called to start execution of the script.
+ *
+ * See also http://wiki.openttd.org/AI:Save/Load for more details.
+ *
  * @api ai game
  */
 class ScriptController {
@@ -45,6 +69,48 @@ public:
 	 * @note Cannot be called from within your script.
 	 */
 	void Start();
+
+#ifdef DOXYGEN_API
+	/**
+	 * Save the state of the script.
+	 *
+	 * By implementing this function, you can store some data inside the savegame.
+	 *   The function should return a table with the information you want to store.
+	 *   You can only store:
+	 *
+	 *   - integers,
+	 *   - strings,
+	 *   - arrays (max. 25 levels deep),
+	 *   - tables (max. 25 levels deep),
+	 *   - booleans, and
+	 *   - nulls.
+	 *
+	 * In particular, instances of classes can't be saved including
+	 *   ScriptList. Such a list should be converted to an array or table on
+	 *   save and converted back on load.
+	 *
+	 * The function is called as soon as the user saves the game,
+	 *   independently of other activities of the script. The script is not
+	 *   notified of the call. To avoid race-conditions between #Save and the
+	 *   other script code, change variables directly after a #Sleep, it is
+	 *   very unlikely, to get interrupted at that point in the execution.
+	 * See also http://wiki.openttd.org/AI:Save/Load for more details.
+	 *
+	 * @note No other information is saved than the table returned by #Save.
+	 *   For example all pending events are lost as soon as the game is loaded.
+	 *
+	 * @return Data of the script that should be stored in the save game.
+	 */
+	SquirrelTable Save();
+
+	/**
+	 * Load saved data just before calling #Start.
+	 * The function is only called when there is data to load.
+	 * @param version Version number of the script that created the \a data.
+	 * @param data Data that was saved (return value of #Save).
+	 */
+	void Load(int version, SquirrelTable data);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Find at which tick your script currently is.
