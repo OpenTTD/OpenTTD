@@ -2873,11 +2873,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parámet
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinear sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Siguiente sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir al sprite siguiente, ignorando pseudosprites, sprites recoloreados y sprites de fuente
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir al siguiente sprite (ignorando pseudosprites, sprites recoloreados y sprites de fuente) y pasar del último al primer sprite
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir a sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir al sprite indicado. Si el sprite no es un sprite normal, ir al siguiente sprite normal
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Saltar al sprite anterior, ignorando pseudosprites, sprites recoloreados y sprites de fuente
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Saltar al sprite anterior (ignorando pseudosprites, sprites recoloreados y sprites de fuente) y pasar del primer al último sprite
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representación del sprite seleccionado. Su alineamiento es ignorado al dibujarlo
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover el sprite, cambiando los ajustes X e Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Ajuste X: {NUM}, Ajuste Y: {NUM}
