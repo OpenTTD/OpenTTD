@@ -1598,11 +1598,11 @@ STR_CONFIG_SETTING_TOWN_GROWTH                                  :Byvækst tempo:
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Hastigheden af by vækst
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langsom
-STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Mængden af byer der vil blive bestragtet som storbyer, og derfor er større og vokser hurtigere
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Hurtig
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Meget hurtig
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Andel af byer der er storbyer: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Mængden af byer der vil blive bestragtet som storbyer, og derfor er større og vokser hurtigere
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Mængden af byer der vil blive betragtet som storbyer, og derfor er større og vokser hurtigere
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 ud af {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Startværdi for bystørrelsesfaktor: {STRING}
