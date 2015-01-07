@@ -1201,6 +1201,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Airde uasta i d
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Uasfhad na dtollán: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Uasfhad i dtaca le tolláin a thógáil
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :An modh chun tionscail phríomhúla a thógáil de láimh: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :An modh a úsáidfear chun tionscal príomhúil a mhaoiniú. Ciallaíonn 'ceann ar bith' nach féidir aon cheann a mhaoiniú, ciallaíonn 'taiscéaladh' gur féidir maoiniú a dhéanamh, ach go ndéanfar an tógáil ar áit randamach ar an léarscáil, agus d'fhéadfadh teip a bheith ann freisin, ciallaíonn 'cosúil le tionscail eile' gur féidir le cuideachtaí tionscail na n-amhábhar a thógáil cosúil le tionscail phróiseála aon áit is mian leo
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ceann ar bith
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Cosúil le tionscail eile
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Cuardach (mianraí srl.)
@@ -1222,16 +1223,19 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :taobh abhus
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :lár
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :taobh thall
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Peanáil an fhuinneog agus an luch ag an taobh: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Má tá sé cumasaithe, tosóidh fuinneoga amhair ag scrollú nuair atá cursóir na luchóige in aice le taobh na fuinneoige
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Díchumasaithe
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Príomhfhuinneog amhairc, lánscáileán amháin
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Príomhfhuinneog amhairc
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Gach fuinneog amhairc
 STR_CONFIG_SETTING_BRIBE                                        :Ceadaigh breabanna a thabhairt don údarás áitiúil: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tabhair cead do chuideachtaí iarracht a dhéanamh breab a thabhairt d'údarás áitiúil baile. Má thugann cigire an breab faoi dearra, ní bheidh an chuideachta in ann aon ghníomh a dhéanamh sa bhaile ar feadh sé mhí
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ceadaigh cearta eisiach iompair a cheannach: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Má cheannaíonn cuideachta cearta eisiacha iompair i mbaile, ní gheobhaidh stáisiúin iomaitheoirí (idir stáisiúin phaisinéirí agus lastais) lastas ar bith ar feadh bliain iomlán
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Ceadaigh maoiniú foirgneamh: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tabhair cead do chuideachtaí airgead a thabhairt do bhailte chun tithe nua a mhaoiniú
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Ceadaigh maoiniú do thógáil bóithre áitiúla: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tabhair cead do chuideachtaí airgead a thabhairt do bhailte chun atógáil a dhéanamh ar bhóithre chun sabaitéireacht a dhéanamh ar sheirbhísí ar bhóthar sa bhaile
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Ceadaigh airgead a sheoladh chuig cuideachtaí eile: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tabhair cead airgead a aistriú idir chuideachtaí sa mhód ilimreoirí
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Iolraitheoir meáchain don lastas le traenacha troma a ionsamhladh: {STRING}
@@ -1246,8 +1250,10 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Gnáth
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaigh stadanna bóthair 'tiomáin tríd' ar bhóithre ar le bailte iad: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ceadaigh stopann bóthair 'tiomáin tríd' a thógáil ar bhóithre ar le bailte iad
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaigh stopanna bóthair 'tiomáin tríd' ar bhóithre ar le hiomaitheoirí iad: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tabhair cead stadanna bóthair 'tiomáin tríd' a thógáil ar bhóithre atá faoi úinéireacht cuideachtaí eile
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féidir an socrú seo a athrú nuair atá feithiclí ann
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cothabháil bonneagair: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Má tá sé cumasaithe, bíonn costais chothabhála ar bhonneagar. Méadaíonn an costas níos tapúla ná méid an líonra, rad a fhágann go mbíonn tionchar níos mó aige ar chuideachtaí móra ná ar chuideachtaí beaga
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Ní imíonn aerfoirt as dáta riamh: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Má dhéantar an socrú seo a chumasú beidh gach cineál aerfoirt ar fáil go deo tar éis é a thabhairt isteach
@@ -1305,6 +1311,7 @@ STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis a
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Méid na n-aibhneacha: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Roghnaigh líon na n-aibhneacha a chruthófar
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algartam le crainnte a chur: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Roghnaigh an chaoi a scaipfear crainnte ar an léarscáil: Le 'bunaidh' cuirfear crainnte agus iad scaipthe go haonfhoirmeach. le 'feabhsaithe' cuirtear iad i ngrúpaí
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ceann ar bith
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Bunaidh
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Feabhsaithe
@@ -1332,6 +1339,7 @@ STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :An méid a thar
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scrollú mín do na fuinneoga amhairc: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Taispeáin leid uirlise tomhais agu uirlisí tógála áirithe in úsáid: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Taispeáin libhréithe sonracha d'fheithiclí: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Rialaigh úsáid libhréithe a bhaineann go sonrach leis an gcineál feithicle d'fheithiclí (seachas libhréithe a bhaineann go sonrach le cuideachta)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ná taispeáin
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Do chuideachta féin
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Gach cuideachta
@@ -1375,7 +1383,9 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Gach gníomh ne
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Gach rud ach gníomhartha a mhionathraíonn an tírdhreach
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Gach gníomh
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Úsáid grúpaí i liosta na bhfeithiclí {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cumasaigh úsáid a bhaint as na liostaí ardleibhéil feithiclí chun feithiclí a ghrúpáil
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Úsáid táscairí lódála: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Roghnaigh cibé acu an dtaispeánfar táscairí lódála os cionn feithiclí atá ag lódáil nó ag dílódáil nó nach dtaispeánfar
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Taispeáin an t-amchlár i dticeanna seachas i laethanta: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Taispeáin amanna taistil i dtáblaí ama i dticeanna cluiche seachas laethanta
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Taispeáin am teacht isteach agus fágála in amchláir: {STRING}
