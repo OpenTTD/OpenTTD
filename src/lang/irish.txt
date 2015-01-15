@@ -1398,6 +1398,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :An chéad chean
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :An cheann deiridh atá ar fáil
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ceann is mó a úsáidtear
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Taispeáin cosáin forchoimeádta iarnróid: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Tabhair dath difriúil ar iarnróid forchoimeádta le cabhrú le fadhbanna le traenacha a dhiúltaíonn dul isteach i mbloic atá bunaithe ar chosáin
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Fág uirlisí tógála gníomhach i ndiaidh úsáide: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Coinnigh na huirlisí tógála do dhroichid, tolláin srl. oscailte tar éis a n-úsáide
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {STRING}
@@ -1440,6 +1441,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Díchumasaigh l
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Má dhéantar an socrú seo a chumasú ní bheidh ríomhimreoir in ann longa a thógáil
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Próifíl socruithe réamhshocraithe: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Roghnaigh cén próifíl socruithe a úsáidfear do AInna fánacha nó na luachanna tosaigh nuair a chuirfear AI nó Script Cluiche nua leis
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Éasca
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Méanach
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Deacair
@@ -1508,10 +1510,13 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Bliain tosaigh:
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cumasaigh geilleagar níos míne (tuilleadh athruithe, agus iad níos lú): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Má dhéantar é a chumasú, athraíonn táirgeadh na dtionscal níos minice, agus i gcéimeanna níos lú. Is iondúil nach mbíonn aon tionchar ag an socrú seo má chuirtear na cineálacha tioinscail ar fáil in NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Má tá sé cumasaithe, tá cead scaireanna i gcuideachta a cheannach agus a dhíol. Ní bheidh scaireanna ar fáil ach do chuideachtaí a bhfuil aois áirithe bainte amach acu
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :An céatadán den bhrabús a íocfar ar chuid den turas i gcórais fhriothálacha: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Agus tú ag tarraingt, cuir síos comharthaí gach: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Socraigh an fad ag a dtógfar comharthaí ar iarnród suas go dtí an chéad chonstaic eile (comhartha, acomhal), agus comharthaí á dtarraingt
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P thíl thíl thíl dtíl tíl}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Agus tú ag tarraingt, coinnigh fad seasta idir comharthaí: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Roghnaigh an chaoi a chuirfear síos comharthaí agus comhartaí á dtarraingt le Ctrl coinnithe síos. Má tá sé cumasaithe, cuirfear comharthaí thart timpeall ar tholláin nó droicid sa chaoi nach mbeidh píosaí fada ann gan aon chomhartha orthu. Má tá sé cumasaithe, cuirfear síos comhartha gach n tíl, rud a fhágann go mbeidh sé níos éasca comharthaí ar iarnróid chomhthreomhara a ailíniú
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Tóg séamafóir go huathoibríoch roimh: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Socraigh an bliain ina n-úsáidfear comharthaí leictreacha ar iarnróid. Roimh an bhliain sin, úsáidfear comharthaí nach comharthaí leictreacha iad (tá an fheidhm cheanainn céanna acu, ach cuma dhifriúil orthu)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Cumasaigh GUI na gcomharthaí: {STRING}

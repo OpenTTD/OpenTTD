@@ -99,7 +99,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pa
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} of coal
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}bag{P "" s} of mail
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} of oil
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}item{P "" s} of livestock
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}head of livestock
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}crate{P "" s} of goods
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} of grain
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} of wood
