@@ -2461,7 +2461,7 @@ STR_AIRPORT_SMALL                                               :소형 공항
 STR_AIRPORT_CITY                                                :도시 공항
 STR_AIRPORT_METRO                                               :대도시 공항
 STR_AIRPORT_INTERNATIONAL                                       :국제 공항
-STR_AIRPORT_COMMUTER                                            :국내 공항
+STR_AIRPORT_COMMUTER                                            :통근용 공항
 STR_AIRPORT_INTERCONTINENTAL                                    :대륙간 공항
 STR_AIRPORT_HELIPORT                                            :헬리콥터 탑승장
 STR_AIRPORT_HELIDEPOT                                           :헬리콥터 격납고
