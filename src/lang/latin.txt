@@ -331,7 +331,7 @@ STR_ABBREV_STEEL                                                :{TINY_FONT}CH
 STR_ABBREV_VALUABLES                                            :{TINY_FONT}RP
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}AE
 STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FR
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}AD
 STR_ABBREV_FOOD                                                 :{TINY_FONT}AL
 STR_ABBREV_PAPER                                                :{TINY_FONT}CA

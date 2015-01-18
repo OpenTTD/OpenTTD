@@ -121,11 +121,11 @@ STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}{P
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}{P mh mh mh m m}ála de mhilseáin
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de chóla
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} d'fhéasóg Daideo
-STR_QUANTITY_BUBBLES                                            :{COMMA} {P sh sh sh s s}súilín{P "" "" "" "" ""}
+STR_QUANTITY_BUBBLES                                            :{COMMA} {P sh sh sh s s}úilín
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de thaifí
 STR_QUANTITY_BATTERIES                                          :{COMMA} {P ch ch ch gc c}eallra{P "" "" "" "" ""}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de phlaisteach
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} {P dh dh dh nd n}eoch súilíneach
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} {P dh dh dh nd d}eoch súilíneach
 STR_QUANTITY_N_A                                                :N/B
 
 # Two letter abbreviation of cargo name
