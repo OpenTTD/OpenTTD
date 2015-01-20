@@ -291,7 +291,7 @@ public:
 	 * @param station_id The airport to modify.
 	 * @pre IsValidStation(station_id).
 	 * @pre HasStationType(station_id, STATION_AIRPORT).
-	 * @return True if the state could be toggled.
+	 * @return True if the state was toggled successfully.
 	 */
 	static bool OpenCloseAirport(StationID station_id);
 
