@@ -846,6 +846,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har ein ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har to like ordrar
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har ein ugyldig stasjon i sine ordre
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har i ordrane ein flyplass der rullebanen er for kort
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er gammal
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er veldig gammal
@@ -1094,6 +1095,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fiendsleg
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AIer tilgjengeleg...{}Du kan lasta ned fleire AI'ar frå nettet med spelets nedlastingssystem.
 
 # Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Innstillingar
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Søkefilter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utvid alle
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
@@ -1589,11 +1591,22 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Plassering
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikk
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyhende / Rådgjevarar
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Rekneskap
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysikk
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Avgrensingar
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofar / ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generer ei verd
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Styremaktane
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byar
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriar
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
@@ -2618,6 +2631,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Lagre
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Lagre gjeldande spel ved å bruke det valde namnet
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Last inn
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Last inn det valde spelet
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Last det valde høgdekartet
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldetaljar
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen informasjon tilgjengeleg
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3262,6 +3276,8 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Slett de
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Gje den valde gruppa nytt namn
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikk for å beskytte denne gruppa frå å global automatisk erstatning
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Slett gruppe
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Er du sikker på at du vil slette denne gruppa og alle underpunkt?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Legg til delte køyretøy
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køyretøy
@@ -3803,6 +3819,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (ikkje på
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis med maks {2:VELOCITY} (utan rutetabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING} med maks {VELOCITY}
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reis {STRING}, ikkje på rutetabell)
 STR_TIMETABLE_STAY_FOR                                          :og bli værande i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
@@ -4261,6 +4278,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du e
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan ikkje lage gruppe...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kan ikkje slette denne gruppa...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kan ikkje gje gruppa nytt namn...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan ikkje setja overordna gruppe...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kan ikkje fjerne alle køyretøy fra denne gruppa...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kan ikkje legge dette køyretøyet til denne gruppa...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kan ikkje legge til gruppe for delte køyretøy...
