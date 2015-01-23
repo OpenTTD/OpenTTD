@@ -481,7 +481,7 @@ STR_SORT_BY_MAX_SPEED                                           :Velocitate maxi
 STR_SORT_BY_MODEL                                               :Typo
 STR_SORT_BY_VALUE                                               :Aestimatione
 STR_SORT_BY_LENGTH                                              :Longitudine
-STR_SORT_BY_LIFE_TIME                                           :Aetate remanente
+STR_SORT_BY_LIFE_TIME                                           :Aetate reliqua
 STR_SORT_BY_TIMETABLE_DELAY                                     :Mora horarii
 STR_SORT_BY_FACILITY                                            :Typo stationis
 STR_SORT_BY_WAITING_TOTAL                                       :Summa onerum manentium
@@ -4201,8 +4201,8 @@ STR_AI_CONFIG_AI                                                :{SILVER}AI
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Eligere {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Ludi Scriptum
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Legere scriptum alium
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Scriptum
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Legere ludi scriptum alium
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Parametra
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Recensere parametra Scripti
 
