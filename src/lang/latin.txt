@@ -296,7 +296,7 @@ STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} c
 STR_QUANTITY_VALUABLES                                          :{G=mp}{COMMA}{NBSP}sacc{P us i} rerum pretiosarum
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} aeris
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} maizii
-STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fructus
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fructuum
 STR_QUANTITY_DIAMONDS                                           :{G=mp}{COMMA}{NBSP}sacc{P us i} adamantum
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} cibi
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} chartae
