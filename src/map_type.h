@@ -19,8 +19,8 @@
 struct Tile {
 	byte   type;        ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 	byte   height;      ///< The height of the northern corner.
-	byte   m1;          ///< Primarily used for ownership information
 	uint16 m2;          ///< Primarily used for indices to towns, industries and stations
+	byte   m1;          ///< Primarily used for ownership information
 	byte   m3;          ///< General purpose
 	byte   m4;          ///< General purpose
 	byte   m5;          ///< General purpose
