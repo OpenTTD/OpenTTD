@@ -429,7 +429,7 @@ struct DepotWindow : Window {
 			pos -= this->vehicle_list.Length();
 			*veh = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
-			x -= VEHICLEINFO_FULL_VEHICLE_WIDTH;
+			x -= UnScaleByZoom(VEHICLEINFO_FULL_VEHICLE_WIDTH * ZOOM_LVL_BASE, ZOOM_LVL_GUI);
 			wagon = true;
 		}
 
@@ -669,7 +669,7 @@ struct DepotWindow : Window {
 
 		/* determine amount of items for scroller */
 		if (this->type == VEH_TRAIN) {
-			uint max_width = VEHICLEINFO_FULL_VEHICLE_WIDTH;
+			uint max_width = UnScaleByZoom(VEHICLEINFO_FULL_VEHICLE_WIDTH * ZOOM_LVL_BASE, ZOOM_LVL_GUI);
 			for (uint num = 0; num < this->vehicle_list.Length(); num++) {
 				uint width = 0;
 				for (const Train *v = Train::From(this->vehicle_list[num]); v != NULL; v = v->Next()) {
