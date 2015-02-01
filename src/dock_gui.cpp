@@ -504,8 +504,8 @@ public:
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y:
-				size->width  = UnScaleByZoom(96 * 4, ZOOM_LVL_GUI) + 2;
-				size->height = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
+				size->width  = ScaleGUITrad(96) + 2;
+				size->height = ScaleGUITrad(64) + 2;
 				break;
 		}
 	}
@@ -514,10 +514,10 @@ public:
 	{
 		this->DrawWidgets();
 
-		int x1 = UnScaleByZoom(63 * 4, ZOOM_LVL_GUI) + 1;
-		int x2 = UnScaleByZoom(31 * 4, ZOOM_LVL_GUI) + 1;
-		int y1 = UnScaleByZoom(17 * 4, ZOOM_LVL_GUI) + 1;
-		int y2 = UnScaleByZoom(33 * 4, ZOOM_LVL_GUI) + 1;
+		int x1 = ScaleGUITrad(63) + 1;
+		int x2 = ScaleGUITrad(31) + 1;
+		int y1 = ScaleGUITrad(17) + 1;
+		int y2 = ScaleGUITrad(33) + 1;
 
 		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + x1, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + y1, AXIS_X, DEPOT_PART_NORTH);
 		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + x2, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + y2, AXIS_X, DEPOT_PART_SOUTH);

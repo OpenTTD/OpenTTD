@@ -119,15 +119,15 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 
 		if (dtss->IsParentSprite()) {
 			Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-			DrawSprite(image, pal, x + UnScaleByZoom(pt.x, ZOOM_LVL_GUI), y + UnScaleByZoom(pt.y, ZOOM_LVL_GUI));
+			DrawSprite(image, pal, x + UnScaleGUI(pt.x), y + UnScaleGUI(pt.y));
 
 			const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
-			child_offset.x = UnScaleByZoom(pt.x + spr->x_offs, ZOOM_LVL_GUI);
-			child_offset.y = UnScaleByZoom(pt.y + spr->y_offs, ZOOM_LVL_GUI);
+			child_offset.x = UnScaleGUI(pt.x + spr->x_offs);
+			child_offset.y = UnScaleGUI(pt.y + spr->y_offs);
 		} else {
 			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
 			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
-			DrawSprite(image, pal, x + child_offset.x + offs_x, y + child_offset.y + offs_y);
+			DrawSprite(image, pal, x + child_offset.x + ScaleGUITrad(offs_x), y + child_offset.y + ScaleGUITrad(offs_y));
 		}
 	}
 }

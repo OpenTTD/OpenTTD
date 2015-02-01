@@ -90,7 +90,9 @@ void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine
 {
 	SpriteID sprite = GetShipIcon(engine, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
-	preferred_x = Clamp(preferred_x, left - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI), right - UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI) - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI));
+	preferred_x = Clamp(preferred_x,
+			left - UnScaleGUI(real_sprite->x_offs),
+			right - UnScaleGUI(real_sprite->width) - UnScaleGUI(real_sprite->x_offs));
 	DrawSprite(sprite, pal, preferred_x, y);
 }
 
@@ -107,10 +109,10 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, i
 {
 	const Sprite *spr = GetSprite(GetShipIcon(engine, image_type), ST_NORMAL);
 
-	width  = UnScaleByZoom(spr->width, ZOOM_LVL_GUI);
-	height = UnScaleByZoom(spr->height, ZOOM_LVL_GUI);
-	xoffs  = UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI);
-	yoffs  = UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI);
+	width  = UnScaleGUI(spr->width);
+	height = UnScaleGUI(spr->height);
+	xoffs  = UnScaleGUI(spr->x_offs);
+	yoffs  = UnScaleGUI(spr->y_offs);
 }
 
 SpriteID Ship::GetImage(Direction direction, EngineImageType image_type) const

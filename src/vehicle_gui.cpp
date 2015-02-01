@@ -665,7 +665,7 @@ struct RefitWindow : public Window {
 				break;
 
 			case WID_VR_VEHICLE_PANEL_DISPLAY:
-				size->height = UnScaleByZoom(4 * GetVehicleHeight(Vehicle::Get(this->window_number)->type), ZOOM_LVL_GUI);
+				size->height = ScaleGUITrad(GetVehicleHeight(Vehicle::Get(this->window_number)->type));
 				break;
 
 			case WID_VR_INFO:
@@ -762,7 +762,7 @@ struct RefitWindow : public Window {
 								}
 
 								if (left != right) {
-									DrawFrameRect(left, r.top + WD_FRAMERECT_TOP, right, r.top + WD_FRAMERECT_TOP + UnScaleByZoom(4 * 14, ZOOM_LVL_GUI) - 1, COLOUR_WHITE, FR_BORDERONLY);
+									DrawFrameRect(left, r.top + WD_FRAMERECT_TOP, right, r.top + WD_FRAMERECT_TOP + ScaleGUITrad(14) - 1, COLOUR_WHITE, FR_BORDERONLY);
 								}
 
 								left = INT32_MIN;
@@ -1289,8 +1289,8 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, Veh
 	if (order == NULL) return;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int l_offset = rtl ? 0 : UnScaleByZoom(4 * 6, ZOOM_LVL_GUI);
-	int r_offset = rtl ? UnScaleByZoom(4 * 6, ZOOM_LVL_GUI) : 0;
+	int l_offset = rtl ? 0 : ScaleGUITrad(6);
+	int r_offset = rtl ? ScaleGUITrad(6) : 0;
 	int i = 0;
 	VehicleOrderID oid = start;
 
@@ -1343,7 +1343,7 @@ void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID se
 uint GetVehicleListHeight(VehicleType type, uint divisor)
 {
 	/* Name + vehicle + profit */
-	uint base = UnScaleByZoom(4 * GetVehicleHeight(type), ZOOM_LVL_GUI) + 2 * FONT_HEIGHT_SMALL;
+	uint base = ScaleGUITrad(GetVehicleHeight(type)) + 2 * FONT_HEIGHT_SMALL;
 	/* Drawing of the 4 small orders + profit*/
 	if (type >= VEH_SHIP) base = max(base, 5U * FONT_HEIGHT_SMALL);
 
@@ -1372,8 +1372,8 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int text_right = right - (rtl ? text_offset :           0);
 
 	bool show_orderlist = this->vli.vtype >= VEH_SHIP;
-	int orderlist_left  = left  + (rtl ? 0 : max(UnScaleByZoom(4 * 100, ZOOM_LVL_GUI) + text_offset, width / 2));
-	int orderlist_right = right - (rtl ? max(UnScaleByZoom(4 * 100, ZOOM_LVL_GUI) + text_offset, width / 2) : 0);
+	int orderlist_left  = left  + (rtl ? 0 : max(ScaleGUITrad(100) + text_offset, width / 2));
+	int orderlist_right = right - (rtl ? max(ScaleGUITrad(100) + text_offset, width / 2) : 0);
 
 	int image_left  = (rtl && show_orderlist) ? orderlist_right : text_left;
 	int image_right = (!rtl && show_orderlist) ? orderlist_left : text_right;
@@ -1909,7 +1909,7 @@ struct VehicleDetailsWindow : Window {
 		uint desired_height;
 		if (v->HasArticulatedPart()) {
 			/* An articulated RV has its text drawn under the sprite instead of after it, hence 15 pixels extra. */
-			desired_height = WD_FRAMERECT_TOP + UnScaleByZoom(4 * 15, ZOOM_LVL_GUI) + 3 * FONT_HEIGHT_NORMAL + 2 + WD_FRAMERECT_BOTTOM;
+			desired_height = WD_FRAMERECT_TOP + ScaleGUITrad(15) + 3 * FONT_HEIGHT_NORMAL + 2 + WD_FRAMERECT_BOTTOM;
 			/* Add space for the cargo amount for each part. */
 			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 				if (u->cargo_cap != 0) desired_height += FONT_HEIGHT_NORMAL + 1;
@@ -1966,7 +1966,7 @@ struct VehicleDetailsWindow : Window {
 			}
 
 			case WID_VD_MATRIX:
-				resize->height = max(UnScaleByZoom(4 * 14, ZOOM_LVL_GUI), WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM);
+				resize->height = max(ScaleGUITrad(14), WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM);
 				size->height = 4 * resize->height;
 				break;
 
@@ -2093,7 +2093,9 @@ struct VehicleDetailsWindow : Window {
 			case WID_VD_MIDDLE_DETAILS: {
 				/* For other vehicles, at the place of the matrix. */
 				bool rtl = _current_text_dir == TD_RTL;
-				uint sprite_width = max<uint>(UnScaleByZoom(GetSprite(v->GetImage(rtl ? DIR_E : DIR_W, EIT_IN_DETAILS), ST_NORMAL)->width, ZOOM_LVL_GUI), 70U) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				uint sprite_width = UnScaleGUI(
+						max<uint>(GetSprite(v->GetImage(rtl ? DIR_E : DIR_W, EIT_IN_DETAILS), ST_NORMAL)->width, 70U)) +
+						WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 
 				uint text_left  = r.left  + (rtl ? 0 : sprite_width);
 				uint text_right = r.right - (rtl ? sprite_width : 0);
@@ -2845,7 +2847,7 @@ int GetVehicleWidth(Vehicle *v, EngineImageType image_type)
 			bool rtl = _current_text_dir == TD_RTL;
 			SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
 			const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
-			vehicle_width = UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI);
+			vehicle_width = UnScaleGUI(real_sprite->width);
 
 			break;
 	}

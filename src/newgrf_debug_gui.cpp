@@ -858,15 +858,15 @@ struct SpriteAlignerWindow : Window {
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
 				int width  = r.right  - r.left + 1;
 				int height = r.bottom - r.top  + 1;
-				int x = r.left - UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI) + (width  - UnScaleByZoom(spr->width, ZOOM_LVL_GUI)) / 2;
-				int y = r.top  - UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI) + (height - UnScaleByZoom(spr->height, ZOOM_LVL_GUI)) / 2;
+				int x = r.left - UnScaleGUI(spr->x_offs) + (width  - UnScaleGUI(spr->width) ) / 2;
+				int y = r.top  - UnScaleGUI(spr->y_offs) + (height - UnScaleGUI(spr->height)) / 2;
 
 				/* And draw only the part within the sprite area */
 				SubSprite subspr = {
-					spr->x_offs + (spr->width  - ScaleByZoom(width,  ZOOM_LVL_GUI)) / 2 + 1,
-					spr->y_offs + (spr->height - ScaleByZoom(height, ZOOM_LVL_GUI)) / 2 + 1,
-					spr->x_offs + (spr->width  + ScaleByZoom(width,  ZOOM_LVL_GUI)) / 2 - 1,
-					spr->y_offs + (spr->height + ScaleByZoom(height, ZOOM_LVL_GUI)) / 2 - 1,
+					spr->x_offs + (spr->width  - UnScaleGUI(width) ) / 2 + 1,
+					spr->y_offs + (spr->height - UnScaleGUI(height)) / 2 + 1,
+					spr->x_offs + (spr->width  + UnScaleGUI(width) ) / 2 - 1,
+					spr->y_offs + (spr->height + UnScaleGUI(height)) / 2 - 1,
 				};
 
 				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr, ZOOM_LVL_GUI);

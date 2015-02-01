@@ -183,12 +183,12 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 {
 	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
-	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + UnScaleByZoom(4 * (this->fs != FS_NORMAL), ZOOM_LVL_GUI) : 0;
+	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + ScaleGUITrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
 }
 
 int SpriteFontCache::GetHeight() const
 {
-	return UnScaleByZoom(4 * this->height, ZOOM_LVL_GUI);
+	return ScaleGUITrad(this->height);
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()

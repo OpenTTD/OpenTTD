@@ -867,15 +867,15 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
 
-		size->width  = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
-		size->height = UnScaleByZoom(48 * 4, ZOOM_LVL_GUI) + 2;
+		size->width  = ScaleGUITrad(64) + 2;
+		size->height = ScaleGUITrad(48) + 2;
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
 
-		DrawRoadDepotSprite(r.left + 1 + UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), r.bottom - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
+		DrawRoadDepotSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1003,8 +1003,8 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 	{
 		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
 
-		size->width  = UnScaleByZoom(64 * 4, ZOOM_LVL_GUI) + 2;
-		size->height = UnScaleByZoom(48 * 4, ZOOM_LVL_GUI) + 2;
+		size->width  = ScaleGUITrad(64) + 2;
+		size->height = ScaleGUITrad(48) + 2;
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -1012,7 +1012,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
 
 		StationType st = (this->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
-		StationPickerDrawSprite(r.left + 1 + UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), r.bottom - UnScaleByZoom(31 * 4, ZOOM_LVL_GUI), st, INVALID_RAILTYPE, widget < WID_BROS_STATION_X ? ROADTYPE_ROAD : _cur_roadtype, widget - WID_BROS_STATION_NE);
+		StationPickerDrawSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), st, INVALID_RAILTYPE, widget < WID_BROS_STATION_X ? ROADTYPE_ROAD : _cur_roadtype, widget - WID_BROS_STATION_NE);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

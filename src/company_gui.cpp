@@ -529,7 +529,7 @@ public:
 
 	uint Height(uint width) const
 	{
-		return max(FONT_HEIGHT_NORMAL, UnScaleByZoom(4 * 12, ZOOM_LVL_GUI) + 2);
+		return max(FONT_HEIGHT_NORMAL, ScaleGUITrad(12) + 2);
 	}
 
 	bool Selectable() const
@@ -543,8 +543,12 @@ public:
 		int height = bottom - top;
 		int icon_y_offset = height / 2;
 		int text_y_offset = (height - FONT_HEIGHT_NORMAL) / 2 + 1;
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, rtl ? right - 2 - UnScaleByZoom(4 * 14, ZOOM_LVL_GUI) : left + UnScaleByZoom(4 * 14, ZOOM_LVL_GUI) + 2, top + icon_y_offset);
-		DrawString(rtl ? left + 2 : left + UnScaleByZoom(4 * 28, ZOOM_LVL_GUI) + 4, rtl ? right - UnScaleByZoom(4 * 28, ZOOM_LVL_GUI) - 4 : right - 2, top + text_y_offset, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result,
+				rtl ? right - 2 - ScaleGUITrad(14) : left + ScaleGUITrad(14) + 2,
+				top + icon_y_offset);
+		DrawString(rtl ? left + 2 : left + ScaleGUITrad(28) + 4,
+				rtl ? right - ScaleGUITrad(28) - 4 : right - 2,
+				top + text_y_offset, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 

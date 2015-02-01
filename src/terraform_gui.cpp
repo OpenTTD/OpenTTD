@@ -559,8 +559,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		if (widget != WID_ETT_DOTS) return;
 
-		size->width  = max<uint>(size->width,  UnScaleByZoom(4 * 59, ZOOM_LVL_GUI));
-		size->height = max<uint>(size->height, UnScaleByZoom(4 * 31, ZOOM_LVL_GUI));
+		size->width  = max<uint>(size->width,  ScaleGUITrad(59));
+		size->height = max<uint>(size->height, ScaleGUITrad(31));
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -575,7 +575,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 		assert(n != 0);
 		do {
-			DrawSprite(SPR_WHITE_POINT, PAL_NONE, center_x + UnScaleByZoom(4 * coords[0], ZOOM_LVL_GUI), center_y + UnScaleByZoom(4 * coords[1], ZOOM_LVL_GUI));
+			DrawSprite(SPR_WHITE_POINT, PAL_NONE, center_x + ScaleGUITrad(coords[0]), center_y + ScaleGUITrad(coords[1]));
 			coords += 2;
 		} while (--n);
 	}

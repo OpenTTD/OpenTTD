@@ -38,17 +38,17 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 	SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
 
-	int width = UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI);
-	int x_offs = UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI);
+	int width = UnScaleGUI(real_sprite->width);
+	int x_offs = UnScaleGUI(real_sprite->x_offs);
 	int x = rtl ? right - width - x_offs : left - x_offs;
 
-	y += UnScaleByZoom(4 * 10, ZOOM_LVL_GUI);
+	y += ScaleGUITrad(10);
 	DrawSprite(sprite, GetVehiclePalette(v), x, y);
 
 	if (v->index == selection) {
 		x += x_offs;
-		y += UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI);
-		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI) + 1, COLOUR_WHITE, FR_BORDERONLY);
+		y += UnScaleGUI(real_sprite->y_offs);
+		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(real_sprite->height) + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

@@ -107,10 +107,10 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 	int reference_width = ROADVEHINFO_DEFAULT_VEHICLE_WIDTH;
 
 	if (offset != NULL) {
-		offset->x = UnScaleByZoom(2 * reference_width, ZOOM_LVL_GUI);
+		offset->x = ScaleGUITrad(reference_width) / 2;
 		offset->y = 0;
 	}
-	return UnScaleByZoom(4 * this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH, ZOOM_LVL_GUI);
+	return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
 }
 
 static SpriteID GetRoadVehIcon(EngineID engine, EngineImageType image_type)
@@ -162,7 +162,9 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
 {
 	SpriteID sprite = GetRoadVehIcon(engine, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
-	preferred_x = Clamp(preferred_x, left - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI), right - UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI) - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI));
+	preferred_x = Clamp(preferred_x,
+			left - UnScaleGUI(real_sprite->x_offs),
+			right - UnScaleGUI(real_sprite->width) - UnScaleGUI(real_sprite->x_offs));
 	DrawSprite(sprite, pal, preferred_x, y);
 }
 
@@ -179,10 +181,10 @@ void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs
 {
 	const Sprite *spr = GetSprite(GetRoadVehIcon(engine, image_type), ST_NORMAL);
 
-	width  = UnScaleByZoom(spr->width, ZOOM_LVL_GUI);
-	height = UnScaleByZoom(spr->height, ZOOM_LVL_GUI);
-	xoffs  = UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI);
-	yoffs  = UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI);
+	width  = UnScaleGUI(spr->width);
+	height = UnScaleGUI(spr->height);
+	xoffs  = UnScaleGUI(spr->x_offs);
+	yoffs  = UnScaleGUI(spr->y_offs);
 }
 
 /**

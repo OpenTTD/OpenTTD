@@ -464,10 +464,10 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	}
 
 	if (offset != NULL) {
-		offset->x = UnScaleByZoom(2 * reference_width, ZOOM_LVL_GUI);
-		offset->y = UnScaleByZoom(4 * vehicle_pitch, ZOOM_LVL_GUI);
+		offset->x = ScaleGUITrad(reference_width) / 2;
+		offset->y = ScaleGUITrad(vehicle_pitch);
 	}
-	return UnScaleByZoom(4 * this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH, ZOOM_LVL_GUI);
+	return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
 }
 
 static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
@@ -514,7 +514,7 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImage
 		SpriteID sprite = GetCustomVehicleIcon(engine, dir, image_type);
 		if (sprite != 0) {
 			if (e->GetGRF() != NULL) {
-				y += UnScaleByZoom(4 * e->GetGRF()->traininfo_vehicle_pitch, ZOOM_LVL_GUI);
+				y += ScaleGUITrad(e->GetGRF()->traininfo_vehicle_pitch);
 			}
 			return sprite;
 		}
@@ -538,14 +538,18 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 		const Sprite *real_spritef = GetSprite(spritef, ST_NORMAL);
 		const Sprite *real_spriter = GetSprite(spriter, ST_NORMAL);
 
-		preferred_x = Clamp(preferred_x, left - UnScaleByZoom(real_spritef->x_offs, ZOOM_LVL_GUI) + UnScaleByZoom(14 * 4, ZOOM_LVL_GUI), right - UnScaleByZoom(real_spriter->width, ZOOM_LVL_GUI) - UnScaleByZoom(real_spriter->x_offs, ZOOM_LVL_GUI) - UnScaleByZoom(15 * 4, ZOOM_LVL_GUI));
+		preferred_x = Clamp(preferred_x,
+				left - UnScaleGUI(real_spritef->x_offs) + ScaleGUITrad(14),
+				right - UnScaleGUI(real_spriter->width) - UnScaleGUI(real_spriter->x_offs) - ScaleGUITrad(15));
 
-		DrawSprite(spritef, pal, preferred_x - UnScaleByZoom(14 * 4, ZOOM_LVL_GUI), yf);
-		DrawSprite(spriter, pal, preferred_x + UnScaleByZoom(15 * 4, ZOOM_LVL_GUI), yr);
+		DrawSprite(spritef, pal, preferred_x - ScaleGUITrad(14), yf);
+		DrawSprite(spriter, pal, preferred_x + ScaleGUITrad(15), yr);
 	} else {
 		SpriteID sprite = GetRailIcon(engine, false, y, image_type);
 		const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
-		preferred_x = Clamp(preferred_x, left - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI), right - UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI) - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI));
+		preferred_x = Clamp(preferred_x,
+				left - UnScaleGUI(real_sprite->x_offs),
+				right - UnScaleGUI(real_sprite->width) - UnScaleGUI(real_sprite->x_offs));
 		DrawSprite(sprite, pal, preferred_x, y);
 	}
 }
@@ -566,20 +570,20 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 	SpriteID sprite = GetRailIcon(engine, false, y, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
 
-	width  = UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI);
-	height = UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI);
-	xoffs  = UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI);
-	yoffs  = UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI);
+	width  = UnScaleGUI(real_sprite->width);
+	height = UnScaleGUI(real_sprite->height);
+	xoffs  = UnScaleGUI(real_sprite->x_offs);
+	yoffs  = UnScaleGUI(real_sprite->y_offs);
 
 	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
 		sprite = GetRailIcon(engine, true, y, image_type);
 		real_sprite = GetSprite(sprite, ST_NORMAL);
 
 		/* Calculate values relative to an imaginary center between the two sprites. */
-		width = UnScaleByZoom(TRAININFO_DEFAULT_VEHICLE_WIDTH * 4, ZOOM_LVL_GUI) + UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI) + UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI) - xoffs;
-		height = max<uint>(height, UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI));
-		xoffs  = xoffs - UnScaleByZoom(TRAININFO_DEFAULT_VEHICLE_WIDTH * 4, ZOOM_LVL_GUI) / 2;
-		yoffs  = min(yoffs, UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI));
+		width = ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(real_sprite->width) + UnScaleGUI(real_sprite->x_offs) - xoffs;
+		height = max<uint>(height, UnScaleGUI(real_sprite->height));
+		xoffs  = xoffs - ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) / 2;
+		yoffs  = min(yoffs, UnScaleGUI(real_sprite->y_offs));
 	}
 }
 

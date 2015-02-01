@@ -71,8 +71,6 @@ extern Dimension _resolutions[32];
 extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
-extern ZoomLevelByte _gui_zoom;
-
 void HandleKeypress(uint keycode, WChar key);
 void HandleTextInput(const char *str, bool marked = false, const char *caret = NULL, const char *insert_location = NULL, const char *replacement_end = NULL);
 void HandleCtrlChanged();

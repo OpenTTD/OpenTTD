@@ -74,7 +74,7 @@ static int HighlightDragPosition(int px, int max_width, VehicleID selection)
 
 	if (drag_hlight_width > 0) {
 		GfxFillRect(drag_hlight_left + WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP + 1,
-				drag_hlight_right - WD_FRAMERECT_RIGHT, UnScaleByZoom(4 * 13, ZOOM_LVL_GUI) - WD_FRAMERECT_BOTTOM, _colour_gradient[COLOUR_GREY][7]);
+				drag_hlight_right - WD_FRAMERECT_RIGHT, ScaleGUITrad(13) - WD_FRAMERECT_BOTTOM, _colour_gradient[COLOUR_GREY][7]);
 	}
 
 	return drag_hlight_width;
@@ -100,7 +100,7 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 	int highlight_l = 0;
 	int highlight_r = 0;
 	int max_width = right - left + 1;
-	int height = UnScaleByZoom(4 * 14, ZOOM_LVL_GUI);
+	int height = ScaleGUITrad(14);
 
 	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, height)) return;
 
@@ -355,7 +355,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 	/* get rid of awkward offset */
 	y -= WD_MATRIX_TOP;
 
-	int sprite_height = UnScaleByZoom(4 * GetVehicleHeight(VEH_TRAIN), ZOOM_LVL_GUI);
+	int sprite_height = ScaleGUITrad(GetVehicleHeight(VEH_TRAIN));
 	int line_height = max(sprite_height, WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM);
 	int sprite_y_offset = line_height / 2;
 	int text_y_offset = (line_height - FONT_HEIGHT_NORMAL) / 2;
@@ -379,7 +379,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 					int pitch = 0;
 					const Engine *e = Engine::Get(v->engine_type);
 					if (e->GetGRF() != NULL) {
-						pitch = UnScaleByZoom(4 * e->GetGRF()->traininfo_vehicle_pitch, ZOOM_LVL_GUI);
+						pitch = ScaleGUITrad(e->GetGRF()->traininfo_vehicle_pitch);
 					}
 					PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 					DrawSprite(u->GetImage(dir, EIT_IN_DETAILS), pal, px + (rtl ? -offset.x : offset.x), y - line_height * vscroll_pos + sprite_y_offset + pitch);
@@ -389,7 +389,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 				u = u->Next();
 			} while (u != NULL && u->IsArticulatedPart());
 
-			bool separate_sprite_row = (dx > (uint)UnScaleByZoom(4 * TRAIN_DETAILS_MAX_INDENT, ZOOM_LVL_GUI));
+			bool separate_sprite_row = (dx > (uint)ScaleGUITrad(TRAIN_DETAILS_MAX_INDENT));
 			if (separate_sprite_row) {
 				vscroll_pos--;
 				dx = 0;
@@ -397,7 +397,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 
 			uint num_lines = max(1u, _cargo_summary.Length());
 			for (uint i = 0; i < num_lines; i++) {
-				int sprite_width = max<int>(dx, UnScaleByZoom(4 * TRAIN_DETAILS_MIN_INDENT, ZOOM_LVL_GUI)) + 3;
+				int sprite_width = max<int>(dx, ScaleGUITrad(TRAIN_DETAILS_MIN_INDENT)) + 3;
 				int data_left  = left + (rtl ? 0 : sprite_width);
 				int data_right = right - (rtl ? sprite_width : 0);
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {

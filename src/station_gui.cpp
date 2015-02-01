@@ -806,7 +806,7 @@ static const NWidgetPart _nested_station_view_widgets[] = {
  */
 static void DrawCargoIcons(CargoID i, uint waiting, int left, int right, int y)
 {
-	int width = UnScaleByZoom(4 * 10, ZOOM_LVL_GUI);
+	int width = ScaleGUITrad(10);
 	uint num = min((waiting + (width / 2)) / width, (right - left) / width); // maximum is width / 10 icons so it won't overflow
 	if (num == 0) return;
 

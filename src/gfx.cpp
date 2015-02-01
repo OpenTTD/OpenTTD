@@ -1532,10 +1532,10 @@ void UpdateCursorSize()
 	CursorVars *cv = &_cursor;
 	const Sprite *p = GetSprite(GB(cv->sprite, 0, SPRITE_WIDTH), ST_NORMAL);
 
-	cv->size.y = UnScaleByZoom(p->height, ZOOM_LVL_GUI);
-	cv->size.x = UnScaleByZoom(p->width, ZOOM_LVL_GUI);
-	cv->offs.x = UnScaleByZoom(p->x_offs, ZOOM_LVL_GUI);
-	cv->offs.y = UnScaleByZoom(p->y_offs, ZOOM_LVL_GUI);
+	cv->size.y = UnScaleGUI(p->height);
+	cv->size.x = UnScaleGUI(p->width);
+	cv->offs.x = UnScaleGUI(p->x_offs);
+	cv->offs.y = UnScaleGUI(p->y_offs);
 
 	cv->dirty = true;
 }
