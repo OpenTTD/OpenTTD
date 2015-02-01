@@ -26,6 +26,8 @@ struct Tile {
 	byte   m5;          ///< General purpose
 };
 
+assert_compile(sizeof(Tile) == 8);
+
 /**
  * Data that is stored per tile. Also used Tile for this.
  * Look at docs/landscape.html for the exact meaning of the members.
