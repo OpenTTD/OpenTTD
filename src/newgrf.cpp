@@ -3471,6 +3471,15 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 							} else if (itt[k].gfx == 0xFF) {
 								itt[k].ti.x = (int8)GB(itt[k].ti.x, 0, 8);
 								itt[k].ti.y = (int8)GB(itt[k].ti.y, 0, 8);
+
+								/* When there were only 256x256 maps, TileIndex was a uint16 and
+								 * itt[k].ti was just a TileIndexDiff that was added to it.
+								 * As such negative "x" values were shifted into the "y" position.
+								 *   x = -1, y = 1 -> x = 255, y = 0
+								 * Since GRF version 8 the position is interpreted as pair of independent int8.
+								 * For GRF version < 8 we need to emulate the old shifting behaviour.
+								 */
+								if (_cur.grffile->grf_version < 8 && itt[k].ti.x < 0) itt[k].ti.y += 1;
 							}
 						}
 
