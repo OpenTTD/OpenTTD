@@ -37,7 +37,7 @@
 extern void MakeNewgameSettingsLive();
 
 /** Enum for the modes we can generate in. */
-enum GenenerateLandscapeWindowMode {
+enum GenerateLandscapeWindowMode {
 	GLWM_GENERATE,  ///< Generate new game.
 	GLWM_HEIGHTMAP, ///< Load from heightmap.
 	GLWM_SCENARIO,  ///< Generate flat land.
@@ -258,7 +258,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 	EndContainer(),
 };
 
-static void StartGeneratingLandscape(GenenerateLandscapeWindowMode mode)
+static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 {
 	DeleteAllNonVitalWindows();
 	ClearErrorMessages();
@@ -278,7 +278,7 @@ static void StartGeneratingLandscape(GenenerateLandscapeWindowMode mode)
 
 static void LandscapeGenerationCallback(Window *w, bool confirmed)
 {
-	if (confirmed) StartGeneratingLandscape((GenenerateLandscapeWindowMode)w->window_number);
+	if (confirmed) StartGeneratingLandscape((GenerateLandscapeWindowMode)w->window_number);
 }
 
 static DropDownList *BuildMapsizeDropDown()
@@ -312,7 +312,7 @@ struct GenerateLandscapeWindow : public Window {
 	uint x;
 	uint y;
 	char name[64];
-	GenenerateLandscapeWindowMode mode;
+	GenerateLandscapeWindowMode mode;
 
 	GenerateLandscapeWindow(WindowDesc *desc, WindowNumber number = 0) : Window(desc)
 	{
@@ -320,7 +320,7 @@ struct GenerateLandscapeWindow : public Window {
 
 		this->LowerWidget(_settings_newgame.game_creation.landscape + WID_GL_TEMPERATE);
 
-		this->mode = (GenenerateLandscapeWindowMode)this->window_number;
+		this->mode = (GenerateLandscapeWindowMode)this->window_number;
 
 		/* Disable town, industry and trees in SE */
 		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
@@ -820,7 +820,7 @@ static WindowDesc _heightmap_load_desc(
 	_nested_heightmap_load_widgets, lengthof(_nested_heightmap_load_widgets)
 );
 
-static void _ShowGenerateLandscape(GenenerateLandscapeWindowMode mode)
+static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 {
 	uint x = 0;
 	uint y = 0;
