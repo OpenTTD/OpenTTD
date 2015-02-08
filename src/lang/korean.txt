@@ -1695,7 +1695,7 @@ STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨�
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :오리지널
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(추천)
+STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(권장)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :열차에 사용할 경로 탐색법: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :열차에 사용할 경로 탐색 방법을 선택합니다.
@@ -2017,11 +2017,11 @@ STR_NETWORK_LANG_TURKISH                                        :터키어
 STR_NETWORK_LANG_UKRAINIAN                                      :우크라이나어
 STR_NETWORK_LANG_AFRIKAANS                                      :아프리카어
 STR_NETWORK_LANG_CROATIAN                                       :크로아티아어
-STR_NETWORK_LANG_CATALAN                                        :카탈로니아
-STR_NETWORK_LANG_ESTONIAN                                       :에스토니아
-STR_NETWORK_LANG_GALICIAN                                       :갈리시아
-STR_NETWORK_LANG_GREEK                                          :그리스
-STR_NETWORK_LANG_LATVIAN                                        :라트비아
+STR_NETWORK_LANG_CATALAN                                        :카탈로니아어
+STR_NETWORK_LANG_ESTONIAN                                       :에스토니아어
+STR_NETWORK_LANG_GALICIAN                                       :갈리시아어
+STR_NETWORK_LANG_GREEK                                          :그리스어
+STR_NETWORK_LANG_LATVIAN                                        :라트비아어
 ############ End of leave-in-this-order
 
 # Network game lobby
@@ -2065,7 +2065,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}회사 �
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명의 접속자가 먼저 기다리고 있습니다
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}지금까지 {BYTES}를 다운로드하였습니다
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 다운로드
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 다운로드 됨
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}접속 끊기
 
@@ -2236,7 +2236,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}필요한 요소: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}태그: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD가 "zlib" 지원 기능을 포함하지 않고 만들어졌습니다...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠를 다운로드 할 수가 없습니다!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}기본 그래픽
@@ -2956,10 +2956,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<알 수 없는
 STR_INVALID_VEHICLE                                             :<알 수 없는 차량>
 
 # NewGRF scanning window
-STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF 검색
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF 검색 중
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF을 검색하는 중입니다. 파일 개수에 따라 시간이 조금 걸릴 수 있습니다...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}약 {1:NUM}개의 NewGRF 중에서 {0:NUM}개의 NewGRF을 찾았습니다
-STR_NEWGRF_SCAN_ARCHIVES                                        :자료 검색
+STR_NEWGRF_SCAN_ARCHIVES                                        :자료 검색 중
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
@@ -3367,7 +3367,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 �
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :새 열차
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :새 전기 열차
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :새 모노레일
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :새 모노레일 열차
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :새 자기부상열차
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :새 열차
@@ -4395,7 +4395,7 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공�
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}열차를 구입할 수 없습니다...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}차량을 구입할 수 없습니다...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}선박을 구입할 수 없습니다...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}항공기를 구입 할 수 없습니다...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}항공기를 구입할 수 없습니다...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}열차의 차량 이름을 다시 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}차종명을 다시 지정할 수 없습니다...
