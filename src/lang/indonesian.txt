@@ -95,7 +95,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Berdesi
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}penumpang
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} batubara
 STR_QUANTITY_MAIL                                               :{COMMA} kantong surat
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} minyak
@@ -249,7 +249,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Batang G
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Runtuhkan bangunan, dll dalam area kotak. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Tampilkan yang tersembunyi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Tampilkan yang tersembunyi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Tampilkan yang tersembunyi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Tampilkan yang tersembunyi
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Mengaktifkan tombol ini akan menampilkan juga kereta yang tersembunyi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Mengaktifkan tombol ini akan menampilkan juga kendaraan yang tersembunyi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Mengaktifkan tombol ini akan menampilkan juga kapal yang tersembunyi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Mengaktifkan tombol ini akan menampilkan juga pesawat yang tersembunyi
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standar
@@ -364,6 +372,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Pengaturan
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Pengaturan AI / Skrip Permainan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
@@ -975,6 +984,13 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi layar yang diinginkan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Ukuran antarmuka
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pilih ukuran elemen antarmuka yang akan digunakan
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Kali dua
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kali empat
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Grafik Dasar
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih grafik dasar yang digunakan
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} berkas hilang atau rusak
@@ -1068,6 +1084,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Sangat Datar
 STR_TERRAIN_TYPE_FLAT                                           :Datar
 STR_TERRAIN_TYPE_HILLY                                          :Berbukit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Pegunungan
+STR_TERRAIN_TYPE_ALPINIST                                       :Pemanjat Gunung
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
@@ -1075,7 +1092,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa macam AI lewat "Cari Konten"
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Pengaturan
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Penyaring kata:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Perluas semua
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Persempit semua
@@ -1091,9 +1109,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setting perusah
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Jenis:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Batasi daftar dibawah ini menggunakan filter yang telah ditetapkan
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pengaturan dasar
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pengaturan lanjut
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pengaturan mahir / semua aturan
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pengaturan dasar (hanya pengaturan yang penting)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pengaturan lanjut (lebih banyak pengaturan)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pengaturan mahir (tampilkan semua, termasuk yang tak biasa)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Pengaturan dengan nilai berbeda dari nilai asli
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Pengaturan dengan nilai berbeda dari pengaturan permainan baru
 
@@ -1148,6 +1166,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Mengaktifkan be
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap pemerintah kota terhadap restrukturasi area: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih seberapa banyak dampak kebisingan dan lingkungan oleh perusahaan terhadap peringkat kota karena pembangunan di daerah
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Tinggi peta maksimum: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Atur ketinggian pegunungan maksimum yang diijinkan untuk peta ini
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kamu tidak bisa mengubah ketinggian peta maksimum di angka itu. Setidaknya ada satu gunung di peta yang lebih tinggi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ijinkan pembentukan tanah dibawah bangunan dan trek tanpa merusaknya
 STR_CONFIG_SETTING_CATCHMENT                                    :Ijinkan ukuran jangkauan wilayah lebih realistik: {STRING}
@@ -1176,6 +1197,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflasi: {STRIN
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Perbolehkan inflasi dalam ekonomi, dimana biaya naik sedikit lebih cepat daripada pembayaran
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Panjang maksimum jembatan: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Panjang maksimum untuk membuat jembatan
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimum tinggi jembatan: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Tinggi maksimum untuk pembangunan jembatan
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Panjang maksimum terowongan: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Panjang maksimum untuk membangun terowongan
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metode pembangunan Industri primer : {STRING}
@@ -1597,7 +1620,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetris" bera
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modus distribusi untuk surat: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetris" berarti kira-kira jumlah surat yang sama akan pergi dari stasiun A ke stasiun B sebagaimana dari B ke A. "asimetris" berarti jumlah surat yang pergi ke kedua arah bisa berbeda-beda. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk surat.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modus distribusi untuk kelas kargo BERLAPIS BAJA: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Kelas kargo BERLAPIS BAJA mengandung barang berharga di iklim sedang, intan di sub tropis atau emas di iklim sub arktik. NewGRFs mungkin mengubah itu. "simetris" berarti bahwa kira-kira sama jumlah kargo itu akan pergi dari stasiun A ke stasiun B sebagai dari B ke A. "asimetris" berarti sewenang-wenang jumlah kargo itu bisa pergi di kedua arah. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo itu. Disarankan untuk diaturkan ini ke asimetris atau manual ketika bermain sub arktik, sebagai bank tidak mengirim emas apapun kembali ke tambang emas. Untuk iklim sedang dan sub tropis anda juga bisah pilih simetris sebagian bank akan mengirim barang berharga kembali ke bank orisinil dari beberapa banyak barang berharga.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Kelas kargo BERLAPIS BAJA meliputi barang berharga pada iklim tropis, intan pada sub tropis atau emas pada iklim sub arktik. NewGRF mungkin mengubah itu. "simetris" berarti bahwa jumlah kargo kira-kira akan terkirim sama dari stasiun A ke stasiun B sebagaimana dari B ke A. "asimetris" berarti jumlah kargo terkirim bisa berbeda pada kedua arah. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo itu. Disarankan untuk memilih asimetris atau manual ketika bermain sub arktik, karena bank tidak mengirim emas kembali ke tambang emas. Untuk iklim tropis dan sub tropis anda juga bisah pilih simetris karena bank akan mengirim kembali beberapa barang berharga ke bank asalnya.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modus distribusi untuk kelas kargo yang lain: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simetris" berarti bahwa kira-kira sama jumlah kargo akan pergi dari stasiun A ke stasiun B sebagai dari B ke A. "asimetris" berarti sewenang-wenang jumlah kargo bisa pergi di kedua arah. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo. Anda mungkin mau mengaturkan ini untuk "asimetris" atau manual.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Ketepatan distribusi: {STRING}
@@ -1716,6 +1739,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Bermain 
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel nilai tertinggi
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Pengaturan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari konten
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Pengaturan AI / Permainan
@@ -1735,6 +1759,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih ga
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Tampilkan opsi permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilkan tabel nilai tertinggi
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Tampilkan Pengaturan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan setelan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Tampilkan pengaturan permainan dan AI
@@ -1774,6 +1799,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat tak akan (sering) celaka di bandara kecil: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Ubah tinggi peta maksimum: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Ubah tinggi maksimum gunug di peta
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap 'Sedang'
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lansekap 'Sub Arktik'
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Lansekap 'Sub Tropis'
@@ -2292,7 +2319,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bangun r
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bangun depo (untuk pembelian dan perbaikan kereta). Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ubah rel menjadi waypoint. Ctrl untuk mengaktifkan penggabungan waypoint. Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bangun stasiun kereta. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta. Ctrl - berganti sinyal bendera-lampu. Drag - membuat sinyal sepanjang rel. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membuat sinyal kereta. Ctrl - berganti sinyal bendera/lampu{}Drag - membuat sinyal sesuai arah sepanjang rel. Ctrl - membuat sinyal sampai persimpangan/sinyal berikutnya{}Ctrl+Klik - mengubah pemilihan sinyal di jendela. Shift - untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangun Jembatan kereta. Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta. Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/bongkar rel kereta, sinyal, waypoint, dan stasiun. Tekan Ctrl juga dapat membongkar rel pada waypoint dan stasiun
@@ -2699,6 +2726,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah Kota:
 STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Tinggi peta maksimum:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Naikkan satu ketinggian maksimum gunung di peta
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Turunkan satu ketinggian maksimum gunung di peta
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Tinggi garis salju:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Naikkan ketinggian garis salju satu angka
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Turunkan ketinggian garis salju satu angka
@@ -2728,6 +2758,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama Pet
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Luas:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Ubah ketinggian peta maksimal
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ubah ketinggian garis salju
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ganti Tahun Permulaan
 
@@ -3389,8 +3420,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Ganti na
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Ubah nama jenis kapal
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ubah nama jenis pesawat
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Sembunyikan
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Sembunyikan
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Sembunyikan
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Sembunyikan
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Tampilkan
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Tampilkan
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Tampilkan
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Tampilkan
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Menampilkan/Sembunyikan jenis kendaraan kereta
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Menampilkan/Sembunyikan jenis kendaraan bus/truk
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Menampilkan/Sembunyikan jenis kendaraan kapal
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Menampilkan/Sembunyikan jenis kendaraan pesawat
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ubah nama jenis kereta
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ganti nama jenis kendaraan
@@ -3445,7 +3488,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gandakan
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gandakan
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Gandakan
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan menggandakan kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Klik untuk berbagi perintah. Shift+Klik untuk menampilkan perkiraan biaya tanpa membelinya
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar bengkel.Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya tanpa membeli
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ini akan membeli satu unit kapal yang sama . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli satu unit pesawat yang sama. Klik tombol ini dan kemudian pada satu pesawat didalam atau diluar hangar. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
@@ -3496,6 +3539,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Kendaraan Jalan
 STR_REPLACE_VEHICLE_SHIP                                        :Kapal
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Pesawat
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Kendaraan sedang digunakan
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Kolom berisi kendaraan yang kamu miliki
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Kendaraan tersedia
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Kolom berisi kendaraan yang tersedia untuk penggantian
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pilih jenis kendaraan yang akan diganti
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pilih jenis mesin yang ingin digunakan sebagai pengganti mesin terpilih di sisi kiri
@@ -4096,6 +4143,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Penggali
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Telah sama dengan ketinggian laut
 STR_ERROR_TOO_HIGH                                              :{WHITE}Terlalu tinggi
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... sudah rata
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Jembatan diatas situ akan terlalu tinggi pada akhirnya.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Tidak dapat mengubah nama perusahaan
@@ -4146,6 +4194,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... huta
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... hanya bisa dibangun diatas garis salju
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... hanya dapat dibangun di bawah batas salju
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Tidak ada tempat yang sesuai untuk industri '{STRING}'
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Ubah pembuatan peta untuk memperoleh peta yang lebih baik
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Tidak dapat membangun stasiun kereta disini
@@ -4283,6 +4333,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Harus me
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Tidak dapat awal dan akhir pada spot/titik lokasi yang sama
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Ujung jembatan tidak pada level yang sama
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Jembatan lebih rendah dari daratan
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Jembatan terlalu tinggi untuk medan ini.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Awal dan akhir harus segaris
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua ujung jembatan harus berada di daratan
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... jembatan terlalu panjang
@@ -4847,6 +4898,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (tersembunyi)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
