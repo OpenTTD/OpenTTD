@@ -120,7 +120,7 @@ void NetworkInitChatMessage()
 
 	_chatmsg_list        = ReallocT(_chatmsg_list, _settings_client.gui.network_chat_box_height);
 	_chatmsg_box.x       = 10;
-	_chatmsg_box.width   = _settings_client.gui.network_chat_box_width;
+	_chatmsg_box.width   = _settings_client.gui.network_chat_box_width_pct * _screen.width / 100;
 	NetworkReInitChatBoxSize();
 	_chatmessage_visible = false;
 

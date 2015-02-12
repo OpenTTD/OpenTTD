@@ -144,7 +144,7 @@ struct GUISettings {
 	uint8  station_gui_sort_by;              ///< sort cargo entries in the station gui by station name or amount
 	uint8  station_gui_sort_order;           ///< the sort order of entries in the station gui - ascending or descending
 #ifdef ENABLE_NETWORK
-	uint16 network_chat_box_width;           ///< width of the chat box in pixels
+	uint16 network_chat_box_width_pct;       ///< width of the chat box in percent
 	uint8  network_chat_box_height;          ///< height of the chat box in lines
 	uint16 network_chat_timeout;             ///< timeout of chat messages in seconds
 #endif
