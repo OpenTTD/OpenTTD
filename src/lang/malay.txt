@@ -953,6 +953,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih re
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Saiz Antaramuka
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Sila pilih saiz elemen antara muka untuk digunakan
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Biasa
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Saiz berganda
@@ -1122,6 +1123,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih tahap keb
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Ketinggian maksimum peta: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Tetapkan ketinggian maksimum yang dibenarkan bagi gunung pada peta
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kamu tidak boleh ubah ketinggian maxima kepada nilai ini. Sekurang-kurangnya satu gunung di dalam peta lebih tinggi.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Benarkan landskap di arah bangunan dan trek tanpa memusnahkannya
 STR_CONFIG_SETTING_CATCHMENT                                    :Benarkan kawasan tangkapan yang lebih realistik: {STRING}
@@ -1150,6 +1152,7 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflasi: {STRIN
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Mengupayakan inflasi kepada ekonomi, di mana kos adalah sedikit lebih cepat meningkat daripada pembayaran
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Panjang maksimum jambatan: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Panjang maksimum untuk binaan jambatan
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Ketinggian jambatan maksima: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Ketinggian maksimum untuk membina jambatan
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Panjang maksimum terowong: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Panjang maksimum binaan terowong
@@ -1476,6 +1479,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih la
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Paparkan pilihan permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Paparan carta mata tertinggi
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Pamerkan pilihan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Paparkan tetapan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Periksa kandungan baru atau yang telah dikemaskini untuk dimuat turun
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Paparan Al/Tetapan Skrip Permainan
@@ -1515,6 +1519,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Jentolak ajaib (buang industri dan objek lain yang biasanya tidak boleh dibuang): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowong boleh bersilang: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat jet tidak akan (sentiasa) terhempas di lapangan terbang kecil: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Ubah ketinggian maxima di dalam peta: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Ubah ketinggian maxima gunung di dalam peta
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap temperate
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lanskap subartik
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Lanskap subtropik
@@ -2420,6 +2426,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah bandar:
 STR_MAPGEN_DATE                                                 :{BLACK}Tarikh:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Ketinggian maxima peta:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Mengurangkan ketinggian maksimum gunung di peta oleh satu
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Mengurangkan ketinggian maksimum gunung di peta oleh satu
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Paras ketinggian garis salji:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tinggikan paras garis salji satu petak
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Rendahkan paras garis salji satu petak
@@ -3742,6 +3751,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Penggali
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... sudah berada di paras laut
 STR_ERROR_TOO_HIGH                                              :{WHITE}... terlalu tinggi
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... sudah rata
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Selepas itu jambatan atasnya akan jadi terlalu tinggi.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nama syarikat tidak dapat ditukar...
@@ -4481,6 +4491,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (tersembunyi)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
