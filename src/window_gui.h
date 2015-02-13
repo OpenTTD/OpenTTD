@@ -167,15 +167,13 @@ struct HotkeyList;
  */
 struct WindowDesc : ZeroedMemoryAllocator {
 
-	WindowDesc(WindowPosition default_pos, const char *ini_key, int16 def_width, int16 def_height,
+	WindowDesc(WindowPosition default_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
 			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys = NULL);
 
 	~WindowDesc();
 
 	WindowPosition default_pos;    ///< Preferred position of the window. @see WindowPosition()
-	int16 default_width;           ///< Preferred initial width of the window.
-	int16 default_height;          ///< Preferred initial height of the window.
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
 	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c NULL if nothing shall be stored.
@@ -188,13 +186,16 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	int16 pref_width;              ///< User-preferred width of the window. Zero if unset.
 	int16 pref_height;             ///< User-preferred height of the window. Zero if unset.
 
-	int16 GetDefaultWidth() const { return this->pref_width != 0 ? this->pref_width : this->default_width; }
-	int16 GetDefaultHeight() const { return this->pref_height != 0 ? this->pref_height : this->default_height; }
+	int16 GetDefaultWidth() const;
+	int16 GetDefaultHeight() const;
 
 	static void LoadFromConfig();
 	static void SaveToConfig();
 
 private:
+	int16 default_width_trad;      ///< Preferred initial width of the window (pixels at 1x zoom).
+	int16 default_height_trad;     ///< Preferred initial height of the window (pixels at 1x zoom).
+
 	/**
 	 * Dummy private copy constructor to prevent compilers from
 	 * copying the structure, which fails due to _window_descs.

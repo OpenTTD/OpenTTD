@@ -87,12 +87,10 @@ static SmallVector<WindowDesc*, 16> *_window_descs = NULL;
 char *_windows_file;
 
 /** Window description constructor. */
-WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width, int16 def_height,
+WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
 			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys) :
 	default_pos(def_pos),
-	default_width(def_width),
-	default_height(def_height),
 	cls(window_class),
 	parent_cls(parent_class),
 	ini_key(ini_key),
@@ -102,7 +100,9 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	hotkeys(hotkeys),
 	pref_sticky(false),
 	pref_width(0),
-	pref_height(0)
+	pref_height(0),
+	default_width_trad(def_width_trad),
+	default_height_trad(def_height_trad)
 {
 	if (_window_descs == NULL) _window_descs = new SmallVector<WindowDesc*, 16>();
 	*_window_descs->Append() = this;
@@ -111,6 +111,26 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 WindowDesc::~WindowDesc()
 {
 	_window_descs->Erase(_window_descs->Find(this));
+}
+
+/**
+ * Determine default width of window.
+ * This is either a stored user preferred size, or the build-in default.
+ * @return Width in pixels.
+ */
+int16 WindowDesc::GetDefaultWidth() const
+{
+	return this->pref_width != 0 ? this->pref_width : ScaleGUITrad(this->default_width_trad);
+}
+
+/**
+ * Determine default height of window.
+ * This is either a stored user preferred size, or the build-in default.
+ * @return Height in pixels.
+ */
+int16 WindowDesc::GetDefaultHeight() const
+{
+	return this->pref_height != 0 ? this->pref_height : ScaleGUITrad(this->default_height_trad);
 }
 
 /**
