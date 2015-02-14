@@ -2161,7 +2161,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :치트 사용 �
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :서버 꽉참
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :너무 많은 명령 전송
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :제 시간에 비밀번호를 입력하십시오
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :일반적인 시간 초과
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :반응 시간 초과
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :지도 다운로드 시간 초과
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :지도 생성 / 입장 시간 초과
 ############ End of leave-in-this-order
