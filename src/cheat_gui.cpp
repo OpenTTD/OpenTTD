@@ -125,7 +125,8 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
  * @return New value (or unchanged old value) of the maximum
  *         allowed heightlevel value.
  */
-static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2) {
+static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2)
+{
 	p1 = Clamp(p1, MIN_MAX_HEIGHTLEVEL, MAX_MAX_HEIGHTLEVEL);
 
 	/* Check if at least one mountain on the map is higher than the new value.

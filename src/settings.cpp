@@ -1277,6 +1277,27 @@ static bool ChangeDynamicEngines(int32 p1)
 	return true;
 }
 
+static bool ChangeMaxHeightLevel(int32 p1)
+{
+	if (_game_mode == GM_NORMAL) return false;
+	if (_game_mode != GM_EDITOR) return true;
+
+	/* Check if at least one mountain on the map is higher than the new value.
+	 * If yes, disallow the change. */
+	for (TileIndex t = 0; t < MapSize(); t++) {
+		if ((int32)TileHeight(t) > p1) {
+			ShowErrorMessage(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN, INVALID_STRING_ID, WL_ERROR);
+			/* Return old, unchanged value */
+			return false;
+		}
+	}
+
+	/* The smallmap uses an index from heightlevels to colours. Trigger rebuilding it. */
+	InvalidateWindowClassesData(WC_SMALLMAP, 2);
+
+	return true;
+}
+
 static bool StationCatchmentChanged(int32 p1)
 {
 	Station::RecomputeIndustriesNearForAll();
