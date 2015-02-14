@@ -12,10 +12,12 @@
 #ifndef TILE_TYPE_H
 #define TILE_TYPE_H
 
-static const uint TILE_SIZE      = 16;            ///< Tiles are 16x16 "units" in size
-static const uint TILE_UNIT_MASK = TILE_SIZE - 1; ///< For masking in/out the inner-tile units.
-static const uint TILE_PIXELS    = 32;            ///< a tile is 32x32 pixels
-static const uint TILE_HEIGHT    =  8;            ///< The standard height-difference between tiles on two levels is 8 (z-diff 8)
+static const uint TILE_SIZE           = 16;                    ///< Tile size in world coordinates.
+static const uint TILE_UNIT_MASK      = TILE_SIZE - 1;         ///< For masking in/out the inner-tile world coordinate units.
+static const uint TILE_PIXELS         = 32;                    ///< Pixel distance between tile columns/rows in #ZOOM_LVL_BASE.
+static const uint TILE_HEIGHT         =  8;                    ///< Height of a height level in world coordinate AND in pixels in #ZOOM_LVL_BASE.
+
+static const uint MAX_BUILDING_PIXELS = 200;                   ///< Maximum height of a building in pixels in #ZOOM_LVL_BASE. (Also applies to "bridge buildings" on the bridge floor.)
 
 static const uint MAX_TILE_HEIGHT     = 255;                   ///< Maximum allowed tile height
 

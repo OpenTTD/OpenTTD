@@ -100,6 +100,12 @@
 
 Point _tile_fract_coords;
 
+
+static const int MAX_TILE_EXTENT_LEFT   = ZOOM_LVL_BASE * TILE_PIXELS;                     ///< Maximum left   extent of tile relative to north corner.
+static const int MAX_TILE_EXTENT_RIGHT  = ZOOM_LVL_BASE * TILE_PIXELS;                     ///< Maximum right  extent of tile relative to north corner.
+static const int MAX_TILE_EXTENT_TOP    = ZOOM_LVL_BASE * MAX_BUILDING_PIXELS;             ///< Maximum top    extent of tile relative to north corner (not considering bridges).
+static const int MAX_TILE_EXTENT_BOTTOM = ZOOM_LVL_BASE * (TILE_PIXELS + 2 * TILE_HEIGHT); ///< Maximum bottom extent of tile relative to north corner (worst case: #SLOPE_STEEP_N).
+
 struct StringSpriteToDraw {
 	StringID string;
 	Colours colour;
@@ -2163,6 +2169,10 @@ void UpdateViewportPosition(Window *w)
  */
 static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom)
 {
+	/* Rounding wrt. zoom-out level */
+	right  += (1 << vp->zoom) - 1;
+	bottom += (1 << vp->zoom) - 1;
+
 	right -= vp->virtual_left;
 	if (right <= 0) return;
 
@@ -2187,10 +2197,10 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 
 /**
  * Mark all viewports that display an area as dirty (in need of repaint).
- * @param left   Left edge of area to repaint
- * @param top    Top edge of area to repaint
- * @param right  Right edge of area to repaint
- * @param bottom Bottom edge of area to repaint
+ * @param left   Left   edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
+ * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
+ * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
+ * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
  * @ingroup dirty
  */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom)
@@ -2226,27 +2236,28 @@ void ConstrainAllViewportsZoom()
  */
 void MarkTileDirtyByTile(TileIndex tile)
 {
-	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, GetTilePixelZ(tile));
+	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, TilePixelHeight(tile));
 	MarkAllViewportsDirty(
-		pt.x - 31  * ZOOM_LVL_BASE,
-		pt.y - 122 * ZOOM_LVL_BASE,
-		pt.x - 31  * ZOOM_LVL_BASE + 67  * ZOOM_LVL_BASE,
-		pt.y - 122 * ZOOM_LVL_BASE + 154 * ZOOM_LVL_BASE
-	);
+			pt.x - MAX_TILE_EXTENT_LEFT,
+			pt.y - MAX_TILE_EXTENT_TOP,
+			pt.x + MAX_TILE_EXTENT_RIGHT,
+			pt.y + MAX_TILE_EXTENT_BOTTOM);
 }
 
+/**
+ * Mark a (virtual) tile outside the map dirty for repaint.
+ * @param x Tile X position.
+ * @param y Tile Y position.
+ * @ingroup dirty
+ */
 void MarkTileDirtyByTileOutsideMap(int x, int y)
 {
-	Point pt = RemapCoords(x * TILE_SIZE, y * TILE_SIZE, GetTilePixelZOutsideMap(x, y));
-	/* Since tiles painted outside the map don't contain buildings, trees, etc.,
-	 * this reduced area for repainting should suffice. If not, adjust the offsets
-	 * used below. */
+	Point pt = RemapCoords(x * TILE_SIZE, y * TILE_SIZE, TilePixelHeightOutsideMap(x, y));
 	MarkAllViewportsDirty(
-		pt.x - TILE_SIZE + 1,
-		pt.y,
-		pt.x + TILE_SIZE - 1,
-		pt.y + TILE_SIZE + TILE_HEIGHT - 1
-	);
+			pt.x - MAX_TILE_EXTENT_LEFT,
+			pt.y, // no buildings outside of map
+			pt.x + MAX_TILE_EXTENT_RIGHT,
+			pt.y + MAX_TILE_EXTENT_BOTTOM);
 }
 
 /**
@@ -2322,15 +2333,15 @@ static void SetSelectionTilesDirty()
 			/* the 'x' coordinate of 'top' and 'bot' is the same (and always in the same distance from tile middle),
 			 * tile height/slope affects only the 'y' on-screen coordinate! */
 
-			int l = top.x - (TILE_PIXELS - 2) * ZOOM_LVL_BASE; // 'x' coordinate of left side of dirty rectangle
-			int t = top.y;                     // 'y' coordinate of top side -//-
-			int r = top.x + (TILE_PIXELS - 2) * ZOOM_LVL_BASE; // right side of dirty rectangle
-			int b = bot.y;                     // bottom -//-
+			int l = top.x - TILE_PIXELS * ZOOM_LVL_BASE; // 'x' coordinate of left   side of the dirty rectangle
+			int t = top.y;                               // 'y' coordinate of top    side of the dirty rectangle
+			int r = top.x + TILE_PIXELS * ZOOM_LVL_BASE; // 'x' coordinate of right  side of the dirty rectangle
+			int b = bot.y;                               // 'y' coordinate of bottom side of the dirty rectangle
 
-			static const int OVERLAY_WIDTH = 4 * ZOOM_LVL_BASE; // part of selection sprites is drawn outside the selected area
+			static const int OVERLAY_WIDTH = 4 * ZOOM_LVL_BASE; // part of selection sprites is drawn outside the selected area (in particular: terraforming)
 
 			/* For halftile foundations on SLOPE_STEEP_S the sprite extents some more towards the top */
-			MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH - TILE_HEIGHT * ZOOM_LVL_BASE, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH * ZOOM_LVL_BASE);
+			MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH - TILE_HEIGHT * ZOOM_LVL_BASE, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH);
 
 			/* haven't we reached the topmost tile yet? */
 			if (top_x != x_start) {

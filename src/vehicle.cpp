@@ -1497,11 +1497,10 @@ void Vehicle::UpdateViewport(bool dirty)
 			this->MarkAllViewportsDirty();
 		} else {
 			::MarkAllViewportsDirty(
-				min(old_coord.left,   this->coord.left),
-				min(old_coord.top,    this->coord.top),
-				max(old_coord.right,  this->coord.right) + 1 * ZOOM_LVL_BASE,
-				max(old_coord.bottom, this->coord.bottom) + 1 * ZOOM_LVL_BASE
-			);
+					min(old_coord.left,   this->coord.left),
+					min(old_coord.top,    this->coord.top),
+					max(old_coord.right,  this->coord.right),
+					max(old_coord.bottom, this->coord.bottom));
 		}
 	}
 }
@@ -1520,7 +1519,7 @@ void Vehicle::UpdatePositionAndViewport()
  */
 void Vehicle::MarkAllViewportsDirty() const
 {
-	::MarkAllViewportsDirty(this->coord.left, this->coord.top, this->coord.right + 1 * ZOOM_LVL_BASE, this->coord.bottom + 1 * ZOOM_LVL_BASE);
+	::MarkAllViewportsDirty(this->coord.left, this->coord.top, this->coord.right, this->coord.bottom);
 }
 
 /**

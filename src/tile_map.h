@@ -67,6 +67,19 @@ static inline uint TilePixelHeight(TileIndex tile)
 }
 
 /**
+ * Returns the tile height for a coordinate outside map.  Such a height is
+ * needed for painting the area outside map using completely black tiles.
+ * The idea is descending to heightlevel 0 as fast as possible.
+ * @param x The X-coordinate (same unit as TileX).
+ * @param y The Y-coordinate (same unit as TileY).
+ * @return The height in pixels in the same unit as TilePixelHeight.
+ */
+static inline uint TilePixelHeightOutsideMap(int x, int y)
+{
+	return TileHeightOutsideMap(x, y) * TILE_HEIGHT;
+}
+
+/**
  * Get the tiletype of a given tile.
  *
  * @param tile The tile to get the TileType
