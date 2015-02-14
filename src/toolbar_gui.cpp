@@ -1990,6 +1990,11 @@ struct ScenarioEditorToolbarWindow : Window {
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
 
+	virtual void FindWindowPlacementAndResize(int def_width, int def_height)
+	{
+		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
+	}
+
 	virtual void OnPaint()
 	{
 		this->SetWidgetDisabledState(WID_TE_DATE_BACKWARD, _settings_game.game_creation.starting_year <= MIN_YEAR);
