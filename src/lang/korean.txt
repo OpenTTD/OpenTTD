@@ -1235,7 +1235,7 @@ STR_CONFIG_SETTING_BRIBE                                        :지역 당국�
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :회사가 지역 도시 당국에 뇌물을 주는 것을 허용합니다. 뇌물 행위가 적발되는 경우, 회사는 해당 도시에서 6개월간 아무 행동도 할 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송권 구입 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해 동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다.
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 행위 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :회사가 도시가 새로운 건물에 투자할 수 있도록 자금을 주는 것을 허용합니다.
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :도시 도로 보수공사 시행을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :도로 기반의 수송 체계를 갖추고 있는 다른 회사를 방해하기 위해 해당 도시가 도로 재건축을 시작하도록 회사가 도시에 돈을 지불하는 행위를 허용합니다.
@@ -2934,7 +2934,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}호환�
 STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없음
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}'{STRING}' NewGRF이 하려는 행위는 비동기화 혹은 충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' NewGRF이 적용되는 과정에서 비동기화나 충돌이 일어날 수 있습니다.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}'에 대한 동력 차량 상태가 바뀌었습니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}차량이 기지 안에 있지 않거나 개조가 불가능한 상태에서 '{1:ENGINE}'의 수송량이 변경되었습니다.
@@ -3217,7 +3217,7 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}설립: {
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}차량:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}열차 {COMMA}대
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}차량 {COMMA}대
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}자동차/전차 {COMMA}대
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}항공기 {COMMA}대
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}선박 {COMMA}대
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
@@ -4131,7 +4131,7 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간�
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}일시 정지 중에는 할 수 없습니다
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}에 대한 회사의 낮은 성취도로 인해 지역 당국이 이 행위를 거절했습니다!
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 지역 당국이 이 행동을 거부했습니다.
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 지역 당국이 이 도시에 다른 공항이 들어서는 것을 거부하였습니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 지역 당국이 소음 문제로 인해 공항 건설을 거부하였습니다
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}당신의 뇌물 수수 행위가 지역 당국에 의해 발각되었습니다!
