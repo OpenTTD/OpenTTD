@@ -2601,7 +2601,7 @@ STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :石頭
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :粗地
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :裸地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
-STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :農場
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :覆雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
