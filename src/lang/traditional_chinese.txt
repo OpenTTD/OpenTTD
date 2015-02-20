@@ -226,7 +226,7 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}�
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}篩選字串：
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}輸入篩選字串
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}輸入篩選所使用的關鍵字，對於清單……
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}輸入關鍵字以篩選您想查閱或更改的選項
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}選擇群組次序
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇排序 (逆序／順序)
