@@ -440,24 +440,25 @@ void ScriptList::AddItem(int64 item, int64 value)
 
 	if (this->HasItem(item)) return;
 
-	this->items[item] = 0;
-	this->buckets[0].insert(item);
-
-	this->SetValue(item, value);
+	this->items[item] = value;
+	this->buckets[value].insert(item);
 }
 
 void ScriptList::RemoveItem(int64 item)
 {
 	this->modifications++;
 
-	if (!this->HasItem(item)) return;
+	ScriptListMap::iterator item_iter = this->items.find(item);
+	if (item_iter == this->items.end()) return;
 
-	int64 value = this->GetValue(item);
+	int64 value = item_iter->second;
 
 	this->sorter->Remove(item);
-	this->buckets[value].erase(item);
-	if (this->buckets[value].empty()) this->buckets.erase(value);
-	this->items.erase(item);
+	ScriptListBucket::iterator bucket_iter = this->buckets.find(value);
+	assert(bucket_iter != this->buckets.end());
+	bucket_iter->second.erase(item);
+	if (bucket_iter->second.empty()) this->buckets.erase(bucket_iter);
+	this->items.erase(item_iter);
 }
 
 int64 ScriptList::Begin()
@@ -496,24 +497,26 @@ int32 ScriptList::Count()
 
 int64 ScriptList::GetValue(int64 item)
 {
-	if (!this->HasItem(item)) return 0;
-
-	return this->items[item];
+	ScriptListMap::const_iterator item_iter = this->items.find(item);
+	return item_iter == this->items.end() ? 0 : item_iter->second;
 }
 
 bool ScriptList::SetValue(int64 item, int64 value)
 {
 	this->modifications++;
 
-	if (!this->HasItem(item)) return false;
+	ScriptListMap::iterator item_iter = this->items.find(item);
+	if (item_iter == this->items.end()) return false;
 
-	int64 value_old = this->GetValue(item);
+	int64 value_old = item_iter->second;
 	if (value_old == value) return true;
 
 	this->sorter->Remove(item);
-	this->buckets[value_old].erase(item);
-	if (this->buckets[value_old].empty()) this->buckets.erase(value_old);
-	this->items[item] = value;
+	ScriptListBucket::iterator bucket_iter = this->buckets.find(value_old);
+	assert(bucket_iter != this->buckets.end());
+	bucket_iter->second.erase(item);
+	if (bucket_iter->second.empty()) this->buckets.erase(bucket_iter);
+	item_iter->second = value;
 	this->buckets[value].insert(item);
 
 	return true;
@@ -772,9 +775,10 @@ SQInteger ScriptList::_get(HSQUIRRELVM vm)
 	SQInteger idx;
 	sq_getinteger(vm, 2, &idx);
 
-	if (!this->HasItem(idx)) return SQ_ERROR;
+	ScriptListMap::const_iterator item_iter = this->items.find(idx);
+	if (item_iter == this->items.end()) return SQ_ERROR;
 
-	sq_pushinteger(vm, this->GetValue(idx));
+	sq_pushinteger(vm, item_iter->second);
 	return 1;
 }
 
