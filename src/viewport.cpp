@@ -405,9 +405,10 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
  * @param vp  Viewport that contains the (\a x, \a y) screen coordinate
  * @param x   Screen x coordinate
  * @param y   Screen y coordinate
+ * @param clamp_to_map Clamp the coordinate outside of the map to the closest tile within the map.
  * @return Tile coordinate
  */
-static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
+Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y, bool clamp_to_map)
 {
 	Point pt;
 	int a, b;
@@ -425,13 +426,15 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	a = y - x;
 	b = y + x;
 
-	/* Bring the coordinates near to a valid range. This is mostly due to the
-	 * tiles on the north side of the map possibly being drawn too high due to
-	 * the extra height levels. So at the top we allow a number of extra tiles.
-	 * This number is based on the tile height and pixels. */
-	int extra_tiles = CeilDiv(_settings_game.construction.max_heightlevel * TILE_HEIGHT, TILE_PIXELS);
-	a = Clamp(a, -extra_tiles * TILE_SIZE, MapMaxX() * TILE_SIZE - 1);
-	b = Clamp(b, -extra_tiles * TILE_SIZE, MapMaxY() * TILE_SIZE - 1);
+	if (clamp_to_map) {
+		/* Bring the coordinates near to a valid range. This is mostly due to the
+		 * tiles on the north side of the map possibly being drawn too high due to
+		 * the extra height levels. So at the top we allow a number of extra tiles.
+		 * This number is based on the tile height and pixels. */
+		int extra_tiles = CeilDiv(_settings_game.construction.max_heightlevel * TILE_HEIGHT, TILE_PIXELS);
+		a = Clamp(a, -extra_tiles * TILE_SIZE, MapMaxX() * TILE_SIZE - 1);
+		b = Clamp(b, -extra_tiles * TILE_SIZE, MapMaxY() * TILE_SIZE - 1);
+	}
 
 	/* (a, b) is the X/Y-world coordinate that belongs to (x,y) if the landscape would be completely flat on height 0.
 	 * Now find the Z-world coordinate by fix point iteration.
@@ -448,8 +451,13 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	for (int malus = 3; malus > 0; malus--) z = GetSlopePixelZ(Clamp(a + max(z, malus) - malus, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + max(z, malus) - malus, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
 	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + z, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + z, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
 
-	pt.x = Clamp(a + z, min_coord, MapMaxX() * TILE_SIZE - 1);
-	pt.y = Clamp(b + z, min_coord, MapMaxY() * TILE_SIZE - 1);
+	if (clamp_to_map) {
+		pt.x = Clamp(a + z, min_coord, MapMaxX() * TILE_SIZE - 1);
+		pt.y = Clamp(b + z, min_coord, MapMaxY() * TILE_SIZE - 1);
+	} else {
+		pt.x = a + z;
+		pt.y = b + z;
+	}
 
 	return pt;
 }

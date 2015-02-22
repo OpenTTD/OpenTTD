@@ -900,30 +900,6 @@ void SmallMapWindow::DrawTowns(const DrawPixelInfo *dpi) const
 }
 
 /**
- * Convert a coordinate of the viewport to essentially a tile on the map,
- * taking care of the different location due to height.
- * @param viewport_coord The coordinate in the viewport.
- * @return The tile location.
- */
-Point SmallMapWindow::GetSmallMapCoordIncludingHeight(Point viewport_coord) const
-{
-	/* First find out which tile would be there if we ignore height */
-	Point pt = InverseRemapCoords(viewport_coord.x, viewport_coord.y);
-	Point pt_without_height = {pt.x / TILE_SIZE, pt.y / TILE_SIZE};
-
-	/* Problem: There are mountains.  So the tile actually displayed at the given position
-	 * might be the high mountain of 30 tiles south.
-	 * Unfortunately, there is no closed formula for finding such a tile.
-	 * We call GetRowAtTile originally implemented for the viewport code, which performs
-	 * a interval search.  For details, see its documentation. */
-	int row_without_height = pt_without_height.x + pt_without_height.y;
-	int row_with_height = GetRowAtTile(viewport_coord.y, pt_without_height, false);
-	int row_offset = row_with_height - row_without_height;
-	Point pt_with_height = {pt_without_height.x + row_offset / 2, pt_without_height.y + row_offset / 2};
-	return pt_with_height;
-}
-
-/**
  * Adds map indicators to the smallmap.
  */
 void SmallMapWindow::DrawMapIndicators() const
@@ -931,15 +907,13 @@ void SmallMapWindow::DrawMapIndicators() const
 	/* Find main viewport. */
 	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-	Point upper_left_viewport_coord = {vp->virtual_left, vp->virtual_top};
-	Point upper_left_small_map_coord = GetSmallMapCoordIncludingHeight(upper_left_viewport_coord);
-	Point upper_left = this->RemapTile(upper_left_small_map_coord.x, upper_left_small_map_coord.y);
+	Point upper_left_smallmap_coord  = TranslateXYToTileCoord(vp, vp->left, vp->top, false);
+	Point lower_right_smallmap_coord = TranslateXYToTileCoord(vp, vp->left + vp->width - 1, vp->top + vp->height - 1, false);
+
+	Point upper_left = this->RemapTile(upper_left_smallmap_coord.x / (int)TILE_SIZE, upper_left_smallmap_coord.y / (int)TILE_SIZE);
 	upper_left.x -= this->subscroll;
 
-	Point lower_right_viewport_coord = {vp->virtual_left + vp->virtual_width, vp->virtual_top + vp->virtual_height};
-	Point lower_right_smallmap_coord = GetSmallMapCoordIncludingHeight(lower_right_viewport_coord);
-	Point lower_right = this->RemapTile(lower_right_smallmap_coord.x, lower_right_smallmap_coord.y);
-	/* why do we do this? in my tests subscroll was zero */
+	Point lower_right = this->RemapTile(lower_right_smallmap_coord.x / (int)TILE_SIZE, lower_right_smallmap_coord.y / (int)TILE_SIZE);
 	lower_right.x -= this->subscroll;
 
 	SmallMapWindow::DrawVertMapIndicator(upper_left.x, upper_left.y, lower_right.y);
@@ -1662,19 +1636,12 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
  */
 void SmallMapWindow::SmallMapCenterOnCurrentPos()
 {
-	/* Goal: Given the viewport coordinates of the middle of the map window, find
-	 * out which tile is displayed there. */
-
-	/* First find out which tile would be there if we ignore height */
 	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-	Point viewport_center = {vp->virtual_left + vp->virtual_width  / 2, vp->virtual_top  + vp->virtual_height / 2};
-	Point pt_with_height = GetSmallMapCoordIncludingHeight(viewport_center);
-
-	/* And finally scroll to that position. */
+	Point viewport_center = TranslateXYToTileCoord(vp, vp->left + vp->width / 2, vp->top + vp->height / 2);
 
 	int sub;
 	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-	Point sxy = this->ComputeScroll(pt_with_height.x, pt_with_height.y,
+	Point sxy = this->ComputeScroll(viewport_center.x / (int)TILE_SIZE, viewport_center.y / (int)TILE_SIZE,
 			max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
 	this->SetNewScroll(sxy.x, sxy.y, sub);
 	this->SetDirty();
