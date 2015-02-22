@@ -116,7 +116,9 @@ Slope GetTileSlope(TileIndex tile, int *h)
 {
 	assert(tile < MapSize());
 
-	if (!IsInnerTile(tile)) {
+	uint x = TileX(tile);
+	uint y = TileY(tile);
+	if (x == MapMaxX() || y == MapMaxY()) {
 		if (h != NULL) *h = TileHeight(tile);
 		return SLOPE_FLAT;
 	}
