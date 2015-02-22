@@ -545,20 +545,8 @@ int VideoDriver_SDL::PollEvent()
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
-			if (_cursor.fix_at) {
-				int dx = ev.motion.x - _cursor.pos.x;
-				int dy = ev.motion.y - _cursor.pos.y;
-				if (dx != 0 || dy != 0) {
-					_cursor.delta.x = dx;
-					_cursor.delta.y = dy;
-					SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
-				}
-			} else {
-				_cursor.delta.x = ev.motion.x - _cursor.pos.x;
-				_cursor.delta.y = ev.motion.y - _cursor.pos.y;
-				_cursor.pos.x = ev.motion.x;
-				_cursor.pos.y = ev.motion.y;
-				_cursor.dirty = true;
+			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
+				SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
 			}
 			HandleMouseEvents();
 			break;

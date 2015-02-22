@@ -362,22 +362,8 @@ static void QZ_DoUnsidedModifiers(unsigned int newMods)
 
 static void QZ_MouseMovedEvent(int x, int y)
 {
-	if (_cursor.fix_at) {
-		int dx = x - _cursor.pos.x;
-		int dy = y - _cursor.pos.y;
-
-		if (dx != 0 || dy != 0) {
-			_cursor.delta.x += dx;
-			_cursor.delta.y += dy;
-
-			QZ_WarpCursor(_cursor.pos.x, _cursor.pos.y);
-		}
-	} else {
-		_cursor.delta.x = x - _cursor.pos.x;
-		_cursor.delta.y = y - _cursor.pos.y;
-		_cursor.pos.x = x;
-		_cursor.pos.y = y;
-		_cursor.dirty = true;
+	if (_cursor.UpdateCursorPosition(x, y, false)) {
+		QZ_WarpCursor(_cursor.pos.x, _cursor.pos.y);
 	}
 	HandleMouseEvents();
 }
