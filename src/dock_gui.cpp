@@ -116,11 +116,17 @@ struct BuildDocksToolbarWindow : Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP),
+
+		bool can_build = CanBuildVehicleInfrastructure(VEH_SHIP);
+		this->SetWidgetsDisabledState(!can_build,
 			WID_DT_DEPOT,
 			WID_DT_STATION,
 			WID_DT_BUOY,
 			WIDGET_LIST_END);
+		if (!can_build) {
+			DeleteWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
+			DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

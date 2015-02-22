@@ -338,11 +338,18 @@ struct BuildRoadToolbarWindow : Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_ROAD),
+
+		bool can_build = CanBuildVehicleInfrastructure(VEH_ROAD);
+		this->SetWidgetsDisabledState(!can_build,
 				WID_ROT_DEPOT,
 				WID_ROT_BUS_STATION,
 				WID_ROT_TRUCK_STATION,
 				WIDGET_LIST_END);
+		if (!can_build) {
+			DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
+			DeleteWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
+			DeleteWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
+		}
 	}
 
 	/**
