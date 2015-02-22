@@ -14,6 +14,9 @@
 
 #include "map_func.h"
 
+void MarkBridgeDirty(TileIndex begin, TileIndex end, DiagDirection direction, uint bridge_height);
+void MarkBridgeDirty(TileIndex tile);
+
 /**
  * Calculates the length of a tunnel or a bridge (without end tiles)
  * @param begin The begin of the tunnel or bridge.

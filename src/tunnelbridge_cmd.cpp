@@ -52,6 +52,33 @@ TileIndex _build_tunnel_endtile; ///< The end of a tunnel; as hidden return from
 /** Z position of the bridge sprites relative to bridge height (downwards) */
 static const int BRIDGE_Z_START = 3;
 
+
+/**
+ * Mark bridge tiles dirty.
+ * Note: The bridge does not need to exist, everything is passed via parameters.
+ * @param begin Start tile.
+ * @param end End tile.
+ * @param direction Direction from \a begin to \a end.
+ * @param bridge_height Bridge height level.
+ */
+void MarkBridgeDirty(TileIndex begin, TileIndex end, DiagDirection direction, uint bridge_height)
+{
+	TileIndexDiff delta = TileOffsByDiagDir(direction);
+	for (TileIndex t = begin; t != end; t += delta) {
+		MarkTileDirtyByTile(t, bridge_height - TileHeight(t));
+	}
+	MarkTileDirtyByTile(end);
+}
+
+/**
+ * Mark bridge tiles dirty.
+ * @param tile Bridge head.
+ */
+void MarkBridgeDirty(TileIndex tile)
+{
+	MarkBridgeDirty(tile, GetOtherTunnelBridgeEnd(tile), GetTunnelBridgeDirection(tile), GetBridgeHeight(tile));
+}
+
 /** Reset the data been eventually changed by the grf loaded. */
 void ResetBridges()
 {
@@ -506,10 +533,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		/* Mark all tiles dirty */
-		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-		for (TileIndex tile = tile_start; tile <= tile_end; tile += delta) {
-			MarkTileDirtyByTile(tile);
-		}
+		MarkBridgeDirty(tile_start, tile_end, AxisToDiagDir(direction), z_start);
 		DirtyCompanyInfrastructureWindows(owner);
 	}
 
@@ -926,7 +950,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 				if (height < minz) SetRoadside(c, ROADSIDE_PAVED);
 			}
 			ClearBridgeMiddle(c);
-			MarkTileDirtyByTile(c);
+			MarkTileDirtyByTile(c, height - TileHeight(c));
 		}
 
 		if (rail) {

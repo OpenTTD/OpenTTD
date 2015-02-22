@@ -77,7 +77,7 @@ void UpdateAllVirtCoords();
 
 extern Point _tile_fract_coords;
 
-void MarkTileDirtyByTile(TileIndex tile);
+void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset = 0);
 
 int GetRowAtTile(int viewport_y, Point tile, bool bridge_correct);
 void MarkTileDirtyByTileOutsideMap(int x, int y);
