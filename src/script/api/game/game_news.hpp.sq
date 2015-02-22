@@ -28,8 +28,13 @@ void SQGSNews_Register(Squirrel *engine)
 	SQGSNews.DefSQConst(engine, ScriptNews::NT_ACCEPTANCE,   "NT_ACCEPTANCE");
 	SQGSNews.DefSQConst(engine, ScriptNews::NT_SUBSIDIES,    "NT_SUBSIDIES");
 	SQGSNews.DefSQConst(engine, ScriptNews::NT_GENERAL,      "NT_GENERAL");
+	SQGSNews.DefSQConst(engine, ScriptNews::NR_NONE,         "NR_NONE");
+	SQGSNews.DefSQConst(engine, ScriptNews::NR_TILE,         "NR_TILE");
+	SQGSNews.DefSQConst(engine, ScriptNews::NR_STATION,      "NR_STATION");
+	SQGSNews.DefSQConst(engine, ScriptNews::NR_INDUSTRY,     "NR_INDUSTRY");
+	SQGSNews.DefSQConst(engine, ScriptNews::NR_TOWN,         "NR_TOWN");
 
-	SQGSNews.DefSQStaticMethod(engine, &ScriptNews::Create, "Create", 4, ".i.i");
+	SQGSNews.DefSQStaticMethod(engine, &ScriptNews::Create, "Create", 6, ".i.iii");
 
 	SQGSNews.PostRegister(engine);
 }

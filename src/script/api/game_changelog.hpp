@@ -35,6 +35,11 @@
  * \li GSStationList_CargoWaitingFromByVia
  * \li GSStationList_CargoWaitingViaByFrom
  *
+ * Other changes:
+ * \li GSNews::Create takes two extra parameters to refer to a location, station,
+ *     industry, or town. The user can click at the news message to jump to the
+ *     referred location.
+ *
  * \b 1.4.4
  *
  * No changes

@@ -16,3 +16,10 @@ GSTown.SetGrowthRate <- function(town_id, days_between_town_growth)
 	if (days_between_town_growth == 0) days_between_town_growth = GSTown.TOWN_GROWTH_NORMAL;
 	return GSTown._SetGrowthRate(town_id, days_between_town_growth);
 }
+
+/* 1.5 adds a game element reference to the news. */
+GSNews._Create <- GSNews.Create;
+GSNews.Create <- function(type, text, company)
+{
+    return GSNews._Create(type, text, company, GSNews.NR_NONE, 0);
+}

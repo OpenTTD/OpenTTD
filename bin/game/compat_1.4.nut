@@ -8,3 +8,10 @@
  */
 
 GSLog.Info("1.4 API compatibility in effect.");
+
+/* 1.5 adds a game element reference to the news. */
+GSNews._Create <- GSNews.Create;
+GSNews.Create <- function(type, text, company)
+{
+    return GSNews._Create(type, text, company, GSNews.NR_NONE, 0);
+}
