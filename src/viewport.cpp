@@ -2569,7 +2569,7 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 				&& y >= 0 && y <= (int)MapSizeY() * (int)TILE_SIZE - 1) {
 			z = GetSlopePixelZ(x, y);
 		} else {
-			z = TileHeightOutsideMap(x / TILE_SIZE, y / TILE_SIZE);
+			z = TileHeightOutsideMap(x / (int)TILE_SIZE, y / (int)TILE_SIZE);
 		}
 	}
 

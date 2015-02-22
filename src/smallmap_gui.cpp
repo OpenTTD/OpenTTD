@@ -847,7 +847,7 @@ void SmallMapWindow::DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter) co
 		if (v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) continue;
 
 		/* Remap into flat coordinates. */
-		Point pt = this->RemapTile(v->x_pos / TILE_SIZE, v->y_pos / TILE_SIZE);
+		Point pt = this->RemapTile(v->x_pos / (int)TILE_SIZE, v->y_pos / (int)TILE_SIZE);
 
 		int y = pt.y - dpi->top;
 		if (!IsInsideMM(y, 0, dpi->height)) continue; // y is out of bounds.
