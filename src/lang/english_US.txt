@@ -4477,7 +4477,7 @@ STR_BASEMUSIC_NONE_DESCRIPTION                                  :A music pack wi
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Tall office block
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Office block
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Small block of apartments
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Small apartment building
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Church
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Large office block
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Town houses
@@ -4494,7 +4494,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadium
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Old houses
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Cottages
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Houses
-STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartments
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartment Building
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Tall office block
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Shops and offices
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Shops and offices
@@ -4512,7 +4512,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Piggy-Bank
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :Coal Mine
-STR_INDUSTRY_NAME_POWER_STATION                                 :Power Station
+STR_INDUSTRY_NAME_POWER_STATION                                 :Power Plant
 STR_INDUSTRY_NAME_SAWMILL                                       :Sawmill
 STR_INDUSTRY_NAME_FOREST                                        :Forest
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Oil Refinery
