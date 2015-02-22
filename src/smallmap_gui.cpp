@@ -1390,24 +1390,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 			int sub;
 			pt = this->PixelToTile(pt.x - wid->pos_x, pt.y - wid->pos_y, &sub);
-			pt = RemapCoords(this->scroll_x + pt.x * TILE_SIZE + this->zoom * (TILE_SIZE - sub * TILE_SIZE / 4),
-					this->scroll_y + pt.y * TILE_SIZE + sub * this->zoom * TILE_SIZE / 4, 0);
-
-			/* correct y coordinate according to the height level at the chosen tile
-			 * - so far we assumed height zero.  Calculations here according to
-			 * TranslateXYToTileCoord in viewport.cpp */
-			Point pt_scaled = {pt.x / (int)(4 * TILE_SIZE), pt.y / (int)(2 * TILE_SIZE)};
-			Point tile_coord = {pt_scaled.y - pt_scaled.x, pt_scaled.y + pt_scaled.x};
-
-			if (tile_coord.x >= 0 && tile_coord.y >= 0
-				 && tile_coord.x < (int)MapMaxX() && tile_coord.y < (int)MapMaxY()) {
-				int clicked_tile_height = TileHeight(TileXY(tile_coord.x, tile_coord.y));
-				pt.y -= clicked_tile_height * TILE_HEIGHT;
-			}
-
-			w->viewport->follow_vehicle = INVALID_VEHICLE;
-			w->viewport->dest_scrollpos_x = pt.x - (w->viewport->virtual_width  >> 1);
-			w->viewport->dest_scrollpos_y = pt.y - (w->viewport->virtual_height >> 1);
+			ScrollWindowTo(this->scroll_x + pt.x * TILE_SIZE, this->scroll_y + pt.y * TILE_SIZE, -1, w);
 
 			this->SetDirty();
 			break;
