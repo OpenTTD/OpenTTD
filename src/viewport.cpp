@@ -1142,16 +1142,21 @@ static void ViewportAddLandscape()
 			tile_info.x = tilecoord.x * TILE_SIZE; // FIXME tile_info should use signed integers
 			tile_info.y = tilecoord.y * TILE_SIZE;
 
-			if (IsInsideBS(tilecoord.x, 0, MapMaxX()) && IsInsideBS(tilecoord.y, 0, MapMaxY())) {
-				/* We are inside the map => paint landscape. */
+			if (IsInsideBS(tilecoord.x, 0, MapSizeX()) && IsInsideBS(tilecoord.y, 0, MapSizeY())) {
+				/* This includes the south border at MapMaxX / MapMaxY. When terraforming we still draw tile selections there. */
 				tile_info.tile = TileXY(tilecoord.x, tilecoord.y);
-				tile_info.tileh = GetTilePixelSlope(tile_info.tile, &tile_info.z);
 				tile_type = GetTileType(tile_info.tile);
 			} else {
-				/* We are outside the map => paint black. */
 				tile_info.tile = INVALID_TILE;
-				tile_info.tileh = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &tile_info.z);
 				tile_type = MP_VOID;
+			}
+
+			if (tile_type != MP_VOID) {
+				/* We are inside the map => paint landscape. */
+				tile_info.tileh = GetTilePixelSlope(tile_info.tile, &tile_info.z);
+			} else {
+				/* We are outside the map => paint black. */
+				tile_info.tileh = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &tile_info.z);
 			}
 
 			int viewport_y = GetViewportY(tilecoord);
@@ -1195,7 +1200,7 @@ static void ViewportAddLandscape()
 				_vd.last_foundation_child[1] = NULL;
 
 				_tile_type_procs[tile_type]->draw_tile_proc(&tile_info);
-				DrawTileSelection(&tile_info);
+				if (tile_info.tile != INVALID_TILE) DrawTileSelection(&tile_info);
 			}
 		}
 	}
