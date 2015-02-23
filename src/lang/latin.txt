@@ -1953,7 +1953,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Inspicer
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Monstrare optiones IA/Ludi scriptorum
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exire OpenTTD
 
-STR_INTRO_TRANSLATION                                           :{BLACK}In hac interpretatione, {NUM} series desunt. Quaesimus, iuva OpenTTD meliorari et dic te velle interpretem esse. Vide readme.txt in quo plura indicia sunt.
+STR_INTRO_TRANSLATION                                           :{BLACK}In hac interpretatione, {NUM} series desunt. Quaesimus, iuva OpenTTD meliorari et dic te velle interpretem esse. Vide readme.txt in quo plura sunt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Exire
@@ -4232,9 +4232,9 @@ STR_AI_SETTINGS_START_DELAY                                     :Quot dies post 
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} LegeMe de {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} index mutationum de {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licentia de {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} - {STRING} LegeMe
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} - {STRING} Index Mutationum
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} - {STRING} Licentia
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Verba volvere
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Volvere verba fenestrae ut omnia intra adsunt sine vagando
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Inspicere LegeMe
