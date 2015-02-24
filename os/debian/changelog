@@ -1,3 +1,9 @@
+openttd (1.5.0~beta2-0) unstable; urgency=low
+
+  * New upstream release 1.5.0-beta2
+
+ -- OpenTTD <info@openttd.org>  Tue, 24 Feb 2015 21:00:00 +0100
+
 openttd (1.5.0~beta1-0) unstable; urgency=low
 
   * New upstream release 1.5.0-beta1
