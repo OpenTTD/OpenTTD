@@ -1636,8 +1636,11 @@ bool CursorVars::UpdateCursorPosition(int x, int y, bool queued_warp)
 
 	bool need_warp = false;
 	if (this->fix_at) {
-		if (!this->queued_warp && (this->delta.x != 0 || this->delta.y != 0)) {
-			/* Trigger warp. */
+		if (this->delta.x != 0 || this->delta.y != 0) {
+			/* Trigger warp.
+			 * Note: We also trigger warping again, if there is already a pending warp.
+			 *       This makes it more tolerant about the OS or other software inbetween
+			 *       botchering the warp. */
 			this->queued_warp = queued_warp;
 			need_warp = true;
 		}
