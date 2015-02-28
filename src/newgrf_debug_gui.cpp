@@ -856,20 +856,20 @@ struct SpriteAlignerWindow : Window {
 			case WID_SA_SPRITE: {
 				/* Center the sprite ourselves */
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
-				int width  = r.right  - r.left + 1;
-				int height = r.bottom - r.top  + 1;
-				int x = r.left - UnScaleGUI(spr->x_offs) + (width  - UnScaleGUI(spr->width) ) / 2;
-				int y = r.top  - UnScaleGUI(spr->y_offs) + (height - UnScaleGUI(spr->height)) / 2;
+				int width  = r.right  - r.left + 1 - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
+				int height = r.bottom - r.top  + 1 - WD_BEVEL_TOP - WD_BEVEL_BOTTOM;
+				int x = -UnScaleGUI(spr->x_offs) + (width  - UnScaleGUI(spr->width) ) / 2;
+				int y = -UnScaleGUI(spr->y_offs) + (height - UnScaleGUI(spr->height)) / 2;
 
-				/* And draw only the part within the sprite area */
-				SubSprite subspr = {
-					spr->x_offs + (spr->width  - UnScaleGUI(width) ) / 2 + 1,
-					spr->y_offs + (spr->height - UnScaleGUI(height)) / 2 + 1,
-					spr->x_offs + (spr->width  + UnScaleGUI(width) ) / 2 - 1,
-					spr->y_offs + (spr->height + UnScaleGUI(height)) / 2 - 1,
-				};
+				DrawPixelInfo new_dpi;
+				if (!FillDrawPixelInfo(&new_dpi, r.left + WD_BEVEL_LEFT, r.top + WD_BEVEL_TOP, width, height)) break;
+				DrawPixelInfo *old_dpi = _cur_dpi;
+				_cur_dpi = &new_dpi;
 
-				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr, ZOOM_LVL_GUI);
+				DrawSprite(this->current_sprite, PAL_NONE, x, y, NULL, ZOOM_LVL_GUI);
+
+				_cur_dpi = old_dpi;
+
 				break;
 			}
 
