@@ -774,10 +774,12 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_RIGHT,                              "WID_SA_RIGHT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_DOWN,                               "WID_SA_DOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_SPRITE,                             "WID_SA_SPRITE");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_OFFSETS,                            "WID_SA_OFFSETS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_OFFSETS_ABS,                        "WID_SA_OFFSETS_ABS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_OFFSETS_REL,                        "WID_SA_OFFSETS_REL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_PICKER,                             "WID_SA_PICKER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_LIST,                               "WID_SA_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_SCROLLBAR,                          "WID_SA_SCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SA_RESET_REL,                          "WID_SA_RESET_REL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NP_SHOW_NUMPAR,                        "WID_NP_SHOW_NUMPAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NP_NUMPAR_DEC,                         "WID_NP_NUMPAR_DEC");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NP_NUMPAR_INC,                         "WID_NP_NUMPAR_INC");

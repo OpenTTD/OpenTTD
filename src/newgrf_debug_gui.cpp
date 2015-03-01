@@ -806,8 +806,11 @@ GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 
 /** Window used for aligning sprites. */
 struct SpriteAlignerWindow : Window {
-	SpriteID current_sprite; ///< The currently shown sprite
+	typedef SmallPair<int16, int16> XyOffs;    ///< Pair for x and y offsets of the sprite before alignment. First value contains the x offset, second value y offset.
+
+	SpriteID current_sprite;                   ///< The currently shown sprite.
 	Scrollbar *vscroll;
+	SmallMap<SpriteID, XyOffs> offs_start_map; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
 
 	SpriteAlignerWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
 	{
@@ -821,16 +824,30 @@ struct SpriteAlignerWindow : Window {
 
 	virtual void SetStringParameters(int widget) const
 	{
+		const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
 		switch (widget) {
 			case WID_SA_CAPTION:
 				SetDParam(0, this->current_sprite);
 				SetDParamStr(1, FioGetFilename(GetOriginFileSlot(this->current_sprite)));
 				break;
 
-			case WID_SA_OFFSETS: {
-				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
+			case WID_SA_OFFSETS_ABS:
 				SetDParam(0, spr->x_offs);
 				SetDParam(1, spr->y_offs);
+				break;
+
+			case WID_SA_OFFSETS_REL: {
+				/* Relative offset is new absolute offset - starting absolute offset.
+				 * Show 0, 0 as the relative offsets if entry is not in the map (meaning they have not been changed yet).
+				 */
+				const SmallPair<SpriteID, XyOffs> *key_offs_pair = this->offs_start_map.Find(this->current_sprite);
+				if (key_offs_pair != this->offs_start_map.End()) {
+					SetDParam(0, spr->x_offs - key_offs_pair->second.first);
+					SetDParam(1, spr->y_offs - key_offs_pair->second.second);
+				} else {
+					SetDParam(0, 0);
+					SetDParam(1, 0);
+				}
 				break;
 			}
 
@@ -949,6 +966,11 @@ struct SpriteAlignerWindow : Window {
 				 * particular NewGRF developer.
 				 */
 				Sprite *spr = const_cast<Sprite *>(GetSprite(this->current_sprite, ST_NORMAL));
+
+				/* Remember the original offsets of the current sprite, if not already in mapping. */
+				if (!(this->offs_start_map.Contains(this->current_sprite))) {
+					this->offs_start_map.Insert(this->current_sprite, XyOffs(spr->x_offs, spr->y_offs));
+				}
 				switch (widget) {
 					case WID_SA_UP:    spr->y_offs--; break;
 					case WID_SA_DOWN:  spr->y_offs++; break;
@@ -960,6 +982,12 @@ struct SpriteAlignerWindow : Window {
 				MarkWholeScreenDirty();
 				break;
 			}
+
+			case WID_SA_RESET_REL:
+				/* Reset the starting offsets for the current sprite. */
+				this->offs_start_map.Erase(this->current_sprite);
+				this->SetDirty();
+				break;
 		}
 	}
 
@@ -1035,8 +1063,12 @@ static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SA_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
 					NWidget(NWID_SPACER), SetFill(1, 1),
 				EndContainer(),
+				NWidget(WWT_LABEL, COLOUR_GREY, WID_SA_OFFSETS_ABS), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS_ABS, STR_NULL), SetFill(1, 0), SetPadding(0, 10, 0, 10),
+				NWidget(WWT_LABEL, COLOUR_GREY, WID_SA_OFFSETS_REL), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS_REL, STR_NULL), SetFill(1, 0), SetPadding(0, 10, 0, 10),
 				NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
-					NWidget(WWT_LABEL, COLOUR_GREY, WID_SA_OFFSETS), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS, STR_NULL), SetFill(1, 0),
+					NWidget(NWID_SPACER), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_RESET_REL), SetDataTip(STR_SPRITE_ALIGNER_RESET_BUTTON, STR_SPRITE_ALIGNER_RESET_TOOLTIP), SetFill(0, 0),
+					NWidget(NWID_SPACER), SetFill(1, 1),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPIP(10, 5, 10),

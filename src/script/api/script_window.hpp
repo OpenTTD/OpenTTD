@@ -1800,10 +1800,12 @@ public:
 		WID_SA_RIGHT                                 = ::WID_SA_RIGHT,                                 ///< Move the sprite to the right.
 		WID_SA_DOWN                                  = ::WID_SA_DOWN,                                  ///< Move the sprite down.
 		WID_SA_SPRITE                                = ::WID_SA_SPRITE,                                ///< The actual sprite.
-		WID_SA_OFFSETS                               = ::WID_SA_OFFSETS,                               ///< The sprite offsets.
+		WID_SA_OFFSETS_ABS                           = ::WID_SA_OFFSETS_ABS,                           ///< The sprite offsets (absolute).
+		WID_SA_OFFSETS_REL                           = ::WID_SA_OFFSETS_REL,                           ///< The sprite offsets (relative).
 		WID_SA_PICKER                                = ::WID_SA_PICKER,                                ///< Sprite picker.
 		WID_SA_LIST                                  = ::WID_SA_LIST,                                  ///< Queried sprite list.
 		WID_SA_SCROLLBAR                             = ::WID_SA_SCROLLBAR,                             ///< Scrollbar for sprite list.
+		WID_SA_RESET_REL                             = ::WID_SA_RESET_REL,                             ///< Reset relative sprite offset
 	};
 
 	/* automatically generated from ../../widgets/newgrf_widget.h */
