@@ -2880,7 +2880,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 �
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X축: {NUM}, Y축: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}스프라이트 선택
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}화면에서 스프라이트를 골라 냅니다.
 
@@ -3224,10 +3223,10 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}회사가치: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY}의 소유)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}기반시설:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}철도 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}선로 {COMMA}칸
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}도로 {COMMA}칸
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}운하시설 {COMMA}칸
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}정거장 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}항만시설 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}역 {COMMA}칸
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}공항 {COMMA}개
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}없음
 

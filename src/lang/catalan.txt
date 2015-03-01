@@ -2510,7 +2510,7 @@ STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crear no
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restableix paisatge
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Treure totes les propietats pertanyents a companyies del mapa
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Restablir Paisatge
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Restableix Paisatge
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs segur que vols treure totes les propietats pertanyents a companyies?
 
 # Town generation window (SE)
@@ -2874,24 +2874,27 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paràmet
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alineant sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite següent
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procedeix cap al següent sprite normal, saltant qualsevol sprite pseudo/recolor/font i passant de l'últim sprite al primer
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Anar a l'sprite
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Anar cap a l'sprite donat. Si l'sprite no és un sprite normal, procedir cap al següent sprite normal
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ves a l'sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Va cap a l'sprite donat. Si l'sprite no és un sprite normal, procedir cap al següent sprite normal
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procedeix cap a l'sprite normal anterior, saltant qualsevol sprite pseudo/recolor/font i passant del primer sprite a l'últim
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representació de l'sprite seleccionat actualment. L'alineació s'ignora quan es dibuixa aquest sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mou l'sprite al voltant, canviant els desplaçaments en X i Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desplaçament X: {NUM}, Desplaçament Y: {NUM}
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Restableix relatius
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Restableix els desplaçaments relatius actuals
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Desplaçament X: {NUM}, Desplaçament Y: {NUM} (Absolut)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Desplaçament X: {NUM}, Desplaçament Y: {NUM} (Relatiu)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Agafa un sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Agafa un sprite de qualsevol lloc de la pantalla
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Anar a l'sprite
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ves a l'sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ha passat un error fatal de NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}S'ha produït un error fatal de NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionarà amb la versió de TTDPatch informada per OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} és per la versió {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} està dissenyat per ser utilitzat amb {STRING}
@@ -4649,7 +4652,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :{G=Masculin}Vag
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elèctrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elèctrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :{G=Masculin}Vagó per Passatgers
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :{G=Masculin}Vagó de Passatgers
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :{G=Masculin}Vagó per Correu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :{G=Masculin}Vagó per Carbó
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :{G=Masculin}Tanc de Petroli
@@ -4681,7 +4684,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cíclope'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elèctrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Quimera' (Elèctrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :{G=Masculin}Vagó per Passatgers
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :{G=Masculin}Vagó de Passatgers
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :{G=Masculin}Vagó per Correu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :{G=Masculin}Vagó per Carbó
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :{G=Masculin}Tanc de Petroli
@@ -4769,9 +4772,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :{G=Masculin}Cam
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :{G=Masculin}Camió per Sucre MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :{G=Masculin}Camió per Sucre Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :{G=Masculin}Camió per Sucre Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :{G=Masculin}Camió per Refresc MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :{G=Masculin}Camió per Refresc Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :{G=Masculin}Camió per Refresc Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :{G=Masculin}Camió per Refrescs MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :{G=Masculin}Camió per Refrescs Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :{G=Masculin}Camió per Refrescs Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :{G=Masculin}Camió per Cotó de Sucre MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :{G=Masculin}Camió per Cotó de Sucre Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :{G=Masculin}Camió per Cotó de Sucre Wizzowow
