@@ -97,7 +97,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :குளிர
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP} பயணி{P "" கள்}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} நிலக்கரி
-STR_QUANTITY_MAIL                                               :{COMMA} அஞ்சல் பை{P "" கள்}
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP} அஞ்சல் பை{P "" கள்}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} எண்ணெய்
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} கால்நடை{P "" கள்}
 STR_QUANTITY_GOODS                                              :{COMMA} சரக்குப் பெட்டி{P "" கள்}
@@ -248,6 +248,10 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll b
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}சதுர நிலப்பகுதியில் கட்டிடம் போன்றவற்றை இடிக்க. Ctrl தேர்வுசெய்திட. Shift உத்தேச செலவை/கட்டிடத்தை காட்டிட
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}மறைந்திருப்பதை காட்டு
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}மறைந்திருப்பதை காட்டு
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}மறைந்திருப்பதை காட்டு
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}மறைந்திருப்பதை காட்டு
 
 
 # Query window
@@ -389,6 +393,7 @@ STR_FILE_MENU_EXIT                                              :வெளிய
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :உலகப் படம்
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :கூடுதல் பார்வைபடம்
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :சரக்கு செல்லும் வழிப் படம்
 STR_MAP_MENU_SIGN_LIST                                          :குறிகளின் பட்டியல்
 
 ############ range for town menu starts
@@ -1062,7 +1067,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :நிறுவ
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}பகுப்பு:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}வகை:
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :அடிப்படை அமைப்புகள்
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :அடிப்படை அமைப்புகளை மட்டுமே காட்டு
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :சிறப்பு அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :அதிக / அனைத்து அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :முதலில் இருந்த மதிப்பினை மாற்றம் செய்யப்பட்ட அமைப்புகள்
@@ -2528,7 +2533,6 @@ STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}ஸ்�
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}அடுத்த ஸ்பிரைட்டு
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}ஸ்பிரைட்டுயிற்கு செல்லவும்
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}முந்தைய ஸ்பிரைட்டு
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}ஸ்பிரைட்டினைத் தேர்ந்தெடுக்கவும்
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}ஸ்பிரைட்டிற்கு செல்லவும்

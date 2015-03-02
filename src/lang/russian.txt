@@ -3059,7 +3059,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Пред
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Перейти к предыдущему нормальному спрайту, пропуская изменяющие цвет, шрифтовые, псевдоспрайты. Переход из начала списка к последнему спрайту.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Представление выбранного спрайта. Выравнивание не учитывается при прорисовке этого спрайта.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Двигайте спрайт, изменяя смещение по X и по Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Смещение по X: {NUM}, Смещение по Y: {NUM}
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Сброс смещения
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Сбросить значения относительного смещения
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Смещение X: {NUM}; смещение Y: {NUM} (абсолютное)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Смещение X: {NUM}; смещение Y: {NUM} (относительное)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Выбрать спрайт
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Выберите любой спрайт на экране
 
