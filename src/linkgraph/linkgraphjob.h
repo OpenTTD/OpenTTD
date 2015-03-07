@@ -343,6 +343,8 @@ public:
  */
 class Path {
 public:
+	static Path *invalid_path;
+
 	Path(NodeID n, bool source = false);
 
 	/** Get the node this leg passes. */

@@ -22,6 +22,13 @@ LinkGraphJobPool _link_graph_job_pool("LinkGraphJob");
 INSTANTIATE_POOL_METHODS(LinkGraphJob)
 
 /**
+ * Static instance of an invalid path.
+ * Note: This instance is created on task start.
+ *       Lazy creation on first usage results in a data race between the CDist threads.
+ */
+/* static */ Path *Path::invalid_path = new Path(INVALID_NODE, true);
+
+/**
  * Create a link graph job from a link graph. The link graph will be copied so
  * that the calculations don't interfer with the normal operations on the
  * original. The job is immediately started.

@@ -19,6 +19,13 @@
 #include "../safeguards.h"
 
 /**
+ * Static instance of LinkGraphSchedule.
+ * Note: This instance is created on task start.
+ *       Lazy creation on first usage results in a data race between the CDist threads.
+ */
+/* static */ LinkGraphSchedule LinkGraphSchedule::instance;
+
+/**
  * Start the next job in the schedule.
  */
 void LinkGraphSchedule::SpawnNext()
@@ -68,9 +75,8 @@ void LinkGraphSchedule::JoinNext()
 /* static */ void LinkGraphSchedule::Run(void *j)
 {
 	LinkGraphJob *job = (LinkGraphJob *)j;
-	LinkGraphSchedule *schedule = LinkGraphSchedule::Instance();
-	for (uint i = 0; i < lengthof(schedule->handlers); ++i) {
-		schedule->handlers[i]->Run(*job);
+	for (uint i = 0; i < lengthof(instance.handlers); ++i) {
+		instance.handlers[i]->Run(*job);
 	}
 }
 
@@ -90,12 +96,11 @@ void LinkGraphSchedule::SpawnAll()
  */
 /* static */ void LinkGraphSchedule::Clear()
 {
-	LinkGraphSchedule *inst = LinkGraphSchedule::Instance();
-	for (JobList::iterator i(inst->running.begin()); i != inst->running.end(); ++i) {
+	for (JobList::iterator i(instance.running.begin()); i != instance.running.end(); ++i) {
 		(*i)->JoinThread();
 	}
-	inst->running.clear();
-	inst->schedule.clear();
+	instance.running.clear();
+	instance.schedule.clear();
 }
 
 /**
@@ -136,15 +141,6 @@ LinkGraphSchedule::~LinkGraphSchedule()
 }
 
 /**
- * Retrieve the link graph schedule or create it if necessary.
- */
-/* static */ LinkGraphSchedule *LinkGraphSchedule::Instance()
-{
-	static LinkGraphSchedule inst;
-	return &inst;
-}
-
-/**
  * Spawn or join a link graph job or compress a link graph if any link graph is
  * due to do so.
  */
@@ -153,9 +149,9 @@ void OnTick_LinkGraph()
 	if (_date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
 	Date offset = _date % _settings_game.linkgraph.recalc_interval;
 	if (offset == 0) {
-		LinkGraphSchedule::Instance()->SpawnNext();
+		LinkGraphSchedule::instance.SpawnNext();
 	} else if (offset == _settings_game.linkgraph.recalc_interval / 2) {
-		LinkGraphSchedule::Instance()->JoinNext();
+		LinkGraphSchedule::instance.JoinNext();
 	}
 }
 

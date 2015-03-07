@@ -1125,7 +1125,7 @@ void SetStartingYear(Year year)
 	_settings_game.game_creation.starting_year = Clamp(year, MIN_YEAR, MAX_YEAR);
 	Date new_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	/* If you open a savegame as scenario there may already be link graphs.*/
-	LinkGraphSchedule::Instance()->ShiftDates(new_date - _date);
+	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, 0);
 }
 
