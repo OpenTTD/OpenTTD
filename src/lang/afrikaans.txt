@@ -799,7 +799,7 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Olie raffinadery het ontplof naby {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}fabriek vernietig in agterdogtig omstandighede naby {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'VVV' beland naby {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Kool myn bedaaring los spoor van vernietiging naby {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Steenkool myn ongeluk los spoor van vernietiging naby {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Oorstroom!{}Te minste {COMMA} vermis, aangeneem dood na beduidende oorstroom!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Vervoer maatsappy in moelikheid!
@@ -827,7 +827,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerhede as ekonomie versterk!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} vermeerder produksie!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nuwe kool laag gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nuwe steenkool laag gevind by {INDUSTRY}!{}Produksie word voorspel dat dit sal verdubbel!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nuwe olie reserwes gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Verbeterde boerdery metodes by {INDUSTRY} sal produksie verdubbel!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} produksie by {INDUSTRY} vermeerder {COMMA}%!
@@ -1048,11 +1048,11 @@ STR_NUM_CUSTOM                                                  :Pasmaak
 STR_NUM_CUSTOM_NUMBER                                           :Pasmaak ({NUM})
 
 STR_VARIETY_NONE                                                :Geen
-STR_VARIETY_VERY_LOW                                            :Baaie Laag
+STR_VARIETY_VERY_LOW                                            :Baie Laag
 STR_VARIETY_LOW                                                 :Laag
 STR_VARIETY_MEDIUM                                              :Middelmatig
 STR_VARIETY_HIGH                                                :Hoog
-STR_VARIETY_VERY_HIGH                                           :Baaie Hoog
+STR_VARIETY_VERY_HIGH                                           :Baie Hoog
 
 STR_AI_SPEED_VERY_SLOW                                          :Baie Stadig
 STR_AI_SPEED_SLOW                                               :Stadig
@@ -2880,7 +2880,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige s
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gaan na vorige normale sprite, en ignoreer enige pseudo/her-kleur/font sprite en spring terug na die einde
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorstelling van geselekteerde sprite. Die belyning word geignoreer waneer sprite geteken word
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Beweeg die sprite rond, verander die X en Y afwyking
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X afwyking: {NUM}, Y afwyking: {NUM}
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Relatiewe herstel
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Herstel die huidige relatiewe verplasing
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X verplasing: {NUM}, Y verplasing: {NUM} (Werklik)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X verplasing: {NUM}, Y verplasing: {NUM} (Relatief)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Kies sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Kies 'n sprite van enige plek op die skerm
 
@@ -4683,7 +4686,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passasierswa
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Pos Wa
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kool Trok
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Steenkool Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Olie Tenkwa
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Lewende Hawe Wa
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Goedere Wa
@@ -4715,7 +4718,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Sup
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Bus
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kool Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Steenkool Trok
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kool Trok
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kool Trok
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Pos Trok

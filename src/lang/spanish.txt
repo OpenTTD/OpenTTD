@@ -2880,6 +2880,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite a
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Saltar al sprite anterior (ignorando pseudosprites, sprites recoloreados y sprites de fuente) y pasar del primer al último sprite
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representación del sprite seleccionado. Su alineamiento es ignorado al dibujarlo
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover el sprite, cambiando los ajustes X e Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reiniciar coordenadas relativas
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reinicia las coordenadas relativas actuales
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Coordenada X: {NUM}, Coordenada Y: {NUM} (Absoluta)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Coordenada X: {NUM}, Coordenada Y: {NUM} (Relativa)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Seleccionar sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Seleccionar un sprite de cualquier parte de la pantalla
 

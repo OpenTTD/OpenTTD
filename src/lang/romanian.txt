@@ -249,7 +249,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de 
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrățel de teren. Ctrl pentru selectare pe diagonală. Shift comută construcție/estimare cost
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Arată ascunse
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Arată ascunse
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Arată ascunse
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Arată ascunse
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Activând acest buton, și trenurile vor fi afișate
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Activând acest buton, și autovehiculele vor fi afișate
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Activând acest button, și vapoarele ascunse vor fi afișate
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activând acest buton, și aeronavele ascunse vor fi afișate
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prestabilit(e)
@@ -1074,6 +1082,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Foarte plat
 STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Deluros
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Muntos
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
@@ -1267,8 +1276,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata de afiș
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata afișării mesajelor de eroare în fereastra roșie. Unele mesaje de eroare (cele critice) nu sunt închise automat după trecerea acestei perioade, și trebuie închise manual.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} secund{P 0 ă e}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Afișează texte informative: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Durata dinaintea afișării textelor informative când se ține mouse-ul pe un element al interfeței. Alternativ, afișarea textelor informative poate fi setată pentru click-dreapta
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :După {COMMA} secund{P 0 ă e}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Durata dinaintea afișării sfaturilor când se ține mausul pe un element al interfeței. Alternativ, afișarea sfaturilor poate fi setată pentru clic-dreapta
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Plutește {COMMA} milisecund{P 0 ă e}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click dreapta
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afişează populaţia unui oras lângă nume: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Afișează populația orașelor în numele afișate pe hartă
@@ -2805,7 +2814,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Imaginea
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mergi la precedenta imagine normală, sărind peste pseudo-imagini, recolorări sau fonturi şi reporneşte când s-a ajuns la sfârşit
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentarea imaginii curente. Aliniamentul este ignorat
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mişcă imaginea schimbând distanţele pe axele X şi Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}distanţa X: {NUM}, distanţa Y: {NUM}
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetează relativele
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetază limitele relative actuale
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Limita X: {NUM}, Limita Y: {NUM} (Absolut)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Limita X: {NUM}, Limita Y: {NUM} (Relativ)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Alege imagine
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Alege o imagine de oriunde de pe ecran
 
@@ -3343,8 +3355,17 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Redenume
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Redenumeşte modelul de navă
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Redenumeşte modelul de aeronavă
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Ascunde
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Ascunde
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Ascunde
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Ascunde
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Afișează
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Afișează
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Afișează
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Afișează
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Comută ascunderea/afișarea tipului de tren
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Comutator pentru afişarea tipului de autovehicul
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Comutator pentru afişarea tipului de navă
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Comutator pentru afişarea tipului de aeronavă
@@ -3453,6 +3474,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autovehicolul
 STR_REPLACE_VEHICLE_SHIP                                        :Nava
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronava
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Vehicule în uz
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Coloana vehiculelor pe care le deții
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Vehicule disponibile
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Coloana vehiculelor disponibile pentru înlocuire
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Alege tipul de motor pentru înlocuire
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Alege noul tip de motor pe care doreşti să-l foloseşti în locul motorului selectat în stânga
@@ -4097,6 +4122,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... păd
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... poate fi construit doar deasupra liniei zăpezii
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... poate fi construit doar sub linia zăpezii
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifică parametrii generatorului ca să obții o hartă mai bună
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nu se poate construi o gară aici...

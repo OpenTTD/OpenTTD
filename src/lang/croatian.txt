@@ -2975,7 +2975,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prethodn
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Otiđi na prethodni normalni sprite, preskačući svaki pseudo/prebojani/font sprite i {BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon dolaska na prvi prebaci na zadnjeg
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prikaz trenutno odabranog spritea. Poravnjanje se ignorira kod crtanja ovog spritea.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pomakni sprite mijenjajući X i Y pomake
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X pomak: {NUM}, Y pomak: {NUM}
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Poništi relativne
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Poništi trenutne relativne pomake
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X pomak: {NUM}, Y pomak: {NUM} (Apsolutni)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X pomak: {NUM}, Y pomak: {NUM} (Relativni)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Odaberi sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Odaberi sprite od bilo gdje na ekranu
 

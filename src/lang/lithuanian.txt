@@ -3098,7 +3098,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Buvęs a
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Pereiti prie buvusio animacinio objekto praleidžiant visus pseudo/spalvinimo/šriftų objektus peršokant į pabaigą pradžioje
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Atvaizdavimas dabartinio pasirinkto sprite. Suderinamumas yra ignoruojamas, rengiant šį sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Perkelti sprite aplink, keičiant X ir Y atsvaras
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X atsvara: {NUM}, Y atsvara: {NUM}
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Anuliuoti santykinius
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Anuliuoti santykinius poslinkius
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X poslinkis: {NUM}, Y poslinkis: {NUM} (Absoliutus)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X poslinkis: {NUM}, Y poslinkis: {NUM} (Santykinis)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pasirinkti sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pasirinkite sprite iš bet kurios vietos ekrane
 

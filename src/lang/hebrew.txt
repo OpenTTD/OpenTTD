@@ -109,7 +109,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.plural                           :משקאות מ
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{P 0 "נוסע " ""}{COMMA}{P "" " נוסעים"}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}נוסע{P "" ים}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} של פחם
 STR_QUANTITY_MAIL                                               :{P 0 "שק " ""}{COMMA}{P "" " שקים"} של דואר
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} של נפט
@@ -988,6 +988,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלו
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{P 0 "קובץ " ""}{NUM}{P "" " קבצים"} חסר{P 0 "" ים}/הושחט{P 0 "" ו}
@@ -1088,7 +1090,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :עויין
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין בינות מלאכותיות מתאימות...{}באפשרותך להוריד בינות מלאכותיות בעזרת מערכת ה'תוכן המקוון'
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}מחרוזת סינון:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}הרחב הכל
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}צמצם הכל
@@ -1104,9 +1106,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :הגדרת חב
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}קטגוריה:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}סוג:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}מגביל את הרשימה להלן תוך שימוש בסינון שהוגדר מראש.
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :הגדרות בסיסיות
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :הגדרות מתקדמות
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :הגדרות מומחה / כל ההגדרות
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :הגדרות בסיסיות (הצג רק הגדרות חשובות)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :הגדרות מתקדמות (הצג את רוב ההגדרות)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :הגדרות מומחה (הצג את כל ההגדרות, כולל הגדרות משונות)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :הגדרות בעלות ערך השונה מברירת המחדל
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :הגדרות בעלות ערך השונה מזה אשר בהגדרות המשחק החדש שלך
 
@@ -1277,7 +1279,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :משך הצגת
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :פרק הזמן להצגת הודעות שגיאה בחלון אדום. יש לשים לב כי כמה הודעות שגיאה (קריטיות) אינן נסגרות אוטומטית אחרי פרק זמן זה, אלא יש לסגור אותן ידנית
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{P 0 "שנייה " ""}{COMMA}{P "" " שניות"}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :הצג רמזים צצים: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :השהייה טרם הצגת רמזים צצים כאשר העכבר מרחף מעל חלק ממשק. לחלופין, ניתן לקשר רמזים צצים לכפתור העכבר הימני
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :השהייה טרם הצגת רמזים צצים כאשר העכבר מרחף מעל חלק ממשק. לחלופין, ניתן לקשר רמזים צצים לכפתור העכבר הימני כאשר מוגדר 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :רחף למשך {P 0 "שניה " ""}{COMMA}{P "" " שניות"}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :קליק ימני
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :הראה את אוכלוסיית העיר בתוך תוית השם של העיר: {STRING}
@@ -1526,7 +1528,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :בחר את ה�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{STRING} :בנה רמזורים מכאניים לפני
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :קבע את השנה בה רמזורים חשמליים ישמשו במסילות. לפני שנה זו יהיו בשימוש רמזורים מכניים (פעולתם זהה, הם רק נראים אחרת)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{STRING} :אפשר ממשק ויזואלי עבור רמזורים
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :הצג חלון לבחירת סוג הרמזור להצבה, במקום רק מעבר בין האפשרויות ללא חלון באמצעות הקלקה על "בנה רמזורים" תוך לחיצה על מקש Ctrl
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :הצג חלון לבחירת סוג הרמזור להצבה, במקום רק מעבר בין האפשרויות באמצעות Ctrl+לחיצה על רמזורים בנויים
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{STRING} :ברירת מחדל לבניית רמזורי רכבת
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :סוג רמזור לשימוש בברירת מחדל
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :רמזורי בלוק
@@ -1611,7 +1613,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"סימטרי" 
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :אופן החלוקה עבור דואר: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"סימטרי" הכוונה שכמות הדואר מתחנה א' לתחנה ב' הוא פחות או יותר אותה כמות הדואר מתחנה ב' לתחנה א'. "אסימטרי" הכוונה שכמויות דואר שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור דואר.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :אופן החלוקה עבור מחלקה משוריינת: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :מחלקה משוריינת מובילה חפצי ערך באקלים ממוזג, יהלומים באקלים טרופי וזהב באקלים קר. קבצי שדרוג גראפי עלולים לשנות חלוקה זו. "סימטרי" הכוונה שכמות המטען מתחנה א' לתחנה ב' הוא פחות או יותר אותה כמות המטען מתחנה ב' לתחנה א'. "אסימטרי" הכוונה שכמויות מטען שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור המטען. באקלים קר מומלץ לקבוע למצב אסימטרי או ידני כי בנקים לא שולחים זהב חזרה למכרות יהלומים. באקלים ממוטזג או טרופי ניתן לבחור גם במצב סימטרי כאשר בנקים ישלחו חפצי ערך חזרה למקור של אותם חפצי ערך.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :מחלקה משוריינת מובילה חפצי ערך באקלים ממוזג, יהלומים באקלים טרופי וזהב באקלים קר. קבצי שדרוג גראפי עלולים לשנות חלוקה זו. "סימטרי" הכוונה שכמות המטען מתחנה א' לתחנה ב' הוא פחות או יותר אותה כמות המטען מתחנה ב' לתחנה א'. "אסימטרי" הכוונה שכמויות מטען שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור המטען. באקלים קר מומלץ לקבוע למצב אסימטרי או ידני כי בנקים לא שולחים זהב חזרה למכרות יהלומים. באקלים ממוזג או טרופי ניתן לבחור גם במצב סימטרי כאשר בנקים ישלחו חפצי ערך חזרה למקור של אותם חפצי ערך.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :אופן החלוקה עבור מטענים אחרים: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"אסימטרי" הכוונה שכמויות מטען שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור המטען.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :דיוק החלוקה: {STRING}
@@ -1647,7 +1649,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :מטרי (קי�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :בינלאומית (קילו ניוטון)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :יחידות גובה: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :כאשר מוצגים גבהים השתמש ביחידות שנבחרו.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :כאשר מוצגים גבהים השתמש ביחידות שנבחרו
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :בריטית (רגל)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מטר)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
@@ -2828,10 +2830,9 @@ STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}עבור
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}דלג לספרייט
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}עבור לספרייט הנתון. אם הוא אינו ספרייט רגיל, עבור לספרייט הרגיל הראשון שבא אחריו
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}הספרייט הקודם
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}עבור לספרייט הקודם, כאשר נדלג על כל הספרייטים המיוחדים ונחזור בסוף לתחילת הרשימה
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}עבור לספרייט הקודם, כאשר נדלג על כל הספרייטים המיוחדים ונחזור מתחילת הרשימה לסופה
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}הייצוג של הספרייט הנבחר. בעת ציור הספרייט, נתעלם מהיישור שלו
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}הזז את הספרייט, תוך שינוי מיקום על צירי ה-X וה-Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X היסט: {NUM}, Y היסט: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}בחר ספרייט
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}בחר ספרייט מנקודה כלשהיא במסך
 

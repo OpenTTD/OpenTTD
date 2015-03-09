@@ -3108,7 +3108,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}An sprit
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Lean air adhart dhan sprite àbhaisteach roimhe, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an toiseach gun sprite mu dheireadh
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Riochdachadh air an sprite a thagh thu an-dràsta. Thèid an co-thaobhadh a chur dhan dàrna taobh nuair a thèid an sprite a tharraing
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Gluais an sprite mu thimcheall, ag atharrachadh nam frith-àireamhan aig X is Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Frith-àireamh X: {NUM}, frith-àireamh Y: {NUM}
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Ath-shuidhich na frith-àireamhean dàimheach
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Ath-shuidhich na frith-àireamhean dàimheach làithreach
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}frith-àireamh X: {NUM}, frith-àireamh Y: {NUM} (absaloideach)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}frith-àireamh X: {NUM}, frith-àireamh Y: {NUM} (dàimheach)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Tagh sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Tagh sprite bho àite sam bith air an sgrìn
 

@@ -1322,7 +1322,7 @@ STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :지도의 나�
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :없음
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :오리지널
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :향상됨
-STR_CONFIG_SETTING_ROAD_SIDE                                    :자동차/전차: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE                                    :자동차 통행 방향: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :통행방향을 선택하세요.
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :높이맵 회전: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
@@ -1711,7 +1711,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정�
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}설정 파일에서 오류 발생
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 배열 '{STRING}'에서 오류 발생
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}'{G 0 "은" "는"} '{0:STRING}'에 사용할 수 없습니다
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}'에 잘못된 값('{0:STRING}')이 지정되었습니다.
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 설정 '{STRING}' 끝에 후행문자(??)
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' 무시중: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 NewGRF '{STRING}' 무시중: {STRING}
@@ -1802,10 +1802,10 @@ STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형 항공기가 소형 공항에서 (자주) 충돌하지 않게 함: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}최대 지형 고도값 수정: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}최대 지형 높이값을 수정합니다.
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후 지형
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :아한대 지형
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후 지형
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감나라 지형
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :아한대 기후
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감나라
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재의 연도를 변경
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}1차 산업시설 생산량 조절 허용: {ORANGE}{STRING}
@@ -2065,7 +2065,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}회사 �
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명의 접속자가 먼저 기다리고 있습니다
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}지금까지 {BYTES}를 다운로드하였습니다
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 다운로드 됨
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 다운로드 완료
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}접속 끊기
 
@@ -2880,6 +2880,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 �
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}상대값 초기화
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}현재 상대값 좌표를 초기화
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X 좌표: {NUM}, Y 좌표: {NUM} (절댓값)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X 좌표: {NUM}, Y 좌표: {NUM} (상대값)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}스프라이트 선택
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}화면에서 스프라이트를 골라 냅니다.
 
