@@ -2815,7 +2815,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Пред
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Продължи към предишен нормален sprite, Пропускайки всички псевдо/прерисувани/текстови sprite и ги облечи в края
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Показване на избрания sprite. Подредбата се пренебрегва при рисуването му.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Преместване на sprite, променяйки X и Y координатите
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X координата: {NUM}, Y координата: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Избери sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Избери sprite от целия екран
 

@@ -2879,7 +2879,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidigare
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till föregående normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om från slutet efter första spriteobjektet
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation av det valda objektet. Justeringen ignoreras när objektet ritas.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet, ändrar X och Y offsets
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Välj objekt
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Välj ett objekt på bildskärmen
 

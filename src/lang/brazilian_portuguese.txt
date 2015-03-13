@@ -2868,7 +2868,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}"Sprite"
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Retorna ao "sprite" normal anterior, pulando quaisquer "sprites" falsos, recoloridos ou de fontes, e junta tudo do primeiro ao último
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do "sprite" atualmente selecionado. O alinhamento é ignorado ao desenhar esse "sprite"
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move o "sprite", alterando os offsets X e Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Escolher "sprite"
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Escolhe um "sprite" de qualquer lugar na tela
 

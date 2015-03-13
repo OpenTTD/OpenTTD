@@ -2879,7 +2879,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一�
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}继续处理上一个正常的图形元素，略过任何虚位／重新着色／文字字型相关的图形元素；并且在处理到第一个图形元素后，返回最后的图形元素继续处理。
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}显示目前选取的 sprite。当 sprite 正在描绘时会忽略其定位。
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移动 sprite 到指定的 X 与 Y 座标位移
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X 座标位移: {NUM}, Y 座标位移: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}选择 sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}请从屏幕画面中任意选取一个 sprite
 

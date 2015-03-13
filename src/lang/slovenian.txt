@@ -2976,7 +2976,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prejšnj
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Nadaljuj k prejšnji navadni sličici, zanemari vse navidezne/pobarvane/besedilne sličice in okvir na koncu
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Predstavitev trenutno izbrane sličice. Zamik je zanemarjen pri risanju te sličice
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Premakni sličico s spreminjanjem X in Y osi
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X zamik: {NUM}, Y zamik: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Izberi sličico
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Izberi sličico kjerkoli na zaslonu
 

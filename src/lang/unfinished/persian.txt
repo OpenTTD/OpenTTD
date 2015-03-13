@@ -2572,7 +2572,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}تصوی
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نمایش تصویر عادی قبلی، بدون انجام دادن هر گونه تغییرات
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}نمایش تصویر انتخاب شده. تغییر مکان تصویر در زمان بارگزاری اعمال نمی شود
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}تغییر مکان تصویر، تغییر مقدار اضافه شونده به X و Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}مقدار اضافه شونده به X: {NUM}, مقدار اضافه شونده به Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}برداشتن تصویر
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}برداشتن یک تصویر از یک نقطه از صفحه نمایش
 

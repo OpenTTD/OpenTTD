@@ -2879,7 +2879,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}前の�
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在選択されているスプライトの代表絵を示します。この配列はスプライトを描画するときには無視されます
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオフセットを変更し、スプライトを移動します
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Xオフセット: {NUM}, Yオフセット: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}スプライトを選ぶ
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}画面内からスプライトを選びます
 

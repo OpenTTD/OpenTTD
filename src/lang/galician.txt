@@ -2837,7 +2837,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite a
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir ao sprite anterior, ignorando pseudosprites, sprites recoloreados e sprites de fonte, e volvendo a empezar ao chegar ao inicio
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representación do sprite seleccionado. A aliñación ignórase ao debuxar este sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move-lo sprite, cambiando os valores de X e Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desp. X: {NUM}, Desp. Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Seleccionar sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Seleccionar un sprite en calquera parte da pantalla
 

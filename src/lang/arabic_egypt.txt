@@ -2495,7 +2495,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}العف
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نابع للعفريتة الطبيعية التالية، تجاوز اي عفريتة موقوفة/ مصبوغة/مخطوطة و انهي في البداية.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}عرض العفريتة المختارة حاليا. يتم تجاهل الموائمة عند رسم هذا العفريت.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}حرك العفريتة في الجوار، غير الاحداثيات س ، ص.
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}احداث س: {NUM}، احداث ص: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}اختر عفريتة
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}اختر عفريتة من اي مكان في الشاشة.
 

@@ -2972,7 +2972,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Předcho
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jít na předchozí normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení začátku se jde na konec
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Zobrazení vybraného spritu. Posun se při jeho vykreslení neuvažoval
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Posouvání spritu změnou souřadnic X a Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Posun X: {NUM}, posun Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vybrat sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Klikni na sprite kdekoli na obrazovce
 

@@ -2874,7 +2874,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Eelmine 
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceed to the previous normal sprite, skipping any pseudo/recolour/font sprites and wrapping around at the begin
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation of the currently selected sprite. The alignment is ignored when drawing this sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liiguta spraiti , muutes X ja Y tasakaalu
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X tasakaal: {NUM}, Y tasakaal: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Korja sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Korja sprite ükskõik kust ekraanil
 

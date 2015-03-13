@@ -2879,7 +2879,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidliger
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsæt til den forrige normal sprite, springe over nogen pseudo / recolour / FONT sprites og indpakning rundt fra den første sprite til det sidste
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Repræsentation af den markerede sprite. Justeringen ignoreres når denne sprite tegnes.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flyt spriten rundt for at ændre X- og Y-forskydningen
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vælg grafikelement
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Vælg en sprite fra et vilkårligt sted på skærmen
 

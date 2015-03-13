@@ -2973,7 +2973,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Попе
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Повернутися до попереднього нормального спрайту, пропускаючи будь-які псевдоспрайти, спрайти зі зміненими кольорами та шрифтові спрайти, а також обгортки (wrap) навколо на початку
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Відображення обраного спрайту (вирівнювання ігнорується)
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайте спрайт навколо, змінюючи його зміщення за X та Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Зміщення за X: {NUM}, Зміщення за Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Вибрати спрайт
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Оберіть будь-який спрайт на екрані
 

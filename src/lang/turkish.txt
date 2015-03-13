@@ -2809,7 +2809,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Önceki 
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve baştaki sargıyı atlayarak bir önceki normal nesneye geç
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Seçili nesnenin mevcut gösterimi. Bu nesneyi çizerken hizalama ihmal edilir
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nesneyi X ve Y ofsetlerini değiştirerek gezdir
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X ofseti: {NUM}, Y ofseti: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Nesne seç
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Ekrandaki herhangi bir yerden bir nesne seçin
 

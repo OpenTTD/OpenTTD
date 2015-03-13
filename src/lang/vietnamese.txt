@@ -2856,7 +2856,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite t
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Xử lý sprite bình thường ở trước, bỏ qua các loại pseudo/recolour/font sprite căn theo điểm bắt đầu
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Theo những thông tin của sprite đã chọn. Thì việc căn chỉnh khi vẽ đối với sprite này sẽ bị bỏ qua
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Chọn sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Chọn sprite ở bất cứ đâu trên màn hình
 

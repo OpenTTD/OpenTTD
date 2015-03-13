@@ -2844,7 +2844,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite r
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Téigh ar aghaigh chuig an gnáth-sprite roimhe, ag scipeáil thar aon bhréag-sprite nó sprite athdathaithe/clófhoirne agus ag timfhilleadh ag an tús
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Léiriú den sprite atá roghnaithe faoi láthair. Déantar neamhaird den ailíniú agus an sprite seo á tharraingt
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bog an sprite timpeall, ag athrú an seach-chur X agus Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}seach-chur X: {NUM}, seach-chur Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Roghnaigh sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Roghnaigh sprite ó áit ar bith ar an scáileán
 

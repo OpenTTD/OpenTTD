@@ -2940,7 +2940,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prethodn
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Vraća se na prethodni normalan sprajt, preskačući sve pseudo/prebojavajuće/font sprajtove i prelazi na kraj posle početnog
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prikaz trenutno odabranog sprajta. Poravnanje se ignoriše tokom iscrtavanja ovog sprajta
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Premeštanje sprajta po kordinatama, menjanjem X i Y pomeraja
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X pomeraj: {NUM}, Y pomeraj: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Odabiranje sprajta
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Odabiranje sprajta bilo gde sa ekrana
 

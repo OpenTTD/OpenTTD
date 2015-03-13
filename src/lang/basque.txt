@@ -2725,7 +2725,6 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Aldez au
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Aurreko grafiko arruntera joan, pseudo/birkoloretu/grafiko tipoak desgaituz
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Orain aukeratutako grafikoaren aurkezpena. Alineazioa ez da kontua hartzen grafiko hau egiterakoan
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}"Sprit"-a mugitu inguruan, X eta Y-ren desplazamenduak aldatuz
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X desplazamendua {NUM}, Y desplazamendua: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}"Sprit"-a aukeratu
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pantaillako edozein lekutatik aukeratu "sprite" bat
 
