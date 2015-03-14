@@ -1156,16 +1156,15 @@ const byte _road_sloped_sprites[14] = {
 };
 
 /**
- * Whether to draw unpaved roads regardless of the town zone.
- * By default, OpenTTD always draws roads as unpaved if they are on a desert
- * tile or above the snowline. Newgrf files, however, can set a bit that allows
- * paved roads to be built on desert tiles as they would be on grassy tiles.
+ * Should the road be drawn as a unpaved snow/desert road?
+ * By default, roads are always drawn as unpaved if they are on desert or
+ * above the snow line, but NewGRFs can override this for desert.
  *
  * @param tile The tile the road is on
  * @param roadside What sort of road this is
- * @return True if the road should be drawn unpaved regardless of the roadside.
+ * @return True if snow/desert road sprites should be used.
  */
-static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
+static bool DrawRoadAsSnowDesert(TileIndex tile, Roadside roadside)
 {
 	return (IsOnSnow(tile) &&
 			!(_settings_game.game_creation.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
@@ -1245,7 +1244,7 @@ static void DrawRoadBits(TileInfo *ti)
 
 	Roadside roadside = GetRoadside(ti->tile);
 
-	if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
+	if (DrawRoadAsSnowDesert(ti->tile, roadside)) {
 		image += 19;
 	} else {
 		switch (roadside) {
@@ -1328,7 +1327,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 				Roadside roadside = GetRoadside(ti->tile);
 
-				if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
+				if (DrawRoadAsSnowDesert(ti->tile, roadside)) {
 					road += 19;
 				} else {
 					switch (roadside) {
@@ -1354,7 +1353,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 				Roadside roadside = GetRoadside(ti->tile);
 
-				if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
+				if (DrawRoadAsSnowDesert(ti->tile, roadside)) {
 					image += 8;
 				} else {
 					switch (roadside) {
