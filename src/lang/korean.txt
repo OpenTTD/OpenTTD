@@ -1218,7 +1218,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :진행 방향�
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :오른쪽에
 STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄움: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :이 옵션을 켜면 회사의 재정 상태를 확인하기 쉽도록 매년 말에 재정 창이 자동으로 뜹니다.
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새로 지정하는 경로는 기본적으로 '직통'으로 처리: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새로 지정하는 경로는 기본적으로 '직행'으로 처리: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :일반적으로 차량은 경로 상에 있는 모든 역에 정차하게 되어있습니다. 이 옵션을 켜면 차량이 마지막 목적지까지 정차없이 모든 역을 통과할 것입니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
 STR_CONFIG_SETTING_STOP_LOCATION                                :새로 지정하는 역 정차 경로는 기본적으로 역의 {STRING}에 정지하도록 설정
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기본적으로 정거장의 어느 위치에 정차할 것인지를 설정합니다. '가까운 쪽'은 역에 진입하는 곳과 가까운 곳에, '중간'은 역 중앙에, '먼쪽'은 진입하는 곳과 먼 곳에 정차합니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
@@ -3140,7 +3140,7 @@ STR_STATION_VIEW_VIA_ANY                                        :{RED}어디든 
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}여기에서 출발하는 {CARGO_SHORT}
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}이 역을 경유하는 {CARGO_SHORT}
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}이 역에 도착하는 {CARGO_SHORT}
-STR_STATION_VIEW_NONSTOP                                        :{YELLOW}직통 {CARGO_SHORT}
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}직행 {CARGO_SHORT}
 
 STR_STATION_VIEW_GROUP_S_V_D                                    :출발-경유-도착
 STR_STATION_VIEW_GROUP_S_D_V                                    :출발-도착-경유
