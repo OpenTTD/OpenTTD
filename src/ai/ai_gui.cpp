@@ -970,7 +970,7 @@ struct AIDebugWindow : public Window {
 	static const int top_offset;    ///< Offset of the text at the top of the WID_AID_LOG_PANEL.
 	static const int bottom_offset; ///< Offset of the text at the bottom of the WID_AID_LOG_PANEL.
 
-	static const unsigned int MAX_BREAK_STR_STRING_LENGTH = 256; ///< Maximum length of the break string.
+	static const uint MAX_BREAK_STR_STRING_LENGTH = 256;   ///< Maximum length of the break string.
 
 	static CompanyID ai_debug_company;                     ///< The AI that is (was last) being debugged.
 	int redraw_timer;                                      ///< Timer for redrawing the window, otherwise it'll happen every tick.

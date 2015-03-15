@@ -635,7 +635,7 @@ static char *MakeCzechTownName(char *buf, const char *last, uint32 seed)
 		choose = _name_czech_subst_full[stem].choose;
 		allow = _name_czech_subst_full[stem].allow;
 	} else {
-		unsigned int map[lengthof(_name_czech_subst_ending)];
+		uint map[lengthof(_name_czech_subst_ending)];
 		int ending_start = -1, ending_stop = -1;
 
 		/* Load the substantive */
