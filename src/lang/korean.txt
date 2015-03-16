@@ -2563,7 +2563,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}소비 �
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}도시 가구
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}이 산업시설의 공급자와 고객을 보려면 클릭하세요.
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}이 화물의 공급자와 고객을 보려면 클릭하세요.
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업망 표시
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업시설 연계도 보기
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}이 산업시설에서 생산/소비하는 화물을 보여줍니다.
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}지도에 표시
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}위 산업망에 표시된 산업을 소형지도에서 볼 수 있게 합니다.
