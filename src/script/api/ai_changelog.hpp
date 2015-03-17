@@ -15,9 +15,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 1.5.0
+ * \b 1.6.0
  *
- * 1.5.0 is not yet released. The following changes are not set in stone yet.
+ * 1.6.0 is not yet released. The following changes are not set in stone yet.
+ *
+ * \b 1.5.0
  *
  * API additions:
  * \li AIList::SwapList
