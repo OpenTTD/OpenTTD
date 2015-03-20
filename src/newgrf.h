@@ -61,6 +61,7 @@ enum GrfMiscBit {
 	GMB_TRAIN_WIDTH_32_PIXELS  = 3, ///< Use 32 pixels per train vehicle in depot gui and vehicle details. Never set in the global variable; @see GRFFile::traininfo_vehicle_width
 	GMB_AMBIENT_SOUND_CALLBACK = 4,
 	GMB_CATENARY_ON_3RD_TRACK  = 5, // Unsupported.
+	GMB_SECOND_ROCKY_TILE_SET  = 6,
 };
 
 enum GrfSpecFeature {
