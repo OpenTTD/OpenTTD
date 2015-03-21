@@ -3081,6 +3081,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Spiritum
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ire ad spiritum naturalem priorem et, termino contacto, ad ultimum revertere
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Imago spiritus electi. Directio neglegitur cum hic spiritus pingitur
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movere spiritum mutatione X et Y incrementa
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reponere relativas
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reponere positiones relativas
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Positio X: {NUM}, Positio Y: {NUM} (Absolutae)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Positio X: {NUM}, Positio Y: {NUM} (Relativae)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Eligere spiritum
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Eligere spiritum e scrinio
 
