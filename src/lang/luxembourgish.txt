@@ -569,7 +569,7 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik: Betriibsgewënn
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik: Betribsgewënn
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik: Akommes
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eenheeten vun Luedung geliwwert
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Firmen Performancebewäertung (max Bewäertung=1000)
@@ -3382,7 +3382,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindegkeet um Ozean: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Geschwindegkeet um Kanal/Floss: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriibskäschtent: {GOLD}{CURRENCY_LONG}/Jr
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betribskäschten: {GOLD}{CURRENCY_LONG}/Jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazitéit: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ëmbaubar)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designt: {GOLD}{NUM}{BLACK} Liewenszäit: {GOLD}{COMMA} Joer
@@ -3528,10 +3528,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :Schëff
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Magnéitbunnlokomotiv
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betriibskäschten {CURRENCY_LONG}/joër{}Kapazitéit: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betribskäschten {CURRENCY_LONG}/Joer{}Kapazitéit: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraaft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betriibskäschten {CURRENCY_LONG}/Joer
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betriibskäschten: {CURRENCY_LONG}/Joer
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten {CURRENCY_LONG}/Joer
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Joer
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
 
@@ -3650,7 +3650,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroosse
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Schëff benennen
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Fliger benennen
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriibskäschten: {LTBLUE}{CURRENCY_LONG}/Joer
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betribskäschten: {LTBLUE}{CURRENCY_LONG}/Joer
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} Joer ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Joer ({COMMA})
