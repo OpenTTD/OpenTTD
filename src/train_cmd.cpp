@@ -2216,8 +2216,12 @@ static void ClearPathReservation(const Train *v, TileIndex tile, Trackdir track_
 				SetTunnelBridgeReservation(end, false);
 
 				if (_settings_client.gui.show_track_reservation) {
-					MarkTileDirtyByTile(tile);
-					MarkTileDirtyByTile(end);
+					if (IsBridge(tile)) {
+						MarkBridgeDirty(tile);
+					} else {
+						MarkTileDirtyByTile(tile);
+						MarkTileDirtyByTile(end);
+					}
 				}
 			}
 		}
