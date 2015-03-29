@@ -99,26 +99,26 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pe
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} batubara
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}kantong surat
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} minyak
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} ekor ternak
-STR_QUANTITY_GOODS                                              :{COMMA} peti barang jadi
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}ekor ternak
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}peti barang jadi
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} gandum
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} kayu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} bijih besi
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} baja
-STR_QUANTITY_VALUABLES                                          :{COMMA} kantong barang berharga
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}kantong barang berharga
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} bijih tembaga
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} jagung
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} buah-buahan
-STR_QUANTITY_DIAMONDS                                           :{COMMA} kantong intan
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}kantong intan
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} makanan
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} kertas
-STR_QUANTITY_GOLD                                               :{COMMA} kantong emas
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}kantong emas
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} air
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} gandum
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} karet
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} gula
-STR_QUANTITY_TOYS                                               :{COMMA} mainan
-STR_QUANTITY_SWEETS                                             :{COMMA} kantong manisan
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}mainan
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}kantong manisan
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} arum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}TANP
 STR_ABBREV_ALL                                                  :{TINY_FONT}SMA
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} penumpang
-STR_BAGS                                                        :{COMMA} kantong
-STR_TONS                                                        :{COMMA} ton
-STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} unit
-STR_CRATES                                                      :{COMMA} peti
+STR_PASSENGERS                                                  :{COMMA}{NBSP}penumpang
+STR_BAGS                                                        :{COMMA}{NBSP}kantong
+STR_TONS                                                        :{COMMA}{NBSP}ton
+STR_LITERS                                                      :{COMMA}{NBSP}liter
+STR_ITEMS                                                       :{COMMA}{NBSP}unit
+STR_CRATES                                                      :{COMMA}{NBSP}peti
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Biru tua
@@ -191,12 +191,12 @@ STR_COLOUR_GREY                                                 :Abu-abu
 STR_COLOUR_WHITE                                                :Putih
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mil/j
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/jam
-STR_UNITS_VELOCITY_SI                                           :{COMMA} meter/detik
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mil/j
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/jam
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}meter/detik
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}dk
-STR_UNITS_POWER_METRIC                                          :{COMMA}dk
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}dk
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}dk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
