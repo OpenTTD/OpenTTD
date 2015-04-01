@@ -1,3 +1,8 @@
+1.5.0 (2015-04-01)
+------------------------------------------------------------------------
+- Fix: [NewGRF] Add Misc. GRF Feature Flag 6 to enable the second rocky tile set [FS#6260] (r27200)
+
+
 1.5.0-RC1 (2015-03-18)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Display relative offset changes in the sprite aligner [FS#6236] (r27174)
