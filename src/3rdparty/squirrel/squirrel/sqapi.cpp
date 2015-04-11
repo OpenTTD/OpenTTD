@@ -1261,10 +1261,28 @@ struct BufState{
 
 WChar buf_lexfeed(SQUserPointer file)
 {
-	BufState *buf=(BufState*)file;
-	if(buf->size<(buf->ptr+1))
-		return 0;
-	return buf->buf[buf->ptr++];
+	/* Convert an UTF-8 character into a WChar */
+	BufState *buf = (BufState *)file;
+	const char *p = &buf->buf[buf->ptr];
+
+	if (buf->size < buf->ptr + 1) return 0;
+
+	/* Read the first character, and get the length based on UTF-8 specs. If invalid, bail out. */
+	uint len = Utf8EncodedCharLen(*p);
+	if (len == 0) {
+		buf->ptr++;
+		return -1;
+	}
+
+	/* Read the remaining bits. */
+	if (buf->size < buf->ptr + len) return 0;
+	buf->ptr += len;
+
+	/* Convert the character, and when definitely invalid, bail out as well. */
+	WChar c;
+	if (Utf8Decode(&c, p) != len) return -1;
+
+	return c;
 }
 
 SQRESULT sq_compilebuffer(HSQUIRRELVM v,const SQChar *s,SQInteger size,const SQChar *sourcename,SQBool raiseerror) {
