@@ -207,7 +207,7 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 static const int MAX_TGP_FREQUENCIES = 10;
 
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
-static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
+static const amplitude_t _water_percent[4] = {70, 170, 270, 420};
 
 /**
  * Gets the maximum allowed height while generating a map based on
