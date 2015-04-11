@@ -155,7 +155,6 @@
 /** Fixed point type for heights */
 typedef int16 height_t;
 static const int height_decimal_bits = 4;
-static const height_t _invalid_height = -32768;
 
 /** Fixed point array for amplitudes (and percent values) */
 typedef int amplitude_t;
@@ -315,8 +314,8 @@ static inline bool AllocHeightMap()
 	_height_map.dim_x = _height_map.size_x + 1;
 	_height_map.h = CallocT<height_t>(_height_map.total_size);
 
-	/* Iterate through height map initialize values */
-	FOR_ALL_TILES_IN_HEIGHT(h) *h = _invalid_height;
+	/* Iterate through height map and initialise values. */
+	FOR_ALL_TILES_IN_HEIGHT(h) *h = 0;
 
 	return true;
 }
