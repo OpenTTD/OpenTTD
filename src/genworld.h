@@ -32,6 +32,17 @@ enum GenWorldMode {
 	GWM_HEIGHTMAP = 3, ///< Generate a newgame from a heightmap
 };
 
+/** Smoothness presets. */
+enum TgenSmoothness {
+	TGEN_SMOOTHNESS_BEGIN,      ///< First smoothness value.
+	TGEN_SMOOTHNESS_VERY_SMOOTH = TGEN_SMOOTHNESS_BEGIN, ///< Smoothness preset 'very smooth'.
+	TGEN_SMOOTHNESS_SMOOTH,     ///< Smoothness preset 'smooth'.
+	TGEN_SMOOTHNESS_ROUGH,      ///< Smoothness preset 'rough'.
+	TGEN_SMOOTHNESS_VERY_ROUGH, ///< Smoothness preset 'very rough'.
+
+	TGEN_SMOOTHNESS_END,        ///< Used to iterate.
+};
+
 static const uint CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY = 4; ///< Value for custom sea level in difficulty settings.
 static const uint CUSTOM_SEA_LEVEL_MIN_PERCENTAGE = 1;    ///< Minimum percentage a user can specify for custom sea level.
 static const uint CUSTOM_SEA_LEVEL_MAX_PERCENTAGE = 90;   ///< Maximum percentage a user can specify for custom sea level.
