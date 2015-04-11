@@ -3332,7 +3332,7 @@ STR_STATION_VIEW_WAITING_STATION                                :Statione: Manen
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Copia: Manentia
 STR_STATION_VIEW_PLANNED_STATION                                :Statione: Rata
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :Copia: Rata
-STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} ex {STATION}
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} a {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} per {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} ad {STATION}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} e statione ignota
@@ -3389,17 +3389,17 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Expensa/
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Constructio
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nova Vehicula
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Pretium Hamaxostichos Operandi
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Pretium Vehicula Viaria Operandi
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Pretium Aeroplana Operandi
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Pretium Naves Operandi
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Tuitio Property Maintenance
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Pretium Operandi Hamaxostichorum
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Pretium Operandi Vehiculorum Viariorum
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Pretium Operandi Aeroplanorum
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Pretium Operandi Navium
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Tuitio Possessionum
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Reditus Hamaxostichorum
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Reditus Vehiculorum Viariorum
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Reditus Aeroplanorum
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Reditus Navium
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Faenus
-STR_FINANCES_SECTION_OTHER                                      :{GOLD}Aliae Res
+STR_FINANCES_SECTION_OTHER                                      :{GOLD}Aliarum Rerum
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Summa:
@@ -3531,7 +3531,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Videre i
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Recensere indicem
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Mittere iussa ad omnia vehicula huius indicis
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Mutare vehicula
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Dimittere ad Ministrandum
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Ministranda Dimmitere
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Dimittere ad Receptaculum
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Dimittere ad Receptaculum
@@ -3897,8 +3897,8 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARG
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vacuum
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} ex {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} ex {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} a {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} a {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Onus
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Monstrare indicia oneris portatum
