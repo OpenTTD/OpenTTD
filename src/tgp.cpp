@@ -213,6 +213,7 @@ static const amplitude_t _water_percent[4] = {70, 170, 270, 420};
  * Gets the maximum allowed height while generating a map based on
  * mapsize, terraintype, and the maximum height level.
  * @return The maximum height for the map generation.
+ * @note Values should never be lower than 3 since the minimum snowline height is 2.
  */
 static height_t TGPGetMaxHeight()
 {
@@ -228,11 +229,11 @@ static height_t TGPGetMaxHeight()
 	 */
 	static const int max_height[5][MAX_MAP_SIZE_BITS - MIN_MAP_SIZE_BITS + 1] = {
 		/* 64  128  256  512 1024 2048 4096 */
-		{   3,   3,   5,   5,   5,   5,   5 }, ///< Very flat
-		{   4,   4,   6,  10,  10,  10,  10 }, ///< Flat
-		{   6,   9,  15,  25,  31,  31,  31 }, ///< Hilly
-		{   7,  12,  23,  42,  78,  85,  85 }, ///< Mountainous
-		{  12,  21,  36,  73, 146, 170, 170 }  ///< Alpinist
+		{   3,   3,   3,   3,   4,   5,   7 }, ///< Very flat
+		{   5,   7,   8,   9,  14,  19,  31 }, ///< Flat
+		{   8,   9,  10,  15,  23,  37,  61 }, ///< Hilly
+		{  10,  11,  17,  19,  49,  63,  73 }, ///< Mountainous
+		{  12,  19,  25,  31,  67,  75,  87 }, ///< Alpinist
 	};
 
 	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS];
