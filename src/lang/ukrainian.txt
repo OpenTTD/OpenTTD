@@ -497,6 +497,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Налаштування
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Налаштування AI / Ігрового скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Налаштування прозорості
@@ -1111,7 +1112,12 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Розд
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть роздільну здатність екрану
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Розмір інтерфейсу
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Оберіть розмір елементів інтерфейсу
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Нормальний
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Подвійний розмір
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Почетверний розмір
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
@@ -1206,6 +1212,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :плаский
 STR_TERRAIN_TYPE_FLAT                                           :рівнинний
 STR_TERRAIN_TYPE_HILLY                                          :пагористий
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :гористий
+STR_TERRAIN_TYPE_ALPINIST                                       :скелястий
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :допустиме
 STR_CITY_APPROVAL_TOLERANT                                      :терпиме
@@ -1214,6 +1221,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :вороже
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Немає відповідних AI...{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернеті'
 
 # Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Налаштування
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтр:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Розгорнути всі
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згорнути всі
@@ -1230,8 +1238,8 @@ STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Кате
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Тип:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Показати лише відфільтровані налаштування
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основні (показує лише найважливіші налаштування)
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Розширені налаштування
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Всі / експертні налаштування
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Розширені (показати основні налаштування)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Експертні / (показати всі налаштування, в тому числі незвичні)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Налаштування, що відрізняються від дефолтних
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Налаштування, що відрізняються від налаштувань нової гри
 
@@ -1242,6 +1250,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Налашту�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Налаштування гри (залишаються при збереженні; впливають лише на поточну гру)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Налаштування компанії (знаходяться в збережених іграх; впливають лише на нові ігри)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Налаштування компанії (знаходяться у збережених іграх; впливають лише на поточну компанію)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Показати всі результати пошуку встановивши{}{SILVER}Категорію {BLACK}на {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Показати всі результати пошуку встановивши{}{SILVER}Тип {BLACK}на {WHITE}Всі типи налаштувань
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Показати всі результати пошуку встановивши{}{SILVER}Категорію {BLACK}на {WHITE}{STRING} {BLACK}і {SILVER}Тип {BLACK}на {WHITE}Всі типи налаштувань
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- немає -
 
 STR_CONFIG_SETTING_OFF                                          :ні
@@ -1283,6 +1294,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Перемкн�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Ставлення ради міста до зміни його території: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Виберіть, який рівень шуму та руйнування довкілля компаніями впливає на їх рейтинг для міст та подальші будівельні дії в їх межах
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Максимальна висота мапи: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Встановити максимально дозволену висоту гір на мапі
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Неможливо встановити таку висоти мапи. Як мінімум одна гора на мапі є вищою
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Дозволити зміну схилів під будівлями, дорогами тощо: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Можливість змінювати ландшафт під будівлями та дорогами без необхідності їх зносу
 STR_CONFIG_SETTING_CATCHMENT                                    :Більш реалістічні зони покриття станцій: {STRING}
@@ -1311,6 +1325,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Інфляці�
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Дозволяє інфляцію в економіці. При цьому витрати з часом зростають дещо швидше за прибутки
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максимальна довжина мостів: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Максимально допустима довжина мостів
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Максимальна висота моста: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Максимальна висота при будівництві мостів
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максимальна довжина тунелів: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Максимально допустима довжина тунелів
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Спосіб створення сировинних підприємств: {STRING}
@@ -1723,6 +1739,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Середнь�
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Оновлювати графік доставки раз на {STRING}{NBSP}д{P 0:2 "ень" "ні" "нів"}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Час між послідовними обрахунками зв'язків на графіку. Кожен обрахунок здійснюється для одного параметра графіку. Тобто значення Х у налаштуваннях не означає, що графік оновлюється кожні Х днів. Лише деякі складові. При виборі параметру "часто" ЦП потрібно більше часу для обрахунку. При виборі параметру "рідко" наступний обрахунок почнеться після запуску доставки за новим маршрутом.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Обраховувати графік доставки раз на {STRING}{NBSP}д{P 0:2 "ень" "ні" "нів"}
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Час, який займає переобчислення кожного зв'язку з компонентом графу. При запуску переобчислення створюється потік, якому дозволяється працювати декілька днів. Чим менше ви поставите це, тим більш можливо, що потік не буде завершено вчасно. Тоді гра зупиниться на час "лагу". Чим довше ви поставите, тим довше займе розподіл доставки при зміні маршрутів.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :ручний
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :асиметричний
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :симетричний
@@ -1738,6 +1755,8 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Точніст�
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Чим більше значення буде встановлено, тим більше часу процесора буде витрачатися на розрахунок графа зв’язків. Якщо це буде тривати довго, ви можете зауважити гальмування. Якщо встановити тут мале значення, розподіл буде неточним і вантаж, можливо, надсилатиметься не в ті місця, куди ви очікуєте.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Сила впливу відстані на попит: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Якщо це значення встановити більшим за 0, відстань між відправною станцією A якогось вантажу та приймаючою станцією B впливатиме на кількість вантажу, який надсилатиметься від A до B. Чим більша відстань від A до B, тим менше вантажу надсилатиметься. Чим більшим буде це значення, тим менше вантажу буде надсилатися до дальніх станцій і тим більше — до ближніх.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Кількість вантажу, що повертається у симетричному режимі: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Встановивши це на менше ніж 100% робить симетричне поширення схожим на асиметричне. Менше вантажу буде примусово повертатися назад, якщо певна його кількість надсилається на станцію. При 0% - симетричне поширення поводить себе зовсім як асиметричне.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Рівень заповнення коротких маршрутів перед переходом до містких: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Часто між двома заданими станціями є більше, ніж один шлях. Cargodist заповнить спочатку найкоротший маршрут, потім другий після найкоротшого і т. д. Рівень заповнення визначається за допомогою оцінки місткості та запланованого використання. Якщо всі маршрути буде заповнено, а джерело вантажу не вичерпається, алгоритм почне переповнювати маршрути, починаючи з наймісткіших. Ця настройка дозволяє задати рівень заповнення в процентах, якого треба досягнути на першому маршруті перед тим, як перейти до заповнення наступного. Варто встановити цей рівень меншим за 100%, щоб уникнути переповнення станцій в разі переоцінки місткості маршруту.
 
@@ -1766,13 +1785,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Метричн�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :СІ (м³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Одиниці тяглової сили: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Показувати тяглову силу в таких одиницях:
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Якщо тяглова силу відображається в інтерфейсі: показувати її в обраній одиниці виміру
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Імперські (фунт-сили)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Метричні (кгс)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :СІ (кН)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Одиниці висоти: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Показувати висоти в таких одиницях:
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Якщо увімкнено показ висоти в інтерфейсі: показувати в обраній одиниці виміру
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Імперські (фути)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метричні (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
@@ -1834,6 +1853,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ба
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... базовий набір звуків '{STRING}' не знайдено
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... базовий набір музики '{STRING}' не знайдено
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Не вистачає пам'яті
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Не вдалося розподілити {BYTES} спрайт-кешу. Спрайт кеш було зменшено до {BYTES}. Це зменшить швидкість роботи OpenTTD. Аби зменшити використання пам'яті спробуйте заборонити 32-бітну графіку і/або ступені масшатабування екрану
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1847,6 +1867,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Мере
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблиця рекордів
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / GS
@@ -1866,6 +1887,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Вибр
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Показати налаштування гри
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показати таблицю рекордів
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Налаштування відображення
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового Скрипта
@@ -1905,6 +1927,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Гра�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Супербульдозер (руйнує все): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунелі перетинаються: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Реактивні літаки не будуть (часто) розбиватися в малих аеропортах: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Змінити максимальну висоту мапи: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Змінити максимальну висоту гір на мапі
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Помірний ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Субарктичний ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Субтропічний ландшафт
@@ -2312,7 +2336,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Вибр
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Позначити весь вміст, що є оновленням існуючого, для завантаження
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Зняти позначки
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Не завантажувати нічого
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Шукати на сторонніх веб-сайтах
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Шукати додатки недоступні на серверах OpenTTD на сторонніх веб-сайтах
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Ви виходите з OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Умови використання додатків з зовнішніх веб-сайтів можуть відрізнятися.{}Інструкції по встановленню даних додатків у OpenTTD шукайте на відповідних веб-сайтах.{}Продовжити?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фільтр за назвою:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Відвідати вебсайт
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Відвітати вебсайт цього контенту
@@ -2383,10 +2410,14 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Змін
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зробити об'єкти невидимими, а не прозорими
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Легенда вантажопотоку
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Усе
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Немає
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Виберіть компанії для відображення
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}не використовується
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}концентрований
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{G=m}{TINY_FONT}{BLACK}перевантажений
 STR_LINKGRAPH_LEGEND_OVERLOADED.r                               :{G=m}{TINY_FONT}{BLACK}перевантаженого
 STR_LINKGRAPH_LEGEND_OVERLOADED.d                               :{G=m}{TINY_FONT}{BLACK}перевантаженому
@@ -2826,6 +2857,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Міста:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кількість виробництв:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Максимальна висота мапи
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Збільшити максимальну висоту гір на мапі на одиницю
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Зменшити максимальну висоту гір на мапі на одиницю
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Висота лінії снігу:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Підвищити лінію снігу
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Понизити лінію снігу
@@ -2855,6 +2889,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назв
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Розмір:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Змінити максимальну висоту мапи
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Змінити висоту лінії снігу
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Змінити рік початку гри
 
@@ -2975,6 +3010,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Попе
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Повернутися до попереднього нормального спрайту, пропускаючи будь-які псевдоспрайти, спрайти зі зміненими кольорами та шрифтові спрайти, а також обгортки (wrap) навколо на початку
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Відображення обраного спрайту (вирівнювання ігнорується)
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайте спрайт навколо, змінюючи його зміщення за X та Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Відновити відносні
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Відновити поточні зсуви (відносні)
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Зсув по осі X: {NUM}, Зсув по осі Y: {NUM} (Абсолютно)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Зсув по осі X: {NUM}, Зсув по осі Y: {NUM} (Відносно)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Вибрати спрайт
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Оберіть будь-який спрайт на екрані
 
@@ -3031,6 +3070,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Відсу
 STR_NEWGRF_BROKEN                                               :{WHITE}Поведінка NewGRF '{0:STRING}' може спричинити розсинхронізацію та/або аварійне завершення
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Це змінило стан локомотиву '{1:ENGINE}', коли він не у депо
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Це змінило довжину транспорту для '{1:ENGINE}', якщо він не в депо
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Було змінено вантажомісткість транспорту для '{1:ENGINE}' поза гаражом чи рембазою
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Потяг '{VEHICLE}', який належить '{COMPANY}', має неправильну довжину. Можливо, це спричинено проблемами з NewGRFs. Гра може розсинхронізуватись або аварійно завершитись
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' надає невірну інформацію
@@ -3176,6 +3216,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}Пер�
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисніть на субсидії, щоб показати підприємство/місто у центрі екрану. Утримання Ctrl відкриває нове вікно з видом на підприємство/місто
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Книга історії
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Книга глобальної історії
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Стор. {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Перейти до сторінки, вибраної в цьому списку.
@@ -3183,6 +3225,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Попе
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}На попередню сторінку
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Далі
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Наступна сторінка
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невірне посилання на завдання
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Назви станцій - натисніть на назву, щоб показати станцію в центрі екрану. Утримання Ctrl відкриває нове вікно з видом на станцію
@@ -3199,6 +3242,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Звід
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} з {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} зарезервовано для завантаження)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Приймає
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показати список приймання вантажів
@@ -3209,9 +3253,14 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показати рейтинг станції
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Щомісячна пропозиція і місцевий рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Групувати по
+STR_STATION_VIEW_WAITING_STATION                                :Станція: Очікується
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Кількість: Очікується
+STR_STATION_VIEW_PLANNED_STATION                                :Станція: Заплановано
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Кількість: Заплановано
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} з {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} через {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} до {STATION}
@@ -3219,9 +3268,16 @@ STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHO
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} до будь-якої станції
 STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} через будь-яку станцію
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} з цієї станції
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} зупиняється на цій станції
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} до цієї станції
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} без зупинки
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Джерело-Через-Місце призначення
+STR_STATION_VIEW_GROUP_S_D_V                                    :Джерело-Місце призначення-Через
+STR_STATION_VIEW_GROUP_V_S_D                                    :Через-Джерело-Місце призначення
+STR_STATION_VIEW_GROUP_V_D_S                                    :Через-Місце призначення-Джерело
+STR_STATION_VIEW_GROUP_D_S_V                                    :Місце призначення-Джерело-Через
+STR_STATION_VIEW_GROUP_D_V_S                                    :Місце призначення-Через-Джерело
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :жахливо
@@ -3995,6 +4051,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Цей �
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Цей розклад почнеться о {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Дата початку
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Оберіть дату як точку відліку даного розкладу. Ctrl+клац мишою встановлює точку відліку даного розкладу і рівномірно розподіляє весь транспорт, що виконує це завдання згідно його відносного порядку розміщення, якщо порядок повністю розписаний у розкладі
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись наказ
@@ -4132,6 +4189,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Прибуток: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Пересадка: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Пересадка: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Перерахувати: {CURRENCY_LONG}{WHITE} / {GREEN}Дохід: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Перерахувати: {CURRENCY_LONG}{WHITE} / {GREEN}Дохід: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Перерахувати: {CURRENCY_LONG}{WHITE} / {RED}Вартість: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Перерахувати: {CURRENCY_LONG}{WHITE} / {RED}Вартість: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Приблизні витрати: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приблизний прибуток: {CURRENCY_LONG}
 
@@ -4216,6 +4277,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Робо
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Вже понижено до рівня моря
 STR_ERROR_TOO_HIGH                                              :{WHITE}Дуже високо
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... вже рівна
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Пізніше, міст над цим місцем буде занадто високо.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Неможливо змінити назву компанії...
@@ -4405,6 +4467,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Споч
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Початок та кінець не можуть бути в одному місці
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Кінці мостів на різних рівнях
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Міст дуже низький для цього місця
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Висота мосту є занадто великою для даного ландшафту
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Початок та кінець мають бути на одній лінії
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... обидва кінці мосту мають бути на землі
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... міст надто довгий
