@@ -516,7 +516,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Monstrar
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Monstrare formulas graphicas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Monstrare album foederis societatum
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Industriam novam condere vel monstrare indicem industriarum
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Monstrare indicem hamaxostichorum societatis. Ctrl+Preme ut mutetur ad indicem sine gregibus
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Monstrare indicem traminum societatis. Ctrl+Preme ut mutetur ad indicem sine gregibus
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Monstrare indicem vehiculorum viariorum societatis. Ctrl+Preme ut mutetur ad indicem sine gregibus
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Monstrare indicem navium societatis. Ctrl+Preme ut mutetur ad indicem sine gregibus
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Monstrare indicem aeroplanorum societatis. Ctrl+Preme ut mutetur ad indicem sine gregibus
@@ -911,7 +911,7 @@ STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stationes/Aeroportus/Navalia
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Aedificia/Industriae
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Vehicula
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Hamaxostichi
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Tramina
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Vehicula Viaria
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Naves
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aeroplana
@@ -976,8 +976,8 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cives celebrant . . .{}Aeroplanum primum advenit ad {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Calamitas Ferriviaria!{}{COMMA} in incendio pereunt post conflictum!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Calamitas Autocinetica!{}Gubernator in incendio perit post conflictum contra hamaxostichum!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Calamitas Autocinetica!{}{COMMA} in incendio pereunt post conflictum contra hamaxostichum!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Calamitas Autocinetica!{}Gubernator in incendio perit post conflictum contra tramen!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Calamitas Autocinetica!{}{COMMA} in incendio pereunt post conflictum contra tramen!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Calamitas Aeroplanica!{}{COMMA} in incendio pereunt apud {STATION}!
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Calamitas Aeroplanica!{}Aeroplano fomes caruit, {COMMA} in incendio pereunt!
 
@@ -994,13 +994,13 @@ STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Consolidatio Societatum!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} vendita est; {STRING} emit, pretio {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Perditum!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} clusus est possessionibus venditis ab creditoribus!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} clusus est possessionibus venditis abs creditoribus!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova societas incohata!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} incipit apud {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} sumpta est ab {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} sumpta est a {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Praeses)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Novum oppidum {1:TOWN} constructum expensis ab {0:STRING} comparatis!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Novum oppidum {1:TOWN} constructum expensis a {0:STRING} comparatis!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G us a um i ae a} {STRING} construitur apud {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G us a um i ae a} {STRING} adsit{G 0 us a um i ae a} apud {TOWN}!
@@ -1054,15 +1054,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nunc {STRING.acc} accipit
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} nunc {STRING.acc} {STRING.acc}que accipit
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Condicio subsidii discedit:{}{}Vectura {STRING.gen} abs {STRING.abl} ad {STRING.acc} non diutius subveniatur
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidium retractum:{}{}Vectura {STRING.gen} abs {STRING.abl} ad {STRING.acc} non diutius subvenietur
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidium oblatum:{}{}Prima vectura {STRING.gen} abs {STRING.abl} ad {STRING.acc} unum annum subveniatur ab auctoritate vicinale!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} abs {STRING.abl} ad {STRING.acc} merebit reditum sesquiplicem anno secundo!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} abs {STRING.abl} ad {STRING.acc} merebit reditum duplicem anno secundo!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} abs {STRING.abl} ad {STRING.acc} merebit reditum triplicem anno secundo!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} abs {STRING.abl} ad {STRING.acc} merebit reditum quadruplicem anno secundo!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Condicio subsidii discedit:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subveniatur
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidium retractum:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subvenietur
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidium oblatum:{}{}Prima vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} unum annum subveniatur ab auctoritate vicinale!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum sesquiplicem anno secundo!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum duplicem anno secundo!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum triplicem anno secundo!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum quadruplicem anno secundo!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Chaos vehicularium in {TOWN}!{}{}Reconstructio viarum, expensis ab {STRING} compartis, affert miseriam autoraedariis 6 menses!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Chaos vehicularium in {TOWN}!{}{}Reconstructio viarum, expensis a {STRING} compartis, affert miseriam autoraedariis 6 menses!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolium Vecturae!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}: Auctoritas vicinalis nuntiat {STRING} esse societatem unicam cui uno anno licet transportare intra oppidum!
 
@@ -1347,11 +1347,11 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Pretii struendi
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Eligere magnitudinem pretiorum struendi emendique
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Sinere recessiones oeconomicae aliquando accidere. In recessione oeconomica, productio omnino minuitur (sed, recessione confecta, productio redit ad magnitudinem priorem)
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vetare hamaxostichos cursum reflectere in stationibus: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si electa, hamaxostichi non possunt cursum reflectere in stationibus quae non sunt termini, etsi adest iter brevius ad destinatum cursu reflexo
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vetare tramina cursum reflectere in stationibus: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si electa, tramina non possunt cursum reflectere in stationibus quae non sunt termini, etsi adest iter brevius ad destinatum cursu reflexo
 STR_CONFIG_SETTING_DISASTERS                                    :Calamitates: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Sinere calamitates accidere, quae forte vehicula aut infrastructuram destruant
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Quamdiu auctoritas vicinalis patitur malas actiones ab societatibus: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Quamdiu auctoritas vicinalis patitur malas actiones a societatibus: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Eligere patientiam auctoritatis vicinalis - quomodo venia eius afficitur a sonito et detrimento vicinitatis. Nimis malis actionibus, auctoritates vetant stationes struere, aedificia viasque removere
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altitudo tabulae maxima: {STRING}
@@ -1363,22 +1363,22 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Sinere magnitud
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Si electa, aeroportus et alii stationum typi habent meliores regiones acceptionis
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Sinere plures vias, pontes, et cuniculos removere in oppidis: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Si electa, infrastructura et aedificia oppidorum sunt magis facilia remotu
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitudo hamaxostichorum maxima: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Eligere longitudinem hamaxostichorum maximam
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitudo traminum maxima: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Eligere longitudinem traminum maximam
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tegul{P 0 ae arum}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Algorithmus fumi/favillarum vehiculorum: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Eligere crebritatem fumi favillarumve quae e vehiculis emissi sunt
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Algorithmus accelerationis hamaxostichorum: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Algorithmus accelerationis traminum: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Eligere algorithmum physicae accelerationis hamaxostichorum. Algorithmus "originalis" facit ut omnes hamaxostichi aeque tardescant in clivis. Algorithmus "realisticus" facit ut hamaxostichi tardescant in clivis et flexibus per potestate, longitudine, etc.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Algorithmus accelerationis vehiculorum viariorum: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Eligere algorithmum physicae accelerationis vehiculorum viariorum. Algorithmus "originalis" facit ut omnes vehicula aeque tardescant in clivis. Algorithmus "realisticus" facit ut vehicula tardescant in clivis et flexibus per potestate, vire tractionis, etc.
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Arduitas clivorum hamaxostichis: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Arduitas clivorum traminibus: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Arduitas tegulae clivosae hamaxosticho. Arduitate maiore, difficultas ascendendi maior est hamaxostichis
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Arduitas clivorum vehiculis viariis: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Arduitas tegulae clivosae vehiculo viario. Arduitate maiore, difficultas ascendendi maior est vehiculis
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Vetare hamaxostichos et naves cursum flectere 90°: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Hamaxostichi possunt cursum flectere in astariis aut 45° (diagonale deinde horizontale/verticale) aut 90° (horizontale deinde verticale); quoque naves possunt cursum 90° aut 45° cursum flectere. Hac electa, tantum 45° licet
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Vetare tramina et naves cursum flectere 90°: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tramina possunt cursum flectere in astariis aut 45° (diagonale deinde horizontale/verticale) aut 90° (horizontale deinde verticale); quoque naves possunt cursum 90° aut 45° cursum flectere. Hac electa, tantum 45° licet
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Sinere stationes iungi quae non contigua sunt: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Sinere partes stationi addere quae non prorsus contigua sunt. Necesse est Ctrl premere dum novae partes adduntur.
 STR_CONFIG_SETTING_INFLATION                                    :Inflatio: {STRING}
@@ -1389,8 +1389,8 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altitudo pontiu
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Eligere altitudinem pontium maximam
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longitudo cuniculorum maxima: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Eligere longitudinem cuniculorum maximam
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Modus industrias primarias ab lusore condendi: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Modus industriam primariam condendi. Optione 'nullo' electa, industrias condere non licet; 'prospiciendo' electa, licet condere industrias, sed locus industriae forte apparet in tabula atque forsitan desit; 'in loco aliarum industriarum' electa, licet industrias primarias condere ab societatibus sicut industrias secondarias, in quovis loco
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Modus industrias primarias a lusore condendi: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Modus industriam primariam condendi. Optione 'nullo' electa, industrias condere non licet; 'prospiciendo' electa, licet condere industrias, sed locus industriae forte apparet in tabula atque forsitan desit; 'in loco aliarum industriarum' electa, licet industrias primarias condere a societatibus sicut industrias secondarias, in quovis loco
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nullo
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :In loco aliarum industriarum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospiciendo
@@ -1407,7 +1407,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Monstrare fenes
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Electa, fenestra argentaria ostenditur quoque anno finito ut facile inspiciatur status argentarius societatis
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nova iussa solite 'continua' sunt: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Solite, vehicula consistunt cuique stationi quam inveniunt. Hac electa, vehicula praeteribunt, non consistentes, omnibus stationibus usque ad destinatum ultimum. Cave, haec electio modo valorem iussi novi solitum definit. Quidque tamen iussum potest utrique modo adlegi
-STR_CONFIG_SETTING_STOP_LOCATION                                :Hamaxostichi solite sistunt in {STRING} suggestus
+STR_CONFIG_SETTING_STOP_LOCATION                                :Tramina solite sistunt in {STRING} suggestus
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Pars suggestus in qua hamaxostichi solite sistunt. 'Citera pars' est juxta aditum, in 'medio' certe est in medio suggestus, et 'ultra pars' est procul ab aditu. Cave, haec electio modo valorem iussi novi solitum definit. Quidque tamen iussum potest utrique modo adlegi
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :citera parte
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :medio
@@ -1449,7 +1449,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Electa, infrast
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportus numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Electa, omnes aeroportuum typi permanent post introductionem
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Monere si vehiculum errantem sit: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Monere si vehiculum errans sit: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Electa, nuntiatur cum vehicula non possint invenire viam ad destinatum
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Recensere iussa vehiculorum: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Electa, iussa vehiculorum aliquando recensentur, atque nonnulla manifesta problemata nuntiantur, si detecta sint
@@ -1490,7 +1490,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Typus terrae: {
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(modo TerraGenesis) Clivositas terrae
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Numerus industriarum: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Eligere quot industriae oportet esse constructae ac oportet sustineri intra ludum
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Spatium maximum abs finibus tabulae ad ergasteria petrolearia struenda: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Spatium maximum a finibus tabulae ad ergasteria petrolearia struenda: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ergasteria petrolearia modo struuntur apud fines tabulae, i.e. in littore si mappa est insula
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitudo lineae nivis: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Eligere altitudinem apud quam nix incipit cadere in terra subarctica. Nix etiam afficit conditionem industriarum et desideria oppidorum
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una plur
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Spatium stationum maximum: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area maxima in qua partes stationum possunt esse sita. Cave, numeris spatii magnis, ludus lentus sit
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Ministrare helicoptera automatice in heliportibus: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Ministrare helicoptera automatice in helicopterariis: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Ministrare helicoptera post quemque appulsum, etsi non est tugurium portui
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Connectere terrae arcam ferramentorum arcis ferriviariae/viariae/aquariae/aeriae ferramentorum: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Cum arca ferramentorum constructionis aperitur, etiam plasmationis terrae arca ferramentorum aperitur
@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primus parabili
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Postremus parabilis
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Frequentissime usus
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Monstrare cursus reservatos in astariis: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Facere ut astaria cum cursibus ab hamaxosticho reservatis habeant alium colorem, ut facilior sit videre errores hamaxostichorum qui nolunt inire quosdam locos cum signalibus
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Facit ut astaria cum cursibus a tramine reservatis habeant alium colorem, ut facilior sit videre errores hamaxostichorum qui nolunt inire quosdam locos cum signalibus
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Ferramenta struendi manent post usum: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Electa, ferramenta struendi (cuniculorum, pontium, ceterorum) tamen activa sunt postquam usa sunt
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Congregare expensa in fenestra argentaria societatis: {STRING}
@@ -1618,12 +1618,12 @@ STR_CONFIG_SETTING_SOUND_DISASTER                               :Calamitates/acc
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Sonare cum calamitates accidentesve accidunt
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehicula: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Sinere vehicula sonare
-STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiens: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambientes: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Sinere sonos ambientes industriarum, oppidorum, terraeque fieri
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Vetare constructionem infrastructurae dum nulla vehicula parabilia sunt: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Electa, infrastructura modo parabilis est si adsunt vehicula parabilia. Itaque non licet absumere pecuniam tempusque struendi infrastructuram inutilem
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Numerus maximus hamaxostichorum cuiusque societatis: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Numerus maximus traminum cuiusque societatis: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numerus maximus hamaxostichorum quos societas habere licet
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Numerus maximus vehiculorum viariorum cuiusque societatis: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Numerus maximus vehiculorum viariorum quae societas habere licet
@@ -1632,8 +1632,8 @@ STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Numerus maximus
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Numerus maximus navium cuiusque societatis: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numerus maximus navium quas societas habere licet
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Vetare IA hamaxostichos habere: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Electa, non licet lusori IA hamaxostichos tenere
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Vetare IA tramina habere: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Electa, non licet lusori IA tramina tenere
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Vetare IA vehicula viaria habere: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Electa, non licet lusori IA vehicula viaria tenere
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Vetare IA aeroplana habere: {STRING}
@@ -1654,7 +1654,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Numerus maximus
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalla ministrationis monstrantur centesimis partibus: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Eligere si ministratio vehiculorum fiat aut quia satis sit tempus post ministrationem priorem, aut quia constantia vehiculi minuatur quamdam partem centesimam de constantia maxima
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervallum ministrationis solitum hamaxostichis: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervallum ministrationis solitum traminibus: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Eligere solitum intervallum ministrationis novis vehiculis ferriviariis, si non est proprium intervallum ministrationis vehiculo
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}die{P 0 m s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Neglectum
@@ -1667,9 +1667,9 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Eligere solitum
 STR_CONFIG_SETTING_NOSERVICE                                    :Neglegere ministrationem cum nullae sunt defectiones vehiculorum: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Electa, vehicula non ministrantur defectionibus vetatis
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Annuere currus ferriviarios habere velocitates maximas: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Electa, velocitates maximae curruum afficiunt velocitatem maximam hamaxostichi
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Electa, velocitates maximae curruum afficiunt velocitatem maximam traminis
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Neglegere ferrivias electricas: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Electa, hamaxostichi electrici non postulant electricam ferriviam, modo ferriviam solitam
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Electa, tramina electrica non postulant electricam ferriviam, modo ferriviam solitam
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :De adventu primi vehiculi stationi lusoris: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Ostendere ephemeridem cum primum vehiculum adveniat stationi lusoris
@@ -1685,12 +1685,12 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :De industriis c
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Ostendere ephemeridem cum industria mox claudatur
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :De mutationibus oeconomicis: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Ostendere ephemeridem cum magna eventa oeconomica fiant
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :De mutationibus productionis industriarum ab societate lusoris attentae: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Ostendere ephemeridem cum productio industriarum ab societate lusoris attentae mutet
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :De mutationibus productionis industriarum ab societatibus competitorum attentae: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Ostendere ephemeridem cum productio industriarum ab societatibus competitorum attentae mutet
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :De mutationibus productionis industriarum a societate lusoris attentae: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Ostendere ephemeridem cum productio industriarum a societate lusoris attentae mutet
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :De mutationibus productionis industriarum a societatibus competitorum attentae: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Ostendere ephemeridem cum productio industriarum a societatibus competitorum attentae mutet
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :De mutationibus productionis aliarum industriarum: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Ostendere ephemeridem cum productio industriarum ab nulla societate attentae mutet
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Ostendere ephemeridem cum productio industriarum a nulla societate attentae mutet
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :De admonitione / indicio vehiculorum societatis lusoris: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Ostendere nuntium de vehiculis attendendis
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :De novis vehiculis: {STRING}
@@ -1710,16 +1710,16 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ephemeris color
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Eligere annum in quo nuntia periodicorum colorata apparet. Antea, nuntia nigra albaque sunt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Annus initii: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Sinere oeconomiam teretem esse (i.e. plures ac minores mutationes): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Electa, productio industriarum saepius mutat, et minores per gradus. Sed haec electio nihil affert si industriae apparatae sunt ab NewGRF
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Electa, productio industriarum saepius mutat, et minores per gradus. Sed haec electio nihil affert si industriae apparatae sunt a NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sinere mercari sortes societatum: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Sinere mercari sortes ab societatibus. Sortes societatum satis aetatis modo mercari licet
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Sinere mercari sortes a societatibus. Sortes societatum satis aetatis modo mercari licet
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Centesimae partes lucri pendenda in translatione: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Centesimae lucri pars medietati data in systematibus transferendi, ut melius distribuatur lucrum vehiculorum
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Trahens, ponere signalia: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Eligere spatium signalia struendi usque ad impedimentum proximum (i.e. aliud signale, compitum), si signalia ponuntur trahendo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} quaque tegula
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Trahens, continere spatium fixum inter signalia: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Eligere modum signalia ponendi Ctrl+trahente. Neglecta, signalia ponuntur circa cuniculos pontesque ut non essent magna spatia sine signalibus. Electa, signalia ponuntur n quaque tegula, ut signalia in astariis parallelis faciliora sint directu
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Eligere modum signalia ponendi Ctrl+trahente. Neglecta, signalia ponuntur circa cuniculos pontesque ut non essent magna spatia sine signalibus. Electa, signalia ponuntur N quaque tegula, ut signalia in astariis parallelis faciliora sint directu
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Struere signalia semaphorica automatice ante annum: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Eligere annum in quo mutandum ad signalia electrica est. Antea, signalia semaphorica adhibenda sunt (quae idem munus habent, sed dissimilia sunt visu)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Annuere GUI signalium: {STRING}
@@ -1747,7 +1747,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Sinere oppida v
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Oppidis licet transitus ferriviarios struere: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Electa, licet auctoritatibus oppidorum struere ferriviarios transitus
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Sinere oppida moderari aeroportus finibus soniti: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Neglecta, modo licet duo esse aeroportus in quoque oppido. Electa, quot aeroportus licet esse in oppido finitur ab sonito et distantia cuiusque aeroportus etiam ab patientia soniti oppidi, quae afficitur numero incolarum oppidi
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Neglecta, modo licet duo esse aeroportus in quoque oppido. Electa, quot aeroportus licet esse in oppido finitur a sonito et distantia cuiusque aeroportus etiam a patientia soniti oppidi, quae afficitur numero incolarum oppidi
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Lusoribus oppida condere: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Electa, licet lusoribus condere oppida intra ludum
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non licet
@@ -1884,14 +1884,14 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originale
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Commendatum)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Inventrum itineris hamaxostichorum: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Inventrum itineris traminum: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Inventrum itineris hamaxostichis adhibendum
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Inventrum itineris vehiculorum viariorum: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Inventrum itineris vehiculis viariis adhibendum
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Inventrum itineris navium: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Inventrum itineris navibus adhibendum
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Reversio automatica apud signalia: {STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Sinere hamaxostichos reverti apud signale, si illic valde morati sunt
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Sinere tramina reverti apud signale, si illic valde morati sunt
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mutare valorem optionis
 
@@ -1984,7 +1984,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Quadrum 
 STR_CHEATS_WARNING                                              :{BLACK}Cave! Competitores tuas falsurus es! Memento tantam infamiam memoria omnium in aeternum teneri!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augere pecuniam {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludens es in loco societatis: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magica machina aggerandi (removere industrias, obiecta immobilia): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magica machina aggerandi (removet industrias, obiecta immobilia): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Sinere cuniculos sese transgredi: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Magna aeroplana non corruent (frequenter) in aeroportibus parvis: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Eligere altitudinem tabulae maximam: {ORANGE}{NUM}
@@ -1993,7 +1993,7 @@ STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Terra temperata
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Terra subarctica
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Terra subtropica
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Terra ludicrorum
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Mutare diem: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Mutare annum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mutare annum currentem
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere mutare productiones industriarum: {ORANGE}{STRING}
 
@@ -2001,7 +2001,7 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere 
 STR_LIVERY_CAPTION                                              :{WHITE}Schema Coloris Novum
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Monstrare schemata coloris generalia
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Monstrare schemata coloris hamaxostichorum
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Monstrare schemata coloris traminum
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Monstrare schemata coloris vehiculorum viariorum
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Monstrare schemata coloris navium
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Monstrare schemata coloris aeroplanorum
@@ -2309,7 +2309,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inscribe
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nullae res retis inventae vel compilata sine ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nulli ludi in rete inventi
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Nulla responsa ab servatro
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Nulla responsa a servatro
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non potest iungere propter NewGRF imparia
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synchronizatio ludi retis defecit
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Connexus retis amissus
@@ -2343,7 +2343,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :editio impar
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nomen iam adhibitum
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :tessera impar
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :agnoscamentum societatis impar in 'DoCommand'
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :dimissus ab servatro
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :dimissus a servatro
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :conabatur trica uti
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servatrum plenum
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :mittebat nimium iussa
@@ -2354,7 +2354,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :tabula geograph
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Connexus forsitan amissus
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In {NUM} prior{P e ibus} secund{P o is} nulla data ab servatro accipitur
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In {NUM} prior{P e ibus} secund{P o is} nulla data e servatro accipitur
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2514,7 +2514,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Constructio Mag
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Struere ferriviam. Ctrl mutat inter ferrivias struendas/removendas. Shift mutat inter constructionem et aestimationem monstrandam
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Struere ferriviam automatico modo. Ctrl mutat inter ferrivias struendas/removendas. Shift mutat inter constructionem et aestimationem monstrandam
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Struere receptaculum hamaxostichorum (ad hamaxostichos ministrandos ac emendos). Shift mutat inter constructionem et aestimationem monstrandam
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Struere receptaculum traminum (ad tramina ministranda ac emenda). Shift mutat inter constructionem et aestimationem monstrandam
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Struere interlocum ferriviarium. Ctrl pressa, interloci iungendi essent. Shift mutat inter constructionem et aestimationem monstrandam
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Struere stationem ferriviariam. Ctrl pressa, stationes iungendae essent. Shift mutat inter constructionem et aestimationem monstrandam
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Struere signalia ferriviaria. Ctrl mutat inter semaphora et signalia electrica{}Constuctio trahendo struit signalia in lineam; Ctrl+trahendo signalia struit usque ad compitum signaleve secundum{}Ctrl+Preme ut fenestra signalium ostendatur celeturve. Shift mutat inter constructionem et aestimationem monstrandam
@@ -2533,8 +2533,8 @@ STR_RAIL_NAME_MAGLEV                                            :Maglev
 STR_RAIL_NAME_MAGLEV.gen                                        :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Directio Receptaculi Hamaxostichorum
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Eligere directionem receptaculi hamaxostichorum
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Directio Receptaculi Traminum
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Eligere directionem receptaculi traminum
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Interlocus
@@ -3115,7 +3115,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectio post ter
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Fundamento graphico adhibito deest nonulli spiritus.{}Utinam arcessas novam editionem
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Fundamento graphico adhibito deest nonulli spiritus.{}Utinam arcessas novam editionem.{}Quoniam ludis {YELLOW}editionem OpenTTD adhuc in explicando{WHITE}, fortasse etiam tibi necesse est {YELLOW}editio fundamenti graphici OpenTTD in explicando{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Opes GRF desideratae non parabiles (spiritus {3:NUM})
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} neglectus est ab {2:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} neglectus est a {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Irrita/ignota dispositio spiritus (spiritus {3:NUM})
 
 # NewGRF related 'general' warnings
@@ -3280,10 +3280,10 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Claudere
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidia
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidia portationis oblata:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} abs {STRING.abl} ad {STRING.acc}{YELLOW} (ante {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} a {STRING.abl} ad {STRING.acc}{YELLOW} (ante {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nulla -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Itinera iam subventa:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} abs {STRING} ad {STRING}{YELLOW} ({COMPANY}{YELLOW}, ad {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} a {STRING} ad {STRING}{YELLOW} ({COMPANY}{YELLOW}, ad {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Preme in subsidium ut conspectus moveatur supra industriam/oppidum. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam/oppidum
 
 # Story book window
@@ -3312,7 +3312,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nullum o
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} abs {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} a {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservata ad onerandum)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accipit
@@ -3364,7 +3364,7 @@ STR_CARGO_RATING_OUTSTANDING                                    :Optima
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Movere conspectum supra hanc stationem. Ctrl+Preme ut nova fenestra conspectus aperiatur supra stationem
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Mutare nomen stationis
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Monstrare omnes hamaxostichos qui hanc stationem in horario habent
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Monstrare omnia tramina quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Monstrare omnia vehicula viaria quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Monstrare omnia aeroplana quae hanc stationem in horario habent
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Monstrare omnes naves quae hanc stationem in horario habent
@@ -3389,12 +3389,12 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Expensa/
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Constructio
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nova Vehicula
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Pretium Operandi Hamaxostichorum
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Pretium Operandi Traminum
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Pretium Operandi Vehiculorum Viariorum
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Pretium Operandi Aeroplanorum
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Pretium Operandi Navium
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Tuitio Possessionum
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Reditus Hamaxostichorum
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Reditus Traminum
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Reditus Vehiculorum Viariorum
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Reditus Aeroplanorum
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Reditus Navium
@@ -3420,13 +3420,13 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Condita: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schema Coloris:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicula:
-STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} hamaxostich{P us i}
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tram{P en ina}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vehicul{P um a} viari{P um a}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeroplan{P um a}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} nav{P is es}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nulla
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Aestimatio societatis: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posessa ab {COMPANY})
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posessa a {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastructura:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} par{P s tes} ferriviae
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} par{P s tes} viae
@@ -3480,15 +3480,15 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriae
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nullae -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% translata)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% translata)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% translat{G 1 us a um i ae a})
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% translat{G 1 us a um i ae a})
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomina industriarum - preme in nomen ut conspectus moveatur supra industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Productio mensis prioris:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% translata)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% translat{G 1 us a um i ae a})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Movere conspectum supra hanc industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Quantitas productionis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Haec industria mox claudetur!
@@ -3510,12 +3510,12 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mutare p
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mutare productionem (centesima, ad 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Hamaxostich{P us i}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tram{P en ina}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Vehicul{P um a} Viari{P um a}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Nav{P is es}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeroplan{P um a}
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Hamaxostichi - preme in hamaxostichum ut indicia monstretur
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tramina - preme in tramen ut indicia monstretur
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehicula viaria - preme in vehiculum ut indicia monstretur
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Naves - preme in navem ut indicia monstretur
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeroplana - preme in aeroplanum ut indicia monstretur
@@ -3544,12 +3544,12 @@ STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Preme ut
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Iussa communia {COMMA} vehicul{P i orum}
 
 # Group window
-STR_GROUP_ALL_TRAINS                                            :Omnes hamaxostichi
+STR_GROUP_ALL_TRAINS                                            :Omnia tramina
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Omnia vehicula viaria
 STR_GROUP_ALL_SHIPS                                             :Omnes naves
 STR_GROUP_ALL_AIRCRAFTS                                         :Omnia aeroplana
 
-STR_GROUP_DEFAULT_TRAINS                                        :Hamaxostichi sine grege
+STR_GROUP_DEFAULT_TRAINS                                        :Tramina sine grege
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicula viaria sine grege
 STR_GROUP_DEFAULT_SHIPS                                         :Naves sine grege
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeroplana sine grege
@@ -3656,7 +3656,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P um a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Hamaxostichi - sinistro trahe vehiculum ut addatur/removeatur tramini, dextrum preme ut indicium monstretur. Ctrl pressa, cuncta catena vehiculorum sequens additur/removetur/indicium eius monstratur
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tramina - sinistro trahe vehiculum ut addatur/removeatur tramini, dextrum preme ut indicium monstretur. Ctrl pressa, cuncta catena vehiculorum sequens additur/removetur/indicium eius monstratur
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicula - dextrum preme in vehiculum ut indicium monstretur
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Naves - dextrum preme in navem ut indicium monstretur
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeroplana - dextrum preme in aeroplanum ut indicium monstretur
@@ -3668,12 +3668,12 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Huc trah
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Huc trahe hamaxam ut cunctum tramen vendatur
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vendere omnes hamaxostichos in receptaculo
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vendere omnia tramina in receptaculo
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vendere omnia vehicula in receptaculo
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vendere omnes naves in receptaculo
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vendere omnia aeroplana in tugurio
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Automutare omnes hamaxostichos in receptaculo
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Automutare omnia tramina in receptaculo
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Automutare omnia vehicula viaria in receptaculo
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Automutare omnes naves in receptaculo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Automutare omnia aeroplana in tugurio
@@ -3683,12 +3683,12 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nova Veh
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novae Naves
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Aeroplana
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Emere novam partem hamaxostichi
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Emere novam partem traminis
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Emere novum vehiculum viarium
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Emere novam navem
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Emere novum aeroplanum
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Duplicare Hamaxostichum
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Duplicare Tramen
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Duplicare Vehiculum
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Duplicare Navem
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Duplicare Aeroplanum
@@ -3703,17 +3703,17 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Movere c
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Movere conspectum supra hoc receptaculum navium. Ctrl+Preme ut nova fenestra conspectus aperiatur supra receptaculum navium
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Movere conspectum supra hoc tugurium. Ctrl+Preme ut nova fenestra conspectus aperiatur supra tugurium
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Ostendere indicem omnium hamaxostichorum qui habent hoc receptaculum in iussis eorum
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Ostendere indicem omnium traminum quae habent hoc receptaculum in iussis eorum
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Ostendere indicem omnium vehiculorum viariorum qui habent hoc receptaculum in iussis eorum
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Ostendere indicem omnium navium qui habent hoc receptaculum in iussis earum
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Ostendere indicem omnium aeroplanorum qui habent hoc receptaculum in iussis eorum
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Preme ut omnes hamaxostichi in hoc receptaculo sistantur
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Preme ut omnia tramina in hoc receptaculo sistantur
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Preme ut omnia vehicula in hoc receptaculo sistantur
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Preme ut omnes naves in hoc receptaculo sistantur
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Preme ut omnia aeroplana in hoc tugurio sistantur
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Preme ut omnes hamaxostichi in hoc receptaculo incohentur
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Preme ut omnia tramina in hoc receptaculo incohentur
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Preme ut omnia vehicula in hoc receptaculo incohentur
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Preme ut omnes naves in hoc receptaculo incohentur
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Preme ut omnia aeroplana in hoc tugurio incohentur
@@ -3739,7 +3739,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Pretium:
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Mutare {STRING} - {STRING}
-STR_REPLACE_VEHICLE_TRAIN                                       :Hamaxostichum
+STR_REPLACE_VEHICLE_TRAIN                                       :Tramen
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehiculum Viarium
 STR_REPLACE_VEHICLE_SHIP                                        :Navem
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplanum
@@ -3780,12 +3780,12 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facere u
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Movere conspectum supra hunc hamaxostichum. Ctrl+Preme ut conspectus tramen sequatur
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Movere conspectum supra hoc tramen. Ctrl+Preme ut conspectus tramen sequatur
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Movere conspectum supra hoc vehiculum. Ctrl+Preme ut conspectus vechiculum sequatur
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Movere conspectum supra hanc navem. Ctrl+Preme ut conspectus navem sequatur
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Movere conspectum supra hoc aeroplanum. Ctrl+Preme ut conspectus aeroplanum sequatur
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mittere hamaxosticum ad receptaculum. Ctrl+Preme ut modo ministretur
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mittere tramen ad receptaculum. Ctrl+Preme ut modo ministretur
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mittere vehiculum ad receptaculum. Ctrl+Preme ut modo ministretur
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Mittere navem ad receptaculum. Ctrl+Preme ut modo ministretur
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mittere aeroplanum ad tugurium. Ctrl+Preme ut modo ministretur
@@ -3797,7 +3797,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Emet exe
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Impellere tramen post signale sine mora, etsi signale rubrum est
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reficere hamaxostichum alii typo oneri
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reficere tramen alio generi oneris
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reficere vehiculum alii typo oneri
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reficere navem alii typo oneri
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reficere aeroplanum alii typo oneri
@@ -3810,12 +3810,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Monstrar
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Monstrare iussa navis. Ctrl+Preme ut horarius navis monstretur
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Monstrare iussa aeroplani. Ctrl+Preme ut horarius aeroplani monstretur
 
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Monstrare indicia hamaxostichi
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Monstrare indicia traminis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Monstrare indicia vehiculi
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Monstrare indicia navis
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Monstrare indicia aeroplani
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Actio hamaxostichi currens - preme ut hamaxostichus sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Actio traminis currens - preme ut tramen sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Actio vehiculi currens - preme ut vehiculum sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Actio navis currens - preme ut navis sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Actio aeroplani currens - preme ut aeroplanum sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
@@ -3847,7 +3847,7 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Incohatu
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Indicia)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nominare
 
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nominare hamaxostichum
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nominare tramen
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nominare vehiculum
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nominare navem
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nominare aeroplanum
@@ -3883,7 +3883,7 @@ STR_VEHICLE_DETAILS_DEFAULT                                     :Solitus
 STR_VEHICLE_DETAILS_DAYS                                        :Diebus
 STR_VEHICLE_DETAILS_PERCENT                                     :Per centum
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nominare hamaxostichum
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nominare tramen
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nominare vehiculum
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nominare navem
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nominare aeroplanum
@@ -3892,7 +3892,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nominare
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Factum: {LTBLUE}{NUM}{BLACK} Aestimatio: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Aestimatio: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tota capacitas huius hamaxostichi:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tota capacitas huius traminis:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -3903,7 +3903,7 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Onus
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Monstrare indicia oneris portatum
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Indicia
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Monstrare indicia vehiculorum hamaxostichi
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Monstrare indicia vehiculorum traminis
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capacitates
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Monstrare capacitates cuiusque vehiculi
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tota Onera
@@ -3925,12 +3925,12 @@ STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Eligere 
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Eligere oneris typum navi transportandum
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Eligere oneris typum aeroplano transportandum
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Reficere hamaxostichum
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Reficere tramen
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reficere vehiculum viarium
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Reficere navem
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Reficere aeroplanum
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reficere hamaxostichum typo oneris electo
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reficere tramen generi oneris electo
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reficere vehiculum viarium typo oneris electo
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reficere navem typo oneris electo
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reficere aeroplanum typo oneris electo
@@ -3965,7 +3965,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Mutare m
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Omnia exonerare
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Exonerare si accipitur
 STR_ORDER_DROP_UNLOAD                                           :Plene quidquam onerare
-STR_ORDER_DROP_TRANSFER                                         :Transferre
+STR_ORDER_DROP_TRANSFER                                         :Transfer
 STR_ORDER_DROP_NO_UNLOADING                                     :Non exonerare
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Mutare modum exonerandi iusso electo
 
@@ -3979,7 +3979,7 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Oneri parabili
 STR_ORDER_SERVICE                                               :{BLACK}Ministratio
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ire semper
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Ministrari si necesse est
-STR_ORDER_DROP_HALT_DEPOT                                       :Consistere
+STR_ORDER_DROP_HALT_DEPOT                                       :Consiste
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transilire huic iusso nisi necesse est ministrari
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Indicia vehiculi ad quae spectat ordines conditionales
@@ -4031,16 +4031,16 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :I continue per 
 STR_ORDER_SERVICE_AT                                            :Ministrare ad
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Ministrare continue ad
 
-STR_ORDER_NEAREST_DEPOT                                         :Proxmimum
-STR_ORDER_NEAREST_HANGAR                                        :Proxmimum Tugurium
-STR_ORDER_TRAIN_DEPOT                                           :Receptaculum Hamaxostichorum
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Receptaculum Viarium
-STR_ORDER_SHIP_DEPOT                                            :Receptaculum Navium
+STR_ORDER_NEAREST_DEPOT                                         :proxmimum
+STR_ORDER_NEAREST_HANGAR                                        :proxmimum tugurium
+STR_ORDER_TRAIN_DEPOT                                           :receptaculum traminum
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :receptaculum viarium
+STR_ORDER_SHIP_DEPOT                                            :receptaculum navium
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Refice {STRING.dat})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Refice {STRING.dat} consisteque)
+STR_ORDER_REFIT_ORDER                                           :(Reficere {STRING.dat})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Reficere {STRING.dat} consisteque)
 STR_ORDER_STOP_ORDER                                            :(Consiste)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -4054,10 +4054,10 @@ STR_ORDER_UNLOAD                                                :(Exonerare et o
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Exonerare et plene onerare)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Exonerare et plene quidquam onerare)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Exonerare et exire vacue)
-STR_ORDER_TRANSFER                                              :(Transferre et onerare)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferre et plene onerare)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferre et plene quidquam onerare)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferre et exire vacue)
+STR_ORDER_TRANSFER                                              :(Transfer et onerare)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer et plene onerare)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer et plene quidquam onerare)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer et exi vacue)
 STR_ORDER_NO_UNLOAD                                             :(Non exonerare et onerare)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non exonerare et plene onerare)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non exonerare et plene quidquam onerare)
@@ -4069,9 +4069,9 @@ STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Reficere {STRI
 STR_ORDER_UNLOAD_REFIT                                          :(Exonerare, reficere {STRING.dat}, et onerare)
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Exonerare, reficere {STRING.dat}, et plene onerare)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Exonerare, reficere {STRING.dat}, et plene quidquam onerare)
-STR_ORDER_TRANSFER_REFIT                                        :(Transferre, reficere {STRING.dat}, et onerare)
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferre, reficere {STRING.dat}, et plene onerare)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferre, reficere {STRING.dat}, et plene quidquam onerare)
+STR_ORDER_TRANSFER_REFIT                                        :(Transfer, reficere {STRING.dat}, et onerare)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfer, reficere {STRING.dat}, et plene onerare)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfer, reficere {STRING.dat}, et plene quidquam onerare)
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Non exonerare, reficere {STRING.dat}, et onerare)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Non exonerare, reficere {STRING.dat}, et plene onerare)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non exonerare, reficere {STRING.dat}, et plene quidquam onerare)
@@ -4460,7 +4460,7 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... sign
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... signum monitorium ab alia societate usum
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Non licet receptaculum hamaxostichorum hic struere...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Non licet receptaculum traminum hic struere...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Non licet receptaculum viarium hic struere...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Non licet receptaculum transviarium hic struere...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Non licet receptaculum navium hic struere...
@@ -4472,8 +4472,8 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... opor
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... oportet constitam esse in receptaculo
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... oportet constitum esse in tugurio
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Commutare hamaxostichum licet modo dum manet in receptaculo
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Hamaxostichus nimis longus
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Commutare tramen licet modo dum manet in receptaculo
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tramen nimis longum
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Non licet vehiculum reflectere...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... constat ex pluribus unitatibus
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Typi ferriviarum impares
@@ -4573,27 +4573,27 @@ STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Non lice
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Non licet vehicula communia gregi addere...
 
 # Generic vehicle errors
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Hamaxostichus obstat
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tramen obstat
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vehiculum viarium obstat
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Navis obstat
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeroplanum obstat
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Non licet hamaxostichum reficere...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Non licet tramen reficere...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Non licet vehiculum reficere...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Non licet navem reficere...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Non licet aeroplanum reficere...
 
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Non licet hamaxostichum nominare...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Non licet tramen nominare...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Non licet vehiculum nominare...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Non licet navem nominare...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Non licet aeroplanum nominare...
 
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Non licet hamaxostichum sistere incohareve...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Non licet tramen sistere incohareve...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Non licet vehiculum viarium sistere incohareve...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Non licet navem sistere incohareve...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Non licet aeroplanum sistere incohareve...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Non licet mittere hamaxostichum ad receptaculum...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Non licet mittere tramen ad receptaculum...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Non licet mittere vehiculum ad receptaculum...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Non licet mittere navem d receptaculum...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Non licet mittere aeroplanum ad tugurium...
@@ -4603,7 +4603,7 @@ STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Non lice
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Non licet emere navem...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Non licet emere aeroplanum...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Non licet renominare hamaxostichi typum...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Non licet renominare traminis typum...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Non licet renominare vehiculi viarii typum...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Non licet renominare navis typum...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Non licet renominare aeroplani typum..
@@ -4653,7 +4653,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... vehi
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Non licet iussa communicare...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Non licet desinere communicationem iussorum...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Non licet iussa transcribere...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... nimis procul ab destinato priore
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... nimis procul a destinato priore
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aeroplano non est satis distantia volatus
 
 # Timetable related errors
@@ -4872,7 +4872,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE.abl                                :{G=f}Saccharifo
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sine Nomine
-STR_SV_TRAIN_NAME                                               :Hamaxostichus {COMMA}
+STR_SV_TRAIN_NAME                                               :Tramen {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Vehiculum Viarium {COMMA}
 STR_SV_SHIP_NAME                                                :Navis {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeroplanum {COMMA}
@@ -5183,8 +5183,8 @@ STR_FORMAT_INDUSTRY_NAME.abl                                    :{TOWN} {STRING.
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Interlocus
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Interlocus #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Receptaculum Hamaxostichorum
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Receptaculum Hamaxostichorum #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Receptaculum Traminum
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Receptaculum Traminum #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Receptaculum Viarium
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Receptaculum Viarium #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Receptaculum Navium
