@@ -3270,7 +3270,7 @@ STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Priorem
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Secundam
 STR_GOAL_QUESTION_BUTTON_STOP                                   :Desinere
 STR_GOAL_QUESTION_BUTTON_START                                  :Incipere
-STR_GOAL_QUESTION_BUTTON_GO                                     :Ire
+STR_GOAL_QUESTION_BUTTON_GO                                     :Incipiamus!
 STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Pergere
 STR_GOAL_QUESTION_BUTTON_RESTART                                :Incipere denuo
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Procrastinare
@@ -4020,7 +4020,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :I ad proximum r
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :I ad proximum tugurium
 STR_ORDER_CONDITIONAL                                           :Iussum conditionale
 STR_ORDER_SHARE                                                 :Iussa communicare
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserere novum iussum ante iussum electum, aut ad finem indicis. Ctrl pressa, iussa stationum sunt 'plene quidquam onerare', iussa interlocorum 'continue', et iussa receptaculorum 'ministrare'. 'Iussa communicare' sive Ctrl facit ut iussa communicentur inter hoc ac electum vehiculum. Pressio in vehiculum aliud transcribit iussa ex illo vehiculo. Si adest iussum receptaculi, vehiculum non automatice ministratur
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserere novum iussum ante iussum electum, aut ad finem indicis. Ctrl pressa, iussa stationum sunt 'plene quidquam onerare', iussa interlocorum 'continue', et iussa receptaculorum 'ministrare'. 'Iussa communicare' sive Ctrl facit ut iussa communicentur inter hoc ac electum vehiculum. Pressio in aliud vehiculum transcribit iussa ex illo vehiculo. Si adest iussum receptaculi, vehiculum non automatice ministratur
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Monstrare omnia vehicula quae hunc horarium communicant
 
@@ -4191,7 +4191,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ludi Scr
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA quae imponet ludo proximo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Lusor humanus
 STR_AI_CONFIG_RANDOM_AI                                         :IA Fortuita
-STR_AI_CONFIG_NONE                                              :(nulla)
+STR_AI_CONFIG_NONE                                              :(nullum)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Sursum Movere
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Movere IA electam sursum in indice
@@ -4205,7 +4205,7 @@ STR_AI_CONFIG_CHANGE                                            :{BLACK}Eligere 
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Scriptum
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Legere ludi scriptum alium
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Legere aliud ludi scriptum
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Parametra
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Recensere parametra Scripti
 
@@ -4338,8 +4338,8 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non lice
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} auctoritas vicinalis vetat
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} auctoritas vicinalis aliud aeroportum in hoc oppido struere vetat
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} auctoritas vicinalis aliud aeroportum struere vetat soniti causa
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} auctoritas vicinalis alium aeroportum in hoc oppido struere vetat
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} auctoritas vicinalis alium aeroportum struere vetat soniti causa
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Largitio tua animadversa est ab inquisitore regionale!
 
 # Levelling errors
@@ -4421,7 +4421,7 @@ STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Nimis st
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Nimis stationes autoplaustricae adsunt
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Nimis prope aliam stationem
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Nimis prope aliud navale
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Nimis prope aliud aeroportum
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Nimis prope alium aeroportum
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Non licet stationem renominare...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... via oppido est
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... viae directio non convenit
