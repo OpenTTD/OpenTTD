@@ -1037,7 +1037,7 @@ STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} veterascit
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} valde veterascit
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} valde veterascit atque necesse est redimi
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} non potest iter reperire
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} non potest iter invenire
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} errans est
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} anno priore {CURRENCY_LONG} lucratur
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} non potest ire ad destinatum nam extra distantiam volatus maximam est
@@ -3768,7 +3768,7 @@ STR_REPLACE_ENGINES                                             :Hamaxarum
 STR_REPLACE_WAGONS                                              :Curruum
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Eligere typum astarii cui est hamaxas commutandas
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Haec monstrat hamaxam ad quam commutandam, si adest
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Haec monstrat novum vehiculum desideratum, si adest
 STR_REPLACE_RAIL_VEHICLES                                       :Vehicula Ferriviaria
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicula Ferriviaria Electrica
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicula Monoorbitalia
