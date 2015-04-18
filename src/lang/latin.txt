@@ -3481,14 +3481,14 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriae
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nullae -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% translat{G 1 us a um i ae a})
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% translat{G 1 us a um i ae a})
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% translat{G 3 us a um i ae a})
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomina industriarum - preme in nomen ut conspectus moveatur supra industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Productio mensis prioris:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% translat{G 1 us a um i ae a})
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% translat{G 0 us a um i ae a})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Movere conspectum supra hanc industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Quantitas productionis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Haec industria mox claudetur!
@@ -5117,7 +5117,7 @@ STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Navis Petrolear
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Navis Petrolearia CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Navis Vectoria MPS
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Navis Vectoria FFP
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Navis Illabans Bakewell 300
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Aeroscapha Bakewell 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Navis Vectoria Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Navis Vectoria Shivershake
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Navis Oneraria Yate
