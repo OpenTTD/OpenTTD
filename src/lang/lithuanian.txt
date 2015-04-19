@@ -434,7 +434,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Pervadin
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Užverti langą
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Lango antraštė — tempkite ją, jei norite perkelti langą į kitą ekrano vietą
 STR_TOOLTIP_SHADE                                               :{BLACK}Sumažinti langą — rodyti tik lango antraštę
-STR_TOOLTIP_DEBUG                                               :{BLACK}Rodyti papildomą NewGRF derinimo informaciją
+STR_TOOLTIP_DEBUG                                               :{BLACK}Rodyti papildomą plėtinio derinimo informaciją
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Pakeisti lango dydį į numatytąjį. Spragtelėjus laikant nuspautą Ctrl klavišą, dabartinis lango dydis bus išsaugotas kaip numatytasis
 STR_TOOLTIP_STICKY                                              :{BLACK}Uždrausti komandai „Užverti visus langus“ užverti šį langą (komanda „Užverti visus langus“ iškviečiama „Delete“ klavišu)
 STR_TOOLTIP_RESIZE                                              :{BLACK}Tempkite už šios vietos, jei norite pakeisti lango matmenis
@@ -1727,7 +1727,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos nauji
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Metai, kai laikraščių antraštės tampa spalvotos. Iki tol jos būna monochominės
 STR_CONFIG_SETTING_STARTING_YEAR                                :Žaidimo pradžia: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tolygi ekonomika (daug, bet nežymių pokyčių): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Jeigu įjungta, pramonės gamybos pajėgumas kis dažniau ir mažesniais žingsniais. Šis nustatymas dažniausiai neturi efekto, jeigu pramonės tipai yra numatyti NewGRF
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Įgalinus nuostatą pramonės įmonių gamybos pajėgumai kis dažniau ir mažesniais žingsniais. Ši nuostata greičiausiai neturės jokios įtakos, jei pramonės įmonė yra aprašyta papildomame plėtinyjeipai yra numatyti NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti kitų kompanijų akcijas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Leisti pirkti bei parduoti kitų kompanijų akcijas. Akcijos yra platinamos tik įmonei sulaukus tam tikro amžiaus
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}
@@ -1785,7 +1785,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :Langų traukos 
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Atstumas tarp langelių. Prieš tai pajudintas langelis automatiškai sulygiuojamas su šalia esančiu langeliu
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 is iai ių}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Išjungta
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Didž. skaičius langų (nelipnių): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Didžiausias nelipnių langų skaičius: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Skaičius nelipnių atidarytų langelių. Prieš tai seni atidaryti langeliai automatiškai užsidarys, kad paliktų daugiau vietos ekrane naujiems langeliams
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Išjungta
@@ -1839,7 +1839,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Simetriškas
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Pasiskirstymo režimas paštui: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :„Simetriškas“ reiškia, jog iš stoties A į stotį B bus išsiųsta apytiksliai tiek pat pašto maišų, kaip ir iš B į A. „Asimetriško“ režimo atveju, pašto srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad pašto srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Pasiskirstymo režimas „šarvuotoms“ krovinių rūšims: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :„Šarvuotų“ krovinių rūšiai priskiriamos brangenybės (vidutinio klimato juostoje), deimantai (subtropinio klimato juostoje) ir auksas (subarktinio klimato juostoje). Įvairūs NewGRF papildiniai gali šitai pakeisti. „Simetriškas“ reiškia, jog iš stoties A į stotį B bus vežamas apytiksliai toks pat krovinių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime. Žaidžiant subarktinio klimato juostoje, rekomenduojama pasirinkti asimetrišką krovinių paskirstymo algoritmą, nes bankai, priėmę auksą, atgal nieko nesiųs. Kitose klimato juostose galima pasirinkti ir asimetrišką algoritmą, nes kroviniai gali keliauti į abi maršruto puses.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :„Šarvuotų“ krovinių rūšiai priskiriamos brangenybės (vidutinio klimato juostoje), deimantai (subtropinio klimato juostoje) ir auksas (subarktinio klimato juostoje), bet tai dar gali priklausyti ir nuo aktyvių plėtinių. „Simetriškas“ reiškia, jog iš stoties A į stotį B bus vežamas apytiksliai toks pat krovinių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime. Žaidžiant subarktinio klimato juostoje, rekomenduojama pasirinkti asimetrišką krovinių paskirstymo algoritmą, nes bankai, priėmę auksą, atgal nieko nesiųs. Kitose klimato juostose galima pasirinkti ir asimetrišką algoritmą, nes kroviniai gali keliauti į abi maršruto puses.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Pasiskirstymo režimas kitoms krovinių rūšims: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Simetriškas“ reiškia, jog iš stoties A į stotį B bus vežamas apytiksliai toks pat krovinių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime. Rekomenduojama pasirinkti arba asimetrinį, arba originalų algoritmą.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Pasiskirstymo tikslumas: {STRING}
@@ -1931,11 +1931,11 @@ STR_CONFIG_ERROR                                                :{WHITE}Klaida n
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... klaida masyve '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... netinkama reikšmė '{STRING}' kintamąjam '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... nustatymo eilutės gale netinkami simboliai '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoruojamas NewGRF '{STRING}': GRF ID dublikatas '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoruojamas klaidingas NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... plėtinys '{STRING}' ignoruojamas: GRF ID dublikatas '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoruojamas klaidingas plėtinys '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nerastas
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nesaugus statiniam naudojimui
-STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sisteminis NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sisteminis plėtinys
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nesuderinamas su šia OpenTTD versija
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nežinomas
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... netinkamas suspaudimo lygis '{STRING}'
@@ -2162,7 +2162,7 @@ STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Apsaugo
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVERIS IŠJUNGTAS
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVERIS PILNAS
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIJŲ NESUTAPIMAS
-STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}PAPILD. GRAFIKOS NEATITIKIMAS
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEATITINKA PLĖTINYS
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Jungtis
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atnaujinti serverį
@@ -2341,7 +2341,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Įveskit
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nerastas tinklo įrenginys arba sukompiliuota be ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nerado nei vieno žaidimo tinkle
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neatsakė į užklausą
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nepavyko prisijungti dėl Papild. grafikos neatitikimo
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nepavyko prisijungti dėl netinkamo plėtinio
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Žaidimo tinkle sinchronizacija nepavyko
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nutruko ryšys
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Negali atverti išsaugoto žaidimo
@@ -2367,7 +2367,7 @@ STR_NETWORK_ERROR_CLIENT_DESYNC                                 :sinchronizacijo
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :negali užkrauti žemėlapio
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :prarastas ryšys
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokolo klaida
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Papild. grafikos neatitikimas
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Neatitinka plėtinys
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Neautorizuota
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :gautas neteisingas arba nelauktas paketas
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :bloga versija
@@ -2571,7 +2571,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Statyti 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Pasirinkti stoties klasę rodymui
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Pasirinkti stoties statymo tipą
 
-STR_STATION_CLASS_DFLT                                          :Numatytoji stotis
+STR_STATION_CLASS_DFLT                                          :Numatytoji stotelė
 STR_STATION_CLASS_WAYP                                          :Keliarodžiai
 
 # Signal window
@@ -2809,7 +2809,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stotelė
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Oro uosto klasė: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Oro uosto pavadinimas: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Oro uosto žemės plotelio pavadinimas: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}Plėtinys: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Krovinys priimtas: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Geležinkelių greičio limitas: {LTBLUE}{VELOCITY}
@@ -2862,7 +2862,7 @@ STR_LAI_TREE_NAME_TREES                                         :Medžiai
 STR_LAI_TREE_NAME_RAINFOREST                                    :Atogrąžų miškas
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusiniai augalai
 
-STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Geležinkelio stotis
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Geležinkelio stotelė
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Lėktuvo angaras
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Oro uostas
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Sunkvežimių pakrovimo aikštelė
@@ -3170,17 +3170,17 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Kvietima
 STR_NEWGRF_INVALID_CARGO                                        :<netinkamas krovinys>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vnt. <netinkamo krovinio>
-STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas variklis>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama industrija>
+STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas transporto priemonės tipas>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama pramonės įmonė>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
 STR_INVALID_VEHICLE                                             :<neteisinga transporto priemonė>
 
 # NewGRF scanning window
-STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tikrinami NewGRF
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Nuskaitomi NewGRF. Tai gali užtrukti, priklausomai nuo kiekio...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Nuskaitomi {NUM} NewGRF{P "" "" ""} iš paskaičiuotų {NUM} NewGRF{P "" "" ""}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Ieškoma archyvų
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tikrinami plėtiniai
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Nuskaitomi plėtiniai. Tai gali užtrukti, priklausomai nuo kiekio...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Nuskaityti {NUM} plėtin{P ys iai ių} iš {NUM}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Ieškoma archyvuose
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}
@@ -3381,10 +3381,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Nuostabus
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane. Ctrl+Click atidaro naują peržiūros langą su vaizdu į šią stotį
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stoties pavadinimą
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotis
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rodyti visus automobilius, į kurių užduotis yra įtraukta ši stotis
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti visus lėktuvus, į kurių užduotis yra įtraukta ši stotis
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotis
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotelė
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rodyti visus automobilius, į kurių užduotis yra įtraukta ši stotelė
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti visus lėktuvus, į kurių užduotis yra įtraukta ši stotelė
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotelė
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pervardinti stotį
 
@@ -4183,7 +4183,7 @@ STR_TIMETABLE_DAYS.kam                                          :{COMMA} dien{P 
 STR_TIMETABLE_DAYS.ka                                           :{COMMA} dien{P ą as ų}
 STR_TIMETABLE_DAYS.kuo                                          :{COMMA} dien{P a omis ų}
 STR_TIMETABLE_DAYS.kur                                          :{COMMA} dien{P oje ose ų}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}žym{P a os ų}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}impuls{P as ai ų}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Maršruto trukmė yra {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Maršruto trukmė yra mažiausiai {STRING}, nes nustatytos ne visų užduočių trukmės
@@ -4240,7 +4240,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nustatym
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Keisti skripto nustatymus
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Perkrauti AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Išbraukti DI, perkrauti skritpą, ir perkrauti DI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Įjungti/išjungti laužymą, kai DI registro žinutė sutinka su lūžio žinute
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Įjungti/išjungti stabdymą, jei DI žurnalo žinutė sutampa su stabdos žinute
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Lūžis ant:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Lūžis ant
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kai DI registro žinutė sutampa su šia eilute, žaidimas pristabdomas
@@ -4450,7 +4450,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... per 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daugiau nera vietos zemelapyje
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miestas nestatys kelių. Jūs galite įjungti kelių statybą per „Išplėstinės nuostatos>Aplinka>Miestai“.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vyksta kelio darbai
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotis arba depas, arba miestui priklausantis vienas iš laukelių negali būti ištrintas.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotelė arba depas, arba miestui priklausantis vienas iš laukelių negali būti pašalintas
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nėra tinkamos vietos statulai šio miesto centre
 
 # Industry related errors
@@ -4485,7 +4485,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Neįmano
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Negalima cia statyti oro uosto...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stotis per daug išsiplėtusi
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stotelė per daug išsiplėtusi
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Per daug stotelių
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Perdaug traukinių stoties dalių
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
@@ -4695,9 +4695,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Aptarnav
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... automobilis sunaikintas
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nebus įmanoma įsigyti jokių transporto priemonių
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pakeiskite NewGRF nuostatas
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pakeiskite plėtinių nuostatas
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Kol kas negalima įsigyti jokių transporto priemonių
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pradėkite žaidimą vėliau, nei {DATE_SHORT}, arba įdiekite NewGRF papildinį, kuris leis įsigyti transporto priemonių šiame ankstyvame laikotarpyje
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pradėkite žaidimą vėliau, nei {DATE_SHORT}, arba įdiekite plėtinių, kurie leistų įsigyti transporto priemonių šiame ankstyvame laikotarpyje
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Neįmanoma priversti traukinio važiuoti nesaugiai...
@@ -4717,7 +4717,7 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Sios uzd
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Negalima perkelti šio užsakymo...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Negalima praleisti šio užsakymo...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Negalima praleisti pažymėto užsakymo...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... transporto priemonė negali vykti į visas stotis
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... transporto priemonė negali vykti į visas stoteles
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... automobilis negali nukakti iki tos stotelės
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... automobilis dalinantis šį grafiką negali nukakti iki tos stotelės
 
@@ -5414,7 +5414,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Laivų d
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Laivų dokas #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Angaras
 
-STR_UNKNOWN_STATION                                             :Nežinoma stotis
+STR_UNKNOWN_STATION                                             :Nežinoma stotelė
 STR_DEFAULT_SIGN_NAME                                           :Ženklas
 STR_COMPANY_SOMEONE                                             :kažkas
 
