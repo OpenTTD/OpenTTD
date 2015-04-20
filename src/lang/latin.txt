@@ -3722,13 +3722,13 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Omnia v
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nuntium a fabricatore vehiculorum
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nuper fabricamus nov{G us a um i ae a} {STRING} - visne uti hoc vehiculo unum annum, ut videamus quomodo operatur antequam omnibus venum damus?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}hamaxa
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nuper fabricamus nov{G um am um os as a} {STRING} - visne uti hoc vehiculo unum annum, ut videamus quomodo operatur antequam omnibus venum damus?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}hamaxam
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}vehiculum viarium
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}aeroplanum
-STR_ENGINE_PREVIEW_SHIP                                         :{G=f}navis
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}hamaxa monoorbitalis
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}hamaxa maglev
+STR_ENGINE_PREVIEW_SHIP                                         :{G=f}navem
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}hamaxam monoorbitalem
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}hamaxam maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}{}Pretium Operandi: {CURRENCY_LONG} per annum{}Capacitas: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}  V.T. Max.: {6:FORCE}{}Pretium Operandi: {4:CURRENCY_LONG} per annum{}Capacitas: {5:CARGO_LONG}
