@@ -671,7 +671,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekrano nuotrauk
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Nepriartintas ekrano vaizdas
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Fotografuoti viso ekrano vaizdą
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Apie „OpenTTD“
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Animacinių objektų išdėstytuvas
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spruklių lygiuoklė
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Rodyti/slėpti apvadus
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Perjungti paveiktų blokų spalvinimą
 ############ range ends here
@@ -767,7 +767,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Įprastinės veiklos pelno diagrama
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Pajamų diagrama
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Prekių vienetų pervežta
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Kompanijos pajėgumo reitingas (maksimalus=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Kompanijos pajėgumo reitingas (didžiausias=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Kompanijos vertė
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Krovinių pervežimo tarifai
@@ -1239,11 +1239,11 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perži�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 svarų (£) jūsų valiuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti pasirinktos valiutos nustatymus
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalus priešininkų skaičius: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Didžiausias priešininkų skaičius: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nėra
 STR_FUNDING_ONLY                                                :Tik finansavimas
-STR_MINIMAL                                                     :Minimalus
+STR_MINIMAL                                                     :Mažiausias
 STR_NUM_VERY_LOW                                                :Labai mažas
 STR_NUM_LOW                                                     :Žemas
 STR_NUM_NORMAL                                                  :Vidutinis
@@ -1483,8 +1483,8 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Atnaujinti tran
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Atitinkamas gyvenimas, kai transporto priemonės turėtų būti atnaujinamos
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mėnesi{P 0 u ais ų} mažesnis
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mėnesi{P 0 u ais ų} didesnis
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimali suma reikalinga automatiniam atnaujinimui: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalus būtinas banko sąskaitos likutis automatiniam transporto priemonės atnaujinimui vykdyti
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Mažiausia suma, reikalinga automatiniam atnaujinimui: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Mažiausias būtinas banko sąskaitos likutis automatiniam transporto priemonės atnaujinimui vykdyti
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Klaidos pranešimo rodymo trukmė: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Klaidos pranešimų rodymo trukmė, po kurios pranešimas langas bus automatiškai užvertas. Atkreipkite dėmesį, kai kai kurie kritiniai pranešimai automatiškai nėra užveriami
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P ė ės žių}
@@ -1641,13 +1641,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Skleisti aplink
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kai įjungta, infrastruktūra yra galima, jeigu ten taip pat yra galimų automobilių. Tam kad užkirstų kelią, laiko ir pinigų švaistimo nereikalingai infrastruktūrai
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Didžiausias traukinių skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalus skaičius traukinių, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Didžiausias skaičius traukinių, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Didžiausias automobilių skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimalus skaičius kelių transporto priemonių, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Didžiausias skaičius automobilių, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Didžiausias lėktuvų skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimalus skaičius lėktuvų, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Didžiausias skaičius lėktuvų, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Didžiausias laivų skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimalus skaičius laivų, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Didžiausias skaičius laivų, kuriuos kompanija gali turėti
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Uždrausti kompiuteriui traukinius: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Įjungus šį nustatymą, statyti traukinius kompiuterio žaidėjui bus neįmanoma
@@ -1667,7 +1667,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Sunkus
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti DI Interneto režime: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leisti DI kompiuterio žaidėjus dalyvauti Interneto režime
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opkodai prieš skriptus yra nevykdomi: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimalus skaičius skaičiavimų žingsnių, kuriuos scenarijus vykdo viename ėjime
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Didžiausias skaičius skaičiavimų žingsnių, kuriuos scenarijus vykdo viename ėjime
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Techninės apžiūros intervalas procentais: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Įjungus šią nuostatą, techninė apžiūra bus vykdoma vos tik patikimumas nukris iki tam tikros procentinės vertės. Priešingu atveju techninė apžiūra bus vykdoma kas nustatytą dienų skaičių
@@ -1684,7 +1684,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Numatytoji nauj
 STR_CONFIG_SETTING_NOSERVICE                                    :Atjungti techninę apžiūrą, jei gedimai nenaudojami: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jeigu įjungta, tada automobiliams nebus atliekama techninė apžiūra, jeigu jie negalės sugesti
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvinti vagonų greičio apribojimą: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Įjungus šią nuostatą, vagonų maksimalus leistinas greitis įtakos maksimalų viso traukinio greitį
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Įgalinus šią nuostatą, vagonų didžiausias leistinas greitis įtakos viso traukinio greitį
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Įjungiant šį nustatymą išjungia elektrifikuotų bėgių reikalavimą padaryti elektrinius variklius veikti ant jų
 
@@ -2135,7 +2135,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Vardas
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Žaidimo pavadinimas
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Žaidejai
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Žaidžia / maksimaliai žaidėjų
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klientų tinkle / Didžiausias leistinas skaičius
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Žemėlapio dydis
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Žaidimo žemėlapio dydis{}Pragtelėjus rušiuojama pagal dydį
@@ -2189,8 +2189,8 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Apsaugok
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
 STR_NETWORK_START_SERVER_ADVERTISED                             :Taip
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P as ai ų}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimalus klientų skaičius:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirinkite maksimalų klientų skaičių. Nebūtinai visos jungtys turi buti užpildytos
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Didžiausias klientų skaičius:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirinkite didžiausią klientų skaičių. Nebūtinai visos jungtys turi būti užpildytos
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanij{P a os ų}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Daugiausia kompanijų:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Riboti serverį iki tam tikro skaičiaus kompanijų
@@ -3422,7 +3422,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Iš viso:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Sąskaitos balansas
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Paskola
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimali paskola: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Didžiausia paskola: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Skolintis {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Skolintis daugiau. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus pasiskolinta didžiausia įmanoma suma
@@ -4204,7 +4204,7 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Trukmės
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Atšaukti pažymėtos užduoties trukmės ribojimus
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Pakeisti greičio ribą
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Pakeisti pažymėtos užduoties maksimalaus greičio ribą
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Pakeisti pažymėtos užduoties didžiausio greičio ribą
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Greičio neriboti
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Neriboti pažymėtos užduoties greičio
