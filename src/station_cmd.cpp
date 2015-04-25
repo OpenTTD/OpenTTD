@@ -1623,11 +1623,12 @@ CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint
  * Remove a rail station/waypoint
  * @param st The station/waypoint to remove the rail part from
  * @param flags operation to perform
+ * @param removal_cost the cost for removing a tile
  * @tparam T the type of station to remove
  * @return cost or failure of operation
  */
 template <class T>
-CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
+CommandCost RemoveRailStation(T *st, DoCommandFlag flags, Money removal_cost)
 {
 	/* Current company owns the station? */
 	if (_current_company != OWNER_WATER) {
@@ -1649,7 +1650,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Failed()) return ret;
 
-		cost.AddCost(_price[PR_CLEAR_STATION_RAIL]);
+		cost.AddCost(removal_cost);
 		if (flags & DC_EXEC) {
 			/* read variables before the station tile is removed */
 			Track track = GetRailStationTrack(tile);
@@ -1704,7 +1705,7 @@ static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
 	}
 
 	Station *st = Station::GetByTile(tile);
-	CommandCost cost = RemoveRailStation(st, flags);
+	CommandCost cost = RemoveRailStation(st, flags, _price[PR_CLEAR_STATION_RAIL]);
 
 	if (flags & DC_EXEC) st->RecomputeIndustriesNear();
 
@@ -1724,7 +1725,7 @@ static CommandCost RemoveRailWaypoint(TileIndex tile, DoCommandFlag flags)
 		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAIL_WAYPOINT);
 	}
 
-	return RemoveRailStation(Waypoint::GetByTile(tile), flags);
+	return RemoveRailStation(Waypoint::GetByTile(tile), flags, _price[PR_CLEAR_WAYPOINT_RAIL]);
 }
 
 
