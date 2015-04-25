@@ -1645,47 +1645,12 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags, Money removal_cost)
 	/* clear all areas of the station */
 	TILE_AREA_LOOP(tile, ta) {
 		/* only remove tiles that are actually train station tiles */
-		if (!st->TileBelongsToRailStation(tile)) continue;
-
-		CommandCost ret = EnsureNoVehicleOnGround(tile);
-		if (ret.Failed()) return ret;
-
-		cost.AddCost(removal_cost);
-		if (flags & DC_EXEC) {
-			/* read variables before the station tile is removed */
-			Track track = GetRailStationTrack(tile);
-			Owner owner = GetTileOwner(tile); // _current_company can be OWNER_WATER
-			Train *v = NULL;
-			if (HasStationReservation(tile)) {
-				v = GetTrainForReservation(tile, track);
-				if (v != NULL) FreeTrainTrackReservation(v);
-			}
-			if (!IsStationTileBlocked(tile)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)]--;
-			Company::Get(owner)->infrastructure.station--;
-			DoClearSquare(tile);
-			DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
-			AddTrackToSignalBuffer(tile, track, owner);
-			YapfNotifyTrackLayoutChange(tile, track);
-			if (v != NULL) TryPathReserve(v, true);
+		if (st->TileBelongsToRailStation(tile)) {
+			SmallVector<T*, 4> affected_stations; // dummy
+			CommandCost ret = RemoveFromRailBaseStation(TileArea(tile, 1, 1), affected_stations, flags, removal_cost, false);
+			if (ret.Failed()) return ret;
+			cost.AddCost(ret);
 		}
-	}
-
-	if (flags & DC_EXEC) {
-		st->rect.AfterRemoveRect(st, st->train_station);
-
-		st->train_station.Clear();
-
-		st->facilities &= ~FACIL_TRAIN;
-
-		free(st->speclist);
-		st->num_specs = 0;
-		st->speclist  = NULL;
-		st->cached_anim_triggers = 0;
-
-		DirtyCompanyInfrastructureWindows(st->owner);
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
-		st->UpdateVirtCoord();
-		DeleteStationIfEmpty(st);
 	}
 
 	return cost;
