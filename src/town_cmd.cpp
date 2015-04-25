@@ -1297,6 +1297,44 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 }
 
 /**
+ * Checks whether a road can be followed or is a dead end, that can not be extended to the next tile.
+ * This only checks trivial but often cases.
+ * @param tile Start tile for road.
+ * @param dir Direction for road to follow or build.
+ * @return true If road is or can be connected in the specified direction.
+ */
+static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
+{
+	TileIndex target_tile = tile + TileOffsByDiagDir(dir);
+	if (!IsValidTile(target_tile)) return false;
+	if (HasTileWaterGround(target_tile)) return false;
+
+	RoadBits target_rb = GetTownRoadBits(target_tile);
+	if (_settings_game.economy.allow_town_roads) {
+		/* Check whether a road connection exists or can be build. */
+		switch (GetTileType(target_tile)) {
+			case MP_ROAD:
+				return target_rb != ROAD_NONE;
+
+			case MP_HOUSE:
+			case MP_STATION:
+			case MP_INDUSTRY:
+			case MP_OBJECT:
+				return false;
+
+			default:
+				/* Checked for void and water earlier */
+				return true;
+		}
+	} else {
+		/* Check whether a road connection already exists,
+		 * and it leads somewhere else. */
+		RoadBits back_rb = DiagDirToRoadBits(ReverseDiagDir(dir));
+		return (target_rb & back_rb) != 0 && (target_rb & back_rb) != back_rb;
+	}
+}
+
+/**
  * Returns "growth" if a house was built, or no if the build failed.
  * @param t town to inquiry
  * @param tile to inquiry
@@ -1348,7 +1386,15 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 		} else {
 			/* Select a random bit from the blockmask, walk a step
 			 * and continue the search from there. */
-			do target_dir = RandomDiagDir(); while (!(cur_rb & DiagDirToRoadBits(target_dir)));
+			do {
+				if (cur_rb == ROAD_NONE) return GROWTH_SEARCH_STOPPED;
+				RoadBits target_bits;
+				do {
+					target_dir = RandomDiagDir();
+					target_bits = DiagDirToRoadBits(target_dir);
+				} while (!(cur_rb & target_bits));
+				cur_rb &= ~target_bits;
+			} while (!CanFollowRoad(tile, target_dir));
 		}
 		tile = TileAddByDiagDir(tile, target_dir);
 
