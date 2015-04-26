@@ -3278,7 +3278,7 @@ static void UpdateStationRating(Station *st)
 
 			bool skip = false;
 			int rating = 0;
-			uint waiting = ge->cargo.TotalCount();
+			uint waiting = ge->cargo.AvailableCount();
 
 			/* num_dests is at least 1 if there is any cargo as
 			 * INVALID_STATION is also a destination.
