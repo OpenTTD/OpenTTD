@@ -580,7 +580,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 �
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}통과시간
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}모두 사용
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}모두 사용 안함
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}모두 사용 안 함
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시 안 함
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물에 대한 그래프 켜기/끄기
@@ -754,7 +754,7 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안함
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안 함
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}고도 표시
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}지도 상의 모든 산업시설을 숨깁니다.
@@ -968,7 +968,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 �
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택
 
 ############ start of autosave dropdown
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안함
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안 함
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
@@ -1026,7 +1026,7 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}접미�
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}사용자 화폐 단위 뒤에 붙는 문구를 설정하십시오.
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}유로화로 전환: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}유로화로 전환: {ORANGE}안함
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}유로화로 전환: {ORANGE}전환하지 않음
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}유로화(€) 전환 연도를 설정하십시오.
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}유로화(€) 전환 연도를 앞으로 당깁니다.
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}유로화(€) 전환 연도를 늦춥니다.
