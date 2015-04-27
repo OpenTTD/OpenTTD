@@ -1331,7 +1331,7 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
 		/* Check whether a road connection already exists,
 		 * and it leads somewhere else. */
 		RoadBits back_rb = DiagDirToRoadBits(ReverseDiagDir(dir));
-		return (target_rb & back_rb) != 0 && (target_rb & back_rb) != back_rb;
+		return (target_rb & back_rb) != 0 && (target_rb & ~back_rb) != 0;
 	}
 }
 
