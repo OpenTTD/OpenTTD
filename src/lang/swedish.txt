@@ -1683,7 +1683,7 @@ STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE} Fysik
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planering av resrutt
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE} Begränsningar
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE} Katastrofer / Olyckor
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Världs generation
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Världsgenerering
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljö
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Mydigheter
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Städer
