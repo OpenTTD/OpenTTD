@@ -5,16 +5,13 @@
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 #
-# Building requires GRFCodec and NFORenum. Older versions of GRFCodec are
-#  known to miscompile the graphics.
+# Building requires GRFCodec.
 #
-# Recent nightlies (including sources) of both can be found at:
+# Recent versions (including sources) can be found at:
 #  http://www.openttd.org/download-grfcodec
-#  http://www.openttd.org/download-nforenum
 #
-# The mercurial repository of both can be found at:
+# The mercurial repository can be found at:
 #  http://hg.openttdcoop.org/grfcodec
-#  http://hg.openttdcoop.org/nforenum
 #
 
 
