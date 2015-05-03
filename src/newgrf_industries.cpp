@@ -354,7 +354,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0xA4: return this->industry->last_month_transported[1];
 		case 0xA5: return GB(this->industry->last_month_transported[1], 8, 8);
 
-		case 0xA6: return this->industry->type;
+		case 0xA6: return indspec->grf_prop.local_id;
 		case 0xA7: return this->industry->founder;
 		case 0xA8: return this->industry->random_colour;
 		case 0xA9: return Clamp(this->industry->last_prod_year - ORIGINAL_BASE_YEAR, 0, 255);
