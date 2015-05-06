@@ -1280,7 +1280,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :פרק הזמן
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{P 0 "שנייה " ""}{COMMA}{P "" " שניות"}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :הצג רמזים צצים: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :השהייה טרם הצגת רמזים צצים כאשר העכבר מרחף מעל חלק ממשק. לחלופין, ניתן לקשר רמזים צצים לכפתור העכבר הימני כאשר מוגדר 0.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :רחף למשך {P 0 "שניה " ""}{COMMA}{P "" " שניות"}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :רחף למשך {P 0 "מילישניה " ""}{COMMA}{P "" " מילישניות"}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :קליק ימני
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :הראה את אוכלוסיית העיר בתוך תוית השם של העיר: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :הצג את אוכלוסייתן של עיירות בתווית שלהן על גבי המפה
