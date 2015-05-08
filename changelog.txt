@@ -1,3 +1,24 @@
+1.5.1-RC1 (2015-05-08)
+------------------------------------------------------------------------
+- Fix: Do not consider road junctions with trivial dead ends as branch points during town growth [FS#6245] (r27260, r27259, r27244)
+- Fix: ScriptList::RemoveList failed to remove a list from itself [FS#6287] (r27258)
+- Fix: Combined button+dropdown widgets in order and autoreplace GUI had incorrect hitbox when using GUI zoom [FS#6270] (r27255)
+- Fix: When building a lock on DC_AUTO-removable water-based objects, the water class was always set to canal [FS#6264] (r27254)
+- Fix: When crossing tram tracks with railroads, cost of extra roads was not being counted [FS#6282] (r27253)
+- Fix: Invalid infrastructure counting when crossing tram tracks with railroads [FS#6281] (r27252)
+- Fix: Broken error message in configure [FS#6286] (r27250)
+- Fix: In some cases town growth failure was considered as success [FS#6240] (r27249, r27247)
+- Fix: Town labels on smallmap and zoomed-out viewports were not centered [FS#6257] (r27248)
+- Fix: Removing a rail waypoint used the remove-rail-station cost [FS#6251] (r27245)
+- Fix: Duplicate frees due to pool item classes not having copy constructors [FS#6285] (r27243)
+- Fix: Crash when no AIs were installed due to improper handling of non-ASCII characters by the string pointer lexer [FS#6272] (r27233)
+- Fix: Compilation on DragonflyBSD [FS#6274] (r27224, r27223)
+- Fix: Use the current maximum speed as limited by bridges, orders etc. for all vehicle types alike when considering increased smoke emissions of vehicles [FS#6278] (r27222)
+- Fix: Multi-value keys in the desktop entry shall end with a trailing separator (r27221)
+- Fix: Draw path reservation on the whole bridge, not only on the bridge heads (r27209)
+- Fix: Draw correct overlay sprites for path reservations on bridges and tunnels (r27208)
+
+
 1.5.0 (2015-04-01)
 ------------------------------------------------------------------------
 - Fix: [NewGRF] Add Misc. GRF Feature Flag 6 to enable the second rocky tile set [FS#6260] (r27200)
