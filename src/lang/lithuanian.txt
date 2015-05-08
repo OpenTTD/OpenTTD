@@ -434,7 +434,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Pervadin
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Užverti langą
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Lango antraštė — tempkite ją, jei norite perkelti langą į kitą ekrano vietą
 STR_TOOLTIP_SHADE                                               :{BLACK}Sumažinti langą — rodyti tik lango antraštę
-STR_TOOLTIP_DEBUG                                               :{BLACK}Rodyti papildomą NewGRF derinimo informaciją
+STR_TOOLTIP_DEBUG                                               :{BLACK}Rodyti papildomą plėtinio derinimo informaciją
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Pakeisti lango dydį į numatytąjį. Spragtelėjus laikant nuspautą Ctrl klavišą, dabartinis lango dydis bus išsaugotas kaip numatytasis
 STR_TOOLTIP_STICKY                                              :{BLACK}Uždrausti komandai „Užverti visus langus“ užverti šį langą (komanda „Užverti visus langus“ iškviečiama „Delete“ klavišu)
 STR_TOOLTIP_RESIZE                                              :{BLACK}Tempkite už šios vietos, jei norite pakeisti lango matmenis
@@ -465,9 +465,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Atstumas: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Sritis: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Plotas: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Atstumas: {NUM}{}Aukščių skirtumas: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Sritis: {NUM} x {NUM}{}Aukščių skirtumas: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plotas: {NUM} x {NUM}{}Aukščių skirtumas: {HEIGHT}
 
 
 # These are used in buttons
@@ -568,18 +568,18 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pagrindinės nuostatos
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Išplėstinės nuostatos
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :DI / Žaidimo nustatymai
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Papild. grafikos nustatymai (NewGRF)
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Permatomumo nustatymai
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rodyti miestų pavadinimus
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Rodyti stotelių pavadinimus
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rodyti tarpines stoteles
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Rodyti ženklus
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rodomi konkurentų ženklai ir pavadinimai
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Dirbtinio intelekto nuostatos
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Plėtinių nuostatos
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Skaidrumo nuostatos
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Miestų pavadinimai
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stotelių pavadinimai
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Tarpinės stotelės
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Ženklai
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Varžovų ženklai ir pavadinimai
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Visa animacija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Visos smulkmenos
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Permatomi pastatai
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Permatomi stočių ženklai
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Skaidrūs pastatai
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Skaidrūs ženklai
 ############ range ends here
 
 ############ range for file menu starts
@@ -671,7 +671,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekrano nuotrauk
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Nepriartintas ekrano vaizdas
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Fotografuoti viso ekrano vaizdą
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Apie „OpenTTD“
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Animacinių objektų išdėstytuvas
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spruklių lygiuoklė
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Rodyti/slėpti apvadus
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Perjungti paveiktų blokų spalvinimą
 ############ range ends here
@@ -767,7 +767,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Įprastinės veiklos pelno diagrama
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Pajamų diagrama
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Prekių vienetų pervežta
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Kompanijos pajėgumo reitingas (maksimalus=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Kompanijos pajėgumo reitingas (didžiausias=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Kompanijos vertė
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Krovinių pervežimo tarifai
@@ -1239,11 +1239,11 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perži�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 svarų (£) jūsų valiuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti pasirinktos valiutos nustatymus
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalus priešininkų skaičius: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Didžiausias priešininkų skaičius: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nėra
 STR_FUNDING_ONLY                                                :Tik finansavimas
-STR_MINIMAL                                                     :Minimalus
+STR_MINIMAL                                                     :Mažiausias
 STR_NUM_VERY_LOW                                                :Labai mažas
 STR_NUM_LOW                                                     :Žemas
 STR_NUM_NORMAL                                                  :Vidutinis
@@ -1483,8 +1483,8 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Atnaujinti tran
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Atitinkamas gyvenimas, kai transporto priemonės turėtų būti atnaujinamos
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mėnesi{P 0 u ais ų} mažesnis
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mėnesi{P 0 u ais ų} didesnis
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimali suma reikalinga automatiniam atnaujinimui: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalus būtinas banko sąskaitos likutis automatiniam transporto priemonės atnaujinimui vykdyti
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Mažiausia suma, reikalinga automatiniam atnaujinimui: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Mažiausias būtinas banko sąskaitos likutis automatiniam transporto priemonės atnaujinimui vykdyti
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Klaidos pranešimo rodymo trukmė: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Klaidos pranešimų rodymo trukmė, po kurios pranešimas langas bus automatiškai užvertas. Atkreipkite dėmesį, kai kai kurie kritiniai pranešimai automatiškai nėra užveriami
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P ė ės žių}
@@ -1641,13 +1641,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Skleisti aplink
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kai įjungta, infrastruktūra yra galima, jeigu ten taip pat yra galimų automobilių. Tam kad užkirstų kelią, laiko ir pinigų švaistimo nereikalingai infrastruktūrai
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Didžiausias traukinių skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalus skaičius traukinių, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Didžiausias skaičius traukinių, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Didžiausias automobilių skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimalus skaičius kelių transporto priemonių, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Didžiausias skaičius automobilių, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Didžiausias lėktuvų skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimalus skaičius lėktuvų, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Didžiausias skaičius lėktuvų, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Didžiausias laivų skaičius vienam žaidėjui: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimalus skaičius laivų, kuriuos kompanija gali turėti
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Didžiausias skaičius laivų, kuriuos kompanija gali turėti
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Uždrausti kompiuteriui traukinius: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Įjungus šį nustatymą, statyti traukinius kompiuterio žaidėjui bus neįmanoma
@@ -1667,7 +1667,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Sunkus
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti DI Interneto režime: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leisti DI kompiuterio žaidėjus dalyvauti Interneto režime
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opkodai prieš skriptus yra nevykdomi: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimalus skaičius skaičiavimų žingsnių, kuriuos scenarijus vykdo viename ėjime
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Didžiausias skaičius skaičiavimų žingsnių, kuriuos scenarijus vykdo viename ėjime
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Techninės apžiūros intervalas procentais: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Įjungus šią nuostatą, techninė apžiūra bus vykdoma vos tik patikimumas nukris iki tam tikros procentinės vertės. Priešingu atveju techninė apžiūra bus vykdoma kas nustatytą dienų skaičių
@@ -1684,7 +1684,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Numatytoji nauj
 STR_CONFIG_SETTING_NOSERVICE                                    :Atjungti techninę apžiūrą, jei gedimai nenaudojami: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jeigu įjungta, tada automobiliams nebus atliekama techninė apžiūra, jeigu jie negalės sugesti
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvinti vagonų greičio apribojimą: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Įjungus šią nuostatą, vagonų maksimalus leistinas greitis įtakos maksimalų viso traukinio greitį
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Įgalinus šią nuostatą, vagonų didžiausias leistinas greitis įtakos viso traukinio greitį
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Įjungiant šį nustatymą išjungia elektrifikuotų bėgių reikalavimą padaryti elektrinius variklius veikti ant jų
 
@@ -1727,7 +1727,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos nauji
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Metai, kai laikraščių antraštės tampa spalvotos. Iki tol jos būna monochominės
 STR_CONFIG_SETTING_STARTING_YEAR                                :Žaidimo pradžia: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tolygi ekonomika (daug, bet nežymių pokyčių): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Jeigu įjungta, pramonės gamybos pajėgumas kis dažniau ir mažesniais žingsniais. Šis nustatymas dažniausiai neturi efekto, jeigu pramonės tipai yra numatyti NewGRF
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Įgalinus nuostatą pramonės įmonių gamybos pajėgumai kis dažniau ir mažesniais žingsniais. Ši nuostata greičiausiai neturės jokios įtakos, jei pramonės įmonė yra aprašyta papildomame plėtinyjeipai yra numatyti NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti kitų kompanijų akcijas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Leisti pirkti bei parduoti kitų kompanijų akcijas. Akcijos yra platinamos tik įmonei sulaukus tam tikro amžiaus
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}
@@ -1785,7 +1785,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :Langų traukos 
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Atstumas tarp langelių. Prieš tai pajudintas langelis automatiškai sulygiuojamas su šalia esančiu langeliu
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 is iai ių}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Išjungta
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Didž. skaičius langų (nelipnių): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Didžiausias nelipnių langų skaičius: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Skaičius nelipnių atidarytų langelių. Prieš tai seni atidaryti langeliai automatiškai užsidarys, kad paliktų daugiau vietos ekrane naujiems langeliams
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Išjungta
@@ -1839,7 +1839,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Simetriškas
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Pasiskirstymo režimas paštui: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :„Simetriškas“ reiškia, jog iš stoties A į stotį B bus išsiųsta apytiksliai tiek pat pašto maišų, kaip ir iš B į A. „Asimetriško“ režimo atveju, pašto srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad pašto srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Pasiskirstymo režimas „šarvuotoms“ krovinių rūšims: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :„Šarvuotų“ krovinių rūšiai priskiriamos brangenybės (vidutinio klimato juostoje), deimantai (subtropinio klimato juostoje) ir auksas (subarktinio klimato juostoje). Įvairūs NewGRF papildiniai gali šitai pakeisti. „Simetriškas“ reiškia, jog iš stoties A į stotį B bus vežamas apytiksliai toks pat krovinių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime. Žaidžiant subarktinio klimato juostoje, rekomenduojama pasirinkti asimetrišką krovinių paskirstymo algoritmą, nes bankai, priėmę auksą, atgal nieko nesiųs. Kitose klimato juostose galima pasirinkti ir asimetrišką algoritmą, nes kroviniai gali keliauti į abi maršruto puses.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :„Šarvuotų“ krovinių rūšiai priskiriamos brangenybės (vidutinio klimato juostoje), deimantai (subtropinio klimato juostoje) ir auksas (subarktinio klimato juostoje), bet tai dar gali priklausyti ir nuo aktyvių plėtinių. „Simetriškas“ reiškia, jog iš stoties A į stotį B bus vežamas apytiksliai toks pat krovinių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime. Žaidžiant subarktinio klimato juostoje, rekomenduojama pasirinkti asimetrišką krovinių paskirstymo algoritmą, nes bankai, priėmę auksą, atgal nieko nesiųs. Kitose klimato juostose galima pasirinkti ir asimetrišką algoritmą, nes kroviniai gali keliauti į abi maršruto puses.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Pasiskirstymo režimas kitoms krovinių rūšims: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Simetriškas“ reiškia, jog iš stoties A į stotį B bus vežamas apytiksliai toks pat krovinių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime. Rekomenduojama pasirinkti arba asimetrinį, arba originalų algoritmą.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Pasiskirstymo tikslumas: {STRING}
@@ -1931,11 +1931,11 @@ STR_CONFIG_ERROR                                                :{WHITE}Klaida n
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... klaida masyve '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... netinkama reikšmė '{STRING}' kintamąjam '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... nustatymo eilutės gale netinkami simboliai '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoruojamas NewGRF '{STRING}': GRF ID dublikatas '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoruojamas klaidingas NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... plėtinys '{STRING}' ignoruojamas: GRF ID dublikatas '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoruojamas klaidingas plėtinys '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nerastas
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nesaugus statiniam naudojimui
-STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sisteminis NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sisteminis plėtinys
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nesuderinamas su šia OpenTTD versija
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nežinomas
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... netinkamas suspaudimo lygis '{STRING}'
@@ -2135,7 +2135,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Vardas
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Žaidimo pavadinimas
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Žaidejai
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Žaidžia / maksimaliai žaidėjų
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klientų tinkle / Didžiausias leistinas skaičius
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Žemėlapio dydis
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Žaidimo žemėlapio dydis{}Pragtelėjus rušiuojama pagal dydį
@@ -2162,7 +2162,7 @@ STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Apsaugo
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVERIS IŠJUNGTAS
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVERIS PILNAS
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIJŲ NESUTAPIMAS
-STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}PAPILD. GRAFIKOS NEATITIKIMAS
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEATITINKA PLĖTINYS
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Jungtis
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atnaujinti serverį
@@ -2189,8 +2189,8 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Apsaugok
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
 STR_NETWORK_START_SERVER_ADVERTISED                             :Taip
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P as ai ų}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimalus klientų skaičius:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirinkite maksimalų klientų skaičių. Nebūtinai visos jungtys turi buti užpildytos
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Didžiausias klientų skaičius:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirinkite didžiausią klientų skaičių. Nebūtinai visos jungtys turi būti užpildytos
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanij{P a os ų}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Daugiausia kompanijų:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Riboti serverį iki tam tikro skaičiaus kompanijų
@@ -2341,7 +2341,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Įveskit
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nerastas tinklo įrenginys arba sukompiliuota be ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nerado nei vieno žaidimo tinkle
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neatsakė į užklausą
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nepavyko prisijungti dėl Papild. grafikos neatitikimo
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nepavyko prisijungti dėl netinkamo plėtinio
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Žaidimo tinkle sinchronizacija nepavyko
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nutruko ryšys
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Negali atverti išsaugoto žaidimo
@@ -2367,7 +2367,7 @@ STR_NETWORK_ERROR_CLIENT_DESYNC                                 :sinchronizacijo
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :negali užkrauti žemėlapio
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :prarastas ryšys
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokolo klaida
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Papild. grafikos neatitikimas
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Neatitinka plėtinys
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Neautorizuota
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :gautas neteisingas arba nelauktas paketas
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :bloga versija
@@ -2488,17 +2488,17 @@ STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Taip, pa
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, išeiti iš OpenTTD
 
 # Transparency settings window
-STR_TRANSPARENCY_CAPTION                                        :{WHITE}Permatomumo nustatymai
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Nustatyti stočių ženklų permatomumą. Ctrl+Click to užrakinti.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Nustatyti medžių permatomumą . Ctrl+Click to užrakinti.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Nustatyti namų permatomumą . Ctrl+Click užrakinti.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Nustatyti pramoninių pastatų permatomumą . Ctrl+Click užrakinti
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Perjungti statomų pastatų, tokių kaip stotys, garažai ir kontrolės punktai, permatomumą. Ctrl+Click užrakinti.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Nustatyti tiltų permatomumą. Ctrl+Click užrakinti
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Perjungti pastatų, tokių kaip švyturiai ir antenos, permatomumą.Ctrl+Click užrakinti
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Perjungti laidų permatomumą . Ctrl+Click užrakinti.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Perjungti krovimo indikatorių permatomumą. Ctrl+Click užrakinti
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nustatyti objektus nematomais vietoje permatomų
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Skaidrumo nuostatos
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Perjungti ženklų skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Perjungti medžių skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Perjungti namų skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Perjungti pramonės įmonių skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Perjungti stotelių, garažų ir panašių pastatų skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Perjungti tiltų skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Perjungti švyturių, siųstuvų ir panašių statinių skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Perjungti laidų skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Perjungti krovos indikatorių skaidrumą. Spragtelėjus laikant nuspaustą Ctrl klavišą, nuostata bus užrakinta
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Pasirinkti tarp skaidrių ir nematomų objektų
 
 # Linkgraph legend window
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Krovinių srautai
@@ -2571,7 +2571,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Statyti 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Pasirinkti stoties klasę rodymui
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Pasirinkti stoties statymo tipą
 
-STR_STATION_CLASS_DFLT                                          :Numatytoji stotis
+STR_STATION_CLASS_DFLT                                          :Numatytoji stotelė
 STR_STATION_CLASS_WAYP                                          :Keliarodžiai
 
 # Signal window
@@ -2809,7 +2809,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stotelė
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Oro uosto klasė: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Oro uosto pavadinimas: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Oro uosto žemės plotelio pavadinimas: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}Plėtinys: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Krovinys priimtas: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Geležinkelių greičio limitas: {LTBLUE}{VELOCITY}
@@ -2862,7 +2862,7 @@ STR_LAI_TREE_NAME_TREES                                         :Medžiai
 STR_LAI_TREE_NAME_RAINFOREST                                    :Atogrąžų miškas
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusiniai augalai
 
-STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Geležinkelio stotis
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Geležinkelio stotelė
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Lėktuvo angaras
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Oro uostas
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Sunkvežimių pakrovimo aikštelė
@@ -3010,48 +3010,48 @@ STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Skriptas
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Ruošiamas žaidimas
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Papild. grafikos nustatymai (NewGRF)
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Išsami NewGRF informacija
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktyvios NewGRF bylos
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktyvios NewGRF bylos
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Plėtinių nuostatos
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Išsami plėtinio informacija
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktyvūs plėtiniai
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktyvūs plėtiniai
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Rinkinys:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Įrašo filtravimas:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Įkrauti pasirinktą nuostatų rinkinį
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtras:
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Įkelti pasirinktą plėtinių rinkinį
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Išsaugoti rinkinį
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Išsaugoti esamą sąrašą kaip rinkinį
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Įvesti vardą nuostatai
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Išsaugoti esamą sąrašą kaip plėtinių rinkinį
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Įvesti rinkinio pavadinimą
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Ištrinti rinkinį
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ištrinti pasirinktą nuostatų rinkinį
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ištrinti pasirinktą plėtinių rinkinį
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pridėti
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Įtraukti pažymėtus Papild. grafikos failus į jūsų nustatymus
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Įtraukti pasirinktą plėtinį į aktyvių plėtinių sąrašą
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Nuskaityti dar kartą failus
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Atnaujinti prieinamų Papild. grafikos failų sąrašą
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Atnaujinti galimų plėtinių sąrašą
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Pašalinti
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Pašalinti pažymėtą Papild. grafikos failą iš sąrašo
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Pašalinti pasirinktą plėtinį iš sąrašo
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Aukštyn
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Perkelti pažymėtus Papild. grafikos failus sąraše aukštyn
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Paslinkti pasirinktą plėtinį sąrašu aukštyn
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Žemyn
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Perkelti pažymėtus Papild. grafikos failus sąraše žemyn
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Paslinkti pasirinktą plėtinį sąrašu žemyn
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Atnaujinti
-STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Atnaujinti grafikos failus, jei yra įdiegta naujesnė versija
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Įdiegtų papild. grafikos failų sąrašas.
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Atnaujinti plėtinius, jei yra įdiegta naujesnė versija
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Aktyvių plėtinių sąrašas
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nustatyti parametrus
-STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Rodyti parametrus
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Kaitalioti paletę
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Kaitalioja parinkto NewGRF paletę.{}Darykite jei pajungta grafika nuspalvinta rožine spalva
-STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Pritaikyti pakeitimus
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Plėtinio nuostatos
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Rodyti nuostatas
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Perjungti spalvų paletę
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Perjunkite spalvų paletę, jei pasirinkto plėtinio objektai žaidime yra nuspalvinti rožine spalva
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Taikyti pokyčius
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Rasti ieškomą turinį tinkle
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Patikrinti ar trūkstamas turinys gali būti rastas internete
 
-STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Failo vardas: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Failo pavadinimas: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versija: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Anksčiausia suderinama versija: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5suma: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 suma: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletė: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametrai: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Nuostatos: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informacijos nėra
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Atitinkamas failas nerastas
@@ -3060,60 +3060,60 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nesuderina
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Išsaugoti rinkinį
-STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Sąrašas visų rinkinių
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Visų rinkinių sąrašas
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Įveskite rinkinio pavadinimą
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Šiuo metu pasirinktas rinkinio pavadinimas
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Atšaukti
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nieko nedaryti ir grįžti atgal
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Išsaugoti
-STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Iššsaugoti rinkinį pasiriktu pavadinimu
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Išsaugoti rinkinį pasiriktu pavadinimu
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Pakeisti NewGRF parametrus
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Uždaryti
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Plėtinio nuostatos
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Užverti
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Atstatyti
-STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nustayti pradines reikšmes visiems parametrams
-STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametras {NUM}
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Atstatyti pradines reikšmes visoms nuostatoms
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Nuostata {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
-STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametrų skaičius: {ORANGE}{NUM}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nuostatų skaičius: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Apžiūrėti - {STRING}
-STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Tėvas
-STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Apžiūrėti objektą iš tėvo apimties
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Viršobjektis
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Apžiūrėti objektą iš viršobjekčio srities
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ties {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objektas
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Geležinkėlio tipas
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Bėgio tipas
 
-STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF kintamojo 60+x parametras (šešioliktainėje sist.)
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Plėtinio kintamojo 60+x parametras (šešioliktainėje sistemoje)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Išdėstymo animacinis objektas {COMMA} ({STRING})
-STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Kitas animacinis objektas
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Pereiti prie kito animacinio objekto praleidžiant visus pseudo/spalvinimo/šriftų objektus peršokant į pradžią pabaigoje
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pereiti prie animacinio objekto
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Pereiti prie nurodyto animacinio objekto. Jeigu objektas nėra įprastas animacinis objektas, pereiti prie kito įprasto
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Buvęs animacinis objektas
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Pereiti prie buvusio animacinio objekto praleidžiant visus pseudo/spalvinimo/šriftų objektus peršokant į pabaigą pradžioje
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Atvaizdavimas dabartinio pasirinkto sprite. Suderinamumas yra ignoruojamas, rengiant šį sprite
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Perkelti sprite aplink, keičiant X ir Y atsvaras
-STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Anuliuoti santykinius
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Anuliuoti santykinius poslinkius
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Lygiuojamas spruklys {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Tolesnis spruklys
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Įkelti tolesnį spruklį
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Nurodyti spruklį
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Įkelti nurodytą spruklį. Jei nurodytas spruklys nėa normalus, įkelti tolesnį normalų
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Ankstesnis spruklys
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Įkelti ankstesnį spruklį
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Pasirinkto spruklio atvaizdas, nekreipiant dėmesio į lygiavimą
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Paslinkti spruklį, keičiant X ir Y poslinkius
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Atkurti
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Atkurti numatytuosius santykinius poslinkius
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X poslinkis: {NUM}, Y poslinkis: {NUM} (Absoliutus)
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X poslinkis: {NUM}, Y poslinkis: {NUM} (Santykinis)
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pasirinkti sprite
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pasirinkite sprite iš bet kurios vietos ekrane
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pasirinkti spruklį
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pasirinkti spruklį iš bet kurios vietos ekrane
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Eiti į sprite
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Įkelti spruklį
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Įspėjimas: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Klaida: {SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalinė klaida: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ištiko nepataisoma NewGRF klaida: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} neveiks su TTDPatch versija nurodyta pagal OpenTTD.
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Lemtingoji klaida: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Įvyko lemtingoji plėtinio klaida: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} neveiks su TTDPatch versija nurodyta pagal OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} skirtas {STRING} TTD versijai.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} yra pritaikytas naudojimui su {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neteisingas parametras {1:STRING}: parametras {STRING} ({NUM})
@@ -3121,9 +3121,9 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} turi
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} turi būti įkeltas po {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} reikalauja OpenTTD versijos {STRING} arba naujesnės
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kurį turėjo išversti
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Įkelta per daug NewGRF
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {1:STRING} kaip statinio NewGRF su {STRING} gali sukelti desinchronizacijas
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Netikėtas spruklys (spruklys {3:NUM})
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Įkelta per daug plėtinių
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Plėtinio {1:STRING} įkėlimas su {STRING} gali išderinti žaidimą
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Netikėtas spruklys ({3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nežinoma veiksmo 0 savybė {4:HEX} (spruklys {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Bandymas panaudoti neteisingą ID (spruklys {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spruklį. Visi sugadinti sprukliai bus rodomi kaip raudoni klaustukai (?)
@@ -3132,7 +3132,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Skaitymas už p
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keleto spruklių.{}Atnaujinkite pagrindinį grafikos rinkinį
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Šiuo metu naudojamam pagrindinės grafikos rinkiniui trūsta keleto spruklių. {}Atnaujinkite pagrindinės grafikos rinkinį. {} Kadangi žaidžiate {YELLOW} negalutinę, vis dar kuriamą OpenTTD versiją, {WHITE}, jums, ko gero, reikėtų įdiegti atitinkamą{YELLOW}naujausią, negalutinį pagrindinės grafikos rinkinį.{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pageidautas GRF resursas yra neprieinamas (spruklys {3:NUM})
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungta: {STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungtas {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas spruklio išdėstymo formatas (spruklys {3:NUM})
 
 # NewGRF related 'general' warnings
@@ -3141,12 +3141,12 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jūs no
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Negalima pridėti failo: pasikartojantis GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atitinkamas failas nerastas (panaudotas suderinamas grafikos failas)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Neįmanoma pridėti failo: pasiektas NewGRF failų limitas
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Neįmanoma pridėti failo: pasiektas plėtinių failų limitas
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Suderinami grafikos failai panaudoti vietoj trūkstamų
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūkstami grafikos failai nenaudojami
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Trūksta GRF failų
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Paleidimas gali užlaužti OpenTTD. Neraportuokite šios rūšies gedimų!{}Ar norite paleisti toliau?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Paleidimas gali išderinti ar užstrigdinti OpenTTD. Nepildykite klaidų pranešimų dėl šių problemų.{}Ar norite paleisti žaidimą?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nėra
@@ -3155,14 +3155,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Rasti s
 STR_NEWGRF_LIST_MISSING                                         :{RED}Trūkstami failai
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF elgesys '{0:STRING}' gali desinchronizuoti ir/arba nutraukti žaidimą
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Tai pakeitė varomo vagono būseną '{1:ENGINE}' kai ji nėra depe.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tai pakeitė transporto priemonės '{1:ENGINE}' ilgį kai ji nėra depe
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Transporto priemonės '{1:ENGINE}' talpa pasikeitė jai nesant depe
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Traukinys '{VEHICLE}' priklausantis '{COMPANY}' yra netinkamo ilgio. Tai tikriausiai nutiko dėl netinkamo NewGRF. Žaidimas gali būti išsinchronizuotas arba išjungtas
+STR_NEWGRF_BROKEN                                               :{WHITE}Plėtinys '{0:STRING}' gali išderinti ar net nutraukti žaidimą.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Transporto priemonės '{1:ENGINE}' būsena pasikeitė jai nesant garaže/depe/angare
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Transporto priemonės '{1:ENGINE}' ilgis pasikeitė jai nesant garaže/depe/angare
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Transporto priemonės '{1:ENGINE}' talpa pasikeitė jai nesant garaže/depe/angare
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Traukinys '{VEHICLE}' priklausantis '{COMPANY}' yra netinkamo ilgio. Tai tikriausiai nutiko dėl netinkamo plėtinio. Žaidimas gali būti išderintas ar net išjungtas
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' teikia neteisingą informaciją
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' variklio krovinio/pertvarkymo informacija skiriasi nuo pirkinių sąrašo po pastatymo. Tai gali sukelti neteisingus automatiško atnaujinimo arba pertvarkymo rezultatus
+STR_NEWGRF_BUGGY                                                :{WHITE}Plėtinys '{0:STRING}' teikia neteisingą informaciją
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Transporto priemonės '{1:ENGINE}' talpa skiriasi nuo nurodytos galimų priemonių sąraše. Automatinis atnaujinimas gali tinkamai neveikti
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' sukėle begalinį ciklą produkcijos atgaliniame kvietime
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Kvietimas {1:HEX} grąžino nežinomą/klaidingą atsakymą {2:HEX}
 
@@ -3170,17 +3170,17 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Kvietima
 STR_NEWGRF_INVALID_CARGO                                        :<netinkamas krovinys>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vnt. <netinkamo krovinio>
-STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas variklis>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama industrija>
+STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas transporto priemonės tipas>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama pramonės įmonė>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
 STR_INVALID_VEHICLE                                             :<neteisinga transporto priemonė>
 
 # NewGRF scanning window
-STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tikrinami NewGRF
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Nuskaitomi NewGRF. Tai gali užtrukti, priklausomai nuo kiekio...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Nuskaitomi {NUM} NewGRF{P "" "" ""} iš paskaičiuotų {NUM} NewGRF{P "" "" ""}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Ieškoma archyvų
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tikrinami plėtiniai
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Nuskaitomi plėtiniai. Tai gali užtrukti, priklausomai nuo kiekio...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Nuskaityti {NUM} plėtin{P ys iai ių} iš {NUM}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Ieškoma archyvuose
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}
@@ -3381,10 +3381,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Nuostabus
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane. Ctrl+Click atidaro naują peržiūros langą su vaizdu į šią stotį
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stoties pavadinimą
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotis
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rodyti visus automobilius, į kurių užduotis yra įtraukta ši stotis
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti visus lėktuvus, į kurių užduotis yra įtraukta ši stotis
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotis
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotelė
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rodyti visus automobilius, į kurių užduotis yra įtraukta ši stotelė
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti visus lėktuvus, į kurių užduotis yra įtraukta ši stotelė
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotelė
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pervardinti stotį
 
@@ -3422,7 +3422,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Iš viso:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Sąskaitos balansas
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Paskola
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimali paskola: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Didžiausia paskola: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Skolintis {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Skolintis daugiau. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus pasiskolinta didžiausia įmanoma suma
@@ -3617,10 +3617,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :visiems krovini
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Didž. traukos jėga: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Nuotolis: {GOLD}{COMMA} langeliai
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lokomotyvų ir vagonų sąrašas. Spragtelėjus ant kurio nors iš jų, bus parodyta platesnė informacija
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :BLACK}Automobilių sąrašas. Spragtelėjus ant kurio nors iš jų, bus parodyta platesnė informacija
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Laivų sąrašas. Spragtelėjus ant kurio nors iš jų, bus parodyta platesnė informacija
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lėktuvų sąrašas. Spragtelėjus ant kurio nors iš jų, bus parodyta platesnė informacija
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lokomotyvų ir vagonų sąrašas. Spragtelėjus bus parodyta platesnė informacija. Spragtelėjus laikant nuspaustą Ctrl klavišą, lokomotyvas ar vagonas bus slepiamas/rodomas sąraše
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Automobilių sąrašas. Spragtelėjus bus parodyta platesnė informacija. Spragtelėjus laikant nuspaustą Ctrl klavišą, automobilis bus slepiamas/rodomas sąraše
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Laivų sąrašas. Spragtelėjus bus parodyta platesnė informacija. Spragtelėjus laikant nuspaustą Ctrl klavišą, laivas bus slepiamas/rodomas sąraše
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lėktuvų sąrašas. Spragtelėjus bus parodyta platesnė informacija. Spragtelėjus laikant nuspaustą Ctrl klavišą, lėktuvas bus slepiamas/rodomas sąraše
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Pirkti
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Pirkti
@@ -4183,7 +4183,7 @@ STR_TIMETABLE_DAYS.kam                                          :{COMMA} dien{P 
 STR_TIMETABLE_DAYS.ka                                           :{COMMA} dien{P ą as ų}
 STR_TIMETABLE_DAYS.kuo                                          :{COMMA} dien{P a omis ų}
 STR_TIMETABLE_DAYS.kur                                          :{COMMA} dien{P oje ose ų}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}žym{P a os ų}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}impuls{P as ai ų}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Maršruto trukmė yra {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Maršruto trukmė yra mažiausiai {STRING}, nes nustatytos ne visų užduočių trukmės
@@ -4204,7 +4204,7 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Trukmės
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Atšaukti pažymėtos užduoties trukmės ribojimus
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Pakeisti greičio ribą
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Pakeisti pažymėtos užduoties maksimalaus greičio ribą
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Pakeisti pažymėtos užduoties didžiausio greičio ribą
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Greičio neriboti
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Neriboti pažymėtos užduoties greičio
@@ -4240,7 +4240,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nustatym
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Keisti skripto nustatymus
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Perkrauti AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Išbraukti DI, perkrauti skritpą, ir perkrauti DI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Įjungti/išjungti laužymą, kai DI registro žinutė sutinka su lūžio žinute
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Įjungti/išjungti stabdymą, jei DI žurnalo žinutė sutampa su stabdos žinute
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Lūžis ant:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Lūžis ant
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kai DI registro žinutė sutampa su šia eilute, žaidimas pristabdomas
@@ -4450,7 +4450,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... per 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daugiau nera vietos zemelapyje
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miestas nestatys kelių. Jūs galite įjungti kelių statybą per „Išplėstinės nuostatos>Aplinka>Miestai“.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vyksta kelio darbai
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotis arba depas, arba miestui priklausantis vienas iš laukelių negali būti ištrintas.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotelė arba depas, arba miestui priklausantis vienas iš laukelių negali būti pašalintas
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nėra tinkamos vietos statulai šio miesto centre
 
 # Industry related errors
@@ -4485,7 +4485,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Neįmano
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Negalima cia statyti oro uosto...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stotis per daug išsiplėtusi
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stotelė per daug išsiplėtusi
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Per daug stotelių
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Perdaug traukinių stoties dalių
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
@@ -4695,9 +4695,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Aptarnav
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... automobilis sunaikintas
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nebus įmanoma įsigyti jokių transporto priemonių
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pakeiskite NewGRF nuostatas
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pakeiskite plėtinių nuostatas
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Kol kas negalima įsigyti jokių transporto priemonių
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pradėkite žaidimą vėliau, nei {DATE_SHORT}, arba įdiekite NewGRF papildinį, kuris leis įsigyti transporto priemonių šiame ankstyvame laikotarpyje
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pradėkite žaidimą vėliau, nei {DATE_SHORT}, arba įdiekite plėtinių, kurie leistų įsigyti transporto priemonių šiame ankstyvame laikotarpyje
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Neįmanoma priversti traukinio važiuoti nesaugiai...
@@ -4717,7 +4717,7 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Sios uzd
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Negalima perkelti šio užsakymo...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Negalima praleisti šio užsakymo...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Negalima praleisti pažymėto užsakymo...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... transporto priemonė negali vykti į visas stotis
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... transporto priemonė negali vykti į visas stoteles
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... automobilis negali nukakti iki tos stotelės
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... automobilis dalinantis šį grafiką negali nukakti iki tos stotelės
 
@@ -5414,7 +5414,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Laivų d
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Laivų dokas #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Angaras
 
-STR_UNKNOWN_STATION                                             :Nežinoma stotis
+STR_UNKNOWN_STATION                                             :Nežinoma stotelė
 STR_DEFAULT_SIGN_NAME                                           :Ženklas
 STR_COMPANY_SOMEONE                                             :kažkas
 

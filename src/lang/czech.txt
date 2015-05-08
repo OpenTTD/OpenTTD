@@ -1265,7 +1265,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Usnadňuje odst
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximální délka vlaků: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Určuje maximální délku vlaků
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pol{P e e í}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :množství kouře/jisker u stroje: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Množství kouře/jisker u vozidel: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Množštví kouře či jisker emitovaných vozidly
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerace vlaků: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Zvolit fyzikální model pro zrychlení vlaků. "Originální" model zpomaluje všechny vozidla na svahu stejně. Realistický model zpomaluje na svazích a v zatáčkách podle různých parametrů, například délky a tažné síly.
@@ -1405,9 +1405,9 @@ STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Množství řek
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Zvol množství řek k vytvoření
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmus sázení stromového porostu: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Zvol způsob rozmisťování stromů ve světe: "Originální" sází stromy rovnoměrně, "Vylepšené" sází stromy ve skupinách
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :žádné
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :žádný
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :původní
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :vylepšené
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :vylepšený
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Silniční vozidla: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Zvol na jaké straně vozovky jezdí vozidla
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Otočení výškové mapy: {STRING}
@@ -1564,11 +1564,11 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Nastaví defaul
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Základní servisní interval pro lodě: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastaví defaultní servisní interval pro lodě pokud loď nemá nastaven jiný servisní interval
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnout servisy, když jsou vypnuty poruchy: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Pokud je zapnuto, vozidla nejezdí do servisu pokud se nemohou porouchat, tedy pokud jsou vypnuty poruchy
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Pokud je zapnuto a zároveň jsou vypnuty poruchy, vozidla nebudou vůbec jezdit do servisu, protože se nemohou nikdy porouchat
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Zapnout omezení rychlosti vagonů: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pokud zapnuto, použije rychlostní omezení vagónů při stanovení maximální rychlosti vlaku
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Vypnout elektrickou železnici: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Zapnutím této možnosti odstraní potřebu elektrifikované trati pro elektrické lokomotivy
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Zapnutí této možnosti odstraní potřebu elektrifikované trati pro elektrické lokomotivy
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Příjezd prvního vozidla do hráčovy stanice: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Zobrazovat noviny pokud první vozidlo dorazí do stanice této společnosti
@@ -2972,6 +2972,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Předcho
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jít na předchozí normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení začátku se jde na konec
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Zobrazení vybraného spritu. Posun se při jeho vykreslení neuvažoval
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Posouvání spritu změnou souřadnic X a Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetovat
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetovat aktuání relativní posunutí
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Posunutí v ose X: {NUM}, Posunutí v ose Y: {NUM} (Absolutní)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Posunutí v ose X: {NUM}, Posunutí v ose Y: {NUM} (Relativní)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vybrat sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Klikni na sprite kdekoli na obrazovce
 

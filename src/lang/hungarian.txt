@@ -2943,6 +2943,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Előző 
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Továbbhaladás az előző normál spritera, kihagyva bármilyen ál/átszínező/betű spriteokat, az elején folytatva az utolsóval
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}A jelenleg kiválasztott sprite ábrázolása. Az elhelyezkedés kikapcsolt sprite-rajzolás közben
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sprite elmozdítása, módosítva az X és Y offszeteket
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Eltolás visszaállítása
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}A jelenlegi relatív eltolás visszaállítása
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X eltolás: {NUM}, Y eltolás: {NUM} (Abszolút)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X eltolás: {NUM}, Y eltolás: {NUM} (Relatív)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Sprite felszedése
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Szedj fel egy spriteot akárhonnan a képernyőről
 

@@ -19,14 +19,14 @@
 
 
 ##id 0x0000
-STR_NULL                                                        :无效
-STR_EMPTY                                                       :空
+STR_NULL                                                        :
+STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(未定义字符串)
 STR_JUST_NOTHING                                                :无
 
 # Cargo related strings
 # Plural cargo name
-STR_CARGO_PLURAL_NOTHING                                        :无
+STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :旅客
 STR_CARGO_PLURAL_COAL                                           :煤炭
 STR_CARGO_PLURAL_MAIL                                           :邮件
@@ -60,7 +60,7 @@ STR_CARGO_PLURAL_PLASTIC                                        :塑料块
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :汽水
 
 # Singular cargo name
-STR_CARGO_SINGULAR_NOTHING                                      :无
+STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :旅客
 STR_CARGO_SINGULAR_COAL                                         :煤炭
 STR_CARGO_SINGULAR_MAIL                                         :邮件
@@ -1110,7 +1110,7 @@ STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}筛选�
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}适用范围：
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}仅显示修改过的选项
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本 (仅显示重要设置)
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :进階 (显示大部份设置)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :高级 (显示大部份设置)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :专业 (显示所有设置)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :修改默认值
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :设置一个与当前游戏设置不同的值
@@ -1684,7 +1684,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}经由
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}限制
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}灾难/事故
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}生成地图
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}环境保护
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}环境
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}政府监管
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}城镇
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}工业设施
@@ -2319,7 +2319,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台。按住 Shift 键显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建造铁路信号。{} 按住 Ctrl 键点选铁路，系统会切换悬臂式/电子式信号灯，或者更改被点选信号灯的种类{} 在一段直线铁路上拖拽，系统会依照设置的信号间距，沿铁路建立信号灯。如果按住 Ctrl 键拖拽，系统会建造信号灯至拖拽方向前的下一个分歧点{} 如果按住 Shift 键点击铁路或在铁路上拖拽，系统会显示建置成本但不设置信号灯{} 如果按住 Ctrl 键点击此键，系统会切换信号灯选择窗口的显示状态
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建造铁路信号。{} 按住 Ctrl 键点选铁路，系统会切换悬臂式/电子式信号灯，或者更改被点选信号灯的种类{} 在一段直线铁路上拖拽，系统会依照设置的信号间距，沿铁路建立信号灯。如果按住 Ctrl 键拖拽，系统会建造信号灯至拖拽方向前的下一个道岔{} 如果按住 Shift 键点击铁路或在铁路上拖拽，系统会显示建置成本但不设置信号灯{} 如果按住 Ctrl 键点击此键，系统会切换信号灯选择窗口的显示状态
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除轨道、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除轨道。
@@ -2560,7 +2560,7 @@ STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}供应商
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}采购商
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}点該工业可显示其上下游工业
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}点击查看上下游产业链
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}点该货物可显示其上下游工业
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}显示产业链
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}显示货物的上下游工业
@@ -2691,7 +2691,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :公司属地
 STR_ABOUT_OPENTTD                                               :{WHITE}关于 OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原始版权由 {COPYRIGHT} 1995 Chris Sawyer 所有，保留一切权力。
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 版本 {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2015 OpenTTD 团队
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2015 OpenTTD 团队
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}保存游戏
@@ -2879,6 +2879,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一�
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}继续处理上一个正常的图形元素，略过任何虚位／重新着色／文字字型相关的图形元素；并且在处理到第一个图形元素后，返回最后的图形元素继续处理。
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}显示目前选取的 sprite。当 sprite 正在描绘时会忽略其定位。
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移动 sprite 到指定的 X 与 Y 座标位移
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}重置相关
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}重置当前相关偏移
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X 偏移: {NUM}, Y 偏移: {NUM} (绝对)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X 偏移: {NUM}, Y 偏移: {NUM} (相对)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}选择 sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}请从屏幕画面中任意选取一个 sprite
 
@@ -4169,7 +4173,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}太靠�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}太靠近另一个城镇了
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}城镇太多了
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图上没有多余的地方了
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}城镇不会修建道路{}您可以经由“高级设置->环境->城镇”开启建设道路的功能
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}城镇不会修建道路{}您可以在“设置->环境->城镇”选项下开启建设道路的功能
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城市中心没有合适的地方放置公司塑像
