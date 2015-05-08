@@ -377,7 +377,8 @@ void Town::UpdateVirtCoord()
 	SetDParam(0, this->index);
 	SetDParam(1, this->cache.population);
 	this->cache.sign.UpdatePosition(pt.x, pt.y - 24 * ZOOM_LVL_BASE,
-		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN);
+		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
+		STR_VIEWPORT_TOWN);
 
 	SetWindowDirty(WC_TOWN_VIEW, this->index);
 }
