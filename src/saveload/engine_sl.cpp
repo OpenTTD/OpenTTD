@@ -48,21 +48,39 @@ static const SaveLoad _engine_desc[] = {
 	SLE_END()
 };
 
-static std::vector<Engine> _temp_engine;
+static std::vector<Engine*> _temp_engine;
+
+/**
+ * Allocate an Engine structure, but not using the pools.
+ * The allocated Engine must be freed using FreeEngine;
+ * @return Allocated engine.
+ */
+static Engine* CallocEngine()
+{
+	uint8 *zero = CallocT<uint8>(sizeof(Engine));
+	Engine *engine = new (zero) Engine();
+	return engine;
+}
+
+/**
+ * Deallocate an Engine constructed by CallocEngine.
+ * @param e Engine to free.
+ */
+static void FreeEngine(Engine *e)
+{
+	if (e != NULL) {
+		e->~Engine();
+		free(e);
+	}
+}
 
 Engine *GetTempDataEngine(EngineID index)
 {
 	if (index < _temp_engine.size()) {
-		return &_temp_engine[index];
+		return _temp_engine[index];
 	} else if (index == _temp_engine.size()) {
-		uint8 zero[sizeof(Engine)];
-		memset(zero, 0, sizeof(zero));
-		Engine *engine = new (zero) Engine();
-
-		/* Adding 'engine' to the vector makes a shallow copy, so we do not want to destruct 'engine' */
-		_temp_engine.push_back(*engine);
-
-		return &_temp_engine[index];
+		_temp_engine.push_back(CallocEngine());
+		return _temp_engine[index];
 	} else {
 		NOT_REACHED();
 	}
@@ -127,6 +145,9 @@ void CopyTempEngineData()
 	}
 
 	/* Get rid of temporary data */
+	for (std::vector<Engine*>::iterator it = _temp_engine.begin(); it != _temp_engine.end(); ++it) {
+		FreeEngine(*it);
+	}
 	_temp_engine.clear();
 }
 
