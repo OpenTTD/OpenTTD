@@ -160,14 +160,12 @@ static void Save_ITBL()
 /** Load industry-type build data. */
 static void Load_ITBL()
 {
+	_industry_builder.Reset();
 	int index;
-	for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
-		index = SlIterateArray();
-		assert(index == i);
-		SlObject(_industry_builder.builddata + i, _industrytype_builder_desc);
+	while ((index = SlIterateArray()) != -1) {
+		if ((uint)index >= NUM_INDUSTRYTYPES) SlErrorCorrupt("Too many industry builder datas");
+		SlObject(_industry_builder.builddata + index, _industrytype_builder_desc);
 	}
-	index = SlIterateArray();
-	assert(index == -1);
 }
 
 extern const ChunkHandler _industry_chunk_handlers[] = {

@@ -1667,9 +1667,11 @@ static void SlLoadChunk(const ChunkHandler *ch)
 		case CH_ARRAY:
 			_sl.array_index = 0;
 			ch->load_proc();
+			if (_next_offs != 0) SlErrorCorrupt("Invalid array length");
 			break;
 		case CH_SPARSE_ARRAY:
 			ch->load_proc();
+			if (_next_offs != 0) SlErrorCorrupt("Invalid array length");
 			break;
 		default:
 			if ((m & 0xF) == CH_RIFF) {

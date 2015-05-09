@@ -51,7 +51,7 @@ void Load_NewGRFMapping(OverrideManagerBase &mapping)
 
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		if ((uint)index >= max_id) break;
+		if ((uint)index >= max_id) SlErrorCorrupt("Too many NewGRF entity mappings");
 		SlObject(&mapping.mapping_ID[index], _newgrf_mapping_desc);
 	}
 }
