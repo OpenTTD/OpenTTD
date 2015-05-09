@@ -28,6 +28,8 @@
 
 #include "table/strings.h"
 
+#include <bitset>
+
 #include "safeguards.h"
 
 static int _smallmap_industry_count; ///< Number of used industries
@@ -175,7 +177,7 @@ void BuildIndustriesLegend()
 	uint j = 0;
 
 	/* Add each name */
-	for (uint8 i = 0; i < NUM_INDUSTRYTYPES; i++) {
+	for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
 		IndustryType ind = _sorted_industry_types[i];
 		const IndustrySpec *indsp = GetIndustrySpec(ind);
 		if (indsp->enabled) {
@@ -1507,11 +1509,11 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 			break;
 
 		case 0: {
-			extern uint64 _displayed_industries;
+			extern std::bitset<NUM_INDUSTRYTYPES> _displayed_industries;
 			if (this->map_type != SMT_INDUSTRY) this->SwitchMapType(SMT_INDUSTRY);
 
 			for (int i = 0; i != _smallmap_industry_count; i++) {
-				_legend_from_industries[i].show_on_map = HasBit(_displayed_industries, _legend_from_industries[i].type);
+				_legend_from_industries[i].show_on_map = _displayed_industries.test(_legend_from_industries[i].type);
 			}
 			break;
 		}
