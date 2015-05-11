@@ -3212,6 +3212,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Папя
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Перайсьці да папярэдняга звычайнага спрайта, прапускаючы змяняючыя колер, шрыфтавыя, псэўдаспрайты. Пераход з пачатку сьпісу да апошняга спрайта.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Прадстаўленьне выбранага спрайта. Выраўноўваньне не ўлічваецца пры прарысоўцы гэтага спрайта.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайце спрайт, зьмяняючы зрушэньне па X і па Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Скід зрушэння
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Скінуць значэнні адноснага зрушэння
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Зрушэнне X: {NUM}; зрушэнне Y: {NUM} (абсалютнае)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Зрушэнне X: {NUM}; зрушэнне Y: {NUM} (адноснае)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Выбраць спрайт
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Абярыце любы спрайт на экране
 
