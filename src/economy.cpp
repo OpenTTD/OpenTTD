@@ -300,7 +300,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		/* Single player cheated to AI company.
 		 * There are no spectators in single player, so we must pick some other company. */
 		assert(!_networking);
-		Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+		Backup<CompanyByte> cur_company2(_current_company, FILE_LINE);
 		Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if (c->index != old_owner) {
@@ -308,7 +308,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				break;
 			}
 		}
-		cur_company.Restore();
+		cur_company2.Restore();
 		assert(old_owner != _local_company);
 	}
 
