@@ -431,10 +431,37 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			FreeUnitIDGenerator(VEH_SHIP,  new_owner), FreeUnitIDGenerator(VEH_AIRCRAFT, new_owner)
 		};
 
+		/* Override company settings to new company defaults in case we need to convert them.
+		 * This is required as the CmdChangeServiceInt doesn't copy the supplied value when it is non-custom
+		 */
+		if (new_owner != INVALID_OWNER) {
+			Company *old_company = Company::Get(old_owner);
+			Company *new_company = Company::Get(new_owner);
+
+			old_company->settings.vehicle.servint_aircraft = new_company->settings.vehicle.servint_aircraft;
+			old_company->settings.vehicle.servint_trains = new_company->settings.vehicle.servint_trains;
+			old_company->settings.vehicle.servint_roadveh = new_company->settings.vehicle.servint_roadveh;
+			old_company->settings.vehicle.servint_ships = new_company->settings.vehicle.servint_ships;
+			old_company->settings.vehicle.servint_ispercent = new_company->settings.vehicle.servint_ispercent;
+		}
+
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == old_owner && IsCompanyBuildableVehicleType(v->type)) {
 				assert(new_owner != INVALID_OWNER);
+
+				/* Correct default values of interval settings while maintaining custom set ones.
+				 * This prevents invalid values on mismatching company defaults being accepted.
+				 */
+				if (!v->ServiceIntervalIsCustom()) {
+					Company *new_company = Company::Get(new_owner);
+
+					/* Technically, passing the interval is not needed as the command will query the default value itself.
+					 * However, do not rely on that behaviour.
+					 */
+					int interval = CompanyServiceInterval(new_company, v->type);
+					DoCommand(v->tile, v->index, interval | (new_company->settings.vehicle.servint_ispercent << 17), DC_EXEC | DC_BANKRUPT, CMD_CHANGE_SERVICE_INT);
+				}
 
 				v->owner = new_owner;
 
