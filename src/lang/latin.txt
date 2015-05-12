@@ -3126,7 +3126,7 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Addere f
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fasciculus congruus lectus (nam fasciculus idem non inventum fuit)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Addere fasciculum non licet; nimis NewGRF adsunt
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fasciculi congrui lecti in loco fasciculis absentibus
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fasciculi congrui lecti in loco fasciculorum absentorum
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fasciculi absentes remoti sunt
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fasciculi GRF absunt
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD forsitan corruatur resumendo. Noli queri de ruinis sequentibus.{}Esne valde certus te ludum resumere velle?
