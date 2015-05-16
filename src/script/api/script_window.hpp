@@ -529,7 +529,7 @@ public:
 		/**
 		 * Generate landscape (newgame); %Window numbers:
 		 *   - GLWM_SCENARIO = #CreateScenarioWidgets
-		 *   - #GenenerateLandscapeWindowMode = #GenerateLandscapeWidgets
+		 *   - #GenerateLandscapeWindowMode = #GenerateLandscapeWidgets
 		 */
 		WC_GENERATE_LANDSCAPE                        = ::WC_GENERATE_LANDSCAPE,
 

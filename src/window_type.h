@@ -446,7 +446,7 @@ enum WindowClass {
 	/**
 	 * Generate landscape (newgame); %Window numbers:
 	 *   - GLWM_SCENARIO = #CreateScenarioWidgets
-	 *   - #GenenerateLandscapeWindowMode = #GenerateLandscapeWidgets
+	 *   - #GenerateLandscapeWindowMode = #GenerateLandscapeWidgets
 	 */
 	WC_GENERATE_LANDSCAPE,
 
