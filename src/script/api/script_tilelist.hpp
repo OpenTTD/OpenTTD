@@ -65,9 +65,10 @@ class ScriptTileList_IndustryAccepting : public ScriptTileList {
 public:
 	/**
 	 * @param industry_id The industry to create the ScriptTileList around.
-	 * @param radius The radius of the station you will be using.
+	 * @param radius The coverage radius of the station type you will be using.
 	 * @pre ScriptIndustry::IsValidIndustry(industry_id).
 	 * @pre radius > 0.
+	 * @note A station part built on any of the returned tiles will give you coverage.
 	 */
 	ScriptTileList_IndustryAccepting(IndustryID industry_id, int radius);
 };
@@ -82,9 +83,10 @@ class ScriptTileList_IndustryProducing : public ScriptTileList {
 public:
 	/**
 	 * @param industry_id The industry to create the ScriptTileList around.
-	 * @param radius The radius of the station you will be using.
+	 * @param radius The coverage radius of the station type you will be using.
 	 * @pre ScriptIndustry::IsValidIndustry(industry_id).
 	 * @pre radius > 0.
+	 * @note A station part built on any of the returned tiles will give you acceptance.
 	 */
 	ScriptTileList_IndustryProducing(IndustryID industry_id, int radius);
 };
