@@ -43,4 +43,6 @@ public:
 	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes);
 };
 
+void BuildContentTypeStringList();
+
 #endif /* NETWORK_CONTENT_GUI_H */
