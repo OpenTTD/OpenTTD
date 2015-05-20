@@ -259,7 +259,8 @@ void cocoaReleaseAutoreleasePool();
 
 int CDECL main(int argc, char *argv[])
 {
-	int ret;
+	/* Make sure our arguments contain only valid UTF-8 characters. */
+	for (int i = 0; i < argc; i++) ValidateString(argv[i]);
 
 #ifdef WITH_COCOA
 	cocoaSetupAutoreleasePool();
@@ -275,7 +276,7 @@ int CDECL main(int argc, char *argv[])
 
 	signal(SIGPIPE, SIG_IGN);
 
-	ret = openttd_main(argc, argv);
+	int ret = openttd_main(argc, argv);
 
 #ifdef WITH_COCOA
 	cocoaReleaseAutoreleasePool();

@@ -174,6 +174,9 @@ int CDECL main(int argc, char *argv[])
 {
 	SetRandomSeed(time(NULL));
 
+	/* Make sure our arguments contain only valid UTF-8 characters. */
+	for (int i = 0; i < argc; i++) ValidateString(argv[i]);
+
 	return openttd_main(argc, argv);
 }
 
