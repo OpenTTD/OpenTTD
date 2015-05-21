@@ -160,7 +160,9 @@ static void Save_ITBL()
 /** Load industry-type build data. */
 static void Load_ITBL()
 {
-	_industry_builder.Reset();
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		_industry_builder.builddata[it].Reset();
+	}
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		if ((uint)index >= NUM_INDUSTRYTYPES) SlErrorCorrupt("Too many industry builder datas");
