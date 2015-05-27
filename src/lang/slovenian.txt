@@ -1070,10 +1070,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestna vozila
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Izberi smer vožnje cestnih vozil
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vožnja po levi
@@ -1126,6 +1122,8 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ločljivost
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izberi ločljivost zaslona
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
@@ -1226,7 +1224,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Sovražno
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ni na voljo nobene uporabne UI.{}UI so na voljo preko 'Prenosa vsebin'.
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj niz:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Razširi vse
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skrči vse
@@ -3147,7 +3145,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacije
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Opozorilo
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Napaka
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Prekliči
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Ne
@@ -3166,6 +3164,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Ponovni zagon
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Preloži
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Predaja
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zapri
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije

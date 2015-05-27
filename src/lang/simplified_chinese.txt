@@ -927,10 +927,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :格鲁吉亚拉
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亚尔(IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}汽车行驶
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}选择汽车行驶的方向
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左侧通行
@@ -3055,7 +3051,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :信息
 STR_GOAL_QUESTION_CAPTION_WARNING                               :警告
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :错误
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :取消
 STR_GOAL_QUESTION_BUTTON_OK                                     :确定
 STR_GOAL_QUESTION_BUTTON_NO                                     :取消
@@ -3074,6 +3070,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :重新开启
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :暂缓
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :放弃
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :关闭
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}财政补贴项目

@@ -1023,10 +1023,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestovna vozila
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Odaberi na kojoj će strani ceste vozila prometovati
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vozi na lijevoj strani
@@ -3151,7 +3147,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacija
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Upozorenje
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Greška
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Poništi
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Ne
@@ -3170,6 +3166,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Ponovi od poče
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Odgodi
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Odustani
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zatvori
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije

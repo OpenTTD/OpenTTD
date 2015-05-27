@@ -928,10 +928,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :그루지야 �
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :이란 리알 (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량 통행 방식
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}차량 통행 방법 선택
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
@@ -3056,7 +3052,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{G=f}정보
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{G=f}경고
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :오류
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :취소
 STR_GOAL_QUESTION_BUTTON_OK                                     :{G=m}확인
 STR_GOAL_QUESTION_BUTTON_NO                                     :아니요
@@ -3075,6 +3071,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :재시작
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :연기
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :양도
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :닫기
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금

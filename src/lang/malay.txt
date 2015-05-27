@@ -895,10 +895,6 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African R
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sesuaikan...
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kenderaan Jalanraya
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pilih laluan memandu kenderaan sebelah kiri atau kanan
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Memandu di sebelah kiri
@@ -2737,7 +2733,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Maklumat
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Amaran
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kesilapan
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Batal
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Tidak
@@ -2756,6 +2752,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Mula semula
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Tangguh
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Menyerah
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tutup
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi

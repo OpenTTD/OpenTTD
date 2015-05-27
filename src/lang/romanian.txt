@@ -926,10 +926,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgian (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranian (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autovehiculele circulă...
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Alege partea străzii pe care se circulă
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Pe partea stângă
@@ -2989,7 +2985,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informație
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Atenționare
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Eroare
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Anulează
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nu
@@ -3008,6 +3004,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Reîncearcă
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Amână
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Renunță
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Închide
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvenţii (F6)

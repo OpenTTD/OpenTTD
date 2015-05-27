@@ -926,10 +926,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (G
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Chọn phía đường lái xe
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lái bên trái
@@ -3028,7 +3024,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Thông Tin
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Cảnh Báo
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Lỗi
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Hủy bỏ
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Không
@@ -3047,6 +3043,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Làm lại
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Hoãn lại
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Từ bỏ
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Đóng
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ Cấp

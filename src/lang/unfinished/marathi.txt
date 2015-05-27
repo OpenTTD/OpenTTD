@@ -723,10 +723,6 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोव
 ############ end of currency region
 
 
-############ start of measuring units region
-############ end of measuring units region
-
-
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :फ्रेंच
@@ -764,6 +760,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
+
+
 # Custom currency window
 
 
@@ -786,7 +784,7 @@ STR_SUBSIDY_X4                                                  :x४
 
 
 
-# Advanced settings window
+# Settings tree window
 
 
 
@@ -1198,7 +1196,8 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 
 # Goal question window
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
+############ End of Goal Question button list
 
 # Subsidies window
 

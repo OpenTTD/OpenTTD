@@ -397,10 +397,6 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 ############ end of currency region
 
 
-############ start of measuring units region
-############ end of measuring units region
-
-
 
 ############ start of townname region
 ############ end of townname region
@@ -412,6 +408,8 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
+
+
 
 
 
@@ -435,7 +433,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
-# Advanced settings window
+# Settings tree window
 
 
 
@@ -767,7 +765,8 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 
 # Goal question window
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
+############ End of Goal Question button list
 
 # Subsidies window
 

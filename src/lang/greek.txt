@@ -1028,10 +1028,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Γεοργια�
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ιρανικό Ριάλ (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Οχήματα δρόμου
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδηγούν από αριστερά
@@ -1084,6 +1080,8 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκ
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλυση οθόνης
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
@@ -1185,7 +1183,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Φιλτράρισμα:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Επέκταση όλων
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Σύμπτυξη όλων
@@ -3024,7 +3022,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Πληροφο�
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Προειδοποίηση
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Σφάλμα
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Ακύρωση
 STR_GOAL_QUESTION_BUTTON_OK                                     :Εντάξει
 STR_GOAL_QUESTION_BUTTON_NO                                     :Όχι
@@ -3043,6 +3041,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Επανεκκ�
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Αναβολή
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Παράδοση
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Κλείσιμο
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Χρηματοδοτήσεις

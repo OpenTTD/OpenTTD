@@ -1129,10 +1129,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheil
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Carbadan-rathaid
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Tagh taobh an rathaid air a dhràibheas na carbadan
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Draibheadh air an taobh chlì
@@ -3284,7 +3280,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Fiosrachadh
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Rabhadh
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Mearachd
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Sguir dheth
 STR_GOAL_QUESTION_BUTTON_OK                                     :Ceart ma-thà
 STR_GOAL_QUESTION_BUTTON_NO                                     :Chan eil
@@ -3303,6 +3299,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Ath-thòisich
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Cuir na dhàil
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Gèill
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Dùin
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tarrailean

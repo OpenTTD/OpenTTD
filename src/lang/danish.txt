@@ -927,10 +927,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rialer (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vejkøretøjer
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vælg den side af vejen, køretøjer skal kører i
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kør i venstre side
@@ -2879,6 +2875,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidliger
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsæt til den forrige normal sprite, springe over nogen pseudo / recolour / FONT sprites og indpakning rundt fra den første sprite til det sidste
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Repræsentation af den markerede sprite. Justeringen ignoreres når denne sprite tegnes.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flyt spriten rundt for at ændre X- og Y-forskydningen
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Nulstil relativ
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nulstil den nuværende relative forskydning
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM} (Absolut)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM} (Relativt)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vælg grafikelement
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Vælg en sprite fra et vilkårligt sted på skærmen
 
@@ -3051,7 +3051,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Information
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Advarsel
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Mål-spørgsmåls-overskriftsfejl
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annuller
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nej
@@ -3070,6 +3070,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Genstart
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Udskyd
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Overgiv dig
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Luk
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tilskudsordninger

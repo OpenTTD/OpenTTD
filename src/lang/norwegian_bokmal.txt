@@ -929,10 +929,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgianske Lar
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kjøretøy
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Velg kjøreside for veier
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekjøring
@@ -3059,7 +3055,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasjon
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Advarsel
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Feil
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Avbryt
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nei
@@ -3078,6 +3074,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Start på nytt
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Utsett
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Gi opp
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Lukk
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidier

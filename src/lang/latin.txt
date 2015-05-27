@@ -1115,10 +1115,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehicula Viaria
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Eligere latus viae gubernandi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gubernantur sinistro
@@ -3257,7 +3253,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Indicia
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Cautio
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Error
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancellare
 STR_GOAL_QUESTION_BUTTON_OK                                     :Ita
 STR_GOAL_QUESTION_BUTTON_NO                                     :Non
@@ -3276,6 +3272,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Incipere denuo
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Procrastinare
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Dedere
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Claudere
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidia

@@ -898,10 +898,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Aksturstefna
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Aksturstefna bifreiða
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstristefna
@@ -954,6 +950,8 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Smelltu 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Stilla skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grunngrafík
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota grunngrafíkina
@@ -1054,7 +1052,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin nothæf gervigreind í boði...{}Þú getur hlaðið niður mörgum gervigreindum í gegnum 'Ná í viðbætur af netinu' viðmótið
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sía:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Þenja út
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Draga saman
@@ -2876,7 +2874,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Upplýsingar
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Varúð
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Villa
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Hætta við
 STR_GOAL_QUESTION_BUTTON_OK                                     :Í lagi
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nei
@@ -2895,6 +2893,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Byrja aftur
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Fresta
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Gefast upp
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Loka
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Samstarfssamningar

@@ -927,10 +927,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (G
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kendaraan jalan raya
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pilih lajur yang dilalui bus/truk
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Berkendara di lajur kiri
@@ -3051,7 +3047,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasi
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Peringatan
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kesalahan
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Batal
 STR_GOAL_QUESTION_BUTTON_OK                                     :Oke
 STR_GOAL_QUESTION_BUTTON_NO                                     :Tidak
@@ -3070,6 +3066,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Restart
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Tunda
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Menyerah
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tutup
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi

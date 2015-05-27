@@ -931,10 +931,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :לארי גאו
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איראני (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}רכבי כביש
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}בחר את צד הכביש בו יסעו כלי הרכב
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :סע בצד שמאל
@@ -3002,7 +2998,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :מידע
 STR_GOAL_QUESTION_CAPTION_WARNING                               :אזהרה
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :שגיאה
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :ביטול
 STR_GOAL_QUESTION_BUTTON_OK                                     :אישור
 STR_GOAL_QUESTION_BUTTON_NO                                     :לא
@@ -3021,6 +3017,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :אתחל
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :דחה
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :היכנע
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :סגור
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות

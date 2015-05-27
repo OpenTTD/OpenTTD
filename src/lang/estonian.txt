@@ -975,10 +975,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruusia lari (G
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iraani rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Sõidukid
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vali, kummal pool teed mootorsõidukid liiklevad
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
@@ -1031,6 +1027,8 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Märgi s
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanilahutus
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Alusgraafika kogu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava alusgraafika kogu
@@ -1132,7 +1130,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv tehismõistus puudub...{}Tehismõistuseid võib laadida Internetisisu laadimise aknast.
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtri tekst:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ava kõik
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulge kõik
@@ -3046,7 +3044,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Teave
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Hoiatus
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Viga
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Tühista
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Ei
@@ -3065,6 +3063,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Alusta uuesti
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Lükka edasi
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Anna alla
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Sulge
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Toetused

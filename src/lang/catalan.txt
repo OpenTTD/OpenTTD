@@ -928,10 +928,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgià(G
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranià(IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automòbils
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Selecciona el sentit de circulació dels automòbils
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Condueix per l'esquerra
@@ -3056,7 +3052,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informació
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Alerta
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Error
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancel·la
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :No
@@ -3075,6 +3071,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Reinicia
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Postposa
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Rendir-se
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tanca
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencions

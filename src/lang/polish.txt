@@ -1307,10 +1307,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari gruziński
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial irański (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pojazdy drogowe
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wybierz stronę, po której będą jeździć samochody
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazda po lewej
@@ -3435,7 +3431,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacja
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Ostrzeżenie
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Błąd
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Anuluj
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nie
@@ -3454,6 +3450,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Restartuj
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Odłóż
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Poddaj się
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zamknij
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydia
