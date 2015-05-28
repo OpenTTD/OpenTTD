@@ -3496,7 +3496,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sa oled
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Teade veovahendite tootjalt
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Me töötasime välja uue {STRING}{P "" i}. Kas te oleksite huvitatud selle ainuõiguslikust katsetamisest järgneva aasta jooksul, et me saaksime jälgida kuidas see toimib?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Me töötasime välja uue {STRING}. Kas te oleksite huvitatud selle ainuõiguslikust katsetamisest järgneva aasta jooksul, et me saaksime jälgida kuidas see toimib?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :raudteevedur
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :mootorsõiduk
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lennuk
