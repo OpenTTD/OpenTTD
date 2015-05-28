@@ -388,13 +388,22 @@ static void EmitWordList(Buffer *buffer, const char * const *words, uint nw)
 void EmitPlural(Buffer *buffer, char *buf, int value)
 {
 	int argidx = _cur_argidx;
-	int offset = 0;
+	int offset = -1;
 	int expected = _plural_forms[_lang.plural_form].plural_count;
 	const char **words = AllocaM(const char *, max(expected, MAX_PLURALS));
 	int nw = 0;
 
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
 	if (!ParseRelNum(&buf, &argidx, &offset)) argidx--;
+
+	const CmdStruct *cmd = _cur_pcs.cmd[argidx];
+	if (offset == -1) {
+		/* Use default offset */
+		if (cmd == NULL || cmd->default_plural_offset < 0) {
+			strgen_fatal("Command '%s' has no (default) plural position", cmd == NULL ? "<empty>" : cmd->cmd);
+		}
+		offset = cmd->default_plural_offset;
+	}
 
 	/* Parse each string */
 	for (nw = 0; nw < MAX_PLURALS; nw++) {
