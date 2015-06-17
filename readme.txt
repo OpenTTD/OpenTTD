@@ -308,9 +308,9 @@ chosen main OpenTTD directory:
 	32bpp Sets:          newgrf                  (or a subdirectory thereof)
 	Music Sets:          baseset                 (or a subdirectory thereof)
 	AIs:                 ai                      (or a subdirectory thereof)
-	AI Libraries:        ai/libraries            (or a subdirectory thereof)
+	AI Libraries:        ai/library              (or a subdirectory thereof)
 	Game Scripts (GS):   game                    (or a subdirectory thereof)
-	GS Libraries:        game/libraries          (or a subdirectory thereof)
+	GS Libraries:        game/library            (or a subdirectory thereof)
 	Savegames:           save
 	Automatic Savegames: save/autosave
 	Scenarios:           scenario
