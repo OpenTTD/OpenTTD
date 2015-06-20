@@ -669,7 +669,7 @@ public:
 			case WID_GL_REPLACE_PROTECTION: {
 				const Group *g = Group::GetIfValid(this->vli.index);
 				if (g != NULL) {
-					DoCommandP(0, this->vli.index, !g->replace_protection | (_ctrl_pressed << 1), CMD_SET_GROUP_REPLACE_PROTECTION);
+					DoCommandP(0, this->vli.index, (g->replace_protection ? 0 : 1) | (_ctrl_pressed << 1), CMD_SET_GROUP_REPLACE_PROTECTION);
 				}
 				break;
 			}
