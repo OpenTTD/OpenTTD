@@ -563,6 +563,15 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 						}
 						return_cmd_error(STR_ERROR_ALREADY_BUILT);
 					}
+					/* Disallow breaking end-of-line of someone else
+					 * so trams can still reverse on this tile. */
+					if (rt == ROADTYPE_TRAM && HasExactlyOneBit(existing)) {
+						Owner owner = GetRoadOwner(tile, rt);
+						if (Company::IsValidID(owner)) {
+							CommandCost ret = CheckOwnership(owner);
+							if (ret.Failed()) return ret;
+						}
+					}
 					break;
 				}
 

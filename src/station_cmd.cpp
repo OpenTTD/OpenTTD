@@ -963,7 +963,11 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 				/* There is a tram, check if we can build road+tram stop over it. */
 				if (HasBit(cur_rts, ROADTYPE_TRAM)) {
 					Owner tram_owner = GetRoadOwner(cur_tile, ROADTYPE_TRAM);
-					if (!_settings_game.construction.road_stop_on_competitor_road && tram_owner != OWNER_NONE) {
+					if (Company::IsValidID(tram_owner) &&
+							(!_settings_game.construction.road_stop_on_competitor_road ||
+							/* Disallow breaking end-of-line of someone else
+							 * so trams can still reverse on this tile. */
+							HasExactlyOneBit(GetRoadBits(cur_tile, ROADTYPE_TRAM)))) {
 						CommandCost ret = CheckOwnership(tram_owner);
 						if (ret.Failed()) return ret;
 					}
