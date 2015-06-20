@@ -96,6 +96,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
  * - p1 = (bit 28-29) - Timetable data to change (@see ModifyTimetableFlags)
  * @param p2 The amount of time to wait.
  * - p2 = (bit  0-15) - The data to modify as specified by p1 bits 28-29.
+ *                      0 to clear times, UINT16_MAX to clear speed limit.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -154,14 +155,29 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (max_speed != order->GetMaxSpeed() && (order->IsType(OT_CONDITIONAL) || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (wait_time != order->GetWaitTime() || (wait_time > 0 && !order->IsWaitTimetabled())) {
-			ChangeTimetable(v, order_number, wait_time, MTF_WAIT_TIME, wait_time > 0);
-		}
-		if (travel_time != order->GetTravelTime() || (travel_time > 0 && !order->IsTravelTimetabled())) {
-			ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME, travel_time > 0);
-		}
-		if (max_speed != order->GetMaxSpeed()) {
-			ChangeTimetable(v, order_number, max_speed, MTF_TRAVEL_SPEED, max_speed != UINT16_MAX);
+		switch (mtf) {
+			case MTF_WAIT_TIME:
+				/* Set time if changing the value or confirming an estimated time as timetabled. */
+				if (wait_time != order->GetWaitTime() || (wait_time > 0 && !order->IsWaitTimetabled())) {
+					ChangeTimetable(v, order_number, wait_time, MTF_WAIT_TIME, wait_time > 0);
+				}
+				break;
+
+			case MTF_TRAVEL_TIME:
+				/* Set time if changing the value or confirming an estimated time as timetabled. */
+				if (travel_time != order->GetTravelTime() || (travel_time > 0 && !order->IsTravelTimetabled())) {
+					ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME, travel_time > 0);
+				}
+				break;
+
+			case MTF_TRAVEL_SPEED:
+				if (max_speed != order->GetMaxSpeed()) {
+					ChangeTimetable(v, order_number, max_speed, MTF_TRAVEL_SPEED, max_speed != UINT16_MAX);
+				}
+				break;
+
+			default:
+				break;
 		}
 	}
 
