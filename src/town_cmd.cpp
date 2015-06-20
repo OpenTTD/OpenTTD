@@ -1317,8 +1317,13 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
 			case MP_ROAD:
 				return target_rb != ROAD_NONE;
 
-			case MP_HOUSE:
 			case MP_STATION:
+				return IsDriveThroughStopTile(tile);
+
+			case MP_TUNNELBRIDGE:
+				return GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD;
+
+			case MP_HOUSE:
 			case MP_INDUSTRY:
 			case MP_OBJECT:
 				return false;
