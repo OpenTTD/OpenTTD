@@ -2873,9 +2873,9 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-v
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Forskyver sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Neste sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsett til neste normale sprite og hopp over enhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved begynnelsen
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til figur
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå til gitt sprite. Hvis spriten ikke er en normal sprite, fortsett til neste normale sprite
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige figur
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsett til forrige normale sprite og hopp over enhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved begynnelsen
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Forhåndsvisning av valgt sprite. Innrettingen ignoreres når spriten tegnes
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytt på spriten for å endre X- og Y-forskyvningene
@@ -2904,7 +2904,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krev
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var laget for å oversette
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er er innlastet
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {1:STRING} som statisk NewGRF med {STRING} kan forårsake synkroniseringsfeil
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet figur (figur {3:NUM})
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet sprite (figur {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent Handling 0 egenskap {4:HEX} (figur {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruke ugyldig ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt sprite. Alle ødelagte spriter blir vist som røde spørsmålstegn (?).
@@ -3754,7 +3754,7 @@ STR_ORDER_GO_VIA                                                :Gå via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gå direkte via
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Endre stopprutinene for den merkede ordren
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last av enhver varetype
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last av alle varetyper
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last hvis tilgjengelig
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full last av alle varetyper
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full last av minst en varetype
