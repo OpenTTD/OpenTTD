@@ -169,8 +169,8 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALLE
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passasjer{P "" er}
 STR_BAGS                                                        :{COMMA}{NBSP}sekk{P "" er}
-STR_TONS                                                        :{COMMA}{NBSP}tonn{P "" }
-STR_LITERS                                                      :{COMMA}{NBSP}liter{P "" }
+STR_TONS                                                        :{COMMA}{NBSP}tonn
+STR_LITERS                                                      :{COMMA}{NBSP}liter
 STR_ITEMS                                                       :{COMMA}{NBSP}element{P "" er}
 STR_CRATES                                                      :{COMMA}{NBSP}kasse{P "" r}
 
