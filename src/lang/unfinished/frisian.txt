@@ -843,6 +843,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} hat in leeche opdracht
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} hat dûbele opdrachten
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} hat in in ûnjildich stasjon yn syn opdrachten
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE}Hat in fleanfjild in syn tjinstregeling wêrfan de lâningsbaan te koart is
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} begjint âld te wurden
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} begjint tige âld te wurden
@@ -982,6 +983,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfac
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normaal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dûbele grutte
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Fjouwerdûbele grutte
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset for ôfbyldings
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektearje de basis ôfbyldingsset om te brûken
@@ -997,6 +999,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selektea
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} korrupt{P "" e} bestân{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Oanfoljende ynformaasje oer de basisset foar musyk
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Koe gjin list mei brûkbere resolúsjes ophelje
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Folslein skermmodus mislearre
 
 # Custom currency window
@@ -1158,7 +1161,8 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Hâlding gemeen
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoe grut ympact fan lûdsoerlêst en omwrâldskea toch bedriuwen is op har reputaasje by de lokale bestjoeren en takomstige konstruksje yn harren mêd
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimale kaarthichte: {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean (autoslope): {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Maksimale tastiene hichte fan bergen op 'e kaart ynstelle
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Stean lânskipsbewurkings ûnder gebouwen en spoarbanen ta sûnder dat dizze ferwidere wurde
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebrûk meer realistyske hannelsgebieten: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Brûk ferskillende opheinbewâlden foar ferskillende typen stasjons en fleanfjilden
@@ -1186,6 +1190,7 @@ STR_CONFIG_SETTING_INFLATION                                    :Ynflaasje: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Skeakel ynflaasje foar de ekonomy yn, hjirby gean de kosten justjes hurder omheech as de ynkomsten
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimale brêgelingte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimumlingte wêroerst brêgen oanlizze kinst
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimale brêgehichte: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimale tunnellingte: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimumlingte wêroerst tunnels oanlizze kinst
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mei de hân te betsjinjen boumetoade foar primêre yndustryen: {STRING}
@@ -1261,7 +1266,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fiertugen ferin
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :By ynskeakeljen bliuwe alle fiertugen foar ivich beskikber
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ferfang âlde fiertugen automatysk: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :By ynskeakeljen wurden fiertugen dy't hast op harren ein binne automatyske ferfongen
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Ferfang in fiertúch at dizze {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Ferfang in fiertúch automatysk nei {STRING} maksimale âldens
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Leeftiid wêrop in fiertúch yn oanmerking komt foar automatysk fernije
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} moanne fan te foaren
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} moannen letter
@@ -1271,7 +1276,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doer flatermeld
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Doer fan reade flatermeldings. Guon krityske flater wurde net automatysk ôfsluten
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Arktips sjen litte: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiid wernei arktips sjen litten wurde at jo de mûs de boppe hâlde. Arktips kinne ek oan de rjochtermûsknop bûn wurde
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiid wernei arktips sjen litten wurde at jo de mûs de boppe hâlde. Arktips kinne ek oan de rjochtermûsknop bûn wurde asto dizze wearde op 0 set
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sweve foar {COMMA} milliseconde{P "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rjochtsklikje
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Ynwennertal sjen litte by steden: {STRING}
@@ -1370,7 +1375,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Gjin aksjes
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle net-konstruksje-aksjes
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alles útsein lânskipsoanpassings
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle aksjes
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Brûk de avansearre fiertugenlist: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Brûk groepen yn fiertugenlist: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Skeakelje de avansearre fiertugenlist yn foar it groepearren fan fiertugen
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Brûk laadyndikators: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :By ynskeakeljen sille ydikators sjen litten wurde boppe fiertugen dy't oan it yn- as útladen binne
