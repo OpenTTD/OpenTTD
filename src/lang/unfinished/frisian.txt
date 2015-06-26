@@ -1191,6 +1191,7 @@ STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Skeakel ynflaas
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimale brêgelingte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimumlingte wêroerst brêgen oanlizze kinst
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimale brêgehichte: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimale hichte foar brêgen
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimale tunnellingte: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimumlingte wêroerst tunnels oanlizze kinst
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mei de hân te betsjinjen boumetoade foar primêre yndustryen: {STRING}
