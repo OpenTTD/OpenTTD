@@ -1957,7 +1957,7 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}이름�
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}호스트(IP) 주소 입력
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}새로운 멀티플레이 게임을 시작
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}새 멀티플레이 게임 시작하기
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}게임 이름:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}멀티플레이 게임 선택 메뉴에서 보여질 게임 제목입니다.
@@ -2021,7 +2021,7 @@ STR_NETWORK_LANG_LATVIAN                                        :라트비아어
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}멀티플레이 준비
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}멀티플레이 게임 대기실
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}참가 준비중: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}이 게임에 있는 회사의 목록입니다. 다른 회사에 같이 참가하거나 (빈 슬롯이 있을 경우) 새로운 회사로 시작할 수 있습니다.
