@@ -16,6 +16,7 @@
 #include "../fios.h"
 #include "../gamelog_internal.h"
 #include "../network/network.h"
+#include "../network/network_func.h"
 #include "../gfxinit.h"
 #include "../viewport_func.h"
 #include "../industry.h"
@@ -2951,18 +2952,20 @@ bool AfterLoadGame()
 	}
 
 	/*
-	 * Only keep order-backups for network clients.
+	 * Only keep order-backups for network clients (and when replaying).
 	 * If we are a network server or not networking, then we just loaded a previously
 	 * saved-by-server savegame. There are no clients with a backup, so clear it.
 	 * Furthermore before savegame version 192 the actual content was always corrupt.
 	 */
 	if (!_networking || _network_server || IsSavegameVersionBefore(192)) {
+#ifndef DEBUG_DUMP_COMMANDS
 		/* Note: We cannot use CleanPool since that skips part of the destructor
 		 * and then leaks un-reachable Orders in the order pool. */
 		OrderBackup *ob;
 		FOR_ALL_ORDER_BACKUPS(ob) {
 			delete ob;
 		}
+#endif
 	}
 
 
