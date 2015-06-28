@@ -195,20 +195,26 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 	int grade_y = y2 - y;
 	int grade_x = x2 - x;
 
+	/* Clipping rectangle. Slightly extended so we can ignore the width of the line. */
+	uint extra = CeilDiv(3 * width, 4); // not less then "width * sqrt(2) / 2"
+	Rect clip = { -extra, -extra, screen_width - 1 + extra, screen_height - 1 + extra };
+
 	/* prevent integer overflows. */
 	int margin = 1;
-	while (INT_MAX / abs(grade_y) < max(abs(x), abs(screen_width - x))) {
+	while (INT_MAX / abs(grade_y) < max(abs(clip.left - x), abs(clip.right - x))) {
 		grade_y /= 2;
 		grade_x /= 2;
 		margin  *= 2; // account for rounding errors
 	}
 
-	/* If the line is outside the screen on the same side at X positions 0
-	 * and screen_width, we don't need to draw anything. */
-	int offset_0 = y - x * grade_y / grade_x;
-	int offset_width = y + (screen_width - x) * grade_y / grade_x;
-	if ((offset_0 > screen_height + width / 2 + margin && offset_width > screen_height + width / 2 + margin) ||
-			(offset_0 < -width / 2 - margin && offset_width < -width / 2 - margin)) {
+	/* Imagine that the line is infinitely long and it intersects with
+	 * infinitely long left and right edges of the clipping rectangle.
+	 * If booth intersection points are outside the clipping rectangle
+	 * and booth on the same side of it, we don't need to draw anything. */
+	int left_isec_y = y + (clip.left - x) * grade_y / grade_x;
+	int right_isec_y = y + (clip.right - x) * grade_y / grade_x;
+	if ((left_isec_y > clip.bottom + margin && right_isec_y > clip.bottom + margin) ||
+			(left_isec_y < clip.top - margin && right_isec_y < clip.top - margin)) {
 		return;
 	}
 
