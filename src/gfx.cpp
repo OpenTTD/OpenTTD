@@ -209,8 +209,8 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 
 	/* Imagine that the line is infinitely long and it intersects with
 	 * infinitely long left and right edges of the clipping rectangle.
-	 * If booth intersection points are outside the clipping rectangle
-	 * and booth on the same side of it, we don't need to draw anything. */
+	 * If both intersection points are outside the clipping rectangle
+	 * and both on the same side of it, we don't need to draw anything. */
 	int left_isec_y = y + (clip.left - x) * grade_y / grade_x;
 	int right_isec_y = y + (clip.right - x) * grade_y / grade_x;
 	if ((left_isec_y > clip.bottom + margin && right_isec_y > clip.bottom + margin) ||
