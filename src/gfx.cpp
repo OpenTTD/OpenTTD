@@ -175,20 +175,9 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 
 	assert(width > 0);
 
-	if (y2 == y) {
-		/* Special case: horizontal line. */
-		blitter->DrawLine(video,
-				Clamp(x, 0, screen_width), y,
-				Clamp(x2, 0, screen_width), y2,
-				screen_width, screen_height, colour, width, dash);
-		return;
-	}
-	if (x2 == x) {
-		/* Special case: vertical line. */
-		blitter->DrawLine(video,
-				x, Clamp(y, 0, screen_height),
-				x2, Clamp(y2, 0, screen_height),
-				screen_width, screen_height, colour, width, dash);
+	if (y2 == y || x2 == x) {
+		/* Special case: horizontal/vertical line. All checks already done in GfxPreprocessLine. */
+		blitter->DrawLine(video, x, y, x2, y2, screen_width, screen_height, colour, width, dash);
 		return;
 	}
 
