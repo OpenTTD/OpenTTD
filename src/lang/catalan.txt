@@ -1243,7 +1243,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de veloc
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Estableix la velocitat relativa dels avions en comparació amb els altres tipus de vehicles, per reduir la quantitat de guanys de transport dels avions
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Nombre d'accidents d'avió: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Estableix les probabilitats de que succeeixi un accident d'avió
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Estableix la probabilitat amb què succeeixen els accidents d'avió
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Cap
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduït
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
@@ -2985,7 +2985,7 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Població: {ORANGE}{COMMA}{BLACK}  Cases: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passatgers el darrer mes: {ORANGE}{COMMA}{BLACK}  màx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Correu el darrer mes: {ORANGE}{COMMA}{BLACK}  màx: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Càrrega requerida per tal de que la població creixi:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Càrrega requerida per tal que la població creixi:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requerides
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerit a l'hivern
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregat
@@ -4064,7 +4064,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Cost Est
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingressos Estimats: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}S'està desant la partida.{}Espera a que acabi l'operació!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}S'està desant la partida.{}Espera que acabi l'operació!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ha fallat el desat automàtic
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible llegir la unitat de disc
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Error guardant la partida{}{STRING}
@@ -4217,7 +4217,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Massa pr
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No es pot canviar el nom de l'estació...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aquesta carretera es propietat de la població
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aquesta carretera és propietat de la població
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... sentit de la carretera en la direcció incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les estacions d'autobús de pas no poden tenir cantonades
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les estacions d'autobús de pas no poden tenir interseccions
