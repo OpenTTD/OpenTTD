@@ -3138,12 +3138,12 @@ STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_S
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} 前往 本站
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} 直达该站
 
-STR_STATION_VIEW_GROUP_S_V_D                                    :來源-途经-目的地
-STR_STATION_VIEW_GROUP_S_D_V                                    :來源-目的地-途经
-STR_STATION_VIEW_GROUP_V_S_D                                    :途经-來源-目的地
-STR_STATION_VIEW_GROUP_V_D_S                                    :途经-目的地-來源
-STR_STATION_VIEW_GROUP_D_S_V                                    :目的地-來源-途经
-STR_STATION_VIEW_GROUP_D_V_S                                    :目的地-途经-來源
+STR_STATION_VIEW_GROUP_S_V_D                                    :来源-途经-目的地
+STR_STATION_VIEW_GROUP_S_D_V                                    :来源-目的地-途经
+STR_STATION_VIEW_GROUP_V_S_D                                    :途经-来源-目的地
+STR_STATION_VIEW_GROUP_V_D_S                                    :途经-目的地-来源
+STR_STATION_VIEW_GROUP_D_S_V                                    :目的地-来源-途经
+STR_STATION_VIEW_GROUP_D_V_S                                    :目的地-途经-来源
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :垃圾（最差评价）
