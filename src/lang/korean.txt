@@ -855,7 +855,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로상에 계획된 개조에 실패하여 {VEHICLE}운행을 멈췄습니다.
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 상에 있던 개조에 실패하여 {VEHICLE}의 운행을 멈췄습니다.
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동 교체에 실패하였습니다{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}신형 {STRING}{G 0 "을" "를"} 사용할 수 있습니다!
