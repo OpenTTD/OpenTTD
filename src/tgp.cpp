@@ -573,7 +573,7 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
  */
 static void HeightMapCurves(uint level)
 {
-	int mh = TGPGetMaxHeight();
+	height_t mh = TGPGetMaxHeight();
 
 	/** Basically scale height X to height Y. Everything in between is interpolated. */
 	struct control_point_t {
@@ -907,13 +907,13 @@ static void HeightMapNormalize()
 	HeightMapSmoothCoasts(water_borders);
 	HeightMapSmoothSlopes(roughness);
 
-	HeightMapSineTransform(12, h_max_new);
+	HeightMapSineTransform(I2H(1), h_max_new);
 
 	if (_settings_game.game_creation.variety > 0) {
 		HeightMapCurves(_settings_game.game_creation.variety);
 	}
 
-	HeightMapSmoothSlopes(16);
+	HeightMapSmoothSlopes(I2H(1));
 }
 
 /**
