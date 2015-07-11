@@ -582,10 +582,10 @@ static void HeightMapCurves(uint level)
 	};
 	/* Scaled curve maps; value is in height_ts. */
 #define F(fraction) ((height_t)(fraction * mh))
-	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) }, { F(2.4 / 3), F(0.4 / 3) },                                                       { F(1.0), F(0.4)  } };
-	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(1.6 / 3), F(0.4 / 3) }, { F(2.4 / 3), F(0.8 / 3) },                           { F(1.0), F(0.6)  } };
-	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(1.6 / 3), F(0.8 / 3) }, { F(2.4 / 3), F(1.8 / 3) },                           { F(1.0), F(0.8)  } };
-	const control_point_t curve_map_4[] = { { F(0.0), F(0.0) }, { F(1.2 / 3), F(0.9 / 3) }, { F(2.0 / 3), F(2.4 / 3) } , { F(5.5 / 6), F(0.99) }, { F(1.0), F(0.99) } };
+	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
+	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
+	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.27) }, { F(0.8), F(0.57) },                       { F(1.0), F(0.8)  } };
+	const control_point_t curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
 #undef F
 
 	/** Helper structure to index the different curve maps. */
