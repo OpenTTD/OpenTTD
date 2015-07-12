@@ -21,9 +21,6 @@
 
 #include "../../safeguards.h"
 
-#define DEBUG_YAPF_CACHE 0
-
-#if DEBUG_YAPF_CACHE
 template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 {
 	DumpTarget dmp1, dmp2;
@@ -36,7 +33,6 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	fclose(f1);
 	fclose(f2);
 }
-#endif
 
 int _total_pf_time_us = 0;
 
@@ -242,17 +238,17 @@ public:
 		if (max_penalty != 0) pf1.DisableCache(true);
 		bool result1 = pf1.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_penalty, reverse_penalty, depot_tile, reversed);
 
-#if DEBUG_YAPF_CACHE
-		Tpf pf2;
-		TileIndex depot_tile2 = INVALID_TILE;
-		bool reversed2 = false;
-		pf2.DisableCache(true);
-		bool result2 = pf2.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_penalty, reverse_penalty, &depot_tile2, &reversed2);
-		if (result1 != result2 || (result1 && (*depot_tile != depot_tile2 || *reversed != reversed2))) {
-			DEBUG(yapf, 0, "CACHE ERROR: FindNearestDepotTwoWay() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
-			DumpState(pf1, pf2);
+		if (_debug_desync_level >= 2) {
+			Tpf pf2;
+			TileIndex depot_tile2 = INVALID_TILE;
+			bool reversed2 = false;
+			pf2.DisableCache(true);
+			bool result2 = pf2.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_penalty, reverse_penalty, &depot_tile2, &reversed2);
+			if (result1 != result2 || (result1 && (*depot_tile != depot_tile2 || *reversed != reversed2))) {
+				DEBUG(desync, 2, "CACHE ERROR: FindNearestDepotTwoWay() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
+				DumpState(pf1, pf2);
+			}
 		}
-#endif
 
 		return result1;
 	}
@@ -327,19 +323,19 @@ public:
 	{
 		/* Create pathfinder instance */
 		Tpf pf1;
-#if !DEBUG_YAPF_CACHE
-		bool result1 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, false);
-
-#else
-		bool result2 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, true);
-		Tpf pf2;
-		pf2.DisableCache(true);
-		bool result1 = pf2.FindNearestSafeTile(v, t1, td, override_railtype, false);
-		if (result1 != result2) {
-			DEBUG(yapf, 0, "CACHE ERROR: FindSafeTile() = [%s, %s]", result2 ? "T" : "F", result1 ? "T" : "F");
-			DumpState(pf1, pf2);
+		bool result1;
+		if (_debug_desync_level < 2) {
+			result1 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, false);
+		} else {
+			bool result2 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, true);
+			Tpf pf2;
+			pf2.DisableCache(true);
+			result1 = pf2.FindNearestSafeTile(v, t1, td, override_railtype, false);
+			if (result1 != result2) {
+				DEBUG(desync, 2, "CACHE ERROR: FindSafeTile() = [%s, %s]", result2 ? "T" : "F", result1 ? "T" : "F");
+				DumpState(pf1, pf2);
+			}
 		}
-#endif
 
 		return result1;
 	}
@@ -410,19 +406,20 @@ public:
 	{
 		/* create pathfinder instance */
 		Tpf pf1;
-#if !DEBUG_YAPF_CACHE
-		Trackdir result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target);
+		Trackdir result1;
 
-#else
-		Trackdir result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_found, false, NULL);
-		Tpf pf2;
-		pf2.DisableCache(true);
-		Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target);
-		if (result1 != result2) {
-			DEBUG(yapf, 0, "CACHE ERROR: ChooseRailTrack() = [%d, %d]", result1, result2);
-			DumpState(pf1, pf2);
+		if (_debug_desync_level < 2) {
+			result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target);
+		} else {
+			result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_found, false, NULL);
+			Tpf pf2;
+			pf2.DisableCache(true);
+			Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target);
+			if (result1 != result2) {
+				DEBUG(desync, 2, "CACHE ERROR: ChooseRailTrack() = [%d, %d]", result1, result2);
+				DumpState(pf1, pf2);
+			}
 		}
-#endif
 
 		return result1;
 	}
@@ -472,15 +469,15 @@ public:
 		Tpf pf1;
 		bool result1 = pf1.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
 
-#if DEBUG_YAPF_CACHE
-		Tpf pf2;
-		pf2.DisableCache(true);
-		bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
-		if (result1 != result2) {
-			DEBUG(yapf, 0, "CACHE ERROR: CheckReverseTrain() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
-			DumpState(pf1, pf2);
+		if (_debug_desync_level >= 2) {
+			Tpf pf2;
+			pf2.DisableCache(true);
+			bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
+			if (result1 != result2) {
+				DEBUG(desync, 2, "CACHE ERROR: CheckReverseTrain() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
+				DumpState(pf1, pf2);
+			}
 		}
-#endif
 
 		return result1;
 	}
