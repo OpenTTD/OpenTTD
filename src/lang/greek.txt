@@ -1199,9 +1199,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ρύθμιση 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Κατηγορία:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Τύπος:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Περιορίζει την παρακάτω λίστα με τη χρήση προκαθορισμένων φίλτρων
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές ρυθμίσεις
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Προχωρημένες ρυθμίσεις / όλες οι ρυθμίσεις
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές (εμφάνιση μόνο σημαντικών ρυθμίσεων)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Για προχωρημένους (εμφάνιση των περισσότερων ρυθμίσεων)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Για ειδικούς (εμφάνιση όλων των ρυθμίσεων, ακομη και παράξενων)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ρυθμίσεις με διαφορετική τιμή από την προκαθωρισμένη
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
@@ -1288,7 +1288,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Χειροκί�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Μέθοδος χρηματοδότησης πρωτογενούς βιομηχανίας. «Καμία» σημαίνει ότι δεν γίνεται να χρηματοδοτηθεί καμία βιομηχανία, «Αναζήτηση» σημαίνει ότι η χρηματοδότηση είναι εφικτή, αλλά η κατασκευή πραγματοποιείται σε τυχαίο σημείο του χάρτη και είναι πιθανό να αποτύχει, «Όπως οι άλλες βιομηχανίες» σημαίνει πως οι πρωτογενείς βιομηχανίες είναι εφικτό να κατασκευαστούν από εταιρείες όπως οι δευτερογενείς βιομηχανίες σε οποιαδήποτε θέση θέλουν
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Καμία
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Όπως οι άλλες βιομηχανίες
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Αναζήτηση
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Διερεύνηση προοπτικών
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Επίπεδη περιοχή γύρω από βιομηχανίες: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Επίπεδος χώρος γύρω από μια βιομηχανία. Αυτό εξασφαλίζει ότι θα παραμείνει διαθέσιμος κενός χώρος γύρω από μια βιομηχανία για να κτισθούν γραμμές, κλπ
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανά πόλη: {STRING}
@@ -1586,7 +1586,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτ�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο κτίσιμο σηματοφόρων πριν από το: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Εμφανίζεται παράθυρο για την επιλογή του τύπου του σήματος που θα τοποθετηθεί, αντί για την απλή μετατροπή από τον έναν τύπο στον άλλο χωρίς παράθυρο, με κλικ σε τοποθετημένα σήματα κρατώντας πατημένο το Ctrl
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Εμφάνιση παραθύρου για την επιλογή του τύπου σήματος που θα τοποθετηθεί, αντί για μετάβαση από τον έναν τύπο στον άλλο χωρίς παράθυρο, με Ctrl+κλικ σε ήδη τοποθετημένα σήματα
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Τύπος σηματοδότη που θα χρησιμοποιείται ως προεπιλογή: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Προκαθορισμένος τύπος σημάτων που χρησιμοποιείται
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Σηματοδότες τμήματος
@@ -2308,7 +2308,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατα
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστάσιου (για αγορά και επισκευή τρένων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Με Ctrl ενεργοποιείται η συνένωση σημείων καθοδήγησης. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Με Ctrl ενεργοποιείται η συνένωση σταθμών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Με Ctrl εναλλάσσονται σηματοφόροι/σηματοδότες{}Το σύρσιμο κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Με το Ctrl πατημένο, κατασκευάζει μέχρι την επομένη διασταύρωση{}Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Με Ctrl εναλλάσσονται σηματοφόροι/σηματοδότες{}Με σύρσιμο κατασκευάζονται σηματοδότες κατά μήκος μιας ευθείας σιδηροτροχιάς. Με το Ctrl πατημένο, κατασκευάζονται σηματοδότες μέχρι την επομένη διασταύρωση ή τον επόμενο σηματοδότη{}Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους, σηματοδότες, σημείων καθοδήγησης και σταθμών. Κρατώντας πατημένο το Ctrl αφαιρεί και τον σιδηρόδρομο από τα σημεία καθοδήγησης και σταθμούς
@@ -3433,7 +3433,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλων
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλωνοποίηση Πλοίου
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση Αεροσκάφους
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift +Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα στο ή έξω από το υπόστεγο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
