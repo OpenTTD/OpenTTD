@@ -254,6 +254,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Ferburge
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Ferburgen skepen sjen litte
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Ferburgen fleanmasines sjen litte
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Mei it ynskeakelje fan dizze knop wurde ek ferburgen treinen toand
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Mei it ynskeakelje fan dizze knop wurde ek ferburgen weinen toand
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Mei it ynskeakelje fan dizze knop wurde ek ferburgen skepen toand
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Mei it ynskeakelje fan dizze knop wurde ek ferburgen fleantúgen toand
@@ -1290,6 +1291,8 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Lângenerator: 
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orizjineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terreintype: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Allinich TerraGenesis) Heuvelichhied fan it lânskip
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Yndustry tichtens: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimale ôfstan fanôf de râne fan 'e kaart foar oaljeraffinaderijen: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oaljeraffinaderijen wurde allinnich tichtoan de râne fan 'e kaart bout
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniehichte: {STRING}
@@ -1298,6 +1301,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Tige glêd
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glêd
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rûch
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tige rûch
+STR_CONFIG_SETTING_VARIETY                                      :Fariaasjedistribusje: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Tal rivieren: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritme foar pleatsing beamen: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Gjin
@@ -1503,6 +1507,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jou de ekonomy 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Stea it keapjen fan oandielen ta: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :By slepe, pleats seinen eltse: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :By slepe, fêste ôfstân hâlde tusken seinen: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bou semafoor seinen foar it jier: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Brûk sein wurkbalk: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Type sein dat standaard boud wurdt: {STRING}
@@ -1535,10 +1540,13 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Oerol
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Plak fan de haad wurkbalk: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posysje fan statusbalke: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Útskeakele
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimaal oantal non-sticky finsters: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :útskeakele
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimum zoom in nivo: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimum zoom out nivo: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaal
