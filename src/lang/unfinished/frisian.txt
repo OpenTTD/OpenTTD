@@ -3328,12 +3328,16 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Helje de
 
 
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Ferwachte
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Pland
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Datum ynstelle
+STR_DATE_SET_DATE                                               :{BLACK}Datum ynstelle
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Dag selektearje
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Moanne selektearje
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Jier selektearje
@@ -3358,27 +3362,37 @@ STR_AI_CONFIG_RANDOM_AI                                         :Samar in AI
 STR_AI_CONFIG_NONE                                              :(gjin)
 
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spulskript
 STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spulskript
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Beskikber {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIs
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spulskripten
 
 STR_AI_LIST_VERSION                                             :{LTBLUE}Ferzje: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Akseptearje
 STR_AI_LIST_CANCEL                                              :{BLACK}Annulearje
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skript net feroare
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spulskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Slúte
+STR_AI_SETTINGS_RESET                                           :{BLACK}Weromsette
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 
 # Textfile window
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisinsje fan {STRING}
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisinsje
 
 
 # Vehicle loading indicators
@@ -3388,6 +3402,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostet: {CURRENCY_LONG}
@@ -3398,14 +3414,17 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Dit gjit
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Dit gjit {CURRENCY_LONG} opbringen.
 
 # Saveload messages
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatysk opslaan net slagge
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Koe net fan 'e skiif lêze
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Opslaan Mislearre{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kin bestân net fuortsmite
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden Mislearre{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne flater: {STRING}
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<net beskikber>
 
 # Map generation messages
 
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... bestând koe net fûn wurde
 
 
 
@@ -3436,6 +3455,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... is f
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebiet is fan in oar bedriuw
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... lânskip kreëar limyt berikt
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... tegel oprom limyt berikt
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namme moat unyk wêze
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} yn it paad
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net tastean. Pausearre
 
@@ -3479,6 +3499,7 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... Gjin
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te folle yndustryen
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kin hjir gjin {STRING} boue...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kin dit type yndustry hjir net boue...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... te ticht by in oare yndustry
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... stêd moat earst bout wurde
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}.. mei mar ien per stêd wêze
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
@@ -3488,12 +3509,18 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kin 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kin allinnich yn lege plakken bout wurde
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kin allinich pleatse wurde by de rân fan'e kaart
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bosk kin allinich boppe snieline boud wurde
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kin allinich boppe snieline boud wurde
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kin allinich ûnder snieline boud wurde
 
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kin hjir gjin treinstasjon boue...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kin hjir gjin busstasjon boue...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kin hjir gjin frachtweinstasjon boue...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kin gjin passazjiertramstasjon boue...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kin hjir gjin frachttramstasjon boue...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :(WHITE}Kin hjir gjin haven boue...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kin hjir gjin fleanfjild boue...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ferbynt mear dan ien stasjon
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stasjon is te grut
@@ -3506,12 +3533,18 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te ticht
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kin namme fan stasjon net feroarje
 
 # Station destruction related errors
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Treinstasjon moat earst fuorthelle wurde
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kin busstasjon net fuorthelje...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kin frachtstasjon net fuorthelje...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kin passazjiertramstasjon net fuorthelje...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kin frachttramstasjon net fuorthelje...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Weistop moat earst fuorthelle wurde
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... Dêr is gjin statsjon
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Treinspoar moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Bushalte moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Frachtstasjon moat earst fuorthelle wurde
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Passazjiertramstasjon moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Frachttramstasjon moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Haven moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Fleanfjild moat earst fuorthelle wurde
@@ -3532,15 +3565,19 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boei
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kin hjir gjin trein depot boue...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kin hjir gjin auto depot boue...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kin hjir gjin tramdepot boue...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kin hjir gjin skipdepot boue...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}kin depot gjin nije namme jaan...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... Trein moat stopt wêze yn depot
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moat stopt wêze yn in depot
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... moat stopt wêze yn depot
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... moat stopt wêze yn hangar
 
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kinne allinich oanpast wurde wannear't ze yn in depot stean
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kin rydrjochting fan de trein net omkeare...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... bestiet út meardere weinen
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Net te ferienigjen spoartypes
 
@@ -3606,6 +3643,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Brêge m
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Begjin en ein kin net op itselde plak wêze
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Útein fan de brêge is net op deselde hichte
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brêge is te leech foar it terrein
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Brêge is te heech foar dit terrein
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begjin en ein moatte op ien lijn wêze
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... beide úteinden fan'e brêge moatte op lân lizze
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brêge te lang
@@ -3632,6 +3670,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... it i
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kin gjin groep oanmeitsje...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kin dizze groep net fuortsmite
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kin de namme net feroarje...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kin haadgroep net ynstelle...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kin net alle fiertugen út dizze groep fuortsmite...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kin dit fiertúch net oan dizze groep taheakje...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kin dielde auto's oan groep ta foege...
@@ -3735,6 +3774,9 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kin stop
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Spul basjeare op Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Orizjinele ôfbyldings fan de Transport Tycoon Deluxe Windows-edysje
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Orizjinele ôfbyldings fan de Transport Tycoon Deluxe (dútse) DOS-edysje
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Orizjinele ôfbyldings fan de Transport Tycoon Deluxe Windows-edysje.
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Orizjinele musyk fan de Transport Tycoon Deluxe DOS-edysje.
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Orizjinele lûden fan de Transport Tycoon Deluxe Windows-edysje.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :In lûdspakket sûnder lûden.
