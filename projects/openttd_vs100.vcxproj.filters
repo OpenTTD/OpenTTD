@@ -1923,6 +1923,9 @@
     <ClInclude Include="..\src\table\strgen_tables.h">
       <Filter>Tables</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\table\string_colours.h">
+      <Filter>Tables</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\..\objs\langs\table\strings.h">
       <Filter>Tables</Filter>
     </ClInclude>

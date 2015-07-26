@@ -23,6 +23,7 @@
 #include "newgrf_debug.h"
 
 #include "table/palettes.h"
+#include "table/string_colours.h"
 #include "table/sprites.h"
 #include "table/control_codes.h"
 

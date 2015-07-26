@@ -664,6 +664,7 @@ table/roadveh_movement.h
 table/sprites.h
 table/station_land.h
 table/strgen_tables.h
+table/string_colours.h
 ../objs/langs/table/strings.h
 table/town_land.h
 table/townname.h

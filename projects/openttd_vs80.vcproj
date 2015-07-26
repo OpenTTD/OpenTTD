@@ -2891,6 +2891,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\string_colours.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\..\objs\langs\table\strings.h"
 				>
 			</File>

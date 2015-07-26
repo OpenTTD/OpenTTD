@@ -898,6 +898,7 @@
     <ClInclude Include="..\src\table\sprites.h" />
     <ClInclude Include="..\src\table\station_land.h" />
     <ClInclude Include="..\src\table\strgen_tables.h" />
+    <ClInclude Include="..\src\table\string_colours.h" />
     <ClInclude Include="..\src\..\objs\langs\table\strings.h" />
     <ClInclude Include="..\src\table\town_land.h" />
     <ClInclude Include="..\src\table\townname.h" />
