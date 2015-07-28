@@ -337,10 +337,7 @@ public:
 			_selected_object_view = 0;
 		}
 
-		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetClicked(_selected_object_view);
-		this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetClicked(_selected_object_index != -1 ? ObjectClass::Get(_selected_object_class)->GetUIFromIndex(_selected_object_index) : -1);
-		this->UpdateSelectSize();
-		this->SetDirty();
+		this->UpdateButtons(_selected_object_class, _selected_object_index, _selected_object_view);
 	}
 
 	void UpdateSelectSize()
@@ -353,6 +350,29 @@ public:
 			int h = GB(spec->size, HasBit(_selected_object_view, 0) ? 0 : 4, 4);
 			SetTileSelectSize(w, h);
 		}
+	}
+
+	/**
+	 * Update buttons to show the selection to the user.
+	 * @param sel_class The class of the selected object.
+	 * @param sel_index Index of the object to select, or \c -1 .
+	 * @param sel_view View of the object to select.
+	 */
+	void UpdateButtons(ObjectClassID sel_class, int sel_index, uint sel_view)
+	{
+		int view_number, object_number;
+		if (sel_index == -1) {
+			view_number = -1; // If no object selected, also hide the selected view.
+			object_number = -1;
+		} else {
+			view_number = sel_view;
+			object_number = ObjectClass::Get(sel_class)->GetUIFromIndex(sel_index);
+		}
+
+		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetClicked(view_number);
+		this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetClicked(object_number);
+		this->UpdateSelectSize();
+		this->SetDirty();
 	}
 
 	virtual void OnResize()
