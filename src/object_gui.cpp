@@ -16,6 +16,7 @@
 #include "newgrf_text.h"
 #include "strings_func.h"
 #include "viewport_func.h"
+#include "tilehighlight_func.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "zoom_func.h"
@@ -31,7 +32,7 @@ static int _selected_object_index;           ///< the index of the selected obje
 static uint8 _selected_object_view;          ///< the view of the selected object
 
 /** The window used for building objects. */
-class BuildObjectWindow : public PickerWindowBase {
+class BuildObjectWindow : public Window {
 	static const int OBJECT_MARGIN = 4; ///< The margin (in pixels) around an object.
 	int line_height;                    ///< The height of a single line.
 	int info_height;                    ///< The height of the info box.
@@ -73,11 +74,13 @@ class BuildObjectWindow : public PickerWindowBase {
 	}
 
 public:
-	BuildObjectWindow(WindowDesc *desc, Window *w) : PickerWindowBase(desc, w), info_height(1)
+	BuildObjectWindow(WindowDesc *desc, WindowNumber number) : Window(desc), info_height(1)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_BO_SCROLLBAR);
-		this->FinishInitNested(0);
+		this->FinishInitNested(number);
+
+		ResetObjectToPlace();
 
 		this->vscroll->SetPosition(0);
 		this->vscroll->SetCount(ObjectClass::GetUIClassCount());
@@ -337,6 +340,10 @@ public:
 			_selected_object_view = 0;
 		}
 
+		if (_selected_object_index != -1) {
+			SetObjectToPlaceWnd(SPR_CURSOR_TRANSMITTER, PAL_NONE, HT_RECT, this);
+		}
+
 		this->UpdateButtons(_selected_object_class, _selected_object_index, _selected_object_view);
 	}
 
@@ -402,12 +409,21 @@ public:
 			case WID_BO_OBJECT_SPRITE:
 				if (_selected_object_index != -1) {
 					_selected_object_view = GB(widget, 16, 16);
-					this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetClicked(_selected_object_view);
-					this->UpdateSelectSize();
-					this->SetDirty();
+					this->SelectOtherObject(_selected_object_index); // Re-select the object for a different view.
 				}
 				break;
 		}
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		DoCommandP(tile, ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index)->Index(),
+				_selected_object_view, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->UpdateButtons(_selected_object_class, -1, _selected_object_view);
 	}
 
 	/**
@@ -508,23 +524,13 @@ static WindowDesc _build_object_desc(
  * Show our object picker.
  * @param w The toolbar window we're associated with.
  */
-void ShowBuildObjectPicker(Window *w)
+void ShowBuildObjectPicker()
 {
-	new BuildObjectWindow(&_build_object_desc, w);
+	AllocateWindowDescFront<BuildObjectWindow>(&_build_object_desc, 0);
 }
 
 /** Reset all data of the object GUI. */
 void InitializeObjectGui()
 {
 	_selected_object_class = (ObjectClassID)0;
-}
-
-/**
- * PlaceProc function, called when someone pressed the button if the
- *  object-tool is selected
- * @param tile on which to place the object
- */
-void PlaceProc_Object(TileIndex tile)
-{
-	DoCommandP(tile, ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index)->Index(), _selected_object_view, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 }
