@@ -538,7 +538,7 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
  */
 static void HeightMapCurves(uint level)
 {
-	int mh = TGPGetMaxHeight();
+	height_t mh = TGPGetMaxHeight() - I2H(1); // height levels above sea level only
 
 	/** Basically scale height X to height Y. Everything in between is interpolated. */
 	struct control_point_t {
@@ -547,10 +547,10 @@ static void HeightMapCurves(uint level)
 	};
 	/* Scaled curve maps; value is in height_ts. */
 #define F(fraction) ((height_t)(fraction * mh))
-	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) }, { F(0.6 / 3), F(0.1) }, { F(2.4 / 3), F(0.4 / 3) },                                                       { F(1.0), F(0.4)  } };
-	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.4 / 3) }, { F(2.4 / 3), F(0.8 / 3) },                           { F(1.0), F(0.6)  } };
-	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.6 / 3), F(0.8 / 3) }, { F(2.4 / 3), F(1.8 / 3) },                           { F(1.0), F(0.8)  } };
-	const control_point_t curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.2 / 3), F(0.1) }, { F(1.2 / 3), F(0.9 / 3) }, { F(2.0 / 3), F(2.4 / 3) } , { F(5.5 / 6), F(0.99) }, { F(1.0), F(0.99) } };
+	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
+	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
+	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.27) }, { F(0.8), F(0.57) },                       { F(1.0), F(0.8)  } };
+	const control_point_t curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
 #undef F
 
 	/** Helper structure to index the different curve maps. */
@@ -628,10 +628,17 @@ static void HeightMapCurves(uint level)
 
 			height_t *h = &_height_map.height(x, y);
 
+			/* Do not touch sea level */
+			if (*h < I2H(1)) continue;
+
+			/* Only scale above sea level */
+			*h -= I2H(1);
+
 			/* Apply all curve maps that are used on this tile. */
 			for (uint t = 0; t < lengthof(curve_maps); t++) {
 				if (!HasBit(corner_bits, t)) continue;
 
+				bool found = false;
 				const control_point_t *cm = curve_maps[t].list;
 				for (uint i = 0; i < curve_maps[t].length - 1; i++) {
 					const control_point_t &p1 = cm[i];
@@ -639,13 +646,18 @@ static void HeightMapCurves(uint level)
 
 					if (*h >= p1.x && *h < p2.x) {
 						ht[t] = p1.y + (*h - p1.x) * (p2.y - p1.y) / (p2.x - p1.x);
+						found = true;
 						break;
 					}
 				}
+				assert(found);
 			}
 
 			/* Apply interpolation of curve map results. */
 			*h = (height_t)((ht[corner_a] * yri + ht[corner_b] * yr) * xri + (ht[corner_c] * yri + ht[corner_d] * yr) * xr);
+
+			/* Readd sea level */
+			*h += I2H(1);
 		}
 	}
 }
@@ -869,13 +881,13 @@ static void HeightMapNormalize()
 	HeightMapSmoothCoasts(water_borders);
 	HeightMapSmoothSlopes(roughness);
 
-	HeightMapSineTransform(12, h_max_new);
+	HeightMapSineTransform(I2H(1), h_max_new);
 
 	if (_settings_game.game_creation.variety > 0) {
 		HeightMapCurves(_settings_game.game_creation.variety);
 	}
 
-	HeightMapSmoothSlopes(16);
+	HeightMapSmoothSlopes(I2H(1));
 }
 
 /**
