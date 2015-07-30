@@ -485,37 +485,38 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				RoadTypes roadtypes = GetRoadTypes(tile);
 				RoadBits road = GetRoadBits(tile, ROADTYPE_ROAD);
 				RoadBits tram = GetRoadBits(tile, ROADTYPE_TRAM);
-				if ((track == TRACK_X && (road | tram) == ROAD_Y) ||
-						(track == TRACK_Y && (road | tram) == ROAD_X)) {
-					switch (roadtypes) {
-						default: break;
-						case ROADTYPES_TRAM:
-							/* Tram crossings must always have road. */
-							if (flags & DC_EXEC) {
-								SetRoadOwner(tile, ROADTYPE_ROAD, _current_company);
-								Company *c = Company::GetIfValid(_current_company);
-								if (c != NULL) {
-									/* A full diagonal tile has two road bits. */
-									c->infrastructure.road[ROADTYPE_ROAD] += 2;
-									DirtyCompanyInfrastructureWindows(c->index);
-								}
-							}
-							roadtypes |= ROADTYPES_ROAD;
-							cost.AddCost(2 * _price[PR_BUILD_ROAD]);
-							break;
-
-						case ROADTYPES_ALL:
-							if (road != tram) return CMD_ERROR;
-							break;
+				if ((track == TRACK_X && ((road | tram) & ROAD_X) == 0) ||
+						(track == TRACK_Y && ((road | tram) & ROAD_Y) == 0)) {
+					Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+					Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+					/* Disallow breaking end-of-line of someone else
+					 * so trams can still reverse on this tile. */
+					if (Company::IsValidID(tram_owner) && HasExactlyOneBit(tram)) {
+						CommandCost ret = CheckOwnership(tram_owner);
+						if (ret.Failed()) return ret;
 					}
+					/* Crossings must always have a road... */
+					uint num_new_road_pieces = 2 - CountBits(road);
+					if (road == ROAD_NONE) road_owner = _current_company;
+					roadtypes |= ROADTYPES_ROAD;
+					/* ...but tram is not required. */
+					uint num_new_tram_pieces = (tram != ROAD_NONE) ? 2 - CountBits(tram) : 0;
 
-					road |= tram;
+					cost.AddCost((num_new_road_pieces + num_new_tram_pieces) * _price[PR_BUILD_ROAD]);
 
 					if (flags & DC_EXEC) {
-						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
+						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
 						DirtyCompanyInfrastructureWindows(_current_company);
+						if (num_new_road_pieces > 0 && Company::IsValidID(road_owner)) {
+							Company::Get(road_owner)->infrastructure.road[ROADTYPE_ROAD] += num_new_road_pieces;
+							DirtyCompanyInfrastructureWindows(road_owner);
+						}
+						if (num_new_tram_pieces > 0 && Company::IsValidID(tram_owner)) {
+							Company::Get(tram_owner)->infrastructure.road[ROADTYPE_TRAM] += num_new_tram_pieces;
+							DirtyCompanyInfrastructureWindows(tram_owner);
+						}
 					}
 					break;
 				}

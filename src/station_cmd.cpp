@@ -1992,6 +1992,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 			}
 		}
 		Company::Get(st->owner)->infrastructure.station--;
+		DirtyCompanyInfrastructureWindows(st->owner);
 
 		if (IsDriveThroughStopTile(tile)) {
 			/* Clears the tile for us */

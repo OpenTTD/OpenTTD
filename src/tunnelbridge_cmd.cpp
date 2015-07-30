@@ -487,7 +487,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	if (flags & DC_EXEC) {
 		DiagDirection dir = AxisToDiagDir(direction);
 
-		Company *c = Company::GetIfValid(owner);
+		Company *c = Company::GetIfValid(company);
 		switch (transport_type) {
 			case TRANSPORT_RAIL:
 				/* Add to company infrastructure count if required. */
@@ -510,13 +510,11 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 					RoadType new_rt;
 					FOR_EACH_SET_ROADTYPE(new_rt, roadtypes ^ prev_roadtypes) {
 						/* A full diagonal road tile has two road bits. */
-						Company::Get(owner)->infrastructure.road[new_rt] += (bridge_len + 2) * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+						c->infrastructure.road[new_rt] += (bridge_len + 2) * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
 					}
 				}
-				Owner owner_road = owner;
-				Owner owner_tram = owner;
-				if (HasBit(prev_roadtypes, ROADTYPE_ROAD)) owner_road = GetRoadOwner(tile_start, ROADTYPE_ROAD);
-				if (HasBit(prev_roadtypes, ROADTYPE_TRAM)) owner_tram = GetRoadOwner(tile_start, ROADTYPE_TRAM);
+				Owner owner_road = HasBit(prev_roadtypes, ROADTYPE_ROAD) ? GetRoadOwner(tile_start, ROADTYPE_ROAD) : company;
+				Owner owner_tram = HasBit(prev_roadtypes, ROADTYPE_TRAM) ? GetRoadOwner(tile_start, ROADTYPE_TRAM) : company;
 				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir,                 roadtypes);
 				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), roadtypes);
 				break;
@@ -534,7 +532,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		/* Mark all tiles dirty */
 		MarkBridgeDirty(tile_start, tile_end, AxisToDiagDir(direction), z_start);
-		DirtyCompanyInfrastructureWindows(owner);
+		DirtyCompanyInfrastructureWindows(company);
 	}
 
 	if ((flags & DC_EXEC) && transport_type == TRANSPORT_RAIL) {
