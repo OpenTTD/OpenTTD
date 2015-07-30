@@ -2200,7 +2200,7 @@ static const NWidgetPart _nested_network_company_password_window_widgets[] = {
 		NWidget(NWID_VERTICAL), SetPIP(5, 5, 5),
 			NWidget(NWID_HORIZONTAL), SetPIP(5, 5, 5),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_NCP_LABEL), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NCP_PASSWORD), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NCP_PASSWORD), SetFill(1, 0), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
 				NWidget(NWID_SPACER), SetFill(1, 0),

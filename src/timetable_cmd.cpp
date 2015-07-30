@@ -96,6 +96,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
  * - p1 = (bit 28-29) - Timetable data to change (@see ModifyTimetableFlags)
  * @param p2 The amount of time to wait.
  * - p2 = (bit  0-15) - The data to modify as specified by p1 bits 28-29.
+ *                      0 to clear times, UINT16_MAX to clear speed limit.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -154,14 +155,29 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (max_speed != order->GetMaxSpeed() && (order->IsType(OT_CONDITIONAL) || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (wait_time != order->GetWaitTime() || (wait_time > 0 && !order->IsWaitTimetabled())) {
-			ChangeTimetable(v, order_number, wait_time, MTF_WAIT_TIME, wait_time > 0);
-		}
-		if (travel_time != order->GetTravelTime() || (travel_time > 0 && !order->IsTravelTimetabled())) {
-			ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME, travel_time > 0);
-		}
-		if (max_speed != order->GetMaxSpeed()) {
-			ChangeTimetable(v, order_number, max_speed, MTF_TRAVEL_SPEED, max_speed != UINT16_MAX);
+		switch (mtf) {
+			case MTF_WAIT_TIME:
+				/* Set time if changing the value or confirming an estimated time as timetabled. */
+				if (wait_time != order->GetWaitTime() || (wait_time > 0 && !order->IsWaitTimetabled())) {
+					ChangeTimetable(v, order_number, wait_time, MTF_WAIT_TIME, wait_time > 0);
+				}
+				break;
+
+			case MTF_TRAVEL_TIME:
+				/* Set time if changing the value or confirming an estimated time as timetabled. */
+				if (travel_time != order->GetTravelTime() || (travel_time > 0 && !order->IsTravelTimetabled())) {
+					ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME, travel_time > 0);
+				}
+				break;
+
+			case MTF_TRAVEL_SPEED:
+				if (max_speed != order->GetMaxSpeed()) {
+					ChangeTimetable(v, order_number, max_speed, MTF_TRAVEL_SPEED, max_speed != UINT16_MAX);
+				}
+				break;
+
+			default:
+				break;
 		}
 	}
 
@@ -368,6 +384,9 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (v->current_order.IsType(OT_IMPLICIT)) return; // no timetabling of auto orders
 
+	if (v->cur_real_order_index >= v->GetNumOrders()) return;
+	Order *real_current_order = v->GetOrder(v->cur_real_order_index);
+
 	VehicleOrderID first_manual_order = 0;
 	for (Order *o = v->GetFirstOrder(); o != NULL && o->IsType(OT_IMPLICIT); o = o->next) {
 		++first_manual_order;
@@ -395,17 +414,20 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
 
 	bool autofilling = HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-	if (travelling && (!v->current_order.IsWaitTimetabled() ||
-			(autofilling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)))) {
-		/* Need to clear that now as otherwise we are not able to reduce the wait time */
+	bool remeasure_wait_time = !real_current_order->IsWaitTimetabled() ||
+			(autofilling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME));
+
+	if (travelling && remeasure_wait_time) {
+		/* We just finished travelling and want to remeasure the loading time,
+		 * so do not apply any restrictions for the loading to finish. */
 		v->current_order.SetWaitTime(0);
 	}
 
 	if (just_started) return;
 
-	/* Modify station waiting time only if our new value is larger (this is
-	 * always the case when we cleared the timetable). */
-	if (!v->current_order.IsType(OT_CONDITIONAL) && (travelling || time_taken > v->current_order.GetWaitTime())) {
+	/* Before modifying waiting times, check whether we want to preserve bigger ones. */
+	if (!real_current_order->IsType(OT_CONDITIONAL) &&
+			(travelling || time_taken > real_current_order->GetWaitTime() || remeasure_wait_time)) {
 		/* Round the time taken up to the nearest day, as this will avoid
 		 * confusion for people who are timetabling in days, and can be
 		 * adjusted later by people who aren't.
@@ -417,9 +439,9 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		 * processing of different orders when filling the timetable. */
 		uint time_to_set = CeilDiv(max(time_taken, 1U), DAY_TICKS) * DAY_TICKS;
 
-		if (travelling && (autofilling || !v->current_order.IsTravelTimetabled())) {
+		if (travelling && (autofilling || !real_current_order->IsTravelTimetabled())) {
 			ChangeTimetable(v, v->cur_real_order_index, time_to_set, MTF_TRAVEL_TIME, autofilling);
-		} else if (!travelling && (autofilling || !v->current_order.IsWaitTimetabled())) {
+		} else if (!travelling && (autofilling || !real_current_order->IsWaitTimetabled())) {
 			ChangeTimetable(v, v->cur_real_order_index, time_to_set, MTF_WAIT_TIME, autofilling);
 		}
 	}
@@ -434,8 +456,8 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (autofilling) return;
 
-	uint timetabled = travelling ? v->current_order.GetTimetabledTravel() :
-			v->current_order.GetTimetabledWait();
+	uint timetabled = travelling ? real_current_order->GetTimetabledTravel() :
+			real_current_order->GetTimetabledWait();
 
 	/* Vehicles will wait at stations if they arrive early even if they are not
 	 * timetabled to wait there, so make sure the lateness counter is updated
