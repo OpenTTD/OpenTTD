@@ -1240,10 +1240,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузінс�
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранскі рыал (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дарожны рух
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Па якім баку дарогі рухаецца аўтатранспарт
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Езьдзіць леваруч
@@ -3212,6 +3208,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Папя
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Перайсьці да папярэдняга звычайнага спрайта, прапускаючы змяняючыя колер, шрыфтавыя, псэўдаспрайты. Пераход з пачатку сьпісу да апошняга спрайта.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Прадстаўленьне выбранага спрайта. Выраўноўваньне не ўлічваецца пры прарысоўцы гэтага спрайта.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайце спрайт, зьмяняючы зрушэньне па X і па Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Скід зрушэння
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Скінуць значэнні адноснага зрушэння
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Зрушэнне X: {NUM}; зрушэнне Y: {NUM} (абсалютнае)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Зрушэнне X: {NUM}; зрушэнне Y: {NUM} (адноснае)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Выбраць спрайт
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Абярыце любы спрайт на экране
 
@@ -3384,7 +3384,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Інфарма�
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Папярэджаньне
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Памылка
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Адмова
 STR_GOAL_QUESTION_BUTTON_OK                                     :Так
 STR_GOAL_QUESTION_BUTTON_NO                                     :Не
@@ -3403,6 +3403,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Пачаць і
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Адкласьцi
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Здацца
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Закрыць
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсыдыі:

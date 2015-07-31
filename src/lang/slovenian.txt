@@ -517,6 +517,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izhod
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavitve
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :UI/Nastavitve skriptov igre
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF nastavitve
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavitve prozornega pogleda
@@ -1070,10 +1071,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestna vozila
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Izberi smer vožnje cestnih vozil
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vožnja po levi
@@ -1126,6 +1123,11 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ločljivost
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izberi ločljivost zaslona
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
+
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Velikost vmesnika
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalno
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojna velikost
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
@@ -1219,6 +1221,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Zelo raven
 STR_TERRAIN_TYPE_FLAT                                           :Raven
 STR_TERRAIN_TYPE_HILLY                                          :Hribovit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Gorat
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustno
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantno
@@ -1226,7 +1229,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Sovražno
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ni na voljo nobene uporabne UI.{}UI so na voljo preko 'Prenosa vsebin'.
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Nastavitve
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj niz:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Razširi vse
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skrči vse
@@ -1240,6 +1244,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavitve podj
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavitve podjetja (shranjeno v igrah, vpliva samo na trenutno podjetje)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Omeji seznam na prikaz le spremenjenih nastavitev
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne nastavitve
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne nastavitve
@@ -1849,6 +1854,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Več igr
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljših rezultatov
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Nastavitve
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}UI / Nastavitve skriptov igre
@@ -1868,6 +1874,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izberi o
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži možnosti igre
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tabelo najboljših rezultatov
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Nastavitve zaslona
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži nastavitve NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži UI in Nastavitve skriptov igre
@@ -2832,6 +2839,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Število mest:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Število industrij:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimalna višina mape:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Višina snežne meje:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Premik snežne meje eno enoto višje
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Premik snežne meje eno enoto nižje
@@ -2861,6 +2869,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ime viš
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velikost:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Spremeni maksimalno višino mape
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Spremeni višino snežne meje
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Spremeni začetno leto
 
@@ -2976,6 +2985,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prejšnj
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Nadaljuj k prejšnji navadni sličici, zanemari vse navidezne/pobarvane/besedilne sličice in okvir na koncu
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Predstavitev trenutno izbrane sličice. Zamik je zanemarjen pri risanju te sličice
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Premakni sličico s spreminjanjem X in Y osi
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetiraj relativno
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetiraj zdajšne relativne odmike
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X odmik: {NUM}, Y odmik: {NUM} (Absolutno)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X odmik: {NUM}, Y odmik: {NUM} (Relativno)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Izberi sličico
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Izberi sličico kjerkoli na zaslonu
 
@@ -3147,7 +3160,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacije
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Opozorilo
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Napaka
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Prekliči
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Ne
@@ -3166,6 +3179,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Ponovni zagon
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Preloži
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Predaja
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zapri
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije

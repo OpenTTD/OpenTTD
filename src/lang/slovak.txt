@@ -995,10 +995,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzínske Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iránsky rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestné vozidlá
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Strana po ktorej jazdia cestne vozidla
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazdia nalavo
@@ -3123,7 +3119,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informácie
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Varovanie
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Chyba
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Zrušiť
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nie
@@ -3142,6 +3138,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Spustiť znova
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Odložiť
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Vzdať
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zavrieť
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotácie

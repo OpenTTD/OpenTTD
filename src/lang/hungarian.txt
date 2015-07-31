@@ -991,10 +991,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Grúz Lari (GEL
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iráni Riál (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Közúti járművek
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}A közúti közlekedés oldalának kiválasztása
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Balra hajtás
@@ -3119,7 +3115,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Információ
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Figyelmeztetés
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Hiba
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Mégse
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nem
@@ -3138,6 +3134,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Újrakezd
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Elhalaszt
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Felad
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Bezár
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Támogatások

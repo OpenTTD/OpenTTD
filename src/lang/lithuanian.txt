@@ -1132,10 +1132,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijos Laris 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano Rialas (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automobilių eismas
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pasirinkite, kuria kelio puse važiuoja automobiliai
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kaire puse
@@ -3274,7 +3270,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacija
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Perspėjimas
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Klaida
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Atšaukti
 STR_GOAL_QUESTION_BUTTON_OK                                     :Gerai
 STR_GOAL_QUESTION_BUTTON_NO                                     :Ne
@@ -3293,6 +3289,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Pradėti iš na
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Atidėti
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Pasiduoti
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Uždaryti
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidijos

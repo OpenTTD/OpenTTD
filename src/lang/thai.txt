@@ -917,10 +917,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}ยานยนต์
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}เลือกฝั่งถนนในการขับยานพาหนะ
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ขับชิดซ้าย
@@ -1073,7 +1069,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :ไม่เป
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม่มี AI ที่เหมาะสมปรากฎ...{}คุณสามารถดาวน์โหลด AI จากระบบ 'Online Content'
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}เติม string:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}ขยายทั้งหมด
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}ยุบลงทั้งหมด
@@ -2969,7 +2965,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :ข้อมู
 STR_GOAL_QUESTION_CAPTION_WARNING                               :คำเตือน
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :ข้อผิดพลาด
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :ยกเลิก
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :ไม่
@@ -2988,6 +2984,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :เริ่ม
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :เลื่อนออกไป
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :ยอมจำนน
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :ปิด
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}เงินอุดหนุน

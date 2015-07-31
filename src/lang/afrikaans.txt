@@ -928,10 +928,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiaanse Lar
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iraanse Rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pad voertuie
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Kies kant van pad waarop voertuie ry
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Bestuur aan linkerkant
@@ -3056,7 +3052,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Inligting
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Waarskuwing
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Fout
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Kanselleer
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nee
@@ -3075,6 +3071,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Begin weer
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Stel uit
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Gee oor
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Maak toe
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies

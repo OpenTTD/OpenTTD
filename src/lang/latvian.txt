@@ -923,10 +923,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijas lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irānas riāli (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autotransporta līdzekļi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Ceļa braucamās puses izvēle
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Brauc pa kreiso pusi
@@ -2978,7 +2974,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informācija
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Brīdinājums
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kļūda
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Atcelt
 STR_GOAL_QUESTION_BUTTON_OK                                     :Labi
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nē
@@ -2999,6 +2995,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Pārstartēt
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Atlikt
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Padoties
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Aizvērt
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsīdijas

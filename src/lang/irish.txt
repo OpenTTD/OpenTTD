@@ -927,10 +927,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari na Seoirsi
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial na hIaráine (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Feithiclí Bóithre
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Roghnaigh an taobh den bhóthair ar a mbeidh feithiclí ag tiomáint
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Tiomáin ar chlé
@@ -3016,7 +3012,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Faisnéis
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Rabhadh
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Earráid
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cuir ar ceal
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Níl
@@ -3035,6 +3031,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Atosaigh
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Cuir siar
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Géill
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Dún
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Fóirdheontais

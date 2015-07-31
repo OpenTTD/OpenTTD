@@ -904,10 +904,6 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Hego Afrikako R
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua...
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Errepideko garraioak
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Aukeratu ibilgailuen gidatzeko norabidea
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ezkerretik gidatu
@@ -2893,7 +2889,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informazioa
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Kontuz
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Akats
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Ezeztatu
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :EZ
@@ -2912,6 +2908,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Restart
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :atzeratzeko
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :errendizioaren
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Itxi
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidioak

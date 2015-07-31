@@ -1072,10 +1072,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинс�
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Иранский риал (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Направление движения
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}По какой стороне дороги ездит автотранспорт
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :левостороннее
@@ -3235,7 +3231,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Информа�
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Предупреждение
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Ошибка
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Отменить
 STR_GOAL_QUESTION_BUTTON_OK                                     :Ok
 STR_GOAL_QUESTION_BUTTON_NO                                     :Нет
@@ -3254,6 +3250,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Перезап�
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Отсрочить
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Сдаться
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Закрыть
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидии

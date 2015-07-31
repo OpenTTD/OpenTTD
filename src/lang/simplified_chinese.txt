@@ -927,10 +927,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :格鲁吉亚拉
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亚尔(IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}汽车行驶
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}选择汽车行驶的方向
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左侧通行
@@ -1285,7 +1281,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :红色窗口显
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} 秒
 STR_CONFIG_SETTING_HOVER_DELAY                                  :显示提示信息：{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :此设置决定鼠标停留在图标、按键或功能时显示提示信息的时间。如果此设置被赋值为 0，您必须揿住鼠标右键来显示图标、按键或功能的提示信息。
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :停留{COMMA} 秒
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :停留 {COMMA} 毫秒
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右键点击
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :在城镇名称的标签中同时显示人口：{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :在地图城镇名称标签上显示人口数量
@@ -3055,7 +3051,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :信息
 STR_GOAL_QUESTION_CAPTION_WARNING                               :警告
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :错误
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :取消
 STR_GOAL_QUESTION_BUTTON_OK                                     :确定
 STR_GOAL_QUESTION_BUTTON_NO                                     :取消
@@ -3074,6 +3070,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :重新开启
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :暂缓
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :放弃
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :关闭
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}财政补贴项目
@@ -3141,12 +3138,12 @@ STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_S
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} 前往 本站
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} 直达该站
 
-STR_STATION_VIEW_GROUP_S_V_D                                    :來源-途经-目的地
-STR_STATION_VIEW_GROUP_S_D_V                                    :來源-目的地-途经
-STR_STATION_VIEW_GROUP_V_S_D                                    :途经-來源-目的地
-STR_STATION_VIEW_GROUP_V_D_S                                    :途经-目的地-來源
-STR_STATION_VIEW_GROUP_D_S_V                                    :目的地-來源-途经
-STR_STATION_VIEW_GROUP_D_V_S                                    :目的地-途经-來源
+STR_STATION_VIEW_GROUP_S_V_D                                    :来源-途经-目的地
+STR_STATION_VIEW_GROUP_S_D_V                                    :来源-目的地-途经
+STR_STATION_VIEW_GROUP_V_S_D                                    :途经-来源-目的地
+STR_STATION_VIEW_GROUP_V_D_S                                    :途经-目的地-来源
+STR_STATION_VIEW_GROUP_D_S_V                                    :目的地-来源-途经
+STR_STATION_VIEW_GROUP_D_V_S                                    :目的地-途经-来源
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :垃圾（最差评价）

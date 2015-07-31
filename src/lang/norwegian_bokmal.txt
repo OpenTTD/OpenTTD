@@ -99,28 +99,28 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Mineralvann
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passasjer{P "" er}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kull
-STR_QUANTITY_MAIL                                               :{COMMA} postsekk{P "" er}
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}postsekk{P "" er}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olje
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} enhet{P "" er} buskap
-STR_QUANTITY_GOODS                                              :{COMMA} kasse{P "" r} gods
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}enhet{P "" er} buskap
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}kasse{P "" r} med gods
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} korn
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} tømmer
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} jernmalm
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} stål
-STR_QUANTITY_VALUABLES                                          :{COMMA} sekk{P "" er} med verdisaker
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}sekk{P "" er} med verdisaker
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kobbermalm
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} frukt
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sekk{P "" er} med diamanter
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}sekk{P "" er} med diamanter
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} mat
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papir
-STR_QUANTITY_GOLD                                               :{COMMA} sekk{P "" er} med gull
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}sekk{P "" er} med gull
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} vann
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} hvete
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gummi
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} sukker
-STR_QUANTITY_TOYS                                               :{COMMA} leke{P "" r}
-STR_QUANTITY_SWEETS                                             :{COMMA} sekk{P "" er} med godteri
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}leke{P "" r}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sekk{P "" er} med godteri
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} sukkerspinn
 STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P "" r}
@@ -167,12 +167,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}IN
 STR_ABBREV_ALL                                                  :{TINY_FONT}ALLE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passasjer{P "" er}
-STR_BAGS                                                        :{COMMA} sekk{P "" er}
-STR_TONS                                                        :{COMMA} tonn
-STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} enhet{P "" er}
-STR_CRATES                                                      :{COMMA} kasse{P "" r}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passasjer{P "" er}
+STR_BAGS                                                        :{COMMA}{NBSP}sekk{P "" er}
+STR_TONS                                                        :{COMMA}{NBSP}tonn
+STR_LITERS                                                      :{COMMA}{NBSP}liter
+STR_ITEMS                                                       :{COMMA}{NBSP}element{P "" er}
+STR_CRATES                                                      :{COMMA}{NBSP}kasse{P "" r}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå
@@ -193,37 +193,37 @@ STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Hvit
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mi/t
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/t
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mi/t
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/t
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} hk
-STR_UNITS_POWER_METRIC                                          :{COMMA} hk
-STR_UNITS_POWER_SI                                              :{COMMA} kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hk
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hk
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonn{P "" er}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonn{P "" er}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P "" er}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter{P "" er}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}fot
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filterstreng:
@@ -929,10 +929,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgianske Lar
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kjøretøy
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Velg kjøreside for veier
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekjøring
@@ -1111,9 +1107,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Selskapet innst
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begrenser listen nedenfor ved hjelp av forhåndsdefinerte filtre
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnleggende innstillinger
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte innstillinger
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Avanserte innstillinger / alle innstillinger
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnleggende (vis bare viktige innstillinger)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avansert (Vis de fleste innstillinger)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert (vis alle innstillinger, inkludert merkelige)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Innstillinger med annen verdi enn standarden
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Innstillinger med annen verdi enn innstillingene dine for nye spill
 
@@ -1288,7 +1284,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Varighet for vi
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} andre{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vis verktøytips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse før verktøytips vises når musen svever over elementer i grensesnittet. Alternativt kan verktøytips bindes til den høyre museknappen
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hovre i {COMMA} sekund{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hovre i {COMMA} millisekunder{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Høyreklikk
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byers innbyggertall i tittelfeltet: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis inbyggertallet i byer i tittelfeltet på kartet
@@ -1471,7 +1467,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Vedlikeholdsint
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Velge om vedlikehold av kjøretøyer utløses av tiden som er forløpt fra siste gjennomførte vedlikehold, eller av at pålitelighet dropper under en bestemt prosent av maksimal pålitelighet
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedlikeholdsintervall for tog: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Angi standard vedlikeholdsintervall for nye skinnegående kjøretøy, hvis det ikke er satt noe serviceintervall for kjøretøyet
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" er}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard vedlikeholdsintervall for veikjøretøy: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Angi standard vedlikeholdsintervall for nye veikjøretøy, hvis det ikke er satt noe vedlikeholdsintervall for kjøretøyet
@@ -1538,7 +1534,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velg oppførsel
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg vingesignal automatisk før: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Angi året når elektriske signal vil bi tatt i bruk for spor. Før dette året vil ikke-elektriske signal bli brukt (som har nøyaktig samme funksjon, men forskjellig utseende)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktiver signalgrensesnittet: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Vis et vindu for å velge hvilke singaltyper som skal bygges, i stedet for vindusløs signaltype-rotasjon når man Ctrl + klikker på byggesignaler
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Vis et vindu for å velge hvilke signaltyper som skal bygges, i stedet for vindusløs signaltype-rotasjon når man Ctrl+klikker på bygde signaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standard signaltype: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Standard signaltype som blir brukt
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokksignaler
@@ -1611,9 +1607,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innledende bystørrelsesmultiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gjennomsnittsstørrelse på (stor)byer i forhold til vanlige byer ved begynnelsen av spillet
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Oppdater distribusjonsgraf hver {STRING} dag{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Oppdater distribusjonsgraf hver {STRING}{NBSP}dag{P 0:2 "" er}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellom påfølgende reberegning av koblingsgrafen. Hver reberegning beregner planene for en del av grafen. Det betyr at en verdi X for denne innstillingen ikke betyr at hele grafen vil bli oppdatert for hver X. dag. Bare noen komponenter vil. Jo kortere du setter det, dess mer CPU tid bil være nødvendig for å beregne det. Jo lenger du setter den, dess lenger vil det ta før last-distribusjonen begynner på nye ruter.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Benytt {STRING} dag{P 0:2 "" er} for reberegning av distribusjonsgraf
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Benytt {STRING}{NBSP}dag{P 0:2 "" er} for omberegning av distribusjonsgraf
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiden det tar for hver ny reberegning av en graf-link komponent. Når en reberegning iverksettes, blir en tråd startet som tillates å kjøre for dette antall dager. Jo kortere du setter dette, desto mer sannsynlig er det at tråden ikke er ferdig til ønsket tid. Da stopper spillet ("etterslep"). Jo lenger du setter den, desto lenger tid tar det for distribusjonen å bli oppdatert når rutene endres.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
@@ -1623,7 +1619,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisk" be
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribusjonsmodus for post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyr at omrent samme mengde post vil bli sent fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder post kan bli sendt i begge retninger. "manuelt" betyr at ingen automatisk distribusjon vil forekomme for post.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribusjonsmodus for den pansrede gods-klassen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den pansrede godsklassen inneholder verdisaker i det tempererte klimaet, diamanter i det subtropiske, og gull i det subarktiske. NEWGRF kan endre på dette. "symmetrisk" betyr at omtrent like mye gods vil bli sendt fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen auomatisk distribusjon vil forekomme for lasten. Det anbefales å sette denne til asymmetrisk eller manuell når du spiller subarktisk, siden banker ikke vil sende noe gull tilbake til gullgruver. For temperert og subtropisk klima kan du også velge symmetrisk, da banker fint kan velge å sende verdisaker tilbake til opprinnelig bank.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den PANSREDE godsklassen inneholder verdisaker i det tempererte klimaet, diamanter i det subtropiske, og gull i det subarktiske. NewGRF-er kan endre på dette. "symmetrisk" betyr at omtrent like mye gods vil bli sendt fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen automatisk distribusjon vil forekomme for lasten. Det anbefales å sette denne til asymmetrisk eller manuell når du spiller subarktisk, siden banker ikke vil sende noe gull tilbake til gullgruver. For temperert og subtropisk klima kan du også velge symmetrisk, da banker fint kan velge å sende verdisaker tilbake til opprinnelig bank.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribusjonsmodus for andre godsklasser: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen automatisk distribusjon av gods vil forekomme for disse godstypene.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribusjons-nøyaktighet: {STRING}
@@ -1648,25 +1644,25 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisk (HK)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Vekt-enheter: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når vektene er vist i brukergrensesnittet , vise det i de utvalgte enheter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når vektene vises i brukergrensesnittet, vis dem i de utvalgte enhetene
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Det britiske imperiets enhetssystem ('short t'/tonn)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisk (t/tonn)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volumenheter: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Når volumene er vist i brukergrensesnittet, vise det i de utvalgte enhter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Når volumene vises i brukergrensesnittet, vis dem i de utvalgte enhetene
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Det britiske imperiets enhetssystem (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisk (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Enhet for trekkraft: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Når trekkarbeid, også kjent som trekkraft, er vist i brukergrensesnittet, vis det i de utvaglte enheter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Når trekkarbeid, også kjent som trekkraft, er vist i brukergrensesnittet, vis det i de utvalgte enhetene
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Det britiske imperiets enhetssystem (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisk (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Høyde-enheter: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når høyder vises i brukergrensesnittet, vise det i de utvalgte enheter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når en høyde vises i brukergrensesnittet, vis den i de valgte enhetene
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Det britiske imperiets enhetssystem (fot)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2323,7 +2319,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg togstall (trengs for å kjøpe og vedlikeholde tog). Shift slår av/på kostnadsestimat
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Gjør om jernbane til kontrollpunkt. Ctrl slår sammen kontrollpunkt. Shift slår av/på kostnadsestimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jernbanestasjon. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. Ctrl veksler mellom vingesignaler/lyssignaler{}Hold og dra for å bygge signaler langs en rett jernbanestrekning. Ctrl bygger signaler til det neste krysset. Ctrl+klikk viser/skjuler signalvalgsvinduet. Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. Ctrl veksler mellom vingesignaler/lyssignaler{}Hold og dra for å bygge signaler langs en rett jernbanestrekning. Ctrl bygger signaler til det neste krysset eller signalet. Ctrl+klikk viser/skjuler signalvalgsvinduet. Shift bytter mellom bygging/vising av kostnadsestimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebro. Shift slår av/på kostnadsestimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel. Shift slår av/på kostnadsestimat
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne Ctrl for i tillegg å fjerne jernbanespor fra kontrollpunkt og stasjoner
@@ -2877,14 +2873,14 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-v
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Forskyver sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Neste sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsett til neste normale sprite og hopp over enhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved begynnelsen
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til figur
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå til gitt sprite. Hvis spriten ikke er en normal sprite, fortsett til neste normale sprite
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige figur
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsett til forrige normale sprite og hopp over enhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved begynnelsen
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Forhåndsvisning av valgt sprite. Innrettingen ignoreres når spriten tegnes
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytt spriten rundt omkring, for å endre X- og Y-forskyvningene
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytt på spriten for å endre X- og Y-forskyvningene
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Tilbakestill relativt
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nullstill de nåværende relative forskyvninger
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nullstill de nåværende relative forskyvningene
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X forskyvning: {NUM}, Y forskyvning: {NUM} (Absolutt)
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X forskyvning: {NUM}, Y forskyvning: {NUM} (Relativt)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Velg en sprite
@@ -2899,26 +2895,26 @@ STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SIL
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-feil har oppstått: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versjonen som er rapportert av OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er for versjon {STRING} av TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er laget for å bli brukt med {STRING}
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er for versjon {STRING} av TTD
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er laget for bruk med {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} må være lastet før {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} må være lastet etter {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krever OpenTTD versjon {STRING} eller nyere.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} må lastes inn før {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} må lastes inn etter {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krever OpenTTD versjon {STRING} eller nyere
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var laget for å oversette
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRFer innlastet.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {1:STRING} som statisk NewGRF med {STRING} kan forårsake synkroniseringsfeil.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet figur (figur {3:NUM})
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er er innlastet
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {1:STRING} som statisk NewGRF med {STRING} kan forårsake synkroniseringsfeil
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet sprite (figur {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent Handling 0 egenskap {4:HEX} (figur {3:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøkt å bruke ugyldig ID (figur {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt sprite. Alle ødelagte spriter vil bli vist som røde spørsmålstegn (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere Handling 8 oppføringer (figur {3:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten av pseudo-figur (figur {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværende grafikksettet mangler en del spriter.{}Vennligst oppdater grafikksettet.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Den benyttede grafikkpakken mangler en mengde bildeelementer.{}Vennligst oppdater grafikkpakken.{}Siden du spiller en {YELLOW}utviklingsversjon av OpenTTD{WHITE}, kan det være at du også trenger en {YELLOW}utviklingsversjon av grafikkpakken{WHITE}
+STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruke ugyldig ID (sprite {3:NUM})
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt sprite. Alle ødelagte spriter blir vist som røde spørsmålstegn (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere Handling 8-oppføringer (figur {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten av pseudo-sprite (figur {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det benyttede grafikksettet mangler en del spriter.{}Du må oppdatere grafikksettet.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Den benyttede grafikkpakken mangler en mengde bildeelementer.{}Du må oppdatere grafikkpakken.{}Siden du spiller en {YELLOW}utviklingsversjon av OpenTTD{WHITE}, kan det være at du også trenger en {YELLOW}utviklingsversjon av grafikkpakken{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurte GRF-ressurser ikke tilgjengelig (figur {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ble deaktivert av {STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjent figur layout-format (figur {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjent sprite layout-format (figur {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -2931,7 +2927,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan ikke
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF(er) lastet for manglende filer
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF-fil(er) har blitt deaktivert
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler GRF-fil(er)
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan medføre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasjer.{}Vil du virkelig slå av pause?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan medføre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasjer.{}Er du sikker på at du vil slå av pause?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Ingen
@@ -2944,7 +2940,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Atferden
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret maskinvogn-tilstand for '{1:ENGINE}' mens det er utenfor en togstall.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall.
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE} Det endret kjøretøykapasitet for '{1:ENGINE}' når ikke i et depot eller under ombygging
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan bli usynkronisert eller krasje.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRF-er. Spillet kan bli usynkronisert eller krasje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare-/ombyggingsinformasjon for '{1:ENGINE}' er forskjellig fra kjøpelisten etter konstruksjonen. Dette kan resultere i at autofornying ikke fungerer på riktig måte.
@@ -2998,8 +2994,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (fortsatt nødvendig)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levert)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}.{BLACK} dag
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}.{BLACK} dag (finansiert)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" s} (finansiert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Byen vokser {RED}ikke{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Flystøy: {ORANGE}{COMMA}{BLACK}  støygrense: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Gå til by. Ctrl+klikk åpner et nytt tilleggsvindu over byen
@@ -3059,7 +3055,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasjon
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Advarsel
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Feil
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Avbryt
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :Nei
@@ -3078,6 +3074,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Start på nytt
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Utsett
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Gi opp
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Lukk
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidier
@@ -3402,10 +3399,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Alt utenom {CAR
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks trekkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rekkevidde: {GOLD}{COMMA} ruter
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liste over tog/vogner - klikk på tog/vogn for mer informasjon
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liste over kjøretøy - klikk på kjøretøy for mer informasjon
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Liste over skip - klikk på skip for mer informasjon
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Liste over luftfartøy - klikk på luftfartøy for mer informasjon
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liste over tog/vogner - klikk på tog/vogn for mer informasjon. Ctrl+klikk for å skjule/vise denne typen
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liste over kjøretøy - klikk på kjøretøy for mer informasjon. Ctrl+klikk for å skjule/vise kjøretøytypen
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Liste over skip - klikk på skip for mer informasjon. Ctrl+klikk for å skjule/vise skiptypen
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Liste over luftfartøy - klikk på luftfartøy for mer informasjon. Ctrl+klikk for å skjule/vise luftfartøytypen
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kjøp tog/vogn
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kjøp kjøretøy
@@ -3495,7 +3492,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kopier k
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kopier skip
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kopier luftfartøy
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil skape en kopi av et tog inkludert alle vognene. Klikk denne knappen og deretter på et tog utenfor eller inni togstallen. Ctrl+klikk vil dele ordrene. Shift+klikk viser estimert kostnad
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil kjøpe en kopi av et tog inkludert alle vognene. Klikk denne knappen og deretter på et tog utenfor eller inni togstallen. Ctrl+klikk deler ordrene. Shift+klikk viser estimert kostnad uten kjøp
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil skape en kopi av et kjøretøy. Klikk denne knappen og deretter på et kjøretøy utenfor eller inni garasjen. Ctrl+klikk vil dele ordrene. Shift+klikk viser estimert kostnad
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil skape en kopi av et skip. Klikk denne knappen og deretter på et skip utenfor eller inni skipsdokken. Ctrl+klikk vil dele ordrene. Shift+klikk viser estimert kostnad
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil skape en kopi av et luftfartøy. Klikk denne knappen og deretter på et luftfartøy utenfor eller inni hangaren. Ctrl+klikk vil dele ordrene. Shift+klikk viser estimert kostnad
@@ -3757,7 +3754,7 @@ STR_ORDER_GO_VIA                                                :Gå via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gå direkte via
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Endre stopprutinene for den merkede ordren
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last av enhver varetype
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last av alle varetyper
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last hvis tilgjengelig
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full last av alle varetyper
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full last av minst en varetype
@@ -3911,8 +3908,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(opphold i {STR
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reise for {STRING}, ikke oppsatt med rutetabell)
 STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" er}
-STR_TIMETABLE_TICKS                                             :{COMMA} tikk
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tikk{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å fullføre rutetabellen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil ta minst {STRING} å fullføre denne rutetabellen (rutetabell ikke fullstendig)
@@ -4178,7 +4175,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...{NBSP
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...{NBSP}for nær en annen by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...{NBSP}for mange byer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det er ikke mer plass på kartet
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen kommer ikke til å bygge veier. Du kan aktivere bygging av veier via Avanserte innstillinger->Økonomi->Byer.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen kommer ikke til å bygge veier. Du kan aktivere bygging av veier via Innstillinger->Miljø->Byer
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Veiarbeid i gang
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke fjerne denne byen...{}En stasjon eller garasje/stall/hangar/dokk henviser til byen eller en by-eid rute som ikke kan fjernes
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passende steder for en statue i sentrum av denne byen

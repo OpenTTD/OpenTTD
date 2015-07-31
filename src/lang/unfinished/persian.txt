@@ -916,10 +916,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :لیره گرج
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :ریال ایران (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK} خودروی جاده ای
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}انتخاب جهت فرمان ماشین ها
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :چپ فرمان
@@ -1073,7 +1069,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :دشمنانه
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ بسته هوش مصنوعی موجود نیست...{}شما می توانید چندین بسته هوش مصنوعی(AI) را از قسمت محتویات برخط بارگیری کنید
 
-# Advanced settings window
+# Settings tree window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}متن فیلتر:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}نمایش همه
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}جمع کردن همه
@@ -2731,7 +2727,7 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}روی �
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :سوال
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :لغو
 STR_GOAL_QUESTION_BUTTON_OK                                     :باشد
 STR_GOAL_QUESTION_BUTTON_NO                                     :خیر
@@ -2750,6 +2746,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :راه‌اند
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :به تاخیر انداختن
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :تسلیم
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :بستن
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}یارانه ها

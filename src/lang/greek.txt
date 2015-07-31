@@ -434,6 +434,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ρυθμίσεις
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Ρυθμίσεις ΑΙ και Δέσμης Ενεργειών
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
@@ -459,6 +460,7 @@ STR_FILE_MENU_EXIT                                              :Έξοδος
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Χάρτης του κόσμου
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Πρόσθετη εμφάνιση
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Υπόμνημα Ροής Φορτίου
 STR_MAP_MENU_SIGN_LIST                                          :Λίστα πινακίδων
 
 ############ range for town menu starts
@@ -809,12 +811,14 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Χάρτ
 STR_SMALLMAP_TYPE_CONTOURS                                      :Περιγράμματα
 STR_SMALLMAP_TYPE_VEHICLES                                      :Οχήματα
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Βιομηχανίες
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Ροή Φορτίου
 STR_SMALLMAP_TYPE_ROUTES                                        :Διαδρομές
 STR_SMALLMAP_TYPE_VEGETATION                                    :Βλάστηση
 STR_SMALLMAP_TYPE_OWNERS                                        :Ιδιοκτήτες
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Εμφανίστε περιγράμματα εδάφους στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Εμφανίστε οχήματα στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Εμφανίστε βιομηχανίες στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Εμφάνιση ροής φορτίων στο χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Εμφανίστε μεταφορικούς οδούς στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Εμφανίστε βλάστηση στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Εμφανίστε ιδιοκτήτες γης στον χάρτη
@@ -864,6 +868,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Εμφά
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Εναλλάγη εμφάνισης υψομετρικού χάρτη
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Απόκρυψη όλων των ιδιοκτησιών των εταιριών στον χάρτη
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Εμφάνιση όλων των ιδιοκτησιών των εταιριών στον χάρτη
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Απόκρυψη όλων των φορτίων στο χάρτη
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Εμφάνιση όλων των φορτίων στο χάρτη
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς νέων
@@ -1028,10 +1034,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Γεοργια�
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ιρανικό Ριάλ (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Οχήματα δρόμου
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδηγούν από αριστερά
@@ -1084,6 +1086,11 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκ
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλυση οθόνης
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
+
+
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Κανονικό
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Διπλό μέγεθος
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Τετραπλό μέγεθος
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
@@ -1185,7 +1192,8 @@ STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 
-# Advanced settings window
+# Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ρυθμίσεις
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Φιλτράρισμα:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Επέκταση όλων
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Σύμπτυξη όλων
@@ -1201,9 +1209,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ρύθμιση 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Κατηγορία:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Τύπος:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Περιορίζει την παρακάτω λίστα με τη χρήση προκαθορισμένων φίλτρων
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές ρυθμίσεις
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Προχωρημένες ρυθμίσεις / όλες οι ρυθμίσεις
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές (εμφάνιση μόνο σημαντικών ρυθμίσεων)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Για προχωρημένους (εμφάνιση των περισσότερων ρυθμίσεων)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Για ειδικούς (εμφάνιση όλων των ρυθμίσεων, ακομη και παράξενων)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ρυθμίσεις με διαφορετική τιμή από την προκαθωρισμένη
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
@@ -1256,6 +1264,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Όταν είν
 STR_CONFIG_SETTING_DISASTERS                                    :Καταστροφές: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Στάση δημοτικού συμβουλίου ως προς τον μετασχηματισμό της περιοχής: {STRING}
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Μέγιστο ύψος χάρτη: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Ορισμός του μέγιστου επιτρεπτού ύψους βουνών στο χάρτη
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Επιτρέπεται η διαμόρφωση του εδάφους κάτω από κτίρια και σιδηροτροχιές χωρίς αυτά να αφαιρούνται
 STR_CONFIG_SETTING_CATCHMENT                                    :Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {STRING}
@@ -1284,13 +1294,15 @@ STR_CONFIG_SETTING_INFLATION                                    :Πληθωρι�
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ενεργοποίηση του πληθωρισμού στην οικονομία, όπου τα κόστη αυξάνονται ελάχιστα ταχύτερα από τις πληρωμές
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Μέγιστο μήκος γέφυρας: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κτίσιμο γεφυρών
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Μέγιστο ύψος γέφυρας: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Μέγιστο ύψος για το χτίσιμο γεφυρών
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Μέγιστο μήκος σήραγγας: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κτίσιμο συράγγων
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Μέθοδος χρηματοδότησης πρωτογενούς βιομηχανίας. «Καμία» σημαίνει ότι δεν γίνεται να χρηματοδοτηθεί καμία βιομηχανία, «Αναζήτηση» σημαίνει ότι η χρηματοδότηση είναι εφικτή, αλλά η κατασκευή πραγματοποιείται σε τυχαίο σημείο του χάρτη και είναι πιθανό να αποτύχει, «Όπως οι άλλες βιομηχανίες» σημαίνει πως οι πρωτογενείς βιομηχανίες είναι εφικτό να κατασκευαστούν από εταιρείες όπως οι δευτερογενείς βιομηχανίες σε οποιαδήποτε θέση θέλουν
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Καμία
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Όπως οι άλλες βιομηχανίες
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Αναζήτηση
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Διερεύνηση προοπτικών
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Επίπεδη περιοχή γύρω από βιομηχανίες: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Επίπεδος χώρος γύρω από μια βιομηχανία. Αυτό εξασφαλίζει ότι θα παραμείνει διαθέσιμος κενός χώρος γύρω από μια βιομηχανία για να κτισθούν γραμμές, κλπ
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανά πόλη: {STRING}
@@ -1377,9 +1389,12 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Εμφάνισ�
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Πάχος γραμμών στα γραφήματα: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Πάχος γραμμών στα γραφήματα. Οι λεπτές γραμμές διαβάζονται με μεγαλύτερη ακρίβεια, οι παχύτερες είναι πιο ευδιάκριτες και τα χρώματα ξεχωρίσουν ευκολότερα
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Τοπίο: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Γεννήτρια γης: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντική
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Σχηματισμός εδάφους: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Πυκνότητα βιομηχανιών: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη απόσταση από την άκρη του χάρτη για τα Διυλιστήρια: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, η οποία είναι ακτή σε νησιωτικούς χάρτες
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
@@ -1388,10 +1403,14 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Απα
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ανώμαλη
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Ανώμαλη
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Πλήθος ποταμών: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Επιλέξτε πόσα ποτάμια να δημιουργηθούν
 STR_CONFIG_SETTING_TREE_PLACER                                  :Αλγόριθμος τοποθέτησης δέντρων: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Κανένας
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικός
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμένος
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Οχήματα δρόμου: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Επιλέξτε την πλευρά οδήγησης
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Περιστροφή χάρτη υψομετρίας: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αριστερόστροφη
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφη
@@ -1445,6 +1464,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Απενεργ�
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Μετάβαση με αριστερό κλικ: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ενεργοποίηση της κύλισης του χάρτη σύροντας τον με το αριστερό κουμπί του ποντικιού. Αυτό είναι ιδιαίτερα χρήσιμο για την κύλιση όταν χρησιμοποιείται οθόνη αφής
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Αυτόματο σώσιμο: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Επιλέξτε το διάστημα ανάμεσα σε δυο διαδοχικά σωσίματα του παιχνιδιου
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της {STRING} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνιδιών
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Μορφή της ημερομηνίας στα αρχεία αποθήκευσης παιχνιδιών
@@ -1490,6 +1511,7 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει η
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Παίζει ήχο όταν γίνεται κλικ σε κουμπιά
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Καταστροφές/ατυχήματα: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Παίζει ήχους για ατυχήματα και συμφορές
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Οχήματα: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Παίζει τα ηχητικά εφέ των οχημάτων
@@ -1555,17 +1577,27 @@ STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Προβάλλ�
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Προβάλλει εφημερίδα όταν αρχίζει νέα εταιρεία ή όταν οι εταιρίες ρισκάρουν χρεωκοπία
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Εμφάνιση εφημερίδας όταν ανοίγουν νέες βιομηχανίες
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Κλείσιμο βιομηχανιών: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Εμφάνιση εφημερίδας όταν κλείνουν βιομηχανίες
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Οικονομικές αλλαγές: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Εμφάνιση εφημερίδας σε αλλαγές παγκόσμιων οικονομικών μεγεθών
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που εξυπηρετείται από την εταιρία
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(-ές): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που εξυπηρετείται από ανταγωνιστές
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Άλλες διαφοροποιήσεις στη παραγωγή: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που δεν εξυπηρετείται από την εταιρία ή ανταγωνιστές
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Συμβουλές / πληροφορίες για τα εταιρικά οχήματα: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Εμφάνιση μηνημάτων όταν κάποιο όχημα χρήζει προσοχής
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Νέα οχήματα: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Εμφάνιση εφημερίδας όταν ένας νέος τύπος οχήματος γίνεται διαθέσιμος
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Αλλαγές στην αποδοχή φορτίου: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Εμφάνιση μηνημάτων σε μεταβολές στην αποδοχή φορτίων από ένα σταθμό
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Επιχορηγήσεις: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Πρόβαλλε εφημερίδα σχετικά με συμβάντα που σχετίζονται με επιδοτήσεις
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Γενικές πληροφορίες: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Εμφάνιση εφημερίδας σε γενικά συμβάντα, όπως αγορά αποκλειστικών δικαιωμάτων ή χρηματοδότηση ανακατασκευής δρόμων
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Απενεργοποιημένα
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Περιλήψεις
@@ -1588,7 +1620,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτ�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο κτίσιμο σηματοφόρων πριν από το: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Εμφανίζεται παράθυρο για την επιλογή του τύπου του σήματος που θα τοποθετηθεί, αντί για την απλή μετατροπή από τον έναν τύπο στον άλλο χωρίς παράθυρο, με κλικ σε τοποθετημένα σήματα κρατώντας πατημένο το Ctrl
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Εμφάνιση παραθύρου για την επιλογή του τύπου σήματος που θα τοποθετηθεί, αντί για μετάβαση από τον έναν τύπο στον άλλο χωρίς παράθυρο, με Ctrl+κλικ σε ήδη τοποθετημένα σήματα
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Τύπος σηματοδότη που θα χρησιμοποιείται ως προεπιλογή: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Προκαθορισμένος τύπος σημάτων που χρησιμοποιείται
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Σηματοδότες τμήματος
@@ -1664,16 +1696,28 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Μέσο μέγ
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :χειροκίνητη
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :μη συμμετρική
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :συμμετρική
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Τρόπος διανομής επιβατών: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Τρόπος διανομής αλληλογραφίας: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Τρόπος διανομής για το ΘΩΡΑΚΙΣΜΕΝΟ είδος φορτίου: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Τρόπος διανομής άλλων ειδών φορτίου: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Ακρίβεια διανομής: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Επίδραση της απόστασης στη ζήτηση προϊόντων: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Αυτοκρατορικό (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Μετρικό (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Μονάδες ισχύος οχημάτων: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Αυτοκρατορικό (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Μετρικό (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Μονάδες μέτρησης βάρους: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Μονάδες μέτρησης όγκου: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Αυτοκρατορικό (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Μετρικό (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
@@ -1741,6 +1785,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχ
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
 STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνακας Βαθμολογιών
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδικτυακό Περιεχόμενο
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και Δέσμης Ενεργειών
@@ -1760,6 +1805,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλ
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Εμφάνιση επιλογών παιχνιδιού
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Εμφάνιση του πίνακα βαθμολογιών
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ρυθμίσεις οθόνης
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για λήψη
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων για AI και της δέσμης ενεργειών του παιχνιδιού
@@ -1799,6 +1845,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Παί�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα αντικείμενα): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Τα τούνελ μπορούν να διασταυρώνονται: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Τα jet δε θα συγκρούονται (συχνά) σε μικρά αεροδρόμια: {ORANGE} {STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Μεταβολή του μέγιστου ύψους του χάρτη: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Μεταβολή του μέγιστου ύψους βουνών στο χάρτη
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Εύκρατο τοπίο
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Πολικό τοπίο
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Υποτροπικό τοπίο
@@ -2310,7 +2358,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατα
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστάσιου (για αγορά και επισκευή τρένων). Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Με Ctrl ενεργοποιείται η συνένωση σημείων καθοδήγησης. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Με Ctrl ενεργοποιείται η συνένωση σταθμών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Με Ctrl εναλλάσσονται σηματοφόροι/σηματοδότες{}Το σύρσιμο κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Με το Ctrl πατημένο, κατασκευάζει μέχρι την επομένη διασταύρωση{}Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Με Ctrl εναλλάσσονται σηματοφόροι/σηματοδότες{}Με σύρσιμο κατασκευάζονται σηματοδότες κατά μήκος μιας ευθείας σιδηροτροχιάς. Με το Ctrl πατημένο, κατασκευάζονται σηματοδότες μέχρι την επομένη διασταύρωση ή τον επόμενο σηματοδότη{}Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Με Shift εναλλάσσεται κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους, σηματοδότες, σημείων καθοδήγησης και σταθμών. Κρατώντας πατημένο το Ctrl αφαιρεί και τον σιδηρόδρομο από τα σημεία καθοδήγησης και σταθμούς
@@ -2584,7 +2632,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Όνομ
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτά εμπορεύματα: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας σιδηροτροχιάς: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας δρόμου: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
@@ -2706,7 +2754,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Δεν �
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστε το όνομα του αποθηκευμένου παιχνιδιού
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστε το όνομα του παιχνιδιού προς αποθήκευση
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Δημιουργία Κόσμου
@@ -2716,6 +2764,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθμός πόλεων:
 STR_MAPGEN_DATE                                                 :{BLACK}Ημερομηνία:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθμός βιομηχανιών:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Μέγιστο ύψος χάρτη
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Αύξηση του μέγιστου ύψους βουνών του χάρτη κατά ένα
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Μείωση του μέγιστου ύψους βουνών του χάρτη κατά ένα
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
@@ -2745,6 +2796,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομ
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Μέγεθος:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Αλλαγή μέγιστου ύψους χάρτη
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή έτους έναρξης
 
@@ -2879,14 +2931,14 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωσ
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Απρόοπτο sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0 {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήσει άκυρο ID (sprite {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως κόκκινα ερωματικό (?)
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :Το {YELLOW}{STRING} περιέχει ένα αλλοιωμένο sprite. Όλα τα αλλοιωμένα sprites θα εμφανίζονται ως κόκκινα ερωτηματικά (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές καταχωρήσεις Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασε πέρα από το τέλος του ψευδό-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Λείπουν μερικά sprites από το τρέχον βασικό σετ γραφικών.{}Παρακαλώ ενημερώστε το βασικό σετ γραφικών
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Λείπουν μερικά sprites από το τρέχον βασικό σετ γραφικών.{}Παρακαλώ ενημερώστε το βασικό σετ γραφικών{}Επειδή παίζετε {YELLOW}μη σταθερή έκδοση του OpenTTD{WHITE}, μπορεί να χρειαστείτε {YELLOW}ασταθή έκδοση των βασικών γραφικών{WHITE}
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Λείπουν μερικά sprites από το τρέχον βασικό σετ γραφικών.{}Παρακαλώ ενημερώστε το βασικό σετ γραφικών{}Επειδή παίζετε {YELLOW}δοκιμαστική έκδοση του OpenTTD{WHITE}, μπορεί να χρειάζεται να έχετε εγκατεστημένη {YELLOW}δοκιμαστική έκδοση των βασικών γραφικών{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Οι ζητημένοι πόροι GRF δεν είναι διαθέσιμοι (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {1:STRING} απενεργοποιήθηκε από το {2:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Άγνωστη/άκυρη μορφή σχεδίου sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Άκυρη/άγνωστη μορφή σχεδίου sprite (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
@@ -3024,7 +3076,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Πληροφο�
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Προειδοποίηση
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Σφάλμα
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Ακύρωση
 STR_GOAL_QUESTION_BUTTON_OK                                     :Εντάξει
 STR_GOAL_QUESTION_BUTTON_NO                                     :Όχι
@@ -3043,6 +3095,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Επανεκκ�
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Αναβολή
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Παράδοση
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Κλείσιμο
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Χρηματοδοτήσεις
@@ -3434,7 +3487,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλων
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλωνοποίηση Πλοίου
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση Αεροσκάφους
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift +Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα στο ή έξω από το υπόστεγο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
@@ -4088,6 +4141,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Η εκ�
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ήδη στο επίπεδο της θάλασσας
 STR_ERROR_TOO_HIGH                                              :{WHITE}... πολύ ψηλά
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ήδη επίπεδο
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Μετά την αλλαγή, η γέφυρα από πάνω του θα είναι πολύ ψηλή
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Δεν ήταν δυνατό να αλλάξει το όνομα της εταιρίας...

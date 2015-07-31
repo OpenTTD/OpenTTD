@@ -888,10 +888,6 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :كرونا اس
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}العربات البرية
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}اختار الجانب الذي تسير فيه المركبات
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :القيادة على اليسار
@@ -2648,7 +2644,8 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :معلومات
 STR_GOAL_QUESTION_CAPTION_WARNING                               :تحذير
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :خطا
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}العروض

@@ -854,7 +854,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}מתיי
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}מתיישן מאוד {VEHICLE}
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}מתיישן מאוד, וזקוק להחלפה בדחיפות {VEHICLE}
 STR_NEWS_TRAIN_IS_STUCK                                         :אינה יכולה למצוא נתיב המשך {WHITE}{VEHICLE}
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} הל{P "ך" "כה"} לאיבוד
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} הל לאיבוד
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :ריווחי {WHITE}{VEHICLE} שנה שעברה הם {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE}אינ{G 0 "ו" "ה"} יכול{G 0 "" "ה"} להגיע אל היעד הבא כי הוא מחוץ לטווח
 
@@ -930,10 +930,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :אחר...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :לארי גאורגי (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איראני (IRR)
 ############ end of currency region
-
-
-############ start of measuring units region
-############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}רכבי כביש
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}בחר את צד הכביש בו יסעו כלי הרכב
@@ -3002,7 +2998,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :מידע
 STR_GOAL_QUESTION_CAPTION_WARNING                               :אזהרה
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :שגיאה
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :ביטול
 STR_GOAL_QUESTION_BUTTON_OK                                     :אישור
 STR_GOAL_QUESTION_BUTTON_NO                                     :לא
@@ -3021,6 +3017,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :אתחל
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :דחה
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :היכנע
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :סגור
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות
@@ -3037,7 +3034,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}מטרה �
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}שמות תחנות - לחץ על השם כדי להתמקד בתחנה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התחנה
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}לחץ והחזק מקש קונטרל כדי לבחור יותר מפריט אחד
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {P 0 "תחנה " ""}{COMMA}{P "" " תחנות"}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {P 1 "תחנה " ""}{COMMA}{P "" " תחנות"}
 STR_STATION_LIST_STATION                                        :{YELLOW} {1:STATION_FEATURES}{0:STATION}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- כלום -

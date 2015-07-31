@@ -790,10 +790,6 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 ############ end of currency region
 
 
-############ start of measuring units region
-############ end of measuring units region
-
-
 
 ############ start of townname region
 ############ end of townname region
@@ -831,7 +827,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилаго�
 
 
 
-# Advanced settings window
+# Settings tree window
 
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Сите подесувања
@@ -1332,7 +1328,8 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клик
 
 # Goal question window
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Кликни на сервис за да се центрира погледот на индустријата/градот

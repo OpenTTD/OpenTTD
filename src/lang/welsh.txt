@@ -927,10 +927,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (G
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 ############ end of currency region
 
-
-############ start of measuring units region
-############ end of measuring units region
-
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cerbydau Ffordd
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Dewiswch ar ba ochr i'r ffordd y dylai cerbydau yrru
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gyrru ar y chwith
@@ -3051,7 +3047,7 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Gwybodaeth
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Rhybudd
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Gwall
 
-### Start of Goal Question button list
+############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Canslo
 STR_GOAL_QUESTION_BUTTON_OK                                     :Iawn
 STR_GOAL_QUESTION_BUTTON_NO                                     :Na
@@ -3070,6 +3066,7 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Ailddechrau
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Gohirio
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Ildio
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Cau
+############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Cymorthdaliadau
