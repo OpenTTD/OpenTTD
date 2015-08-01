@@ -1,3 +1,21 @@
+1.5.2-RC1 (2015-08-01)
+------------------------------------------------------------------------
+- Change: Auto-complete partial roads when building level-crossings [FS#6283] (r27309)
+- Fix: Do not rerandomise the town name when only cost-estimating the founding [FS#6332] (r27341)
+- Fix: Make variety distribution not assume that sea level is at height 0.2 / 3 * TGPGetMaxHeight() [FS#6335] (r27331, r27330, r27329, r27328)
+- Fix: Remove corner-case optimisation for line drawing, which failed for dashed lines  (r27324)
+- Fix: Clipping of inclined lines did not account for the 'horizontal width' being bigger than the 'real width' (r27323, r27322)
+- Fix: Incorrect owner assignment when adding/removing road/tram to/from bridges [FS#6317] (r27313, r27312)
+- Fix: Mark infrastructure window dirty in more cases (r27311)
+- Fix: Prevent breaking of tram-reversal points by adding more road pieces [FS#6283] (r27308)
+- Fix: Error message window with manager face failed with GUI zoom [FS#6259] (r27307)
+- Fix: Account for road-bridges and drive-through-stops in CanFollowRoad [FS#6320] (r27306, r27305)
+- Fix: Password window layout with GUI zoom [FS#6321] (r27304, r27303)
+- Fix: Speed-only timetables got assigned times in stations [FS#6313] (r27302, r27301)
+- Fix: Enforce the company's default service intervals when purchasing another company [FS#6254] (r27282, r27281)
+- Fix: Cloning/autoreplace/autorenew did not copy custom service intervals (r27280)
+
+
 1.5.1 (2015-06-01)
 ------------------------------------------------------------------------
 (None)
