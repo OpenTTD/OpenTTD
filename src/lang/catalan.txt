@@ -1115,13 +1115,13 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paràmetres amb
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringeix la llista de sota a certs tipus de paràmetres
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tots els paràmetres
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paràmetres del client (no s'emmagatzemen a les partides; afecten a totes les partides)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paràmetres de la partida (emmagatzemats a les partides; només afectaran a les noves partides)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paràmetres de la partida (emmagatzemats a les partides; només afectaran les noves partides)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paràmetres de la partida (emmagatzemats a la partida actual; només afecten la partida actual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paràmetres de la companyia (emmagatzemats a les partides desades; només afectaran les partides noves)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paràmetres de la companyia (emmagatzemats a la partida actual; només afecten la companyia actual)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostra tots els resultats de la cerca ajustant{}{SILVER}Categoria {BLACK}a {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar tots els resultats per opció de configuració{}{SILVER}Tipus {BLACK}a {WHITE}Tots els tipus d'opció
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostra tots els resultats de la cerca ajustant{}{SILVER}Categoria {BLACK}a {WHITE}{STRING} {BLACK}i {SILVER}Tipus {BLACK}a {WHITE}Tots els tipus d'ajustaments
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostra tots els resultats de la cerca filtrada de {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar tots els resultats de la cerca filtrada amb {WHITE}tots els tipus de paràmetres
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostra tots els resultats de la cerca filtrada de {WHITE}{STRING} {BLACK}i {WHITE}tots els tipus d'ajustaments
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Cap -
 
 STR_CONFIG_SETTING_OFF                                          :Inactiu
@@ -1134,53 +1134,53 @@ STR_CONFIG_SETTING_COMPANIES_ALL                                :Totes les compa
 
 STR_CONFIG_SETTING_NONE                                         :Cap
 STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realístic
+STR_CONFIG_SETTING_REALISTIC                                    :Realista
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima de préstec que pot demanar una companyia (sense tenir en compte l'inflació)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa d'interès: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interès dels préstecs; també controla la inflació, si està activada
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos d'utilització: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixa el nivell de manteniment i els costos d'utilització dels vehicles i infraestructures
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ritme de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la quantitat d'accions de construcció per part de les IA
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Avaries de vehicles: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Nombre d'avaries de vehicles: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla cada quan els vehicles revisats inadequadament s'espatllen
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador del subsidi: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixa quant es paga per les connexions subsidiades
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixa quant es paga pels transports subsidiats
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell de construcció i els preus de compra
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està actiu les recessions poden passar cada pocs anys. Durant una recessió tota la producció és significativament baixa (torna al nivell previ quan la recessió s'acaba)
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permet que els trens canviïn de sentit a les estacions: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit
-STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Commuta els desastres que poden bloquejar o destruir ocasionalment vehicles o infraestructures
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està actiu, les recessions poden passar cada pocs anys. Durant una recessió, tota la producció és significativament baixa, tornant al nivell previ quan la recessió s'acabi.
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permetis que els trens canviïn de sentit a les estacions: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu, els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit.
+STR_CONFIG_SETTING_DISASTERS                                    :Catàstrofes: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Permet o no que passin catàstrofes que puguin bloquejar o destruir ocasionalment vehicles o infraestructures
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la població davant de reestructuracions a la zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escull quin nivell de soroll i de danys ambientals fets per les companyies afecten al seu prestigi a la població i a futures accions de construcció a la zona
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Estableix quin nivell de soroll i de danys ambientals fets per les companyies afecten al seu prestigi davant de la població i futures accions de construcció a la zona
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Alçada màxima del mapa: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Estableix l'alçada màxima permesa del terreny en el mapa
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No pots escollir aquesta alçada màxima del mapa. Hi ha alguna zona del mapa actual que és més alta
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet modificar el terreny sota edificis, rails, etc.: {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permetre modelar el terreny sota edificis i rails, sense eliminar-los
-STR_CONFIG_SETTING_CATCHMENT                                    :Permet una mida més real de l'àrea d'influència: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Tenir diferents mides de zones de captació per a diferents tipus d'estacions i aeroports
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No es pot escollir aquesta alçada màxima del mapa: hi ha alguna zona del mapa actual que és més alta.
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet la modificació del terreny sota edificis, rails, etc.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permet modelar el terreny sota edificis i rails, sense eliminar-los
+STR_CONFIG_SETTING_CATCHMENT                                    :Estableix una mida més real de l'àrea d'influència: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permet tenir diferents mides de zones de captació per a diferents tipus d'estacions i aeroports
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Que sigui més fàcil esborrar infraesctuctures i construccions propietat de la població
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Aquesta opció permet fer més fàcil l'esborrat d'infraestructures i construccions propietat de la població
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud màxima dels trens: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Establir la longitud màxima dels trens
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} cel·l{P 0 a es}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Estableix la longitud màxima dels trens
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} cel·l{P a es}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantitat de fum i espurnes dels vehicles: {STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Establir la quantitat de fums o quantes espurnes són emeses pels vehicles
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Estableix la quantitat de fum o quantes espurnes són emeses pels vehicles
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model d'acceleració dels trens: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleccioneu el model físic per a l'acceleració del tren. El model "original" penalitza les pujades per igual a tots els vehicles. El model "realístic" penalitza les pujades i les corbes en funció de diverses propietats del compost, al igual que la longitud i la força de tracció
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleccioneu el model físic per l'acceleració de trens. El model «original» penalitza les pujades per igual a tots els vehicles. El model «realista» penalitza les pujades i les corbes en funció de diverses propietats del tren, com ara la longitud i la força de tracció
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model d'acceleració per als vehicles: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleccioneu el model físic per a l'acceleració dels automòbils. El model "original" penalitza les pujades per igual a tots els vehicles. El model "realista" penalitza les pendents en funció de les diferents propietats de la màquina, com per exemple "l'esforç de tracció"
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleccioneu el model físic per l'acceleració d'automòbils. El model «original» penalitza les pujades per igual a tots els vehicles. El model «realista» penalitza els pendents en funció de les diferents propietats de la màquina, com per exemple l'esforç de tracció.
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendent d'inclinació per als trens: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :La inclinació d'una cel·la en pendent per a un tren. Els valors més alts fan que sigui més difícil escalar un turó
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
