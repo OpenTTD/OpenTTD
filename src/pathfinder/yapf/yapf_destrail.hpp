@@ -12,8 +12,7 @@
 #ifndef YAPF_DESTRAIL_HPP
 #define YAPF_DESTRAIL_HPP
 
-class CYapfDestinationRailBase
-{
+class CYapfDestinationRailBase {
 protected:
 	RailTypes m_compatible_railtypes;
 
@@ -36,9 +35,7 @@ public:
 };
 
 template <class Types>
-class CYapfDestinationAnyDepotRailT
-	: public CYapfDestinationRailBase
-{
+class CYapfDestinationAnyDepotRailT : public CYapfDestinationRailBase {
 public:
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
@@ -75,9 +72,7 @@ public:
 };
 
 template <class Types>
-class CYapfDestinationAnySafeTileRailT
-	: public CYapfDestinationRailBase
-{
+class CYapfDestinationAnySafeTileRailT : public CYapfDestinationRailBase {
 public:
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
@@ -115,9 +110,7 @@ public:
 };
 
 template <class Types>
-class CYapfDestinationTileOrStationRailT
-	: public CYapfDestinationRailBase
-{
+class CYapfDestinationTileOrStationRailT : public CYapfDestinationRailBase {
 public:
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type

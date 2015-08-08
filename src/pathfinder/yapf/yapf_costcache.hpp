@@ -121,9 +121,7 @@ struct CSegmentCostCacheBase
  *  Look at CYapfRailSegment (yapf_node_rail.hpp) for the segment example
  */
 template <class Tsegment>
-struct CSegmentCostCacheT
-	: public CSegmentCostCacheBase
-{
+struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 	static const int C_HASH_BITS = 14;
 
 	typedef CHashTableT<Tsegment, C_HASH_BITS> HashTable;
@@ -162,9 +160,7 @@ struct CSegmentCostCacheT
  *  segment cost caching services for your Nodes.
  */
 template <class Types>
-class CYapfSegmentCostCacheGlobalT
-	: public CYapfSegmentCostCacheLocalT<Types>
-{
+class CYapfSegmentCostCacheGlobalT : public CYapfSegmentCostCacheLocalT<Types> {
 public:
 	typedef CYapfSegmentCostCacheLocalT<Types> Tlocal;
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)

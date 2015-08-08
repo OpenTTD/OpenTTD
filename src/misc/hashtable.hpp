@@ -24,7 +24,10 @@ struct CHashTableSlotT
 	inline CHashTableSlotT() : m_pFirst(NULL) {}
 
 	/** hash table slot helper - clears the slot by simple forgetting its items */
-	inline void Clear() {m_pFirst = NULL;}
+	inline void Clear()
+	{
+		m_pFirst = NULL;
+	}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - const version */
 	inline const Titem_ *Find(const Key &key) const
@@ -168,14 +171,23 @@ protected:
 	}
 
 	/** static helper - return hash for the given item modulo number of slots */
-	inline static int CalcHash(const Titem_ &item) {return CalcHash(item.GetKey());}
+	inline static int CalcHash(const Titem_ &item)
+	{
+		return CalcHash(item.GetKey());
+	}
 
 public:
 	/** item count */
-	inline int Count() const {return m_num_items;}
+	inline int Count() const
+	{
+		return m_num_items;
+	}
 
 	/** simple clear - forget all items - used by CSegmentCostCacheT.Flush() */
-	inline void Clear() {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
+	inline void Clear()
+	{
+		for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();
+	}
 
 	/** const item search */
 	const Titem_ *Find(const Tkey &key) const

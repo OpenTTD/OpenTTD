@@ -71,7 +71,10 @@ public:
 	static const size_t header_size = sizeof(BlobHeader);
 
 	/** default constructor - initializes empty blob */
-	inline ByteBlob() { InitEmpty(); }
+	inline ByteBlob()
+	{
+		InitEmpty();
+	}
 
 	/** copy constructor */
 	inline ByteBlob(const ByteBlob &src)
@@ -311,9 +314,22 @@ public:
 
 	struct OnTransfer {
 		typename base::BlobHeader *header;
-		OnTransfer(const OnTransfer& src) : header(src.header) {assert(src.header != NULL); *const_cast<typename base::BlobHeader**>(&src.header) = NULL;}
-		OnTransfer(CBlobT& src) : header(src.header) {src.InitEmpty();}
-		~OnTransfer() {assert(header == NULL);}
+
+		OnTransfer(const OnTransfer& src) : header(src.header)
+		{
+			assert(src.header != NULL);
+			*const_cast<typename base::BlobHeader**>(&src.header) = NULL;
+		}
+
+		OnTransfer(CBlobT& src) : header(src.header)
+		{
+			src.InitEmpty();
+		}
+
+		~OnTransfer()
+		{
+			assert(header == NULL);
+		}
 	};
 
 	/** Default constructor - makes new Blob ready to accept any data */

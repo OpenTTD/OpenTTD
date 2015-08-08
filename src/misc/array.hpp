@@ -42,9 +42,16 @@ protected:
 
 public:
 	/** implicit constructor */
-	inline SmallArray() { }
+	inline SmallArray()
+	{
+	}
+
 	/** Clear (destroy) all items */
-	inline void Clear() {data.Clear();}
+	inline void Clear()
+	{
+		data.Clear();
+	}
+
 	/** Return actual number of items */
 	inline uint Length() const
 	{
@@ -54,13 +61,29 @@ public:
 		return (super_size - 1) * B + sub_size;
 	}
 	/** return true if array is empty */
-	inline bool IsEmpty() { return data.IsEmpty(); }
+	inline bool IsEmpty()
+	{
+		return data.IsEmpty();
+	}
+
 	/** return true if array is full */
-	inline bool IsFull() { return data.IsFull() && data[N - 1].IsFull(); }
+	inline bool IsFull()
+	{
+		return data.IsFull() && data[N - 1].IsFull();
+	}
+
 	/** allocate but not construct new item */
-	inline T *Append() { return FirstFreeSubArray().Append(); }
+	inline T *Append()
+	{
+		return FirstFreeSubArray().Append();
+	}
+
 	/** allocate and construct new item */
-	inline T *AppendC() { return FirstFreeSubArray().AppendC(); }
+	inline T *AppendC()
+	{
+		return FirstFreeSubArray().AppendC();
+	}
+
 	/** indexed access (non-const) */
 	inline T& operator[](uint index)
 	{

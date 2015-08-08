@@ -24,34 +24,23 @@
 template <class Titem_, int Thash_bits_open_, int Thash_bits_closed_>
 class CNodeList_HashTableT {
 public:
-	/** make Titem_ visible from outside of class */
-	typedef Titem_ Titem;
-	/** make Titem_::Key a property of HashTable */
-	typedef typename Titem_::Key Key;
-	/** type that we will use as item container */
-	typedef SmallArray<Titem_, 65536, 256> CItemArray;
-	/** how pointers to open nodes will be stored */
-	typedef CHashTableT<Titem_, Thash_bits_open_  > COpenList;
-	/** how pointers to closed nodes will be stored */
-	typedef CHashTableT<Titem_, Thash_bits_closed_> CClosedList;
-	/** how the priority queue will be managed */
-	typedef CBinaryHeapT<Titem_> CPriorityQueue;
+	typedef Titem_ Titem;                                        ///< Make #Titem_ visible from outside of class.
+	typedef typename Titem_::Key Key;                            ///< Make Titem_::Key a property of #HashTable.
+	typedef SmallArray<Titem_, 65536, 256> CItemArray;           ///< Type that we will use as item container.
+	typedef CHashTableT<Titem_, Thash_bits_open_  > COpenList;   ///< How pointers to open nodes will be stored.
+	typedef CHashTableT<Titem_, Thash_bits_closed_> CClosedList; ///< How pointers to closed nodes will be stored.
+	typedef CBinaryHeapT<Titem_> CPriorityQueue;                 ///< How the priority queue will be managed.
 
 protected:
-	/** here we store full item data (Titem_) */
-	CItemArray            m_arr;
-	/** hash table of pointers to open item data */
-	COpenList             m_open;
-	/** hash table of pointers to closed item data */
-	CClosedList           m_closed;
-	/** priority queue of pointers to open item data */
-	CPriorityQueue        m_open_queue;
-	/** new open node under construction */
-	Titem                *m_new_node;
+	CItemArray      m_arr;        ///< Here we store full item data (Titem_).
+	COpenList       m_open;       ///< Hash table of pointers to open item data.
+	CClosedList     m_closed;     ///< Hash table of pointers to closed item data.
+	CPriorityQueue  m_open_queue; ///< Priority queue of pointers to open item data.
+	Titem          *m_new_node;   ///< New open node under construction.
+
 public:
 	/** default constructor */
-	CNodeList_HashTableT()
-		: m_open_queue(2048)
+	CNodeList_HashTableT() : m_open_queue(2048)
 	{
 		m_new_node = NULL;
 	}
@@ -152,9 +141,16 @@ public:
 	}
 
 	/** The number of items. */
-	inline int TotalCount() {return m_arr.Length();}
+	inline int TotalCount()
+	{
+		return m_arr.Length();
+	}
+
 	/** Get a particular item. */
-	inline Titem_& ItemAt(int idx) {return m_arr[idx];}
+	inline Titem_& ItemAt(int idx)
+	{
+		return m_arr[idx];
+	}
 
 	/** Helper for creating output of this array. */
 	template <class D> void Dump(D &dmp) const

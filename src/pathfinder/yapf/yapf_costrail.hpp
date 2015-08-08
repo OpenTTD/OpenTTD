@@ -15,9 +15,7 @@
 #include "../../pbs.h"
 
 template <class Types>
-class CYapfCostRailT
-	: public CYapfCostBase
-{
+class CYapfCostRailT : public CYapfCostBase {
 public:
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
@@ -74,10 +72,7 @@ protected:
 
 	static const int s_max_segment_cost = 10000;
 
-	CYapfCostRailT()
-		: m_max_cost(0)
-		, m_disable_cache(false)
-		, m_stopped_on_first_two_way_signal(false)
+	CYapfCostRailT() : m_max_cost(0), m_disable_cache(false), m_stopped_on_first_two_way_signal(false)
 	{
 		/* pre-compute look-ahead penalties into array */
 		int p0 = Yapf().PfGetSettings().rail_look_ahead_signal_p0;
