@@ -1942,9 +1942,26 @@ check_compiler() {
 		log 2 "  exit code $ret"
 
 		if ( [ -z "$machine" ] && [ "$8" != "3" ] ) || [ "$ret" != "0" ]; then
-			log 1 "checking $1... $compiler not found"
-			log 1 "I couldn't detect any $6 binary for $3"
-			exit 1
+			if [ -z "$5" ]; then
+				log 1 "checking $1... $compiler not found"
+				log 1 "I couldn't detect any $6 binary for $3"
+				exit 1
+			else
+				compiler="$3-$5"
+			fi
+			machine=`eval $compiler $9 2>/dev/null`
+			ret=$?
+			eval "$2=\"$compiler\""
+
+			log 2 "executing $compiler $9"
+			log 2 "  returned $machine"
+			log 2 "  exit code $ret"
+
+			if ( [ -z "$machine" ] && [ "$8" != "3" ] ) || [ "$ret" != "0" ]; then
+				log 1 "checking $1... $compiler not found"
+				log 1 "I couldn't detect any $5 binary for $3"
+				exit 1
+			fi
 		fi
 
 		if [ "$machine" != "$3" ] && ( [ "$8" = "0" ] || [ "$8" = "1" ] ); then
