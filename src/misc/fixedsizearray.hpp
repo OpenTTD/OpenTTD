@@ -63,7 +63,7 @@ public:
 	}
 
 	/** Copy constructor. Preallocate space for items and header, then initialize header. */
-	FixedSizeArray(const FixedSizeArray<T, C>& src)
+	FixedSizeArray(const FixedSizeArray<T, C> &src)
 	{
 		/* share block (header + items) with the source array */
 		data = src.data;
@@ -106,9 +106,9 @@ public:
 	/** add and construct item using default constructor */
 	inline T *AppendC() { T *item = Append(); new(item)T; return item; }
 	/** return item by index (non-const version) */
-	inline T& operator [] (uint index) { assert(index < Length()); return data[index]; }
+	inline T& operator[](uint index) { assert(index < Length()); return data[index]; }
 	/** return item by index (const version) */
-	inline const T& operator [] (uint index) const { assert(index < Length()); return data[index]; }
+	inline const T& operator[](uint index) const { assert(index < Length()); return data[index]; }
 };
 
 #endif /* FIXEDSIZEARRAY_HPP */

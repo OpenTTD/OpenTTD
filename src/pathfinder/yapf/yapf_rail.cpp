@@ -48,7 +48,7 @@ protected:
 	/** to access inherited pathfinder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 private:
@@ -200,7 +200,7 @@ protected:
 	/** to access inherited path finder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 public:
@@ -209,7 +209,7 @@ public:
 	 *  reachable trackdir on the new tile creates new node, initializes it
 	 *  and adds it to the open list by calling Yapf().AddNewNode(n)
 	 */
-	inline void PfFollowNode(Node& old_node)
+	inline void PfFollowNode(Node &old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir())) {
@@ -296,7 +296,7 @@ protected:
 	/** to access inherited path finder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 public:
@@ -305,7 +305,7 @@ public:
 	 *  reachable trackdir on the new tile creates new node, initializes it
 	 *  and adds it to the open list by calling Yapf().AddNewNode(n)
 	 */
-	inline void PfFollowNode(Node& old_node)
+	inline void PfFollowNode(Node &old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle(), Yapf().GetCompatibleRailTypes());
 		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()) && F.MaskReservedTracks()) {
@@ -379,7 +379,7 @@ protected:
 	/** to access inherited path finder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 public:
@@ -388,7 +388,7 @@ public:
 	 *  reachable trackdir on the new tile creates new node, initializes it
 	 *  and adds it to the open list by calling Yapf().AddNewNode(n)
 	 */
-	inline void PfFollowNode(Node& old_node)
+	inline void PfFollowNode(Node &old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir())) {
@@ -453,7 +453,7 @@ public:
 				this->FindSafePositionOnNode(pPrev);
 			}
 			/* return trackdir from the best origin node (one of start nodes) */
-			Node& best_next_node = *pPrev;
+			Node &best_next_node = *pPrev;
 			next_trackdir = best_next_node.GetTrackdir();
 
 			if (reserve_track && path_found) this->TryReservePath(target, pNode->GetLastTile());
@@ -502,7 +502,7 @@ public:
 		}
 
 		/* check if it was reversed origin */
-		Node& best_org_node = *pNode;
+		Node &best_org_node = *pNode;
 		bool reversed = (best_org_node.m_cost != 0);
 		return reversed;
 	}

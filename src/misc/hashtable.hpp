@@ -27,7 +27,7 @@ struct CHashTableSlotT
 	inline void Clear() {m_pFirst = NULL;}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - const version */
-	inline const Titem_ *Find(const Key& key) const
+	inline const Titem_ *Find(const Key &key) const
 	{
 		for (const Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
@@ -39,7 +39,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - non-const version */
-	inline Titem_ *Find(const Key& key)
+	inline Titem_ *Find(const Key &key)
 	{
 		for (Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
@@ -51,7 +51,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - add new item to the slot */
-	inline void Attach(Titem_& new_item)
+	inline void Attach(Titem_ &new_item)
 	{
 		assert(new_item.GetHashNext() == NULL);
 		new_item.SetHashNext(m_pFirst);
@@ -59,7 +59,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - remove item from a slot */
-	inline bool Detach(Titem_& item_to_remove)
+	inline bool Detach(Titem_ &item_to_remove)
 	{
 		if (m_pFirst == &item_to_remove) {
 			m_pFirst = item_to_remove.GetHashNext();
@@ -81,7 +81,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - remove and return item from a slot */
-	inline Titem_ *Detach(const Key& key)
+	inline Titem_ *Detach(const Key &key)
 	{
 		/* do we have any items? */
 		if (m_pFirst == NULL) {
@@ -89,7 +89,7 @@ struct CHashTableSlotT
 		}
 		/* is it our first item? */
 		if (m_pFirst->GetKey() == key) {
-			Titem_& ret_item = *m_pFirst;
+			Titem_ &ret_item = *m_pFirst;
 			m_pFirst = m_pFirst->GetHashNext();
 			ret_item.SetHashNext(NULL);
 			return &ret_item;
@@ -128,7 +128,7 @@ struct CHashTableSlotT
  *    - public method that calculates key's hash:
  *        int CalcHash() const;
  *    - public 'equality' operator to compare the key with another one
- *        bool operator == (const Key& other) const;
+ *        bool operator==(const Key &other) const;
  */
 template <class Titem_, int Thash_bits_>
 class CHashTableT {
@@ -156,7 +156,7 @@ public:
 
 protected:
 	/** static helper - return hash for the given key modulo number of slots */
-	inline static int CalcHash(const Tkey& key)
+	inline static int CalcHash(const Tkey &key)
 	{
 		int32 hash = key.CalcHash();
 		if ((8 * Thash_bits) < 32) hash ^= hash >> (min(8 * Thash_bits, 31));
@@ -168,7 +168,7 @@ protected:
 	}
 
 	/** static helper - return hash for the given item modulo number of slots */
-	inline static int CalcHash(const Titem_& item) {return CalcHash(item.GetKey());}
+	inline static int CalcHash(const Titem_ &item) {return CalcHash(item.GetKey());}
 
 public:
 	/** item count */
@@ -178,28 +178,28 @@ public:
 	inline void Clear() {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
 
 	/** const item search */
-	const Titem_ *Find(const Tkey& key) const
+	const Titem_ *Find(const Tkey &key) const
 	{
 		int hash = CalcHash(key);
-		const Slot& slot = m_slots[hash];
+		const Slot &slot = m_slots[hash];
 		const Titem_ *item = slot.Find(key);
 		return item;
 	}
 
 	/** non-const item search */
-	Titem_ *Find(const Tkey& key)
+	Titem_ *Find(const Tkey &key)
 	{
 		int hash = CalcHash(key);
-		Slot& slot = m_slots[hash];
+		Slot &slot = m_slots[hash];
 		Titem_ *item = slot.Find(key);
 		return item;
 	}
 
 	/** non-const item search & optional removal (if found) */
-	Titem_ *TryPop(const Tkey& key)
+	Titem_ *TryPop(const Tkey &key)
 	{
 		int hash = CalcHash(key);
-		Slot& slot = m_slots[hash];
+		Slot &slot = m_slots[hash];
 		Titem_ *item = slot.Detach(key);
 		if (item != NULL) {
 			m_num_items--;
@@ -208,7 +208,7 @@ public:
 	}
 
 	/** non-const item search & removal */
-	Titem_& Pop(const Tkey& key)
+	Titem_& Pop(const Tkey &key)
 	{
 		Titem_ *item = TryPop(key);
 		assert(item != NULL);
@@ -216,11 +216,11 @@ public:
 	}
 
 	/** non-const item search & optional removal (if found) */
-	bool TryPop(Titem_& item)
+	bool TryPop(Titem_ &item)
 	{
-		const Tkey& key = item.GetKey();
+		const Tkey &key = item.GetKey();
 		int hash = CalcHash(key);
-		Slot& slot = m_slots[hash];
+		Slot &slot = m_slots[hash];
 		bool ret = slot.Detach(item);
 		if (ret) {
 			m_num_items--;
@@ -229,17 +229,17 @@ public:
 	}
 
 	/** non-const item search & removal */
-	void Pop(Titem_& item)
+	void Pop(Titem_ &item)
 	{
 		bool ret = TryPop(item);
 		assert(ret);
 	}
 
 	/** add one item - copy it from the given item */
-	void Push(Titem_& new_item)
+	void Push(Titem_ &new_item)
 	{
 		int hash = CalcHash(new_item);
-		Slot& slot = m_slots[hash];
+		Slot &slot = m_slots[hash];
 		assert(slot.Find(new_item.GetKey()) == NULL);
 		slot.Attach(new_item);
 		m_num_items++;

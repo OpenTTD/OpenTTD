@@ -81,7 +81,7 @@ public:
 	}
 
 	/** Notify the nodelist that we don't want to discard the given node. */
-	inline void FoundBestNode(Titem_& item)
+	inline void FoundBestNode(Titem_ &item)
 	{
 		/* for now it is enough to invalidate m_new_node if it is our given node */
 		if (&item == m_new_node) {
@@ -91,7 +91,7 @@ public:
 	}
 
 	/** insert given item as open node (into m_open and m_open_queue) */
-	inline void InsertOpenNode(Titem_& item)
+	inline void InsertOpenNode(Titem_ &item)
 	{
 		assert(m_closed.Find(item.GetKey()) == NULL);
 		m_open.Push(item);
@@ -122,30 +122,30 @@ public:
 	}
 
 	/** return the open node specified by a key or NULL if not found */
-	inline Titem_ *FindOpenNode(const Key& key)
+	inline Titem_ *FindOpenNode(const Key &key)
 	{
 		Titem_ *item = m_open.Find(key);
 		return item;
 	}
 
 	/** remove and return the open node specified by a key */
-	inline Titem_& PopOpenNode(const Key& key)
+	inline Titem_& PopOpenNode(const Key &key)
 	{
-		Titem_& item = m_open.Pop(key);
+		Titem_ &item = m_open.Pop(key);
 		uint idxPop = m_open_queue.FindIndex(item);
 		m_open_queue.Remove(idxPop);
 		return item;
 	}
 
 	/** close node */
-	inline void InsertClosedNode(Titem_& item)
+	inline void InsertClosedNode(Titem_ &item)
 	{
 		assert(m_open.Find(item.GetKey()) == NULL);
 		m_closed.Push(item);
 	}
 
 	/** return the closed node specified by a key or NULL if not found */
-	inline Titem_ *FindClosedNode(const Key& key)
+	inline Titem_ *FindClosedNode(const Key &key)
 	{
 		Titem_ *item = m_closed.Find(key);
 		return item;

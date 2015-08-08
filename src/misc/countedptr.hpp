@@ -38,7 +38,7 @@ public:
 	inline CCountedPtr(Tcls *pObj = NULL) : m_pT(pObj) {AddRef();}
 
 	/** copy constructor (invoked also when initializing from another smart ptr) */
-	inline CCountedPtr(const CCountedPtr& src) : m_pT(src.m_pT) {AddRef();}
+	inline CCountedPtr(const CCountedPtr &src) : m_pT(src.m_pT) {AddRef();}
 
 	/** destructor releasing the reference */
 	inline ~CCountedPtr() {Release();}
@@ -52,10 +52,10 @@ public:
 	inline void Release() {if (m_pT != NULL) {Tcls *pT = m_pT; m_pT = NULL; pT->Release();}}
 
 	/** dereference of smart pointer - const way */
-	inline const Tcls *operator -> () const {assert(m_pT != NULL); return m_pT;}
+	inline const Tcls *operator->() const {assert(m_pT != NULL); return m_pT;}
 
 	/** dereference of smart pointer - non const way */
-	inline Tcls *operator -> () {assert(m_pT != NULL); return m_pT;}
+	inline Tcls *operator->() {assert(m_pT != NULL); return m_pT;}
 
 	/** raw pointer casting operator - const way */
 	inline operator const Tcls*() const {assert(m_pT == NULL); return m_pT;}
@@ -64,13 +64,13 @@ public:
 	inline operator Tcls*() {return m_pT;}
 
 	/** operator & to support output arguments */
-	inline Tcls** operator &() {assert(m_pT == NULL); return &m_pT;}
+	inline Tcls** operator&() {assert(m_pT == NULL); return &m_pT;}
 
 	/** assignment operator from raw ptr */
-	inline CCountedPtr& operator = (Tcls *pT) {Assign(pT); return *this;}
+	inline CCountedPtr& operator=(Tcls *pT) {Assign(pT); return *this;}
 
 	/** assignment operator from another smart ptr */
-	inline CCountedPtr& operator = (const CCountedPtr& src) {Assign(src.m_pT); return *this;}
+	inline CCountedPtr& operator=(const CCountedPtr &src) {Assign(src.m_pT); return *this;}
 
 	/** assignment operator helper */
 	inline void Assign(Tcls *pT);
@@ -79,10 +79,10 @@ public:
 	inline bool IsNull() const {return m_pT == NULL;}
 
 	/** another way how to test for NULL value */
-	//inline bool operator == (const CCountedPtr& sp) const {return m_pT == sp.m_pT;}
+	//inline bool operator == (const CCountedPtr &sp) const {return m_pT == sp.m_pT;}
 
 	/** yet another way how to test for NULL value */
-	//inline bool operator != (const CCountedPtr& sp) const {return m_pT != sp.m_pT;}
+	//inline bool operator != (const CCountedPtr &sp) const {return m_pT != sp.m_pT;}
 
 	/** assign pointer w/o incrementing ref count */
 	inline void Attach(Tcls *pT) {Release(); m_pT = pT;}

@@ -28,7 +28,7 @@ protected:
 	/** to access inherited path finder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 public:
@@ -45,7 +45,7 @@ public:
 		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
 			Trackdir td = (Trackdir)FindFirstBit2x64(tdb);
-			Node& n1 = Yapf().CreateNewNode();
+			Node &n1 = Yapf().CreateNewNode();
 			n1.Set(NULL, m_orgTile, td, is_choice);
 			Yapf().AddStartupNode(n1);
 		}
@@ -72,7 +72,7 @@ protected:
 	/** to access inherited path finder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 public:
@@ -91,12 +91,12 @@ public:
 	void PfSetStartupNodes()
 	{
 		if (m_orgTile != INVALID_TILE && m_orgTd != INVALID_TRACKDIR) {
-			Node& n1 = Yapf().CreateNewNode();
+			Node &n1 = Yapf().CreateNewNode();
 			n1.Set(NULL, m_orgTile, m_orgTd, false);
 			Yapf().AddStartupNode(n1);
 		}
 		if (m_revTile != INVALID_TILE && m_revTd != INVALID_TRACKDIR) {
-			Node& n2 = Yapf().CreateNewNode();
+			Node &n2 = Yapf().CreateNewNode();
 			n2.Set(NULL, m_revTile, m_revTd, false);
 			n2.m_cost = m_reverse_penalty;
 			Yapf().AddStartupNode(n2);
@@ -135,12 +135,12 @@ protected:
 	/** to access inherited path finder */
 	Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 public:
 	/** Called by YAPF to detect if node ends in the desired destination */
-	inline bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node &n)
 	{
 		bool bDest = (n.m_key.m_tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(n.GetTrackdir())) != TRACKDIR_BIT_NONE);
 		return bDest;
@@ -150,7 +150,7 @@ public:
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate
 	 */
-	inline bool PfCalcEstimate(Node& n)
+	inline bool PfCalcEstimate(Node &n)
 	{
 		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
 		static const int dg_dir_to_y_offs[] = {0, 1, 0, -1};

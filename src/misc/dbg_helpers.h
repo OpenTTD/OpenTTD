@@ -111,7 +111,7 @@ struct DumpTarget {
 			m_ptr = src.m_ptr;
 		}
 
-		bool operator < (const KnownStructKey &other) const
+		bool operator<(const KnownStructKey &other) const
 		{
 			if ((size_t)m_ptr < (size_t)other.m_ptr) return true;
 			if ((size_t)m_ptr > (size_t)other.m_ptr) return false;

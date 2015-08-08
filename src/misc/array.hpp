@@ -34,7 +34,7 @@ protected:
 	{
 		uint super_size = data.Length();
 		if (super_size > 0) {
-			SubArray& s = data[super_size - 1];
+			SubArray &s = data[super_size - 1];
 			if (!s.IsFull()) return s;
 		}
 		return *data.AppendC();
@@ -62,17 +62,17 @@ public:
 	/** allocate and construct new item */
 	inline T *AppendC() { return FirstFreeSubArray().AppendC(); }
 	/** indexed access (non-const) */
-	inline T& operator [] (uint index)
+	inline T& operator[](uint index)
 	{
-		const SubArray& s = data[index / B];
-		T& item = s[index % B];
+		const SubArray &s = data[index / B];
+		T &item = s[index % B];
 		return item;
 	}
 	/** indexed access (const) */
-	inline const T& operator [] (uint index) const
+	inline const T& operator[](uint index) const
 	{
-		const SubArray& s = data[index / B];
-		const T& item = s[index % B];
+		const SubArray &s = data[index / B];
+		const T &item = s[index % B];
 		return item;
 	}
 
@@ -87,7 +87,7 @@ public:
 		dmp.WriteLine("num_items = %d", num_items);
 		CStrA name;
 		for (uint i = 0; i < num_items; i++) {
-			const T& item = (*this)[i];
+			const T &item = (*this)[i];
 			name.Format("item[%d]", i);
 			dmp.WriteStructT(name.Data(), &item);
 		}

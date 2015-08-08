@@ -17,19 +17,19 @@ struct CYapfRailSegmentKey
 {
 	uint32    m_value;
 
-	inline CYapfRailSegmentKey(const CYapfRailSegmentKey& src) : m_value(src.m_value) {}
+	inline CYapfRailSegmentKey(const CYapfRailSegmentKey &src) : m_value(src.m_value) {}
 
-	inline CYapfRailSegmentKey(const CYapfNodeKeyTrackDir& node_key)
+	inline CYapfRailSegmentKey(const CYapfNodeKeyTrackDir &node_key)
 	{
 		Set(node_key);
 	}
 
-	inline void Set(const CYapfRailSegmentKey& src)
+	inline void Set(const CYapfRailSegmentKey &src)
 	{
 		m_value = src.m_value;
 	}
 
-	inline void Set(const CYapfNodeKeyTrackDir& node_key)
+	inline void Set(const CYapfNodeKeyTrackDir &node_key)
 	{
 		m_value = (((int)node_key.m_tile) << 4) | node_key.m_td;
 	}
@@ -49,7 +49,7 @@ struct CYapfRailSegmentKey
 		return (Trackdir)(m_value & 0x0F);
 	}
 
-	inline bool operator == (const CYapfRailSegmentKey& other) const
+	inline bool operator==(const CYapfRailSegmentKey &other) const
 	{
 		return m_value == other.m_value;
 	}
@@ -75,7 +75,7 @@ struct CYapfRailSegment
 	EndSegmentReasonBits   m_end_segment_reason;
 	CYapfRailSegment      *m_hash_next;
 
-	inline CYapfRailSegment(const CYapfRailSegmentKey& key)
+	inline CYapfRailSegment(const CYapfRailSegmentKey &key)
 		: m_key(key)
 		, m_last_tile(INVALID_TILE)
 		, m_last_td(INVALID_TRACKDIR)

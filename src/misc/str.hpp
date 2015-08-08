@@ -35,7 +35,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Take over ownership constructor */
-	inline CStrA(const OnTransfer& ot)
+	inline CStrA(const OnTransfer &ot)
 		: base(ot)
 	{
 	}
@@ -67,7 +67,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Assignment from C string. */
-	inline CStrA &operator = (const char *src)
+	inline CStrA &operator=(const char *src)
 	{
 		base::Clear();
 		AppendStr(src);
@@ -75,7 +75,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Assignment from another CStrA. */
-	inline CStrA &operator = (const CStrA &src)
+	inline CStrA &operator=(const CStrA &src)
 	{
 		if (&src != this) {
 			base::Clear();
@@ -86,7 +86,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Lower-than operator (to support stl collections) */
-	inline bool operator < (const CStrA &other) const
+	inline bool operator<(const CStrA &other) const
 	{
 		return strcmp(base::Data(), other.Data()) < 0;
 	}

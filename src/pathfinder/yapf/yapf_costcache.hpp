@@ -30,7 +30,7 @@ public:
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
 	 *  @return true if globally cached data were used or false if local data was used
 	 */
-	inline bool PfNodeCacheFetch(Node& n)
+	inline bool PfNodeCacheFetch(Node &n)
 	{
 		return false;
 	}
@@ -39,7 +39,7 @@ public:
 	 * Called by YAPF to flush the cached segment cost data back into cache storage.
 	 *  Current cache implementation doesn't use that.
 	 */
-	inline void PfNodeCacheFlush(Node& n)
+	inline void PfNodeCacheFlush(Node &n)
 	{
 	}
 };
@@ -67,7 +67,7 @@ protected:
 	/** to access inherited path finder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 public:
@@ -75,7 +75,7 @@ public:
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
 	 *  @return true if globally cached data were used or false if local data was used
 	 */
-	inline bool PfNodeCacheFetch(Node& n)
+	inline bool PfNodeCacheFetch(Node &n)
 	{
 		CacheKey key(n.GetKey());
 		Yapf().ConnectNodeToCachedData(n, *new (m_local_cache.Append()) CachedData(key));
@@ -86,7 +86,7 @@ public:
 	 * Called by YAPF to flush the cached segment cost data back into cache storage.
 	 *  Current cache implementation doesn't use that.
 	 */
-	inline void PfNodeCacheFlush(Node& n)
+	inline void PfNodeCacheFlush(Node &n)
 	{
 	}
 };
@@ -142,7 +142,7 @@ struct CSegmentCostCacheT
 		m_heap.Clear();
 	}
 
-	inline Tsegment& Get(Key& key, bool *found)
+	inline Tsegment& Get(Key &key, bool *found)
 	{
 		Tsegment *item = m_map.Find(key);
 		if (item == NULL) {
@@ -175,14 +175,14 @@ public:
 	typedef CSegmentCostCacheT<CachedData> Cache;
 
 protected:
-	Cache&      m_global_cache;
+	Cache &m_global_cache;
 
 	inline CYapfSegmentCostCacheGlobalT() : m_global_cache(stGetGlobalCache()) {};
 
 	/** to access inherited path finder */
 	inline Tpf& Yapf()
 	{
-		return *static_cast<Tpf*>(this);
+		return *static_cast<Tpf *>(this);
 	}
 
 	inline static Cache& stGetGlobalCache()
@@ -211,14 +211,14 @@ public:
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
 	 *  @return true if globally cached data were used or false if local data was used
 	 */
-	inline bool PfNodeCacheFetch(Node& n)
+	inline bool PfNodeCacheFetch(Node &n)
 	{
 		if (!Yapf().CanUseGlobalCache(n)) {
 			return Tlocal::PfNodeCacheFetch(n);
 		}
 		CacheKey key(n.GetKey());
 		bool found;
-		CachedData& item = m_global_cache.Get(key, &found);
+		CachedData &item = m_global_cache.Get(key, &found);
 		Yapf().ConnectNodeToCachedData(n, item);
 		return found;
 	}
@@ -227,7 +227,7 @@ public:
 	 * Called by YAPF to flush the cached segment cost data back into cache storage.
 	 *  Current cache implementation doesn't use that.
 	 */
-	inline void PfNodeCacheFlush(Node& n)
+	inline void PfNodeCacheFlush(Node &n)
 	{
 	}
 };

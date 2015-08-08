@@ -26,7 +26,7 @@ struct CYapfNodeKeyExitDir {
 	}
 
 	inline int CalcHash() const {return m_exitdir | (m_tile << 2);}
-	inline bool operator == (const CYapfNodeKeyExitDir& other) const {return (m_tile == other.m_tile) && (m_exitdir == other.m_exitdir);}
+	inline bool operator==(const CYapfNodeKeyExitDir &other) const {return (m_tile == other.m_tile) && (m_exitdir == other.m_exitdir);}
 
 	void Dump(DumpTarget &dmp) const
 	{
@@ -39,7 +39,7 @@ struct CYapfNodeKeyExitDir {
 struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir
 {
 	inline int CalcHash() const {return m_td | (m_tile << 4);}
-	inline bool operator == (const CYapfNodeKeyTrackDir& other) const {return (m_tile == other.m_tile) && (m_td == other.m_td);}
+	inline bool operator==(const CYapfNodeKeyTrackDir &other) const {return (m_tile == other.m_tile) && (m_td == other.m_td);}
 };
 
 /** Yapf Node base */
@@ -70,7 +70,7 @@ struct CYapfNodeT {
 	inline const Tkey_& GetKey() const {return m_key;}
 	inline int GetCost() const {return m_cost;}
 	inline int GetCostEstimate() const {return m_estimate;}
-	inline bool operator < (const Node& other) const {return m_estimate < other.m_estimate;}
+	inline bool operator<(const Node &other) const {return m_estimate < other.m_estimate;}
 
 	void Dump(DumpTarget &dmp) const
 	{
