@@ -29,6 +29,7 @@ set_default() {
 	strip=""
 	lipo=""
 	awk="awk"
+	pkg_config="pkg-config"
 	os="DETECT"
 	endian="AUTO"
 	cpu_type="DETECT"
@@ -105,6 +106,7 @@ set_default() {
 		strip
 		lipo
 		awk
+		pkg_config
 		os
 		endian
 		cpu_type
@@ -213,6 +215,8 @@ detect_params() {
 			--windres=*)                  windres="$optarg";;
 			--awk)                        prev_p="awk";;
 			--awk=*)                      awk="$optarg";;
+			--pkg-config)                 prev_p="pkg_config";;
+			--pkg-config=*)               pkg_config="$optarg";;
 			--strip)                      prev_p="strip";;
 			--strip=*)                    strip="$optarg";;
 			--lipo)                       prev_p="lipo";;
@@ -2736,7 +2740,7 @@ detect_pkg_config() {
 	log 2 "detecting $2"
 
 	if [ "$1" = "1" ] || [ "$1" = "" ] || [ "$1" = "2" ]; then
-		pkg_config_call="pkg-config $2"
+		pkg_config_call="$pkg_config $2"
 	else
 		pkg_config_call="$1"
 	fi
@@ -2758,7 +2762,7 @@ detect_pkg_config() {
 
 		# It was forced, so it should be found.
 		if [ "$1" != "1" ]; then
-			log 1 "configure: error: pkg-config $2 couldn't be found"
+			log 1 "configure: error: $pkg_config $2 couldn't be found"
 			log 1 "configure: error: you supplied '$1', but it seems invalid"
 			exit 1
 		fi
@@ -3588,6 +3592,7 @@ showhelp() {
 	echo "  --windres=WINDRES              the windres to use [HOST-windres]"
 	echo "  --strip=STRIP                  the strip to use [HOST-strip]"
 	echo "  --awk=AWK                      the awk to use in configure [awk]"
+	echo "  --pkg-config=PKG-CONFIG        the pkg-config to use in configure [pkg-config]"
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/DRAGONFLY/OPENBSD/"
