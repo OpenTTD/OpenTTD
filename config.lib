@@ -1760,13 +1760,15 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ -n "$libtimidity" ]; then
-		if [ "$enable_static" != "0" ]; then
-			LIBS="$LIBS $libtimidity"
-		else
-			LIBS="$LIBS -ltimidity"
-		fi
+	if [ -n "$libtimidity_config" ]; then
 		CFLAGS="$CFLAGS -DLIBTIMIDITY"
+		CFLAGS="$CFLAGS `$libtimidity_config --cflags | tr '\n\r' '  '`"
+
+		if [ "$enable_static" != "0" ]; then
+			LIBS="$LIBS `$libtimidity_config --libs --static | tr '\n\r' '  '`"
+		else
+			LIBS="$LIBS `$libtimidity_config --libs | tr '\n\r' '  '`"
+		fi
 	fi
 
 	if [ "$with_iconv" != "0" ]; then
@@ -2669,7 +2671,7 @@ detect_lzo2() {
 }
 
 detect_libtimidity() {
-	detect_library "$with_libtimidity" "libtimidity" "libtimidity.a" "" "timidity.h"
+	detect_pkg_config "$with_libtimidity" "libtimidity" "libtimidity_config" "0.1" "1"
 }
 
 detect_pkg_config() {
@@ -3533,7 +3535,8 @@ showhelp() {
 	echo "  --with-midi=midi               define which midi-player to use"
 	echo "  --with-midi-arg=arg            define which args to use for the"
 	echo "                                 midi-player"
-	echo "  --with-libtimidity             enables libtimidity support"
+	echo "  --with-libtimidity[=\"pkg-config libtimidity\"]"
+	echo "                                 enables libtimidity support"
 	echo "  --with-allegro[=\"pkg-config allegro\"]"
 	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
