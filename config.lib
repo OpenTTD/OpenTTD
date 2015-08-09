@@ -2796,47 +2796,7 @@ detect_png() {
 }
 
 detect_freetype() {
-	# 0 means no, 1 is auto-detect, 2 is force
-	if [ "$with_freetype" = "0" ]; then
-		log 1 "checking libfreetype... disabled"
-
-		freetype_config=""
-		return 0
-	fi
-	if [ "$with_freetype" = "1" ] && [ "$enable_dedicated" != "0" ]; then
-		log 1 "checking libfreetype... dedicated server, skipping"
-
-		freetype_config=""
-		return 0
-	fi
-
-	if [ "$with_freetype" = "1" ] || [ "$with_freetype" = "" ] || [ "$with_freetype" = "2" ]; then
-		freetype_config="freetype-config"
-	else
-		freetype_config="$with_freetype"
-	fi
-
-	version=`$freetype_config --version 2>/dev/null`
-	ret=$?
-	log 2 "executing freetype_config --version"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking libfreetype... not found"
-
-		# It was forced, so it should be found.
-		if [ "$with_freetype" != "1" ]; then
-			log 1 "configure: error: freetype-config couldn't be found"
-			log 1 "configure: error: you supplied '$with_freetype', but it seems invalid"
-			exit 1
-		fi
-
-		freetype_config=""
-		return 0
-	fi
-
-	log 1 "checking libfreetype... found"
+	detect_pkg_config "$with_freetype" "freetype2" "freetype_config" "2.2" "1"
 }
 
 detect_fontconfig() {
@@ -3634,7 +3594,7 @@ showhelp() {
 	echo "                                 enables liblzma support"
 	echo "  --with-liblzo2[=liblzo2.a]     enables liblzo2 support"
 	echo "  --with-png[=libpng-config]     enables libpng support"
-	echo "  --with-freetype[=freetype-config]"
+	echo "  --with-freetype[=\"pkg-config freetype2\"]"
 	echo "                                 enables libfreetype support"
 	echo "  --with-fontconfig[=\"pkg-config fontconfig\"]"
 	echo "                                 enables fontconfig support"
