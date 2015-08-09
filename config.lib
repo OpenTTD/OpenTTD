@@ -2407,33 +2407,7 @@ detect_sdl() {
 		sleep 5
 	fi
 
-	if [ "$with_sdl" = "1" ] || [ "$with_sdl" = "" ] || [ "$with_sdl" = "2" ]; then
-		sdl_config="sdl-config"
-	else
-		sdl_config="$with_sdl"
-	fi
-
-	version=`$sdl_config --version 2>/dev/null`
-	ret=$?
-	log 2 "executing $sdl_config --version"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking SDL... not found"
-
-		# It was forced, so it should be found.
-		if [ "$with_sdl" != "1" ]; then
-			log 1 "configure: error: sdl-config couldn't be found"
-			log 1 "configure: error: you supplied '$with_sdl', but it seems invalid"
-			exit 1
-		fi
-
-		sdl_config=""
-		return 0
-	fi
-
-	log 1 "checking SDL... found"
+	detect_pkg_config "$with_sdl" "sdl" "sdl_config" "1.2"
 }
 
 detect_osx_sdk() {
@@ -3562,7 +3536,7 @@ showhelp() {
 	echo "  --with-allegro[=\"pkg-config allegro\"]"
 	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
-	echo "  --with-sdl[=sdl-config]        enables SDL video driver support"
+	echo "  --with-sdl[=\"pkg-config sdl\"]  enables SDL video driver support"
 	echo "  --with-zlib[=zlib.a]           enables zlib support"
 	echo "  --with-liblzma[=\"pkg-config liblzma\"]"
 	echo "                                 enables liblzma support"
