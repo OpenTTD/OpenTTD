@@ -85,7 +85,8 @@ set_default() {
 	with_libtimidity="1"
 	with_freetype="1"
 	with_fontconfig="1"
-	with_icu="1"
+	with_icu_layout="1"
+	with_icu_sort="1"
 	static_icu="0"
 	with_psp_config="1"
 	with_threads="1"
@@ -161,7 +162,8 @@ set_default() {
 		with_libtimidity
 		with_freetype
 		with_fontconfig
-		with_icu
+		with_icu_layout
+		with_icu_sort
 		static_icu
 		with_psp_config
 		with_threads
@@ -387,12 +389,18 @@ detect_params() {
 			--without-libfontconfig)      with_fontconfig="0";;
 			--with-libfontconfig=*)       with_fontconfig="$optarg";;
 
-			--with-icu)                   with_icu="2";;
-			--without-icu)                with_icu="0";;
-			--with-icu=*)                 with_icu="$optarg";;
-			--with-libicu)                with_icu="2";;
-			--without-libicu)             with_icu="0";;
-			--with-libicu=*)              with_icu="$optarg";;
+			--with-icu)                   with_icu_layout="2";with_icu_sort="2";;
+			--without-icu)                with_icu_layout="0";with_icu_sort="0";;
+			--with-icu=*)                 with_icu_layout="$optarg";with_icu_sort="$optarg";;
+			--with-libicu)                with_icu_layout="2";with_icu_sort="2";;
+			--without-libicu)             with_icu_layout="0";with_icu_sort="0";;
+			--with-libicu=*)              with_icu_layout="$optarg";with_icu_sort="$optarg";;
+			--with-icu-layout)            with_icu_layout="2";;
+			--without-icu-layout)         with_icu_layout="0";;
+			--with-icu-layout=*)          with_icu_layout="$optarg";;
+			--with-icu-sort)              with_icu_sort="2";;
+			--without-icu-sort)           with_icu_sort="0";;
+			--with-icu-sort=*)            with_icu_sort="$optarg";;
 			--static-icu)                 static_icu="1";;
 			--static-icu=*)               static_icu="$optarg";;
 			--static-libicu)              static_icu="1";;
@@ -842,7 +850,8 @@ check_params() {
 	detect_png
 	detect_freetype
 	detect_fontconfig
-	detect_icu
+	detect_icu_layout
+	detect_icu_sort
 	detect_pspconfig
 	detect_libtimidity
 
@@ -1737,15 +1746,25 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ -n "$icu_config" ]; then
-		CFLAGS="$CFLAGS -DWITH_ICU_LAYOUT -DWITH_ICU_SORT"
-		CFLAGS="$CFLAGS `$icu_config --cppflags | tr '\n\r' '  '`"
+	if [ -n "$icu_layout_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_ICU_LAYOUT"
+		CFLAGS="$CFLAGS `$icu_layout_config --cflags | tr '\n\r' '  '`"
 
-		# Some icu-configs have the 'feature' of not adding a space where others do add the space
 		if [ "$static_icu" != "0" ]; then
-			LIBS="$LIBS `$icu_config --ldflags-searchpath` `($icu_config --ldflags-libsonly; $icu_config --ldflags-layout) | tr '\n\r' '  ' | sed s/licu/lsicu/g`"
+			LIBS="$LIBS `$icu_layout_config --libs --static | tr '\n\r' '  ' | sed s/-licu/-lsicu/g`"
 		else
-			LIBS="$LIBS `$icu_config --ldflags-searchpath` `($icu_config --ldflags-libsonly; $icu_config --ldflags-layout) | tr '\n\r' '  '`"
+			LIBS="$LIBS `$icu_layout_config --libs | tr '\n\r' '  '`"
+		fi
+	fi
+
+	if [ -n "$icu_sort_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_ICU_SORT"
+		CFLAGS="$CFLAGS `$icu_sort_config --cflags | tr '\n\r' '  '`"
+
+		if [ "$static_icu" != "0" ]; then
+			LIBS="$LIBS `$icu_sort_config --libs --static | tr '\n\r' '  ' | sed s/-licu/-lsicu/g`"
+		else
+			LIBS="$LIBS `$icu_sort_config --libs | tr '\n\r' '  '`"
 		fi
 	fi
 
@@ -2773,54 +2792,12 @@ detect_fontconfig() {
 	detect_pkg_config "$with_fontconfig" "fontconfig" "fontconfig_config" "2.3" "1"
 }
 
-detect_icu() {
-	# 0 means no, 1 is auto-detect, 2 is force
-	if [ "$with_icu" = "0" ]; then
-		log 1 "checking libicu... disabled"
+detect_icu_layout() {
+	detect_pkg_config "$with_icu_layout" "icu-lx" "icu_layout_config" "4.8" "1"
+}
 
-		icu_config=""
-		return 0
-	fi
-	if [ "$with_icu" = "1" ] && [ "$enable_dedicated" != "0" ]; then
-		log 1 "checking libicu... dedicated server, skipping"
-
-		icu_config=""
-		return 0
-	fi
-
-	if [ "$with_icu" = "1" ] || [ "$with_icu" = "" ] || [ "$with_icu" = "2" ]; then
-		icu_config="icu-config"
-	else
-		icu_config="$with_icu"
-	fi
-
-	version=`$icu_config --version 2>/dev/null`
-	ret=$?
-	check_version '3.6' "$version"
-	version_ok=$?
-	log 2 "executing $icu_config --version"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version_ok" != "1" ]; then
-		if [ -n "$version" ] && [ "$version_ok" != "1" ]; then
-			log 1 "checking libicu... needs at least version 3.6.0, icu NOT enabled"
-		else
-			log 1 "checking libicu... not found"
-		fi
-
-		# It was forced, so it should be found.
-		if [ "$with_icu" != "1" ]; then
-			log 1 "configure: error: icu-config couldn't be found"
-			log 1 "configure: error: you supplied '$with_icu', but it seems invalid"
-			exit 1
-		fi
-
-		icu_config=""
-		return 0
-	fi
-
-	log 1 "checking libicu... found"
+detect_icu_sort() {
+	detect_pkg_config "$with_icu_sort" "icu-i18n" "icu_sort_config" "4.8" "1"
 }
 
 detect_pspconfig() {
@@ -3554,7 +3531,11 @@ showhelp() {
 	echo "                                 enables fontconfig support"
 	echo "  --with-xdg-basedir[=\"pkg-config libxdg-basedir\"]"
 	echo "                                 enables XDG base directory support"
-	echo "  --with-icu[=icu-config]        enables icu (used for right-to-left support)"
+	echo "  --with-icu                     enables icu components for layout and sorting"
+	echo "  --with-icu-layout[=\"pkg-config icu-lx\"]"
+	echo "                                 enables icu components for layouting (right-to-left support)"
+	echo "  --with-icu-sort[=\"pkg-config icu-i18n\"]"
+	echo "                                 enables icu components for locale specific string sorting"
 	echo "  --static-icu                   try to link statically (libsicu instead of"
 	echo "                                 libicu; can fail as the new name is guessed)"
 	echo "  --with-iconv[=iconv-path]      enables iconv support"
