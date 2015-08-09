@@ -2728,10 +2728,18 @@ detect_pkg_config() {
 	# $2 - package name ('liblzma')
 	# $3 - config name ('lzma_config', sets $lzma_config)
 	# $4 - minimum module version ('2.3')
+	# $5 - check for dedicated, 1 is "skif if dedicated"
 
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$1" = "0" ]; then
 		log 1 "checking $2... disabled"
+
+		eval "$3=\"\""
+		return 0
+	fi
+
+	if [ "$5" = "1" ] && [ "$1" = "1" ] && [ "$enable_dedicated" != "0" ]; then
+		log 1 "checking $2... dedicated server, skipping"
 
 		eval "$3=\"\""
 		return 0
@@ -2839,12 +2847,6 @@ detect_fontconfig() {
 		fontconfig_config=""
 		return 0
 	fi
-	if [ "$with_fontconfig" = "1" ] && [ "$enable_dedicated" != "0" ]; then
-		log 1 "checking libfontconfig... dedicated server, skipping"
-
-		fontconfig_config=""
-		return 0
-	fi
 	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
 		log 1 "checking libfontconfig... WIN32, skipping"
 		fontconfig_config=""
@@ -2857,7 +2859,7 @@ detect_fontconfig() {
 		return 0
 	fi
 
-	detect_pkg_config "$with_fontconfig" "fontconfig" "fontconfig_config" "2.3"
+	detect_pkg_config "$with_fontconfig" "fontconfig" "fontconfig_config" "2.3" "1"
 }
 
 detect_icu() {
