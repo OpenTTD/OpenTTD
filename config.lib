@@ -791,7 +791,7 @@ check_params() {
 	pre_detect_with_zlib=$with_zlib
 	detect_zlib
 
-	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
+	if [ "$with_zlib" = "0" ] || [ -z "$zlib-config" ]; then
 		log 1 "WARNING: zlib was not detected or disabled"
 		log 1 "WARNING: OpenTTD doesn't require zlib, but it does mean that many features"
 		log 1 "WARNING: (like loading most old savegames/scenarios, loading heightmaps,"
@@ -1657,12 +1657,13 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ "$with_zlib" != "0" ]; then
-		if [ "$enable_static" != "0" ] && [ "$os" != "OSX" ]; then
-			LIBS="$LIBS $zlib"
-		else
-			LIBS="$LIBS -lz"
-		fi
 		CFLAGS="$CFLAGS -DWITH_ZLIB"
+		CFLAGS="$CFLAGS `$zlib_config --cflags | tr '\n\r' '  '`"
+		if [ "$enable_static" != "0" ]; then
+			LIBS="$LIBS `$zlib_config --libs --static | tr '\n\r' '  '`"
+		else
+			LIBS="$LIBS `$zlib_config --libs | tr '\n\r' '  '`"
+		fi
 	fi
 
 	if [ -n "$lzma_config" ]; then
@@ -2660,7 +2661,7 @@ detect_library() {
 }
 
 detect_zlib() {
-	detect_library "$with_zlib" "zlib" "libz.a" "" "zlib.h"
+	detect_pkg_config "$with_zlib" "zlib" "zlib_config" "1.2"
 }
 
 detect_lzo2() {
@@ -3537,7 +3538,8 @@ showhelp() {
 	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
 	echo "  --with-sdl[=\"pkg-config sdl\"]  enables SDL video driver support"
-	echo "  --with-zlib[=zlib.a]           enables zlib support"
+	echo "  --with-zlib[=\"pkg-config zlib\"]"
+	echo "                                 enables zlib support"
 	echo "  --with-liblzma[=\"pkg-config liblzma\"]"
 	echo "                                 enables liblzma support"
 	echo "  --with-liblzo2[=liblzo2.a]     enables liblzo2 support"
