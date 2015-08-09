@@ -13,9 +13,9 @@
 #define LANGUAGE_H
 
 #include "core/smallvec_type.hpp"
-#ifdef WITH_ICU
+#ifdef WITH_ICU_SORT
 #include <unicode/coll.h>
-#endif /* WITH_ICU */
+#endif /* WITH_ICU_SORT */
 
 static const uint8 CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gender string.
 static const uint8 MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
@@ -110,9 +110,9 @@ extern LanguageList _languages;
 /** The currently loaded language. */
 extern const LanguageMetadata *_current_language;
 
-#ifdef WITH_ICU
+#ifdef WITH_ICU_SORT
 extern Collator *_current_collator;
-#endif /* WITH_ICU */
+#endif /* WITH_ICU_SORT */
 
 bool ReadLanguagePack(const LanguageMetadata *lang);
 const LanguageMetadata *GetLanguage(byte newgrflangid);

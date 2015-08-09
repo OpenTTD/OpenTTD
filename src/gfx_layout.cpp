@@ -17,9 +17,9 @@
 
 #include "table/control_codes.h"
 
-#ifdef WITH_ICU
+#ifdef WITH_ICU_LAYOUT
 #include <unicode/ustring.h>
-#endif /* WITH_ICU */
+#endif /* WITH_ICU_LAYOUT */
 
 #include "safeguards.h"
 
@@ -42,7 +42,7 @@ Font::Font(FontSize size, TextColour colour) :
 	assert(size < FS_END);
 }
 
-#ifdef WITH_ICU
+#ifdef WITH_ICU_LAYOUT
 /* Implementation details of LEFontInstance */
 
 le_int32 Font::getUnitsPerEM() const
@@ -213,7 +213,7 @@ static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontM
 	return new ICUParagraphLayout(p);
 }
 
-#endif /* WITH_ICU */
+#endif /* WITH_ICU_LAYOUT */
 
 /*** Paragraph layout ***/
 /**
@@ -654,7 +654,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			line.layout->Reflow();
 		} else {
 			/* Line is new, layout it */
-#ifdef WITH_ICU
+#ifdef WITH_ICU_LAYOUT
 			FontState old_state = state;
 			const char *old_str = str;
 

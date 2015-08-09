@@ -196,9 +196,9 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 #	include <ft2build.h>
 #	include FT_FREETYPE_H
 #endif /* WITH_FREETYPE */
-#ifdef WITH_ICU
+#if defined(WITH_ICU_LAYOUT) || defined(WITH_ICU_SORT)
 #	include <unicode/uversion.h>
-#endif /* WITH_ICU */
+#endif /* WITH_ICU_SORT || WITH_ICU_LAYOUT */
 #ifdef WITH_LZMA
 #	include <lzma.h>
 #endif
@@ -241,14 +241,19 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	buffer += seprintf(buffer, last, " FreeType:   %d.%d.%d\n", major, minor, patch);
 #endif /* WITH_FREETYPE */
 
-#ifdef WITH_ICU
+#if defined(WITH_ICU_LAYOUT) || defined(WITH_ICU_SORT)
 	/* 4 times 0-255, separated by dots (.) and a trailing '\0' */
 	char buf[4 * 3 + 3 + 1];
 	UVersionInfo ver;
 	u_getVersion(ver);
 	u_versionToString(ver, buf);
-	buffer += seprintf(buffer, last, " ICU:        %s\n", buf);
-#endif /* WITH_ICU */
+#ifdef WITH_ICU_SORT
+	buffer += seprintf(buffer, last, " ICU i18n:   %s\n", buf);
+#endif
+#ifdef WITH_ICU_LAYOUT
+	buffer += seprintf(buffer, last, " ICU lx:     %s\n", buf);
+#endif
+#endif /* WITH_ICU_SORT || WITH_ICU_LAYOUT */
 
 #ifdef WITH_LZMA
 	buffer += seprintf(buffer, last, " LZMA:       %s\n", lzma_version_string());
