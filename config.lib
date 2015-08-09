@@ -2784,29 +2784,6 @@ detect_xdg_basedir() {
 }
 
 detect_png() {
-	# 0 means no, 1 is auto-detect, 2 is force
-	if [ "$with_png" = "0" ]; then
-		log 1 "checking libpng... disabled"
-
-		png_config=""
-		return 0
-	fi
-
-	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
-		if [ "$with_png" != "1" ]; then
-			log 1 "checking libpng... no zlib"
-			log 1 "ERROR: libpng was forced, but zlib was not detected / disabled."
-			log 1 "ERROR: libpng depends on zlib."
-
-			exit 1
-		fi
-
-		log 1 "checking libpng... no zlib, skipping"
-
-		png_config=""
-		return 0
-	fi
-
 	detect_pkg_config "$with_png" "libpng" "png_config" "1.2"
 }
 
@@ -2820,21 +2797,6 @@ detect_freetype() {
 	fi
 	if [ "$with_freetype" = "1" ] && [ "$enable_dedicated" != "0" ]; then
 		log 1 "checking libfreetype... dedicated server, skipping"
-
-		freetype_config=""
-		return 0
-	fi
-
-	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
-		if [ "$with_freetype" != "1" ]; then
-			log 1 "checking libfreetype... no zlib"
-			log 1 "ERROR: libfreetype was forced, but zlib was not detected / disabled."
-			log 1 "ERROR: libfreetype depends on zlib."
-
-			exit 1
-		fi
-
-		log 1 "checking libfreetype... no zlib, skipping"
 
 		freetype_config=""
 		return 0
@@ -2883,13 +2845,6 @@ detect_fontconfig() {
 		fontconfig_config=""
 		return 0
 	fi
-	if [ "$with_fontconfig" != "2" ] && [ -z "$freetype_config" ]; then
-		log 1 "checking libfontconfig... no freetype, skipping"
-
-		fontconfig_config=""
-		return 0
-	fi
-
 	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
 		log 1 "checking libfontconfig... WIN32, skipping"
 		fontconfig_config=""
