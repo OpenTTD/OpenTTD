@@ -1943,7 +1943,7 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL: {
-				int top_pos = r.top + SETTINGTREE_TOP_OFFSET + 1 + this->warn_lines * FONT_HEIGHT_NORMAL;
+				int top_pos = r.top + SETTINGTREE_TOP_OFFSET + 1 + this->warn_lines * SETTING_HEIGHT;
 				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
 				int next_row = GetSettingsTree().Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, top_pos,
 						this->vscroll->GetPosition(), last_row, this->last_clicked);
