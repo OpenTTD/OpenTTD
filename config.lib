@@ -2353,7 +2353,7 @@ detect_allegro() {
 		return 0
 	fi
 
-	# By default on OSX we don't use SDL. The rest is auto-detect
+	# By default on OSX we don't use Allegro. The rest is auto-detect
 	if [ "$with_allegro" = "1" ] && [ "$os" = "OSX" ] && [ "$with_cocoa" != "0" ]; then
 		log 1 "checking Allegro... OSX, skipping"
 
@@ -2361,33 +2361,7 @@ detect_allegro() {
 		return 0
 	fi
 
-	if [ "$with_allegro" = "1" ] || [ "$with_allegro" = "" ] || [ "$with_allegro" = "2" ]; then
-		allegro_config="allegro-config"
-	else
-		allegro_config="$with_allegro"
-	fi
-
-	version=`$allegro_config --version 2>/dev/null`
-	ret=$?
-	log 2 "executing $allegro_config --version"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking Allegro... not found"
-
-		# It was forced, so it should be found.
-		if [ "$with_allegro" != "1" ]; then
-			log 1 "configure: error: allegro-config couldn't be found"
-			log 1 "configure: error: you supplied '$with_allegro', but it seems invalid"
-			exit 1
-		fi
-
-		allegro_config=""
-		return 0
-	fi
-
-	log 1 "checking Allegro... found"
+	detect_pkg_config "$with_allegro" "allegro" "allegro_config" "4.4"
 }
 
 
@@ -3585,7 +3559,7 @@ showhelp() {
 	echo "  --with-midi-arg=arg            define which args to use for the"
 	echo "                                 midi-player"
 	echo "  --with-libtimidity             enables libtimidity support"
-	echo "  --with-allegro[=allegro-config]"
+	echo "  --with-allegro[=\"pkg-config allegro\"]"
 	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
 	echo "  --with-sdl[=sdl-config]        enables SDL video driver support"
