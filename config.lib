@@ -1708,13 +1708,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS `$png_config --cflags | tr '\n\r' '  '`"
 
 		if [ "$enable_static" != "0" ]; then
-			if [ "$os" = "OSX" ]; then
-				# fontconfig_config goes via pkg-config on all systems, which doesn't know --prefix
-				# Also, despite the reason we link to the .a file ourself (because we can't use -static), we do need to ask pkg-config about possible other deps
-				LIBS="$LIBS `$png_config --variable=prefix`/lib/libpng.a `$png_config --libs --static | sed s@-lpng[0-9]*@@`"
-			else
-				LIBS="$LIBS `$png_config --libs --static | tr '\n\r' '  '`"
-			fi
+			LIBS="$LIBS `$png_config --libs --static | tr '\n\r' '  '`"
 		else
 			LIBS="$LIBS `$png_config --libs | tr '\n\r' '  '`"
 		fi
@@ -1725,13 +1719,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS `$fontconfig_config --cflags | tr '\n\r' '  '`"
 
 		if [ "$enable_static" != "0" ]; then
-			if [ "$os" = "OSX" ]; then
-				# fontconfig_config goes via pkg-config on all systems, which doesn't know --prefix
-				# Also, despite the reason we link to the .a file ourself (because we can't use -static), we do need to ask pkg-config about possible other deps
-				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a `$fontconfig_config --libs --static | sed s@-lfontconfig@@`"
-			else
-				LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
-			fi
+			LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
 		else
 			LIBS="$LIBS `$fontconfig_config --libs | tr '\n\r' '  '`"
 		fi
@@ -1742,12 +1730,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS `$freetype_config --cflags | tr '\n\r' '  '`"
 
 		if [ "$enable_static" != "0" ]; then
-			if [ "$os" = "OSX" ]; then
-				LIBS="$LIBS `$freetype_config --prefix`/lib/libfreetype.a"
-			else
-				# Is it possible to do static with freetype, if so: how?
-				LIBS="$LIBS `$freetype_config --libs | tr '\n\r' '  '`"
-			fi
+			LIBS="$LIBS `$freetype_config --libs --static | tr '\n\r' '  '`"
 		else
 			LIBS="$LIBS `$freetype_config --libs | tr '\n\r' '  '`"
 		fi
