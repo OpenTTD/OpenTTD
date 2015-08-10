@@ -1076,7 +1076,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 		_heightmap_schemes[n].height_colours = ReallocT<uint32>(_heightmap_schemes[n].height_colours, heights);
 
 		for (int z = 0; z < heights; z++) {
-			uint access_index = (_heightmap_schemes[n].colour_count * z) / heights;
+			size_t access_index = (_heightmap_schemes[n].colour_count * z) / heights;
 
 			/* Choose colour by mapping the range (0..max heightlevel) on the complete colour table. */
 			_heightmap_schemes[n].height_colours[z] = _heightmap_schemes[n].height_colours_base[access_index];
@@ -1401,7 +1401,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 		case WID_SM_ZOOM_IN:
 		case WID_SM_ZOOM_OUT: {
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-			Point pt = {wid->current_x / 2, wid->current_y / 2};
+			Point pt = { (int)wid->current_x / 2, (int)wid->current_y / 2};
 			this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
 			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 			break;

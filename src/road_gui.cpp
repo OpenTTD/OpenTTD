@@ -233,7 +233,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, uint32 p2, u
 	p2 |= ddir << 6; // Set the DiagDirecion into p2 bits 6 and 7.
 
 	TileArea ta(start_tile, end_tile);
-	CommandContainer cmdcont = { ta.tile, ta.w | ta.h << 8, p2, cmd, CcRoadStop, "" };
+	CommandContainer cmdcont = { ta.tile, (uint32)(ta.w | ta.h << 8), p2, cmd, CcRoadStop, "" };
 	ShowSelectStationIfNeeded(cmdcont, ta);
 }
 

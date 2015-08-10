@@ -403,7 +403,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			}
 		}
 
-		if (c != NULL) c->terraform_limit -= ts.tile_to_new_height.size() << 16;
+		if (c != NULL) c->terraform_limit -= (uint32)ts.tile_to_new_height.size() << 16;
 	}
 	return total_cost;
 }

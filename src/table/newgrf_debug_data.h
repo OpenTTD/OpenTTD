@@ -13,7 +13,7 @@
 #include "../newgrf_engine.h"
 
 /* Helper for filling property tables */
-#define NIP(prop, base, variable, type, name) { name, cpp_offsetof(base, variable), cpp_sizeof(base, variable), prop, type }
+#define NIP(prop, base, variable, type, name) { name, (ptrdiff_t)cpp_offsetof(base, variable), cpp_sizeof(base, variable), prop, type }
 #define NIP_END() { NULL, 0, 0, 0, 0 }
 
 /* Helper for filling callback tables */

@@ -45,7 +45,7 @@ struct CompanyInfrastructure {
 	}
 };
 
-typedef Pool<Company, CompanyByte, 1, MAX_COMPANIES> CompanyPool;
+typedef Pool<Company, CompanyID, 1, MAX_COMPANIES> CompanyPool;
 extern CompanyPool _company_pool;
 
 

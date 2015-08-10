@@ -1545,7 +1545,7 @@ void NWidgetMatrix::SetupSmallestSize(Window *w, bool init_array)
 	SB(nw->index, 16, 16, 0);
 	this->head->SetupSmallestSize(w, init_array);
 
-	Dimension padding = {this->pip_pre + this->pip_post, this->pip_pre + this->pip_post};
+	Dimension padding = { (uint)this->pip_pre + this->pip_post, (uint)this->pip_pre + this->pip_post};
 	Dimension size    = {this->head->smallest_x + padding.width, this->head->smallest_y + padding.height};
 	Dimension fill    = {0, 0};
 	Dimension resize  = {this->pip_inter + this->head->smallest_x, this->pip_inter + this->head->smallest_y};

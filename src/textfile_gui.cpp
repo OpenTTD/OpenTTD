@@ -227,7 +227,7 @@ static void Gunzip(byte **bufp, size_t *sizep)
 
 	memset(&z, 0, sizeof(z));
 	z.next_in = *bufp;
-	z.avail_in = *sizep;
+	z.avail_in = (uInt)*sizep;
 
 	/* window size = 15, add 32 to enable gzip or zlib header processing */
 	res = inflateInit2(&z, 15 + 32);

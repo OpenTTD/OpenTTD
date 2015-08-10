@@ -121,7 +121,7 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 		item = (Titem *)MallocT<byte>(size);
 	}
 	this->data[index] = item;
-	item->index = (uint)index;
+	item->index = (Tindex)(uint)index;
 	return item;
 }
 
