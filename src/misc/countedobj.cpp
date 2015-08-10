@@ -25,7 +25,12 @@ int32 SimpleCountedObject::Release()
 	int32 res = --m_ref_cnt;
 	assert(res >= 0);
 	if (res == 0) {
-		FinalRelease();
+		try {
+			FinalRelease(); // may throw, for example ScriptTest/ExecMode
+		} catch (...) {
+			delete this;
+			throw;
+		}
 		delete this;
 	}
 	return res;

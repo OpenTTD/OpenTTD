@@ -46,6 +46,8 @@ public:
 	 *   in when the instance was created.
 	 */
 	~ScriptExecMode();
+
+	virtual void FinalRelease();
 };
 
 #endif /* SCRIPT_EXECMODE_HPP */
