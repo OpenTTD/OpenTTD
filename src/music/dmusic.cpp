@@ -22,6 +22,7 @@
 #include "dmusic.h"
 
 #include <windows.h>
+#undef FACILITY_DIRECTMUSIC // Needed for newer Windows SDK version.
 #include <dmksctrl.h>
 #include <dmusici.h>
 #include <dmusicc.h>

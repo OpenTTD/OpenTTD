@@ -223,7 +223,9 @@
 
 	#include <malloc.h> // alloca()
 	#define NORETURN __declspec(noreturn)
-	#define inline __forceinline
+	#if (_MSC_VER < 1900)
+		#define inline __forceinline
+	#endif
 
 	#if !defined(WINCE)
 		#define CDECL _cdecl

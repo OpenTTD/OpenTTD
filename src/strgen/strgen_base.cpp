@@ -378,7 +378,7 @@ static int TranslateArgumentIdx(int arg, int offset = 0);
 static void EmitWordList(Buffer *buffer, const char * const *words, uint nw)
 {
 	buffer->AppendByte(nw);
-	for (uint i = 0; i < nw; i++) buffer->AppendByte((uint)strlen(words[i]) + 1);
+	for (uint i = 0; i < nw; i++) buffer->AppendByte((byte)strlen(words[i]) + 1);
 	for (uint i = 0; i < nw; i++) {
 		for (uint j = 0; words[i][j] != '\0'; j++) buffer->AppendByte(words[i][j]);
 		buffer->AppendByte(0);

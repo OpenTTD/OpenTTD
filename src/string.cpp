@@ -349,7 +349,7 @@ bool IsValidChar(WChar key, CharSetFilter afilter)
 }
 
 #ifdef WIN32
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && _MSC_VER < 1900
 /**
  * Almost POSIX compliant implementation of \c vsnprintf for VC compiler.
  * The difference is in the value returned on output truncation. This
