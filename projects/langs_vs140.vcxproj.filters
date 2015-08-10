@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Translations">
+      <UniqueIdentifier>{2a164580-9033-4a01-974b-b21da507efda}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\src\lang\english.txt" />
+    <CustomBuild Include="..\src\lang\afrikaans.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\arabic_egypt.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\basque.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\belarusian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\brazilian_portuguese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\bulgarian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\catalan.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\croatian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\czech.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\danish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\dutch.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\english_AU.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\english_US.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\esperanto.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\estonian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\faroese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\finnish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\french.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\gaelic.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\galician.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\german.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\greek.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\hebrew.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\hungarian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\icelandic.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\indonesian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\irish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\italian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\japanese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\korean.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\latin.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\latvian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\lithuanian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\luxembourgish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\malay.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\norwegian_bokmal.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\norwegian_nynorsk.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\polish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\portuguese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\romanian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\russian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\serbian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\simplified_chinese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\slovak.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\slovenian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\spanish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\swedish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\tamil.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\thai.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\traditional_chinese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\turkish.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\ukrainian.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\vietnamese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\welsh.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
