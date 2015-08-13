@@ -1181,64 +1181,64 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model d'acceler
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleccioneu el model físic per l'acceleració de trens. El model «original» penalitza les pujades per igual a tots els vehicles. El model «realista» penalitza les pujades i les corbes en funció de diverses propietats del tren, com ara la longitud i la força de tracció
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model d'acceleració per als vehicles: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleccioneu el model físic per l'acceleració d'automòbils. El model «original» penalitza les pujades per igual a tots els vehicles. El model «realista» penalitza els pendents en funció de les diferents propietats de la màquina, com per exemple l'esforç de tracció.
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendent d'inclinació per als trens: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :La inclinació d'una cel·la en pendent per a un tren. Els valors més alts fan que sigui més difícil escalar un turó
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendent de les costes per als trens: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :El pendent de les caselles amb costes per als trens. Els valors alts fan que sigui més difícil pujar els turons.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendent d'inclinació per als automòbils: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :La inclinació d'una cel·la amb pendent per a automòbils. Els valors més alts fan que sigui més difícil escalar un turó
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendent de les costes per als vehicles de carretera: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :El pendent de les caselles amb costes per a vehicles de carretera. Els valors alts fan que sigui més difícil pujar els turons.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer girs de 90 graus als trens i vaixells: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan una via horitzontal està seguida d'una vertical a la cel·la annexa, provocant que el tren giri 90 graus quan travessi la vora de la cel·la en lloc dels 45 graus usuals en les altres combinacions. Això també s'aplica al radi de gir dels vaixells
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan hi ha una via horitzontal seguida d'una de vertical a la cel·la annexa, provocant que el tren giri 90 graus quan travessi la vora de la cel·la en lloc dels 45 graus usuals en les altres combinacions. Això també s'aplica al gir dels vaixells.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permetre afegir parts a una estació sense contacte directe amb les parts existents. Fa falta Ctrl + Clic, mentre és col·loquen les peces noves
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Aquesta opció permet afegir parts noves a una estació existent sense estar les parts noves en contacte directe amb les existents. Cal clicar Ctrl+Clic mentre es col·loquen les parts noves.
 STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
-STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud dels ponts: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments.
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Longitud màxima dels ponts: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de ponts
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Alçada màxima dels ponts: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Alçada màxima de construcció dels ponts
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud dels túnels: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de túnels
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mètode de construcció de la indústria primària manual: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Mètode de finançament d'indústria primària. 'cap' significa que no serà possible fundar-ne cap, 'prospecció' significa que serà possible fundar-ne, però la construcció succeirà en un lloc aleatori del mapa i també podria passar que fracassi, 'com les altre indústries' significa que les indústries de matèries primeres poden ser construides a qualsevol lloc per les companyies igual que les indústries manufactureres
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Cap
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Fundació de noves indústries primàries: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Mètode de fundació de noves indústries primàries. «Fundació desactivada» significa que no serà possible fundar-ne cap, «Amb prospeccions» significa que serà possible fundar-ne, però la construcció succeirà en un lloc aleatori del mapa i podria fracassar. «Com les altres indústries» significa que les indústries de matèries primeres poden ser construïdes en qualsevol lloc per les companyies igual que les indústries manufactureres.
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Fundació desactivada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Com les altres indústries
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospeccionant
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Àrea plana al voltant de les indústries: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantitat d'espai pla al voltant d'una indústira. Això assegura que quedarà espai buit al voltant de la indústria per a construir vies, etc.
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Amb prospeccions
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Àrea anivellada al voltant de les indústries: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantitat d'espai pla al voltant d'una indústria. Això assegura que quedarà espai buit al voltant de la indústria per construir vies o altres infraestructures.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permet vàries indústries similars a cada població: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalment, una població no vol més d'un tipus d'indústria de cada tipus. Amb aquest paràmetre es permetrà diverses indústries del mateix tipus a la mateixa població
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalment, una població no vol tenir més d'una indústria de cada tipus. Amb aquest paràmetre es permet la construcció de diverses indústries del mateix tipus a la mateixa població.
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostra els senyals: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selecciona a quin costat de la via s'han de posar els senyals
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Seleccioneu a quin costat de la via s'han de posar els senyals
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A l'esquerra
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Al costat de conducció
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la dreta
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostra la finestra de balanç al finalitzar cada any: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si està activat, la finestra de finances apareix al final de cada any per permetre una inspecció fàcil de l'estat financer de la companyia
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les noves ordres predeterminades són 'sense parada': {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalment, un vehicle pararà a cada estació que passi. Activant aquest paràmetre no pararà a cap estació fins arribar a la seu destí. Nota, aquest paràmetre només defineix el valor predeterminat per les noves ordres. De totes maneres les ordres individuals poden establir explícitament qualsevol dels comportaments
-STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres del tren: parar per defecte {STRING} de la plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Situa en quin lloc de la plataforma el tren pararà per defecte. 'Extrem més proper' significa a prop del punt d'entrada, 'al mig' significa al mig de la plataforma, i 'extrem més llunyà' significa lluny del punt d'entrada. Nota, aquest paràmetre només defineix el valor predeterminat per les noves ordres. De totes maneres les ordres individuals poden establir explícitament qualsevol dels comportaments
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a l'extrem més proper
-STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més llunyà
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avís quan el ratolí és al marc del programa: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, les vistes començaran a desplaçar-se quan el ratolí sigui a prop la vora de la finestra
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si el paràmetre està activat, la finestra de finances apareix al final de cada any per permetre una inspecció fàcil de l'estat financer de la companyia.
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :«Sense parada» per defecte a les noves ordres : {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalment, un vehicle para a cada estació per la que passa. Activant aquest paràmetre, no pararà a cap estació fins arribar al seu destí. Nota: aquest paràmetre només defineix el valor predeterminat per a les noves ordres. Un cop creada una ordre, aquesta es pot establir manualment al comportament desitjat.
+STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres de trens: parar per defecte {STRING} de la plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Estableix en quin lloc de la plataforma els trens pararan per defecte. «Extrem més proper» significa a prop del punt d'entrada, «Al mig» significa al mig de la plataforma, i «Extrem més llunyà» significa lluny del punt d'entrada. Nota: aquest paràmetre només defineix el valor predeterminat per les noves ordres. Un cop creada una ordre, es pot modificar el comportament de forma manual.
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :A l'extrem més proper
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :Al mig
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :A l'extrem més llunyà
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Desplaça la finestra quan el ratolí sigui prop de la vora: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, l'àrea de visualització començarà a desplaçar-se quan el ratolí sigui prop de la vora de la finestra.
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivat
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal, només pantalla completa
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal (només pantalla completa)
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Cada vista
-STR_CONFIG_SETTING_BRIBE                                        :Permet subornar a les autoritats locals: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar a l'autoritat local. Si el suborn és detectat per un inspector, la companyia no podrà actuar a la població durant sis mesos
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Qualsevol vista
+STR_CONFIG_SETTING_BRIBE                                        :Permet subornar les autoritats locals: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar l'autoritat local. Si el suborn és detectat per un inspector, la companyia no podrà actuar a la població durant sis mesos.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una companyia compra els drets de transport en exclusiva en una població, les estacions dels oponents (passatgers i càrrega) no rebran cap càrrega durant tot l'any
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una companyia compra els drets de transport en exclusiva d'una població, les estacions dels oponents (passatgers i càrrega) no rebran cap càrrega durant un any sencer.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permet finançar edificis: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permet a les companyies donar diners a les poblacions per a finançar nous edificis
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permet a les companyies donar diners a les poblacions per finançar nous edificis
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permet finançar la reconstrucció dels carrers locals: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permet a les companyies donar diners a les poblacions per a la reconstrucció de carrers i sabotejar-hi la circulació de vehicles
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permet a les companyies donar diners a les poblacions per la reconstrucció de carrers i sabotejar la circulació de vehicles.
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permet enviar diners a altres companyies: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permet transferir diners entre companyies en el mode multijugador
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de pes per contenidor per simular trens pesats: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Estableix l'impacte de transportar contenidors en trens. Un valor més alt fa que transportar contenidors sigui més exigent amb els trens, especialment als turons
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de pes per simular trens pesats: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Estableix l'impacte de transportar contenidors en trens. Els valors alts fan que transportar contenidors sigui més exigent amb els trens, especialment als turons.
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de velocitat dels avions: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Estableix la velocitat relativa dels avions en comparació amb els altres tipus de vehicles, per reduir la quantitat de guanys de transport dels avions
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
