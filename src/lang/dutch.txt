@@ -3185,7 +3185,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Bouwkosten
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nieuwe voertuigen
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Treinonderhoudskosten
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Wegvoertuigbrandstofkosten
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Wegvoertuigonderhoudskosten
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Vliegtuigonderhoudskosten
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schiponderhoudskosten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Eigendomsonderhoud
@@ -3268,7 +3268,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramrail
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Water tegels:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalen
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Station tegels
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stationtegels
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Vliegvelden
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/jr
 
@@ -3350,7 +3350,7 @@ STR_GROUP_DEFAULT_SHIPS                                         :Niet gegroepeer
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Niet gegroepeerde vliegtuigen
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep. Klik en sleep om hiërarchie te beheren
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om een groep te maken
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om een groep te creëren
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hernoem de geselecteerde groep
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen
