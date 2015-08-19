@@ -30,7 +30,7 @@ STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Passagiers
 STR_CARGO_PLURAL_COAL                                           :Kolen
 STR_CARGO_PLURAL_MAIL                                           :Post
-STR_CARGO_PLURAL_OIL                                            :Olie
+STR_CARGO_PLURAL_OIL                                            :Ruwe olie
 STR_CARGO_PLURAL_LIVESTOCK                                      :Vee
 STR_CARGO_PLURAL_GOODS                                          :Goederen
 STR_CARGO_PLURAL_GRAIN                                          :Graan
@@ -4357,7 +4357,7 @@ STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan dit 
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... het is al van jou!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan groep niet maken...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan groep niet creëren...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kan deze groep niet verwijderen...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kan deze groep niet hernoemen...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan huidige groep niet instellen...
