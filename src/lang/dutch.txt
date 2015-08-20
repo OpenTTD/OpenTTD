@@ -30,7 +30,7 @@ STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Passagiers
 STR_CARGO_PLURAL_COAL                                           :Kolen
 STR_CARGO_PLURAL_MAIL                                           :Post
-STR_CARGO_PLURAL_OIL                                            :Ruwe olie
+STR_CARGO_PLURAL_OIL                                            :Aardolie
 STR_CARGO_PLURAL_LIVESTOCK                                      :Vee
 STR_CARGO_PLURAL_GOODS                                          :Goederen
 STR_CARGO_PLURAL_GRAIN                                          :Graan
@@ -64,7 +64,7 @@ STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Passagier
 STR_CARGO_SINGULAR_COAL                                         :Kolen
 STR_CARGO_SINGULAR_MAIL                                         :Post
-STR_CARGO_SINGULAR_OIL                                          :Olie
+STR_CARGO_SINGULAR_OIL                                          :Aardolie
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Vee
 STR_CARGO_SINGULAR_GOODS                                        :Goederen
 STR_CARGO_SINGULAR_GRAIN                                        :Graan
@@ -98,7 +98,7 @@ STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passagier{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kolen
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}zak{P "" ken} post
-STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} Vaten Olie
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}stuk{P "" s} vee
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}krat{P "" ten} goederen
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
@@ -168,7 +168,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALLE
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passagier{P "" s}
 STR_BAGS                                                        :{COMMA}{NBSP}zak{P "" ken}
 STR_TONS                                                        :{COMMA}{NBSP}ton
-STR_LITERS                                                      :{COMMA}{NBSP}liter
+STR_LITERS                                                      :{COMMA}{NBSP}liter{P "" s}
 STR_ITEMS                                                       :{COMMA}{NBSP}stuk{P "" s}
 STR_CRATES                                                      :{COMMA}{NBSP}krat{P "" ten}
 
