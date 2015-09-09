@@ -1303,7 +1303,9 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rûch
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tige rûch
 STR_CONFIG_SETTING_VARIETY                                      :Fariaasjedistribusje: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Tal rivieren: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Kieze hoefolle rivieren generearje moatte wurde
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritme foar pleatsing beamen: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Kies de spreding fan beammen op 'e kaart: 'Orizjineel' plantet beammen ferspreid oer de kaart, 'Ferbettere' plantet beammen yn kloften
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Gjin
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Orizjineel
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Ferbettere
@@ -1446,6 +1448,7 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middel
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Dreech
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Stea AIs ta yn multiplayer: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Kompjûterspilers tastean mei te spylje yn multyspyler spullen
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :reperaasje skemas binne yn procenten: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standert reparaasjeskema foar treinen: {STRING}
@@ -3293,12 +3296,23 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Net losse en w
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of losse)
 
 STR_ORDER_AUTO_REFIT                                            :(Ombouwe nei {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Net losse en fracht meinimme mei ombou nei {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Net losse en folslein lade mei ombou nei {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Net losse en ien fracht folslein lade mei ombou nei {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :beskikbere fracht
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[begjin]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[ein]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Folgjende bestimming is bûten berik)
 
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Ljep nei opdracht {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Ljep nei opdracht {COMMA} at {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Ljep nei opdracht {COMMA} at {STRING} {STRING}
 
+STR_INVALID_ORDER                                               :{RED} (Unjildige opdracht)
 
 # Time table window
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Opdrachten
