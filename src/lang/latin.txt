@@ -512,7 +512,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Monstrar
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Monstrare res fiscales societatis
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Monstrare facta generalia societatis
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Monstrare librum fabularum
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Monstrare indicem metarum
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Monstrare indicem propositorum
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Monstrare formulas graphicas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Monstrare album foederis societatum
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Industriam novam condere vel monstrare indicem industriarum
@@ -526,11 +526,11 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Struere 
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Struere vias
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Struere navalia
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Struere aeroportus
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Monstrare terrae arcam ferramentorum qua potes terram augere/minuere, arbores serere, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Monstrare terrae arcam instrumentorum qua potes terram augere/minuere, arbores serere, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Monstrare fenestram soni musicaeque
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Monstrare nuntium novissimum sive optiones nuntii
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Indicia terrae regionis, consola, emendatio scripti, imagines conspectus, de OpenTTD
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Mutare inter arcas ferramentorum
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Mutare inter arcas instrumentorum
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Servare scaenarium, legere scaenarium, relinquere scriptorium scaenarii, exire
@@ -1507,7 +1507,7 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalis
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Melior
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehicula viaria: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Eligere latus viae gubernandi
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Circuitus tabulae altitudinum: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotatio tabulae altitudinum: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sinistrorsus
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dextrorsus
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Altitudo scaenario plano data: {STRING}
@@ -1518,8 +1518,8 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :Spatium station
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area maxima in qua partes stationum possunt esse sita. Cave, numeris spatii magnis, ludus lentus sit
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Ministrare helicoptera automatice in helicopterariis: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Ministrare helicoptera post quemque appulsum, etsi non est tugurium portui
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Connectere terrae arcam ferramentorum arcis ferriviariae/viariae/aquariae/aeriae ferramentorum: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Cum arca ferramentorum constructionis aperitur, etiam plasmationis terrae arca ferramentorum aperitur
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Connectere terrae arcam instrumentorum arcis ferriviariae/viariae/aquariae/aeriae instrumentorum: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Cum arca instrumentorum constructionis aperitur, etiam plasmationis terrae arca instrumentorum aperitur
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color terrae in tabula adhibitus: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color terrae in tabula geographica parva
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Viridis
@@ -1756,8 +1756,8 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nulla {RED}(rum
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Modo in silvis plivualibus
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Ubique
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :Locus primariae arcae ferramentorum: {STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Locus horizontalis arcae ferramentorum primariae apud apicem fenestrae
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Locus primariae arcae instrumentorum: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Locus horizontalis arcae instrumentorum primariae apud apicem fenestrae
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Locus serae status: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Locus horizontalis serae status apud infimam partem fenestrae
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radius fenestrae adhaerendae: {STRING}
@@ -2951,7 +2951,7 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Fortuiti
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Fortuiti
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manu
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Circuitus tabulae altitudinum:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotatio tabulae altitudinum:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nomen tabulae altitudinum:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Magnitudo:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
@@ -3236,16 +3236,16 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Emere m
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Largiri auctoritatem vicinalem ut tua censio augeatur, at difficultas adest: forsitan animadvertaris et graviter puniaris.{}Pretium: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Metae
-STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Metae Globales
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Metae globales:
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Proposita
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Proposita Universalia
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Proposita universalia:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nullae -
 STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Non applicabiles -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metae Societatis:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Preme in metam ut conspectus moveatur supra industriam/oppidum/tegulam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam/oppidum/tegulam
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Proposita Societatis:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Preme in propositum ut conspectus moveatur supra industriam/oppidum/tegulam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam/oppidum/tegulam
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Quaestio
@@ -3285,7 +3285,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Preme in
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Librum Fabularum
-STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Librum Fabularum Globalis
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Librum Fabularum Universale
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Salire ad quamdam paginam eligendo eam in hac indice
@@ -3293,7 +3293,7 @@ STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Priorem
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ire ad paginam priorem
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Secundam
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ire ad paginam secundam
-STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Meta irrita
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Propositum irritum
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomina stationum - preme in nomen ut conspectus moveatur supra stationem. Ctrl+Preme ut nova fenestra conspectus aperiatur supra stationem
@@ -3555,7 +3555,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Greges -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Preme ut grex creatur
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Delere gregem electam
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renominare gregem electam
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Preme ut vehicula huius gregis custodiantur contra autocommutationem globalem
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Preme ut vehicula huius gregis custodiantur contra autocommutationem universalem
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Gregem Delere
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Esne certus te velle delere hanc gregem eiusque descendentes?
