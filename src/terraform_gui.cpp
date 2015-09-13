@@ -462,7 +462,7 @@ static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 				NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_PLACE_DESERT), SetMinimalSize(22, 22),
 											SetFill(0, 1), SetDataTip(SPR_IMG_DESERT, STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA),
 			EndContainer(),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_PLACE_OBJECT), SetMinimalSize(23, 22),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_ETT_PLACE_OBJECT), SetMinimalSize(23, 22),
 										SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_SCENEDIT_TOOLBAR_PLACE_OBJECT),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
@@ -704,7 +704,6 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		this->RaiseButtons();
 		this->SetDirty();
-		DeleteWindowById(WC_BUILD_OBJECT, 0);
 	}
 
 	static HotkeyList hotkeys;
