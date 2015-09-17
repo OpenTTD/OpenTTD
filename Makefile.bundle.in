@@ -172,6 +172,7 @@ install: bundle
 	$(Q)install -d "$(INSTALL_BINARY_DIR)"
 	$(Q)install -d "$(INSTALL_ICON_DIR)"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/ai"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/game"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/baseset"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/scripts"
@@ -182,6 +183,7 @@ else
 endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/lang/"* "$(INSTALL_DATA_DIR)/lang"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/ai/"* "$(INSTALL_DATA_DIR)/ai"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/game/"* "$(INSTALL_DATA_DIR)/game"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/baseset/"* "$(INSTALL_DATA_DIR)/baseset"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/scripts/"* "$(INSTALL_DATA_DIR)/scripts"
 ifndef DO_NOT_INSTALL_DOCS
