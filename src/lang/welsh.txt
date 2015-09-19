@@ -2875,6 +2875,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Corlun b
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mynd i'r corlun cyffredin blaenorol, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio o'r corlun cyntaf i'r olaf
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Cynrychioliad o'r corlun a ddewiswyd. Fe anwybyddir yr aliniad wrth lunio'r corlun
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Symud y corlun, gan newid yr atredau X ac Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Ailosod perthyniad
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Ailosod y dodiadau perthynol
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Dodiad X: {NUM}, Dodiad Y: {NUM} (Absoliwt)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Dodiad X: {NUM}, Dodiad Y: {NUM} (Perthynol)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Dewis corlun
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Dewis corlun o ynrhyw fan ar y sgrïn
 

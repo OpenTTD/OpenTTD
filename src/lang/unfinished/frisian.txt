@@ -1563,6 +1563,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :langsaam
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :gewoan
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Hiel snel
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Gjin
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Begjin stêdgrutte fermenigfuldiger: {STRING}
 
@@ -1649,6 +1650,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Feroarje
 # Config errors
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... flater in reeks '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ûnjildige wearde '{STRING}' foar '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :koe net fûn wurde
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Dat strykt net mei dizze ferzje fan OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ûnbekind
 
