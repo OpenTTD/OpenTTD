@@ -63,7 +63,6 @@ NetworkCompanyState *_network_company_states = NULL; ///< Statistics about some 
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
 bool _network_need_advertise;         ///< Whether we need to advertise.
-uint32 _network_last_advertise_frame; ///< Last time we did advertise.
 uint8 _network_reconnect;             ///< Reconnect timeout
 StringList _network_bind_list;        ///< The addresses to bind on.
 StringList _network_host_list;        ///< The servers we know.
@@ -759,7 +758,6 @@ bool NetworkServerStart()
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
 
 	/* Try to register us to the master server */
-	_network_last_advertise_frame = 0;
 	_network_need_advertise = true;
 	NetworkUDPAdvertise();
 
@@ -1076,7 +1074,6 @@ void NetworkStartUp()
 	/* Network is available */
 	_network_available = NetworkCoreInitialize();
 	_network_dedicated = false;
-	_network_last_advertise_frame = 0;
 	_network_need_advertise = true;
 	_network_advertise_retries = 0;
 
