@@ -41,7 +41,7 @@ STR_CARGO_PLURAL_VALUABLES                                      :مقتنيات 
 STR_CARGO_PLURAL_COPPER_ORE                                     :منجم نحاس
 STR_CARGO_PLURAL_MAIZE                                          :ذرة
 STR_CARGO_PLURAL_FRUIT                                          :فواكة
-STR_CARGO_PLURAL_DIAMONDS                                       :جواهر
+STR_CARGO_PLURAL_DIAMONDS                                       :ألماس
 STR_CARGO_PLURAL_FOOD                                           :طعام
 STR_CARGO_PLURAL_PAPER                                          :ورق
 STR_CARGO_PLURAL_GOLD                                           :ذهب
@@ -97,10 +97,10 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :مشروب غا
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} راكب
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} من الفحم
-STR_QUANTITY_MAIL                                               :{COMMA} صندوق من البريد
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP} كيس بريد
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} من النفط
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}راس من الماشية
-STR_QUANTITY_GOODS                                              :{COMMA} قفص من البضائع
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}رأس ماشية
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP} صندوق بضائع
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} من الحبوب
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} من الخشب
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} من خام الحديد
@@ -109,16 +109,16 @@ STR_QUANTITY_VALUABLES                                          :{COMMA}صندو
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} من خام النحاس
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} من الذرة
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} من الفواكة
-STR_QUANTITY_DIAMONDS                                           :{COMMA}كيس من الجواهر
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}كيس ألماس
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} من الطعام
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} من الورق
-STR_QUANTITY_GOLD                                               :{COMMA}كيس من الذهب
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP} كيس ذهب
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} من المياة
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} من القمح
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} من المطاط
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} من السكر
-STR_QUANTITY_TOYS                                               :{COMMA}الالعاب
-STR_QUANTITY_SWEETS                                             :{COMMA} كيس من الحلويات
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP} لعبة
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP} كيس حلويات
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} من الكولا
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} من الحلاوة القطنية
 STR_QUANTITY_BUBBLES                                            :{COMMA}فقاعات
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}لا
 STR_ABBREV_ALL                                                  :{TINY_FONT}الكل
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} ركاب
-STR_BAGS                                                        :{COMMA} صناديق
-STR_TONS                                                        :{COMMA} اطنان/طن
-STR_LITERS                                                      :{COMMA} لتر
+STR_PASSENGERS                                                  :{COMMA}{NBSP} راكب
+STR_BAGS                                                        :{COMMA}{NBSP} كيس
+STR_TONS                                                        :{COMMA}{NBSP} طن
+STR_LITERS                                                      :{COMMA}{NBSP} لتر
 STR_ITEMS                                                       :{COMMA} وحدة
-STR_CRATES                                                      :{COMMA} صناديق
+STR_CRATES                                                      :{COMMA}{NBSP} صندوق
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :ازرق غامق
@@ -191,32 +191,32 @@ STR_COLOUR_GREY                                                 :رمادي
 STR_COLOUR_WHITE                                                :ابيض
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}ميل/س
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA}كم/س
-STR_UNITS_VELOCITY_SI                                           :{COMMA}م/ث
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}ميل/س
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}كم/س
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}م/ث
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}حصان
-STR_UNITS_POWER_METRIC                                          :{COMMA}حصان
-STR_UNITS_POWER_SI                                              :{COMMA}ك واط
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}حصان
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}حصان
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}ك واط
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ت
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}طن
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}كجم
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP} طن
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}طن
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}كجم
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} طن
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}كجم
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP} طن
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}كجم
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}غال
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ل
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}م3
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}غال
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}ل
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}م3
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} لتر
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}م3
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP} لتر
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}م3
 
-STR_UNITS_FORCE_SI                                              :{COMMA} كيلو نيوتن
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP} كيلو نيوتن
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} قدم
-STR_UNITS_HEIGHT_SI                                             :{COMMA} متر
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP} قدم
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP} متر
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} ادخل فلتر
@@ -286,7 +286,7 @@ STR_SORT_BY_ENGINE_ID                                           :نوع المح
 STR_SORT_BY_COST                                                :التكلفة
 STR_SORT_BY_POWER                                               :الطاقة
 STR_SORT_BY_TRACTIVE_EFFORT                                     :قوة الجذب
-STR_SORT_BY_INTRO_DATE                                          :بداية التشغيل
+STR_SORT_BY_INTRO_DATE                                          :بداية الإنتاج
 STR_SORT_BY_RUNNING_COST                                        :تكلفة التشغيل
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :القوة/تكلفة التشغيل
 STR_SORT_BY_CARGO_CAPACITY                                      :سعة الشحن
@@ -351,6 +351,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :انهاء
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :إعدادات اللعبه
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :الإعدادات
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :الذكاء الصناعي/ اعدادات اللعبة
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :إعدادات اﻹضافات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :خيارات الشفافية
@@ -941,7 +942,12 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}دقة �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر دقة الشاشة
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :حجم اللوحة
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :حدد العنصر المطلوب
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :تقريب عادي
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :تقريب ×2
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :تقريب ×4
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK} الواجهة الرسومية الاساسية
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK} اختر مجموعة الواجهة الرسومية
@@ -1036,6 +1042,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :مسطح تما
 STR_TERRAIN_TYPE_FLAT                                           :مسطح
 STR_TERRAIN_TYPE_HILLY                                          :مرتفعات - هضاب
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :جبال
+STR_TERRAIN_TYPE_ALPINIST                                       :شاهق
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :متساهل
 STR_CITY_APPROVAL_TOLERANT                                      :متقبل
@@ -1044,6 +1051,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :معاد
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايوجد ذكاء اصطناعي متاح ...{}تستطيع تجميل العديد من الذكاء الاصطناعي عن طريق اللانترنت
 
 # Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :الإعدادات
 STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
 
@@ -1053,11 +1061,11 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :اﻹعدادا
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}احصر القائمة على انواع اعدادات محددة
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :كل الاعدادات
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :اعدادات العميل (غير مخزن في المحفوظات, يؤثر على كل الالعاب)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :اعدادات اللعبة (مخزن في المحفوظات, يؤثر على الالعاب الجديدة فقط)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :اعدادات اللعبة (مخزن في المحفوظات, يؤثر على اللعبة الحالية فقط)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :اعدادات الشركة (مخزن في المحفوظات, يؤثر على الالعاب الجديدة فقط)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :اعدادات الشركة (مخزن في المحفوظات: يؤثر على الشركة الحالية فقط)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :اعدادات العميل (لا يخزن في الحفظ ؛ يطبق على كل الالعاب)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :اعدادات اللعبة (يخزن في الحفظ ؛ يطبق على الالعاب الجديدة فقط)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :اعدادات اللعبة (يخزن في الحفظ ؛ يطبق على اللعبة الحالية فقط)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :اعدادات الشركة (يخزن في الحفظ ؛ يطبق على الالعاب الجديدة فقط)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :اعدادات الشركة (يخزن في الحفظ ؛ يطبق على الشركة الحالية فقط)
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}عرض جميع النتائج بالنسبة للإعداد {}{SILVER} الفئة {BLACK} إلى {WHITE}{STRING} {BLACK}و{SILVER}نوع {BLACK} إلى{WHITE} جميع انواع الإعدادات
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE} - بدون -
 
@@ -1078,7 +1086,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح بتحريك الأرض تحت المباني, الطرق, الخ : {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :كمية دخان/شرار القطارات:{STRING}
@@ -1204,7 +1212,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :لا تصرف
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :الكل ما عدا عمليات البناء
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :الكل ما عدا خيارات تعديل الخريطة
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :كل تصرف
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :استخدام قائمة العربات المطورة: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :استخدام المجموعات في قائمة العربات : {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :تفعيل مؤشر التحميل: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :عرض جدولة الأعمال بالمهام بدلا من الأيام: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :عرض الوصول و المغادرة في جدولة الاعمال: {STRING}
@@ -1400,6 +1408,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}لعب �
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}إعدادات اللعبه
 STR_INTRO_HIGHSCORE                                             :{BLACK}قائمه المتفوقين
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :الاعدادات
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK} اعدادات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} إبحث عن المحتوى عبر الشبكه العنكبوتيه
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}إعدادات الذكاء الصناعى
@@ -1418,6 +1427,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}اختي
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}اختيار نمط الألعاب
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}عرض خيارات اللعبة
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :إعدادات العرض
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}عرض إعدادات اﻹضافات
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} ابحث عن محتوى جديد او تحديث
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}اغلاق'OpenTTD'
@@ -2373,6 +2383,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}اسم �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}الحجم:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :تغيير أعلى ارتفاع للخريطة
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}غير مستوى خط الثلج
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}غير سنة البداية
 
@@ -2592,8 +2603,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} تم توصيلة
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (مازال مطلوب)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (تم توصيلة)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}المدينة تنمو كل {ORANGE}{COMMA}{BLACK} يوم
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}المدينة تنمو كل {ORANGE}{COMMA}{BLACK} يوم{} (مول)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}المدينة تنمو كل {ORANGE}{COMMA}{BLACK}{NBSP} يوم
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}المدينة تنمو كل {ORANGE}{COMMA}{BLACK}{NBSP} يوم (ممول)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}المدينة {RED}لا{BLACK} تنمو
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}حدود الضوضاء داخل المدن: {ORANGE}{COMMA}{BLACK} القصوى: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}وسط الشاشة الاساسية على موقع المدينة
@@ -2863,7 +2874,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :لاتنتمي 
 STR_GROUP_DEFAULT_SHIPS                                         :مركبة لاتنتمي لأي مجموعة
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :طائرة لاتنتمي لأي مجموعة
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}المجموعات: اضغط على اي مجموعة لعرض المركبات التابعة لها
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}المجموعات: اضغط على اي مجموعة لعرض مركباتها . اسحب للترتيب .
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}أضغط لإنشاء مجموعة
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}أحذف المجموعة المختارة
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}أعد تسمية المجموعة المختارة
@@ -3158,7 +3169,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK} الس�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}مقدار التحويل: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فترات الصيانة: {LTBLUE}{COMMA} يوم {BLACK} اخر صيانة: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فترات الصيانة: {LTBLUE}{COMMA}{NBSP} يوم {BLACK} اخر صيانة: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}فترات الصيانة: {LTBLUE}{COMMA}% {BLACK}    الصيانة الأخيرة: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة بقدر 10. ومع مفتاح كنترول بمقدار 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK} انقاص فترات الصيانة بمعدل 10. Ctrl+ الضغط الانقاص بمعدل 5.
@@ -3250,8 +3261,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}غير �
 
 STR_ORDER_REFIT                                                 :{BLACK}اعادة تهيئة
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}اختر نوع البضائع المنقولة لتهيئة العربات في هذا الامر. اضغط كنترول لازالة تعليمات التهيئة.
-STR_ORDER_REFIT_AUTO                                            :{BLACK}ملائمة ذاتية
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}اختر اي نوع من الحملة تريد ملائمتها ذاتيا.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}ملائمة في محطة
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}اختر اي نوع من الحمولة تريد ملائمتها . اضغط مع ctrl لإزالة الملائمة . الملائمة في المحطات لن تكون ما لم تقبل العربة ذلك .
 STR_ORDER_DROP_REFIT_AUTO                                       :شحنة ثابتة
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :البضائع المتاحة
 
@@ -3342,13 +3353,13 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(عدم انز�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :-عدم انزال الشحنة و الانتظار للحمولة القصوى لاي شحنة-
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(لا تفريغ و لا تحميل)
 
-STR_ORDER_AUTO_REFIT                                            :(ملائمة ذاتية ل {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(تحميل كلي مع الملائمة الذاتية لـ {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(تحميل كلي لاي بضاعة مع الملائمة الذاتية لـ {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(تفريغ الحمولة و شحن البضائع مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_AUTO_REFIT                                            :(ملائمة لـ {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(تحميل كلي مع الملائمة لـ {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(تحميل كلي لأي بضاعة مع الملائمة لـ {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(تفريغ الحمولة و شحن البضائع مع الملائمة لـ {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(تفرغ الحمولة و الانتظار للتحميل الكلي مع الملائمة لـ {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(التفريغ و الانتظار للتحميل الكلي لاي بضاعة مع الملائمة الذاتية لـ {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(تحويل البضاعة و اخذ البضاعة مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(التفريغ و الانتظار للتحميل الكلي لأي بضاعة مع الملائمة لـ {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(تحويل البضاعة و أخذ البضاعة مع الملائمة لـ {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(تحويل البضاعة و الانتظار للحمولة القصوى مع الملائمة الذاتية لـ {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(تحويل البضاعة و الانتظار لاي حمولة كاملة مع الملائمة الذاتية لـ {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(عدم التفريغ و تحميل البضائع مع الملائمة الذاتية لـ {STRING})
@@ -3620,7 +3631,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... قر
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... قريبة جدا من مدينة أخرى
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... المدن كثيرة جدا
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... لا يوجد فراغ في الخريطة
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}لن تبني البلدية طرق جديدة. بامكانك تمكين البلدية من بناء الطرق الجديدة عن طريق الاعدادات المتقدمة --> الاقتصاد --> المدن
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}لن تبني البلدية طرق جديدة. بإمكانك تمكين بناء الطرق الجديدة عن طريق الاعدادات --> البيئة--> المدن
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}اعمال الطرق قيد التنفيذ
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}لا يمكن ازالة هذه المدينة {}محطة او ورشة مرتبطة بالمدينة او هناك مربع مملوك للمدينة لا يمكن لزالته
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... لا يوجد مكان مناسب للمجسم بداخل هذة المدينة/البلدة
