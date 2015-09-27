@@ -3021,7 +3021,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Mutare c
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Mutare coloris tabulam huius NewGRF.{}Utere cum colores huius NewGRF videntur esse rosei
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Confirmare mutationes
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Quaere res absentes in interrete
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Quaere res absentes in interreti
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Inspicere si res absentes in inventario Interretiale sunt
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nomen fasciculi: {SILVER}{STRING}
@@ -4374,7 +4374,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... nimi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... nimis prope aliud oppidum
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... nimis oppida adsunt
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... plus spatium tabulae deest
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oppidum non vias faciet. Potest sinere vias facere in Electionibus->Circumiecta->Oppida
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oppidum non vias struet. Potes hanc optionem mutare in Electionibus->Circumiecta->Oppida
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Constructio viaria agitur
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Non licet oppidum delere...{}Statio receptaculumve est oppido sive non licet tegulam oppidi removere
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non est locus effigiei idoneus in medio oppidi

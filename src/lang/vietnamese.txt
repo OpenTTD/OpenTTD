@@ -1653,11 +1653,21 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Tiêu Chuẩn Đo Lường
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Đồ họa
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Âm thanh
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Giao Diện
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Tổng quát
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vùng nhìn
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Xây Dựng
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Tin tức / Cố vấn
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Công ty
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Kế toán
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Vật lý
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đường
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Giới hạn
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Thiên tai / Tai nạn
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Khởi tạo bản đồ
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Môi trường
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Chính quyền
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Đô thị
@@ -2684,6 +2694,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Lưu
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Lưu ván chơi hiện tại, sử dụng tên đã chọn
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Nạp
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Nạp ván chơi được chọn
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Nạp bản đồ địa hình đang chọn
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Chi Tiết Trò Chơi
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Không có thông tin gì cả.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3328,6 +3339,8 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Xoá nh�
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Đổi tên nhóm
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Không để nhóm này tự thay thế (thiết lập chung) khi hết hạn
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Xóa Nhóm
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Bạn có chắc chắn muốn xóa nhóm này và tất cả con của nó?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Thêm phương tiện được chia sẻ
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Xoá tất cả phương tiện
@@ -3869,6 +3882,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Di chuyển (kh
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Hành trình với tốc độ tối đa là {2:VELOCITY} (chưa dựng lịch trình)
 STR_TIMETABLE_TRAVEL_FOR                                        :Di chuyển trong {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Lộ trình {STRING} với tốc độ tối đa {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Lộ trình (cho {STRING}, chưa có lịch trình)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Lộ trình (cho {STRING}, chưa có lịch trình) với tốc độ đối đa {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ở lại {STRING}, chưa có lịch trình)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(di chuyển đến {STRING}, chưa có lịch trình)
 STR_TIMETABLE_STAY_FOR                                          :và ở lại trong {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :và di chuyển trong {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}ngày
@@ -4327,6 +4344,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... bạ
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Không thể tạo nhóm...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Không thể xoá bỏ nhóm...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Không thể đổi tên nhóm...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Không thể thiết đặt nhóm cha...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Không thể bỏ các phương tiện trong nhóm này...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Không thể thêm phương tiện vào nhóm này...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Không thể thêm phương tiện được chia sẻ vào nhóm...
