@@ -327,17 +327,17 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}显示游戏目标选单
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}显示图表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}显示公司名次表
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}建设新的工业设施
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}工业设施列表/产业链/建立新工业设施
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}显示公司的火车列表。按住 Ctrl 键单击可以切换组群和车辆列表。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}显示公司的汽车列表。按住 Ctrl 键单击可以切换组群和汽车列表。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}显示公司的船只列表。按住 Ctrl 键单击可以切换组群和船只列表。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}显示公司的飞机列表。按住 Ctrl 键单击可以切换组群和飞机列表。
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}放大视图
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}缩小视图
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}建设铁路
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}建设公路
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}建设港口
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设机场
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}显示铁路建设工具
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}显示公路建设工具
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}显示水运建设工具
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}显示机场建设工具
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏{}以修改地形、设置地貌等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}显示 声音/音乐 控制菜单
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}显示最新消息新闻,消息选项,消息历史
@@ -2424,7 +2424,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}货运�
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}选择货运电车车站方向
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}码头建设
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}水运建设
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水运
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建运河
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设船闸，按住 Shift 键操作可以显示所需资金
