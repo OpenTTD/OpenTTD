@@ -661,11 +661,11 @@ STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}停止�
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}开始播放音乐
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}拖动滑块以调节音乐和音效的音量
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}选择全部乐曲
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}选择'旧的风格'音乐列表
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}选择'新的风格'音乐列表
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}选择'Ezy街头'风格的音乐列表
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}选择'自定义1'（用户定义）的列表
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}选择'自定义2'（用户定义）的列表
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}选择“老式音乐”列表
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}选择“新的风格”音乐列表
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}选择“Ezy街头”风格的音乐列表
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}选择“自定义1”（用户定义）的列表
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}选择“自定义2”（用户定义）的列表
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}开启/关闭 随机播放列表中的曲目
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}打开音乐选单窗口
 
@@ -1748,10 +1748,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}使用�
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}创建自定义的游戏场景
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}开始联机游戏
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}选择 '温带' 景观风格
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}选择 '寒带' 景观风格
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}选择 '沙漠' 景观风格
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}选择 '玩具' 景观风格
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}选择“温带”景观风格
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}选择“寒带”景观风格
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}选择“沙漠”景观风格
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}选择 “玩具”景观风格
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}显示游戏选项
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}显示高分榜
