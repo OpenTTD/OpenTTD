@@ -197,31 +197,31 @@ STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}me
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}dk
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}dk
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litre
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Kata penyaring:
@@ -1113,7 +1113,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Pengaturan deng
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Membatasi urutan / tabel di bawah ke setting tertentu
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Semua setting
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Setting klien (tidak disimpan di penyimpanan; mempengaruhi semua permainan)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Pengaturan klien (tidak disimpan di penyimpanan; mempengaruhi semua permainan)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan baru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan aktif)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada permainan baru)
@@ -1165,7 +1165,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih seberapa 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Tinggi peta maksimum: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Atur ketinggian pegunungan maksimum yang diijinkan untuk peta ini
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kamu tidak bisa mengubah ketinggian peta maksimum di angka itu. Setidaknya ada satu gunung di peta yang lebih tinggi
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ijinkan pembentukan tanah dibawah bangunan dan trek tanpa merusaknya
 STR_CONFIG_SETTING_CATCHMENT                                    :Ijinkan ukuran jangkauan wilayah lebih realistik: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Gunakan area penarikan berbeda untuk tipe stasiun dan airport yang berbeda
@@ -1281,7 +1281,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durasi penampil
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} detik
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Tampilkan tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay sebelum bantuan peralatan ditampilkan saat mouse diatas sebuah ikon. Selain itu bantuan peralatan juga dapat ditampilkan dengan klik kanan
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Melayang untuk {COMMA} detik
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Melayang untuk {COMMA} mili detik
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klik kanan
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Tampilkan populasi kota di label nama kota: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Tampilkan populasi kota di label nama kota pada peta
@@ -1343,7 +1343,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Pergeseran pand
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Menyetel bagaimana tampilan utama menggeser posisi di peta kecil. Jika dinyalakan, peta akan bergeser secara halus. Jika dimatikan, peta langsung menuju tempat yang di klik
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Tampilkan ukuran ketika menggunakan alat pembangun: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Tampilkan perbedaan jarak dan tinggi ubin saat proses pembangunan
-STR_CONFIG_SETTING_LIVERIES                                     :Tampilkan warna perusahaan: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Tampilkan warna tergantung jenis kendaraan: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrol penggunaan tipe kendaraan spesifik untuk kendaraan (dalam perusahaan tertentu)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Tidak ada
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Perusahaan milik sendiri
@@ -1390,7 +1390,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Tidak ada tinda
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Semua tindakan kecuali pembangunan
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Semua kecuali mengubah dataran
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Semua tindakan
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gunakan daftar kendaraan tingkat lanjut: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gunakan grup dalam daftar kendaraan: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Mengaktifkan penggunaan daftar kendaraan lebih lanjut dalam pengelompokkan kendaraan
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Tampilkan indikator pengangkutan: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Pilih apakah petunjuk beban ditayangkan di atas kendaran yang sedang mengisi atau menurunkan beban
@@ -1405,7 +1405,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jenis rel yang 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Tersedia pertama
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sorot rel yang akan terpakai: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Tampilkan rel yang akan terpakai: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Beri warna yang berbeda untuk jalur-jalur yang dicadangkan untuk menolong ketika terdapat kereta yang menolak masuk ke blok menurut jalurnya
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Toolbar tetap aktif setelah dipakai: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menjagakan alat pembangunan untuk jembatan, terowongan, etc. buka setelah dipakai
