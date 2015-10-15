@@ -207,7 +207,7 @@ STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}to
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
@@ -215,11 +215,11 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}ga
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litre
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
 STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}kaki
 STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
@@ -1098,7 +1098,7 @@ STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Nilai s
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipe setting: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Setting klien (tidak disimpan di penyimpanan; mempengaruhi semua permainan)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Setting permainan (disimpan dalam penyimpanan; hanya mempengaruhi permainan baru)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setting permainan (disimpan dalam penyimpanan; hanya mempengaruhi permainan saat ini))
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Pengaturan permainan (disimpan dalam penyimpanan; hanya mempengaruhi permainan saat ini)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setting perusahaan (disimpan dalam penyimpanan; hanya mempengaruhi permainan baru)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setting perusahaan (disimpan dalam penyimpanan; hanya mempengaruhi permainan saat ini)
 
@@ -1115,7 +1115,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Membatas
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Semua setting
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Pengaturan klien (tidak disimpan di penyimpanan; mempengaruhi semua permainan)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan baru)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan aktif)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan saat ini)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada permainan baru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada perusahaan aktif)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Tampilkan semua pencarian berdasarkan pengaturan{}{SILVER}Kategori {BLACK}sampai {WHITE}{STRING}
@@ -1433,11 +1433,11 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Matikan infrast
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Jika diaktifkan, infrastruktur cuma tersedia jika ada kendaraan tersedia, mencegah buang waktu dan uang di infrastruktur yang tidak bisa digunakan
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. kereta tiap pemain: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Batas jumlah kereta yang boleh dimiliki satu perusahaan
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. kendaraan jalan raya tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. kendaraan jalan raya tiap perusahaan: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Batas jumlah kendaraan jalan raya yang boleh dimiliki satu perusahaan
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks. pesawat tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks. pesawat tiap perusahaan: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Batas jumlah pesawat yang boleh dimiliki satu perusahaan
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks. kapal tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks. kapal tiap perusahaan: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Jumlah maximum kapal yang boleh dimilki sebuah perusahaan
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Non-aktifkan kereta bagi pemain komputer: {STRING}
@@ -1464,7 +1464,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Jangka waktu pe
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih apakah servis kendaraan dipicu oleh waktu terlewat sejak servis terakhir atau dari kehandalan menjatuh beberapa persentase dari kehandalan maximum
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval dasar untuk kereta: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setel interval dasar untuk kereta, jika tidak ada interval tetap
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} hari/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}hari/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Di non-aktifkan
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval dasar untuk kendaraan jalan raya: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Setel Interval perbaikan untuk kendaraan jalan raya baru, jika tidak ada interval tetap
@@ -1604,9 +1604,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Tidak ada
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Faktor kali ukuran kota awal: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Ukuran rata-rata kota besar terhadap kota kecil saat permainan dimulai
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Perbarui grafik distribusi setiap {STRING} hari
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Perbarui grafik distribusi setiap {STRING}{NBSP}hari
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Waktu diantara dua penghitungan linkgraph berurutan. Setiap penghitungan hanya menghitung satu komponen perencanaan dari grafik. Namun, angka yang diberikan untuk seting ini bukan berarti seluruh grafik akan diperbaharui dalam angka hari yang sama, hanya beberapa bagian. Semakin sedikit semakin banyak proses CPU yang diperlukan untuk menghitung. Semakin banyak semakin lama waktu sebelum cargo distribution dimulai pada rute baru.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Ambil {STRING} hari untuk menghitung grafik distribusi
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Ambil {STRING}{NBSP}hari untuk menghitung grafik distribusi
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Waktu dibutuhkan untuk setiap perhitungan dari komponen 'linkgraph'. Ketika perhitungan dimulai, ada utas 'dibuat' yang boleh dijalankan untuk jumlah hari ini. Semakin pendek anda mengatur ini lebih mungkin utas ini belum selesai ketika itu seharusnya. Kemudian permainan berhenti sampai itu ("lag"). Semakin lama anda mengatur semakin lama itu untuk distribusinya untuk memperbarui ketika rute mengganti.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetris
@@ -1618,7 +1618,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetris" bera
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modus distribusi untuk kelas kargo BERLAPIS BAJA: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Kelas kargo BERLAPIS BAJA meliputi barang berharga pada iklim sedang, intan pada sub tropis atau emas pada iklim sub arktik. NewGRF mungkin mengubah itu. "simetris" berarti bahwa jumlah kargo kira-kira akan terkirim sama dari stasiun A ke stasiun B sebagaimana dari B ke A. "asimetris" berarti jumlah kargo terkirim bisa berbeda pada kedua arah. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo itu. Disarankan untuk memilih asimetris atau manual ketika bermain sub arktik, karena bank tidak mengirim emas kembali ke tambang emas. Untuk iklim tropis dan sub tropis anda juga bisah pilih simetris karena bank akan mengirim kembali beberapa barang berharga ke bank asalnya.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modus distribusi untuk kelas kargo yang lain: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simetris" berarti bahwa kira-kira sama jumlah kargo akan pergi dari stasiun A ke stasiun B sebagai dari B ke A. "asimetris" berarti sewenang-wenang jumlah kargo bisa pergi di kedua arah. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo. Anda mungkin mau mengaturkan ini untuk "asimetris" atau manual.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimetris" berarti jumlah kargo yang pergi ke kedua arah bisa berbeda-beda. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Ketepatan distribusi: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Semakin tinggi anda mengatur ini semakin banyak waktu CPU perhitungan "linkgraph" akan mengambil. Jika waktu terlalu lama anda mungkin melihat "lag".Jika anda mengatur itu ke nilai rendah, tetapi, distribusi akan menjadi tidak akurat, dan anda mungkin melihat kargo tidak dikirim ke tempat anda berharap untuk pergi.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efek jarak kepada permintaan : {STRING}
@@ -1666,7 +1666,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisasi
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efek suara
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Suara
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Umum
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Jendela
@@ -1684,7 +1684,7 @@ STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Linkung
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Berwenang
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kota
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi Kargo
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi kargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain Komputer
 
@@ -1966,13 +1966,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Tidak
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ya
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klien
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimum klien:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimum jumlah klien:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pilih jumlah klien maksimal. Tidak semua slot harus diisi
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Perusahaan
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimum perusahaan:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimum jumlah perusahaan:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Batasi jumlah perusahaan pada server
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} Penonton
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimum penonton:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimum jumlah penonton:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Batasi jumlah penonton pada server
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa pembicaraan:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Agar pemain lain mengetahui bahasa apa yang digunakan pada sever
@@ -2986,8 +2986,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} terkirim
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (masih dibutuhkan)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (terkirim)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kota tumbuh setiap {ORANGE}{COMMA}{BLACK} hari
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kota tumbuh setiap {ORANGE}{COMMA}{BLACK} hari (didanai)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kota tumbuh setiap {ORANGE}{COMMA}{BLACK}{NBSP}hari
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kota tumbuh setiap {ORANGE}{COMMA}{BLACK}{NBSP}hari (didanai)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kota {RED}tidak{BLACK} tumbuh
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
@@ -3196,7 +3196,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo Bank
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman Maks: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman maks.: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pinjam {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Tambah jumlah pinjaman. Tekan Ctrl+Click untuk meminjam sebanyak mungkin.
@@ -3664,7 +3664,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Mua
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} hari{BLACK}   Perbaikan terakhir: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA}{NBSP}hari{BLACK}   Perbaikan terakhir: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} %{BLACK}   Perbaikan terakhir: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah jarak waktu perbaikan dengan 10. Ctrl+Click menambah jarak waktu perbaikan dengan 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangi jarak waktu perbaikan dengan 10. Ctrl+Click mengurangi jarak waktu perbaikan dengan 5
@@ -3900,8 +3900,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(menetap untuk 
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(perjalan untuk {STRING}, tidak berjadwal)
 STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :dan berjalan selama {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} hari
-STR_TIMETABLE_TICKS                                             :{COMMA} titik
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}hari
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}titik
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Total durasi seluruh perjalanan akan memakan waktu {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Total durasi seluruh perjalanan akan memakan waktu kurang lebih {STRING} untuk terpenuhi (blm semuanya terjadwal)
