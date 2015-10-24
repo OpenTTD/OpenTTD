@@ -2174,7 +2174,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :게임이 아�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :게임이 아직 일시 정지된 상태입니다. ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :게임이 아직 일시 정지된 상태입니다. ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :게임이 재개되었습니다. ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :충분한 플레이어가 없습니다
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :플레이하는 사람 수
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :접속자와 연결중
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :수동
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :게임 스크립트
