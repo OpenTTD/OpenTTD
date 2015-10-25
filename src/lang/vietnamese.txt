@@ -844,6 +844,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} chưa có lệnh
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} có các lệnh trùng lặp
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} có trạm bất hợp lệ trong lệnh
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} có trong lộ trình một sân bay có đường băng quá ngắn
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} đang cũ đi
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} đang xuống cấp
@@ -1287,17 +1288,28 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Hiển thị d�
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Độ đậm của đường kẻ trong đồ thị: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Độ đậm của đường vẽ trên đồ thị. Một đường mảnh sẽ chính xác hơn, trong khi đó đường đậm sẽ dễ nhìn hơn và màu sắc dễ phân biệt hơn
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Nền đất: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Nền đất là định nghĩa cơ bản của các màn chơi với các kiểu hàng hóa và yêu cầu cho sự phát triển đô thị khác nhau. NewGRF và kịch bản chơi cho phép các điều chỉnh nhỏ hơn.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Tạo nền đất: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Bộ khởi tạo nguyên bản chỉ dựa vào tập hợp đồ họa đối tượng cơ bản, rồi sinh ra các dạng địa hình cố đinh. Với TerraGenesis thì dựa trên có chế nhiễu loạn (noise) kiểu Perlin và cho phép các điều chỉnh nhỏ hơn.
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Kiểu nền đất: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Chỉ cho TerraGenesis) Địa hình nhiều đồi núi
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Mật độ nhà máy: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Thiết lập số nhà máy sẽ được tạo ra và mức độ dùy trì trong ván chơi
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Khoảng cách tối đa từ lề bản đồ tới nhà máy lọc dầu: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Nhà máy hóa dầu chỉ có thể xây gần rìa bản đồ, tương ứng là ven biển với những bản đồ dạng đảo
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Độ cao tuyết phủ: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Điều chỉnh độ cao của tuyết phủ đối với địa hình xứ lanh. Tuyết phủ có thể ảnh hưởng tới việc tạo ra nhà máy và các yêu cầu cho sự tăng trưởng đô thị
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Chỉ cho TerraGenesis) Chọn mức độ trùng điệp của núi: địa hình bằng phẳng thì ít hơn, địa hình đồi núi thì nhiều hơn. Địa hình gồ ghề có nhiều núi và trông có vẻ lặp lại
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Rất Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Rất Gồ Ghề
+STR_CONFIG_SETTING_VARIETY                                      :Phân bổ sự đa dạng: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Chỉ cho TerraGenesis) Điều chỉnh liệu rằng bản đồ gồm cả vùng núi cao và vùng đồng bằng. Đây chỉ là điều chỉnh cho sự bằng phẳng hơn, các thiết lập khác sẽ điều chỉnh cho vùng núi.
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Số lượng sông ngòi: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Chọn số lượng sông ngòi được khởi tạo
 STR_CONFIG_SETTING_TREE_PLACER                                  :Thuật toán đặt cây: {STRING}
@@ -2863,6 +2875,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite t
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Xử lý sprite bình thường ở trước, bỏ qua các loại pseudo/recolour/font sprite căn theo điểm bắt đầu
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Theo những thông tin của sprite đã chọn. Thì việc căn chỉnh khi vẽ đối với sprite này sẽ bị bỏ qua
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Đặt lại tương đối
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Đặt lại các dịch chuyển tương đối hiện tại
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK} dịch X: {NUM}, dịch Y: {NUM} (tuyệt đối)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}toạ độ X: {NUM}, toạ độ Y: {NUM} (tương đối)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Chọn sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Chọn sprite ở bất cứ đâu trên màn hình
 
