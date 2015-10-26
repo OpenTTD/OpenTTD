@@ -991,7 +991,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaño cuádru
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunto de gráficos base a usar
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fichero{P "" s} perdido{P "" s} o corrupto{P "" s}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional acerca de este fichero de gráficos
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre el set de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sonidos base
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleccionar conjunto de sonidos base a emplear
@@ -1820,14 +1820,14 @@ STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Seleccio
 
 STR_LIVERY_DEFAULT                                              :Estación normal
 STR_LIVERY_STEAM                                                :Locomotora a Vapor
-STR_LIVERY_DIESEL                                               :Locomotora Diesel
+STR_LIVERY_DIESEL                                               :Locomotora Diésel
 STR_LIVERY_ELECTRIC                                             :Locomotora Eléctrica
 STR_LIVERY_MONORAIL                                             :Locomotora Monorraíl
 STR_LIVERY_MAGLEV                                               :Locomotora Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón Pasajeros (Vapor)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón Pasajeros (Diesel)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón Pasajeros (Diésel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón Pasajeros (Eléctrico)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagón Pasajeros (Monorraíl)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagón Pasajeros (Maglev)
@@ -2248,7 +2248,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Librería SJ
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descargando contenido...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Solicitando ficheros...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Solicitando archivos...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Descargando {STRING} ({NUM} de {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descarga completada
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descargadas ({NUM} %)
@@ -2257,8 +2257,8 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No es posible conectarse al servidor de contenidos...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga errónea...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexión perdida
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no se puede escribir en el fichero
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el fichero descargado
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no se puede escribir en el archivo
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el archivo descargado
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráficos no encontrados
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesita gráficos para funcionar pero no se pudo encontrar ninguno. ¿Desea permitir que OpenTTD descargue e instale dichos gráficos?
@@ -2918,7 +2918,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Precau
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van a modificar los NewGRF de una partida ya comenzada. Esto puede provocar un error fatal en OpenTTD o romper la partida.{}No se deben crear reportes de bugs por problemas causados por esta acción.{}¿Está completamente seguro de esto?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se puede añadir: GRF ID duplicado
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichero no encontrado (GRF compatible cargado)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Archivo no encontrado (GRF compatible cargado)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No se puede añadir fichero: Límite de ficheros NewGRF alcanzado
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para ficheros que faltan
@@ -3921,7 +3921,7 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona una fecha como punto de partida de este horario. Ctrl+Click permite fijar el punto de partida de este horario y distribuye todos los vehículos que lo compartan siempre y cuando el horario esté completo
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Horario
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la cantidad de tiempo que debe tomar una orden marcada
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la cantidad de tiempo que debe tardar una orden marcada
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Limpiar Horario
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar la cantidad de tiempo para la orden seleccionada
@@ -4068,13 +4068,13 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}El guard
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Error en Autoguardado
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}No es posible leer la unidad
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Error guardando juego{}{STRING}
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}No es posible borrar el fichero
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}No es posible borrar el archivo
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Carga de Juego Errónea{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida guardada corrupta - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guardada ha sido realizada con una versión más nueva
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No se puede leer fichero
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No se puede escribir en el fichero
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Archivo no legible
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No se puede escribir en el archivo
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Comprobación de integridad de los datos fallida
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El juego ha sido guardado en una versión sin soporte para tranvías. Todos los tranvías serán eliminados
@@ -4604,7 +4604,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diésel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
