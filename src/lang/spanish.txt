@@ -942,7 +942,7 @@ STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francés
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemán
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglés (Adicional)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinoamericano
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tontos
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Absurdos
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sueco
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandés
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandés
@@ -2802,8 +2802,8 @@ STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borrar la programación seleccionada
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Añadir
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Añade el NewGRF seleccionado a tu configuración
-STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualizar ficheros
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza la lista de ficheros NewGRF disponibles
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualizar archivos
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza la lista de archivos NewGRF disponibles
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Retirar
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retirar el NewGRF seleccionado de la lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mover Arriba
@@ -2812,7 +2812,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mover Ab
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mueve el NewGRF seleccionado abajo en la lista
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Actualiza
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Utiliza las versiones más nuevas de los archivos NewGRF que dispongan de diversas versiones instaladas
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una lista de los ficheros NewGRF instalados
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una lista de los archivos NewGRF instalados
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establecer parámetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parámetros
@@ -2823,7 +2823,7 @@ STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Encontrar contenido que falta en línea
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comprobar si el contenido que falta puede ser encontrado en línea
 
-STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Fichero: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Archivo: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versión compatible: {SILVER}{NUM}
@@ -2832,7 +2832,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: 
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámetros: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No tiene información disponible
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichero no encontrado
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Archivo no encontrado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible con esta versión de OpenTTD
 
@@ -2921,15 +2921,15 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se pu
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Archivo no encontrado (GRF compatible cargado)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No se puede añadir fichero: Límite de ficheros NewGRF alcanzado
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para ficheros que faltan
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF no encontrados han sido desactivados
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF no encontrados
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para archivos que faltan
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Archivo(s) GRF no encontrados han sido desactivados
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Archivo(s) GRF no encontrados
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Ninguno
 STR_NEWGRF_LIST_ALL_FOUND                                       :Todos los ficheros presentes
-STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Ficheros compatibles encontrados
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Archivos compatibles encontrados
 STR_NEWGRF_LIST_MISSING                                         :{RED}Ficheros que faltan
 
 # NewGRF 'it's broken' warnings
@@ -4084,7 +4084,7 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generaci
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hay municipios en el escenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}No se pudo cargar mapa de alturas PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fichero no encontrado
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... archivo no encontrado
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... no se pudo convertir tipo de imagen. Se requieren imágenes PNG de 8 o 24-bits
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algo ha salido mal (es probable que el fichero esté corrupto)
 
