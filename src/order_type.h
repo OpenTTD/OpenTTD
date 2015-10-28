@@ -113,6 +113,14 @@ enum OrderDepotActionFlags {
 DECLARE_ENUM_AS_BIT_SET(OrderDepotActionFlags)
 
 /**
+ * Flags for go to waypoint orders
+ */
+enum OrderWaypointFlags {
+	OWF_DEFAULT          = 0,      ///< Default waypoint behaviour
+};
+DECLARE_ENUM_AS_BIT_SET(OrderWaypointFlags)
+
+/**
  * Variables (of a vehicle) to 'cause' skipping on.
  */
 enum OrderConditionVariable {
