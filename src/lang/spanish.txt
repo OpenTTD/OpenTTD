@@ -434,7 +434,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nueva in
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcción de ferrocarril
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcción ferrocarril eléctrico
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcción de ferrocarril eléctrico
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcción de monorraíl
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcción de maglev
 ############ range ends here
@@ -625,7 +625,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstam
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Cantidad de vehículos que obtuvieron beneficios el año pasado. Incluye vehículos de carretera, trenes, barcos y aeronaves
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Las estaciones de tren, paradas de autobus, aeropuertos y demás son contabilizadas por separado incluso si pertenecen a la misma estación
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Las estaciones de tren, paradas de autobús, aeropuertos y demás son contabilizadas por separado incluso si pertenecen a la misma estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficio del vehículo con menores ingresos (de entre todos los vehículos con más de 2 años)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más bajo de los pasados 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más alto de los pasados 12 trimestres
@@ -656,15 +656,15 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Título
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Mezclar
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programa
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Pasar a pista anterior de la selección
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Pasar a siguiente pista de la selección
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Saltar a la pista anterior de la selección
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Saltar a la siguiente pista de la selección
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Detener música
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Comenzar música
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Mueva los cursores para fijar volumen de música y efectos
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Seleccionar programa 'todas las pistas'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Seleccionar programa 'estilo antiguo'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Seleccionar programa 'estilo moderno'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Elegir el programa musical de estilo 'Ezy Street'
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Seleccionar programa 'estilo Ezy Street'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Seleccionar programa 'Personal 1' (definido por el usuario)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccionar programa 'Personal 2' (definido por el usuario)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Encender/apagar mezclador
@@ -717,7 +717,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostrar propietarios de terrenos en el mapa
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click en un tipo de industria para mostrarlo/ocultarlo. Ctrl+Click oculta todos los tipos excepto el seleccionado. Ctrl+Click de nuevo en el mismo tipo muestra todos los tipos de industrias
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click en una empresa para mostrar/ocultar sus propiedades. Ctrl+Click oculta todas las empresas excepto la seleccionada. Ctrl+Click de nuevo en la misma empresa muestra todas las empresas
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Un Click en una carga permite activar o desactivar su visualización. Ctrl+Click deshabilita todas las cargas excepto la seleccionada. Un segundo Ctrl+Click habilita la visualización de todos los tipos de carga
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Click en una carga permite activar o desactivar su visualización. Ctrl+Click deshabilita todas las cargas excepto la seleccionada. Un segundo Ctrl+Click habilita la visualización de todos los tipos de carga
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Carreteras
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Ferrocarriles
