@@ -117,6 +117,7 @@ DECLARE_ENUM_AS_BIT_SET(OrderDepotActionFlags)
  */
 enum OrderWaypointFlags {
 	OWF_DEFAULT          = 0,      ///< Default waypoint behaviour
+	OWF_REVERSE          = 1 << 0, ///< Reverse train at the waypoint
 };
 DECLARE_ENUM_AS_BIT_SET(OrderWaypointFlags)
 
@@ -164,6 +165,7 @@ enum ModifyOrderFlags {
 	MOF_COND_COMPARATOR, ///< A comparator changes.
 	MOF_COND_VALUE,      ///< The value to set the condition to.
 	MOF_COND_DESTINATION,///< Change the destination of a conditional order.
+	MOF_WAYPOINT_FLAGS,  ///< Change the waypoint flags
 	MOF_END
 };
 template <> struct EnumPropsT<ModifyOrderFlags> : MakeEnumPropsT<ModifyOrderFlags, byte, MOF_NON_STOP, MOF_END, MOF_END, 4> {};

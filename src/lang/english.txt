@@ -3868,6 +3868,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Select w
 STR_ORDER_DROP_REFIT_AUTO                                       :Fixed cargo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Available cargo
 
+STR_ORDER_REVERSE                                               :{BLACK}Reverse
+STR_ORDER_REVERSE_TOOLTIP                                       :{BLACK}Change the reversing behaviour of the highlighted order.
+
 STR_ORDER_SERVICE                                               :{BLACK}Service
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Always go
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Service if needed
@@ -3920,6 +3923,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Show all
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Go via {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Go non-stop via {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT_REVERSE                                :Go via and reverse at {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT_REVERSE                       :Go non-stop via and reverse at {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Service at
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Service non-stop at

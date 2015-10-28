@@ -3142,6 +3142,11 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 {
 	if (v->type == VEH_TRAIN) {
 		StationID station_id = GetStationIndex(tile);
+		if (v->current_order.IsType(OT_GOTO_WAYPOINT) && v->current_order.GetDestination() == station_id && v->current_order.GetWaypointFlags() & OWF_REVERSE) {
+			Train *t = Train::From(v);
+			// reverse at waypoint
+			if (t->reverse_distance == 0) t->reverse_distance = t->gcache.cached_total_length;
+		}
 		if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
 		if (!IsRailStation(tile) || !v->IsFrontEngine()) return VETSB_CONTINUE;
 

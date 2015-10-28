@@ -1318,7 +1318,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			if (mof != MOF_NON_STOP) return CMD_ERROR;
+			if (mof != MOF_NON_STOP && mof != MOF_WAYPOINT_FLAGS) return CMD_ERROR;
 			break;
 
 		case OT_CONDITIONAL:
@@ -1399,6 +1399,10 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 		case MOF_COND_DESTINATION:
 			if (data >= v->GetNumOrders()) return CMD_ERROR;
+			break;
+
+		case MOF_WAYPOINT_FLAGS:
+			if (data != (data & OWF_REVERSE)) return CMD_ERROR;
 			break;
 	}
 
@@ -1488,6 +1492,10 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			case MOF_COND_DESTINATION:
 				order->SetConditionSkipToOrder(data);
+				break;
+
+			case MOF_WAYPOINT_FLAGS:
+				order->SetWaypointFlags((OrderWaypointFlags)data);
 				break;
 
 			default: NOT_REACHED();
