@@ -3085,6 +3085,17 @@ static Vehicle *CheckTrainAtSignal(Vehicle *v, void *data)
 	return t;
 }
 
+uint16 ReversingDistanceTargetSpeed(const Train *v)
+{
+	int target_speed;
+	if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC) {
+		target_speed = ((v->reverse_distance - 1) * 5) / 2;
+	} else {
+		target_speed = (v->reverse_distance - 1) * 10 - 5;
+	}
+	return max(0, target_speed);
+}
+
 /**
  * Move a vehicle chain one movement stop forwards.
  * @param v First vehicle to move.
@@ -3103,14 +3114,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 	}
 
 	if (v->reverse_distance > 1) {
-		v->vehstatus |= VS_TRAIN_SLOWING;
-		int target_speed;
-		if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC) {
-			target_speed = ((v->reverse_distance - 1) * 5) / 2;
-		} else {
-			target_speed = (v->reverse_distance - 1) * 10 - 5;
-		}
-		uint16 spd = max(0, target_speed);
+		uint16 spd = ReversingDistanceTargetSpeed(v);
 		if (spd < v->cur_speed) v->cur_speed = spd;
 	}
 
