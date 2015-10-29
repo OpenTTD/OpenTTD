@@ -67,7 +67,7 @@ static inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 /**
  * Short-hand to apply GUI zoom level.
  * @param value Pixel amount at #ZOOM_LVL_BEGIN (full zoom in).
- * @return value Pixel amount at #ZOOM_LVL_GUI.
+ * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
 static inline int UnScaleGUI(int value)
 {
@@ -76,8 +76,8 @@ static inline int UnScaleGUI(int value)
 
 /**
  * Scale traditional pixel dimensions to GUI zoom level.
- * @param value Pixel amount at 1x zoom level.
- * @return value Pixel amount at #ZOOM_LVL_GUI.
+ * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
 static inline int ScaleGUITrad(int value)
 {
