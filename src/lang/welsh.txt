@@ -284,8 +284,8 @@ STR_SORT_BY_PRODUCTION                                          :Cynyrch
 STR_SORT_BY_TYPE                                                :Math
 STR_SORT_BY_TRANSPORTED                                         :Wedi'i gludo
 STR_SORT_BY_NUMBER                                              :Rhif
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Elw eleni
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Elw llynedd
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Elw llynedd
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Elw eleni
 STR_SORT_BY_AGE                                                 :Oed
 STR_SORT_BY_RELIABILITY                                         :Dibynadwyedd
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Cyfanswm Gallu Cludo fesul y math o lwyth
