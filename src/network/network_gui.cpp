@@ -1863,7 +1863,9 @@ struct NetworkClientListWindow : Window {
 	int selected_item;
 
 	uint server_client_width;
-	uint company_icon_width;
+	uint line_height;
+
+	Dimension icon_size;
 
 	NetworkClientListWindow(WindowDesc *desc, WindowNumber window_number) :
 			Window(desc),
@@ -1885,7 +1887,7 @@ struct NetworkClientListWindow : Window {
 			if (ci->client_playas != COMPANY_INACTIVE_CLIENT) num++;
 		}
 
-		num *= FONT_HEIGHT_NORMAL;
+		num *= this->line_height;
 
 		int diff = (num + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM) - (this->GetWidget<NWidgetBase>(WID_CL_PANEL)->current_y);
 		/* If height is changed */
@@ -1901,7 +1903,8 @@ struct NetworkClientListWindow : Window {
 		if (widget != WID_CL_PANEL) return;
 
 		this->server_client_width = max(GetStringBoundingBox(STR_NETWORK_SERVER).width, GetStringBoundingBox(STR_NETWORK_CLIENT).width) + WD_FRAMERECT_RIGHT;
-		this->company_icon_width = GetSpriteSize(SPR_COMPANY_ICON).width + WD_FRAMERECT_LEFT;
+		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
+		this->line_height = max(this->icon_size.height + 2U, (uint)FONT_HEIGHT_NORMAL);
 
 		uint width = 100; // Default width
 		const NetworkClientInfo *ci;
@@ -1909,7 +1912,7 @@ struct NetworkClientListWindow : Window {
 			width = max(width, GetStringBoundingBox(ci->client_name).width);
 		}
 
-		size->width = WD_FRAMERECT_LEFT + this->server_client_width + this->company_icon_width + width + WD_FRAMERECT_RIGHT;
+		size->width = WD_FRAMERECT_LEFT + this->server_client_width + this->icon_size.width + WD_FRAMERECT_LEFT + width + WD_FRAMERECT_RIGHT;
 	}
 
 	virtual void OnPaint()
@@ -1925,11 +1928,13 @@ struct NetworkClientListWindow : Window {
 		if (widget != WID_CL_PANEL) return;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - 10) / 2;
+		int icon_offset = (this->line_height - icon_size.height) / 2;
+		int text_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+
 		uint y = r.top + WD_FRAMERECT_TOP;
 		uint left = r.left + WD_FRAMERECT_LEFT;
 		uint right = r.right - WD_FRAMERECT_RIGHT;
-		uint type_icon_width = this->server_client_width + this->company_icon_width;
+		uint type_icon_width = this->server_client_width + this->icon_size.width + WD_FRAMERECT_LEFT;
 
 
 		uint type_left  = rtl ? right - this->server_client_width : left;
@@ -1943,24 +1948,24 @@ struct NetworkClientListWindow : Window {
 		FOR_ALL_CLIENT_INFOS(ci) {
 			TextColour colour;
 			if (this->selected_item == i++) { // Selected item, highlight it
-				GfxFillRect(r.left + 1, y, r.right - 1, y + FONT_HEIGHT_NORMAL - 1, PC_BLACK);
+				GfxFillRect(r.left + 1, y, r.right - 1, y + this->line_height - 1, PC_BLACK);
 				colour = TC_WHITE;
 			} else {
 				colour = TC_BLACK;
 			}
 
 			if (ci->client_id == CLIENT_ID_SERVER) {
-				DrawString(type_left, type_right, y, STR_NETWORK_SERVER, colour);
+				DrawString(type_left, type_right, y + text_offset, STR_NETWORK_SERVER, colour);
 			} else {
-				DrawString(type_left, type_right, y, STR_NETWORK_CLIENT, colour);
+				DrawString(type_left, type_right, y + text_offset, STR_NETWORK_CLIENT, colour);
 			}
 
 			/* Filter out spectators */
-			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, icon_left, y + icon_y_offset);
+			if (Company::IsValidID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, icon_left, y + icon_offset);
 
-			DrawString(name_left, name_right, y, ci->client_name, colour);
+			DrawString(name_left, name_right, y + text_offset, ci->client_name, colour);
 
-			y += FONT_HEIGHT_NORMAL;
+			y += line_height;
 		}
 	}
 
@@ -1993,7 +1998,7 @@ struct NetworkClientListWindow : Window {
 		pt.y -= this->GetWidget<NWidgetBase>(WID_CL_PANEL)->pos_y;
 		int item = -1;
 		if (IsInsideMM(pt.y, WD_FRAMERECT_TOP, this->GetWidget<NWidgetBase>(WID_CL_PANEL)->current_y - WD_FRAMERECT_BOTTOM)) {
-			item = (pt.y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
+			item = (pt.y - WD_FRAMERECT_TOP) / this->line_height;
 		}
 
 		/* It did not change.. no update! */
