@@ -57,41 +57,44 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 			bool connective = false;
 			const RoadBits mirrored_rb = MirrorRoadBits(target_rb);
 
-			switch (GetTileType(neighbor_tile)) {
-				/* Always connective ones */
-				case MP_CLEAR: case MP_TREES:
-					connective = true;
-					break;
+			if (IsValidTile(neighbor_tile)) {
+				switch (GetTileType(neighbor_tile)) {
+					/* Always connective ones */
+					case MP_CLEAR: case MP_TREES:
+						connective = true;
+						break;
 
-				/* The conditionally connective ones */
-				case MP_TUNNELBRIDGE:
-				case MP_STATION:
-				case MP_ROAD: {
-					const RoadBits neighbor_rb = GetAnyRoadBits(neighbor_tile, ROADTYPE_ROAD) | GetAnyRoadBits(neighbor_tile, ROADTYPE_TRAM);
+					/* The conditionally connective ones */
+					case MP_TUNNELBRIDGE:
+					case MP_STATION:
+					case MP_ROAD:
+						if (IsNormalRoadTile(neighbor_tile)) {
+							/* Always connective */
+							connective = true;
+						} else {
+							const RoadBits neighbor_rb = GetAnyRoadBits(neighbor_tile, ROADTYPE_ROAD) | GetAnyRoadBits(neighbor_tile, ROADTYPE_TRAM);
 
-					/* Accept only connective tiles */
-					connective = (neighbor_rb & mirrored_rb) || // Neighbor has got the fitting RoadBit
-							HasExactlyOneBit(neighbor_rb); // Neighbor has got only one Roadbit
+							/* Accept only connective tiles */
+							connective = (neighbor_rb & mirrored_rb) != ROAD_NONE;
+						}
+						break;
 
-					break;
+					case MP_RAILWAY:
+						connective = IsPossibleCrossing(neighbor_tile, DiagDirToAxis(dir));
+						break;
+
+					case MP_WATER:
+						/* Check for real water tile */
+						connective = !IsWater(neighbor_tile);
+						break;
+
+					/* The definitely not connective ones */
+					default: break;
 				}
-
-				case MP_RAILWAY:
-					connective = IsPossibleCrossing(neighbor_tile, DiagDirToAxis(dir));
-					break;
-
-				case MP_WATER:
-					/* Check for real water tile */
-					connective = !IsWater(neighbor_tile);
-					break;
-
-				/* The definitely not connective ones */
-				default: break;
 			}
 
 			/* If the neighbor tile is inconnective, remove the planed road connection to it */
 			if (!connective) org_rb ^= target_rb;
-
 		}
 	}
 
