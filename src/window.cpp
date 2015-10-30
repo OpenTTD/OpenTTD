@@ -1207,6 +1207,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 			case WC_BUY_COMPANY:
 			case WC_COMPANY:
 			case WC_COMPANY_INFRASTRUCTURE:
+			case WC_VEHICLE_ORDERS: // Changing owner would also require changing WindowDesc, which is not possible; however keeping the old one crashes because of missing widgets etc.. See ShowOrdersWindow().
 				continue;
 
 			default:
