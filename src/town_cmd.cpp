@@ -1247,8 +1247,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 					/* FALL THROUGH */
 
 				case TL_2X2_GRID:
-					rcmd = GetTownRoadGridElement(t1, house_tile, target_dir);
-					allow_house = (rcmd == ROAD_NONE);
+					rcmd = GetTownRoadGridElement(t1, tile, target_dir);
+					allow_house = (rcmd & DiagDirToRoadBits(target_dir)) == ROAD_NONE;
 					break;
 
 				case TL_BETTER_ROADS: // Use original afterwards!
