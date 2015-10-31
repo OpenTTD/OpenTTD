@@ -1258,7 +1258,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :By ynskeakeljen
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warskôgje as in fiertúch it paad bjuster is: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Lit berjochten sjen at in fiertúch gjin paad nei syn bestimming fine kin
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Hâld fiertúchoarders yn de gaten: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :By ynkeakeljen wurde de oarder fan de fiertugen sa no en dan kontrolearre en wurde flater dy't dêrby nei boppe komme melden
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :By ynskeakeljen wurde de oarder fan de fiertugen sa no en dan kontrolearre en wurde flater dy't dêrby nei boppe komme melden
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, mar slút stilsteande fiertugen út
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Fan alle fiertugen
@@ -1303,7 +1303,9 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rûch
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tige rûch
 STR_CONFIG_SETTING_VARIETY                                      :Fariaasjedistribusje: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Tal rivieren: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Kieze hoefolle rivieren generearje moatte wurde
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritme foar pleatsing beamen: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Kies de spreding fan beammen op 'e kaart: 'Orizjineel' plantet beammen ferspreid oer de kaart, 'Ferbettere' plantet beammen yn kloften
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Gjin
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Orizjineel
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Ferbettere
@@ -1328,7 +1330,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grien
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker grien
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Draai scrollrjochtig om: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :By útskeakjen beweecht de mûs de kamera. By ynskeakeljen beweecht de mûs de kaart
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :By útskeakeljen beweecht de mûs de kamera. By ynskeakeljen beweecht de mûs de kaart
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Loaitsfinster floeiend scrolle : {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepaalt hoe it haadfinster scrollt. By ynskeakeljen sil dit floeiend wêze. By útskeakeljen ljept it byld direktst nei de selektearre lokaasje
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Under it gebrûk fan de ferskate bou-arken diminsjes sjen litte: {STRING}
@@ -1446,6 +1448,7 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middel
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Dreech
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Stea AIs ta yn multiplayer: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Kompjûterspilers tastean mei te spylje yn multyspyler spullen
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :reperaasje skemas binne yn procenten: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standert reparaasjeskema foar treinen: {STRING}
@@ -1560,6 +1563,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :langsaam
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :gewoan
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Hiel snel
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Gjin
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Begjin stêdgrutte fermenigfuldiger: {STRING}
 
@@ -1646,6 +1650,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Feroarje
 # Config errors
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... flater in reeks '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ûnjildige wearde '{STRING}' foar '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :koe net fûn wurde
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Dat strykt net mei dizze ferzje fan OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ûnbekind
 
@@ -3293,12 +3298,23 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Net losse en w
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of losse)
 
 STR_ORDER_AUTO_REFIT                                            :(Ombouwe nei {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Net losse en fracht meinimme mei ombou nei {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Net losse en folslein lade mei ombou nei {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Net losse en ien fracht folslein lade mei ombou nei {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :beskikbere fracht
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[begjin]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[ein]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Folgjende bestimming is bûten berik)
 
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Ljep nei opdracht {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Ljep nei opdracht {COMMA} at {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Ljep nei opdracht {COMMA} at {STRING} {STRING}
 
+STR_INVALID_ORDER                                               :{RED} (Unjildige opdracht)
 
 # Time table window
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Opdrachten
@@ -3314,6 +3330,7 @@ STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}{P
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P "" ken}
 
 
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit fiertûg is op tiid
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tiid Feroarje
@@ -3326,6 +3343,7 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Feroarje
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Helje maksimum snelheid fuort
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Helje de maksimum reissnelheid fuort fan de opljochte oarder
 
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Fertragingsteller weromsette
 
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Ferwachte
@@ -3373,7 +3391,9 @@ STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spulskript
 STR_AI_LIST_CAPTION                                             :{WHITE}Beskikber {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spulskripten
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om in skript te selektearje
 
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Makker: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Ferzje: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
@@ -3420,6 +3440,8 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Opslaan 
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kin bestân net fuortsmite
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden Mislearre{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne flater: {STRING}
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Koe bestân net lêze
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Koe net nei bestân skriuwe
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<net beskikber>
 
 # Map generation messages
@@ -3462,13 +3484,16 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net tast
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} gemiente stiet dit net ta
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} gemeente lit it net ta dat der noch in fleanfjild bout wurd yn dizze stêd
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} gemeente lit it net ta dat der in fleanfjild bout wurd fanwegen lûdoerlêst
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kin it lân hjir net ferheegje...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kin it lân hjir net ferleegje...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kin it lân hjir net egalisearje...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Utgrave soe tunnel beskeadigje
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Lân is al op seenivo
 STR_ERROR_TOO_HIGH                                              :{WHITE}Te heech
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... is al plat
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kin bedriuwsnamme net feroarje...
@@ -3479,10 +3504,12 @@ STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kin net 
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... gjin liening werom te betelje
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} nedich
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kin liening net werombetelje...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kin gjin jild dat fan de bank lient is weijaan...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kin bedriuw net keapje...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kin gjin haadkantoar boue
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kin net 25% oandielen fan dit bedriuw keapje...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kin net 25% oandielen fan dit bedriuw ferkeapje...
+STR_ERROR_PROTECTED                                             :{WHITE}Dit bedriuw is noch net âld genoch om oandielen te ferhannelje...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kin gjin stêd bouwe
@@ -3493,10 +3520,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te t
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te ticht by in oare stêd
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te folle stêden
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der is gjin romte mear op'e kaart
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wurk oan de dyk dwaande
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kin dizze stêd net fuorthelje...{}In stasjon of depôt ferwiist nei dizze stêd of in tegel dy't eigendom van dizze stêd is kin net fuorthelje wurde
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... Gjin geskikt plak fûn foar in stânbield in dizze stêd
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te folle yndustryen
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kin gjin yndustryen generearje...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kin hjir gjin {STRING} boue...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kin dit type yndustry hjir net boue...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... te ticht by in oare yndustry
@@ -3506,12 +3536,15 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kin 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kin allinnich yn in reinwâld bout wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kin allinnich yn in woastine bout wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kin allinnich yn in stêd bout wurde (ferfangt besteande hûzen)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kin allinich by it sintrum van in stêd bout wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kin allinnich yn lege plakken bout wurde
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kin allinich pleatse wurde by de rân fan'e kaart
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bosk kin allinich boppe snieline boud wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kin allinich boppe snieline boud wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kin allinich ûnder snieline boud wurde
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Der wie gjin gaadlike plak foar '{STRING}' industryen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Feroarje de mapynstellings om in bettere kaart te krijen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kin hjir gjin treinstasjon boue...
@@ -3525,14 +3558,20 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kin hjir
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ferbynt mear dan ien stasjon
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stasjon is te grut
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te folle stasjons
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te folle stasjonsdielen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te folle bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te folle frachtstasjons
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te ticht by in oar stasjon
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te ticht by in oare haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te ticht by in oar fleanfjild
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kin namme fan stasjon net feroarje
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... dizze dyk is eigendom fan in stêd
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... dyk leit in ferkearde rjochting
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... trochriidhaltes kinne gjin bochten hawwe
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... trochriidhaltes kinne gjin krusings hawwe
 
 # Station destruction related errors
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kin diel fan it stasjon net fourthelje...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Treinstasjon moat earst fuorthelle wurde
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kin busstasjon net fuorthelje...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kin frachtstasjon net fuorthelje...

@@ -3848,7 +3848,7 @@ STR_ORDER_NO_LOAD                                               :(Ingen lastning
 STR_ORDER_UNLOAD                                                :(Lasta av och lasta gods)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lasta av och vänta på full last)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lasta av och vänta på någon full last)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Ladda av och lämna tom)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Lasta av och lämna tom)
 STR_ORDER_TRANSFER                                              :(Överför och lasta gods)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Överför och vänta på full last)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Överför och vänta på full last av någon godstyp)

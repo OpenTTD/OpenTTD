@@ -205,16 +205,16 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonn{P "" er}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonn{P "" er}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonn
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonn{P "" ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P "" er}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter{P "" er}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
@@ -1528,7 +1528,7 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prosentandel av
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Andel av inntekten gitt til de mellomliggende etapper i et overføringssystem, noe som gir mer kontroll over inntektene
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Når du drar en linje, plasser signaler hver: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Angi distansen for når signaler vil bli bygget på et spor frem til neste hinder (signal, kryss), hvis signaler blir dratt
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kartelement{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kartelement{P 0 "" er}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Når du drar en linje, oppretthold fast avstand mellom signaler: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velg oppførselen til signalplassering ved Ctrl + dragning av signaler. Hvis deaktivert, blir signaler plassert ved tunneler eller broer for å unngå lange strekninger uten signaler. Hvis aktivert, blir signalene plassert for hver N ruter, noe som gjør justering av signaler på parallelle spor enklere
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg vingesignal automatisk før: {STRING}
@@ -1577,7 +1577,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Statusbarens po
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontal posisjon av status verktøylinjen på bunnen av skjermen
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Vinduers smekkeradius: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Avstanden mellom vinduer før vinduet som blir flyttet automatisk tilpasset nærliggende vinduer
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 el ler}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Deaktivert
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimalt antall flytende vinduer: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antall ikke-klebrige åpne vinduer før gamle vinduer automatisk blir lukket for å gi plass til nye vinduer
@@ -3908,8 +3908,8 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(opphold i {STR
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reise for {STRING}, ikke oppsatt med rutetabell)
 STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tikk{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" er}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tikk
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å fullføre rutetabellen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil ta minst {STRING} å fullføre denne rutetabellen (rutetabell ikke fullstendig)

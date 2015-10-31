@@ -30,7 +30,7 @@ STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Passagiers
 STR_CARGO_PLURAL_COAL                                           :Kolen
 STR_CARGO_PLURAL_MAIL                                           :Post
-STR_CARGO_PLURAL_OIL                                            :Olie
+STR_CARGO_PLURAL_OIL                                            :Aardolie
 STR_CARGO_PLURAL_LIVESTOCK                                      :Vee
 STR_CARGO_PLURAL_GOODS                                          :Goederen
 STR_CARGO_PLURAL_GRAIN                                          :Graan
@@ -64,7 +64,7 @@ STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Passagier
 STR_CARGO_SINGULAR_COAL                                         :Kolen
 STR_CARGO_SINGULAR_MAIL                                         :Post
-STR_CARGO_SINGULAR_OIL                                          :Olie
+STR_CARGO_SINGULAR_OIL                                          :Aardolie
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Vee
 STR_CARGO_SINGULAR_GOODS                                        :Goederen
 STR_CARGO_SINGULAR_GRAIN                                        :Graan
@@ -98,7 +98,7 @@ STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passagier{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kolen
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}zak{P "" ken} post
-STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} Vaten Olie
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}stuk{P "" s} vee
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}krat{P "" ten} goederen
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
@@ -168,7 +168,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALLE
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passagier{P "" s}
 STR_BAGS                                                        :{COMMA}{NBSP}zak{P "" ken}
 STR_TONS                                                        :{COMMA}{NBSP}ton
-STR_LITERS                                                      :{COMMA}{NBSP}liter
+STR_LITERS                                                      :{COMMA}{NBSP}liter{P "" s}
 STR_ITEMS                                                       :{COMMA}{NBSP}stuk{P "" s}
 STR_CRATES                                                      :{COMMA}{NBSP}krat{P "" ten}
 
@@ -1143,7 +1143,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximale beginl
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximale bedrag een bedrijf kan lenen (zonder rekening te houden met de inflatie)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rente van lening: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Percentage rente op lening; bepaald ook het inflatiecijfer wanneer ingeschakeld
-STR_CONFIG_SETTING_RUNNING_COSTS                                :Brandstofkosten: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Onderhoudskosten: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en bedrijfskosten van voertuigen en infrastuctuur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
@@ -3184,16 +3184,16 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Uitgaven
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Bouwkosten
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nieuwe voertuigen
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Treinbrandstofkosten
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Wegvoertuigbrandstofkosten
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Vliegtuigbrandstofkosten
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schipbrandstofkosten
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Treinonderhoudskosten
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Wegvoertuigonderhoudskosten
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Vliegtuigonderhoudskosten
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schiponderhoudskosten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Eigendomsonderhoud
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Treininkomsten
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Wegvoertuiginkomsten
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Vliegtuiginkomsten
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Schipinkomsten
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Rente van lening
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD} De rente van de lening
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Overig
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
@@ -3268,7 +3268,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramrail
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Water tegels:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalen
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Station tegels
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stationtegels
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Vliegvelden
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/jr
 
@@ -3350,7 +3350,7 @@ STR_GROUP_DEFAULT_SHIPS                                         :Niet gegroepeer
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Niet gegroepeerde vliegtuigen
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep. Klik en sleep om hiërarchie te beheren
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om een groep te maken
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om een groep te creëren
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hernoem de geselecteerde groep
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen
@@ -3598,12 +3598,12 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bouw sch
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bouw vliegtuig om voor een ander goederentype
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Keer trein om
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Dwing het wegvoertuig om om te draaien
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Dwing het wegvoertuig te keren.
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon orders van trein. Ctrl+klik toont het tijdschema van de trein
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon orders van wegvoertuig. Ctrl+klik toont tijdschema van het voertuig
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Toon orders van schip. Ctrl+klik toont tijdschema van het schip
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Toon orders van vliegtuig. Ctrl+klik toont het tijdschema van het vliegtuig
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon orders van de trein. Ctrl+klik toont het tijdschema van de trein
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon orders van het wegvoertuig. Ctrl+klik toont tijdschema van het voertuig
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Toon orders van het schip. Ctrl+klik toont tijdschema van het schip
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Toon orders van het vliegtuig. Ctrl+klik toont het tijdschema van het vliegtuig
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Toon details van trein
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Toon details van wegvoertuig
@@ -4153,9 +4153,9 @@ STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maxi
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan geen geld meer lenen...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om af te betalen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} benodigd
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan geen lening afbetalen...
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan de lening niet afbetalen..
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan geen geld weggeven dat van de bank geleend is...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan bedrijf niet kopen...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan het bedrijf niet kopen...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan bedrijfshoofdkantoor niet bouwen...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan geen 25% aandeel in dit bedrijf kopen...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan geen 25% aandeel in dit bedrijf verkopen...
@@ -4357,7 +4357,7 @@ STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan dit 
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... het is al van jou!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan groep niet maken...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan groep niet creëren...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kan deze groep niet verwijderen...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kan deze groep niet hernoemen...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan huidige groep niet instellen...
