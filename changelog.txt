@@ -1,3 +1,23 @@
+1.5.3-RC1 (2015-11-01)
+------------------------------------------------------------------------
+- Fix: When selecting a refit cargo for orders, do not check whether the vehicle is in a depot or station, and do not ask whether the vehicle currently allows station-refitting. Also hide the refit cost for orders, it is not predictable (r27428)
+- Fix: Use the NewGRF railtype sorting order in the infrastructure window (r27427)
+- Fix: Crash when switching to or taking over companies, when an order window of a vehicle of the new company was opened. Now close those windows [FS#5842] (r27425)
+- Fix: Towns did not connect roads to existing roads, unless they had only a single roadbit. Otoh, towns also tried to connect to single roadbit tiles such as tunnels and depots, even though they were not connectable in the direction of interest [FS#6374] (r27424)
+- Fix: When towns expanded single-bit roadtiles using a grid-layout, they used the layout position of the neighbouring tile (r27423)
+- Fix: Aircraft picked the wrong airport entry point, if airports were rotated by 180 degree [FS#6341] (r27422)
+- Fix: Consider text and icon sizes when drawing the client list [FS#6265] (r27421)
+- Fix: GrowTownAtRoad sometimes returned false, even when a house was built [FS#6362] (r27420)
+- Fix: CmdSellRailWagon did not revert all actions properly when no orderlist could be allocated [FS#6369] (r27419)
+- Fix: Desync due to incorrect storage of segments with different railtype in the YAPF cache [FS#6329] [FS#6379] (r27418)
+- Fix: When a dedicated server was paused with no clients, the master server advertisement interval was slowed, causing deadvertisement of the server [FS#6368] (r27400)
+- Fix: [Makefile] Game script directory and compat*.nut were never installed on *nix (r27399)
+- Fix: There are two different availability conditions for fdatasync in the manpage. Use them both, since at least on some MinGW versions one is not enough (r27389)
+- Fix: win32 sound driver failed to report errors (r27383)
+- Fix: Clickareas in settings tree were misaligned when the filter warning was displayed, if the setting height was defined by the icons instead of the font [FS#6358] (r27366)
+- Fix: Center settings filter warning also vertically, and also in case of multiple lines (r27365)
+
+
 1.5.2 (2015-09-01)
 ------------------------------------------------------------------------
 (None)
