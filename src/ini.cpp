@@ -16,7 +16,6 @@
 #include "fileio_func.h"
 
 #if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 199309L) || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE >= 500)
-# define WITH_FDATASYNC
 # include <unistd.h>
 #endif
 
@@ -80,7 +79,7 @@ bool IniFile::SaveToDisk(const char *filename)
  * APIs to do so. We only need to flush the data as the metadata itself
  * (modification date etc.) is not important to us; only the real data is.
  */
-#ifdef WITH_FDATASYNC
+#if defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
 	int ret = fdatasync(fileno(f));
 	fclose(f);
 	if (ret != 0) return false;
