@@ -809,7 +809,7 @@ static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc,
 		/* We are northwest or southeast of the airport */
 		dir = delta_y < 0 ? DIAGDIR_NW : DIAGDIR_SE;
 	}
-	dir = ChangeDiagDir(dir, (DiagDirDiff)ReverseDiagDir(DirToDiagDir(rotation)));
+	dir = ChangeDiagDir(dir, DiagDirDifference(DIAGDIR_NE, DirToDiagDir(rotation)));
 	return apc->entry_points[dir];
 }
 

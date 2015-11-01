@@ -358,8 +358,10 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 
 		bool auto_refit_allowed;
 		CommandCost refit_cost = GetRefitCost(v, v->engine_type, new_cid, actual_subtype, &auto_refit_allowed);
-		if (auto_refit && !auto_refit_allowed) {
-			/* Sorry, auto-refitting not allowed, subtract the cargo amount again from the total. */
+		if (auto_refit && (flags & DC_QUERY_COST) == 0 && !auto_refit_allowed) {
+			/* Sorry, auto-refitting not allowed, subtract the cargo amount again from the total.
+			 * When querrying cost/capacity (for example in order refit GUI), we always assume 'allowed'.
+			 * It is not predictable. */
 			total_capacity -= amount;
 			total_mail_capacity -= mail_capacity;
 
@@ -446,8 +448,15 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	/* Don't allow shadows and such to be refitted. */
 	if (v != front && (v->type == VEH_SHIP || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
+
 	/* Allow auto-refitting only during loading and normal refitting only in a depot. */
-	if (!free_wagon && (!auto_refit || !front->current_order.IsType(OT_LOADING)) && !front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
+	if ((flags & DC_QUERY_COST) == 0 && // used by the refit GUI, including the order refit GUI.
+			!free_wagon && // used by autoreplace/renew
+			(!auto_refit || !front->current_order.IsType(OT_LOADING)) && // refit inside stations
+			!front->IsStoppedInDepot()) { // refit inside depots
+		return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
+	}
+
 	if (front->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	/* Check cargo */
