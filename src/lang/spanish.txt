@@ -2919,7 +2919,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se puede añadir: GRF ID duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Archivo no encontrado (GRF compatible cargado)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No se puede añadir fichero: Límite de ficheros NewGRF alcanzado
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No se puede añadir archivo: Alcanzado el máximo de NewGRFs permitidos
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para archivos que faltan
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Archivo(s) GRF no encontrados han sido desactivados
