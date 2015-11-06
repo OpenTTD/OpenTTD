@@ -645,8 +645,8 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Personal 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Volumen música
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Volumen efectos
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MÍN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MÁX
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
@@ -759,7 +759,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activar 
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altura
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}No mostrar industrias en el mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas las industrias en el mapa
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar / ocultar mapa de alturas
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar/ocultar mapa de alturas
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}No mostrar propiedades de empresas en el mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar todas las propiedades de empresas en el mapa
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}No muestra ninguna carga en el mapa
