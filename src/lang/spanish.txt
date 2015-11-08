@@ -990,7 +990,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaño cuádru
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunto de gráficos base a usar
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fichero{P "" s} perdido{P "" s} o corrupto{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} archivo{P "" s} perdido{P "" s} o corrupto{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre el set de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sonidos base
@@ -2898,7 +2898,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro inco
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} debe ser cargado antes de {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} debe ser cargado después de {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requiere OpenTTD versión {STRING} o superior
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :El fichero GRF ha sido diseñado para ser traducido
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :El archivo GRF ha sido diseñado para ser traducido
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {1:STRING} como NewGRF estático con {STRING} puede causar desincronizaciones
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado (sprite {3:NUM})
@@ -2928,9 +2928,9 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar l
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Ninguno
-STR_NEWGRF_LIST_ALL_FOUND                                       :Todos los ficheros presentes
+STR_NEWGRF_LIST_ALL_FOUND                                       :Todos los archivos presentes
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Archivos compatibles encontrados
-STR_NEWGRF_LIST_MISSING                                         :{RED}Ficheros que faltan
+STR_NEWGRF_LIST_MISSING                                         :{RED}Archivos que faltan
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Es probable que el funcionamiento del NewGRF '{0:STRING}' cause desincronizaciones o fallos
@@ -2939,8 +2939,8 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha cambi
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ha cambiado la capacidad del vehículo para '{1:ENGINE}' fuera de un depósito o mientras no se estaba remodelando
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' da información incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Información de carga/reforma para '{1:ENGINE}' difiere tras la de la lista de compra después de la construcción. Esto puede causar que la renovación/reemplazo automáticos no reformen correctamente
+STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga/reforma para '{1:ENGINE}' difiere de la de lista de compra después de la construcción. Esto puede causar que la renovación/reemplazo automático no haga la reforma correcta
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causado un bucle sin fin en la 'callback' de producción
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Callback' {1:HEX} devolvió el resultado desconocido o inválido {2:HEX}
 
@@ -3023,7 +3023,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Pagar la recons
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Poner una estatua al dueño de la empresa
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Pagar la construcción de nuevos edificios
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar la exclusiva de los servicios de transporte
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar la autoridad local
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar a la autoridad local
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY_LONG}
