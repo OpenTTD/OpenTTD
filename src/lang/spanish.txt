@@ -1031,7 +1031,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previa:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras(£) en tu moneda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar parámetro de moneda personalizada
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Num. Máximo de jugadores: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Núm. máximo de jugadores: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ninguno
 STR_FUNDING_ONLY                                                :Solo fundadas
@@ -1087,7 +1087,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron IA apropiadas...{}Puedes descargar IA a través del sistema de 'Contenido Online'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron IAs apropiadas...{}Puedes descargar IAs a través del sistema de 'Contenido Online'
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
