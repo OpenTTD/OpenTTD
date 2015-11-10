@@ -1173,7 +1173,7 @@ STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite tener d
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir eliminar más propiedades de los municipios: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hace que sea más fácil eliminar infraestructuras y edificios de los municipios
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud máxima de trenes: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Permite cambiar la longitud máxima de trenes
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Permite cambiar la longitud máxima de los trenes
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantidad de humo/chispas: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Permite indicar la cantidad de humo o chispas que son emitidos por vehículos
@@ -1193,11 +1193,11 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite añadir
 STR_CONFIG_SETTING_INFLATION                                    :Inflación: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Activa la inflación económica, lo cual hace que los costes aumenten ligeramente más rápido que los beneficios
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Longitud máxima de puentes: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Máxima longitud permitida para puentes
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud máxima permitida para los puentes
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altura máxima de puentes: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altura máxima permitida al construir puentes
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longitud máxima de túneles: {STRING}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Máxima longitud permitida para túneles
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud máxima permitida para los túneles
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de construcción de industria primaria: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Forma de fundar industrias primarias. 'ninguno' significa que no se puede crear ninguna, 'prospeccón' significa que es posible crear nuevas industrias, pero que éstas aparecen en un lugar aleatorio del mapa y pueden fallar. 'como las otras industrias' significa que las industrias primarias pueden construirse como el resto de industrias en cualquier lugar que se quiera
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ninguno
