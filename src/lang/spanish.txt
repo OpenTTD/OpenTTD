@@ -1141,15 +1141,15 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Máximo préstamo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una compañía puede tomar en un préstamo (sin tener en cuenta la inflación)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una compañía puede recibir en un préstamo (sin tener en cuenta la inflación)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Porcentaje de interés: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de interés de los préstamos; también controla la inflación en el caso de que esté activada
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de interés de los préstamos; también controla la inflación, en caso de que esté activada
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costes de operación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Permite fijar el nivel de los costes de mantenimiento y operación de vehículos e infraestructuras
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la velocidad de las acciones de construcción para las IA
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Averías de vehículos: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla la frecuencia con la que los vehículos que no hayan tenido un mantenimiento adecuado se rompen
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla la frecuencia con la que los vehículos, con mantenimiento inadecuado, se rompen
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador por subsidio: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Permite fijar a cuanto se pagan las conexiones con subsidio
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costes de construcción: {STRING}
