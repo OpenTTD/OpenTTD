@@ -229,6 +229,7 @@ struct DepotWindow : Window {
 	VehicleID vehicle_over; ///< Rail vehicle over which another one is dragged, \c INVALID_VEHICLE if none.
 	VehicleType type;
 	bool generate_list;
+	bool sell_hovered;      ///< A vehicle is being dragged/hovered over the sell button.
 	VehicleList vehicle_list;
 	VehicleList wagon_list;
 	uint unitnumber_digits;
@@ -243,6 +244,7 @@ struct DepotWindow : Window {
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_over = INVALID_VEHICLE;
 		this->generate_list = true;
+		this->sell_hovered = false;
 		this->type = type;
 		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
 		this->unitnumber_digits = 2;
@@ -867,11 +869,24 @@ struct DepotWindow : Window {
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_over = INVALID_VEHICLE;
 		this->SetWidgetDirty(WID_D_MATRIX);
+
+		if (this->sell_hovered) {
+			this->SetWidgetLoweredState(WID_D_SELL, false);
+			this->SetWidgetDirty(WID_D_SELL);
+			this->sell_hovered = false;
+		}
 	}
 
 	virtual void OnMouseDrag(Point pt, int widget)
 	{
-		if (this->type != VEH_TRAIN || this->sel == INVALID_VEHICLE) return;
+		if (this->sel == INVALID_VEHICLE) return;
+		bool is_sell_widget = widget == WID_D_SELL;
+		if (is_sell_widget != this->sell_hovered) {
+			this->sell_hovered = is_sell_widget;
+			this->SetWidgetLoweredState(WID_D_SELL, is_sell_widget);
+			this->SetWidgetDirty(WID_D_SELL);
+		}
+		if (this->type != VEH_TRAIN) return;
 
 		/* A rail vehicle is dragged.. */
 		if (widget != WID_D_MATRIX) { // ..outside of the depot matrix.
@@ -958,7 +973,9 @@ struct DepotWindow : Window {
 			default:
 				this->sel = INVALID_VEHICLE;
 				this->SetDirty();
+				break;
 		}
+		this->sell_hovered = false;
 		_cursor.vehchain = false;
 	}
 
