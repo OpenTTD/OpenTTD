@@ -282,10 +282,22 @@ public:
 	}
 };
 
+/** Filter data for NetworkContentListWindow. */
+struct ContentListFilterData {
+	StringFilter string_filter; ///< Text filter of content list
+	ContentType type;           ///< Content type displayed
+};
+
+/** Filter criterias for NetworkContentListWindow. */
+enum ContentListFilterCriteria {
+	CONTENT_FILTER_TEXT = 0,        ///< Filter by query sting
+	CONTENT_FILTER_TYPE_OR_SELECTED,///< Filter by being of displayed type or selected for download
+};
+
 /** Window that lists the content that's at the content server */
 class NetworkContentListWindow : public Window, ContentCallback {
 	/** List with content infos. */
-	typedef GUIList<const ContentInfo *, StringFilter &> GUIContentList;
+	typedef GUIList<const ContentInfo *, ContentListFilterData &> GUIContentList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50; ///< Maximum size of the editbox in characters.
 
@@ -295,7 +307,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	static GUIContentList::FilterFunction * const filter_funcs[]; ///< Filter functions.
 	GUIContentList content;      ///< List with content
 	bool auto_select;            ///< Automatically select all content when the meta-data becomes available
-	StringFilter string_filter;  ///< Filter for content list
+	ContentListFilterData filter_data; ///< Filter for content list
 	QueryString filter_editbox;  ///< Filter editbox;
 	Dimension checkbox_size;     ///< Size of checkbox/"blot" sprite
 
@@ -431,20 +443,38 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by tags/name */
-	static bool CDECL TagNameFilter(const ContentInfo * const *a, StringFilter &filter)
+	static bool CDECL TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
-		filter.ResetState();
+		filter.string_filter.ResetState();
 		for (int i = 0; i < (*a)->tag_count; i++) {
-			filter.AddLine((*a)->tags[i]);
+			filter.string_filter.AddLine((*a)->tags[i]);
 		}
-		filter.AddLine((*a)->name);
-		return filter.GetState();
+		filter.string_filter.AddLine((*a)->name);
+		return filter.string_filter.GetState();
+	}
+
+	/** Filter content by type, but still show content selected for download. */
+	static bool CDECL TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	{
+		if (filter.type == CONTENT_TYPE_END) return true;
+		if ((*a)->type == filter.type) return true;
+		return ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED);
 	}
 
 	/** Filter the content list */
 	void FilterContentList()
 	{
-		if (!this->content.Filter(this->string_filter)) return;
+		/* Apply filters. */
+		bool changed = false;
+		if (!this->filter_data.string_filter.IsEmpty()) {
+			this->content.SetFilterType(CONTENT_FILTER_TEXT);
+			changed |= this->content.Filter(this->filter_data);
+		}
+		if (this->filter_data.type != CONTENT_TYPE_END) {
+			this->content.SetFilterType(CONTENT_FILTER_TYPE_OR_SELECTED);
+			changed |= this->content.Filter(this->filter_data);
+		}
+		if (!changed) return;
 
 		/* update list position */
 		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
@@ -457,6 +487,20 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		/* previously selected item not in list anymore */
 		this->selected = NULL;
 		this->list_pos = 0;
+	}
+
+	/**
+	 * Update filter state based on current window state.
+	 * @return true if filter state was changed, otherwise false.
+	 */
+	bool UpdateFilterState()
+	{
+		Filtering old_params = this->content.GetFiltering();
+		bool new_state = !this->filter_data.string_filter.IsEmpty() || this->filter_data.type != CONTENT_TYPE_END;
+		if (new_state != old_params.state) {
+			this->content.SetFilterState(new_state);
+		}
+		return new_state != old_params.state;
 	}
 
 	/** Make sure that the currently selected content info is within the visible part of the matrix */
@@ -473,8 +517,12 @@ public:
 	 * Create the content list window.
 	 * @param desc the window description to pass to Window's constructor.
 	 * @param select_all Whether the select all button is allowed or not.
+	 * @param type the main type of content to display or #CONTENT_TYPE_END.
+	 *   When a type other than #CONTENT_TYPE_END is given, dependencies of
+	 *   other types are only shown when content that depend on them are
+	 *   selected.
 	 */
-	NetworkContentListWindow(WindowDesc *desc, bool select_all) :
+	NetworkContentListWindow(WindowDesc *desc, bool select_all, ContentType type) :
 			Window(desc),
 			auto_select(select_all),
 			filter_editbox(EDITBOX_MAX_SIZE),
@@ -493,12 +541,14 @@ public:
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 		this->SetFocusedWidget(WID_NCL_FILTER);
 		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select);
+		this->filter_data.type = type;
 
 		_network_content_client.AddCallback(this);
 		this->content.SetListing(this->last_sorting);
 		this->content.SetFiltering(this->last_filtering);
 		this->content.SetSortFuncs(this->sorter_funcs);
 		this->content.SetFilterFuncs(this->filter_funcs);
+		this->UpdateFilterState();
 		this->content.ForceRebuild();
 		this->FilterContentList();
 		this->SortContentList();
@@ -751,6 +801,10 @@ public:
 					this->content.ForceResort();
 				}
 
+				if (this->filter_data.type != CONTENT_TYPE_END) {
+					this->content.ForceRebuild();
+				}
+
 				this->InvalidateData();
 				break;
 			}
@@ -846,6 +900,10 @@ public:
 						this->content.ForceResort();
 						this->InvalidateData();
 					}
+					if (this->filter_data.type != CONTENT_TYPE_END) {
+						this->content.ForceRebuild();
+						this->InvalidateData();
+					}
 					return ES_HANDLED;
 				}
 				/* FALL THROUGH, space is pressed and filter is focused. */
@@ -856,13 +914,21 @@ public:
 
 		if (this->content.Length() == 0) {
 			this->list_pos = 0; // above stuff may result in "-1".
+			if (this->UpdateFilterState()) {
+				this->content.ForceRebuild();
+				this->InvalidateData();
+			}
 			return ES_HANDLED;
 		}
 
 		this->selected = *this->content.Get(this->list_pos);
 
-		/* scroll to the new server if it is outside the current range */
-		this->ScrollToSelected();
+		if (this->UpdateFilterState()) {
+			this->content.ForceRebuild();
+		} else {
+			/* Scroll to the new content if it is outside the current range. */
+			this->ScrollToSelected();
+		}
 
 		/* redraw window */
 		this->InvalidateData();
@@ -872,8 +938,8 @@ public:
 	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_NCL_FILTER) {
-			this->string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-			this->content.SetFilterState(!this->string_filter.IsEmpty());
+			this->filter_data.string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->UpdateFilterState();
 			this->content.ForceRebuild();
 			this->InvalidateData();
 		}
@@ -965,6 +1031,7 @@ NetworkContentListWindow::GUIContentList::SortFunction * const NetworkContentLis
 
 NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentListWindow::filter_funcs[] = {
 	&TagNameFilter,
+	&TypeOrSelectedFilter,
 };
 
 char NetworkContentListWindow::content_type_strs[CONTENT_TYPE_END][64];
@@ -1080,7 +1147,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type)
 	}
 
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
-	new NetworkContentListWindow(&_network_content_list_desc, cv != NULL);
+	new NetworkContentListWindow(&_network_content_list_desc, cv != NULL, type);
 #else
 	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, WL_ERROR);
 	/* Connection failed... clean up the mess */
