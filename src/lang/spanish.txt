@@ -1161,7 +1161,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, l
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructuras
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los municipios frente a reestructuraciones en su zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir la medida en la que el ruido y el daño ambiental causado por las compañías afecta a su calificación local en los municipios
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir en que medida el ruido y el daño ambiental causado por las compañías afecta a su calificación y nuevas acciones de construcción en los municipios
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altura máxima del mapa: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Establece la altura máxima permitida para las montañas en el mapa
@@ -1213,7 +1213,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A la izquierda
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :En el lado de conducción
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la derecha
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar ventana de finanzas al final del año: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, la ventana de finanzas aparecerá al final de cada año para permitir inspeccionar de forma fácil el estado financiero de la compañía
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, la ventana de finanzas aparecerá al final de cada año para permitir inspeccionar fácilmente el estado financiero de la compañía
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nuevas órdenes son 'sin parada' por defecto: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, un vehículo se detendrá en todas las estaciones por las que pase. Si se activa esta opción, pasará sin detenerse a través de todas las estaciones hasta llegar a su destino. Esta opción solamente cambia el comportamiento por defecto de las órdenes nuevas. Es posible especificar para cada orden el comportamiento que se desea
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nuevos trenes paran por defecto en el {STRING} de la plataforma
