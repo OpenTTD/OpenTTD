@@ -1236,7 +1236,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite a las c
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir pagar la reconstrucción de las carreteras locales: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite a las compañías dar dinero a los municipios para que reconstruyan sus carreteras, saboteando los servicios de carretera en la zona
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinero a otras empresas: {STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite la transferencia de dinero entre compañías en modo multijugador
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite la transferencia de dinero entre compañías en el modo multijugador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular trenes pesados: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Permite fijar el impacto de llevar mercancías en los trenes. Un valor alto hace que a los trenes les cueste más llevar carga, especialmente en colinas
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de velocidad de aeronaves: {STRING}
