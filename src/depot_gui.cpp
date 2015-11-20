@@ -229,7 +229,7 @@ struct DepotWindow : Window {
 	VehicleID vehicle_over; ///< Rail vehicle over which another one is dragged, \c INVALID_VEHICLE if none.
 	VehicleType type;
 	bool generate_list;
-	bool sell_hovered;      ///< A vehicle is being dragged/hovered over the sell button.
+	int hovered_widget; ///< Index of the widget being hovered during drag/drop. -1 if no drag is in progress.
 	VehicleList vehicle_list;
 	VehicleList wagon_list;
 	uint unitnumber_digits;
@@ -244,7 +244,7 @@ struct DepotWindow : Window {
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_over = INVALID_VEHICLE;
 		this->generate_list = true;
-		this->sell_hovered = false;
+		this->hovered_widget = -1;
 		this->type = type;
 		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
 		this->unitnumber_digits = 2;
@@ -870,21 +870,26 @@ struct DepotWindow : Window {
 		this->vehicle_over = INVALID_VEHICLE;
 		this->SetWidgetDirty(WID_D_MATRIX);
 
-		if (this->sell_hovered) {
-			this->SetWidgetLoweredState(WID_D_SELL, false);
-			this->SetWidgetDirty(WID_D_SELL);
-			this->sell_hovered = false;
+		if (this->hovered_widget != -1) {
+			this->SetWidgetLoweredState(this->hovered_widget, false);
+			this->SetWidgetDirty(this->hovered_widget);
+			this->hovered_widget = -1;
 		}
 	}
 
 	virtual void OnMouseDrag(Point pt, int widget)
 	{
 		if (this->sel == INVALID_VEHICLE) return;
-		bool is_sell_widget = widget == WID_D_SELL;
-		if (is_sell_widget != this->sell_hovered) {
-			this->sell_hovered = is_sell_widget;
-			this->SetWidgetLoweredState(WID_D_SELL, is_sell_widget);
-			this->SetWidgetDirty(WID_D_SELL);
+		if (widget != this->hovered_widget) {
+			if (this->hovered_widget == WID_D_SELL || this->hovered_widget == WID_D_SELL_CHAIN) {
+				this->SetWidgetLoweredState(this->hovered_widget, false);
+				this->SetWidgetDirty(this->hovered_widget);
+			}
+			this->hovered_widget = widget;
+			if (this->hovered_widget == WID_D_SELL || this->hovered_widget == WID_D_SELL_CHAIN) {
+				this->SetWidgetLoweredState(this->hovered_widget, true);
+				this->SetWidgetDirty(this->hovered_widget);
+			}
 		}
 		if (this->type != VEH_TRAIN) return;
 
@@ -975,7 +980,7 @@ struct DepotWindow : Window {
 				this->SetDirty();
 				break;
 		}
-		this->sell_hovered = false;
+		this->hovered_widget = -1;
 		_cursor.vehchain = false;
 	}
 
