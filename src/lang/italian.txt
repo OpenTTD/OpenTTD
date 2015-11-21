@@ -2904,7 +2904,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Va allo 
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Precedente
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procede al precedente sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando all'ultimo se viene raggiunto il primo della lista
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Rappresentazione dello sprite corrente. L'allineamento viene ignorato in questa casella.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando gli spiazzamenti X e Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando gli spiazzamenti X e Y. CTRL+clic sposta lo sprite di otto unità alla volta
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reimposta posizione relativa
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reimposta gli spiazzamenti relativi attuali
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Posizione X: {NUM}, Y: {NUM} (assoluto)
