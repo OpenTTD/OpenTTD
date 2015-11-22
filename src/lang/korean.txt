@@ -2875,7 +2875,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}입력�
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 스프라이트
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다. CTRL+클릭하면 한 번에 8씩 이동시킬 수 있습니다.
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}상대값 초기화
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}현재 상대값 좌표를 초기화
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X 좌표: {NUM}, Y 좌표: {NUM} (절댓값)
@@ -3880,9 +3880,9 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[먼쪽]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (다음 목적지가 항속거리제한을 벗어납니다.)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :[조건 경로] {COMMA}번째 경로로 건너뛰기
-STR_ORDER_CONDITIONAL_NUM                                       :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING}{STRING})
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :[조건 경로] {COMMA}번 경로로 건너뛰기
+STR_ORDER_CONDITIONAL_NUM                                       :[조건 경로] {COMMA}번 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :[조건 경로] {COMMA}번 경로로 건너뛰기 ({STRING}{STRING})
 
 STR_INVALID_ORDER                                               :{RED} (잘못된 행선지)
 
