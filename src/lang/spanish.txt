@@ -1278,26 +1278,26 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Mínimo de dinero requerido para renovación automática: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Mínima cantidad de dinero que se debe de tener en el banco para poder considerar la renovación automática de vehículos
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración de mensajes de error: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración de los mensajes de error mostrados en ventanas rojas. Algunos mensajes de error críticos no se cierran automáticamente, y deben de ser cerrados manualmente
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración de los mensajes de error mostrados en ventanas rojas. Algunos mensajes de error (críticos) no se cierran automáticamente, y deben de ser cerrados manualmente
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar mensajes de ayuda: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo necesario con el ratón sobre un elemento de la interfaz para que esta muestre su mensaje de ayuda. De forma alternativa, se puede escoger mostrar estos mensajes al pulsar el botón derecho cuando el valor de esta opción ha sido establecido a 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Mantener ratón durante {COMMA} milisegundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click derecho
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Muestra la población de un municipio en su etiqueta: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostrar la población de un municipio en su etiqueta: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Muestra la población de los municipios en su etiqueta sobre el mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las líneas en los gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las líneas en los gráficos. Una línea fina es más precisa, una línea más gruesa es más fácil de distinguir
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen escenarios con diferentes tipos de carga y requisitos de crecimiento de municipios. Es posible modificarlos empleando NewGRF y scripts de juego
-STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador terreno: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :El generador original depende del tipo de gráficos base, y crea formas de terreno fijas. TerraGenesis es un generador basado en ruido Perlin que permite un mayor control de configuración
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Sólo TerraGenesis) Colinas del terreno
-STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad de industria: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad industrial: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Permite fijar el número de industrias que deberían de generarse, y el nivel que debería mantenerse durante el juego
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías de petróleo solamente se construyen cerca del borde del mapa, el cual es costa para los mapas con borde de océano
