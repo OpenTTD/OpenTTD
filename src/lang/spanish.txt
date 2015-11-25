@@ -1304,7 +1304,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura línea nieve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Permite escoger la altura a la cual la nieve comienza en el clima subártico. La nieve también afecta a la generación de industrias y a los requisitos de crecimiento de municipios
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosidad del terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Sólo TerraGenesis) Permite elegir la frecuencia de colinas: los terrenos más planos tienen un número menor de colinas, agrupadas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetitivo
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Sólo TerraGenesis) Permite elegir la frecuencia de las colinas: Los terrenos más planos tienen menor número, aunque suelen ser más extensas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetitivo
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Áspero
@@ -1314,7 +1314,7 @@ STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Sólo TerraGen
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Cantidad de ríos: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Elegir el número de ríos a generar
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmo de colocación de árboles: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Permite escoger la distribución de árboles en el mapa. 'Original' coloca los árboles distribuidos de forma uniforme, mientras que 'Mejorado' los planta en grupos
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Permite escoger la distribución de los árboles sobre el mapa. 'Original' distribuye la plantación de árboles uniformemente, mientras que 'Mejorado' los planta en grupos
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ninguno
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Mejorado

@@ -2970,7 +2970,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Otiđi n
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prethodni sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Otiđi na prethodni normalni sprite, preskačući svaki pseudo/prebojani/font sprite i {BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon dolaska na prvi prebaci na zadnjeg
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prikaz trenutno odabranog spritea. Poravnjanje se ignorira kod crtanja ovog spritea.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pomakni sprite mijenjajući X i Y pomake
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pomakni sprite mijenjajući X i Y pomake. Ctrl+Click za micanje po 8 jedinica odjednom.
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Poništi relativne
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Poništi trenutne relativne pomake
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X pomak: {NUM}, Y pomak: {NUM} (Apsolutni)
