@@ -1320,7 +1320,7 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Mejorado
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehículos de carretera: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Elegir el lado de conducción
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotación de Mapa de altura: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotación del Mapa de alturas: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :El nivel de la altura del mapa plano tiene: {STRING}
@@ -1329,7 +1329,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o m�
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Máxima extensión de estaciones: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Máxima área que pueden ocupar las partes de una estación. Valores muy altos pueden ralentizar el juego
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Mantener los helicópteros en helipuertos automáticamente: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Realizar, automáticamente, el mantenimiento de los helicópteros en helipuertos: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Dar servicio a los helicópteros después de cada aterrizaje, aunque no haya hangar en el aeropuerto
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Une la barra de terreno a la barra de construcción: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Cuando se abre una barra de herramientas de construcción, se abre también la barra de terraformación
@@ -2750,7 +2750,7 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatori
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatorio
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación mapa de alturas:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación del mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nombre del mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}

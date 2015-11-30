@@ -292,6 +292,8 @@ STR_SORT_BY_LENGTH                                              :Luzera
 STR_SORT_BY_LIFE_TIME                                           :Geratzen zaion bizitza denbora
 STR_SORT_BY_TIMETABLE_DELAY                                     :Ordutegiko atzerapena
 STR_SORT_BY_FACILITY                                            :Geltoki mota
+STR_SORT_BY_WAITING_TOTAL                                       :Itxaroten dagoen zama totala
+STR_SORT_BY_WAITING_AVAILABLE                                   :Itxaroten dagoen zama eskuragarria
 STR_SORT_BY_RATING_MAX                                          :Zama balorazio handiena
 STR_SORT_BY_RATING_MIN                                          :Zama balorazio txikiena
 STR_SORT_BY_ENGINE_ID                                           :MotoreID (ordenatze klasikoa)
@@ -910,6 +912,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lituaniako Lita
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Hego koreako Won-a (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Hego Afrikako Rand-a (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Errepideko garraioak
@@ -966,6 +970,9 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantaila
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Tamaina doblea
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaina laukoitza
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
@@ -1068,6 +1075,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Kontrakoa
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ez dago IA egokirik aukeratzeko..{}IA asko jaitsi ditzakezu 'Online edukiera' sistemaren bidez
 
 # Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ezarpenak
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lokarri iragazkia:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Guztia haunditu
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Guztia kolapsatu
@@ -1254,6 +1262,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikoen marre
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Lur sortzailea: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Jatorrizkoa
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industria dentsitatea: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo findegietatik maparen ertzera dagoen gehienezko distantzia: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Elur garaiera: {STRING}
@@ -1262,10 +1271,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Oso Zakarra
+STR_CONFIG_SETTING_VARIETY                                      :Barietateen distribuzioa: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Ibai kantitatea: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER                                  :Zuhaitz kokatzeko algoritmoa: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Jatorrizkoa
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Errepideko garraioak: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Garaiera maparen norabidea: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
@@ -1320,6 +1332,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Itzalita
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Saguaren ezkerreko botoiarekin mapan zehar mugitzea: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Gaitu mapatik zehar mugitzea saguaren ezkerreko botoia mapan arrastratzerakoan. Oso erabilgarria da ukipen pantailak erabiltzerakoan
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Auto-gordea: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gordetako jokoen izenetan {STRING} data fomatua erabili
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Gordetako fitxeroen dataren formatoa
@@ -1357,6 +1370,11 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantendu zubi, 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Talde gastuak konpainiaren finantza leihoan: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Konpainiako gastuen lehioaren diseinua
 
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Periodikoa: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Amaiera urtea: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Eraikuntza: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastreak/istripuak: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Garraioak: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Azpiturak eraikitzea debekatu ibilgailu egokiak ez daudenean eskuragarri: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Gaitua dagoenean, ezingo da azpiegiturarik eraiki azpiegitura horren ibilgailuak ez badaude eskuragarri, denbora eta dirua aurreztuz
@@ -1521,6 +1539,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Joko hasieran h
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :eskuz egin
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrikoa
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetrikoa
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Bidaiariek banaketa modua: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Korreoaren banaketa modua: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Banaketen zehaztasuna: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Abiadura unitateak: {STRING}
@@ -1534,6 +1554,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrikoa (zp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Pisu unitateak: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (ton/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrikoa (t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
@@ -1542,6 +1563,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Inperiala (galo
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrikoa (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperiala (libra)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrikoa (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
@@ -1555,6 +1577,7 @@ STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiko
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinua
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfazea
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Orokorra
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Leihoak
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Eraikuntza
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Konpainia
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
@@ -1617,6 +1640,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijok
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Jokoaren Aukerak
 STR_INTRO_HIGHSCORE                                             :{BLACK}Puntuazio taula
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ezarpenak
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak Online Kontsultatu
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}IA/Joko Scripten Ezarpenak
@@ -1636,6 +1660,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Aukeratu
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Jokoaren aukerak erakutsi
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puntuazioen taula erakutsi
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ezarpenak erakutsi
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ezarpenak erakutsi
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Bilatu eduki berria eta eguneratua deskargatzeko
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}IA/Joko Scripten Ezarpenak
@@ -2076,7 +2101,7 @@ STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Edukien 
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Lerroan sakatu ezaugarriak ikusteko{}Laukitxoan sakatu aukeratzeko
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Guztia aukeratu
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Markatu deskargatuak izango diren edukiak
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Bertsio berriak haukeratu
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Eguneraketak Aukeratu
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Haukeratu dituzun edukiak berrituko dituzten edukiak deskargatuak izateko
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Guztia desmarkatu
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Dekargatuak izango ez diren eduki guztiak markatu
@@ -2762,6 +2787,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Action 8 sarrera asko ditu (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo spritea baino hurrunago irakurri (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aukeratuta daukazun oinarrizko grafiko paketean "sprite" batzuk falta dira.{}Mesedez eguneratu oinarrizko grafiko paketea
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Erabiltzen ari den grafiko baseari sprite batzuk falta zaizkio.{}Mesedez zure grafiko basea eguneratu ezazu.{}OpenTTD-ren {YELLOW}garapen bertsio bat erabiltzen ari zarenez{WHITE}, grafiko basearen {YELLOW}garapen bertsio bat behar izango duzu{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Eskatutako GRFa ez dago eskuragarri (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} desgaitua izan da {STRING}(en)gatik
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Grafiko deseinu formatu ezezaguna/baliogabea (sprite {3:NUM})
@@ -2772,6 +2798,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Abiaraz
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ezin artxiboa gehitu: GRF ID bikoiztua
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bat datorren artxiboa ez da aurkitu (GRF bateragarria kargatua)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Ezin da artxiboa gehitu: NewGRF-ren artxibo limitera iritsia
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Falta diren artxiboentzako GRF bateragarria deskargatua
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Falta de GRF artxiboa desgaitua izan da
@@ -2891,6 +2918,7 @@ STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Helburu 
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Helburu orokorrak:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ezer ez -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ez aplikagarria -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Konpainiaren helburuak:
@@ -2933,6 +2961,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikatu garraio zerbitzuan ikuspegi nagusia industria/herrian zentratzeko. Ktrl+Klik ikuspegi lehio berria irekiko du indutri/herriaren kokapenean
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Istorio Liburua
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Istorio Liburu Globala
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Orrialdea {NUM}
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Aurrekoa
@@ -2968,6 +2998,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Zama bal
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Geltokiaren zama balorazioak erakutsi
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Taldekatu
 STR_STATION_VIEW_WAITING_STATION                                :Geltokia: Itxaroten
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Kopurua: Itxoiten
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} {STATION}-tik
@@ -3198,6 +3229,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Aukeratu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Aukeratutako taldea berrizendatu
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikatu taldean ordezkatze orokorretik babesteko
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Taldea Ezabatu
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Geheitu konpartituako ibilgailuak
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ibilgailu guztiak ezabatu
@@ -3261,7 +3293,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Errepide
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Itsasontzia berrizendatu
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Hegazkina berrizendatu
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Ezkutatu
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Ezkutatu
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Ezkutatu
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Ezkutatu
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Erakutsi
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Erakutsi
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Erakutsi
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Erakutsi
 
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Tren ibilgailua berrizendatu
@@ -3368,6 +3408,8 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Errepide ibilga
 STR_REPLACE_VEHICLE_SHIP                                        :Itsasontzia
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Hegazkina
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Erabilitako garraioak
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Garraio eskuragarriak
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Aukeratu aldatu beharreko motore mota
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK} Aukeratu motore mota zaharra ordezkatuko duen motore berria
