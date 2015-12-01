@@ -19,6 +19,18 @@
  *
  * 1.6.0 is not yet released. The following changes are not set in stone yet.
  *
+ * \b 1.5.3
+ *
+ * No changes
+ *
+ * \b 1.5.2
+ *
+ * No changes
+ *
+ * \b 1.5.1
+ *
+ * No changes
+ *
  * \b 1.5.0
  *
  * API additions:
