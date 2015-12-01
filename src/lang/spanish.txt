@@ -2428,7 +2428,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccio
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcción de Canales
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canales
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canales. Shift permite mostrar una estimación del precio
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir dársenas. Shift permite mostrar una estimación del precio
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir esclusas. Shift permite mostrar una estimación del precio
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir astillero (para comprar y dar servicio a barcos). Shift permite mostrar una estimación del precio
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelles. Ctrl activa la unión de estaciones. Shift permite mostrar una estimación del precio
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya que puede ser usada como punto de ruta. Shift permite mostrar una estimación del precio
@@ -2651,7 +2651,7 @@ STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punto de ruta
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Agua
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
-STR_LAI_WATER_DESCRIPTION_LOCK                                  :Dársena
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Esclusa
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Río
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Costa o rivera
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Astillero
@@ -4603,13 +4603,13 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Va
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Vapor)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diésel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diésel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diésel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
