@@ -1,3 +1,9 @@
+openttd (1.5.3-0) unstable; urgency=low
+
+  * New upstream release 1.5.3
+
+ -- OpenTTD <info@openttd.org>  Tue, 01 Dec 2015 21:00:00 +0100
+
 openttd (1.5.3~RC1-0) unstable; urgency=low
 
   * New upstream release 1.5.3-RC1

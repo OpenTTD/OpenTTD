@@ -1,3 +1,8 @@
+1.5.3 (2015-12-01)
+------------------------------------------------------------------------
+(None)
+
+
 1.5.3-RC1 (2015-11-01)
 ------------------------------------------------------------------------
 - Fix: When selecting a refit cargo for orders, do not check whether the vehicle is in a depot or station, and do not ask whether the vehicle currently allows station-refitting. Also hide the refit cost for orders, it is not predictable (r27428)
