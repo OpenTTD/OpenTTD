@@ -2768,7 +2768,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura t
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Reduce la altura de la tierra llana
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Aumenta la altura de la tierra llana
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambiar la altura de la tierra llana
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambia la altura de la tierra llana
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Generando Mundo...
@@ -2816,12 +2816,12 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una list
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establecer parámetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parámetros
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Seleccionar paleta
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Cambiar la paleta del NewGRF seleccionado.{}Esto es necesario cuando los gráficos de un NewGRF se ven de color rosa durante el juego
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Cambiar paleta
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Cambia la paleta del NewGRF seleccionado.{}Esto es necesario cuando los gráficos de un NewGRF se ven de color rosa durante el juego
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar cambios
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Encontrar contenido que falta en línea
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comprobar si el contenido que falta puede ser encontrado en línea
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Buscar contenido que falta en línea
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comprueba si el contenido que falta puede ser encontrado en línea
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Archivo: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
