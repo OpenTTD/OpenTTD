@@ -2897,7 +2897,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} est�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro incorrecto para {1:STRING}: párametro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} debe ser cargado antes de {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} debe ser cargado después de {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requiere OpenTTD versión {STRING} o superior
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requiere OpenTTD versión {STRING} ó superior
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :El archivo GRF ha sido diseñado para ser traducido
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {1:STRING} como NewGRF estático con {STRING} puede causar desincronizaciones
@@ -2917,7 +2917,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de colo
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Precaución!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van a modificar los NewGRF de una partida ya comenzada. Esto puede provocar un error fatal en OpenTTD o romper la partida.{}No se deben crear reportes de bugs por problemas causados por esta acción.{}¿Está completamente seguro de esto?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se puede añadir: GRF ID duplicado
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}El archivo no puede añadirse: GRF ID duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Archivo no encontrado (GRF compatible cargado)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No se puede añadir archivo: Alcanzado el máximo de NewGRFs permitidos
 
