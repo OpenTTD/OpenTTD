@@ -250,7 +250,15 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kaydırm
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Bir arazi üzerinde bulunan binaları ve benzeri yapıları yık. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
 
 # Show engines button
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Gizliyi göster
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Gizliyi göster
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Gizliyi göster
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Gizliyi göster
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Bu düğme etkinleştirildiğinde, gizli tren araçları da görüntülenir
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Bu düğme etkinleştirildiğinde, gizli yol araçları da görüntülenir
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Bu düğme etkinleştirildiğinde, gizli gemiler de görüntülenir
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Bu düğme etkinleştirildiğinde, gizli uçaklar da görüntülenir
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Varsayılan
@@ -365,6 +373,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ayarlar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :YZ/Oyun betik ayarları
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ayarları
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
@@ -836,6 +845,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} aracının boş bir emri var
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} talimatları arasında tekrarlanmış olanlar var
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} aracının geçersiz talimatları var
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE}, pisti çok kısa olan bir havaalanında göreve sahip
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} eskiyor
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} çok eskidi
@@ -971,7 +981,12 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Ç
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Arayüz boyutu
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kullanmak üzere arayüz bileşen boyutunu seçin
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :İki kat büyük
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Dört kat büyük
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin
@@ -987,6 +1002,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kullanı
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} adet bozuk dosya var
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Temel müzik hakkında daha fazla bilgi
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Desteklenen çözünürlük listesi alınamadı
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Tam ekran kipi başarısız
 
 # Custom currency window
@@ -1065,6 +1081,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Dümdüz
 STR_TERRAIN_TYPE_FLAT                                           :Düz
 STR_TERRAIN_TYPE_HILLY                                          :Engebeli
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Dağlık
+STR_TERRAIN_TYPE_ALPINIST                                       :Alp Meraklısı
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :İzne tabi
 STR_CITY_APPROVAL_TOLERANT                                      :Töleranslı
@@ -1073,6 +1090,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Düşman
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
 
 # Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ayarlar
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Süzgeç metni:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Tümünü genişlet
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tümünü kısalt
@@ -1145,6 +1163,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya d
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Arazi şekillendirmeye karşı belediye meclisinin tavrı: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Şirketlerin sebep olduğu gürültü ve çevreye zararın kasaba beğenilerini ve ilerideki inşaatlarını nasıl etkileyeceğini seçin
 
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Azami harita yüksekliği: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Haritadaki dağlar için izin verilen azami yüksekliği ayarla
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Azami harita yüksekliğini bu değere ayarlayamazsınız. Haritadaki en az bir dağ bu değerden yüksek
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yolların vb. altındaki araziyi değiştirmeye izin ver: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Binaları ve yolları kaldırmaksızın altlarında yeryüzü şekillendirmesi yapılmasına izin ver
 STR_CONFIG_SETTING_CATCHMENT                                    :İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {STRING}
@@ -1173,6 +1194,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Enflasyon: {STR
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Maliyetlerin ödemelerden biraz daha hızlı arttığı ekonomide enflasyonu etkinleştir
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Azami köprü uzunluğu: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Köprü inşası için azami uzunluk
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Azami köprü yüksekliği: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Köprü inşaası için azami yükseklik
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Azami tünel uzunluğu: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tünel inşa etmek için azami uzunluk
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Üretim fabrikalarının yapım yöntemi: {STRING}
@@ -1266,9 +1289,14 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Haritadaki şeh
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grafiklerdeki çizgi kalınlığı: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafiklerdeki çizginin genişliği. İnce çizgiler daha hassas şekilde okunabilir, koyu çizgileri ise görmek ve renklerini ayırt etmek daha kolay olur.
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :İklim: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :İklimler farklı kargo ve şehir gelişme gereksinimlerini belirleyen temel oynanış senaryolarını tanımlar. NewGRF ve Oyun Betikleri daha ince ayarlar yapmanızı sağlar
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Arazi üretici: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Özgün
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Zemin türü: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Sadece TerraGenesis) Yer biçemi engebe değeri
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Endüstri yoğunluğu: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petrol rafinerilerinin kenarlardan azami uzaklığı: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petrol rafinerileri sadece haritanın sınırlarında inşa edilir; ada haritalarında sahillere kurulurlar.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Kar kalınlığı: {STRING}
@@ -1277,6 +1305,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Dümdüz
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Düzgün
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Çok Engebeli
+STR_CONFIG_SETTING_VARIETY                                      :Çeşitlilik dağılımı: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER                                  :Ağaç üretme algoritması: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Hiçbiri
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Özgün
@@ -2804,7 +2833,11 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Verilen 
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Önceki nesne
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve baştaki sargıyı atlayarak bir önceki normal nesneye geç
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Seçili nesnenin mevcut gösterimi. Bu nesneyi çizerken hizalama ihmal edilir
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nesneyi X ve Y ofsetlerini değiştirerek gezdir
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nesneyi X ve Y ofsetlerini değiştirerek gezdir. Ctrl+Tıklama ile nesneleri bir kerede sekiz birim kaydır
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Bağılı sıfırla
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Geçerli bağıl ofsetleri sıfırla
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X ofseti: {NUM}, Y ofseti: {NUM} (Gerçek)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X ofseti: {NUM}, Y ofseti: {NUM} (Bağıl)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Nesne seç
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Ekrandaki herhangi bir yerden bir nesne seçin
 

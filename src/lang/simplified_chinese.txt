@@ -4586,7 +4586,7 @@ STR_SV_STNAME_UPPER                                             :前 {STRING}
 STR_SV_STNAME_LOWER                                             :后 {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} 停机楼
 STR_SV_STNAME_FOREST                                            :{STRING} 林场
-STR_SV_STNAME_FALLBACK                                          :{STRING} 车站 #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM} 号站
 ############ end of savegame specific region!
 
 ##id 0x8000
