@@ -149,7 +149,7 @@ public:
 
 extern ClientNetworkContentSocketHandler _network_content_client;
 
-void ShowNetworkContentListWindow(ContentVector *cv = NULL, ContentType type = CONTENT_TYPE_END);
+void ShowNetworkContentListWindow(ContentVector *cv = NULL, ContentType type1 = CONTENT_TYPE_END, ContentType type2 = CONTENT_TYPE_END);
 
 void ShowMissingContentWindow(const struct GRFConfig *list);
 
