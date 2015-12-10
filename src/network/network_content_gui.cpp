@@ -1138,6 +1138,7 @@ static WindowDesc _network_content_list_desc(
  * @param cv the content to show, or NULL when it has to search for itself
  * @param type1 the first type to (only) show or #CONTENT_TYPE_END to show all.
  * @param type2 the second type to (only) show in addition to type1. If type2 is != #CONTENT_TYPE_END, then also type1 should be != #CONTENT_TYPE_END.
+ *   If type2 != #CONTENT_TYPE_END, then type1 != type2 must be true.
  */
 void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentType type2)
 {
@@ -1146,8 +1147,9 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	_network_content_client.Clear();
 	if (cv == NULL) {
 		assert(type1 != CONTENT_TYPE_END || type2 == CONTENT_TYPE_END);
+		assert(type1 == CONTENT_TYPE_END || type1 != type2);
 		_network_content_client.RequestContentList(type1);
-		if (type2 != type1) _network_content_client.RequestContentList(type2);
+		if (type2 != CONTENT_TYPE_END) _network_content_client.RequestContentList(type2);
 
 		if (type1 != CONTENT_TYPE_END) types[type1] = true;
 		if (type2 != CONTENT_TYPE_END) types[type2] = true;
