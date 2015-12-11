@@ -1292,24 +1292,34 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafiklerdeki �
 STR_CONFIG_SETTING_LANDSCAPE                                    :İklim: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :İklimler farklı kargo ve şehir gelişme gereksinimlerini belirleyen temel oynanış senaryolarını tanımlar. NewGRF ve Oyun Betikleri daha ince ayarlar yapmanızı sağlar
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Arazi üretici: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Özgün oluşturucu temel grafik kümesine bağlıdır ve sabit arazi şekillerini oluşturur. TerraGenesis, daha iyi denetim ayarlarına sahip bir Perlin gürültü tabanlı oluşturucudur
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Özgün
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Zemin türü: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Sadece TerraGenesis) Yer biçemi engebe değeri
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Endüstri yoğunluğu: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Oyun boyunca kaç tane fabrika oluşturulması gerektiğini ve hangi seviyede bakıma alınması gerektiğini ayarlayın
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petrol rafinerilerinin kenarlardan azami uzaklığı: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petrol rafinerileri sadece haritanın sınırlarında inşa edilir; ada haritalarında sahillere kurulurlar.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Kar kalınlığı: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kutupsal arazide, karın ne kadar yükseklikten başlayacağını denetleyin. Kar aynı zamanda fabrika oluşumunu ve şehir gelişme gereksinimini de etkiler
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Arazinin engebesi: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Sadece TerraGenesis) Tepelerin sıklığını seçin: Yumuşak yerleşimler daha az, geniş alana yayılmış tepelere sahiptir. Sıkı yerleşimler tekrarlanmış gibi görülen çok sayıda tepeye sahip olacaklar.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Dümdüz
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Düzgün
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Çok Engebeli
 STR_CONFIG_SETTING_VARIETY                                      :Çeşitlilik dağılımı: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Sadece TerraGenesis) Haritanın hem dağlık hem de düz alanlar içerip içermeyeceğini denetleyin. Bu haritayı sadece düz yapacağı için, diğer seçenek dağlı seçilmeli.
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Nehir miktarı: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Kaç tane nehir oluşturulacağını seçin
 STR_CONFIG_SETTING_TREE_PLACER                                  :Ağaç üretme algoritması: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Haritada ağaçların dağıtımını seçin: 'Özgün', ağaçları düzgün dağıtımlı yerleştirirken, 'İyileştirilmiş' gruplar halinde yerleştirir
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Hiçbiri
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Özgün
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Gelişmiş
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Yol araçları: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Sürüş yönünü seçin
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Yükseklik haritasını döndür: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
@@ -1364,6 +1374,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kapalı
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sol tık ile ekran kaydır: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Sol fare tuşuyla sürükleyerek harita kaydırma özelliğini etkinleştir. Özellikle dokunmatik-ekran kullanırken kaydırma yapmak için kullanılabilir.
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :Otomatik kaydet: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Otomatik oyun kaydetme sıklığını seçin
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Kaydedilen oyun isimlerinde {STRING} tarih biçimini kullan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Kaydedilen oyun isimlerinde kullanılan tarih biçimi
@@ -1654,11 +1666,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (Uluslararası Ölçüm Sistemi) (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Yerelleştirme
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikler
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ses
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Arayüz
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Genel
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Harita kısım pencereleri
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}İnşaat
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Haberler / Danışmanlar
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Şirket
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Muhasebe
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Araçlar
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizik
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Yönlenme
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Sınırlamalar
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Felaketler / Kazalar
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Harita üretimi
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ortam
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Yetkililer
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Şehirler
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Endüstri
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kargo dağılımı
@@ -1712,6 +1736,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Çok Oyu
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Seçenekler
 STR_INTRO_HIGHSCORE                                             :{BLACK}Puan Tablosu
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}YZ/Oyun Betik Ayarları
@@ -1731,6 +1756,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'Oyuncak
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seçenekleri göster
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tablosunu göster
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Görüntü ayarları
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}YZ ve Oyun betik ayarlarını göster
@@ -1770,6 +1796,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Oynanan
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldozer (fabrikaları, silinemeyen nesneleri siler): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetler küçük havalimanlarında (sıklıkla) düşmesin: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Azami harita yüksekliğini değiştir: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{BLACK}Haritadaki azami dağ yüksekliğini düzenle
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Ilıman iklim
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Soğuk iklim
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropik iklim
@@ -2406,7 +2434,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}İskele 
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir. Shift ile tıklama maliyet tahminini gösterir
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Su kemeri yap. Shift ile tıklama maliyet tahminini gösterir
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Su alanını belirle.{}Deniz seviyesinde CTRL tuşu basılı olmadığı sürece kanal yapar, basılıysa etraftakileri su altında bırakır
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Irmak oluştur
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Nehir yerleştir
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Tersane Yönü
@@ -2695,6 +2723,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Şehir sayısı:
 STR_MAPGEN_DATE                                                 :{BLACK}Tarih:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fabrika sayısı:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Azami harita yüksekliği:
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Haritadaki azami dağ yüksekliğini bir arttır
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Haritadaki azami dağ yüksekliğini bir azalt
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Kar yüksekliği:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Kar yüksekliğini bir arttır
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Kar yüksekliğini bir azalt
@@ -2724,6 +2755,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Yüksekl
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Boyut:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Azami harita yüksekliğini değiştir
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Kar yüksekliğini değiştir
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Başlangıç yılını değiştir
 
@@ -2748,7 +2780,7 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Harita üretimi
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Nehir oluşturma
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Tasinmaz üretimi
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nesne oluşturma
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalik alan oluştur
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Oyun ayarlanıyor
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}tile-loop çalıştırılıyor
@@ -2778,6 +2810,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Yukarı 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Seçili NewGRF dosyasını listenin yukarısına taşı
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Aşağı Taşı
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Seçili NewGRF dosyasını listenin aşağısına taşı
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Yükselt
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Daha yeni sürümü yüklü NewGRF dosyalarını yükselt
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Yüklü NewGRF dosyalarının listesidir.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametreler
@@ -2803,6 +2837,14 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Etkisiz
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD'nin bu sürümüyle uyumlu değil
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Ön ayarı kaydet
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Kullanılabilir ön ayarların listesi, aşağıdaki isimle kaydetmek üzere kopyalamak için birini seçin
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Ön ayar için bir isim girin
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Geçerli seçimdeki ön ayarın kaydedilmek için adı
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}İptal
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ön ayarı değiştirme
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Kaydet
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Ön ayarı geçerli seçili isimle kaydet
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametrelerini değiştir
@@ -3379,8 +3421,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Araç t�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Gemi türünü adlandır
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Uçak türünü adlandır
 
+STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Gizle
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Gizle
+STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Gizle
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Gizle
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Görüntüle
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Görüntüle
+STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Görüntüle
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Görüntüle
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Tren aracı türünün gizlenmesini/gösterilmesini aç/kapat
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Yol aracı türünün gizlenmesini/gösterilmesini aç/kapat
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Gemi türünün gizlenmesini/gösterilmesini aç/kapat
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Uçak türünün gizlenmesini/gösterilmesini aç/kapat
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Tren yeniden adlandırılamaz
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Araç türünü yeniden adlandır
@@ -3486,6 +3540,10 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Karayolu taşı
 STR_REPLACE_VEHICLE_SHIP                                        :Gemi
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Uçak
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Kullanımdaki araçlar
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Sahip olduğunuz araçlara sahip sütun
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Kullanılabilir araçlar
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Araç sütunu değiştirilmek için kullanılabilir
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Değiştirilecek türü seçin
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Değiştirilecek türün yerine geçecek türü seçin
@@ -3841,6 +3899,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :En çok {2:VELOCITY} hız ile git (zaman tablosu yok)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} boyunca yol al
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} boyunca en çok {VELOCITY} hız ile git
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Seyahat et ({STRING} için, hareket planı yok)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Seyahat et ({STRING} için, hareket planı yok) en fazla {VELOCITY} hızı ile
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :({STRING} kalma, hareket saati yok)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} için seyahat, hareket saati yok)
 STR_TIMETABLE_STAY_FOR                                          :{STRING} bekle
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ve şuraya sefer yap: {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}gün
@@ -4082,6 +4144,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Kazı t�
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... zaten deniz seviyesinde
 STR_ERROR_TOO_HIGH                                              :{WHITE}... çok yüksek
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... zaten düz
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ardından üzerindeki köprü çok yüksek olacaktı.
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Şirket ismi değiştirilemez...
@@ -4132,6 +4195,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... orma
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin üzerinde yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin altında yapılabilir
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}'{STRING}' fabrikaları için uygun bir alan yoktu
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Daha iyi bir harita için harita oluşturma parametrelerini değiştirin
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Buraya tren istasyonu yapılamıyor...
@@ -4269,6 +4334,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Önce k�
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Aynı noktada başlayıp bitemez
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Köprü uçları aynı seviyede değil
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Köprü bu arazi için çok alçakta
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Köprü bu arazi için çok yüksek.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... köprünün her iki ucu da karada olmalı
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... köprü çok uzun
@@ -4843,6 +4909,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (gizli)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
