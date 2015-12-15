@@ -2610,10 +2610,13 @@ detect_library() {
 			fi
 		fi
 		if [ -z "$res" ] && [ "$os" = "HAIKU" ]; then
-			eval "$2=`ls -1 /boot/common/include/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
+			if [ -z "$includeDir" ]; then
+				includeDir=`finddir B_SYSTEM_HEADERS_DIRECTORY`
+			fi
+			eval "$2=`ls -1 $includeDir/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
 			eval "res=\$$2"
 			if [ -z "$res" ]; then
-				log 2 "  trying /boot/common/include/$4$5... no"
+				log 2 "  trying $includeDir/$4$5... no"
 			fi
 		fi
 
