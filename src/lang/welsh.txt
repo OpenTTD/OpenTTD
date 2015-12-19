@@ -2874,7 +2874,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mynd i'r
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Corlun blaenorol
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mynd i'r corlun cyffredin blaenorol, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio o'r corlun cyntaf i'r olaf
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Cynrychioliad o'r corlun a ddewiswyd. Fe anwybyddir yr aliniad wrth lunio'r corlun
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Symud y corlun, gan newid yr atredau X ac Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Symud y corlun, gan newid yr atredau X ac Y. Mae Ctrl+Clic yn symud y corlun wyth uned ar y tro
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Ailosod perthyniad
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Ailosod y dodiadau perthynol
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Dodiad X: {NUM}, Dodiad Y: {NUM} (Absoliwt)
