@@ -52,7 +52,7 @@ STR_CARGO_PLURAL_SUGAR                                          :Siúcra
 STR_CARGO_PLURAL_TOYS                                           :Bréagáin
 STR_CARGO_PLURAL_CANDY                                          :Milseáin
 STR_CARGO_PLURAL_COLA                                           :Cóla
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Féasóg Daideo
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Scamall siúcra
 STR_CARGO_PLURAL_BUBBLES                                        :Súilíní
 STR_CARGO_PLURAL_TOFFEE                                         :Taifí
 STR_CARGO_PLURAL_BATTERIES                                      :Cadhnraí
@@ -86,7 +86,7 @@ STR_CARGO_SINGULAR_SUGAR                                        :Siúcra
 STR_CARGO_SINGULAR_TOY                                          :Bréagán
 STR_CARGO_SINGULAR_CANDY                                        :Milseán
 STR_CARGO_SINGULAR_COLA                                         :Cóla
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Féasóg Daideo
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Scamall siúcra
 STR_CARGO_SINGULAR_BUBBLE                                       :Súilín
 STR_CARGO_SINGULAR_TOFFEE                                       :Taifí
 STR_CARGO_SINGULAR_BATTERY                                      :Ceallra
@@ -120,7 +120,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} d
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}{P bh bh bh mb b}réagán
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}{P mh mh mh m m}ála de mhilseáin
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de chóla
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} d'fhéasóg Daideo
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de scamall siúcra
 STR_QUANTITY_BUBBLES                                            :{COMMA} {P sh sh sh s s}úilín
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de thaifí
 STR_QUANTITY_BATTERIES                                          :{COMMA} {P ch ch ch gc c}eallra{P "" "" "" "" ""}
@@ -155,7 +155,7 @@ STR_ABBREV_SUGAR                                                :{TINY_FONT}SI
 STR_ABBREV_TOYS                                                 :{TINY_FONT}BR
 STR_ABBREV_SWEETS                                               :{TINY_FONT}MI
 STR_ABBREV_COLA                                                 :{TINY_FONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}FD
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}SS
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}SÚ
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}CE
@@ -1213,6 +1213,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Ar dheis
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Taispeáin an fhuinneoig airgeadais ag deireadh na bliana: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Má tá sé cumasaithe, preabann an fhuinneog airgeadais aníos ag deireadh gach bliana le gur féidir stádas airgeadais na cuideachta a scrúdú go héasca
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Bíonn orduithe nua 'gan-stad' mar réamhshocrú: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Go hiondúil, stopfaidh feithicil ag gach stáisiún a rachaidh sé tharais. Má dhéantar an socrú seo a chumasú, tiománfaidh sí trí gach stáisiún ar an mbealach chuig an gceann scríbe deiridh gan stopadh. Tabhair faoi deara nach socraítear leis an socrú seo ach an luach tosaigh a bheidh ann d'orduithe nua. Is féidir orduithe aonair a shocrú go sainráite go ceachtar den dá rogha mar sin féin
 STR_CONFIG_SETTING_STOP_LOCATION                                :Stopann orduithe traenach nua ag {STRING} an ardáin mar reamhshocrú
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :An áit ag a stopfaidh traein ar an ardán mar réamhshocrú. Ciallaíonn 'taobh is gaire' in aice leis an pointe iontrála, ciallaíonn 'an lár' lár an ardáin, agus ciallaíonn 'taobh is faide' an áit is faide ón bpointe iontrála. Tabhair faoi deara nach bhfuil i gceist leis an socrú seo ach réamhshocrú d'orduithe nua. Is féidir orduithe aonair a shocrú go sainráite ag aon cheann de na socruithe
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :taobh abhus
@@ -1418,6 +1419,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :comhthimpeallac
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Seinn maisíochtaí fuaime comhthimpeallach tírdhreacha, tionscail agus bailte
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Díchumasaigh tógáil bonneagair nuair nach bhfuil aon fheithicil oiriúnach ar fáil: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Má tá seo cumasaithe, ní bhíonn bonneagar ar fáil ach amháin má tá feithiclí ar fáil dó freisin, rud a fhágann nach gcuirfear am agus airgead amú ar bhonneagar neamhoiriúnach
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uaslíon na dtraenacha in aghaidh na cuideachta: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Uaslíon na dtraenacha is féidir a bheith ag cuideachta
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uaslíon na bhfeithiclí bóthair in aghaidh na cuideachta: {STRING}
@@ -1464,6 +1466,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Má tá sé cum
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cumasaigh teorainneacha luais vaigíní: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Má tá sé cumasaithe, úsáid teorainneacha luais na vaigíní freisin chun luas uasta traenacha a shocrú
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Díchumasaigh ráillí leictreacha: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Má dhéantar an socrú seo a chumasú ní bheidh sé riachtanach iarnróid a leictriú chun go mbeidh traenacha leictreacha in ann taisteal orthu
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Tagann an chéad fheiticil isteach i stáisiún imreora: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Taispeáin nuachtán nuair a thagann an chéad traein isteach ag stáisiún imreora nua
@@ -1534,9 +1537,11 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :greille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :greille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :randamach
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Ceadaítear do bhailte bóithre a thógáil: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Ceadaigh do bhailte bóithre a thógáil le bheith ag fás. Díchumasaigh seo chun cosc a chur ar údaráis na mbailte bóithre a thógáil iad féin
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaítear do bhailte crosairí comhréidh a thógáil: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Má dhéantar an socrú seo a chumasú, beidh bailte in ann crosairí comhréidh a thógáil
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ceadaigh leibhéal fuaime rialaithe ag an mbaile d'aerfoirt: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Má tá an socrú seo díchumasaithe, ní féidir dhá aerfort a bheith in aon bhaile. Má tá an socrú seo cumasaithe, beidh líon na n-aerfort i mbaile teoranta ag an méid torainn a ghlactar leis sa bhaile, a bhíonn ag brath ar an daonra agus ar mhéid an aerfoirt agus an fad ón mbaile
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Bailte a bhunú sa chluiche: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Má dhéantar an socrú seo a chumasú beidh imreoirí in ann bailte nua a bhunú sa chluiche
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :coiscthe
@@ -1576,6 +1581,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Gnáth
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Scioptha
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :An-scioptha
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Líon na mbailte a ndéanfar cathratha díobh: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Líon na mbailte a bheidh ina gcathracha, sé sin baile a thosaíonn amach níos mó agus a fhásann níos tapúla
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 as {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ceann ar bith
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iolraitheoir tosaigh mhéid na gcathracha: {STRING}
@@ -2840,6 +2846,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite r
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Téigh ar aghaigh chuig an gnáth-sprite roimhe, ag scipeáil thar aon bhréag-sprite nó sprite athdathaithe/clófhoirne agus ag timfhilleadh ag an tús
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Léiriú den sprite atá roghnaithe faoi láthair. Déantar neamhaird den ailíniú agus an sprite seo á tharraingt
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bog an sprite timpeall, ag athrú an seach-chur X agus Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Athshocraigh coibhneasta
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Athshocraigh na seach-chuir choibhneasta reatha
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Seach-chur X: {NUM}, Seach-chur Y: {NUM} (Dearbh-shuíomh)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Seach-chur X: {NUM}, Seach-chur Y: {NUM} (Coibhneasta)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Roghnaigh sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Roghnaigh sprite ó áit ar bith ar an scáileán
 
@@ -4498,7 +4508,7 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Túr Uisce
 STR_INDUSTRY_NAME_FACTORY_2                                     :Monarcha
 STR_INDUSTRY_NAME_FARM_2                                        :Feirm
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Muileann Adhmaid
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Foraois Féasóg Daideo
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Foraois Scamaill Siúcra
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Monarcha Milseán
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Feirm Ceallraí
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Toibreacha Cóla
@@ -4597,7 +4607,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Tancaer Uisce
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Trucail Torthaí
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Trucail Rubair
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Trucail Siúcra
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Crannóg Féasóg Daideo
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Crannóg Scamaill Siúcra
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Crannóg Taifí
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Veain Súilíní
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Tancaer Cóla
@@ -4627,7 +4637,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Tancaer Uisce
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Trucail Torthaí
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Trucail Rubair
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Trucail Siúcra
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Crannóg Féasóg Daideo
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Crannóg Scamaill Siúcra
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Crannóg Taifí
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Veain Súilíní
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Tancaer Cóla
@@ -4659,7 +4669,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Tancaer Uisce
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Trucail Torthaí
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Trucail Rubair
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Trucail Siúcra
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Crannóg Féasóg Daideo
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Crannóg Scamaill Siúcra
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Crannóg Taifí
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Veain Súilíní
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Tancaer Cóla
@@ -4732,9 +4742,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Trucail Siúchr
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Trucail Cóla MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Trucail Cóla Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Trucail Cóla Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Trucail Féasóg Daideo MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Trucail Féasóg Daideo Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Trucail Féasóg Daideo Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Trucail Scamaill Siúcra MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Trucail Scamaill Siúcra Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Trucail Scamaill Siúcra Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Trucail Taifí MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Trucail Taifí Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Trucail Taifí Wizzowow
