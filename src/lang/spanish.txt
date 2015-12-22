@@ -942,7 +942,7 @@ STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francés
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemán
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglés (Adicional)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinoamericano
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tontos - Absurdos
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tontos/Absurdos
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sueco
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandés
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandés
@@ -2934,8 +2934,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Archivos q
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Es probable que el funcionamiento del NewGRF '{0:STRING}' cause desincronizaciones o fallos
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha cambiado el estado 'vagón con potencia' para '{1:ENGINE}' fuera de un depósito
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha cambiado la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha cambiado el estado 'vagón motorizado' para '{1:ENGINE}' cuando no estaba dentro de un depósito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha cambiado la longitud del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ha cambiado la capacidad del vehículo para '{1:ENGINE}' fuera de un depósito o mientras no se estaba remodelando
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar
 
