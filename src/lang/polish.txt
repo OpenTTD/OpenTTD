@@ -1914,7 +1914,7 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Uaktywnij okno 
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Wyświetlaj okno wyboru typu semaforów do budowy, zamiast samego przełączania typu semafora bez okna z Ctrl+klik na zbudowanym semaforze
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Domyślny typ sygnalizatorów: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Domyślny typ semaforów
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :sygnalizatory bloku
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :sygnalizatory blokowe
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :sygnalizatory jazdy
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :sygnalizatory jazdy - jednokierunkowe
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Przełączaj typy sygnalizatorów: {STRING}
