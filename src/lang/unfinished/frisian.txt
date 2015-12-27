@@ -2609,7 +2609,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warskôging: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Flater: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatale flater: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Der hat in fatale NewGRF-flater plakfûn: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Der hat in fatale NewGRF-flater plakfûn:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sil net wurkje kinne mei de TTDPatch-ferzje dy't troch OpenTTD meldt wurdt
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is makke foar de {STRING}-ferzje fan TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} makke om te brûken tegeare my{STRING}
@@ -2734,7 +2734,7 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Keapje it lokal
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begjin in lytse advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Subsidearje de fernijing fan it dikenstelsel yn dizze stêd. Jout tsjin de seis moannen grutte oerlêst foar it ferkear {}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Subsidearje de fernijing fan it dikenstelsel yn dizze stêd. Jout tsjin de seis moannen grutte oerlêst foar it ferkear{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Subsidearje de bou fan nije kommersjele gebouwen yn dizze stêd.{}Kosten: {CURRENCY_LONG}
 

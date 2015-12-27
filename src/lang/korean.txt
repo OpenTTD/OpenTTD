@@ -1119,9 +1119,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :게임 설정 (
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :게임 설정 (게임 저장 파일에 저장됨; 현재 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :회사 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :회사 설정 (게임 저장 파일에 저장됨; 현재 회사에만 적용됨)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}검색 결과를 전부 보시려면 {}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로 바꾸십시오.
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}검색 결과를 전부 보시려면 {}{SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}검색 결과를 전부 보시려면 {}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로, {SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}검색 결과를 전부 보시려면{}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로 바꾸십시오.
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}검색 결과를 전부 보시려면{}{SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}검색 결과를 전부 보시려면{}{SILVER}분류 {BLACK}설정을 {WHITE}{STRING}{BLACK}으로, {SILVER}종류 {BLACK}설정을 {WHITE}모든 설정{BLACK}으로 바꾸십시오.
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 없음 -
 
 STR_CONFIG_SETTING_OFF                                          :아니요
@@ -2890,7 +2890,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}경고: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}치명적 오류: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}치명적인 NewGRF 오류가 발생했습니다: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}치명적인 NewGRF 오류가 발생했습니다:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}은 OpenTTD에서 보고된 TTD패치 버전에서 작동하지 않을 것입니다.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}{G 1 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}{G 1 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다

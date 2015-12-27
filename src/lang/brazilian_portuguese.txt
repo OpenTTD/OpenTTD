@@ -2890,7 +2890,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenção: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Um erro de NewGRF fatal ocorreu: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Um erro de NewGRF fatal ocorreu:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não irá funcionar com a versão do TTDPatch encontrada pelo OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} funciona na versão {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} é projetado para ser usado com {STRING}
@@ -3975,7 +3975,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver a de
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Checando o log do Game Script
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA adequada encontrada para carregar. {} Esta IA é falsa e não irá fazer nada. {} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'
+STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA adequada encontrada para carregar.{} Esta IA é falsa e não irá fazer nada.{} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Um dos scripts em execução travou. Favor relatar isto ao autor do script com uma captura de tela da Janela de Depuração da I.A./Script do jogo
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Depuração de I.A./Script do jogo só é acessível pelo servidor
 
@@ -4080,7 +4080,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<não disponív
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração do mapa abortada... {}... não há locais para criação de cidades
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração do mapa abortada...{}... não há locais para criação de cidades
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existe cidade neste cenário
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar terreno a partir de PNG...
@@ -4173,7 +4173,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... cida
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não há mais espaço no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não irá construir estradas. Você pode ativar a construção através de Configurações->Ambiente->Cidades
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Recapeamento rodoviário em progresso
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossível remover cidade... {}Uma estação ou depósito referente à essa cidade não pode ser removido
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossível remover cidade...{}Uma estação ou depósito referente à essa cidade não pode ser removido
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há local para uma estátua no centro dessa cidade
 
 # Industry related errors

@@ -2824,7 +2824,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenţie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eroare: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O eroare fatală NewGRF a avut loc: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O eroare fatală NewGRF a avut loc:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nu va funcţiona cu versiunea TTDPatch raportată de OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} este pentru versiunea {STRING} a TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} este conceput pentru a fi folosit cu {STRING}
@@ -3189,7 +3189,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vinde 25
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Noul nume al companiei
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Noul nume al preşedintelui
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Căutăm o companie de transport care să preia societatea noastră {}{}Doriţi să cumpăraţi {COMPANY} la preţul de {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Căutăm o companie de transport care să preia societatea noastră{}{}Doriţi să cumpăraţi {COMPANY} la preţul de {CURRENCY_LONG}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructura {COMPANY}

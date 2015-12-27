@@ -2357,14 +2357,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}閉塞�
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号 (腕木式){}この信号の先にある出口信号のうち最低でも1つが緑であれば緑になりますが、そうでなければ赤になります。場内信号に良く使われます
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号 (腕木式){}動作は普通の閉塞信号と同様ですが、入口/コンボ信号を使用する場合に必要になります。ホームの入り口に良く使われます
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}コンボ信号 (腕木式){}コンボ信号は入口信号と出口信号の機能を併せ持つ信号です。この信号を使うと多数の分岐のあるような場内信号網を作ることができます
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}パス信号 (腕木式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。汎用性は高いですが、一方向式しか使えず信号の背面から進行してくる列車を防護することができません。この信号で列車が停車中に正面から対向列車が来ると問答無用で衝突事故を起こします!
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}一方通行パス信号 (腕木式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}パス信号 (腕木式){}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。汎用性は高いですが、一方向式しか使えず信号の背面から進行してくる列車を防護することができません。この信号で列車が停車中に正面から対向列車が来ると問答無用で衝突事故を起こします!
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}一方通行パス信号 (腕木式){}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}閉塞信号 (色灯式){}最も一般的な信号で、1つの閉塞内(信号同士の間の区間)には1編成のみが進入できます。配置した信号をクリックすると信号の向きを「一方向→一方向(逆)→二方向」の順で変えられます。一方向式の信号は背面から通過できません
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号 (色灯式){}この信号の先にある出口信号のうち最低でも1つが緑であれば緑になりますが、そうでなければ赤になります。場内信号に良く使われます
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号 (色灯式){}動作は普通の閉塞信号と同様ですが、入口/コンボ信号を使用する場合に必要になります。ホームの入り口に良く使われます
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}コンボ信号 (色灯式){}コンボ信号は入口信号と出口信号の機能を併せ持つ信号です。この信号を使うと多数の分岐のあるような場内信号網を作ることができます
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}パス信号 (色灯式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。汎用性は高いですが、一方向式しか使えず信号の背面から進行してくる列車を防護することができません。この信号で列車が停車中に正面から対向列車が来ると問答無用で衝突事故を起こします!
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (色灯式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}パス信号 (色灯式){}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。汎用性は高いですが、一方向式しか使えず信号の背面から進行してくる列車を防護することができません。この信号で列車が停車中に正面から対向列車が来ると問答無用で衝突事故を起こします!
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (色灯式){}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号交換{}既存の信号を今選択している信号に交換します。Ctrl+クリックで種類は替えずに腕木/色灯の形式のみ切り替えます。Shift+クリックで費用を見積もります
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}ドラッグ時の信号設置間隔を指定します
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置間隔を減らします
@@ -2885,7 +2885,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}致命的エラー: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRFに致命的なエラーが発生しました: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRFに致命的なエラーが発生しました:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンには対応していません
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDのバージョン{STRING}にのみ対応しています
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時には{STRING}を有効にしなければなりません

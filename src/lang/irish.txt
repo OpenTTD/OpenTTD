@@ -2860,7 +2860,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rabhadh: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Earráid: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Marfach: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Tharla earráid mharfach NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Tharla earráid mharfach NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Ní oibreoidh {1:STRING} leis an leagan de TTDPatch a thuairiscigh OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}: Is don leagan {STRING} de TTD é
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Tá {1:STRING} deartha le húsáid le {STRING}

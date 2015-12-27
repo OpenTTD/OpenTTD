@@ -2890,7 +2890,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarskuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fataal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}'n Fataale NewGRF fout het gebeur: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}'n Fataale NewGRF fout het gebeur:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sal nie met die TTDPatch uitgawe rapporteer deur OpenTTD werk nie.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is vir die {STRING} uitgawe van TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is onderwerp om saam met {STRING} gebruik te word
@@ -2924,7 +2924,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan nie 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Versoenbare GRF(s) gelaai vir vermiste lêers
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermiste GRF lêers is gedeaktiveer
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF leêr(s) ontbreek
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Hervatting kan veroorsaak dat OpenTTD bots. Moet nie daaropeenvolgende botsings verslae rapporteer nie. {}Will jy rêrig unpause?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Hervatting kan veroorsaak dat OpenTTD bots. Moet nie daaropeenvolgende botsings verslae rapporteer nie.{}Will jy rêrig unpause?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Geen
@@ -4064,7 +4064,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Beraamde
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Beraamde Inkomste: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Stoor van speletjie is nog besig, {}wag asb tot dit klaar is!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Stoor van speletjie is nog besig,{}wag asb tot dit klaar is!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Outostoor het misluk
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan nie skyf lees nie
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Speletjie Spaar Misluk{}{STRING}
@@ -4173,7 +4173,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te v
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daar is nie meer spasie oor op die kaart nie
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE} Die dorp sal nie paaie bou nie. Jy kan dit verander deur die bou van paaie via Stellings-> Omgewings-> Dorpe te aktiveer
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Pad werke in verloop
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan nie die dorp verwyder nie... {}'n Stasie of depot verwys na die dorp of die blok wat deur die dorp besit word kan nie verwyder word nie.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan nie die dorp verwyder nie...{}'n Stasie of depot verwys na die dorp of die blok wat deur die dorp besit word kan nie verwyder word nie.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... daar is geen plek vir 'n standbeeld in die middel van die dorp
 
 # Industry related errors

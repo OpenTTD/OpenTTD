@@ -1120,7 +1120,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma indstilli
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma indstilling (lagret i gemt spil; påvirker kun aktuelt selskab)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Kategori {BLACK}to {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Vis alle søgeresultater ved at sætte{}{SILVER}Indtast {BLACK}til {WHITE}Alle Indstillingstyper
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Vis alle søgeresultater ved at sætte {} {SILVER}Kategori {BLACK}til {WHITE} {STRING} {BLACK}og {SILVER} Indtast {BLACK}til {WHITE}Alle Indstillingstyper
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Vis alle søgeresultater ved at sætte{} {SILVER}Kategori {BLACK}til {WHITE} {STRING} {BLACK}og {SILVER} Indtast {BLACK}til {WHITE}Alle Indstillingstyper
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 
 STR_CONFIG_SETTING_OFF                                          :Fra
@@ -2889,7 +2889,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fejl: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-fejl er opstået: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-fejl er opstået:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versionen rapporteret af OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er beregnet til {STRING}-versionen af TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er designet til brug sammen med {STRING}

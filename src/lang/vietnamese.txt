@@ -1118,9 +1118,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Thiết lập t
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Thiết lập trò chơi (chứa trong save; chỉ có tác dụng với ván chơi hiện tại)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Thiết lập công ty (chứa trong save; chỉ tác động với ván chơi mới)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Thiết lập công ty (lưu trong save; chỉ tác động tới công ty hiện tại)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Hiện tất cả kết quả tìm kiếm theo {}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Hiện tất cả kết quả tìm kiếm theo {}{SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Hiện tất cả kết quả tìm kiếm theo {}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING} {BLACK}và {SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Hiện tất cả kết quả tìm kiếm theo{}{SILVER}Phân loại {BLACK}cho {WHITE}{STRING} {BLACK}và {SILVER}Kiểu {BLACK}cho {WHITE}tất cả kiểu thiết lập
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Không -
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
@@ -2315,7 +2315,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây d�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Xây xưởng tàu hoả (để chế tạo và bảo dưỡng tàu). Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Chuyển từ ray sang điểm mốc. Ctrl để nối các điểm mốc. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Xây nhà ga tàu hoả. Ctrl để nối các nhà ga. Shift để xem chi phí dự tính
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Xây đèn tín hiệu đường sắt. Ctrl đổi dùng đèn/cờ tín hiệu{}Kéo thả để xây đèn tín hiệu theo đoạn kéo thả. Ctrl + kéo chuột theo đường ray khi xây sẽ xây loạt đèn tín hiệu cho tới điểm ngã ba, tư kế tiếp {}Ctrl+Click để mở cửa sổ chọn loại đèn tin hiệu. Shift để xem chi phí dự tính
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Xây đèn tín hiệu đường sắt. Ctrl đổi dùng đèn/cờ tín hiệu{}Kéo thả để xây đèn tín hiệu theo đoạn kéo thả. Ctrl + kéo chuột theo đường ray khi xây sẽ xây loạt đèn tín hiệu cho tới điểm ngã ba, tư kế tiếp{}Ctrl+Click để mở cửa sổ chọn loại đèn tin hiệu. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Xây cầu tàu hoả. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Xây hầm tàu hoả. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm mốc và nhà ga. Giữ Ctrl để phá bỏ đường ray tính từ điểm mốc hay nhà ga
@@ -2359,7 +2359,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Đèn (c
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Đèn (cờ) tín hiệu kết hợp{}Nó vừa là đèn tín hiệu cửa thoát (với đèn nhập ở phía trước nó) và vừa là đèn tín hiệu cửa nhập (đối với đèn thoát ở sau nó). Loại đèn này cho phép tạo nhiều lớp đèn cho một hệ thống tín hiệu phức tạp.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Đèn (cờ) tín hiệu giành đường{}Đèn tín hiệu giành đường cho phép nhiều hơn 1 đoàn tàu có thể đi vào 1 khu vực khoá, nếu như mỗi đoàn tàu có thể giành lấy một con đường tới một điểm đến một cách an toàn. Đèn tín hiệu giành đường tiêu chuẩn cho thể cho phép đi qua từ phía sau của đèn.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Đèn (cờ) tín hiệu giành đường một chiều{}Đèn tín hiệu giành đường cho phép nhiều hơn 1 đoàn tàu có thể đi vào 1 khu vực khoá, nếu như mỗi đoàn tàu có thể giành lấy một con đường tới một điểm đến một cách an toàn. Đèn tín hiệu giành đường tiêu chuẩn cho thể cho phép đi qua từ phía sau của đèn.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Đèn tín hiệu (điện) {}Đèn tín hiệu cơ bản, chỉ cho phép một đoàn toàn đi vào một khu vực khoá của đèn.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Đèn tín hiệu (điện){}Đèn tín hiệu cơ bản, chỉ cho phép một đoàn toàn đi vào một khu vực khoá của đèn.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Đèn tín hiệu cửa nhập (điện){}Sẽ xanh nếu một hoặc nhiều đèn tín hiệu cửa thoát ở phía sau màu xanh. Không thì sẽ đỏ.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Đèn tín hiệu cửa thoát (điện){}Tương tự đèn tín hiệu khoá, nhưng cần có để đổi trạng thái của đèn tín hiệu loại cửa nhập & kết hợp nằm trước nó.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Đèn tín hiệu kết hợp (điện){}Nó vừa là đèn tín hiệu cửa thoát (với đèn nhập ở phía trước nó) và vừa là đèn tín hiệu cửa nhập (đối với đèn thoát ở sau nó). Loại đèn này cho phép tạo nhiều lớp đèn cho một hệ thống tín hiệu phức tạp.
@@ -2889,7 +2889,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Cảnh báo: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Lỗi: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Lỗi nghiêm trọng: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Xảy ra lỗi NewGRF nghiêm trọng: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Xảy ra lỗi NewGRF nghiêm trọng:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sẽ không hoạt động với phiên bản TTDPatch version theo như báo cáo của OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} để dành cho phiên bản {STRING} của TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} được thiết kế để xài với {STRING}

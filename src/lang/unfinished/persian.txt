@@ -773,7 +773,7 @@ STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}شهروندان شهر . . .{}ورود اولين مسافر به {STATION}را جشن مي گيرند!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}شهروندان شهر . . .{}ورود اولين بارکش به {STATION}را جشن مي گيرند!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}جشن گرفتن شهروندان. . .{} اولین کشتی به {STATION} رسید!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
@@ -1907,7 +1907,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}نوع
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}نوع محتوی
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}نام
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}نام محتوی
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}برای مشاهده ی جزئیات روی خط کلیک کنید {}برای اتنخاب برای دانلود روی چک باکس کلیک کنید
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}برای مشاهده ی جزئیات روی خط کلیک کنید{}برای اتنخاب برای دانلود روی چک باکس کلیک کنید
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}انتخاب تمامی موارد
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}علامت گذاری تمامی موارد را برای بارگیری
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}انتخاب موارد ارتقاع
@@ -2202,7 +2202,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به ش
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}مکان های سنگی در نقشه ایجاد کن
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK} ناحیه ی بیابانی را مشخص کن {} دکمه ی "کنترل" را فشار بده تا حذف کند
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK} ناحیه ی بیابانی را مشخص کن{} دکمه ی "کنترل" را فشار بده تا حذف کند
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}افزایش مساحت زمین به بالا/پایین
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}کاهش مساحت زمین به بالا/پایین
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}نقشه ی تصادفی بساز
@@ -2580,7 +2580,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}هشدار: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}خطا: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}خطای وخیم: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}یک خطای وخیم در NewGRF اتفاق افتاده: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}یک خطای وخیم در NewGRF اتفاق افتاده:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} با TTDPatch که ویرایش آن توسط OpenTTD گزارش شده کار نمی کند
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} برای ویرایش {STRING}TTD می باشد
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} طراحی شده برای استفاده با {STRING}

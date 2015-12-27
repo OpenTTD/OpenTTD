@@ -7,7 +7,7 @@
 ##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0419
-##grflangid 0x0B
+##grflangid 0x0b
 
 
 # $Id$

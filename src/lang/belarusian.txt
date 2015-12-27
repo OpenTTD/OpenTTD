@@ -2225,7 +2225,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Назв
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Назва гэтай гульні
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} — {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Кліенты
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Клиентаў анлайн/макс. {}Кампаніяў анлайн/макс.
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Клиентаў анлайн/макс.{}Кампаніяў анлайн/макс.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Памер мапы
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Памер мапы гульні{}Клікніце для сартаваньня па плошчы
@@ -3222,7 +3222,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Увага: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Памылка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Крытычная памылка: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Памылка пры рабоце з NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Памылка пры рабоце з NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ня будзе працаваць з вэрсіяй TTDPatch, паведламленай OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Файл {1:STRING} патрабуе {STRING}-вэрсію TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} зроблены для выкарыстаньня сумесна з {STRING}

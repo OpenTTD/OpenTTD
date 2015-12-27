@@ -2953,7 +2953,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmeztetés: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Egy végzetes NewGRF hiba történt: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Egy végzetes NewGRF hiba történt:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy együtt lesz használva ezzel: {STRING}

@@ -1120,9 +1120,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spillinnstillin
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spillinnstillinger (lagres i lagringsfilen; påvirker bare gjeldende spill)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firmainnstillinger (lagres i lagringsfilen; påvirker bare nye spill)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firmainnstillinger (lagret i lagringsfilen; påvirker bare gjeldende selskap)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK} Vis alle søkeresultater ved å sette {} {SILVER} kategori {BLACK} til {WHITE} {STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK} Vis alle søkeresultater ved å sette {} {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK} Vis alle søkeresultater ved å sette {} {SILVER} kategori {BLACK} til {WHITE} {STRING} {BLACK} og {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK} Vis alle søkeresultater ved å sette{} {SILVER} kategori {BLACK} til {WHITE} {STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK} Vis alle søkeresultater ved å sette{} {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK} Vis alle søkeresultater ved å sette{} {SILVER} kategori {BLACK} til {WHITE} {STRING} {BLACK} og {SILVER} type {BLACK} til {WHITE} alle innstillingstyper
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ingen -
 
 STR_CONFIG_SETTING_OFF                                          :Av
@@ -1922,7 +1922,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartstø
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dato
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Gjeldende dato
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}År
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Antall år {}spillet pågår
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Antall år{}spillet pågår
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Språk, tjenerversjon, osv.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikk på et spill i listen for å velge det
@@ -2893,7 +2893,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-feil har oppstått: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-feil har oppstått:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versjonen som er rapportert av OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er for versjon {STRING} av TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er laget for bruk med {STRING}

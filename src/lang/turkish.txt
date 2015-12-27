@@ -780,15 +780,15 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaj
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK} {} Halk {STATION} istasyonuna ilk gelen treni kutladı!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK} {} Halk {STATION} durağına ilk gelen otobüsü kutladı!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK} {} Halk {STATION} durağına ilk gelen kamyonu kutladı!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK} {} Halk {STATION} istasyonuna ilk gelen yolcu tramvayı kutladı!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK} {} Halk {STATION} istasyonuna ilk gelen yük tramvayını kutladı!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK} {} Halk {STATION} rıhtımına ilk gelen gemiyi kutladı!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK} {} Halk {STATION} havaalanına ilk gelen uçağı kutladı!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}{} Halk {STATION} istasyonuna ilk gelen treni kutladı!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}{} Halk {STATION} durağına ilk gelen otobüsü kutladı!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}{} Halk {STATION} durağına ilk gelen kamyonu kutladı!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}{} Halk {STATION} istasyonuna ilk gelen yolcu tramvayı kutladı!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}{} Halk {STATION} istasyonuna ilk gelen yük tramvayını kutladı!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}{} Halk {STATION} rıhtımına ilk gelen gemiyi kutladı!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}{} Halk {STATION} havaalanına ilk gelen uçağı kutladı!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tren Kazası!!! Talihsiz kazada {}{COMMA} kişi öldü...
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tren Kazası!!! Talihsiz kazada{}{COMMA} kişi öldü...
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Trafik kazası!{}Trenle çarpışan aracın şoförü feci şekilde can verdi...
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Trafik kazası!{}{COMMA} kişi patlamadan kurtulamadı...
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Uçak Kazası!{}{COMMA} kişinin öldüğü yer {STATION}
@@ -867,9 +867,9 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} artık {STRING} kabul ediyor
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} artık {STRING} ve {STRING} kabul ediyor
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Teşvik önerisinin süresi doldu: {}{}{1:STRING} ile {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Teşvik önerisinin süresi doldu:{}{}{1:STRING} ile {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Teşvik geri çekildi:{}{}{1:STRING} ile {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Hizmet teşviği önerildi: {}{} {1:STRING} -> {2:STRING} arası ilk {0:STRING} taşıma hizmeti belediyeden teşvik alacak!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Hizmet teşviği önerildi:{}{} {1:STRING} -> {2:STRING} arası ilk {0:STRING} taşıma hizmeti belediyeden teşvik alacak!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca %50 fazla gelir sağlayacak!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca iki kat fazla gelir sağlayacak!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca üç kat fazla gelir sağlayacak!
@@ -2890,7 +2890,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Uyarı: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hata: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Ölümcül hata: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ölümcül bir NewGRF hatası oluştu: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ölümcül bir NewGRF hatası oluştu:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}, TTD'nin {STRING} sürümü içindir
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}, {STRING} ile kullanılmak için tasarlanmıştır

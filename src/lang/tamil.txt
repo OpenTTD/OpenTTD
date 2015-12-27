@@ -7,7 +7,7 @@
 ##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0449
-##grflangid 0x0A
+##grflangid 0x0a
 
 
 # $Id$
@@ -2538,7 +2538,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}எச்சரிக்கை: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}பிழை: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}மரணம்: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}மரணமான NewGRF பிழை ஏற்பட்டுள்ளது: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}மரணமான NewGRF பிழை ஏற்பட்டுள்ளது:{}{STRING}
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ஆனது {STRING} TTD பதிப்பிற்காகவே
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ஆனது {STRING} உடன் இணைந்து பயன்படுத்த வடிவமைக்கப்பட்டுள்ளது
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :செல்லாத குணாதிசயம் {1:STRING} இன்: குணாதிசயம் {STRING} ({NUM})

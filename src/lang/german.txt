@@ -1766,7 +1766,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Dieser �
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Verlassen
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}OpenTTD wirklich beenden und zu {}{STRING} zurückkehren?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}OpenTTD wirklich beenden und zu{}{STRING} zurückkehren?
 STR_QUIT_YES                                                    :{BLACK}Ja
 STR_QUIT_NO                                                     :{BLACK}Nein
 
@@ -2876,6 +2876,8 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorherig
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gehe zum vorherigen normalen Sprite und überspringe alle Pseudo-, Recolour- und Schriftsprites (springt ggf. vom letzten bis zum ersten Sprite)
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Darstellung des aktuellen Sprites. Die Ausrichtung wird beim Zeichnen des Sprites ignoriert
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bewege die Sprites und ändere dadurch die X- und Y-Offsets. Drücke Strg+Click um die Sprites 8 Blöcke weit zu bewegen.
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Absolut)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Relativ)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Sprite auswählen
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Wähle ein Sprite vom Bildschirm aus
 
@@ -2886,7 +2888,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fehler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Schwerer Fehler: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ein schwerer NewGRF-Fehler ist aufgetreten: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ein schwerer NewGRF-Fehler ist aufgetreten:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} funktioniert nicht im Zusammenhang mit der von OpenTTD ermittelten TTDPatch-Version
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ist für die {STRING}-Version von TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ist für die Nutzung mit {STRING} vorgesehen
@@ -2920,7 +2922,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Datei ka
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible NewGRF(s) für fehlende Dateien geladen
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende NewGRF-Dateien wurden deaktiviert
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}NewGRF-Datei(en) fehlen
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das Beenden der Pause kann OpenTTD zum Absturz bringen. Bitte keine Fehlerberichte bei auftretenden Fehlern senden. {}Pause wirklich beenden?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das Beenden der Pause kann OpenTTD zum Absturz bringen. Bitte keine Fehlerberichte bei auftretenden Fehlern senden.{}Pause wirklich beenden?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Keine
@@ -3514,7 +3516,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sollen 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nachricht vom Fahrzeughersteller
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt. {}Besteht Interesse, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt.{}Besteht Interesse, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=w}Lokomotive
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}Straßenfahrzeug
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}Flugzeug
@@ -4378,10 +4380,10 @@ STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Fahrzeug
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Schiff kann nicht benannt werden...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Flugzeug kann nicht benannt werden...
 
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Zug kann nicht angehalten {} oder losgeschickt werden ...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Fahrzeug kann nicht angehalten {} oder losgeschickt werden...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Schiff kann nicht angehalten {} oder losgeschickt werden...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Flugzeug kann nicht angehalten {} oder losgeschickt werden...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Zug kann nicht angehalten{} oder losgeschickt werden ...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Fahrzeug kann nicht angehalten{} oder losgeschickt werden...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Schiff kann nicht angehalten{} oder losgeschickt werden...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Flugzeug kann nicht angehalten{} oder losgeschickt werden...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Zug kann nicht ins Depot geschickt werden...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Fahrzeug kann nicht ins Depot geschickt werden...

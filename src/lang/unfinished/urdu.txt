@@ -262,8 +262,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK} لمبائی: {NUM}
 STR_MEASURE_AREA                                                :{BLACK} پھیلاؤ: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK} لمبائی: {NUM} {}تفریقِ اونچائی: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK} پھیلاؤ: {NUM} x {NUM} {}تفریقِ اونچائی: {HEIGHT}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK} لمبائی: {NUM}{}تفریقِ اونچائی: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK} پھیلاؤ: {NUM} x {NUM}{}تفریقِ اونچائی: {HEIGHT}
 
 
 # These are used in buttons
@@ -767,7 +767,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLAC
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}ہوائی غبارہ تباہ!{}حادثہ {STATION} کے مقام پر پیش آیا
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}آُڑن طشتری سے ٹکرا کر گاڑی تباہ!!!!!!!!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}تیل صاف کرنے کے کارخانے میں دھماکہ! {}کارخانہ {TOWN} کے قریب واقع تھا
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}تیل صاف کرنے کے کارخانے میں دھماکہ!{}کارخانہ {TOWN} کے قریب واقع تھا
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}پراسرار حملے میں کارخانہ تباہ۔ لوگ پریشان{}کارخانہ {TOWN} کے قریب واقع تھا
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}اُڑن طشتری {TOWN} کے قریب اُتر گئی
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}کوئلے کی کان زمین میں دھنس گئی{}{TOWN} کے قریب تباہی کے نشان۔
@@ -826,7 +826,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} اگلی منزل پر پہنچ سے باہر ہونے کی وجہ سے نہیں جا سکتا
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} رُک گیا ہے کیونکے اُسے دیا گیا تزین و آرائش کا حکم پورا نہں ہو سکا
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} کی خودکار تبدیلی ناکام ہو کئی {}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} کی خودکار تبدیلی ناکام ہو کئی{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}نئی {STRING} اب دستیاب ہے!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -837,7 +837,7 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} اب قبول کرتا ہے {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} اب {STRING} اور {STRING} قبول کرتا ہے
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}امداد کی پیشکش کی معیاد ختم: {}{}{STRING} {STRING} سے {STRING} تک اب کوئی امداد نہیں ملے گی
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}امداد کی پیشکش کی معیاد ختم:{}{}{STRING} {STRING} سے {STRING} تک اب کوئی امداد نہیں ملے گی
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}امداد ختم:{}{}{STRING} {STRING} سے {STRING} تک کئی گئی خدمت کی اب کوئی امداد نہیں ملے گی
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}خدمات پر امداد کی پیشکش:{}{}پہلی خدمت {STRING} جو {STRING} سے {STRING} تک ہو، پر ایک سال تک امدام ملے گی
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال 50٪ زیادہ ملیں گے

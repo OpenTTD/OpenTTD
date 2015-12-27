@@ -994,7 +994,7 @@ STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLAC
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Traukinio avarija!{}{COMMA} žmon{P us ės ių} žuvo liepsnose po traukinių susidūrimo
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Automobilio avarija!{}Automobilio vairuotojas žuvo po susidūrimo su traukiniu
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Automobilio avarija! {}Žuvo {COMMA} keleiv{P is iai ių} automobiliui susidūrus su traukiniu
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Automobilio avarija!{}Žuvo {COMMA} keleiv{P is iai ių} automobiliui susidūrus su traukiniu
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lėktuvo avarija!{}Prie {1:STATION} liepsnose žuvo {0:COMMA} keleiv{P is iai ių}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lėktuvo avarija!{}Lėktuvas pritrūko degalų, {COMMA} nukrito ant žemės!
 
@@ -1291,7 +1291,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
 STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nerasta tinkamų DI... {}Galite parsisiųsti keletą DI naudonat 'Turinio internete' sistemą
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nerasta tinkamų DI...{}Galite parsisiųsti keletą DI naudonat 'Turinio internete' sistemą
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Išplėstinės nuostatos
@@ -2426,7 +2426,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Pažymė
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Ieškoti išorinėse svetainėse
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Ieškoti turinio neoficialiose OpenTTd svetainėse
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Paliekate OpenTTD programą!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Turinio parsisiuntimo sąlygos įvairiose išorinėse svetainėse skiriasi.{}Norėdami įdiegti turinį, turėsite sekti nurodymus, pateikiamus tose svetainėse. {}Ar tęsti?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Turinio parsisiuntimo sąlygos įvairiose išorinėse svetainėse skiriasi.{}Norėdami įdiegti turinį, turėsite sekti nurodymus, pateikiamus tose svetainėse.{}Ar tęsti?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Žymės/pavadinimo filtravimas:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Aplankyti svetainę
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Aplankyti šio turinio svetainę
@@ -3108,7 +3108,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Įspėjimas: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Klaida: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Lemtingoji klaida: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Įvyko lemtingoji plėtinio klaida: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Įvyko lemtingoji plėtinio klaida:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} neveiks su TTDPatch versija nurodyta pagal OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} skirtas {STRING} TTD versijai.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} yra pritaikytas naudojimui su {STRING}
@@ -3126,7 +3126,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Susideda iš keleto veiksmo 8 įrašų (spruklys {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Skaitymas už pseudospruklio pabaigos (spruklys {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keleto spruklių.{}Atnaujinkite pagrindinį grafikos rinkinį
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Šiuo metu naudojamam pagrindinės grafikos rinkiniui trūsta keleto spruklių. {}Atnaujinkite pagrindinės grafikos rinkinį. {} Kadangi žaidžiate {YELLOW} negalutinę, vis dar kuriamą OpenTTD versiją, {WHITE}, jums, ko gero, reikėtų įdiegti atitinkamą{YELLOW}naujausią, negalutinį pagrindinės grafikos rinkinį.{WHITE}
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Šiuo metu naudojamam pagrindinės grafikos rinkiniui trūsta keleto spruklių.{}Atnaujinkite pagrindinės grafikos rinkinį.{} Kadangi žaidžiate {YELLOW} negalutinę, vis dar kuriamą OpenTTD versiją, {WHITE}, jums, ko gero, reikėtų įdiegti atitinkamą{YELLOW}naujausią, negalutinį pagrindinės grafikos rinkinį.{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pageidautas GRF resursas yra neprieinamas (spruklys {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungtas {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas spruklio išdėstymo formatas (spruklys {3:NUM})

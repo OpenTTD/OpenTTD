@@ -792,10 +792,10 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}התושבים חוגגים . . .{}ספינה ראשונה הגיעה ל{STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}התושבים חוגגים . . .{}מטוס ראשון הגיע ל{STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK} !התנגשות רכבות {}{NBSP} נספו בפיצוץ כתוצאה מהתאונה {COMMA}
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK} !התנגשות רכבות{}{NBSP} נספו בפיצוץ כתוצאה מהתאונה {COMMA}
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}תאונת כלי רכב!{}נהג נהרג לאחר התנגשות ברכבת
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}תאונת כלי רכב!{}{NBSP}נהרגו לאחר התנגשות עם רכבת {COMMA}
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK} !התרסקות מטוס {}{NBSP}{1:STATION} נספו בפיצוץ בשדה התעופה {NBSP}{0:COMMA}
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK} !התרסקות מטוס{}{NBSP}{1:STATION} נספו בפיצוץ בשדה התעופה {NBSP}{0:COMMA}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}התרסקות מטוס!{}הדלק אזל במהלך הטיסה, {COMMA} נספו בפיצוץ
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK} אסון ספינת אוויר ב-{STATION}!
@@ -826,7 +826,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}בעיות בהספקת חומרי גלם גרמו ל{STRING}להכריז על סגירה בקרוב!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}מחסור בעצים בסביבה הקרובה גרם ל{STRING} להכריז על סגירה בקרוב!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}!היורו הינו המטבע היחידי המשמש לסחר חליפין בארצך {} האיחוד המוניטרי האירופאי
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}!היורו הינו המטבע היחידי המשמש לסחר חליפין בארצך{} האיחוד המוניטרי האירופאי
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}מיתון עולמי!{}{}מומחי כלכלה חוששים מהגרוע מכל בזמן שהכלכלה בשפל!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}המיתון נגמר!{}{}מגמת עלייה במסחר מעניקה בטחון בזמן שהכלכלה מתחזקת!
 
@@ -1115,8 +1115,8 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :הגדרות מ
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :הגדרות משחק (מאוחסנות במשחק שמור; משפיעות רק על משחק נוכחי)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :הגדרות חברה (מאוחסנות במשחקים שמורים; משפיעות רק על משחקים חדשים)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :הגדרות חברה (מאוחסנות במשחק שמור; משפיעות רק על חברה נוכחית)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הקטגוריה {} {BLACK} ל{WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הסוג {} {BLACK}ל{WHITE}כל סוגי ההגדרות
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הקטגוריה{} {BLACK} ל{WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}הצג את תוצאות החיפוש בהגדרת {SILVER}הסוג{} {BLACK}ל{WHITE}כל סוגי ההגדרות
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}הצג את תוצאות החיפוש בהגדרת{SILVER}הקטגוריה{} {BLACK}ל{WHITE}{STRING} {BLACK}וגם את {SILVER}הסוג {BLACK}ל{WHITE}כל סוגי ההגדרות
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- אין -
 
@@ -2308,7 +2308,7 @@ STR_STATION_CLASS_WAYP                                          :נקודות ד
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}בחירת רמזורים
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}רמזור בלוק (מכאניים){}זהו הרמזורי הפשוט ביותר, מאפשר לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}רמזור כניסה (סמפור) {}ירוקים כל עוד יש לפחות רמזור יציאה ירוק מקטע המסילה העוקב. אחרת מראה אדום
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}רמזור כניסה (סמפור){}ירוקים כל עוד יש לפחות רמזור יציאה ירוק מקטע המסילה העוקב. אחרת מראה אדום
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}רמזור יציאה (סמפור){} מתנהג בדומה לרמזור הבלוק, אבל נחוץ להצגת הצבע הנכון ברמזורי כניסה ורמזורים משולבים
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}רמזור משולב (סמפור){}מתפקד כרמזור כניסה ויציאה במשולב. דבר זה מאפשר יצירת "עצים" מורכבים של רמזורים מקדימים
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}רמזור נתיב (סמפור){} מאפשר ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח. ניתן לחלוף על פני רמזור נתיב מאחורה
@@ -2839,7 +2839,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}אזהרה: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{SILVER}{STRING}{RED}: שגיאה
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{SILVER}{STRING}{RED} :שגיאה חמורה
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}התרחשה שגיאה קריטית ב-NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}התרחשה שגיאה קריטית ב-NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} לא יעבוד עם גרסת ה-TTDPatch שדווחה ע"י OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} היא עבור גרסת {STRING} של TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} נועד להיות בשימוש יחד עם {STRING}
@@ -3447,7 +3447,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :כלי שייט
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פס
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מגנטי
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}{1:WEIGHT_SHORT} :משקל  {NBSP}{0:CURRENCY_LONG}  :מחיר {}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO_LONG} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY_LONG} :עלות תפעולית
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}{1:WEIGHT_SHORT} :משקל  {NBSP}{0:CURRENCY_LONG}  :מחיר{}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO_LONG} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY_LONG} :עלות תפעולית
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}עלות: {CURRENCY_LONG} משקל: {WEIGHT_SHORT}{}מהירות: {VELOCITY}  הספק: {POWER}  מקסימלי T.E.: {6:FORCE}{}עלות תפעולית: {4:CURRENCY_LONG}/לשנה{}קיבולת: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO_LONG}, {CARGO_LONG}{}עלות שוטפת: {CURRENCY_LONG}/לשנה
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO_LONG}{}הוצאה שוטפת: {CURRENCY_LONG}/לשנה
@@ -3623,7 +3623,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK} :קיב
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}(התאם) {VEHICLE}
 STR_REFIT_TITLE                                                 :{GOLD}בחר את סוג המטען עבור כלי שייט זה
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{RED}{1:CURRENCY_LONG}{BLACK} :עלות ההתאמה {}{GOLD}{0:CARGO_LONG}{BLACK} :קיבולת
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{RED}{1:CURRENCY_LONG}{BLACK} :עלות ההתאמה{}{GOLD}{0:CARGO_LONG}{BLACK} :קיבולת
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}קיבולת חדשה: {GOLD}{CARGO_LONG}{}{BLACK}רווח מציוד מחדש: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}קיבולת חדשה: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}עלות אבזור מחדש: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}קיבולת חדשה: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}רווח מציוד מחדש: {GREEN}{CURRENCY_LONG}

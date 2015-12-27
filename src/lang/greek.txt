@@ -148,9 +148,13 @@ STR_CARGO_SINGULAR_COTTON_CANDY.subs                            :{G=n}Μαλλί
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Φυσαλίδα
 STR_CARGO_SINGULAR_BUBBLE.subs                                  :{G=f}Φυσαλίδες
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Καραμέλα βουτύρου
+STR_CARGO_SINGULAR_TOFFEE.subs                                  :{G=n}Ζαχαρωτα
 STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Μπαταρία
+STR_CARGO_SINGULAR_BATTERY.subs                                 :{G=f}Μπαταρίες
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=n}Πλαστικό
+STR_CARGO_SINGULAR_PLASTIC.subs                                 :{G=n}Πλαστικα
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=n}Αναψυκτικό
+STR_CARGO_SINGULAR_FIZZY_DRINK.subs                             :{G=n}Αναψυκτικα
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -2928,7 +2932,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προειδοποίηση: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ένα καταστροφικό λάθος για τα NewGRF έχει συμβεί: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ένα καταστροφικό λάθος για τα NewGRF έχει συμβεί:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Το {1:STRING} δεν θα δουλέψει με την έκδοση του TTDPatch όπως αναφέρεται από το OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Το {1:STRING} είναι για την έκδοση {STRING} του TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} είναι σχεδιασμένο να δουλέψει με το {STRING}

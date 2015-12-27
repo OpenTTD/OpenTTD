@@ -2199,7 +2199,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Tanam po
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pembentukan Tanah
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Letakkan kawasan berbatu atas lanskap
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pilih kawasan gurun {}Tekan Ctrl untuk membuangkannya
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pilih kawasan gurun{}Tekan Ctrl untuk membuangkannya
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Menurunkan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Janakan tanah secara rawak
@@ -2579,7 +2579,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Amaran: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kesilapan: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Bahaya: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Kesilapan NewGRF yang bahaya telah berlaku: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Kesilapan NewGRF yang bahaya telah berlaku:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} tidak akan berfungsi dengan versi TTDPatch seperti yang dilaporkan oleh OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} adalah untuk TTD versi {STRING}.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} direkabentuk untuk digunakan bersama {STRING}

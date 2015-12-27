@@ -3091,7 +3091,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Cautio: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Error Fatalis: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Error NewGRF fatalis: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Error NewGRF fatalis:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non operat apud editionem TTDPatch ab OpenTTD dicta
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} spectat ad editionem {STRING} TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} spectat ad {STRING}

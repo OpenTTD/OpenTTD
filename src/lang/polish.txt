@@ -3269,7 +3269,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Ostrzeżenie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Błąd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Błąd krytyczny: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Wystąpił błąd krytyczny NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Wystąpił błąd krytyczny NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nie zadziała z wersją TTDPatcha zgłoszoną przez OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} jest przeznaczony dla TTD wersji {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} jest zaprojektowany do użycia z {STRING}

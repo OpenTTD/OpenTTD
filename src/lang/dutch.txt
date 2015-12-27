@@ -2889,7 +2889,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatale fout: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF-fout is ontstaan: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF-fout is ontstaan:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie die is opgegeven door OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor de {STRING} versie van TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is ontwikkeld voor {STRING}
@@ -2907,7 +2907,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere acties 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Voorbij het einde van pseudo-sprite gelezen (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}De momenteel gebruikte basis graphics set mist een aantal sprites. {} Werk de ingestelde basis graphics bij. {} Aangezien u een {YELLOW} ontwikkeling momentopname van OpenTTD{WHITE} speelt, heeft u ook een {YELLOW} ontwikkeling snapshot van de basis graphics set{WHITE} nodig
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}De momenteel gebruikte basis graphics set mist een aantal sprites.{} Werk de ingestelde basis graphics bij.{} Aangezien u een {YELLOW} ontwikkeling momentopname van OpenTTD{WHITE} speelt, heeft u ook een {YELLOW} ontwikkeling snapshot van de basis graphics set{WHITE} nodig
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF middelen niet beschikbaar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} is uitgeschakeld door {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldig/onbekend sprite lay-out-formaat (sprite {3:NUM})
@@ -3974,7 +3974,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Toon deb
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Controleer het Game Script log
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
+STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden.{} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve scripts is vastgelopen. Meld dit a.u.b. bij de auteur van dit script met een schermprint van het AI/Spel script Debugscherm
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Spel script debugvenster is alleen beschikbaar voor de server
 

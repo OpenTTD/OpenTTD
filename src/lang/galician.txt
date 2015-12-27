@@ -792,7 +792,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLAC
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Accidente de tráfico!{}O condutor morre na deflagración producida trala colisión cun tren
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Accidente de tráfico!{}{COMMA} mortos na deflagración producida trala colisión cun tren
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Accidente aéreo!{}{COMMA} mortos na deflagración en {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accidente de aéreo!O avión {} quedou sen combustible, {COMMA} mortos na deflagración!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accidente de aéreo!O avión{} quedou sen combustible, {COMMA} mortos na deflagración!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Desastre dun zeppelin en {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Vehículo de estrada destruído tras colisionar cun 'OVNI'!
@@ -2843,7 +2843,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Coidado: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu un erro fatal de NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu un erro fatal de NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funcionará coa versión de TTDPatch reportada por OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} é para a versión {STRING} de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} está deseñado para ser usado con {STRING}
@@ -2860,8 +2860,8 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contén un sprite corrupto. Tódolos sprites corruptos mostraranse coma unha interrogación vermella (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contén múltiples entradas de acción 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura máis aló da fin dun pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites. {}Por favor, actualiza o conxunto de gráficos básico
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites. {}Por favor, actualiza o conxunto de gráficos básico.{}Dado que estás a xogar unha {YELLOW}versión de desenrolo de OpenTTD{WHITE}, é posíbel que tamén necesites unha {YELLOW}versión de desenrolo do conjunto de gráficos base{WHITE}
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites.{}Por favor, actualiza o conxunto de gráficos básico
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites.{}Por favor, actualiza o conxunto de gráficos básico.{}Dado que estás a xogar unha {YELLOW}versión de desenrolo de OpenTTD{WHITE}, é posíbel que tamén necesites unha {YELLOW}versión de desenrolo do conjunto de gráficos base{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Os recursos GRF solicitados non están disponíbeis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desactivado por {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de colocación de sprites inválido ou descoñecido (sprite {3:NUM})

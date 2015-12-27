@@ -2806,7 +2806,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Åtvaring: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ein fatal NewGRF-feil har oppstått: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ein fatal NewGRF-feil har oppstått:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} vil ikkje verke med den TTDPatch versjonen som OpenTTD oppgjer
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er for {STRING} utgåva av TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er laga for å brukast saman med {STRING}

@@ -1205,9 +1205,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavení hry 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením {}{SILVER}kategorie {BLACK}na {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením {}{SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením {}{SILVER}kategorie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}kategorie {BLACK}na {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Všechny výsledky vyhledávání zobrazíš nastavením{}{SILVER}kategorie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všechny typy nastavení
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nic -
 
 STR_CONFIG_SETTING_OFF                                          :Vypnuto
@@ -2982,7 +2982,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Závažná chyba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Vyskytla se kritická chyba v NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Vyskytla se kritická chyba v NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pro TTD verzi {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navržen pro práci s {STRING}
@@ -3612,16 +3612,13 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chceš 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Zpráva od výrobce dopravních prostředků
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ý ou é é é é á} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.dat                      :
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :{G=f}lokomotivu
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}silniční vozidlo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotiva pro monorail
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.dat                      :
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :{G=f}lokomotivu pro monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotiva Maglev
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.dat                        :
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :{G=f}lokomotivu Maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnost: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY_LONG} ročně{}Kapacita: {CARGO_LONG}

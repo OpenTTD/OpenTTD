@@ -839,7 +839,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tilboð til samstarfssamnings runnið út:{}{}{STRING} frá {STRING} til {STRING} mun ekki vera samningsbundið.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Samsarfssamningur gerður ógildur:{}{} {STRING}flutningur frá {STRING} til {STRING} er ekki lengur samningsbundinn.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nýtt tilboð til samstarfssamnings: {}{}Fyrsti {STRING}flutningur frá {STRING} til {STRING} mun stofna til eins árs samstarfssamnings við bæjaryfirvöld!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nýtt tilboð til samstarfssamnings:{}{}Fyrsti {STRING}flutningur frá {STRING} til {STRING} mun stofna til eins árs samstarfssamnings við bæjaryfirvöld!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STRING} til {STRING} mun borga 50% aukalega í heilt ár!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STRING} til {STRING} mun borga tvöfalt í heilt ár!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STRING} til {STRING} mun borga þrefalt í heilt ár!
@@ -2719,7 +2719,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aðvörun: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Villa: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Banvænt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Alvarleg NewGRF villa átti sér stað: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Alvarleg NewGRF villa átti sér stað:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er fyrir {STRING} útgáfu af TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er hannað til að notast með {STRING}

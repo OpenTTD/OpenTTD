@@ -750,17 +750,17 @@ STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLAC
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK} ... المواطنون يحتفلون{} اول قطار وصل في {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}يحتفل الأهالي ...{}بوصول اول باص للمحطة ...{STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}الأهالي يحتفلون ... {}بوصول اول عربة الى .. {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}الأهالي يحتفلون ...{}بوصول اول عربة الى .. {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}المواطنون يحتفلون . . .{}بوصول اول عربة ركاب ترام الى {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}المواطنون يحتفلون ... {}بوصول اول سفينة الى {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}الأهالي يحتفلون . . . {}بوصول أول طائرة الى {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}المواطنون يحتفلون . . .{}بوصول اول عربة ترام لمحطة {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}المواطنون يحتفلون ...{}بوصول اول سفينة الى {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}الأهالي يحتفلون . . .{}بوصول أول طائرة الى {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}تحطم قطاراً!{}{COMMA} مات فى الحريق بعد الحادث
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}تحطم طائرة !{}{COMMA}ماتوا في الحريق بمطار {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}تحطم طائرة ! {}انتهى الوقود من الطائرة, {COMMA}توفي اثر الحادث !
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}تحطم طائرة !{}انتهى الوقود من الطائرة, {COMMA}توفي اثر الحادث !
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}حادثة منطاد في {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}تحطم عربة في حادث تصادم بجسم غامض !
@@ -790,7 +790,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}تسبب نقص في الامدادات الى الاغلاق الفوري ل {STRING}
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK} النقص في الشجر بالجوار ادى الى الاغلاق الفوري ل {STRING}.
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}العملة الموحدة للدول الأوربية! {}{}تم اعتماد العملة الأوربية الموحدة - اليورو - للمعاملات اليومية في دولتك!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}العملة الموحدة للدول الأوربية!{}{}تم اعتماد العملة الأوربية الموحدة - اليورو - للمعاملات اليومية في دولتك!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}ركود اقتصادي!{}{}خبراء الأقتصاد خائفون من ركود اقتصادي وشيك
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}الركود انتهى!{}{}العودة للصعود في الاقتصاد اعطى الثقة في قوة الاقتصاد
 
@@ -835,9 +835,9 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} الآن تقبل {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}الآن تقبل {STRING} و {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK} اعلان عن انتهاء عرض {}{} نقل {STRING} من {STRING} الى {STRING} لن يعطي ارباح اضافية بعد الآن .
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK} تم سحب العرض {}{} نقل {STRING} من {STRING} الى {STRING} لم يعد معروض
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}اعلان عن عرض {}{} نقل اول {STRING} من {STRING} الى {STRING} سوف يعطي زيادة ارباح في السنة القادمة.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK} اعلان عن انتهاء عرض{}{} نقل {STRING} من {STRING} الى {STRING} لن يعطي ارباح اضافية بعد الآن .
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK} تم سحب العرض{}{} نقل {STRING} من {STRING} الى {STRING} لم يعد معروض
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}اعلان عن عرض{}{} نقل اول {STRING} من {STRING} الى {STRING} سوف يعطي زيادة ارباح في السنة القادمة.
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK} العرض قد اعطي لـ {STRING}!{}{} نقل {STRING} من {STRING} الى {STRING} سوف يعطي زيادة 50% ارباح للسنة القادمة
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}العرض قد اعطي لـ {STRING}!{}{} نقل {STRING}من {STRING}الى {STRING} سوف يعطي ضعف الدخل للسنة القادمة
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}شركة {STRING} فازت بالعرض{}{} نقل {STRING} من {STRING} الى {STRING} سوف يعطي 3 اضعاف الدخل للسنة القادمة
@@ -1066,7 +1066,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :اعدادات 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :اعدادات اللعبة (يخزن في الحفظ ؛ يطبق على اللعبة الحالية فقط)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :اعدادات الشركة (يخزن في الحفظ ؛ يطبق على الالعاب الجديدة فقط)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :اعدادات الشركة (يخزن في الحفظ ؛ يطبق على الشركة الحالية فقط)
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}عرض جميع النتائج بالنسبة للإعداد {}{SILVER} الفئة {BLACK} إلى {WHITE}{STRING} {BLACK}و{SILVER}نوع {BLACK} إلى{WHITE} جميع انواع الإعدادات
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}عرض جميع النتائج بالنسبة للإعداد{}{SILVER} الفئة {BLACK} إلى {WHITE}{STRING} {BLACK}و{SILVER}نوع {BLACK} إلى{WHITE} جميع انواع الإعدادات
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE} - بدون -
 
 STR_CONFIG_SETTING_OFF                                          :قفل
@@ -1841,7 +1841,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ق
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} اعطى شركتك : {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** انت اعطيت {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}اقفل الخادم الجلسة
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}يتم بدأ الخادم من جديد ... {} الرجاء الأنتظار
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}يتم بدأ الخادم من جديد ...{} الرجاء الأنتظار
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}تنزيل المحتوى
@@ -1849,7 +1849,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK} نوع
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK} نوع المحتوى
 STR_CONTENT_NAME_CAPTION                                        :{BLACK} الاسم
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK} اسم المحتوى
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK} اضغط على الخط لرؤية التفاصيل. {} اضغط على مربع الاختيار لتحميل.
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK} اضغط على الخط لرؤية التفاصيل.{} اضغط على مربع الاختيار لتحميل.
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK} اختيار الكل
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK} تحميل كامل المحتوى
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} اختر التحديث
@@ -1992,17 +1992,17 @@ STR_STATION_CLASS_WAYP                                          :نقطة عبو
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}اختيار الإشارات
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}اشارة اقفال (بالاعلام){}هذة الاشارة الأساسية. تسمح بتواجد قطار واحد في القسم و الوقت الواحد
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}اشارة دخول (بالاعلام){} تكون خضراء عندما توجد اشارة خضراء في اشارات الخروج التالية لها. والا تكون حمراء.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}اشارة خروج (بالاعلام) {}تعمل مثل اشارة الاقفال, لكن يجب تنشيط الوضع الصحيح في الدخول و الاشارة المزدوجة.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}اشارة مزدوجة (بالاعلام) {} الاشارة المزدوجة تعمل للدخول و الخروج. فهي تسمح لك بعمل شجرة كبيرة من الاشارات
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}اشارة خروج (بالاعلام){}تعمل مثل اشارة الاقفال, لكن يجب تنشيط الوضع الصحيح في الدخول و الاشارة المزدوجة.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}اشارة مزدوجة (بالاعلام){} الاشارة المزدوجة تعمل للدخول و الخروج. فهي تسمح لك بعمل شجرة كبيرة من الاشارات
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}اشارة طريق (بالاعلام){}تسمح بمرور اكثر من قطارفي القسم التالي اذا كان القطار يستطيع الوصول الى نقطة آمنة. يمكن تخطي الاشارة بالاتجاهين.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}اشارة الاتجاة الواحد (بالاعلام){}اشارة طريق تسمح باكثر من قطار يدخل في القسم التالي في نفس الوقت, اذا كان القطار يستطيع الوصول الى نقطة آمنة. لا يمكن تخطي اشارة الاتجاة الواحد من الخلف.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}اشارة اقفال (كهربائية){}هذة الاشارة الأساسية. تسمح بتواجد قطار واحد في القسم و الوقت الواحد
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}اشارة دخول (كهربائية){} تكون خضراء عندما توجد اشارة خضراء في اشارات الخروج التالية لها. والا تكون حمراء.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}اشارة خروج (كهربائية) {}تعمل مثل اشارة الاقفال, لكن يجب تنشيط الوضع الصحيح في الدخول و الاشارة المزدوجة.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}اشارة مزدوجة (كهربائية) {} الاشارة المزدوجة تعمل للدخول و الخروج. فهي تسمح لك بعمل شجرة كبيرة من الاشارات.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}اشارة خروج (كهربائية){}تعمل مثل اشارة الاقفال, لكن يجب تنشيط الوضع الصحيح في الدخول و الاشارة المزدوجة.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}اشارة مزدوجة (كهربائية){} الاشارة المزدوجة تعمل للدخول و الخروج. فهي تسمح لك بعمل شجرة كبيرة من الاشارات.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}اشارة طريق(كهربائية){}تسمح بمروراكثرمن قطارفي القسم التالي اذا كان القطار يستطيع الوصول الى نقطة آمنة. يمكن تخطي الاشارة بالاتجاهين.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}اشارة الاتجاة الواحد (كهربائية){}اشارة طريق تسمح باكثر من قطار يدخل في القسم التالي في نفس الوقت, اذا كان القطار يستطيع الوصول الى نقطة آمنة. لا يمكن تخطي اشارة الاتجاة الواحد من الخلف.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK} تغيير الاشارات {} عند الاختيار, سوف يتم تغيير الاشارة الى النوع المختار. الضغط على مفتاح كنترول سوف يبدل بين انواع الاشارات.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK} تغيير الاشارات{} عند الاختيار, سوف يتم تغيير الاشارة الى النوع المختار. الضغط على مفتاح كنترول سوف يبدل بين انواع الاشارات.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}سرعة السحب
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}تقليل سرعة السحب
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}زيادة سرعة السحب
@@ -2134,7 +2134,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}زراع
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}بناء المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}اضافة مناطق صخرية على المنظر
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}عرف منطقة صحراوية. {}اضغط بشكل متواصل مفتاح كنترول لأزالتها
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}عرف منطقة صحراوية.{}اضغط بشكل متواصل مفتاح كنترول لأزالتها
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}زيادة ارتفاع و انخفاض المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}انقاص ارتفاع و انخفاض المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}انشاء مسطحات عشوائية
@@ -2167,7 +2167,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}كبير
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK} عشوائي
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}حدد حجم المدينه
 STR_FOUND_TOWN_CITY                                             :{BLACK}مدينة
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية. {} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية.{} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW} تصميم طرق المدينة
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK} اختر تصميم الطرق لهذه المدينة
@@ -2512,7 +2512,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED} تحذير: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED} خطأ: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED} خطأ قاتل: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}حدث خظأ في NewGRF لا يمكن اصلاحة: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}حدث خظأ في NewGRF لا يمكن اصلاحة:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} لن يعمل مع اصدار الباتش المسجل في النسخة المفتوحة
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} يعمل مع {STRING} اصدار من TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} مصمم ليستخدم مع {STRING}
@@ -2537,7 +2537,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}الم�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}تم تحميل ملف GFR مطابق بدلا من المفقود
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}تم تعطيل ملف GRF المفقود
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}ملف NewGRF مفقود
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}عدم الايقاف قد يتسبب في تعطل النسخة المفتوحة. لا تنشأ ملف اخطاء لاالخطاء التالية. {} هل تود بالفعل اكمال اللعب؟
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}عدم الايقاف قد يتسبب في تعطل النسخة المفتوحة. لا تنشأ ملف اخطاء لاالخطاء التالية.{} هل تود بالفعل اكمال اللعب؟
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :لا يوجد
@@ -2637,14 +2637,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :مول انشا
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :اشتري حقوق النقل الحصرية للمدينة
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :ارشي السلطات المحلية
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}البدء في حملة دعائية صغيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} البدء في حملة دعائية متوسطة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}البدء في حملة دعائية كبيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} مول اعمال الصيانة للطرق و الشوارع بالمدينة. يتسبب في تعطيل حركة النقل داخل المدينة لمدة قد تصل ستة اشهر. {} التكلفة {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} بناء مجسم تقديرا للشركة في اعمال النقل. {} التكلفة {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} مول بناء مباني تجارية جديدة في المدينة. {}التكلفة {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} اشتري حقوق النقل لسنة كاملة في هذة المدينة و المصانع التابعة لها. البلدية سوف تسمح للركاب و البضائع باستخدام محطاتك فقط. {}التكلفة: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} ارشي السلطات المحلية لزيادة كفائة الشركة. هناك عقاب شديد اذا ما اكتشفت الرشوة. {} التكلفة: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}البدء في حملة دعائية صغيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك.{} التكلفة: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} البدء في حملة دعائية متوسطة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك.{} التكلفة: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}البدء في حملة دعائية كبيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك.{} التكلفة: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} مول اعمال الصيانة للطرق و الشوارع بالمدينة. يتسبب في تعطيل حركة النقل داخل المدينة لمدة قد تصل ستة اشهر.{} التكلفة {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} بناء مجسم تقديرا للشركة في اعمال النقل.{} التكلفة {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} مول بناء مباني تجارية جديدة في المدينة.{}التكلفة {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} اشتري حقوق النقل لسنة كاملة في هذة المدينة و المصانع التابعة لها. البلدية سوف تسمح للركاب و البضائع باستخدام محطاتك فقط.{}التكلفة: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} ارشي السلطات المحلية لزيادة كفائة الشركة. هناك عقاب شديد اذا ما اكتشفت الرشوة.{} التكلفة: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -2794,7 +2794,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}بيع 2
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :اسم الشركة
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :اسم صاحب الشركة
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}نحن نبحث عن شركة لتشتري شركتنا. {}{} عل ترغب في شراء {COMPANY} بـ {CURRENCY_LONG}؟
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}نحن نبحث عن شركة لتشتري شركتنا.{}{} عل ترغب في شراء {COMPANY} بـ {CURRENCY_LONG}؟
 
 # Company infrastructure window
 
@@ -2827,7 +2827,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}ينتج
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج مضاعف من 8 الى 2040
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}غير مستوى الانتاج {}نسبة مئوية حتى 800%.
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}غير مستوى الانتاج{}نسبة مئوية حتى 800%.
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA}قطار
@@ -3037,7 +3037,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :سفينة
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :قاطرة سكة قطار احادية
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :قاطرة سكة قطار ممغنطة
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK} التكلفة: {CURRENCY_LONG} الوزن: {WEIGHT_SHORT} {} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY_LONG} / سنة {} السعة: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK} التكلفة: {CURRENCY_LONG} الوزن: {WEIGHT_SHORT}{} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY_LONG} / سنة{} السعة: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}التكلفة {CURRENCY_LONG} الوزن {WEIGHT_SHORT}{}السرعة {VELOCITY}  Power: {POWER}قوة السحب  {6:FORCE}{}التكلفة التشغيلية {4:CURRENCY_LONG}/سنة{}السعة: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK} التكلفة {CURRENCY_LONG} السرعة القصوى {VELOCITY}{}Capacity السعة {CARGO_LONG} {CARGO_LONG}{} كلفة التشغيل {CURRENCY_LONG} / سنة
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK} التكلفة {CURRENCY_LONG} السرعة القصوى {VELOCITY}{} السعة {CARGO_LONG}{} كلفة التشغيل {CURRENCY_LONG} / سنة
@@ -3463,7 +3463,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}استم
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}عدم توقيف ومواصلة الذكاء الصناعي
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض صائد الاخطاء لهذه الاضافة
 
-STR_ERROR_AI_NO_AI_FOUND                                        :لا يوجد اضافات مناسبة للتحميل {} هذه اضافة غبية ولن تفعل شيئا لك {} تستطيع تحميل اضافات من الشبكة عن طريق نظام التحميل
+STR_ERROR_AI_NO_AI_FOUND                                        :لا يوجد اضافات مناسبة للتحميل{} هذه اضافة غبية ولن تفعل شيئا لك{} تستطيع تحميل اضافات من الشبكة عن طريق نظام التحميل
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاشة اخطاء الذكاء الصناعي متوفرة فقط للخادم
 
@@ -3533,7 +3533,7 @@ STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}فشل �
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}لا يمكن قرائة القرص
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}فشل حفظ اللعبة{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}لا يمكن حذف الملف
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}فشل فتح اللعبة {}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}فشل فتح اللعبة{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :خطأ داخلي: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :لعبه محفوظه غير صالحه - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :اللعبة حفظت بنسخة أحدث
@@ -3544,7 +3544,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<غير متا�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}اللعبة حفظت بنسخة لا تدعم الترام. كل ما يتعلق بالترام حذف.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}مولد الخريطة توقف ... {} ... لا يوجد مواقع مناسبة للمدن
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}مولد الخريطة توقف ...{} ... لا يوجد مواقع مناسبة للمدن
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... لا يوجد مدن في هذه الخريطة
 
 STR_ERROR_PNGMAP                                                :{WHITE}لا يمكن تحميل الخريطة من PNG ...
@@ -3633,7 +3633,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ال
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... لا يوجد فراغ في الخريطة
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}لن تبني البلدية طرق جديدة. بإمكانك تمكين بناء الطرق الجديدة عن طريق الاعدادات --> البيئة--> المدن
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}اعمال الطرق قيد التنفيذ
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}لا يمكن ازالة هذه المدينة {}محطة او ورشة مرتبطة بالمدينة او هناك مربع مملوك للمدينة لا يمكن لزالته
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}لا يمكن ازالة هذه المدينة{}محطة او ورشة مرتبطة بالمدينة او هناك مربع مملوك للمدينة لا يمكن لزالته
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... لا يوجد مكان مناسب للمجسم بداخل هذة المدينة/البلدة
 
 # Industry related errors

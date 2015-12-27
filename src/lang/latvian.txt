@@ -2811,7 +2811,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Brīdinājums: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kļūda: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatāls: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Notikusi fatāla NewGRF kļūda: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Notikusi fatāla NewGRF kļūda:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nedarbosies kopā ar TTDPatch versiju (par ko ziņoja OpenTTD).
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir TTD {STRING} versijai
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir paredzēts lietošanai kopā ar {STRING}
@@ -4082,7 +4082,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... pār
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... uz kartes nav vairāk vietas
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Pilsēta ceļus nebūvēs. Jūs varat ieslēgt ceļu būvi caur Papildu iestatījumi->Ekonomika->Pilsētas
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Notiek ceļa remonts
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Šo pilsētu nevar dzēst... {}Kāda stacija vai depo attiecas uz pilsētu. Vai pilsētai pieder nenoņemams lauciņš
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Šo pilsētu nevar dzēst...{}Kāda stacija vai depo attiecas uz pilsētu. Vai pilsētai pieder nenoņemams lauciņš
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... šās pilsētas centrā statujai nav piemērotas vietas
 
 # Industry related errors
