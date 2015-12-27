@@ -38,6 +38,9 @@
 #define PM_QS_INPUT 0x20000
 #endif
 
+typedef BOOL (WINAPI *PFNTRACKMOUSEEVENT)(LPTRACKMOUSEEVENT lpEventTrack);
+static PFNTRACKMOUSEEVENT _pTrackMouseEvent = NULL;
+
 static struct {
 	HWND main_wnd;
 	HBITMAP dib_sect;
@@ -747,7 +750,16 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			 * tracking the mouse for exiting the window */
 			if (!_cursor.in_window) {
 				_cursor.in_window = true;
-				SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+				if (_pTrackMouseEvent != NULL) {
+					TRACKMOUSEEVENT tme;
+					tme.cbSize = sizeof(tme);
+					tme.dwFlags = TME_LEAVE;
+					tme.hwndTrack = hwnd;
+
+					_pTrackMouseEvent(&tme);
+				} else {
+					SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+				}
 			}
 
 			if (_cursor.fix_at) {
@@ -1038,6 +1050,9 @@ static void RegisterWndClass()
 
 		registered = true;
 		if (!RegisterClass(&wnd)) usererror("RegisterClass failed");
+
+		/* Dynamically load mouse tracking, as it doesn't exist on Windows 95. */
+		_pTrackMouseEvent = (PFNTRACKMOUSEEVENT)GetProcAddress(GetModuleHandle(_T("User32")), "TrackMouseEvent");
 	}
 }
 
