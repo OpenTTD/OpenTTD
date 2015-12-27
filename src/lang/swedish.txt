@@ -2874,7 +2874,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå till
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidigare spriteobjekt
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till föregående normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om från slutet efter första spriteobjektet
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation av det valda objektet. Justeringen ignoreras när objektet ritas.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet, ändrar X och Y offsets
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet, ändrar X och Y offsets. Ctrl+klicka för att flyta runt objektet åtta steg i taget
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Återställ relativ
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Återställ den nuvarande relativa offsetten
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offsett: {NUM}, Y offsett: {NUM} (Absolut)

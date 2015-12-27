@@ -1090,7 +1090,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλ
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Μέγεθος διεπαφής
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACk}Επιλέξτε το μέγεθος στοιχείου διεπαφής
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Επιλέξτε το μέγεθος στοιχείου διεπαφής
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Κανονικό
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Διπλό μέγεθος

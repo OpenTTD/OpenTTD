@@ -1168,6 +1168,7 @@ STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ní féi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ceadaigh tírdhreachú faoi fhoirgneamh agus ráillí gan iad a bhaint
 STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Bíodh an ceantar máguaird a bhaineann le cineálacha éagsúla stáisiún agus aerfort ar mhéideanna éagsúla
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Ceadaigh tuilleadh bóithre, droichid agus tolláin ar le baile iad a bhaint: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Fág go mbeidh sé níos éasca bonneagar agus foirgnimh ar le bailte iad a bhaint
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Uasfhad na dtraenacha: {STRING}
@@ -1287,6 +1288,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tiús na línte
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Leithead na líne sna graif. Is féidir líne thanaí a léamh go beacht, agus tá líne níos tiubhe níos éasca le feiceáil agus tá sé níos éasca na dathanna a idirdhealú óna gcéile
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Tírdhreach: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Sonraíonn na tírdhreacha an cúlra bunúsach don imirt, le lastais éagsúla agus riachtanais éagsúla d'fhás na mbailte. Is féidir é sin a mhionathrú tuilleadh le NewGRFanna agus Scripteanna Cluiche mar sin féin
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gineadóir talún: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Bunaidh
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
@@ -1326,6 +1328,7 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :An limistéar u
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Déan seirbhísiú ar héileacaptair ag héileapadanna go huathoibríoch: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Déan seirbhísiú ar heileacaptair tar éis gach tuirlingte, fiú mura bhfuil iosta ag an aerfort
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ceangail an barra uirlisí tírdhreacha leis na barraí uirlisí iarnróid/bóíthre/uisce/aerfort: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Nuair a osclaítear barra uirlisí tógála do chineál iompair, oscail an barra uirlisí do chóiriú na talún freisin
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Dath na talún a úsáidtear sa léarscáil bheag: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Dath an tír-raoin ar an léarscáil bheag
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
@@ -1335,12 +1338,14 @@ STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Aisiompaigh an 
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :An méid a tharlaíonn agus an léarscáil á scrollú leis an gcnaipe luchóige deas. Má bhíonn sé díchumasaithe, bogann an luchóg leis an gceamara. Má bhíonn sé cumasaithe, bogann an luchóg an léarscáil
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scrollú mín do na fuinneoga amhairc: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Taispeáin leid uirlise tomhais agu uirlisí tógála áirithe in úsáid: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Taispeánfar faid na dtíleanna agus difríochtaí san airde agus tú ag tarraingt le linn duit a bheith i mbun tógála
 STR_CONFIG_SETTING_LIVERIES                                     :Taispeáin libhréithe sonracha d'fheithiclí: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Rialaigh úsáid libhréithe a bhaineann go sonrach leis an gcineál feithicle d'fheithiclí (seachas libhréithe a bhaineann go sonrach le cuideachta)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ná taispeáin
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Do chuideachta féin
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Gach cuideachta
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Tús áite do chomhrá foirne le <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Usáid <ENTER> don chomhrá laistigh den chuideachta agus úsáid <Ctrl+ENTER> don chomhrá poiblí.
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Feidhm an rotha scrollaithe: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Cumasaigh scrollú le rothaí luchóige déthoiseacha
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zúmáil an léarscáil
@@ -1525,6 +1530,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Comharthaí blo
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Comharthaí cosán
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Comharthaí cosán aonbhealaigh
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Téigh trí na cineálacha comharthaí in ord: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Roghnaigh cad iad na cineálacha comharthaí a rachfar tríd, nuair a dhéánfar Ctrl+cliceáil ar chomhartha tógála le huirlis na gcomharthaí
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Comharthaí bloc amháin
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Comharthaí cosán amháin
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Gach
@@ -1566,6 +1572,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Líon na bhfuin
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :díchumasaithe
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Zúmáil uasta i leibhéil: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :An leibhéal uasta zúmála isteach d'fhuinneoga amhairc. Tabhair faoi deara go dtiocfaidh méadú ar an méid cuimhne a bheidh ag teastáil má dhéantar leibhéil níos airde don zúmáil isteach a chumasú
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Leibhéal uasta zúmala amach: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
@@ -1585,6 +1592,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Líon na mbailt
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 as {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ceann ar bith
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iolraitheoir tosaigh mhéid na gcathracha: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meánmhéid na gcathracha i gcomórtas le gnáthbhailte ag tús an chluiche
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Nuashonraigh an graf dáileacháin gach {STRING}{NBSP}lá
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Tóg {STRING}{NBSP}lá chun an graf dáileacháin a athríomh
@@ -1593,7 +1601,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :neamhshiméadra
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :siméadrach
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :An mód dáileacháin do phaisinéirí: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :An mód dáileacháin do phost: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Ciallaíonn "siméadrach" go seolfar thart ar an méid céanna postais ó stáisiún A go stáisiún B agus a sheoltar ó B go A. Ciallaíonn "neamhshiméadrach" gur féidir méideanna neamhshrianta postais a sheoladh i gceachtar den dá threo. Ciallaíonn "de láimh" nach ndéanfar dáileadh uathoibríoch ar an bpostas
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :An mód dáileacháin don aicme lastais ARMÚRTHA: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :San aicme lastais ARMÚRTHA, bíonn earraí luachmhara san aeráid mheasartha, diamaint san aeráid fho-theochreasach nó ór san aeráid fho-artach. Is féidir é sin a athrú le NewGRFanna. Ciallaíonn "siméadrach" go seolfar thart ar an méid céanna den lastas sin ó stáisiún A go stáisiún B agus a sheoltar ó B go A. Ciallaíonn "neamhshiméadrach" gur féidir méideanna neamhshrianta den lastas sin a sheoladh i gceachtar den dá threo. Ciallaíonn "de láimh" nach ndéanfar dáileadh uathoibríoch don lastas sin. Moltar é seo a shocrú go neamhshiméadrach nó de láimh má bhíonn tú ag imirt leis an aeráid fho-artach, toisc nach seolann bainc aon ór ar ais chuig na mianach óir. Sna haeráidí measartha agus fo-theochreasach is féidir leat siméadrach a roghnú freisin, toisc go seolfaidh na bainc earraí luachmhara ar ais chuig an mbanc tosaigh i gcás lastas earraí luachmhara.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :An mód dáileacháin d'aicmí eile lastais: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Cruinneas an dáileacháin: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :An tionchar atá ag fad ar éilimh: {STRING}
@@ -1753,7 +1763,7 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Fág Cluiche
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Fág an Cluiche
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}An bhfuil tú cinnte gur mhaith leat an cluiche seo a fhágáil?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}An bhfuil tú cinnte gur mhaith leat an scéal seo a fhágáil?
 
@@ -2845,7 +2855,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Téigh c
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite roimhe
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Téigh ar aghaigh chuig an gnáth-sprite roimhe, ag scipeáil thar aon bhréag-sprite nó sprite athdathaithe/clófhoirne agus ag timfhilleadh ag an tús
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Léiriú den sprite atá roghnaithe faoi láthair. Déantar neamhaird den ailíniú agus an sprite seo á tharraingt
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bog an sprite timpeall, ag athrú an seach-chur X agus Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bog an sprid timpeall, ag athrú an seach-chur X agus Y. Ctrl+Cliceáil chun an sprid a bhogadh ocht n-aonad ag an am céanna
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Athshocraigh coibhneasta
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Athshocraigh na seach-chuir choibhneasta reatha
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Seach-chur X: {NUM}, Seach-chur Y: {NUM} (Dearbh-shuíomh)
