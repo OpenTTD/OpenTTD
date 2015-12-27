@@ -930,9 +930,9 @@ STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Coille
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Stèisean rèile
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{G=m}{TINY_FONT}{BLACK}Ionad-luchdaidh nan làraidh
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY.nom                      :{G=m}{TINY_FONT}{BLACK}Ionad-luchdaidh nan làraidh
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY.gen                      :{G=m}{TINY_FONT}{BLACK}Ionaid-luchdaidh nan làraidh
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY.dat                      :{G=m}{TINY_FONT}{BLACK}Ionad-luchdaidh nan làraidh
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY.nom                      :{TINY_FONT}{BLACK}Ionad-luchdaidh nan làraidh
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY.gen                      :{TINY_FONT}{BLACK}Ionaid-luchdaidh nan làraidh
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY.dat                      :{TINY_FONT}{BLACK}Ionad-luchdaidh nan làraidh
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Stèisean bus
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Port-adhair/port-heileacoptair
 STR_SMALLMAP_LEGENDA_DOCK                                       :{G=m}{TINY_FONT}{BLACK}Port
@@ -2643,9 +2643,9 @@ STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Tagh com
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{G=m}{WHITE}Port
-STR_STATION_BUILD_DOCK_CAPTION.nom                              :{G=m}{WHITE}Port
-STR_STATION_BUILD_DOCK_CAPTION.gen                              :{G=m}{WHITE}Puirt
-STR_STATION_BUILD_DOCK_CAPTION.dat                              :{G=m}{WHITE}Port
+STR_STATION_BUILD_DOCK_CAPTION.nom                              :{WHITE}Port
+STR_STATION_BUILD_DOCK_CAPTION.gen                              :{WHITE}Puirt
+STR_STATION_BUILD_DOCK_CAPTION.dat                              :{WHITE}Port
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Puirt-adhair
@@ -2664,14 +2664,14 @@ STR_AIRPORT_INTERNATIONAL                                       :Eadar-nàiseant
 STR_AIRPORT_COMMUTER                                            :Iomlaideach
 STR_AIRPORT_INTERCONTINENTAL                                    :Thar chuain
 STR_AIRPORT_HELIPORT                                            :{G=m}Port-heileacoptair
-STR_AIRPORT_HELIPORT.nom                                        :{G=m}Port-heileacoptair
-STR_AIRPORT_HELIPORT.gen                                        :{G=m}Puirt-heileacoptair
-STR_AIRPORT_HELIPORT.dat                                        :{G=m}Port-heileacoptair
+STR_AIRPORT_HELIPORT.nom                                        :Port-heileacoptair
+STR_AIRPORT_HELIPORT.gen                                        :Puirt-heileacoptair
+STR_AIRPORT_HELIPORT.dat                                        :Port-heileacoptair
 STR_AIRPORT_HELIDEPOT                                           :Hangar-heileacoptair
 STR_AIRPORT_HELISTATION                                         :{G=m}Stèisean heileacoptair
-STR_AIRPORT_HELISTATION.nom                                     :{G=m}Stèisean heileacoptair
-STR_AIRPORT_HELISTATION.gen                                     :{G=m}Stèisein heileacoptair
-STR_AIRPORT_HELISTATION.dat                                     :{G=m}Stèisean heileacoptair
+STR_AIRPORT_HELISTATION.nom                                     :Stèisean heileacoptair
+STR_AIRPORT_HELISTATION.gen                                     :Stèisein heileacoptair
+STR_AIRPORT_HELISTATION.dat                                     :Stèisean heileacoptair
 
 STR_AIRPORT_CLASS_SMALL                                         :Puirt-adhair beaga
 STR_AIRPORT_CLASS_LARGE                                         :Puirt-adhair mòra
@@ -2851,26 +2851,26 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Coille-uisge
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactasan
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :{G=m}Stèisean rèile
-STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION.nom                :{G=m}Stèisean rèile
-STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION.gen                :{G=m}Stèisein rèile
-STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION.dat                :{G=m}Stèisean rèile
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION.nom                :Stèisean rèile
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION.gen                :Stèisein rèile
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION.dat                :Stèisean rèile
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :{G=m}Hangar
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR.nom                 :{G=m}Hangar
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR.gen                 :{G=m}Hangair
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR.dat                 :{G=m}Hangar
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR.nom                 :Hangar
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR.gen                 :Hangair
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR.dat                 :Hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :{G=m}Port-adhair
-STR_LAI_STATION_DESCRIPTION_AIRPORT.nom                         :{G=m}Port-adhair
-STR_LAI_STATION_DESCRIPTION_AIRPORT.gen                         :{G=m}Puirt-adhair
-STR_LAI_STATION_DESCRIPTION_AIRPORT.dat                         :{G=m}Port-adhair
+STR_LAI_STATION_DESCRIPTION_AIRPORT.nom                         :Port-adhair
+STR_LAI_STATION_DESCRIPTION_AIRPORT.gen                         :Puirt-adhair
+STR_LAI_STATION_DESCRIPTION_AIRPORT.dat                         :Port-adhair
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Ionad-luchdaidh nan làraidh
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :{G=m}Stèisean bus
-STR_LAI_STATION_DESCRIPTION_BUS_STATION.nom                     :{G=m}Stèisean bus
-STR_LAI_STATION_DESCRIPTION_BUS_STATION.gen                     :{G=m}Stèisein bus
-STR_LAI_STATION_DESCRIPTION_BUS_STATION.dat                     :{G=m}Stèisean bus
+STR_LAI_STATION_DESCRIPTION_BUS_STATION.nom                     :Stèisean bus
+STR_LAI_STATION_DESCRIPTION_BUS_STATION.gen                     :Stèisein bus
+STR_LAI_STATION_DESCRIPTION_BUS_STATION.dat                     :Stèisean bus
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :{G=m}Port
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK.nom                       :{G=m}Port
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK.gen                       :{G=m}Puirt
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK.dat                       :{G=m}Port
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK.nom                       :Port
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK.gen                       :Puirt
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK.dat                       :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Fleodrainn
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Puing-thurais
 
@@ -2880,9 +2880,9 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Loc
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Abhainn
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Oirthir no bot
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :{G=m}Cala
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT.nom                        :{G=m}Cala
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT.gen                        :{G=m}Calaidh
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT.dat                        :{G=m}Cala
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT.nom                        :Cala
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT.gen                        :Calaidh
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT.dat                        :Cala
 
 # Industries come directly from their industry names
 
@@ -4712,9 +4712,9 @@ STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :{G=m}Ionad oifi
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Taighean-baile
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :{G=m}Taigh-òsta
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :{G=f}Ìomhaigh
-STR_TOWN_BUILDING_NAME_STATUE_1.nom                             :{G=f}Ìomhaigh
-STR_TOWN_BUILDING_NAME_STATUE_1.gen                             :{G=f}Ìomhaighe
-STR_TOWN_BUILDING_NAME_STATUE_1.dat                             :{G=f}Ìomhaigh
+STR_TOWN_BUILDING_NAME_STATUE_1.nom                             :Ìomhaigh
+STR_TOWN_BUILDING_NAME_STATUE_1.gen                             :Ìomhaighe
+STR_TOWN_BUILDING_NAME_STATUE_1.dat                             :Ìomhaigh
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :{G=m}Fuaran
 STR_TOWN_BUILDING_NAME_PARK_1                                   :{G=f}Pàirc
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :{G=m}Ionad oifisean
@@ -4731,42 +4731,42 @@ STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Ionad oifisean 
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Bùthan is oifisean
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Bùthan is oifisean
 STR_TOWN_BUILDING_NAME_THEATER_1                                :{G=m}Taigh-cluiche
-STR_TOWN_BUILDING_NAME_THEATER_1.nom                            :{G=m}Taigh-cluiche
-STR_TOWN_BUILDING_NAME_THEATER_1.gen                            :{G=m}Taighe-chluiche
-STR_TOWN_BUILDING_NAME_THEATER_1.dat                            :{G=m}Taigh-cluiche
+STR_TOWN_BUILDING_NAME_THEATER_1.nom                            :Taigh-cluiche
+STR_TOWN_BUILDING_NAME_THEATER_1.gen                            :Taighe-chluiche
+STR_TOWN_BUILDING_NAME_THEATER_1.dat                            :Taigh-cluiche
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :{G=m}Stèideam
-STR_TOWN_BUILDING_NAME_STADIUM_2.nom                            :{G=m}Stèideam
-STR_TOWN_BUILDING_NAME_STADIUM_2.gen                            :{G=m}Stèideim
-STR_TOWN_BUILDING_NAME_STADIUM_2.dat                            :{G=m}Stèideam
+STR_TOWN_BUILDING_NAME_STADIUM_2.nom                            :Stèideam
+STR_TOWN_BUILDING_NAME_STADIUM_2.gen                            :Stèideim
+STR_TOWN_BUILDING_NAME_STADIUM_2.dat                            :Stèideam
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :{G=f}Oifisean
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :{G=m}Taighean
-STR_TOWN_BUILDING_NAME_HOUSES_2.nom                             :{G=m}Taighean
-STR_TOWN_BUILDING_NAME_HOUSES_2.gen                             :{G=m}Thaighean
-STR_TOWN_BUILDING_NAME_HOUSES_2.dat                             :{G=m}Taighean
+STR_TOWN_BUILDING_NAME_HOUSES_2.nom                             :Taighean
+STR_TOWN_BUILDING_NAME_HOUSES_2.gen                             :Thaighean
+STR_TOWN_BUILDING_NAME_HOUSES_2.dat                             :Taighean
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :{G=m}Taigh-dhealbh
-STR_TOWN_BUILDING_NAME_CINEMA_1.nom                             :{G=m}Taigh-dhealbh
-STR_TOWN_BUILDING_NAME_CINEMA_1.gen                             :{G=m}Taighe-dhealbh
-STR_TOWN_BUILDING_NAME_CINEMA_1.dat                             :{G=m}Taigh-dhealbh
+STR_TOWN_BUILDING_NAME_CINEMA_1.nom                             :Taigh-dhealbh
+STR_TOWN_BUILDING_NAME_CINEMA_1.gen                             :Taighe-dhealbh
+STR_TOWN_BUILDING_NAME_CINEMA_1.dat                             :Taigh-dhealbh
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :{G=m}Ionad bhùthan
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.nom                      :{G=m}Ionad bhùthan
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.gen                      :{G=m}Ionaid bhùthan
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.dat                      :{G=m}Ionad bhùthan
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.nom                      :Ionad bhùthan
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.gen                      :Ionaid bhùthan
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.dat                      :Ionad bhùthan
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :{G=m}Taigh-sneachda
-STR_TOWN_BUILDING_NAME_IGLOO_1.nom                              :{G=m}Taigh-sneachda
-STR_TOWN_BUILDING_NAME_IGLOO_1.gen                              :{G=m}Taighe-shneachda
-STR_TOWN_BUILDING_NAME_IGLOO_1.dat                              :{G=m}Taigh-sneachda
+STR_TOWN_BUILDING_NAME_IGLOO_1.nom                              :Taigh-sneachda
+STR_TOWN_BUILDING_NAME_IGLOO_1.gen                              :Taighe-shneachda
+STR_TOWN_BUILDING_NAME_IGLOO_1.dat                              :Taigh-sneachda
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :{G=m}Tìpidhean
-STR_TOWN_BUILDING_NAME_TEPEES_1.nom                             :{G=m}Tìpidhean
-STR_TOWN_BUILDING_NAME_TEPEES_1.gen                             :{G=m}Thìpidhean
-STR_TOWN_BUILDING_NAME_TEPEES_1.dat                             :{G=m}Tìpidhean
+STR_TOWN_BUILDING_NAME_TEPEES_1.nom                             :Tìpidhean
+STR_TOWN_BUILDING_NAME_TEPEES_1.gen                             :Thìpidhean
+STR_TOWN_BUILDING_NAME_TEPEES_1.dat                             :Tìpidhean
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :{G=m}Taigh poit-teatha
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.nom                       :{G=m}Taigh poit-teatha
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.gen                       :{G=m}Taighe poit-teatha
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.dat                       :{G=m}Taigh poit-teatha
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.nom                       :Taigh poit-teatha
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.gen                       :Taighe poit-teatha
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.dat                       :Taigh poit-teatha
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :{G=f}Mucag-airgid
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.nom                         :{G=f}Mucag-airgid
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.gen                         :{G=f}Mucaige-airgid
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.dat                         :{G=f}Mucag-airgid
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.nom                         :Mucag-airgid
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.gen                         :Mucaige-airgid
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.dat                         :Mucag-airgid
 
 ##id 0x4800
 # industry names
@@ -4940,15 +4940,15 @@ STR_SV_STNAME_WOODS                                             :Coille {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Loch {STRING}
 STR_SV_STNAME_EXCHANGE                                          :Iomlaid {STRING}
 STR_SV_STNAME_AIRPORT                                           :{G=m}Port-adhair {STRING}
-STR_SV_STNAME_AIRPORT.nom                                       :{G=m}Port-adhair - {STRING}
-STR_SV_STNAME_AIRPORT.gen                                       :{G=m}Puirt-adhair - {STRING}
-STR_SV_STNAME_AIRPORT.dat                                       :{G=m}Port-adhair - {STRING}
+STR_SV_STNAME_AIRPORT.nom                                       :Port-adhair - {STRING}
+STR_SV_STNAME_AIRPORT.gen                                       :Puirt-adhair - {STRING}
+STR_SV_STNAME_AIRPORT.dat                                       :Port-adhair - {STRING}
 STR_SV_STNAME_OILFIELD                                          :Achadh-ola {STRING}
 STR_SV_STNAME_MINES                                             :Mèinnean {STRING}
 STR_SV_STNAME_DOCKS                                             :{G=m}Port {STRING}
-STR_SV_STNAME_DOCKS.nom                                         :{G=m}Port - {STRING}
-STR_SV_STNAME_DOCKS.gen                                         :{G=m}Puirt - {STRING}
-STR_SV_STNAME_DOCKS.dat                                         :{G=m}Port - {STRING}
+STR_SV_STNAME_DOCKS.nom                                         :Port - {STRING}
+STR_SV_STNAME_DOCKS.gen                                         :Puirt - {STRING}
+STR_SV_STNAME_DOCKS.dat                                         :Port - {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
@@ -4958,9 +4958,9 @@ STR_SV_STNAME_BRANCH                                            :Meur {STRING}
 STR_SV_STNAME_UPPER                                             :{STRING} Uachdarach
 STR_SV_STNAME_LOWER                                             :{STRING} Iochdarach
 STR_SV_STNAME_HELIPORT                                          :{G=m}Port-heileacoptair {STRING}
-STR_SV_STNAME_HELIPORT.nom                                      :{G=m}Port-heileacoptair - {STRING}
-STR_SV_STNAME_HELIPORT.gen                                      :{G=m}Puirt-heileacoptair - {STRING}
-STR_SV_STNAME_HELIPORT.dat                                      :{G=m}Port-heileacoptair - {STRING}
+STR_SV_STNAME_HELIPORT.nom                                      :Port-heileacoptair - {STRING}
+STR_SV_STNAME_HELIPORT.gen                                      :Puirt-heileacoptair - {STRING}
+STR_SV_STNAME_HELIPORT.dat                                      :Port-heileacoptair - {STRING}
 STR_SV_STNAME_FOREST                                            :Coille {STRING}
 STR_SV_STNAME_FALLBACK                                          :{STRING} Stèisean {NUM}
 ############ end of savegame specific region!
@@ -5240,21 +5240,21 @@ STR_FORMAT_WAYPOINT_NAME                                        :Puing-thurais {
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Puing-thurais {1:COMMA} {0:TOWN}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{G=f}Trèan-lann {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN.nom                                 :{G=f}Trèan-lann - {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN.gen                                 :{G=f}Trèan-lainn - {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN.dat                                 :{G=f}Trèan-lann - {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN.nom                                 :Trèan-lann - {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN.gen                                 :Trèan-lainn - {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN.dat                                 :Trèan-lann - {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Trèan-lann {1:COMMA} {0:TOWN}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=f}Garaids {TOWN}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=f}Garaids {1:COMMA} {0:TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=m}Cala {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP.nom                                  :{G=m}Cala - {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP.gen                                  :{G=m}Calaidh - {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP.dat                                  :{G=m}Cala - {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP.nom                                  :Cala - {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP.gen                                  :Calaidh - {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP.dat                                  :Cala - {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=m}Cala {1:COMMA} {0:TOWN}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=m}Hangar {STATION}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT.nom                              :{G=m}Hangar - {STATION}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT.gen                              :{G=m}Hangair - {STATION}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT.dat                              :{G=m}Hangar - {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT.nom                              :Hangar - {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT.gen                              :Hangair - {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT.dat                              :Hangar - {STATION}
 
 STR_UNKNOWN_STATION                                             :stèisean neo-aithnichte
 STR_DEFAULT_SIGN_NAME                                           :Sanas

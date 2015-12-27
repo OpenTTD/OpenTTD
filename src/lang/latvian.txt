@@ -2508,7 +2508,7 @@ STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Īpašni
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Ceļa īpašnieks: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvaju ceļa īpašnieks: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dzelzceļa īpašnieks: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER.kas                        :{G=f}{BLACK}Dzelzceļa īpašniece: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER.kas                        :{BLACK}Dzelzceļa īpašniece: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pašvaldība: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neviena
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinātes: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
@@ -2817,9 +2817,9 @@ STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir T
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir paredzēts lietošanai kopā ar {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nepareizs parametrs priekš {1:STRING}: parametrs {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} jābūt ielādētam pirms {STRING}.
-STR_NEWGRF_ERROR_LOAD_BEFORE.kas                                :{G=f}{1:STRING} jābūt ielādētai pirms {STRING}.
+STR_NEWGRF_ERROR_LOAD_BEFORE.kas                                :{1:STRING} jābūt ielādētai pirms {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} jābūt ielādētam pēc {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER.kas                                 :{G=f}{1:STRING} jābūt ielādētai pēc {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER.kas                                 :{1:STRING} jābūt ielādētai pēc {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} ir vajadzīga Open TTD versija {STRING} vai labāka
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radīts tulkošanai
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ir ielādēti pārāk daudzi NewGRF
@@ -2896,7 +2896,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Ievadīt
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pilsētas
 STR_TOWN_DIRECTORY_NONE                                         :{G=m}{ORANGE}- Neviens -
-STR_TOWN_DIRECTORY_NONE.kas                                     :{G=f}{ORANGE}- Neviena -
+STR_TOWN_DIRECTORY_NONE.kas                                     :{ORANGE}- Neviena -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Pilsētu nosaukumi - klikšķināt uz nosaukuma, lai centrētu skatu uz to. Ctrl+klikšķis atvērs jaunu skatu lauku uz pilsētu
 STR_TOWN_POPULATION                                             :{BLACK}Pasaules iedzīvotāju skaits: {COMMA}
@@ -2984,9 +2984,9 @@ STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Pieņemt
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Neievērot
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :Mēģināt vēl
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Iepriekšējais
-STR_GOAL_QUESTION_BUTTON_PREVIOUS.kas                           :{G=f}Iepriekšējā
+STR_GOAL_QUESTION_BUTTON_PREVIOUS.kas                           :Iepriekšējā
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Nākamais
-STR_GOAL_QUESTION_BUTTON_NEXT.kas                               :{G=f}Nākamā
+STR_GOAL_QUESTION_BUTTON_NEXT.kas                               :Nākamā
 STR_GOAL_QUESTION_BUTTON_STOP                                   :Apturēt
 STR_GOAL_QUESTION_BUTTON_START                                  :Sākt
 STR_GOAL_QUESTION_BUTTON_GO                                     :Doties
@@ -3198,7 +3198,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ražotnes
 STR_INDUSTRY_DIRECTORY_NONE                                     :{G=m}{ORANGE}- Neviens -
-STR_INDUSTRY_DIRECTORY_NONE.kas                                 :{G=f}{ORANGE}- Neviena -
+STR_INDUSTRY_DIRECTORY_NONE.kas                                 :{ORANGE}- Neviena -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% pārvadāts)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% pārvadāts)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

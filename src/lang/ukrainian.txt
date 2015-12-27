@@ -2415,9 +2415,9 @@ STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Вибе
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}не використовується
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}заповнений
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{G=m}{TINY_FONT}{BLACK}перевантажений
-STR_LINKGRAPH_LEGEND_OVERLOADED.r                               :{G=m}{TINY_FONT}{BLACK}перевантаженого
-STR_LINKGRAPH_LEGEND_OVERLOADED.d                               :{G=m}{TINY_FONT}{BLACK}перевантаженому
-STR_LINKGRAPH_LEGEND_OVERLOADED.z                               :{G=m}{TINY_FONT}{BLACK}перевантажений
+STR_LINKGRAPH_LEGEND_OVERLOADED.r                               :{TINY_FONT}{BLACK}перевантаженого
+STR_LINKGRAPH_LEGEND_OVERLOADED.d                               :{TINY_FONT}{BLACK}перевантаженому
+STR_LINKGRAPH_LEGEND_OVERLOADED.z                               :{TINY_FONT}{BLACK}перевантажений
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Підсвічення зони покриття
@@ -4643,61 +4643,61 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Копилка
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Вугільна шахта
-STR_INDUSTRY_NAME_COAL_MINE.z                                   :{G=f}вугільну шахту
+STR_INDUSTRY_NAME_COAL_MINE.z                                   :вугільну шахту
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Електростанція
-STR_INDUSTRY_NAME_POWER_STATION.z                               :{G=f}електростанцію
+STR_INDUSTRY_NAME_POWER_STATION.z                               :електростанцію
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Лісопилка
-STR_INDUSTRY_NAME_SAWMILL.z                                     :{G=f}лісопилку
+STR_INDUSTRY_NAME_SAWMILL.z                                     :лісопилку
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Ліс
-STR_INDUSTRY_NAME_FOREST.z                                      :{G=m}ліс
+STR_INDUSTRY_NAME_FOREST.z                                      :ліс
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}Нафтопереробний завод
-STR_INDUSTRY_NAME_OIL_REFINERY.z                                :{G=m}нафтопереробний завод
+STR_INDUSTRY_NAME_OIL_REFINERY.z                                :нафтопереробний завод
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Нафтова платформа
-STR_INDUSTRY_NAME_OIL_RIG.z                                     :{G=f}нафтову платформу
+STR_INDUSTRY_NAME_OIL_RIG.z                                     :нафтову платформу
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Фабрика
-STR_INDUSTRY_NAME_FACTORY.z                                     :{G=f}фабрику
+STR_INDUSTRY_NAME_FACTORY.z                                     :фабрику
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Друкарня
-STR_INDUSTRY_NAME_PRINTING_WORKS.z                              :{G=f}друкарню
+STR_INDUSTRY_NAME_PRINTING_WORKS.z                              :друкарню
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталеварний завод
-STR_INDUSTRY_NAME_STEEL_MILL.z                                  :{G=m}сталеварний завод
+STR_INDUSTRY_NAME_STEEL_MILL.z                                  :сталеварний завод
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
-STR_INDUSTRY_NAME_FARM.z                                        :{G=f}ферму
+STR_INDUSTRY_NAME_FARM.z                                        :ферму
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Міднорудна шахта
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.z                             :{G=f}міднорудну шахту
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.z                             :міднорудну шахту
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Нафтова свердловина
-STR_INDUSTRY_NAME_OIL_WELLS.z                                   :{G=f}нафтову свердловину
+STR_INDUSTRY_NAME_OIL_WELLS.z                                   :нафтову свердловину
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Банк
-STR_INDUSTRY_NAME_BANK.z                                        :{G=m}банк
+STR_INDUSTRY_NAME_BANK.z                                        :банк
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Продуктовий завод
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.z                       :{G=m}продуктовий завод
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.z                       :продуктовий завод
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Паперова фабрика
-STR_INDUSTRY_NAME_PAPER_MILL.z                                  :{G=f}паперову фабрику
+STR_INDUSTRY_NAME_PAPER_MILL.z                                  :паперову фабрику
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Золоторудна шахта
-STR_INDUSTRY_NAME_GOLD_MINE.z                                   :{G=f}золоторудну шахту
+STR_INDUSTRY_NAME_GOLD_MINE.z                                   :золоторудну шахту
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Банк
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.z                          :{G=m}банк
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.z                          :банк
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Діамантова шахта
-STR_INDUSTRY_NAME_DIAMOND_MINE.z                                :{G=f}діамантову шахту
+STR_INDUSTRY_NAME_DIAMOND_MINE.z                                :діамантову шахту
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Залізорудна шахта
-STR_INDUSTRY_NAME_IRON_ORE_MINE.z                               :{G=f}залізорудну шахту
+STR_INDUSTRY_NAME_IRON_ORE_MINE.z                               :залізорудну шахту
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}Фруктовий сад
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.z                            :{G=m}фруктовий сад
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.z                            :фруктовий сад
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=m}Каучуковий сад
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.z                           :{G=m}каучуковий сад
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.z                           :каучуковий сад
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Водопостачання
 STR_INDUSTRY_NAME_WATER_SUPPLY.z                                :водопостачання
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Водонапірна башта
-STR_INDUSTRY_NAME_WATER_TOWER.z                                 :{G=f}водонапірну башту
+STR_INDUSTRY_NAME_WATER_TOWER.z                                 :водонапірну башту
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Фабрика
-STR_INDUSTRY_NAME_FACTORY_2.z                                   :{G=f}фабрику
+STR_INDUSTRY_NAME_FACTORY_2.z                                   :фабрику
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Ферма
-STR_INDUSTRY_NAME_FARM_2.z                                      :{G=f}ферму
+STR_INDUSTRY_NAME_FARM_2.z                                      :ферму
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Лісопилка
-STR_INDUSTRY_NAME_LUMBER_MILL.z                                 :{G=f}лісопилку
+STR_INDUSTRY_NAME_LUMBER_MILL.z                                 :лісопилку
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Ліс солодкої вати
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.z                         :{G=m}ліс солодкої вати
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.z                         :ліс солодкої вати
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Цукеркова фабрика
-STR_INDUSTRY_NAME_CANDY_FACTORY.z                               :{G=f}цукеркову фабрику
+STR_INDUSTRY_NAME_CANDY_FACTORY.z                               :цукеркову фабрику
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Батарейкове поле
 STR_INDUSTRY_NAME_BATTERY_FARM.z                                :батарейкове поле
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Джерело Кока-коли

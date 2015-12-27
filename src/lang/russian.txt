@@ -2387,29 +2387,29 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... за
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}Базовая графика
-STR_CONTENT_TYPE_BASE_GRAPHICS.gen                              :{G=m}набора базовой графики
-STR_CONTENT_TYPE_BASE_GRAPHICS.acc                              :{G=m}набор базовой графики
+STR_CONTENT_TYPE_BASE_GRAPHICS.gen                              :набора базовой графики
+STR_CONTENT_TYPE_BASE_GRAPHICS.acc                              :набор базовой графики
 STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
-STR_CONTENT_TYPE_NEWGRF.gen                                     :{G=m}NewGRF
-STR_CONTENT_TYPE_NEWGRF.acc                                     :{G=m}NewGRF
+STR_CONTENT_TYPE_NEWGRF.gen                                     :NewGRF
+STR_CONTENT_TYPE_NEWGRF.acc                                     :NewGRF
 STR_CONTENT_TYPE_AI                                             :{G=m}ИИ
-STR_CONTENT_TYPE_AI.gen                                         :{G=m}ИИ
-STR_CONTENT_TYPE_AI.acc                                         :{G=m}ИИ
+STR_CONTENT_TYPE_AI.gen                                         :ИИ
+STR_CONTENT_TYPE_AI.acc                                         :ИИ
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Библиотека ИИ
-STR_CONTENT_TYPE_AI_LIBRARY.gen                                 :{G=f}библиотеки ИИ
-STR_CONTENT_TYPE_AI_LIBRARY.acc                                 :{G=f}библиотеку ИИ
+STR_CONTENT_TYPE_AI_LIBRARY.gen                                 :библиотеки ИИ
+STR_CONTENT_TYPE_AI_LIBRARY.acc                                 :библиотеку ИИ
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Сценарий
-STR_CONTENT_TYPE_SCENARIO.gen                                   :{G=m}сценария
-STR_CONTENT_TYPE_SCENARIO.acc                                   :{G=m}сценарий
+STR_CONTENT_TYPE_SCENARIO.gen                                   :сценария
+STR_CONTENT_TYPE_SCENARIO.acc                                   :сценарий
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Карта высот
-STR_CONTENT_TYPE_HEIGHTMAP.gen                                  :{G=f}карты высот
-STR_CONTENT_TYPE_HEIGHTMAP.acc                                  :{G=f}карту высот
+STR_CONTENT_TYPE_HEIGHTMAP.gen                                  :карты высот
+STR_CONTENT_TYPE_HEIGHTMAP.acc                                  :карту высот
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Основные звуки
-STR_CONTENT_TYPE_BASE_SOUNDS.gen                                :{G=m}набора базовых звуков
-STR_CONTENT_TYPE_BASE_SOUNDS.acc                                :{G=m}набор базовых звуков
+STR_CONTENT_TYPE_BASE_SOUNDS.gen                                :набора базовых звуков
+STR_CONTENT_TYPE_BASE_SOUNDS.acc                                :набор базовых звуков
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=f}Музыка
-STR_CONTENT_TYPE_BASE_MUSIC.gen                                 :{G=f}музыки
-STR_CONTENT_TYPE_BASE_MUSIC.acc                                 :{G=f}музыку
+STR_CONTENT_TYPE_BASE_MUSIC.gen                                 :музыки
+STR_CONTENT_TYPE_BASE_MUSIC.acc                                 :музыку
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Игровой скрипт
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Библиотека ИС
 

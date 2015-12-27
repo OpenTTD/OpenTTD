@@ -35,14 +35,14 @@ STR_CARGO_PLURAL_PASSENGERS.big                                 :Cestující
 STR_CARGO_PLURAL_COAL                                           :Uhlí
 STR_CARGO_PLURAL_COAL.big                                       :Uhlí
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Pošta
-STR_CARGO_PLURAL_MAIL.nom                                       :{G=f}pošta
-STR_CARGO_PLURAL_MAIL.gen                                       :{G=f}pošty
-STR_CARGO_PLURAL_MAIL.dat                                       :{G=f}poštu
-STR_CARGO_PLURAL_MAIL.acc                                       :{G=f}poštu
-STR_CARGO_PLURAL_MAIL.loc                                       :{G=f}poště
-STR_CARGO_PLURAL_MAIL.ins                                       :{G=f}poštou
+STR_CARGO_PLURAL_MAIL.nom                                       :pošta
+STR_CARGO_PLURAL_MAIL.gen                                       :pošty
+STR_CARGO_PLURAL_MAIL.dat                                       :poštu
+STR_CARGO_PLURAL_MAIL.acc                                       :poštu
+STR_CARGO_PLURAL_MAIL.loc                                       :poště
+STR_CARGO_PLURAL_MAIL.ins                                       :poštou
 STR_CARGO_PLURAL_MAIL.big                                       :Pošta
-STR_CARGO_PLURAL_MAIL.small                                     :{G=f}pošta
+STR_CARGO_PLURAL_MAIL.small                                     :pošta
 STR_CARGO_PLURAL_OIL                                            :Ropa
 STR_CARGO_PLURAL_OIL.gen                                        :Ropy
 STR_CARGO_PLURAL_OIL.acc                                        :Ropu
@@ -3612,14 +3612,14 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chceš 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Zpráva od výrobce dopravních prostředků
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ý ou é é é é á} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :{G=f}lokomotivu
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :lokomotivu
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}silniční vozidlo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotiva pro monorail
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :{G=f}lokomotivu pro monorail
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :lokomotivu pro monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotiva Maglev
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :{G=f}lokomotivu Maglev
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :lokomotivu Maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnost: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY_LONG} ročně{}Kapacita: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Váha: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Síla: {POWER}  Maximální tažná síla: {6:FORCE}{}Provozní náklady: {4:CURRENCY_LONG}/rok{}Kapacita: {5:CARGO_LONG}
@@ -4615,153 +4615,153 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banka prasátko
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}Uhelný důl
-STR_INDUSTRY_NAME_COAL_MINE.gen                                 :{G=m}uhelného dolu
-STR_INDUSTRY_NAME_COAL_MINE.loc                                 :{G=m}v uhelném dole
-STR_INDUSTRY_NAME_COAL_MINE.small                               :{G=m}uhelný důl
+STR_INDUSTRY_NAME_COAL_MINE.gen                                 :uhelného dolu
+STR_INDUSTRY_NAME_COAL_MINE.loc                                 :v uhelném dole
+STR_INDUSTRY_NAME_COAL_MINE.small                               :uhelný důl
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Elektrárna
-STR_INDUSTRY_NAME_POWER_STATION.gen                             :{G=f}elektrárny
-STR_INDUSTRY_NAME_POWER_STATION.loc                             :{G=f}v elektrárně
-STR_INDUSTRY_NAME_POWER_STATION.small                           :{G=f}elektrárna
+STR_INDUSTRY_NAME_POWER_STATION.gen                             :elektrárny
+STR_INDUSTRY_NAME_POWER_STATION.loc                             :v elektrárně
+STR_INDUSTRY_NAME_POWER_STATION.small                           :elektrárna
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Pila
-STR_INDUSTRY_NAME_SAWMILL.gen                                   :{G=f}pily
-STR_INDUSTRY_NAME_SAWMILL.loc                                   :{G=f}na pile
-STR_INDUSTRY_NAME_SAWMILL.small                                 :{G=f}pila
+STR_INDUSTRY_NAME_SAWMILL.gen                                   :pily
+STR_INDUSTRY_NAME_SAWMILL.loc                                   :na pile
+STR_INDUSTRY_NAME_SAWMILL.small                                 :pila
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Les
-STR_INDUSTRY_NAME_FOREST.gen                                    :{G=m}lesa
-STR_INDUSTRY_NAME_FOREST.loc                                    :{G=m}v lese
-STR_INDUSTRY_NAME_FOREST.small                                  :{G=m}les
+STR_INDUSTRY_NAME_FOREST.gen                                    :lesa
+STR_INDUSTRY_NAME_FOREST.loc                                    :v lese
+STR_INDUSTRY_NAME_FOREST.small                                  :les
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Rafinerie
-STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :{G=f}rafinerie
-STR_INDUSTRY_NAME_OIL_REFINERY.loc                              :{G=f}v rafinerii
-STR_INDUSTRY_NAME_OIL_REFINERY.small                            :{G=f}rafinerie
+STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :rafinerie
+STR_INDUSTRY_NAME_OIL_REFINERY.loc                              :v rafinerii
+STR_INDUSTRY_NAME_OIL_REFINERY.small                            :rafinerie
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Ropná plošina
-STR_INDUSTRY_NAME_OIL_RIG.gen                                   :{G=f}ropné plošiny
-STR_INDUSTRY_NAME_OIL_RIG.loc                                   :{G=f}na ropné plošině
-STR_INDUSTRY_NAME_OIL_RIG.small                                 :{G=f}ropná plošina
+STR_INDUSTRY_NAME_OIL_RIG.gen                                   :ropné plošiny
+STR_INDUSTRY_NAME_OIL_RIG.loc                                   :na ropné plošině
+STR_INDUSTRY_NAME_OIL_RIG.small                                 :ropná plošina
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Továrna
-STR_INDUSTRY_NAME_FACTORY.gen                                   :{G=f}továrny
-STR_INDUSTRY_NAME_FACTORY.loc                                   :{G=f}v továrně
-STR_INDUSTRY_NAME_FACTORY.small                                 :{G=f}továrna
+STR_INDUSTRY_NAME_FACTORY.gen                                   :továrny
+STR_INDUSTRY_NAME_FACTORY.loc                                   :v továrně
+STR_INDUSTRY_NAME_FACTORY.small                                 :továrna
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Tiskárna
-STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :{G=f}tiskárny
-STR_INDUSTRY_NAME_PRINTING_WORKS.loc                            :{G=f}v tiskárně
-STR_INDUSTRY_NAME_PRINTING_WORKS.small                          :{G=f}tiskárna
+STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :tiskárny
+STR_INDUSTRY_NAME_PRINTING_WORKS.loc                            :v tiskárně
+STR_INDUSTRY_NAME_PRINTING_WORKS.small                          :tiskárna
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Ocelárna
-STR_INDUSTRY_NAME_STEEL_MILL.gen                                :{G=f}ocelárny
-STR_INDUSTRY_NAME_STEEL_MILL.loc                                :{G=f}v ocelárně
-STR_INDUSTRY_NAME_STEEL_MILL.small                              :{G=f}ocelárna
+STR_INDUSTRY_NAME_STEEL_MILL.gen                                :ocelárny
+STR_INDUSTRY_NAME_STEEL_MILL.loc                                :v ocelárně
+STR_INDUSTRY_NAME_STEEL_MILL.small                              :ocelárna
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Farma
-STR_INDUSTRY_NAME_FARM.gen                                      :{G=f}farmy
-STR_INDUSTRY_NAME_FARM.loc                                      :{G=f}na farmě
-STR_INDUSTRY_NAME_FARM.small                                    :{G=f}farma
+STR_INDUSTRY_NAME_FARM.gen                                      :farmy
+STR_INDUSTRY_NAME_FARM.loc                                      :na farmě
+STR_INDUSTRY_NAME_FARM.small                                    :farma
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=m}Důl na měděnou rudu
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :{G=m}dolu na měděnou rudu
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.loc                           :{G=m}v dole na měděnou rudu
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.small                         :{G=m}důl na měděnou rudu
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :dolu na měděnou rudu
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.loc                           :v dole na měděnou rudu
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.small                         :důl na měděnou rudu
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Ropný vrt
-STR_INDUSTRY_NAME_OIL_WELLS.gen                                 :{G=m}ropného vrtu
-STR_INDUSTRY_NAME_OIL_WELLS.loc                                 :{G=m}v ropném vrtu
-STR_INDUSTRY_NAME_OIL_WELLS.small                               :{G=m}ropný vrt
+STR_INDUSTRY_NAME_OIL_WELLS.gen                                 :ropného vrtu
+STR_INDUSTRY_NAME_OIL_WELLS.loc                                 :v ropném vrtu
+STR_INDUSTRY_NAME_OIL_WELLS.small                               :ropný vrt
 STR_INDUSTRY_NAME_BANK                                          :{G=f}Banka
-STR_INDUSTRY_NAME_BANK.gen                                      :{G=f}banky
-STR_INDUSTRY_NAME_BANK.loc                                      :{G=f}v bance
-STR_INDUSTRY_NAME_BANK.small                                    :{G=f}banka
+STR_INDUSTRY_NAME_BANK.gen                                      :banky
+STR_INDUSTRY_NAME_BANK.loc                                      :v bance
+STR_INDUSTRY_NAME_BANK.small                                    :banka
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Potravinářský závod
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :{G=m}potravinářského závodu
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.loc                     :{G=m}v potravinářském závodu
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.small                   :{G=m}potravinářský závod
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :potravinářského závodu
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.loc                     :v potravinářském závodu
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.small                   :potravinářský závod
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Papírna
-STR_INDUSTRY_NAME_PAPER_MILL.gen                                :{G=f}papírny
-STR_INDUSTRY_NAME_PAPER_MILL.loc                                :{G=f}v papírně
-STR_INDUSTRY_NAME_PAPER_MILL.small                              :{G=f}papírna
+STR_INDUSTRY_NAME_PAPER_MILL.gen                                :papírny
+STR_INDUSTRY_NAME_PAPER_MILL.loc                                :v papírně
+STR_INDUSTRY_NAME_PAPER_MILL.small                              :papírna
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=m}Zlatý důl
-STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :{G=m}zlatého dolu
-STR_INDUSTRY_NAME_GOLD_MINE.loc                                 :{G=m}ve zlatém dole
-STR_INDUSTRY_NAME_GOLD_MINE.small                               :{G=m}zlatý důl
+STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :zlatého dolu
+STR_INDUSTRY_NAME_GOLD_MINE.loc                                 :ve zlatém dole
+STR_INDUSTRY_NAME_GOLD_MINE.small                               :zlatý důl
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=f}Banka
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.gen                        :{G=f}banky
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.loc                        :{G=f}v bance
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.small                      :{G=f}banka
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.gen                        :banky
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.loc                        :v bance
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.small                      :banka
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=m}Diamantový důl
-STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :{G=m}diamantového dolu
-STR_INDUSTRY_NAME_DIAMOND_MINE.loc                              :{G=m}v diamantovém dole
-STR_INDUSTRY_NAME_DIAMOND_MINE.small                            :{G=m}diamantový důl
+STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :diamantového dolu
+STR_INDUSTRY_NAME_DIAMOND_MINE.loc                              :v diamantovém dole
+STR_INDUSTRY_NAME_DIAMOND_MINE.small                            :diamantový důl
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=m}Důl na železnou rudu
-STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :{G=m}dolu na železnou rudu
-STR_INDUSTRY_NAME_IRON_ORE_MINE.loc                             :{G=m}v dole na železnou rudu
-STR_INDUSTRY_NAME_IRON_ORE_MINE.small                           :{G=m}důl na železnou rudu
+STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :dolu na železnou rudu
+STR_INDUSTRY_NAME_IRON_ORE_MINE.loc                             :v dole na železnou rudu
+STR_INDUSTRY_NAME_IRON_ORE_MINE.small                           :důl na železnou rudu
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}Ovocný sad
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.gen                          :{G=m}ovocného sadu
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.loc                          :{G=m}v ovocném sadu
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.small                        :{G=m}ovocný sad
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.gen                          :ovocného sadu
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.loc                          :v ovocném sadu
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.small                        :ovocný sad
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Kaučuková plantáž
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.gen                         :{G=f}kaučukové plantáže
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.loc                         :{G=f}na kaučukové plantáži
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.small                       :{G=f}kaučuková plantáž
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.gen                         :kaučukové plantáže
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.loc                         :na kaučukové plantáži
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.small                       :kaučuková plantáž
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Zdroj vody
-STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :{G=m}zdroje vody
-STR_INDUSTRY_NAME_WATER_SUPPLY.loc                              :{G=m}ve zdroji vody
-STR_INDUSTRY_NAME_WATER_SUPPLY.small                            :{G=m}zdroj vody
+STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :zdroje vody
+STR_INDUSTRY_NAME_WATER_SUPPLY.loc                              :ve zdroji vody
+STR_INDUSTRY_NAME_WATER_SUPPLY.small                            :zdroj vody
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Vodojem
-STR_INDUSTRY_NAME_WATER_TOWER.gen                               :{G=m}vodojemu
-STR_INDUSTRY_NAME_WATER_TOWER.loc                               :{G=m}ve vodojemu
-STR_INDUSTRY_NAME_WATER_TOWER.small                             :{G=m}vodojem
+STR_INDUSTRY_NAME_WATER_TOWER.gen                               :vodojemu
+STR_INDUSTRY_NAME_WATER_TOWER.loc                               :ve vodojemu
+STR_INDUSTRY_NAME_WATER_TOWER.small                             :vodojem
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Továrna
-STR_INDUSTRY_NAME_FACTORY_2.gen                                 :{G=f}továrny
-STR_INDUSTRY_NAME_FACTORY_2.loc                                 :{G=f}v továrně
-STR_INDUSTRY_NAME_FACTORY_2.small                               :{G=f}továrna
+STR_INDUSTRY_NAME_FACTORY_2.gen                                 :továrny
+STR_INDUSTRY_NAME_FACTORY_2.loc                                 :v továrně
+STR_INDUSTRY_NAME_FACTORY_2.small                               :továrna
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Farma
-STR_INDUSTRY_NAME_FARM_2.gen                                    :{G=f}farmy
-STR_INDUSTRY_NAME_FARM_2.loc                                    :{G=f}na farmě
-STR_INDUSTRY_NAME_FARM_2.small                                  :{G=f}farma
+STR_INDUSTRY_NAME_FARM_2.gen                                    :farmy
+STR_INDUSTRY_NAME_FARM_2.loc                                    :na farmě
+STR_INDUSTRY_NAME_FARM_2.small                                  :farma
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Pila
-STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :{G=f}pily
-STR_INDUSTRY_NAME_LUMBER_MILL.loc                               :{G=f}na pile
-STR_INDUSTRY_NAME_LUMBER_MILL.small                             :{G=f}pila
+STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :pily
+STR_INDUSTRY_NAME_LUMBER_MILL.loc                               :na pile
+STR_INDUSTRY_NAME_LUMBER_MILL.small                             :pila
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Les cukrové vaty
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.gen                       :{G=m}lesa cukrové vaty
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.loc                       :{G=m}v lese cukrové vaty
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.small                     :{G=m}les cukrové vaty
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.gen                       :lesa cukrové vaty
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.loc                       :v lese cukrové vaty
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.small                     :les cukrové vaty
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Továrna na sladkosti
-STR_INDUSTRY_NAME_CANDY_FACTORY.gen                             :{G=f}továrny na sladkosti
-STR_INDUSTRY_NAME_CANDY_FACTORY.loc                             :{G=f}továrně na sladkosti
-STR_INDUSTRY_NAME_CANDY_FACTORY.small                           :{G=f}továrna na sladkosti
+STR_INDUSTRY_NAME_CANDY_FACTORY.gen                             :továrny na sladkosti
+STR_INDUSTRY_NAME_CANDY_FACTORY.loc                             :továrně na sladkosti
+STR_INDUSTRY_NAME_CANDY_FACTORY.small                           :továrna na sladkosti
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma na baterie
-STR_INDUSTRY_NAME_BATTERY_FARM.gen                              :{G=f}farmy na baterie
-STR_INDUSTRY_NAME_BATTERY_FARM.loc                              :{G=f}na farmě na baterie
-STR_INDUSTRY_NAME_BATTERY_FARM.small                            :{G=f}farma na baterie
+STR_INDUSTRY_NAME_BATTERY_FARM.gen                              :farmy na baterie
+STR_INDUSTRY_NAME_BATTERY_FARM.loc                              :na farmě na baterie
+STR_INDUSTRY_NAME_BATTERY_FARM.small                            :farma na baterie
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=fp}Kolové studny
-STR_INDUSTRY_NAME_COLA_WELLS.gen                                :{G=fp}kolových studen
-STR_INDUSTRY_NAME_COLA_WELLS.loc                                :{G=fp}v kolových studnách
-STR_INDUSTRY_NAME_COLA_WELLS.small                              :{G=fp}kolové studny
+STR_INDUSTRY_NAME_COLA_WELLS.gen                                :kolových studen
+STR_INDUSTRY_NAME_COLA_WELLS.loc                                :v kolových studnách
+STR_INDUSTRY_NAME_COLA_WELLS.small                              :kolové studny
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=n}Hračkářství
-STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :{G=n}hračkářství
-STR_INDUSTRY_NAME_TOY_SHOP.loc                                  :{G=n}v hračkářství
-STR_INDUSTRY_NAME_TOY_SHOP.small                                :{G=n}hračkářství
+STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :hračkářství
+STR_INDUSTRY_NAME_TOY_SHOP.loc                                  :v hračkářství
+STR_INDUSTRY_NAME_TOY_SHOP.small                                :hračkářství
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Továrna na hračky
-STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :{G=f}továrny na hračky
-STR_INDUSTRY_NAME_TOY_FACTORY.loc                               :{G=f}v továrně na hračky
-STR_INDUSTRY_NAME_TOY_FACTORY.small                             :{G=f}továrna na hračky
+STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :továrny na hračky
+STR_INDUSTRY_NAME_TOY_FACTORY.loc                               :v továrně na hračky
+STR_INDUSTRY_NAME_TOY_FACTORY.small                             :továrna na hračky
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=fp}Plastové fontány
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :{G=fp}plastových fontán
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.loc                         :{G=fp}v plastových fontánách
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.small                       :{G=fp}plastové fontány
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :plastových fontán
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.loc                         :v plastových fontánách
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.small                       :plastové fontány
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Sodovkárna
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :{G=f}sodovkárny
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.loc                       :{G=f}v sodovkárně
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.small                     :{G=f}sodovkárna
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :sodovkárny
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.loc                       :v sodovkárně
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.small                     :sodovkárna
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generátor bublin
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :{G=m}generátoru bublin
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.loc                          :{G=m}v generátoru bublin
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.small                        :{G=m}generátor bublin
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :generátoru bublin
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.loc                          :v generátoru bublin
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.small                        :generátor bublin
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Karamelolom
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :{G=m}karamelolomu
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.loc                             :{G=m}v karamelolomu
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.small                           :{G=m}karamelolom
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :karamelolomu
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.loc                             :v karamelolomu
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.small                           :karamelolom
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}Cukerný důl
-STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :{G=m}cukerného dolu
-STR_INDUSTRY_NAME_SUGAR_MINE.loc                                :{G=m}v cukerném dole
-STR_INDUSTRY_NAME_SUGAR_MINE.small                              :{G=m}cukerný důl
+STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :cukerného dolu
+STR_INDUSTRY_NAME_SUGAR_MINE.loc                                :v cukerném dole
+STR_INDUSTRY_NAME_SUGAR_MINE.small                              :cukerný důl
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

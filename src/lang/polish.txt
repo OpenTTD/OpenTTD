@@ -1108,7 +1108,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Samoloty
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Trasy transportowe
 STR_SMALLMAP_LEGENDA_FOREST                                     :{G=m}{TINY_FONT}{BLACK}Las
-STR_SMALLMAP_LEGENDA_FOREST.d                                   :{G=m}{TINY_FONT}{BLACK}Lasu
+STR_SMALLMAP_LEGENDA_FOREST.d                                   :{TINY_FONT}{BLACK}Lasu
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Stacja kolejowa
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Załadunek ciężarówek
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Przystanek
@@ -3899,17 +3899,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sprzeda
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomość od producenta pojazdów
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy jesteś zainteresowany w rocznej wyłączności na użycie tego pojazdu, żebyśmy mogli zobaczyć przed wypuszczeniem na rynek jak się sprawuje?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :{G=f}lokomotywę
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :lokomotywę
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}pojazd
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :{G=m}pojazd
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :pojazd
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
-STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :{G=m}samolot
+STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
-STR_ENGINE_PREVIEW_SHIP.b                                       :{G=m}statek
+STR_ENGINE_PREVIEW_SHIP.b                                       :statek
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotywa jednoszynowa
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.b                        :{G=f}lokomotywę jednoszynową
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.b                        :lokomotywę jednoszynową
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotywa Maglev
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :{G=f}lokomotywę Maglev
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :lokomotywę Maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Koszt utrzymania: {CURRENCY_LONG}/rok{}Ładowność: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszt utrzymania: {4:CURRENCY_LONG}/rok{}Ładowność: {5:CARGO_LONG}
@@ -4898,79 +4898,79 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Świnka-skarbon
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Kopalnia węgla
-STR_INDUSTRY_NAME_COAL_MINE.d                                   :{G=f}kopalni węgla
+STR_INDUSTRY_NAME_COAL_MINE.d                                   :kopalni węgla
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Elektrownia
-STR_INDUSTRY_NAME_POWER_STATION.d                               :{G=f}elektrowni
+STR_INDUSTRY_NAME_POWER_STATION.d                               :elektrowni
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=m}Tartak
-STR_INDUSTRY_NAME_SAWMILL.d                                     :{G=m}tartaku
+STR_INDUSTRY_NAME_SAWMILL.d                                     :tartaku
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Las
-STR_INDUSTRY_NAME_FOREST.d                                      :{G=m}lasu
+STR_INDUSTRY_NAME_FOREST.d                                      :lasu
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Rafineria
-STR_INDUSTRY_NAME_OIL_REFINERY.d                                :{G=f}rafinerii
+STR_INDUSTRY_NAME_OIL_REFINERY.d                                :rafinerii
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Platforma wiertnicza
-STR_INDUSTRY_NAME_OIL_RIG.d                                     :{G=f}platformy wiertniczej
+STR_INDUSTRY_NAME_OIL_RIG.d                                     :platformy wiertniczej
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fabryka
-STR_INDUSTRY_NAME_FACTORY.d                                     :{G=f}fabryki
+STR_INDUSTRY_NAME_FACTORY.d                                     :fabryki
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Drukarnia
-STR_INDUSTRY_NAME_PRINTING_WORKS.d                              :{G=f}drukarni
+STR_INDUSTRY_NAME_PRINTING_WORKS.d                              :drukarni
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Huta
-STR_INDUSTRY_NAME_STEEL_MILL.d                                  :{G=f}huty
+STR_INDUSTRY_NAME_STEEL_MILL.d                                  :huty
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Farma
-STR_INDUSTRY_NAME_FARM.d                                        :{G=f}farmy
+STR_INDUSTRY_NAME_FARM.d                                        :farmy
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Kopalnia rudy miedzi
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.d                             :{G=f}kopalni rudy miedzi
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.d                             :kopalni rudy miedzi
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pole naftowe
-STR_INDUSTRY_NAME_OIL_WELLS.d                                   :{G=m}pola naftowego
+STR_INDUSTRY_NAME_OIL_WELLS.d                                   :pola naftowego
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Bank
-STR_INDUSTRY_NAME_BANK.d                                        :{G=m}banku
+STR_INDUSTRY_NAME_BANK.d                                        :banku
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Przetwórnia żywności
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.d                       :{G=f}przetwórni żywności
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.d                       :przetwórni żywności
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Zakład papierniczy
-STR_INDUSTRY_NAME_PAPER_MILL.d                                  :{G=m}zakładu papierniczego
+STR_INDUSTRY_NAME_PAPER_MILL.d                                  :zakładu papierniczego
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Kopalnia złota
-STR_INDUSTRY_NAME_GOLD_MINE.d                                   :{G=f}kopalni złota
+STR_INDUSTRY_NAME_GOLD_MINE.d                                   :kopalni złota
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Bank
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.d                          :{G=m}banku
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.d                          :banku
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Kopalnia diamentów
-STR_INDUSTRY_NAME_DIAMOND_MINE.d                                :{G=f}kopalni diamentów
+STR_INDUSTRY_NAME_DIAMOND_MINE.d                                :kopalni diamentów
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Kopalnia rudy żelaza
-STR_INDUSTRY_NAME_IRON_ORE_MINE.d                               :{G=f}kopalni rudy żelaza
+STR_INDUSTRY_NAME_IRON_ORE_MINE.d                               :kopalni rudy żelaza
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantacja owoców
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.d                            :{G=f}plantacji owoców
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.d                            :plantacji owoców
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantacja kauczuku
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.d                           :{G=f}plantacji kauczuku
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.d                           :plantacji kauczuku
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=n}Ujęcie wody
-STR_INDUSTRY_NAME_WATER_SUPPLY.d                                :{G=n}ujęcia wody
+STR_INDUSTRY_NAME_WATER_SUPPLY.d                                :ujęcia wody
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Wieża ciśnień
-STR_INDUSTRY_NAME_WATER_TOWER.d                                 :{G=f}wieży ciśnień
+STR_INDUSTRY_NAME_WATER_TOWER.d                                 :wieży ciśnień
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fabryka
-STR_INDUSTRY_NAME_FACTORY_2.d                                   :{G=f}fabryki
+STR_INDUSTRY_NAME_FACTORY_2.d                                   :fabryki
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Farma
-STR_INDUSTRY_NAME_FARM_2.d                                      :{G=f}farmy
+STR_INDUSTRY_NAME_FARM_2.d                                      :farmy
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=m}Tartak
-STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :{G=m}tartaku
+STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :tartaku
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Las waty cukrowej
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.d                         :{G=m}lasu waty cukrowej
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.d                         :lasu waty cukrowej
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}Zakład cukierniczy
-STR_INDUSTRY_NAME_CANDY_FACTORY.d                               :{G=m}zakładu cukierniczego
+STR_INDUSTRY_NAME_CANDY_FACTORY.d                               :zakładu cukierniczego
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma baterii
-STR_INDUSTRY_NAME_BATTERY_FARM.d                                :{G=f}farmy baterii
+STR_INDUSTRY_NAME_BATTERY_FARM.d                                :farmy baterii
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Studnia coli
-STR_INDUSTRY_NAME_COLA_WELLS.d                                  :{G=f}studni coli
+STR_INDUSTRY_NAME_COLA_WELLS.d                                  :studni coli
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Sklep z zabawkami
-STR_INDUSTRY_NAME_TOY_SHOP.d                                    :{G=m}sklepu z zabawkami
+STR_INDUSTRY_NAME_TOY_SHOP.d                                    :sklepu z zabawkami
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fabryka zabawek
-STR_INDUSTRY_NAME_TOY_FACTORY.d                                 :{G=f}fabryki zabawek
+STR_INDUSTRY_NAME_TOY_FACTORY.d                                 :fabryki zabawek
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontanny plastiku
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.d                           :{G=f}fontann plastiku
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.d                           :fontann plastiku
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fabryka napojów gazowanych
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.d                         :{G=f}fabryki napojów gazowanych
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.d                         :fabryki napojów gazowanych
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generator bąbelków
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.d                            :{G=m}generatora bąbelków
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.d                            :generatora bąbelków
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Odkrywka toffi
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.d                               :{G=f}odkrywkę toffi
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.d                               :odkrywkę toffi
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Kopalnia cukru
-STR_INDUSTRY_NAME_SUGAR_MINE.d                                  :{G=f}kopalni cukru
+STR_INDUSTRY_NAME_SUGAR_MINE.d                                  :kopalni cukru
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
