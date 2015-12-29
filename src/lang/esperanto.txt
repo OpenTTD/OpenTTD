@@ -2426,7 +2426,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de relo
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sekvanta bildeto
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iru al bildeto
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Antaŭa bildeto
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movu ĉirkaŭ la bildeton, ŝanĝante la X kaj Y distancojn
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movadi la bildeton, ŝanĝante la X kaj Y distancojn. Stir-klako por movi la bildeton je 8 unuoj samtempe
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Elektu bildeton ie el la ekrano
 
