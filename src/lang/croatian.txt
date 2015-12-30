@@ -1488,8 +1488,8 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Sve osim akcija
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Sve akcije
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Koristi grupe u listi vozila: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Uključi korištenje naprednih lista vozila za grupiranje vozila
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :Koristi pokazatelje utovara: {STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Odaberi da li će prikazivači utovara biti prikazani iznad vozila koja se utovaruju ili iznad vozila koja se istovaruju
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Koristi pokazatelje ukrcaja: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Odaberi hoće li oznake za ukrcaj biti prikazane iznad vozila koja se ukrcavaju ili iskrcavaju
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Pokaži vozni red u otkucajima rađe nego u danima: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Prikaži trajanje putovanja u voznim redovima u otkucajima igre umjesto u danima
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokaži dolaske i odlaske u voznim redovima: {STRING}
@@ -2493,7 +2493,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Izgradi 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Izgradi spremište tramvajskih vozila (za kupnju i servisiranje vozila). Shift mijenja prikaz građenje/procjena troškova.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Izgradi autobusnu postaju. Ctrl omogućava spajanje postaja. Shift mijenja prikaz građenje/procjena troškova.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Izgradi putničku tramvajsku postaju. Ctrl omogućava spajanje postaja. Shift mijenja prikaz građenje/procjena troškova.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Izgradi pretovarni kamionski terminal. Ctrl omogućava spajanje postaja. Shift mijenja prikaz građenje/procjena troškova.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Izgradi prekrcajni kamionski terminal. Ctrl omogućava spajanje postaja. Shift mijenja prikaz građenje/procjena troškova.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Izgradi teretnu tramvajsku postaju. Ctrl omogućava spajanje postaja. Shift mijenja prikaz građenje/procjena troškova.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiviraj/deaktiviraj jednosmjerne ceste
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Izgradi cestovni most. Shift mijenja prikaz građenje/procjena troškova.
@@ -3712,7 +3712,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutna
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutna radnja zrakoplova - pritisni za zaustavljanje/pokretanje zrakoplova. Ctrl+klik za odlazak do odredišta.
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Utovar / Istovar
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ukrcaj / Iskrcaj
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Odlazeći
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Slupan!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokvareno
