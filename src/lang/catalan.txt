@@ -43,7 +43,7 @@ STR_CARGO_PLURAL_COPPER_ORE                                     :{G=Masculin}Min
 STR_CARGO_PLURAL_MAIZE                                          :{G=Masculin}Blat de moro
 STR_CARGO_PLURAL_FRUIT                                          :{G=Femenin}Fruita
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=Masculin}Diamants
-STR_CARGO_PLURAL_FOOD                                           :{G=Masculin}Menjar
+STR_CARGO_PLURAL_FOOD                                           :{G=Masculin}Queviures
 STR_CARGO_PLURAL_PAPER                                          :{G=Masculin}Paper
 STR_CARGO_PLURAL_GOLD                                           :{G=Masculin}Or
 STR_CARGO_PLURAL_WATER                                          :Aigua
@@ -56,7 +56,7 @@ STR_CARGO_PLURAL_COLA                                           :{G=Masculin}Ref
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=Masculin}Cotó de sucre
 STR_CARGO_PLURAL_BUBBLES                                        :{G=Femenin}Bombolles
 STR_CARGO_PLURAL_TOFFEE                                         :{G=Masculin}Caramels
-STR_CARGO_PLURAL_BATTERIES                                      :{G=Femenin}Bateries
+STR_CARGO_PLURAL_BATTERIES                                      :{G=Femenin}Piles
 STR_CARGO_PLURAL_PLASTIC                                        :{G=Masculin}Plàstic
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=Femenin}Begudes gasoses
 
@@ -159,7 +159,7 @@ STR_ABBREV_COLA                                                 :{TINY_FONT}RF
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CS
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BB
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}CA
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}PI
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}BG
 STR_ABBREV_NONE                                                 :{TINY_FONT}NO
@@ -468,10 +468,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de mi
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de la casella de terreny
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de la casella
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostra/oculta la consola
-STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de les IA i l'script de la partida
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Commuta la consola
+STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de les IA i l'script de partida
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura de pantalla amb el zoom màxim
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura de pantalla amb el zoom predeterminat
@@ -479,7 +479,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pant
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a l'OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador d'sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Commuta les caixes delimitadores
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta el colorejat dels blocs bruts
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta l'acoloriment de blocs bruts
 ############ range ends here
 
 ############ range for ordinal numbers used for the place in the highscore window
@@ -1050,11 +1050,11 @@ STR_VARIETY_MEDIUM                                              :Mitjana
 STR_VARIETY_HIGH                                                :Alta
 STR_VARIETY_VERY_HIGH                                           :Molt alta
 
-STR_AI_SPEED_VERY_SLOW                                          :Molt lent
-STR_AI_SPEED_SLOW                                               :Lent
-STR_AI_SPEED_MEDIUM                                             :Mitjà
-STR_AI_SPEED_FAST                                               :Ràpid
-STR_AI_SPEED_VERY_FAST                                          :Molt ràpid
+STR_AI_SPEED_VERY_SLOW                                          :Molt lenta
+STR_AI_SPEED_SLOW                                               :Lenta
+STR_AI_SPEED_MEDIUM                                             :Mitjana
+STR_AI_SPEED_FAST                                               :Ràpida
+STR_AI_SPEED_VERY_FAST                                          :Molt ràpida
 
 STR_SEA_LEVEL_VERY_LOW                                          :Molt baix
 STR_SEA_LEVEL_LOW                                               :Baix
@@ -1783,9 +1783,9 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandona la Partida
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estàs segur que vols abandonar aquesta partida?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estàs segur que vols sortir d'aquest escenari?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandona la partida
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Esteu segur que voleu abandonar la partida?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esteu segur que voleu sortir de l'escenari?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampes
@@ -2328,8 +2328,8 @@ STR_RAIL_NAME_MONORAIL                                          :Monorail
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientació del Dipòsit
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona l'orientació de les cotxeres de tren
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientació del dipòsit
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccioneu l'orientació desitjada del dipòsit i taller de trens.
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Punt de pas
@@ -2366,10 +2366,10 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Senyal d
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Senyal combinat (elèctric){}El senyal combinat simplement actua alhora com a senyal d'entrada i de sortida. Això permet construir grans "arbres" de pre-senyals
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Senyal de camí (elèctric){}Un senyal de camí permet entrar més d'un tren dins del mateix tram si són capaços de reservar una ruta cap a un punt de parada segur. Els senyals de camí poden ser passats des del darrera
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Senyal de camí d'un sentit (elèctric){}Un senyal de camí permet entrar més d'un tren dins del mateix tram si són capaços de reservar una ruta cap a un punt de parada segur. Els senyals de camí d'un sentit no poden ser passats des del darrera
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversió de senyals{}Quan està seleccionat, clicant un senyal existent el converteix al tipus de senyal seleccionat. CTRL+Clic commuta la variant existent. Shift+Clic mostra el cost estimat de conversió
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densitat de senyals en arrossegar
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminueix la densitat de senyals en arrossegar
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementa la densitat de senyals en arrossegar
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversió de senyals{}Quan aquest botó està premut, si es clica un senyal existent el converteix al tipus de senyal seleccionat. Ctrl+Clic commuta la variant existent. Maj+Clic mostra el cost estimat de conversió.
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Espaiat entre senyals
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminueix l'espai entre senyals consecutives situades automàticament quan s'arrossega el ratolí o es manté premuda la tecla Ctrl.
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenta l'espai entre senyals consecutives situades automàticament quan s'arrossega el ratolí o es manté premuda la tecla Ctrl.
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona Pont de Tren
@@ -2377,14 +2377,14 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Seleccio
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensió, Acer
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Biga, Acer
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Volada, Acer
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspensió, Formigó
-STR_BRIDGE_NAME_WOODEN                                          :De Fusta
-STR_BRIDGE_NAME_CONCRETE                                        :Formigó
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Tubular, Acer
-STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicona
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Pont penjant d'acer
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Pont biga d'acer
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Pont en mènsula d'acer
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Pont penjant de formigó
+STR_BRIDGE_NAME_WOODEN                                          :Pont de fusta
+STR_BRIDGE_NAME_CONCRETE                                        :Pont de formigó
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Pont tubular d'acer
+STR_BRIDGE_TUBULAR_SILICON                                      :Pont tubular de silicona
 
 
 # Road construction toolbar
@@ -2409,10 +2409,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intercan
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Cotxeres
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecciona l'orientació de les cotxeres
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientació de les cotxeres de tramvies
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecciona l'orientació de les cotxeres de tramvies
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientació de la cotxera
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleccioneu l'orientació desitjada de la cotxera per a vehicles de carretera.
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientació de la cotxera de tramvies
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleccioneu l'orientació de la cotxera de tramvies.
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientació Parada d'autobús
@@ -2454,19 +2454,19 @@ STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Classe d
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Disposició {NUM}
 
 STR_AIRPORT_SMALL                                               :Petit
-STR_AIRPORT_CITY                                                :de Ciutat
+STR_AIRPORT_CITY                                                :De ciutat
 STR_AIRPORT_METRO                                               :Metropolità
 STR_AIRPORT_INTERNATIONAL                                       :Internacional
 STR_AIRPORT_COMMUTER                                            :Regional
 STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
 STR_AIRPORT_HELIPORT                                            :Heliport
-STR_AIRPORT_HELIDEPOT                                           :Helihangar
-STR_AIRPORT_HELISTATION                                         :Heliestació
+STR_AIRPORT_HELIDEPOT                                           :Hangar d'helicòpters
+STR_AIRPORT_HELISTATION                                         :Estació d'helicòpters
 
 STR_AIRPORT_CLASS_SMALL                                         :Aeroports petits
 STR_AIRPORT_CLASS_LARGE                                         :Aeroports grans
 STR_AIRPORT_CLASS_HUB                                           :Aeroports d'enllaç
-STR_AIRPORT_CLASS_HELIPORTS                                     :Aeroports d'helicòpters
+STR_AIRPORT_CLASS_HELIPORTS                                     :Heliports
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Soroll generat: {GOLD}{COMMA}
 
@@ -2685,8 +2685,8 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Seu de l'Empres
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :terreny propietat de l'Empresa
 
 # About OpenTTD window
-STR_ABOUT_OPENTTD                                               :{WHITE}Quant a OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tots els drets reservats
+STR_ABOUT_OPENTTD                                               :{WHITE}Quant a l'OpenTTD
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer. Tots els drets reservats.
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versió {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2015 L'equip de l'OpenTTD
 
@@ -2875,7 +2875,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Va cap a
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procedeix cap a l'sprite normal anterior, saltant qualsevol sprite pseudo/recolor/font i passant del primer sprite a l'últim
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representació de l'sprite seleccionat actualment. L'alineació s'ignora quan es dibuixa aquest sprite
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mou l'sprite al voltant, canviant els desplaçaments en X i Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desplaça l'sprite un píxel en el sentit indicat. Amb Ctrl+Clic el desplaça 8 píxels.
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Restableix relatius
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Restableix els desplaçaments relatius actuals
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Desplaçament X: {NUM}, Desplaçament Y: {NUM} (Absolut)
@@ -2937,7 +2937,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}El compo
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle '{1:ENGINE}' ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva llargada mentre estava fora del dipòsit
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva capacitat mentre estava fora del dipòsit o no s'estava canviant el tipus de càrrega a transportar
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRF. La partida podria desincronitzar-se o penjar-se
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' de '{COMPANY}' té una llargada invàlida, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix
@@ -3956,76 +3956,76 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleccio
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Depuració de les IA/Script de la Partida
+STR_AI_DEBUG                                                    :{WHITE}Depuració de les IA/script de partida
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nom de l'script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Paràmetres
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Canvia els paràmetres de l'script
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarrega IA
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata la IA, recarrega l'script, i reinicia la IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activa/Desactiva la pausa automàtica quan un missatge del registre de l'IA coincideixi amb la cadena de parada
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Canvia els paràmetres de l'script de la IA.
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarrega la IA
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Para, recarrega i reinicia la IA.
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Commuta la pausa automàtica quan un missatge del registre de la IA coincideixi amb la cadena de parada.
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Posa en pausa amb:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Posa en pausa quan l'script registri aquesta cadena
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quan un missatge del registre d'IA coincideixi amb aquesta cadena, la partida es posarà en pausa
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Posa en pausa quan es registri aquesta cadena
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quan un missatge del registre d'IA coincideixi amb aquesta cadena, la partida es posarà en pausa.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Distingeix entre majúscules i minúscules
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Commuta la distinció entre majúscules i minúscules quan es comparin els missatges de registre d'IA amb la cadena de parada
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Commuta la distinció entre majúscules i minúscules quan es comparin els missatges de registre d'IA amb la cadena de parada.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprèn i continua la IA
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Veure la sortida de depuració per aquesta IA
-STR_AI_GAME_SCRIPT                                              :{BLACK}Script de la partida
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comprova el registre de l'script de la partida
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprèn i continua l'execució de la IA.
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostra la sortida de depuració d'aquesta IA.
+STR_AI_GAME_SCRIPT                                              :{BLACK}Script de partida
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Mostra el registre de l'script de partida.
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IA via el sistema de "Contingut en línia"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts executant-se s'ha penjat. Si us plau, reporta això a l'autor de l'script amb una captura de pantalla de la finestra de depuració IA/Script de la Partida
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{WHITE}Configuració de les IA/Script de la Partida
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració de la IA/Script de Joc
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}L'Script de la Partida que serà carregat a la propera partida
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IA que seran carregades a la propera partida
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració de la IA/script de partida
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Aquest és l'script que s'usarà a la propera partida.
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Aquesta llista conté les IA que es carregaran a la propera partida.
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatòria
 STR_AI_CONFIG_NONE                                              :(cap)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mou amunt
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mou la IA selecionada amunt a la llista
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Desplaça la IA seleccionada una posició cap amunt
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mou avall
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mou la IA selecionada avall a la llista
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Desplaça la IA seleccionada una posició cap avall.
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de la Partida
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de partida
 STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecciona {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script de la Partida
+STR_AI_CONFIG_CHANGE_AI                                         :una IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :un script de partida
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carrega un altre script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura els paràmetres de l'script
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} Disponibles
+STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibles
 STR_AI_LIST_CAPTION_AI                                          :IA
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de la Partida
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Clica per a seleccionar un script
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de partida
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliqueu un element per seleccionar un script.
 
-STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Obra de: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Versió: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accepta
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecciona l'script realçat
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecciona l'script marcat.
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancel·la
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canvïis l'script
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canviïs l'script.
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :de la IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :de l'Script de la Partida
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :de l'script de partida
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Restableix
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Número de dies per començar aquesta IA després de l'anterior (aproximadament): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Dies des de l'inici de la IA prèvia fins que s'inicia aquesta: {ORANGE}{STRING}
 
 
 # Textfile window
@@ -4465,14 +4465,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}El senya
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Un joc de simulació basat en Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Gràfics originals de Transport Tycoon Deluxe per a DOS.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Gràfics originals de Transport Tycoon Deluxe per a DOS (Alemany).
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Gràfics originals de Transport Tycoon Deluxe per a Windows.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons originals de Transport Tycoon Deluxe per a DOS.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons originals de Transport Tycoon Deluxe per a Windows.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Un joc de sons sense cap so.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música Original de Transport Tycoon Deluxe per a Windows.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :Un joc de música sense cap música.
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Gràfics originals del Transport Tycoon Deluxe pel DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Gràfics originals del Transport Tycoon Deluxe (alemany) pel DOS.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Gràfics originals del Transport Tycoon Deluxe pel Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons originals del Transport Tycoon Deluxe pel DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons originals del Transport Tycoon Deluxe pel Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Una llista de sons buida.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música original del Transport Tycoon Deluxe pel Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Una llista de música sense cap peça.
 
 ##id 0x2000
 # Town building names
