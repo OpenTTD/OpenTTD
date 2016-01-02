@@ -1784,7 +1784,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar Juego
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está seguro que desea abandonar este juego?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está seguro de que desea abandonar este juego?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está seguro de que desea salir de este escenario?
 
 # Cheat window
