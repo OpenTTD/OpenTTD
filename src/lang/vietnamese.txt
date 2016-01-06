@@ -2874,7 +2874,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Nhảy t
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite trước
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Xử lý sprite bình thường ở trước, bỏ qua các loại pseudo/recolour/font sprite căn theo điểm bắt đầu
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Theo những thông tin của sprite đã chọn. Thì việc căn chỉnh khi vẽ đối với sprite này sẽ bị bỏ qua
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets. Ctrl+Click để di chuyển sprite tám đơn vị một lúc
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Đặt lại tương đối
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Đặt lại các dịch chuyển tương đối hiện tại
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK} dịch X: {NUM}, dịch Y: {NUM} (tuyệt đối)
