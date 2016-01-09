@@ -229,7 +229,7 @@ STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PU
 STR_ABBREV_COAL                                                 :{TINY_FONT}UG
 STR_ABBREV_MAIL                                                 :{TINY_FONT}PT
 STR_ABBREV_OIL                                                  :{TINY_FONT}NF
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}DŽ
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ST
 STR_ABBREV_GOODS                                                :{TINY_FONT}RB
 STR_ABBREV_GRAIN                                                :{TINY_FONT}ŽT
 STR_ABBREV_WOOD                                                 :{TINY_FONT}DV
