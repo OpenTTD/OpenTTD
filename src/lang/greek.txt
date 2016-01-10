@@ -1713,6 +1713,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Τρόπος δ
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Τρόπος διανομής άλλων ειδών φορτίου: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Ακρίβεια διανομής: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Επίδραση της απόστασης στη ζήτηση προϊόντων: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Αν ορίσετε αυτό σε μια τιμή μεγαλύτερη από 0, η απόσταση μεταξύ ενός αρχικού σταθμού Α ενός φορτίου και ενός πιθανού προορισμού Β θα επηρεάσει το ποσό του φορτίου που θα αποσταλεί από τον Α στον Β. Όσο πιο μακριά βρίσκεται ο Β από τον Α, τόσο λιγότερο φορτίο θα αποσταλεί. Όσο πιο μεγάλη τιμή ορίσετε, θα αποστέλλεται λιγότερο φορτίο σε μακρινούς προορισμούς και περισσότερο σε κοντινούς.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Αυτοκρατορικό (mph)
@@ -2337,6 +2338,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Εναλ
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα που θα είναι αόρατα αντί για διάφανα
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Υπόμνημα ροής Φορτίου
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Όλες
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Καμία
 

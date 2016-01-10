@@ -52,7 +52,7 @@ STR_CARGO_PLURAL_RUBBER                                         :{G=Masculin}Cau
 STR_CARGO_PLURAL_SUGAR                                          :{G=Masculin}Sucre
 STR_CARGO_PLURAL_TOYS                                           :{G=Femenin}Joguines
 STR_CARGO_PLURAL_CANDY                                          :{G=Masculin}Dolços
-STR_CARGO_PLURAL_COLA                                           :{G=Masculin}Refrescs
+STR_CARGO_PLURAL_COLA                                           :{G=Masculin}Refrescos
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=Masculin}Cotó de sucre
 STR_CARGO_PLURAL_BUBBLES                                        :{G=Femenin}Bombolles
 STR_CARGO_PLURAL_TOFFEE                                         :{G=Masculin}Caramels
@@ -594,11 +594,11 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clica aq
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Taula de la lliga d'empreses
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} «{STRING}»
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Enginyer
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Director de trànsit
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de transport
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de ruta
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de rutes
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Director
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Cap executiu
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Conseller delegat
@@ -1705,7 +1705,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permetre als tr
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Error en l'arxiu de configuració...
+STR_CONFIG_ERROR                                                :{WHITE}S'ha produït un error en l'arxiu de configuració...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... error en la sèrie '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valor invàlid '{STRING}' per '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caràcters de fi al final de la configuració '{STRING}'
@@ -1789,13 +1789,13 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esteu s
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampes
-STR_CHEATS_TOOLTIP                                              :{BLACK}Els quadres marcats indiquen que ja has fet servir aquesta trampa
-STR_CHEATS_WARNING                                              :{BLACK}Atenció! Estàs a punt d'enredar als teus companys competidors. Pensa que una cosa així serà recordada per tota la eternitat
-STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementa els diners en {CURRENCY_LONG}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugant com la companyia: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, objectes inamovibles): {ORANGE}{STRING}
+STR_CHEATS_TOOLTIP                                              :{BLACK}Les caselles de selecció indiquen si heu fet servir aquesta trampa.
+STR_CHEATS_WARNING                                              :{BLACK}Atenció! Esteu a punt d'enredar als altres jugadors. Penseu que una cosa així serà recordada per tota l'eternitat.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenta els diners de la companyia actual en {CURRENCY_LONG}.
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Juga amb la companyia: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries i altres objectes inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els túnels es poden creuar: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció no tindran accidents (freqüents) en els aeroports petits: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció en aeroports petits tindran menys accidents: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edita l'alçada màxima del mapa: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edita l'alçada màxima del terreny en el mapa
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Paisatge temperat
@@ -1804,7 +1804,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Paisatge subtro
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Paisatge de joguines
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l'any actual
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació de valors de producció: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació dels valors de producció: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Nou esquema de colors
@@ -2089,18 +2089,18 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdue
 STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No desis la contrasenya introduïda
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Dóna a la companyia una nova contrasenya
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No desis la nova contrasenya.
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Estableix aquesta nova contrasenya per a la companyia.
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Contrasenya de la companyia
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Contrasenya de la companyia predeterminada
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Utilitza la contrasenya d'aquesta companyia com a predeterminada per a noves companyies
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Contrasenya predeterminada de companyies noves
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Utilitza com a contrasenya predeterminada de companyies noves la d'aquesta companyia.
 
 # Network company info join/password
-STR_COMPANY_VIEW_JOIN                                           :{BLACK}Unir-se
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Unir-se i jugar amb aquesta companyia
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}Uniu-vos
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Uniu-vos a aquesta companyia per poder-hi jugar.
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Contrasenya
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protegeix la teva empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Estableix la contrasenya de l'Empresa
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protegeix la vostra companyia amb una contrasenya per tal d'evitar que la controlin altres usuaris no autoritzats.
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Estableix la contrasenya de la companyia.
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Envia
@@ -3103,13 +3103,13 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 STR_STATION_LIST_NONE                                           :{YELLOW}- Cap -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar totes les instal·lacions
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Selecciona tots els tipus de càrrega (incloent carga sense espera)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}No hi ha càrrega d'aquest tipus esperant
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Selecciona les estacions que no tenen càrrega esperant.
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} des de {STATION})
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservat per carregar)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}(reservat per carregar: {CARGO_SHORT})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la llista de càrregues admeses
@@ -3148,11 +3148,11 @@ STR_STATION_VIEW_GROUP_D_V_S                                    :Destincació-Vi
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pèssim
-STR_CARGO_RATING_VERY_POOR                                      :Molt Pobre
+STR_CARGO_RATING_VERY_POOR                                      :Molt pobre
 STR_CARGO_RATING_POOR                                           :Pobre
 STR_CARGO_RATING_MEDIOCRE                                       :Mediocre
 STR_CARGO_RATING_GOOD                                           :Bo
-STR_CARGO_RATING_VERY_GOOD                                      :Molt Bo
+STR_CARGO_RATING_VERY_GOOD                                      :Molt bo
 STR_CARGO_RATING_EXCELLENT                                      :Excel·lent
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 ############ range for rating ends
@@ -3213,16 +3213,16 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraest
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(President)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurat: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Any d'inici d'activitats: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de colors:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicles:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" s}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} automòbil{P "" s}
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} avió{P "" ns}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vehicle{P "" s} de carretera
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronau{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} vaixell{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Cap
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor de l'Empresa: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propietat de {COMPANY})
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor de la companyia: {WHITE}{CURRENCY_LONG}
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}(un {COMMA}% és propietat de {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestructura:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} tros{P "" sos} de via
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} tros{P "" sos} de carretera
@@ -3231,37 +3231,37 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroport{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Cap
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir Seu
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construeix seu de la companyia
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Veure Seu
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Veure seu de la companyia
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Trasllada la Seu
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu de la companyia a un altre lloc amb el cost d'un 1% del seu valor. Shift+Clic mostra el cost estimat sense traslladar la seu
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construeix la seu
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construeix la seu de la companyia.
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Veure la seu
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Veure la seu de la companyia.
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Trasllada la seu
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu a un altre lloc amb el cost d'un 1% del valor de la companyia. Amb Maj+Clic, mostra el cost estimat sense traslladar la seu.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalls
-STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Veure detalls del càlculs de la infraestructura
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Veure els detalls de la infraestructura de la companyia.
 
-STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selecciona una nova cara pel president
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Modifica la cara
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Modifica la cara del president de la companyia.
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de colors
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Canvia l'aspecte dels vehicles de la companyia
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nom Empresa
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Canvia el nom de la companyia
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nom President
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Canvia el nom del president
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Canvia l'aspecte dels vehicles de la companyia.
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nom de la companyia
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Canvia el nom de la companyia.
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nom del president
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Canvia el nom del president de la companyia.
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Compra un 25% d'accions
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendre un 25% d'accions
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra el 25% de les accions d'aquesta companyia. Shift+Clic mostra el cost estimat sense comprar cap acció
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ven un 25% de les accions d'aquesta companyia. Shift+Clic mostra el cost estimat sense vendre cap acció
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra el 25% de les accions d'aquesta companyia. Amb Maj+Clic, mostra'n només el cost estimat.
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ven un 25% de les accions d'aquesta companyia. Amb Maj+Clic, mostra el cost estimat sense vendre cap acció.
 
-STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom Empresa
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom President
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom de la companyia
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom del president
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estem venent la nostra companyia de transports.{}{}Vols comprar {COMPANY} per {CURRENCY_LONG}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura de {COMPANY}
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trossos de via:
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trossos de vies:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Senyals
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Trossos de carretera:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Carretera
@@ -4874,7 +4874,7 @@ STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STAT
 
 STR_UNKNOWN_STATION                                             :{G=Femenin}estació desconeguda
 STR_DEFAULT_SIGN_NAME                                           :{G=Femenin}Senyal
-STR_COMPANY_SOMEONE                                             :algú
+STR_COMPANY_SOMEONE                                             :Desconegut
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :{G=Masculin}Espectador, {1:STRING}
