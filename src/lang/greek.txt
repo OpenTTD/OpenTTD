@@ -1409,6 +1409,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Πυκνότη�
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη απόσταση από την άκρη του χάρτη για τα Διυλιστήρια: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, η οποία είναι ακτή σε νησιωτικούς χάρτες
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Έλεγχος του ύψους στο οποίο ξεκινά το χιόνι στο υπαρκτικό τοπίο. Το χιόνι επηρεάζει επίσης τη δημιουργία βιομηχανιών και τις προυποθέσεις επέκτασης πόλης
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ανωμαλία επιφάνειας (μόνο με TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλή
@@ -1417,6 +1418,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Ανώ
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Πλήθος ποταμών: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Επιλέξτε πόσα ποτάμια να δημιουργηθούν
 STR_CONFIG_SETTING_TREE_PLACER                                  :Αλγόριθμος τοποθέτησης δέντρων: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Επιλογή διανομής δέντρων στο χάρτη: Το «Πρωτότυπο» φυτεύει δέντρα ομοιόμορφα μοιρασμένα, ενώ το «Βελτιωμένο» φυτεύει σε ομάδες
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Κανένας
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικός
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμένος
@@ -1726,6 +1728,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Μετρικό 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Μονάδες μέτρησης βάρους: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Όποτε εμφανίζεται ένα βάρος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Μονάδες μέτρησης όγκου: {STRING}
@@ -1744,8 +1747,11 @@ STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Τοπ�
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ήχος
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Περιβάλλον Λειτουργίας
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Κατασκευή
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Εταιρία
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρομολογήσεις
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Περιορισμοί
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Περιβάλλον
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Βιομηχανίες
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
@@ -2762,6 +2768,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Αποθ
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Αποθήκευση παιχνιδιού, χρησιμοποιώντας το επιλεγμένο όνομα
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Φόρτωση
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Φόρτωση του επιλεγμένου παιχνιδιού
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Φόρτωση του επιλεγμένου χάρτη υψομετρίας
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Λεπτομέρειες Παιχνιδιού
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Δεν υπάρχουν πληροφορίες.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2889,6 +2896,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενε
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συμβατό με αυτήν την έκδοση του OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}Αποθήκευση προκαθορισμένου
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
@@ -3373,6 +3381,8 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Διαγ
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Μετονομασία της επιλεγμένης ομάδας
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Κάντε κλικ για προστατέψετε αυτήν την ομάδα από την γενική αυτόματη αντικατάσταση
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Διαγραφή ομάδας
+STR_GROUP_DELETE_QUERY_TEXT                                     :Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την ομάδα και οποιουσδήποτε απογόνους;
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Προσθήκη κοινόχρηστων οχημάτων
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεση όλων των οχημάτων
