@@ -1543,6 +1543,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Oerol
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Plak fan de haad wurkbalk: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posysje fan statusbalke: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Finster snap radius: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Útskeakele
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimaal oantal non-sticky finsters: {STRING}
@@ -1567,6 +1568,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Gjin
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Begjin stêdgrutte fermenigfuldiger: {STRING}
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Wurkje by de grafyk fan distribúsje eltse{STRING}{NBSP}dagen{P 0:2 "" s}
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :hânmjittich
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrysk
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrysk
@@ -1643,6 +1645,7 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rec
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder foar treinen: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pathfinder foar auto's: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pathfinder foar skippen: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pathfinder te brûken foar skippen
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Omkeare fan treinen by seinen: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Feroarje wearde
@@ -1856,6 +1859,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start ts
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start dien eigen tsjinner
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Fier dyn namme in
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Fier de namme fan de host yn
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start in spul foar multispilers
@@ -1929,6 +1933,7 @@ STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nei Bedr
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Nei bedriuw oprjochtsje
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Spul taskôgje
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Spul besjen as taskôger
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Help dit bedriuw bestjoeren
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Ferbyning meitsje...
@@ -1953,6 +1958,7 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tsjinner
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedriuw is beskerme. Fier wachtwurd yn
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client lyst
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Taskôgje
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Bedriuw
 
@@ -1968,6 +1974,7 @@ STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Taskôge
 
 # Network set password
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Bedriuwswachtwurd
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Brûk dit bedriuwswachtwurd gewoanwei foar alle nije bedriuwen
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Mei spielje
@@ -1985,6 +1992,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Oan {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privee] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privee] Nei {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Yderiin] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriuw berjocht foar netwurk chat
 
 # Network messages
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Koe gjin networkspullen fine
@@ -2018,6 +2026,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De lêst
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spul stiet nog yn rêst ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :hânmjittich
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spulskript
 ############ End of leave-in-this-order
@@ -2035,6 +2044,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles de
 STR_CONTENT_OPEN_URL                                            :{BLACK}Webside besykje
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Webside foar dizze ynhâld besykje
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Delhelje
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}KONTENT INFO
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Namme: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Ferzje: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beskriuwing: {WHITE}{STRING}
@@ -2049,6 +2059,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_SCENARIO                                       :Lânskip
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hichtemap
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spulskript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS biblioteek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ynhâld delheljen...
@@ -2101,6 +2112,7 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorail Konstr
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Konstruksje
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoarwei
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Spoar bouwe mei help fan Autorail. Brûk Ctrl foar ferwiderje. Brûk Shift foar ferwachte kosten.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bou treindepot (foar bou en ûnderhâld fan treinen)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Spoar nei kontrôlepost omsette
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bou treinstasjon
@@ -2153,6 +2165,7 @@ STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hingbrêge, Bet
 STR_BRIDGE_NAME_WOODEN                                          :Hout
 STR_BRIDGE_NAME_CONCRETE                                        :Beton
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Buis, Stiel
+STR_BRIDGE_TUBULAR_SILICON                                      :Buisbrêge silisium
 
 
 # Road construction toolbar
@@ -2164,6 +2177,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bou buss
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bou laadstasjon foar frachtauto's
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bou autobrêge
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bou autotunnel
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bou in tramtunnel. Brûk Shift foar ferwachte kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Wikselje tusken bou en fuortheljen fan dyken
 
 # Road depot construction window
@@ -2182,11 +2196,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Kies rjo
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Wetterwei Konstruksje
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Wetterwei
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bou in slûs. Brûk Shift foar ferwachte kosten.
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bou skipmakkerij (Foar bou en ûnderhâld fan skippen). Brûk Shift foar ferwachte kosten
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bou akwadukt. Shift skeakelt tusken bouwe/taksearje fan de kosten
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Tsjut wettergebied oan.{}Meitsje in kanaal, of ast' Ctrl op seenivo yndrukst, dan oerstreamt it gebied deromhinne
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Rivier pleatse.
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Skipmakkerij oriïntaasje
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Haven
@@ -2201,6 +2218,7 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Patroan 
 
 STR_AIRPORT_SMALL                                               :Lyts
 STR_AIRPORT_CITY                                                :Stêd
+STR_AIRPORT_METRO                                               :status: kwyt
 STR_AIRPORT_INTERNATIONAL                                       :Ynternasjonaal
 STR_AIRPORT_COMMUTER                                            :Forins
 STR_AIRPORT_INTERCONTINENTAL                                    :Ynterkontinentaal
@@ -2255,6 +2273,7 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nije St�
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Bou nije stêd
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Samar in stêd
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bou samar ergens in stêd
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pleats Stêden en Doarpen oer de map hinne
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Stêd namme:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Typ namme fan in stêd
@@ -2286,6 +2305,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bouwe
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansierje
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :produksje yndustry
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Yndustry aksepteare
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hûzen
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Lit produksjeketting sjen
@@ -2563,6 +2583,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Dat strykt
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Sla ynstellings op
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Jou dizze ynstellings in namme
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Op dit stuit selektearre namme foar preset om op te slaan
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annulearje
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ynstellings net feroarje
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Opslaan
@@ -2665,6 +2686,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<unjildiche ynd
 STR_INVALID_VEHICLE                                             :<ûnjildich fiertúch>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Sykje nei NewGRFs. Dit kin in skoftke duorje.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Boerdenlist - {COMMA} Boerd{P "" en}
@@ -2737,8 +2759,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begjin 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Subsidearje de fernijing fan it dikenstelsel yn dizze stêd. Jout tsjin de seis moannen grutte oerlêst foar it ferkear{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Subsidearje de bou fan nije kommersjele gebouwen yn dizze stêd.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Keapje de gemeente om. Mei it risiko op in boete ast betrape wurdst.{}kosten: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Doelen
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalde doelen
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Gjin -
@@ -2909,6 +2933,7 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Gjin
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Bedriuwswearde: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit fan {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Ynfrastruktuer:
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} stikje dyk{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} fleanfjild{P "" en}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Gjin
 
@@ -3002,6 +3027,7 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Stjoer nei depo
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Stjoer nei depot
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Stjoer nei hangaar
 
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klik om alle weinen út disse list út ein sette te litten
 
 
 # Group window
@@ -3021,6 +3047,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Alle fiertugen 
 
 
 # Build vehicle window
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nije spoar weinen
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nije Weinen
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nije Skepen
@@ -3039,6 +3066,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: 
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteit: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kin omboud wurde nei: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle frachttypen
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Berik: {GOLD}{COMMA} flakken
 
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Keapje auto
@@ -3087,10 +3115,15 @@ STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Weinen - Brûk rjochter mûsklik op de wein foar ynformaasje
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}tôgje trein hjirhinne om it te ferkeapjen.
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}tôgje wein hjirhinne om it te ferkeapjen.
 
 
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :Ferkeapje alle weinen yn disse garage
 
-
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Ferfang automatysk alle fleantúgen yn disse fleantúchhangaar
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nije fiertugen
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nije Weinen
@@ -3105,6 +3138,7 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Nij flea
 
 
 
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik om alle treinen binnen dit depot te stoppen
 
 
 
@@ -3121,6 +3155,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglevlokomotyf
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Underhâldskosten: {CURRENCY_LONG}/jr{}Kapasiteit: {CARGO_LONG}
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ferfang {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Trein
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Auto
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
@@ -3129,21 +3164,27 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fleanmasine
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Fiertúgen dy't yn gebrûk binne
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Beskikbere fiertugen
 
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selektearje it type lokomotyf om te ferfangen
+
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ferfang allinech âlde weinen
 
 
-
+STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail weinen
 
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Sintrearje it byld op de lokaasje fan dit skip. bij Ctrl+Click bliuwst it skip folgjen
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Sintrearje it byld op de lokaasje fan dit fleantúch
 
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stjoer skip nij skipmakkerij. Brûk Ctrl+klik om skip ûnderhâld te jaan
 
 
 
 
 
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Lit de rûte fan dit skip sjen. Ctrl+Click lit tsjinstregeling sjen
 
 
 
@@ -3168,6 +3209,7 @@ STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stoppe
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namme
 
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namme fan de wein
 
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} jier{P "" ren} ({COMMA})
@@ -3175,6 +3217,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ji
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. snelheid: {LTBLUE}{VELOCITY}
 
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}betrouberens: {LTBLUE}{COMMA}%  {BLACK}Stikken west sûnt lêste ûnderhâld: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Gjin{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasiteit: {LTBLUE}{CARGO_LONG}{3:STRING}
@@ -3217,12 +3260,14 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nije kapasiteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}kosten fan werfolje: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selektearje in ferfiermiddel foar reparaasje. sleep mei de mûs om meardere ferfiermiddels te selekttearjen. Ctrl+klick sil in ferfiermiddel selektearje en de neikommende rige
 
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}selektearje soart fracht foar de trein om mei te nimmen
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Trein ombouwe
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Wein ombouwe
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Skip ombouwe
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Fleantúch ombouwe
 
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Skip ombouwe nij selektearre fracht
 
 # Order view
 
@@ -3235,7 +3280,9 @@ STR_ORDER_GO_TO                                                 :Gean nei
 STR_ORDER_GO_NON_STOP_TO                                        :Gean non-stop nei
 STR_ORDER_GO_VIA                                                :Gean via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gean non-stop fia
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Feroarje it stop gedrach fan selektearre opdracht
 
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Folslein lade fan alle fracht
 STR_ORDER_DROP_NO_LOADING                                       :Net laden
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles losse
@@ -3244,18 +3291,23 @@ STR_ORDER_DROP_TRANSFER                                         :Oerlade
 STR_ORDER_DROP_NO_UNLOADING                                     :Net losse
 
 STR_ORDER_REFIT                                                 :{BLACK}Ombouwe
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Ombouwe op it station
+STR_ORDER_DROP_REFIT_AUTO                                       :Fêste fracht
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beskikbere fracht
 
 STR_ORDER_SERVICE                                               :{BLACK}Tsjinst
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gean altyd
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sla dizze opdracht oer of it moar wêze dat ûnderhâld nedich is.
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouberens
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimale snelheid
+STR_ORDER_CONDITIONAL_AGE                                       :âlderdom (yn jierren)
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altyd
 
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is net wier
 
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Oerslaan
@@ -3326,6 +3378,7 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reizgje (foar {
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reizgje (foar {STRING}, sûnder tjinstregeling) mei maksimaal {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(bliuw foar {STRING}, sûnder tjinstregeling)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reizgje foar {STRING}, sûnder tjinstregeling)
+STR_TIMETABLE_STAY_FOR                                          :en bliuw foar{STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}{P dei dagen}
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P "" ken}
 
@@ -3362,6 +3415,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Jier sel
 
 
 # AI debug window
+STR_AI_DEBUG                                                    :{WHITE}AI/Game Script Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skriptnamme
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ynstellings
@@ -3379,13 +3433,16 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Minslike spiler
 STR_AI_CONFIG_RANDOM_AI                                         :Samar in AI
 STR_AI_CONFIG_NONE                                              :(gjin)
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Pleats heger
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spulskript
 STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Selektear {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spulskript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}in oar script lade
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Beskikber {STRING}
@@ -3398,6 +3455,7 @@ STR_AI_LIST_VERSION                                             :{LTBLUE}Ferzje:
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Akseptearje
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selekteare highlighted script
 STR_AI_LIST_CANCEL                                              :{BLACK}Annulearje
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skript net feroare
 
@@ -3430,6 +3488,7 @@ STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED
 STR_INCOME_FLOAT_COST                                           :{RED}Kostet: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Opbringst: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Opbringst: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Omwikselje: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Dit gjit {CURRENCY_LONG} kosten.
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Dit gjit {CURRENCY_LONG} opbringen.
 
@@ -3440,6 +3499,7 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Opslaan 
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kin bestân net fuortsmite
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden Mislearre{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne flater: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Stikkene savegame - {STRING}
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Koe bestân net lêze
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Koe net nei bestân skriuwe
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<net beskikber>
@@ -3449,6 +3509,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<net beskikber>
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... bestând koe net fûn wurde
 
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... ôfbylding is te grut
 
 
 # Soundset messages

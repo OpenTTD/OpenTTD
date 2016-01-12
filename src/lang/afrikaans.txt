@@ -2875,7 +2875,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gaan na 
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gaan na vorige normale sprite, en ignoreer enige pseudo/her-kleur/font sprite en spring terug na die einde
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorstelling van geselekteerde sprite. Die belyning word geignoreer waneer sprite geteken word
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Beweeg die sprite rond, verander die X en Y afwyking
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Beweeg die sprite rond, verander die X en Y afwyking. Ctrl-klik om die sprite agt lengtes rond te beweeg op 'n slag
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Relatiewe herstel
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Herstel die huidige relatiewe verplasing
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X verplasing: {NUM}, Y verplasing: {NUM} (Werklik)
