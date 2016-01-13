@@ -6421,8 +6421,8 @@ static void SafeParamSet(ByteReader *buf)
 {
 	uint8 target = buf->ReadByte();
 
-	/* Only writing GRF parameters is considered safe */
-	if (target < 0x80) return;
+	/* Writing GRF parameters and some bits of 'misc GRF features' are safe. */
+	if (target < 0x80 || target == 0x9E) return;
 
 	/* GRM could be unsafe, but as here it can only happen after other GRFs
 	 * are loaded, it should be okay. If the GRF tried to use the slots it
@@ -6838,7 +6838,15 @@ static void ParamSet(ByteReader *buf)
 			/* Remove the local flags from the global flags */
 			ClrBit(res, GMB_TRAIN_WIDTH_32_PIXELS);
 
-			_misc_grf_features = res;
+			/* Only copy safe bits for static grfs */
+			if (HasBit(_cur.grfconfig->flags, GCF_STATIC)) {
+				uint32 safe_bits = 0;
+				SetBit(safe_bits, GMB_SECOND_ROCKY_TILE_SET);
+
+				_misc_grf_features = (_misc_grf_features & ~safe_bits) | (res & safe_bits);
+			} else {
+				_misc_grf_features = res;
+			}
 			break;
 
 		case 0x9F: // locale-dependent settings
