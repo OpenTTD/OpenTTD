@@ -1525,7 +1525,7 @@ STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομ�
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Παίζει ήχο όταν γίνεται κλικ σε κουμπιά
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Καταστροφές/ατυχήματα: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Παίζει ήχους για ατυχήματα και συμφορές
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Παίζει ήχους για ατυχήματα και καταστροφές
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Οχήματα: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Παίζει τα ηχητικά εφέ των οχημάτων
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Περιβαλλοντικά: {STRING}
@@ -1586,7 +1586,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Παρουσί�
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Παρουσίασε τα νέα όταν το πρώτο όχημα φτάνει σε νέο σταθμό ενός ανταγωνιστή
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ατυχήματα / καταστροφές: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Προβάλλει εφημερίδα όταν συμβαίνουν ατυχήματα ή συμφορές
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Προβάλλει εφημερίδα όταν συμβαίνουν ατυχήματα ή καταστροφές
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Προβάλλει εφημερίδα όταν αρχίζει νέα εταιρεία ή όταν οι εταιρίες ρισκάρουν χρεωκοπία
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
@@ -1718,11 +1718,13 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Επίδρασ�
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Αν ορίσετε αυτό σε μια τιμή μεγαλύτερη από 0, η απόσταση μεταξύ ενός αρχικού σταθμού Α ενός φορτίου και ενός πιθανού προορισμού Β θα επηρεάσει το ποσό του φορτίου που θα αποσταλεί από τον Α στον Β. Όσο πιο μακριά βρίσκεται ο Β από τον Α, τόσο λιγότερο φορτίο θα αποσταλεί. Όσο πιο μεγάλη τιμή ορίσετε, θα αποστέλλεται λιγότερο φορτίο σε μακρινούς προορισμούς και περισσότερο σε κοντινούς.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Όποτε εμφανίζεται μια ταχύτητα στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Αυτοκρατορικό (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Μετρικό (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Μονάδες ισχύος οχημάτων: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Όποτε εμφανίζεται η ισχύς ενός οχήματος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Αυτοκρατορικό (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Μετρικό (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
@@ -1732,26 +1734,34 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Όποτε εμ
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Μονάδες μέτρησης όγκου: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Όποτε εμφανίζεται ένας όγκος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Αυτοκρατορικό (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Μετρικό (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Όποτε εμφανίζεται μια ελκτική δύναμη στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Μετρικό (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Μονάδες μέτρησης ύψους: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Όποτε εμφανίζεται ένα ύψος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικές (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Τοπικοποίηση
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Γραφικά
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ήχος
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Περιβάλλον Λειτουργίας
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Κατασκευή
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Εταιρία
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Φυσική
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρομολογήσεις
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Περιορισμοί
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Καταστροφές/Ατυχήματα
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Δημιουργία Κόσμου
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Περιβάλλον
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Αρχές
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Βιομηχανίες
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
@@ -2349,6 +2359,9 @@ STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Όλες
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Καμία
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}μη χρησιμοποιημένο
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}κορεσμένο
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}υπερφορτωμένο
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Κάλυψη περιοχής
@@ -2871,6 +2884,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετα
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Μετακινήστε το επιλεγμένο αρχείο NewGRF πάνω στη λίστα
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Μετακίνηση Κάτω
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετακινήστε το επιλεγμένο αρχείο NewGRF κάτω στη λίστα
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Αναβάθμιση αρχείων NewGRF για τα οποία μια νεότερη έκδοση έχει εγκατασταθεί
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μία λίστα που περιέχει τα εγκατεστημένα αρχεία NewGRF
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ρύθμιση παραμέτρων
@@ -2897,6 +2911,9 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συ�
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Αποθήκευση προκαθορισμένου
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Δώστε ένα όνομα για το προκαθορισμένο
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Μη αλλαγή του προκαθορισμένου
+STR_SAVE_PRESET_SAVE                                            :{BLACK}Αποθήκευση
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
@@ -3087,9 +3104,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Αγο�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκήστε τις τοπικές αρχές για να αυξήσετε τα ποσοστά αποδοχής σας, με ρίσκο ένα μεγάλο πρόστιμο εάν συλληφθείτε.{}Κόστος: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_SPECTATOR_CAPTION                                     :{BLACK}Καθολικοί στόχοι:
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Καθολικοί στόχοι:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Μη εφαρμόσιμος -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Εταιρικοί στόχοι:
@@ -3132,12 +3151,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάνετε κλικ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Βιβλίο Ιστορίας
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Παγκόσμιο Βιβλίο Ιστορίας
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Σελίδα {NUM}
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Προηγούμενη
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Μεταβαίνει στη προηγούμενη σελίδα
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Επόμενη
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Μεταβαίνει στην επόμενη σελίδα
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Μη έγκυρη αναφορά στόχου
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - κάνετε κλικ στο όνομα για κεντράρισμα στο σταθμό. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του σταθμού
@@ -3167,10 +3189,22 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμ
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_WAITING_STATION                                :Σταθμός: Σε αναμονή
+STR_STATION_VIEW_PLANNED_STATION                                :Σταθμός: Προγραμματισμένο
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Ποσό: Σχεδιασμένο
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} από {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} μέσω {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} προς {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} από άγνωστο σταθμό
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} σταματάει σε αυτόν τον σταθμό
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} σε αυτό το σταθμό
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} χωρίς στάση
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Πηγή-Μέσω-Προορισμός-Μέσω
+STR_STATION_VIEW_GROUP_S_D_V                                    :Πηγή-Προορισμός-Μέσω
+STR_STATION_VIEW_GROUP_V_S_D                                    :Μέσω-Πηγή-Προορισμός
+STR_STATION_VIEW_GROUP_V_D_S                                    :Μέσω-Προορισμός-Πηγή
+STR_STATION_VIEW_GROUP_D_V_S                                    :Προορισμός-Μέσω-Πηγή
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Απαίσια
@@ -3930,6 +3964,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψ�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με στο μέγιστο {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ταξίδι (for {STRING}, (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}μέρ{P α ες}
