@@ -1745,15 +1745,18 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Μονάδες μέτρησης ύψους: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Όποτε εμφανίζεται ένα ύψος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικές (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικό (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Τοπικοποίηση
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Γραφικά
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ήχος
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Περιβάλλον Λειτουργίας
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Παράθυρα προβολών
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Κατασκευή
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Νέα / Σύμβουλοι
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Εταιρία
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Λογιστικά
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Φυσική
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρομολογήσεις
@@ -1764,6 +1767,7 @@ STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Περ�
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Αρχές
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Βιομηχανίες
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Κατανομή φορτίων
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Παίκτες υπολογιστή
 
@@ -1979,6 +1983,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλα
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Διαφημιζόμενο
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Όχι
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ναι
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
@@ -2914,6 +2919,7 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Αποθ
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Δώστε ένα όνομα για το προκαθορισμένο
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Μη αλλαγή του προκαθορισμένου
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Αποθήκευση
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Αποθήκευση προκαθορισμένου, χρησιμοποιώντας το επιλεγμένο όνομα
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
@@ -3204,6 +3210,7 @@ STR_STATION_VIEW_GROUP_S_V_D                                    :Πηγή-Μέσ
 STR_STATION_VIEW_GROUP_S_D_V                                    :Πηγή-Προορισμός-Μέσω
 STR_STATION_VIEW_GROUP_V_S_D                                    :Μέσω-Πηγή-Προορισμός
 STR_STATION_VIEW_GROUP_V_D_S                                    :Μέσω-Προορισμός-Πηγή
+STR_STATION_VIEW_GROUP_D_S_V                                    :Προορισμός-Πηγή-Μέσω
 STR_STATION_VIEW_GROUP_D_V_S                                    :Προορισμός-Μέσω-Πηγή
 
 ############ range for rating starts
@@ -3964,7 +3971,8 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψ�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με στο μέγιστο {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ταξίδι (for {STRING}, (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ταξίδι γιά {STRING}, (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(ταξίδι για {STRING}, μη δρομολογημένο)
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}μέρ{P α ες}
@@ -4093,6 +4101,7 @@ STR_AI_SETTINGS_START_DELAY                                     :Αριθμός 
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme του {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{G=m}{WHITE}{STRING} ιστορικό αλλαγών του {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} άδεια του {STRING}
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Αναδίπλωση του κειμένου του παραθύρου ώστε να χωρά χωρίς να απαιτέιται κύλιση
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Εμφάνιση readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ιστορικό αλλαγών
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Άδεια
