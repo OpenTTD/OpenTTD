@@ -98,28 +98,28 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음�
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :승객{NBSP}{COMMA}명
 STR_QUANTITY_COAL                                               :석탄 {WEIGHT_LONG}
-STR_QUANTITY_MAIL                                               :{G=f}우편 {COMMA}{NBSP}자루
+STR_QUANTITY_MAIL                                               :우편 {COMMA}{NBSP}자루
 STR_QUANTITY_OIL                                                :석유 {VOLUME_LONG}
-STR_QUANTITY_LIVESTOCK                                          :{G=f}가축 {COMMA}{NBSP}마리
-STR_QUANTITY_GOODS                                              :{G=f}상품 {COMMA}{NBSP}상자
+STR_QUANTITY_LIVESTOCK                                          :가축 {COMMA}{NBSP}마리
+STR_QUANTITY_GOODS                                              :상품 {COMMA}{NBSP}상자
 STR_QUANTITY_GRAIN                                              :곡물 {WEIGHT_LONG}
 STR_QUANTITY_WOOD                                               :목재 {WEIGHT_LONG}
 STR_QUANTITY_IRON_ORE                                           :철광석 {WEIGHT_LONG}
 STR_QUANTITY_STEEL                                              :철 {WEIGHT_LONG}
-STR_QUANTITY_VALUABLES                                          :{G=f}귀금속 {COMMA}{NBSP}자루
+STR_QUANTITY_VALUABLES                                          :귀금속 {COMMA}{NBSP}자루
 STR_QUANTITY_COPPER_ORE                                         :구리 광석 {WEIGHT_LONG}
 STR_QUANTITY_MAIZE                                              :옥수수 {WEIGHT_LONG}
 STR_QUANTITY_FRUIT                                              :과일 {WEIGHT_LONG}
-STR_QUANTITY_DIAMONDS                                           :{G=f}다이아몬드 {COMMA}{NBSP}자루
+STR_QUANTITY_DIAMONDS                                           :다이아몬드 {COMMA}{NBSP}자루
 STR_QUANTITY_FOOD                                               :식품 {WEIGHT_LONG}
 STR_QUANTITY_PAPER                                              :종이 {WEIGHT_LONG}
-STR_QUANTITY_GOLD                                               :{G=f}금 {COMMA}{NBSP}자루
+STR_QUANTITY_GOLD                                               :금 {COMMA}{NBSP}자루
 STR_QUANTITY_WATER                                              :물 {VOLUME_LONG}
 STR_QUANTITY_WHEAT                                              :밀 {WEIGHT_LONG}
 STR_QUANTITY_RUBBER                                             :고무 {VOLUME_LONG}
 STR_QUANTITY_SUGAR                                              :설탕 {WEIGHT_LONG}
-STR_QUANTITY_TOYS                                               :{G=f}장난감 {COMMA}{NBSP}상자
-STR_QUANTITY_SWEETS                                             :{G=f}사탕 {COMMA}{NBSP}자루
+STR_QUANTITY_TOYS                                               :장난감 {COMMA}{NBSP}상자
+STR_QUANTITY_SWEETS                                             :사탕 {COMMA}{NBSP}자루
 STR_QUANTITY_COLA                                               :콜라 {VOLUME_LONG}
 STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
@@ -177,7 +177,7 @@ STR_CRATES                                                      :{G=f}{COMMA}{NB
 STR_COLOUR_DARK_BLUE                                            :어두운 파랑
 STR_COLOUR_PALE_GREEN                                           :연한 초록
 STR_COLOUR_PINK                                                 :분홍
-STR_COLOUR_YELLOW                                               :{G=m}노랑
+STR_COLOUR_YELLOW                                               :노랑
 STR_COLOUR_RED                                                  :빨강
 STR_COLOUR_LIGHT_BLUE                                           :밝은 파랑
 STR_COLOUR_GREEN                                                :녹색
@@ -306,7 +306,7 @@ STR_SORT_BY_COST                                                :가격
 STR_SORT_BY_POWER                                               :힘
 STR_SORT_BY_TRACTIVE_EFFORT                                     :견인력
 STR_SORT_BY_INTRO_DATE                                          :도입 날짜
-STR_SORT_BY_RUNNING_COST                                        :{G=f}유지비
+STR_SORT_BY_RUNNING_COST                                        :유지비
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :유지비 분의 힘
 STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송량
 STR_SORT_BY_RANGE                                               :항속거리
@@ -979,7 +979,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD�
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 해상도
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용하실 화면 해상도를 선택하세요.
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :{G=f}기타
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택하십시오.
@@ -1715,7 +1715,7 @@ STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :찾을 수 없�
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :사용하기에 불안함
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF 시스템
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :현재 OpenTTD 버전과 맞지 않음
-STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :{G=m}알 수 없음
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :알 수 없음
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 압축 레벨 '{STRING}' : 유효하지 않습니다
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... '{STRING}' 형식으로 게임을 저장할 수 없습니다. '{STRING}' 형식으로 변환합니다
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 기본 그래픽 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
@@ -1776,7 +1776,7 @@ STR_OSNAME_DOS                                                  :{G=f}DOS
 STR_OSNAME_UNIX                                                 :{G=f}Unix
 STR_OSNAME_OSX                                                  :{G=f}OS{NBSP}X
 STR_OSNAME_BEOS                                                 :{G=f}BeOS
-STR_OSNAME_HAIKU                                                :Haiku
+STR_OSNAME_HAIKU                                                :{G=f}Haiku
 STR_OSNAME_MORPHOS                                              :{G=f}MorphOS
 STR_OSNAME_AMIGAOS                                              :{G=f}AmigaOS
 STR_OSNAME_OS2                                                  :{G=f}OS/2
@@ -1829,8 +1829,8 @@ STR_LIVERY_EMU                                                  :{G=f}EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :{G=f}객차 (증기)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :{G=f}객차 (디젤)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :{G=f}객차 (전기)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :객차 (모노레일)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :객차 (자기부상)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :{G=f}객차 (모노레일)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :{G=f}객차 (자기부상)
 STR_LIVERY_FREIGHT_WAGON                                        :{G=f}화물차
 STR_LIVERY_BUS                                                  :{G=f}버스
 STR_LIVERY_TRUCK                                                :{G=m}트럭
@@ -1839,8 +1839,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :{G=m}화물선
 STR_LIVERY_HELICOPTER                                           :{G=f}헬리콥터
 STR_LIVERY_SMALL_PLANE                                          :{G=f}소형 항공기
 STR_LIVERY_LARGE_PLANE                                          :{G=f}대형 항공기
-STR_LIVERY_PASSENGER_TRAM                                       :승객 전차
-STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
+STR_LIVERY_PASSENGER_TRAM                                       :{G=f}승객 전차
+STR_LIVERY_FREIGHT_TRAM                                         :{G=f}화물 전차
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}얼굴 선택
@@ -2332,7 +2332,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량�
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량기지의 방향을 선택하세요.
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{G=f}{WHITE}경유지
+STR_WAYPOINT_CAPTION                                            :{WHITE}경유지
 STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}경유지 종류 설정
 
 # Rail station construction window
@@ -2350,7 +2350,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}표시�
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}건설할 역의 종류를 선택합니다
 
 STR_STATION_CLASS_DFLT                                          :기본 역사
-STR_STATION_CLASS_WAYP                                          :{G=f}경유지
+STR_STATION_CLASS_WAYP                                          :경유지
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}신호기 선택
@@ -2629,7 +2629,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 차량
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :도로
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :가로등이 있는 도로
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :가로수가 있는 도로
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :{G=f}차고지
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :차고지
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :철도 건널목
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :전찻길
 
@@ -2646,8 +2646,8 @@ STR_LAI_STATION_DESCRIPTION_AIRPORT                             :공항
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :트럭 적하장
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :버스 정류장
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :항구
-STR_LAI_STATION_DESCRIPTION_BUOY                                :{G=f}부표
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :{G=f}경유지
+STR_LAI_STATION_DESCRIPTION_BUOY                                :부표
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :경유지
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :물
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :운하
@@ -3054,9 +3054,9 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :오류
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :취소
-STR_GOAL_QUESTION_BUTTON_OK                                     :{G=m}확인
+STR_GOAL_QUESTION_BUTTON_OK                                     :확인
 STR_GOAL_QUESTION_BUTTON_NO                                     :아니요
-STR_GOAL_QUESTION_BUTTON_YES                                    :{G=f}예
+STR_GOAL_QUESTION_BUTTON_YES                                    :예
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :거절
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :수락
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :무시
@@ -3878,7 +3878,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[가까운쪽]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[중간]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[먼쪽]
 
-STR_ORDER_OUT_OF_RANGE                                          :{RED} (다음 목적지가 항속거리제한을 벗어납니다.)
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (다음 목적지가 제한 항속거리보다 멀리 있습니다)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :[조건 경로] {COMMA}번 경로로 건너뛰기
 STR_ORDER_CONDITIONAL_NUM                                       :[조건 경로] {COMMA}번 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
@@ -3985,7 +3985,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}다음�
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}다음에 게임을 시작할 때 이 인공지능을 불러올 것입니다
 STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
 STR_AI_CONFIG_RANDOM_AI                                         :무작위 인공지능
-STR_AI_CONFIG_NONE                                              :{G=m}(없음)
+STR_AI_CONFIG_NONE                                              :(없음)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}위로 이동
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}목록에서 선택한 인공지능의 순서를 한 칸 위로 옮깁니다.
@@ -3997,16 +3997,16 @@ STR_AI_CONFIG_AI                                                :{G=m}{SILVER}�
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}{STRING} 선택하기
 STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_AI_CONFIG_CHANGE_AI                                         :{G=m}인공지능
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{G=f}게임 스크립트
+STR_AI_CONFIG_CHANGE_AI                                         :인공지능
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :게임 스크립트
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 스크립트 불러오기
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}설정
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}인공지능의 매개 변수를 설정합니다.
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}사용 가능한 {STRING}
-STR_AI_LIST_CAPTION_AI                                          :{G=m}인공지능
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :{G=f}게임 스크립트
+STR_AI_LIST_CAPTION_AI                                          :인공지능
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :게임 스크립트
 STR_AI_LIST_TOOLTIP                                             :{BLACK}스크립트를 선택하려면 클릭하세요.
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}저자: {ORANGE}{STRING}
@@ -4020,7 +4020,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}인공�
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 매개 변수
-STR_AI_SETTINGS_CAPTION_AI                                      :{G=m}인공지능
+STR_AI_SETTINGS_CAPTION_AI                                      :인공지능
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :게임 스크립트
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
@@ -4554,7 +4554,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}설탕 광
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :{G=m}이름 없음
+STR_SV_UNNAMED                                                  :이름 없음
 STR_SV_TRAIN_NAME                                               :열차 {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :차량 {COMMA}
 STR_SV_SHIP_NAME                                                :선박 {COMMA}
@@ -4856,7 +4856,7 @@ STR_FORMAT_DATE_SHORT                                           :{1:NUM}년 {0:S
 STR_FORMAT_DATE_LONG                                            :{2:NUM}년 {1:STRING}월 {0:STRING}일
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{G=f}{TOWN} 부표
+STR_FORMAT_BUOY_NAME                                            :{TOWN} 부표
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} 부표 #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(회사 {COMMA})
 STR_FORMAT_GROUP_NAME                                           :그룹 {COMMA}
@@ -4872,7 +4872,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} 정박�
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} 정박소 #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} 격납고
 
-STR_UNKNOWN_STATION                                             :알수없는 정거장
+STR_UNKNOWN_STATION                                             :알 수 없는 정거장
 STR_DEFAULT_SIGN_NAME                                           :팻말
 STR_COMPANY_SOMEONE                                             :누군가
 
