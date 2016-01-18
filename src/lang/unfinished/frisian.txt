@@ -1833,6 +1833,7 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Namme fa
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Namme
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Namme fan dit spul
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}kliïnten
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Lângrutte
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
@@ -2001,8 +2002,10 @@ STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Koe opsl
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Koe de tsjinner net starte
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Koe gjin ferbyning meitsje
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Ferbining #{NUM} ferrûn
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}In protokol flater is opmurken en de ferbining is sletten
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Ferkeard wachtwurd
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De tsjinner is vol
+STR_NETWORK_ERROR_CHEATER                                       :Falsk spielje net tastien op disse server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Do stjoerst tevolle opdrachten ny de server
 
 ############ Leave those lines in this order!!
@@ -2030,6 +2033,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spul stiet nog 
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :hânmjittich
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spulskript
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :Ferlit
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} der is ien bykommen(Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} is in neie taskôger
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat syn/har namme oanpast nei {STRING}
@@ -2300,6 +2304,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Samar
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Betelje nije yndustry
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pleats yndustry oer de map hinne
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kostet: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bouwe
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansierje
@@ -2836,6 +2841,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akseptea
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit stasjon hat eksklusyfe transportrjochten in dizze plak.
 
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stasjonwurdearing sjen litte
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Moanlikse foarried en wurdearring:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Groepearje by
@@ -2966,6 +2972,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wy sykje
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Ynfrastruktuer fan {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinen
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Stikjes dyk:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Dyk
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramwei
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasjons:
@@ -3104,6 +3111,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Wikselje
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Wikselje tusken it ferbergje/sjen litte fan it soart skip
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Wikselje tusken it ferbergje/sjen litte fan it soart fleanmasine
 
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Jou treinmodel in oare namme
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -3119,10 +3127,12 @@ STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Weinen -
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}tôgje trein hjirhinne om it te ferkeapjen.
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}tôgje wein hjirhinne om it te ferkeapjen.
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}tôgje fleantúg hjirhinne om it te ferkeapjen.
 
 
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :Ferkeapje alle weinen yn disse garage
 
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Ferfang automatysk skippen yn de skipmakkerij
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Ferfang automatysk alle fleantúgen yn disse fleantúchhangaar
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nije fiertugen
@@ -3175,6 +3185,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail weinen
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Sintrearje it byld op de lokaasje fan disse trein. bij Ctrl+Click bliuwst it skip folgjen
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Sintrearje it byld op de lokaasje fan dit skip. bij Ctrl+Click bliuwst it skip folgjen
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Sintrearje it byld op de lokaasje fan dit fleantúch
 
@@ -3190,6 +3201,7 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Lit de r
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laden / Losse
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}fuortsette
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Stikken
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppe
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stoppet, {VELOCITY}
@@ -3224,6 +3236,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasite
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasiteit: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasiteit: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wikselje kredyt: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Underhâldsinterval: {LTBLUE}{COMMA}{NBSP}dagen{BLACK}   Lêste underhâld: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Underhâldsinterval: {LTBLUE}{COMMA}%{BLACK}   Lêste underhâld: {LTBLUE}{DATE_LONG}
@@ -3267,6 +3280,7 @@ STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Wein omb
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Skip ombouwe
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Fleantúch ombouwe
 
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Wein ombouwe nij selektearre fracht
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Skip ombouwe nij selektearre fracht
 
 # Order view
@@ -3330,6 +3344,7 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
+STR_ORDER_REFIT_ORDER                                           :(Ombouwe nij {STRING})
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3470,6 +3485,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 # Textfile window
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisinsje fan {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Omwikkelje tekst
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisinsje
 
 
