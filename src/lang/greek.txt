@@ -1463,6 +1463,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Απενεργ�
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Ταχύτητα ροδέλας μετακίνησης χάρτη: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Έλεγχος της ευαισθησίας του τροχού του ποντικιού κατά την κύλιση
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Πληκτρολόγιο στην οθόνη: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Επιλογή της μεθόδου για το άνοιγμα του πληκτρολογίου της οθόνης για την εισαγωγή κειμένου σε κουτιά με τη χρήση μόνο της δεικτικής συσκευής. Αυτή η ρύθμιση προορίζεται για μικρότερες συσκευές χωρίς πραγματικό πληκτρολόγιο
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Απενεργοποιημένο
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Με διπλό κλικ
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Με απλό κλικ (όταν είναι επικεντρωμένο)
@@ -1740,6 +1741,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Μετρικό 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Όποτε εμφανίζεται μια ελκτική δύναμη στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Αυτοκρατορικό (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Μετρικό (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
@@ -3196,8 +3198,9 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφά
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_WAITING_STATION                                :Σταθμός: Σε αναμονή
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Ποσότητα: Σε αναμονή
 STR_STATION_VIEW_PLANNED_STATION                                :Σταθμός: Προγραμματισμένο
-STR_STATION_VIEW_PLANNED_AMOUNT                                 :Ποσό: Σχεδιασμένο
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Ποσότητα: Σχεδιασμένο
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} από {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} μέσω {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} προς {STATION}
