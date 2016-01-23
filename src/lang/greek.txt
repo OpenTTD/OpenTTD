@@ -282,7 +282,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
 STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}πόδια
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}πόδ{P "ι" "ια"}
 STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}μ
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
@@ -403,7 +403,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Κατα
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Κατασκευάστε αεροδρόμια
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ανοίξτε την μπάρα εργαλείων μορφοποίησης εδάφους για ανύψωση/βύθιση γης, δενδροφύτευση, κλπ.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Εμφάνιση παραθύρου ήχου/μουσικής
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς ειδήσεων, επιλογές μηνυμάτων
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληροφορίες περιοχής, κονσόλα, αποσφαλμάτωση δέσμης ενεργειών, φωτογραφίες οθόνης, περί του OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Εναλλάγη μπαρών εργασίας
 
@@ -525,7 +525,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ήχος/Μου
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Τελευταίο μήνυμα/αναφορά νέων
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Τελευταίο μήνυμα/αναφορά ειδήσεων
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ιστορικό μηνυμάτων
 ############ range ends here
 
@@ -874,7 +874,7 @@ STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Απόκ
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Εμφάνιση όλων των φορτίων στο χάρτη
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς νέων
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς ειδήσεων
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ΠΑΥΣΗ  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ΑΥΤΟΜΑΤΗ ΑΠΟΘΗΚΕΥΣΗ
@@ -1083,7 +1083,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσ
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας του παιχνιδιού
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Πλήρης οθόνη
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκάρετε αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλυση οθόνης
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
@@ -1374,7 +1374,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Όχι
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Για όλα τα οχήματα
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματου είναι αρνητικά: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένη, στέλνεται μήνυμα νέων όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός ημερολογιακού έτους
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένη, στέλνεται μήνυμα ειδήσεων όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός ημερολογιακού έτους
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένη, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη ανανέωση όταν ένα όχημα παλιώνει: {STRING}
@@ -1406,15 +1406,19 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Σχηματισμός εδάφους: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis μόνο) Λοφώδησ χαρακτήρας του εδάφους
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Πυκνότητα βιομηχανιών: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Θέτει πόσες βιομηχανίες θα δημιουργηθούν και σε τι επίπεδο θα μέινουν κάτα τη διάρκεια το παιχνιδιού
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη απόσταση από την άκρη του χάρτη για τα Διυλιστήρια: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, η οποία είναι ακτή σε νησιωτικούς χάρτες
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Έλεγχος του ύψους στο οποίο ξεκινά το χιόνι στο υπαρκτικό τοπίο. Το χιόνι επηρεάζει επίσης τη δημιουργία βιομηχανιών και τις προυποθέσεις επέκτασης πόλης
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ανωμαλία επιφάνειας (μόνο με TerraGenesis) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis μόνο) Επιλογή της συψνότητας των λόφων: Τα λεία τοπία έχουν λιγότερους, πιο πλατείς λόφους. Τα τραχιά τοπία έχουν πολλούς λόφους που μπορεί να δείχνει μονότονο
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ανώμαλη
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Ανώμαλη
+STR_CONFIG_SETTING_VARIETY                                      :Διανομή ποικιλομορφίας: {STRING}
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis μόνο) Ελέγξτε εάν ο χάρτης θα περιέχει και ορεινές και πεδινές εκτάσεις. Μιας και αυτό μονάχα κάνει το χάρτη πιο επίπεδο, οι άλλες ρυθμίσιες θα πρεπει να τεθούν στο ορεινό
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Πλήθος ποταμών: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Επιλέξτε πόσα ποτάμια να δημιουργηθούν
 STR_CONFIG_SETTING_TREE_PLACER                                  :Αλγόριθμος τοποθέτησης δέντρων: {STRING}
@@ -1517,6 +1521,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρη�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Ορίστε τη μορφή για το παράθυρο των εξόδων της εταιρείας
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Ήχος ειδήσεων: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Παίζει ήχο για περιληπτικά μηνύματα ειδήσεων
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Εφημερίδα: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Παίζει ήχο όταν εμφανίζονται εφημερίδες
@@ -1524,6 +1529,7 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Στο τέλο
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει ηχητικό εφέ στο τέλος του χρόνου που συνοψίζει την επίδοση της εταιρείας κατά την διάρκεια αυτού του χρόνου σε σχέση με τον προηγούμενο χρόνο
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
+STR_CONFIG_SETTING_SOUND_CLICK                                  :πατήματα κουμπιού: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Παίζει ήχο όταν γίνεται κλικ σε κουμπιά
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Καταστροφές/ατυχήματα: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Παίζει ήχους για ατυχήματα και καταστροφές
@@ -1707,21 +1713,32 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Καμία
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Αρχικός πολλαπλασιαστής μεγέθους πόλης: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Μέσο μέγεθος μεγάλων πόλεων σε σχέση με τις κανονικές στην αρχή του παιχνιδιού
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Ενημέρωση γραφήματος κάθε {STRING}{NBSP}μέρ{P 0:2 α ες}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Χρόνος που μεσολαβεί μεταξύ επαναυπολογισμών του γραφήματος συνδέσμου. Κάθε επαναυπολογισμός υπολογίζει το σχέδιο για ένα τμήματος του γραφήματος. Αυτό σημαίνει ότι μια τιμή Χ για αυτή τη ρύθμιση δεν σημαίνει ότι ολόκληρο το γράφημα θα ενημερώνεται κάθε Χ ημέρες, μονάχα κάποια τμήματα. Όσο μικρότερη ρύθμιση τεθεί τόσο μεγαλύτερος χρόνος επεξεργαστή απαιτείται για τον υπολογσιμό του. Όσο μεγαλύτερη ρύθμιση τεθεί  τόσο περισσότερο θα πάρει για να ξεκινήσει η διανομή φορτίου σε νέες διαδρομές.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Πάρε {STRING}{NBSP}μέρ{P 0:2 α ες} για επανυπολογσιμό του γραφήματος διανομής
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Χρόνος που απαιτείται για επαναυπολογισμούς τμήματος γραφήματος συνδέσμου. Όταν ένας επαναυπολογισμός αρχίζει, προκύπτει ένα νήμα το οποίο επιτρέπεται να τρέξει για έναν συγκεκριμένο αριθμό ημερών. Όσο μικρότερος αριθμός τόσο μεγαλύτερες πιθανότητες ότι το νήμα δεν τελείωνει όταν πρέπει. Τότε το παιχνίδι σταματά μέχρι να ολοκληρωθεί («λαγκάρει»). Όσο μεγαλύτερος αριθμός τόσο μεγαλύτερο χρόνο παίρνει για να για να ενημερωθεί διανομή όταν αλλάζουν οι διαδρομές.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :χειροκίνητη
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :μη συμμετρική
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :συμμετρική
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Τρόπος διανομής επιβατών: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Το «συμμετρικό» σημαίνει ότι περίπου ο ίδιος αριθμός επιβατών θα σταλέι από έναν σταθμό Α σε ένα σταθμό Β όσο από τον Β στον Α. Το «ασυμμετρικό» σημαίνει ότι αυθαίρετος αριθμός επιβατών μπορεί να σταλούν σε οποιαδήποτε εκ των δύο κατευθύνσεων. Το «χειροκίνητο» σημαίνει ότι καμία αυτόματη διανομή δε θα γίνεται για τους επιβάτες.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Τρόπος διανομής αλληλογραφίας: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Το «συμμετρικό» σημαίνει ότι περίπου η ίδια ποσότητα αλληλογραφίας θα σταλέι από έναν σταθμό Α σε ένα σταθμό Β όσο από τον Β στον Α. Το «ασυμμετρικό» σημαίνει ότι αυθαίρετες ποσότητες αλληλογραφίας μπορεί να σταλούν σε οποιαδήποτε εκ των δύο κατευθύνσεων. Το «χειροκίνητο» σημαίνει ότι καμία αυτόματη διανομή δε θα γίνεται για την αλληλογραφία.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Τρόπος διανομής για το ΘΩΡΑΚΙΣΜΕΝΟ είδος φορτίου: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Ο ΘΩΡΑΚΙΣΜΕΝΟΣ τύπος φορτίου περιέχει πολύτιμα στο εύκρατο, διαμάντια στο υποτροπικό ή χρυσό στο υποαρκτικό κλίμα. Τα NewGRF μπορούν να το αλλάξουν αυτό. Το «συμμετρικό» σημαίνει ότι περίπου η ίδια ποσότητα φορτίου θα σταλέι από έναν σταθμό Α σε ένα σταθμό Β όσο από τον Β στον Α. Το «ασυμμετρικό» σημαίνει ότι αυθαίρετες ποσότητες αυτού του φορτίου μπορεί να σταλούν σε οποιαδήποτε εκ των δύο κατευθύνσεων. Το «χειροκίνητο» σημαίνει ότι καμία αυτόματη διανομή δε θα γίνεται για το συκγεκριμένο τύπο φορτίου. Συνιστάται η χρήση του ασυμμετρικού ή χειροκίνητου μοντέλου ο΄ταν παίζετε στο υποαρκτικό κλίμα, καθώς οι τράπεζες δε θα στέλνουν χρυσό πίσω στα χρυσωρυχεία. Για το εύκρατο ή υποτροπικό κλίμα μπορείτε επίσης να χρησιμοιήσετε το συμμετρικό καθώς οι τράπεζες θα στέλνουν πολύτιμα πίσω στην τράπεζα προέλευσης.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Τρόπος διανομής άλλων ειδών φορτίου: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Το «ασυμμετρικό» σημαίνει ότι αυθαίρετες ποσότητες αυτού του φορτίου μπορεί να σταλούν σε οποιαδήποτε εκ των δύο κατευθύνσεων. Το «χειροκίνητο» σημαίνει ότι καμία αυτόματη διανομή δε θα γίνεται για αυτά τα φορτία.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Ακρίβεια διανομής: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Επίδραση της απόστασης στη ζήτηση προϊόντων: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Αν ορίσετε αυτό σε μια τιμή μεγαλύτερη από 0, η απόσταση μεταξύ ενός αρχικού σταθμού Α ενός φορτίου και ενός πιθανού προορισμού Β θα επηρεάσει το ποσό του φορτίου που θα αποσταλεί από τον Α στον Β. Όσο πιο μακριά βρίσκεται ο Β από τον Α, τόσο λιγότερο φορτίο θα αποσταλεί. Όσο πιο μεγάλη τιμή ορίσετε, θα αποστέλλεται λιγότερο φορτίο σε μακρινούς προορισμούς και περισσότερο σε κοντινούς.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Ποσότητα επιστρεφόμενου φορτίου στη συμμετρική ρύθμιση: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Θέτοντας αυτή τη ρύθμιση σε τιμή λιγότερη του 100% κάνετε τη συμμετρική διανομή να συμπεριφέρεται πιο πολύ σαν την ασυμμετρική. Λιγότερο φορτίο θα στέλνεται πίσω εαν μια συγκεκριμένη ποσότητα έχει σταλεί σε έναν σταθμό. Αν τεθεί στο 0% η συμμετρική διανομή συμπεριφέρεται ακριβώς όπως η ασυμμετρική.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Κορεσμός σύντομων δρόμων πριν τη χρήση δρόμων μεγάλης χωρητικότητας: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Όποτε εμφανίζεται μια ταχύτητα στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Αυτοκρατορικό (mph)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Μετρικό (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Αυτοκρατορικό (μίλια/ώρα)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Μετρικό (χλμ/ώρα)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Μονάδες ισχύος οχημάτων: {STRING}
@@ -1732,14 +1749,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Μονάδες μέτρησης βάρους: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Όποτε εμφανίζεται ένα βάρος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Αυτοκρατορικό (τόννοι)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Μετρικό (t/τόννος)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Μονάδες μέτρησης όγκου: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Όποτε εμφανίζεται ένας όγκος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Αυτοκρατορικό (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Αυτοκρατορικό (γαλ)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Μετρικό (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Μονάδες ελκτικής δύναμης: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Όποτε εμφανίζεται μια ελκτική δύναμη στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Αυτοκρατορικό (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Μετρικό (kgf)
@@ -1747,6 +1767,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Μονάδες μέτρησης ύψους: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Όποτε εμφανίζεται ένα ύψος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Αυτοκρατορικό (πόδια)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικό (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
@@ -1754,9 +1775,10 @@ STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Τοπ�
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Γραφικά
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ήχος
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Περιβάλλον Λειτουργίας
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Γενικά
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Παράθυρα προβολών
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Κατασκευή
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Νέα / Σύμβουλοι
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Ειδήσεις / Σύμβουλοι
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Εταιρία
 STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Λογιστικά
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
@@ -1806,6 +1828,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... αγ
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... αγνόηση βασικού σετ ήχων «{STRING}»: δεν βρέθηκε
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... αγνόηση βασικού σετ μουσικής «{STRING}»: δεν βρέθηκε
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Έλληψη μνήμης
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Η κατανομή {BYTES} του spritecache απέτυχε. Το spritecache μειώθηκε σε {BYTES}. Αυτό θα μειώσει την απόδοση του OpenTTD. Για να μειώσετε τις ανάγκες μνήμς μπορείτε να απενεργοποιήσετε τα γραφικά 32bpp graphics ή/και τα επίπεδα μεγέθυνσης
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1986,6 +2009,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλα
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
 STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Διαφημιζόμενο
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Επιλογή ανάμεσα σε ένα διαφημιζόμενο (διαδίκτυο) ή μη διαφημιζόμενο (Τοπικό Δίκτυο/LAN) παιχνίδι
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Όχι
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ναι
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
@@ -2364,6 +2388,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλ
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Υπόμνημα ροής Φορτίου
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Όλες
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Καμία
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Επιλογή εταιριών για να εμφανιστούν
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}μη χρησιμοποιημένο
@@ -2769,7 +2794,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ιδιοκτη�
 STR_ABOUT_OPENTTD                                               :{WHITE}Σχετικά με το OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
 STR_ABOUT_VERSION                                               :{BLACK}Έκδοση OpenTTD{REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2015 Η ομάδα του OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2016 Η ομάδα του OpenTTD
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Αποθήκευση Παιχνιδιού
@@ -2891,6 +2916,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετα
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Μετακινήστε το επιλεγμένο αρχείο NewGRF πάνω στη λίστα
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Μετακίνηση Κάτω
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετακινήστε το επιλεγμένο αρχείο NewGRF κάτω στη λίστα
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Αναβάθμιση
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Αναβάθμιση αρχείων NewGRF για τα οποία μια νεότερη έκδοση έχει εγκατασταθεί
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μία λίστα που περιέχει τα εγκατεστημένα αρχεία NewGRF
 
@@ -2918,7 +2944,10 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συ�
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Αποθήκευση προκαθορισμένου
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Λίστα διαθέσιμων προκαθορισμένων, επιλέχτε ένα για την αντιγραφή το στο όνομα αποθήκευσης απο κάτω
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Δώστε ένα όνομα για το προκαθορισμένο
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Τρέχον επιλεγμένο όνομα για το προκαθορισμένο για αποθήκευση
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Ακύρωση
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Μη αλλαγή του προκαθορισμένου
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Αποθήκευση
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Αποθήκευση προκαθορισμένου, χρησιμοποιώντας το επιλεγμένο όνομα
@@ -3112,6 +3141,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Αγο�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκήστε τις τοπικές αρχές για να αυξήσετε τα ποσοστά αποδοχής σας, με ρίσκο ένα μεγάλο πρόστιμο εάν συλληφθείτε.{}Κόστος: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Στόχοι:
 STR_GOALS_SPECTATOR_CAPTION                                     :{BLACK}Καθολικοί στόχοι:
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Καθολικοί στόχοι:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3163,6 +3193,7 @@ STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Παγκόσμιο Βιβλίο Ιστορίας
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Σελίδα {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Μεταβείτε σε μια συγκεκριμένη σελίδα επιλέγοντάς την από αυτή τη λίστα.
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Προηγούμενη
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Μεταβαίνει στη προηγούμενη σελίδα
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Επόμενη
@@ -3195,8 +3226,10 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Η {YELLOW}{COM
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Μηνιαία προμήθεια και τοπικό ποσοστό αποδοχής:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Ομαδοποίηση από
 STR_STATION_VIEW_WAITING_STATION                                :Σταθμός: Σε αναμονή
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Ποσότητα: Σε αναμονή
 STR_STATION_VIEW_PLANNED_STATION                                :Σταθμός: Προγραμματισμένο
@@ -3205,6 +3238,9 @@ STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} μέσω {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} προς {STATION}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} από άγνωστο σταθμό
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} φορτίο σε οποινδήποτε σταθμό
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} μέσω οποιουδήποτε σταθμού
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} από αυτό το σταθμό
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} σταματάει σε αυτόν τον σταθμό
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} σε αυτό το σταθμό
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} χωρίς στάση
@@ -3357,6 +3393,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Παρα
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην περιοχή της βιομηχανίας
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Επίπεδο παραγωγής: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Η βιομηχανία έχει ανακοινώσει άμεσο κλείσιμο!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}
@@ -3974,7 +4011,9 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψ�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδι (μη δρομολογημένο) με μέγιστη ταχύτητα {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με στο μέγιστο {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Ταξίδι (για {STRING}, μη δρομολογημένο)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ταξίδι γιά {STRING}, (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(αναμονή για {STRING}, μη δρομολογημένο)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(ταξίδι για {STRING}, μη δρομολογημένο)
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
@@ -3991,6 +4030,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Αυτό
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Αυτό το δρομολόγιο θα ξεκινήσει στις {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Εναρκτήρια ημερομηνία
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Διαλέξτε μια ημερομηνία ως αρχικό σημείο του πίνακα δρομολογίων. Το Ctrl+κλικ θέτει το αρχικό σημείο του πίνακα δρομολογίων και διανέμει τα οχήματα που μοιράζονται τις διαταγές ίσα με βάση τη σχετική τους σειρά αν η διαταγή είναι εξολοκλήρου δρομολογημένη
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλάζει ο χρόνος που παίρνει η επιλεγμένη επιλογή για να εκτελεστεί
@@ -4087,7 +4127,7 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Ιστ�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Αποδοχή
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Αποδοχή της επιλεγμένης δέσμης ενεργειών
-STR_AI_LIST_CANCEL                                              :{BLACK}Άκυρο
+STR_AI_LIST_CANCEL                                              :{BLACK}Άκυρωση
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μην γίνει αλλαγή δέσμης ενεργειών
 
 # AI Parameters
@@ -4104,6 +4144,7 @@ STR_AI_SETTINGS_START_DELAY                                     :Αριθμός 
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme του {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{G=m}{WHITE}{STRING} ιστορικό αλλαγών του {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} άδεια του {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Αναδίπλωση κειμένου
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Αναδίπλωση του κειμένου του παραθύρου ώστε να χωρά χωρίς να απαιτέιται κύλιση
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Εμφάνιση readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ιστορικό αλλαγών
@@ -4432,6 +4473,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... εί
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Δεν μπορεί να δημιουργηθεί ομάδα...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Δεν μπορεί να διαγραφεί αυτή η ομάδα...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Δεν μπορεί να μετονομαστεί η ομάδα...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Δε γίνεται να τεθεί γονική ομάδα...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Δεν μπορεί να αφαιρεθούν όλα τα οχήματα από την ομάδα...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Δεν μπορεί να προστεθεί το όχημα στην ομάδα...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Δεν μπορεί να προστεθούν κοινά οχήματα στην ομάδα...
