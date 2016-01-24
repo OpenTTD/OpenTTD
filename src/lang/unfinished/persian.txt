@@ -2801,6 +2801,7 @@ STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_S
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} به این ایستگاه
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} بدون توقف
 
+STR_STATION_VIEW_GROUP_D_V_S                                    :مقصد با منبع
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :ترسناک
@@ -2870,6 +2871,7 @@ STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}25% سه
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}25% سهام این شرکت را بخر.Shift+Click برآورد قیمت سهام را بدون فروش سهام نشان می دهد.
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% سهام این شرکت را بفروش.دکمه Shift+Clickبرآورد قیمت را بدون فروش سهام نمایش می دهد
 
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :مدیر عامل
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}ما به دنبال یک شرکت حمل و نقل هستیم که مایل باشد مالکیت شرکت ما را بصورت یکجا در اختیار بگیرد.{}{}آیا شما مایل به خرید شرکت {COMPANY} به مبلغ {CURRENCY_LONG} هستید؟
 
@@ -3066,6 +3068,7 @@ STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}وسی�
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK} ستون با وسیله نقلیه آماده جایگزینی می باشد
 
 
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}برای توقف جایگزین کردن برای نوع انتخاب شده در سمت چپ کلیک کنید
 
 
 
@@ -3191,6 +3194,7 @@ STR_ORDERS_END_OF_ORDERS                                        :- - پایان 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :عمر مفید باقی مانده (سال)
 
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :صحیح است
 
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}رها کردن
@@ -3253,6 +3257,7 @@ STR_AI_DEBUG                                                    :{WHITE}رفع �
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}نام کد
 STR_AI_DEBUG_RELOAD                                             :{BLACK}بازگشایی مجدد هوش مصنوعی
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}از بین بردن هوش مصنوعی. بازگشایی اسکریپت. و شروع مجدد هوش مصنوعی
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}فعالسازی/غیر فعال سازی توقف هنگامی که هوش مصنوعی گزارشی با متن توقف تولید می کند
 STR_AI_GAME_SCRIPT                                              :{BLACK}کدبازی
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}دیدن گزارش های کد بازی
 
@@ -3358,6 +3363,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}مکان
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}قبلا در اینجا ساخته شده
 STR_ERROR_OWNED_BY                                              :{WHITE}صاحب {STRING} است.
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}این ناحیه توسط شرکت دیگری تصاحب شده
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... به بیش از حد تولید پستی و بلندی ها رسیده
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}انجمن شهر {TOWN} اجازه این کار را نمیدهد
