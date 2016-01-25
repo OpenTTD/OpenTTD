@@ -342,7 +342,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construe
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar el terreny, plantar arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra de so/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies i l'historial disponible
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació de terreny, consola, depuració d'scripts, captures de pantalla, informació de l'OpenTTD...
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació de terreny, consola, depuració de scripts, captures de pantalla, informació de l'OpenTTD...
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
@@ -3058,7 +3058,7 @@ STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :No
 STR_GOAL_QUESTION_BUTTON_YES                                    :Sí
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Declina
-STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accepta
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :D'acord
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignora
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :Reintenta
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anterior
@@ -4013,7 +4013,7 @@ STR_AI_LIST_AUTHOR                                              :{LTBLUE}Obra de
 STR_AI_LIST_VERSION                                             :{LTBLUE}Versió: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
-STR_AI_LIST_ACCEPT                                              :{BLACK}Accepta
+STR_AI_LIST_ACCEPT                                              :{BLACK}D'acord
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecciona l'script marcat.
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancel·la
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canviïs l'script.
