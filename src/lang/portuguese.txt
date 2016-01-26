@@ -1664,8 +1664,10 @@ STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localiz
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efeitos sonoros
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construção
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Empresa
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veículos
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Em rota
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Acidentes
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Cidades
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuição de Carga
