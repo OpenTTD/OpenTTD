@@ -167,7 +167,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passager{P "" s}
-STR_BAGS                                                        :{COMMA}{NBSP}sac{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}sac{P 0 "" s}
 STR_TONS                                                        :{COMMA}{NBSP}tonne{P "" s}
 STR_LITERS                                                      :{COMMA}{NBSP}litre{P "" s}
 STR_ITEMS                                                       :{COMMA}{NBSP}unité{P "" s}
@@ -815,8 +815,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} a sponsorisé la construction de la nouvelle ville {TOWN}{NBSP}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} en construction près de {TOWN}{NBSP}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} s'implante près de {TOWN}{NBSP}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Un{G 0 "" "" e} nouv{G 0 eau el elle} {STRING} en construction près de {TOWN}{NBSP}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Un{G 0 "" "" e} nouv{G 0 eau el elle} {STRING} s'implante près de {TOWN}{NBSP}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} annonce une fermeture imminente{NBSP}!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Des problèmes d'approvisionnement obligent {STRING} à fermer bientôt{NBSP}!
@@ -858,9 +858,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}L'échec du réaménagement a stoppé {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Le renouvellement automatique de {VEHICLE} a échoué{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nouv{G eau el elle} {STRING} disponible{NBSP}!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nouv{G 0 eau el elle} {STRING} disponible{NBSP}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nouv{G eau el elle} {STRING} disponible{NBSP}!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nouv{G 0 eau el elle} {STRING} disponible{NBSP}!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} n'accepte plus {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} n'accepte plus {STRING} ou {STRING}
@@ -1215,8 +1215,8 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :à droite de la
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Afficher le bilan financier en fin d'année{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si activé, le bilan financier sera affiché à la fin de chaque année pour permettre un contrôle rapide de l'état de la compagnie.
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les nouveaux ordres sont « sans arrêt » par défaut{NBSP}: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalement, un véhicule s'arrête dans chaque station qu'il traverse. En activant ce paramètre, il traversera toutes les stations sur le chemin de sa destination finale sans s'arrêter. Noter que ce paramètre défini uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent par ailleurs être réglés individuellement avec un autre comportement
-STR_CONFIG_SETTING_STOP_LOCATION                                :Les nouveaux ordres arrêtent les trains {G 0:2 au au "à la"} {STRING} du quai par défaut
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalement, un véhicule s'arrête dans chaque station qu'il traverse. En activant ce paramètre, il traversera toutes les stations sur le chemin de sa destination finale sans s'arrêter. Noter que ce paramètre définit uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent par après être réglés individuellement avec un autre comportement
+STR_CONFIG_SETTING_STOP_LOCATION                                :Les nouveaux ordres arrêtent les trains {G 0 au au "à la"} {STRING} du quai par défaut
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Endroit du quai où un train s'arrête par défaut. "queue" signifie proche du point d'entrée. "milieu" signifie au milieu du quai. "tête" signifie à l'opposé du point d'entrée. Noter que ce paramètre défini uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent par ailleurs être réglés individuellement avec un autre comportement
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :{G=f}queue
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :{G=m}milieu
@@ -1407,7 +1407,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Premier disponi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Dernier disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Le plus utilisé
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Afficher les réservations de chemin sur les voies{NBSP}: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donne une couleur différente aux voies réservées pour aider à résoudre les problèmes de trains refusant d'entrer dans des blocs basés sur le chemin
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donne une couleur différente aux voies réservées afin d'aider à résoudre les problèmes de trains refusant de s'engager dans des tronçons encadrés par des signaux de passage
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Conserver les outils de construction actifs après usage{NBSP}: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Garde les outils de construction de ponts, tunnels, etc. ouverts après usage
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Regrouper les dépenses dans la fenêtre des finances{NBSP}: {STRING}
@@ -1464,15 +1464,15 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Nombre maximum 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Les intervalles de service sont en pourcentage{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choisir si l'entretien des véhicule est activé par le temps passé depuis le dernier entretien ou par la fiabilité passant sous un pourcentage de la fiabilité maximum
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalle d'entretien par défaut pour les trains{NBSP}: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Défini l'intervalle d'entretien par défaut des nouveaux véhicules ferroviaires, si aucun intervalle d'entretien n'est définit pour le véhicule
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Définit l'intervalle d'entretien par défaut des nouveaux véhicules ferroviaires, si aucun intervalle d'entretien n'est défini pour le véhicule
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}jour{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Désactivé
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalle d'entretien par défaut pour les véhicules routiers{NBSP}: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Défini l'intervalle d'entretien par défaut des nouveaux véhicules routiers, si aucun intervalle d'entretien n'est définit pour le véhicule
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Définit l'intervalle d'entretien par défaut des nouveaux véhicules routiers, si aucun intervalle d'entretien n'est défini pour le véhicule
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalle d'entretien par défaut pour les aéronefs{NBSP}: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Défini l'intervalle d'entretien par défaut des nouveaux aéronefs, si aucun intervalle d'entretien n'est définit pour le véhicule
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Définit l'intervalle d'entretien par défaut des nouveaux aéronefs, si aucun intervalle d'entretien n'est défini pour le véhicule
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalle d'entretien par défaut pour les navires{NBSP}: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Défini l'intervalle d'entretien par défaut des nouveaux navires, si aucun intervalle d'entretien n'est définit pour le véhicule
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Définit l'intervalle d'entretien par défaut des nouveaux navires, si aucun intervalle d'entretien n'est défini pour le véhicule
 STR_CONFIG_SETTING_NOSERVICE                                    :Désactiver l'entretien quand les pannes sont inactives{NBSP}: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Lorsqu'il est activé, les véhicules ne sont pas entretenus s'ils ne peuvent pas tomber en panne
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activer la vitesse limite des wagons{NBSP}: {STRING}
@@ -2221,7 +2221,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Pré-s�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cette dépendance a été sélectionnée pour être téléchargée
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Vous avez déjà ceci
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ce module est inconnu et ne peut pas être téléchargé dans OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ceci est un remplacement pour {G "un" "des" "une"} {STRING} existant{G 0 "" "s" "e"}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ceci est un remplacement pour {G 0 "un" "des" "une"} {STRING} existant{G 0 "" "s" "e"}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nom{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Description{NBSP}: {WHITE}{STRING}
