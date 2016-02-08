@@ -33,6 +33,7 @@ enum VehicleSoundEvent {
 SoundEntry *AllocateSound(uint num);
 void InitializeSoundPool();
 bool LoadNewGRFSound(SoundEntry *sound);
+SoundID GetNewGRFSoundID(const struct GRFFile *file, SoundID sound_id);
 SoundEntry *GetSound(SoundID sound_id);
 uint GetNumSounds();
 bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event);

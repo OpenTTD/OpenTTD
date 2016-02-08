@@ -161,6 +161,22 @@ bool LoadNewGRFSound(SoundEntry *sound)
 	return false;
 }
 
+/**
+ * Resolve NewGRF sound ID.
+ * @param file NewGRF to get sound from.
+ * @param sound_id GRF-specific sound ID. (GRF-local for IDs above ORIGINAL_SAMPLE_COUNT)
+ * @return Translated (global) sound ID, or INVALID_SOUND.
+ */
+SoundID GetNewGRFSoundID(const GRFFile *file, SoundID sound_id)
+{
+	/* Global sound? */
+	if (sound_id < ORIGINAL_SAMPLE_COUNT) return sound_id;
+
+	sound_id -= ORIGINAL_SAMPLE_COUNT;
+	if (file == NULL || sound_id >= file->num_sounds) return INVALID_SOUND;
+
+	return file->sound_offset  + sound_id;
+}
 
 /**
  * Checks whether a NewGRF wants to play a different vehicle sound effect.
@@ -185,14 +201,10 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 	/* Play default sound if callback fails */
 	if (callback == CALLBACK_FAILED) return false;
 
-	if (callback >= ORIGINAL_SAMPLE_COUNT) {
-		callback -= ORIGINAL_SAMPLE_COUNT;
+	callback = GetNewGRFSoundID(file, callback);
 
-		/* Play no sound if result is out of range */
-		if (callback > file->num_sounds) return true;
-
-		callback += file->sound_offset;
-	}
+	/* Play no sound, if result is invalid */
+	if (callback == INVALID_SOUND) return true;
 
 	assert(callback < GetNumSounds());
 	SndPlayVehicleFx(callback, v);
@@ -207,11 +219,8 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
  */
 void PlayTileSound(const GRFFile *file, SoundID sound_id, TileIndex tile)
 {
-	if (sound_id >= ORIGINAL_SAMPLE_COUNT) {
-		sound_id -= ORIGINAL_SAMPLE_COUNT;
-		if (sound_id > file->num_sounds) return;
-		sound_id += file->sound_offset;
-	}
+	sound_id = GetNewGRFSoundID(file, sound_id);
+	if (sound_id == INVALID_SOUND) return;
 
 	assert(sound_id < GetNumSounds());
 	SndPlayTileFx(sound_id, tile);

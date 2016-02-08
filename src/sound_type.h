@@ -119,4 +119,6 @@ static const uint ORIGINAL_SAMPLE_COUNT = 73;
 
 typedef uint16 SoundID;
 
+static const SoundID INVALID_SOUND = 0xFFFF;
+
 #endif /* SOUND_TYPE_H */
