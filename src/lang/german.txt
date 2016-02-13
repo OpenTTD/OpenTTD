@@ -2876,6 +2876,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorherig
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gehe zum vorherigen normalen Sprite und überspringe alle Pseudo-, Recolour- und Schriftsprites (springt ggf. vom letzten bis zum ersten Sprite)
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Darstellung des aktuellen Sprites. Die Ausrichtung wird beim Zeichnen des Sprites ignoriert
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bewege die Sprites und ändere dadurch die X- und Y-Offsets. Drücke Strg+Click um die Sprites 8 Blöcke weit zu bewegen.
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Setze zurück
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Setze die aktuelle Verschiebung zurück.
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Absolut)
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Relativ)
