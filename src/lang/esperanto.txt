@@ -1349,6 +1349,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgran
 
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metriko (hp)
 
 
 
@@ -2563,6 +2564,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 # Goal question window
 
 ############ Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Daŭrigu
 ############ End of Goal Question button list
 
 # Subsidies window
@@ -3365,12 +3367,14 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu for
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Ludo Skripto Agordo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Homa ludanto
 STR_AI_CONFIG_RANDOM_AI                                         :Hazarda AI
+STR_AI_CONFIG_NONE                                              :(neniu)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Movi supren
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Movi elektitan AI-on supren en la listo
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Movi suben
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Movi elektitan AI-on suben en la listo
 
+STR_AI_CONFIG_AI                                                :{SILVER}AIj
 
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Agordi
