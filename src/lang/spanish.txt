@@ -1464,7 +1464,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalo de mantenimiento en porcentajes: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Permite escoger si el mantenimiento de vehículos comenzará debido al tiempo pasado desde el último mantenimiento o por una reducción de la fiabilidad más allá de un porcentaje determinado
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantenimiento por defecto para trenes: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Fija el intervalo de mantenimiento por defecto para vehículos de ferrocarril nuevos, que se empleará si no se define un intervalo de forma explícita para ese vehículo
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Fija el intervalo de mantenimiento por defecto para los nuevos vehículos de ferrocarril, siendo usado este si no se define un intervalo de forma explícita para ese vehículo
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}día{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deshabilitado
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento por defecto para vehículos de carretera: {STRING}
@@ -3406,7 +3406,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar 
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar barco
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar aeronave
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el vehículo de raíl resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra el vehículo de ferrocarril resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el vehículo de carretera resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar el barco resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave resaltada. Shift+Click muestra una estimación del precio sin realizar la compra
@@ -4004,8 +4004,8 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configur
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura los parámetros del script
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibles
-STR_AI_LIST_CAPTION_AI                                          :IA
+STR_AI_LIST_CAPTION                                             :{WHITE}Disponible {STRING}
+STR_AI_LIST_CAPTION_AI                                          :IAs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de Juego
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Click para seleccionar un script
 
@@ -4020,8 +4020,8 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No cambi
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros {STRING}
-STR_AI_SETTINGS_CAPTION_AI                                      :de la IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :del Script de Juego
+STR_AI_SETTINGS_CAPTION_AI                                      :IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
