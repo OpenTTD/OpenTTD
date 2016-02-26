@@ -1325,7 +1325,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :El nivel de la altura del mapa plano tiene: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no son agua
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no es agua
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Máxima extensión de estaciones: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Máxima área que pueden ocupar las partes de una estación. Valores muy altos pueden ralentizar el juego
@@ -3396,10 +3396,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {C
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T máxima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} casillas
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de los vehículos de raíl - Click en el vehículo para más información - Ctrl+Click para mostrar/ocultar el tipo del vehículo
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera - Click en el vehículo para más información - Ctrl+Click para mostrar/ocultar el tipo del vehículo
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos - Click en el barco para más información - Ctrl+Click para mostrar/ocultar el tipo del barco
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de aeronaves - Click en la aeronave para más información - Ctrl+Click para mostrar/ocultar el tipo de la aeronave
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de los vehículos de ferrocarril. Click en el vehículo para más información. Ctrl+Click para mostrar/ocultar el tipo del vehículo
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera. Click en el vehículo para más información. Ctrl+Click para mostrar/ocultar el tipo del vehículo
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos. Click en el barco para más información. Ctrl+Click para mostrar/ocultar el tipo del barco
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de aeronaves. Click en la aeronave para más información. Ctrl+Click para mostrar/ocultar el tipo de la aeronave
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Comprar vehículo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar vehículo
