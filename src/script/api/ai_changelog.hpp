@@ -17,7 +17,7 @@
  *
  * \b 1.6.0
  *
- * 1.6.0 is not yet released. The following changes are not set in stone yet.
+ * No changes
  *
  * \b 1.5.3
  *
