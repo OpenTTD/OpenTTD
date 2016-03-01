@@ -15,9 +15,13 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.7.0
+ *
+ * 1.7.0 is not yet released. The following changes are not set in stone yet.
+ *
  * \b 1.6.0
  *
- * 1.6.0 is not yet released. The following changes are not set in stone yet.
+ * No changes
  *
  * \b 1.5.3
  *
