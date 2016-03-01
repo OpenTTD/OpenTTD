@@ -3254,7 +3254,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Idź do 
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Poprzedni obrazek
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idź do poprzedniego normalnego obrazka, pomijając jakiekolwiek pseudo/kolorowe/znakowe obrazki i zawijaj je od pierwszego do ostatniego
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Przedstawienie wybranego orbazka. Dostosowanie jest ignorowane podczas rysowania tego obrazka
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj obrazkiem, zmieniając przesunięcia X i Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj obrazkiem, zmieniając przesunięcia X i Y. Ctrl+klik aby przesunąć o 8 jednostek  na raz.
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetuj zależność
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetuj aktualne offsety zależne
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Całkowity)

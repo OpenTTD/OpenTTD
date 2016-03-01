@@ -1064,6 +1064,7 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :แบนรา
 STR_TERRAIN_TYPE_FLAT                                           :แบนราบ
 STR_TERRAIN_TYPE_HILLY                                          :เนินเขา
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :ภูเขาสูง
+STR_TERRAIN_TYPE_ALPINIST                                       :นักไต่เขา
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
 STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อนผันให้ได้
@@ -1084,6 +1085,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ตั้งค
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :ตั้งค่าองค์กร (ถูกเก็บไว้ในการบันทึกเกม; มีผลเฉพาะการเริ่มเกมใหม่)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :ตั้งค่าองค์กร (ถูกเก็บไว้ในการบันทึกเกม; มีผลเฉพาะเกมปัจจุบัน)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}หมวดหมู่:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}จำกัดรายการด้านล่างให้แสดงเฉพาะการตั้งค่าที่มีการเปลี่ยนแปลง
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :ตั้งค่าพื้นฐาน
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :ตั้งค่าขั้นสูง
@@ -1166,6 +1168,7 @@ STR_CONFIG_SETTING_INFLATION                                    :ภาวะเ
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :เมื่อเปิดการใช้งานอัตราเงินเฟ้อ ค่าเงินจะถูกลงและต้องใช้เงินมากขึ้นในการซื้อหรือสร้าง แต่ผลตอบแทนจากการขนส่งก็จะเพิ่มขึ้นด้วยเช่นกัน
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :ความยาวสูงสุดของสะพาน: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :ปรับความยาวสูงสุดสำหรับการสร้างสะพาน
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :ความสูงของสะพาน: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :ความยาวสูงสุดของอุโมงค์: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :ปรับความยาวสูงสุดสำหรับการสร้างอุโมงค์
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :กำหนดวิธีหลักในการก่อสร้างอุตสาหกรรมเอง: {STRING}
@@ -1265,6 +1268,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :ระยะห่างที่สุดจากขอบแผนที่ของโรงกลั่นน้ำมัน: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :โรงกลั่นน้ำมันจะสามารถตั้งได้เฉพาะบริเวณใกล้ๆขอบแผนที่เท่านั้น การตั้งค่านี้จะสามารถตั้งให้สร้างโรงกลั่นน้ำมันได้ห่างสูงสุดเท่าใดจากของแผนที่
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ระดับความสูงแนวหิมะ: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :ควบคุมความสูงเริ่มต้นของหิมะบนพื้นภูมิทัศน์อาร์ติคย่อยๆ, หิมะยังมีผลการสร้างอุตสาหกรรม และการเติบโตของเมือง
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :ความหยาบของพื้นที่ (เฉพาะ TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ราบเรียบมาก
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ราบเรียบ
@@ -1623,6 +1627,7 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่�
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}สิ่งแวดล้อม
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}อุตสาหกรรม
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}การกระจายสินค้า
@@ -1676,6 +1681,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}เล�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตัวเลือกเกม
 STR_INTRO_HIGHSCORE                                             :{BLACK}ตารางคะแนนสูงสุด
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}ตั้งค่า
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}ตรวจสอบเนื้อหาออนไลน์
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}ตั้งค่า AI/Game Script
@@ -2740,6 +2746,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}ย้�
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}เลื่อน NewGRF ที่เลือกไว้ขึ้นไปในรายการ
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}ย้ายตำแหน่งลง
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}เลื่อน NewGRF ที่เลือกไว้ลงไปในรายการ
+STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}อัพเกรด
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}ปรับปรุงรุ่นไฟล์ NewGRF สำหรับเวอร์ชันที่ได้ติดตั้งไปแล้วก่อนหน้า
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}รายการของ NewGRF ที่มีการติดตั้งในปัจจุบัน
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ตั้งค่า parameters
@@ -3335,6 +3343,8 @@ STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}เป�
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}เปลี่ยนชื่อชนิดของเครื่องบิน
 
 
+STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}การแสดงผล
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}การแสดงผล
 
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}เปลี่ยนชื่อชนิดของรถไฟ
@@ -4037,6 +4047,7 @@ STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}กา�
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ตอนนี้อยู่ที่ระดับน้ำทะเลแล้ว
 STR_ERROR_TOO_HIGH                                              :{WHITE}... สูงเกินไป
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... อยู่ในสภาพที่ต่ำที่สุดแล้ว
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}สะพานที่อยู่ด้านบนจะสูงเกินไป
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}ไม่สามารถเปลี่ยนชื่อบริษัทได้
