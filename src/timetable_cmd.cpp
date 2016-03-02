@@ -174,6 +174,39 @@ CommandCost CmdChangeTimetable(DoCommandFlag flags, VehicleID veh, VehicleOrderI
 }
 
 /**
+ * Change timetable data of all orders of a vehicle.
+ * @param flags Operation to perform.
+ * @param veh Vehicle with the orders to change.
+ * @param mtf Timetable data to change (@see ModifyTimetableFlags)
+ * @param data The data to modify as specified by \c mtf.
+ *             0 to clear times, UINT16_MAX to clear speed limit.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdBulkChangeTimetable(DoCommandFlag flags, VehicleID veh, ModifyTimetableFlags mtf, uint16 data)
+{
+	Vehicle *v = Vehicle::GetIfValid(veh);
+	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	if (ret.Failed()) return ret;
+
+	if (mtf >= MTF_END) return CMD_ERROR;
+
+	if (v->GetNumOrders() == 0) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		for (VehicleOrderID order_number = 0; order_number < v->GetNumOrders(); order_number++) {
+			Order *order = v->GetOrder(order_number);
+			if (order == nullptr || order->IsType(OT_IMPLICIT)) continue;
+
+			Command<CMD_CHANGE_TIMETABLE>::Do(DC_EXEC, v->index, order_number, mtf, data);
+		}
+	}
+
+	return CommandCost();
+}
+
+/**
  * Clear the lateness counter to make the vehicle on time.
  * @param flags Operation to perform.
  * @param veh Vehicle with the orders to change.
