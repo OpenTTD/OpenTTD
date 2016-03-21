@@ -194,7 +194,7 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			FontCache::Get(FS_MONO)->GetFontName()
 	);
 
-	buffer += seprintf(buffer, last, "AI Configuration (local: %i):\n", (int)_local_company);
+	buffer += seprintf(buffer, last, "AI Configuration (local: %i) (current: %i):\n", (int)_local_company, (int)_current_company);
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->ai_info == NULL) {
