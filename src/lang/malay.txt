@@ -241,6 +241,7 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Musnahka
 
 # Show engines button
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Dengan membenarkan pilihan ini, kapal tersembunyi turut ditunjukkan
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Asal
@@ -4078,6 +4079,7 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Sebuah permaina
 
 # Translatable descriptions in media/baseset/*.ob* files
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe DOS edition.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe edisi Windows.
 
 ##id 0x2000
 # Town building names
