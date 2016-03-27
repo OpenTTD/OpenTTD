@@ -1200,9 +1200,11 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :நகரத்
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :நகரத்தின் மக்கள்தொகையினை வரைபடத்தில் காட்டவும்
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :வரைபடத்தில் கோடுகளின் எண்ணிக்கை: {STRING}
 
+STR_CONFIG_SETTING_LANDSCAPE                                    : நிலவெளி: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :நில உருவாக்கி: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :உண்மையான
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :தொழிற்சாலை அடர்த்தி: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :வரைபட எல்லையிலிருந்து எண்ணெய் சுத்திகரிப்பு நிலையங்கள் இருக்கக்கூடிய தூரம்: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :எண்ணெய் சுத்திகரிப்பு நிலையங்கள் வரைபடத்தின் எல்லைகளில் மட்டுமே கட்ட இயலும், அதாவது தீவு வரைபடங்களில் கடற்கரைகளில் கட்ட இயலும்
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :பனி-கோடின் உயரம்: {STRING}
@@ -1215,6 +1217,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :மரங்க
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மையான
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :சீரமைக்கப்பட்ட
+STR_CONFIG_SETTING_ROAD_SIDE                                    :சாலை வாகனங்கள்: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :உயர்பட சுழற்ச்சி: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :வலமிருந்து இடமாக செல்
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :இடமிலிருந்து வலஞ்செல்
@@ -1250,6 +1253,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :அணை
 
 
+STR_CONFIG_SETTING_AUTOSAVE                                     :தானியங்கிபதிவு: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{STRING} தேதி வகையினை பதிவுஆட்டங்கள் பெயர்களுக்கு பயன்படுத்தவும்
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :பதிவு ஆட்டங்கள் கோப்புப் பெயர்களில் உள்ள தேதி வகையினை அமை
@@ -1306,6 +1310,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :கணினி
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :கணினியிற்கு கப்பல்களை அனுமதிக்காதே: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :கணினியால் கப்பல்களை பயன்படுத்த இயலாது
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :முதன்மை அமைப்புகள் profile: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :எளிதான
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :நடுத்தரமான
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :கடுமையான
@@ -1414,6 +1419,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ஒன்று
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்க நகர அளவு பெருக்கம்: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத்தின் தொடக்கத்தில் மாநகரங்களின் அளவு நகரங்களை ஒப்பிடுகையில்
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :கைமுறை
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :பயணிகள் பரிமாற்றம் வகை: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :அஞ்சல் பரிமாற்றம் வகை: {STRING}
 
@@ -1446,11 +1452,17 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :இம்பீ
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :மெட்ரிக் (மீ)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (மீ)
 
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}அசைவூட்டம்
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}ஒலிகள்
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}கட்டுமானம்
+STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}நிறுவனம்
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}கணக்கியல்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}வழி மாற்றல்
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}எல்லைகள்
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}பேரழிவுகள் / விபத்துகள்
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}சுற்றுச்சூழல்
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}நகரங்கள்
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}தொழிற்சாலைகள்
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}சரக்கு பரிமாற்றம்
@@ -2146,6 +2158,7 @@ STR_AIRPORT_CITY                                                :மாநகர
 STR_AIRPORT_METRO                                               :மாநகர
 STR_AIRPORT_INTERNATIONAL                                       :சர்வதேச
 STR_AIRPORT_COMMUTER                                            :பயணிகள்
+STR_AIRPORT_INTERCONTINENTAL                                    :கண்டமிடை
 STR_AIRPORT_HELIPORT                                            :ஹெலிபோர்ட்
 STR_AIRPORT_HELIDEPOT                                           :வானூர்தி பணிமனை
 STR_AIRPORT_HELISTATION                                         :வானூர்தி நிலையம்
