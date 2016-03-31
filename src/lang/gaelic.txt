@@ -1232,7 +1232,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Ro-shea
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 not (£) san airgeadra agad
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Atharraich paramadair an airgeadra ghnàthaichte
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Àireamh as motha dhe dh'fharpaisichean: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Chan eil gin
 STR_FUNDING_ONLY                                                :Le maoineachadh a-mhàin
@@ -1431,7 +1431,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Na h-uile port-
 STR_CONFIG_SETTING_BRIBE                                        :Ceadaich brìbeadh an ùghdarrais ionadail: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Faodaidh companaidhean feuchainn ri ùghdarras ionadail a' bhaile a bhrìbeadh. Ma mhothaicheas neach-sgrùdaidh am brìbeadh, chan fhaod a' chompanaidh dad a dhèanamh tuilleadh sa bhaile fad sia mìosan
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ceadaich ceannach aig còirichean giùlain às-dùnach: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ma cheannaicheas companaidh còirichean giùlain às-dùnach airson baile, chan fhaigh stèiseanan (taistealaich no carago) nan co-fharpaisichean carago sam bith fad bliadhna
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ma cheannaicheas companaidh còirichean giùlain às-dùnach airson baile, chan fhaigh stèiseanan (taistealaich no carago) nan co-fharpaiseach carago sam bith fad bliadhna
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Ceadaich maoineachadh thogalaichean: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Faodaidh companaidhean airgead a thoirt dha bhailtean ach an tog iad taighean ùra
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Ceadaich maoineachadh ath-thogail rathaidean ionadail: {STRING}
@@ -1991,7 +1991,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}A bheil
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cealgaireachd
 STR_CHEATS_TOOLTIP                                              :{BLACK}Is ciall dha bhogsaichean-cromaige gun deach a' chealgaireachd seo a chleachdadh roimhe
-STR_CHEATS_WARNING                                              :{BLACK}Rabhadh! Tha thu gu bhith a' mealladh na co-fharpaisichean agad. Thoir an aire gun cumar cuimhne air an tàmailt seo gu bràth tuilleadh
+STR_CHEATS_WARNING                                              :{BLACK}Rabhadh! Tha thu gu bhith a' mealladh nan co-fharpaiseach agad. Thoir an aire gun cumar cuimhne air an tàmailt seo gu bràth tuilleadh
 STR_CHEAT_MONEY                                                 :{LTBLUE}Meudaich an t-airgead le {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}A' cluich mar a' chompanaidh: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer draoidheach (thoir air falbh gnìomhachasan, oibseactan do-ghluasad): {ORANGE}{STRING}
