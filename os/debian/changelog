@@ -1,3 +1,9 @@
+openttd (1.6.0-0) unstable; urgency=low
+
+  * New upstream release 1.6.0
+
+ -- OpenTTD <info@openttd.org>  Fri, 01 Apr 2016 21:00:00 +0200
+
 openttd (1.6.0~RC1-0) unstable; urgency=low
 
   * New upstream release 1.6.0-RC1
