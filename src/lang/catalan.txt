@@ -1445,7 +1445,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactiva els t
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activant aquesta opció fa que sigui impossible construir trens i altres vehicles que utilitzen rails als jugadors IA.
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactiva els vehicles de carretera per a les IA: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activant aquesta opció fa que sigui impossible construir automòbils i altres vehicles de carretera als jugadors IA.
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactiva les aeronaus per a les IA de l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactiva les aeronaus per a les IA: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activant aquesta opció fa que sigui impossible construir aeronaus als jugadors IA.
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva els vaixells per a les IA: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activant aquesta opció fa que sigui impossible construir vaixells als jugadors IA.
@@ -3309,7 +3309,7 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Canvia e
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} tren{P "" s}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} vehicle{P "" s}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} vaixell{P "" s}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} avi{P ó ons}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} aeronau{P "" s}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - clica al tren per més informació
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automòbils - clica en un vehicle per més informació
