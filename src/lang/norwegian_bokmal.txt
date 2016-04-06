@@ -102,25 +102,25 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} k
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}postsekk{P "" er}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olje
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}enhet{P "" er} buskap
-STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}kasse{P "" r} med gods
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}kasse{P "" r} gods
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} korn
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} tømmer
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} jernmalm
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} stål
-STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}sekk{P "" er} med verdisaker
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}sekk{P "" er} verdisaker
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kobbermalm
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} frukt
-STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}sekk{P "" er} med diamanter
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}sekk{P "" er} diamanter
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} mat
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papir
-STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}sekk{P "" er} med gull
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}sekk{P "" er} gull
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} vann
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} hvete
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gummi
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} sukker
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}leke{P "" r}
-STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sekk{P "" er} med godteri
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sekk{P "" er} godteri
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} sukkerspinn
 STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P "" r}
@@ -816,7 +816,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponset grunnleggelsen av den nye byen {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} bygges i nærheten av {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} blir anlagt i nærheten av {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} plantes i nærheten av {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} legges ned!
@@ -825,7 +825,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLAC
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europeisk valutaunion!{}{}Euro introdusert som enerådende valutaenhet for transaksjoner i landet ditt!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Global finanskrise!{}{}Økonomer frykter det verste i det økonomien raser!
-STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Finanskrisen over!{}{}Opptur i markedet gir industrien selvsikkerheten tilbake!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Finanskrisen over!{}{}Opptur i markedet gir industrien selvtilliten tilbake!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} øker produksjonen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kullåre funnet i {INDUSTRY}!{}En dobling i produksjonen ventes!
@@ -1082,11 +1082,11 @@ STR_TERRAIN_TYPE_VERY_FLAT                                      :Veldig flatt
 STR_TERRAIN_TYPE_FLAT                                           :Flatt
 STR_TERRAIN_TYPE_HILLY                                          :Åslendt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Berglendt
-STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpint
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
-STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
+STR_CITY_APPROVAL_HOSTILE                                       :Fiendtlig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen egnet AI tilgjengelig...{}Du kan laste ned flere AIer fra nettet med spillets nedlastingssystem.
 
@@ -3522,12 +3522,12 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er n
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding fra kjøretøysprodusent
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nettopp designet e{G n i t} ny{G "" "" tt} {STRING} - er du interessert i et års ekslusivt bruk av dette, slik at vi kan se hvordan det virker før det blir allment tilgjengelig?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotiv
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :kjøretøy
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=neuter}lokomotiv
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=neuter}kjøretøy
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=neuter}luftfartøy
-STR_ENGINE_PREVIEW_SHIP                                         :skip
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomotiv
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv
+STR_ENGINE_PREVIEW_SHIP                                         :{G=neuter}skip
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=neuter}monorail-lokomotiv
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=neuter}maglev-lokomotiv
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY_LONG}/år{}Kapasitet: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Kraft: {POWER}  Maks trekkraft: {6:FORCE}{}Vedlikehold: {4:CURRENCY_LONG}/år{}Kapasitet: {5:CARGO_LONG}
@@ -4423,7 +4423,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}...{NBSP
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen kjøretøyer vil være tilgjengelig i det hele tatt
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Endre din NewGRF konfigurasjon
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen kjøretøyer er tilgjengelig enda
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen kjøretøyer er tilgjengelig ennå
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starte et nytt spill etter {DATE_SHORT}, eller bruke en NewGRF som inneholder tidlige kjøretøy
 
 # Specific vehicle errors
@@ -4547,7 +4547,7 @@ STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=masculine}Go
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=masculine}Batterigård
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=masculine}Colabrønn
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=masculine}Leketøysbutikk
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Leketøysfabrikk
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=masculine}Leketøysfabrikk
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=feminine}Plastfontene
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=masculine}Mineralvannfabrikk
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=masculine}Boblegenerator
