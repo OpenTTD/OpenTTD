@@ -3796,8 +3796,8 @@ STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :＜
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :≤
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :＞
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :≥
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :있을 때
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :없을 때
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :이 있을 때
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :이 없을 때
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}비교조건에 대한 입력값입니다.
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}비교할 값을 입력하세요.
