@@ -849,6 +849,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}ל{VEHIC
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}ל{VEHICLE} יעד שאינו קיים עוד עבור
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}ל{VEHICLE} כפילות ברשימת היעדים של
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} יעד בלתי חוקי במסלול הנסיעה של
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :ל{WHITE}{VEHICLE} יש בהוראות שדה תעופה בעל מסלול קצר מידי
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}מתיישן {VEHICLE}
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}מתיישן מאוד {VEHICLE}
@@ -1087,6 +1088,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :עויין
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין בינות מלאכותיות מתאימות...{}באפשרותך להוריד בינות מלאכותיות בעזרת מערכת ה'תוכן המקוון'
 
 # Settings tree window
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}הגדרות
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}מחרוזת סינון:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}הרחב הכל
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}צמצם הכל
@@ -1613,6 +1615,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :מחלקה מש
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :אופן החלוקה עבור מטענים אחרים: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"אסימטרי" הכוונה שכמויות מטען שרירותיות יכולות להישלח לכל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור המטען.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :דיוק החלוקה: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :כמות המטען החוזר עבור מצב סימטרי: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :יחידות מהירות: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :כאשר מוצגת מהירות השתמש ביחידות הנבחרות
@@ -1651,11 +1654,13 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מט�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}הגדרות מיקום
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}גרפיקה
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ממשק חזותי
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}בנייה
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}ניתוב
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}רשויות
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}ערים
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}תעשיות
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
@@ -1694,6 +1699,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... פו
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... מתעלם מערכת גרפיקה בסיסית '{STRING}': לא נמצאה
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... מתעלם מערכת צלילים בסיסית '{STRING}': לא נמצאה
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... מתעלם מערכת מוסיקה בסיסית '{STRING}': לא נמצאה
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE} הקצאת {BYTES} בתים של מטמון נכשלה. המטמון הופחת ל-{BYTES} בתים. דבר זה יפחית את הביצועים של OpenTTD. כדי להפחית את דרישות הזיכרון ניתן לנסות לבטל את הגרפיקה ב-32bbp ו/או רמות ה-זום-אין
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1929,6 +1935,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}השם �
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}קבע סיסמה
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}הגן על המשחק שלך עם סיסמה אם אתה לא רוצה שהוא יהיה זמין לכולם
 
+STR_NETWORK_START_SERVER_ADVERTISED                             :כן
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} לקוח{P "" "ות"}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}מספר מקסימלי של לקוחות:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספר משתתפים מירבי
@@ -2168,6 +2175,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} בחר 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} בחר את כל התכנים המהווים שדרוג לבחירה קיימת
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} בטל בחירה
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} בטל את כל הבחירות להורדה
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE} התנאים להורדת תוכן מאתר חיצוני השתנו.{}עלייך לפנות לאתרים חיצוניים להנחיות כיצד להתקין את התוכן לתוך OpenTTD.{}האם ברצונך להמשיך?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}סינון תוית\שם:
 STR_CONTENT_OPEN_URL                                            :{BLACK}בקר באתר האינטרנט
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}בקר באתר האינטרנט עבור התוכן הזה
@@ -2239,6 +2247,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}הסתר
 
 # Linkgraph legend window
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}מקרא זרימת מטענים
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}בחר חברות להצגה
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
@@ -2828,7 +2837,8 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}עבור
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}הספרייט הקודם
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}עבור לספרייט הקודם, כאשר נדלג על כל הספרייטים המיוחדים ונחזור מתחילת הרשימה לסופה
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}הייצוג של הספרייט הנבחר. בעת ציור הספרייט, נתעלם מהיישור שלו
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}הזז את הספרייט, תוך שינוי מיקום על צירי ה-X וה-Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}הזז את הספרייט, תוך שינוי ההיסט של צירי ה-X וה-Y. לחץ עם ctrl כדי להזיז את הספרייט שמונה יחידות בבת אחת
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}איפוס יחסית
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}בחר ספרייט
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}בחר ספרייט מנקודה כלשהיא במסך
 
@@ -3029,6 +3039,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום העיר/תעשייה
 
 # Story book window
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}קפוץ לדף ספציפי באמצעות בחירתו ברשימה נפתחת זו.
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}מטרה לא תקינה
 
 # Station list window
@@ -3056,6 +3067,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}דירוג
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}הצג את דירוג השירות
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}אספקה חודשית ודירוג מקומי:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}קבץ לפי
 STR_STATION_VIEW_WAITING_STATION                                :תחנה: בהמתנה
@@ -3353,6 +3366,7 @@ STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}החלף
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}החלף שם סוג כלי הטיס
 
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}תצוגה
 
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :הסתר/הצג סוג של כלי שיט
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}הסתר/הצג סוג של כלי טיס
@@ -3591,6 +3605,8 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{LTBLUE}{1:DATE
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הגדל את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מגדיל את המרווח ב-5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הקטן את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מקטינה את המרווח ב-5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}שנה סוג מרווח שירות
+STR_VEHICLE_DETAILS_PERCENT                                     :אחוז
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}תן שם לרכבת
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}תן שם לכלי הרכב
@@ -3812,6 +3828,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :(מסע (ללא
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :סע במהירות שהיא לכל היותר {2:VELOCITY} (ללא לוח זמנים)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} ערוך מסע ל
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :סע למשך {STRING} במהירות שהיא לכל היותר {VELOCITY}
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(מסע עבור {STRING} ללא טבלת זמנים)
 STR_TIMETABLE_STAY_FOR                                          :{STRING} והמתן למשך
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :{STRING} וערוך מסע ל
 STR_TIMETABLE_DAYS                                              :{P 0 "יום " ""}{COMMA}{P "" " ימים"}
