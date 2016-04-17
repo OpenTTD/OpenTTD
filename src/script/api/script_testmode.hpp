@@ -49,6 +49,9 @@ public:
 	 */
 	~ScriptTestMode();
 
+	/**
+	 * @api -all
+	 */
 	virtual void FinalRelease();
 };
 
