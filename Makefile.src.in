@@ -210,7 +210,7 @@ endif
 	{                                   \
 		print $$0                         \
 	}                                   \
-	' < Makefile.dep.tmp | sed 's@  *@ @g;s@ $$@@' | $(SORT) > Makefile.dep
+	' < Makefile.dep.tmp | sed 's@  *@ @g;s@ $$@@' | LC_ALL=C $(SORT) > Makefile.dep
 
 	$(Q)rm -f Makefile.dep.tmp Makefile.dep.tmp.bak
 
