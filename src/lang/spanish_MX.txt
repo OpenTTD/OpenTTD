@@ -283,7 +283,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Fecha
 STR_SORT_BY_NAME                                                :Nombre
 STR_SORT_BY_PRODUCTION                                          :Producción
 STR_SORT_BY_TYPE                                                :Tipo
-STR_SORT_BY_TRANSPORTED                                         :Transportado
+STR_SORT_BY_TRANSPORTED                                         :Entregado
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Utilidad año pasado
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Utilidad este año
@@ -1213,7 +1213,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A la izquierda
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :En el lado de conducción
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la derecha
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar ventana de finanzas al final del año: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, la ventana de finanzas aparecerá al final de cada año para realizar una inspección más fácil del estado financiero de la empresa
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, la ventana de finanzas aparecerá al final de cada año para permitir realizar una inspección más fácil del estado financiero de la empresa
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Toda nueva orden es 'Sin paradas' por defecto: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Generalmente, un tren se detendrá en cada estación por la que pase. Si se activa esta opción, pasará sin detenerse a través de todas las estaciones hasta llegar a su destino. Esta opción solamente define el valor predeterminado de las órdenes nuevas. Es posible especificar para cada orden el comportamiento deseado
 STR_CONFIG_SETTING_STOP_LOCATION                                :Todos los nuevos trenes paran por defecto en el {STRING} del andén
@@ -1221,7 +1221,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :En qué parte p
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :principio
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :centro
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fondo
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Recorrer vista cuando se mueve el cursor a los bordes: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Recorrer vista cuando se mueva el cursor a los bordes: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si se activa esta opción, las vistas se recorrerán cuando el ratón esté cerca de los bordes de la ventana
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivado
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal, solo en pantalla completa
@@ -1259,7 +1259,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Areopuertos sie
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de aeropuertos estarán disponibles todo el tiempo después de haber surgido
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar si un vehículo se ha perdido: {STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar un mensajes indicando aquellos vehículos que no puedan encontrar una ruta a su destino
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensajes indicando aquellos vehículos que no puedan encontrar una ruta a su destino
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analizar órdenes de vehículos: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Cuando se activa, las órdenes de los vehículos se analizan regularmente y los problemas que se encuentren se informan en una noticia
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :No
@@ -1344,16 +1344,16 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Forma en la que la vista principal se mueve a una ubicación específica al hacer clic en el minimapa o tras una orden de moverse a un objeto determinado del mapa. Si se activa, la vista se mueve de forma suave. Si se desactiva, la vista se mueve instantáneamente al sitio indicado
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar información de medidas al usar las herramientas de construcción: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distancias en número de casillas y las diferencias de altura cuando se realicen labores de construcción
-STR_CONFIG_SETTING_LIVERIES                                     :Mostrar combinaciones de color, según tipo de vehículo: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlar el uso de combinaciones de color específicos para vehículos, en contraste a los específicos para empresas
+STR_CONFIG_SETTING_LIVERIES                                     :Mostrar diseño de colores según el tipo de vehículo: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlar el uso de diseños de colores específicos para vehículos en lugar de los específicos de cada empresa
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Empresa propia
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas las empresas
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Activar chat de equipo con <ENTER>: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Cambiar el acceso al chat interno de la empresa y al chat público entre <ENTER> y <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Función de la rueda del ratón: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activar el deslizamiento con ratones de rueda bidimensional
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Enforcar mapa
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activar el desplazamiento del mapa con ratones de rueda bidimensional
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Enfocar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Desplazarse sobre el mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nada
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidad de la rueda del ratón sobre el mapa: {STRING}
@@ -1372,13 +1372,13 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Ninguno
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desplazamiento con botón izquierdo: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activa el deslizamiento del mapa al arrastrar con el botón izquierdo. Esto es especialmente útil al usar pantallas táctiles
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activar el desplazamiento del mapa al arrastrar con el botón izquierdo. Esto es especialmente útil al usar pantallas táctiles
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Guardado automático: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Intervalo entre guardados automáticos de la partida
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de fecha {STRING} para los nombres de partidas guardadas
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Asigna un formato de fecha como nombre al guardar una partida
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Asignar un formato de fecha como nombre al guardar una partida
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :largo (31 Dic 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1398,18 +1398,18 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Mostrar indicad
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostrar tiempo de viaje en ticks en lugar de días: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostrar los tiempos de viaje en los itinerarios en impulsos de reloj de sistema (ticks) en lugar de días
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en itinerarios: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar tiempos de llegadas y salidas anticipados en los itinerarios
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar tiempos anticipados de llegadas y salidas en los itinerarios
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de órdenes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Elegir automáticamente la opción 'Ir a' al abrir la ventana de órdenes
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo de vía férrea predeterminada al iniciar o cargar un juego: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de vía férrea predeterminada al iniciar o cargar un juego. 'Primera disponible' elige el tipo más viejo, 'Última disponible' elige el tipo más nuevo, y 'Más usado' elige el tipo de mayor uso al momento
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo predeterminado de vías férreas al iniciar o cargar un juego: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo predeterminado de vías de tren al iniciar o cargar un juego. 'Primero disponible' elige el tipo más viejo, 'Último disponible' elige el tipo más nuevo y 'Más usado' elige el tipo de mayor uso al momento
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar rutas reservadas sobre las vías férreas: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dar un color especial a las vías de tren reservadas para ayudar a resolver problemas con trenes que no ingresan en secciones con señales de ruta
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantener activas las herramientas de construcción tras su uso: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantener las herramientas de construcción de puentes, túneles, etc., abiertas después de usarlas
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantener abiertas las herramientas de construcción de puentes, túneles, etc., después de usarlas
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar gastos en la ventana de finanzas: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definir el diseño de la ventana de finanzas
 
@@ -1481,25 +1481,25 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferr
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Si se activa, no es necesario electrificar las vías férreas para hacer que los trenes eléctricos puedan recorrerlas
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Llegada del primer vehículo a una estación del jugador: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostrar una noticia cuando el primer vehículo llegue a una estación del jugador
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostrar noticia cuando el primer vehículo llegue a una estación del jugador
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Llegada del primer vehículo a una estación de la competencia: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostrar una noticia cuando el primer vehículo llegue a la estación de un competidor
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostrar noticia cuando el primer vehículo llegue a la estación de un competidor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes y desastres: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar noticias cuando ocurra un accidente o un desastre
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar noticia cuando ocurra un accidente o un desastre
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información de la empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar una noticia cuando una nueva empresa sea creada o cuando alguna empresa esté en peligro de quiebra
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar noticia cuando una nueva empresa sea creada o cuando alguna empresa esté en peligro de quiebra
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostrar noticia cuando abra una nueva industrias
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostrar noticia cuando abra una nueva industria
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cierre de industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostrar noticias cuando cierre una industria
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostrar noticia cuando cierre una industria
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios en la economía: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostrar noticias sobre cambios globales a la economía
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción en industrias atendidas por la empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar una noticia cuando cambie el nivel de producción de una industria que está atendida por la empres del jugador
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar noticia cuando cambie el nivel de producción de una industria que esté atendida por la empresa del jugador
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios de producción en las industrias servidas por los competidores: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar una noticia cuando cambie el nivel de producción de una industria que está atendida por las empresas de la competencia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar noticia cuando cambie el nivel de producción de una industria que esté atendida por las empresas de la competencia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción de otras industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar una noticia cuando cambie el nivel de producción de una industria que no está atendida por nadie
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar noticia cuando cambie el nivel de producción de una industria que no esté atendida por nadie
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Sugerencias e información de los vehículos de la empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensajes sobre vehículos que requieran atención
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuevos vehículos: {STRING}
@@ -1507,16 +1507,16 @@ STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostrar noticia
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios en la recepción de cargamento: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostrar mensajes sobre cambios a la recepción de cargamento en estaciones
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidios: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostrar noticias sobre eventos relativos a subsidios
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostrar noticias sobre eventos relacionados con subsidios
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información general: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostrar noticias de eventos generales, tales como la compra de derechos de transporte exclusivos o el pago de reconstrucción de carreteras locales
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostrar noticias sobre eventos generales, tales como la compra de derechos exclusivos de transporte o el pago de la reconstrucción de carreteras locales
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desactivado
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumen
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias a color aparecen en: {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Año en el que los periódicos comenzarán a imprimirse a color. Antes de ese año apacerán en blanco y negro
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias a color aparecen en el año: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Año en el que los periódicos comenzarán a imprimirse a color. Antes de ese año, apacerán en blanco y negro
 STR_CONFIG_SETTING_STARTING_YEAR                                :Fecha de inicio: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economía fácil (cambios más pequeños): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Al activarse, habrá cambios de producción en las industrias más frecuentemente y en escala menor. Si se usa un NewGRF con industrias adicionales esta opción generalmente no tiene efecto
@@ -1534,7 +1534,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Año a partir d
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar interfaz de señales: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostrar una ventana para elegir los tipos de señales a instalar. Si no se activa, se instalan las señales y se selecciona un tipo determinado mediante Ctrl+Clic, sin que aparezca ninguna interfaz
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal predeterminada a instalar: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal predeterminada que se usará la primera vez
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal predeterminada a utilizar
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de bloqueo
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Señales de ruta
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Señales de ruta de un sentido
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Posición de la
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posición horizontal de la barra de estado en la parte inferior de la pantalla
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radio de ajuste de ventana: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distancia máxima entre ventanas antes de que la ventana que se está moviendo sea ajustada automáticamente con las ventanas cercanas
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" es}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Deshabilitado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Máximo número de ventanas sin anclar: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número máximo de ventanas sin anclar que pueden estar abiertas antes de que las anteriores se cierren automáticamente para dejar paso a las nuevas
@@ -1654,7 +1654,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidades de fuerza de tracción: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Cada vez que se muestre un fuerza de tracción (o esfuerzo de tracción) en la interfaz de usuario, se emplearán las unidades elegidas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Cada vez que se muestre una fuerza de tracción (o esfuerzo de tracción) en la interfaz de usuario, se emplearán las unidades elegidas
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
@@ -3214,7 +3214,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurada: {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Combinación de olor:
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Diseño de colores:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" es}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vehículo{P "" s} de carretera
@@ -3242,7 +3242,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver info
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el presidente
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Diseño de color
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Diseño de colores
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambiar el diseño de colores corportativos de la empresa
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre de la empresa
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambiar el nombre de la empresa
@@ -3276,15 +3276,15 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ninguna -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transportado)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}, {CARGO_LONG}{STRING}){YELLOW} ({COMMA}%, {COMMA}% transportado)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% entregado)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}, {CARGO_LONG}{STRING}){YELLOW} ({COMMA}%, {COMMA}% entregado)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nombre de industria: Clic en un nombre para centrar la vista principal en la industria. Ctrl+Clic abre una ventana de vista en dicha ubicación
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción en el mes anterior:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% entregado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar la vista sobre la industria. Ctrl+Clic abre una ventana de vista en dicha ubicación
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}¡La industria ha anunciado su cierre inminente!
@@ -4860,7 +4860,7 @@ STR_FORMAT_BUOY_NAME                                            :Boya {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Boya {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(empresa {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}, {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Puesto guía {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Puesto guía {TOWN} #{COMMA}
 
