@@ -603,7 +603,7 @@ TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID str
 /**
  * Update vehicle loading indicators.
  * @param te_id   TextEffectID to be updated.
- * @param string  String wich is printed.
+ * @param string  String which is printed.
  */
 void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID string)
 {
