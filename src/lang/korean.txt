@@ -3012,7 +3012,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} �
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}회사에 대한 이 도시의 평판:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}가능한 행동:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}이 도시에 할 수 있는 일 목록 - 상세 정보를 보시려면 클릭하세요
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}이 도시에 할 수 있는 일 목록 - 상세 정보를 보시려면 클릭하세요.
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}실행
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}선택된 항목을 실행에 옮깁니다
 
