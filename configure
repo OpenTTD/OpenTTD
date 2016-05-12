@@ -149,7 +149,7 @@ AWKCOMMAND='
 
 # Read the source.list and process it
 # Please escape ALL " within ` because e.g. "" terminates the string in some sh implementations
-SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | $awk \"$AWKCOMMAND\" | $PIPE_SORT`"
+SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | $awk \"$AWKCOMMAND\" | LC_ALL=C $PIPE_SORT`"
 
 OBJS_C="`  echo \"$SRCS\" | $awk ' { ORS = \" \" } /\.c$/   { gsub(\".c$\",   \".o\", $0); print $0; }'`"
 OBJS_CPP="`echo \"$SRCS\" | $awk ' { ORS = \" \" } /\.cpp$/ { gsub(\".cpp$\", \".o\", $0); print $0; }'`"
