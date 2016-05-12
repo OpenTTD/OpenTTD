@@ -1,5 +1,5 @@
 ##name Spanish (Mexican)
-##ownname Español mexicano (MX)
+##ownname Español (MX)
 ##isocode es_MX
 ##plural 0
 ##textdir ltr
