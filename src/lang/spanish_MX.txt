@@ -1178,7 +1178,7 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casilla
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantidad de humo o chispas: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Cantidad de humo o chispas que son emitidos por los vehículos
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleración para trenes: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Elegir el modelo de física para emplear en la aceleración de trenes. El modelo 'Original' penaliza las pendientes de forma idéntica para todos los vehículos. El modelo 'Simulado' penaliza pendientes y curvas según las características del tren como longitud, fuerza de tracción, etc.
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Elegir el modelo de simulación física para emplear en la aceleración de trenes. El modelo 'Original' penaliza las pendientes de forma idéntica para todos los vehículos. El modelo 'Simulado' penaliza pendientes y curvas según las características del tren como longitud, fuerza de tracción, etc.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de aceleración para vehículos de carretera: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Elegir el modelo de simulación física para emplear en la aceleración de vehículos de carretera. El modelo 'Original' penaliza las pendientes de forma idéntica para todos los vehículos. El modelo 'Simulado' penaliza pendientes y curvas según las características del vehículo como potencia, fuerza de tracción, etc.
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinación de pendientes para trenes: {STRING}
@@ -1256,7 +1256,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento d
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cuando se activa, la infraestructura tiene costo de mantenimiento, el cual aumenta en relación con el tamaño de la red de transporte. Esto afecta en mayor medida a las empresas grandes que a las pequeñas
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos siempre disponibles: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de aeropuertos estarán disponibles todo el tiempo después de haber surgido
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de aeropuertos estarán disponibles todo el tiempo tras haber sido introducidos
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar si un vehículo se ha perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensajes indicando aquellos vehículos que no puedan encontrar una ruta a su destino
@@ -1298,7 +1298,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Solo TerraGenesis) Colinas del terreno
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad industrial: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :El número de industrias a generar y el nivel a mantener durante el juego
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Número de industrias a generar y nivel a mantener durante el juego
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distancia máxima de refinerías de petróleo con los bordes del mapa: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías de petróleo se construyen cerca del borde del mapa, el cual es costa en mapas con borde marítimo
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivel de inicio de nieve: {STRING}
@@ -1328,7 +1328,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o m�
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no es agua
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Máxima ampliación de estaciones: {STRING}
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Máxima área que pueden ocupar las partes de una estación. Los valores muy altos pueden alentar el juego
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Máxima área que pueden ocupar las partes de una estación. Los valores muy altos pueden hacer que el juego sea lento
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Realizar automáticamente el mantenimiento de helicópteros en los helipuertos: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Dar mantenimiento a los helicópteros después de cada aterrizaje, aun sin haber hangar en el aeropuerto
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Unir la barra de transformación de terreno con la barra de construcción: {STRING}
@@ -4853,23 +4853,23 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Helicóptero Po
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{0:STRING}/{1:STRING}/{2:NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{0:STRING} de {1:STRING} de {2:NUM}
+STR_FORMAT_DATE_LONG                                            :{0:STRING} {1:STRING} {2:NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :Boya {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Boya {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING}, {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Puesto guía {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Puesto guía {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Puesto guía #{1:COMMA}, {0:TOWN}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de trenes de {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de trenes #{1:COMMA} de {0:TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de vehículos de carretera de {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de vehículos de carretera #{1:COMMA} de {0:TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :Astillero de {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Astillero #{1:COMMA} de {0:TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de trenes, {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de trenes #{1:COMMA}, {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de vehículos de carretera, {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de vehículos de carretera #{1:COMMA}, {0:TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Astillero, {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Astillero #{1:COMMA}, {0:TOWN}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
 
 STR_UNKNOWN_STATION                                             :estación desconocida
