@@ -982,7 +982,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elegir l
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otra
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elige el tamaño de los elementos de la interfaz
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el tamaño de los elementos de la interfaz
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Tamaño doble
@@ -2588,7 +2588,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Tipo de 
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nombre del aeropuerto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nombre de casilla del aeropuerto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargamento que recibe: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargamento recibido: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límite de velocidad de ferrocarril: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Límite de velocidad de carretera: {LTBLUE}{VELOCITY}
@@ -2723,7 +2723,7 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Núm. de pueblos:
 STR_MAPGEN_DATE                                                 :{BLACK}Fecha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Núm. de industrias:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Elevación máxima del mapa:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Elevación máx.:
 STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Aumentar la elevación máxima de las montañas del mapa una unidad
 STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Disminuir la elevación máxima de las montañas del mapa una unidad
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivel de nieve:
@@ -3205,7 +3205,7 @@ STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstam
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir préstamo de {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Incrementar préstamo. Ctrl+Clic solicita todo el préstamo posible
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar préstamo {CURRENCY_LONG}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar préstamo de {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar parte del préstamo. Ctrl+Clic paga todo el préstamo posible
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraestructura
 
@@ -3244,9 +3244,9 @@ STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva ca
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el presidente
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Diseño de colores
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambiar el diseño de colores corporativos de la empresa
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre de la empresa
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre empresa
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambiar el nombre de la empresa
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nombre del presidente
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nombre presidente
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambiar el nombre del presidente
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar un 25% de las acciones
