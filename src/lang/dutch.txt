@@ -2874,7 +2874,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ga naar 
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige afbeelding
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ga naar vorige normale afbeelding, sla alle pseudo/herkleur/lettertype afbeeldingen over en ga naar het einde bij het begin
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige afbeelding. De uitlijning wordt genegeerd bij het weergeven van de afbeelding
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Afbeelding verplaatsen, dit verandert X en Y offsets
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Afbeelding verplaatsen, dit verandert X en Y offsets. Ctr+klik om de afbeelding 8 eenheden per keer te verplaatsen.
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Herstel relatief
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Herstel de huidige relative offsets
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Absoluut)
