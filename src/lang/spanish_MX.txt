@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} d
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plásticos
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refresco{P "" s}
-STR_QUANTITY_N_A                                                :Ninguna
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2814,7 +2814,7 @@ STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Actualiz
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Actualizar los archivos NewGRF que lo requieran a la versión más reciente
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista de archivos NewGRF instalados
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establecer parámetros
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parámetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parámetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Cambiar paleta
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Cambia la paleta del NewGRF elegido.{}Esto es necesario cuando los gráficos de un NewGRF se ven de color rosa durante el juego
@@ -3774,7 +3774,7 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargamento disp
 
 STR_ORDER_SERVICE                                               :{BLACK}Mantenimiento
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir siempre
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Mantenimiento si es necesario
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Mantto. si es necesario
 STR_ORDER_DROP_HALT_DEPOT                                       :Detenerse
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ignorar esta orden a menos que el mantenimiento sea necesario
 
