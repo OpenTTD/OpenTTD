@@ -1097,11 +1097,11 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plegar t
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no hay explicación disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor predeterminado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de opción: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Opción de cliente (no se almacena en partidas guardadas, afecta a todas las partidas)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Opción de partida (se almacena en las partidas guardadas, afecta solamente a nuevas partidas)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Opción de partida (almacenada en la partida guardada, afecta solamente a la partida actual)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Opción de empresa (se almacena en las partidas guardadas, afecta solamente a las nuevas partidas)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empresa (almacenada en la partida guardada, afecta solamente a la empresa actual)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Opción de cliente (no se almacena en partidas guardadas, afecta todas las partidas)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Opción de partida (se almacena en las partidas guardadas, afecta solamente partidas nuevas)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Opción de partida (almacenada en la partida guardada, afecta solamente la partida actual)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Opción de empresa (se almacena en las partidas guardadas, afecta solamente las partidas nuevas)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empresa (almacenada en la partida guardada, afecta solamente la empresa actual)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
@@ -1114,11 +1114,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Opciones con un
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringir la lista a ciertos tipos de opciones
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todos los tipos de opciones
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Opciones de cliente (no se almacena en partidas guardadas, afecta a todas las partidas)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Opciones de juego (se almacena en las partidas guardadas, afecta solamente a partidas nuevas)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Opciones de juego (se almacena en las partidas guardadas, afecta solamente a la partida actual)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente a partidas nuevas)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente a la empresa actual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Opciones de cliente (no se almacena en partidas guardadas, afecta todas las partidas)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Opciones de juego (se almacena en las partidas guardadas, afecta solamente partidas nuevas)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Opciones de juego (se almacena en las partidas guardadas, afecta solamente la partida actual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente partidas nuevas)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente la empresa actual)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Categoría {BLACK}a {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Tipo {BLACK}a {WHITE}Todos los tipos de opción
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Categoría {BLACK}a {WHITE}{STRING} {BLACK}y {SILVER}Tipo {BLACK}a {WHITE}Todos los tipos de opción
@@ -1161,7 +1161,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, l
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructura
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los ayuntamientos ante restructuraciones hechas en sus zonas: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :En qué medida el ruido y el daño ambiental causado por las empresas afectan su evaluación y futuras acciones de construcción en las mismas zonas
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Medida en que el ruido y el daño ambiental causado por las empresas afectan su evaluación y futuras acciones de construcción en las mismas zonas
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Elevación máxima del mapa: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Elevación máxima que las montañas pueden tener en el mapa
@@ -1230,7 +1230,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas las vista
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos al ayuntamiento: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Las empresas pueden tratar de sobornar a los ayuntamientos. Si el soborno es descubierto por un inspector, la empresa no podrá realizar actividades en la localidad durante seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir adquirir los derechos de transporte exclusivos: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una empresa adquiere los derechos de transporte exclusivos en un pueblo, las estaciones de la competencia (pasajeros o cargamento) no recibirán nada para transportar durante un año
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una empresa adquiere los derechos de transporte exclusivos en un pueblo, las estaciones de la competencia (de pasajeros o carga) no recibirán nada que entregar durante un año
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la construcción de nuevos edificios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Las empresas aportan dinero a los ayuntamientos para que construyan nuevas casas y edificios
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir el pago de la reconstrucción de las carreteras locales: {STRING}
@@ -1290,7 +1290,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las l
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las líneas en las gráficas. Una línea fina es más precisa, una línea más gruesa es más fácil de distinguir
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen mapas con diferentes tipos de cargamentos y requisitos de crecimiento para los pueblos. Es posible modificarlos empleando NewGRF y scripts de juego
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen mapas con diferentes tipos de carga y requisitos de crecimiento para los pueblos. Es posible modificarlos empleando NewGRF y scripts de juego
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :El generador 'Original' depende de los gráficos base y crea formas de terreno fijas. 'TerraGenesis' es un generador basado en Ruido Perlin que permite un mayor control de configuración
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1522,8 +1522,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar econom�
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Al activarse, habrá cambios de producción en las industrias más frecuentemente y en escala menor. Si se usa un NewGRF con industrias adicionales esta opción generalmente no tiene efecto
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Al activarse, se pueden comprar y vender acciones de otras empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa cumpla una edad determinada
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje de la utilidad total a pagar por transferencias de cargamento: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaje de utilidad cedida a los transportes intermedios en sistemas de transferencias de cargamento, dando un mayor control sobre la utilidad de cada vehículo
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje de la utilidad total a pagar por transferencias de carga: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaje de utilidad cedida a los transportes intermedios en sistemas de transferencia de carga, dando un mayor control sobre la utilidad de cada vehículo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, colocar señales cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Distancia de separación entre señales hasta topar con algún obstáculo (otra señal, un desvío, etc.) al instalarlas mediante arrastre con el ratón
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
@@ -1564,7 +1564,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, diseño urbano personalizado
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Crecimiento de árboles durante la partida: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlar la aparición aleatoria de árboles durante la partida. Esto puede afectar a industrias que dependen del crecimiento de árboles, como los aserraderos
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlar la aparición aleatoria de árboles durante la partida. Esto puede afectar industrias que dependen del crecimiento de árboles, como los aserraderos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ninguno {RED}(inutiliza aserraderos)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Solo en selva
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Cualquier parte
@@ -1623,7 +1623,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :'Asimétrica' s
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de la distribución: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Si el valor es alto, se requerirá mayor tiempo para calcular la gráfica de distribución (si se lleva demasiado tiempo, se notará desfase en el juego). Si es muy bajo, la distribución será imprecisa, pudiendo hacer que el cargamento no vaya al lugar indicado
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Con un valor diferente a 0, la distancia entre la estación de origen de cierto cargamento y una posible estación de destino afectará a la cantidad de cargamento que se envíe entre ambas. Cuanto más lejos estén entre sí, menos cargamento se enviará. Cuanto mayor sea el valor de esta opción, menos cargamento se enviará a estaciones distantes en favor de estaciones cercanas
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Con un valor diferente a 0, la distancia entre la estación de origen de cierta carga y una posible estación de destino afectará la cantidad de cargamento que se envíe entre ambas. Cuanto más lejos estén entre sí, menos cargamento se enviará. Cuanto mayor sea el valor de esta opción, menos cargamento se enviará a estaciones distantes en favor de estaciones cercanas
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantidad de cargamento a devolver en modo simétrico: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Establecer un valor menor de 100% hará que la distribución simétrica de cargamento sea más asimétrica. Se enviará menos cargamento de regreso forzosamente si una cantidad determinada es enviada a una estación. Si se fija a 0%, la distribución simétrica será como una distribución asimétrica
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Nivel de saturación de rutas cortas antes de cambiar a rutas de mayor capacidad: {STRING}
@@ -1685,7 +1685,7 @@ STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambient
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pueblos
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución de cargamento
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución de carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores no humanos
 
