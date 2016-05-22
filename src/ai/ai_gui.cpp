@@ -28,6 +28,7 @@
 #include "../widgets/dropdown_type.h"
 #include "../widgets/dropdown_func.h"
 #include "../hotkeys.h"
+#include "../core/geometry_func.hpp"
 
 #include "ai.hpp"
 #include "ai_gui.hpp"
@@ -766,6 +767,22 @@ struct AIConfigWindow : public Window {
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = 8 * this->line_height;
 				break;
+
+			case WID_AIC_CHANGE: {
+				SetDParam(0, STR_AI_CONFIG_CHANGE_GAMESCRIPT);
+				Dimension dim = GetStringBoundingBox(STR_AI_CONFIG_CHANGE);
+
+				SetDParam(0, STR_AI_CONFIG_CHANGE_NONE);
+				dim = maxdim(dim, GetStringBoundingBox(STR_AI_CONFIG_CHANGE));
+
+				SetDParam(0, STR_AI_CONFIG_CHANGE_AI);
+				dim = maxdim(dim, GetStringBoundingBox(STR_AI_CONFIG_CHANGE));
+
+				dim.width += padding.width;
+				dim.height += padding.height;
+				*size = maxdim(*size, dim);
+				break;
+			}
 		}
 	}
 
