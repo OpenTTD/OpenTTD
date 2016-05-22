@@ -3031,6 +3031,10 @@ void UpdateWindows()
 		w->ProcessHighlightedInvalidations();
 	}
 
+	/* Skip the actual drawing on dedicated servers without screen.
+	 * But still empty the invalidation queues above. */
+	if (_network_dedicated) return;
+
 	static int we4_timer = 0;
 	int t = we4_timer + 1;
 
