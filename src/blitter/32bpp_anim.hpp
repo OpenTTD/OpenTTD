@@ -29,6 +29,8 @@ public:
 		anim_buf_height(0)
 	{}
 
+	~Blitter_32bppAnim();
+
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	/* virtual */ void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal);
 	/* virtual */ void SetPixel(void *video, int x, int y, uint8 colour);
