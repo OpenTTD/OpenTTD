@@ -879,7 +879,7 @@ CommandCost CmdSetVehicleVisibility(TileIndex tile, DoCommandFlag flags, uint32 
 {
 	Engine *e = Engine::GetIfValid(GB(p2, 0, 31));
 	if (e == NULL || _current_company >= MAX_COMPANIES) return CMD_ERROR;
-	if ((e->flags & ENGINE_AVAILABLE) == 0 || !HasBit(e->company_avail, _current_company)) return CMD_ERROR;
+	if (!IsEngineBuildable(e->index, e->type, _current_company)) return CMD_ERROR;
 
 	if ((flags & DC_EXEC) != 0) {
 		SB(e->company_hidden, _current_company, 1, GB(p2, 31, 1));
