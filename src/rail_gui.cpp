@@ -86,7 +86,7 @@ static bool IsStationAvailable(const StationSpec *statspec)
 	return Convert8bitBooleanCallback(statspec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res);
 }
 
-void CcPlaySound1E(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcPlaySound_SPLAT_RAIL(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_20_SPLAT_RAIL, tile);
 }
@@ -97,7 +97,7 @@ static void GenericPlaceRail(TileIndex tile, int cmd)
 			_remove_button_clicked ?
 			CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
 			CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
-			CcPlaySound1E);
+			CcPlaySound_SPLAT_RAIL);
 }
 
 /**
@@ -223,7 +223,7 @@ static void GenericPlaceSignals(TileIndex tile)
 	Track track = FindFirstTrack(trackbits);
 
 	if (_remove_button_clicked) {
-		DoCommandP(tile, track, 0, CMD_REMOVE_SIGNALS | CMD_MSG(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM), CcPlaySound1E);
+		DoCommandP(tile, track, 0, CMD_REMOVE_SIGNALS | CMD_MSG(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM), CcPlaySound_SPLAT_RAIL);
 	} else {
 		const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
 
@@ -250,7 +250,7 @@ static void GenericPlaceSignals(TileIndex tile)
 
 		DoCommandP(tile, p1, 0, CMD_BUILD_SIGNALS |
 				CMD_MSG((w != NULL && _convert_signal_button) ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
-				CcPlaySound1E);
+				CcPlaySound_SPLAT_RAIL);
 	}
 }
 
@@ -355,7 +355,7 @@ static void DoRailroadTrack(int mode)
 			_remove_button_clicked ?
 			CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
 			CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
-			CcPlaySound1E);
+			CcPlaySound_SPLAT_RAIL);
 }
 
 static void HandleAutodirPlacement()
@@ -410,7 +410,7 @@ static void HandleAutoSignalPlacement()
 			_remove_button_clicked ?
 			CMD_REMOVE_SIGNAL_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM) :
 			CMD_BUILD_SIGNAL_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
-			CcPlaySound1E);
+			CcPlaySound_SPLAT_RAIL);
 }
 
 
@@ -710,7 +710,7 @@ struct BuildRailToolbarWindow : Window {
 					break;
 
 				case DDSP_CONVERT_RAIL:
-					DoCommandP(end_tile, start_tile, _cur_railtype | (_ctrl_pressed ? 0x10 : 0), CMD_CONVERT_RAIL | CMD_MSG(STR_ERROR_CAN_T_CONVERT_RAIL), CcPlaySound1E);
+					DoCommandP(end_tile, start_tile, _cur_railtype | (_ctrl_pressed ? 0x10 : 0), CMD_CONVERT_RAIL | CMD_MSG(STR_ERROR_CAN_T_CONVERT_RAIL), CcPlaySound_SPLAT_RAIL);
 					break;
 
 				case DDSP_REMOVE_STATION:
@@ -718,20 +718,20 @@ struct BuildRailToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) {
 						/* Station */
 						if (_remove_button_clicked) {
-							DoCommandP(end_tile, start_tile, _ctrl_pressed ? 0 : 1, CMD_REMOVE_FROM_RAIL_STATION | CMD_MSG(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION), CcPlaySound1E);
+							DoCommandP(end_tile, start_tile, _ctrl_pressed ? 0 : 1, CMD_REMOVE_FROM_RAIL_STATION | CMD_MSG(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION), CcPlaySound_SPLAT_RAIL);
 						} else {
 							HandleStationPlacement(start_tile, end_tile);
 						}
 					} else {
 						/* Waypoint */
 						if (_remove_button_clicked) {
-							DoCommandP(end_tile, start_tile, _ctrl_pressed ? 0 : 1, CMD_REMOVE_FROM_RAIL_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT), CcPlaySound1E);
+							DoCommandP(end_tile, start_tile, _ctrl_pressed ? 0 : 1, CMD_REMOVE_FROM_RAIL_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT), CcPlaySound_SPLAT_RAIL);
 						} else {
 							TileArea ta(start_tile, end_tile);
 							uint32 p1 = _cur_railtype | (select_method == VPM_FIX_X ? AXIS_X : AXIS_Y) << 4 | ta.w << 8 | ta.h << 16 | _ctrl_pressed << 24;
 							uint32 p2 = STAT_CLASS_WAYP | _cur_waypoint_type << 8 | INVALID_STATION << 16;
 
-							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT), CcPlaySound1E, "" };
+							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT), CcPlaySound_SPLAT_RAIL, "" };
 							ShowSelectWaypointIfNeeded(cmdcont, ta);
 						}
 					}

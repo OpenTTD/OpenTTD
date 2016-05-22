@@ -64,7 +64,7 @@ static RoadType _cur_roadtype;
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
 
-void CcPlaySound1D(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcPlaySound_SPLAT_OTHER(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
 }
@@ -629,7 +629,7 @@ struct BuildRoadToolbarWindow : Window {
 					DoCommandP(start_tile, end_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5),
 							_remove_button_clicked ?
 							CMD_REMOVE_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
-							CMD_BUILD_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road), CcPlaySound1D);
+							CMD_BUILD_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road), CcPlaySound_SPLAT_OTHER);
 					break;
 
 				case DDSP_BUILD_BUSSTOP:
@@ -642,13 +642,13 @@ struct BuildRoadToolbarWindow : Window {
 
 				case DDSP_REMOVE_BUSSTOP: {
 					TileArea ta(start_tile, end_tile);
-					DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_BUS, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_BUS]), CcPlaySound1D);
+					DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_BUS, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_BUS]), CcPlaySound_SPLAT_OTHER);
 					break;
 				}
 
 				case DDSP_REMOVE_TRUCKSTOP: {
 					TileArea ta(start_tile, end_tile);
-					DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_TRUCK, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_TRUCK]), CcPlaySound1D);
+					DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_TRUCK, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_TRUCK]), CcPlaySound_SPLAT_OTHER);
 					break;
 				}
 			}
