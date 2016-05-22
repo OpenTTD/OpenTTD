@@ -250,7 +250,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 
 	assert(cv->Length() < 255);
 	assert(cv->Length() < (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
-			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? sizeof(ContentInfo::md5sum) : 0)));
+			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? /*sizeof(ContentInfo::md5sum)*/16 : 0)));
 
 	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID);
 	p->Send_uint8(cv->Length());
