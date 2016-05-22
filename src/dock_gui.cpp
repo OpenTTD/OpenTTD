@@ -433,7 +433,7 @@ public:
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
 		if (top > bottom) {
-			ResizeWindow(this, 0, top - bottom);
+			ResizeWindow(this, 0, top - bottom, false);
 		}
 	}
 
