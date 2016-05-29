@@ -124,7 +124,10 @@ public:
 	ScriptText *AddParam(Object value);
 #endif /* DOXYGEN_API */
 
-	/* virtual */ const char *GetEncodedText();
+	/**
+	 * @api -all
+	 */
+	virtual const char *GetEncodedText();
 
 private:
 	StringID string;

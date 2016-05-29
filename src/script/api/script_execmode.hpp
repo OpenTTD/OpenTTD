@@ -47,6 +47,9 @@ public:
 	 */
 	~ScriptExecMode();
 
+	/**
+	 * @api -all
+	 */
 	virtual void FinalRelease();
 };
 
