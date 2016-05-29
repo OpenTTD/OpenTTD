@@ -663,7 +663,8 @@ struct DepotWindow : Window {
 			DepotSortList(&this->vehicle_list);
 
 			uint new_unitnumber_digits = GetUnitNumberDigits(this->vehicle_list);
-			if (this->unitnumber_digits != new_unitnumber_digits) {
+			/* Only increase the size; do not decrease to prevent constant changes */
+			if (this->unitnumber_digits < new_unitnumber_digits) {
 				this->unitnumber_digits = new_unitnumber_digits;
 				this->ReInit();
 			}
