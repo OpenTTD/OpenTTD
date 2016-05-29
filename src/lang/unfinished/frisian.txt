@@ -1976,6 +1976,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Bedr
 STR_NETWORK_CLIENTLIST_KICK                                     :Skoppe
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Jouw jild
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Tsjin elkenien prate
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Praat mei bedriuw
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Priveeberjocht
 
 STR_NETWORK_SERVER                                              :Tsjinner
@@ -2208,6 +2209,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bou in t
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bou autotunnel
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bou in tramtunnel. Brûk Shift foar ferwachte kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Wikselje tusken bou en fuortheljen fan dyken
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Wikselje tusken bou en fuortheljen fan tramwei
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autodepot rjochting
@@ -2368,6 +2370,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Treinspo
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemiente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neat
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Boud: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stasjonstype: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Fleanfjild klasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Fleanfjild namme: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Fleanfjild tile namme: {LTBLUE}{STRING}
@@ -2973,6 +2976,7 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Fiertúch
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} trein{P "" en}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} Wein{P "" en}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} fleantugen
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} sk{P ip epen}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Gjin
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Bedriuwswearde: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit fan {COMPANY})
@@ -3083,6 +3087,7 @@ STR_GROUP_ALL_ROAD_VEHICLES                                     :Alle weinen
 STR_GROUP_ALL_SHIPS                                             :Alle skepen
 STR_GROUP_ALL_AIRCRAFTS                                         :Alle fleantugen
 
+STR_GROUP_DEFAULT_SHIPS                                         :Net groepearre skepen
 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om in groep oan te meitsje
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Smit de selektearre groep fuort
@@ -3096,6 +3101,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Alle fiertugen 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nije spoar weinen
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nije elektryske treinen
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nije Maglev Treinen
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nije Weinen
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nije Skepen
@@ -3103,6 +3109,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nije fleantugen
 
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK} Kracht: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Snelheid: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Faasje op see: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Underhâldskosten: {GOLD}{CURRENCY_LONG}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteit: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(kin omboud wurde)
@@ -3172,6 +3179,7 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepen -
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}tôgje trein hjirhinne om it te ferkeapjen.
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}tôgje wein hjirhinne om it te ferkeapjen.
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Tôgje skip hjirhinne om it te ferkeapjen
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}tôgje fleantúg hjirhinne om it te ferkeapjen.
 
 
@@ -3199,6 +3207,7 @@ STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik om 
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klik om alle weinen yn dizze garaazje te stopjen
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klik om alle fleantugen yn dizze hangar te stopje
 
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik om alle skepen te starte
 
 
 # Engine preview window
@@ -3254,6 +3263,7 @@ STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Trein om
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Wein ombouwe om in oar soart fracht mei te nimmen
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Skip ombouwe nei in oar saort fracht
 
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Rydrjochting fan trein omkeare
 
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Lit oarders fan'e wein sjen. Brûk Ctrl+Klik om de tjinstregeling te sjen
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Lit de rûte fan dit skip sjen. Ctrl+Click lit tsjinstregeling sjen
@@ -3312,6 +3322,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Underhâ
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Underhâldsinterval ferheegje mei 10. Ctrl+Klik ferheegt underhâldsinterval mei 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tiid tusken ûnderhâldsbeurten ferleegje mei 10. Ctrl+Klik ferleegt de tiid tusken ûnderhâldsbeurten mei 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Feroarje tiid tusken ûnderhâldsbeurten
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standert
 STR_VEHICLE_DETAILS_DAYS                                        :Dagen
 STR_VEHICLE_DETAILS_PERCENT                                     :Persintaazje
@@ -3360,6 +3371,7 @@ STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Fleantú
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Trein ombouwe nei selektearre fracht
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Wein ombouwe nij selektearre fracht
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Skip ombouwe nei selektearre fracht
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Fleantúch ombouwe nei selektearre fracht
 
 # Order view
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tjinstregeling
@@ -3548,6 +3560,7 @@ STR_AI_CONFIG_NONE                                              :(gjin)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Pleats heger
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Set selektearre AI boppenoan de list
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Pleats leger
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spulskript
 STR_AI_CONFIG_AI                                                :{SILVER}AIs

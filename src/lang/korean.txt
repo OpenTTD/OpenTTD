@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}칸 간�
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :드래그할 때, 신호기 사이의 거리를 계속 고정: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 CTRL+드래그 하여 설치할 때의 행동을 선택합니다. 이 옵션을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 신호기가 설치될 것입니다. 이 옵션을 켜면, 신호기는 터널/다리와 상관없이 매 n개의 칸마다 설치될 것입니다.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :전자식 신호기의 사용: {STRING}년 이후에
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호등은 기능적으로는 동일하고 모습만 다릅니다.)
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호기는 기능적으로는 동일하고 모습만 다릅니다.)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :신호기 설치시 신호기 선택 창을 띄움: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :설치할 신호기 종류를 고를 수 있는 신호기 선택 창을 표시합니다. 이 옵션을 끄면 선택 창 없이 CTRL+클릭 만으로 신호기의 종류를 바꿔야 합니다.
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :기본적으로 만들 신호기 종류: {STRING}
@@ -1762,7 +1762,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 �
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}인공지능/게임 스크립트 설정창을 엽니다.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다.
 
-STR_INTRO_TRANSLATION                                           :{BLACK}이 버전의 OpenTTD는 {NUM}개의 문장이 한국어로 번역되지 않았습니다. 한국어 번역자에게 번역을 의뢰하십시오.{}텔크 (telk5093@gmail.com)
+STR_INTRO_TRANSLATION                                           :{BLACK}이 버전의 OpenTTD는 {NUM}개의 문장이 한국어로 번역되지 않았습니다. OpenTTD가 더욱 발전할 수 있도록 번역에 참여하세요. 자세한 사항은 readme.txt를 참고하세요.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}종료
@@ -3012,7 +3012,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} �
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}회사에 대한 이 도시의 평판:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}가능한 행동:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}이 도시에 할 수 있는 일 목록 - 상세 정보를 보시려면 클릭하세요
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}이 도시에 할 수 있는 일 목록 - 상세 정보를 보시려면 클릭하세요.
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}실행
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}선택된 항목을 실행에 옮깁니다
 
@@ -3796,8 +3796,8 @@ STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :＜
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :≤
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :＞
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :≥
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :있을 때
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :없을 때
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :이 있을 때
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :이 없을 때
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}비교조건에 대한 입력값입니다.
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}비교할 값을 입력하세요.

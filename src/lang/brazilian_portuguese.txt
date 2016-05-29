@@ -1090,7 +1090,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não há IA compatíveis disponíveis...{}Você pode baixar várias IA's pelo sistema de 'Conteúdo Online'
 
 # Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :[WHITE}Configurações
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configurações
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtro:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Maximizar tudo
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Minimizar tudo
@@ -2875,7 +2875,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Vai para
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}"Sprite" anterior
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Retorna ao "sprite" normal anterior, pulando quaisquer "sprites" falsos, recoloridos ou de fontes, e junta tudo do primeiro ao último
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do "sprite" atualmente selecionado. O alinhamento é ignorado ao desenhar esse "sprite"
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move o "sprite", alterando os offsets X e Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move o "sprite", alterando os offsets X e Y. Ctrl+Clique para mover o sprite 8 unidades por vez
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetar relativo
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reseta os offsets relativos atuais
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Absoluto)

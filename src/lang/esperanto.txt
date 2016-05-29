@@ -472,6 +472,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tuta karto ekra
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Bildeto-liniigilo
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montri limigujo
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :(Mal)ŝalti la kolorigon de malpuraj blokoj
 ############ range ends here
 
 ############ range for ordinal numbers used for the place in the highscore window
@@ -1280,6 +1281,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permesu Artefar
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Prizorgintervala procentaĵo: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Malŝaltu prizorgadon se rompiĝoj ne okazas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktivigu vagonajn rapideclimojn: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiam ebligita, ankaŭ uzu rapideco-limigojn de vagonoj por decidi la maksimuman rapidecon de trajno
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Malŝaltu elektrajn relojn: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Unua veturilo atingas propran stacion: {STRING}
@@ -2560,6 +2562,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subaĉe
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Nenia -
 
 # Goal question window
 

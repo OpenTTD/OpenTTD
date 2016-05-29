@@ -61,10 +61,10 @@ STR_CARGO_PLURAL_WOOD                                           :{G=n}Lignum
 STR_CARGO_PLURAL_WOOD.gen                                       :ligni
 STR_CARGO_PLURAL_WOOD.acc                                       :Lignum
 STR_CARGO_PLURAL_WOOD.dat                                       :Ligno
-STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Ferrum
-STR_CARGO_PLURAL_IRON_ORE.gen                                   :ferri
-STR_CARGO_PLURAL_IRON_ORE.acc                                   :Ferrum
-STR_CARGO_PLURAL_IRON_ORE.dat                                   :Ferro
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Ferrum Rude
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :ferri rudis
+STR_CARGO_PLURAL_IRON_ORE.acc                                   :Ferrum Rude
+STR_CARGO_PLURAL_IRON_ORE.dat                                   :Ferro Rudi
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Chalybs
 STR_CARGO_PLURAL_STEEL.gen                                      :chalybis
 STR_CARGO_PLURAL_STEEL.acc                                      :Chalybem
@@ -73,10 +73,10 @@ STR_CARGO_PLURAL_VALUABLES                                      :{G=fp}Res Preti
 STR_CARGO_PLURAL_VALUABLES.gen                                  :rerum pretiosarum
 STR_CARGO_PLURAL_VALUABLES.acc                                  :Res Pretiosas
 STR_CARGO_PLURAL_VALUABLES.dat                                  :Rebus Pretiosis
-STR_CARGO_PLURAL_COPPER_ORE                                     :{G=n}Aes
-STR_CARGO_PLURAL_COPPER_ORE.gen                                 :aeris
-STR_CARGO_PLURAL_COPPER_ORE.acc                                 :Aes
-STR_CARGO_PLURAL_COPPER_ORE.dat                                 :Aeri
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=n}Aes Rude
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :aeris rudis
+STR_CARGO_PLURAL_COPPER_ORE.acc                                 :Aes Rude
+STR_CARGO_PLURAL_COPPER_ORE.dat                                 :Aeri Rudi
 STR_CARGO_PLURAL_MAIZE                                          :{G=n}Maizium
 STR_CARGO_PLURAL_MAIZE.gen                                      :maizii
 STR_CARGO_PLURAL_MAIZE.acc                                      :Maizium
@@ -188,10 +188,10 @@ STR_CARGO_SINGULAR_WOOD                                         :{G=n}Lignum
 STR_CARGO_SINGULAR_WOOD.gen                                     :ligni
 STR_CARGO_SINGULAR_WOOD.acc                                     :Lignum
 STR_CARGO_SINGULAR_WOOD.dat                                     :Ligno
-STR_CARGO_SINGULAR_IRON_ORE                                     :{G=n}Ferrum
-STR_CARGO_SINGULAR_IRON_ORE.gen                                 :ferri
-STR_CARGO_SINGULAR_IRON_ORE.acc                                 :Ferrum
-STR_CARGO_SINGULAR_IRON_ORE.dat                                 :Ferro
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=n}Ferrum Rudum
+STR_CARGO_SINGULAR_IRON_ORE.gen                                 :ferri rudis
+STR_CARGO_SINGULAR_IRON_ORE.acc                                 :Ferrum Rude
+STR_CARGO_SINGULAR_IRON_ORE.dat                                 :Ferro Rudi
 STR_CARGO_SINGULAR_STEEL                                        :{G=m}Chalybs
 STR_CARGO_SINGULAR_STEEL.gen                                    :chalybis
 STR_CARGO_SINGULAR_STEEL.acc                                    :Chalybem
@@ -200,10 +200,10 @@ STR_CARGO_SINGULAR_VALUABLES                                    :{G=fp}Res Preti
 STR_CARGO_SINGULAR_VALUABLES.gen                                :rerum pretiosarum
 STR_CARGO_SINGULAR_VALUABLES.acc                                :Res Pretiosas
 STR_CARGO_SINGULAR_VALUABLES.dat                                :Rebus Pretiosis
-STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=n}Aes
-STR_CARGO_SINGULAR_COPPER_ORE.gen                               :aeris
-STR_CARGO_SINGULAR_COPPER_ORE.acc                               :Aes
-STR_CARGO_SINGULAR_COPPER_ORE.dat                               :Aeri
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=n}Aes Rude
+STR_CARGO_SINGULAR_COPPER_ORE.gen                               :aeris rudis
+STR_CARGO_SINGULAR_COPPER_ORE.acc                               :Aes Rude
+STR_CARGO_SINGULAR_COPPER_ORE.dat                               :Aeri Rudi
 STR_CARGO_SINGULAR_MAIZE                                        :{G=n}Maizium
 STR_CARGO_SINGULAR_MAIZE.gen                                    :maizii
 STR_CARGO_SINGULAR_MAIZE.acc                                    :Maizium
@@ -291,10 +291,10 @@ STR_QUANTITY_LIVESTOCK                                          :{G=np}{COMMA}{N
 STR_QUANTITY_GOODS                                              :{G=fp}{COMMA}{NBSP}capsa{P "" e} mercium
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} frumenti
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} ligni
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} ferri
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} ferri rudis
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} chalybis
 STR_QUANTITY_VALUABLES                                          :{G=mp}{COMMA}{NBSP}sacc{P us i} rerum pretiosarum
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} aeris
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} aeris rudis
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} maizii
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fructuum
 STR_QUANTITY_DIAMONDS                                           :{G=mp}{COMMA}{NBSP}sacc{P us i} adamantum

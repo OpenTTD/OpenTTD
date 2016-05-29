@@ -2874,7 +2874,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}前往�
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一個子畫面
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}繼續處理上一個正常的子畫面，略過任何虛位／重新著色／文字字型相關的子畫面，並在到達第一個子畫面後，返回最後的子畫面繼續進行處理。
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}顯示目前選取的 sprite。當 sprite 正在描繪時會忽略其定位
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移動 sprite 到指定的 X 及 Y 座標位移
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移動 sprite 到指定的 X 及 Y 座標位移。Ctrl+點擊可以一次移動8個單元格。
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}重設相對值
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}重設目前的相對位移值
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X 位移：{NUM}，Y 位移：{NUM}（絕對值）

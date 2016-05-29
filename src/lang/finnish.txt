@@ -2874,7 +2874,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mene val
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Edelinen sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jatka edelliseen tavalliseen spriteen ja hyppää yli kaikki pseudo-/uudelleenväritetyt/fontti- spritet ja mene loppuun kun päästään ensimmäiseen
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Valitun spriten näyttö. Sijaintia ei huomioida spriteä piirrettäessä
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liikuta spriteä ympäriinsä, muuttaen X- ja Y-sijainteja
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liikuta spriteä ympäriinsä, muuttaen X- ja Y-sijainteja. Ctrl+Klik siirtää spriteä kahdeksan yksikköä kerralla
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Nollaa suhteelliset
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nollaa suhteelliset erotukset
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-erotus: {NUM}, Y-erotus: {NUM} (Absoluuttinen)

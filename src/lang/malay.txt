@@ -241,6 +241,7 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Musnahka
 
 # Show engines button
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Dengan membenarkan pilihan ini, kapal tersembunyi turut ditunjukkan
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Asal
@@ -279,6 +280,7 @@ STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Baki jangka hayat
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kelewatan jadual waktu
 STR_SORT_BY_FACILITY                                            :Jenis stesen
+STR_SORT_BY_WAITING_TOTAL                                       :Jumlah kargo menunggu
 STR_SORT_BY_RATING_MAX                                          :Penarafan kargo tertinggi
 STR_SORT_BY_RATING_MIN                                          :Penarafan kargo terendah
 STR_SORT_BY_ENGINE_ID                                           :ID Enjin (susunan klasik)
@@ -893,6 +895,7 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Lita
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sesuaikan...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kenderaan Jalanraya
@@ -1396,6 +1399,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lambat
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Biasa
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Pantas
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Sangat pantas
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 dalam {COMMA}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal saiz bandar: {STRING}
 
 
@@ -1409,6 +1413,7 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaram
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
+STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Kecelakaan / Kemalangan
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bandar-bandar
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri-industri
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
@@ -1422,6 +1427,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pencari laluan 
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pencari laluan untuk kenderaan jalanraya: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pencari laluan untuk kapal: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Berundur secara automatik di isyarat: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Benarkan keretapi berundur di lampu isyarat, jika ia menuggu lama
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Tukar nilai tetapan
 
@@ -4073,6 +4079,8 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Papan ta
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Sebuah permainan simulasi berasaskan Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe DOS edition.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe edisi Windows.
 
 ##id 0x2000
 # Town building names
