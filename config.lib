@@ -1490,7 +1490,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ $enable_debug -le 2 ]; then
-		cc_host_is_gcc=`basename "$cc_host" | grep "gcc" &>/dev/null`
+		cc_host_is_gcc=`basename "$cc_host" | grep "gcc" 2>/dev/null`
 		if [ -n "$cc_host_is_gcc" ]; then
 			# Define only when compiling with GCC. Some GLIBC versions use GNU
 			# extensions in a way that breaks build with at least ICC.
@@ -1498,7 +1498,7 @@ make_cflags_and_ldflags() {
 			CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2"
 		fi
 
-		cc_build_is_gcc=`basename "$cc_build" | grep "gcc" &>/dev/null`
+		cc_build_is_gcc=`basename "$cc_build" | grep "gcc" 2>/dev/null`
 		if [ -n "$cc_build_is_gcc" ]; then
 			# Just add -O1 to the tools needed for building.
 			CFLAGS_BUILD="$CFLAGS_BUILD -D_FORTIFY_SOURCE=2 -O1"
