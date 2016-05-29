@@ -1651,6 +1651,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			uint amount_unloaded = _settings_game.order.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
 			bool remaining = false; // Are there cargo entities in this vehicle that can still be unloaded here?
 
+			assert(payment != NULL);
 			payment->SetCargo(v->cargo_type);
 
 			if (!HasBit(ge->status, GoodsEntry::GES_ACCEPTANCE) && v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER) > 0) {

@@ -216,7 +216,7 @@ uint Vehicle::Crash(bool flooded)
 	SetWindowDirty(WC_VEHICLE_DEPOT, this->tile);
 
 	delete this->cargo_payment;
-	this->cargo_payment = NULL;
+	assert(this->cargo_payment == NULL); // cleared by ~CargoPayment
 
 	return RandomRange(pass + 1); // Randomise deceased passengers.
 }
@@ -746,6 +746,7 @@ void Vehicle::PreDestructor()
 		HideFillingPercent(&this->fill_percent_te_id);
 		this->CancelReservation(INVALID_STATION, st);
 		delete this->cargo_payment;
+		assert(this->cargo_payment == NULL); // cleared by ~CargoPayment
 	}
 
 	if (this->IsEngineCountable()) {
@@ -2085,6 +2086,7 @@ void Vehicle::LeaveStation()
 	assert(this->current_order.IsType(OT_LOADING));
 
 	delete this->cargo_payment;
+	assert(this->cargo_payment == NULL); // cleared by ~CargoPayment
 
 	/* Only update the timetable if the vehicle was supposed to stop here. */
 	if (this->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);
