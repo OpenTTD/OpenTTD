@@ -177,7 +177,7 @@ public:
 		y = y + WD_FRAMERECT_BOTTOM - nwid->pos_y; // Compute needed size of the widget.
 		if (y > nwid->current_y) {
 			/* If the company list is too big to fit, mark ourself dirty and draw again. */
-			ResizeWindow(this, 0, y - nwid->current_y);
+			ResizeWindow(this, 0, y - nwid->current_y, false);
 		}
 	}
 

@@ -23,6 +23,7 @@
 #include "transport_type.h"
 #include "group_type.h"
 #include "base_consist.h"
+#include "network/network.h"
 #include <list>
 #include <map>
 
@@ -1072,6 +1073,9 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	inline void UpdateViewport(bool force_update, bool update_delta)
 	{
+		/* Skip updating sprites on dedicated servers without screen */
+		if (_network_dedicated) return;
+
 		/* Explicitly choose method to call to prevent vtable dereference -
 		 * it gives ~3% runtime improvements in games with many vehicles */
 		if (update_delta) ((T *)this)->T::UpdateDeltaXY(this->direction);
