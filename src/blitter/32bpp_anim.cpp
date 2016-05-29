@@ -20,6 +20,11 @@
 /** Instantiation of the 32bpp with animation blitter factory. */
 static FBlitter_32bppAnim iFBlitter_32bppAnim;
 
+Blitter_32bppAnim::~Blitter_32bppAnim()
+{
+	free(this->anim_buf);
+}
+
 template <BlitterMode mode>
 inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 {
