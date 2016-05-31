@@ -1401,6 +1401,12 @@ make_compiler_cflags() {
 			flags="$flags -Wno-free-nonheap-object"
 		fi
 
+		if [ $cc_version -ge 60 ]; then
+			# -flifetime-dse=2 (default since GCC 6) doesn't play
+			# well with our custom pool item allocator
+			cxxflags="$cxxflags -flifetime-dse=1"
+		fi
+
 		if [ "$enable_lto" != "0" ]; then
 			# GCC 4.5 outputs '%{flto}', GCC 4.6 outputs '%{flto*}'
 			has_lto=`$1 -dumpspecs | grep '\%{flto'`
