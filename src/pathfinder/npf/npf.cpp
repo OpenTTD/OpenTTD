@@ -959,12 +959,13 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
  * multiple targets that are spread around, we should perform a breadth first
  * search by specifiying CalcZero as our heuristic.
  */
-static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start_tile1, AyStarNode *start2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, AyStarUserData *user, uint reverse_penalty, bool ignore_reserved = false)
+static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start_tile1, AyStarNode *start2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, AyStarUserData *user, uint reverse_penalty, bool ignore_reserved = false, int max_penalty = 0)
 {
 	int r;
 	NPFFoundTargetData result;
 
 	/* Initialize procs */
+	_npf_aystar.max_path_cost = max_penalty;
 	_npf_aystar.CalculateH = heuristic_proc;
 	_npf_aystar.EndNodeCheck = target_proc;
 	_npf_aystar.FoundEndNode = NPFSaveTargetData;
@@ -1052,7 +1053,7 @@ static NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir track
  * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
  * tile).
  */
-static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStarUserData *user, uint reverse_penalty)
+static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStarUserData *user, uint reverse_penalty, int max_penalty)
 {
 	AyStarNode start1;
 	AyStarNode start2;
@@ -1064,7 +1065,7 @@ static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Tra
 
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any depot...*/
-	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindDepot, NPFCalcZero, user, reverse_penalty);
+	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindDepot, NPFCalcZero, user, reverse_penalty, false, max_penalty);
 }
 
 void InitializeNPF()
@@ -1114,7 +1115,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 	Trackdir trackdir = v->GetVehicleTrackdir();
 
 	AyStarUserData user = { v->owner, TRANSPORT_ROAD, INVALID_RAILTYPES, v->compatible_roadtypes };
-	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, NULL, &user, 0);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, NULL, &user, 0, max_penalty);
 
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
@@ -1204,7 +1205,7 @@ FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty)
 
 	assert(trackdir != INVALID_TRACKDIR);
 	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE };
-	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, &user, NPF_INFINITE_PENALTY);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, &user, NPF_INFINITE_PENALTY, max_penalty);
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
 	/* Found target */
