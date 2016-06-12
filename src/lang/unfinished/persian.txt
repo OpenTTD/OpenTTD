@@ -970,6 +970,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}وضوح
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :دو برابر
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بسته گرافیک پایه
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بسته گرافیک پایه را انتخاب کنید
@@ -3071,6 +3072,7 @@ STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK} ستو�
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}برای توقف جایگزین کردن برای نوع انتخاب شده در سمت چپ کلیک کنید
 
 
+STR_REPLACE_ELRAIL_VEHICLES                                     :وسایل نقلیه ریلی برقی
 
 
 # Vehicle view
