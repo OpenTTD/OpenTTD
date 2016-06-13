@@ -301,7 +301,7 @@ STR_SORT_BY_WAITING_TOTAL                                       :Cargamento tota
 STR_SORT_BY_WAITING_AVAILABLE                                   :Cargamento disponible en espera
 STR_SORT_BY_RATING_MAX                                          :Valoración más alta de cargamento
 STR_SORT_BY_RATING_MIN                                          :Valoración más baja de cargamento
-STR_SORT_BY_ENGINE_ID                                           :Id. de locomotora (orden clásico)
+STR_SORT_BY_ENGINE_ID                                           :EngineID (classic sort)Id. locomotora (orden clásico)
 STR_SORT_BY_COST                                                :Costo
 STR_SORT_BY_POWER                                               :Potencia
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Fuerza de tracción
@@ -893,7 +893,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecci�
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar americano (USD)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar estadounidense (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen japonés (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Chelín austríaco (ATS)
@@ -1008,7 +1008,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El modo 
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE} {CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reducir el valor de la moneda por una libra (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementar el valor de la moneda por una libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ajustar el valor de cambio de la moneda por una Libra (£)
@@ -1027,7 +1027,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Establec
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Cambiar a euro antes
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Cambiar a euro después
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista previa: {ORANGE}{CURRENCY_LONG}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista previa: {ORANGE} {CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libras (£) en la moneda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar parámetro de moneda personalizada
 
