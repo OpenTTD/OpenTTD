@@ -35,7 +35,9 @@
 #include "window_func.h"
 #include "debug.h"
 #include "game/game_text.hpp"
-#include "network/network_content_gui.h"
+#ifdef ENABLE_NETWORK
+#	include "network/network_content_gui.h"
+#endif /* ENABLE_NETWORK */
 #include <stack>
 
 #include "table/strings.h"
@@ -1815,7 +1817,9 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	SortIndustryTypes();
 	BuildIndustriesLegend();
 	SortNetworkLanguages();
+#ifdef ENABLE_NETWORK
 	BuildContentTypeStringList();
+#endif /* ENABLE_NETWORK */
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE);      // Build vehicle window.
 	InvalidateWindowClassesData(WC_TRAINS_LIST);        // Train group window.
 	InvalidateWindowClassesData(WC_ROADVEH_LIST);       // Road vehicle group window.
