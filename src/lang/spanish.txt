@@ -111,7 +111,7 @@ STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} d
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de maíz
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruta
 STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}bolsa{P "" s} de diamantes
-STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimento
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papel
 STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}bolsa{P "" s} de oro
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} de agua
@@ -3961,9 +3961,9 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nombre del script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuración
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración del script
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar/desactivar la pausa automática cuando un mensaje de log de la IA coincide con la cadena de parada
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activa/desactiva la pausa automática cuando un mensaje de log de la IA coincide con la cadena de parada
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausar con:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausar cuando el script registre esta cadena
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cuando un mensaje de log de una IA coincide con esta cadena, el juego se pausa
@@ -3980,7 +3980,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de l
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de Scripts
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de Scripts de Juego / IA
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de Juego que será cargada en la próxima partida
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IAs que serán cargadas en la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador Humano
@@ -4630,7 +4630,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Vagón de Mader
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Vagoneta de Mineral de Hierro
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Vagón de Acero
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Vagón Blindado
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagón de Alimento
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagón de Alimentos
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Vagón de Papel
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Vagoneta de Mineral de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Cisterna de Agua
@@ -4660,7 +4660,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Vagón de Mader
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Vagoneta de Mineral de Hierro
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Vagón de Acero
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Vagón Blindado
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagón de Alimento
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagón de Alimentos
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Vagón de Papel
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Vagoneta de Mineral de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Cisterna de Agua
@@ -4692,7 +4692,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Vagón de Mader
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Vagoneta de Mineral de Hierro
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Vagón de Acero
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Vagón Blindado
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagón de Alimento
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagón de Alimentos
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Vagón de Papel
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Vagoneta de Mineral de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Cisterna de Agua
@@ -4734,8 +4734,8 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camión de Merc
 STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camión de Mercancías Craighead
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camión de Mercancías Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Camión Granero Hereford
-STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Camión Granero Thomas
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Camión Granero Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Camión de Grano Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Camión de Grano Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Camión Maderero Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Camión Maderero Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Camión Maderero Moreland
@@ -4748,9 +4748,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Camión de Acer
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Furgón Blindado Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Furgón Blindado Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Furgón Blindado Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Furgón de Comida Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Furgón de Comida Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Furgón de Comida Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Furgón de Alimentos Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Furgón de Alimentos Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Furgón de Alimentos Chippy
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Camión de Papel Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Camión de Papel Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Camión de Papel MPS
