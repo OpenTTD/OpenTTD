@@ -3321,7 +3321,7 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLA
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos de carretera disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos disponibles
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aviones disponibles
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves disponibles
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de modelos disponibles para este tipo de vehículo
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administrar lista
@@ -4478,7 +4478,7 @@ STR_BASEMUSIC_NONE_DESCRIPTION                                  :Un conjunto de 
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Bloque alto de oficinas
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Bloque de oficinas
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Bloque de viviendas pequeño
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Bloque de apartamentos pequeño
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Iglesia
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Gran bloque de oficinas
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas del municipio
@@ -4733,7 +4733,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Camión de Gana
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camión de Mercancías Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camión de Mercancías Craighead
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camión de Mercancías Goss
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Camión Granero Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Camión de Grano Hereford
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Camión de Grano Thomas
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Camión de Grano Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Camión Maderero Witcombe
