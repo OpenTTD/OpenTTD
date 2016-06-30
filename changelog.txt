@@ -1,3 +1,11 @@
+1.6.1 (2016-07-01)
+------------------------------------------------------------------------
+- Fix: Compilation and optimisation issues with GCC6 (r27606, r27605, r27595)
+- Fix: Compilation with --disable-network [FS#6481] (r27602)
+- Fix: [NewGRF] shift-and-add-divide/modulo varadjusts use signed division/modulo (r27600)
+- Fix: Company 0 could accept engine previews before they were offered (r27598)
+
+
 1.6.1-RC1 (2016-06-01)
 ------------------------------------------------------------------------
 - Feature: Mexican Spanish (r27564, r27553, r27552)
