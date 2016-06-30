@@ -204,8 +204,8 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ScopeResolver
 	if (adjust->type != DSGA_TYPE_NONE) value += (S)adjust->add_val;
 
 	switch (adjust->type) {
-		case DSGA_TYPE_DIV:  value /= (S)adjust->divmod_val; break;
-		case DSGA_TYPE_MOD:  value %= (U)adjust->divmod_val; break;
+		case DSGA_TYPE_DIV:  value = (S)value / (S)adjust->divmod_val; break;
+		case DSGA_TYPE_MOD:  value = (S)value % (S)adjust->divmod_val; break;
 		case DSGA_TYPE_NONE: break;
 	}
 
