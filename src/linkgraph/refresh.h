@@ -14,7 +14,7 @@
 
 #include "../cargo_type.h"
 #include "../vehicle_base.h"
-#include <list>
+#include <vector>
 #include <map>
 #include <set>
 
@@ -79,7 +79,7 @@ protected:
 		bool operator<(const Hop &other) const;
 	};
 
-	typedef std::list<RefitDesc> RefitList;
+	typedef std::vector<RefitDesc> RefitList;
 	typedef std::map<CargoID, uint> CapacitiesMap;
 	typedef std::set<Hop> HopSet;
 
