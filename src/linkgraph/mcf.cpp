@@ -136,7 +136,7 @@ private:
 	LinkGraphJob &job; ///< Link graph job we're working with.
 
 	/** Lookup table for getting NodeIDs from StationIDs. */
-	std::map<StationID, NodeID> station_to_node;
+	std::vector<NodeID> station_to_node;
 
 	/** Current iterator in the shares map. */
 	FlowStat::SharesMap::const_iterator it;
@@ -152,7 +152,11 @@ public:
 	FlowEdgeIterator(LinkGraphJob &job) : job(job)
 	{
 		for (NodeID i = 0; i < job.Size(); ++i) {
-			this->station_to_node[job[i].Station()] = i;
+			StationID st = job[i].Station();
+			if (st >= this->station_to_node.size()) {
+				this->station_to_node.resize(st + 1);
+			}
+			this->station_to_node[st] = i;
 		}
 	}
 
