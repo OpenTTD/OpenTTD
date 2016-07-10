@@ -33,6 +33,11 @@ public:
 	inline uint GetAnnotation() const { return this->distance; }
 
 	/**
+	 * Update the cached annotation value
+	 */
+	inline void UpdateAnnotation() { }
+
+	/**
 	 * Comparator for std containers.
 	 */
 	struct Comparator {
@@ -47,6 +52,8 @@ public:
  * can only decrease or stay the same if you add more edges.
  */
 class CapacityAnnotation : public Path {
+	int cached_annotation;
+
 public:
 
 	/**
@@ -62,7 +69,15 @@ public:
 	 * Return the actual value of the annotation, in this case the capacity.
 	 * @return Capacity.
 	 */
-	inline int GetAnnotation() const { return this->GetCapacityRatio(); }
+	inline int GetAnnotation() const { return this->cached_annotation; }
+
+	/**
+	 * Update the cached annotation value
+	 */
+	inline void UpdateAnnotation()
+	{
+		this->cached_annotation = this->GetCapacityRatio();
+	}
 
 	/**
 	 * Comparator for std containers.
@@ -246,6 +261,7 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 	paths.resize(size, NULL);
 	for (NodeID node = 0; node < size; ++node) {
 		Tannotation *anno = new Tannotation(node, node == source_node);
+		anno->UpdateAnnotation();
 		annos.insert(anno);
 		paths[node] = anno;
 	}
@@ -270,6 +286,7 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 			if (dest->IsBetter(source, capacity, capacity - edge.Flow(), distance)) {
 				annos.erase(dest);
 				dest->Fork(source, capacity, capacity - edge.Flow(), distance);
+				dest->UpdateAnnotation();
 				annos.insert(dest);
 			}
 		}
