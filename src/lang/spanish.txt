@@ -229,10 +229,10 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Patrón 
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Escriba un patrón de filtrado
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduzca una palabra clave para filtrar la lista
 
-STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Seleccionar orden de agrupamiento
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccione ordenación (descendiente/ascendiente)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Seleccione criterio de orden
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Seleccione criterio de filtrado
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecciona orden de agrupamiento
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona orden de clasificación (descendiente/ascendiente)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona orden de clasificación
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_LOCATION                                             :{BLACK}Sitio
 STR_BUTTON_RENAME                                               :{BLACK}Renombrar
@@ -978,7 +978,7 @@ STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marca esta opción para jugar OpenTTD a pantalla completa
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolución de pantalla
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccione la resolución de pantalla a usar
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolución de pantalla a usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otras
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
@@ -3102,7 +3102,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ninguna -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar todos los tipos de estación
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Selecciona todos los tipos de carga (incluidas las que no están en espera)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ningún tipo de carga está esperando
 
 # Station view window
@@ -3768,7 +3768,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar 
 STR_ORDER_REFIT                                                 :{BLACK}Reformar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+Click para eliminar la orden de reforma
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Reforma en la estación
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Seleccionar el tipo de carga a la que reformar en esta orden. Ctrl+Click elimina la orden de reforma. La reforma solamente puede llevarse a cabo si el vehículo lo permite
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+Click elimina la orden de reforma. La reforma solamente puede llevarse a cabo si el vehículo lo permite
 STR_ORDER_DROP_REFIT_AUTO                                       :Carga fijada
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carga disponible
 
