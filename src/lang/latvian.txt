@@ -760,6 +760,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Pārslē
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nerādīt neviena uzņēmuma īpašumus uz kartes
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Rādīt visu uzņēmumu īpašumus uz kartes
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nerādīt kravas uz kartes
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Rādīt visas kravas uz kartes
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Rādīt pēdējo ziņojumu vai avīzes rakstu
@@ -4242,7 +4243,7 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Vispirms
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nevar sākties un beigties tajā paša vietā
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Tilta gali nav vienā līmenī
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tilts ir pārāk zems šim zemes apvidum
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Tilts ir pārāk augsts priekš šī vilciena.
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Tilts ir pārāk augsts šim zemes apvidum.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Sākumam un beigām jābūt uz vienas līnijas
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abiem tilta galiem jābūt uz zemes
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... tilts ir pārāk garš
@@ -4372,6 +4373,10 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nevar dz
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Uz 'Transport Tycoon Deluxe' balstīta simulācijas spēle
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Oriģinālā Transport Tycoon Deluxe DOS izdevuma grafika.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Oriģinālā Transport Tycoon Deluxe DOS (vācu) izdevuma grafika.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Oriģinālā Transport Tycoon Deluxe Windows izdevuma grafika.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Skaņu kopa bez skaņas.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Oriģinālā Transport Tycoon Deluxe Windows izdevuma mūzika.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Mūzikas kopa bez mūzikas
 
