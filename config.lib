@@ -1330,9 +1330,11 @@ make_compiler_cflags() {
 		ldflags="$ldflags -rdynamic"
 	else
 		# Enable some things only for certain GCC versions
-		cc_version=`$1 -dumpversion | cut -c 1,3`
+		# cc_version = major_version * 100 + minor_version
+		# For example: "3.3" -> 303, "4.9.2" -> 409, "6" -> 600, "23.5" -> 2305
+		cc_version=`$1 -dumpversion | $awk -F . '{printf "%d%02d", $1, $2}'`
 
-		if [ $cc_version -lt 33 ]; then
+		if [ $cc_version -lt 303 ]; then
 			log 1 "configure: error: gcc older than 3.3 can't compile OpenTTD because of its poor template support"
 			exit 1
 		fi
@@ -1345,20 +1347,20 @@ make_compiler_cflags() {
 		if [ $enable_assert -eq 0 ]; then
 			# Do not warn about unused variables when building without asserts
 			flags="$flags -Wno-unused-variable"
-			if [ $cc_version -ge 46 ]; then
+			if [ $cc_version -ge 406 ]; then
 				# GCC 4.6 gives more warnings, disable them too
 				flags="$flags -Wno-unused-but-set-variable"
 				flags="$flags -Wno-unused-but-set-parameter"
 			fi
 		fi
 
-		if [ $cc_version -ge 34 ]; then
+		if [ $cc_version -ge 304 ]; then
 			# Warn when a variable is used to initialise itself:
 			# int a = a;
 			flags="$flags -Winit-self"
 		fi
 
-		if [ $cc_version -ge 40 ]; then
+		if [ $cc_version -ge 400 ]; then
 			# GCC 4.0+ complains about that we break strict-aliasing.
 			#  On most places we don't see how to fix it, and it doesn't
 			#  break anything. So disable strict-aliasing to make the
@@ -1369,7 +1371,7 @@ make_compiler_cflags() {
 			flags="$flags -Wcast-qual"
 		fi
 
-		if [ $cc_version -ge 42 ]; then
+		if [ $cc_version -ge 402 ]; then
 			# GCC 4.2+ automatically assumes that signed overflows do
 			# not occur in signed arithmetics, whereas we are not
 			# sure that they will not happen. It furthermore complains
@@ -1380,19 +1382,19 @@ make_compiler_cflags() {
 			flags="$flags -Wnon-virtual-dtor"
 		fi
 
-		if [ $cc_version -ge 43 ] && [ $cc_version -lt 60 ]; then
+		if [ $cc_version -ge 403 ] && [ $cc_version -lt 600 ]; then
 			# Use gnu++0x mode so static_assert() is available.
 			# Don't use c++0x, it breaks mingw (with gcc 4.4.0).
 			cxxflags="$cxxflags -std=gnu++0x"
 		fi
 
-		if [ $cc_version -eq 45 ]; then
+		if [ $cc_version -eq 405 ]; then
 			# Prevent optimisation supposing enums are in a range specified by the standard
 			# For details, see http://gcc.gnu.org/PR43680
 			flags="$flags -fno-tree-vrp"
 		fi
 
-		if [ $cc_version -ge 47 ]; then
+		if [ $cc_version -ge 407 ]; then
 			# Disable -Wnarrowing which gives many warnings, such as:
 			# warning: narrowing conversion of '...' from 'unsigned int' to 'int' inside { } [-Wnarrowing]
 			# They are valid according to the C++ standard, but useless.
@@ -1401,7 +1403,7 @@ make_compiler_cflags() {
 			flags="$flags -Wno-free-nonheap-object"
 		fi
 
-		if [ $cc_version -ge 60 ]; then
+		if [ $cc_version -ge 600 ]; then
 			# -flifetime-dse=2 (default since GCC 6) doesn't play
 			# well with our custom pool item allocator
 			cxxflags="$cxxflags -flifetime-dse=1 -std=gnu++14"
@@ -1412,7 +1414,7 @@ make_compiler_cflags() {
 			has_lto=`$1 -dumpspecs | grep '\%{flto'`
 			if [ -n "$has_lto" ]; then
 				# Use LTO only if we see LTO exists and is requested
-				if [ $cc_version -lt 46 ]; then
+				if [ $cc_version -lt 406 ]; then
 					flags="$flags -flto"
 				else
 					flags="$flags -flto=jobserver"
@@ -1511,7 +1513,7 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ "$os" = "OSX" ] && [ $cc_version -eq 40 ]; then
+	if [ "$os" = "OSX" ] && [ $cc_version -eq 400 ]; then
 		# Apple's GCC 4.0 has a compiler bug for x86_64 with (higher) optimization,
 		# wrongly optimizing ^= in loops. This disables the failing optimisation.
 		CFLAGS="$CFLAGS -fno-expensive-optimizations"
@@ -1535,7 +1537,7 @@ make_cflags_and_ldflags() {
 			LDFLAGS="$LDFLAGS -mwin32"
 		fi
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
-			if [ $cc_version -lt 46 ]; then
+			if [ $cc_version -lt 406 ]; then
 				flags="$flags -mno-cygwin"
 				LDFLAGS="$LDFLAGS -mno-cygwin"
 			fi
@@ -1548,10 +1550,10 @@ make_cflags_and_ldflags() {
 
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32 -limm32"
 
-			if [ $cc_version -ge 44 ]; then
+			if [ $cc_version -ge 40 ]; then
 				LDFLAGS_BUILD="$LDFLAGS_BUILD -static-libgcc -static-libstdc++"
 			fi
-			if [ $cc_version -ge 47 ]; then
+			if [ $cc_version -ge 407 ]; then
 				CFLAGS="$CFLAGS -mno-ms-bitfields"
 			fi
 		fi
