@@ -562,8 +562,8 @@ STR_MONTH_DEC                                                   :Decembris
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}Leģenda
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Diagrammās rādīt leģendas
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Apzīmējumu atslēga
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Diagrammās rādīt apzīmējumu atslēgas
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -577,7 +577,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Uzņēmu
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kravas apmaksas cenas
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dienas pārvadājumos
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Izmaksas par 10 vienību (vai 10,000 litru) kravas pārvadāšanu par 20mit lauciņiem
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Izmaksas par 10 vienību (vai 10,000 litru) kravas pārvadāšanu par 20 lauciņiem
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Iespējot visu
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Atspējot visu
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Rādīt visas kravas samaksu salīdzināšanas diagrammā
@@ -588,8 +588,8 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus uzņēmējdarbības vērtējumus
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leģendas uzņēmumu diagrammās
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikšķināt šeit, lai izslēgtu/ieslēgtu uzņēmuma iekļaušanu diagrammā
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Apzīmējumu atslēgas uzņēmumu diagrammās
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikšķināt šeit, lai ieslēgtu/izslēgtu uzņēmuma attēlošanu diagrammā
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Uzņēmumu rangu saraksts
@@ -703,6 +703,7 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Karte - 
 STR_SMALLMAP_TYPE_CONTOURS                                      :kontūras
 STR_SMALLMAP_TYPE_VEHICLES                                      :transportlīdzekļi
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :ražotnes
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :kravas plūsma
 STR_SMALLMAP_TYPE_ROUTES                                        :maršruti
 STR_SMALLMAP_TYPE_VEGETATION                                    :augu valsts
 STR_SMALLMAP_TYPE_OWNERS                                        :īpašnieki
@@ -1339,6 +1340,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Kreisā klikšķa ritināšana: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automātiskā saglabāšana: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Izvēlēties spēles automātiskās saglabāšanas starplaikus
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Lietot {STRING} datuma formātu saglabāto spēļu nosaukumos
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datuma formāts spēļu saglabājuma failu nosaukumos
@@ -2216,9 +2218,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslē
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Caurspīdības vietā objektus padarīt neredzamus
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Atzīmēt kompānijas kuras uzrādīt
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Kravas plūsmas apzīmējumi
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Visi
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Neviens
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Izvēlēties attēlojamos uzņēmumus
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nelietots
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}piesātināts
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}pārslogots
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Pārklājuma iezīmēšana
@@ -3009,6 +3017,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķināt uz servisa, lai iecentrētu skatu uz rūpnīcu/pilsētu. Ctrl+klikšķis atvērs jaunu skatu lauku uz pilsētu/rūpnīcu
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Stāstu grāmata
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globālā stāstu grāmata
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM} lapa
@@ -3816,7 +3825,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Saraksts
 
 STR_TIMETABLE_NO_TRAVEL                                         :Bez braukšanas
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ceļot (automātiski; pēc nākamā manuālā rīkojuma saraksta)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Braukšana (nav pēc saraksta)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Braukšana (nav sarakstā)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Braukt ar ne vairāk kā {2:VELOCITY} (nav sarakstā)
 STR_TIMETABLE_TRAVEL_FOR                                        :Braukt līdz {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Braukt uz {STRING} ar ne vairāk kā {VELOCITY}
@@ -4270,7 +4279,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... tā 
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nevar izveidot grupu...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nevar izdzēst šo grupu...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nevar pārdēvēt grupu...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}No šīs grupas nevar noņemt visus transportlīdzekļus...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nevar noņemt no šīs grupas visus transportlīdzekļus...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nevar pievienot transportlīdzekļus šai grupai...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nevar pievienot koplietojamos transportlīdzekļus šai grupai...
 
@@ -4286,8 +4295,8 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nevar pi
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nevar pielāgot lidaparātu...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nevar nosaukt vilcienu...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Autotransporta līdzekli nevar nosaukt...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nevar pārdēvēt kuģi...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nevar nosaukt autotransporta līdzekli...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nevar nosaukt kuģi...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nevar nosaukt lidaparātu...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nevar apturēt/palaist vilcienu...
