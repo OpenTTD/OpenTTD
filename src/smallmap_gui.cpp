@@ -738,11 +738,11 @@ inline uint32 SmallMapWindow::GetTileColours(const TileArea &ta) const
 	TileType et = MP_VOID;         // Effective tile type at that position.
 
 	TILE_AREA_LOOP(ti, ta) {
-		TileType ttype = GetTileType(tile);
+		TileType ttype = GetTileType(ti);
 
 		switch (ttype) {
 			case MP_TUNNELBRIDGE: {
-				TransportType tt = GetTunnelBridgeTransportType(tile);
+				TransportType tt = GetTunnelBridgeTransportType(ti);
 
 				switch (tt) {
 					case TRANSPORT_RAIL: ttype = MP_RAILWAY; break;
