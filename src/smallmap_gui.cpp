@@ -413,26 +413,10 @@ static const byte _tiletype_importance[] = {
 };
 
 
-static inline TileType GetEffectiveTileType(TileIndex tile)
-{
-	TileType t = GetTileType(tile);
-
-	if (t == MP_TUNNELBRIDGE) {
-		TransportType tt = GetTunnelBridgeTransportType(tile);
-
-		switch (tt) {
-			case TRANSPORT_RAIL: t = MP_RAILWAY; break;
-			case TRANSPORT_ROAD: t = MP_ROAD;    break;
-			default:             t = MP_WATER;   break;
-		}
-	}
-	return t;
-}
-
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Contour".
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
+ * @param t    Effective tile type of the tile (see #GetTileColours).
  * @return The colour of tile in the small map in mode "Contour"
  */
 static inline uint32 GetSmallMapContoursPixels(TileIndex tile, TileType t)
@@ -445,7 +429,7 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Vehicles".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
+ * @param t    Effective tile type of the tile (see #GetTileColours).
  * @return The colour of tile in the small map in mode "Vehicles"
  */
 static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
@@ -458,7 +442,7 @@ static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Industries".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
+ * @param t    Effective tile type of the tile (see #GetTileColours).
  * @return The colour of tile in the small map in mode "Industries"
  */
 static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
@@ -483,7 +467,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Routes".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
+ * @param t    Effective tile type of the tile (see #GetTileColours).
  * @return The colour of tile  in the small map in mode "Routes"
  */
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
@@ -516,7 +500,7 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "link stats".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
+ * @param t    Effective tile type of the tile (see #GetTileColours).
  * @return The colour of tile in the small map in mode "link stats"
  */
 static inline uint32 GetSmallMapLinkStatsPixels(TileIndex tile, TileType t)
@@ -539,7 +523,7 @@ static const uint32 _vegetation_clear_bits[] = {
  * Return the colour a tile would be displayed with in the smallmap in mode "Vegetation".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
+ * @param t    Effective tile type of the tile (see #GetTileColours).
  * @return The colour of tile  in the smallmap in mode "Vegetation"
  */
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
@@ -566,7 +550,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Owner".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
+ * @param t    Effective tile type of the tile (see #GetTileColours).
  * @return The colour of tile in the small map in mode "Owner"
  */
 static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
@@ -754,7 +738,24 @@ inline uint32 SmallMapWindow::GetTileColours(const TileArea &ta) const
 	TileType et = MP_VOID;         // Effective tile type at that position.
 
 	TILE_AREA_LOOP(ti, ta) {
-		TileType ttype = GetEffectiveTileType(ti);
+		TileType ttype = GetTileType(tile);
+
+		switch (ttype) {
+			case MP_TUNNELBRIDGE: {
+				TransportType tt = GetTunnelBridgeTransportType(tile);
+
+				switch (tt) {
+					case TRANSPORT_RAIL: ttype = MP_RAILWAY; break;
+					case TRANSPORT_ROAD: ttype = MP_ROAD;    break;
+					default:             ttype = MP_WATER;   break;
+				}
+				break;
+			}
+
+			default:
+				break;
+		}
+
 		if (_tiletype_importance[ttype] > importance) {
 			importance = _tiletype_importance[ttype];
 			tile = ti;
