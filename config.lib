@@ -1550,7 +1550,7 @@ make_cflags_and_ldflags() {
 
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32 -limm32"
 
-			if [ $cc_version -ge 40 ]; then
+			if [ $cc_version -ge 404 ]; then
 				LDFLAGS_BUILD="$LDFLAGS_BUILD -static-libgcc -static-libstdc++"
 			fi
 			if [ $cc_version -ge 407 ]; then
@@ -1604,7 +1604,7 @@ make_cflags_and_ldflags() {
 			LDFLAGS="$OSX_LD_SYSROOT $LDFLAGS"
 		fi
 
-		if [ "$enable_universal" = "0" ] && [ $cc_version -gt 40 ]; then
+		if [ "$enable_universal" = "0" ] && [ $cc_version -gt 400 ]; then
 			# Only set the min version when not doing an universal build.
 			# Universal builds set the version elsewhere.
 			if [ "$cpu_type" = "64" ]; then
@@ -1782,7 +1782,7 @@ make_cflags_and_ldflags() {
 		# GCC 4.0+ doesn't like the DirectX includes (gives tons of
 		#  warnings on it we won't be able to fix). For now just
 		#  suppress those warnings.
-		if [ $cc_version -ge 40 ]; then
+		if [ $cc_version -ge 400 ]; then
 			CFLAGS="$CFLAGS -Wno-non-virtual-dtor"
 		fi
 	fi
