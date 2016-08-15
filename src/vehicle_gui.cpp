@@ -2861,3 +2861,20 @@ int GetVehicleWidth(Vehicle *v, EngineImageType image_type)
 
 	return vehicle_width;
 }
+
+/**
+ * Set the mouse cursor to look like a vehicle.
+ * @param v Vehicle
+ * @param image_type Type of vehicle image to use.
+ */
+void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
+{
+	bool rtl = _current_text_dir == TD_RTL;
+
+	_cursor.sprite_count = 1;
+	_cursor.sprite_seq[0].sprite = v->GetImage(rtl ? DIR_E : DIR_W, EIT_IN_DEPOT);
+	_cursor.sprite_seq[0].pal = GetVehiclePalette(v);
+	_cursor.sprite_pos[0].x = v->IsGroundVehicle() ? (16 - v->GetGroundVehicleCache()->cached_veh_length * 2) * (rtl ? -1 : 1) : 0;
+
+	UpdateCursorSize();
+}
