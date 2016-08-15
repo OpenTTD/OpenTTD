@@ -127,9 +127,11 @@ struct CursorVars {
 	int h_wheel;
 
 	/* Mouse appearance */
-	CursorID sprite;              ///< current image of cursor
-	PaletteID pal;
-	Point size, offs;             ///< sprite properties
+	PalSpriteID sprite_seq[16];   ///< current image of cursor
+	Point sprite_pos[16];         ///< relative position of individual sprites
+	uint sprite_count;            ///< number of sprites to draw
+	Point total_offs, total_size; ///< union of sprite properties
+
 	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
 
 	const AnimCursor *animate_list; ///< in case of animated cursor, list of frames
@@ -141,7 +143,6 @@ struct CursorVars {
 	bool in_window;               ///< mouse inside this window, determines drawing logic
 
 	/* Drag data */
-	int short_vehicle_offset;     ///< offset of the X for short vehicles
 	bool vehchain;                ///< vehicle chain is dragged
 
 	bool UpdateCursorPosition(int x, int y, bool queued_warp);
