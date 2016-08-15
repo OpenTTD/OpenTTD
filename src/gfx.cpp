@@ -1573,6 +1573,19 @@ void CursorTick()
 }
 
 /**
+ * Set or unset the ZZZ cursor.
+ * @param busy Whether to show the ZZZ cursor.
+ */
+void SetMouseCursorBusy(bool busy)
+{
+	if (busy) {
+		if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
+	} else {
+		if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
+	}
+}
+
+/**
  * Assign a single non-animated sprite to the cursor.
  * @param sprite Sprite to draw for the cursor.
  * @param pal Palette to use for recolouring.

@@ -77,7 +77,7 @@ static void CleanupGeneration()
 {
 	_generating_world = false;
 
-	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
+	SetMouseCursorBusy(false);
 	/* Show all vital windows again, because we have hidden them */
 	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 	SetModalProgress(false);

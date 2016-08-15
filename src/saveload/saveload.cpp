@@ -2460,7 +2460,7 @@ static void SaveFileStart()
 {
 	_sl.ff_state = _fast_forward;
 	_fast_forward = 0;
-	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
+	SetMouseCursorBusy(true);
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_START);
 	_sl.saveinprogress = true;
@@ -2470,7 +2470,7 @@ static void SaveFileStart()
 static void SaveFileDone()
 {
 	if (_game_mode != GM_MENU) _fast_forward = _sl.ff_state;
-	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
+	SetMouseCursorBusy(false);
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_FINISH);
 	_sl.saveinprogress = false;

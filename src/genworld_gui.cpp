@@ -1190,7 +1190,7 @@ struct GenerateProgressWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GP_ABORT:
-				if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
+				SetMouseCursorBusy(false);
 				ShowQuery(
 					STR_GENERATION_ABORT_CAPTION,
 					STR_GENERATION_ABORT_MESSAGE,
