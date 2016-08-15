@@ -2829,37 +2829,43 @@ void CcBuildPrimaryVehicle(const CommandCost &result, TileIndex tile, uint32 p1,
 }
 
 /**
- * Get the width of a vehicle (including all parts of the consist) in pixels.
+ * Get the width of a vehicle (part) in pixels.
  * @param v Vehicle to get the width for.
  * @return Width of the vehicle.
  */
-int GetVehicleWidth(Vehicle *v, EngineImageType image_type)
+int GetSingleVehicleWidth(const Vehicle *v, EngineImageType image_type)
 {
-	int vehicle_width = 0;
-
 	switch (v->type) {
 		case VEH_TRAIN:
-			for (const Train *u = Train::From(v); u != NULL; u = u->Next()) {
-				vehicle_width += u->GetDisplayImageWidth();
-			}
-			break;
+			return Train::From(v)->GetDisplayImageWidth();
 
 		case VEH_ROAD:
-			for (const RoadVehicle *u = RoadVehicle::From(v); u != NULL; u = u->Next()) {
-				vehicle_width += u->GetDisplayImageWidth();
-			}
-			break;
+			return RoadVehicle::From(v)->GetDisplayImageWidth();
 
 		default:
 			bool rtl = _current_text_dir == TD_RTL;
 			SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
 			const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
-			vehicle_width = UnScaleGUI(real_sprite->width);
-
-			break;
+			return UnScaleGUI(real_sprite->width);
 	}
+}
 
-	return vehicle_width;
+/**
+ * Get the width of a vehicle (including all parts of the consist) in pixels.
+ * @param v Vehicle to get the width for.
+ * @return Width of the vehicle.
+ */
+int GetVehicleWidth(const Vehicle *v, EngineImageType image_type)
+{
+	if (v->type == VEH_TRAIN || v->type == VEH_ROAD) {
+		int vehicle_width = 0;
+		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+			vehicle_width += GetSingleVehicleWidth(u, image_type);
+		}
+		return vehicle_width;
+	} else {
+		return GetSingleVehicleWidth(v, image_type);
+	}
 }
 
 /**
