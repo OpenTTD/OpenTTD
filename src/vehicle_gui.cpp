@@ -2877,10 +2877,26 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
-	_cursor.sprite_count = 1;
-	_cursor.sprite_seq[0].sprite = v->GetImage(rtl ? DIR_E : DIR_W, EIT_IN_DEPOT);
-	_cursor.sprite_seq[0].pal = GetVehiclePalette(v);
-	_cursor.sprite_pos[0].x = v->IsGroundVehicle() ? (16 - v->GetGroundVehicleCache()->cached_veh_length * 2) * (rtl ? -1 : 1) : 0;
+	_cursor.sprite_count = 0;
+	int total_width = 0;
+	for (; v != NULL; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL) {
+		if (_cursor.sprite_count == lengthof(_cursor.sprite_seq)) break;
+		if (total_width >= 2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH) break;
+
+		_cursor.sprite_seq[_cursor.sprite_count].sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
+		_cursor.sprite_seq[_cursor.sprite_count].pal = GetVehiclePalette(v);
+		_cursor.sprite_pos[_cursor.sprite_count].x = rtl ? -total_width : total_width;
+		_cursor.sprite_pos[_cursor.sprite_count].y = 0;
+
+		total_width += GetSingleVehicleWidth(v, image_type);
+		_cursor.sprite_count++;
+	}
+
+	int offs = ((int)VEHICLEINFO_FULL_VEHICLE_WIDTH - total_width) / 2;
+	if (rtl) offs = -offs;
+	for (uint i = 0; i < _cursor.sprite_count; ++i) {
+		_cursor.sprite_pos[i].x += offs;
+	}
 
 	UpdateCursorSize();
 }
