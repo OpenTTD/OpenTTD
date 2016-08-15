@@ -115,29 +115,34 @@ struct AnimCursor {
 
 /** Collection of variables for cursor-display and -animation */
 struct CursorVars {
-	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
-	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
-	int short_vehicle_offset;     ///< offset of the X for short vehicles
-	CursorID sprite; ///< current image of cursor
-	PaletteID pal;
-
-	int wheel;       ///< mouse wheel movement
+	/* Logical mouse position */
+	Point pos;                    ///< logical mouse position
+	Point delta;                  ///< relative mouse movement in this tick
+	int wheel;                    ///< mouse wheel movement
+	bool fix_at;                  ///< mouse is moving, but cursor is not (used for scrolling)
 
 	/* We need two different vars to keep track of how far the scrollwheel moved.
 	 * OSX uses this for scrolling around the map. */
 	int v_wheel;
 	int h_wheel;
 
+	/* Mouse appearance */
+	CursorID sprite;              ///< current image of cursor
+	PaletteID pal;
+	Point size, offs;             ///< sprite properties
+	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
+
 	const AnimCursor *animate_list; ///< in case of animated cursor, list of frames
 	const AnimCursor *animate_cur;  ///< in case of animated cursor, current frame
 	uint animate_timeout;           ///< in case of animated cursor, number of ticks to show the current cursor
 
-	bool visible;    ///< cursor is visible
-	bool dirty;      ///< the rect occupied by the mouse is dirty (redraw)
-	bool fix_at;     ///< mouse is moving, but cursor is not (used for scrolling)
-	bool in_window;  ///< mouse inside this window, determines drawing logic
+	bool visible;                 ///< cursor is visible
+	bool dirty;                   ///< the rect occupied by the mouse is dirty (redraw)
+	bool in_window;               ///< mouse inside this window, determines drawing logic
 
-	bool vehchain;   ///< vehicle chain is dragged
+	/* Drag data */
+	int short_vehicle_offset;     ///< offset of the X for short vehicles
+	bool vehchain;                ///< vehicle chain is dragged
 
 	bool UpdateCursorPosition(int x, int y, bool queued_warp);
 
