@@ -324,7 +324,7 @@ DEF_CONSOLE_CMD(ConSaveConfig)
 static const FiosItem *GetFiosItem(const char *file)
 {
 	_saveload_mode = SLD_LOAD_GAME;
-	BuildFileList();
+	BuildFileList(_saveload_mode);
 
 	for (const FiosItem *item = _fios_items.Begin(); item != _fios_items.End(); item++) {
 		if (strcmp(file, item->name) == 0) return item;
@@ -415,7 +415,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 		return true;
 	}
 
-	BuildFileList();
+	BuildFileList(_saveload_mode);
 
 	for (uint i = 0; i < _fios_items.Length(); i++) {
 		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _fios_items[i].title);

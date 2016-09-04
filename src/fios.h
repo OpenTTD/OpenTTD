@@ -179,7 +179,7 @@ int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 
 extern const TextColour _fios_colours[];
 
-void BuildFileList();
+void BuildFileList(SaveLoadDialogMode mode);
 void SetFiosType(const byte fiostype);
 
 #endif /* FIOS_H */

@@ -193,20 +193,20 @@ const TextColour _fios_colours[] = {
 	TC_ORANGE,     TC_LIGHT_BROWN, TC_ORANGE,     TC_ORANGE, TC_YELLOW
 };
 
-void BuildFileList()
+void BuildFileList(SaveLoadDialogMode mode)
 {
 	_fios_path_changed = true;
 	FiosFreeSavegameList();
 
-	switch (_saveload_mode) {
+	switch (mode) {
 		case SLD_LOAD_SCENARIO:
 		case SLD_SAVE_SCENARIO:
-			FiosGetScenarioList(_saveload_mode); break;
+			FiosGetScenarioList(mode); break;
 		case SLD_SAVE_HEIGHTMAP:
 		case SLD_LOAD_HEIGHTMAP:
-			FiosGetHeightmapList(_saveload_mode); break;
+			FiosGetHeightmapList(mode); break;
 
-		default: FiosGetSavegameList(_saveload_mode); break;
+		default: FiosGetSavegameList(mode); break;
 	}
 
 	/* Invalidate saveload window */
@@ -683,7 +683,7 @@ public:
 				this->selected = NULL;
 				_load_check_data.Clear();
 				if (!gui_scope) break;
-				BuildFileList();
+				BuildFileList(_saveload_mode);
 				/* FALL THROUGH */
 			case 1:
 				/* Selection changes */
