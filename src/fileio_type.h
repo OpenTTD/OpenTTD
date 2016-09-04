@@ -22,6 +22,21 @@ enum AbstractFileType {
 	FT_HEIGHTMAP, ///< heightmap file
 };
 
+/** Elements of a file system that are recognized. */
+enum FiosType {
+	FIOS_TYPE_DRIVE,
+	FIOS_TYPE_PARENT,
+	FIOS_TYPE_DIR,
+	FIOS_TYPE_FILE,
+	FIOS_TYPE_OLDFILE,
+	FIOS_TYPE_SCENARIO,
+	FIOS_TYPE_OLD_SCENARIO,
+	FIOS_TYPE_DIRECT,
+	FIOS_TYPE_PNG,
+	FIOS_TYPE_BMP,
+	FIOS_TYPE_INVALID = 255,
+};
+
 /**
  * The different kinds of subdirectories OpenTTD uses
  */

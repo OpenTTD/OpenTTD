@@ -107,20 +107,6 @@ enum SaveLoadDialogMode {
 	SLD_SAVE_HEIGHTMAP, ///< Save a heightmap.
 };
 
-enum FiosType {
-	FIOS_TYPE_DRIVE,
-	FIOS_TYPE_PARENT,
-	FIOS_TYPE_DIR,
-	FIOS_TYPE_FILE,
-	FIOS_TYPE_OLDFILE,
-	FIOS_TYPE_SCENARIO,
-	FIOS_TYPE_OLD_SCENARIO,
-	FIOS_TYPE_DIRECT,
-	FIOS_TYPE_PNG,
-	FIOS_TYPE_BMP,
-	FIOS_TYPE_INVALID = 255,
-};
-
 /** Deals with finding savegames */
 struct FiosItem {
 	FiosType type;
@@ -163,6 +149,5 @@ int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 extern const TextColour _fios_colours[];
 
 void BuildFileList(SaveLoadDialogMode mode);
-void SetFiosType(const byte fiostype);
 
 #endif /* FIOS_H */

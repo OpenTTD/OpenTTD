@@ -39,6 +39,8 @@ struct FileToSaveLoad {
 	AbstractFileType filetype; ///< what type of file are we dealing with
 	char name[MAX_PATH];       ///< name
 	char title[255];           ///< internal name of the game
+
+	void SetMode(FiosType ft);
 };
 
 /** Types of save games. */

@@ -626,7 +626,7 @@ int openttd_main(int argc, char *argv[])
 				const char *t = strrchr(_file_to_saveload.name, '.');
 				if (t != NULL) {
 					FiosType ft = FiosGetSavegameListCallback(SLD_LOAD_GAME, _file_to_saveload.name, t, NULL, NULL);
-					if (ft != FIOS_TYPE_INVALID) SetFiosType(ft);
+					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
 				}
 
 				break;
