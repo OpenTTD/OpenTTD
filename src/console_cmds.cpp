@@ -67,7 +67,7 @@ public:
 	void ValidateFileList(bool force_reload = false)
 	{
 		if (force_reload || !this->file_list_valid) {
-			this->BuildFileList(FT_SAVEGAME, FOP_LOAD);
+			this->BuildFileList(FT_SAVEGAME, SLO_LOAD);
 			this->file_list_valid = true;
 		}
 	}
@@ -318,7 +318,7 @@ DEF_CONSOLE_CMD(ConSave)
 		char *filename = str_fmt("%s.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, FOP_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
+		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
 			IConsolePrint(CC_ERROR, "Saving map failed");
 		} else {
 			IConsolePrintF(CC_DEFAULT, "Map successfully saved to %s", filename);

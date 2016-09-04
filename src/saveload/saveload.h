@@ -24,14 +24,14 @@ enum SaveOrLoadResult {
 
 /** Deals with the type of the savegame, independent of extension */
 struct FileToSaveLoad {
-	FileOperation file_op;           ///< File operation to perform.
+	SaveLoadOperation file_op;           ///< File operation to perform.
 	DetailedFileType detail_ftype;   ///< Concrete file type (PNG, BMP, old save, etc).
 	AbstractFileType abstract_ftype; ///< Abstract type of file (scenario, heightmap, etc).
 	char name[MAX_PATH];             ///< Name of the file.
 	char title[255];                 ///< Internal name of the game.
 
 	void SetMode(FiosType ft);
-	void SetMode(FileOperation fop, AbstractFileType aft, DetailedFileType dft);
+	void SetMode(SaveLoadOperation fop, AbstractFileType aft, DetailedFileType dft);
 	void SetName(const char *name);
 	void SetTitle(const char *title);
 };
@@ -51,7 +51,7 @@ extern FileToSaveLoad _file_to_saveload;
 void GenerateDefaultSaveName(char *buf, const char *last);
 void SetSaveLoadError(uint16 str);
 const char *GetSaveLoadErrorString();
-SaveOrLoadResult SaveOrLoad(const char *filename, FileOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
+SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
 void ProcessAsyncSaveFinish();
 void DoExitSave();

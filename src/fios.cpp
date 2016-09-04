@@ -71,13 +71,13 @@ FileList::~FileList()
 /**
  * Construct a file list with the given kind of files, for the stated purpose.
  * @param abstract_filetype Kind of files to collect.
- * @param fop Purpose of the collection, either #FOP_LOAD or #FOP_SAVE.
+ * @param fop Purpose of the collection, either #SLO_LOAD or #SLO_SAVE.
  */
-void FileList::BuildFileList(AbstractFileType abstract_filetype, FileOperation fop)
+void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop)
 {
 	this->Clear();
 
-	assert(fop == FOP_LOAD || FOP_SAVE);
+	assert(fop == SLO_LOAD || SLO_SAVE);
 	switch (abstract_filetype) {
 		case FT_NONE:
 			break;
@@ -274,13 +274,13 @@ bool FiosDelete(const char *name)
 	return unlink(filename) == 0;
 }
 
-typedef FiosType fios_getlist_callback_proc(FileOperation fop, const char *filename, const char *ext, char *title, const char *last);
+typedef FiosType fios_getlist_callback_proc(SaveLoadOperation fop, const char *filename, const char *ext, char *title, const char *last);
 
 /**
  * Scanner to scan for a particular type of FIOS file.
  */
 class FiosFileScanner : public FileScanner {
-	FileOperation fop;       ///< The kind of file we are looking for.
+	SaveLoadOperation fop;   ///< The kind of file we are looking for.
 	fios_getlist_callback_proc *callback_proc; ///< Callback to check whether the file may be added
 	FileList &file_list;     ///< Destination of the found files.
 public:
@@ -290,7 +290,7 @@ public:
 	 * @param callback_proc The function that is called where you need to do the filtering.
 	 * @param file_list Destination of the found files.
 	 */
-	FiosFileScanner(FileOperation fop, fios_getlist_callback_proc *callback_proc, FileList &file_list) :
+	FiosFileScanner(SaveLoadOperation fop, fios_getlist_callback_proc *callback_proc, FileList &file_list) :
 			fop(fop), callback_proc(callback_proc), file_list(file_list)
 	{}
 
@@ -354,7 +354,7 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length, cons
  * @param subdir The directory from where to start (global) searching.
  * @param file_list Destination of the found files.
  */
-static void FiosGetFileList(FileOperation fop, fios_getlist_callback_proc *callback_proc, Subdirectory subdir, FileList &file_list)
+static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *callback_proc, Subdirectory subdir, FileList &file_list)
 {
 	struct stat sb;
 	struct dirent *dirent;
@@ -456,7 +456,7 @@ static void GetFileTitle(const char *file, char *title, const char *last, Subdir
  * @see FiosGetFileList
  * @see FiosGetSavegameList
  */
-FiosType FiosGetSavegameListCallback(FileOperation fop, const char *file, const char *ext, char *title, const char *last)
+FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show savegame files
 	 * .SAV OpenTTD saved game
@@ -472,7 +472,7 @@ FiosType FiosGetSavegameListCallback(FileOperation fop, const char *file, const 
 		return FIOS_TYPE_FILE;
 	}
 
-	if (fop == FOP_LOAD) {
+	if (fop == SLO_LOAD) {
 		if (strcasecmp(ext, ".ss1") == 0 || strcasecmp(ext, ".sv1") == 0 ||
 				strcasecmp(ext, ".sv2") == 0) {
 			if (title != NULL) GetOldSaveGameName(file, title, last);
@@ -489,7 +489,7 @@ FiosType FiosGetSavegameListCallback(FileOperation fop, const char *file, const 
  * @param file_list Destination of the found files.
  * @see FiosGetFileList
  */
-void FiosGetSavegameList(FileOperation fop, FileList &file_list)
+void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list)
 {
 	static char *fios_save_path = NULL;
 	static char *fios_save_path_last = NULL;
@@ -517,7 +517,7 @@ void FiosGetSavegameList(FileOperation fop, FileList &file_list)
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-static FiosType FiosGetScenarioListCallback(FileOperation fop, const char *file, const char *ext, char *title, const char *last)
+static FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
@@ -528,7 +528,7 @@ static FiosType FiosGetScenarioListCallback(FileOperation fop, const char *file,
 		return FIOS_TYPE_SCENARIO;
 	}
 
-	if (fop == FOP_LOAD) {
+	if (fop == SLO_LOAD) {
 		if (strcasecmp(ext, ".sv0") == 0 || strcasecmp(ext, ".ss0") == 0 ) {
 			GetOldSaveGameName(file, title, last);
 			return FIOS_TYPE_OLD_SCENARIO;
@@ -544,7 +544,7 @@ static FiosType FiosGetScenarioListCallback(FileOperation fop, const char *file,
  * @param file_list Destination of the found files.
  * @see FiosGetFileList
  */
-void FiosGetScenarioList(FileOperation fop, FileList &file_list)
+void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list)
 {
 	static char *fios_scn_path = NULL;
 	static char *fios_scn_path_last = NULL;
@@ -562,11 +562,11 @@ void FiosGetScenarioList(FileOperation fop, FileList &file_list)
 	char base_path[MAX_PATH];
 	FioGetDirectory(base_path, lastof(base_path), SCENARIO_DIR);
 
-	Subdirectory subdir = (fop == FOP_LOAD && strcmp(base_path, _fios_path) == 0) ? SCENARIO_DIR : NO_DIRECTORY;
+	Subdirectory subdir = (fop == SLO_LOAD && strcmp(base_path, _fios_path) == 0) ? SCENARIO_DIR : NO_DIRECTORY;
 	FiosGetFileList(fop, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
-static FiosType FiosGetHeightmapListCallback(FileOperation fop, const char *file, const char *ext, char *title, const char *last)
+static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
@@ -615,7 +615,7 @@ static FiosType FiosGetHeightmapListCallback(FileOperation fop, const char *file
  * @param fop Purpose of collecting the list.
  * @param file_list Destination of the found files.
  */
-void FiosGetHeightmapList(FileOperation fop, FileList &file_list)
+void FiosGetHeightmapList(SaveLoadOperation fop, FileList &file_list)
 {
 	static char *fios_hmap_path = NULL;
 	static char *fios_hmap_path_last = NULL;

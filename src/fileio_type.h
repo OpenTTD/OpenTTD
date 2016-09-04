@@ -46,12 +46,12 @@ enum DetailedFileType {
 };
 
 /** Operation performed on the file. */
-enum FileOperation {
-	FOP_CHECK,   ///< Load file for checking and/or preview.
-	FOP_LOAD,    ///< File is being loaded.
-	FOP_SAVE,    ///< File is being saved.
+enum SaveLoadOperation {
+	SLO_CHECK,   ///< Load file for checking and/or preview.
+	SLO_LOAD,    ///< File is being loaded.
+	SLO_SAVE,    ///< File is being saved.
 
-	FOP_INVALID, ///< Unknown file operation.
+	SLO_INVALID, ///< Unknown file operation.
 };
 
 /**

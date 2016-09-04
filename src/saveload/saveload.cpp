@@ -2778,10 +2778,10 @@ SaveOrLoadResult LoadWithFilter(LoadFilter *reader)
  * @param threaded True when threaded saving is allowed
  * @return Return the result of the action. #SL_OK, #SL_ERROR, or #SL_REINIT ("unload" the game)
  */
-SaveOrLoadResult SaveOrLoad(const char *filename, FileOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded)
+SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded)
 {
 	/* An instance of saving is already active, so don't go saving again */
-	if (_sl.saveinprogress && fop == FOP_SAVE && dft == DFT_GAME_FILE && threaded) {
+	if (_sl.saveinprogress && fop == SLO_SAVE && dft == DFT_GAME_FILE && threaded) {
 		/* if not an autosave, but a user action, show error message */
 		if (!_do_autosave) ShowErrorMessage(STR_ERROR_SAVE_STILL_IN_PROGRESS, INVALID_STRING_ID, WL_ERROR);
 		return SL_OK;
@@ -2790,7 +2790,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, FileOperation fop, DetailedFil
 
 	try {
 		/* Load a TTDLX or TTDPatch game */
-		if (fop == FOP_LOAD && dft == DFT_OLD_GAME_FILE) {
+		if (fop == SLO_LOAD && dft == DFT_OLD_GAME_FILE) {
 			InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 
 			/* TTD/TTO savegames have no NewGRFs, TTDP savegame have them
@@ -2813,33 +2813,33 @@ SaveOrLoadResult SaveOrLoad(const char *filename, FileOperation fop, DetailedFil
 
 		assert(dft == DFT_GAME_FILE);
 		switch (fop) {
-			case FOP_CHECK:
+			case SLO_CHECK:
 				_sl.action = SLA_LOAD_CHECK;
 				break;
 
-			case FOP_LOAD:
+			case SLO_LOAD:
 				_sl.action = SLA_LOAD;
 				break;
 
-			case FOP_SAVE:
+			case SLO_SAVE:
 				_sl.action = SLA_SAVE;
 				break;
 
 			default: NOT_REACHED();
 		}
 
-		FILE *fh = (fop == FOP_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
+		FILE *fh = (fop == SLO_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
 		/* Make it a little easier to load savegames from the console */
-		if (fh == NULL && fop != FOP_SAVE) fh = FioFOpenFile(filename, "rb", SAVE_DIR);
-		if (fh == NULL && fop != FOP_SAVE) fh = FioFOpenFile(filename, "rb", BASE_DIR);
-		if (fh == NULL && fop != FOP_SAVE) fh = FioFOpenFile(filename, "rb", SCENARIO_DIR);
+		if (fh == NULL && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", SAVE_DIR);
+		if (fh == NULL && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", BASE_DIR);
+		if (fh == NULL && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", SCENARIO_DIR);
 
 		if (fh == NULL) {
-			SlError(fop == FOP_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+			SlError(fop == SLO_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 		}
 
-		if (fop == FOP_SAVE) { // SAVE game
+		if (fop == SLO_SAVE) { // SAVE game
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
 
@@ -2847,25 +2847,25 @@ SaveOrLoadResult SaveOrLoad(const char *filename, FileOperation fop, DetailedFil
 		}
 
 		/* LOAD game */
-		assert(fop == FOP_LOAD || fop == FOP_CHECK);
+		assert(fop == SLO_LOAD || fop == SLO_CHECK);
 		DEBUG(desync, 1, "load: %s", filename);
-		return DoLoad(new FileReader(fh), fop == FOP_CHECK);
+		return DoLoad(new FileReader(fh), fop == SLO_CHECK);
 	} catch (...) {
 		/* This code may be executed both for old and new save games. */
 		ClearSaveLoadState();
 
 		/* Skip the "colour" character */
-		if (fop != FOP_CHECK) DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
+		if (fop != SLO_CHECK) DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
-		return (fop == FOP_LOAD) ? SL_REINIT : SL_ERROR;
+		return (fop == SLO_LOAD) ? SL_REINIT : SL_ERROR;
 	}
 }
 
 /** Do a save when exiting the game (_settings_client.gui.autosave_on_exit) */
 void DoExitSave()
 {
-	SaveOrLoad("exit.sav", FOP_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR);
+	SaveOrLoad("exit.sav", SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR);
 }
 
 /**
@@ -2909,7 +2909,7 @@ void GenerateDefaultSaveName(char *buf, const char *last)
  */
 void FileToSaveLoad::SetMode(FiosType ft)
 {
-	this->SetMode(FOP_LOAD, GetAbstractFileType(ft), GetDetailedFileType(ft));
+	this->SetMode(SLO_LOAD, GetAbstractFileType(ft), GetDetailedFileType(ft));
 }
 
 /**
@@ -2918,10 +2918,10 @@ void FileToSaveLoad::SetMode(FiosType ft)
  * @param aft Abstract file type.
  * @param dft Detailed file type.
  */
-void FileToSaveLoad::SetMode(FileOperation fop, AbstractFileType aft, DetailedFileType dft)
+void FileToSaveLoad::SetMode(SaveLoadOperation fop, AbstractFileType aft, DetailedFileType dft)
 {
 	if (aft == FT_INVALID || aft == FT_NONE) {
-		this->file_op = FOP_INVALID;
+		this->file_op = SLO_INVALID;
 		this->detail_ftype = DFT_INVALID;
 		this->abstract_ftype = FT_INVALID;
 		return;
