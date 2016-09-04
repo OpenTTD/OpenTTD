@@ -14,6 +14,14 @@
 
 #include "core/enum_type.hpp"
 
+/** The different abstract types of files that the system knows about. */
+enum AbstractFileType {
+	FT_NONE,      ///< nothing to do
+	FT_SAVEGAME,  ///< old or new savegame
+	FT_SCENARIO,  ///< old or new scenario
+	FT_HEIGHTMAP, ///< heightmap file
+};
+
 /**
  * The different kinds of subdirectories OpenTTD uses
  */
