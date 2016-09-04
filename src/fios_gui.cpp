@@ -201,12 +201,12 @@ void BuildFileList(SaveLoadDialogMode mode)
 	switch (mode) {
 		case SLD_LOAD_SCENARIO:
 		case SLD_SAVE_SCENARIO:
-			FiosGetScenarioList(mode); break;
+			FiosGetScenarioList(mode, _fios_items); break;
 		case SLD_SAVE_HEIGHTMAP:
 		case SLD_LOAD_HEIGHTMAP:
-			FiosGetHeightmapList(mode); break;
+			FiosGetHeightmapList(mode, _fios_items); break;
 
-		default: FiosGetSavegameList(mode); break;
+		default: FiosGetSavegameList(mode, _fios_items); break;
 	}
 
 	/* Invalidate saveload window */

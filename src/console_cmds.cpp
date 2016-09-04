@@ -462,7 +462,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	}
 
 	/* XXX - Workaround for broken file handling */
-	FiosGetSavegameList(SLD_LOAD_GAME);
+	FiosGetSavegameList(SLD_LOAD_GAME, _fios_items);
 	_fios_items.Clear();
 
 	FiosGetDescText(&path, NULL);

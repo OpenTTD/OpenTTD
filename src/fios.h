@@ -218,9 +218,9 @@ extern SortingBits _savegame_sort_order;
 
 void ShowSaveLoadDialog(SaveLoadDialogMode mode);
 
-void FiosGetSavegameList(SaveLoadDialogMode mode);
-void FiosGetScenarioList(SaveLoadDialogMode mode);
-void FiosGetHeightmapList(SaveLoadDialogMode mode);
+void FiosGetSavegameList(SaveLoadDialogMode mode, FileList &file_list);
+void FiosGetScenarioList(SaveLoadDialogMode mode, FileList &file_list);
+void FiosGetHeightmapList(SaveLoadDialogMode mode, FileList &file_list);
 
 const char *FiosBrowseTo(const FiosItem *item);
 

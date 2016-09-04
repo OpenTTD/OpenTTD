@@ -220,15 +220,16 @@ typedef FiosType fios_getlist_callback_proc(SaveLoadDialogMode mode, const char 
 class FiosFileScanner : public FileScanner {
 	SaveLoadDialogMode mode; ///< The mode we want to search for
 	fios_getlist_callback_proc *callback_proc; ///< Callback to check whether the file may be added
+	FileList &file_list;     ///< Destination of the found files.
 public:
 	/**
 	 * Create the scanner
 	 *  @param mode The mode we are in. Some modes don't allow 'parent'.
 	 *  @param callback_proc The function that is called where you need to do the filtering.
+	 *  @param file_list Destination of the found files.
 	 */
-	FiosFileScanner(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc) :
-		mode(mode),
-		callback_proc(callback_proc)
+	FiosFileScanner(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc, FileList &file_list) :
+			mode(mode), callback_proc(callback_proc), file_list(file_list)
 	{}
 
 	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename);
@@ -251,11 +252,11 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length, cons
 	FiosType type = this->callback_proc(this->mode, filename, ext, fios_title, lastof(fios_title));
 	if (type == FIOS_TYPE_INVALID) return false;
 
-	for (const FiosItem *fios = _fios_items.Begin(); fios != _fios_items.End(); fios++) {
+	for (const FiosItem *fios = file_list.Begin(); fios != file_list.End(); fios++) {
 		if (strcmp(fios->name, filename) == 0) return false;
 	}
 
-	FiosItem *fios = _fios_items.Append();
+	FiosItem *fios = file_list.Append();
 #ifdef WIN32
 	struct _stat sb;
 	if (_tstat(OTTD2FS(filename), &sb) == 0) {
@@ -289,8 +290,9 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length, cons
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
  *  @param callback_proc The function that is called where you need to do the filtering.
  *  @param subdir The directory from where to start (global) searching.
+ *  @param file_list Destination of the found files.
  */
-static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc, Subdirectory subdir)
+static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc, Subdirectory subdir, FileList &file_list)
 {
 	struct stat sb;
 	struct dirent *dirent;
@@ -299,11 +301,11 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	int sort_start;
 	char d_name[sizeof(fios->name)];
 
-	_fios_items.Clear();
+	file_list.Clear();
 
 	/* A parent directory link exists if we are not in the root directory */
 	if (!FiosIsRoot(_fios_path)) {
-		fios = _fios_items.Append();
+		fios = file_list.Append();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
 		strecpy(fios->name, "..", lastof(fios->name));
@@ -319,7 +321,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 			if (FiosIsValidFile(_fios_path, dirent, &sb) && S_ISDIR(sb.st_mode) &&
 					(!FiosIsHiddenFile(dirent) || strncasecmp(d_name, PERSONAL_DIR, strlen(d_name)) == 0) &&
 					strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
-				fios = _fios_items.Append();
+				fios = file_list.Append();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
 				strecpy(fios->name, d_name, lastof(fios->name));
@@ -334,27 +336,27 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	{
 		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		QSortT(_fios_items.files.Begin(), _fios_items.files.Length(), CompareFiosItems);
+		QSortT(file_list.files.Begin(), file_list.files.Length(), CompareFiosItems);
 		_savegame_sort_order = order;
 	}
 
 	/* This is where to start sorting for the filenames */
-	sort_start = _fios_items.Length();
+	sort_start = file_list.Length();
 
 	/* Show files */
-	FiosFileScanner scanner(mode, callback_proc);
+	FiosFileScanner scanner(mode, callback_proc, file_list);
 	if (subdir == NO_DIRECTORY) {
 		scanner.Scan(NULL, _fios_path, false);
 	} else {
 		scanner.Scan(NULL, subdir, true, true);
 	}
 
-	QSortT(_fios_items.Get(sort_start), _fios_items.Length() - sort_start, CompareFiosItems);
+	QSortT(file_list.Get(sort_start), file_list.Length() - sort_start, CompareFiosItems);
 
 	/* Show drives */
 	FiosGetDrives();
 
-	_fios_items.Compact();
+	file_list.Compact();
 }
 
 /**
@@ -422,9 +424,10 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 /**
  * Get a list of savegames.
  * @param mode Save/load mode.
+ * @param file_list Destination of the found files.
  * @see FiosGetFileList
  */
-void FiosGetSavegameList(SaveLoadDialogMode mode)
+void FiosGetSavegameList(SaveLoadDialogMode mode, FileList &file_list)
 {
 	static char *fios_save_path = NULL;
 	static char *fios_save_path_last = NULL;
@@ -438,7 +441,7 @@ void FiosGetSavegameList(SaveLoadDialogMode mode)
 	_fios_path = fios_save_path;
 	_fios_path_last = fios_save_path_last;
 
-	FiosGetFileList(mode, &FiosGetSavegameListCallback, NO_DIRECTORY);
+	FiosGetFileList(mode, &FiosGetSavegameListCallback, NO_DIRECTORY, file_list);
 }
 
 /**
@@ -476,9 +479,10 @@ static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char 
 /**
  * Get a list of scenarios.
  * @param mode Save/load mode.
+ * @param file_list Destination of the found files.
  * @see FiosGetFileList
  */
-void FiosGetScenarioList(SaveLoadDialogMode mode)
+void FiosGetScenarioList(SaveLoadDialogMode mode, FileList &file_list)
 {
 	static char *fios_scn_path = NULL;
 	static char *fios_scn_path_last = NULL;
@@ -496,7 +500,8 @@ void FiosGetScenarioList(SaveLoadDialogMode mode)
 	char base_path[MAX_PATH];
 	FioGetDirectory(base_path, lastof(base_path), SCENARIO_DIR);
 
-	FiosGetFileList(mode, &FiosGetScenarioListCallback, (mode == SLD_LOAD_SCENARIO && strcmp(base_path, _fios_path) == 0) ? SCENARIO_DIR : NO_DIRECTORY);
+	Subdirectory subdir = (mode == SLD_LOAD_SCENARIO && strcmp(base_path, _fios_path) == 0) ? SCENARIO_DIR : NO_DIRECTORY;
+	FiosGetFileList(mode, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
 static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last)
@@ -546,8 +551,9 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char
 /**
  * Get a list of heightmaps.
  * @param mode Save/load mode.
+ * @param file_list Destination of the found files.
  */
-void FiosGetHeightmapList(SaveLoadDialogMode mode)
+void FiosGetHeightmapList(SaveLoadDialogMode mode, FileList &file_list)
 {
 	static char *fios_hmap_path = NULL;
 	static char *fios_hmap_path_last = NULL;
@@ -564,7 +570,8 @@ void FiosGetHeightmapList(SaveLoadDialogMode mode)
 	char base_path[MAX_PATH];
 	FioGetDirectory(base_path, lastof(base_path), HEIGHTMAP_DIR);
 
-	FiosGetFileList(mode, &FiosGetHeightmapListCallback, strcmp(base_path, _fios_path) == 0 ? HEIGHTMAP_DIR : NO_DIRECTORY);
+	Subdirectory subdir = strcmp(base_path, _fios_path) == 0 ? HEIGHTMAP_DIR : NO_DIRECTORY;
+	FiosGetFileList(mode, &FiosGetHeightmapListCallback, subdir, file_list);
 }
 
 /**
