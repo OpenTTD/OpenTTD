@@ -2812,7 +2812,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, FileOperation fop, DetailedFil
 		}
 
 		assert(dft == DFT_GAME_FILE);
-		switch (dft) {
+		switch (fop) {
 			case FOP_CHECK:
 				_sl.action = SLA_LOAD_CHECK;
 				break;
