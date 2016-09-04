@@ -200,6 +200,9 @@ public:
 		this->files.Compact();
 	}
 
+	void BuildFileList(SaveLoadDialogMode mode);
+	const FiosItem *FindItem(const char *file);
+
 	SmallVector<FiosItem, 32> files; ///< The list of files.
 };
 
@@ -234,7 +237,5 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 
 extern const TextColour _fios_colours[];
-
-void BuildFileList(SaveLoadDialogMode mode);
 
 #endif /* FIOS_H */

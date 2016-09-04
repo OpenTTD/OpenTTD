@@ -70,6 +70,58 @@ FileList::~FileList()
 }
 
 /**
+ * Construct a file list containing file appropriate for the specified \a mode.
+ * @param mode Kind of files required in the list.
+ */
+void FileList::BuildFileList(SaveLoadDialogMode mode)
+{
+	this->Clear();
+
+	switch (mode) {
+		case SLD_LOAD_SCENARIO:
+		case SLD_SAVE_SCENARIO:
+			FiosGetScenarioList(mode, *this); break;
+		case SLD_SAVE_HEIGHTMAP:
+		case SLD_LOAD_HEIGHTMAP:
+			FiosGetHeightmapList(mode, *this); break;
+
+		default: FiosGetSavegameList(mode, *this); break;
+	}
+}
+
+/**
+ * Find file information of a file by its name from the file list.
+ * @param file The filename to return information about. Can be the actual name
+ *             or a numbered entry into the filename list.
+ * @return The information on the file, or \c NULL if the file is not available.
+ */
+const FiosItem *FileList::FindItem(const char *file)
+{
+	for (const FiosItem *item = this->Begin(); item != this->End(); item++) {
+		if (strcmp(file, item->name) == 0) return item;
+		if (strcmp(file, item->title) == 0) return item;
+	}
+
+	/* If no name matches, try to parse it as number */
+	char *endptr;
+	int i = strtol(file, &endptr, 10);
+	if (file == endptr || *endptr != '\0') i = -1;
+
+	if (IsInsideMM(i, 0, this->Length())) return this->Get(i);
+
+	/* As a last effort assume it is an OpenTTD savegame and
+	 * that the ".sav" part was not given. */
+	char long_file[MAX_PATH];
+	seprintf(long_file, lastof(long_file), "%s.sav", file);
+	for (const FiosItem *item = this->Begin(); item != this->End(); item++) {
+		if (strcmp(long_file, item->name) == 0) return item;
+		if (strcmp(long_file, item->title) == 0) return item;
+	}
+
+	return NULL;
+}
+
+/**
  * Get descriptive texts. Returns the path and free space
  * left on the device
  * @param path string describing the path

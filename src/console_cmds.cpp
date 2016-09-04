@@ -315,42 +315,6 @@ DEF_CONSOLE_CMD(ConSaveConfig)
 	return true;
 }
 
-/**
- * Get savegame file informations.
- * @param file The savegame filename to return information about. Can be the actual name
- *             or a numbered entry into the filename list.
- * @return FiosItem The information on the file.
- */
-static const FiosItem *GetFiosItem(const char *file)
-{
-	_saveload_mode = SLD_LOAD_GAME;
-	BuildFileList(_saveload_mode);
-
-	for (const FiosItem *item = _fios_items.Begin(); item != _fios_items.End(); item++) {
-		if (strcmp(file, item->name) == 0) return item;
-		if (strcmp(file, item->title) == 0) return item;
-	}
-
-	/* If no name matches, try to parse it as number */
-	char *endptr;
-	int i = strtol(file, &endptr, 10);
-	if (file == endptr || *endptr != '\0') i = -1;
-
-	if (IsInsideMM(i, 0, _fios_items.Length())) return _fios_items.Get(i);
-
-	/* As a last effort assume it is an OpenTTD savegame and
-	 * that the ".sav" part was not given. */
-	char long_file[MAX_PATH];
-	seprintf(long_file, lastof(long_file), "%s.sav", file);
-	for (const FiosItem *item = _fios_items.Begin(); item != _fios_items.End(); item++) {
-		if (strcmp(long_file, item->name) == 0) return item;
-		if (strcmp(long_file, item->title) == 0) return item;
-	}
-
-	return NULL;
-}
-
-
 DEF_CONSOLE_CMD(ConLoad)
 {
 	if (argc == 0) {
@@ -361,7 +325,8 @@ DEF_CONSOLE_CMD(ConLoad)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	const FiosItem *item = GetFiosItem(file);
+	_fios_items.BuildFileList(SLD_LOAD_GAME);
+	const FiosItem *item = _fios_items.FindItem(file);
 	if (item != NULL) {
 		switch (item->type) {
 			case FIOS_TYPE_FILE: case FIOS_TYPE_OLDFILE: {
@@ -393,7 +358,8 @@ DEF_CONSOLE_CMD(ConRemove)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	const FiosItem *item = GetFiosItem(file);
+	_fios_items.BuildFileList(SLD_LOAD_GAME);
+	const FiosItem *item = _fios_items.FindItem(file);
 	if (item != NULL) {
 		if (!FiosDelete(item->name)) {
 			IConsolePrintF(CC_ERROR, "%s: Failed to delete file", file);
@@ -415,8 +381,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 		return true;
 	}
 
-	BuildFileList(_saveload_mode);
-
+	_fios_items.BuildFileList(_saveload_mode);
 	for (uint i = 0; i < _fios_items.Length(); i++) {
 		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _fios_items[i].title);
 	}
@@ -436,7 +401,8 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	const FiosItem *item = GetFiosItem(file);
+	_fios_items.BuildFileList(SLD_LOAD_GAME);
+	const FiosItem *item = _fios_items.FindItem(file);
 	if (item != NULL) {
 		switch (item->type) {
 			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
