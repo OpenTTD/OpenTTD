@@ -115,6 +115,94 @@ struct FiosItem {
 	char name[MAX_PATH];
 };
 
+/** List of file information. */
+class FileList {
+public:
+	~FileList();
+
+	/**
+	 * Construct a new entry in the file list.
+	 * @return Pointer to the new items to be initialized.
+	 */
+	inline FiosItem *Append()
+	{
+		return this->files.Append();
+	}
+
+	/**
+	 * Get the number of files in the list.
+	 * @return The number of files stored in the list.
+	 */
+	inline uint Length() const
+	{
+		return this->files.Length();
+	}
+
+	/**
+	 * Get a pointer to the first file information.
+	 * @return Address of the first file information.
+	 */
+	inline const FiosItem *Begin() const
+	{
+		return this->files.Begin();
+	}
+
+	/**
+	 * Get a pointer behind the last file information.
+	 * @return Address behind the last file information.
+	 */
+	inline const FiosItem *End() const
+	{
+		return this->files.End();
+	}
+
+	/**
+	 * Get a pointer to the indicated file information. File information must exist.
+	 * @return Address of the indicated existing file information.
+	 */
+	inline const FiosItem *Get(uint index) const
+	{
+		return this->files.Get(index);
+	}
+
+	/**
+	 * Get a pointer to the indicated file information. File information must exist.
+	 * @return Address of the indicated existing file information.
+	 */
+	inline FiosItem *Get(uint index)
+	{
+		return this->files.Get(index);
+	}
+
+	inline const FiosItem &operator[](uint index) const
+	{
+		return this->files[index];
+	}
+
+	/**
+	 * Get a reference to the indicated file information. File information must exist.
+	 * @return The requested file information.
+	 */
+	inline FiosItem &operator[](uint index)
+	{
+		return this->files[index];
+	}
+
+	/** Remove all items from the list. */
+	inline void Clear()
+	{
+		this->files.Clear();
+	}
+
+	/** Compact the list down to the smallest block size boundary. */
+	inline void Compact()
+	{
+		this->files.Compact();
+	}
+
+	SmallVector<FiosItem, 32> files; ///< The list of files.
+};
+
 enum SortingBits {
 	SORT_ASCENDING  = 0,
 	SORT_DESCENDING = 1,
@@ -124,7 +212,7 @@ enum SortingBits {
 DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
 /* Variables to display file lists */
-extern SmallVector<FiosItem, 32> _fios_items;
+extern FileList _fios_items;
 extern SaveLoadDialogMode _saveload_mode;
 extern SortingBits _savegame_sort_order;
 
@@ -134,7 +222,6 @@ void FiosGetSavegameList(SaveLoadDialogMode mode);
 void FiosGetScenarioList(SaveLoadDialogMode mode);
 void FiosGetHeightmapList(SaveLoadDialogMode mode);
 
-void FiosFreeSavegameList();
 const char *FiosBrowseTo(const FiosItem *item);
 
 StringID FiosGetDescText(const char **path, uint64 *total_free);

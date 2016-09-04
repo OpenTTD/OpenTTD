@@ -29,7 +29,7 @@
 #include "safeguards.h"
 
 /* Variables to display file lists */
-SmallVector<FiosItem, 32> _fios_items;
+FileList _fios_items;
 static char *_fios_path;
 static const char *_fios_path_last;
 SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
@@ -64,11 +64,9 @@ int CDECL CompareFiosItems(const FiosItem *da, const FiosItem *db)
 	return r;
 }
 
-/** Free the list of savegames. */
-void FiosFreeSavegameList()
+FileList::~FileList()
 {
-	_fios_items.Clear();
-	_fios_items.Compact();
+	this->Clear();
 }
 
 /**
@@ -336,7 +334,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	{
 		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		QSortT(_fios_items.Begin(), _fios_items.Length(), CompareFiosItems);
+		QSortT(_fios_items.files.Begin(), _fios_items.files.Length(), CompareFiosItems);
 		_savegame_sort_order = order;
 	}
 

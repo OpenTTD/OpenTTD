@@ -378,7 +378,7 @@ DEF_CONSOLE_CMD(ConLoad)
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
 	}
 
-	FiosFreeSavegameList();
+	_fios_items.Clear();
 	return true;
 }
 
@@ -402,7 +402,7 @@ DEF_CONSOLE_CMD(ConRemove)
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
 	}
 
-	FiosFreeSavegameList();
+	_fios_items.Clear();
 	return true;
 }
 
@@ -421,7 +421,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _fios_items[i].title);
 	}
 
-	FiosFreeSavegameList();
+	_fios_items.Clear();
 	return true;
 }
 
@@ -448,7 +448,7 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
 	}
 
-	FiosFreeSavegameList();
+	_fios_items.Clear();
 	return true;
 }
 
@@ -463,7 +463,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 
 	/* XXX - Workaround for broken file handling */
 	FiosGetSavegameList(SLD_LOAD_GAME);
-	FiosFreeSavegameList();
+	_fios_items.Clear();
 
 	FiosGetDescText(&path, NULL);
 	IConsolePrint(CC_DEFAULT, path);

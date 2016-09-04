@@ -256,6 +256,8 @@ public:
 
 	/**
 	 * Get the number of items in the list.
+	 *
+	 * @return The number of items in the list.
 	 */
 	inline uint Length() const
 	{

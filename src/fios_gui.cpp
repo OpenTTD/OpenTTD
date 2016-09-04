@@ -196,7 +196,7 @@ const TextColour _fios_colours[] = {
 void BuildFileList(SaveLoadDialogMode mode)
 {
 	_fios_path_changed = true;
-	FiosFreeSavegameList();
+	_fios_items.Clear();
 
 	switch (mode) {
 		case SLD_LOAD_SCENARIO:
@@ -327,7 +327,7 @@ public:
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
 			DoCommandP(0, PM_PAUSED_SAVELOAD, 0, CMD_PAUSE);
 		}
-		FiosFreeSavegameList();
+		_fios_items.Clear();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
