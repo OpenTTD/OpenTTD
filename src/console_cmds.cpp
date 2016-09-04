@@ -45,6 +45,38 @@
 /* scriptfile handling */
 static bool _script_running; ///< Script is running (used to abort execution when #ConReturn is encountered).
 
+/** File list storage for the console, for caching the last 'ls' command. */
+class ConsoleFileList : public FileList {
+public:
+	ConsoleFileList() : FileList()
+	{
+		this->file_list_valid = false;
+	}
+
+	/** Declare the file storage cache as being invalid, also clears all stored files. */
+	void InvalidateFileList()
+	{
+		this->Clear();
+		this->file_list_valid = false;
+	}
+
+	/**
+	 * (Re-)validate the file storage cache. Only makes a change if the storage was invalid, or if \a force_reload.
+	 * @param Always reload the file storage cache.
+	 */
+	void ValidateFileList(bool force_reload = false)
+	{
+		if (force_reload || !this->file_list_valid) {
+			this->BuildFileList(SLD_LOAD_GAME);
+			this->file_list_valid = true;
+		}
+	}
+
+	bool file_list_valid; ///< If set, the file list is valid.
+};
+
+static ConsoleFileList _console_file_list; ///< File storage cache for the console.
+
 /* console command defines */
 #define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])
 #define DEF_CONSOLE_HOOK(function) static ConsoleHookResult function(bool echo)
@@ -325,8 +357,8 @@ DEF_CONSOLE_CMD(ConLoad)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	_fios_items.BuildFileList(SLD_LOAD_GAME);
-	const FiosItem *item = _fios_items.FindItem(file);
+	_console_file_list.ValidateFileList();
+	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != NULL) {
 		switch (item->type) {
 			case FIOS_TYPE_FILE: case FIOS_TYPE_OLDFILE: {
@@ -343,7 +375,6 @@ DEF_CONSOLE_CMD(ConLoad)
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
 	}
 
-	_fios_items.Clear();
 	return true;
 }
 
@@ -358,8 +389,8 @@ DEF_CONSOLE_CMD(ConRemove)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	_fios_items.BuildFileList(SLD_LOAD_GAME);
-	const FiosItem *item = _fios_items.FindItem(file);
+	_console_file_list.ValidateFileList();
+	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != NULL) {
 		if (!FiosDelete(item->name)) {
 			IConsolePrintF(CC_ERROR, "%s: Failed to delete file", file);
@@ -368,7 +399,7 @@ DEF_CONSOLE_CMD(ConRemove)
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
 	}
 
-	_fios_items.Clear();
+	_console_file_list.InvalidateFileList();
 	return true;
 }
 
@@ -381,12 +412,11 @@ DEF_CONSOLE_CMD(ConListFiles)
 		return true;
 	}
 
-	_fios_items.BuildFileList(_saveload_mode);
-	for (uint i = 0; i < _fios_items.Length(); i++) {
-		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _fios_items[i].title);
+	_console_file_list.ValidateFileList(true);
+	for (uint i = 0; i < _console_file_list.Length(); i++) {
+		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _console_file_list[i].title);
 	}
 
-	_fios_items.Clear();
 	return true;
 }
 
@@ -401,8 +431,8 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	_fios_items.BuildFileList(SLD_LOAD_GAME);
-	const FiosItem *item = _fios_items.FindItem(file);
+	_console_file_list.ValidateFileList(true);
+	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != NULL) {
 		switch (item->type) {
 			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
@@ -414,7 +444,7 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
 	}
 
-	_fios_items.Clear();
+	_console_file_list.InvalidateFileList();
 	return true;
 }
 
@@ -428,8 +458,8 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	}
 
 	/* XXX - Workaround for broken file handling */
-	FiosGetSavegameList(SLD_LOAD_GAME, _fios_items);
-	_fios_items.Clear();
+	_console_file_list.ValidateFileList(true);
+	_console_file_list.InvalidateFileList();
 
 	FiosGetDescText(&path, NULL);
 	IConsolePrint(CC_DEFAULT, path);
