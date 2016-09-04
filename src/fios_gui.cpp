@@ -186,11 +186,18 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 	EndContainer(),
 };
 
-/** Colours for fios types, indexed by #FiosType. */
-const TextColour _fios_colours[] = {
-	TC_LIGHT_BLUE, TC_DARK_GREEN,  TC_DARK_GREEN, TC_ORANGE, TC_LIGHT_BROWN,
-	TC_ORANGE,     TC_LIGHT_BROWN, TC_ORANGE,     TC_ORANGE, TC_YELLOW
+/** Text colours of #DetailedFileType fios entries in the window. */
+static const TextColour _fios_colours[] = {
+	TC_LIGHT_BROWN,  // DFT_OLD_GAME_FILE
+	TC_ORANGE,       // DFT_GAME_FILE
+	TC_YELLOW,       // DFT_HEIGHTMAP_BMP
+	TC_ORANGE,       // DFT_HEIGHTMAP_PNG
+	TC_LIGHT_BLUE,   // DFT_FIOS_DRIVE
+	TC_DARK_GREEN,   // DFT_FIOS_PARENT
+	TC_DARK_GREEN,   // DFT_FIOS_DIR
+	TC_ORANGE,       // DFT_FIOS_DIRECT
 };
+
 
 /**
  * Sort the collected list save games prior to displaying it in the save/load gui.
@@ -368,7 +375,7 @@ public:
 					if (item == this->selected) {
 						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_DARK_BLUE);
 					}
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, item->title, _fios_colours[item->type]);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, item->title, _fios_colours[GetDetailedFileType(item->type)]);
 					y += this->resize.step_height;
 					if (y >= this->vscroll->GetCapacity() * this->resize.step_height + r.top + WD_FRAMERECT_TOP) break;
 				}
@@ -575,7 +582,8 @@ public:
 							this->selected = file;
 							_load_check_data.Clear();
 
-							if (file->type == FIOS_TYPE_FILE || file->type == FIOS_TYPE_SCENARIO) {
+							if (GetDetailedFileType(file->type) == DFT_GAME_FILE) {
+								/* Other detailed file types cannot be checked before. */
 								SaveOrLoad(name, SL_LOAD_CHECK, NO_DIRECTORY, false);
 							}
 

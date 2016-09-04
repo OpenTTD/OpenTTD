@@ -360,16 +360,14 @@ DEF_CONSOLE_CMD(ConLoad)
 	_console_file_list.ValidateFileList();
 	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != NULL) {
-		switch (item->type) {
-			case FIOS_TYPE_FILE: case FIOS_TYPE_OLDFILE: {
-				_switch_mode = SM_LOAD_GAME;
-				_file_to_saveload.SetMode(item->type);
+		if (GetAbstractFileType(item->type) == FT_SAVEGAME) {
+			_switch_mode = SM_LOAD_GAME;
+			_file_to_saveload.SetMode(item->type);
 
-				strecpy(_file_to_saveload.name, FiosBrowseTo(item), lastof(_file_to_saveload.name));
-				strecpy(_file_to_saveload.title, item->title, lastof(_file_to_saveload.title));
-				break;
-			}
-			default: IConsolePrintF(CC_ERROR, "%s: Not a savegame.", file);
+			strecpy(_file_to_saveload.name, FiosBrowseTo(item), lastof(_file_to_saveload.name));
+			strecpy(_file_to_saveload.title, item->title, lastof(_file_to_saveload.title));
+		} else {
+			IConsolePrintF(CC_ERROR, "%s: Not a savegame.", file);
 		}
 	} else {
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);

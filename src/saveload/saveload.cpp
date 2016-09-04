@@ -2924,30 +2924,8 @@ void FileToSaveLoad::SetMode(FiosType ft)
 			break;
 	}
 
-	switch (ft) {
-		case FIOS_TYPE_OLDFILE:
-		case FIOS_TYPE_FILE:
-			this->filetype = FT_SAVEGAME;
-			break;
-
-		case FIOS_TYPE_OLD_SCENARIO:
-		case FIOS_TYPE_SCENARIO:
-			this->filetype = FT_SCENARIO;
-			break;
-
-#ifdef WITH_PNG
-		case FIOS_TYPE_PNG:
-			/* FALL THROUGH */
-#endif /* WITH_PNG */
-
-		case FIOS_TYPE_BMP:
-			this->filetype = FT_HEIGHTMAP;
-			break;
-
-		default:
-			this->filetype = FT_INVALID;
-			break;
-	}
+	this->filetype = GetAbstractFileType(ft);
+	if (this->filetype == FT_NONE) this->filetype = FT_INVALID;
 }
 
 #if 0

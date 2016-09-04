@@ -224,6 +224,4 @@ FiosType FiosGetSavegameListCallback(FileOperation fop, const char *file, const 
 
 int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 
-extern const TextColour _fios_colours[];
-
 #endif /* FIOS_H */
