@@ -388,7 +388,7 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 		seprintf(filename, filename_last, "%scrash.sav", _personal_dir);
 
 		/* Don't do a threaded saveload. */
-		return SaveOrLoad(filename, SL_SAVE, NO_DIRECTORY, false) == SL_OK;
+		return SaveOrLoad(filename, FOP_SAVE, DFT_GAME_FILE, NO_DIRECTORY, false) == SL_OK;
 	} catch (...) {
 		return false;
 	}

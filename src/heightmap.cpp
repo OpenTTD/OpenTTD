@@ -102,7 +102,7 @@ static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop 
  * If map == NULL only the size of the PNG is read, otherwise a map
  * with grayscale pixels is allocated and assigned to *map.
  */
-static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
+static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, byte **map)
 {
 	FILE *fp;
 	png_structp png_ptr = NULL;
@@ -232,7 +232,7 @@ static void ReadHeightmapBMPImageData(byte *map, BmpInfo *info, BmpData *data)
  * If map == NULL only the size of the BMP is read, otherwise a map
  * with grayscale pixels is allocated and assigned to *map.
  */
-static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
+static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, byte **map)
 {
 	FILE *f;
 	BmpInfo info;
@@ -444,45 +444,56 @@ void FixSlopes()
 }
 
 /**
- * Reads the heightmap with the correct file reader
+ * Reads the heightmap with the correct file reader.
+ * @param dft Type of image file.
+ * @param filename Name of the file to load.
+ * @param [out] x Length of the image.
+ * @param [out] y Height of the image.
+ * @param [inout] map If not \c NULL, destination to store the loaded block of image data.
+ * @return Whether loading was successful.
  */
-static bool ReadHeightMap(char *filename, uint *x, uint *y, byte **map)
+static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, uint *y, byte **map)
 {
-	switch (_file_to_saveload.mode) {
-		default: NOT_REACHED();
+	switch (dft) {
+		default:
+			NOT_REACHED();
+
 #ifdef WITH_PNG
-		case SL_PNG:
+		case DFT_HEIGHTMAP_PNG:
 			return ReadHeightmapPNG(filename, x, y, map);
 #endif /* WITH_PNG */
-		case SL_BMP:
+
+		case DFT_HEIGHTMAP_BMP:
 			return ReadHeightmapBMP(filename, x, y, map);
 	}
 }
 
 /**
  * Get the dimensions of a heightmap.
+ * @param dft Type of image file.
  * @param filename to query
  * @param x dimension x
  * @param y dimension y
  * @return Returns false if loading of the image failed.
  */
-bool GetHeightmapDimensions(char *filename, uint *x, uint *y)
+bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x, uint *y)
 {
-	return ReadHeightMap(filename, x, y, NULL);
+	return ReadHeightMap(dft, filename, x, y, NULL);
 }
 
 /**
  * Load a heightmap from file and change the map in his current dimensions
  *  to a landscape representing the heightmap.
  * It converts pixels to height. The brighter, the higher.
+ * @param dft Type of image file.
  * @param filename of the heightmap file to be imported
  */
-void LoadHeightmap(char *filename)
+void LoadHeightmap(DetailedFileType dft, const char *filename)
 {
 	uint x, y;
 	byte *map = NULL;
 
-	if (!ReadHeightMap(filename, &x, &y, &map)) {
+	if (!ReadHeightMap(dft, filename, &x, &y, &map)) {
 		free(map);
 		return;
 	}

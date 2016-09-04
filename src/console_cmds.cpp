@@ -318,7 +318,7 @@ DEF_CONSOLE_CMD(ConSave)
 		char *filename = str_fmt("%s.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, SL_SAVE, SAVE_DIR) != SL_OK) {
+		if (SaveOrLoad(filename, FOP_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
 			IConsolePrint(CC_ERROR, "Saving map failed");
 		} else {
 			IConsolePrintF(CC_DEFAULT, "Map successfully saved to %s", filename);

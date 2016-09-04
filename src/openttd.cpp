@@ -328,7 +328,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	SetupColoursAndInitialWindow();
 
 	/* Load the default opening screen savegame */
-	if (SaveOrLoad("opntitle.dat", SL_LOAD, BASESET_DIR) != SL_OK) {
+	if (SaveOrLoad("opntitle.dat", FOP_LOAD, DFT_GAME_FILE, BASESET_DIR) != SL_OK) {
 		GenerateWorld(GWM_EMPTY, 64, 64); // if failed loading, make empty world.
 		WaitTillGeneratedWorld();
 		SetLocalCompany(COMPANY_SPECTATOR);
@@ -619,8 +619,9 @@ int openttd_main(int argc, char *argv[])
 		case 'g':
 			if (mgo.opt != NULL) {
 				strecpy(_file_to_saveload.name, mgo.opt, lastof(_file_to_saveload.name));
-				_switch_mode = (_switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_LOAD_GAME);
-				_file_to_saveload.mode = SL_LOAD;
+				bool is_scenario = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO;
+				_switch_mode = is_scenario ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+				_file_to_saveload.SetMode(FOP_LOAD, is_scenario ? FT_SCENARIO : FT_SAVEGAME, DFT_GAME_FILE);
 
 				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
 				const char *t = strrchr(_file_to_saveload.name, '.');
@@ -650,7 +651,7 @@ int openttd_main(int argc, char *argv[])
 			FiosGetSavegameListCallback(FOP_LOAD, mgo.opt, strrchr(mgo.opt, '.'), title, lastof(title));
 
 			_load_check_data.Clear();
-			SaveOrLoadResult res = SaveOrLoad(mgo.opt, SL_LOAD_CHECK, SAVE_DIR, false);
+			SaveOrLoadResult res = SaveOrLoad(mgo.opt, FOP_CHECK, DFT_GAME_FILE, SAVE_DIR, false);
 			if (res != SL_OK || _load_check_data.HasErrors()) {
 				fprintf(stderr, "Failed to open savegame\n");
 				if (_load_check_data.HasErrors()) {
@@ -997,14 +998,15 @@ static void MakeNewEditorWorld()
  * @param subdir default directory to look for filename, set to 0 if not needed
  * @param lf Load filter to use, if NULL: use filename + subdir.
  */
-bool SafeLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL)
+bool SafeLoad(const char *filename, FileOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL)
 {
-	assert(mode == SL_LOAD || (lf == NULL && mode == SL_OLD_LOAD));
+	assert(fop == FOP_LOAD);
+	assert(dft == DFT_GAME_FILE || (lf == NULL && dft == DFT_OLD_GAME_FILE));
 	GameMode ogm = _game_mode;
 
 	_game_mode = newgm;
 
-	switch (lf == NULL ? SaveOrLoad(filename, mode, subdir) : LoadWithFilter(lf)) {
+	switch (lf == NULL ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf)) {
 		case SL_OK: return true;
 
 		case SL_REINIT:
@@ -1093,11 +1095,11 @@ void SwitchToMode(SwitchMode new_mode)
 			ResetGRFConfig(true);
 			ResetWindowSystem();
 
-			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
+			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, NO_DIRECTORY)) {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {
-				if (_file_to_saveload.filetype == FT_SCENARIO) {
+				if (_file_to_saveload.abstract_ftype == FT_SCENARIO) {
 					/* Reset engine pool to simplify changing engine NewGRFs in scenario editor. */
 					EngineOverrideManager::ResetToCurrentNewGRFConfig();
 				}
@@ -1134,7 +1136,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
-			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
+			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalCompany(OWNER_NONE);
 				_settings_newgame.game_creation.starting_year = _cur_year;
 				/* Cancel the saveload pausing */
@@ -1156,7 +1158,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_SAVE_GAME: // Save game.
 			/* Make network saved games on pause compatible to singleplayer */
-			if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
+			if (SaveOrLoad(_file_to_saveload.name, FOP_SAVE, DFT_GAME_FILE, NO_DIRECTORY) != SL_OK) {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {
@@ -1367,7 +1369,7 @@ void StateGameLoop()
 			/* Save the desync savegame if needed. */
 			char name[MAX_PATH];
 			seprintf(name, lastof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
-			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR, false);
+			SaveOrLoad(name, FOP_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
 		}
 
 		CheckCaches();
@@ -1424,7 +1426,7 @@ static void DoAutosave()
 	}
 
 	DEBUG(sl, 2, "Autosaving to '%s'", buf);
-	if (SaveOrLoad(buf, SL_SAVE, AUTOSAVE_DIR) != SL_OK) {
+	if (SaveOrLoad(buf, FOP_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR) != SL_OK) {
 		ShowErrorMessage(STR_ERROR_AUTOSAVE_FAILED, INVALID_STRING_ID, WL_ERROR);
 	}
 }

@@ -584,7 +584,7 @@ public:
 
 							if (GetDetailedFileType(file->type) == DFT_GAME_FILE) {
 								/* Other detailed file types cannot be checked before. */
-								SaveOrLoad(name, SL_LOAD_CHECK, NO_DIRECTORY, false);
+								SaveOrLoad(name, FOP_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
 							}
 
 							this->InvalidateData(1);
@@ -777,7 +777,7 @@ void ShowSaveLoadDialog(AbstractFileType abstract_filetype, FileOperation fop)
 		sld = (abstract_filetype == FT_HEIGHTMAP) ? &_load_heightmap_dialog_desc : &_load_dialog_desc;
 	}
 
-	_file_to_saveload.filetype = abstract_filetype;
+	_file_to_saveload.abstract_ftype = abstract_filetype;
 
 	new SaveLoadWindow(sld, abstract_filetype, fop);
 }

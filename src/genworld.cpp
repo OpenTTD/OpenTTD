@@ -204,7 +204,7 @@ static void _GenerateWorld(void *)
 		if (_debug_desync_level > 0) {
 			char name[MAX_PATH];
 			seprintf(name, lastof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
-			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR, false);
+			SaveOrLoad(name, FOP_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
 		}
 	} catch (...) {
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP, true);
