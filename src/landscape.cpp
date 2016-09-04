@@ -31,6 +31,7 @@
 #include "object_base.h"
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"
+#include "saveload/saveload.h"
 #include <list>
 #include <set>
 

@@ -267,6 +267,7 @@
 extern const uint16 SAVEGAME_VERSION = 195; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
+FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
 
 uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
 uint16 _sl_version;       ///< the major savegame version identifier

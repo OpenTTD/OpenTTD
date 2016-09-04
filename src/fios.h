@@ -107,14 +107,6 @@ enum SaveLoadDialogMode {
 	SLD_SAVE_HEIGHTMAP, ///< Save a heightmap.
 };
 
-/** The different types of files that the system knows about. */
-enum FileType {
-	FT_NONE,      ///< nothing to do
-	FT_SAVEGAME,  ///< old or new savegame
-	FT_SCENARIO,  ///< old or new scenario
-	FT_HEIGHTMAP, ///< heightmap file
-};
-
 enum FiosType {
 	FIOS_TYPE_DRIVE,
 	FIOS_TYPE_PARENT,
@@ -137,14 +129,6 @@ struct FiosItem {
 	char name[MAX_PATH];
 };
 
-/** Deals with the type of the savegame, independent of extension */
-struct FileToSaveLoad {
-	int mode;             ///< savegame/scenario type (old, new)
-	FileType filetype;    ///< what type of file are we dealing with
-	char name[MAX_PATH];  ///< name
-	char title[255];      ///< internal name of the game
-};
-
 enum SortingBits {
 	SORT_ASCENDING  = 0,
 	SORT_DESCENDING = 1,
@@ -155,7 +139,6 @@ DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
 /* Variables to display file lists */
 extern SmallVector<FiosItem, 32> _fios_items;
-extern FileToSaveLoad _file_to_saveload;
 extern SaveLoadDialogMode _saveload_mode;
 extern SortingBits _savegame_sort_order;
 

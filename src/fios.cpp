@@ -32,7 +32,6 @@
 SmallVector<FiosItem, 32> _fios_items;
 static char *_fios_path;
 static const char *_fios_path_last;
-FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
 SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */

@@ -26,6 +26,7 @@
 #include "town.h"
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
+#include "saveload/saveload.h"
 #include "progress.h"
 #include "error.h"
 
