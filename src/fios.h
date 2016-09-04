@@ -215,7 +215,6 @@ enum SortingBits {
 DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
 /* Variables to display file lists */
-extern FileList _fios_items;
 extern SaveLoadDialogMode _saveload_mode;
 extern SortingBits _savegame_sort_order;
 

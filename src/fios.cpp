@@ -29,7 +29,6 @@
 #include "safeguards.h"
 
 /* Variables to display file lists */
-FileList _fios_items;
 static char *_fios_path;
 static const char *_fios_path_last;
 SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;

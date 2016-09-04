@@ -193,7 +193,11 @@ const TextColour _fios_colours[] = {
 	TC_ORANGE,     TC_LIGHT_BROWN, TC_ORANGE,     TC_ORANGE, TC_YELLOW
 };
 
-static void MakeSortedSaveGameList()
+/**
+ * Sort the collected list save games prior to displaying it in the save/load gui.
+ * @param [inout] file_list List of save game files found in the directory.
+ */
+static void SortSaveGameList(FileList &file_list)
 {
 	uint sort_start = 0;
 	uint sort_end = 0;
@@ -202,7 +206,7 @@ static void MakeSortedSaveGameList()
 	 * Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
 	 * Only sort savegames/scenarios, not directories
 	 */
-	for (const FiosItem *item = _fios_items.Begin(); item != _fios_items.End(); item++) {
+	for (const FiosItem *item = file_list.Begin(); item != file_list.End(); item++) {
 		switch (item->type) {
 			case FIOS_TYPE_DIR:    sort_start++; break;
 			case FIOS_TYPE_PARENT: sort_start++; break;
@@ -211,15 +215,16 @@ static void MakeSortedSaveGameList()
 		}
 	}
 
-	uint s_amount = _fios_items.Length() - sort_start - sort_end;
-	QSortT(_fios_items.Get(sort_start), s_amount, CompareFiosItems);
+	uint s_amount = file_list.Length() - sort_start - sort_end;
+	QSortT(file_list.Get(sort_start), s_amount, CompareFiosItems);
 }
 
 struct SaveLoadWindow : public Window {
 private:
 	QueryString filename_editbox; ///< Filename editbox.
+	FileList fios_items;          ///< Save game list.
 	FiosItem o_dir;
-	const FiosItem *selected;
+	const FiosItem *selected;     ///< Selected game in #fios_items, or \c NULL.
 	Scrollbar *vscroll;
 public:
 
@@ -307,7 +312,6 @@ public:
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
 			DoCommandP(0, PM_PAUSED_SAVELOAD, 0, CMD_PAUSE);
 		}
-		_fios_items.Clear();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -340,8 +344,8 @@ public:
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, PC_BLACK);
 
 				uint y = r.top + WD_FRAMERECT_TOP;
-				for (uint pos = this->vscroll->GetPosition(); pos < _fios_items.Length(); pos++) {
-					const FiosItem *item = _fios_items.Get(pos);
+				for (uint pos = this->vscroll->GetPosition(); pos < this->fios_items.Length(); pos++) {
+					const FiosItem *item = this->fios_items.Get(pos);
 
 					if (item == this->selected) {
 						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_DARK_BLUE);
@@ -475,10 +479,10 @@ public:
 	{
 		if (_savegame_sort_dirty) {
 			_savegame_sort_dirty = false;
-			MakeSortedSaveGameList();
+			SortSaveGameList(this->fios_items);
 		}
 
-		this->vscroll->SetCount(_fios_items.Length());
+		this->vscroll->SetCount(this->fios_items.Length());
 		this->DrawWidgets();
 	}
 
@@ -543,7 +547,7 @@ public:
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WD_FRAMERECT_TOP);
 				if (y == INT_MAX) return;
 
-				const FiosItem *file = _fios_items.Get(y);
+				const FiosItem *file = this->fios_items.Get(y);
 
 				const char *name = FiosBrowseTo(file);
 				if (name != NULL) {
@@ -665,8 +669,10 @@ public:
 				if (!gui_scope) break;
 
 				_fios_path_changed = true;
-				_fios_items.BuildFileList(_saveload_mode);
-				InvalidateWindowData(WC_SAVELOAD, 0, 2, true);
+				this->fios_items.BuildFileList(_saveload_mode);
+				this->vscroll->SetCount(this->fios_items.Length());
+				this->selected = NULL;
+				_load_check_data.Clear();
 				/* FALL THROUGH */
 			case 1:
 				/* Selection changes */
@@ -682,12 +688,6 @@ public:
 					this->SetWidgetDisabledState(WID_SL_MISSING_NEWGRFS,
 							!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility == GLC_ALL_GOOD);
 				}
-				break;
-			case 2:
-				/* _fios_items changed */
-				this->vscroll->SetCount(_fios_items.Length());
-				this->selected = NULL;
-				_load_check_data.Clear();
 				break;
 		}
 	}
