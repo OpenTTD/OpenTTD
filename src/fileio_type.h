@@ -20,6 +20,8 @@ enum AbstractFileType {
 	FT_SAVEGAME,  ///< old or new savegame
 	FT_SCENARIO,  ///< old or new scenario
 	FT_HEIGHTMAP, ///< heightmap file
+
+	FT_INVALID = 7, ///< Invalid or unknown file type.
 };
 
 /** Elements of a file system that are recognized. */

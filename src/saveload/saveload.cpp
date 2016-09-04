@@ -2893,7 +2893,7 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 }
 
 /**
- * Set the mode of the file to save or load based on the type of file entry at the file system.
+ * Set the mode and file type of the file to save or load based on the type of file entry at the file system.
  * @param ft Type of file entry of the file system.
  */
 void FileToSaveLoad::SetMode(FiosType ft)
@@ -2921,6 +2921,31 @@ void FileToSaveLoad::SetMode(FiosType ft)
 
 		default:
 			this->mode = SL_INVALID;
+			break;
+	}
+
+	switch (ft) {
+		case FIOS_TYPE_OLDFILE:
+		case FIOS_TYPE_FILE:
+			this->filetype = FT_SAVEGAME;
+			break;
+
+		case FIOS_TYPE_OLD_SCENARIO:
+		case FIOS_TYPE_SCENARIO:
+			this->filetype = FT_SCENARIO;
+			break;
+
+#ifdef WITH_PNG
+		case FIOS_TYPE_PNG:
+			/* FALL THROUGH */
+#endif /* WITH_PNG */
+
+		case FIOS_TYPE_BMP:
+			this->filetype = FT_HEIGHTMAP;
+			break;
+
+		default:
+			this->filetype = FT_INVALID;
 			break;
 	}
 }
