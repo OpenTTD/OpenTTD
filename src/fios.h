@@ -138,7 +138,7 @@ struct FiosItem {
 };
 
 /** Deals with the type of the savegame, independent of extension */
-struct SmallFiosItem {
+struct FileToSaveLoad {
 	int mode;             ///< savegame/scenario type (old, new)
 	FileType filetype;    ///< what type of file are we dealing with
 	char name[MAX_PATH];  ///< name
@@ -155,7 +155,7 @@ DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
 /* Variables to display file lists */
 extern SmallVector<FiosItem, 32> _fios_items;
-extern SmallFiosItem _file_to_saveload;
+extern FileToSaveLoad _file_to_saveload;
 extern SaveLoadDialogMode _saveload_mode;
 extern SortingBits _savegame_sort_order;
 
