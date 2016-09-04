@@ -38,7 +38,7 @@ SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 extern bool FiosIsRoot(const char *path);
 extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 extern bool FiosIsHiddenFile(const struct dirent *ent);
-extern void FiosGetDrives();
+extern void FiosGetDrives(FileList &file_list);
 extern bool FiosGetDiskFreeSpace(const char *path, uint64 *tot);
 
 /* get the name of an oldstyle savegame */
@@ -354,7 +354,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	QSortT(file_list.Get(sort_start), file_list.Length() - sort_start, CompareFiosItems);
 
 	/* Show drives */
-	FiosGetDrives();
+	FiosGetDrives(file_list);
 
 	file_list.Compact();
 }

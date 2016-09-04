@@ -208,11 +208,11 @@ bool FiosIsRoot(const char *file)
 	return file[3] == '\0'; // C:\...
 }
 
-void FiosGetDrives()
+void FiosGetDrives(FileList &file_list)
 {
 #if defined(WINCE)
 	/* WinCE only knows one drive: / */
-	FiosItem *fios = _fios_items.Append();
+	FiosItem *fios = file_list.Append();
 	fios->type = FIOS_TYPE_DRIVE;
 	fios->mtime = 0;
 	seprintf(fios->name, lastof(fios->name), PATHSEP "");
@@ -223,7 +223,7 @@ void FiosGetDrives()
 
 	GetLogicalDriveStrings(lengthof(drives), drives);
 	for (s = drives; *s != '\0';) {
-		FiosItem *fios = _fios_items.Append();
+		FiosItem *fios = file_list.Append();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
 		seprintf(fios->name, lastof(fios->name),  "%c:", s[0] & 0xFF);
