@@ -2932,6 +2932,24 @@ void FileToSaveLoad::SetMode(FileOperation fop, AbstractFileType aft, DetailedFi
 	this->abstract_ftype = aft;
 }
 
+/**
+ * Set the name of the file.
+ * @param name Name of the file.
+ */
+void FileToSaveLoad::SetName(const char *name)
+{
+	strecpy(this->name, name, lastof(this->name));
+}
+
+/**
+ * Set the title of the file.
+ * @param title Title of the file.
+ */
+void FileToSaveLoad::SetTitle(const char *title)
+{
+	strecpy(this->title, title, lastof(this->title));
+}
+
 #if 0
 /**
  * Function to get the type of the savegame by looking at the file header.

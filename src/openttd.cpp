@@ -618,7 +618,7 @@ int openttd_main(int argc, char *argv[])
 		case 'e': _switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_EDITOR); break;
 		case 'g':
 			if (mgo.opt != NULL) {
-				strecpy(_file_to_saveload.name, mgo.opt, lastof(_file_to_saveload.name));
+				_file_to_saveload.SetName(mgo.opt);
 				bool is_scenario = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO;
 				_switch_mode = is_scenario ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 				_file_to_saveload.SetMode(FOP_LOAD, is_scenario ? FT_SCENARIO : FT_SAVEGAME, DFT_GAME_FILE);

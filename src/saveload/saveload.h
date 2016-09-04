@@ -32,6 +32,8 @@ struct FileToSaveLoad {
 
 	void SetMode(FiosType ft);
 	void SetMode(FileOperation fop, AbstractFileType aft, DetailedFileType dft);
+	void SetName(const char *name);
+	void SetTitle(const char *title);
 };
 
 /** Types of save games. */
