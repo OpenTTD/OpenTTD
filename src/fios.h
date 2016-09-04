@@ -97,16 +97,6 @@ enum FileSlots {
 	MAX_FILE_SLOTS = 64
 };
 
-/** Mode of the file dialogue window. */
-enum SaveLoadDialogMode {
-	SLD_LOAD_GAME,      ///< Load a game.
-	SLD_LOAD_SCENARIO,  ///< Load a scenario.
-	SLD_SAVE_GAME,      ///< Save a game.
-	SLD_SAVE_SCENARIO,  ///< Save a scenario.
-	SLD_LOAD_HEIGHTMAP, ///< Load a heightmap.
-	SLD_SAVE_HEIGHTMAP, ///< Save a heightmap.
-};
-
 /** Deals with finding savegames */
 struct FiosItem {
 	FiosType type;
@@ -215,10 +205,9 @@ enum SortingBits {
 DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
 /* Variables to display file lists */
-extern SaveLoadDialogMode _saveload_mode;
 extern SortingBits _savegame_sort_order;
 
-void ShowSaveLoadDialog(SaveLoadDialogMode mode);
+void ShowSaveLoadDialog(AbstractFileType abstract_filetype, FileOperation fop);
 
 void FiosGetSavegameList(FileOperation fop, FileList &file_list);
 void FiosGetScenarioList(FileOperation fop, FileList &file_list);

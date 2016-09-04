@@ -1187,17 +1187,17 @@ struct NetworkStartServerWindow : public Window {
 
 			case WID_NSS_LOAD_GAME:
 				_is_network_server = true;
-				ShowSaveLoadDialog(SLD_LOAD_GAME);
+				ShowSaveLoadDialog(FT_SAVEGAME, FOP_LOAD);
 				break;
 
 			case WID_NSS_PLAY_SCENARIO:
 				_is_network_server = true;
-				ShowSaveLoadDialog(SLD_LOAD_SCENARIO);
+				ShowSaveLoadDialog(FT_SCENARIO, FOP_LOAD);
 				break;
 
 			case WID_NSS_PLAY_HEIGHTMAP:
 				_is_network_server = true;
-				ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP);
+				ShowSaveLoadDialog(FT_HEIGHTMAP,FOP_LOAD);
 				break;
 		}
 	}

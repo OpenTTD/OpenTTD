@@ -111,9 +111,9 @@ struct SelectGameWindow : public Window {
 				}
 				break;
 
-			case WID_SGI_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-			case WID_SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
-			case WID_SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+			case WID_SGI_LOAD_GAME:      ShowSaveLoadDialog(FT_SAVEGAME, FOP_LOAD); break;
+			case WID_SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, FOP_LOAD); break;
+			case WID_SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP,FOP_LOAD); break;
 			case WID_SGI_EDIT_SCENARIO:  StartScenarioEditor(); break;
 
 			case WID_SGI_PLAY_NETWORK:
