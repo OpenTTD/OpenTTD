@@ -24,6 +24,12 @@ enum AbstractFileType {
 	FT_INVALID = 7, ///< Invalid or unknown file type.
 };
 
+/** Operation performed on the file. */
+enum FileOperation {
+	FOP_LOAD, ///< File is being loaded.
+	FOP_SAVE, ///< File is being saved.
+};
+
 /** Elements of a file system that are recognized. */
 enum FiosType {
 	FIOS_TYPE_DRIVE,

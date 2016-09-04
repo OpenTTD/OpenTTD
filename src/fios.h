@@ -200,7 +200,7 @@ public:
 		this->files.Compact();
 	}
 
-	void BuildFileList(SaveLoadDialogMode mode);
+	void BuildFileList(AbstractFileType abstract_filetype, FileOperation fop);
 	const FiosItem *FindItem(const char *file);
 
 	SmallVector<FiosItem, 32> files; ///< The list of files.
@@ -220,9 +220,9 @@ extern SortingBits _savegame_sort_order;
 
 void ShowSaveLoadDialog(SaveLoadDialogMode mode);
 
-void FiosGetSavegameList(SaveLoadDialogMode mode, FileList &file_list);
-void FiosGetScenarioList(SaveLoadDialogMode mode, FileList &file_list);
-void FiosGetHeightmapList(SaveLoadDialogMode mode, FileList &file_list);
+void FiosGetSavegameList(FileOperation fop, FileList &file_list);
+void FiosGetScenarioList(FileOperation fop, FileList &file_list);
+void FiosGetHeightmapList(FileOperation fop, FileList &file_list);
 
 const char *FiosBrowseTo(const FiosItem *item);
 
@@ -231,7 +231,7 @@ bool FiosDelete(const char *name);
 void FiosMakeHeightmapName(char *buf, const char *name, const char *last);
 void FiosMakeSavegameName(char *buf, const char *name, const char *last);
 
-FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last);
+FiosType FiosGetSavegameListCallback(FileOperation fop, const char *file, const char *ext, char *title, const char *last);
 
 int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 

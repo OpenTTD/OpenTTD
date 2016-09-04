@@ -669,7 +669,19 @@ public:
 				if (!gui_scope) break;
 
 				_fios_path_changed = true;
-				this->fios_items.BuildFileList(_saveload_mode);
+
+				AbstractFileType abstract_filetype;
+				FileOperation fop;
+				switch (_saveload_mode) {
+					case SLD_LOAD_GAME:      abstract_filetype = FT_SAVEGAME; fop = FOP_LOAD; break;
+					case SLD_LOAD_SCENARIO:  abstract_filetype = FT_SCENARIO; fop = FOP_LOAD; break;
+					case SLD_SAVE_GAME:      abstract_filetype = FT_SAVEGAME; fop = FOP_SAVE; break;
+					case SLD_SAVE_SCENARIO:  abstract_filetype = FT_SCENARIO; fop = FOP_SAVE; break;
+					case SLD_LOAD_HEIGHTMAP: abstract_filetype = FT_HEIGHTMAP; fop = FOP_LOAD; break;
+					case SLD_SAVE_HEIGHTMAP: abstract_filetype = FT_HEIGHTMAP; fop = FOP_SAVE; break;
+					default: NOT_REACHED();
+				}
+				this->fios_items.BuildFileList(abstract_filetype, fop);
 				this->vscroll->SetCount(this->fios_items.Length());
 				this->selected = NULL;
 				_load_check_data.Clear();
