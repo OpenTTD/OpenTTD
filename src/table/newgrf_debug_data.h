@@ -17,7 +17,7 @@
 #define NIP_END() { NULL, 0, 0, 0, 0 }
 
 /* Helper for filling callback tables */
-#define NIC(cb_id, base, variable, bit) { #cb_id, cpp_offsetof(base, variable), cpp_sizeof(base, variable), bit, cb_id }
+#define NIC(cb_id, base, variable, bit) { #cb_id, (ptrdiff_t)cpp_offsetof(base, variable), cpp_sizeof(base, variable), bit, cb_id }
 #define NIC_END() { NULL, 0, 0, 0, 0 }
 
 /* Helper for filling variable tables */

@@ -1285,7 +1285,7 @@ make_compiler_cflags() {
 
 		# -W alone doesn't enable all warnings enabled by -Wall; on the other hand,
 		# -Weverything enables too many useless warnings that can't be disabled (as of 3.0)
-		flags="$flags -Wall -W"
+		flags="$flags -Wall -W -Wextra"
 
 		# warning: unused parameter '...'
 		flags="$flags -Wno-unused-parameter"
@@ -1324,6 +1324,11 @@ make_compiler_cflags() {
 		if [ "$enable_assert" -eq "0" ]; then
 			# do not warn about unused variables when building without asserts
 			flags="$flags -Wno-unused-variable"
+		fi
+
+		if [ "$cc_version" -ge "33" ]; then
+			# clang completed C++11 support in version 3.3
+			flags="$flags -std=c++11"
 		fi
 
 		# rdynamic is used to get useful stack traces from crash reports.
