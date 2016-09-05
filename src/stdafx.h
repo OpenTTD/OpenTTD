@@ -430,6 +430,9 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 /* Asserts are enabled if NDEBUG isn't defined or WITH_ASSERT is defined. */
 #if !defined(NDEBUG) || defined(WITH_ASSERT)
 #	define OTTD_ASSERT
+#	define assert_msg(expression, msg, ...) if (!(expression)) error("Assertion failed at line %i of %s: %s\n\t" msg, __LINE__, __FILE__, #expression, __VA_ARGS__);
+#else
+#	define assert_msg(expression, msg, ...)
 #endif
 
 #if defined(OPENBSD)

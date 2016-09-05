@@ -129,7 +129,7 @@ void CDECL usererror(const char *s, ...)
 void CDECL error(const char *s, ...)
 {
 	va_list va;
-	char buf[512];
+	char buf[2048];
 
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
