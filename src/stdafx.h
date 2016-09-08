@@ -111,7 +111,7 @@
 #endif
 
 /* Stuff for GCC */
-#if defined(__GNUC__)
+#if defined(__GNUC__) || defined(__clang__)
 #	define NORETURN __attribute__ ((noreturn))
 #	define CDECL
 #	define __int64 long long
@@ -134,7 +134,7 @@
 #	else
 #		define FALLTHROUGH
 #	endif
-#endif /* __GNUC__ */
+#endif /* __GNUC__ || __clang__ */
 
 #if defined(__WATCOMC__)
 #	define NORETURN
@@ -417,13 +417,13 @@ assert_compile(SIZE_MAX >= UINT32_MAX);
 #	define CloseConnection OTTD_CloseConnection
 #endif /* __APPLE__ */
 
-#ifdef __GNUC__
+#if defined(__GNUC__) || defined(__clang__)
 #	define likely(x)   __builtin_expect(!!(x), 1)
 #	define unlikely(x) __builtin_expect(!!(x), 0)
 #else
 #	define likely(x)   (x)
 #	define unlikely(x) (x)
-#endif
+#endif /* __GNUC__ || __clang__ */
 
 void NORETURN CDECL usererror(const char *str, ...) WARN_FORMAT(1, 2);
 void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
