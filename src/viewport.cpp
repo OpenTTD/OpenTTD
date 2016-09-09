@@ -88,6 +88,10 @@
 #include "command_func.h"
 #include "network/network_func.h"
 #include "framerate_type.h"
+#include "depot_base.h"
+#include "tunnelbridge_map.h"
+#include "gui.h"
+#include "core/container_func.hpp"
 
 #include <map>
 
@@ -181,6 +185,36 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 
 static ViewportDrawer _vd;
 
+static std::vector<ViewPort *> _viewport_window_cache;
+
+RouteStepsMap _vp_route_steps;
+RouteStepsMap _vp_route_steps_last_mark_dirty;
+uint _vp_route_step_width = 0;
+uint _vp_route_step_height_top = 0;
+uint _vp_route_step_height_middle = 0;
+uint _vp_route_step_height_bottom = 0;
+SubSprite _vp_route_step_subsprite;
+
+struct DrawnPathRouteTileLine {
+	TileIndex from_tile;
+	TileIndex to_tile;
+
+	bool operator==(const DrawnPathRouteTileLine &other) const
+	{
+		return this->from_tile == other.from_tile && this->to_tile == other.to_tile;
+	}
+
+	bool operator!=(const DrawnPathRouteTileLine &other) const
+	{
+		return !(*this == other);
+	}
+};
+
+std::vector<DrawnPathRouteTileLine> _vp_route_paths_drawn_dirty;
+std::vector<DrawnPathRouteTileLine> _vp_route_paths_last_mark_dirty;
+
+static void MarkRoutePathsDirty(const std::vector<DrawnPathRouteTileLine> &lines);
+
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
 bool _draw_bounding_boxes = false;
@@ -200,6 +234,7 @@ void DeleteWindowViewport(Window *w)
 {
 	if (w->viewport == nullptr) return;
 
+	container_unordered_remove(_viewport_window_cache, w->viewport);
 	delete w->viewport->overlay;
 	free(w->viewport);
 	w->viewport = nullptr;
@@ -260,6 +295,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	w->viewport = vp;
 	vp->virtual_left = 0; // pt.x;
 	vp->virtual_top = 0;  // pt.y;
+	_viewport_window_cache.push_back(vp);
 }
 
 static Point _vp_move_offs;
@@ -1478,11 +1514,8 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, zoom);
 	}
 
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		ViewPort *vp = w->viewport;
-		if (vp != nullptr && vp->zoom <= maxzoom) {
-			assert(vp->width != 0);
+	for (ViewPort *vp : _viewport_window_cache) {
+		if (vp->zoom <= maxzoom) {
 			Rect &zl = zoomlevels[vp->zoom];
 			MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
 		}
