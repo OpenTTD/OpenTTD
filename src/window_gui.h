@@ -261,6 +261,8 @@ struct ViewportData : Viewport {
 	int32 dest_scrollpos_y;   ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
 };
 
+extern std::vector<Viewport *> _viewport_window_cache; ///< Cache of active window viewports.
+
 struct QueryString;
 
 /* misc_gui.cpp */

@@ -181,6 +181,8 @@ static void MarkViewportDirty(const Viewport *vp, int left, int top, int right, 
 
 static ViewportDrawer _vd;
 
+std::vector<Viewport *> _viewport_window_cache;
+
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
 bool _draw_bounding_boxes = false;
@@ -200,8 +202,9 @@ void DeleteWindowViewport(Window *w)
 {
 	if (w->viewport == nullptr) return;
 
+	_viewport_window_cache.erase(std::remove(_viewport_window_cache.begin(), _viewport_window_cache.end(), w->viewport), _viewport_window_cache.end());
 	delete w->viewport->overlay;
-	free(w->viewport);
+	delete w->viewport;
 	w->viewport = nullptr;
 }
 
@@ -222,8 +225,9 @@ void InitializeWindowViewport(Window *w, int x, int y,
 {
 	assert(w->viewport == nullptr);
 
-	ViewportData *vp = CallocT<ViewportData>(1);
+	ViewportData *vp = new ViewportData();
 
+	vp->overlay = nullptr;
 	vp->left = x + w->left;
 	vp->top = y + w->top;
 	vp->width = width;
@@ -231,6 +235,8 @@ void InitializeWindowViewport(Window *w, int x, int y,
 
 	vp->zoom = static_cast<ZoomLevel>(Clamp(zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
 
+	vp->virtual_left = 0;
+	vp->virtual_top = 0;
 	vp->virtual_width = ScaleByZoom(width, zoom);
 	vp->virtual_height = ScaleByZoom(height, zoom);
 
@@ -255,11 +261,8 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->dest_scrollpos_x = pt.x;
 	vp->dest_scrollpos_y = pt.y;
 
-	vp->overlay = nullptr;
-
 	w->viewport = vp;
-	vp->virtual_left = 0; // pt.x;
-	vp->virtual_top = 0;  // pt.y;
+	_viewport_window_cache.push_back(vp);
 }
 
 static Point _vp_move_offs;
@@ -1478,11 +1481,8 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, zoom);
 	}
 
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		Viewport *vp = w->viewport;
-		if (vp != nullptr && vp->zoom <= maxzoom) {
-			assert(vp->width != 0);
+	for (Viewport *vp : _viewport_window_cache) {
+		if (vp->zoom <= maxzoom) {
 			Rect &zl = zoomlevels[vp->zoom];
 			MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
 		}
@@ -1874,9 +1874,11 @@ static void MarkViewportDirty(const Viewport *vp, int left, int top, int right, 
 
 	right -= vp->virtual_left;
 	if (right <= 0) return;
+	right = min(right, vp->virtual_width);
 
 	bottom -= vp->virtual_top;
 	if (bottom <= 0) return;
+	bottom = min(bottom, vp->virtual_height);
 
 	left = max(0, left - vp->virtual_left);
 
@@ -1904,13 +1906,9 @@ static void MarkViewportDirty(const Viewport *vp, int left, int top, int right, 
  */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 {
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		Viewport *vp = w->viewport;
-		if (vp != nullptr) {
-			assert(vp->width != 0);
-			MarkViewportDirty(vp, left, top, right, bottom);
-		}
+	for (Viewport *vp : _viewport_window_cache) {
+		assert(vp->width != 0);
+		MarkViewportDirty(vp, left, top, right, bottom);
 	}
 }
 

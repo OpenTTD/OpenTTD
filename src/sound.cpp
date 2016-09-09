@@ -238,12 +238,8 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 {
 	if (_settings_client.music.effect_vol == 0) return;
 
-	const Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		const Viewport *vp = w->viewport;
-
-		if (vp != nullptr &&
-				left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
+	for (const Viewport *vp : _viewport_window_cache) {
+		if (left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
 				top < vp->virtual_top + vp->virtual_height && bottom > vp->virtual_top) {
 			int screen_x = (left + right) / 2 - vp->virtual_left;
 			int width = (vp->virtual_width == 0 ? 1 : vp->virtual_width);
