@@ -56,7 +56,7 @@ void DrawHillyLandTile(const TileInfo *ti)
 	if (ti->tileh != SLOPE_FLAT) {
 		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 	} else {
-		DrawGroundSprite(_landscape_clear_sprites_rough[GB(ti->x ^ ti->y, 4, 3)], PAL_NONE);
+		DrawGroundSprite(_landscape_clear_sprites_rough[GB(TileHash(ti->x, ti->y), 0, 3)], PAL_NONE);
 	}
 }
 
