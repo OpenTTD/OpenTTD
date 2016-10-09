@@ -845,6 +845,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem nula
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tem ordens duplicadas
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tem uma ordem inválida no seu horário
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} tem um aeroporto nas ordens cuja pista de aterragem é muito curta
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} está a ficar velho
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} está a ficar muito velho
@@ -1288,10 +1289,14 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar a popul
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Largura da linha nos gráficos. Uma linha mais estreita é de leitura mais precisa, enquanto uma linha mais espessa é mais fácil de ver e as cores distinguem-se melhor.
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Cenário: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Os estilos dos cenários definem a jogabilidade base, cada um com cargas e requerimentos diferentes para o desenvolvimento das cidades. Mas NewGRF e Scripts de Jogo permitem um controlo mais refinado
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de terra: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :O gerador original é dependente do conjunto gráfico base, e compõe formas de terreno já afixadas. TerraGenesis é um gerador baseado no algoritmo de ruído de Perlin que permite definições mais refinadas
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Relevo do terreno
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade industrial: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre o limite do mapa e Refinarias de Petróleo: {STRING}
@@ -1661,13 +1666,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localização
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gráficos
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efeitos sonoros
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Geral
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Visualizadores
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construção
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Notícias / Assessores
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Empresa
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Contabilidade
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veículos
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Física
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Em rota
+STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitações
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Acidentes
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Geração do mundo
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambiente
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Cidades
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuição de Carga
@@ -2860,7 +2875,11 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir para 
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Gráfico anterior
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceder ao gráfico normal anterior, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no início
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do gráfico seleccionado actualmente. O alinhamento é ignorado a desenhar este gráfico
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover o gráfico, mudando os desvios X e Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desloca o gráfico, alterando os intervalos  X e Y. Ctrl+Clique desloca o gráfico 8 unidades de uma só vez
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Repor relativo
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Repor intervalos relativos atuais
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Intervalo X: {NUM}, Intervalo Y: {NUM} (Absoluto)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Intervalo X: {NUM}, Intervalo Y: {NUM} (Relativo)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Escolher gráfico
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Escolha um gráfico de qualquer lado no ecrã
 
@@ -3338,6 +3357,7 @@ STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Mudar o 
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da autosubstituição global
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Apagar Grupo
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Tem a certeza de que quer apagar este grupo e quaisquer descendentes?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adic. veíc. partilh.
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
@@ -3879,6 +3899,10 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viagem (sem pro
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar no máximo a {2:VELOCITY} (sem programação)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar por {STRING} no máximo a {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, sem programação)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (por {STRING}, sem programação) no máximo a {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permanecer durante {STRING}, sem programação)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante {STRING}, sem programação)
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaja para {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
