@@ -2100,9 +2100,7 @@ struct VehicleDetailsWindow : Window {
 			case WID_VD_MIDDLE_DETAILS: {
 				/* For other vehicles, at the place of the matrix. */
 				bool rtl = _current_text_dir == TD_RTL;
-				uint sprite_width = UnScaleGUI(
-						max<uint>(GetSprite(v->GetImage(rtl ? DIR_E : DIR_W, EIT_IN_DETAILS), ST_NORMAL)->width, 70U)) +
-						WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				uint sprite_width = GetSingleVehicleWidth(v, EIT_IN_DETAILS) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 
 				uint text_left  = r.left  + (rtl ? 0 : sprite_width);
 				uint text_right = r.right - (rtl ? sprite_width : 0);
