@@ -3521,14 +3521,14 @@ static void ChangeTrainDirRandomly(Train *v)
 		/* We don't need to twist around vehicles if they're not visible */
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
-			v->UpdateDeltaXY(v->direction);
-			v->cur_image = v->GetImage(v->direction, EIT_ON_MAP);
 			/* Refrain from updating the z position of the vehicle when on
 			 * a bridge, because UpdateInclination() will put the vehicle under
 			 * the bridge in that case */
 			if (v->track != TRACK_BIT_WORMHOLE) {
 				v->UpdatePosition();
-				v->UpdateInclination(false, false);
+				v->UpdateInclination(false, true);
+			} else {
+				v->UpdateViewport(false, true);
 			}
 		}
 	} while ((v = v->Next()) != NULL);
