@@ -202,17 +202,19 @@ void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID en
 	VehicleSpriteSeq seq;
 	GetAircraftIcon(engine, image_type, &seq);
 
-	const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
+	Rect rect;
+	seq.GetBounds(&rect);
 	preferred_x = Clamp(preferred_x,
-			left - UnScaleGUI(real_sprite->x_offs),
-			right - UnScaleGUI(real_sprite->width) - UnScaleGUI(real_sprite->x_offs));
-	DrawSprite(seq.sprite, pal, preferred_x, y);
+			left - UnScaleGUI(rect.left),
+			right - UnScaleGUI(rect.right));
+
+	seq.Draw(preferred_x, y, pal, pal == PALETTE_CRASH);
 
 	if (!(AircraftVehInfo(engine)->subtype & AIR_CTOL)) {
 		VehicleSpriteSeq rotor_seq;
 		GetCustomRotorIcon(engine, image_type, &rotor_seq);
 		if (!rotor_seq.IsValid()) rotor_seq.Set(SPR_ROTOR_STOPPED);
-		DrawSprite(rotor_seq.sprite, PAL_NONE, preferred_x, y - ScaleGUITrad(5));
+		rotor_seq.Draw(preferred_x, y - ScaleGUITrad(5), PAL_NONE, false);
 	}
 }
 
@@ -230,12 +232,13 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoff
 	VehicleSpriteSeq seq;
 	GetAircraftIcon(engine, image_type, &seq);
 
-	const Sprite *spr = GetSprite(seq.sprite, ST_NORMAL);
+	Rect rect;
+	seq.GetBounds(&rect);
 
-	width  = UnScaleGUI(spr->width);
-	height = UnScaleGUI(spr->height);
-	xoffs  = UnScaleGUI(spr->x_offs);
-	yoffs  = UnScaleGUI(spr->y_offs);
+	width  = UnScaleGUI(rect.right - rect.left + 1);
+	height = UnScaleGUI(rect.bottom - rect.top + 1);
+	xoffs  = UnScaleGUI(rect.left);
+	yoffs  = UnScaleGUI(rect.top);
 }
 
 /**

@@ -163,6 +163,9 @@ struct VehicleSpriteSeq {
 	{
 		this->sprite = sprite;
 	}
+
+	void GetBounds(Rect *bounds) const;
+	void Draw(int x, int y, PaletteID default_pal, bool force_pal) const;
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */

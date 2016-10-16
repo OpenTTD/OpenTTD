@@ -2844,8 +2844,9 @@ int GetSingleVehicleWidth(const Vehicle *v, EngineImageType image_type)
 			bool rtl = _current_text_dir == TD_RTL;
 			VehicleSpriteSeq seq;
 			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
-			const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
-			return UnScaleGUI(real_sprite->width);
+			Rect rec;
+			seq.GetBounds(&rec);
+			return UnScaleGUI(rec.right - rec.left + 1);
 	}
 }
 

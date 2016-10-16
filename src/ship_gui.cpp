@@ -38,19 +38,20 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 	VehicleSpriteSeq seq;
 	v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
 
-	const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
+	Rect rect;
+	seq.GetBounds(&rect);
 
-	int width = UnScaleGUI(real_sprite->width);
-	int x_offs = UnScaleGUI(real_sprite->x_offs);
+	int width = UnScaleGUI(rect.right - rect.left + 1);
+	int x_offs = UnScaleGUI(rect.left);
 	int x = rtl ? right - width - x_offs : left - x_offs;
 
 	y += ScaleGUITrad(10);
-	DrawSprite(seq.sprite, GetVehiclePalette(v), x, y);
+	seq.Draw(x, y, GetVehiclePalette(v), false);
 
 	if (v->index == selection) {
 		x += x_offs;
-		y += UnScaleGUI(real_sprite->y_offs);
-		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(real_sprite->height) + 1, COLOUR_WHITE, FR_BORDERONLY);
+		y += UnScaleGUI(rect.top);
+		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(rect.bottom - rect.top + 1) + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

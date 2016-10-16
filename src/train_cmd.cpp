@@ -536,24 +536,27 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 		GetRailIcon(engine, false, yf, image_type, &seqf);
 		GetRailIcon(engine, true, yr, image_type, &seqr);
 
-		const Sprite *real_spritef = GetSprite(seqf.sprite, ST_NORMAL);
-		const Sprite *real_spriter = GetSprite(seqr.sprite, ST_NORMAL);
+		Rect rectf, rectr;
+		seqf.GetBounds(&rectf);
+		seqr.GetBounds(&rectr);
 
 		preferred_x = Clamp(preferred_x,
-				left - UnScaleGUI(real_spritef->x_offs) + ScaleGUITrad(14),
-				right - UnScaleGUI(real_spriter->width) - UnScaleGUI(real_spriter->x_offs) - ScaleGUITrad(15));
+				left - UnScaleGUI(rectf.left) + ScaleGUITrad(14),
+				right - UnScaleGUI(rectr.right) - ScaleGUITrad(15));
 
-		DrawSprite(seqf.sprite, pal, preferred_x - ScaleGUITrad(14), yf);
-		DrawSprite(seqr.sprite, pal, preferred_x + ScaleGUITrad(15), yr);
+		seqf.Draw(preferred_x - ScaleGUITrad(14), yf, pal, pal == PALETTE_CRASH);
+		seqr.Draw(preferred_x + ScaleGUITrad(15), yr, pal, pal == PALETTE_CRASH);
 	} else {
 		VehicleSpriteSeq seq;
 		GetRailIcon(engine, false, y, image_type, &seq);
 
-		const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
+		Rect rect;
+		seq.GetBounds(&rect);
 		preferred_x = Clamp(preferred_x,
-				left - UnScaleGUI(real_sprite->x_offs),
-				right - UnScaleGUI(real_sprite->width) - UnScaleGUI(real_sprite->x_offs));
-		DrawSprite(seq.sprite, pal, preferred_x, y);
+				left - UnScaleGUI(rect.left),
+				right - UnScaleGUI(rect.right));
+
+		seq.Draw(preferred_x, y, pal, pal == PALETTE_CRASH);
 	}
 }
 
@@ -573,22 +576,23 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 	VehicleSpriteSeq seq;
 	GetRailIcon(engine, false, y, image_type, &seq);
 
-	const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
+	Rect rect;
+	seq.GetBounds(&rect);
 
-	width  = UnScaleGUI(real_sprite->width);
-	height = UnScaleGUI(real_sprite->height);
-	xoffs  = UnScaleGUI(real_sprite->x_offs);
-	yoffs  = UnScaleGUI(real_sprite->y_offs);
+	width  = UnScaleGUI(rect.right - rect.left + 1);
+	height = UnScaleGUI(rect.bottom - rect.top + 1);
+	xoffs  = UnScaleGUI(rect.left);
+	yoffs  = UnScaleGUI(rect.top);
 
 	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
 		GetRailIcon(engine, true, y, image_type, &seq);
-		real_sprite = GetSprite(seq.sprite, ST_NORMAL);
+		seq.GetBounds(&rect);
 
 		/* Calculate values relative to an imaginary center between the two sprites. */
-		width = ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(real_sprite->width) + UnScaleGUI(real_sprite->x_offs) - xoffs;
-		height = max<uint>(height, UnScaleGUI(real_sprite->height));
+		width = ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(rect.right) - xoffs;
+		height = max<uint>(height, UnScaleGUI(rect.bottom - rect.top + 1));
 		xoffs  = xoffs - ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) / 2;
-		yoffs  = min(yoffs, UnScaleGUI(real_sprite->y_offs));
+		yoffs  = min(yoffs, UnScaleGUI(rect.top));
 	}
 }
 
