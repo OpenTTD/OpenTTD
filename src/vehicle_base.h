@@ -128,11 +128,12 @@ struct VehicleCache {
 
 /** Sprite sequence for a vehicle part. */
 struct VehicleSpriteSeq {
-	SpriteID sprite;
+	PalSpriteID seq[4];
+	uint count;
 
 	bool operator==(const VehicleSpriteSeq &other) const
 	{
-		return this->sprite == other.sprite;
+		return this->count == other.count && MemCmpT<PalSpriteID>(this->seq, other.seq, this->count) == 0;
 	}
 
 	bool operator!=(const VehicleSpriteSeq &other) const
@@ -145,7 +146,7 @@ struct VehicleSpriteSeq {
 	 */
 	bool IsValid() const
 	{
-		return this->sprite != 0;
+		return this->count != 0;
 	}
 
 	/**
@@ -153,7 +154,7 @@ struct VehicleSpriteSeq {
 	 */
 	void Clear()
 	{
-		this->sprite = 0;
+		this->count = 0;
 	}
 
 	/**
@@ -161,7 +162,21 @@ struct VehicleSpriteSeq {
 	 */
 	void Set(SpriteID sprite)
 	{
-		this->sprite = sprite;
+		this->count = 1;
+		this->seq[0].sprite = sprite;
+		this->seq[0].pal = 0;
+	}
+
+	/**
+	 * Copy data from another sprite sequence, while dropping all recolouring information.
+	 */
+	void CopyWithoutPalette(const VehicleSpriteSeq &src)
+	{
+		this->count = src.count;
+		for (uint i = 0; i < src.count; ++i) {
+			this->seq[i].sprite = src.seq[i].sprite;
+			this->seq[i].pal = 0;
+		}
 	}
 
 	void GetBounds(Rect *bounds) const;
@@ -982,7 +997,10 @@ struct SpecializedVehicle : public Vehicle {
 	/**
 	 * Set vehicle type correctly
 	 */
-	inline SpecializedVehicle<T, Type>() : Vehicle(Type) { }
+	inline SpecializedVehicle<T, Type>() : Vehicle(Type)
+	{
+		this->sprite_seq.count = 1;
+	}
 
 	/**
 	 * Get the first vehicle in the chain

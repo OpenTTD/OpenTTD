@@ -1025,13 +1025,23 @@ VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle
 
 void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type, VehicleSpriteSeq *result)
 {
-	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_CACHED, false, CBID_NO_CALLBACK, image_type);
+	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_CACHED, false, CBID_NO_CALLBACK);
 	result->Clear();
 
-	const SpriteGroup *group = object.Resolve();
-	if (group == NULL || group->GetNumResults() == 0) return;
-
-	result->Set(group->GetResult() + (direction % group->GetNumResults()));
+	bool sprite_stack = HasBit(EngInfo(engine)->misc_flags, EF_SPRITE_STACK);
+	uint max_stack = sprite_stack ? lengthof(result->seq) : 1;
+	for (uint stack = 0; stack < max_stack; ++stack) {
+		object.ResetState();
+		object.callback_param1 = image_type | (stack << 8);
+		const SpriteGroup *group = object.Resolve();
+		uint32 reg100 = sprite_stack ? GetRegister(0x100) : 0;
+		if (group != NULL && group->GetNumResults() != 0) {
+			result->seq[result->count].sprite = group->GetResult() + (direction % group->GetNumResults());
+			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
+			result->count++;
+		}
+		if (!HasBit(reg100, 31)) break;
+	}
 }
 
 
@@ -1043,15 +1053,24 @@ void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info
 	assert(e->type == VEH_AIRCRAFT);
 	assert(!(e->u.air.subtype & AIR_CTOL));
 
-	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_SELF, info_view, CBID_NO_CALLBACK, image_type);
+	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_SELF, info_view, CBID_NO_CALLBACK);
 	result->Clear();
 	uint rotor_pos = v == NULL || info_view ? 0 : v->Next()->Next()->state;
 
-	const SpriteGroup *group = object.Resolve();
-
-	if (group == NULL || group->GetNumResults() == 0) return;
-
-	result->Set(group->GetResult() + (rotor_pos % group->GetNumResults()));
+	bool sprite_stack = HasBit(e->info.misc_flags, EF_SPRITE_STACK);
+	uint max_stack = sprite_stack ? lengthof(result->seq) : 1;
+	for (uint stack = 0; stack < max_stack; ++stack) {
+		object.ResetState();
+		object.callback_param1 = image_type | (stack << 8);
+		const SpriteGroup *group = object.Resolve();
+		uint32 reg100 = sprite_stack ? GetRegister(0x100) : 0;
+		if (group != NULL && group->GetNumResults() != 0) {
+			result->seq[result->count].sprite = group->GetResult() + (rotor_pos % group->GetNumResults());
+			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
+			result->count++;
+		}
+		if (!HasBit(reg100, 31)) break;
+	}
 }
 
 

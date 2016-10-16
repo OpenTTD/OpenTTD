@@ -2880,20 +2880,24 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 	_cursor.sprite_count = 0;
 	int total_width = 0;
 	for (; v != NULL; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL) {
-		if (_cursor.sprite_count == lengthof(_cursor.sprite_seq)) break;
 		if (total_width >= 2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH) break;
 
 		PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 		VehicleSpriteSeq seq;
 		v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
 
-		_cursor.sprite_seq[_cursor.sprite_count].sprite = seq.sprite;
-		_cursor.sprite_seq[_cursor.sprite_count].pal = pal;
-		_cursor.sprite_pos[_cursor.sprite_count].x = rtl ? -total_width : total_width;
-		_cursor.sprite_pos[_cursor.sprite_count].y = 0;
+		if (_cursor.sprite_count + seq.count > lengthof(_cursor.sprite_seq)) break;
+
+		for (uint i = 0; i < seq.count; ++i) {
+			PaletteID pal2 = (v->vehstatus & VS_CRASHED) || !seq.seq[i].pal ? pal : seq.seq[i].pal;
+			_cursor.sprite_seq[_cursor.sprite_count].sprite = seq.seq[i].sprite;
+			_cursor.sprite_seq[_cursor.sprite_count].pal = pal2;
+			_cursor.sprite_pos[_cursor.sprite_count].x = rtl ? -total_width : total_width;
+			_cursor.sprite_pos[_cursor.sprite_count].y = 0;
+			_cursor.sprite_count++;
+		}
 
 		total_width += GetSingleVehicleWidth(v, image_type);
-		_cursor.sprite_count++;
 	}
 
 	int offs = ((int)VEHICLEINFO_FULL_VEHICLE_WIDTH - total_width) / 2;

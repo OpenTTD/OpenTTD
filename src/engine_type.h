@@ -158,6 +158,7 @@ enum EngineMiscFlags {
 	EF_AUTO_REFIT = 4, ///< Automatic refitting is allowed
 	EF_NO_DEFAULT_CARGO_MULTIPLIER = 5, ///< Use the new capacity algorithm. The default cargotype of the vehicle does not affect capacity multipliers. CB 15 is also called in purchase list.
 	EF_NO_BREAKDOWN_SMOKE          = 6, ///< Do not show black smoke during a breakdown.
+	EF_SPRITE_STACK                = 7, ///< Draw vehicle by stacking multiple sprites.
 };
 
 /**

@@ -75,11 +75,23 @@ INSTANTIATE_POOL_METHODS(Vehicle)
  */
 void VehicleSpriteSeq::GetBounds(Rect *bounds) const
 {
-	const Sprite *spr = GetSprite(this->sprite, ST_NORMAL);
-	bounds->left = spr->x_offs;
-	bounds->top  = spr->y_offs;
-	bounds->right  = spr->width  + spr->x_offs - 1;
-	bounds->bottom = spr->height + spr->y_offs - 1;
+	bounds->left = bounds->top = bounds->right = bounds->bottom = 0;
+	for (uint i = 0; i < this->count; ++i) {
+		const Sprite *spr = GetSprite(this->seq[i].sprite, ST_NORMAL);
+		if (i == 0) {
+			bounds->left = spr->x_offs;
+			bounds->top  = spr->y_offs;
+			bounds->right  = spr->width  + spr->x_offs - 1;
+			bounds->bottom = spr->height + spr->y_offs - 1;
+		} else {
+			if (spr->x_offs < bounds->left) bounds->left = spr->x_offs;
+			if (spr->y_offs < bounds->top)  bounds->top  = spr->y_offs;
+			int right  = spr->width  + spr->x_offs - 1;
+			int bottom = spr->height + spr->y_offs - 1;
+			if (right  > bounds->right)  bounds->right  = right;
+			if (bottom > bounds->bottom) bounds->bottom = bottom;
+		}
+	}
 }
 
 /**
@@ -91,7 +103,10 @@ void VehicleSpriteSeq::GetBounds(Rect *bounds) const
  */
 void VehicleSpriteSeq::Draw(int x, int y, PaletteID default_pal, bool force_pal) const
 {
-	DrawSprite(this->sprite, default_pal, x, y);
+	for (uint i = 0; i < this->count; ++i) {
+		PaletteID pal = force_pal || !this->seq[i].pal ? default_pal : this->seq[i].pal;
+		DrawSprite(this->seq[i].sprite, pal, x, y);
+	}
 }
 
 /**
@@ -1048,8 +1063,14 @@ static void DoDrawVehicle(const Vehicle *v)
 		if (to != TO_INVALID && (IsTransparencySet(to) || IsInvisibilitySet(to))) return;
 	}
 
-	AddSortableSpriteToDraw(v->sprite_seq.sprite, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
-		v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed, v->x_bb_offs, v->y_bb_offs);
+	StartSpriteCombine();
+	for (uint i = 0; i < v->sprite_seq.count; ++i) {
+		PaletteID pal2 = v->sprite_seq.seq[i].pal;
+		if (!pal2 || (v->vehstatus & VS_CRASHED)) pal2 = pal;
+		AddSortableSpriteToDraw(v->sprite_seq.seq[i].sprite, pal2, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
+			v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed, v->x_bb_offs, v->y_bb_offs);
+	}
+	EndSpriteCombine();
 }
 
 /**

@@ -499,7 +499,7 @@ static bool DisasterTick_Helicopter_Rotors(DisasterVehicle *v)
 	v->tick_counter++;
 	if (HasBit(v->tick_counter, 0)) return true;
 
-	SpriteID &cur_image = v->sprite_seq.sprite;
+	SpriteID &cur_image = v->sprite_seq.seq[0].sprite;
 	if (++cur_image > SPR_ROTOR_MOVING_3) cur_image = SPR_ROTOR_MOVING_1;
 
 	v->UpdatePositionAndViewport();

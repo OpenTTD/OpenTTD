@@ -525,7 +525,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 
 	safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
 	u->z_pos = GetSlopePixelZ(safe_x, safe_y);
-	u->sprite_seq.sprite = v->sprite_seq.sprite;
+	u->sprite_seq.CopyWithoutPalette(v->sprite_seq); // the shadow is never coloured
 
 	u->UpdatePositionAndViewport();
 
