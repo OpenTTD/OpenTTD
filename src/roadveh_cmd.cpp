@@ -113,40 +113,39 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 	return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
 }
 
-static SpriteID GetRoadVehIcon(EngineID engine, EngineImageType image_type)
+static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
 	uint8 spritenum = e->u.road.image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W, image_type);
-		if (sprite != 0) return sprite;
+		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
+		if (result->IsValid()) return;
 
 		spritenum = e->original_image_index;
 	}
 
 	assert(IsValidImageIndex<VEH_ROAD>(spritenum));
-	return DIR_W + _roadveh_images[spritenum];
+	result->Set(DIR_W + _roadveh_images[spritenum]);
 }
 
-SpriteID RoadVehicle::GetImage(Direction direction, EngineImageType image_type) const
+void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
 {
 	uint8 spritenum = this->spritenum;
-	SpriteID sprite;
 
 	if (is_custom_sprite(spritenum)) {
-		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)), image_type);
-		if (sprite != 0) return sprite;
+		GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)), image_type, result);
+		if (result->IsValid()) return;
 
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
 	assert(IsValidImageIndex<VEH_ROAD>(spritenum));
-	sprite = direction + _roadveh_images[spritenum];
+	SpriteID sprite = direction + _roadveh_images[spritenum];
 
 	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _roadveh_full_adder[spritenum];
 
-	return sprite;
+	result->Set(sprite);
 }
 
 /**
@@ -160,12 +159,14 @@ SpriteID RoadVehicle::GetImage(Direction direction, EngineImageType image_type) 
  */
 void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
 {
-	SpriteID sprite = GetRoadVehIcon(engine, image_type);
-	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+	VehicleSpriteSeq seq;
+	GetRoadVehIcon(engine, image_type, &seq);
+
+	const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
 	preferred_x = Clamp(preferred_x,
 			left - UnScaleGUI(real_sprite->x_offs),
 			right - UnScaleGUI(real_sprite->width) - UnScaleGUI(real_sprite->x_offs));
-	DrawSprite(sprite, pal, preferred_x, y);
+	DrawSprite(seq.sprite, pal, preferred_x, y);
 }
 
 /**
@@ -179,7 +180,10 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
  */
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type)
 {
-	const Sprite *spr = GetSprite(GetRoadVehIcon(engine, image_type), ST_NORMAL);
+	VehicleSpriteSeq seq;
+	GetRoadVehIcon(engine, image_type, &seq);
+
+	const Sprite *spr = GetSprite(seq.sprite, ST_NORMAL);
 
 	width  = UnScaleGUI(spr->width);
 	height = UnScaleGUI(spr->height);
@@ -306,7 +310,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 
-		v->cur_image = SPR_IMG_QUERY;
+		v->sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 		v->SetFrontEngine();
 

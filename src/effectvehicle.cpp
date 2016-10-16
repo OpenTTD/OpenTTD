@@ -30,8 +30,8 @@
  */
 static bool IncrementSprite(EffectVehicle *v, SpriteID last)
 {
-	if (v->cur_image != last) {
-		v->cur_image++;
+	if (v->sprite_seq.sprite != last) {
+		v->sprite_seq.sprite++;
 		return true;
 	} else {
 		return false;
@@ -41,7 +41,7 @@ static bool IncrementSprite(EffectVehicle *v, SpriteID last)
 static void ChimneySmokeInit(EffectVehicle *v)
 {
 	uint32 r = Random();
-	v->cur_image = SPR_CHIMNEY_SMOKE_0 + GB(r, 0, 3);
+	v->sprite_seq.Set(SPR_CHIMNEY_SMOKE_0 + GB(r, 0, 3));
 	v->progress = GB(r, 16, 3);
 }
 
@@ -57,7 +57,7 @@ static bool ChimneySmokeTick(EffectVehicle *v)
 		}
 
 		if (!IncrementSprite(v, SPR_CHIMNEY_SMOKE_7)) {
-			v->cur_image = SPR_CHIMNEY_SMOKE_0;
+			v->sprite_seq.Set(SPR_CHIMNEY_SMOKE_0);
 		}
 		v->progress = 7;
 		v->UpdatePositionAndViewport();
@@ -68,7 +68,7 @@ static bool ChimneySmokeTick(EffectVehicle *v)
 
 static void SteamSmokeInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_STEAM_SMOKE_0;
+	v->sprite_seq.Set(SPR_STEAM_SMOKE_0);
 	v->progress = 12;
 }
 
@@ -98,7 +98,7 @@ static bool SteamSmokeTick(EffectVehicle *v)
 
 static void DieselSmokeInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_DIESEL_SMOKE_0;
+	v->sprite_seq.Set(SPR_DIESEL_SMOKE_0);
 	v->progress = 0;
 }
 
@@ -122,7 +122,7 @@ static bool DieselSmokeTick(EffectVehicle *v)
 
 static void ElectricSparkInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_ELECTRIC_SPARK_0;
+	v->sprite_seq.Set(SPR_ELECTRIC_SPARK_0);
 	v->progress = 1;
 }
 
@@ -145,7 +145,7 @@ static bool ElectricSparkTick(EffectVehicle *v)
 
 static void SmokeInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_SMOKE_0;
+	v->sprite_seq.Set(SPR_SMOKE_0);
 	v->progress = 12;
 }
 
@@ -175,7 +175,7 @@ static bool SmokeTick(EffectVehicle *v)
 
 static void ExplosionLargeInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_EXPLOSION_LARGE_0;
+	v->sprite_seq.Set(SPR_EXPLOSION_LARGE_0);
 	v->progress = 0;
 }
 
@@ -195,7 +195,7 @@ static bool ExplosionLargeTick(EffectVehicle *v)
 
 static void BreakdownSmokeInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_BREAKDOWN_SMOKE_0;
+	v->sprite_seq.Set(SPR_BREAKDOWN_SMOKE_0);
 	v->progress = 0;
 }
 
@@ -204,7 +204,7 @@ static bool BreakdownSmokeTick(EffectVehicle *v)
 	v->progress++;
 	if ((v->progress & 7) == 0) {
 		if (!IncrementSprite(v, SPR_BREAKDOWN_SMOKE_3)) {
-			v->cur_image = SPR_BREAKDOWN_SMOKE_0;
+			v->sprite_seq.Set(SPR_BREAKDOWN_SMOKE_0);
 		}
 		v->UpdatePositionAndViewport();
 	}
@@ -220,7 +220,7 @@ static bool BreakdownSmokeTick(EffectVehicle *v)
 
 static void ExplosionSmallInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_EXPLOSION_SMALL_0;
+	v->sprite_seq.Set(SPR_EXPLOSION_SMALL_0);
 	v->progress = 0;
 }
 
@@ -240,7 +240,7 @@ static bool ExplosionSmallTick(EffectVehicle *v)
 
 static void BulldozerInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_BULLDOZER_NE;
+	v->sprite_seq.Set(SPR_BULLDOZER_NE);
 	v->progress = 0;
 	v->animation_state = 0;
 	v->animation_substate = 0;
@@ -291,7 +291,7 @@ static bool BulldozerTick(EffectVehicle *v)
 	if ((v->progress & 7) == 0) {
 		const BulldozerMovement *b = &_bulldozer_movement[v->animation_state];
 
-		v->cur_image = SPR_BULLDOZER_NE + b->image;
+		v->sprite_seq.Set(SPR_BULLDOZER_NE + b->image);
 
 		v->x_pos += _inc_by_dir[b->direction].x;
 		v->y_pos += _inc_by_dir[b->direction].y;
@@ -313,7 +313,7 @@ static bool BulldozerTick(EffectVehicle *v)
 
 static void BubbleInit(EffectVehicle *v)
 {
-	v->cur_image = SPR_BUBBLE_GENERATE_0;
+	v->sprite_seq.Set(SPR_BUBBLE_GENERATE_0);
 	v->spritenum = 0;
 	v->progress = 0;
 }
@@ -476,8 +476,9 @@ static bool BubbleTick(EffectVehicle *v)
 	if ((v->progress & 3) != 0) return true;
 
 	if (v->spritenum == 0) {
-		v->cur_image++;
-		if (v->cur_image < SPR_BUBBLE_GENERATE_3) {
+		SpriteID &cur_image = v->sprite_seq.sprite;
+		cur_image++;
+		if (cur_image < SPR_BUBBLE_GENERATE_3) {
 			v->UpdatePositionAndViewport();
 			return true;
 		}
@@ -522,7 +523,7 @@ static bool BubbleTick(EffectVehicle *v)
 	v->x_pos += b->x;
 	v->y_pos += b->y;
 	v->z_pos += b->z;
-	v->cur_image = SPR_BUBBLE_0 + b->image;
+	v->sprite_seq.Set(SPR_BUBBLE_0 + b->image);
 
 	v->UpdatePositionAndViewport();
 

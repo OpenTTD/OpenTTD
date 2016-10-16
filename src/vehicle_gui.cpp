@@ -2842,8 +2842,9 @@ int GetSingleVehicleWidth(const Vehicle *v, EngineImageType image_type)
 
 		default:
 			bool rtl = _current_text_dir == TD_RTL;
-			SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
-			const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+			VehicleSpriteSeq seq;
+			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
+			const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
 			return UnScaleGUI(real_sprite->width);
 	}
 }
@@ -2882,8 +2883,10 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 		if (total_width >= 2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH) break;
 
 		PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+		VehicleSpriteSeq seq;
+		v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
 
-		_cursor.sprite_seq[_cursor.sprite_count].sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
+		_cursor.sprite_seq[_cursor.sprite_count].sprite = seq.sprite;
 		_cursor.sprite_seq[_cursor.sprite_count].pal = pal;
 		_cursor.sprite_pos[_cursor.sprite_count].x = rtl ? -total_width : total_width;
 		_cursor.sprite_pos[_cursor.sprite_count].y = 0;

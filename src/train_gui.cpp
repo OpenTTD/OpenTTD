@@ -124,7 +124,9 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 
 		if (rtl ? px + width > 0 : px - width < max_width) {
 			PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-			DrawSprite(v->GetImage(dir, image_type), pal, px + (rtl ? -offset.x : offset.x), height / 2 + offset.y);
+			VehicleSpriteSeq seq;
+			v->GetImage(dir, image_type, &seq);
+			DrawSprite(seq.sprite, pal, px + (rtl ? -offset.x : offset.x), height / 2 + offset.y);
 		}
 
 		if (!v->IsArticulatedPart()) sel_articulated = false;
@@ -383,7 +385,9 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 						pitch = ScaleGUITrad(e->GetGRF()->traininfo_vehicle_pitch);
 					}
 					PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-					DrawSprite(u->GetImage(dir, EIT_IN_DETAILS), pal, px + (rtl ? -offset.x : offset.x), y - line_height * vscroll_pos + sprite_y_offset + pitch);
+					VehicleSpriteSeq seq;
+					u->GetImage(dir, EIT_IN_DETAILS, &seq);
+					DrawSprite(seq.sprite, pal, px + (rtl ? -offset.x : offset.x), y - line_height * vscroll_pos + sprite_y_offset + pitch);
 				}
 				px += rtl ? -width : width;
 				dx += width;

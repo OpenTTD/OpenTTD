@@ -64,13 +64,19 @@ static const uint TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
 static const uint ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 32;
 static const uint VEHICLEINFO_FULL_VEHICLE_WIDTH    = 32;
 
+struct VehicleSpriteSeq;
+
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, EngineID *train_id, uint trains);
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);
 void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
-SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type);
-SpriteID GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info_view, EngineImageType image_type);
-#define GetCustomRotorSprite(v, i, image_type) GetRotorOverrideSprite(v->engine_type, v, i, image_type)
-#define GetCustomRotorIcon(et, image_type) GetRotorOverrideSprite(et, NULL, true, image_type)
+
+void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type, VehicleSpriteSeq *result);
+#define GetCustomVehicleSprite(v, direction, image_type, result) GetCustomEngineSprite(v->engine_type, v, direction, image_type, result)
+#define GetCustomVehicleIcon(et, direction, image_type, result) GetCustomEngineSprite(et, NULL, direction, image_type, result)
+
+void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info_view, EngineImageType image_type, VehicleSpriteSeq *result);
+#define GetCustomRotorSprite(v, i, image_type, result) GetRotorOverrideSprite(v->engine_type, v, i, image_type, result)
+#define GetCustomRotorIcon(et, image_type, result) GetRotorOverrideSprite(et, NULL, true, image_type, result)
 
 /* Forward declaration of GRFFile, to avoid unnecessary inclusion of newgrf.h
  * elsewhere... */
@@ -81,8 +87,6 @@ void SetEngineGRF(EngineID engine, const struct GRFFile *file);
 uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v);
 uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent);
 bool UsesWagonOverride(const Vehicle *v);
-#define GetCustomVehicleSprite(v, direction, image_type) GetCustomEngineSprite(v->engine_type, v, direction, image_type)
-#define GetCustomVehicleIcon(et, direction, image_type) GetCustomEngineSprite(et, NULL, direction, image_type)
 
 /* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
  * time) orig_value is returned */

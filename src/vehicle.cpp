@@ -1008,7 +1008,6 @@ void CallVehicleTicks()
  */
 static void DoDrawVehicle(const Vehicle *v)
 {
-	SpriteID image = v->cur_image;
 	PaletteID pal = PAL_NONE;
 
 	if (v->vehstatus & VS_DEFPAL) pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
@@ -1023,7 +1022,7 @@ static void DoDrawVehicle(const Vehicle *v)
 		if (to != TO_INVALID && (IsTransparencySet(to) || IsInvisibilitySet(to))) return;
 	}
 
-	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
+	AddSortableSpriteToDraw(v->sprite_seq.sprite, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
 		v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed, v->x_bb_offs, v->y_bb_offs);
 }
 
@@ -1487,10 +1486,9 @@ void Vehicle::UpdatePosition()
  */
 void Vehicle::UpdateViewport(bool dirty)
 {
-	int img = this->cur_image;
-	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
-	const Sprite *spr = GetSprite(img, ST_NORMAL);
+	const Sprite *spr = GetSprite(this->sprite_seq.sprite, ST_NORMAL);
 
+	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
 	pt.x += spr->x_offs;
 	pt.y += spr->y_offs;
 

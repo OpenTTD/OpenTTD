@@ -482,41 +482,40 @@ static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
  * @param image_type Visualisation context.
  * @return Sprite to display.
  */
-SpriteID Train::GetImage(Direction direction, EngineImageType image_type) const
+void Train::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
 {
 	uint8 spritenum = this->spritenum;
-	SpriteID sprite;
 
 	if (HasBit(this->flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
 	if (is_custom_sprite(spritenum)) {
-		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)), image_type);
-		if (sprite != 0) return sprite;
+		GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)), image_type, result);
+		if (result->IsValid()) return;
 
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
 	assert(IsValidImageIndex<VEH_TRAIN>(spritenum));
-	sprite = GetDefaultTrainSprite(spritenum, direction);
+	SpriteID sprite = GetDefaultTrainSprite(spritenum, direction);
 
 	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _wagon_full_adder[spritenum];
 
-	return sprite;
+	result->Set(sprite);
 }
 
-static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType image_type)
+static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
 	Direction dir = rear_head ? DIR_E : DIR_W;
 	uint8 spritenum = e->u.rail.image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		SpriteID sprite = GetCustomVehicleIcon(engine, dir, image_type);
-		if (sprite != 0) {
+		GetCustomVehicleIcon(engine, dir, image_type, result);
+		if (result->IsValid()) {
 			if (e->GetGRF() != NULL) {
 				y += ScaleGUITrad(e->GetGRF()->traininfo_vehicle_pitch);
 			}
-			return sprite;
+			return;
 		}
 
 		spritenum = Engine::Get(engine)->original_image_index;
@@ -524,7 +523,7 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImage
 
 	if (rear_head) spritenum++;
 
-	return GetDefaultTrainSprite(spritenum, DIR_W);
+	result->Set(GetDefaultTrainSprite(spritenum, DIR_W));
 }
 
 void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
@@ -533,24 +532,28 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 		int yf = y;
 		int yr = y;
 
-		SpriteID spritef = GetRailIcon(engine, false, yf, image_type);
-		SpriteID spriter = GetRailIcon(engine, true, yr, image_type);
-		const Sprite *real_spritef = GetSprite(spritef, ST_NORMAL);
-		const Sprite *real_spriter = GetSprite(spriter, ST_NORMAL);
+		VehicleSpriteSeq seqf, seqr;
+		GetRailIcon(engine, false, yf, image_type, &seqf);
+		GetRailIcon(engine, true, yr, image_type, &seqr);
+
+		const Sprite *real_spritef = GetSprite(seqf.sprite, ST_NORMAL);
+		const Sprite *real_spriter = GetSprite(seqr.sprite, ST_NORMAL);
 
 		preferred_x = Clamp(preferred_x,
 				left - UnScaleGUI(real_spritef->x_offs) + ScaleGUITrad(14),
 				right - UnScaleGUI(real_spriter->width) - UnScaleGUI(real_spriter->x_offs) - ScaleGUITrad(15));
 
-		DrawSprite(spritef, pal, preferred_x - ScaleGUITrad(14), yf);
-		DrawSprite(spriter, pal, preferred_x + ScaleGUITrad(15), yr);
+		DrawSprite(seqf.sprite, pal, preferred_x - ScaleGUITrad(14), yf);
+		DrawSprite(seqr.sprite, pal, preferred_x + ScaleGUITrad(15), yr);
 	} else {
-		SpriteID sprite = GetRailIcon(engine, false, y, image_type);
-		const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+		VehicleSpriteSeq seq;
+		GetRailIcon(engine, false, y, image_type, &seq);
+
+		const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
 		preferred_x = Clamp(preferred_x,
 				left - UnScaleGUI(real_sprite->x_offs),
 				right - UnScaleGUI(real_sprite->width) - UnScaleGUI(real_sprite->x_offs));
-		DrawSprite(sprite, pal, preferred_x, y);
+		DrawSprite(seq.sprite, pal, preferred_x, y);
 	}
 }
 
@@ -567,8 +570,10 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 {
 	int y = 0;
 
-	SpriteID sprite = GetRailIcon(engine, false, y, image_type);
-	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+	VehicleSpriteSeq seq;
+	GetRailIcon(engine, false, y, image_type, &seq);
+
+	const Sprite *real_sprite = GetSprite(seq.sprite, ST_NORMAL);
 
 	width  = UnScaleGUI(real_sprite->width);
 	height = UnScaleGUI(real_sprite->height);
@@ -576,8 +581,8 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 	yoffs  = UnScaleGUI(real_sprite->y_offs);
 
 	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
-		sprite = GetRailIcon(engine, true, y, image_type);
-		real_sprite = GetSprite(sprite, ST_NORMAL);
+		GetRailIcon(engine, true, y, image_type, &seq);
+		real_sprite = GetSprite(seq.sprite, ST_NORMAL);
 
 		/* Calculate values relative to an imaginary center between the two sprites. */
 		width = ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(real_sprite->width) + UnScaleGUI(real_sprite->x_offs) - xoffs;
@@ -638,7 +643,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->cur_image = SPR_IMG_QUERY;
+		v->sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 
 		v->group_id = DEFAULT_GROUP;
@@ -706,7 +711,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->engine_type = v->engine_type;
 	u->date_of_last_service = v->date_of_last_service;
 	u->build_year = v->build_year;
-	u->cur_image = SPR_IMG_QUERY;
+	u->sprite_seq.Set(SPR_IMG_QUERY);
 	u->random_bits = VehicleRandomBits();
 	v->SetMultiheaded();
 	u->SetMultiheaded();
@@ -772,7 +777,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->cur_image = SPR_IMG_QUERY;
+		v->sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);

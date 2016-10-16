@@ -149,7 +149,9 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 
 		if (rtl ? px + width > 0 : px - width < max_width) {
 			PaletteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-			DrawSprite(u->GetImage(dir, image_type), pal, px + (rtl ? -offset.x : offset.x), ScaleGUITrad(6) + offset.y);
+			VehicleSpriteSeq seq;
+			u->GetImage(dir, image_type, &seq);
+			DrawSprite(seq.sprite, pal, px + (rtl ? -offset.x : offset.x), ScaleGUITrad(6) + offset.y);
 		}
 
 		px += rtl ? -width : width;

@@ -441,7 +441,7 @@ void AddArticulatedParts(Vehicle *first)
 		v->max_age = 0;
 		v->engine_type = engine_type;
 		v->value = 0;
-		v->cur_image = SPR_IMG_QUERY;
+		v->sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 
 		if (flip_image) v->spritenum++;
