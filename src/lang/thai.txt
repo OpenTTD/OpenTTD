@@ -250,6 +250,7 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำ�
 
 # Show engines button
 
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :ถ้าได้อนุญาตที่ปุ่มนี้แล้ว อากาศยานที่ซ่อนจะถูกแสดงออกมา
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}ค่าปกติ
@@ -970,6 +971,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}คว�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}เลือกความละเอียดของหน้าจอที่จะใช้
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}ขนาดของแผงควบคุม
 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ตั้งค่า Graphic พื้นฐาน
@@ -1086,6 +1088,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :ตั้งค
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :ตั้งค่าองค์กร (ถูกเก็บไว้ในการบันทึกเกม; มีผลเฉพาะเกมปัจจุบัน)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}หมวดหมู่:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}ชนิด:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}จำกัดรายการด้านล่างให้แสดงเฉพาะการตั้งค่าที่มีการเปลี่ยนแปลง
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :ตั้งค่าพื้นฐาน
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :ตั้งค่าขั้นสูง
@@ -1270,6 +1273,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :โรงกล
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ระดับความสูงแนวหิมะ: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :ควบคุมความสูงเริ่มต้นของหิมะบนพื้นภูมิทัศน์อาร์ติคย่อยๆ, หิมะยังมีผลการสร้างอุตสาหกรรม และการเติบโตของเมือง
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :ความหยาบของพื้นที่ (เฉพาะ TerraGenesis): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choose the frequency of hills: Smooth landscapes have fewer, more wide-spread hills. Rough landscapes have many hills, which may look repetitive
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ราบเรียบมาก
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ราบเรียบ
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :หยาบ
@@ -1626,6 +1630,7 @@ STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เส�
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :กายภาพ
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}สิ่งแวดล้อม
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง
@@ -1701,6 +1706,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}เล�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}แสดงตัวเลือกเกม
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}แสดงตารางคะแนนสูงสุด
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}การตั้งค่า หน้าจอ
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}แสดงการกำหนดค่า NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}ตรวจสอบเนื้อหาใหม่และการปรับปรุงสำหรับดาวโหลด
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}แสดงการตั้งค่า AI/Game script
@@ -2663,6 +2669,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}จำนวนเมือง
 STR_MAPGEN_DATE                                                 :{BLACK}วันที่:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}จำนวนอุตสาหกรรม:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}ขนาดความสูงของแผนที่สูงสุด:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}เส้นความสูงเขตหิมะ:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ปรับเปลี่ยนความสูงของหิมะขึ้นไป 1 ระดับ
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}ปรับเปลี่ยนความสูงของหิมะลงมา 1 ระดับ
@@ -2773,6 +2780,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}ไม่�
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}ไม่รองรับกับ OpenTTD เวอร์ชั่นนี้
 
 # NewGRF save preset window
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :บันทึก ชุดการตั้งค่า ตามที่ได้เลือกไว้
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}เปลี่ยนแปลง NewGRF parameters
@@ -3342,10 +3350,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}เป�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}เปลี่ยนชื่อชนิดของเรือ
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}เปลี่ยนชื่อชนิดของเครื่องบิน
 
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :ซ่อน
 
 STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}การแสดงผล
 STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}การแสดงผล
 
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}ปรับเปลี่ยน ซ่อน/แสดง ของชนิดเครื่องอากาศยาน
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}เปลี่ยนชื่อชนิดของรถไฟ
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}เปลี่ยนชื่อชนิดของรถ
@@ -3451,6 +3461,7 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ยานพา
 STR_REPLACE_VEHICLE_SHIP                                        :ยานพาหนะทางน้ำ
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :อากาศยาน
 
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}พาหนะถูกใช้งานอยู่
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}เลือกประเภทของรถจักรที่จะแทนที่
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}เลือกประเภทของพาหนะที่จะแทนที่ทางซ้ายมือ
