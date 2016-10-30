@@ -2585,7 +2585,7 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 	SlSaveChunks();
 
 	SaveFileStart();
-	if (!threaded || !ThreadObject::New(&SaveFileToDiskThread, NULL, &_save_thread)) {
+	if (!threaded || !ThreadObject::New(&SaveFileToDiskThread, NULL, &_save_thread, "ottd:savegame")) {
 		if (threaded) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
 		SaveOrLoadResult result = SaveFileToDisk(false);

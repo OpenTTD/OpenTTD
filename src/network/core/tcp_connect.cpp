@@ -35,7 +35,7 @@ TCPConnecter::TCPConnecter(const NetworkAddress &address) :
 	address(address)
 {
 	*_tcp_connecters.Append() = this;
-	if (!ThreadObject::New(TCPConnecter::ThreadEntry, this, &this->thread)) {
+	if (!ThreadObject::New(TCPConnecter::ThreadEntry, this, &this->thread, "ottd:tcp")) {
 		this->Connect();
 	}
 }

@@ -687,7 +687,7 @@ void VideoDriver_SDL::MainLoop()
 			_draw_mutex->BeginCritical();
 			_draw_continue = true;
 
-			_draw_threaded = ThreadObject::New(&DrawSurfaceToScreenThread, NULL, &_draw_thread);
+			_draw_threaded = ThreadObject::New(&DrawSurfaceToScreenThread, NULL, &_draw_thread, "ottd:draw-sdl");
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {

@@ -109,7 +109,7 @@ static void NetworkUDPQueryServerThread(void *pntr)
 void NetworkUDPQueryServer(NetworkAddress address, bool manually)
 {
 	NetworkUDPQueryServerInfo *info = new NetworkUDPQueryServerInfo(address, manually);
-	if (address.IsResolved() || !ThreadObject::New(NetworkUDPQueryServerThread, info)) {
+	if (address.IsResolved() || !ThreadObject::New(NetworkUDPQueryServerThread, info, NULL, "ottd:udp-query")) {
 		NetworkUDPQueryServerThread(info);
 	}
 }
@@ -565,7 +565,7 @@ void NetworkUDPRemoveAdvertise(bool blocking)
 	/* Check if we are advertising */
 	if (!_networking || !_network_server || !_network_udp_server) return;
 
-	if (blocking || !ThreadObject::New(NetworkUDPRemoveAdvertiseThread, NULL)) {
+	if (blocking || !ThreadObject::New(NetworkUDPRemoveAdvertiseThread, NULL, NULL, "ottd:udp-advert")) {
 		NetworkUDPRemoveAdvertiseThread(NULL);
 	}
 }
@@ -648,7 +648,7 @@ void NetworkUDPAdvertise()
 	if (_next_advertisement < _last_advertisement) _next_advertisement = UINT32_MAX;
 	if (_next_retry         < _last_advertisement) _next_retry         = UINT32_MAX;
 
-	if (!ThreadObject::New(NetworkUDPAdvertiseThread, NULL)) {
+	if (!ThreadObject::New(NetworkUDPAdvertiseThread, NULL, NULL, "ottd:udp-advert")) {
 		NetworkUDPAdvertiseThread(NULL);
 	}
 }

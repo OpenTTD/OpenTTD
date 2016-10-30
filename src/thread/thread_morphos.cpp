@@ -193,7 +193,7 @@ private:
 	}
 };
 
-/* static */ bool ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread)
+/* static */ bool ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread, const char *name)
 {
 	ThreadObject *to = new ThreadObject_MorphOS(proc, param, thread == NULL);
 	if (thread != NULL) *thread = to;
