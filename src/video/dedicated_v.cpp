@@ -84,6 +84,7 @@ static void DedicatedSignalHandler(int sig)
 # endif
 # include <time.h>
 # include <tchar.h>
+# include "../os/windows/win32.h"
 static HANDLE _hInputReady, _hWaitForInputHandling;
 static HANDLE _hThread; // Thread to close
 static char _win_console_thread_buffer[200];
@@ -95,6 +96,8 @@ static void WINAPI CheckForConsoleInput()
 	/* WinCE doesn't support console stuff */
 	return;
 #else
+	SetWin32ThreadName(-1, "ottd:win-console");
+
 	DWORD nb;
 	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
 	for (;;) {

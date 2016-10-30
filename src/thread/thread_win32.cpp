@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <process.h>
+#include "../os/windows/win32.h"
 
 #include "../safeguards.h"
 
@@ -29,17 +30,19 @@ private:
 	OTTDThreadFunc proc; ///< External thread procedure.
 	void *param;         ///< Parameter for the external thread procedure.
 	bool self_destruct;  ///< Free ourselves when done?
+	const char *name;    ///< Thread name.
 
 public:
 	/**
 	 * Create a win32 thread and start it, calling proc(param).
 	 */
-	ThreadObject_Win32(OTTDThreadFunc proc, void *param, bool self_destruct) :
+	ThreadObject_Win32(OTTDThreadFunc proc, void *param, bool self_destruct, const char *name) :
 		thread(NULL),
 		id(0),
 		proc(proc),
 		param(param),
-		self_destruct(self_destruct)
+		self_destruct(self_destruct),
+		name(name)
 	{
 		this->thread = (HANDLE)_beginthreadex(NULL, 0, &stThreadProc, this, CREATE_SUSPENDED, &this->id);
 		if (this->thread == NULL) return;
@@ -85,6 +88,10 @@ private:
 	 */
 	void ThreadProc()
 	{
+#ifdef _MSC_VER
+		/* Set thread name for debuggers. Has to be done from the thread due to a race condition in older MS debuggers. */
+		SetWin32ThreadName(-1, this->name);
+#endif
 		try {
 			this->proc(this->param);
 		} catch (OTTDThreadExitSignal) {
@@ -98,7 +105,7 @@ private:
 
 /* static */ bool ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread, const char *name)
 {
-	ThreadObject *to = new ThreadObject_Win32(proc, param, thread == NULL);
+	ThreadObject *to = new ThreadObject_Win32(proc, param, thread == NULL, name);
 	if (thread != NULL) *thread = to;
 	return true;
 }

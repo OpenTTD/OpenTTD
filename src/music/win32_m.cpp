@@ -14,6 +14,7 @@
 #include "win32_m.h"
 #include <windows.h>
 #include <mmsystem.h>
+#include "../os/windows/win32.h"
 
 #include "../safeguards.h"
 
@@ -105,6 +106,8 @@ static bool MidiIntIsSongPlaying()
 
 static DWORD WINAPI MidiThread(LPVOID arg)
 {
+	SetWin32ThreadName(-1, "ottd:win-midi");
+
 	do {
 		char *s;
 		int vol;

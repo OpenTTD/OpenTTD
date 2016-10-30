@@ -39,4 +39,10 @@ HRESULT OTTDSHGetFolderPath(HWND, int, HANDLE, DWORD, LPTSTR);
 #define SHGFP_TYPE_CURRENT 0
 #endif /* __MINGW32__ */
 
+#ifdef _MSC_VER
+void SetWin32ThreadName(DWORD dwThreadID, const char* threadName);
+#else
+void SetWin32ThreadName(DWORD dwThreadID, const char* threadName) {}
+#endif
+
 #endif /* WIN32_H */
