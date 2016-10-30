@@ -42,7 +42,7 @@ HRESULT OTTDSHGetFolderPath(HWND, int, HANDLE, DWORD, LPTSTR);
 #ifdef _MSC_VER
 void SetWin32ThreadName(DWORD dwThreadID, const char* threadName);
 #else
-void SetWin32ThreadName(DWORD dwThreadID, const char* threadName) {}
+static inline void SetWin32ThreadName(DWORD dwThreadID, const char* threadName) {}
 #endif
 
 #endif /* WIN32_H */
