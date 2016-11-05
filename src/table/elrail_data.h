@@ -331,7 +331,7 @@ static const uint ELRAIL_ELEVATION = 10;
 /** Wires that a draw one level higher than the north corner. */
 static const uint ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT;
 
-static const SortableSpriteStruct CatenarySpriteData[] = {
+static const SortableSpriteStruct RailCatenarySpriteData[] = {
 /* X direction
 	 * Flat tiles:
 		 * Wires */
@@ -392,14 +392,14 @@ static const SortableSpriteStruct CatenarySpriteData[] = {
 	{ WSO_EW_E,         15,  8,  3,  3,  1, ELRAIL_ELEVATION }  //!33: LOWER trackbit wire, pylon on both ends
 };
 
-static const SortableSpriteStruct CatenarySpriteData_Depot[] = {
+static const SortableSpriteStruct RailCatenarySpriteData_Depot[] = {
 	{ WSO_ENTRANCE_NE,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE depot exit
 	{ WSO_ENTRANCE_SE,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE depot exit
 	{ WSO_ENTRANCE_SW,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW depot exit
 	{ WSO_ENTRANCE_NW,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW depot exit
 };
 
-static const SortableSpriteStruct CatenarySpriteData_Tunnel[] = {
+static const SortableSpriteStruct RailCatenarySpriteData_Tunnel[] = {
 	{ WSO_ENTRANCE_NE,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel exit
 	{ WSO_ENTRANCE_SE,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel exit
 	{ WSO_ENTRANCE_SW,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel exit
@@ -419,7 +419,7 @@ static const SortableSpriteStruct CatenarySpriteData_Tunnel[] = {
  * <li>Position of the Pylon relative to the track</li>
  * <li>Position of the Pylon inside the tile</li></ol>
  */
-enum CatenarySprite {
+enum RailCatenarySprite {
 	WIRE_X_FLAT_SW,
 	WIRE_X_FLAT_NE,
 	WIRE_X_FLAT_BOTH,
@@ -471,7 +471,7 @@ enum CatenarySprite {
  * c) the second
  * d) both
  * PCP exists.*/
-static const CatenarySprite Wires[5][TRACK_END][4] = {
+static const RailCatenarySprite Wires[5][TRACK_END][4] = {
 	{ // Tileh == 0
 		{INVALID_CATENARY, WIRE_X_FLAT_NE,   WIRE_X_FLAT_SW,   WIRE_X_FLAT_BOTH},
 		{INVALID_CATENARY, WIRE_Y_FLAT_SE,   WIRE_Y_FLAT_NW,   WIRE_Y_FLAT_BOTH},
