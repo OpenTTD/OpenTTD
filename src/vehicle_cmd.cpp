@@ -606,7 +606,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 	bool vehicle_list_window = HasBit(p1, 1);
 
 	VehicleListIdentifier vli;
-	if (!vli.Unpack(p2)) return CMD_ERROR;
+	if (!vli.UnpackIfValid(p2)) return CMD_ERROR;
 	if (!IsCompanyBuildableVehicleType(vli.vtype)) return CMD_ERROR;
 
 	if (vehicle_list_window) {
@@ -1001,7 +1001,7 @@ CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (p1 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		VehicleListIdentifier vli;
-		if (!vli.Unpack(p2)) return CMD_ERROR;
+		if (!vli.UnpackIfValid(p2)) return CMD_ERROR;
 		return SendAllVehiclesToDepot(flags, (p1 & DEPOT_SERVICE) != 0, vli);
 	}
 
