@@ -1297,6 +1297,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Foarte fin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Fin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Dur
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Foarte dur
+STR_CONFIG_SETTING_VARIETY                                      :Distribuția varietății: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritm amplasare arbori: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Alegeți distribuția copacilor pe hartă: 'Original' plantează copacii dispersați uniform, 'Îmbunătățit' îi plantează grupat
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Niciunul
@@ -1587,6 +1588,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetric
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalitatea de distribuire a pasagerilor: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetric" înseamnă că aproximativ același număr de pasageri va fi transportat din stația A spre stația B, precum de la B la A. "asimetric" presupune transportul unui număr arbitrar de pasageri în fiecare direcție. "manual" înseamnă că repartizarea pasagerilor nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modalitatea de distribuire a poştei: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetric" înseamnă că aproximativ aceeași cantitate de poștă va fi expediată din stația A spre stația B, precum de la B la A. "asimetric" presupune expedierea de cantități arbitrare de poștă în fiecare direcție. "manual" înseamnă că repartizarea poștei nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modalitatea de distribuire pentru clasa de cargo BLINDAT: {STRING}
@@ -1642,6 +1644,8 @@ STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Compani
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicule
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Dezastre / Accidente
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generare lume
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Mediu
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrii
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
@@ -2550,6 +2554,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Încărcături acceptate: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limită viteză pe calea ferată: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Viteza limită a drumului: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Stânci
@@ -2769,6 +2774,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mută fi
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mută în jos
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fişierul NewGRF selectat mai jos în listă
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Upgrade
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Actualizați fișierele NewGRF pentru care aveți o versiune mai nouă instalată
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
@@ -2794,6 +2800,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dezactivat
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatibil cu această versiune de OpenTTD
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Anulează
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nu schimba setarea implicită
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salvează setarea pe numele selectat
 
@@ -2826,7 +2833,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mergi la
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Imaginea precedentă
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mergi la precedenta imagine normală, sărind peste pseudo-imagini, recolorări sau fonturi şi reporneşte când s-a ajuns la sfârşit
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentarea imaginii curente. Aliniamentul este ignorat
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mişcă imaginea schimbând distanţele pe axele X şi Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mișcă imaginea schimbând distanțele pe axele X şi Y. Ctrl+Clic pentru mutarea imaginii câte opt unități la un pas
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetează relativele
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetază limitele relative actuale
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Limita X: {NUM}, Limita Y: {NUM} (Absolut)
@@ -3847,6 +3854,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Călătoriți (neplanificat) cu maxim {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Calatorii pentru {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Mergi către {STRING} cu maxim {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Călătorie (pentru {STRING}, neplanificată)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Călătoriți (pentru {STRING}, neprogramat) cu cel mult {VELOCITY}
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(călătorie pentru {STRING}, neprogramată)
 STR_TIMETABLE_STAY_FOR                                          :şi opreşte pentru {STRING}
@@ -3978,6 +3986,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}, lista de modificări a {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}, licența fișierului {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Încadrează textul
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Încadrează textul ferestrei ca să fie vizibil integral, fără derulare
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenţă
