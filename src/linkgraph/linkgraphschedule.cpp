@@ -86,6 +86,7 @@ void LinkGraphSchedule::JoinNext()
 /* static */ void LinkGraphSchedule::Run(LinkGraphJob *job)
 {
 	for (uint i = 0; i < lengthof(instance.handlers); ++i) {
+		if (job->IsJobAborted()) return;
 		instance.handlers[i]->Run(*job);
 	}
 
@@ -119,7 +120,7 @@ void LinkGraphSchedule::SpawnAll()
 /* static */ void LinkGraphSchedule::Clear()
 {
 	for (JobList::iterator i(instance.running.begin()); i != instance.running.end(); ++i) {
-		(*i)->JoinThread();
+		(*i)->AbortJob();
 	}
 	instance.running.clear();
 	instance.schedule.clear();
