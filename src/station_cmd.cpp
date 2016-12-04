@@ -3459,8 +3459,8 @@ void DeleteStaleLinks(Station *from)
 			if ((uint)(_date - edge.LastUpdate()) > timeout) {
 				/* Have all vehicles refresh their next hops before deciding to
 				 * remove the node. */
-				bool updated = false;
 				OrderList *l;
+				SmallVector<Vehicle *, 32> vehicles;
 				FOR_ALL_ORDER_LISTS(l) {
 					bool found_from = false;
 					bool found_to = false;
@@ -3475,18 +3475,31 @@ void DeleteStaleLinks(Station *from)
 						}
 					}
 					if (!found_to || !found_from) continue;
-					for (Vehicle *v = l->GetFirstSharedVehicle(); !updated && v != NULL; v = v->NextShared()) {
-						/* There is potential for optimization here:
-						 * - Usually consists of the same order list are the same. It's probably better to
-						 *   first check the first of each list, then the second of each list and so on.
-						 * - We could try to figure out if we've seen a consist with the same cargo on the
-						 *   same list already and if the consist can actually carry the cargo we're looking
-						 *   for. With conditional and refit orders this is not quite trivial, though. */
-						LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
-						if (edge.LastUpdate() == _date) updated = true;
-					}
-					if (updated) break;
+					*(vehicles.Append()) = l->GetFirstSharedVehicle();
 				}
+
+				bool updated = false;
+				Vehicle **iter = vehicles.Begin();
+				while (iter != vehicles.End()) {
+					Vehicle *v = *iter;
+
+					LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
+					if (edge.LastUpdate() == _date) {
+						updated = true;
+						break;
+					}
+
+					Vehicle *next_shared = v->NextShared();
+					if (next_shared) {
+						*iter = next_shared;
+						++iter;
+					} else {
+						vehicles.Erase(iter);
+					}
+
+					if (iter == vehicles.End()) iter = vehicles.Begin();
+				}
+
 				if (!updated) {
 					/* If it's still considered dead remove it. */
 					node.RemoveEdge(to->goods[c].node);
