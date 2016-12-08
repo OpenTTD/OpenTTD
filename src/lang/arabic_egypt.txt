@@ -3060,7 +3060,6 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}لم ي�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK} اوقف تبديل العربات
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK} اضغط لايقاف تبديل المحركات المختارة في اليسار
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK} تبديل: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} بدل بين نافذة استبدال المحركات و العربات
 STR_REPLACE_ENGINES                                             :محركات
 STR_REPLACE_WAGONS                                              :عربات

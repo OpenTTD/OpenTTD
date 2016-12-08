@@ -3558,7 +3558,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} waneer
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Staak vervanging
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Druk om die vervanging van die linker gekose enjin tipe te stop
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vervang: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skakel tussen enjin en wa vervang vensters
 STR_REPLACE_ENGINES                                             :Enjin
 STR_REPLACE_WAGONS                                              :Waens

@@ -3557,7 +3557,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} wann a
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gefieraustosch
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken fir den Austosch ze stoppen
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Tauschen aus: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Waggonaustosch-Fënster
 STR_REPLACE_ENGINES                                             :Lokomotiven
 STR_REPLACE_WAGONS                                              :Waggonen

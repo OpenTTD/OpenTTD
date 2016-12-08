@@ -3688,7 +3688,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} кол
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Зупинити оновлення
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів, що вибрані ліворуч
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Переключення між вікнами заміни потягів та вагонів.
 STR_REPLACE_ENGINES                                             :Локомотиви
 STR_REPLACE_WAGONS                                              :Вагони

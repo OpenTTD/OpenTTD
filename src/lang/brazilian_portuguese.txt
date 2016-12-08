@@ -3558,7 +3558,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} quando
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Substituição
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pressione para parar a subsituição do tipo de motor que selecionou à esquerda
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituindo: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Troca entre substituir máquinas e substituir vagões
 STR_REPLACE_ENGINES                                             :Motores
 STR_REPLACE_WAGONS                                              :Vagões

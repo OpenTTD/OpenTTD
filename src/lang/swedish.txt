@@ -3557,7 +3557,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} vid h�
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sluta byta ut fordon
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryck för att sluta byta ut fordonstypen vald på vänster sida
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersätter: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Växla mellan lok- och vagnersättningsfönster
 STR_REPLACE_ENGINES                                             :Lok
 STR_REPLACE_WAGONS                                              :Vagnar

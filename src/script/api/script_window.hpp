@@ -942,10 +942,8 @@ public:
 		WID_RV_STOP_REPLACE                          = ::WID_RV_STOP_REPLACE,                          ///< Stop Replacing button.
 
 		/* Train only widgets. */
-		WID_RV_TRAIN_ENGINEWAGON_TOGGLE              = ::WID_RV_TRAIN_ENGINEWAGON_TOGGLE,              ///< Button to toggle engines and/or wagons.
-		WID_RV_TRAIN_FLUFF_LEFT                      = ::WID_RV_TRAIN_FLUFF_LEFT,                      ///< The fluff on the left.
+		WID_RV_TRAIN_ENGINEWAGON_DROPDOWN            = ::WID_RV_TRAIN_ENGINEWAGON_DROPDOWN,            ///< Dropdown to select engines and/or wagons.
 		WID_RV_TRAIN_RAILTYPE_DROPDOWN               = ::WID_RV_TRAIN_RAILTYPE_DROPDOWN,               ///< Dropdown menu about the railtype.
-		WID_RV_TRAIN_FLUFF_RIGHT                     = ::WID_RV_TRAIN_FLUFF_RIGHT,                     ///< The fluff on the right.
 		WID_RV_TRAIN_WAGONREMOVE_TOGGLE              = ::WID_RV_TRAIN_WAGONREMOVE_TOGGLE,              ///< Button to toggle removing wagons.
 	};
 
@@ -2384,6 +2382,7 @@ public:
 		WID_TN_AIRCRAFTS                             = ::WID_TN_AIRCRAFTS,                             ///< Aircraft menu.
 		WID_TN_ZOOM_IN                               = ::WID_TN_ZOOM_IN,                               ///< Zoom in the main viewport.
 		WID_TN_ZOOM_OUT                              = ::WID_TN_ZOOM_OUT,                              ///< Zoom out the main viewport.
+		WID_TN_BUILDING_TOOLS_START                  = ::WID_TN_BUILDING_TOOLS_START,                  ///< Helper for the offset of the building tools
 		WID_TN_RAILS                                 = ::WID_TN_RAILS,                                 ///< Rail building menu.
 		WID_TN_ROADS                                 = ::WID_TN_ROADS,                                 ///< Road building menu.
 		WID_TN_WATER                                 = ::WID_TN_WATER,                                 ///< Water building toolbar.

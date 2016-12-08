@@ -3558,7 +3558,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} cuando
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de reemplazar vehículos
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona este botón para detener el reemplazo del vehículo situado a la izquierda
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre las ventanas de cambio de vagón y locomotora
 STR_REPLACE_ENGINES                                             :Locomotoras
 STR_REPLACE_WAGONS                                              :Vagones

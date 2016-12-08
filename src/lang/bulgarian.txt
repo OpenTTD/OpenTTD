@@ -3477,7 +3477,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ког
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Спиране на замяната
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натиснете за спиране подновяването на избрания в ляво двигател
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяна: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Превключване между замяна на локомотиви и вагони
 STR_REPLACE_ENGINES                                             :Двигатели
 STR_REPLACE_WAGONS                                              :Вагони

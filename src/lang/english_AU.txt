@@ -3508,7 +3508,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} when o
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Replacing Vehicles
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Press to stop the replacement of the engine type selected on the left
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Replacing: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Switch between engine and wagon replacement windows
 STR_REPLACE_ENGINES                                             :Engines
 STR_REPLACE_WAGONS                                              :Wagons

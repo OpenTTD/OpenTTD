@@ -3558,7 +3558,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} eskidi
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Araçları değiştirmeyi durdur
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Değiştirme işlemini durdurmak için basın
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Değiştiriyor: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.
 STR_REPLACE_ENGINES                                             :Lokomotifler
 STR_REPLACE_WAGONS                                              :Vagon

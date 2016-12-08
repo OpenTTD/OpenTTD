@@ -3943,7 +3943,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kiedy 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zatrzymaj zastępowanie
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Wciśnij ten przycisk jeśli nie chcesz zmieniać pojazdu zaznaczone po lewej stronie
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zastępowanie: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Przejdź pomiędzy oknami zamiany lokomotyw i wagonów
 STR_REPLACE_ENGINES                                             :Lokomotywy
 STR_REPLACE_WAGONS                                              :Wagony

@@ -3587,7 +3587,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} una vo
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Interrompi rimpiazzamento
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Premere per interrompere il rimpiazzamento del modello di locomotiva selezionato a sinistra
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Rimpiazza: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Scambia tra loro le finestre di rimpiazzamento delle locomotive e dei vagoni
 STR_REPLACE_ENGINES                                             :Locomotive
 STR_REPLACE_WAGONS                                              :Vagoni

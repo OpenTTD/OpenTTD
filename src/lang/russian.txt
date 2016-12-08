@@ -3747,7 +3747,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ког
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Прекратить замену
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Прекратить замену транспорта
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Заменяем: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Переключение между окнами замены локомотивов и вагонов
 STR_REPLACE_ENGINES                                             :Локомотивы
 STR_REPLACE_WAGONS                                              :Вагоны

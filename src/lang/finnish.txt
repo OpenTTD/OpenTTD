@@ -3557,7 +3557,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kun va
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta ajoneuvojen korv.
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Napsauta pysäyttääksesi vasemmalta valitun veturityypin korvauksen.
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Korvataan: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaihda toiseen korvausikkunaan
 STR_REPLACE_ENGINES                                             :Veturit
 STR_REPLACE_WAGONS                                              :Vaunut

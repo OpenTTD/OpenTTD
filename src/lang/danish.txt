@@ -3557,7 +3557,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} når d
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop udskiftning
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vognudskiftningsvindue
 STR_REPLACE_ENGINES                                             :Lokomotiver
 STR_REPLACE_WAGONS                                              :Vogne

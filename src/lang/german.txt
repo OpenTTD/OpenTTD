@@ -3558,7 +3558,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} wenn a
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeugersetzung aus
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klick zum Abbrechen der Ersetzung des Fahrzeugtyps auf der linken Seite
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetzen: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Umschalter für Lok- oder Waggonersetzung
 STR_REPLACE_ENGINES                                             :Schienenfahrzeuge
 STR_REPLACE_WAGONS                                              :Waggons

@@ -3710,7 +3710,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ko se 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ustavi menjavo vozil
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisni za zaustavitev zamenjave na levi izbranega tipa lokomotive
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Preklop med okni za menjavo lokomotiv in vagonov
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni

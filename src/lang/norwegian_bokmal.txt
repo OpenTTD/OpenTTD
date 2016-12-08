@@ -3561,7 +3561,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} når g
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopp erstatning av kjøretøy
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikk denne knappen for å stoppe erstatning av lokomotivet som er valgt på venstresiden
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Veksle mellom tog- og vognerstatningsvinduet
 STR_REPLACE_ENGINES                                             :Lokomotiv
 STR_REPLACE_WAGONS                                              :Vogner

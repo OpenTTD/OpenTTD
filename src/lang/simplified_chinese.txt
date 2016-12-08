@@ -3557,7 +3557,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} 变老
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止更新
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}点击这里可以停止继续更新车辆
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}替换项目： {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}可以切换 机车/挂车 替换项目
 STR_REPLACE_ENGINES                                             :机车
 STR_REPLACE_WAGONS                                              :挂车

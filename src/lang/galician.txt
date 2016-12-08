@@ -3504,7 +3504,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} cando 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de substituír vehículos
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona para parar a substitución do tipo de máquina seleccionada na esquerda
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituíndo: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre as fiestras de substitución de locomotoras e vagóns
 STR_REPLACE_ENGINES                                             :Locomotoras
 STR_REPLACE_WAGONS                                              :Vagóns

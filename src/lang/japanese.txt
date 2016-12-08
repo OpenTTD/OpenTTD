@@ -3557,7 +3557,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :老朽化した
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}置換終了
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}クリックすると選択した輸送機器の置換を終了します
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}置換対象: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}置換対象を機関車/貨車に切り替えます
 STR_REPLACE_ENGINES                                             :機関車
 STR_REPLACE_WAGONS                                              :貨車

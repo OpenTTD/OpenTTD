@@ -3424,7 +3424,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} zaharr
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ibilgailuak ordezkatzen gelditu
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikatu ezkerrean aukeratutako motore motaren ordezkapena gelditzeko
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ordezkatzen: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Aldatu motore pantaila eta bagoi paintailaren artean
 STR_REPLACE_ENGINES                                             :Motoreak
 STR_REPLACE_WAGONS                                              :Bagoiak

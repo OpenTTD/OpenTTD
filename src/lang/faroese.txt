@@ -3168,7 +3168,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} tá ga
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Steðga umbýting av flutningstólum
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Trýst fyri at steðga umbýtanini av motor slagnum tú valdi á vinstru síðu
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Býtur um: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift ímillum motor og vogna umbýtingar vindeyga
 STR_REPLACE_ENGINES                                             :Motorar
 STR_REPLACE_WAGONS                                              :Vognar

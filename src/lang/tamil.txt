@@ -3142,7 +3142,6 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}எந�
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} காலாவதியான பிறகு
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}வாகனங்களை மாற்றுவதை நிறுத்தவும்
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}மாற்றல்: {ORANGE}{STRING}
 STR_REPLACE_ENGINES                                             :பொறிகள்
 STR_REPLACE_WAGONS                                              :வாகனங்கள்
 

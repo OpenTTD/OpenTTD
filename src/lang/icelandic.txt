@@ -3330,7 +3330,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ef gö
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stöðva skipti
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Smelltu til að stöðva skipti á vagntegundinni sem valin er vinstra megin
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skipta á milli útskiptiglugga dráttar- og flutningavagna
 STR_REPLACE_ENGINES                                             :Dráttarvagnar
 STR_REPLACE_WAGONS                                              :Vagnar

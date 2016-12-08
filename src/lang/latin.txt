@@ -3759,7 +3759,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} cum ve
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Consistere mutationem vehiculorum
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Preme ut mutatio vehiculi sinistri consistatur
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Mutatio: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Mutare inter mutationem hamaxarum curruumque
 STR_REPLACE_ENGINES                                             :Hamaxarum
 STR_REPLACE_WAGONS                                              :Curruum

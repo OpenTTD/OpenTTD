@@ -225,10 +225,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_START_REPLACE,                      "WID_RV_START_REPLACE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_INFO_TAB,                           "WID_RV_INFO_TAB");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_STOP_REPLACE,                       "WID_RV_STOP_REPLACE");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_ENGINEWAGON_TOGGLE,           "WID_RV_TRAIN_ENGINEWAGON_TOGGLE");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_FLUFF_LEFT,                   "WID_RV_TRAIN_FLUFF_LEFT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_ENGINEWAGON_DROPDOWN,         "WID_RV_TRAIN_ENGINEWAGON_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_RAILTYPE_DROPDOWN,            "WID_RV_TRAIN_RAILTYPE_DROPDOWN");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_FLUFF_RIGHT,                  "WID_RV_TRAIN_FLUFF_RIGHT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_WAGONREMOVE_TOGGLE,           "WID_RV_TRAIN_WAGONREMOVE_TOGGLE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BB_BACKGROUND,                         "WID_BB_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BAFD_QUESTION,                         "WID_BAFD_QUESTION");
@@ -1183,6 +1181,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_AIRCRAFTS,                          "WID_TN_AIRCRAFTS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_ZOOM_IN,                            "WID_TN_ZOOM_IN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_ZOOM_OUT,                           "WID_TN_ZOOM_OUT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_BUILDING_TOOLS_START,               "WID_TN_BUILDING_TOOLS_START");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_RAILS,                              "WID_TN_RAILS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_ROADS,                              "WID_TN_ROADS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_WATER,                              "WID_TN_WATER");

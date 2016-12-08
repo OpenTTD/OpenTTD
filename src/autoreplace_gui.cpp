@@ -87,7 +87,7 @@ class ReplaceVehicleWindow : public Window {
 	byte sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
-	RailType sel_railtype;        ///< Type of rail tracks selected.
+	RailType sel_railtype;        ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
 	Scrollbar *vscroll[2];
 
 	/**
@@ -104,7 +104,7 @@ class ReplaceVehicleWindow : public Window {
 		/* Ensure that the wagon/engine selection fits the engine. */
 		if ((rvi->railveh_type == RAILVEH_WAGON) == show_engines) return false;
 
-		if (draw_left && show_engines) {
+		if (draw_left && this->sel_railtype != INVALID_RAILTYPE) {
 			/* Ensure that the railtype is specific to the selected one */
 			if (rvi->railtype != this->sel_railtype) return false;
 		}
@@ -211,24 +211,7 @@ class ReplaceVehicleWindow : public Window {
 public:
 	ReplaceVehicleWindow(WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window(desc)
 	{
-		if (vehicletype == VEH_TRAIN) {
-			/* For rail vehicles find the most used vehicle type, which is usually
-			 * better than 'just' the first/previous vehicle type. */
-			uint type_count[RAILTYPE_END];
-			memset(type_count, 0, sizeof(type_count));
-
-			const Engine *e;
-			FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
-				if (e->u.rail.railveh_type == RAILVEH_WAGON) continue;
-				type_count[e->u.rail.railtype] += GetGroupNumEngines(_local_company, id_g, e->index);
-			}
-
-			this->sel_railtype = RAILTYPE_BEGIN;
-			for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
-				if (type_count[this->sel_railtype] < type_count[rt]) this->sel_railtype = rt;
-			}
-		}
-
+		this->sel_railtype = INVALID_RAILTYPE;
 		this->replace_engines  = true; // start with locomotives (all other vehicles will not read this bool)
 		this->engines[0].ForceRebuild();
 		this->engines[1].ForceRebuild();
@@ -288,12 +271,9 @@ public:
 				break;
 			}
 
-			case WID_RV_TRAIN_ENGINEWAGON_TOGGLE: {
-				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
-				SetDParam(0, STR_REPLACE_ENGINES);
-				Dimension d = GetStringBoundingBox(str);
-				SetDParam(0, STR_REPLACE_WAGONS);
-				d = maxdim(d, GetStringBoundingBox(str));
+			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN: {
+				Dimension d = GetStringBoundingBox(STR_REPLACE_ENGINES);
+				d = maxdim(d, GetStringBoundingBox(STR_REPLACE_WAGONS));
 				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
@@ -367,7 +347,7 @@ public:
 				break;
 			}
 
-			case WID_RV_TRAIN_ENGINEWAGON_TOGGLE:
+			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN:
 				SetDParam(0, this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
 				break;
 		}
@@ -432,12 +412,8 @@ public:
 		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE, this->sel_engine[0] == INVALID_ENGINE || !EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
 
 		if (this->window_number == VEH_TRAIN) {
-			/* sets the colour of that art thing */
-			this->GetWidget<NWidgetCore>(WID_RV_TRAIN_FLUFF_LEFT)->colour  = _company_colours[_local_company];
-			this->GetWidget<NWidgetCore>(WID_RV_TRAIN_FLUFF_RIGHT)->colour = _company_colours[_local_company];
-
 			/* Show the selected railtype in the pulldown menu */
-			this->GetWidget<NWidgetCore>(WID_RV_TRAIN_RAILTYPE_DROPDOWN)->widget_data = GetRailTypeInfo(sel_railtype)->strings.replace_text;
+			this->GetWidget<NWidgetCore>(WID_RV_TRAIN_RAILTYPE_DROPDOWN)->widget_data = sel_railtype == INVALID_RAILTYPE ? STR_REPLACE_ALL_RAILTYPE : GetRailTypeInfo(sel_railtype)->strings.replace_text;
 		}
 
 		this->DrawWidgets();
@@ -483,15 +459,16 @@ public:
 				DisplayVehicleSortDropDown(this, static_cast<VehicleType>(this->window_number), this->sort_criteria, WID_RV_SORT_DROPDOWN);
 				break;
 
-			case WID_RV_TRAIN_ENGINEWAGON_TOGGLE:
-				this->replace_engines  = !(this->replace_engines);
-				this->engines[0].ForceRebuild();
-				this->reset_sel_engine = true;
-				this->SetDirty();
+			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN: {
+				DropDownList *list = new DropDownList();
+				*list->Append() = new DropDownListStringItem(STR_REPLACE_ENGINES, 1, false);
+				*list->Append() = new DropDownListStringItem(STR_REPLACE_WAGONS, 0, false);
+				ShowDropDownList(this, list, this->replace_engines ? 1 : 0, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN);
 				break;
+			}
 
 			case WID_RV_TRAIN_RAILTYPE_DROPDOWN: // Railtype selection dropdown menu
-				ShowDropDownList(this, GetRailTypeDropDownList(true), sel_railtype, WID_RV_TRAIN_RAILTYPE_DROPDOWN);
+				ShowDropDownList(this, GetRailTypeDropDownList(true, true), sel_railtype, WID_RV_TRAIN_RAILTYPE_DROPDOWN);
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
@@ -566,6 +543,14 @@ public:
 				break;
 			}
 
+			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN: {
+				this->replace_engines = index != 0;
+				this->engines[0].ForceRebuild();
+				this->reset_sel_engine = true;
+				this->SetDirty();
+				break;
+			}
+
 			case WID_RV_START_REPLACE:
 				this->ReplaceClick_StartReplace(index != 0);
 				break;
@@ -611,7 +596,13 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_TRAIN_RAILTYPE_DROPDOWN), SetMinimalSize(136, 12), SetDataTip(0x0, STR_REPLACE_HELP_RAILTYPE), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN), SetDataTip(STR_BLACK_STRING, STR_REPLACE_ENGINE_WAGON_SELECT_HELP),
+			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
+		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASCENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 1),
@@ -631,20 +622,16 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_LEFT_DETAILS), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_RIGHT_DETAILS), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_RIGHT_DETAILS), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_TRAIN_WAGONREMOVE_TOGGLE), SetMinimalSize(138, 12), SetDataTip(STR_REPLACE_REMOVE_WAGON, STR_REPLACE_REMOVE_WAGON_HELP), SetFill(1, 0), SetResize(1, 0),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_PUSHBUTTON_DROPDOWN, COLOUR_GREY, WID_RV_START_REPLACE), SetMinimalSize(139, 12), SetDataTip(STR_REPLACE_VEHICLES_START, STR_REPLACE_HELP_START_BUTTON),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_INFO_TAB), SetMinimalSize(167, 12), SetDataTip(0x0, STR_REPLACE_HELP_REPLACE_INFO_TAB), SetResize(1, 0),
 		EndContainer(),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_STOP_REPLACE), SetMinimalSize(150, 12), SetDataTip(STR_REPLACE_VEHICLES_STOP, STR_REPLACE_HELP_STOP_BUTTON),
-	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_TRAIN_ENGINEWAGON_TOGGLE), SetMinimalSize(139, 12), SetDataTip(STR_REPLACE_ENGINE_WAGON_SELECT, STR_REPLACE_ENGINE_WAGON_SELECT_HELP),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_TRAIN_FLUFF_LEFT), SetMinimalSize(15, 12), EndContainer(),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_TRAIN_RAILTYPE_DROPDOWN), SetMinimalSize(136, 12), SetDataTip(0x0, STR_REPLACE_HELP_RAILTYPE), SetResize(1, 0),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_TRAIN_FLUFF_RIGHT), SetMinimalSize(16, 12), EndContainer(),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_TRAIN_WAGONREMOVE_TOGGLE), SetMinimalSize(138, 12), SetDataTip(STR_REPLACE_REMOVE_WAGON, STR_REPLACE_REMOVE_WAGON_HELP),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };

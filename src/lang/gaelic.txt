@@ -3786,7 +3786,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} nuair 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sguir dhe leasachadh nan carbadan
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Briog air ach nach tèid einnseanan dhen t-seòrsa a thagh thu air an taobh chlì a leasachadh
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}A' leasachadh: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Gearr leum eadar uinneagan leasachadh nan einnseanan is nan carbadan
 STR_REPLACE_ENGINES                                             :Einnseanan
 STR_REPLACE_WAGONS                                              :Carbadan

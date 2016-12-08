@@ -3557,7 +3557,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} als ou
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het vervangen
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief niet wilt vervangen
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel tussen locomotief- en wagonvervangvensters
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons

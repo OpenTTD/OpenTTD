@@ -3476,7 +3476,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} เม
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}หยุดการแทนที่ยานพาหนะ
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}กดเพื่อเริ่มหยุดการแทนที่ยานพาหนะตามที่เลือกไว้ในรายการ
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}กำลังแทนที่: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}สลับระหว่างหน้าต่างการแทนที่ของรถจักรและรถพ่วง
 STR_REPLACE_ENGINES                                             :รถจักร
 STR_REPLACE_WAGONS                                              :รถพ่วง

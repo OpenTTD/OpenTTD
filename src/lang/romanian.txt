@@ -3514,7 +3514,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} când 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire înlocuire vehicule
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasă aici pentru a opri înlocuirea motorului selectat în stânga
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Comutã între ferestrele de înlocuire motoare si vagoane
 STR_REPLACE_ENGINES                                             :Motoare
 STR_REPLACE_WAGONS                                              :Vagoane

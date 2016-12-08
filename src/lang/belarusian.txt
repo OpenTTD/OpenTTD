@@ -3910,7 +3910,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} кал
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Спыніць замену
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Спыніць замену транспарту
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяняем: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пераключэньне паміж вокнамі замены лякаматываў і ваґонаў
 STR_REPLACE_ENGINES                                             :Лякаматывы
 STR_REPLACE_WAGONS                                              :Ваґоны

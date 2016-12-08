@@ -3672,7 +3672,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ότα
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Διακοπή Αντικατάστασης Οχημάτων
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του τύπου μηχανής επιλεγμένος στα αριστερά
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Αντικατάσταση: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλαγή μεταξύ των παραθύρων αντικατάστασης μηχανών και βαγονιών
 STR_REPLACE_ENGINES                                             :Μηχανές
 STR_REPLACE_WAGONS                                              :Βαγόνια

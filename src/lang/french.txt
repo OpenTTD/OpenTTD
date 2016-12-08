@@ -3558,7 +3558,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} si vie
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer sur ce bouton pour arrêter le remplacement du type de véhicule sélectionné à gauche
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En remplacement{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterner entre les fenêtres de remplacement des locomotives ou des wagons
 STR_REPLACE_ENGINES                                             :Locomotives
 STR_REPLACE_WAGONS                                              :Wagons

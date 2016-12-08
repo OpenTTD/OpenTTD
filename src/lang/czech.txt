@@ -3653,7 +3653,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} když 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Vypnout vyměňování
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Zmáčkni toto tlačítko, když nechceš vyměňovat typ lokomotivy vybraný v levém seznamu
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vyměňování: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Přepne mezi okny na výměnu lokomotiv a vagonů
 STR_REPLACE_ENGINES                                             :lokomotivy
 STR_REPLACE_WAGONS                                              :vagony

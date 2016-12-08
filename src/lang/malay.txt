@@ -3197,7 +3197,6 @@ STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Tiada ke
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Hentikan Penggantian Kenderaan
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Menekan untuk menghentikan ketukaran jenis engin yang telah dipilih di sebelah kiri
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Beralih antara tetingkap enjin dan penggantian wagon
 STR_REPLACE_ENGINES                                             :Enjin
 STR_REPLACE_WAGONS                                              :Gerabak

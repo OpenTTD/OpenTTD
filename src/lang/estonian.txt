@@ -3615,7 +3615,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kui va
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõpeta Sõidukite Asendamine
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Vajuta lõpetamaks vasakult valitud veduri asendust
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Asendamisel: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaheta aken mootori ja vaguni asendamise aknate vahel
 STR_REPLACE_ENGINES                                             :Vedurid
 STR_REPLACE_WAGONS                                              :Vaguneid

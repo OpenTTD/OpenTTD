@@ -3553,7 +3553,6 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} saat t
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Berhenti Mengganti
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tekan untuk menghentikan penggantian jenis kendaraan terpilih di sisi kiri
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Mengganti: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pindah tampilan penggantian lokomitif atau gerbong
 STR_REPLACE_ENGINES                                             :Lokomotif
 STR_REPLACE_WAGONS                                              :Gerbong
