@@ -1612,6 +1612,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	if (tt == TRANSPORT_RAIL) {
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 		td->rail_speed = rti->max_speed;
+		td->railtype = rti->strings.name;
 
 		if (!IsTunnel(tile)) {
 			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;

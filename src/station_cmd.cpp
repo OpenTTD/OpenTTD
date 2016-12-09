@@ -2995,6 +2995,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 		td->rail_speed = rti->max_speed;
+		td->railtype = rti->strings.name;
 	}
 
 	if (IsAirport(tile)) {
