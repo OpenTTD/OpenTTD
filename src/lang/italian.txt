@@ -3590,6 +3590,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Premere 
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Scambia tra loro le finestre di rimpiazzamento delle locomotive e dei vagoni
 STR_REPLACE_ENGINES                                             :Locomotive
 STR_REPLACE_WAGONS                                              :Vagoni
+STR_REPLACE_ALL_RAILTYPE                                        :Tutti i veicoli ferroviari
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezionare il tipo di rotaia per la quale si desidera rimpiazzare le locomotive
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotiva sarà rimpiazzato il modello eventualmente selezionato a sinistra
