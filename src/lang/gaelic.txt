@@ -2812,29 +2812,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Achaidhean
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tìr sneachdach
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Fàsach
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Slighe {STRING.gen}
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Slighe {STRING.gen} le comharran bacaidh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Slighe {STRING.gen} le ro-chomharran
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Slighe {STRING.gen} le comharran a-mach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Slighe {STRING.gen} le comharran aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Slighe {STRING.gen} le comharran slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Slighe {STRING.gen} le comharran aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Slighe {STRING.gen} le comharran bacaidh is ro-chomharran
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Slighe {STRING.gen} le comharran-bacaidh is a-mach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Slighe {STRING.gen} le comharran-bacaidh is aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Slighe {STRING.gen} le comharran-bacaidh is slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Slighe {STRING.gen} le comharran-bacaidh is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Slighe {STRING.gen} le ro-chomharran is comharran a-mach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Slighe {STRING.gen} le ro-chomharran is comharran aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Slighe {STRING.gen} le ro-chomharran is comharran slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Slighe {STRING.gen} le ro-chomharran is comharran aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Slighe {STRING.gen} le comharran a-mach is aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Slighe {STRING.gen} le comharran a-mach is slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Slighe {STRING.gen} le comharran a-mach is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Slighe {STRING.gen} le comharran aonaichte is slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Slighe {STRING.gen} le comharran aonaichte is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Slighe {STRING.gen} le comharran slighe is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trèan-lann {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Slighe Rathad-iarainn
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Slighe Rathad-iarainn le comharran bacaidh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Slighe Rathad-iarainn le ro-chomharran
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Slighe Rathad-iarainn le comharran a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Slighe Rathad-iarainn le comharran aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Slighe Rathad-iarainn le comharran slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Slighe Rathad-iarainn le comharran aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Slighe Rathad-iarainn le comharran bacaidh is ro-chomharran
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Slighe Rathad-iarainn le comharran-bacaidh is a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Slighe Rathad-iarainn le comharran-bacaidh is aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Slighe Rathad-iarainn le comharran-bacaidh is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Slighe Rathad-iarainn le comharran-bacaidh is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Slighe Rathad-iarainn le ro-chomharran is comharran a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Slighe Rathad-iarainn le ro-chomharran is comharran aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Slighe Rathad-iarainn le ro-chomharran is comharran slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Slighe Rathad-iarainn le ro-chomharran is comharran aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Slighe Rathad-iarainn le comharran a-mach is aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Slighe Rathad-iarainn le comharran a-mach is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Slighe Rathad-iarainn le comharran a-mach is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Slighe Rathad-iarainn le comharran aonaichte is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Slighe Rathad-iarainn le comharran aonaichte is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Slighe Rathad-iarainn le comharran slighe is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trèan-lann Rathad-iarainn
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Rathad
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Rathad le solasan-rathaid

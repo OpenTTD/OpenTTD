@@ -2566,29 +2566,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Teren agricol
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Teren înzăpezit
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deşert
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} cale ferată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} cale ferată cu semafoare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} cale ferată cu presemafoare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} cale ferată cu semafoare de ieșire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} cale ferată cu semafoare combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} cale ferată cu semafoare de direcționare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} cale ferată cu semafoare de direcționare unidirecționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} cale ferată cu semafoare și presemafoare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} cale ferată cu semafoare și semafoare de ieșire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} cale ferată cu semafoare și semafoare combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} cale ferată cu semafoare și semafoare de direcționare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} cale ferată cu semafoare și semafoare de direcționare unidirecționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} cale ferată cu presemafoare și semafoare de ieșire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} cale ferată cu presemafoare și semafoare combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} cale ferată cu presemafoare și semafoare de direcționare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} cale ferată cu presemafoare și semafoare de direcționare unidirecționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} cale ferată cu semafoare de ieșire și semafoare combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} cale ferată cu semafoare de ieșire și semafoare direcționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} cale ferată cu semafoare de ieșire și semafoare direcționale unidirecționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} cale ferată cu semafoare combo și semafoare direcționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} cale ferată cu semafoare combo și semafoare direcționale unidirecționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} cale ferată cu semafoare direcționale şi semafoare directionale unidirecționale
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depou trenuri
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cale ferată cale ferată
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cale ferată cale ferată cu semafoare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cale ferată cale ferată cu presemafoare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cale ferată cale ferată cu semafoare de ieșire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cale ferată cale ferată cu semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cale ferată cale ferată cu semafoare de direcționare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cale ferată cale ferată cu semafoare de direcționare unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cale ferată cale ferată cu semafoare și presemafoare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cale ferată cale ferată cu semafoare și semafoare de ieșire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cale ferată cale ferată cu semafoare și semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cale ferată cale ferată cu semafoare și semafoare de direcționare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cale ferată cale ferată cu semafoare și semafoare de direcționare unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cale ferată cale ferată cu presemafoare și semafoare de ieșire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cale ferată cale ferată cu presemafoare și semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cale ferată cale ferată cu presemafoare și semafoare de direcționare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cale ferată cale ferată cu presemafoare și semafoare de direcționare unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cale ferată cale ferată cu semafoare de ieșire și semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cale ferată cale ferată cu semafoare de ieșire și semafoare direcționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cale ferată cale ferată cu semafoare de ieșire și semafoare direcționale unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cale ferată cale ferată cu semafoare combo și semafoare direcționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cale ferată cale ferată cu semafoare combo și semafoare direcționale unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cale ferată cale ferată cu semafoare direcționale şi semafoare directionale unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Cale ferată depou trenuri
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Şosea
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Stradă iluminată

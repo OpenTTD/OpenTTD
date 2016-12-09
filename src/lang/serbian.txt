@@ -2796,29 +2796,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snegom prekrivena zemlja
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustinja
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} kolosek
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} kolosek sa blok signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} kolosek sa predsignalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} kolosek sa izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} kolosek sa kombinovanom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} kolosek sa putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} kolosek sa jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} kolosek sa blok i predsignalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} kolosek sa blok i izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} kolosek sa blok i kombinovanom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} kolosek sa blok i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} kolosek sa blok i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} kolosek sa pred i izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} kolosek sa pred i kombinovanom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} kolosek sa pred i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} kolosek sa pred i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} kolosek sa izlaznom i kombinovanom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} kolosek sa izlaznom i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} kolosek sa izlaznom i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} kolosek sa kombinovanom i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} kolosek sa kombinovanom i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} kolosek sa putnom i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} železnički depo
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železnica kolosek
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železnica kolosek sa blok signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železnica kolosek sa predsignalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železnica kolosek sa izlaznom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železnica kolosek sa kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železnica kolosek sa putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železnica kolosek sa jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železnica kolosek sa blok i predsignalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železnica kolosek sa blok i izlaznom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Železnica kolosek sa blok i kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železnica kolosek sa blok i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Železnica kolosek sa blok i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Železnica kolosek sa pred i izlaznom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Železnica kolosek sa pred i kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železnica kolosek sa pred i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Železnica kolosek sa pred i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Železnica kolosek sa izlaznom i kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železnica kolosek sa izlaznom i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železnica kolosek sa izlaznom i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železnica kolosek sa kombinovanom i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železnica kolosek sa kombinovanom i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železnica kolosek sa putnom i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železnica železnički depo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Put
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Kolovoz sa uličnom rasvetom

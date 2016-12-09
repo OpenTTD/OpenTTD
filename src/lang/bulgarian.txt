@@ -2540,29 +2540,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснежена земя
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустиня
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} линия
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} линия с блокиращи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} линия с пре-сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} линия с изходни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} линия с комбо сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} линия с насочващи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} линия с еднопосочни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} линия с блокиращи и пре-сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} линия с блокиращи и изходни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} линия с блокиращи и комбо сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} линия с блокиращи и насочващи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} линия с блокиращи и еднопосочни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} линия с пред и изходни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} линя с пред и комбо сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} линия с пред и насочващи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} линия с пред и еднопосочни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} линия с изходни и комбо сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} линия с изходни и насочващи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} линия с изходни и еднопосочни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} линия с комбо и насочващи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} линия с комбо и еднопосочни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} линия с насочващи и еднопосочни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} влаково депо
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :ЖП път линия
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :ЖП път линия с блокиращи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :ЖП път линия с пре-сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :ЖП път линия с изходни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :ЖП път линия с комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :ЖП път линия с насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :ЖП път линия с еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :ЖП път линия с блокиращи и пре-сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :ЖП път линия с блокиращи и изходни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :ЖП път линия с блокиращи и комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :ЖП път линия с блокиращи и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :ЖП път линия с блокиращи и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :ЖП път линия с пред и изходни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :ЖП път линя с пред и комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :ЖП път линия с пред и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :ЖП път линия с пред и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :ЖП път линия с изходни и комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :ЖП път линия с изходни и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :ЖП път линия с изходни и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :ЖП път линия с комбо и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :ЖП път линия с комбо и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :ЖП път линия с насочващи и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :ЖП път влаково депо
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :път
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Асфалтов път с улично осветление

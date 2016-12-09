@@ -2710,29 +2710,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Χωράφια
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Χιονισμένο έδαφος
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Έρημος
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} σιδηροτροχιά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} σιδηροτροχιά με σήματα τμήματος
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} σιδηροτροχιά με σήματα ειδοποίησης
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} σιδηροτροχιά με σήματα εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} σιδηροτροχιά με συνδυαστικά σήματα
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} σιδηροτροχιά με σήματα διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} σιδηροτροχιά με σήματα μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} σιδηροτροχιά με σήματα τμήματος και ειδοποίησης
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} σιδηροτροχιά με σήματα τμήματος και εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} σιδηροτροχιά με σήματα τμήματος και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} σιδηροτροχιά με σήματα τμήματος και διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} σιδηροτροχιά με σήματα τμήματος και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} σιδηροτροχιά με σήματα εξόδου και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} σιδηροτροχιά με σήματα εξόδου και διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} σιδηροτροχιά με σήματα εξόδου και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} σιδηροτροχιά με σήματα διαδρομής και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} σιδηροτροχιά σήματα μονόδρομους διαδρομής και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} σιδηροτροχιά με σήματα διαδρομής και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} αμαξοστάσιο τρένων
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Σιδηρόδρομος σιδηροτροχιά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Σιδηρόδρομος σιδηροτροχιά με συνδυαστικά σήματα
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Σιδηρόδρομος σιδηροτροχιά με σήματα διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Σιδηρόδρομος σιδηροτροχιά με σήματα μονόδρομους διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και ειδοποίησης
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και μονόδρομους διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και μονόδρομους διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου και μονόδρομους διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Σιδηρόδρομος σιδηροτροχιά με σήματα διαδρομής και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Σιδηρόδρομος σιδηροτροχιά σήματα μονόδρομους διαδρομής και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Σιδηρόδρομος σιδηροτροχιά με σήματα διαδρομής και μονόδρομους διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Σιδηρόδρομος αμαξοστάσιο τρένων
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Δρόμος
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Δρόμος με φωτισμό

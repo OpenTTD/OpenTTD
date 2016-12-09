@@ -2292,29 +2292,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :வயல்வ
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :பனி-படர்ந்த நிலம்
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :பாலைவனம்
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} தடம்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} தடம் கட்ட சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} தடம் முன் சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} தடம் வெளியேறு சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} தடம் இணைந்த சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} தடம் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} தடம் ஒருவழிப் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} தடம் கட்டம் மற்றும் முன் சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} தடம் கட்டம் மற்றும் வெளியேறு சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} தடம் கட்டம் மற்றும் இணைந்த சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} தடம் கட்டம் மற்றும் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} தடம் கட்டம் மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} தடம் முன் மற்றும் வெளியேறு சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} தடம் முன் மற்றும் இணைந்த சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} தடம் முன் மற்றும் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} தடம் முன் மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} தடம் வெளியேறு மற்றும் இணைந்த சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} தடம் வெளியேறு மற்றும் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} தடம் வெளியேறு மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} தடம் இணைந்த மற்றும் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} தடம் இணைந்த மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} தடம் பாதை மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} இரயில் பணிமனை
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :இரயில்வே தடம்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :இரயில்வே தடம் கட்ட சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :இரயில்வே தடம் முன் சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :இரயில்வே தடம் வெளியேறு சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :இரயில்வே தடம் இணைந்த சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :இரயில்வே தடம் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :இரயில்வே தடம் ஒருவழிப் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :இரயில்வே தடம் கட்டம் மற்றும் முன் சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :இரயில்வே தடம் கட்டம் மற்றும் வெளியேறு சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :இரயில்வே தடம் கட்டம் மற்றும் இணைந்த சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :இரயில்வே தடம் கட்டம் மற்றும் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :இரயில்வே தடம் கட்டம் மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :இரயில்வே தடம் முன் மற்றும் வெளியேறு சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :இரயில்வே தடம் முன் மற்றும் இணைந்த சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :இரயில்வே தடம் முன் மற்றும் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :இரயில்வே தடம் முன் மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :இரயில்வே தடம் வெளியேறு மற்றும் இணைந்த சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :இரயில்வே தடம் வெளியேறு மற்றும் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :இரயில்வே தடம் வெளியேறு மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :இரயில்வே தடம் இணைந்த மற்றும் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :இரயில்வே தடம் இணைந்த மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :இரயில்வே தடம் பாதை மற்றும் ஒருவழிப் பாதை சிக்னல்களுடன்
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :இரயில்வே இரயில் பணிமனை
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :சாலை
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :தெரு விளக்குகளுடன் சாலை

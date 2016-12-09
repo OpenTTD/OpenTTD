@@ -2549,29 +2549,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :ทุ่งห
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :พื้นที่หิมะปกคลุม
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :ทะเลทราย
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} ราง
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING}ทางรถไฟกับ Block Signal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING}ทางรถไฟกับ Pre-Signal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING}ทางรถไฟกับ Exit-Signal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING}ทางรถไฟกับ Combo-Signal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING}ทางรถไฟกับ Path Signal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING}ทางรถไฟกับ Path Signal แบบเดินทางเดียว
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING}ทางรถไฟกับ Block และ Pre-Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING}ทางรถไฟกับ Block และ Exit-Signal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING}ทางรถไฟกับ Block และ Combo-Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING}ทางรถไฟกับ Block และ Path Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING}ทางรถไฟกับ Block และ Path Signals แบบเดินรถทางเดียว
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING}ทางรถไฟกับ Pre- และ Exit-Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING}ทางรถไฟกับ Pre- และ Combo-Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING}ทางรถไฟกับ Pre- และ Path Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING}ทางรถไฟและ Pre- และ Path Signals แบบเดินรถทางเดียว
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING}ทางรถไฟกับ Exit- และ Combo-Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING}ทางรถไฟกับ Exit- และ Path Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING}ทางรถไฟและ Exit- และ Path Signals แบบเดินรถทางเดียว
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING}ทางรถไฟและ Combo- และ Path Signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING}ทางรถไฟและ Combo- และ Path Signals แบบเดินรถทางเดียว
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING}ทางรถไฟกับ Path และ Path Signals แบบเดินรถทางเดียว
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} โรงซ่อมบำรุงรถไฟ
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :รางรถไฟ ราง
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :รางรถไฟทางรถไฟกับ Block Signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :รางรถไฟทางรถไฟกับ Pre-Signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :รางรถไฟทางรถไฟกับ Exit-Signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :รางรถไฟทางรถไฟกับ Combo-Signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :รางรถไฟทางรถไฟกับ Path Signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :รางรถไฟทางรถไฟกับ Path Signal แบบเดินทางเดียว
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :รางรถไฟทางรถไฟกับ Block และ Pre-Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :รางรถไฟทางรถไฟกับ Block และ Exit-Signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :รางรถไฟทางรถไฟกับ Block และ Combo-Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :รางรถไฟทางรถไฟกับ Block และ Path Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :รางรถไฟทางรถไฟกับ Block และ Path Signals แบบเดินรถทางเดียว
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :รางรถไฟทางรถไฟกับ Pre- และ Exit-Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :รางรถไฟทางรถไฟกับ Pre- และ Combo-Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :รางรถไฟทางรถไฟกับ Pre- และ Path Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :รางรถไฟทางรถไฟและ Pre- และ Path Signals แบบเดินรถทางเดียว
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :รางรถไฟทางรถไฟกับ Exit- และ Combo-Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :รางรถไฟทางรถไฟกับ Exit- และ Path Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :รางรถไฟทางรถไฟและ Exit- และ Path Signals แบบเดินรถทางเดียว
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :รางรถไฟทางรถไฟและ Combo- และ Path Signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :รางรถไฟทางรถไฟและ Combo- และ Path Signals แบบเดินรถทางเดียว
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :รางรถไฟทางรถไฟกับ Path และ Path Signals แบบเดินรถทางเดียว
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :รางรถไฟ โรงซ่อมบำรุงรถไฟ
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :ถนน
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :ถนนพร้อมไฟถนน

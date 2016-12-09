@@ -2601,29 +2601,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Garrantaí
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Talamh faoi shneachta
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Fásach
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} ráille
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} ráille ar a bhfuil comharthaí bloc
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} ráille ar a bhfuil réamhchomharthaí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} ráille ar a bhfuil comharthaí amach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} ráille ar a bhfuil comharthaí teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} ráille ar a bhfuil comharthaí cosáin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} ráille ar a bhfuil comharthaí cosáin aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} ráille ar a bhfuil comharthaí bloic agus réamhchomharthaí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} ráille ar a bhfuil comharthaí bloic agus amach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} ráille ar a bhfuil comharthaí bloic agus teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} ráille ar a bhfuil comharthaí bloic agus cosáin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} ráille ar a bhfuil comharthaí bloic agus cosáin aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} ráille ar a bhfuil réamhchomharthaí agus comharthaí amach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} ráille ar a bhfuil réamhchomharthaí agus comharthaí teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} ráille ar a bhfuil réamhchomharthaí agus comharthaí cosáin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} ráille ar a bhfuil réamhchomharthaí agus comharthaí cosáin aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} ráille ar a bhfuil comharthaí amach agus teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} ráille ar a bhfuil comharthaí amach agus cosáin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} ráille ar a bhfuil comharthaí amach agus cosáin aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} ráille ar a bhfuil comharthaí teaglama agus cosáin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} ráille ar a bhfuil comharthaí teaglama agus cosáin aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} ráille ar a bhfuil comharthaí cosáin agus cosáin aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} iosta traenach
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Iarnród ráille
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Iarnród ráille ar a bhfuil comharthaí bloc
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Iarnród ráille ar a bhfuil réamhchomharthaí
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Iarnród ráille ar a bhfuil comharthaí amach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Iarnród ráille ar a bhfuil comharthaí teaglama
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Iarnród ráille ar a bhfuil comharthaí cosáin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Iarnród ráille ar a bhfuil comharthaí cosáin aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Iarnród ráille ar a bhfuil comharthaí bloic agus réamhchomharthaí
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Iarnród ráille ar a bhfuil comharthaí bloic agus amach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Iarnród ráille ar a bhfuil comharthaí bloic agus teaglama
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Iarnród ráille ar a bhfuil comharthaí bloic agus cosáin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Iarnród ráille ar a bhfuil comharthaí bloic agus cosáin aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Iarnród ráille ar a bhfuil réamhchomharthaí agus comharthaí amach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Iarnród ráille ar a bhfuil réamhchomharthaí agus comharthaí teaglama
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Iarnród ráille ar a bhfuil réamhchomharthaí agus comharthaí cosáin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Iarnród ráille ar a bhfuil réamhchomharthaí agus comharthaí cosáin aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Iarnród ráille ar a bhfuil comharthaí amach agus teaglama
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Iarnród ráille ar a bhfuil comharthaí amach agus cosáin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Iarnród ráille ar a bhfuil comharthaí amach agus cosáin aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Iarnród ráille ar a bhfuil comharthaí teaglama agus cosáin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Iarnród ráille ar a bhfuil comharthaí teaglama agus cosáin aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Iarnród ráille ar a bhfuil comharthaí cosáin agus cosáin aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Iarnród iosta traenach
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Bóthair
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Bóthair le soilse sráide

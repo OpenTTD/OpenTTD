@@ -2934,29 +2934,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Палi
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Засьнежаная зямля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустэльня
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} рэйкi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} рэйкi са звычайнымі сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} рэйкi з уваходнымі прэсыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} рэйкi з выхаднымi сыґналамi (прэсыґналамі)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} рэйкi з камбiнаванымi сыґналамi (прэсыґналамі)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} рэйкi з маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} рэйкi з аднабаковымi маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} рэйкi са звычайнымi й уваходнымі прэсыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} рэйкi са звычайнымi й выхаднымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} рэйкi са звычайнымi й камбiнаванымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} рэйкi са звычайнымi й маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} рэйкi са звычайнымi й аднабаковымi маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} рэйкi з уваходнымi (прэcыгналамi) ды выхаднымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} рэйкi з уваходнымi (прэсыґналамi) ды камбiнаванымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} рэйкi з уваходнымi (прэсыґналамi) ды маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} рэйкi з уваходнымi (прэсыґналамi) ды аднабаковымi маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} рэйкi з выхаднымi й камбінаванымі прэсыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} рэйкі з выхаднымі (прэсыґналамі) ды маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} рэйкі з выхаднымі (прэсыґналамі) ды аднабаковымі маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} рэйкі з камбінаванымі (прэсыґналамі) ды маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} рэйкі з камбінаванымі (прэсыґналамі) ды аднабаковымі маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} рэйкі з маршрутнымі (PMS) ды аднабаковымі маршрутнымі сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} чыгуначнае дэпо
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Чыгунка рэйкi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Чыгунка рэйкi са звычайнымі сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Чыгунка рэйкi з уваходнымі прэсыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Чыгунка рэйкi з выхаднымi сыґналамi (прэсыґналамі)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Чыгунка рэйкi з камбiнаванымi сыґналамi (прэсыґналамі)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Чыгунка рэйкi з маршрутнымi (PMS) сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Чыгунка рэйкi з аднабаковымi маршрутнымi (PMS) сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Чыгунка рэйкi са звычайнымi й уваходнымі прэсыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Чыгунка рэйкi са звычайнымi й выхаднымi сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Чыгунка рэйкi са звычайнымi й камбiнаванымi сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Чыгунка рэйкi са звычайнымi й маршрутнымi (PMS) сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Чыгунка рэйкi са звычайнымi й аднабаковымi маршрутнымi (PMS) сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Чыгунка рэйкi з уваходнымi (прэcыгналамi) ды выхаднымi сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Чыгунка рэйкi з уваходнымi (прэсыґналамi) ды камбiнаванымi сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Чыгунка рэйкi з уваходнымi (прэсыґналамi) ды маршрутнымi (PMS) сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Чыгунка рэйкi з уваходнымi (прэсыґналамi) ды аднабаковымi маршрутнымi (PMS) сыґналамi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Чыгунка рэйкi з выхаднымi й камбінаванымі прэсыґналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Чыгунка рэйкі з выхаднымі (прэсыґналамі) ды маршрутнымі (PMS) сыґналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Чыгунка рэйкі з выхаднымі (прэсыґналамі) ды аднабаковымі маршрутнымі (PMS) сыґналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Чыгунка рэйкі з камбінаванымі (прэсыґналамі) ды маршрутнымі (PMS) сыґналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Чыгунка рэйкі з камбінаванымі (прэсыґналамі) ды аднабаковымі маршрутнымі (PMS) сыґналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Чыгунка рэйкі з маршрутнымі (PMS) ды аднабаковымі маршрутнымі сыґналамі
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Чыгунка чыгуначнае дэпо
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дарога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дарога з вулічным асьвятленьнем

@@ -2341,29 +2341,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Markir
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Kava-klætt lendi
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Oyðimørk
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} breyt
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} breyt við blokk teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} breyt við for teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} breyt við útvegs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} breyt við blandings teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} breyt við leið teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} breyt við einvegis leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} breyt við blokk og for teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} breyt við blokk og útvegs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} breyt við block og blandings teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} breyt við blokk og leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} breyt við blokk og einvegis leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} breyt við for og útvegis teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} breyt við for og blandings teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} breyt við for og leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} breyt við for og einvegis leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} breyt við útvegs og blandings teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} breyt við útvegs og leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} breyt við útvegs og einvegis leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} breyt við blandings og leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} breyt við blandings og einvegis leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} breyt við leiðs og einvegis leiðs teknum
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} Tok goymsla
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{G=m}Jarnbreyt breyt
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{G=m}Jarnbreyt breyt við blokk teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{G=m}Jarnbreyt breyt við for teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{G=m}Jarnbreyt breyt við útvegs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{G=m}Jarnbreyt breyt við blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{G=m}Jarnbreyt breyt við leið teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{G=m}Jarnbreyt breyt við einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{G=m}Jarnbreyt breyt við blokk og for teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{G=m}Jarnbreyt breyt við blokk og útvegs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{G=m}Jarnbreyt breyt við block og blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{G=m}Jarnbreyt breyt við blokk og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{G=m}Jarnbreyt breyt við blokk og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{G=m}Jarnbreyt breyt við for og útvegis teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{G=m}Jarnbreyt breyt við for og blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{G=m}Jarnbreyt breyt við for og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{G=m}Jarnbreyt breyt við for og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{G=m}Jarnbreyt breyt við útvegs og blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{G=m}Jarnbreyt breyt við útvegs og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{G=m}Jarnbreyt breyt við útvegs og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{G=m}Jarnbreyt breyt við blandings og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{G=m}Jarnbreyt breyt við blandings og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{G=m}Jarnbreyt breyt við leiðs og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{G=m}Jarnbreyt Tok goymsla
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Vegur
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Vegur við lyktapelum

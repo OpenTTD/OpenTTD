@@ -2496,29 +2496,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Eremuak
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Elurrez estalitako paisaia
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desertua
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} Trenbidea
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} Trenbidea blokeo seinalearekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} trenbidea aurre-seinalekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} trenbidea irteera seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} trenbidea konbo seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} trenbidea bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} trenbidea norabide bakarreko bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} trenbidea blokeo seinale eta aurre-seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} trenbidea blokeo seinale eta irteera seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} trenbidea blokeo seinalea eta konbo seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} trenbidea blokeo seinaleekin eta bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} Trenbidea blokeo eta norabide bakarreko bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} trenbidea aurre-seinale eta irteera seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} trenbidea aurre-seinale eta konbo seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} trenbidea aurre-seinale eta bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} trenbidea aurre-seinale eta norabide bakarreko bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} trenbidea irteera seinale eta konbo seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} trenbidea irteera seinale eta bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} trenbidea irteera seinale eta norabide bakarreko bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} trenbidea konbo seinale eta bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} trenbide konbo seinale eta norabide bakarreko bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} trenbidea bide seinale eta norabide bakarreko seinaleekina
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} tren gordailua
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trenbidea Trenbidea
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Trenbidea Trenbidea blokeo seinalearekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Trenbidea trenbidea aurre-seinalekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Trenbidea trenbidea irteera seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Trenbidea trenbidea konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Trenbidea trenbidea bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Trenbidea trenbidea norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Trenbidea trenbidea blokeo seinale eta aurre-seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Trenbidea trenbidea blokeo seinale eta irteera seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Trenbidea trenbidea blokeo seinalea eta konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Trenbidea trenbidea blokeo seinaleekin eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Trenbidea Trenbidea blokeo eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Trenbidea trenbidea aurre-seinale eta irteera seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Trenbidea trenbidea aurre-seinale eta konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Trenbidea trenbidea aurre-seinale eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Trenbidea trenbidea aurre-seinale eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trenbidea trenbidea irteera seinale eta konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trenbidea trenbidea irteera seinale eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trenbidea trenbidea irteera seinale eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trenbidea trenbidea konbo seinale eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trenbidea trenbide konbo seinale eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trenbidea trenbidea bide seinale eta norabide bakarreko seinaleekina
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trenbidea tren gordailua
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :errepidea
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Errepidea farolekin

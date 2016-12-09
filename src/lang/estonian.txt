@@ -2659,29 +2659,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Põllud
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumine maa
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Kõrb
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} rööbas
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} rööpad koos blokksignaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} rööpad koos eelsignaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} rööpad väljasõidusignaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} rööpad kombineeritud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} rööpad koos täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} tööpad koos ühesuunaliste täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} rööpad koos blokk- ja eelsignaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} rööpad koos blokk- ja väljumissignaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} rööpad koos blokk- ja kombineeritud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} rööpad koos blokk- ja täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} rööpad koos blokksignaalidega ja ühesuunaliste täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} rööpad koos eel- ja väljumissignaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} rööpad koos eel- ja kombineeritud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} rööpad koos eel- ja täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} rööpad koos eel- ja ühesuunaliste täiustatud signaaligeda
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} rööpad koos väljumis- ja kombineeritud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} rööpad koos väljumis- ja täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} rööpad koos väljumis. ja ühesuunaliste täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} rööpad koos komineeriutd ja täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} rööpad koos komineeritud ja ühesuunaliste täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} rööpad koos täisutatud ja ühesuunaliste täiustatud signaalidega
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} Rongidepoo
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Raudtee rööbas
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Raudtee rööpad koos blokksignaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Raudtee rööpad koos eelsignaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Raudtee rööpad väljasõidusignaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Raudtee rööpad kombineeritud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Raudtee rööpad koos täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Raudtee tööpad koos ühesuunaliste täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Raudtee rööpad koos blokk- ja eelsignaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Raudtee rööpad koos blokk- ja väljumissignaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Raudtee rööpad koos blokk- ja kombineeritud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Raudtee rööpad koos blokk- ja täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Raudtee rööpad koos blokksignaalidega ja ühesuunaliste täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Raudtee rööpad koos eel- ja väljumissignaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Raudtee rööpad koos eel- ja kombineeritud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Raudtee rööpad koos eel- ja täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Raudtee rööpad koos eel- ja ühesuunaliste täiustatud signaaligeda
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Raudtee rööpad koos väljumis- ja kombineeritud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Raudtee rööpad koos väljumis- ja täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Raudtee rööpad koos väljumis. ja ühesuunaliste täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Raudtee rööpad koos komineeriutd ja täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Raudtee rööpad koos komineeritud ja ühesuunaliste täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Raudtee rööpad koos täisutatud ja ühesuunaliste täiustatud signaalidega
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Raudtee Rongidepoo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Sõidutee
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Valgustatud sõidutee

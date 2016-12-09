@@ -2820,29 +2820,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Laukai
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Užpustyta žemė
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Dykuma
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} bėgiai
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} bėgiai su paprastais šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} ebgiai su prie signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} bėgiai su išvažiavimo signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} bėgiai su kombinuotais signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} bėgiai su trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} bėgiai su vienpusiais trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} begiai su paprastais ir prie signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} bėgiai su paprastais ir išvažiavimo signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} bėgiai su paprastais ir kombinuotais signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} bėgiai su paprastais ir trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} bėgiai su paprastais ir vienpusiais trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} bėgiai su pre ir išvažiavimo signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} bėgiai su prie ir kombinuotais signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} bėgiai su prie ir trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} bėgiai su prie ir vienpusiais trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} bėgiai su išvažiavimo ir kombinuotais signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} bėgiai su išvažiavimo ir trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} bėgiai su išvažiavimo ir vienpusiais signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} bėgiai su kombinuotais ir trasos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} bėgiai su kombinuotais ir vienpusiais signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} bėgiai su trasos ir vienpusiais signalais
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} traukinių depas
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Geležinkelis bėgiai
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Geležinkelis bėgiai su paprastais šviesoforais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Geležinkelis ebgiai su prie signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Geležinkelis bėgiai su išvažiavimo signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Geležinkelis bėgiai su kombinuotais signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Geležinkelis bėgiai su trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Geležinkelis bėgiai su vienpusiais trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Geležinkelis begiai su paprastais ir prie signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Geležinkelis bėgiai su paprastais ir išvažiavimo signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Geležinkelis bėgiai su paprastais ir kombinuotais signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Geležinkelis bėgiai su paprastais ir trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Geležinkelis bėgiai su paprastais ir vienpusiais trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Geležinkelis bėgiai su pre ir išvažiavimo signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Geležinkelis bėgiai su prie ir kombinuotais signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Geležinkelis bėgiai su prie ir trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Geležinkelis bėgiai su prie ir vienpusiais trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Geležinkelis bėgiai su išvažiavimo ir kombinuotais signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Geležinkelis bėgiai su išvažiavimo ir trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Geležinkelis bėgiai su išvažiavimo ir vienpusiais signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Geležinkelis bėgiai su kombinuotais ir trasos signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Geležinkelis bėgiai su kombinuotais ir vienpusiais signalais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Geležinkelis bėgiai su trasos ir vienpusiais signalais
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Geležinkelis traukinių depas
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Kelias
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Kelias su žibintais

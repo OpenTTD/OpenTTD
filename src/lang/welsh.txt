@@ -2601,29 +2601,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Caeau
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tir ag eira
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Anialdir
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cledrau {STRING}
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cledrau {STRING} gyda signalau bloc
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cledrau {STRING} gyda rhagsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cledrau {STRING} gyda signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cledrau {STRING} gyda signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cledrau {STRING} gyda signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cledrau {STRING} gyda signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cledrau {STRING} gyda signalau bloc a rhagsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cledrau {STRING} gyda signalau bloc a signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cledrau {STRING} gyda signalau bloc a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cledrau {STRING} gyda signalau bloc a signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cledrau {STRING} gyda signalau bloc a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cledrau {STRING} gyda rhagsignalau a signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cledrau {STRING} gyda rhagsignalau a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cledrau {STRING} gyda rhagsignalau a signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cledrau {STRING} gyda rhag-signalau a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cledrau {STRING} gyda signalau gadael a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cledrau {STRING} gyda signalau gadael a signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cledrau {STRING} gyda signalau gadael a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cledrau {STRING} gyda signalau cyfun a llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cledrau {STRING} gyda signalau cyfun a signalau llwybr unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cledrau {STRING} gyda signalau llwybro a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo trên {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cledrau Rheilffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cledrau Rheilffordd gyda signalau bloc
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cledrau Rheilffordd gyda rhagsignalau
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cledrau Rheilffordd gyda signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cledrau Rheilffordd gyda signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cledrau Rheilffordd gyda signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cledrau Rheilffordd gyda signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cledrau Rheilffordd gyda signalau bloc a rhagsignalau
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cledrau Rheilffordd gyda signalau bloc a signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cledrau Rheilffordd gyda signalau bloc a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cledrau Rheilffordd gyda signalau bloc a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cledrau Rheilffordd gyda signalau bloc a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cledrau Rheilffordd gyda rhagsignalau a signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cledrau Rheilffordd gyda rhagsignalau a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cledrau Rheilffordd gyda rhagsignalau a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cledrau Rheilffordd gyda rhag-signalau a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cledrau Rheilffordd gyda signalau gadael a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cledrau Rheilffordd gyda signalau gadael a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cledrau Rheilffordd gyda signalau gadael a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cledrau Rheilffordd gyda signalau cyfun a llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cledrau Rheilffordd gyda signalau cyfun a signalau llwybr unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cledrau Rheilffordd gyda signalau llwybro a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo trên Rheilffordd
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ffordd gyda goleuadau stryd
