@@ -98,7 +98,7 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 	int heli_offs = 0;
 
 	PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	seq.Draw(x, y + y_offs, pal, v->vehstatus & VS_CRASHED);
+	seq.Draw(x, y + y_offs, pal, (v->vehstatus & VS_CRASHED) != 0);
 	if (helicopter) {
 		const Aircraft *a = Aircraft::From(v);
 		VehicleSpriteSeq rotor_seq;
