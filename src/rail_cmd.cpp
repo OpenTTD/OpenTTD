@@ -68,7 +68,16 @@ void ResetRailTypes()
 
 	uint i = 0;
 	for (; i < lengthof(_original_railtypes); i++) _railtypes[i] = _original_railtypes[i];
-	for (; i < lengthof(_railtypes);          i++) _railtypes[i] = RailtypeInfo(); // zero-init
+
+	static const RailtypeInfo empty_railtype = {
+		{0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,{}},
+		{0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0},
+		0, RAILTYPES_NONE, RAILTYPES_NONE, 0, 0, 0, RTFB_NONE, 0, 0, 0, 0, 0,
+		RailTypeLabelList(), 0, 0, RAILTYPES_NONE, RAILTYPES_NONE, 0,
+		{}, {} };
+	for (; i < lengthof(_railtypes);          i++) _railtypes[i] = empty_railtype;
 }
 
 void ResolveRailTypeGUISprites(RailtypeInfo *rti)
