@@ -152,7 +152,7 @@ RailType AllocateRailType(RailTypeLabel label)
 
 		if (rti->label == 0) {
 			/* Set up new rail type */
-			*rti = _railtypes[RAILTYPE_RAIL];
+			*rti = _original_railtypes[RAILTYPE_RAIL];
 			rti->label = label;
 			rti->alternate_labels.Clear();
 
