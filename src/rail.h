@@ -113,7 +113,8 @@ typedef SmallVector<RailTypeLabel, 4> RailTypeLabelList;
 /**
  * This struct contains all the info that is needed to draw and construct tracks.
  */
-struct RailtypeInfo {
+class RailtypeInfo {
+public:
 	/**
 	 * Struct containing the main sprites. @note not all sprites are listed, but only
 	 *  the ones used directly in the code

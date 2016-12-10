@@ -47,8 +47,6 @@ RailtypeInfo _railtypes[RAILTYPE_END];
 RailType _sorted_railtypes[RAILTYPE_END];
 uint8 _sorted_railtypes_size;
 
-assert_compile(sizeof(_original_railtypes) <= sizeof(_railtypes));
-
 /** Enum holding the signal offset in the sprite sheet according to the side it is representing. */
 enum SignalOffsets {
 	SIGNAL_TO_SOUTHWEST,
@@ -66,8 +64,11 @@ enum SignalOffsets {
  */
 void ResetRailTypes()
 {
-	memset(_railtypes, 0, sizeof(_railtypes));
-	memcpy(_railtypes, _original_railtypes, sizeof(_original_railtypes));
+	assert_compile(lengthof(_original_railtypes) <= lengthof(_railtypes));
+
+	uint i = 0;
+	for (; i < lengthof(_original_railtypes); i++) _railtypes[i] = _original_railtypes[i];
+	for (; i < lengthof(_railtypes);          i++) _railtypes[i] = RailtypeInfo(); // zero-init
 }
 
 void ResolveRailTypeGUISprites(RailtypeInfo *rti)
@@ -151,11 +152,9 @@ RailType AllocateRailType(RailTypeLabel label)
 
 		if (rti->label == 0) {
 			/* Set up new rail type */
-			memcpy(rti, &_railtypes[RAILTYPE_RAIL], sizeof(*rti));
+			*rti = _railtypes[RAILTYPE_RAIL];
 			rti->label = label;
-			/* Clear alternate label list. Can't use Reset() here as that would free
-			 * the data pointer of RAILTYPE_RAIL and not our new rail type. */
-			new (&rti->alternate_labels) RailTypeLabelList;
+			rti->alternate_labels.Clear();
 
 			/* Make us compatible with ourself. */
 			rti->powered_railtypes    = (RailTypes)(1 << rt);
