@@ -1424,11 +1424,11 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra gli arri
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra gli orari di arrivo e partenza previsti nelle tabelle orarie
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creazione rapida degli ordini dei veicoli: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-seleziona il comando 'Vai a' quando si apre la finestra degli ordini
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Ferrovia predefinita (a inizio/ripresa partita): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo di ferrovia da selezionare dopo l'inizio o il caricamento di una partita. 'La prima disponibile' seleziona il tipo più vecchio di binari, 'L'ultima disponibile' seleziona il tipo più vecchio di binari, e 'La più usata' seleziona il tipo più utilizzato al momento
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :La prima disponibile
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :L'ultima disponibile
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :La più usata
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo di rotaie predefinito (a inizio/ripresa partita): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo di rotaie da selezionare dopo l'inizio o il caricamento di una partita. 'Il primo disponibile' seleziona il tipo più vecchio di binari, 'L'ultimo disponibile' seleziona il tipo più nuovo di binari, e 'Il più usato' seleziona il tipo più utilizzato al momento
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Il primo disponibile
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :L'ultimo disponibile
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Il più usato
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra i percorsi riservati sui binari: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dà ai binari riservati un colore differente, aiutando a correggere problemi di treni che si rifiutano di entrare in blocchi protetti con segnali a percorso
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantieni aperte le finestre di costruzione dopo l'uso: {STRING}
@@ -2619,6 +2619,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome blo
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carichi accettati: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo di rotaie: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limite di velocità rotaie: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite di velocità strada: {LTBLUE}{VELOCITY}
 
@@ -2653,7 +2654,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Ferrovia con se
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ferrovia con segnali combinati e a percorso
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ferrovia con segnali combinati e a percorso s.u.
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ferrovia con segnali a percorso e a percorso s.u.
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Deposito Ferrovia
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Deposito ferroviario
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strada con lampioni
@@ -2891,7 +2892,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Ispezion
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} a {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Oggetto
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo rotaia
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo di rotaie
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametro variabile NewGRF 60+x (esadecimale)
 
@@ -3592,7 +3593,7 @@ STR_REPLACE_ENGINES                                             :Locomotive
 STR_REPLACE_WAGONS                                              :Vagoni
 STR_REPLACE_ALL_RAILTYPE                                        :Tutti i veicoli ferroviari
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezionare il tipo di rotaia per la quale si desidera rimpiazzare le locomotive
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezionare il tipo di rotaie per il quale si desidera rimpiazzare le locomotive
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotiva sarà rimpiazzato il modello eventualmente selezionato a sinistra
 STR_REPLACE_RAIL_VEHICLES                                       :Veicoli ferroviari
 STR_REPLACE_ELRAIL_VEHICLES                                     :Veicoli ferroviari elettrici
