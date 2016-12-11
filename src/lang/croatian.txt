@@ -2685,6 +2685,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Naziv po
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Prihvaćeni teret: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Vrsta željeznice: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Najveća brzina željeznice: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ograničenje brzine na cesti: {LTBLUE}{VELOCITY}
 
@@ -2697,29 +2698,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zemlja pokrivena snijegom
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustinja
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Pruga pruga
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Pruga pruga sa blok-signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Pruga pruga sa pred-signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Pruga pruga sa izlaznim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Pruga pruga sa kombiniranim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Pruga pruga sa putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Pruga pruga sa jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Pruga pruga sa blok-signalima i pred-signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Pruga pruga sa blok-signalima i izlaznim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Pruga pruga sa blok-signalima i kombiniranim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Pruga pruga sa blok-signalima i putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Pruga pruga sa blok-signalima i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Pruga pruga sa pred-signalima i izlaznim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Pruga pruga sa pred-signalima i kombiniranim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Pruga pruga sa pred-signalima i putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Pruga pruga sa pred-signalima i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Pruga pruga sa izlaznim i kombiniranim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Pruga pruga sa izlaznim i putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Pruga pruga sa izlaznim i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Pruga pruga sa kombiniranim i putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Pruga pruga sa kombiniranim i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Pruga pruga sa putnim i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Pruga spremište vlaka
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Pruga
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Pruga sa blok-signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Pruga sa pred-signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Pruga sa izlaznim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Pruga sa kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Pruga sa putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Pruga sa jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Pruga sa blok-signalima i pred-signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Pruga sa blok-signalima i izlaznim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Pruga sa blok-signalima i kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Pruga sa blok-signalima i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Pruga sa blok-signalima i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Pruga sa pred-signalima i izlaznim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Pruga sa pred-signalima i kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Pruga sa pred-signalima i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Pruga sa pred-signalima i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Pruga sa izlaznim i kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Pruga sa izlaznim i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Pruga sa izlaznim i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Pruga sa kombiniranim i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Pruga sa kombiniranim i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Pruga  sa putnim i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Spremište vlakova
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta s javnom rasvjetom
@@ -3656,6 +3657,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikni z
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prebaci između prozora za izmjenu lokomotiva i vagona
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni
+STR_REPLACE_ALL_RAILTYPE                                        :Sva pružna vozila
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Odaberite vrstu željeznice za koju želite zamijeniti lokomotive
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikazuje sa kojom se lokomotivom zamjenjuje lijevo odabrana lokomotiva, ako postoji koji

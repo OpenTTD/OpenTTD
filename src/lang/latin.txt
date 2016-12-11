@@ -2791,6 +2791,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nomen te
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Onera accepta: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Typus ferriviae: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Velocitas maxima ferriviae: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Velocitas maxima viae: {LTBLUE}{VELOCITY}
 
@@ -2803,29 +2804,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Agri
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terra Nivea
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserta
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Astarium Ferrivia
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Astarium Ferrivia cum signalibus zonalibus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Astarium Ferrivia cum signalibus aditus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Astarium Ferrivia cum signalibus exitus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Astarium Ferrivia cum signalibus compositis
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Astarium Ferrivia cum signalibus itineris
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Astarium Ferrivia cum signalibus itineris unius cursus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Astarium Ferrivia cum signalibus zonalibus et aditus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Astarium Ferrivia cum signalibus zonalibus et exitus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Astarium Ferrivia cum signalibus zonalibus et compositis
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Astarium Ferrivia cum signalibus zonalibus et itineris
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Astarium Ferrivia cum signalibus zonalibus et itineris unius cursus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Astarium Ferrivia cum signalibus aditus et exitus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Astarium Ferrivia cum signalibus aditus et compositis
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Astarium Ferrivia cum signalibus aditus et itineris
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Astarium Ferrivia cum signalibus aditus et itineris unius cursus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Astarium Ferrivia cum signalibus exitus et compositis
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Astarium Ferrivia cum signalibus exitus et itineris
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Astarium Ferrivia cum signalibus exitus et itineris unius cursus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Astarium Ferrivia cum signalibus compositis et itineris
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Astarium Ferrivia cum signalibus compositis et itineris unius cursus
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Astarium Ferrivia cum signalibus itineris et unius cursus itineris
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Receptaculum Ferrivia
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Astarium Ferriviae
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Ferrivia cum signalibus zonalibus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Ferrivia cum signalibus aditus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Ferrivia cum signalibus exitus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Ferrivia cum signalibus compositis
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Ferrivia cum signalibus itineris
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Ferrivia cum signalibus itineris unius cursus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Ferrivia cum signalibus zonalibus et aditus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ferrivia cum signalibus zonalibus et exitus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Ferrivia cum signalibus zonalibus et compositis
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Ferrivia cum signalibus zonalibus et itineris
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Ferrivia cum signalibus zonalibus et itineris unius cursus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ferrivia cum signalibus aditus et exitus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ferrivia cum signalibus aditus et compositis
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ferrivia cum signalibus aditus et itineris
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ferrivia cum signalibus aditus et itineris unius cursus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Ferrivia cum signalibus exitus et compositis
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Ferrivia cum signalibus exitus et itineris
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Ferrivia cum signalibus exitus et itineris unius cursus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ferrivia cum signalibus compositis et itineris
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ferrivia cum signalibus compositis et itineris unius cursus
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ferrivia cum signalibus itineris et unius cursus itineris
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Receptaculum ferriviarium
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Via
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Via cum lampadibus
@@ -3762,6 +3763,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Preme ut
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Mutare inter mutationem hamaxarum curruumque
 STR_REPLACE_ENGINES                                             :Hamaxarum
 STR_REPLACE_WAGONS                                              :Curruum
+STR_REPLACE_ALL_RAILTYPE                                        :Omnia vehicula ferriviaria
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Eligere typum astarii cui est hamaxas commutandas
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Haec monstrat novum vehiculum desideratum, si adest
