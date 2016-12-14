@@ -2322,7 +2322,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterner entre construire et retirer des voies, des signaux, des points de contrôle et des gares.{}Ctrl pour retirer également la voie lors du retrait des points de contrôle et des gares.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Améliorer le type de rail.{}Shift pour afficher seulement le coût estimé.
 
-STR_RAIL_NAME_RAILROAD                                          :Voie ferrée simple
+STR_RAIL_NAME_RAILROAD                                          :Voie ferrée
 STR_RAIL_NAME_ELRAIL                                            :Voie ferrée électrifiée
 STR_RAIL_NAME_MONORAIL                                          :Monorail
 STR_RAIL_NAME_MAGLEV                                            :Maglev
@@ -2590,6 +2590,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nom de l
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargaison acceptée{NBSP}: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Type de rail{NBSP}: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Vitesse limite de la voie{NBSP}: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Vitesse limite de la route{NBSP}: {LTBLUE}{VELOCITY}
 
@@ -2602,29 +2603,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Champs
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terre enneigée
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Désert
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Voie ferrée simple{NBSP}
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Voie ferrée simple avec signaux de bloc
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Voie ferrée simple avec pré-signaux
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Voie ferrée simple avec signaux de sortie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Voie ferrée simple avec signaux combinés
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Voie ferrée simple avec signaux de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Voie ferrée simple avec signaux de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Voie ferrée simple avec signal de bloc et pré-signaux
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Voie ferrée simple avec signal de bloc et signaux de sortie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Voie ferrée simple avec signal de bloc et signaux combinés
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Voie ferrée simple avec signaux de bloc et de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Voie ferrée simple avec signaux de bloc et de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Voie ferrée simple avec pré-signal et signal de sortie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Voie ferrée simple avec pré-signal et signal combiné
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Voie ferrée simple avec pré-signal et signal de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Voie ferrée simple avec pré-signal et signal de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Voie ferrée simple avec signal de sortie et signal combiné
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Voie ferrée simple avec signal de sortie et signal de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Voie ferrée simple avec signal de sortie et signal de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Voie ferrée simple avec signal combiné et signal de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Voie ferrée simple avec signal combiné et signal de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Voie ferrée simple avec signal de chemin et signal de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dépôt de trains de Voie ferrée simple
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Voie ferrée
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Voie ferrée avec signaux de bloc
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Voie ferrée avec pré-signaux
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Voie ferrée avec signaux de sortie
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Voie ferrée avec signaux combinés
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Voie ferrée avec signaux de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Voie ferrée avec signaux de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Voie ferrée avec signal de bloc et pré-signaux
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Voie ferrée avec signal de bloc et signaux de sortie
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Voie ferrée avec signal de bloc et signaux combinés
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Voie ferrée avec signaux de bloc et de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Voie ferrée avec signaux de bloc et de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Voie ferrée avec pré-signal et signal de sortie
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Voie ferrée avec pré-signal et signal combiné
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Voie ferrée avec pré-signal et signal de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Voie ferrée avec pré-signal et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Voie ferrée avec signal de sortie et signal combiné
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Voie ferrée avec signal de sortie et signal de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Voie ferrée avec signal de sortie et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Voie ferrée avec signal combiné et signal de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Voie ferrée avec signal combiné et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Voie ferrée avec signal de chemin et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dépôt ferroviaire
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Route
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Route avec lampadaires
@@ -3561,6 +3562,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer 
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterner entre les fenêtres de remplacement des locomotives ou des wagons
 STR_REPLACE_ENGINES                                             :Locomotives
 STR_REPLACE_WAGONS                                              :Wagons
+STR_REPLACE_ALL_RAILTYPE                                        :Tous le véhicules sur rail
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir un type de rail pour le remplacement de locomotives
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quel type de véhicule sera remplacé celui sélectionné à gauche, si possible

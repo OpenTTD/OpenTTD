@@ -660,7 +660,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Saltar a
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Saltar a la siguiente pista de la selección
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Detener música
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Comenzar música
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Mueva los cursores para fijar volumen de música y efectos
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Arrastre los controles deslizantes para ajustar el volumen de música y efectos
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Seleccionar programa 'todas las pistas'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Seleccionar programa 'estilo antiguo'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Seleccionar programa 'estilo moderno'
@@ -2282,7 +2282,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Poner ob
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Leyenda de Movimientos de Carga
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ninguna
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Seleccione las compañías a ser mostradas
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Seleccione las compañías a mostrar
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}sin uso
@@ -2603,10 +2603,10 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tierra cubierta por nieve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desierto
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía de Ferrocarril
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía de ferrocarril
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Ferrocarril con señales de bloque
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Ferrocarril con señales de entrada
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Ferrocarril con señales de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vía de ferrocarril con señales de salida
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vía de Ferrocarril con señales combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Ferrocarril con señales de ruta
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Ferrocarril con señales de ruta de un solo sentido
