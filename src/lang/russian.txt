@@ -2789,7 +2789,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Ж/д путь 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Ж/д путь с комбинированными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Ж/д путь с маршрутными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Ж/д путь с односторонними маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Ж/д путь с обычными и входными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Ж/д путь с обычным и входным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ж/д путь с обычным и выходным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Ж/д путь с обычными и комбинированными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Ж/д путь с обычными и маршрутными сигналами
@@ -3875,8 +3875,8 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Назв
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Название возд. судна
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}  Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Стоимость: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Построен в {LTBLUE}{NUM} г. {BLACK}Стоимость: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Общая загруженность состава:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} (Всего: {CARGO_SHORT})
@@ -4364,7 +4364,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... не
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не будут строить дороги сами. Вы можете включить строительство дорог в разделе «Настройки -> Окр.{NBSP}среда -> Города».
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}...в центре города нет места для статуи
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... в центре города нет места для статуи
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... слишком много предприятий
@@ -4420,7 +4420,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Нево
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Невозможно удалить пассажирскую трамвайную остановку...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Невозможно удалить грузовую трамвайную остановку...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Сначала удалите остановку
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...здесь нет станции
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... здесь нет станции
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала снесите ж/д станцию
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Сначала снесите автобусную остановку
@@ -4486,8 +4486,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здес
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не удалось удалить рельсы...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не удалось удалить сигнал...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Невозможно преобразовать здесь сигнал...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...здесь нет железной дороги
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...сигналы отсутствуют
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... здесь нет железной дороги
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... сигналы отсутствуют
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Здесь невозможно преобразовать тип рельса...
 
@@ -4498,8 +4498,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Здес
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Здесь невозможно проложить трамвайные пути...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не удалось удалить дорогу...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не удалось удалить трамвайные пути...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...здесь нет дороги
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...здесь нет трамвайных путей
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... здесь нет дороги
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... здесь нет трамвайных путей
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Здесь невозможно построить канал...
@@ -4632,7 +4632,7 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не у�
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не удалось перейти к выделенному заданию...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... ТС не может достигнуть всех станций
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС не может достигнуть этой станции
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...ТС с общим маршрутом не может достигнуть этой станции
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС с общим маршрутом не может достигнуть этой станции
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Невозможно использовать общий маршрут...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Невозможно создать индивидуальный маршрут...
