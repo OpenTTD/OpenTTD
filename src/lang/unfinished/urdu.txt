@@ -1049,6 +1049,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :مخالفان�
 
 # Settings tree window
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(کوئی وضاحت موجود نہیں)
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}ترتیب قسم: {ORANGE}{STRING}
 
 
 
@@ -1200,6 +1201,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :مخصوص پٹ
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :تعمیراتی ٹول کو استعمال کے بعد فعال رکھیں: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :کمپنی کی مالیاتی ونڈو میں اخراجات کو اکٹھا دکھائیں: {STRING}
 
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :وسیع آواز چلایں
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :موزوں گاڑیاں نہ ہونے کی صورت میں عمارت کو غیر فعال کر دیں: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :کمپنی کی زیادہ سے زیادہ ریل گاڑیاں: {STRING}
@@ -2184,6 +2186,7 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE} جای�
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :غیر متوقع سپرائٹ (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 
@@ -2313,6 +2316,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 
 # Industry view
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}گزشتہ ماہ کی پیداوار:
 
 ############ range for requires starts
 ############ range for requires ends
@@ -2339,6 +2343,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 # Group window
 
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}گروپ ۔ اس گروپ ک تمام گاڑیاں دیکھنے کے لیے اسے دبایں۔ پکڑ کے اوپر نیچے بھی کر سکتے ہیں۔
 
 
 
@@ -2533,6 +2538,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقف�
 # AI configuration window
 
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کھیل کا سکرپٹ
 
 STR_AI_CONFIG_CHANGE_NONE                                       :
 
@@ -2605,6 +2611,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 
 # Station construction related errors
 
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :ایک اور گودی کے قریب
 
 # Station destruction related errors
 
@@ -2722,9 +2729,11 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoo
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :چرچ
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_POWER_STATION                                 :بجلی گھر
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
