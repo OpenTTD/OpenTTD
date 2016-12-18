@@ -2799,9 +2799,9 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ж/д путь 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ж/д путь с входными и маршрутными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ж/д путь с входным и односторонним маршрутным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Ж/д путь с выходными и комбинированными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Ж/д путь с выходными и маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Ж/д путь с выходным и маршрутным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Ж/д путь с выходным и односторонним маршрутным сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ж/д путь с комбинир. и маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ж/д путь с комбинированным и маршрутным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ж/д путь с комбинированным и односторонним маршрутным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ж/д путь с маршрутным и односторонним маршрутным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Ж/д депо
@@ -2954,7 +2954,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Изме
 STR_GENERATION_WORLD                                            :{WHITE}Создание мира...
 STR_GENERATION_ABORT                                            :{BLACK}Прервать
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Прервать создание игрового мира
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Вы серьезно хотите прервать создание мира?
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Вы действительно хотите прервать создание мира?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% готово
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Создание мира
