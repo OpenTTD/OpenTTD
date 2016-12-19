@@ -4948,7 +4948,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Грузови�
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Почтовый фургон MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Почтовый фургон Reynard
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Почтовый фургон Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Почтовый фургон «MightyMover»
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Почтовый фургон MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Почтовый фургон Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Почтовый фургон Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Цистерна Witcombe (нефть)
