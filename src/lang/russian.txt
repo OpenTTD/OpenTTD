@@ -363,7 +363,7 @@ STR_BUTTON_LOCATION                                             :{BLACK}Обзо
 STR_BUTTON_RENAME                                               :{BLACK}Переименовать
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - тащите его для перемещения окна
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Окна можно перетаскивать, схватив за заголовок
 STR_TOOLTIP_SHADE                                               :{BLACK}Свернуть окно, оставив заголовок
 STR_TOOLTIP_DEBUG                                               :{BLACK}Показать отладочную информацию NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Изменить размеры окна на значения по умолчанию. Ctrl+щелчок сохранит текущий размер как значение по умолчанию.
@@ -565,12 +565,12 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Строите�
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Строительство автомобильных коммуникаций
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Строительство трамвайных коммуникаций
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Строительство автомобильной инфраструктуры
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Строительство трамвайной инфраструктуры
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Строительство водных коммуникаций
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Строительство инфраструктуры водного транспорта
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -593,7 +593,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История 
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация о земле
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация об участке земли
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Отладка ИИ / скриптов
@@ -715,7 +715,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Стои
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Оплата за перевозку грузов
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Дней в пути
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Оплата за доставку 10 единиц (10 000 литров) груза на расстояние в 20 клеток
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Оплата за доставку 10 единиц (10{NBSP}000 литров) груза на расстояние в 20 клеток
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Показать все
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Спрятать все
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показать все виды грузов на графике
@@ -750,7 +750,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Подробная информация о компании
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Кол-во ТС:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Количество ТС:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станции:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мин. прибыль:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мин. доход:
@@ -758,15 +758,15 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Макс
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Доставлено:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Груз:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Деньги:
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Заём:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Займ:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всего:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Количество транспортных средств, принёсших доход в прошлом году.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Количество транспортных средств, принёсших доход в прошлом году
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Количество обслуживаемых станций. Если несколько типов станций связаны в одну, они все учитываются отдельно.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибыль транспорта с самым низким доходом (среди транспортных средств старше 2-х лет)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Наименьший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Наибольший квартальный доход за последние 3 года
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Кол-во груза, доставленного за последние 4 квартала
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Количество груза, доставленного за последние 4 квартала
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Количество типов груза, доставленного за последний квартал
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Количество денег на банковском счету компании
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Размер займа, полученного этой компанией в банке
@@ -775,9 +775,9 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Всег
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Музыкальный автомат
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Все
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Старый Стиль
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Новый Стиль
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Уличный Стиль
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Старый стиль
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Новый стиль
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Уличный стиль
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Пользоват. 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Пользоват. 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Громкость музыки
@@ -801,7 +801,7 @@ STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Пере
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Выбор программы «Все треки»
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Выбор программы «Старый стиль музыки»
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Выбор программы «Новый стиль музыки»
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Выбрать музыкальную программу
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Выбор программы «Ezy Street»
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Выбор программы «Пользоват. 1»
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбор программы «Пользоват. 2»
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вкл./Выкл. случайный выбор программы
@@ -838,7 +838,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL.abl                       :транспо�
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Магнат Века
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY.abl       :Магнатом Века
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}«{STRING}»   ({COMMA})
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}«{STRING}» ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}Директора компании «{COMPANY}» называют {STRING.abl}!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME}, президент компании «{COMPANY}», заслужил титул «{STRING}»!
 
@@ -943,7 +943,7 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Взрыв нефтеперегонного завода вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Взрыв завода при подозрительных обстоятельствах вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}НЛО приземлилось возле г.{NBSP}{TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Обвал на угольной шахте вызывает оползень в районе г.{NBSP}{TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Обвал на угольной шахте вызвал оползень в районе г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Потоп!{}По крайней мере {COMMA} человек{P "" а ""} признан{P "" о о} пропавшим{P "" и и} без вести в результате наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Транспортная компания в опасном положении!
