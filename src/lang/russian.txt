@@ -396,9 +396,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Длина: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Площадь: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Площадь: {NUM} × {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Длина: {NUM}{}Разница высот: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площадь: {NUM} x {NUM}{}Разница высот: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площадь: {NUM} × {NUM}{}Разница высот: {HEIGHT}
 
 
 # These are used in buttons
@@ -944,7 +944,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Взрыв завода при подозрительных обстоятельствах вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}НЛО приземлилось возле г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Обвал на угольной шахте вызвал оползень в районе г.{NBSP}{TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Потоп!{}По крайней мере {COMMA} человек{P "" а ""} признан{P "" о о} пропавшим{P "" и и} без вести в результате наводнения!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Потоп!{}По крайней мере {COMMA} человек{P "" а ""} пропал{P "" о о} без вести в результате наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Транспортная компания в опасном положении!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} будет продана или объявлена банкротом, если не улучшит финансовые показатели!
@@ -964,7 +964,7 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLAC
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}Предприятие «{STRING}» объявляет о скором закрытии!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} закрывается из-за проблем с поставками сырья!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}«{STRING}» объявляет о закрытии в связи с отсутствием деревьев в округе!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}«{STRING}» объявляет о закрытии в связи с полной вырубкой близлежащих лесов!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
@@ -989,7 +989,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}У ТС 
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}У ТС «{VEHICLE}» недействительное задание
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}У ТС «{VEHICLE}» повторяющиеся задания
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}У ТС «{VEHICLE}» некорректный пункт назначения
-STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} направлен{G 0 "" а о ы} в аэропорт со слишком короткой полосой
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} направлен{G 0 "" а о ы} в аэропорт со слишком короткой взлётно-посадочной полосой
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}ТС «{VEHICLE}» устарело
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}ТС «{VEHICLE}» сильно устарело
@@ -2065,7 +2065,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Назв
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Клиенты
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Клиентов сейчас/макс.{}Компаний сейчас/макс.
-STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Размер карты
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Размер карты игры{}Нажмите для сортировки по площади
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
@@ -2082,7 +2082,7 @@ STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ИНФ�
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Клиенты: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Язык: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ландшафт: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Размер карты: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Размер карты: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версия сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Дата начала: {WHITE}{DATE_SHORT}
@@ -2661,7 +2661,7 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбо
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Выберите создаваемый объект. При нажатом Shift - оценка стоимости постройки.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Выберите класс объекта для строительства
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Предварительный просмотр объекта
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} x {NUM} клеток
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} × {NUM} клеток
 
 STR_OBJECT_CLASS_LTHS                                           :Маяки
 STR_OBJECT_CLASS_TRNS                                           :Передатчики
@@ -2759,7 +2759,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Влад
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Владелец ж/д пути: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Администрация: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Нет
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Координаты: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Координаты: {LTBLUE}{NUM} × {NUM} × {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Построено: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Класс станции: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип станции: {LTBLUE}{STRING}
@@ -2933,7 +2933,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вруч
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот карты:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Название карты:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
 STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Максимальная высота карты
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Изменить высоту снеговой линии
@@ -3854,7 +3854,7 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надё
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ёмкость: {LTBLUE}отсутствует{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ёмкость: {LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ёмкость: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ёмкость: {LTBLUE}{CARGO_LONG}{3:STRING} (×{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмкость: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY_LONG}
@@ -3880,11 +3880,11 @@ STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Общая загруженность состава:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} (Всего: {CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (×{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Пусто
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} из {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} из {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} из {STATION} (×{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Груз
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Показать сведения о перевозимых грузах

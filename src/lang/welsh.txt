@@ -2312,7 +2312,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Adeiladu Maglef
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Adeiladu trac rheilffordd. Mae Ctrl yn toglo adeiladu/codi'r rheilffordd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Adeiladu trac yn defnyddio'r modd Awtoreilffordd. Mae Ctrl yn toglo adeiladu/codi'r rheilffordd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Adeiladu trên depo (ar gyfer adeiladu a rhoi gwasanaeth i drenau). Mae Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Adeiladu depo trenau (ar gyfer adeiladu a rhoi gwasanaeth i drenau). Mae Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Newid rheilffordd yn bwynt llwybro. Mae Ctrl yn galluogi uno pwyntiau llwybro, tra fod Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Adeiladu gorsaf reilffordd. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Adeiladu signalau rheilffordd. Mae Ctrl yn toglo signalau semafor/golau lliw{}Mae llusgo'n adeiladu signalau ar hyd trac syth. Mae Ctrl yn adeiladu signalau hyd y gyffordd nesaf{}Mae Ctrl+Clic yn toglo agor y ffenestr dewis signalau. Mae Shift yn toglo adeiladu/amcangyfrif y gost
@@ -2323,7 +2323,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trosi/Di
 
 STR_RAIL_NAME_RAILROAD                                          :Rheilffordd
 STR_RAIL_NAME_ELRAIL                                            :rheilffordd drydan
-STR_RAIL_NAME_MONORAIL                                          :monoreilffordd
+STR_RAIL_NAME_MONORAIL                                          :Monoreilffordd
 STR_RAIL_NAME_MAGLEV                                            :maglef
 
 # Rail depot construction window
@@ -2589,6 +2589,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Enw teil
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Llwythi a dderbynir: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Math rheilffordd: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Terfyn cyflymder rheilffordd: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Terfyn cyflymder ffordd: {LTBLUE}{VELOCITY}
 
@@ -2601,29 +2602,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Caeau
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tir ag eira
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Anialdir
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cledrau Rheilffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cledrau Rheilffordd gyda signalau bloc
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cledrau Rheilffordd gyda rhagsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cledrau Rheilffordd gyda signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cledrau Rheilffordd gyda signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cledrau Rheilffordd gyda signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cledrau Rheilffordd gyda signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cledrau Rheilffordd gyda signalau bloc a rhagsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cledrau Rheilffordd gyda signalau bloc a signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cledrau Rheilffordd gyda signalau bloc a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cledrau Rheilffordd gyda signalau bloc a signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cledrau Rheilffordd gyda signalau bloc a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cledrau Rheilffordd gyda rhagsignalau a signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cledrau Rheilffordd gyda rhagsignalau a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cledrau Rheilffordd gyda rhagsignalau a signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cledrau Rheilffordd gyda rhag-signalau a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cledrau Rheilffordd gyda signalau gadael a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cledrau Rheilffordd gyda signalau gadael a signalau llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cledrau Rheilffordd gyda signalau gadael a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cledrau Rheilffordd gyda signalau cyfun a llwybro
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cledrau Rheilffordd gyda signalau cyfun a signalau llwybr unffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cledrau Rheilffordd gyda signalau llwybro a signalau llwybro unffordd
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo trên Rheilffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cledrau rheilffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cledrau rheilffordd gyda signalau bloc
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cledrau rheilffordd gyda rhagsignalau
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cledrau rheilffordd gyda signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cledrau rheilffordd gyda signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cledrau rheilffordd gyda signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cledrau rheilffordd gyda signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cledrau rheilffordd gyda signalau bloc a rhagsignalau
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cledrau rheilffordd gyda signalau bloc a signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cledrau rheilffordd gyda signalau bloc a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cledrau rheilffordd gyda signalau bloc a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cledrau rheilffordd gyda signalau bloc a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cledrau rheilffordd gyda rhagsignalau a signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cledrau rheilffordd gyda rhagsignalau a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cledrau rheilffordd gyda rhagsignalau a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cledrau rheilffordd gyda rhag-signalau a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cledrau rheilffordd gyda signalau gadael a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cledrau rheilffordd gyda signalau gadael a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cledrau rheilffordd gyda signalau gadael a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cledrau rheilffordd gyda signalau cyfun a llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cledrau rheilffordd gyda signalau cyfun a signalau llwybr unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cledrau rheilffordd gyda signalau llwybro a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo trenau rheilffordd
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ffordd gyda goleuadau stryd
@@ -3369,7 +3370,7 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Cerbydau Rheilf
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Cerbydau Monoreilffordd Newydd
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Cerbydau Maglef Newydd
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Cerbydau Rheilffordd
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Cerbydau Rheilffordd Newydd
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Cerbydau Ffordd Newydd
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Llongau Newydd
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Awyrennau Newydd
@@ -3560,6 +3561,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Gwasgwch
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Newid rhwng y ffenest disodli wagenni a'r un injanau
 STR_REPLACE_ENGINES                                             :Injanau
 STR_REPLACE_WAGONS                                              :Wagenni
+STR_REPLACE_ALL_RAILTYPE                                        :Pob cerbyd rheilffordd
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Dewiswch y math o reilffordd yr hoffech chi ddisodli injans ar ei gyfer
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dangoswch pa injan (os unrhyw) y mae'r injan ar y chwith yn cael ei disodli gyda
@@ -4252,7 +4254,7 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bwï
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bwï mewn defnydd gan cwmni arall!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Methu adeiladu trên depo yma...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Methu adeiladu depo trenau yma...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Methu adeiladu depo cerbydau ffordd yma...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Methu adeiladu depo cerbyd tramiau yma...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Methu adeiladu depo llong yma...
