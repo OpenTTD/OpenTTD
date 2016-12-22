@@ -1399,7 +1399,7 @@ make_compiler_cflags() {
 			flags="$flags -fno-tree-vrp"
 		fi
 
-		if [ $cc_version -ge 407 ]; then
+		if [ $cc_version -eq 407 ]; then
 			# Disable -Wnarrowing which gives many warnings, such as:
 			# warning: narrowing conversion of '...' from 'unsigned int' to 'int' inside { } [-Wnarrowing]
 			# They are valid according to the C++ standard, but useless.
