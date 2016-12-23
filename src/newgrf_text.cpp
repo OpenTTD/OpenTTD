@@ -527,6 +527,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 					case 0x1B:
 					case 0x1C:
 					case 0x1D:
+					case 0x1E:
 						d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
 						break;
 
@@ -996,6 +997,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_POWER:
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
+		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
 			if (argv_size < 1) {
 				DEBUG(misc, 0, "Too many NewGRF string parameters.");
 				return 0;
@@ -1058,6 +1060,10 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID:
 				*argv = MapGRFStringID(_newgrf_textrefstack.grffile->grfid, _newgrf_textrefstack.PopUnsignedWord());
+				break;
+
+			case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
+				*argv = 1 << GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile);
 				break;
 		}
 	} else {
@@ -1127,6 +1133,9 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
 			return SCC_CARGO_TINY;
+
+		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
+			return SCC_CARGO_LIST;
 
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			return SCC_STATION_NAME;
