@@ -3162,9 +3162,9 @@ STR_TOWN_POPULATION                                             :{BLACK}Насе
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Мегаполис)
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Зданий: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пассажиров за прошлый месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Почты за прошлый месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Население: {ORANGE}{COMMA}{BLACK} Зданий: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пассажиров за прошлый месяц: {ORANGE}{COMMA}{BLACK}; макс.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Почты за прошлый месяц: {ORANGE}{COMMA}{BLACK}; макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, необходимый для роста города:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} требу{G 0 е е е ю}тся
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} требу{G 0 е е е ю}тся зимой
@@ -3176,8 +3176,8 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Горо
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Город {RED}не{BLACK} развивается
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать город в основном окне. Ctrl+щелчок - показать в дополнительном окне.
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Местные власти
-STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Информация о местных властях
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Администрация
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Взаимодействие с администрацией города
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Переименовать город
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Расширить
@@ -3192,9 +3192,9 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Адми
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейтинг транспортных компаний
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Доступные действия:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Список возможных действий в этом городе - щёлкните для получения доп. сведений
-STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Применить
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выполнить выделенное действие в списке выше
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Список возможных действий в этом городе. Описание выбранного действия приводится ниже.
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Выполнить
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выполнить выбранное действие
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Малая рекламная кампания
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Средняя рекламная кампания
@@ -3437,7 +3437,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Прод
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Компания
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Имя директора
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Мы ищем транспортную компанию для присоединения к ней.{}{}Вы хотите купить {COMPANY} за {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Мы ищем потенциального покупателя для нашей компании.{}{}Не желаете ли Вы приобрести {COMPANY} за {CURRENCY_LONG}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфраструктура «{COMPANY}»
