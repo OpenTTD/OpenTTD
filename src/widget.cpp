@@ -2393,14 +2393,21 @@ void NWidgetLeaf::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
+	/* Setup a clipping rectangle... */
+	DrawPixelInfo new_dpi;
+	if (!FillDrawPixelInfo(&new_dpi, this->pos_x, this->pos_y, this->current_x, this->current_y)) return;
+	/* ...but keep coordinates relative to the window. */
+	new_dpi.left += this->pos_x;
+	new_dpi.top += this->pos_y;
+
+	DrawPixelInfo *old_dpi = _cur_dpi;
+	_cur_dpi = &new_dpi;
+
 	Rect r;
 	r.left = this->pos_x;
 	r.right = this->pos_x + this->current_x - 1;
 	r.top = this->pos_y;
 	r.bottom = this->pos_y + this->current_y - 1;
-
-	const DrawPixelInfo *dpi = _cur_dpi;
-	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
 
 	bool clicked = this->IsLowered();
 	switch (this->type) {
@@ -2512,6 +2519,8 @@ void NWidgetLeaf::Draw(const Window *w)
 	if (this->IsDisabled()) {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
+
+	_cur_dpi = old_dpi;
 }
 
 /**
