@@ -942,7 +942,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 				left < w->left + w->width &&
 				top < w->top + w->height) {
 			/* Window w intersects with the rectangle => needs repaint */
-			DrawOverlappedWindow(w, left, top, right, bottom);
+			DrawOverlappedWindow(w, max(left, w->left), max(top, w->top), min(right, w->left + w->width), min(bottom, w->top + w->height));
 		}
 	}
 }
