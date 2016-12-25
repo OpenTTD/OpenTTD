@@ -2416,7 +2416,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Библиот�
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Загрузка контента...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Запрашиваем файлы...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Сейчас скачивается {STRING} ({NUM} из {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Идёт загрузка {STRING} ({NUM} из {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Загрузка завершена
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} из {BYTES} загружено ({NUM}%)
 
