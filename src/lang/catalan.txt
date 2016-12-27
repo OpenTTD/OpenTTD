@@ -3885,7 +3885,7 @@ STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :salta a l'ordre
 STR_ORDER_CONDITIONAL_NUM                                       :Salta a l'ordre {COMMA} quan {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Salta a l'ordre {COMMA} quan {STRING} {STRING}
 
-STR_INVALID_ORDER                                               :{RED} (Ordre incorrecte)
+STR_INVALID_ORDER                                               :{RED} (Ordre incorrecta)
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horari)
