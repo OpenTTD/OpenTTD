@@ -2610,8 +2610,8 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vía de ferroca
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vía de ferrocarril con señales combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vía de ferrocarril con señales de ruta
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vía de ferrocarril con señales de ruta de un solo sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Ferrocarril con señales de bloque y señales de entrada
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ferrocarril con señales de bloque y señales de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vía de ferrocarril con señales de bloque y de entrada
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vía de ferrocarril con señales de bloque y de salida
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vía de ferrocarril con señales de bloque y combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vía de ferrocarril con señales de bloque y de ruta
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vía de ferrocarril con señales de bloque y de ruta de un solo sentido
