@@ -179,8 +179,6 @@ struct GRFConfig : ZeroedMemoryAllocator {
 
 	void CopyParams(const GRFConfig &src);
 
-	bool IsOpenTTDBaseGRF() const;
-
 	const char *GetTextfile(TextfileType type) const;
 	const char *GetName() const;
 	const char *GetDescription() const;

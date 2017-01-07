@@ -103,7 +103,6 @@ struct GRFLabel {
 /** Dynamic data of a loaded NewGRF */
 struct GRFFile : ZeroedMemoryAllocator {
 	char *filename;
-	bool is_ottdfile;
 	uint32 grfid;
 	byte grf_version;
 

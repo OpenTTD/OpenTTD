@@ -916,15 +916,6 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
 static const uint32 OPENTTD_GRAPHICS_BASE_GRF_ID = BSWAP32(0xFF4F5400);
 
 /**
- * Checks whether this GRF is a OpenTTD base graphic GRF.
- * @return true if and only if it is a base GRF.
- */
-bool GRFConfig::IsOpenTTDBaseGRF() const
-{
-	return (this->ident.grfid & 0x00FFFFFF) == OPENTTD_GRAPHICS_BASE_GRF_ID;
-}
-
-/**
  * Search a textfile file next to this NewGRF.
  * @param type The type of the textfile to search for.
  * @return The filename for the textfile, \c NULL otherwise.
