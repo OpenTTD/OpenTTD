@@ -425,7 +425,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir)
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
-		LoadNewGRFFile(config, 62, GLS_SAFETYSCAN, subdir);
+		LoadNewGRFFile(config, CONFIG_SLOT, GLS_SAFETYSCAN, subdir);
 
 		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
 		if (HasBit(config->flags, GCF_UNSAFE)) return false;
