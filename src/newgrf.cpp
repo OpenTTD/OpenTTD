@@ -6199,7 +6199,7 @@ static void ScanInfo(ByteReader *buf)
 	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
-	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur.grfconfig->flags, GCF_SYSTEM);
+	if (GB(grfid, 0, 8) == 0xFF) SetBit(_cur.grfconfig->flags, GCF_SYSTEM);
 
 	AddGRFTextToList(&_cur.grfconfig->name->text, 0x7F, grfid, false, name);
 
