@@ -420,8 +420,8 @@ bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir)
 	config->SetSuitablePalette();
 	config->FinalizeParameterInfo();
 
-	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
-	if (config->ident.grfid == 0 || config->ident.grfid == 0xFFFFFFFF || config->IsOpenTTDBaseGRF()) return false;
+	/* Skip if the grfid is 0 (not read) or if it is an internal GRF */
+	if (config->ident.grfid == 0 || HasBit(config->flags, GCF_SYSTEM)) return false;
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
