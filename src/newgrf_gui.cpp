@@ -1279,7 +1279,6 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			/* All widgets are now enabled, so disable widgets we can't use */
 			if (this->active_sel == this->actives)    this->DisableWidget(WID_NS_MOVE_UP);
 			if (this->active_sel->next == NULL)       this->DisableWidget(WID_NS_MOVE_DOWN);
-			if (this->active_sel->IsOpenTTDBaseGRF()) this->DisableWidget(WID_NS_REMOVE);
 		}
 
 		this->SetWidgetDisabledState(WID_NS_PRESET_DELETE, this->preset == -1);
