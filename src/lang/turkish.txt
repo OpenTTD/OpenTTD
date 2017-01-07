@@ -2590,6 +2590,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Havalima
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}İstenen: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Ray türü: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ray hız sınırı: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Yol hız sınırı: {LTBLUE}{VELOCITY}
 
@@ -2602,29 +2603,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Mera
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Karlı arazi
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Çöl
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Demiryolu ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Demiryolu blok sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Demiryolu ön sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Demiryolu çıkış sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Demiryolu karışık sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Demiryolu yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Demiryolu tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Demiryolu blok ve ön sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Demiryolu blok ve çıkış sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Demiryolu blok ve karışık sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Demiryolu blok ve yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Demiryolu blok ve tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Demiryolu ön ve çıkış sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Demiryolu ön ve karışık sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Demiryolu ön ve yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Demiryolu ön ve tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Demiryolu çıkış ve karışık sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Demiryolu çıkış ve yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Demiryolu çıkış ve tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Demiryolu karışık ve tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Demiryolu karışık ve tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Demiryolu yol ve tek yön yol sinyalli ray
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Demiryolu tren garajı
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Blok sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Ön sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Çıkış sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Blok ve ön sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Blok ve çıkış sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Blok ve karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Blok ve yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Blok ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ön ve çıkış sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ön ve karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ön ve yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ön ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Çıkış ve karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Çıkış ve yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Çıkış ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Karışık ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Karışık ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Yol ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Tren garajı
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Yol
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Sokak lambalı yol
@@ -3561,6 +3562,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Değişt
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.
 STR_REPLACE_ENGINES                                             :Lokomotifler
 STR_REPLACE_WAGONS                                              :Vagon
+STR_REPLACE_ALL_RAILTYPE                                        :Tüm demiryolu araçları
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Lokomatiflerini değiştireceğiniz ray türünü seçin
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki değiştiriliyorsa neyle değiştirildiğini göster
