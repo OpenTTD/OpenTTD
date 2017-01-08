@@ -1611,23 +1611,6 @@ make_cflags_and_ldflags() {
 			CFLAGS="$OSX_SYSROOT $CFLAGS"
 			LDFLAGS="$OSX_LD_SYSROOT $LDFLAGS"
 		fi
-
-		if [ "$enable_universal" = "0" ] && [ $cc_version -gt 400 ]; then
-			# Only set the min version when not doing an universal build.
-			# Universal builds set the version elsewhere.
-			if [ "$cpu_type" = "64" ]; then
-				CFLAGS="$CFLAGS -mmacosx-version-min=10.5"
-			else
-				gcc_cpu=`$cc_host -dumpmachine`
-				if [ "`echo $gcc_cpu | cut -c 1-3`" = "ppc" -o "`echo $gcc_cpu | cut -c 1-7`" = "powerpc" ]; then
-					# PowerPC build can run on 10.3
-					CFLAGS="$CFLAGS -mmacosx-version-min=10.3"
-				else
-					# Intel is only available starting from 10.4
-					CFLAGS="$CFLAGS -mmacosx-version-min=10.4"
-				fi
-			fi
-		fi
 	fi
 
 	if [ "$os" = "BEOS" ] || [ "$os" = "HAIKU" ]; then
