@@ -183,7 +183,7 @@ extern GRFLoadedFeatures _loaded_newgrf_features;
 byte GetGRFContainerVersion();
 
 void LoadNewGRFFile(struct GRFConfig *config, uint file_index, GrfLoadingStage stage, Subdirectory subdir);
-void LoadNewGRF(uint load_index, uint file_index);
+void LoadNewGRF(uint load_index, uint file_index, uint num_baseset);
 void ReloadNewGRFData(); // in saveload/afterload.cpp
 void ResetNewGRFData();
 void ResetPersistentNewGRFData();

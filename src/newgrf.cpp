@@ -9203,8 +9203,9 @@ static void AfterLoadGRFs()
  * Load all the NewGRFs.
  * @param load_index The offset for the first sprite to add.
  * @param file_index The Fio index of the first NewGRF to load.
+ * @param num_baseset Number of NewGRFs at the front of the list to look up in the baseset dir instead of the newgrf dir.
  */
-void LoadNewGRF(uint load_index, uint file_index)
+void LoadNewGRF(uint load_index, uint file_index, uint num_baseset)
 {
 	/* In case of networking we need to "sync" the start values
 	 * so all NewGRFs are loaded equally. For this we use the
@@ -9270,7 +9271,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
-			Subdirectory subdir = slot == file_index ? BASESET_DIR : NEWGRF_DIR;
+			Subdirectory subdir = slot < file_index + num_baseset ? BASESET_DIR : NEWGRF_DIR;
 			if (!FioCheckFileExists(c->filename, subdir)) {
 				DEBUG(grf, 0, "NewGRF file is missing '%s'; disabling", c->filename);
 				c->status = GCS_NOT_FOUND;

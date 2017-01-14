@@ -152,7 +152,7 @@ mrproper:
 distclean: mrproper
 
 maintainer-clean: distclean
-	$(Q)rm -f $(BIN_DIR)/baseset/openttd.grf $(BIN_DIR)/baseset/*.obg $(BIN_DIR)/baseset/*.obs $(BIN_DIR)/baseset/*.obm
+	$(Q)rm -f $(BIN_DIR)/baseset/openttd.grf $(BIN_DIR)/baseset/orig_extra.grf $(BIN_DIR)/baseset/*.obg $(BIN_DIR)/baseset/*.obs $(BIN_DIR)/baseset/*.obm
 
 depend:
 	@for dir in $(SRC_DIRS); do \

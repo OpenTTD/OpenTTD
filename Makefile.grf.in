@@ -44,22 +44,18 @@ PNG_FILES    := $(GRF_DIR)/*.png $(GRF_DIR)/rivers/*.png
 
 # Build the GRF.
 ifdef GRFCODEC
-all: $(BIN_DIR)/openttd.grf $(BIN_DIR)/orig_dos.obg $(BIN_DIR)/orig_dos_de.obg $(BIN_DIR)/orig_win.obg $(BIN_DIR)/orig_dos.obs $(BIN_DIR)/orig_win.obs $(BIN_DIR)/no_sound.obs $(BIN_DIR)/orig_win.obm $(BIN_DIR)/no_music.obm
+all: $(BIN_DIR)/openttd.grf $(BIN_DIR)/orig_extra.grf $(BIN_DIR)/orig_dos.obg $(BIN_DIR)/orig_dos_de.obg $(BIN_DIR)/orig_win.obg $(BIN_DIR)/orig_dos.obs $(BIN_DIR)/orig_win.obs $(BIN_DIR)/no_sound.obs $(BIN_DIR)/orig_win.obm $(BIN_DIR)/no_music.obm
 else
 all:
 endif
-
-# Make sure the sprites directory exists.
-$(OBJS_DIR)/sprites:
-	$(Q)-mkdir "$@"
 
 $(OBJS_DIR)/langfiles.tmp: $(LANG_DIR)/*.txt
 	$(E) '$(STAGE) Collecting baseset translations'
 	$(Q) cat $^ > $@
 
-$(BIN_DIR)/%.obg: $(BASESET_DIR)/%.obg $(BIN_DIR)/openttd.grf $(OBJS_DIR)/langfiles.tmp $(BASESET_DIR)/translations.awk
+$(BIN_DIR)/%.obg: $(BASESET_DIR)/%.obg $(BIN_DIR)/orig_extra.grf $(OBJS_DIR)/langfiles.tmp $(BASESET_DIR)/translations.awk
 	$(E) '$(STAGE) Updating $(notdir $@)'
-	$(Q) sed 's/^OPENTTD.GRF  = *[0-9a-f]*$$/OPENTTD.GRF  = '`$(MD5SUM) $(BIN_DIR)/openttd.grf | sed 's@ .*@@'`'/' $< > $@.tmp
+	$(Q) sed 's/^ORIG_EXTRA.GRF    = *[0-9a-f]*$$/ORIG_EXTRA.GRF    = '`$(MD5SUM) $(BIN_DIR)/orig_extra.grf | sed 's@ .*@@'`'/' $< > $@.tmp
 	$(Q) awk -v langfiles='$(OBJS_DIR)/langfiles.tmp' -f $(BASESET_DIR)/translations.awk $@.tmp >$@
 	$(Q) rm $@.tmp
 
@@ -72,14 +68,26 @@ $(BIN_DIR)/%.obm: $(BASESET_DIR)/%.obm $(OBJS_DIR)/langfiles.tmp $(BASESET_DIR)/
 	$(Q) awk -v langfiles='$(OBJS_DIR)/langfiles.tmp' -f $(BASESET_DIR)/translations.awk $< >$@
 
 # Compile extra grf
-$(BIN_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites $(GRF_DIR)/assemble_nfo.awk
+$(BIN_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(GRF_DIR)/assemble_nfo.awk
 	$(E) '$(STAGE) Assembling openttd.nfo'
+	$(Q)-mkdir -p $(OBJS_DIR)/sprites
 	$(Q)-cp $(PNG_FILES) $(OBJS_DIR)/sprites 2> /dev/null
 	$(Q) awk -f $(GRF_DIR)/assemble_nfo.awk $(GRF_DIR)/openttd.nfo > $(OBJS_DIR)/sprites/openttd.nfo
 	$(Q) $(NFORENUM) -s $(OBJS_DIR)/sprites/openttd.nfo
 	$(E) '$(STAGE) Compiling openttd.grf'
 	$(Q) $(GRFCODEC) -n -s -e -p1 $(OBJS_DIR)/openttd.grf
 	$(Q)cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf
+
+# The copy operation of PNG_FILES is duplicated from the target 'openttd.grf', thus those targets may not run in parallel.
+$(BIN_DIR)/orig_extra.grf: $(PNG_FILES) $(NFO_FILES) $(GRF_DIR)/assemble_nfo.awk | $(BIN_DIR)/openttd.grf
+	$(E) '$(STAGE) Assembling orig_extra.nfo'
+	$(Q)-mkdir -p $(OBJS_DIR)/sprites
+	$(Q)-cp $(PNG_FILES) $(OBJS_DIR)/sprites 2> /dev/null
+	$(Q) awk -f $(GRF_DIR)/assemble_nfo.awk $(GRF_DIR)/orig_extra.nfo > $(OBJS_DIR)/sprites/orig_extra.nfo
+	$(Q) $(NFORENUM) -s $(OBJS_DIR)/sprites/orig_extra.nfo
+	$(E) '$(STAGE) Compiling orig_extra.grf'
+	$(Q) $(GRFCODEC) -n -s -e -p1 $(OBJS_DIR)/orig_extra.grf
+	$(Q)cp $(OBJS_DIR)/orig_extra.grf $(BIN_DIR)/orig_extra.grf
 
 # Clean up temporary files.
 clean:

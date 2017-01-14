@@ -9,7 +9,7 @@
 // OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
-// Sources for OpenTTD's required base graphics.
+// Sources for extra graphics to complement the original graphics.
 // Checks whether the correct version of OpenTTD is used before
 // allowing it to be used.
 //
@@ -61,41 +61,24 @@
 
 // GRF ID, must start with FF so it gets ignored
 //@@WARNING DISABLE 101
-   -1 * 0	 08 08 FF FF FF FE
+   -1 * 0	 08 08 FF "OTT"
 
 // Name of the GRF
-             "OpenTTD's default and fallback extra graphics" 00
+             "Original baseset extra graphics" 00
 
 // Description of the GRF.
              "License: GNU General Public License version 2" 0D
-             "Marcin Grzegorczyk: non-halftile foundations" 0D
-             "Michael Blunck: catenary, signals" 0D
-             "George: canals" 0D
-             "David Dallaston: tram tracks" 0D
-             "Jonathan G. Rennison: aqueducts" 0D
-             "Bilbo, Jasper Vries: font" 0D
              "Andrew Parkhouse: rivers" 0D
+             "Addi and PaulC: original graphics fixes" 0D
              "OpenTTD developers: other graphics" 00
 
 //
 // The real data of the GRF is acquired from several subfiles.
 //
-#include "2ccmap.nfo"
-#include "signals.nfo"
-#include "elrails.nfo"
-#include "foundations.nfo"
-#include "canals.nfo"
-#include "oneway.nfo"
-#include "tramtracks.nfo"
-#include "sloped_tracks.nfo"
-#include "airports.nfo"
-#include "roadstops.nfo"
-#include "aqueduct.nfo"
-#include "autorail.nfo"
-#include "flags.nfo"
-#include "openttdgui.nfo"
-#include "airport_preview.nfo"
-#include "chars.nfo"
-#include "mono.nfo"
-#include "tunnel_portals.nfo"
-#include "palette.nfo"
+#include "shore.nfo"
+#include "fix_graphics.nfo"
+#include "rivers/rapids.nfo"
+#include "rivers/temperate.nfo"
+#include "rivers/arctic.nfo"
+#include "rivers/tropic.nfo"
+#include "rivers/toyland.nfo"
