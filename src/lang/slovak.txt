@@ -2974,8 +2974,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použit
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškodený sprite. Všetky poškodené sprajty budú zobrazené ako červený otáznik (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje viacnásobné záznamy Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čítanie za koncom pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V používanej základnej grafickej sade chýbajú niektoré grafické objekty.{}Aktualizujte prosím základnú grafickú sadu.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Aktuálne používanej základnej sade grafiky chýba niekoľko spritov.{}Prosím zaktualizujte základnú sadu grafiky.{}Keďže hráte {YELLOW}vývojovú verziu OpenTTD{WHITE}, môžete tiež potrebovať{YELLOW}vývojovú verziu základnej sady grafiky{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované GRF prostriedky nie sú dosupné (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bol vypnutý {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nesprávny/neznámy formát rozloženia sprite(ov) (sprite {3:NUM})

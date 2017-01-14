@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :不正なIDが�
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING}には破損スプライトがあります。破損スプライトは赤疑問符({RED}?{YELLOW})として表示されます
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :アクション8のエントリが複数含まれています (スプライト {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :疑似スプライトのデータが十分にありません (スプライト {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}使用中の基本グラフィックセットから複数のスプライトが欠落しています。{}セットを更新して下さいますよう、お願いします
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}使用中の基本グラフィックセットから複数のスプライトが欠落しています。{}セットを更新して下さいますよう、お願いします{}{YELLOW}OpenTTDの速報開発版{WHITE}をお使いの際は、{YELLOW}速報開発版に即したグラフィックセット{WHITE}が必要となる場合があります
 STR_NEWGRF_ERROR_GRM_FAILED                                     :要求されたGRFのリソースは使用できません (スプライト {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}は{STRING}により無効にされました
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :不正なレイアウト書式です (スプライト {3:NUM})

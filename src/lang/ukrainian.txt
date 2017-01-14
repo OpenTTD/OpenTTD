@@ -3037,8 +3037,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Спроба в
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} містить зіпсований спрайт. Усі зіпсовані спрайти будуть показані як червоний знак питання (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Містить декілька записів Action 8 (спрайт {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Вихід за границю псевдо-спрайта при читанні (спрайт {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У базовому наборі графіки, що зараз використовується не вистачає спрайтів.{}Будь-ласка оновіть базовий набір графіки
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}В наборі графіки, який використовується на даний момент відсутній ряд спрайтів.{}Будь ласка, поновіть базовий набір графіки.{}Оскільки ви граєте у {YELLOW} тестову версію OpenTTD{WHITE}, вам також може знадобитися {YELLOW}тестовий набір базової графіки{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Недоступні необхідні ресурси GRF (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} був вимкнений {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Некоректний або невідомий формат розміщення спрайтів (спрайт {3:NUM})

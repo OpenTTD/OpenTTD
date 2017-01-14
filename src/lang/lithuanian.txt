@@ -3125,8 +3125,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Bandymas panaud
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spruklį. Visi sugadinti sprukliai bus rodomi kaip raudoni klaustukai (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Susideda iš keleto veiksmo 8 įrašų (spruklys {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Skaitymas už pseudospruklio pabaigos (spruklys {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keleto spruklių.{}Atnaujinkite pagrindinį grafikos rinkinį
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Šiuo metu naudojamam pagrindinės grafikos rinkiniui trūsta keleto spruklių.{}Atnaujinkite pagrindinės grafikos rinkinį.{} Kadangi žaidžiate {YELLOW} negalutinę, vis dar kuriamą OpenTTD versiją, {WHITE}, jums, ko gero, reikėtų įdiegti atitinkamą{YELLOW}naujausią, negalutinį pagrindinės grafikos rinkinį.{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pageidautas GRF resursas yra neprieinamas (spruklys {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungtas {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas spruklio išdėstymo formatas (spruklys {3:NUM})

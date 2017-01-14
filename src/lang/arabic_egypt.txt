@@ -2524,7 +2524,6 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :تم تصميم
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :العديد من NewGRF تم تحميلها
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :تحميل {1:STRING}كملف ثابت مع NewGRF {STRING}قد يتسبب بمشكلة توافق.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} يحتوي على خصائص غير صالحة. جميع الخصائص الغير صالحة سوف يشار لها بعلامة استفهام حمراء.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}ملف الرسوم المستخدم حاليا يفتقد لبعض الرسوم الاساسية.{}الرجاء حدث ملف الرسوم.
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}تم تعطيلة بواسطة{STRING}
 
 # NewGRF related 'general' warnings

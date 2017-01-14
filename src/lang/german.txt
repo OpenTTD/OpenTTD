@@ -2907,8 +2907,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Zugriff auf ein
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält fehlerhafte Grafiken. Diese werden als Fragezeichen (?) dargestellt
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Action 8 - Einträge (Sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus (Sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Durch ein Update der Basisgrafiken kann dieser Fehler behoben werden
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Den momentan verwendeten Basisgrafiken fehlen einige Sprites.{}Bitte update die Basisgrafiken.{}Weil dieses eine {YELLOW}Entwickler-Version von OpenTTD{WHITE} ist, ist es möglich, dass auch eine {YELLOW}Entwickler-Version der Basisgrafiken{WHITE} benötigt wird.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angeforderte GRF-Ressource ist nicht verfügbar (Sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wurde von {STRING} deaktiviert
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges oder unbekanntes Format für Spritelayout (Sprite {3:NUM})

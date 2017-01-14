@@ -2999,8 +2999,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použit
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje vícero Akce 8 záznamů (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení konce pseudo-spritu (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Aktuálnímu grafickému setu chybí nějaké části.{}Aktualizuj prosím grafický set.{}Pokud hraješ{YELLOW}vývojovou verzi OpenTTD{WHITE}, možná potřebuješ {YELLOW}vývojovou verzi základních grafik{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje GRF nejsou dostupné (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} byla vypnuta {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neplatný/neznámý sprite layout formát (sprite {3:NUM})

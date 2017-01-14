@@ -150,6 +150,25 @@ uint GetOriginFileSlot(SpriteID sprite)
 }
 
 /**
+ * Count the sprites which originate from a specific file slot in a range of SpriteIDs.
+ * @param file_slot FIOS file slot.
+ * @param begin First sprite in range.
+ * @param end First sprite not in range.
+ * @return Number of sprites.
+ */
+uint GetSpriteCountForSlot(uint file_slot, SpriteID begin, SpriteID end)
+{
+	uint count = 0;
+	for (SpriteID i = begin; i != end; i++) {
+		if (SpriteExists(i)) {
+			SpriteCache *sc = GetSpriteCache(i);
+			if (sc->file_slot == file_slot) count++;
+		}
+	}
+	return count;
+}
+
+/**
  * Get a reasonable (upper bound) estimate of the maximum
  * SpriteID used in OpenTTD; there will be no sprites with
  * a higher SpriteID, although there might be up to roughly

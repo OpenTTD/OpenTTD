@@ -2839,8 +2839,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} บรรจุ sprites ที่สูญหาย. สิ่งที่สูญหายจะแสดงเป็นเครื่องหมายตกใจสีแดง (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}กราฟิกพื้นฐานที่ใช้อยู่มี Sprite ไม่สมบูรณ์{}กรุณาปรับรุ่นของ Base Graphic
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}ไฟล์ในกราฟฟิคพื้นฐานหายไปบางส่วน{}กรุณาอัพเดตกราฟฟิคพื้นฐาน.{}ตั้งแต่คุณเริ่มเล่น {YELLOW}ภาพของ OpenTTD{WHITE},คุณอาจต้องการ {YELLOW}ภาพของกราฟฟิคพื้นฐาน{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :ต้นแบบ GRF ที่ต้องการสามารถใช้การได้(sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ถูกยกเลิกโดย {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :ไม่ถูกต้อง/ไม่ทราบ รูปแบบ sprite (sprite {3:NUM})

@@ -5694,35 +5694,6 @@ static void SkipAct5(ByteReader *buf)
 }
 
 /**
- * Check whether we are (obviously) missing some of the extra
- * (Action 0x05) sprites that we like to use.
- * When missing sprites are found a warning will be shown.
- */
-void CheckForMissingSprites()
-{
-	/* Don't break out quickly, but allow to check the other
-	 * sprites as well, so we can give the best information. */
-	bool missing = false;
-	for (uint8 i = 0; i < lengthof(_action5_types); i++) {
-		const Action5Type *type = &_action5_types[i];
-		if (type->block_type == A5BLOCK_INVALID) continue;
-
-		for (uint j = 0; j < type->max_sprites; j++) {
-			if (!SpriteExists(type->sprite_base + j)) {
-				DEBUG(grf, 0, "%s sprites are missing", type->name);
-				missing = true;
-				/* No need to log more of the same. */
-				break;
-			}
-		}
-	}
-
-	if (missing) {
-		ShowErrorMessage(IsReleasedVersion() ? STR_NEWGRF_ERROR_MISSING_SPRITES : STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE, INVALID_STRING_ID, WL_CRITICAL);
-	}
-}
-
-/**
  * Reads a variable common to VarAction2 and Action7/9/D.
  *
  * Returns VarAction2 variable 'param' resp. Action7/9/D variable '0x80 + param'.

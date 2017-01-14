@@ -582,6 +582,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_ARCTIC_LANDSCAPE,                  "WID_SGI_ARCTIC_LANDSCAPE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_TROPIC_LANDSCAPE,                  "WID_SGI_TROPIC_LANDSCAPE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_TOYLAND_LANDSCAPE,                 "WID_SGI_TOYLAND_LANDSCAPE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_BASESET_SELECTION,                 "WID_SGI_BASESET_SELECTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_BASESET,                           "WID_SGI_BASESET");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_TRANSLATION_SELECTION,             "WID_SGI_TRANSLATION_SELECTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_TRANSLATION,                       "WID_SGI_TRANSLATION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_OPTIONS,                           "WID_SGI_OPTIONS");

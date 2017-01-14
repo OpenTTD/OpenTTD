@@ -2736,8 +2736,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Verið að reyn
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inniheldur gallaða mynd. Allar gallaðar myndir munu birtast sem rauð spurningamerki (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inniheldur margþættar aðgerðir, 8 innkomur (hreyfimynd {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Les fyrir endan af gervi-hreyfimynd (hreyfimynd {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Grunnteiknisafnið sem er í notkun vantar hluta af hreyfimyndunum.{}Vinsamlegast uppfærðu grunnteiknisafnið
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Í Grafíska safnið sem nú er í notkun vantar nokkrar myndir.{}Vinsamlegast uppfærið grafíska safnið.{}Þar sem þú ert að spila {YELLOW}þróunar útgáfu af OpenTTD{WHITE}, gæti verið að þú þyrftir líka {YELLOW} þróunar útgáfu af grafíska safninu{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Umbeðin GRF gögn ekki tiltæk (hreyfimynd {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} var óvirkjað af {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Rangt/óþekkt hreyfimyndar snið (hreyfimynd {3:NUM})

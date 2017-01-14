@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Versicht invali
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} huet eng korrupt Sprite. All korrupt Sprites ginn als Fragezeichen (?) duergestallt
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Huet eng Rei Action 8 Einträg (Sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lanscht d'Enn vum Pseudo-Sprite gelies (Sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}D'momentan benotzten Grafikset huet e puer Sprites ze mann.{}W.e.g d'Basisgrafikset updaten
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Am grad benotzten Basis-Grafikset fehlen e puer Sprites.{}W.e.g Basis-Grafikset updaten.{}Wellsde en {YELLOW}Development Snapshot vun OpenTTD spills{WHITE}, brauchsde och en {YELLOW}Development Snapshot vum Basis-Grafikset{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Ugefroten GRF Ressource net verfügbar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} gouf ausgeschalt vun {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/onbekannten Sprite Layout Format (Sprite {3:NUM})

@@ -1497,8 +1497,10 @@ public:
 		WID_SGI_ARCTIC_LANDSCAPE                     = ::WID_SGI_ARCTIC_LANDSCAPE,                     ///< Select arctic landscape button.
 		WID_SGI_TROPIC_LANDSCAPE                     = ::WID_SGI_TROPIC_LANDSCAPE,                     ///< Select tropic landscape button.
 		WID_SGI_TOYLAND_LANDSCAPE                    = ::WID_SGI_TOYLAND_LANDSCAPE,                    ///< Select toyland landscape button.
+		WID_SGI_BASESET_SELECTION                    = ::WID_SGI_BASESET_SELECTION,                    ///< Baseset selection.
+		WID_SGI_BASESET                              = ::WID_SGI_BASESET,                              ///< Baseset errors.
 		WID_SGI_TRANSLATION_SELECTION                = ::WID_SGI_TRANSLATION_SELECTION,                ///< Translation selection.
-		WID_SGI_TRANSLATION                          = ::WID_SGI_TRANSLATION,                          ///< Translation.
+		WID_SGI_TRANSLATION                          = ::WID_SGI_TRANSLATION,                          ///< Translation errors.
 		WID_SGI_OPTIONS                              = ::WID_SGI_OPTIONS,                              ///< Options button.
 		WID_SGI_HIGHSCORE                            = ::WID_SGI_HIGHSCORE,                            ///< Highscore button.
 		WID_SGI_SETTINGS_OPTIONS                     = ::WID_SGI_SETTINGS_OPTIONS,                     ///< Settings button.

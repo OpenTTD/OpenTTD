@@ -3059,8 +3059,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje več Ukaz 8 vnosov (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Prebrana datoteka preko meje za sličice (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Trenutni set osnovnih grafik ne vsebuje določenih sličic. Posodobi osnovni set.{}Odkar igraš {YELLOW} razvojni pogled OpenTTD{WHITE}, nogoče potrebuješ tudi {YELLOW}razvojni pogled osnovnih grafik{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Zahtevani viri GRF niso na voljo (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je bil izklopljen zaradi {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neveljaven/neznan format zapisa sličic (sprite {3:NUM})

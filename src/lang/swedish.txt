@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Försökt att a
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller en skadad bild. Alla korrupta bilder kommer att visas som ett rött frågetecken (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutet av pseudo-spriteobjekt (spriteobjekt {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet.{}Eftersom du spelar en {YELLOW}utvecklings-version av OpenTTD{WHITE}, så kan du även behöva en {YELLOW}utvecklings-version av basgrafikpaketet{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} har inaktiverats av {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktig/okänd layout-format av spriteobjekt (spriteobjekt {3:NUM})

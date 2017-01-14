@@ -2970,8 +2970,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen I
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Több Action 8 bejegyzést tartalmaz (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}A használt alap grafikus csomagból néhány egység hiányzik.{}Kérjük frissítsd az alap grafikus csomagot.{}Mivel az {YELLOW}OpenTTD fejlesztői változatát{WHITE} használod, lehet, hogy a {YELLOW}fejlesztői alap grafikus csomagot{WHITE} kellene használnod
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Kért GRF források nem elérhetőek (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} kikapcsolva {STRING} által
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Érvénytelen/ismeretlen sprite szerkezet formátum (sprite {3:NUM})

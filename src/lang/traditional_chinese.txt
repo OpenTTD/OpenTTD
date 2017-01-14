@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :子畫面企圖
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite 會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :過多的 Action 8 資料 (發生於第 {3:NUM} 個子畫面)
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :子畫面資料不足 (發生於第 {3:NUM} 個子畫面)
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}目前使用的基本圖形集少了某些 sprite。{}請更新基本圖形集。
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}你正在使用的圖形集缺少了一些圖形.{}請更新圖形集.{}因為你正在使用一個{YELLOW}開發中的OpenTTD{WHITE},你可能需要一個{YELLOW}開發中的圖形集{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :要求的 GRF 資料不存在或無法讀取 (發生於第 {3:NUM} 個子畫面)
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} 使 {1:STRING} 被停用
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :無效或無法識別的子畫面配置格式 (發生於第 {3:NUM} 個子畫面)

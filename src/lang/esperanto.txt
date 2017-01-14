@@ -2451,7 +2451,6 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} bezo
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :la GRF-dosiero estas farita por traduki
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tro da NewGRF-oj estas ŝarĝataj
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enhavas rompitan bildeton. Ĉiuj rompitaj bildetoj aspektos kiel ruĝaj demandsignoj (?)
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}La nuntempe uza baza grafikaĵaro mankas kelkajn da bildetoj.{}Bonvolu renovigu la baza grafikaĵaro
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} estis malaktivata per {STRING}
 
 # NewGRF related 'general' warnings

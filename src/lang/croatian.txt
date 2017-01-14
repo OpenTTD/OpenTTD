@@ -3003,8 +3003,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušaj koriš
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan sprite. Svi neispravni grafički znakovi bit će pokazani kao crveni upitnik (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži višestruke unose za Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pročitaj nakon kraja od pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Baznom grafičkom setu u uporabi nedostaju neki spriteovi.{}Ažurirajte bazni grafički set
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Trenutno korištenom osnovnom grafičkom setu nedostaju pojedini crteži.{}Molimo da nadogradite osnovni grafički set.{}Pošto igrate {YELLOW}razvojnu inačicu OpenTTD-a{WHITE}, možda će vam trebati i {YELLOW}razvojna inačica osnovnog grafičkog seta{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Zatraženi GRF resursi nisu dostupni (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je isključen od strane {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Pogrešan/nepoznat format raspored sprite-a (sprite {3:NUM})

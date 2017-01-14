@@ -2902,8 +2902,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggun
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Memuat beberapa entri Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Baca akhir sprite palsu (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Beberapa 'sprite' tidak terdapat pada Set Grafik Dasar yang sedang digunakan.{}Silahkan update Set Grafik Dasar
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Set grafis dasar kekurangan beberapa sprite.{}Tolong perbarui set grafis dasar.{}Karena anda memainkan {YELLOW}snapshot pengembangan OpenTTD{WHITE}, anda mungkin memerlukan{YELLOW}snapshot pengembangan set grafis dasar{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Sumber GRF yang diminta tidak tersedia (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} dinonaktifkan oleh {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format sprite salah/tidak diketahui (sprite {3:NUM})

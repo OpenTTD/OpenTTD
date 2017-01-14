@@ -3101,8 +3101,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušaj koriš
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan sprajt. Svi neispravni sprajtovi će biti prikazani kao crveni znakovi pitanja (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži više Akcija 8 ulaza (sprajt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje iza završetka pseudo-sprajta (sprajt {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Odabranom skupu osnovnih grafika nedostaje neki broj sprajtova.{}Molimo Vas da ga ažurirate
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Grafičkom setu koji je trenutno u upotrebi nedostaje određen broj sprajtova.{}Osvežite grafički set.{}S obzirom da igrate {YELLOW}razvojnu verziju OpenTTD-a{WHITE}, treba vam i {YELLOW}razvojna verzija grafičkog seta{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Traženi GRF resursi nisu dostupni (sprajt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je isključen od strane {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neispravan/nepoznat format prikazivanja sprajta (sprajt {3:NUM})

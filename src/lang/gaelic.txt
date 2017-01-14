@@ -3135,8 +3135,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Chaidh feuchain
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tha sprite coirbte am broinn {STRING.gen}. Thèid a h-uile sprite coirbte a shealltainn na comharradh-ceiste dhearg (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tha iomadh innteart gnìomh 8 ann (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Chaidh leughadh thar deireadh a' sprite mas fhìor (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Tha sprite no dhà a dhìth air an t-seata ghrafaigeachd bhunasach a tha thu a' cleachdadh an-dràsta.{}Feuch an ùraich thu an seata grafaigeachd bunasach
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Tha sprite no dhà a dhìth air an t-seata ghrafaigeachd bhunasach a tha thu a' cleachdadh an-dràsta.{}Feuch an ùraich thu an seata grafaigeachd bunasach.{}Bhon a tha thu a' cluich le {YELLOW}snapshot leasachaidh aig OpenTTD{WHITE}, ’S dòcha gu bheil {YELLOW} snapshot leasachaidh dhen t-seata grafaigeachd bunasach{WHITE} a dhìth ort cuideachd
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Chan eil na goireasan GRF a chaidh iarraidh ri làimh (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Chaidh {1:STRING} a chur à comas le {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Fòrmat co-dhealbhachd sprite mì-dhligheach/neo-aithnichte (sprite {3:NUM})

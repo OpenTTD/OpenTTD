@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på at 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder adskillige handling 8 indgange (grafikelement {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læs forbi slutningen af pseudo-grafikelement (grafikelement {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det brugte basis grafiksæt mangler en række elementer.{}Opdater venligst grafiksættet.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Den grafikpakke som bruges er ufuldstændig.{}Opdater venligst grafikpakken.{}eftersom du spiller et{YELLOW} development snapshot of OpenTTD{WHITE},får du måske også brug for er{YELLOW}development snapshot of the base graphics{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :De ønskede GRF ressourcer er ikke tilgængelige (grafikelement {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blev deaktiveret af {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldigt / ukendt grafikelement layoutformat (grafikelement {3:NUM})

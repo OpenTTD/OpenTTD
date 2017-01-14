@@ -2907,8 +2907,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Poging on 'n on
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat 'n korrupte prent. Korrupte prente sal as 'n rooi vraagteken gewys word (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat veelvoudige Aksie 8 inskrywings (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees verby die einde van die pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :WHITE}Die huidige basis-grafikastel ontbreek sommige sprites.{}Opdateer die basis-grafikastel.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Die huidige basis-grafikastel ontbreek sommige sprites.{}Opdateer die basis-grafikastel.{}Aangesien jy 'n {YELLOW}ontwikkelingsweergawe van OpenTTD{WHITE} het, mag jy dalk 'n {YELLOW}ontwikkelingsweergawe{WHITE} van die basis-grafikastel benodig{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Aangevraagde GRF hulpbronne is nie beskikbaar nie (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} was gedeaktiveer deur {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldige/onbekende sprite uitleg formaat (sprite {3:NUM})

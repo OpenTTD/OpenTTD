@@ -2907,8 +2907,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}The currently used base graphics set is missing a number of sprites.{}Please update the base graphics set
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}The currently used base graphics set is missing a number of sprites.{}Please update the base graphics set.{}Since you are playing a {YELLOW}development snapshot of OpenTTD{WHITE}, you might also need a {YELLOW}development snapshot of the base graphics{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Requested GRF resources not available (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} was disabled by {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/unknown sprite layout format (sprite {3:NUM})

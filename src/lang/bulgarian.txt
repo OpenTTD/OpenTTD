@@ -2838,8 +2838,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Опит за �
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} съдържа повреден обект. Вскички повредени обекти ще бъдат показани като червена въпросителна (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Текущите основни графики имат празни картинки.{}Моля обновете си основните графики.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Текущо използвания графичен сет има липсващи спрайтове.{}Моля обновете графичния сет.{}Тъй като играете {YELLOW}версия на OpenTTD в процес на разработка{WHITE}, може да се нуждаете и от {YELLOW}версията на графичния сет, която е в разработка{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Изискваните GRF resources не са на разположение (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} беше изключено от {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/unknown sprite layout format (sprite {3:NUM})

@@ -3287,8 +3287,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Próba użycia 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza obszar pseudo-sprite'u (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualnie używany zestaw grafik jest niekompletny.{}Proszę zaktualizować podstawowy zestaw grafik
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}W aktualnie używanym podstawowym zestawie graficznym brakuje pewnej ilości sprite'ów.{}Proszę zaktualizowaćswój zestaw graficzny.{}Z powodu tego, że używasz {YELLOW}rozwojowej wersji OpenTTD{WHITE}, możesz potrzebować również {YELLOW}rozwojowej wersji podstawowego zestawu graficznego{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Potrzebne źródło GRF nie jest dostępne (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} został wyłączony przez {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Niepoprawny/nieznany format układu sprite'u (sprite {3:NUM})

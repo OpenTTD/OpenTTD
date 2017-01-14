@@ -2908,8 +2908,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID ku
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir nesne içeriyor. Tüm bozuk nesneler kırmızı bir soru işareti (?) olarak görünecektir
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (nesne {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-nesne bitiminden sonrasını okudu (nesne {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı nesneleri içermiyor.{}Lütfen temel grafik kümesini güncelleyin
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Kullanımdaki temel grafik kümesi bazı nesneleri içermiyor.{}Lütfen temel grafik setinizi güncelleyin .{}{YELLOW}OpenTTD'nin geliştirme kopyasını {WHITE}kullandığınız için, {YELLOW}temel grafiklerin de{WHITE} geliştirme kopyasını kullanmalısınız.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (nesne {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz/bilinmeyen nesne yerleşim biçimi (nesne {3:NUM})

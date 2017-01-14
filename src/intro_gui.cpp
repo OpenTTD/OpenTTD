@@ -60,13 +60,21 @@ struct SelectGameWindow : public Window {
 
 	virtual void OnInit()
 	{
-		bool missing = _current_language->missing >= _settings_client.gui.missing_strings_threshold && !IsReleasedVersion();
-		this->GetWidget<NWidgetStacked>(WID_SGI_TRANSLATION_SELECTION)->SetDisplayedPlane(missing ? 0 : SZSP_NONE);
+		bool missing_sprites = _missing_extra_graphics > 0 && !IsReleasedVersion();
+		this->GetWidget<NWidgetStacked>(WID_SGI_BASESET_SELECTION)->SetDisplayedPlane(missing_sprites ? 0 : SZSP_NONE);
+
+		bool missing_lang = _current_language->missing >= _settings_client.gui.missing_strings_threshold && !IsReleasedVersion();
+		this->GetWidget<NWidgetStacked>(WID_SGI_TRANSLATION_SELECTION)->SetDisplayedPlane(missing_lang ? 0 : SZSP_NONE);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
+			case WID_SGI_BASESET:
+				SetDParam(0, _missing_extra_graphics);
+				DrawStringMultiLine(r.left, r.right, r.top,  r.bottom, STR_INTRO_BASESET, TC_FROMSTRING, SA_CENTER);
+				break;
+
 			case WID_SGI_TRANSLATION:
 				SetDParam(0, _current_language->missing);
 				DrawStringMultiLine(r.left, r.right, r.top,  r.bottom, STR_INTRO_TRANSLATION, TC_FROMSTRING, SA_CENTER);
@@ -76,20 +84,29 @@ struct SelectGameWindow : public Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
+		StringID str = 0;
 		switch (widget) {
-			case WID_SGI_TRANSLATION: {
-				SetDParam(0, _current_language->missing);
-				int height = GetStringHeight(STR_INTRO_TRANSLATION, size->width);
-				if (height > 3 * FONT_HEIGHT_NORMAL) {
-					/* Don't let the window become too high. */
-					Dimension textdim = GetStringBoundingBox(STR_INTRO_TRANSLATION);
-					textdim.height *= 3;
-					textdim.width -= textdim.width / 2;
-					*size = maxdim(*size, textdim);
-				} else {
-					size->height = height + padding.height;
-				}
+			case WID_SGI_BASESET:
+				SetDParam(0, _missing_extra_graphics);
+				str = STR_INTRO_BASESET;
 				break;
+
+			case WID_SGI_TRANSLATION:
+				SetDParam(0, _current_language->missing);
+				str = STR_INTRO_TRANSLATION;
+				break;
+		}
+
+		if (str != 0) {
+			int height = GetStringHeight(str, size->width);
+			if (height > 3 * FONT_HEIGHT_NORMAL) {
+				/* Don't let the window become too high. */
+				Dimension textdim = GetStringBoundingBox(str);
+				textdim.height *= 3;
+				textdim.width -= textdim.width / 2;
+				*size = maxdim(*size, textdim);
+			} else {
+				size->height = height + padding.height;
 			}
 		}
 	}
@@ -199,6 +216,11 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 	EndContainer(),
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 7),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SGI_BASESET_SELECTION),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_EMPTY, COLOUR_ORANGE, WID_SGI_BASESET), SetMinimalSize(316, 12), SetFill(1, 0), SetPadding(0, 10, 7, 10),
+		EndContainer(),
+	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SGI_TRANSLATION_SELECTION),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_EMPTY, COLOUR_ORANGE, WID_SGI_TRANSLATION), SetMinimalSize(316, 12), SetFill(1, 0), SetPadding(0, 10, 7, 10),

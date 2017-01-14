@@ -2840,8 +2840,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Mēģinājums i
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} satur bojātu gariņu. Visi bojātie gariņi tiks parādīti ar sarkanu jautājuma zīmi (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Satur vairākus Action 8 ierakstus (gariņš {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lasīt aiz pseidogariņa beigām (gariņš {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Pašlaik lietotajai pamata grafikas kopai trūkst daļa gariņu.{}Lūdzu atjauniniet pamata grafikas kopu
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Pašlaik lietotajai pamata grafikas kopai trūkst daļa gariņu.{}Lūdzu atjauniniet pamata grafikas kopu.{}Tā kā jūs spēlējat {YELLOW}OpenTTD izstrādes momentuzņēmumu{WHITE}, jums varētu būt nepieciešams arī {YELLOW}pamata grafikas izstrādes momentuzņēmums{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pieprasītie GRF resursi nav pieejami (gariņš {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ar {2:STRING} tika atspējots
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nederīgs/nezināms gariņa izkārtojuma formāts (gariņš {3:NUM})

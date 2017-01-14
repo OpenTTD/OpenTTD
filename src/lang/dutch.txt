@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Poging om ongel
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere acties 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Voorbij het einde van pseudo-sprite gelezen (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}De momenteel gebruikte basis graphics set mist een aantal sprites.{} Werk de ingestelde basis graphics bij.{} Aangezien u een {YELLOW} ontwikkeling momentopname van OpenTTD{WHITE} speelt, heeft u ook een {YELLOW} ontwikkeling snapshot van de basis graphics set{WHITE} nodig
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF middelen niet beschikbaar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} is uitgeschakeld door {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldig/onbekend sprite lay-out-formaat (sprite {3:NUM})

@@ -2689,7 +2689,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Hat besocht in 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} befettet in korrupte ôfbylding. Alle korrupte ôfbyldings sille mei in read fraachteken markearre wurde (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Befet meardere Aksje-8 fermeldings (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ein fan pseudo-ôfbylding lêze (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}It hjoeddeiske basisôfbyldingspakket misset in oantal ôfbylding.{}Besykje dit ôfbyldingspakket te fernijen
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Oanfrege GRF-bron is net beskikber (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wie útskeakele troch {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Unjildich/ûnbekind ôfbyldingsútlisformaat (sprite {3:NUM})

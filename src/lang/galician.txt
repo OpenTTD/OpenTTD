@@ -2860,8 +2860,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contén un sprite corrupto. Tódolos sprites corruptos mostraranse coma unha interrogación vermella (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contén múltiples entradas de acción 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura máis aló da fin dun pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites.{}Por favor, actualiza o conxunto de gráficos básico
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites.{}Por favor, actualiza o conxunto de gráficos básico.{}Dado que estás a xogar unha {YELLOW}versión de desenrolo de OpenTTD{WHITE}, é posíbel que tamén necesites unha {YELLOW}versión de desenrolo do conjunto de gráficos base{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Os recursos GRF solicitados non están disponíbeis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desactivado por {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de colocación de sprites inválido ou descoñecido (sprite {3:NUM})

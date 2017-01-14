@@ -3015,8 +3015,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθ�
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :Το {YELLOW}{STRING} περιέχει ένα αλλοιωμένο sprite. Όλα τα αλλοιωμένα sprites θα εμφανίζονται ως κόκκινα ερωτηματικά (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές καταχωρήσεις Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασε πέρα από το τέλος του ψευδό-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Λείπουν μερικά sprites από το τρέχον βασικό σετ γραφικών.{}Παρακαλώ ενημερώστε το βασικό σετ γραφικών
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Λείπουν μερικά sprites από το τρέχον βασικό σετ γραφικών.{}Παρακαλώ ενημερώστε το βασικό σετ γραφικών{}Επειδή παίζετε {YELLOW}δοκιμαστική έκδοση του OpenTTD{WHITE}, μπορεί να χρειάζεται να έχετε εγκατεστημένη {YELLOW}δοκιμαστική έκδοση των βασικών γραφικών{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Οι ζητημένοι πόροι GRF δεν είναι διαθέσιμοι (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {1:STRING} απενεργοποιήθηκε από το {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Άκυρη/άγνωστη μορφή σχεδίου sprite (sprite {3:NUM})

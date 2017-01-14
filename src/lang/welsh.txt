@@ -2907,8 +2907,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Ceisio defnyddi
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Mae'r {STRING} yn cynnwys corlun llygredig. Bydd corluniau llygredig yn cael eu dynodi gan farc cwestiwn coch (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Yn cynnwys sawl cofnod Gweithred 8 (corlun {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Darllen heibio i ddiwedd llid-gorlun (corlun {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Mae'r set raffeg sylfaenol a ddefnyddir ar hyn o bryd yn brin o sawl corlun{}Diweddarwch y set raffeg sylfaenol i ddatrys hyn
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Mae nifer o gorluniau ar goll o'r set graffeg sylfaenol mewn defnydd.{}Diweddarwch y set graffeg sylfaenol.{}Gane eich bod yn chwarae {YELLOW}ciplun datblygiadol o OpenTTD{WHITE}, efallai y byddwch angen {YELLOW}ciplun ddatblygiadol o'r grafffeg sylfaenol{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Nid yw'r adnoddau GRF a geisiwyd ar gael (corlun {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Fe analluogwyd {1:STRING} gan {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Fformat cynllun corlun annilys/anhysbys (corlun {3:NUM})

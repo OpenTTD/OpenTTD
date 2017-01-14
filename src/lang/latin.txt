@@ -3109,8 +3109,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Conatus agnosca
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} spiritum corruptum habet. Omnes spiritus corrupti monstrabuntur forma rubro puncto interrogativo - ?
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Continet plures Actiones 8 (spiritus {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectio post terminum pseudospiritus (spiritus {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Fundamento graphico adhibito deest nonulli spiritus.{}Utinam arcessas novam editionem
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Fundamento graphico adhibito deest nonulli spiritus.{}Utinam arcessas novam editionem.{}Quoniam ludis {YELLOW}editionem OpenTTD adhuc in explicando{WHITE}, fortasse etiam tibi necesse est {YELLOW}editio fundamenti graphici OpenTTD in explicando{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Opes GRF desideratae non parabiles (spiritus {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} neglectus est a {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Irrita/ignota dispositio spiritus (spiritus {3:NUM})

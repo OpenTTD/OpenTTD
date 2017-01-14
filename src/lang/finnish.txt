@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Yritys käyttä
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisältää useita Action 8-merkintöjä (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Luku pseudo-spriten ohi (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Käytössä olevasta perusgrafiikkapaketista puuttuu spritejä.{}Ole hyvä ja päivitä perusgrafiikkapaketti
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Käytössä olevasta perusgrafiikkapaketista puuttuu spritejä.{}Päivitä perusgrafiikkapaketti.{}Koska pelaat {YELLOW}OpenTTD:n kehitysversiota{WHITE}, saatat myös tarvita {YELLOW}kehitysversion perusgrafiikkapaketista{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pyydetyt GRF-resurssit eivät ole saatavilla (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} poisti käytöstä NewGRF:n {1:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Virheellinen/tuntematon spriten asettelumuoto (sprite {3:NUM})

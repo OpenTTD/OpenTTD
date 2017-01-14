@@ -2964,8 +2964,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Kasutati kõlbm
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisaldab vigast pilti. Kõiki vigaseid pilte näidatakse punase küsimärgina (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisaldab mitut Action 8 kirjet (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Loe pseudo-sprite lõpust edasi (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Praegune alusgraafika kogu ei sisalda mitmeid spraite.{}Palun uuenda alusgraafika kogu
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Praegune alusgraafika kogu ei sisalda mitmeid spraite.{}Palun uuenda alusgraafika kogu.{}Kuna sa mängid {YELLOW}OpenTTD arendusversiooniga{WHITE}, siis ilmselt pead sa kasutama {YELLOW}alusgraafika kogu arendusversiooni{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Soovitud GRFi ressursid ei ole saadaval (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blokeeriti {STRING} poolt
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :«Sprite» paigutus kõlbmatus vormis («sprite» {3:NUM})

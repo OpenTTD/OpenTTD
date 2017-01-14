@@ -3239,8 +3239,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Спроба в
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} утрымлiвае пашкоджаны спрайт. Усе пашкоджаныя спрайты будуць паказаны чырвоным знакам пытаньня (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Утрымлiвае некалькі блёкаў «Action 8» (спрайт {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чытаньне па-за канцом псэўда-спрайту (спрайт {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай ґрафікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай ґрафікі.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}У выкарыстаным наборы базавай ґрафікі адсутнічаюць некаторыя малюнкі.{}Калі ласка, абнавіце набор малюнкаў.{}Вам можа спатрэбіцца {YELLOW}тэставая вэрсія ґрафічнага набору{WHITE}, таму што ў вас {YELLOW}тэставая вэрсія OpenTTD{WHITE}.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запытаныя рэсурсы GRF недаступныя (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} быў адключаны з-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недапушчальны/невядомы фармат размяшчэньня спрайтаў (спрайт {3:NUM})

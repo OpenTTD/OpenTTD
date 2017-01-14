@@ -2908,8 +2908,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :유효하지 �
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 에 손상된 객체가 있습니다. 모든 손상된 객체는 붉은 물음표로 보일 것입니다.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :여러 개의 액션 8 엔트리 포함 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :모조-스프라이트의 지나간 끝을 읽음 (스프라이트 {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}최근에 이용한 기본 그래픽 세트에 객체가 많이 손실되었습니다.{}기본 그래픽 세트를 업데이트 하십시오.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}현재 사용중인 기본 그래픽에 그래픽이 다수 존재하지 않습니다.{}기본 그래픽 세트를 업데이트해 주십시오.{}현재 당신이 {YELLOW}OpenTTD의 개발 버전{WHITE}을 사용하고 있기 때문에, {YELLOW}기본 그래픽의 개발 버전{WHITE}이 필요할 수 있습니다.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :요청한 GRF 자원을 사용할 수 없음 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}(은)는 {STRING} 때문에 사용할 수 없습니다
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :유효하지 않은/알 수 없는 스프라이트 구조 유형 (스프라이트 {3:NUM})

@@ -1270,7 +1270,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Објекто�
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Во моментов се користат база графики поставени недостасува голем број на sprites.{}Надградете ја основата графика во собата.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Внимание!

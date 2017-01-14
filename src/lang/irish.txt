@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Iarracht ID nea
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tá sprite truaillithe in {STRING}. Taispeánfar gach sprite truaillithe mar chomhartha ceiste (?) dearg.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálacha iolraccha Ghníomhaíocht 8 ann (sprid {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Léadh tar éis deireadh an pseudo-sprid (sprid {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Tá roinnt sprite in easnamh sa tsraith bhunúsach grafaicí atá in úsáid faoi láthair.{}Déan úasghrádú ar an tsraith bhunúsach grafaicí le do thoil
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Tá roinnt sprideanna in easnamh sa tacar bunghraificí atá in úsáid faoi láthair.{}Nuashonraigh an tacar bunghraificí.{}Toisc go bhfuil tú ag imirt ar {YELLOW}roghbhlúire forbróirí (development snapshot) OpenTTD{WHITE}, seans go mbeidh {YELLOW}roghbhlúire forbróirí de na bunghraificí{WHITE} ag teastáil uait
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Níl na hacmhainní GRF a iarradh ar fáil (sprid {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Bhí {1:STRING} díchumasaithe ag {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formáid neamhbhailí/anaithnid do leagan amach na spride (sprid {3:NUM})

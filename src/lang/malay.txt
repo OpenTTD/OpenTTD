@@ -2602,7 +2602,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Cubaan untuk me
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} mengandungi peperi yang rosak. Semua peperi yang rosak akan ditunjukkan menggunakan tanda soal (?) merah.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Mengandungi pelbagai Tindakan 8 kemasukan (peperi {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Bacaan melepasi penghujung peperi-pseudo (peperi {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Set asas grafik yang sedang digunakan, hilang sebilangan sprites.{}Sila mengemaskini set asas grafik
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Sumber GRF yang diminta tidak diperolehi (peperi {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} telah dinyahaktifkan oleh {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Tidak sah/diketahui format susun atur (peperi {3:NUM})

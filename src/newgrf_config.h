@@ -202,6 +202,7 @@ extern GRFConfig *_all_grfs;          ///< First item in list of all scanned New
 extern GRFConfig *_grfconfig;         ///< First item in list of current GRF set up
 extern GRFConfig *_grfconfig_newgame; ///< First item in list of default GRF set up
 extern GRFConfig *_grfconfig_static;  ///< First item in list of static GRF set up
+extern uint _missing_extra_graphics;  ///< Number of sprites provided by the fallback extra GRF, i.e. missing in the baseset.
 
 /** Callback for NewGRF scanning. */
 struct NewGRFScanCallback {
@@ -214,7 +215,6 @@ struct NewGRFScanCallback {
 size_t GRFGetSizeOfDataSection(FILE *f);
 
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
-void CheckForMissingSprites();
 const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = NULL, uint32 desired_version = 0);
 GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);

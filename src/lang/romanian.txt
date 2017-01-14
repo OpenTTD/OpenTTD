@@ -2866,8 +2866,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Încercare de a
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conţine o imagine coruptă. Toate imaginile corupte vor fi afişate ca semne de întrebare (?) roşii
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conține mai multe intrări pentru Acțiunea 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire după sfârşitul preudo-elementului grafic (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele imagini lipsesc din setul grafic de bază.{}Vă rugăm actualizaţi setul grafic de bază
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE} Pachetul grafic de bază folosit în acest moment este incomplet, un număr de sprite-uri lipsesc ..{}Trebuie să actualizezi acest pachet grafic de bază.{}Deoarece te joci o {YELLOW}versiune de dezvoltare a OpenTTD{WHITE}, este posibil să ai nevoie de o {YELLOW}versiune de dezvoltare a pachetului grafic de bază{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Resursele GRF solicitate nu sunt disponibile (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a fost dezactivat de {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Structură necunoscută/invalidă pentru elementul grafic (sprite {3:NUM})

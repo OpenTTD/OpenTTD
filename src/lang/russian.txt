@@ -3087,8 +3087,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Попытка 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} содержит повреждённый спрайт. Все повреждённые спрайты будут показаны красным знаком вопроса (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Содержит несколько блоков «Action 8» (спрайт {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чтение за концом псевдо-спрайта (спрайт {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}В текущем наборе базовой графики отсутствуют изображения некоторых объектов.{}Пожалуйста, обновите модуль базовой графики.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}В используемом наборе базовой графики отсутствуют некоторые изображения.{}Пожалуйста, обновите набор изображений.{}Так как у вас {YELLOW}тестовая версия OpenTTD{WHITE}, вам может понадобиться {YELLOW}тестовая версия графического набора{WHITE}.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошенные ресурсы GRF недоступны (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} был отключён из-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недопустимый/неизвестный формат расположения спрайтов (спрайт {3:NUM})

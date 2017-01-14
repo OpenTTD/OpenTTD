@@ -2786,8 +2786,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Identifikazio b
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sprite baliogabea dauka. Sprite baliogabeak galdera ikur gorria bezala ikusiko dira (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Action 8 sarrera asko ditu (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo spritea baino hurrunago irakurri (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aukeratuta daukazun oinarrizko grafiko paketean "sprite" batzuk falta dira.{}Mesedez eguneratu oinarrizko grafiko paketea
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Erabiltzen ari den grafiko baseari sprite batzuk falta zaizkio.{}Mesedez zure grafiko basea eguneratu ezazu.{}OpenTTD-ren {YELLOW}garapen bertsio bat erabiltzen ari zarenez{WHITE}, grafiko basearen {YELLOW}garapen bertsio bat behar izango duzu{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Eskatutako GRFa ez dago eskuragarri (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} desgaitua izan da {STRING}(en)gatik
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Grafiko deseinu formatu ezezaguna/baliogabea (sprite {3:NUM})

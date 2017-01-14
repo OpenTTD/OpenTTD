@@ -2906,8 +2906,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Sử dụng IT 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bị hỏng sprite. Tất cả các sprite sẽ hiện thị với dấu hỏi (?) màu đỏ.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Có nhiều mục thực thi 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc quá giới hạn của sprite giả (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy cập nhật gói đồ họa lên phiên bản mới.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Bộ file đồ họa hiện tại thiết một số sprites.{}Hãy cập nhật phiên bản mới.{}Bởi vì bạn chơi {YELLOW}một phiên bản thử nghiệm đang phát triển OpenTTD{WHITE}, bạn cần phải có cả {YELLOW}bộ file đồ họa đang được phát triển nữa{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Dữ liệu GRF theo yêu cầu không hợp lệ (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bị tắt bởi {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Định dạng Sprite không hợp lệ hoặc chưa định nghĩa (sprite {3:NUM})

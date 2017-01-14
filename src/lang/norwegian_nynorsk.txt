@@ -2823,8 +2823,6 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneheld øydelagd grafikk. All øydelagd grafikk vil bli vist som raude spørsmålsteikn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneheld fleire tilfelle av handling 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lest forbi slutten av pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværande grafikksettet manglar ein del bilete.{}Vennligst oppdater grafikksettet.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Det valde grafikksettet manglar nokre bilete.{}Vær venleg og forny grafikksettet.{}I og med at du spelar eit {YELLOW}utviklingsutkast av OpenTTD{WHITE} treng du òg eit {YELLOW}utviklingsutkast av grafikksettet{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurde GRF-ressursar ikkje tilgjengeleg (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} vart deaktivert av {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjend sprite layout-format (sprite {3:NUM})

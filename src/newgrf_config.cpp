@@ -192,6 +192,7 @@ GRFConfig *_all_grfs;
 GRFConfig *_grfconfig;
 GRFConfig *_grfconfig_newgame;
 GRFConfig *_grfconfig_static;
+uint _missing_extra_graphics = 0;
 
 /**
  * Construct a new GRFError.

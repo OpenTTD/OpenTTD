@@ -2593,7 +2593,6 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :فایل GRF ب
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :تعداد NewGRF بیشتر از حد می باشد
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :در حال بارگزاری {1:STRING} به عنوان NewGRF ایستا با {STRING} مشکل همخوانی دارد
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} دارای یک تصویر خراب می باشد. تصویرهای خراب با علامت سوال قرمز (؟) نشان داده شدند.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}بسته گرافیک استفاده شده تعدادی از تصاوبر را ندارد.{}لطفا بسته گرافیکی را به روز کنید
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} غیر فعال گردیده توسط {STRING}
 
 # NewGRF related 'general' warnings
