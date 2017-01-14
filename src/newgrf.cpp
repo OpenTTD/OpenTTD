@@ -8860,8 +8860,8 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, S
 		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
 	}
 
-	if (file_index > LAST_GRF_SLOT) {
-		DEBUG(grf, 0, "'%s' is not loaded as the maximum number of GRFs has been reached", filename);
+	if (file_index >= MAX_FILE_SLOTS) {
+		DEBUG(grf, 0, "'%s' is not loaded as the maximum number of file slots has been reached", filename);
 		config->status = GCS_DISABLED;
 		config->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 		return;
@@ -9263,6 +9263,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 		}
 
 		uint slot = file_index;
+		uint num_non_static = 0;
 
 		_cur.stage = stage;
 		for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
@@ -9277,6 +9278,16 @@ void LoadNewGRF(uint load_index, uint file_index)
 			}
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c);
+
+			if (!HasBit(c->flags, GCF_STATIC) && !HasBit(c->flags, GCF_SYSTEM)) {
+				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
+					DEBUG(grf, 0, "'%s' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
+					c->status = GCS_DISABLED;
+					c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
+					continue;
+				}
+				num_non_static++;
+			}
 			LoadNewGRFFile(c, slot++, stage, subdir);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);

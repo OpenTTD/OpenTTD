@@ -39,10 +39,6 @@
 #include <map>
 #include "safeguards.h"
 
-/* Maximum number of NewGRFs that may be loaded. Six reserved slots are:
- * 0 - config, 1 - sound, 2 - base, 3 - logos, 4 - climate, 5 - extra */
-static const int MAX_NEWGRFS = MAX_FILE_SLOTS - 6;
-
 /**
  * Show the first NewGRF error we can find.
  */
@@ -1509,7 +1505,7 @@ private:
 	{
 		if (this->avail_sel == NULL || !this->editable || HasBit(this->avail_sel->flags, GCF_INVALID)) return false;
 
-		int count = 0;
+		uint count = 0;
 		GRFConfig **entry = NULL;
 		GRFConfig **list;
 		/* Find last entry in the list, checking for duplicate grfid on the way */
@@ -1519,10 +1515,10 @@ private:
 				ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, WL_INFO);
 				return false;
 			}
-			count++;
+			if (!HasBit((*list)->flags, GCF_STATIC)) count++;
 		}
 		if (entry == NULL) entry = list;
-		if (count >= MAX_NEWGRFS) {
+		if (count >= NETWORK_MAX_GRF_COUNT) {
 			ShowErrorMessage(STR_NEWGRF_TOO_MANY_NEWGRFS, INVALID_STRING_ID, WL_INFO);
 			return false;
 		}
