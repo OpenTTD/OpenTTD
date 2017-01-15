@@ -1762,6 +1762,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra els paràmetres de les IA/Script de la partida
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
 
+STR_INTRO_BASESET                                               :{WHITE}Al joc de gràfics base seleccionat li falten {NUM} sprite{P "" s}.{}Si us plau, comproveu-ne si hi ha actualitzacions disponibles.
 STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falten {NUM} caden{P a es}. Si us plau ajuda a fer millor OpenTTD unint-te com a traductor. Veure readme.txt per més detalls.
 
 # Quit window
