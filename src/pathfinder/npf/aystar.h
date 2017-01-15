@@ -133,7 +133,7 @@ struct AyStar {
 	 * everything */
 	void *user_path;
 	void *user_target;
-	uint user_data[10];
+	void *user_data;
 
 	byte loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
 	uint max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
