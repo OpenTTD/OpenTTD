@@ -1848,6 +1848,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Ukázat,
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zobrazit nastavení AI a hry
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončit 'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK}V aktuálně zvolené základní sadě grafiky chybí {NUM} sprit{P "" y ů}. Zkuste, prosím, vyhledat aktualizovanou základní sadu.
 STR_INTRO_TRANSLATION                                           :{BLACK}Tento překlad postrádá {NUM} řetěz{P ec ce ců}. Prosím pomozte OpenTTD udělat lepším a přihlaste se jako překladatel. Pro více informací, čtěte readme.txt.
 
 # Quit window
@@ -2682,6 +2683,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Název d
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Přijímané zboží: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Druh kolejí: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rychlostní omezení tratě: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Rychlostní omezení silnice: {LTBLUE}{VELOCITY}
 
@@ -2694,29 +2696,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pole
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasněžená země
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Poušť
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železnice trať
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železnice trať s obyčejným návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železnice trať s vjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železnice trať s výjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železnice trať s kombinovaným návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železnice trať s dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železnice trať s dokonalejším (PBS) jednosměrným návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železnice trať s obyčejným a vjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železnice trať s obyčejným a odjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Železnice trať s obyčejným a kombinovaným návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železnice trať s obyčejným a cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Železnice trať s obyčejným a jednosměrným cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Železnice trať s vjezdovým a odjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Železnice trať s vjezdovým a kombinovaným návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železnice trať s vjezdovým a cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Železnice trať s vjezdovým a jednosměrným cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Železnice trať s výjezdovým a kombinovaným návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železnice trať s výjezdovým a cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železnice trať s výjezdovým a jednosměrným cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železnice trať s kombinovaným a cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železnice trať s kombinovaným a jednosměrným cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železnice trať s cestovým a jednosměrným cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železnice železniční depo
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železniční trať
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železniční trať s obyčejnými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železniční trať s vjezdovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železniční trať s odjezdovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železniční trať s kombinovanými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železniční trať s dokonalejšími (PBS) návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železniční trať s jednosměrnými cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železniční trať s obyčejnými a vjezdovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železniční trať s obyčejnými a odjezdovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Železniční trať s obyčejnými a kombinovanými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železniční trať s obyčejnými a cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Železniční trať s obyčejnými a jednosměrnými cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Železniční trať s vjezdovými a odjezdovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Železniční trať s vjezdovými a kombinovanými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železniční trať s vjezdovými a cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Železniční trať s vjezdovými a jednosměrnými cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Železniční trať s odjezdovými a kombinovanými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železniční trať s odjezdovými a cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železniční trať s odjezdovými a jednosměrnými cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železniční trať s kombinovanými a cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železniční trať s kombinovanými a jednosměrnými cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železniční trať s cestovými a jednosměrnými cestovými návěstidly
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železniční depo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Silnice
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Silnice s pouličním osvětlením
@@ -3654,6 +3656,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Zmáčkn
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Přepne mezi okny na výměnu lokomotiv a vagonů
 STR_REPLACE_ENGINES                                             :lokomotivy
 STR_REPLACE_WAGONS                                              :vagony
+STR_REPLACE_ALL_RAILTYPE                                        :Všechna drážní vozidla
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolejí, pro které chceš měnit lokomotivy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu vyměňuje
@@ -4186,7 +4189,7 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nelz
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... obrázek je příliš velký
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Varování kvůli velikosti
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tak velká zmena velikosti zdrojové mapy není doporučena. Pokračovat s generováním?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tak velká změna velikosti zdrojové mapy není doporučena. Pokračovat v generování?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Byl nalezen pouze nouzový zvukový soubor. Pokud chcete zvuky, nainstalujte prosim zvukové soubory skrze systém stahování obsahu
