@@ -2058,11 +2058,10 @@ static void MakeTownHouse(TileIndex t, Town *town, byte counter, byte stage, Hou
  * Checks if a house can be built here. Important is slope, bridge above
  * and ability to clear the land.
  * @param tile tile to check
- * @param town town that is checking
  * @param noslope are slopes (foundations) allowed?
  * @return true iff house can be built here
  */
-static inline bool CanBuildHouseHere(TileIndex tile, TownID town, bool noslope)
+static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
 {
 	/* cannot build on these slopes... */
 	Slope slope = GetTileSlope(tile);
@@ -2070,9 +2069,6 @@ static inline bool CanBuildHouseHere(TileIndex tile, TownID town, bool noslope)
 
 	/* building under a bridge? */
 	if (IsBridgeAbove(tile)) return false;
-
-	/* do not try to build over house owned by another town */
-	if (IsTileType(tile, MP_HOUSE) && GetTownIndex(tile) != town) return false;
 
 	/* can we clear the land? */
 	return DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR).Succeeded();
@@ -2082,15 +2078,14 @@ static inline bool CanBuildHouseHere(TileIndex tile, TownID town, bool noslope)
 /**
  * Checks if a house can be built at this tile, must have the same max z as parameter.
  * @param tile tile to check
- * @param town town that is checking
  * @param z max z of this tile so more parts of a house are at the same height (with foundation)
  * @param noslope are slopes (foundations) allowed?
  * @return true iff house can be built here
  * @see CanBuildHouseHere()
  */
-static inline bool CheckBuildHouseSameZ(TileIndex tile, TownID town, int z, bool noslope)
+static inline bool CheckBuildHouseSameZ(TileIndex tile, int z, bool noslope)
 {
-	if (!CanBuildHouseHere(tile, town, noslope)) return false;
+	if (!CanBuildHouseHere(tile, noslope)) return false;
 
 	/* if building on slopes is allowed, there will be flattening foundation (to tile max z) */
 	if (GetTileMaxZ(tile) != z) return false;
@@ -2102,20 +2097,19 @@ static inline bool CheckBuildHouseSameZ(TileIndex tile, TownID town, int z, bool
 /**
  * Checks if a house of size 2x2 can be built at this tile
  * @param tile tile, N corner
- * @param town town that is checking
  * @param z maximum tile z so all tile have the same max z
  * @param noslope are slopes (foundations) allowed?
  * @return true iff house can be built
  * @see CheckBuildHouseSameZ()
  */
-static bool CheckFree2x2Area(TileIndex tile, TownID town, int z, bool noslope)
+static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
 {
 	/* we need to check this tile too because we can be at different tile now */
-	if (!CheckBuildHouseSameZ(tile, town, z, noslope)) return false;
+	if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
 
 	for (DiagDirection d = DIAGDIR_SE; d < DIAGDIR_END; d++) {
 		tile += TileOffsByDiagDir(d);
-		if (!CheckBuildHouseSameZ(tile, town, z, noslope)) return false;
+		if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
 	}
 
 	return true;
@@ -2202,10 +2196,10 @@ static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslop
 	/* 'tile' is already checked in BuildTownHouse() - CanBuildHouseHere() and slope test */
 
 	TileIndex tile2 = *tile + TileOffsByDiagDir(second);
-	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, t->index, maxz, noslope)) return true;
+	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, maxz, noslope)) return true;
 
 	tile2 = *tile + TileOffsByDiagDir(ReverseDiagDir(second));
-	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, t->index, maxz, noslope)) {
+	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, maxz, noslope)) {
 		*tile = tile2;
 		return true;
 	}
@@ -2227,7 +2221,7 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool nosl
 	TileIndex tile2 = *tile;
 
 	for (DiagDirection d = DIAGDIR_SE;; d++) { // 'd' goes through DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_END
-		if (TownLayoutAllows2x2HouseHere(t, tile2) && CheckFree2x2Area(tile2, t->index, maxz, noslope)) {
+		if (TownLayoutAllows2x2HouseHere(t, tile2) && CheckFree2x2Area(tile2, maxz, noslope)) {
 			*tile = tile2;
 			return true;
 		}
@@ -2251,7 +2245,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	if (!TownLayoutAllowsHouseHere(t, tile)) return false;
 
 	/* no house allowed at all, bail out */
-	if (!CanBuildHouseHere(tile, t->index, false)) return false;
+	if (!CanBuildHouseHere(tile, false)) return false;
 
 	Slope slope = GetTileSlope(tile);
 	int maxz = GetTileMaxZ(tile);
