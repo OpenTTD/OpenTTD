@@ -1761,6 +1761,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Weis KI an Spill-Script-Astellungen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'OpenTTD' eraus goen
 
+STR_INTRO_BASESET                                               :{BLACK}Dem grad ausgewielte Basis Grafikset fehlen {NUM} Srite{P "" s}. W.e.g. no Updates fir dëse Set sichen.
 STR_INTRO_TRANSLATION                                           :{BLACK}Dës Iwwersetzung huet {NUM} String{P "" s}. Hëllef OpenTTD besser ze man andems du dech als Iwwersetzer mells! Lies readme.txt fir d'Detailer.
 
 # Quit window
@@ -2589,6 +2590,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Fluchhaf
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akzeptéiert Wuer: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Schinnentyp: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Schinne-Geschw.-Limit: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Stroosse-Geschw.-Limit: {LTBLUE}{VELOCITY}
 
@@ -2601,29 +2603,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Felder
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Schnéibedeckt Land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüst
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schinnen Schinn
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Schinnen Schinn mat Blocksignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Schinnen Schinn mat Presignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Schinnen Schinn mat Ausgangs-Signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Schinnen Schinn mat Kombo-Signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Schinnen Schinn mat Weesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Schinnen Schinn mat Einbahnsignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Schinnen Schinn mat Block- an Presignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Schinnen Schinn mat Block- an Ausgangssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Schinnen Schinn mat Block- a Kombosignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Schinnen Schinn mat Block- a Weesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Schinnen Schinn mat Block- a Einbahnsignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Schinnen Schinn mat Pre- an Ausgangssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Schinnen Schinn mat Pre- a Kombosignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Schinnen Schinn mat Pre- a Weesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Schinnen Schinn mat Pre- an Einbahnweesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Schinnen Schinn mat Ausgangs- a Kombosignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Schinnen Schinn mat Ausgangs- a Weesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Schinnen Schinn mat Ausgang- an Einbahnweesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Schinnen Schinn mat Kombo- an Weesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Schinnen Schinn mat Kombo- an Einbahnweesignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Schinnen Schinn mat Wee- and Einbahnweesignaler
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Schinnen Zuchschapp
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schinn
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Schinn mat Blocksignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Schinn mat Presignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Schinn mat Ausgangs-Signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Schinn mat Kombo-Signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Schinn mat Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Schinn mat Einbahnsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Schinn mat Block- an Presignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Schinn mat Block- an Ausgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Schinn mat Block- a Kombosignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Schinn mat Block- a Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Schinn mat Block- a Einbahnsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Schinn mat Pre- an Ausgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Schinn mat Pre- a Kombosignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Schinn mat Pre- a Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Schinn mat Pre- an Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Schinn mat Ausgangs- a Kombosignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Schinn mat Ausgangs- a Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Schinn mat Ausgang- an Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Schinn mat Kombo- an Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Schinn mat Kombo- an Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Schinn mat Wee- and Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Zuchschapp
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strooss
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strooss mat Luuchten
@@ -3558,6 +3560,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Waggonaustosch-Fënster
 STR_REPLACE_ENGINES                                             :Lokomotiven
 STR_REPLACE_WAGONS                                              :Waggonen
+STR_REPLACE_ALL_RAILTYPE                                        :All Zich
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt de Schinnentyp fir déi Lokomotiven ausgetosch ginn
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Weist un wellech Lokomotiv vun der lénks ugewielter Lokomotiv ausgetosch soll ginn, wann et zoutrëfft

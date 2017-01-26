@@ -1913,6 +1913,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найт
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Изменить настройки ИИ / игрового скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйти из OpenTTD
 
+STR_INTRO_BASESET                                               :{BLACK}В выбранном наборе базовой графики отсутствует {NUM} спрайт{P "" а ов}. Пожалуйста, обновите набор графики.
 STR_INTRO_TRANSLATION                                           :{BLACK}На этот язык не переведен{P 0 а ы о} {NUM} строк{P а и ""}. Вы можете помочь проекту, зарегистрировавшись как переводчик. Инструкции в файле readme.txt.
 
 # Quit window
