@@ -1762,6 +1762,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar 
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar configuración de scripts
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK}A los gráficos base elegidos les hace falta {NUM} spirte{P "" s}. Necesitan actualizarse.
 STR_INTRO_TRANSLATION                                           :{BLACK}A esta traducción le falta{P 0 "" n} {NUM} cadena{P "" s}. Considera ayudar a mejorar OpenTTD convirtiéndote en traductor. Consulta el archivo readme.txt para más detalles.
 
 # Quit window
