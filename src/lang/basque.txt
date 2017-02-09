@@ -319,6 +319,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidio
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Erakutsi konpainien geltokien zerrenda
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Erakutsi konpaniaren finantza informazioa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Erakutsi konpaniaren informazio generala
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Helburu zerrenda erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikoak erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Erakutsi konpanien ligako taula
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Eraiki industria berria edo industri guztien zerrenda erakutsi
@@ -1097,6 +1098,8 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Aditua (ezarpen
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ezarpenak lehenetsitakoen balio ezberdinarekin
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Balio ezberdinak dituzten ezarpenak zure joko berriaren ezarpenekin alderatuta
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Bezero ezarpenak (ez dira partidatan gordetzen; joko guztiei eragiten die)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Enpresa ezarpenak (partidan gordeta; bakarrik uneko enpresari eragiten dio)
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ezer ez -
 
 STR_CONFIG_SETTING_OFF                                          :Itzalita
@@ -1262,6 +1265,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikoen marre
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Lur sortzailea: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Jatorrizkoa
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis bakarrik) Maparen menditsutasuna
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industria dentsitatea: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo findegietatik maparen ertzera dagoen gehienezko distantzia: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
@@ -1278,6 +1282,7 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Jatorrizkoa
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Errepideko garraioak: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Gidatzeko aldea aukeratu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Garaiera maparen norabidea: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
@@ -1333,6 +1338,7 @@ STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Saguaren ezkerr
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Gaitu mapatik zehar mugitzea saguaren ezkerreko botoia mapan arrastratzerakoan. Oso erabilgarria da ukipen pantailak erabiltzerakoan
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Auto-gordea: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Partida gordetze automatikoaren bitartea aukeratu
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gordetako jokoen izenetan {STRING} data fomatua erabili
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Gordetako fitxeroen dataren formatoa
@@ -1373,7 +1379,9 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Konpainiako gas
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Periodikoa: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Amaiera urtea: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Eraikuntza: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Eraikuntza arrakastatsua edo beste akzioekin soinu bat egin
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastreak/istripuak: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Istripu edo desastreen soinu efektuak aktibatu
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Garraioak: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Azpiturak eraikitzea debekatu ibilgailu egokiak ez daudenean eskuragarri: {STRING}
@@ -2105,6 +2113,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Egunerak
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Haukeratu dituzun edukiak berrituko dituzten edukiak deskargatuak izateko
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Guztia desmarkatu
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Dekargatuak izango ez diren eduki guztiak markatu
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Kanpoko webguneak bilatu
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD uzten zaude!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiketa/izen iragazkia:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Webgunera joan
@@ -2484,6 +2493,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Aireport
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Onartutako zama: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Errail mota: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Trenbidearen abiadura muga: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Bideko abiadura muga: {LTBLUE}{VELOCITY}
 
@@ -2496,11 +2506,11 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Eremuak
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Elurrez estalitako paisaia
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desertua
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trenbidea Trenbidea
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trenbidea
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Trenbidea Trenbidea blokeo seinalearekin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Trenbidea trenbidea aurre-seinalekin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Trenbidea trenbidea irteera seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Trenbidea trenbidea konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Konbo-seinaledun trenbidea
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Trenbidea trenbidea bide seinaleekin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Trenbidea trenbidea norabide bakarreko bide seinaleekin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Trenbidea trenbidea blokeo seinale eta aurre-seinaleekin
@@ -2516,7 +2526,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trenbidea trenb
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trenbidea trenbidea irteera seinale eta bide seinaleekin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trenbidea trenbidea irteera seinale eta norabide bakarreko bide seinaleekin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trenbidea trenbidea konbo seinale eta bide seinaleekin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trenbidea trenbide konbo seinale eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Konbo-seinale eta norabide bakarreko bide seinaledun trenbidea
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trenbidea trenbidea bide seinale eta norabide bakarreko seinaleekina
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trenbidea tren gordailua
 
@@ -2724,6 +2734,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desgaitua
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD-ren bertsio honekin bateraezina
 
 # NewGRF save preset window
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ez aldatu berezko balioa
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametroak aldatu
@@ -2984,6 +2995,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ez dago 
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {STATION}-(e)tik garraiatua)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} kargarako erreserbatua)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Onartu
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Onartzen diren zamen zerrenda
@@ -4050,6 +4062,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Baso
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... bakarrik elur garaieratik gora eraiki daiteke
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... bakarrik elur garaieratik behera eraiki daiteke
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Ez dago leku aproposik '{STRING}' industriarako
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ezin da tren gordailua hemen eraiki...
@@ -4315,7 +4328,11 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ezin da 
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe-ren simulazio bat
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Transport Tycoon Deluxe originaleko DOS edizioko grafikoak.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Transport Tycoon Deluxe originaleko DOS edizioko soinuak.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoon Deluxe originaleko Windows edizioko grafikoak.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Soinurik gabeko soinu pakete bat
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Musika gabeko musika paketea.
 
 ##id 0x2000
 # Town building names

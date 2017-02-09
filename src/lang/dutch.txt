@@ -1761,6 +1761,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken n
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Toon AI/Game script instellingen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK}De huidige gekozen graphics set mist {NUM} afbeelding{P "" en}. Controleer of er updates zijn voor deze basisset.
 STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help aub om OpenTTD beter te maken door je al vertaler aan te melden. Zie readme.txt voor details.
 
 # Quit window
@@ -2589,6 +2590,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Vliegvel
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde vracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Rail type: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Spoor snelheidslimiet: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Snelheidslimiet weg: {LTBLUE}{VELOCITY}
 
@@ -2618,7 +2620,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoorweg spoor 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Spoorweg spoor met voor- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Spoorweg spoor met voor- en eenrichtingsseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoorweg spoor met exit- en combo-seinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Spoorweg spoor em exit- en routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Spoorweg spoor met exit- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Spoorweg spoor met exit- en eenrichtingsseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Spoorweg spoor met combo- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Spoorweg Spoor met combo- en eenrichtingssein
@@ -3558,6 +3560,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op 
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel tussen locomotief- en wagonvervangvensters
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons
+STR_REPLACE_ALL_RAILTYPE                                        :Alle railvoertuigen
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt vervangen
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief vervangen wordt
