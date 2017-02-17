@@ -1708,7 +1708,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정�
 STR_CONFIG_ERROR                                                :{WHITE}설정 파일에서 오류 발생
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 배열 '{STRING}'에서 오류 발생
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}'에 잘못된 값('{0:STRING}')이 지정되었습니다.
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 설정 '{STRING}' 끝에 후행문자(??)
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... '{STRING}' 설정의 끝에 후행 문자가 있습니다.
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' 무시중: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 NewGRF '{STRING}' 무시중: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :찾을 수 없음
@@ -1722,7 +1722,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 기�
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 기본 효과음 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 기본 배경음 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}메모리 초과
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES}의 스프라이트 캐시 할당에 실패하였습니다. 스프라이트 캐시는 {BYTES} 만큼으로 감소합니다. 이는 OpenTTD의 성능을 저하시킬 것입니다. 메모리 요구사항을 낮추려면 32bpp를 비활성화하거나 화면 확대 옵션을 기본값에 가깝게 조절하십시오.
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES}의 스프라이트 캐시 할당에 실패하였습니다. 스프라이트 캐시 용량이 {BYTES}로 감소합니다. 이는 OpenTTD의 성능을 저하시킬 것입니다. 메모리 요구사항을 낮추려면 32bpp를 비활성화하거나 화면 확대 설정을 기본값에 가깝게 조절하십시오.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2871,12 +2871,12 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF �
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}스프라이트 정렬 {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}다음 스프라이트
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 다음 보통 스프라이트로 이동하고, 마지막 스프라이트에 다다르면 다시 처음으로 돌아갑니다.
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}(유사/재색상/글씨 스프라이트를 제외한) 다음 보통 스프라이트로 이동하고, 마지막 스프라이트에 다다르면 다시 처음으로 돌아갑니다.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트 번호 입력
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}입력한 스프라이트 번호로 이동합니다. 만약 입력한 번호의 스프라이트가 일반 스프라이트가 아닐경우, 그 다음으로 오는 일반 스프라이트로 이동합니다.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 스프라이트
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(위조/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(유사/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표현합니다. 이 스프라이트를 표현할 때, 정렬 상태는 무시하고 표현합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다. CTRL+클릭하면 한 번에 8씩 이동시킬 수 있습니다.
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}상대값 초기화
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}현재 상대값 좌표를 초기화
@@ -2907,8 +2907,8 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :예기치 않�
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :알려지지 않은 액션 0 속성 {4:HEX} (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :유효하지 않은 ID 사용 시도 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 에 손상된 객체가 있습니다. 모든 손상된 객체는 붉은 물음표로 보일 것입니다.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :여러 개의 액션 8 엔트리 포함 (스프라이트 {3:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :모조-스프라이트의 지나간 끝을 읽음 (스프라이트 {3:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :여러 개의 Action 8 엔트리 포함 (스프라이트 {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :유사 스프라이트의 끝이었던 부분을 읽으려고 시도함 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :요청한 GRF 자원을 사용할 수 없음 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}(은)는 {STRING} 때문에 사용할 수 없습니다
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :유효하지 않은/알 수 없는 스프라이트 구조 유형 (스프라이트 {3:NUM})
