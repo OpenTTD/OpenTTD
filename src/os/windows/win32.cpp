@@ -32,6 +32,8 @@
 
 #include "../../safeguards.h"
 
+bool _in_event_loop_post_crash;
+
 static bool _has_console;
 static bool _cursor_disable = true;
 static bool _cursor_visible = true;
@@ -76,6 +78,7 @@ bool LoadLibraryList(Function proc[], const char *dll)
 
 void ShowOSErrorBox(const char *buf, bool system)
 {
+	_in_event_loop_post_crash = true;
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), OTTD2FS(buf), _T("Error!"), MB_ICONSTOP | MB_TASKMODAL);
 }

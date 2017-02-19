@@ -51,6 +51,20 @@ extern GameMode _game_mode;
 extern SwitchMode _switch_mode;
 extern bool _exit_game;
 
+#if defined(WIN32)
+extern bool _in_event_loop_post_crash;
+
+inline bool InEventLoopPostCrash()
+{
+	return _in_event_loop_post_crash;
+}
+#else
+inline bool InEventLoopPostCrash()
+{
+	return false;
+}
+#endif
+
 /** Modes of pausing we've got */
 enum PauseMode : byte {
 	PM_UNPAUSED              = 0,      ///< A normal unpaused game
