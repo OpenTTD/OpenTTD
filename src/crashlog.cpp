@@ -28,6 +28,7 @@
 #include "language.h"
 #include "fontcache.h"
 #include "news_gui.h"
+#include "command_func.h"
 
 #include "ai/ai_info.hpp"
 #include "game/game.hpp"
@@ -324,6 +325,19 @@ char *CrashLog::LogRecentNews(char *buffer, const char *last) const
 }
 
 /**
+ * Writes the recent command log data to the buffer.
+ * @param buffer The begin where to write at.
+ * @param last   The last position in the buffer to write to.
+ * @return the position of the \c '\0' character after the buffer.
+ */
+char *CrashLog::LogRecentCommands(char *buffer, const char *last) const
+{
+	buffer = DumpRecentCommandLog(buffer, last);
+	buffer += seprintf(buffer, last, "\n");
+	return buffer;
+}
+
+/**
  * Fill the crash log buffer with all data of a crash log.
  * @param buffer The begin where to write at.
  * @param last   The last position in the buffer to write to.
@@ -350,6 +364,7 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 	buffer = this->LogModules(buffer, last);
 	buffer = this->LogGamelog(buffer, last);
 	buffer = this->LogRecentNews(buffer, last);
+	buffer = this->LogRecentCommands(buffer, last);
 
 	buffer += seprintf(buffer, last, "*** End of OpenTTD Crash Report ***\n");
 	return buffer;

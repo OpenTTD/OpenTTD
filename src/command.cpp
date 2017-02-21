@@ -26,6 +26,8 @@
 #include "signal_func.h"
 #include "core/backup_type.hpp"
 #include "object_base.h"
+#include "string_func.h"
+#include <array>
 
 #include "table/strings.h"
 
@@ -360,6 +362,80 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdOpenCloseAirport,                               0, CMDT_ROUTE_MANAGEMENT      ), // CMD_OPEN_CLOSE_AIRPORT
 };
 
+
+/**
+ * List of flags for a command log entry
+ */
+enum CommandLogEntryFlagEnum {
+	CLEF_NONE                = 0x00, ///< no flag is set
+	CLEF_CMD_FAILED          = 0x01, ///< command failed
+	CLEF_GENERATING_WORLD    = 0x02, ///< generating world
+	CLEF_TEXT                = 0x04, ///< have command text
+	CLEF_ESTIMATE_ONLY       = 0x08, ///< estimate only
+	CLEF_MY_CMD              = 0x10, ///< locally generated command
+};
+DECLARE_ENUM_AS_BIT_SET(CommandLogEntryFlagEnum)
+typedef SimpleTinyEnumT<CommandLogEntryFlagEnum, byte> CommandLogEntryFlag;
+
+struct CommandLogEntry {
+	TileIndex tile;
+	uint32 p1;
+	uint32 p2;
+	uint32 cmd;
+	Date date;
+	DateFract date_fract;
+	CompanyByte current_company;
+	CompanyByte local_company;
+	CommandLogEntryFlag log_flags;
+
+	CommandLogEntry() { }
+
+	CommandLogEntry(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandLogEntryFlag log_flags)
+			: tile(tile), p1(p1), p2(p2), cmd(cmd), date(_date), date_fract(_date_fract),
+			current_company(_current_company), local_company(_local_company), log_flags(log_flags)
+	{}
+};
+
+static std::array<CommandLogEntry, 32> command_log;
+static unsigned int command_log_count = 0;
+static unsigned int command_log_next = 0;
+
+void ClearRecentCommandLog()
+{
+	command_log_count = 0;
+	command_log_next = 0;
+}
+
+char *DumpRecentCommandLog(char *buffer, const char *last)
+{
+	const unsigned int count = min<unsigned int>(command_log_count, command_log.size());
+	unsigned int log_index = command_log_next;
+
+	buffer += seprintf(buffer, last, "Command Log:\n Showing most recent %u of %u commands\n", count, command_log_count);
+
+	for (unsigned int i = 0 ; i < count; i++) {
+		if (log_index > 0) {
+			log_index--;
+		} else {
+			log_index = command_log.size() - 1;
+		}
+		const CommandLogEntry &entry = command_log[log_index];
+
+		auto fc = [&](CommandLogEntryFlagEnum flag, char c) -> char {
+			return entry.log_flags & flag ? c : '-';
+		};
+
+		YearMonthDay ymd;
+		ConvertDateToYMD(entry.date, &ymd);
+		buffer += seprintf(buffer, last, " %3u | %4i-%02i-%02i, %2i | ", i, ymd.year, ymd.month + 1, ymd.day, entry.date_fract);
+		buffer += seprintf(buffer, last, "%c%c%c%c%c | ",
+				fc(CLEF_MY_CMD, 'm'), fc(CLEF_ESTIMATE_ONLY, 'e'), fc(CLEF_TEXT, 't'), fc(CLEF_GENERATING_WORLD, 'g'), fc(CLEF_CMD_FAILED, 'f'));
+		buffer += seprintf(buffer, last, " %7d x %7d, p1: 0x%08X, p2: 0x%08X, cc: %2u, lc: %2u, cmd: 0x%08X (%s)\n",
+				TileX(entry.tile), TileY(entry.tile), entry.p1, entry.p2, (uint) entry.current_company, (uint) entry.local_company, entry.cmd, GetCommandName(entry.cmd));
+	}
+	return buffer;
+}
+
 /*!
  * This function range-checks a cmd, and checks if the cmd is not NULL
  *
@@ -672,6 +748,17 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	CommandCost res = proc(tile, flags, p1, p2, text);
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
+
+	CommandLogEntryFlag log_flags;
+	log_flags = CLEF_NONE;
+	if (res.Failed()) log_flags |= CLEF_CMD_FAILED;
+	if (_generating_world) log_flags |= CLEF_GENERATING_WORLD;
+	if (!StrEmpty(text)) log_flags |= CLEF_TEXT;
+	if (estimate_only) log_flags |= CLEF_ESTIMATE_ONLY;
+	if (my_cmd) log_flags |= CLEF_MY_CMD;
+	command_log[command_log_next] = CommandLogEntry(tile, p1, p2, cmd, log_flags);
+	command_log_next = (command_log_next + 1) % command_log.size();
+	command_log_count++;
 
 	/* Make sure we're not messing things up here. */
 	assert(exec_as_spectator ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
