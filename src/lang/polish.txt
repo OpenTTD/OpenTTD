@@ -2141,6 +2141,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Pokaż ustawienia SI / Game Script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Wyjdź z 'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK}Aktualnie używany podstawowy zestaw graficzny nie posiada {NUM} wymagan{P ego ych ych} sprite{P 'u 'ów 'ów}. Proszę poszukać aktualizacji dla zestawu podstawowego.
 STR_INTRO_TRANSLATION                                           :{BLACK}Tej wersji językowej brakuje jeszcze {NUM} wpis{P "" y ów}. Możesz pomóc ulepszyć nam OpenTTD rejestrując się jako tłumacz. Szczegóły znajdziesz w pliku readme.txt.
 
 # Quit window
