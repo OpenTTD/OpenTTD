@@ -24,7 +24,7 @@
  */
 static inline uint GetStringTab(StringID str)
 {
-	return GB(str, 11, 5);
+	return GB(str, TAB_SIZE_BITS, 5);
 }
 
 /**
@@ -34,7 +34,7 @@ static inline uint GetStringTab(StringID str)
  */
 static inline uint GetStringIndex(StringID str)
 {
-	return GB(str, 0, 11);
+	return GB(str, 0, TAB_SIZE_BITS);
 }
 
 /**
@@ -45,7 +45,8 @@ static inline uint GetStringIndex(StringID str)
  */
 static inline StringID MakeStringID(uint tab, uint index)
 {
-	return tab << 11 | index;
+	assert(index < TAB_SIZE);
+	return tab << TAB_SIZE_BITS | index;
 }
 
 class StringParameters {

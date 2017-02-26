@@ -26,6 +26,11 @@ enum TextDirection {
 	TD_RTL, ///< Text is written right-to-left by default
 };
 
+/** Number of bits for the StringIndex within a StringTab */
+static const uint TAB_SIZE_BITS       = 11;
+/** Number of strings per StringTab */
+static const uint TAB_SIZE            = 1 << TAB_SIZE_BITS;
+
 /** Special string constants */
 enum SpecialStrings {
 
