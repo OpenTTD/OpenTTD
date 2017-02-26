@@ -195,12 +195,10 @@ static bool _scan_for_gender_data = false;  ///< Are we scanning for the gender 
 const char *GetStringPtr(StringID string)
 {
 	switch (GetStringTab(string)) {
-		case TEXT_TAB_GAMESCRIPT: return GetGameStringPtr(GetStringIndex(string));
+		case TEXT_TAB_GAMESCRIPT_START: return GetGameStringPtr(GetStringIndex(string));
 		/* 0xD0xx and 0xD4xx IDs have been converted earlier. */
 		case TEXT_TAB_OLD_NEWGRF: NOT_REACHED();
-		case TEXT_TAB_NEWGRF1: return GetGRFStringPtr(GetStringIndex(string));
-		case TEXT_TAB_NEWGRF2: return GetGRFStringPtr(GetStringIndex(string) + 0x0800);
-		case TEXT_TAB_NEWGRF3: return GetGRFStringPtr(GetStringIndex(string) + 0x1000);
+		case TEXT_TAB_NEWGRF_START: return GetGRFStringPtr(GetStringIndex(string));
 		default: return _langpack_offs[_langtab_start[GetStringTab(string)] + GetStringIndex(string)];
 	}
 }
@@ -242,20 +240,14 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 			}
 			break;
 
-		case TEXT_TAB_GAMESCRIPT:
+		case TEXT_TAB_GAMESCRIPT_START:
 			return FormatString(buffr, GetGameStringPtr(index), args, last, case_index, true);
 
 		case TEXT_TAB_OLD_NEWGRF:
 			NOT_REACHED();
 
-		case TEXT_TAB_NEWGRF1:
+		case TEXT_TAB_NEWGRF_START:
 			return FormatString(buffr, GetGRFStringPtr(index), args, last, case_index);
-
-		case TEXT_TAB_NEWGRF2:
-			return FormatString(buffr, GetGRFStringPtr(index + 0x0800), args, last, case_index);
-
-		case TEXT_TAB_NEWGRF3:
-			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), args, last, case_index);
 
 		default:
 			break;
@@ -825,17 +817,16 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				sub_args.ClearTypeInformation();
 				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
 
-				uint16 stringid;
 				const char *s = str;
 				char *p;
-				stringid = strtol(str, &p, 16);
+				uint32 stringid = strtoul(str, &p, 16);
 				if (*p != ':' && *p != '\0') {
 					while (*p != '\0') p++;
 					str = p;
 					buff = strecat(buff, "(invalid SCC_ENCODED)", last);
 					break;
 				}
-				if (stringid >= TAB_SIZE) {
+				if (stringid >= TAB_SIZE_GAMESCRIPT) {
 					while (*p != '\0') p++;
 					str = p;
 					buff = strecat(buff, "(invalid StringID)", last);
@@ -883,13 +874,13 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						param = strtoull(s, &p, 16);
 
 						if (lookup) {
-							if (param >= TAB_SIZE) {
+							if (param >= TAB_SIZE_GAMESCRIPT) {
 								while (*p != '\0') p++;
 								str = p;
 								buff = strecat(buff, "(invalid sub-StringID)", last);
 								break;
 							}
-							param = MakeStringID(TEXT_TAB_GAMESCRIPT, param);
+							param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, param);
 						}
 
 						sub_args.SetParam(i++, param);
@@ -904,7 +895,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				/* If we didn't error out, we can actually print the string. */
 				if (*str != '\0') {
 					str = p;
-					buff = GetStringWithArgs(buff, MakeStringID(TEXT_TAB_GAMESCRIPT, stringid), &sub_args, last, true);
+					buff = GetStringWithArgs(buff, MakeStringID(TEXT_TAB_GAMESCRIPT_START, stringid), &sub_args, last, true);
 				}
 
 				for (int i = 0; i < 20; i++) {
@@ -1020,7 +1011,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_STRING: {// {STRING}
 				StringID str = args->GetInt32(SCC_STRING);
-				if (game_script && GetStringTab(str) != TEXT_TAB_GAMESCRIPT) break;
+				if (game_script && GetStringTab(str) != TEXT_TAB_GAMESCRIPT_START) break;
 				/* WARNING. It's prohibited for the included string to consume any arguments.
 				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
 				 * To debug stuff you can set argv to NULL and it will tell you */
@@ -1039,7 +1030,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING7: { // {STRING1..7}
 				/* Strings that consume arguments */
 				StringID str = args->GetInt32(b);
-				if (game_script && GetStringTab(str) != TEXT_TAB_GAMESCRIPT) break;
+				if (game_script && GetStringTab(str) != TEXT_TAB_GAMESCRIPT_START) break;
 				uint size = b - SCC_STRING1 + 1;
 				if (game_script && size > args->GetDataLeft()) {
 					buff = strecat(buff, "(too many parameters)", last);

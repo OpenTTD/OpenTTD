@@ -24,7 +24,10 @@
  */
 static inline StringTab GetStringTab(StringID str)
 {
-	return (StringTab)GB(str, TAB_SIZE_BITS, 5);
+	StringTab result = (StringTab)(str >> TAB_SIZE_BITS);
+	if (result >= TEXT_TAB_NEWGRF_START) return TEXT_TAB_NEWGRF_START;
+	if (result >= TEXT_TAB_GAMESCRIPT_START) return TEXT_TAB_GAMESCRIPT_START;
+	return result;
 }
 
 /**
@@ -34,7 +37,7 @@ static inline StringTab GetStringTab(StringID str)
  */
 static inline uint GetStringIndex(StringID str)
 {
-	return GB(str, 0, TAB_SIZE_BITS);
+	return str - (GetStringTab(str) << TAB_SIZE_BITS);
 }
 
 /**
@@ -45,9 +48,15 @@ static inline uint GetStringIndex(StringID str)
  */
 static inline StringID MakeStringID(StringTab tab, uint index)
 {
-	assert(tab < TEXT_TAB_END);
-	assert(index < TAB_SIZE);
-	return tab << TAB_SIZE_BITS | index;
+	if (tab == TEXT_TAB_NEWGRF_START) {
+		assert(index < TAB_SIZE_NEWGRF);
+	} else if (tab == TEXT_TAB_GAMESCRIPT_START) {
+		assert(index < TAB_SIZE_GAMESCRIPT);
+	} else {
+		assert(tab < TEXT_TAB_END);
+		assert(index < TAB_SIZE);
+	}
+	return (tab << TAB_SIZE_BITS) + index;
 }
 
 class StringParameters {

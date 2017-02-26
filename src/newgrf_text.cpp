@@ -156,7 +156,7 @@ struct GRFTextEntry {
 
 
 static uint _num_grf_texts = 0;
-static GRFTextEntry _grf_text[TAB_SIZE * 3];
+static GRFTextEntry _grf_text[TAB_SIZE_NEWGRF];
 static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 /**
@@ -693,7 +693,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 
 	grfmsg(3, "Added 0x%X: grfid %08X string 0x%X lang 0x%X string '%s'", id, grfid, stringid, newtext->langid, newtext->text);
 
-	return MakeStringID(TEXT_TAB_NEWGRF1, 0) + id; // Id reaches across multiple tabs
+	return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 }
 
 /**
@@ -703,7 +703,7 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 {
 	for (uint id = 0; id < _num_grf_texts; id++) {
 		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
-			return MakeStringID(TEXT_TAB_NEWGRF1, 0) + id; // Id reaches across multiple tabs
+			return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 		}
 	}
 

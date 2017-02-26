@@ -34,9 +34,8 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 {
 	uint index = GetStringIndex(internal_string_id);
 	switch (GetStringTab(internal_string_id)) {
-		case TEXT_TAB_NEWGRF1:
-		case TEXT_TAB_NEWGRF2:
-		case TEXT_TAB_NEWGRF3:
+		case TEXT_TAB_NEWGRF_START:
+		case TEXT_TAB_GAMESCRIPT_START:
 			return ERR_NEWGRF_SUPPLIED_ERROR; // NewGRF strings.
 
 		case TEXT_TAB_SPECIAL:

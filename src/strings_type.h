@@ -36,18 +36,22 @@ enum StringTab {
 	TEXT_TAB_OLD_CUSTOM       = 15,
 	TEXT_TAB_VEHICLE          = 16,
 	/* Tab 17 for regular strings */
-	TEXT_TAB_GAMESCRIPT       = 18,
 	TEXT_TAB_OLD_NEWGRF       = 26,
-	TEXT_TAB_NEWGRF1          = 28,
-	TEXT_TAB_NEWGRF2          = 29,
-	TEXT_TAB_NEWGRF3          = 30,
-	TEXT_TAB_END              = 32
+	TEXT_TAB_END              = 32, ///< End of language files.
+	TEXT_TAB_GAMESCRIPT_START = 32, ///< Start of GameScript supplied strings.
+	TEXT_TAB_NEWGRF_START     = 64, ///< Start of NewGRF supplied strings.
 };
 
 /** Number of bits for the StringIndex within a StringTab */
 static const uint TAB_SIZE_BITS       = 11;
 /** Number of strings per StringTab */
 static const uint TAB_SIZE            = 1 << TAB_SIZE_BITS;
+
+/** Number of strings for GameScripts */
+static const uint TAB_SIZE_GAMESCRIPT = TAB_SIZE * 32;
+
+/** Number of strings for NewGRFs */
+static const uint TAB_SIZE_NEWGRF     = TAB_SIZE * 256;
 
 /** Special string constants */
 enum SpecialStrings {
