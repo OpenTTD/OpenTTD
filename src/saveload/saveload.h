@@ -49,7 +49,7 @@ enum SavegameType {
 extern FileToSaveLoad _file_to_saveload;
 
 void GenerateDefaultSaveName(char *buf, const char *last);
-void SetSaveLoadError(uint16 str);
+void SetSaveLoadError(StringID str);
 const char *GetSaveLoadErrorString();
 SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
@@ -161,7 +161,7 @@ enum VarTypes {
 	SLE_INT64        = SLE_FILE_I64 | SLE_VAR_I64,
 	SLE_UINT64       = SLE_FILE_U64 | SLE_VAR_U64,
 	SLE_CHAR         = SLE_FILE_I8  | SLE_VAR_CHAR,
-	SLE_STRINGID     = SLE_FILE_STRINGID | SLE_VAR_U16,
+	SLE_STRINGID     = SLE_FILE_STRINGID | SLE_VAR_U32,
 	SLE_STRINGBUF    = SLE_FILE_STRING   | SLE_VAR_STRB,
 	SLE_STRINGBQUOTE = SLE_FILE_STRING   | SLE_VAR_STRBQ,
 	SLE_STRING       = SLE_FILE_STRING   | SLE_VAR_STR,

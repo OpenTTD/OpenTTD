@@ -98,7 +98,7 @@ typedef uint8 IndustryType;  ///< The ID of an industry-type.
 typedef OverflowSafeInt64 Money; ///< Money, stored in a 32bit/64bit safe way. For scripts money is always in pounds.
 typedef uint16 SignID;       ///< The ID of a sign.
 typedef uint16 StationID;    ///< The ID of a station.
-typedef uint16 StringID;     ///< The ID of a string.
+typedef uint32 StringID;     ///< The ID of a string.
 typedef uint16 SubsidyID;    ///< The ID of a subsidy.
 typedef uint16 StoryPageID;  ///< The ID of a story page.
 typedef uint16 StoryPageElementID; ///< The ID of a story page element.
