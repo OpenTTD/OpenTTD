@@ -22,9 +22,9 @@
  * @param str String identifier
  * @return StringTab from \a str
  */
-static inline uint GetStringTab(StringID str)
+static inline StringTab GetStringTab(StringID str)
 {
-	return GB(str, TAB_SIZE_BITS, 5);
+	return (StringTab)GB(str, TAB_SIZE_BITS, 5);
 }
 
 /**
@@ -43,8 +43,9 @@ static inline uint GetStringIndex(StringID str)
  * @param index StringIndex
  * @return StringID composed from \a tab and \a index
  */
-static inline StringID MakeStringID(uint tab, uint index)
+static inline StringID MakeStringID(StringTab tab, uint index)
 {
+	assert(tab < TEXT_TAB_END);
 	assert(index < TAB_SIZE);
 	return tab << TAB_SIZE_BITS | index;
 }

@@ -34,15 +34,16 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 {
 	uint index = GetStringIndex(internal_string_id);
 	switch (GetStringTab(internal_string_id)) {
-		case 26: case 28: case 29: case 30: // NewGRF strings.
-			return ERR_NEWGRF_SUPPLIED_ERROR;
+		case TEXT_TAB_NEWGRF1:
+		case TEXT_TAB_NEWGRF2:
+		case TEXT_TAB_NEWGRF3:
+			return ERR_NEWGRF_SUPPLIED_ERROR; // NewGRF strings.
 
-		/* DO NOT SWAP case 14 and 4 because that will break StringToError due
-		 * to the index dependency that relies on FALL THROUGHs. */
-		case 14: if (index < 0xE4) break; // Player name
-		case 4:  if (index < 0xC0) break; // Town name
-		case 15: // Custom name
-		case 31: // Dynamic strings
+		case TEXT_TAB_SPECIAL:
+			if (index < 0xE4) break; // Player name
+			/* FALL THROUGH */
+		case TEXT_TAB_TOWN:
+			if (index < 0xC0) break; // Town name
 			/* These strings are 'random' and have no meaning.
 			 * They actually shouldn't even be returned as error messages. */
 			return ERR_UNKNOWN;

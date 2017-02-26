@@ -502,11 +502,11 @@ static void Check_PLYR()
 
 		/* We do not load old custom names */
 		if (IsSavegameVersionBefore(84)) {
-			if (GetStringTab(cprops->name_1) == 15) {
+			if (GetStringTab(cprops->name_1) == TEXT_TAB_OLD_CUSTOM) {
 				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 			}
 
-			if (GetStringTab(cprops->president_name_1) == 15) {
+			if (GetStringTab(cprops->president_name_1) == TEXT_TAB_OLD_CUSTOM) {
 				cprops->president_name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 			}
 		}

@@ -26,6 +26,24 @@ enum TextDirection {
 	TD_RTL, ///< Text is written right-to-left by default
 };
 
+/** StringTabs to group StringIDs */
+enum StringTab {
+	/* Tabs 0..1 for regular strings */
+	TEXT_TAB_TOWN             =  4,
+	TEXT_TAB_INDUSTRY         =  9,
+	TEXT_TAB_STATION          = 12,
+	TEXT_TAB_SPECIAL          = 14,
+	TEXT_TAB_OLD_CUSTOM       = 15,
+	TEXT_TAB_VEHICLE          = 16,
+	/* Tab 17 for regular strings */
+	TEXT_TAB_GAMESCRIPT       = 18,
+	TEXT_TAB_OLD_NEWGRF       = 26,
+	TEXT_TAB_NEWGRF1          = 28,
+	TEXT_TAB_NEWGRF2          = 29,
+	TEXT_TAB_NEWGRF3          = 30,
+	TEXT_TAB_END              = 32
+};
+
 /** Number of bits for the StringIndex within a StringTab */
 static const uint TAB_SIZE_BITS       = 11;
 /** Number of strings per StringTab */

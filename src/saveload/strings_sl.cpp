@@ -61,7 +61,7 @@ char *_old_name_array = NULL;
 char *CopyFromOldName(StringID id)
 {
 	/* Is this name an (old) custom name? */
-	if (GetStringTab(id) != 15) return NULL;
+	if (GetStringTab(id) != TEXT_TAB_OLD_CUSTOM) return NULL;
 
 	if (IsSavegameVersionBefore(37)) {
 		/* Allow for expansion when converted to UTF-8. */
