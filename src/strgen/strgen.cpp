@@ -525,7 +525,7 @@ int CDECL main(int argc, char *argv[])
 			mkpath(pathbuf, lastof(pathbuf), src_dir, "english.txt");
 
 			/* parse master file */
-			StringData data(TAB_COUNT);
+			StringData data(TEXT_TAB_END);
 			FileStringReader master_reader(data, pathbuf, true, false);
 			master_reader.ParseFile();
 			if (_errors != 0) return 1;
@@ -542,7 +542,7 @@ int CDECL main(int argc, char *argv[])
 
 			mkpath(pathbuf, lastof(pathbuf), src_dir, "english.txt");
 
-			StringData data(TAB_COUNT);
+			StringData data(TEXT_TAB_END);
 			/* parse master file and check if target file is correct */
 			FileStringReader master_reader(data, pathbuf, true, false);
 			master_reader.ParseFile();
