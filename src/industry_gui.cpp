@@ -56,9 +56,18 @@ enum CargoSuffixType {
 	CST_DIR,   ///< Industry-directory window
 };
 
+/** Ways of displaying the cargo. */
+enum CargoSuffixDisplay {
+	CSD_CARGO,             ///< Display the cargo without sub-type (cb37 result 401).
+	CSD_CARGO_AMOUNT,      ///< Display the cargo and amount (if useful), but no sub-type (cb37 result 400 or fail).
+	CSD_CARGO_TEXT,        ///< Display then cargo and supplied string (cb37 result 800-BFF).
+	CSD_CARGO_AMOUNT_TEXT, ///< Display then cargo, amount, and string (cb37 result 000-3FF).
+};
+
 /** Transfer storage of cargo suffix information. */
 struct CargoSuffix {
-	char text[512]; ///< Storage of the cargo suffix to print.
+	CargoSuffixDisplay display; ///< How to display the cargo and text.
+	char text[512];             ///< Cargo suffix text.
 };
 
 static void ShowIndustryCargoesWindow(IndustryType id);
@@ -80,15 +89,47 @@ static void ShowIndustryCargoesWindow(IndustryType id);
 static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, CargoSuffix &suffix)
 {
 	suffix.text[0] = '\0';
+	suffix.display = CSD_CARGO_AMOUNT;
+
 	if (HasBit(indspec->callback_mask, CBM_IND_CARGO_SUFFIX)) {
-		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, const_cast<Industry *>(ind), ind_type, (cst != CST_FUND) ? ind->location.tile : INVALID_TILE);
-		if (callback == CALLBACK_FAILED || callback == 0x400) return;
-		if (callback > 0x400) {
+		TileIndex t = (cst != CST_FUND) ? ind->location.tile : INVALID_TILE;
+		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, const_cast<Industry *>(ind), ind_type, t);
+		if (callback == CALLBACK_FAILED) return;
+
+		if (indspec->grf_prop.grffile->grf_version < 8) {
+			if (GB(callback, 0, 8) == 0xFF) return;
+			if (callback < 0x400) {
+				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
+				GetString(suffix.text, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback), lastof(suffix.text));
+				StopTextRefStackUsage();
+				suffix.display = CSD_CARGO_AMOUNT_TEXT;
+				return;
+			}
 			ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_CARGO_SUFFIX, callback);
-		} else if (indspec->grf_prop.grffile->grf_version >= 8 || GB(callback, 0, 8) != 0xFF) {
-			StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-			GetString(suffix.text, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback), lastof(suffix.text));
-			StopTextRefStackUsage();
+			return;
+
+		} else { // GRF version 8 or higher.
+			if (callback == 0x400) return;
+			if (callback == 0x401) {
+				suffix.display = CSD_CARGO;
+				return;
+			}
+			if (callback < 0x400) {
+				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
+				GetString(suffix.text, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback), lastof(suffix.text));
+				StopTextRefStackUsage();
+				suffix.display = CSD_CARGO_AMOUNT_TEXT;
+				return;
+			}
+			if (callback >= 0x800 && callback < 0xC00) {
+				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
+				GetString(suffix.text, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 - 0x800 + callback), lastof(suffix.text));
+				StopTextRefStackUsage();
+				suffix.display = CSD_CARGO_TEXT;
+				return;
+			}
+			ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_CARGO_SUFFIX, callback);
+			return;
 		}
 	}
 }
