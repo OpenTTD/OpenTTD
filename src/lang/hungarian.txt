@@ -3356,6 +3356,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Felhaszn
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}, {STRING}{STRING}

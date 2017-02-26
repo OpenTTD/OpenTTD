@@ -3387,6 +3387,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Vyžaduj
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Vyžaduje: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}, {STRING.acc}{STRING}
 ############ range for requires ends
 
+
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}

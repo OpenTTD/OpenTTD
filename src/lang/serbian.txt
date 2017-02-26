@@ -3487,6 +3487,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Potražu
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}, {STRING.aku}{STRING}, {STRING.aku}{STRING}
 ############ range for requires ends
 
+
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}, {STRING}{STRING}

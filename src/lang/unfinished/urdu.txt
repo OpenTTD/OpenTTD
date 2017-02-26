@@ -2321,6 +2321,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}گزشت
 ############ range for requires starts
 ############ range for requires ends
 
+
 ############ range for produces starts
 ############ range for produces ends
 

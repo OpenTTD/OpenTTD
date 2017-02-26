@@ -3495,6 +3495,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Postulat
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}, {STRING.acc}{STRING}
 ############ range for requires ends
 
+
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Efficit: {YELLOW}{STRING.acc}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Efficit: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}

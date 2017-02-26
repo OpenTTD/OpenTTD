@@ -3306,6 +3306,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{YELLOW}{3:STRI
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{YELLOW}{5:STRING}{4:STRING},{3:STRING}{2:STRING},{1:STRING}{0:STRING}{BLACK} :דורש
 ############ range for requires ends
 
+
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{YELLOW}{1:STRING}{0:STRING}{BLACK} :מייצר
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{YELLOW}{3:STRING}{2:STRING},{1:STRING}{0:STRING}{BLACK} :מייצר

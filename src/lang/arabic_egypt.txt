@@ -2818,6 +2818,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}يحتا
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}يحتاج: {YELLOW}{STRING}{STRING}, {STRING}{STRING} , {STRING}{STRING}
 ############ range for requires ends
 
+
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}ينتج: {YELLOW}{STRING} {STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}ينتج: {YELLOW}{STRING} {STRING}, {STRING} {STRING}

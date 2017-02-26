@@ -1412,6 +1412,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Прои
 ############ range for requires starts
 ############ range for requires ends
 
+
 ############ range for produces starts
 ############ range for produces ends
 
