@@ -21,10 +21,8 @@ static const uint8 CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gen
 static const uint8 MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
 static const uint8 MAX_NUM_CASES   = 16; ///< Maximum number of supported cases.
 
-static const uint TAB_SIZE_OFFSET  = 0;                   ///< The offset for the tab size.
 static const uint TAB_SIZE_BITS    = 11;                  ///< The number of bits used for the tab size.
 static const uint TAB_SIZE         = 1 << TAB_SIZE_BITS;  ///< The number of values in a tab.
-static const uint TAB_COUNT_OFFSET = TAB_SIZE_BITS;       ///< The offset for the tab count.
 static const uint TAB_COUNT_BITS   = 5;                   ///< The number of bits used for the amount of tabs.
 static const uint TAB_COUNT        = 1 << TAB_COUNT_BITS; ///< The amount of tabs.
 

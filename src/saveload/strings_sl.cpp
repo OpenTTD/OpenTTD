@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../string_func.h"
+#include "../strings_func.h"
 #include "saveload_internal.h"
 
 #include "table/strings.h"
@@ -60,7 +61,7 @@ char *_old_name_array = NULL;
 char *CopyFromOldName(StringID id)
 {
 	/* Is this name an (old) custom name? */
-	if (GB(id, 11, 5) != 15) return NULL;
+	if (GetStringTab(id) != 15) return NULL;
 
 	if (IsSavegameVersionBefore(37)) {
 		/* Allow for expansion when converted to UTF-8. */

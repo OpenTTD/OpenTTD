@@ -194,14 +194,14 @@ static bool _scan_for_gender_data = false;  ///< Are we scanning for the gender 
 
 const char *GetStringPtr(StringID string)
 {
-	switch (GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS)) {
-		case GAME_TEXT_TAB: return GetGameStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS));
+	switch (GetStringTab(string)) {
+		case GAME_TEXT_TAB: return GetGameStringPtr(GetStringIndex(string));
 		/* 0xD0xx and 0xD4xx IDs have been converted earlier. */
 		case 26: NOT_REACHED();
-		case 28: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS));
-		case 29: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS) + 0x0800);
-		case 30: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS) + 0x1000);
-		default: return _langpack_offs[_langtab_start[GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS)] + GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS)];
+		case 28: return GetGRFStringPtr(GetStringIndex(string));
+		case 29: return GetGRFStringPtr(GetStringIndex(string) + 0x0800);
+		case 30: return GetGRFStringPtr(GetStringIndex(string) + 0x1000);
+		default: return _langpack_offs[_langtab_start[GetStringTab(string)] + GetStringIndex(string)];
 	}
 }
 
@@ -219,8 +219,8 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 {
 	if (string == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
 
-	uint index = GB(string, TAB_SIZE_OFFSET,  TAB_SIZE_BITS);
-	uint tab   = GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS);
+	uint index = GetStringIndex(string);
+	uint tab = GetStringTab(string);
 
 	switch (tab) {
 		case 4:
@@ -886,7 +886,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 								buff = strecat(buff, "(invalid sub-StringID)", last);
 								break;
 							}
-							param = (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + param;
+							param = MakeStringID(GAME_TEXT_TAB, param);
 						}
 
 						sub_args.SetParam(i++, param);
@@ -901,7 +901,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				/* If we didn't error out, we can actually print the string. */
 				if (*str != '\0') {
 					str = p;
-					buff = GetStringWithArgs(buff, (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + stringid, &sub_args, last, true);
+					buff = GetStringWithArgs(buff, MakeStringID(GAME_TEXT_TAB, stringid), &sub_args, last, true);
 				}
 
 				for (int i = 0; i < 20; i++) {
@@ -1017,7 +1017,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_STRING: {// {STRING}
 				StringID str = args->GetInt32(SCC_STRING);
-				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
+				if (game_script && GetStringTab(str) != GAME_TEXT_TAB) break;
 				/* WARNING. It's prohibited for the included string to consume any arguments.
 				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
 				 * To debug stuff you can set argv to NULL and it will tell you */
@@ -1036,7 +1036,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING7: { // {STRING1..7}
 				/* Strings that consume arguments */
 				StringID str = args->GetInt32(b);
-				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
+				if (game_script && GetStringTab(str) != GAME_TEXT_TAB) break;
 				uint size = b - SCC_STRING1 + 1;
 				if (game_script && size > args->GetDataLeft()) {
 					buff = strecat(buff, "(too many parameters)", last);

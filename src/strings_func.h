@@ -15,6 +15,38 @@
 #include "strings_type.h"
 #include "string_type.h"
 #include "gfx_type.h"
+#include "core/bitmath_func.hpp"
+
+/**
+ * Extract the StringTab from a StringID.
+ * @param str String identifier
+ * @return StringTab from \a str
+ */
+static inline uint GetStringTab(StringID str)
+{
+	return GB(str, 11, 5);
+}
+
+/**
+ * Extract the StringIndex from a StringID.
+ * @param str String identifier
+ * @return StringIndex from \a str
+ */
+static inline uint GetStringIndex(StringID str)
+{
+	return GB(str, 0, 11);
+}
+
+/**
+ * Create a StringID
+ * @param tab StringTab
+ * @param index StringIndex
+ * @return StringID composed from \a tab and \a index
+ */
+static inline StringID MakeStringID(uint tab, uint index)
+{
+	return tab << 11 | index;
+}
 
 class StringParameters {
 	StringParameters *parent; ///< If not NULL, this instance references data from this parent instance.
