@@ -766,35 +766,49 @@ public:
 
 		CargoSuffix cargo_suffix[3];
 		GetAllCargoSuffixes(0, CST_VIEW, i, i->type, ind, i->accepts_cargo, cargo_suffix);
-		if (HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) {
-			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] == CT_INVALID) continue;
-				has_accept = true;
-				if (first) {
-					DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING);
-					y += FONT_HEIGHT_NORMAL;
-					first = false;
-				}
-				SetDParam(0, i->accepts_cargo[j]);
-				SetDParam(1, i->incoming_cargo_waiting[j]);
-				SetDParamStr(2, cargo_suffix[j].text);
-				DrawString(left + WD_FRAMETEXT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO);
+		bool stockpiling = HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS);
+
+		uint left_side = left + WD_FRAMERECT_LEFT * 4; // Indent accepted cargoes.
+		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+			if (i->accepts_cargo[j] == CT_INVALID) continue;
+			has_accept = true;
+			if (first) {
+				DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_REQUIRES);
 				y += FONT_HEIGHT_NORMAL;
+				first = false;
 			}
-		} else {
-			StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
-			byte p = 0;
-			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] == CT_INVALID) continue;
-				has_accept = true;
-				if (p > 0) str++;
-				SetDParam(p++, CargoSpec::Get(i->accepts_cargo[j])->name);
-				SetDParamStr(p++, cargo_suffix[j].text);
+			switch (cargo_suffix[j].display) {
+				case CSD_CARGO_AMOUNT:
+					if (stockpiling) {
+						SetDParam(0, i->accepts_cargo[j]);
+						SetDParam(1, i->incoming_cargo_waiting[j]);
+						DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT);
+						break;
+					}
+					/* FALL THROUGH */
+
+				case CSD_CARGO:
+					SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);
+					DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO);
+					break;
+
+				case CSD_CARGO_TEXT:
+					SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);
+					SetDParamStr(1, cargo_suffix[j].text);
+					DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT);
+					break;
+
+				case CSD_CARGO_AMOUNT_TEXT:
+					SetDParam(0, i->accepts_cargo[j]);
+					SetDParam(1, i->incoming_cargo_waiting[j]);
+					SetDParamStr(2, cargo_suffix[j].text);
+					DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT);
+					break;
+
+				default:
+					NOT_REACHED();
 			}
-			if (has_accept) {
-				DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, str);
-				y += FONT_HEIGHT_NORMAL;
-			}
+			y += FONT_HEIGHT_NORMAL;
 		}
 
 		GetAllCargoSuffixes(3, CST_VIEW, i, i->type, ind, i->produced_cargo, cargo_suffix);
