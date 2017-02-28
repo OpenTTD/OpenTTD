@@ -1870,6 +1870,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγ
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων για AI και της δέσμης ενεργειών του παιχνιδιού
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το «OpenTTD»
 
+STR_INTRO_BASESET                                               :{BLACK}Λείπουν {NUM} sprite{P "" s} από το επιλεγμένο βασικό σετ γραφικών. Παρακαλούμε ελέγξτε για ενημερώσεις του βασικού σετ.
 STR_INTRO_TRANSLATION                                           :{BLACK}Λείπουν {NUM} παράμετροι από τη μετάφραση. Παρακαλούμε βοηθήστε να κάνουμε το OpenTTD καλύτερο εγγραφόμενοι ως μεταφραστές. Δείτε το αρχείο readme.txt για λεπτομέρειες.
 
 # Quit window
@@ -2698,6 +2699,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Όνομ
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτά εμπορεύματα: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Τύπος σιδηροτροχιάς: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας σιδηροτροχιάς: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας δρόμου: {LTBLUE}{VELOCITY}
 
@@ -2710,29 +2712,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Χωράφια
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Χιονισμένο έδαφος
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Έρημος
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Σιδηρόδρομος σιδηροτροχιά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Σιδηρόδρομος σιδηροτροχιά με συνδυαστικά σήματα
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Σιδηρόδρομος σιδηροτροχιά με σήματα διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Σιδηρόδρομος σιδηροτροχιά με σήματα μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και ειδοποίησης
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Σιδηρόδρομος σιδηροτροχιά με σήματα τμήματος και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Σιδηρόδρομος σιδηροτροχιά με σήματα ειδοποίησης και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου και διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Σιδηρόδρομος σιδηροτροχιά με σήματα εξόδου και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Σιδηρόδρομος σιδηροτροχιά με σήματα διαδρομής και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Σιδηρόδρομος σιδηροτροχιά σήματα μονόδρομους διαδρομής και συνδυαστικά
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Σιδηρόδρομος σιδηροτροχιά με σήματα διαδρομής και μονόδρομους διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Σιδηρόδρομος αμαξοστάσιο τρένων
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Σιδηροδρομική τροχιά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Σιδηροδρομική τροχιά με σήματα τμήματος
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Σιδηροδρομική τροχιά με σήματα ειδοποίησης
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Σιδηροδρομική τροχιά με σήματα εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Σιδηροδρομική τροχιά με συνδυαστικά σήματα
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Σιδηροδρομική τροχιά με σήματα διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Σιδηροδρομική τροχιά με σήματα μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Σιδηροδρομική τροχιά με σήματα τμήματος και ειδοποίησης
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Σιδηροδρομική τροχιά με σήματα τμήματος και εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Σιδηροδρομική τροχιά με σήματα τμήματος και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Σιδηροδρομική τροχιά με σήματα τμήματος και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Σιδηροδρομική τροχιά με σήματα τμήματος και μονόδρομους διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Σιδηροδρομική τροχιά με σήματα ειδοποίησης και εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Σιδηροδρομική τροχιά με σήματα ειδοποίησης και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Σιδηροδρομική τροχιά με σήματα ειδοποίησης και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Σιδηροδρομική τροχιά με σήματα ειδοποίησης και μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Σιδηροδρομική τροχιά με σήματα εξόδου και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Σιδηροδρομική τροχιά με σήματα εξόδου και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Σιδηροδρομική τροχιά με σήματα εξόδου και μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Σιδηρόδρομος με σήματα διαδρομής και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Σιδηροδρομική τροχιά με σήματα μονόδρομης διαδρομής και συνδυαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Σιδηροδρομική τροχιά με σήματα διαδρομής και μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Αμαξοστάσιο σιδηροδρομικών τρένων
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Δρόμος
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Δρόμος με φωτισμό
@@ -3401,6 +3403,9 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Απαι
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Απαιτεί
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}σε αναμονή
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Παράγει: {YELLOW}{STRING}{STRING}
@@ -3672,6 +3677,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατή
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλαγή μεταξύ των παραθύρων αντικατάστασης μηχανών και βαγονιών
 STR_REPLACE_ENGINES                                             :Μηχανές
 STR_REPLACE_WAGONS                                              :Βαγόνια
+STR_REPLACE_ALL_RAILTYPE                                        :Όλα τα οχήματα σιδηρόδρομου
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Επιλέξτε τον τύπο σιδηροδρόμου για τον οποίο θέλετε να γίνει η αντικατάσταση των μηχανών
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Εμφανίζει ποια μηχανή αυτή στα αριστερά θα αντικατασταθεί, εάν υπάρχει
