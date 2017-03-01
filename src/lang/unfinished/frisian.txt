@@ -3388,6 +3388,7 @@ STR_ORDER_GO_NON_STOP_VIA                                       :Gean non-stop f
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Feroarje it stop gedrach fan selektearre opdracht
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Alle fracht folslein lade
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lade as beskikber
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Samar in fracht folslein lade
 STR_ORDER_DROP_NO_LOADING                                       :Net laden
 
@@ -3597,6 +3598,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} feroarings fan {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisinsje fan {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Omwikkelje tekst
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Feroarings
