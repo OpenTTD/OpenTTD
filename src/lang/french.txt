@@ -1762,6 +1762,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifie
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afficher la configuration des scripts
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter OpenTTD
 
+STR_INTRO_BASESET                                               :{BLACK}{NUM} sprite{P "" s} manque{P "" "nt"} dans les graphiques de base actuellement sélectionnés. Veuillez vérifier les mises à jours pour les graphiques de base.
 STR_INTRO_TRANSLATION                                           :{BLACK}Il manque {NUM} chaîne{P "" s} dans cette traduction. Merci d'aider à améliorer OpenTTD en vous inscrivant comme traducteur. Voir readme.txt pour les détails.
 
 # Quit window
@@ -3294,6 +3295,11 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Nécessi
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Nécessite{NBSP}: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Nécessite
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}en attente
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produit{NBSP}: {YELLOW}{STRING}{STRING}
