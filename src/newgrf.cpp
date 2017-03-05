@@ -5474,12 +5474,6 @@ static void FeatureNewName(ByteReader *buf)
 				}
 				break;
 
-			case GSF_INDUSTRIES: {
-				AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
-				break;
-			}
-
-			case GSF_HOUSES:
 			default:
 				switch (GB(id, 8, 8)) {
 					case 0xC4: // Station class name
