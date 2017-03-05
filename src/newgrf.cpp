@@ -550,24 +550,28 @@ static StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
  */
 StringID MapGRFStringID(uint32 grfid, StringID str)
 {
-	/* 0xD0 and 0xDC stand for all the TextIDs in the range
-	 * of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).
-	 * These strings are unique to each grf file, and thus require to be used with the
-	 * grfid in which they are declared */
-	switch (GB(str, 8, 8)) {
-		case 0xD0: case 0xD1: case 0xD2: case 0xD3:
-		case 0xDC:
-			return GetGRFStringID(grfid, str);
-
-		case 0xD4: case 0xD5: case 0xD6: case 0xD7:
-			/* Strings embedded via 0x81 have 0x400 added to them (no real
-			 * explanation why...) */
-			return GetGRFStringID(grfid, str - 0x400);
-
-		default: break;
+	if (IsInsideMM(str, 0xDC00, 0xDD00)) {
+		/* General text provided by NewGRF.
+		 * In the specs this is called the 0xDCxx range (misc presistent texts).
+		 * Note: We are not involved in the "persistent" business, since we do not store
+		 * any NewGRF strings in savegames. */
+		return GetGRFStringID(grfid, str);
+	} else if (IsInsideMM(str, 0xD000, 0xD800)) {
+		/* Callback text provided by NewGRF.
+		 * In the specs this is called the 0xD0xx range (misc graphics texts).
+		 * These texts can be returned by various callbacks.
+		 *
+		 * Due to how TTDP implements the GRF-local- to global-textid translation
+		 * texts included via 0x80 or 0x81 control codes have to add 0x400 to the textid.
+		 * We do not care about that difference and just mask out the 0x400 bit.
+		 */
+		str &= ~0x400;
+		return GetGRFStringID(grfid, str);
+	} else {
+		/* The NewGRF wants to include/reference an original TTD string.
+		 * Try our best to find an equivalent one. */
+		return TTDPStringIDToOTTDStringIDMapping(str);
 	}
-
-	return TTDPStringIDToOTTDStringIDMapping(str);
 }
 
 static std::map<uint32, uint32> _grf_id_overrides;
@@ -5475,6 +5479,11 @@ static void FeatureNewName(ByteReader *buf)
 				break;
 
 			default:
+				if (IsInsideMM(id, 0xD000, 0xD400) || IsInsideMM(id, 0xDC00, 0xDD00)) {
+					AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
+					break;
+				}
+
 				switch (GB(id, 8, 8)) {
 					case 0xC4: // Station class name
 						if (_cur.grffile->stations == NULL || _cur.grffile->stations[GB(id, 0, 8)] == NULL) {
@@ -5507,14 +5516,6 @@ static void FeatureNewName(ByteReader *buf)
 						} else {
 							_cur.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
-						break;
-
-					case 0xD0:
-					case 0xD1:
-					case 0xD2:
-					case 0xD3:
-					case 0xDC:
-						AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
 						break;
 
 					default:
