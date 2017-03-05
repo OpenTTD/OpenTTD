@@ -550,9 +550,10 @@ static StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
  */
 StringID MapGRFStringID(uint32 grfid, StringID str)
 {
-	if (IsInsideMM(str, 0xDC00, 0xDD00)) {
+	if (IsInsideMM(str, 0xD800, 0xE000)) {
 		/* General text provided by NewGRF.
-		 * In the specs this is called the 0xDCxx range (misc presistent texts).
+		 * In the specs this is called the 0xDCxx range (misc presistent texts),
+		 * but we meanwhile extended the range to 0xD800-0xDFFF.
 		 * Note: We are not involved in the "persistent" business, since we do not store
 		 * any NewGRF strings in savegames. */
 		return GetGRFStringID(grfid, str);
@@ -5479,7 +5480,7 @@ static void FeatureNewName(ByteReader *buf)
 				break;
 
 			default:
-				if (IsInsideMM(id, 0xD000, 0xD400) || IsInsideMM(id, 0xDC00, 0xDD00)) {
+				if (IsInsideMM(id, 0xD000, 0xD400) || IsInsideMM(id, 0xD800, 0xE000)) {
 					AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
 					break;
 				}
@@ -7239,7 +7240,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 	byte num_strings = buf->ReadByte();
 	uint16 first_id  = buf->ReadWord();
 
-	if (!((first_id >= 0xD000 && first_id + num_strings <= 0xD400) || (first_id >= 0xDC00 && first_id + num_strings <= 0xDD00))) {
+	if (!((first_id >= 0xD000 && first_id + num_strings <= 0xD400) || (first_id >= 0xD800 && first_id + num_strings <= 0xE000))) {
 		grfmsg(7, "TranslateGRFStrings: Attempting to set out-of-range string IDs in action 13 (first: 0x%4X, number: 0x%2X)", first_id, num_strings);
 		return;
 	}
