@@ -1073,6 +1073,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Tetapan permain
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Tetapan syarikat (disimpan di simpanan; berkesan hanya permainan baru)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Tetapan syarikat (disimpan di penyimpanan; hanya berkesan kepada syarikat semasa)
 
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hadkan senarai di bawah menggunakan penapis yang telah ditetapkan
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Asas (menunjukkan tetapan yang penting sahaja)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Terperinci (tunjukkan kebanyakan tetapan)
@@ -1080,6 +1081,7 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (memapar
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Tetapan dengan nilai berbeza dari yang lalai
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Tetapan dengan nilai yang berbeza daripada tetapan baru permainananda
 
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Tiada -
 
 STR_CONFIG_SETTING_OFF                                          :Matikan
 STR_CONFIG_SETTING_ON                                           :Hidupkan
@@ -1165,6 +1167,7 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Jumlah ruang ra
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Benarkan pelbagai industri sejenis di setiap bandar: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Biasanya sebuah bandar tidak mahu lebih daripada beberapa industri. Dengan tetapan ini membolehakn beberapa industri di bandar yang sama
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Pamer isyarat: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di sebelah kanan
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tunjukkan tetingkap kewangan setiap penghujung tahun: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Arahan baru ialah 'tanpa henti' secara lazim: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Arahan keretapi baru berhenti secara lazim di pletfom {STRING}
@@ -1302,6 +1305,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Tunjukkan landa
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Alat binaan tetap aktif selepas digunakan: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Perbelanjaan kumpulan dalam tetingkap kewangan syarikat: {STRING}
 
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembinaan: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Nyahaktif infrastruktur bangunan apabila tiada kenderaan yang sesuai: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Amaun maksimum kereta api setiap syarikat: {STRING}
@@ -1324,6 +1328,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Benarkan Kepint
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum skrip adalah digantung: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tempoh waktu servis dalam peratusan: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih sama ada selenggara kenderaan dimulakan sejak tempoh masa dari servis terakhir atau apabila peratusan kebolehupayaan kenderaan berkurang kepada peratusan tertentu.
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dilumpuhkan
 STR_CONFIG_SETTING_NOSERVICE                                    :Servis tidak diperlukan apabila kerosakan kenderaan ditetapkan kepada tiada: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Benarkan had kelajuan untuk gerabak: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tiada landasan elektrik: {STRING}
@@ -1332,6 +1338,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ketibaan kender
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ketibaan kenderaan di stesen pesaing: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Kemalangan / bencana: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Maklumat syarikat: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Paparkan surat khabar mengenai pembukaan syarikat baru, atau apabila syarikat dalam risiko untuk muflis
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Pembukaan industri: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Penutupan industri: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Perubahan ekonomi: {STRING}
@@ -1353,6 +1360,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun permulaan
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gunakan ekonomi baik (perubahan yang lebih kecil): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Benarkan membeli saham syarikat lain: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bina semafor secara automatik sebelum: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tetapkan tahun apabila isyarat berjenis elektrik digunakan untuk landasan. Sebelum tahun ini, isyarat bukan elektrik akan digunakan (memiliki fungsi yang sama, tetapi berlainan reka bentuk)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Gunakan GUI isyarat: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Jenis isyarat yang dibina secara lazim: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Isyarat sekatan
@@ -2308,27 +2316,27 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ladang
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tanah diliputi salji
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Padang pasir
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Keretapi landasan
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Landasan keretapi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Keretapi landasan dengan isyarat sekatan
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Keretapi landasan dengan pra-isyarat
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Keretapi landasan dengan isyarat keluar
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Keretapi landasan dengan isyarat kombo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Landasan keretapi dengan isyarat keluar
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Landasan keretapi dengan isyarat kombo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Keretapi landasan dengan isyarat laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Keretapi landasan dengan isyarat satu hala
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Landasan keretapi dengan isyarat satu hala
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Keretapi landasan dengan isyarat sekatan dan pra-isyarat
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Keretapi landasan dengan isyarat sekatan dan keluar
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Keretapi landasan dengan isyarat sekatan dan kombo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Landasan keretapi dengan isyarat sekatan dan keluar
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Landasan keretapi dengan isyarat sekatan dan kombo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Keretapi landasan dengan isyarat sekatan dan laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Keretapi landasan dengan isyarat sekatan dan satu hala
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Landasan keretapi dengan isyarat sekatan dan satu hala
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Keretapi landasan dengan isyarat pra- dan keluar
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Keretapi landasan dengan isyarat pra- dan kombo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Keretapi landasan dengan isyarat pra- dan laluan
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Keretapi landasan dengan isyarat pra- dan satu hala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Keretapi landasan dengan isyarat keluar dan kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Keretapi landasan dengan isyarat keluar dan laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Keretapi landasan dengan isyarat keluar dan satu hala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Keretapi landasan dengan isyarat kombo dan laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Keretapi landasan dengan isyarat kombo dan satu hala
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Landasan keretapi dengan isyarat keluar dan kombo.
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Landasan keretapi dengan isyarat keluar dan laluan
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Landasan keretapi dengan isyarat keluar dan satu hala
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Landasan keretapi dengan isyarat kombo dan signal laluan
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Landasan keretapi dengan isyarat kombo dan satu hala
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Keretapi landasan dengan isyarat laluan dan satu hala
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Keretapi depoh keretapi
 
@@ -2769,6 +2777,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk memusatkan pemandangan kepada industri/bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama stesen - klik pada nama untuk memusatkan pemandangan ke stesen. Ctrl+Klik membuka tetingkap pemandangan di lokasi stesen
@@ -2935,6 +2944,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Pengelua
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% dihantar)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Pusatkan pemandangan utama ke lokasi industri. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi industri
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tahap produksi: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW} Industri mengumumkan penutupan serta merta!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}
@@ -2942,6 +2952,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Memerluk
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Diperlukan
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Mengeluarkan: {YELLOW}{STRING}{STRING}
@@ -3310,6 +3321,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tempoh P
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah 10 tempoh penyenggelaraan. Ctrl+Klik untuk tambah 5 tempoh penyenggelaraan
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangkan 10 tempoh penyenggelaraan. Ctrl+Klik untuk kurangkan 5 tempoh penyenggelaraan
 
+STR_VEHICLE_DETAILS_PERCENT                                     :Peratusan
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama keretapi
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kenderaan jalanraya
@@ -4032,6 +4044,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak bo
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kenderaan sudah musnah
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Mulakan permainan baru selepas {DATE_SHORT} atau gunakan NewGRF yang digunakan kenderaan terdahulu
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Keretapi tidak boleh melanggar isyarat kerana terdapat kemungkinan bahaya...
@@ -4078,6 +4091,8 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Sebuah permaina
 # Translatable descriptions in media/baseset/*.ob* files
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe DOS edition.
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe edisi Windows.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Muzik asal Transport Tycoon Deluxe edisi Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pek muzik tanpa muzik sebenar.
 
 ##id 0x2000
 # Town building names
