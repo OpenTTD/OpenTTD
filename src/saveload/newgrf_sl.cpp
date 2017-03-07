@@ -96,8 +96,16 @@ static void Load_NGRF()
 {
 	Load_NGRF_common(_grfconfig);
 
-	/* Append static NewGRF configuration, but only if there are some NewGRFs. */
-	if (_game_mode != GM_MENU || _all_grfs != NULL) AppendStaticGRFConfigs(&_grfconfig);
+	if (_game_mode == GM_MENU) {
+		/* Intro game must not have NewGRF. */
+		if (_grfconfig != NULL) SlErrorCorrupt("The intro game must not use NewGRF");
+
+		/* Activate intro NewGRFs (townnames) */
+		ResetGRFConfig(false);
+	} else {
+		/* Append static NewGRF configuration */
+		AppendStaticGRFConfigs(&_grfconfig);
+	}
 }
 
 static void Check_NGRF()
