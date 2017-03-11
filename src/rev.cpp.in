@@ -72,7 +72,7 @@ const byte _openttd_revision_modified = !!MODIFIED!!;
  * final release will always have a lower version number than the released
  * version, thus making comparisons on specific revisions easy.
  */
-const uint32 _openttd_newgrf_version = 1 << 28 | 7 << 24 | 0 << 20 | 0 << 19 | (!!REVISION!! & ((1 << 19) - 1));
+const uint32 _openttd_newgrf_version = 1 << 28 | 8 << 24 | 0 << 20 | 0 << 19 | (!!REVISION!! & ((1 << 19) - 1));
 
 #ifdef __MORPHOS__
 /**
