@@ -818,10 +818,17 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 
 bool VideoDriver_SDL::AfterBlitterChange()
 {
+	return CreateMainSurface(_screen.width, _screen.height);
+}
+
+void VideoDriver_SDL::AcquireBlitterLock()
+{
 	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
-	bool ret = CreateMainSurface(_screen.width, _screen.height);
+}
+
+void VideoDriver_SDL::ReleaseBlitterLock()
+{
 	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
-	return ret;
 }
 
 #endif /* WITH_SDL */

@@ -1334,10 +1334,17 @@ bool VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 
 bool VideoDriver_Win32::AfterBlitterChange()
 {
+	return AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+}
+
+void VideoDriver_Win32::AcquireBlitterLock()
+{
 	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
-	bool ret = AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+}
+
+void VideoDriver_Win32::ReleaseBlitterLock()
+{
 	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
-	return ret;
 }
 
 void VideoDriver_Win32::EditBoxLostFocus()

@@ -31,6 +31,10 @@ public:
 
 	/* virtual */ bool AfterBlitterChange();
 
+	/* virtual */ void AcquireBlitterLock();
+
+	/* virtual */ void ReleaseBlitterLock();
+
 	/* virtual */ bool ClaimMousePointer();
 
 	/* virtual */ void EditBoxLostFocus();
