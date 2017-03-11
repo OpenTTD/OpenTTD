@@ -1,3 +1,68 @@
+1.6.1 (2016-07-01)
+------------------------------------------------------------------------
+- Fix: Compilation and optimisation issues with GCC6 (r27606, r27605, r27595)
+- Fix: Compilation with --disable-network [FS#6481] (r27602)
+- Fix: [NewGRF] shift-and-add-divide/modulo varadjusts use signed division/modulo (r27600)
+- Fix: Company 0 could accept engine previews before they were offered (r27598)
+
+
+1.6.1-RC1 (2016-06-01)
+------------------------------------------------------------------------
+- Feature: Mexican Spanish (r27564, r27553, r27552)
+- Change: Performance improvement for dedicated servers by skipping drawing calls earlier in the process [FS#6402] (r27579)
+- Fix: Automatic servicing of road vehicles compared path finder costs with tile distances, thus vehicles went to depots which were factor 100 too far away [FS#6410] (r27586)
+- Fix: Enforce a non-zero load amount for all vehicles, so that vehicles can process their cargo reservations [FS#6437] (r27585, r27584)
+- Fix: Do not decrease the column width of depot windows when vehicles with high unitnumbers leave [FS#6415] (r27583)
+- Fix: Button size computation in script configuration window [FS#6461] (r27581)
+- Fix: [NewGRF] Set date of last service on construction also for wagons and articulated parts [FS#6395] (r27580)
+- Fix: Vehicles could not be hidden from the purchase list when they were in exclusive preview [FS#6454] (r27578)
+- Fix: Dock and roadstop picker, client list and town authority window did not auto-resize according to their content when they were positioned at the bottom of the screen [FS#6386] (r27577)
+- Fix: Various incorrect but uncritical size computations in the content client [FS#6449] (r27576, r27570)
+- Fix: Memory leak when disabling palette animation [FS#6404] (r27575)
+- Fix: [NewGRF] The house id as returned by house variable 66 was incorrect when querying neighboured tiles [FS#6432] (r27574)
+- Fix: [Build] Compilation failure with gcc 6.1 due to headers included after safeguards.h [FS#6467] (r27573)
+- Fix: Convenience savegame bump to distinguish 1.6 savegames from 1.5 savegames [FS#6442] (r27572)
+- Fix: [Build] Force sorting to be locale independent, so files are always ordered the same and by that token better diff-able (r27562, r27558)
+- Fix: Typos in comments and string (r27561, r27560)
+- Fix: [Build] bashism that caused different CFLAGS with bash vs dash (r27557)
+- Fix: Use a more appropiate sound effect for convert-rail (r27547)
+- Fix: Remove SetFill from vehicle GUI buttons, so that the viewport is resized instead of them in case of long window titles (r27546)
+- Fix: [Script] Generation of API wrappers (r27545, r27544, r27543)
+- Fix: [Windows] ICU got disabled for Windows builds, breaking RTL support [FS#6427] (r27542)
+- Fix: [NewGRF] Station spritelayouts did not accept the var10 flag for the palette [FS#6435] (r27534)
+
+
+1.6.0 (2016-04-01)
+------------------------------------------------------------------------
+(None)
+
+
+1.6.0-RC1 (2016-03-01)
+------------------------------------------------------------------------
+- Feature: [NewGRF] Allow custom sound IDs in RV property 0x12, ship property 0x10 and aircraft property 0x12 (r27507)
+- Feature: When viewing online content of a particular type, hide content of other types unless they have been (auto)selected for download (r27469, r27468, r27444)
+- Feature: [NewGRF] Move sprite 8 positions in sprite aligner with ctrl+click [FS#6241] (r27451)
+- Feature: Lower the sell-vehicle and sell-chain buttons in the train depot GUI while dragging a vehicle over it [FS#6391] (r27450, r27446)
+- Feature: Make the object placement GUI an independent window (r27438, r27397, r27346)
+- Feature: [Build] Project files and compilation with MSVC2015 (r27385, r27382, r27381, r27380, r27379)
+- Feature: [NewGRF] Allow railtype NewGRF to define separate sprites for the fences on either track side [FS#6315] (r27354, r27343)
+- Feature: [NewGRF] Increase the maximum amount of industry types to 128 per NewGRF and 240 in total (r27279)
+- Feature: Make Ctrl+Remove-Roadstop also remove the road, just like for rail stations [FS#6252] (r27251)
+- Change: [NewGRF] Allow static NewGRF to enable the second rocky tile set (r27497)
+- Change: Round loading percentage in loading indicators and conditional orders towards 50%, so that 0% and 100% mean completely empty or full (r27426)
+- Change: [Build] Rework the configure system to make more use of pkg-config (r27377:r27366, r27361, r27360)
+- Change: Enable YAPF cache debugging with desync debug level 2 (r27332)
+- Change: [strgen] Default plural subparameter position for CARGO_xxx string control codes is subparameter 1 (r27295)
+- Change: [NewGRF] Translate industry variable A6 (r27267)
+- Change: Do not consider cargo that is already being loaded as waiting cargo wrt. the station rating [FS#6165] (r27256)
+- Change: Tune down terrain generation to reduce amount of long slopes (r27230)
+- Change: Generate more detailed curves at the coast (r27229)
+- Change: Slightly more water in the non-custom sea levels (r27228)
+- Change: Be more lenient about road stop removal when at least one stop could be removed [FS#6262] (r27225)
+- Fix: [Win32] Stdin/out/err need to be re-assigned differently if the runtime lib of MSVC2015 is used (r27481)
+- Fix: [Haiku] On Haiku use the appropriate system variable to obtain the include dir [FS#6401] (r27472)
+
+
 1.5.3 (2015-12-01)
 ------------------------------------------------------------------------
 (None)

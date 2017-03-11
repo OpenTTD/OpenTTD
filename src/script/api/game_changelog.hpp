@@ -19,19 +19,11 @@
  *
  * 1.7.0 is not yet released. The following changes are not set in stone yet.
  *
- * \b 1.6.0
+ * \b 1.6.1 - 1.6.0
  *
  * No changes
  *
- * \b 1.5.3
- *
- * No changes
- *
- * \b 1.5.2
- *
- * No changes
- *
- * \b 1.5.1
+ * \b 1.5.3 - 1.5.1
  *
  * No changes
  *
@@ -58,11 +50,7 @@
  *     industry, or town. The user can click at the news message to jump to the
  *     referred location.
  *
- * \b 1.4.4
- *
- * No changes
- *
- * \b 1.4.3
+ * \b 1.4.4 - 1.4.3
  *
  * No changes
  *
@@ -106,11 +94,7 @@
  * \li GSStation::GetCargoRating does return -1 for cargo-station combinations that
  *     do not have a rating yet instead of returning 69.
  *
- * \b 1.3.3
- *
- * No changes
- *
- * \b 1.3.2
+ * \b 1.3.3 - 1.3.2
  *
  * No changes
  *
@@ -136,15 +120,7 @@
  * Other changes:
  * \li Company specific goals are now removed when a company goes bankrupt or is taken over.
  *
- * \b 1.2.3
- *
- * No changes
- *
- * \b 1.2.2
- *
- * No changes
- *
- * \b 1.2.1
+ * \b 1.2.3 - 1.2.1
  *
  * No changes
  *
