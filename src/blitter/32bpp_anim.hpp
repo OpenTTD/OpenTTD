@@ -27,7 +27,9 @@ public:
 		anim_buf(NULL),
 		anim_buf_width(0),
 		anim_buf_height(0)
-	{}
+	{
+		this->palette = _cur_palette;
+	}
 
 	~Blitter_32bppAnim();
 

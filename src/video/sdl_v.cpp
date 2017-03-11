@@ -404,19 +404,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 	blitter->PostResize();
 
 	InitPalette();
-	switch (blitter->UsePaletteAnimation()) {
-		case Blitter::PALETTE_ANIMATION_NONE:
-		case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-			UpdatePalette();
-			break;
-
-		case Blitter::PALETTE_ANIMATION_BLITTER:
-			if (VideoDriver::GetInstance() != NULL) blitter->PaletteAnimate(_local_palette);
-			break;
-
-		default:
-			NOT_REACHED();
-	}
 
 	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
 	SDL_CALL SDL_WM_SetCaption(caption, caption);
