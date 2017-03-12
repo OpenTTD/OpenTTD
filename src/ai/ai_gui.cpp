@@ -531,21 +531,23 @@ struct AISettingsWindow : public Window {
 	virtual void OnQueryTextFinished(char *str)
 	{
 		if (StrEmpty(str)) return;
-		ScriptConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (it->flags & SCRIPTCONFIG_INGAME) == 0) return;
+		const ScriptConfigItem config_item = **it;
+		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
 		int32 value = atoi(str);
-		this->ai_config->SetSetting((*it).name, value);
+		this->ai_config->SetSetting(config_item.name, value);
 		this->SetDirty();
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		assert(this->clicked_dropdown);
-		ScriptConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (it->flags & SCRIPTCONFIG_INGAME) == 0) return;
-		this->ai_config->SetSetting((*it).name, index);
+		const ScriptConfigItem config_item = **it;
+		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
+		this->ai_config->SetSetting(config_item.name, index);
 		this->SetDirty();
 	}
 
