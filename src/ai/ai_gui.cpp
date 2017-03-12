@@ -306,7 +306,6 @@ struct AISettingsWindow : public Window {
 		timeout(0)
 	{
 		this->ai_config = GetConfig(slot);
-		this->RebuildVisibleSettings();
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_AIS_SCROLLBAR);
@@ -314,7 +313,7 @@ struct AISettingsWindow : public Window {
 
 		this->SetWidgetDisabledState(WID_AIS_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
 
-		this->vscroll->SetCount((int)this->visible_settings.size());
+		this->RebuildVisibleSettings();
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -342,6 +341,8 @@ struct AISettingsWindow : public Window {
 				visible_settings.push_back(&(*it));
 			}
 		}
+
+		this->vscroll->SetCount((int)this->visible_settings.size());
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
