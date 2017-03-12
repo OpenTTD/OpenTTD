@@ -324,6 +324,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		if (wp->town == NULL) MakeDefaultName(wp);
 
 		MakeBuoy(tile, wp->index, GetWaterClass(tile));
+		MarkTileDirtyByTile(tile);
 
 		wp->UpdateVirtCoord();
 		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
