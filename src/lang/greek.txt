@@ -31,8 +31,7 @@ STR_JUST_NOTHING                                                :Τίποτα
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Επιβάτες
 STR_CARGO_PLURAL_PASSENGERS.geniki                              :Επιβάτη
-STR_CARGO_PLURAL_COAL                                           :{G=m}Άνθρακες
-STR_CARGO_PLURAL_COAL.geniki                                    :Άνθρακων
+STR_CARGO_PLURAL_COAL                                           :{G=m}Άνθρακάς
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Αλληλογραφία
 STR_CARGO_PLURAL_MAIL.geniki                                    :Αλληλογραφίας
 STR_CARGO_PLURAL_OIL                                            :{G=n}Πετρέλαια
@@ -97,7 +96,6 @@ STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Επιβάτης
 STR_CARGO_SINGULAR_PASSENGER.subs                               :Επιβάτες
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Άνθρακας
-STR_CARGO_SINGULAR_COAL.subs                                    :Άνθρακες
 STR_CARGO_SINGULAR_MAIL                                         :{G=f}Αλληλογραφία
 STR_CARGO_SINGULAR_MAIL.subs                                    :Αλληλογραφία
 STR_CARGO_SINGULAR_OIL                                          :{G=n}Πετρέλαιο
