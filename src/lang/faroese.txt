@@ -3141,10 +3141,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomoti
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnaður: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Ferð: {VELOCITY}  Megi: {POWER}{}Rakstrar kostnaður: {CURRENCY_LONG}/ár{}Pláss: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnaður: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Ferð: {VELOCITY}  Megi: {POWER}  Maks. D.Ó.: {6:FORCE}{}Rakstrar kostnaður: {4:CURRENCY_LONG}/ár{}Pláss: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Kostnaður: {CURRENCY_LONG} Maks. Ferð: {VELOCITY}{}Pláss: {CARGO_LONG}, {CARGO_LONG}{}Rakstrar kostnaður: {CURRENCY_LONG}/ár
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kostnaður: {CURRENCY_LONG} Maks. Ferð: {VELOCITY}{}Pláss: {CARGO_LONG}{}Rakstrar kostnaður: {CURRENCY_LONG}/ár
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Kostnaður: {CURRENCY_LONG} Maks. Ferð: {VELOCITY} Vídd: {COMMA} puntar{}Pláss: {CARGO_LONG}, {CARGO_LONG}{}Rakstrar kostnaður: {CURRENCY_LONG}/ár
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Kostnaður: {CURRENCY_LONG} Maks. Ferð: {VELOCITY} Vídd: {COMMA} puntar{}Pláss: {CARGO_LONG}{}Rakstrar kostnaður: {CURRENCY_LONG}/ár
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Být um {STRING} - {STRING}

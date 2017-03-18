@@ -3753,10 +3753,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :einnsean magnai
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cosgais: {CURRENCY_LONG} Cuideam: {WEIGHT_SHORT}{}Luaths: {VELOCITY}  Cumhachd: {POWER}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna{}Tomhas-lìonaidh: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cosgais: {CURRENCY_LONG} Cuideam: {WEIGHT_SHORT}{}Luaths: {VELOCITY}  Cumhachd: {POWER}  Neart: {6:FORCE}{}Cosgaisean ruith: {4:CURRENCY_LONG}/bliadhna{}Tomhas-lìonaidh: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY}{}Tomhas-lìonaidh: {CARGO_LONG}, {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY}{}Tomhas-lìonaidh: {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY} Astar: {COMMA} leacan{}Tomhas-lìonaidh: {CARGO_LONG}, {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY} Astar: {COMMA} leacan{}Tomhas-lìonaidh: {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Leasaich {STRING} - {STRING}

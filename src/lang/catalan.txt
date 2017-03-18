@@ -3532,10 +3532,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=Femenin}loco
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Pes: {WEIGHT_SHORT}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY_LONG}/any{}Capacitat: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Pes: {WEIGHT_SHORT}{}Velocitat: {VELOCITY} Potència: {POWER} Màx. E.T.: {6:FORCE}{}Cost d'utilització: {4:CURRENCY_LONG}/any{}Capacitat: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Cost: {CURRENCY_LONG} Vel. Màx: {VELOCITY}{}Capacitat: {CARGO_LONG}, {CARGO_LONG}{}Cost d'utilització: {CURRENCY_LONG}/any
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Vel. Màx: {VELOCITY}{}Capacitat: {CARGO_LONG}{}Cost d'utilització: {CURRENCY_LONG}/any
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Cost: {CURRENCY_LONG} Vel. màx.: {VELOCITY} Abast: {COMMA} cel·les{}Capacitat: {CARGO_LONG}, {CARGO_LONG}{}Cost d'utilització: {CURRENCY_LONG}/any
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Cost: {CURRENCY_LONG} Vel. màx.: {VELOCITY} Abast: {COMMA} cel·les{}Capacitat: {CARGO_LONG}{}Cost d'utilització: {CURRENCY_LONG}/any
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING} - {STRING}
