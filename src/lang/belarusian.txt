@@ -3869,10 +3869,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :магніта�
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Кошт: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Хуткасьць: {VELOCITY}  Магутнасьць: {POWER}{}Кошт абслуг.: {CURRENCY_LONG}/год{}Ёмістасьць: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Кошт: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Хуткасьць: {VELOCITY}  Магутнасьць: {POWER}  Макс. ЦН: {6:FORCE}{}Кошт абслуг.: {4:CURRENCY_LONG}/год{}Ёмістасьць: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY}{}Ёмістасьць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY}{}Ёмістасьць: {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY} Далёкасьць: {COMMA} клетк{P а i ак}{}Умяшчальнасьць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслугоўваньня: {CURRENCY_LONG}/год
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY} Далёкасьць: {COMMA} клет{P ка кi ак}{}Умяшчальнасьць: {CARGO_LONG}{}Кошт абслугоўваньня: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY}{}Ёмістасьць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY}{}Ёмістасьць: {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY} Далёкасьць: {COMMA} клетк{P а i ак}{}Умяшчальнасьць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслугоўваньня: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY} Далёкасьць: {COMMA} клет{P ка кi ак}{}Умяшчальнасьць: {CARGO_LONG}{}Кошт абслугоўваньня: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} — {STRING}

@@ -3301,10 +3301,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Segulsvifvagn
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hraði: {VELOCITY}  Afl: {POWER}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári{}Burðargeta: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hámarskhraði: {VELOCITY}  Afl: {POWER}  Hámarks kraftur: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/ári{}Burðargeta: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}, {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY} Drægni: {COMMA} reitir{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Rekstrarkosnaður: {CURRENCY_LONG} á ári
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY} Drægni: {COMMA} reitir{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}, {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY} Drægni: {COMMA} reitir{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Rekstrarkosnaður: {CURRENCY_LONG} á ári
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY} Drægni: {COMMA} reitir{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING} - {STRING}

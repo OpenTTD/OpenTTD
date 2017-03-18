@@ -3588,10 +3588,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Maglev mozdony
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER}{}Üzemeltetés: {CURRENCY_LONG}/év{}Kapacitás: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER} Maximális vonóerő: {6:FORCE}{}Üzemeltetés: {4:CURRENCY_LONG}/év{}Kapacitás: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} lecserélése - {STRING}

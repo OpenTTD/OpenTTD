@@ -3118,10 +3118,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :மேக்ல
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}செலவு: {CURRENCY_LONG} எடை: {WEIGHT_SHORT}{}வேகம்: {VELOCITY}  திறன்: {POWER}{}ஓட்டுவதற்கான செலவு: {CURRENCY_LONG}/வரு{}கொள்ளளவு: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}செலவு: {CURRENCY_LONG} எடை: {WEIGHT_SHORT}{}வேகம்: {VELOCITY} திறன்: {POWER}  அதி. T.E.: {6:FORCE}{}ஓட்டுவதற்கான செலவு: {4:CURRENCY_LONG}/வரு{}கொள்ளளவு: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}கொள்ளளவு: {CARGO_LONG}, {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}கொள்ளளவு: {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY} எல்லை: {COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}, {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY} வரையறை: {COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}{}இயக்குவதற்கான செலவு: {CURRENCY_LONG}/வரு
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}கொள்ளளவு: {CARGO_LONG}, {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}கொள்ளளவு: {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY} எல்லை: {COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}, {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY} வரையறை: {COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}{}இயக்குவதற்கான செலவு: {CURRENCY_LONG}/வரு
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}மாற்று {STRING} - {STRING}

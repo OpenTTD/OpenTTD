@@ -3524,10 +3524,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :inneall gluaist
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costas {CURRENCY_LONG} Meáchan: {WEIGHT_SHORT}{}Luas: {VELOCITY}  Cumhacht: {POWER}{}Costas Coinneála {CURRENCY_LONG}/bl{}Toilleadh: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costas: {CURRENCY_LONG} Meáchan: {WEIGHT_SHORT}{}Luas: {VELOCITY}  Cumhacht: {POWER}  T.E. uasta: {6:FORCE}{}Costas Coinneála: {4:CURRENCY_LONG}/bl{}Toilleadh: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Costas: {CURRENCY_LONG} Luas Uasta: {VELOCITY}{}Toilleadh: {CARGO_LONG}, {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/bl
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Costas: {CURRENCY_LONG} Luas Uasta: {VELOCITY}{}Toilleadh: {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/bl
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Costas: {CURRENCY_LONG} Luas uasta: {VELOCITY} Raon: {COMMA} tíl{}Toilleadh: {CARGO_LONG}, {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/bl
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Costas: {CURRENCY_LONG} Luas uasta: {VELOCITY} Raon: {COMMA} tíleanna{}Toilleadh: {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Costas: {CURRENCY_LONG} Luas Uasta: {VELOCITY}{}Toilleadh: {CARGO_LONG}, {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/bl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costas: {CURRENCY_LONG} Luas Uasta: {VELOCITY}{}Toilleadh: {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/bl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Costas: {CURRENCY_LONG} Luas uasta: {VELOCITY} Raon: {COMMA} tíl{}Toilleadh: {CARGO_LONG}, {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/bl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Costas: {CURRENCY_LONG} Luas uasta: {VELOCITY} Raon: {COMMA} tíleanna{}Toilleadh: {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/yr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ionadaigh{STRING} - {STRING}

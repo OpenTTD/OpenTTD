@@ -3471,10 +3471,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora de m
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Custo operativo: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}  Esforzo tractor máximo: {6:FORCE}{}Custo operativo: {4:CURRENCY_LONG}/ano{}Capacidade: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY}{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY} Autonomía: {COMMA} cadros{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY} Autonomía: {COMMA} cadros{}Capacidade: {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY}{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY} Autonomía: {COMMA} cadros{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY} Autonomía: {COMMA} cadros{}Capacidade: {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituír {STRING} - {STRING}

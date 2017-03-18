@@ -3405,10 +3405,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Lokomotora magn
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostea: {CURRENCY_LONG} Pisua: {WEIGHT_SHORT}{}Pisua: {VELOCITY}  Potentzia: {POWER}{}Mantenimendua: {CURRENCY_LONG}/urtero{}Edukiera: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostua: {CURRENCY_LONG} Pisua: {WEIGHT_SHORT}{}Abiadura: {VELOCITY}  Potentzia: {POWER}  Gehienezko trakzioa: {6:FORCE}{}Mantinemendua: {4:CURRENCY_LONG}/urtero{}Edukiera: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY}{}Edukiera: {CARGO_LONG}, {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY}{}Edukiera: {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY} Irismena: {COMMA} tiles{}Edukiera: {CARGO_LONG}, {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY} Irismena: {COMMA} tiles{}Edukiera: {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY}{}Edukiera: {CARGO_LONG}, {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY}{}Edukiera: {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY} Irismena: {COMMA} tiles{}Edukiera: {CARGO_LONG}, {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY} Irismena: {COMMA} tiles{}Edukiera: {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ordezkatu {STRING} - {STRING}

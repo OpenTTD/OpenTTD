@@ -3731,10 +3731,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}hamaxam ma
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}{}Pretium Operandi: {CURRENCY_LONG} per annum{}Capacitas: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}  V.T. Max.: {6:FORCE}{}Pretium Operandi: {4:CURRENCY_LONG} per annum{}Capacitas: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Capacitas: {CARGO_LONG}, {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Capacitas: {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY} Range: {COMMA} tiles{}Capacitas: {CARGO_LONG}, {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY} Range: {COMMA} tiles{}Capacitas: {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST               :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Capacitas: {CARGO_LONG}, {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Capacitas: {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST         :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY} Range: {COMMA} tiles{}Capacitas: {CARGO_LONG}, {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST             :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY} Range: {COMMA} tiles{}Capacitas: {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Mutare {STRING} - {STRING}
