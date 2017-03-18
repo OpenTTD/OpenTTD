@@ -4002,7 +4002,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} г{P о
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} г{P од ады адоў} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. хуткасьць: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. хуткасьць: {LTBLUE}{VELOCITY} {BLACK}Далёкасьць: {LTBLUE}{COMMA} клетк{P а i ак}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY} {BLACK}Макс. ЦН: {LTBLUE}{FORCE}
 

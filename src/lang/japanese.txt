@@ -3653,7 +3653,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA}年({COM
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年({COMMA}年)
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}最高速度: {LTBLUE}{VELOCITY} {BLACK}航続距離: {LTBLUE}{COMMA}タイル
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}　{BLACK}最大牽引力: {LTBLUE}{FORCE}
 

@@ -3655,7 +3655,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} Joer ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Joer ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Distanz: {LTBLUE}{COMMA} Felder
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

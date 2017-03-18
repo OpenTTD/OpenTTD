@@ -4041,7 +4041,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Prędkość maksymalna: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Zasięg: {LTBLUE}{COMMA} pól
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
 

@@ -3568,7 +3568,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ปี 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ปี ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}ความเร็วสูงสุด: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}ความเร็วสูงสุด: {LTBLUE}{VELOCITY} {BLACK}พิสัย: {LTBLUE}{COMMA} ช่อง
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}น้ำหนัก: {LTBLUE}{WEIGHT_SHORT} {BLACK}พลังขับเคลื่อน: {LTBLUE}{POWER}{BLACK} ความเร็วสูงสุด: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}น้ำหนัก: {LTBLUE}{WEIGHT_SHORT} {BLACK}พลังขับเคลื่อน: {LTBLUE}{POWER}{BLACK} ความเร็วสูงสุด: {LTBLUE}{VELOCITY} {BLACK}กำลังลากจูงสูงสุด: {LTBLUE}{FORCE}
 

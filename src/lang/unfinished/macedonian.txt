@@ -1549,7 +1549,6 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име �
 STR_VEHICLE_INFO_AGE                                            :{COMMA} година{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} година{P "" s} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. брзина: {LTBLUE}{VELOCITY} {BLACK}Опсег: {LTBLUE}{COMMA} плочки
 
 
 

@@ -3663,7 +3663,6 @@ STR_VEHICLE_INFO_AGE                                            :({1:COMMA}) ש�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}({1:COMMA}) שנים {NBSP}{0:COMMA}
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}מהירות מקסימלית: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}מהירות מירבית: {LTBLUE}{VELOCITY} {BLACK}טווח: {LTBLUE}{COMMA} משבצות
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}T.E. מקסימלי: {LTBLUE}{FORCE}
 

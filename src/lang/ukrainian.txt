@@ -3780,7 +3780,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} р{P і
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} р{P ік оки оків} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Дальність: {LTBLUE}{COMMA} клітинок
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
 

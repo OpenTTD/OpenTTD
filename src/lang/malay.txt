@@ -3301,7 +3301,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun (
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kelajuan Maks.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Kelajuan Maks.: {LTBLUE}{VELOCITY} {BLACK}Jarak: {LTBLUE}{COMMA} petak
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kuasa: {LTBLUE}{POWER}{BLACK} Kelajuan Maks.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kuasa: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}T.E. Maks.: {LTBLUE}{FORCE}
 

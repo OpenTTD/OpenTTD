@@ -3600,7 +3600,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. speed: {LTBLUE}{VELOCITY} {BLACK}Range: {LTBLUE}{COMMA} tiles
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

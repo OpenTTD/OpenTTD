@@ -3860,7 +3860,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} godin{P
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} godin{P a e a} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Najveća brzina: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Najveća brzina: {LTBLUE}{VELOCITY} {BLACK}Domet: {LTBLUE}{COMMA} pločica
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Najveća vučna snaga: {LTBLUE}{FORCE}
 

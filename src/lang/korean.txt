@@ -3658,7 +3658,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({CO
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}최고 속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}최고 속력: {LTBLUE}{VELOCITY} {BLACK}항속거리: {LTBLUE}{COMMA} 칸
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY} {BLACK}최고 T.E.: {LTBLUE}{FORCE}
 

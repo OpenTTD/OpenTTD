@@ -3713,7 +3713,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} év ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Hatótávolság: {LTBLUE}{COMMA} mező
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
 

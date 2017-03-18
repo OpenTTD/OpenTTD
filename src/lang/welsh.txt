@@ -3651,7 +3651,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} blwyddy
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} blwyddyn ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Cyf. uchaf: {LTBLUE}{VELOCITY} {BLACK}Pell. Cyrraedd: {LTBLUE}{COMMA} teil
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

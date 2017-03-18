@@ -3906,7 +3906,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} met{P a
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} met{P ai ai ų} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Didž. greitis: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Didž. greitis: {LTBLUE}{VELOCITY} {BLACK}Nuotolis: {LTBLUE}{COMMA} langeliai
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svoris: {LTBLUE}{WEIGHT_SHORT} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Didž. greitis: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svoris: {LTBLUE}{WEIGHT_SHORT} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Didž. greitis: {LTBLUE}{VELOCITY} {BLACK}Didž. traukos jėga: {LTBLUE}{FORCE}
 

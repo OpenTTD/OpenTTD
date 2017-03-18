@@ -3857,7 +3857,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P u
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P us i} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocitas maxima: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Velocitas maxima: {LTBLUE}{VELOCITY} {BLACK}Max. distantia volatus: {LTBLUE}{COMMA} tegulas
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pondus: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potestas: {LTBLUE}{POWER}{BLACK} Velocitas maxima: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pondus: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potestas: {LTBLUE}{POWER}{BLACK} Velocitas maxima: {LTBLUE}{VELOCITY} {BLACK}V.T. Max.: {LTBLUE}{FORCE}
 

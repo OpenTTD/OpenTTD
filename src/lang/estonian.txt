@@ -3707,7 +3707,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} aasta{P
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} aasta{P "" t} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maksimaalne kiirus: {LTBLUE}{VELOCITY} {BLACK}Tegevusraadius: {LTBLUE}{COMMA} ruutu
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tühimass: {LTBLUE}{WEIGHT_SHORT} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tühimass: {LTBLUE}{WEIGHT_SHORT} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Veojõud: {LTBLUE}{FORCE}
 

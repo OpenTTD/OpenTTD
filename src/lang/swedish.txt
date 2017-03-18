@@ -3649,7 +3649,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maxhastiget: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maxhastighet: {LTBLUE}{VELOCITY} {BLACK}Räckvidd: {LTBLUE}{COMMA} rutor
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastiget: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vikt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastiget: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

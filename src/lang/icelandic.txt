@@ -3422,7 +3422,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ár ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ár ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Drægni: {LTBLUE}{COMMA} reitir
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: {LTBLUE}{WEIGHT_SHORT} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Þyngd: {LTBLUE}{WEIGHT_SHORT} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Hámarks dráttarafl.: {LTBLUE}{FORCE}
 

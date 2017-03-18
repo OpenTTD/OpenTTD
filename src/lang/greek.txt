@@ -3768,7 +3768,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} χρό�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χρόν{P ος ια} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Μέγ. ταχύτητα: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Μέγ. ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Εμβέλεια: {LTBLUE}{COMMA} τετραγωνίδια
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Δύναμη Κινητήρα: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Δύναμη Κινητήρα: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μέγ. Ε.Δ: {LTBLUE}{FORCE}
 

@@ -3717,7 +3717,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} rok{P "
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} rok{P "" y ov} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. rýchlosť: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. rýchlosť: {LTBLUE}{VELOCITY} {BLACK}Dosah: {LTBLUE}{COMMA} políčok
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnosť: {LTBLUE}{WEIGHT_SHORT} {BLACK}Sila: {LTBLUE}{POWER}{BLACK} Max. rýchlosť: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnosť: {LTBLUE}{WEIGHT_SHORT} {BLACK}Sila: {LTBLUE}{POWER}{BLACK} Max. rýchlosť: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

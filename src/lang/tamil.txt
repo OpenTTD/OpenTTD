@@ -3228,7 +3228,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} வர�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} வருடம்{P "" கள்} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}வரையறை: {LTBLUE}{COMMA} கட்டங்கள்
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}அதி. T.E.: {LTBLUE}{FORCE}
 

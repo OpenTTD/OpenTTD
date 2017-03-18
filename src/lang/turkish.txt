@@ -3652,7 +3652,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} sene ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} sene ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Azami Hız: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Azami hız: {LTBLUE}{VELOCITY} {BLACK}Menzil: {LTBLUE}{COMMA} kare
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 

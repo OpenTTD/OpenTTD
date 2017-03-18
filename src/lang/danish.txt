@@ -3649,7 +3649,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. hast.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. hastighed: {LTBLUE}{VELOCITY} {BLACK}Rækkevidde: {LTBLUE}{COMMA} felter
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
 

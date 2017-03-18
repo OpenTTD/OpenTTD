@@ -3128,7 +3128,6 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگ
 STR_VEHICLE_INFO_AGE                                            :{COMMA}سال ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} سال ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}بیشینه سرعت: {LTBLUE}{VELOCITY} {BLACK}برد: {LTBLUE}{COMMA} قطعه
 
 
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}ظرفیت: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}

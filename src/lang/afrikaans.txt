@@ -3650,7 +3650,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar re} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. spoed: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. spoed: {LTBLUE}{VELOCITY} {BLACK}Afstand: {LTBLUE}{COMMA} teëls
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Massa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 

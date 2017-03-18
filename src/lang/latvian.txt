@@ -3580,7 +3580,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} gad{P s
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} gad{P s i u} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. ātrums: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maks. ātrums: {LTBLUE}{VELOCITY} {BLACK}Apgabals: {LTBLUE}{COMMA} flīzes
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svars: {LTBLUE}{WEIGHT_SHORT} {BLACK}Jauda: {LTBLUE}{POWER}{BLACK} Maks. ātrums: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svars: {LTBLUE}{WEIGHT_SHORT} {BLACK}Jauda: {LTBLUE}{POWER}{BLACK} Maks. ātrums: {LTBLUE}{VELOCITY} {BLACK}Maks. spēks: {LTBLUE}{FORCE}
 

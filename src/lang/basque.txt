@@ -3528,7 +3528,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} urte ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} urte ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Gehienezko abiadura: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Gehienezko abiadura: {LTBLUE}{VELOCITY} {BLACK}Irismena: {LTBLUE}{COMMA} lauki
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pisua: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potentzia: {LTBLUE}{POWER}{BLACK} Gehienezko abiadura: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pisua: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potentzia: {LTBLUE}{POWER}{BLACK} Gehienezko abiadura: {LTBLUE}{VELOCITY} {BLACK}Gehienezko trakzio indarra: {LTBLUE}{FORCE}
 

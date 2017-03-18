@@ -3569,7 +3569,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} год�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} годин{P а и} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY} {BLACK}Обхват: {LTBLUE}{COMMA} полета
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Тегло: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Макс. Скорост: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Тегло: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Макс. Скорост: {LTBLUE}{VELOCITY} {BLACK}Макс. Т.С.: {LTBLUE}{FORCE}
 

@@ -3606,7 +3606,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P ""
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" i} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Viteză maximă: {LTBLUE}{VELOCITY} {BLACK}Rază de acțiune: {LTBLUE}{COMMA} pătrățele
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Efort tractiv: {LTBLUE}{FORCE}
 

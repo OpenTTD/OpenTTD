@@ -3649,7 +3649,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P s
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Suurin nopeus: {LTBLUE}{VELOCITY} {BLACK}Toimintasäde: {LTBLUE}{COMMA} ruutua
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 

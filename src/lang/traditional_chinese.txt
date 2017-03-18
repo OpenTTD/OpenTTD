@@ -3649,7 +3649,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}最高速度： {LTBLUE}{VELOCITY} {BLACK}範圍： {LTBLUE}{COMMA} 格
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}載重：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}載重：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY} {BLACK}最大牽引力：{LTBLUE}{FORCE}
 

@@ -2447,7 +2447,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 
 # The next two need to stay in this order
 
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}حد رفتار: {LTBLUE}{VELOCITY} {BLACK} پہنچ: {LTBLUE}{COMMA} ٹائلیں
 
 
 

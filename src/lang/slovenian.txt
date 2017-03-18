@@ -3802,7 +3802,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} let{P o
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} let{P o i a ""} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Domet: {LTBLUE}{COMMA} polj
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

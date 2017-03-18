@@ -3652,7 +3652,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar ren} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY} {BLACK}Bereik: {LTBLUE}{COMMA} tegels
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY} {BLACK}Max. T.K.: {LTBLUE}{FORCE}
 

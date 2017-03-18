@@ -3847,7 +3847,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P го
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P год года лет} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Дальность: {LTBLUE}{COMMA} клет{P ка ки ок}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 

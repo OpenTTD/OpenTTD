@@ -3230,7 +3230,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ár ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ár ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. ferð: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maks. ferð: {LTBLUE}{VELOCITY} {BLACK}Vídd: {LTBLUE}{COMMA} puntar
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Megi: {LTBLUE}{POWER}{BLACK} Maks. ferð: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Megi: {LTBLUE}{POWER}{BLACK} Maks. ferð: {LTBLUE}{VELOCITY} {BLACK}Maks. D.Ó.: {LTBLUE}{FORCE}
 

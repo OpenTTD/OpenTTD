@@ -3649,7 +3649,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P bhli
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P bhliain bhliain bliana mbliana bliana} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Luas uasta: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Luas uasta: {LTBLUE}{VELOCITY} {BLACK}Raon: {LTBLUE}{COMMA} {P th th th dt t}íl
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Meáchan: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhacht: {LTBLUE}{POWER}{BLACK}Luas uasta: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Meáchan: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhacht: {LTBLUE}{POWER}{BLACK} Uas-luas: {LTBLUE}{VELOCITY} {BLACK}T.E. Uasta: {LTBLUE}{FORCE}
 

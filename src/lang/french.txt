@@ -3658,7 +3658,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P ""
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" nées} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}{BLACK} − Rayon d'action{NBSP}: {LTBLUE}{COMMA} cases
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NBSP}: {LTBLUE}{NBSP}{WEIGHT_SHORT} − {BLACK}Puissance{NBSP}: {LTBLUE}{NBSP}{POWER}{BLACK} − Vitesse max.{NBSP}: {LTBLUE}{NBSP}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT}{BLACK} − Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} − Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}{BLACK} − E.T. max.{NBSP}: {LTBLUE}{FORCE}
 

@@ -3878,7 +3878,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P bhli
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P bhliadhna bhliadhna bliadhna bliadhna} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Luaths as motha: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Luaths as motha: {LTBLUE}{VELOCITY} {BLACK}Astar: {LTBLUE}{COMMA} {P leac leac leacan leac}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Cuideam: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhachd: {LTBLUE}{POWER}{BLACK} Luaths as motha: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Cuideam: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhachd: {LTBLUE}{POWER}{BLACK} Luaths as motha: {LTBLUE}{VELOCITY} {BLACK}Neart as motha: {LTBLUE}{FORCE}
 

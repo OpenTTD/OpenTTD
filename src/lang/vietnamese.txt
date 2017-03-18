@@ -3649,7 +3649,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} năm ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tốc độ tối đa: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Tốc độ max: {LTBLUE}{VELOCITY} {BLACK} Tầm xa: {LTBLUE}{COMMA} ô
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_SHORT} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_SHORT} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

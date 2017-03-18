@@ -3650,7 +3650,6 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} Jahr{P 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. Geschwindigkeit: {LTBLUE}{VELOCITY} {BLACK}Reichweite: {LTBLUE}{COMMA} Felder
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
 
