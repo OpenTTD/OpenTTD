@@ -719,7 +719,15 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 	return y;
 }
 
-/* Draw aircraft specific details */
+/**
+ * Draw aircraft specific details in the buy window.
+ * @param left Left edge of the window to draw in.
+ * @param right Right edge of the window to draw in.
+ * @param y Top of the area to draw in.
+ * @param engine_number Engine to display.
+ * @param refittable If set, the aircraft can be refitted.
+ * @return Bottom of the used area.
+ */
 static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable)
 {
 	const Engine *e = Engine::Get(engine_number);
@@ -755,6 +763,12 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST);
 	y += FONT_HEIGHT_NORMAL;
 
+	/* Aircraft type */
+	SetDParam(0, e->GetAircraftTypeText());
+	DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_TYPE);
+	y += FONT_HEIGHT_NORMAL;
+
+	/* Aircraft range, if available. */
 	uint16 range = e->GetRange();
 	if (range != 0) {
 		SetDParam(0, range);
