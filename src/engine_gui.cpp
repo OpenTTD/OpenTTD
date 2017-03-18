@@ -196,6 +196,7 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 	uint i = 0;
 	SetDParam(i++, e->GetCost());
 	SetDParam(i++, e->GetDisplayMaxSpeed());
+	SetDParam(i++, e->GetAircraftTypeText());
 	if (range > 0) SetDParam(i++, range);
 	SetDParam(i++, cargo);
 	SetDParam(i++, capacity);
@@ -204,10 +205,10 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 		SetDParam(i++, CT_MAIL);
 		SetDParam(i++, mail_capacity);
 		SetDParam(i++, e->GetRunningCost());
-		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_CAP_RUNCOST;
+		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST;
 	} else {
 		SetDParam(i++, e->GetRunningCost());
-		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST;
+		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST;
 	}
 }
 
