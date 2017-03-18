@@ -111,6 +111,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint GetDisplayMaxTractiveEffort() const;
 	Date GetLifeLengthInDays() const;
 	uint16 GetRange() const;
+	StringID GetAircraftTypeText() const;
 
 	/**
 	 * Check whether the engine is hidden in the GUI for the given company.
