@@ -456,19 +456,6 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 	return track;
 }
 
-static const Direction _new_vehicle_direction_table[] = {
-	DIR_N , DIR_NW, DIR_W , INVALID_DIR,
-	DIR_NE, DIR_N , DIR_SW, INVALID_DIR,
-	DIR_E , DIR_SE, DIR_S
-};
-
-static Direction ShipGetNewDirection(Vehicle *v, int x, int y)
-{
-	uint offs = (y - v->y_pos + 1) * 4 + (x - v->x_pos + 1);
-	assert(offs < 11 && offs != 3 && offs != 7);
-	return _new_vehicle_direction_table[offs];
-}
-
 static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
 {
 	return GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
@@ -633,7 +620,6 @@ static void ShipController(Ship *v)
 	}
 
 	/* update image of ship, as well as delta XY */
-	dir = ShipGetNewDirection(v, gp.x, gp.y);
 	v->x_pos = gp.x;
 	v->y_pos = gp.y;
 	v->z_pos = GetSlopePixelZ(gp.x, gp.y);
