@@ -594,7 +594,7 @@ static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir)
 static inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir)
 {
 	assert(IsValidTrackdirForRoadVehicle(trackdir));
-	extern const TrackdirBits _track_crosses_trackdirs[TRACKDIR_END];
+	extern const TrackdirBits _track_crosses_trackdirs[TRACK_END];
 	return _track_crosses_trackdirs[TrackdirToTrack(trackdir)];
 }
 
