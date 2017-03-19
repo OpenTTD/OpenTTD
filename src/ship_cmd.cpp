@@ -462,14 +462,6 @@ static const Direction _new_vehicle_direction_table[] = {
 	DIR_E , DIR_SE, DIR_S
 };
 
-static Direction ShipGetNewDirectionFromTiles(TileIndex new_tile, TileIndex old_tile)
-{
-	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
-							TileX(new_tile) - TileX(old_tile) + 1;
-	assert(offs < 11 && offs != 3 && offs != 7);
-	return _new_vehicle_direction_table[offs];
-}
-
 static Direction ShipGetNewDirection(Vehicle *v, int x, int y)
 {
 	uint offs = (y - v->y_pos + 1) * 4 + (x - v->x_pos + 1);
@@ -599,9 +591,8 @@ static void ShipController(Ship *v)
 			/* New tile */
 			if (!IsValidTile(gp.new_tile)) goto reverse_direction;
 
-			dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);
-			assert(dir == DIR_NE || dir == DIR_SE || dir == DIR_SW || dir == DIR_NW);
-			DiagDirection diagdir = DirToDiagDir(dir);
+			DiagDirection diagdir = DiagdirBetweenTiles(gp.old_tile, gp.new_tile);
+			assert(diagdir != INVALID_DIAGDIR);
 			tracks = GetAvailShipTracks(gp.new_tile, diagdir);
 			if (tracks == TRACK_BIT_NONE) goto reverse_direction;
 
