@@ -73,12 +73,6 @@ static const Trackdir _road_reverse_table[DIAGDIR_END] = {
 	TRACKDIR_RVREV_NE, TRACKDIR_RVREV_SE, TRACKDIR_RVREV_SW, TRACKDIR_RVREV_NW
 };
 
-/** Converts the exit direction of a depot to trackdir the vehicle is going to drive to */
-static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
-	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
-};
-
-
 /**
  * Check whether a roadvehicle is a bus
  * @return true if bus
@@ -993,7 +987,7 @@ static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 	DiagDirection dir = GetRoadDepotDirection(v->tile);
 	v->direction = DiagDirToDir(dir);
 
-	Trackdir tdir = _roadveh_depot_exit_trackdir[dir];
+	Trackdir tdir = DiagDirToDiagTrackdir(dir);
 	const RoadDriveEntry *rdp = _road_drive_data[v->roadtype][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + tdir];
 
 	int x = TileX(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].x & 0xF);
