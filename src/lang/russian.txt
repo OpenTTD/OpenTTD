@@ -3578,6 +3578,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы
 STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип возд. судна: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список локомотивов и вагонов - щёлкните для получения информации. Ctrl+щелчок скроет/покажет ТС.
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автотранспорта - щёлкните для получения информации. Ctrl+щелчок скроет/покажет выбранный автомобиль.
@@ -3718,6 +3719,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магнито�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Стоимость обслуж.: {CURRENCY_LONG}/год{}Ёмкость: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY_LONG}/год{}Ёмкость: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Тип: {STRING}{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Тип: {STRING}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Тип: {STRING} Дальность: {COMMA} клеток{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Тип: {STRING} Дальность: {COMMA} клеток{}Ёмкость: {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} - {STRING}
@@ -3844,6 +3849,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P го
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P год года лет} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Тип возд. судна: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING} {BLACK}Дальность: {LTBLUE}{COMMA} клеток
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 
