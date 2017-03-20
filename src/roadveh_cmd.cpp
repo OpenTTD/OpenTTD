@@ -69,14 +69,6 @@ bool IsValidImageIndex<VEH_ROAD>(uint8 image_index)
 	return image_index < lengthof(_roadveh_images);
 }
 
-/** 'Convert' the DiagDirection where a road vehicle enters to the trackdirs it can drive onto */
-static const TrackdirBits _road_enter_dir_to_reachable_trackdirs[DIAGDIR_END] = {
-	TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_X_NE,    // Enter from north east
-	TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_Y_SE,    // Enter from south east
-	TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_X_SW    | TRACKDIR_BIT_RIGHT_S, // Enter from south west
-	TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_Y_NW     // Enter from north west
-};
-
 static const Trackdir _road_reverse_table[DIAGDIR_END] = {
 	TRACKDIR_RVREV_NE, TRACKDIR_RVREV_SE, TRACKDIR_RVREV_SW, TRACKDIR_RVREV_NW
 };
@@ -935,7 +927,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	 */
 
 	/* Remove tracks unreachable from the enter dir */
-	trackdirs &= _road_enter_dir_to_reachable_trackdirs[enterdir];
+	trackdirs &= DiagdirReachesTrackdirs(enterdir);
 	if (trackdirs == TRACKDIR_BIT_NONE) {
 		/* No reachable tracks, so we'll reverse */
 		return_track(_road_reverse_table[enterdir]);
