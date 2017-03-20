@@ -139,7 +139,7 @@ int16 WindowDesc::GetDefaultHeight() const
 void WindowDesc::LoadFromConfig()
 {
 	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(_windows_file, BASE_DIR);
+	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);
 	for (WindowDesc **it = _window_descs->Begin(); it != _window_descs->End(); ++it) {
 		if ((*it)->ini_key == NULL) continue;
 		IniLoadWindowSettings(ini, (*it)->ini_key, *it);
@@ -165,7 +165,7 @@ void WindowDesc::SaveToConfig()
 	QSortT(_window_descs->Begin(), _window_descs->Length(), DescSorter);
 
 	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(_windows_file, BASE_DIR);
+	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);
 	for (WindowDesc **it = _window_descs->Begin(); it != _window_descs->End(); ++it) {
 		if ((*it)->ini_key == NULL) continue;
 		IniSaveWindowSettings(ini, (*it)->ini_key, *it);
