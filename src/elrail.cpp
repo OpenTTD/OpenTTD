@@ -99,6 +99,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			break;
 
 		case MP_TUNNELBRIDGE:
+			if (GetTunnelBridgeTransportType(t) != TRANSPORT_RAIL) return TRACK_BIT_NONE;
 			if (!HasRailCatenary(GetRailType(t))) return TRACK_BIT_NONE;
 			if (override != NULL && (IsTunnel(t) || GetTunnelBridgeLength(t, GetOtherBridgeEnd(t)) > 0)) {
 				*override = 1 << GetTunnelBridgeDirection(t);
