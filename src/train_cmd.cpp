@@ -1700,8 +1700,8 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	/* train on crossing || train approaching crossing || reserved */
-	bool new_state = HasVehicleOnPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile) || HasCrossingReservation(tile);
+	/* reserved || train on crossing || train approaching crossing */
+	bool new_state = HasCrossingReservation(tile) || HasVehicleOnPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
 
 	if (new_state != IsCrossingBarred(tile)) {
 		if (new_state && sound) {
