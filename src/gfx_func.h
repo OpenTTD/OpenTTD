@@ -142,6 +142,18 @@ void CheckBlitter();
 
 bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height);
 
+/**
+ * Determine where to draw a centred object inside a widget.
+ * @param min The top or left coordinate.
+ * @param max The bottom or right coordinate.
+ * @param size The height or width of the object to draw.
+ * @return Offset of where to start drawing the object.
+ */
+static inline int CenterBounds(int min, int max, uint size)
+{
+	return min + (max - min - size + 1) / 2;
+}
+
 /* window.cpp */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
