@@ -3019,6 +3019,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Buang semua ken
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Namakan semula kenderaan
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Keretapi Baru
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Keretapi Elektrik Baru

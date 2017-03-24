@@ -2796,6 +2796,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Forigi ĉiujn v
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Alinomi grupon
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novaj Relaj Veturiloj
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novaj Elektraj Relaj Veturiloj

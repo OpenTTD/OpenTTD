@@ -3362,6 +3362,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçla
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Grubun ismini değiştir
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Yeni Tren
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Yeni Elektrikli Trenler

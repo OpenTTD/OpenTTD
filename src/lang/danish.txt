@@ -3360,6 +3360,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kør
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Omdøb en gruppe
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nye jernbanekøretøjer
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nyt elektrisk lokomotiv

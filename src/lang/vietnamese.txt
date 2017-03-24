@@ -3360,6 +3360,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Xoá tất cả
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Đổi tên nhóm
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Tàu Hỏa Mới
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Tàu Điện Mới

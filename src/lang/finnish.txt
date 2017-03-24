@@ -3360,6 +3360,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki a
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uusi juna
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uusi sähköjuna

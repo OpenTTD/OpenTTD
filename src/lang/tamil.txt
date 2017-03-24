@@ -2976,6 +2976,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :அனைத்
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}குழுவின் பெயரினை மாற்றவும்
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :புது இரயில் வாகனங்கள்
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :புது மின்சார இரயில் வாகனங்கள்

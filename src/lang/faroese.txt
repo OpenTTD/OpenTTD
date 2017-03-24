@@ -2989,6 +2989,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bein øll flutn
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Navngev ein bólk
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nýggj jarnbreyta flutningstól
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nýggj ravmagns jarnbreyta flutningstól

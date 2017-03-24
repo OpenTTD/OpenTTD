@@ -3363,6 +3363,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :全輸送機器
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}グループ名を変更
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :新規機関車(非電化)
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :新規機関車(電化)/電車

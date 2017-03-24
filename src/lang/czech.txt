@@ -3455,6 +3455,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstranit všec
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Přejmenovat skupinu
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nové lokomotivy a vagony
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nové elektrické lokomotivy a vagony

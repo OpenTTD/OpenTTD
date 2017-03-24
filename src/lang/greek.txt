@@ -3472,6 +3472,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεσ�
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετονομασία μίας ομάδας
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Νέα Οχήματα Σιδηρόδρομου
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήματα Ηλεκτροδοτουμένου Σιδηρόδρομου

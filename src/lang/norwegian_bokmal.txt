@@ -3364,6 +3364,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kjø
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endre navn på gruppe
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nye tog/vogner for jernbane
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nye tog/vogner for elektrisk jernbane

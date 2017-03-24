@@ -3361,6 +3361,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Dileu pob cerby
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ailenwi grŵp
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Cerbydau Rheilffordd Newydd
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Cerbydau Rheilffordd Trydan Newydd

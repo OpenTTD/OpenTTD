@@ -3368,6 +3368,11 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 �
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 설정
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :올해 수익:
+STR_GROUP_PROFIT_LAST_YEAR                                      :작년 수익:
+STR_GROUP_OCCUPANCY                                             :현재 사용량:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :새 열차
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :새 전기 열차
@@ -3399,6 +3404,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :모든 화물
 STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} 이외의 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}항공기 종류: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}열차 차량 구매 목록입니다. 차량의 정보를 보려면 클릭하세요. CTRL + 클릭하면 해당 차량을 숨김/표시 처리할 수 있습니다.
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}자동차/전차 구매 목록입니다. 차량의 정보를 보려면 클릭하세요. CTRL + 클릭하면 해당 차량을 숨김/표시 처리할 수 있습니다.
@@ -3531,8 +3537,12 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}모노레�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}자기부상열차
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}{}유지비: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}비용: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 T.E.: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}용량: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 견인력: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}수송량: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING}{}수송량: {CARGO_LONG}, {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING}{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING} 항속거리: {COMMA}칸{}수송량: {CARGO_LONG}, {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING} 항속거리: {COMMA}칸{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체 - {STRING}
@@ -3655,8 +3665,10 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({CO
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}최고 속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY} {BLACK}최고 T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}최고 속력: {LTBLUE}{VELOCITY} {BLACK}항공기 종류: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}최고 속력: {LTBLUE}{VELOCITY} {BLACK}항공기 종류: {LTBLUE}{STRING} {BLACK}항속거리: {LTBLUE}{COMMA}칸
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY} {BLACK}최고 견인력: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 수익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}

@@ -3245,6 +3245,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ibilgailu guzti
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Taldea berrizendatu
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Tren berriak
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Tren elektriko berriak

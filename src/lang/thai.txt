@@ -3290,6 +3290,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :ลบยาน
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}เปลี่ยนชื่อกลุ่ม
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :รถไฟใหม่
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :รถไฟฟ้าใหม่

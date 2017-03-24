@@ -3327,6 +3327,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehi
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a group
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :New Rail Vehicles
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :New Electric Rail Vehicles

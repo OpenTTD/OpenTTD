@@ -3424,6 +3424,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Új vasúti járművek
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Új villamos vasúti járművek

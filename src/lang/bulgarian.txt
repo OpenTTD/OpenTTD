@@ -3280,6 +3280,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахн�
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Преименовай група
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Нови Машини за Двурелсов път
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Нови електрически влакове

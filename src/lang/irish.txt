@@ -3360,6 +3360,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bain gach feith
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Athainmnigh grúpa
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Feithiclí Iarnróid Nua
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Feithiclí Iarnróid Leictreacha Nua

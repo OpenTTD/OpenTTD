@@ -3360,6 +3360,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移去所有運
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重新命名群組
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :新購鐵路列車
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :新購電氣化列車

@@ -3374,6 +3374,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :הסר את כ�
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}שנה שם קבוצה
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :רכבות חדשות
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :רכבות חשמליות חדשות

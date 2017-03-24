@@ -3360,6 +3360,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重命名分组
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :购买普通列车
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :购买电气化列车

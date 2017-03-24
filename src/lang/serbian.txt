@@ -3555,6 +3555,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozi
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nova Železnička Vozila
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova Železnička Električna Vozila

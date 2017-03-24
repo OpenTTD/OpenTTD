@@ -3356,6 +3356,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Jual semua
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nama kelompok
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Kereta Baru
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Kereta listrik baru

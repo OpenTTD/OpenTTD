@@ -3097,6 +3097,7 @@ STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Ferwider
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Alle fiertugen weihelje
 
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nije spoar weinen
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nije elektryske treinen

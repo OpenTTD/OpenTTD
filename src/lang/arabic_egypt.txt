@@ -2886,6 +2886,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :أزل جميع
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}إعادة تسمية مجموعة
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :عربات قطار جديدة
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :عربات قطار كهربائية جديدة

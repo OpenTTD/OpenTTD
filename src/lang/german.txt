@@ -3361,6 +3361,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Neue Schienenfahrzeuge
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Neue elektrische Schienenfahrzeuge

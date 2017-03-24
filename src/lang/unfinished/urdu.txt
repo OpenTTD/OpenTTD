@@ -2349,6 +2349,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}گروپ
 
 
 
+
 # Build vehicle window
 
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :نیا طیارہ

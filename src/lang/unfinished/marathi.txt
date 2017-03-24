@@ -1310,6 +1310,7 @@ STR_GROUP_ALL_AIRCRAFTS                                         :सर्व �
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :सगळे वाहने काढा
 
 
+
 # Build vehicle window
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :नवीन रस्त्यावरचे वाहन

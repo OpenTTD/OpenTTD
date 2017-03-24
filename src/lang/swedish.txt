@@ -3360,6 +3360,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ta bort alla fo
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Döp om en grupp
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nytt tågfordon
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nya elektriska järnvägsfordon

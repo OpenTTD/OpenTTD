@@ -3567,6 +3567,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Removere omnia 
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renominare gregem
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Vehicula Ferriviaria Nova
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Vehicula Ferriviaria Electrica Nova

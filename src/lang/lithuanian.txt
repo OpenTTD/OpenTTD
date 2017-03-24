@@ -3579,6 +3579,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Iškelti visas 
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pervadinti grupę
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nauji lokomotyvai
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nauji elektriniai lokomotyvai

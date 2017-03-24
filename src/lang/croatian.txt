@@ -3463,6 +3463,11 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozi
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Dobit ove godine:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Dobit prošle godine:
+STR_GROUP_OCCUPANCY                                             :Trenutna uporaba:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nova željeznička vozila
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova električna pružna vozila

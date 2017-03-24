@@ -3547,6 +3547,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить 
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Название группы
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новый поезд
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новый электропоезд

@@ -839,6 +839,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 
 
 
+
 # Build vehicle window
 
 

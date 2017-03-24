@@ -3418,6 +3418,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik s
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rühma nime vahetamine
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uued rööbassõidukid
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uus elektriraudteesõiduk

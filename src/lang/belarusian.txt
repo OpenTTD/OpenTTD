@@ -3693,6 +3693,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Выдаліц�
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перайменаваць групу
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новы цягнік
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новы электрычны цягнік
