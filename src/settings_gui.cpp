@@ -1506,6 +1506,7 @@ static SettingsContainer &GetSettingsTree()
 				general->Add(new SettingEntry("gui.errmsg_duration"));
 				general->Add(new SettingEntry("gui.window_snap_radius"));
 				general->Add(new SettingEntry("gui.window_soft_limit"));
+				general->Add(new SettingEntry("gui.right_mouse_wnd_close"));
 			}
 
 			SettingsPage *viewports = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_VIEWPORTS));
