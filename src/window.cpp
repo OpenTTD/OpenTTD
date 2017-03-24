@@ -773,12 +773,9 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	}
 
 	/* Right-click close is enabled and there is a closebox */
-	if (_settings_client.gui.right_mouse_wnd_close && w->nested_root->GetWidgetOfType(WWT_CLOSEBOX))
-	{
+	if (_settings_client.gui.right_mouse_wnd_close && w->nested_root->GetWidgetOfType(WWT_CLOSEBOX)) {
 		delete w;
-	}
-	else if (_settings_client.gui.hover_delay_ms == 0 && wid->tool_tip != 0)
-	{
+	} else if (_settings_client.gui.hover_delay_ms == 0 && wid->tool_tip != 0) {
 		GuiShowTooltips(w, wid->tool_tip, 0, NULL, TCC_RIGHT_CLICK);
 	}
 }
