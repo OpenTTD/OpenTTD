@@ -149,7 +149,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
  * @param size The height or width of the object to draw.
  * @return Offset of where to start drawing the object.
  */
-static inline int CenterBounds(int min, int max, uint size)
+static inline int CenterBounds(int min, int max, int size)
 {
 	return min + (max - min - size + 1) / 2;
 }
