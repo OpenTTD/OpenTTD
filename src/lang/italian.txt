@@ -1396,6 +1396,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Nessuna
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scorrimento con clic sinistro: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Abilita lo scorrimento della mappa trascinandola con il pulsante sinistro del mouse. Questa impostazione è utile quando si utilizza un touch-screen
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Chiudi finestra con clic destro: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Consente di chiudere una finestra facendo clic col pulsante destro al suo interno. Disabilita I suggerimenti attivati al clic col pulsante destro!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Salvataggi automatici: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Seleziona l'intervallo fra i salvataggi automatici della partita
@@ -3397,6 +3399,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Rimuovi tutti i
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rinomina un gruppo
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Profitto quest'anno:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Profitto anno scorso:
+STR_GROUP_OCCUPANCY                                             :Utilizzo corrente:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuovi veicoli ferroviari

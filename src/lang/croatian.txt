@@ -1468,6 +1468,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Isključeno
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Skrolanje lijevim klikom: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Uključi pomicanje karte povlačenjem pomoću lijevog gumba miša. Ovo je posebno korisno kada se koristi zaslon osjetljiv na dodir
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zatvori prozor nakon desnog klika: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zatvara prozor nakon desnog klika unutar prozora. S desnim klikom zatvaraju se i upute alata!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatsko snimanje: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Odaberite interval između automatskog snimanja igre
