@@ -1397,7 +1397,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Nessuna
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scorrimento con clic sinistro: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Abilita lo scorrimento della mappa trascinandola con il pulsante sinistro del mouse. Questa impostazione è utile quando si utilizza un touch-screen
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Chiudi finestra con clic destro: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Consente di chiudere una finestra facendo clic col pulsante destro al suo interno. Disabilita I suggerimenti attivati al clic col pulsante destro!
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Consente di chiudere una finestra facendo clic col pulsante destro al suo interno. Disabilita i suggerimenti attivati al clic col pulsante destro!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Salvataggi automatici: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Seleziona l'intervallo fra i salvataggi automatici della partita

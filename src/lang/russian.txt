@@ -1524,6 +1524,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Смещение обзора по нажатию левой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Смещение обзора левой кнопкой мыши. Это удобно при использовании сенсорного экрана.
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Закрывать окна щелчком ПКМ: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Закрывать окно щелчком правой кнопкой мыши в его пределах. При этом отключается появление подсказок по правой кнопке.
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Автосохранения: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Укажите интервал между автоматическими сохранениями
@@ -3547,6 +3549,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить 
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Название группы
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Прибыль в текущем году:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Прибыль в прошлом году:
+STR_GROUP_OCCUPANCY                                             :Средняя загрузка ТС:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новый поезд

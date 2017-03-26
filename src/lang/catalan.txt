@@ -1373,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivat
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desplaçament amb el botó esquerre: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activa el desplaçament del mapa arrossegant-lo amb el botó esquerre del ratolí. Això és especialment útil quan s'utilitzen pantalles tàctils
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Tanca la finestra amb un clic dret del ratolí: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Tanca una finestra fent-hi un clic amb el botó dret del ratolí. Aquesta opció desactiva els indicadors de funció amb el mateix botó.
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Desada automàtica: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecciona l'interval entre desades automàtiques de les partides.
@@ -3368,6 +3370,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els v
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Canvia de nom el grup
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Benefici d'enguany:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Benefici de l'any passat:
+STR_GROUP_OCCUPANCY                                             :Ocupació actual:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Compra de nous vehicles ferroviaris
