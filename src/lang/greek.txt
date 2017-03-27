@@ -3142,7 +3142,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωρ�
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Στόχοι:
-STR_GOALS_SPECTATOR_CAPTION                                     :{BLACK}Καθολικοί στόχοι:
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Καθολικοί στόχοι:
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Καθολικοί στόχοι:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
@@ -3465,7 +3465,7 @@ STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Μετο
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Πατήστε για προστατέψετε αυτήν την ομάδα από την γενική αυτόματη αντικατάσταση
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Διαγραφή ομάδας
-STR_GROUP_DELETE_QUERY_TEXT                                     :Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την ομάδα και οποιουσδήποτε απογόνους;
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την ομάδα και οποιουσδήποτε απογόνους;
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Προσθήκη κοινόχρηστων οχημάτων
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεση όλων των οχημάτων
