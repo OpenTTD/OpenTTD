@@ -313,6 +313,15 @@ struct NewsWindow : Window {
 	{
 		StringID str = STR_NULL;
 		switch (widget) {
+			case WID_N_CAPTION: {
+				/* Caption is not a real caption (so that the window cannot be moved)
+				 * thus it doesn't get the default sizing of a caption. */
+				Dimension d2 = GetStringBoundingBox(STR_NEWS_MESSAGE_CAPTION);
+				d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
+				*size = maxdim(*size, d2);
+				return;
+			}
+
 			case WID_N_MGR_FACE:
 				*size = maxdim(*size, GetSpriteSize(SPR_GRADIENT));
 				break;
