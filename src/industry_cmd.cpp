@@ -1383,7 +1383,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 		}
 
 		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
-			if (!IsTileType(cur_tile, MP_WATER) ||
+			if (!IsWaterTile(cur_tile) ||
 					!IsTileFlat(cur_tile)) {
 				return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 			}
