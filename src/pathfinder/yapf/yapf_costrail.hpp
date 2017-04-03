@@ -479,7 +479,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			/* Finish if we already exceeded the maximum path cost (i.e. when
 			 * searching for the nearest depot). */
 			if (m_max_cost > 0 && (parent_cost + segment_entry_cost + segment_cost) > m_max_cost) {
-				end_segment_reason |= ESRB_PATH_TOO_LONG;
+				end_segment_reason |= ESRB_MAX_COST_EXCEEDED;
 			}
 
 			/* Move to the next tile/trackdir. */
@@ -554,6 +554,9 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			cur = next;
 
 		} // for (;;)
+
+		/* Don't consider path any further it if exceeded max_cost. */
+		if (end_segment_reason & ESRB_MAX_COST_EXCEEDED) return false;
 
 		bool target_seen = false;
 		if ((end_segment_reason & ESRB_POSSIBLE_TARGET) != ESRB_NONE) {
