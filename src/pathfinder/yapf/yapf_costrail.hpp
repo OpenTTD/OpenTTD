@@ -403,6 +403,8 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				/* Penalty for reversing in a depot. */
 				assert(IsRailDepot(cur.tile));
 				segment_cost += Yapf().PfGetSettings().rail_depot_reverse_penalty;
+
+			} else if (IsRailDepotTile(cur.tile)) {
 				/* We will end in this pass (depot is possible target) */
 				end_segment_reason |= ESRB_DEPOT;
 
