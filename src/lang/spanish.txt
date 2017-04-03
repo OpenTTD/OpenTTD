@@ -1762,7 +1762,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comproba
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar configuración de scripts de juego e IAs
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}A esta traducción le faltan {NUM} cadena{P "" s}. Considera ayudar a mejorar OpenTTD convirtiéndote en traductor. Consulta readme.txt para más detalles.
+STR_INTRO_TRANSLATION                                           :{BLACK}A esta traducción le faltan {NUM} cadena{P "" s} de texto. Considera ayudar a mejorar OpenTTD convirtiéndote en traductor. Consulta el readme.txt para más detalles.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Salir
@@ -2261,7 +2261,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no s
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el archivo descargado
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráficos no encontrados
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesita gráficos para funcionar pero no se pudo encontrar ninguno. ¿Desea permitir que OpenTTD descargue e instale dichos gráficos?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesita gráficos para funcionar pero no pudo encontrarse ninguno. ¿Desea permitir que OpenTTD descargue e instale dichos gráficos?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sí, descargar los gráficos
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, salir de OpenTTD
 
@@ -2898,7 +2898,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} est�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro incorrecto para {1:STRING}: párametro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} debe ser cargado antes de {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} debe ser cargado después de {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requiere OpenTTD versión {STRING} ó superior
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necesita la versión {STRING} ó superior de OpenTTD
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :El archivo GRF ha sido diseñado para ser traducido
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {1:STRING} como NewGRF estático con {STRING} puede causar desincronizaciones
@@ -3290,10 +3290,12 @@ STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indu
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Requiere: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Necesita: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requiere: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesita
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}esperando
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produce: {YELLOW}{STRING}{STRING}
@@ -3362,6 +3364,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos lo
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renombrar un grupo
 
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuevos Vehículos de Ferrocarril
@@ -3811,7 +3814,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir al depósito
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir al hangar más cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orden condicional
 STR_ORDER_SHARE                                                 :Compartir órdenes
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista. Ctrl sobre estaciones ordena 'Carga completa cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Ctrl o Compartir órdenes permite a este vehículo compartir órdenes con el vehículo seleccionado. Click sobre un vehículo copia las órdenes. Una órden de depósito desactiva el mantenimiento automático del vehículo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista. Ctrl sobre estaciones ordena 'Carga completa de cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Ctrl o Compartir órdenes permite a este vehículo compartir órdenes con el vehículo seleccionado. Click sobre un vehículo copia las órdenes. Una órden de depósito desactiva el mantenimiento automático del vehículo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Ver todos los vehículos con el mismo calendario
 
@@ -4108,7 +4111,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensaje
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fuera del borde del mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Demasiado cerca del borde del mapa
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No hay suficiente dinero - se requiere {CURRENCY_LONG}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No hay suficiente dinero - se necesita {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Se requiere terreno llano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tierra inclinada en dirección errónea
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No se puede hacer eso...
