@@ -1373,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrollen mit linker Maustaste: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Scrolle die Karte, indem mit der linken Maustaste gezogen wird. Dies ist besonders sinnvoll, wenn ein Touchscreen zum Scrollen genutzt wird
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fenster mit Rechtsklick schließen: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Schließt ein Fenster mittels Rechts-Klick. Schaltet Tooltip mit Rechts-Klick ab!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autosave: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Wähle das Interval zwischen automatischen Speicherungen
@@ -1762,6 +1764,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe, 
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zeige KI- und Skripteinstellungen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD beenden
 
+STR_INTRO_BASESET                                               :{BLACK}Dem momentan ausgewählten Basisgrafiken fehl{P 0 "t" "en"} {NUM} Sprite{P 0 "" s}. Bitte überprüfe, ob es Updates für die Basisgrafiken gibt.
 STR_INTRO_TRANSLATION                                           :{BLACK}Dieser Übersetzung fehl{P 0 t en} {NUM} String{P "" s}. Bitte hilf, OpenTTD zu verbessern und melde Dich als Übersetzer an. Siehe readme.txt für weitere Details.
 
 # Quit window
@@ -2590,6 +2593,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Name des
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Angenommene Frachtarten: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Gleistyp: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Schiene: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Straße: {LTBLUE}{VELOCITY}
 
@@ -2602,7 +2606,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ackerland
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Schneebedecktes Land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüste
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schienen: Gleise
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schienen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Schienen: Gleise mit Blocksignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Schienen: Gleise mit Vorsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Schienen: Gleise mit Ausfahrtsignal
@@ -2615,7 +2619,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Schienen: Gleis
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Schienen: Gleise mit Block- und Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Schienen: Gleise mit Blocksignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Schienen: Gleise mit Vor- und Ausfahrtsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Schienen: Gleise mit Vor- und Kombinationssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Schienen mit Vor- und Kombinationssignalen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Schienen: Gleise mit Vor- und Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Schienen: Gleise mit Vorsignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Schienen: Gleise mit Ausfahrts- und Kombinationssignal
@@ -3293,6 +3297,11 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Benötig
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Benötigt: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}benötigt
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}wartend
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produziert: {YELLOW}{STRING}{STRING}
@@ -3361,6 +3370,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Gewinn in diesem Jahr:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Gewinn im letzten Jahr:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Neue Schienenfahrzeuge
@@ -3527,6 +3539,9 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=w}Magnetschw
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: {CURRENCY_LONG}   Gewicht: {WEIGHT_SHORT}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY_LONG} pro Jahr{}Kapazität: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Preis: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Max. Geschwindigkeit: {VELOCITY}  Leistung: {POWER}  Max. Zugkraft: {6:FORCE}{}Betriebskosten: {4:CURRENCY_LONG}/yr{}Kapazität: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Preis: {CURRENCY_LONG} Höchstgeschw.: {VELOCITY}{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/Jahr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kosten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Flugzeugtyp: {STRING}{}Kapazität: {CARGO_LONG}, {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/Jahr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Kosten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Flugzeugtyp: {STRING}{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/Jahr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kosten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Flugzeugtyp: {STRING} Reichweite: {COMMA} Felder{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/Jahr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen - {STRING}
@@ -3648,6 +3663,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} Jahr{P 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Flugzeugtyp: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Flugzeugtyp: {LTBLUE}{STRING} {BLACK}Reichweite: {LTBLUE}{COMMA} Felder
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
 
