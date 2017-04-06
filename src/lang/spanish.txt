@@ -286,7 +286,7 @@ STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Beneficio año pasado
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Beneficio año actual
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Beneficio este año
 STR_SORT_BY_AGE                                                 :Edad
 STR_SORT_BY_RELIABILITY                                         :Fiabilidad
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidad por tipo de carga
@@ -3316,7 +3316,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehícul
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - Click en barco para información
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave - Click en la aeronave para información
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Beneficio este año: {CURRENCY_LONG} (año anterior: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Beneficio este año: {CURRENCY_LONG} (último año: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos de carretera disponibles
@@ -3364,6 +3364,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos lo
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renombrar un grupo
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Beneficio este año:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Beneficio del último año:
+STR_GROUP_OCCUPANCY                                             :Uso actual:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
@@ -3656,7 +3659,7 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocida
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY} {BLACK}F.T. Máx.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Beneficios este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde el último mantenimiento: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construido: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
