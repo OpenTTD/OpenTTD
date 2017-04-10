@@ -3295,6 +3295,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requiere
 ############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesita
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}esperando
 
 ############ range for produces starts
@@ -3312,7 +3313,7 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenes - Click en tren para información
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de carretera - Click en vehículo para información
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de carretera - Click en el vehículo para información
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - Click en barco para información
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave - Click en la aeronave para información
 
@@ -3400,6 +3401,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T máxima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} casillas
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de los vehículos de ferrocarril. Click en el vehículo para más información. Ctrl+Click para mostrar/ocultar el tipo del vehículo
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera. Click en el vehículo para más información. Ctrl+Click para mostrar/ocultar el tipo del vehículo
@@ -3458,8 +3460,8 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con Click izquierdo para añadir/retirar del tren, Click derecho para mostrar información. Mantén pulsado Ctrl para usar estos comandos con el resto del tren
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos de carretera - Click derecho en vehículo para información
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en barco para información
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos de carretera - Click derecho en el vehículo para información
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en el barco para información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Click derecho en la aeronave para información
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrastrar aquí el vehículo de raíl para venderlo
