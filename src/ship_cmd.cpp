@@ -28,6 +28,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "ai/ai.hpp"
+#include "game/game.hpp"
 #include "pathfinder/opf/opf_ship.h"
 #include "engine_base.h"
 #include "company_base.h"
@@ -421,6 +422,7 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 			st->index
 		);
 		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
+		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
 	}
 }
 

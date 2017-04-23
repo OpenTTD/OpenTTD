@@ -529,7 +529,7 @@ const Sprite *FreeTypeFontCache::GetGlyph(GlyphID key)
 			return glyph->sprite;
 		}
 	}
-	FT_Load_Glyph(this->face, key, FT_LOAD_DEFAULT);
+	FT_Load_Glyph(this->face, key, FT_LOAD_NO_HINTING);
 	FT_Render_Glyph(this->face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
 
 	/* Despite requesting a normal glyph, FreeType may have returned a bitmap */
