@@ -3217,11 +3217,7 @@ static bool DrawCustomStationFoundations(const StationSpec *statspec, BaseStatio
 
 	/* Station has custom foundations.
 	 * Check whether the foundation continues beyond the tile's upper sides. */
-	uint edge_info = 0;
-	auto [slope, z] = GetFoundationPixelSlope(ti->tile);
-	if (!HasFoundationNW(ti->tile, slope, z)) SetBit(edge_info, 0);
-	if (!HasFoundationNE(ti->tile, slope, z)) SetBit(edge_info, 1);
-
+	uint edge_info = GetFoundationSpriteBlock(ti->tile);
 	SpriteID image = GetCustomStationFoundationRelocation(statspec, st, ti->tile, gfx, edge_info);
 	if (image == 0) return false;
 

@@ -398,7 +398,7 @@ std::tuple<Slope, int> GetFoundationSlope(TileIndex tile)
 }
 
 
-bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
+static bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 {
 	int z_W_here = z_here;
 	int z_N_here = z_here;
@@ -413,7 +413,7 @@ bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 }
 
 
-bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
+static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 {
 	int z_E_here = z_here;
 	int z_N_here = z_here;
@@ -428,6 +428,24 @@ bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 }
 
 /**
+ * Get the sprite block to use for a foundation.
+ * @param tile Tile to draw a foundation on.
+ * @return The needed block of foundations sprites.
+ * Block 0: Walls at NW and NE edge.
+ * Block 1: Wall at NE edge.
+ * Block 2: Wall at NW edge.
+ * Block 3: No walls at NW or NE edge.
+ */
+uint GetFoundationSpriteBlock(TileIndex tile)
+{
+	auto [slope, z] = GetFoundationPixelSlope(tile);
+	uint block = 0;
+	if (!HasFoundationNW(tile, slope, z)) block += 1;
+	if (!HasFoundationNE(tile, slope, z)) block += 2;
+	return block;
+}
+
+/**
  * Draw foundation \a f at tile \a ti. Updates \a ti.
  * @param ti Tile to draw foundation on
  * @param f  Foundation to draw
@@ -439,17 +457,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	/* Two part foundations must be drawn separately */
 	assert(f != Foundation::SteepBoth);
 
-	uint sprite_block = 0;
-	auto [slope, z] = GetFoundationPixelSlope(ti->tile);
-
-	/* Select the needed block of foundations sprites
-	 * Block 0: Walls at NW and NE edge
-	 * Block 1: Wall  at        NE edge
-	 * Block 2: Wall  at NW        edge
-	 * Block 3: No walls at NW or NE edge
-	 */
-	if (!HasFoundationNW(ti->tile, slope, z)) sprite_block += 1;
-	if (!HasFoundationNE(ti->tile, slope, z)) sprite_block += 2;
+	uint sprite_block = GetFoundationSpriteBlock(ti->tile);
 
 	/* Use the original slope sprites if NW and NE borders should be visible */
 	SpriteID leveled_base = (sprite_block == 0 ? (int)SPR_FOUNDATION_BASE : (SPR_SLOPES_VIRTUAL_BASE + sprite_block * TRKFOUND_BLOCK_SIZE));
