@@ -306,7 +306,6 @@ struct AISettingsWindow : public Window {
 		timeout(0)
 	{
 		this->ai_config = GetConfig(slot);
-		this->RebuildVisibleSettings();
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_AIS_SCROLLBAR);
@@ -314,7 +313,7 @@ struct AISettingsWindow : public Window {
 
 		this->SetWidgetDisabledState(WID_AIS_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
 
-		this->vscroll->SetCount((int)this->visible_settings.size());
+		this->RebuildVisibleSettings();
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -342,6 +341,8 @@ struct AISettingsWindow : public Window {
 				visible_settings.push_back(&(*it));
 			}
 		}
+
+		this->vscroll->SetCount((int)this->visible_settings.size());
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -531,21 +532,23 @@ struct AISettingsWindow : public Window {
 	virtual void OnQueryTextFinished(char *str)
 	{
 		if (StrEmpty(str)) return;
-		ScriptConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (it->flags & SCRIPTCONFIG_INGAME) == 0) return;
+		const ScriptConfigItem config_item = **it;
+		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
 		int32 value = atoi(str);
-		this->ai_config->SetSetting((*it).name, value);
+		this->ai_config->SetSetting(config_item.name, value);
 		this->SetDirty();
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		assert(this->clicked_dropdown);
-		ScriptConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (it->flags & SCRIPTCONFIG_INGAME) == 0) return;
-		this->ai_config->SetSetting((*it).name, index);
+		const ScriptConfigItem config_item = **it;
+		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
+		this->ai_config->SetSetting(config_item.name, index);
 		this->SetDirty();
 	}
 
