@@ -975,7 +975,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona l'idioma de la interfície
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marca la casella per tenir l'OpenTTD en pantalla completa
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marqueu la casella per mostrar l'OpenTTD a pantalla completa.
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolució de pantalla
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolució de pantalla
@@ -1119,9 +1119,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paràmetres de 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paràmetres de la partida (emmagatzemats a la partida actual; només afecten la partida actual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paràmetres de la companyia (emmagatzemats a les partides desades; només afectaran les partides noves)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paràmetres de la companyia (emmagatzemats a la partida actual; només afecten la companyia actual)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostra tots els resultats de la cerca filtrada de {WHITE}{STRING}
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostra tots els resultats establint {SILVER}«Categoria» {BLACK}a {WHITE}«{STRING}»{BLACK}.
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar tots els resultats de la cerca filtrada amb {WHITE}tots els tipus de paràmetres
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostra tots els resultats de la cerca filtrada de {WHITE}{STRING} {BLACK}i {WHITE}tots els tipus d'ajustaments
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostra tots els resultats de la cerca establint {SILVER}«Categoria» {BLACK}a {WHITE}«{STRING}» {BLACK}i {SILVER}«Tipus» {BLACK}a {WHITE}«Tots els paràmetres»{BLACK}.
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Cap -
 
 STR_CONFIG_SETTING_OFF                                          :Inactiu
@@ -1129,8 +1129,8 @@ STR_CONFIG_SETTING_ON                                           :Actiu
 STR_CONFIG_SETTING_DISABLED                                     :Desactivat
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Inactiu
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Pròpia companyia
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Totes les companyies
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Només de la companyia pròpia
+STR_CONFIG_SETTING_COMPANIES_ALL                                :De totes les companyies
 
 STR_CONFIG_SETTING_NONE                                         :Cap
 STR_CONFIG_SETTING_ORIGINAL                                     :Original
@@ -1160,16 +1160,16 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permetis que
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu, els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit.
 STR_CONFIG_SETTING_DISASTERS                                    :Catàstrofes: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Permet o no que passin catàstrofes que puguin bloquejar o destruir ocasionalment vehicles o infraestructures
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la població davant de reestructuracions a la zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Estableix quin nivell de soroll i de danys ambientals fets per les companyies afecten al seu prestigi davant de la població i futures accions de construcció a la zona
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la població enfront les reestructuracions a la zona: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Establiu com afecta al prestigi de les companyies el soroll i els danys ambientals que provoquen. Aquest prestigi influirà en la futura acceptació o denegació d'accions de construcció a la zona.
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Alçada màxima del mapa: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Estableix l'alçada màxima permesa del terreny en el mapa
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No es pot escollir aquesta alçada màxima del mapa: hi ha alguna zona del mapa actual que és més alta.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet la modificació del terreny sota edificis, rails, etc.: {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permet modelar el terreny sota edificis i rails, sense eliminar-los
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permet modelar el terreny sota les vies, els edificis i altres elements sense eliminar-los.
 STR_CONFIG_SETTING_CATCHMENT                                    :Estableix una mida més real de l'àrea d'influència: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permet tenir diferents mides de zones de captació per a diferents tipus d'estacions i aeroports
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permet tenir diferents mides de zones de captació de càrrega per diferents tipus d'estacions (aeroports, estacions de tren, etc.).
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Aquesta opció permet fer més fàcil l'esborrat d'infraestructures i construccions propietat de la població
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud màxima dels trens: {STRING}
@@ -1214,7 +1214,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Al costat de co
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la dreta
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostra la finestra de balanç al finalitzar cada any: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si el paràmetre està activat, la finestra de finances apareix al final de cada any per permetre una inspecció fàcil de l'estat financer de la companyia.
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :«Sense parada» per defecte a les noves ordres : {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :«Sense parada» per defecte a les ordres noves: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalment, un vehicle para a cada estació per la que passa. Activant aquest paràmetre, no pararà a cap estació fins arribar al seu destí. Nota: aquest paràmetre només defineix el valor predeterminat per a les noves ordres. Un cop creada una ordre, aquesta es pot establir manualment al comportament desitjat.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres de trens: parar per defecte {STRING} de la plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Estableix en quin lloc de la plataforma els trens pararan per defecte. «Extrem més proper» significa a prop del punt d'entrada, «Al mig» significa al mig de la plataforma, i «Extrem més llunyà» significa lluny del punt d'entrada. Nota: aquest paràmetre només defineix el valor predeterminat per les noves ordres. Un cop creada una ordre, es pot modificar el comportament de forma manual.
@@ -1222,7 +1222,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :A l'extrem més
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :Al mig
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :A l'extrem més llunyà
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Desplaça la finestra quan el ratolí sigui prop de la vora: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, l'àrea de visualització començarà a desplaçar-se quan el ratolí sigui prop de la vora de la finestra.
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si s'activa aquesta opció, l'àrea de visualització començarà a desplaçar-se quan el ratolí sigui prop de la vora de la finestra.
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivat
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal (només pantalla completa)
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
@@ -1385,12 +1385,12 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament quan comenci una nova partida: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es posa en pausa automàticament quan es comenci una partida nova, permetent a l'usuari estudiar el mapa més detalladament
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Quan s'estigui en pausa permet: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecciona quines accions poden fer-se quan la partida està en pausa
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Sense accions
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Totes les accions no-constructores
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Tot menys les accions modificadores del paisatge
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Totes les accions
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Accions permeses mentre s'està fent una pausa a la partida: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleccioneu quines accions es poden realitzar mentre s'està fent una pausa a la partida.
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Cap
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Totes, excepte les de construcció
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Totes, excepte les que modifiquen el paisatge
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Totes
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Mostra els grups en el llistat de vehicles de la companyia: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activa la utilització de llistes avançades de vehicles per agrupar vehicles.
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilitza indicadors de càrrega: {STRING}
@@ -1516,7 +1516,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resum
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Les notícies en color apareixen el: {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Any en què els diaris comencen a fer els anunciaments impresos en color. Abans d'aquest any, s'utilitza el blanc i negre
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Any en què els diaris comencen a fer anuncis en color. Abans d'aquest any, imprimiran en blanc i negre.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Any d'inici: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activa economia suau (més canvis però més petits): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quan està activat, els canvis de producció de la indústria són més habituals, i en passos més petits. Aquest paràmetre usualment no té efecte, si el tipus d'indústria estan proveïts per un NewGRF
@@ -1603,7 +1603,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Proporció de p
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida.
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING}{NBSP}di{P 0:2 a es}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de distribució. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
@@ -1760,14 +1760,14 @@ STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra la configuració de les extensions NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra els paràmetres de les IA/Script de la partida
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt de l'OpenTTD.
 
 STR_INTRO_BASESET                                               :{WHITE}Al joc de gràfics base seleccionat li falten {NUM} sprite{P "" s}.{}Si us plau, comproveu-ne si hi ha actualitzacions disponibles.
-STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falten {NUM} caden{P a es}. Si us plau ajuda a fer millor OpenTTD unint-te com a traductor. Veure readme.txt per més detalls.
+STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falten {NUM} caden{P a es}. Si us plau, ajudeu a fer millor l'OpenTTD unint-vos com a traductor. Vegeu el fitxer readme.txt per més detalls.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Surt
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Estàs segur que vols abandonar aquesta partida i tornar a {STRING}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Esteu segur que voleu abandonar aquesta partida i tornar a {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Sí
 STR_QUIT_NO                                                     :{BLACK}No
 
@@ -1861,7 +1861,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simple
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecció de cara simple
 STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carrega la cara preferida
-STR_FACE_LOAD_DONE                                              :{WHITE}S'ha carregat la cara personalitzada des de l'arxiu de configuració de l'OpenTTD
+STR_FACE_LOAD_DONE                                              :{WHITE}S'ha carregat la cara personalitzada des de l'arxiu de configuració de l'OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Número de la cara
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna el número de la cara del president
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna el número de la cara del president
@@ -1869,7 +1869,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}El núme
 STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el número de cara del president - ha de ser un nombre entre 0 i 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Desa la cara preferida
-STR_FACE_SAVE_DONE                                              :{WHITE}Es desarà aquesta cara personalitzada a l'arxiu de configuració de l'OpenTTD
+STR_FACE_SAVE_DONE                                              :{WHITE}Es desarà aquesta cara personalitzada a l'arxiu de configuració de l'OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecciona cares europees
 STR_FACE_AFRICAN                                                :{BLACK}Africana
@@ -2207,9 +2207,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marca to
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecciona tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marca tots els continguts a no ser descarregats
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cerca en webs externes
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cerca contingut no disponible al servei de continguts d'OpenTTD en webs no associades amb OpenTTD
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Estàs sortint de l'OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Els termes i condicions per descarregar contingut des de webs externes varia.{}Hauràs d'adreçar-te a les webs externes per trobar instruccions sobre com instal·lar contingut a OpenTTD.{}Vols continuar?
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cerca contingut no disponible al servei de continguts de l'OpenTTD en webs no associades.
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Esteu sortint de l'OpenTTD.
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Els termes i condicions per descarregar contingut des de webs externes varia.{}Haureu d'adreçar-vos a les webs externes per trobar instruccions sobre com instal·lar contingut a l'OpenTTD.{}Voleu continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Marca/anomena filtre:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visita la web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita la web per accedir a aquest contingut
@@ -2262,9 +2262,9 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no e
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els arxius descarregats
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gràfics que falten
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necessita gràfics per funcionar però no se n'ha trobat cap. Vols permetre a OpenTTD descarregar i instal·lar aquests gràfics?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}L'OpenTTD necessita gràfics per funcionar, però no se n'han trobat. Voleu permetre a l'OpenTTD descarregar i instal·lar aquests gràfics?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sí, descarregar els gràfics
-STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, surt d'OpenTTD
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, surt de l'OpenTTD.
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcions de transparència
@@ -2689,7 +2689,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :terreny propiet
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Quant a l'OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer. Tots els drets reservats.
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versió {REV}
+STR_ABOUT_VERSION                                               :{BLACK}Versió {REV} de l'OpenTTD
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2017 L'equip de l'OpenTTD
 
 # Save/load game/scenario
@@ -2836,7 +2836,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paràmet
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No hi ha informació disponible
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}No s'ha trobat cap arxiu coincident
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivat
-STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Versió incompatible amb aquesta versió de OpenTTD
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Versió incompatible amb aquesta versió de l'OpenTTD.
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Guardar configuració NewGRF
@@ -2915,7 +2915,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de dispo
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esteu a punt de fer canvis en una partida activa. Això pot fer que l'OpenTTD falli. No envieu cap informe d'error sobre això.{}Esteu completament segur que voleu fer-los?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esteu a punt de fer canvis en una partida activa que poden fer que l'OpenTTD falli. No envieu cap informe d'error produït després d'efectuar aquests canvis crítics.{}Esteu completament segur que voleu fer-los?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir l'arxiu: ID GRF duplicada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha trobat un arxiu coincident (els GRF compatibles s'han carregat)
@@ -2937,7 +2937,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}El compo
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle '{1:ENGINE}' ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva llargada mentre estava fora del dipòsit
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva capacitat mentre estava fora del dipòsit o no s'estava canviant el tipus de càrrega a transportar
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' de '{COMPANY}' té una llargada invàlida, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada invàlida, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix

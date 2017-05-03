@@ -286,7 +286,7 @@ STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Beneficio año pasado
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Beneficio año actual
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Beneficio este año
 STR_SORT_BY_AGE                                                 :Edad
 STR_SORT_BY_RELIABILITY                                         :Fiabilidad
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidad por tipo de carga
@@ -1762,7 +1762,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comproba
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar configuración de scripts de juego e IAs
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}A esta traducción le faltan {NUM} cadena{P "" s}. Considera ayudar a mejorar OpenTTD convirtiéndote en traductor. Consulta readme.txt para más detalles.
+STR_INTRO_TRANSLATION                                           :{BLACK}A esta traducción le faltan {NUM} cadena{P "" s} de texto. Considera ayudar a mejorar OpenTTD convirtiéndote en traductor. Consulta el readme.txt para más detalles.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Salir
@@ -2261,7 +2261,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no s
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el archivo descargado
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráficos no encontrados
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesita gráficos para funcionar pero no se pudo encontrar ninguno. ¿Desea permitir que OpenTTD descargue e instale dichos gráficos?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesita gráficos para funcionar pero no pudo encontrarse ninguno. ¿Desea permitir que OpenTTD descargue e instale dichos gráficos?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sí, descargar los gráficos
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, salir de OpenTTD
 
@@ -2377,10 +2377,10 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elige pu
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de puente - Click en el puente elegido para construirlo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensión, Acero
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante, Acero
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Tirantes, Acero
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Colgante, Acero
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspensión, Hormigón
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantiléver, Acero
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Colgante, Hormigón
 STR_BRIDGE_NAME_WOODEN                                          :Madera
 STR_BRIDGE_NAME_CONCRETE                                        :Hormigón
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Tubular, Acero
@@ -2615,10 +2615,10 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vía de ferroca
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vía de ferrocarril con señales de bloque y combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vía de ferrocarril con señales de bloque y de ruta
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vía de ferrocarril con señales de bloque y de ruta de un solo sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ferrocarril con señales de entrada y señales de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ferrocarril con señales de entrada y de salida
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vía de ferrocarril con señales de entrada y combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vía de ferrocarril con señales de entrada y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ferrocarril con señales de entrada y señales de ruta de un solo sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ferrocarril con señales de entrada y de ruta de un solo sentido
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vía de ferrocarril con señales de salida y combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vía de ferrocarril con señales de salida y de ruta
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vía de ferrocarril con señales de salida y de ruta de un solo sentido
@@ -2664,7 +2664,7 @@ STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel de carre
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Puente de ferrocarril de acero suspendido
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Puente de ferrocarril de acero con tirantes
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Puente de ferrocarril colgante de acero
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Puente de ferrocarril cantiléver de acero
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Puente de ferrocarril de hormigón suspendido reforzado
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Puente de ferrocarril de madera
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Puente de ferrocarril de hormigón
@@ -2672,7 +2672,7 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Puente de ferro
 
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Puente de carretera de acero suspendido
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Puente de carretera de acero con tirantes
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Puente de carretera colgante de acero
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Puente de carretera cantiléver de acero
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Puente de carretera de hormigón suspendido reforzado
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Puente de carretera de madera
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Puente de carretera de hormigón
@@ -2898,7 +2898,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} est�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro incorrecto para {1:STRING}: párametro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} debe ser cargado antes de {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} debe ser cargado después de {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requiere OpenTTD versión {STRING} ó superior
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necesita la versión {STRING} ó superior de OpenTTD
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :El archivo GRF ha sido diseñado para ser traducido
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {1:STRING} como NewGRF estático con {STRING} puede causar desincronizaciones
@@ -3231,7 +3231,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Ninguna
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir Sede
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir sede de la empresa
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir la sede de la empresa
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver Sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede de la empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reubicar Sede
@@ -3290,7 +3290,7 @@ STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indu
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Requiere: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Necesita: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requiere: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
@@ -3307,14 +3307,14 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambiar 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trenes
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Vehículos de Carretera
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Barcos
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave{P "" s}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenes - Click en tren para información
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de carretera - Click en vehículo para información
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de carretera - Click en el vehículo para información
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - Click en barco para información
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave - Click en la aeronave para información
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Beneficio este año: {CURRENCY_LONG} (año anterior: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Beneficio este año: {CURRENCY_LONG} (último año: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos de carretera disponibles
@@ -3451,8 +3451,8 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con Click izquierdo para añadir/retirar del tren, Click derecho para mostrar información. Mantén pulsado Ctrl para usar estos comandos con el resto del tren
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos de carretera - Click derecho en vehículo para información
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en barco para información
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos de carretera - Click derecho en el vehículo para información
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en el barco para información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Click derecho en la aeronave para información
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrastrar aquí el vehículo de raíl para venderlo
@@ -3524,8 +3524,8 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}barco
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotora de monorraíl
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotora maglev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Coste: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidad: {VELOCITY}  Potencia: {POWER}{}Coste Operativo: {CURRENCY_LONG}/año{}Capacidad: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Coste: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidad: {VELOCITY}  Potencia: {POWER}  F.T. Máxima: {6:FORCE}{}Coste de operación: {4:CURRENCY_LONG}/año{}Capacidad: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Coste: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidad: {VELOCITY}  Potencia: {POWER}{}Coste Mantenimiento: {CURRENCY_LONG}/año{}Capacidad: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Coste: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidad: {VELOCITY}  Potencia: {POWER}  F.T. Máxima: {6:FORCE}{}Coste Mantenimiento: {4:CURRENCY_LONG}/año{}Capacidad: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Coste: {CURRENCY_LONG} Velocidad Máx.: {VELOCITY}{}Capacidad: {CARGO_LONG}, {CARGO_LONG}{}Coste Mantenimiento: {CURRENCY_LONG}/año
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Coste: {CURRENCY_LONG} Velocidad Máx.: {VELOCITY}{}Capacidad: {CARGO_LONG}{}Coste Mantenimiento: {CURRENCY_LONG}/año
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coste: {CURRENCY_LONG} Velocidad Máx.: {VELOCITY} Alcance: {COMMA} casillas{}Capacidad: {CARGO_LONG}, {CARGO_LONG}{}Coste de Operación: {CURRENCY_LONG}/año
@@ -3656,7 +3656,7 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Velocida
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY} {BLACK}F.T. Máx.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Beneficios este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde el último mantenimiento: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construido: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
@@ -3814,7 +3814,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir al depósito
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir al hangar más cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orden condicional
 STR_ORDER_SHARE                                                 :Compartir órdenes
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista. Ctrl sobre estaciones ordena 'Carga completa cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Ctrl o Compartir órdenes permite a este vehículo compartir órdenes con el vehículo seleccionado. Click sobre un vehículo copia las órdenes. Una órden de depósito desactiva el mantenimiento automático del vehículo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista. Ctrl sobre estaciones ordena 'Carga completa de cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Ctrl o Compartir órdenes permite a este vehículo compartir órdenes con el vehículo seleccionado. Click sobre un vehículo copia las órdenes. Una órden de depósito desactiva el mantenimiento automático del vehículo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Ver todos los vehículos con el mismo calendario
 
@@ -4111,7 +4111,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensaje
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fuera del borde del mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Demasiado cerca del borde del mapa
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No hay suficiente dinero - se requiere {CURRENCY_LONG}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No hay suficiente dinero - se necesita {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Se requiere terreno llano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tierra inclinada en dirección errónea
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No se puede hacer eso...
@@ -4149,13 +4149,13 @@ STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}No se pu
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}No se puede cambiar nombre del presidente...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... máxima cantidad de préstamo permitida es {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}No se incrementar el préstamo...
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}No se puede incrementar el préstamo...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... no hay préstamo que pagar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} requerido
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No es posible pagar préstamo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No se puede dar dinero que ha sido prestado de un banco...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No se puede comprar la empresa...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No se puede construir la sede de la empresa...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No puede construirse la sede de la empresa...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}No se puede comprar el 25% de acciones...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}No se puede vender el 25% de acciones...
 STR_ERROR_PROTECTED                                             :{WHITE}Esta empresa es demasiado reciente como para comerciar con acciones...
@@ -4177,33 +4177,33 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no e
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas industrias
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No se pueden crear industrias...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}No se puede construir {STRING} aquí...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}No puede construirse {STRING} aquí...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}No se puede construir este tipo de industria aquí...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... demasiado cerca de otra industria
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... debe construirse un municipio primero
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... solo se permite uno por municipio
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... sólo puede ser construido en municipios de al menos 1.200 habitantes
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... sólo se puede construir en áreas de selva
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... sólo se puede construir en áreas desérticas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... solo puede ser construido en municipios (reemplazando casas)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... solamente puede construirse cerca del centro de un municipio
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... solo puede construirse en municipios de al menos 1.200 habitantes
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... solo puede construirse en zonas selváticas
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... solo puede construirse en zonas desérticas
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... solo puede construirse en municipios (reemplazando casas)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... solo puede construirse cerca del centro de un municipio
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... solo puede construirse en zonas bajas
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sólo se puede colocar cerca de los bordes del mapa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... sólo se puede plantar bosques sobre la nieve
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solamente puede construirse por encima de la línea de nieve
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solamente puede construirse por debajo de la línea de nieve
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... solo puede colocarse cerca de los bordes del mapa
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... solo se pueden plantar bosques sobre la nieve
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solo puede construirse por encima de la línea de nieve
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solo puede construirse por debajo de la línea de nieve
 
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No había sitios apropiados disponibles para industrias '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Cambia los parámetros de generación del mapa para obtener un mapa mejor
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}No se puede construir estación de tren aquí...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}No se puede construir estación de autobuses...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}No puede construirse una estación de autobuses...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}No se puede construir estación de camiones...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}No se puede construir estación de tranvía de pasajeros...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}No puede construir estación de tranvía de carga...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}No se pueden construir muelles aquí...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}No se puede construir aeropuerto aquí...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}No puede construirse una estación de tranvía de carga...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}No pueden construirse muelles aquí...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}No puede construirse un aeropuerto aquí...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjunta más de una estación/zona de carga existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estación demasiado extendida
@@ -4310,8 +4310,8 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... no h
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... no hay tranvía
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}No se pueden construir canales aquí...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}No se pueden construir dársenas aquí...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}No pueden construirse canales aquí...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}No pueden construirse dársenas aquí...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}No se pueden situar ríos aquí...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... debe construirse sobre el agua
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... no se puede construir sobre el agua
@@ -4319,7 +4319,7 @@ STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... no s
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... no se puede construir en un canal
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... no se puede construir en un río
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Debes demoler el canal primero
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}No se puede construir un acueducto aquí
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}No puede construirse un acueducto aquí
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... ya hay árboles aquí
@@ -4327,7 +4327,7 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... terr
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}No se pueden plantar árboles aquí...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}No se puede construir puente aquí...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}No puede construirse un puente aquí...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Primero debe demolerse el puente
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}No se puede comenzar y acabar en la misma posición
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Las cabeceras del puente no están al mismo nivel
@@ -4351,7 +4351,7 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tún
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objetos
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No se puede construir objeto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objeto en medio
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa está en medio
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... la sede de la empresa está en medio
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No es posible comprar este terreno...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡ya es de su propiedad!
 

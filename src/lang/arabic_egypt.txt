@@ -942,8 +942,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}دقة �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر دقة الشاشة
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :حجم اللوحة
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :حدد العنصر المطلوب
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}حجم اللوحة
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}حدد العنصر المطلوب
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :تقريب عادي
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :تقريب ×2
@@ -1051,9 +1051,9 @@ STR_CITY_APPROVAL_HOSTILE                                       :معاد
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايوجد ذكاء اصطناعي متاح ...{}تستطيع تجميل العديد من الذكاء الاصطناعي عن طريق اللانترنت
 
 # Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :الإعدادات
-STR_CONFIG_SETTING_EXPAND_ALL                                   :مدد الكل
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :إسحب الكل
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}الإعدادات
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}مدد الكل
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}إسحب الكل
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK} فئة:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
@@ -1408,7 +1408,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}لعب �
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}إعدادات اللعبه
 STR_INTRO_HIGHSCORE                                             :{BLACK}قائمه المتفوقين
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :الاعدادات
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}الاعدادات
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK} اعدادات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} إبحث عن المحتوى عبر الشبكه العنكبوتيه
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}إعدادات الذكاء الصناعى
@@ -1427,7 +1427,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}اختي
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}اختيار نمط الألعاب
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}عرض خيارات اللعبة
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :إعدادات العرض
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}إعدادات العرض
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}عرض إعدادات اﻹضافات
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} ابحث عن محتوى جديد او تحديث
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}اغلاق'OpenTTD'
@@ -2383,7 +2383,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}اسم �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}الحجم:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :تغيير أعلى ارتفاع للخريطة
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}تغيير أعلى ارتفاع للخريطة
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}غير مستوى خط الثلج
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}غير سنة البداية
 
@@ -2463,7 +2463,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}معطل
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}متعارض مع هذا اللإصدار من Openttd
 
 # NewGRF save preset window
-STR_SAVE_PRESET_CAPTION                                         :{BLACK}حفظ الإعداد المسبق
+STR_SAVE_PRESET_CAPTION                                         :{WHITE}حفظ الإعداد المسبق
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}لائحة الإعدادات المسبقة. اختر واحدة لنسخها للإسم المحفوظ بالإسفل
 STR_SAVE_PRESET_TITLE                                           :{BLACK}أدخل اسم للإعداد المسبق
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}الإسم المختار لحفظ الإعداد المسبق
@@ -3871,7 +3871,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}لا ي�
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... العربة تحطمت
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}لن تتوافر اى وسائل نقل على اﻹطلاق
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :لا تتوافر اى آليه نقل بعد
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}لا تتوافر اى آليه نقل بعد
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر

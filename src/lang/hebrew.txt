@@ -1810,7 +1810,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}טרק�
 STR_CHEAT_CROSSINGTUNNELS                                       :{ORANGE}{STRING}{LTBLUE} :מנהרות יכולות לחצות זו את זו
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}מטוסי סילון לא יתרסקו (לעיתים קרובות) בשדות תעופה קטנים: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}ערוך את הגובה המקסימלי במפה: {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :ערוך את הגובה המקסימלי של הרים במפה
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}ערוך את הגובה המקסימלי של הרים במפה
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :אקלים ממוזג
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :אקלים קר
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :אקלים טרופי
@@ -3443,7 +3443,7 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}תצוג
 
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}החלף בין הסתרה/הצגה של סוג רכבת
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}החלף בין הסתרה/הצגה של סוג רכב כביש
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :הסתר/הצג סוג של כלי שיט
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}הסתר/הצג סוג של כלי שיט
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}הסתר/הצג סוג של כלי טיס
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}שנה את שם סוג קרון הרכבת
@@ -4068,7 +4068,7 @@ STR_FEEDER                                                      :{YELLOW}העב�
 STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}העברה: {CURRENCY_LONG}{WHITE} / {GREEN}הכנסה:{CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}העברה:  {CURRENCY_LONG}{WHITE} / {GREEN}הכנסה: {CURRENCY_LONG}
 STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}העברה: {CURRENCY_LONG}{WHITE} / {RED}עלות: {CURRENCY_LONG}
-STR_FEEDER_COST                                                 :{YELLOW}העברה: {CURRENCY_LONG}{WHITE} / עלות: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}העברה: {CURRENCY_LONG}{WHITE} / {RED}עלות: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}{CURRENCY_LONG} :מחיר משוער
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}{CURRENCY_LONG} :הכנסה משוערת
 

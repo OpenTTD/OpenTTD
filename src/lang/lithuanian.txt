@@ -3794,7 +3794,7 @@ STR_REPLACE_VEHICLE_SHIP                                        :Laivas
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lėktuvas
 
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Naudojamos transporto priemonės
-STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :BLACK}Stulpelis su informacija apie transporto priemones, kurias šiuo metu naudojate
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Stulpelis su informacija apie transporto priemones, kurias šiuo metu naudojate
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Galimos transporto priemonės
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Stulpelis su informacija apie transporto priemones, kuriomis galite pakeisti jau turimas
 

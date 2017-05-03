@@ -762,7 +762,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Amosar/ocultar mapa de cotas do terreo
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Non amosar as propiedades de ningunha compañía no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Amosar as propiedades de tódalas compañías no mapa
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :BLACK}Non amosa ningunha carga no mapa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Non amosa ningunha carga no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Amosa tódolas cargas no mapa
 
 # Status bar messages
@@ -2560,29 +2560,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Leiras
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terra cuberta de neve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía de Ferrocarril
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vía de Ferrocarril con sinais de bloqueo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vía de Ferrocarril con sinais avanzados
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía de ferrocarril
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vía de ferrocarril con sinais de bloqueo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vía de ferrocarril con sinais avanzados
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vía de Ferrocarril con sinais de saída
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vía de Ferrocarril con sinais combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vía de Ferrocarril con sinais de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vía de Ferrocarril con sinais de ruta monosentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vía de Ferrocarril con sinais de bloqueo e avanzados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vía de Ferrocarril con sinais de bloqueo e saída
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vía de Ferrocarril con sinais de bloqueo e combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vía de Ferrocarril con sinais de bloqueo e de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vía de ferrocarril con sinais de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vía de ferrocarril con sinais de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vía de Ferrocarril con sinais de bloqueo e pre-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vía de ferrocarril con sinais de bloqueo e saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vía de ferrocarril con sinais de bloqueo e combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vía de ferrocarril con sinais de bloqueo e de ruta
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vía de Ferrocarril con sinais de bloqueo e de ruta monosentido
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vía de Ferrocarril con sinais avanzados e de saída
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vía de Ferrocarril con sinais avanzados e combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vía de Ferrocarril con sinais avanzados e de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vía de Ferrocarril con sinais avanzados e de ruta monosentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vía de Ferrocarril con sinais de saída e combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vía de Ferrocarril con sinais de saída e de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vía de ferrocarril con sinais avanzados e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vía de ferrocarril con sinais de saída e combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vía de ferrocarril con sinais de saída e de ruta
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vía de Ferrocarril con sinais de saída e de ruta monosentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vía de Ferrocarril con sinais combo e de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vía de Ferrocarril con sinais combo e de ruta monosentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vía de Ferrocarril con sinais de ruta e de ruta monosentido
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito ferroviario Ferrocarril
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vía de ferrocarril con sinais combo e de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vía de ferrocarril con sinais combo e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vía de ferrocarril con sinais de ruta e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito ferroviario de ferrocarril
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Estrada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Estrada con iluminación
@@ -2832,7 +2832,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir ao sp
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir ao sprite anterior, ignorando pseudosprites, sprites recoloreados e sprites de fonte, e volvendo a empezar ao chegar ao inicio
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representación do sprite seleccionado. A aliñación ignórase ao debuxar este sprite
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move-lo sprite, cambiando os valores de X e Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move-lo sprite, cambiando os valores de X e Y. Ctrl+Click para movelo sprite oito unidades de golpe.
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Seleccionar sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Seleccionar un sprite en calquera parte da pantalla
 
@@ -2887,7 +2887,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Faltan arq
 STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar desincronizacións e/ou colgues
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambiou o estado 'vagón con potencia' para '{1:ENGINE}' fóra dun depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambiou a lonxitude do vehículo a '{1:ENGINE}' cando non está nun depósito
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O tren '{VEHICLE}' pertencente a '{COMPANY}' ten unha lonxitude inválida. Esto está causado probabelmente por problemas con NewGRFs. O xogo pode desincronizarse ou colgarse
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O tren '{VEHICLE}' pertencente a '{COMPANY}' ten unha lonxitude inválida. Isto está causado probabelmente por problemas con NewGRFs. O xogo pode desincronizarse ou colgarse
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' proporciona información incorrecta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Información de carga/reforma para '{1:ENGINE}' difiire da lista de compra despois da construción. Isto pode causar que a renovación/reemprazo automáticos non reformen correctamente
@@ -3911,7 +3911,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Quita-la pausa e continua-la IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ve-la saída da depuración desta IA
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script do xogo
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :BLACK}Comproba o log do script do xogo
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comproba o log do script do xogo
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Non se atopou ningunha IA adecuada para cargar.{} Esta IA é parva e non vai facer nada.{}Podes descargar varias IAs no sistema de contidos online.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Fallou unha das IA en execución. Por favor, informa ao autor desta IA cunha captura da Fiestra de Depuración de IA.
@@ -3926,7 +3926,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
 STR_AI_CONFIG_NONE                                              :(ningunha)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA seleccionada hacia arriba na lista
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA seleccionada cara arriba na lista
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Baixar
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA seleccionada hacia abaixo na lista
 

@@ -2602,7 +2602,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ackerland
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Schneebedecktes Land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüste
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schienen: Gleise
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schienen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Schienen: Gleise mit Blocksignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Schienen: Gleise mit Vorsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Schienen: Gleise mit Ausfahrtsignal
@@ -2615,7 +2615,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Schienen: Gleis
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Schienen: Gleise mit Block- und Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Schienen: Gleise mit Blocksignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Schienen: Gleise mit Vor- und Ausfahrtsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Schienen: Gleise mit Vor- und Kombinationssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Schienen mit Vor- und Kombinationssignalen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Schienen: Gleise mit Vor- und Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Schienen: Gleise mit Vorsignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Schienen: Gleise mit Ausfahrts- und Kombinationssignal

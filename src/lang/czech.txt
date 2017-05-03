@@ -1884,7 +1884,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magick�
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely se mohou křížit: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Letadla nebudou na malých letištích havarovat (tak často): {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Upravit maximální výšku mapy: {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{BLACK}Upravit maximální výšku hor na mapě
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Upravit maximální výšku hor na mapě
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :krajina mírného pásma
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :subarktická krajina
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :subtropická kraina
@@ -3225,7 +3225,7 @@ STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} do {STATION}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} z neznámé stanice
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} do kterékoliv stanice
-STR_STATION_VIEW_VIA_ANY                                        :{GREEN}{CARGO_SHORT} přes jakoukoliv stanici
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} přes jakoukoliv stanici
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} z této stanice
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} zastavuje v této stanici
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} do této stanice

@@ -3926,7 +3926,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Samolot
 
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Używane pojazdy
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Lista posiadanych pojazdów
-STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{BLACK}Dostępne pojazdy
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Dostępne pojazdy
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Lista pojazdów dostępnych do zamiany
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wybierz typ pojazdu do zamiany

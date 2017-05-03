@@ -1119,7 +1119,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spillastellunge
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firmenastellungen (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firmenastellungen (am Save gespäichert; betrëfft just déi aktuell Firma)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :Weis all Sich-Resultater no der Astellung{}{SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Weis all Sich-Resultater no der Astellung{}{SILVER}Kategorie {BLACK}bis {WHITE}{STRING} {BLACK}an {SILVER}Typ {BLACK}bis {WHITE}All Astellungstypen
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Keng -
 
@@ -3524,7 +3524,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :Schëff
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Magnéitbunnlokomotiv
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betribskäschten {CURRENCY_LONG}/Joer{}Kapazitéit: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betribskäschten {CURRENCY_LONG}/Jr{}Kapazitéit: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraaft: {POWER}  Max. T.E.: {6:FORCE}{}Betribskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten {CURRENCY_LONG}/Joer
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Joer

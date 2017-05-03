@@ -1432,7 +1432,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Наладкі 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Наладкі кампаніі (запісваюцца ў захаваньні; уплываюць толькі на новыя гульні)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Наладкі кампаніі (запісваюцца ў захаваньне; уплываюць толькі на бягучую кампанію)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Паказаць усе вынікі пошуку па наладках{}{SILVER}Катэґорыя {BLACK}да {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Паказаць усе вынікі пошуку па наладках{}{SILVER}Тып BLACK}да {WHITE}Усе тыпы наладак
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Паказаць усе вынікі пошуку па наладках{}{SILVER}Тып {BLACK}да {WHITE}Усе тыпы наладак
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Паказаць усе вынікі пошуку па наладках{}{SILVER}Катэґорыя {BLACK}да {WHITE}{STRING} {BLACK}і {SILVER}Тып {BLACK}да {WHITE}Усе тыпы наладак
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Няма -
 

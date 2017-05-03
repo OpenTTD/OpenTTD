@@ -250,7 +250,7 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำ�
 
 # Show engines button
 
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :ถ้าได้อนุญาตที่ปุ่มนี้แล้ว อากาศยานที่ซ่อนจะถูกแสดงออกมา
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}ถ้าได้อนุญาตที่ปุ่มนี้แล้ว อากาศยานที่ซ่อนจะถูกแสดงออกมา
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}ค่าปกติ
@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}แส�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}แสดงข้อมูลทางการเงินของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}แสดงข้อมูลทั่วไปของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}แสดงสมุดบันทึก
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :แสดงรายการเป้าหมายที่ต้องทำ
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}แสดงรายการเป้าหมายที่ต้องทำ
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}แสดงกราฟ
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}แสดงตารางอันดับบริษัท
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ลงทุนก่อสร้างอุตสาหกรรมใหม่ หรือ แสดงรายชื่ออุตสาหกรรมทั้งหมด
@@ -1630,7 +1630,7 @@ STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เส�
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :กายภาพ
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}กายภาพ
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}สิ่งแวดล้อม
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง
@@ -2227,7 +2227,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}เป�
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}ตั้งให้วัตถุมองไม่เห็นแทนการโปร่งใส
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{WHITE}แสดงเส้นทางและความหนาแน่น
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}แสดงเส้นทางและความหนาแน่น
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}ทั้งหมด
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}ไม่เลือก
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}เลือกบริษัทที่จะแสดง
@@ -2780,7 +2780,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}ไม่�
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}ไม่รองรับกับ OpenTTD เวอร์ชั่นนี้
 
 # NewGRF save preset window
-STR_SAVE_PRESET_SAVE_TOOLTIP                                    :บันทึก ชุดการตั้งค่า ตามที่ได้เลือกไว้
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}บันทึก ชุดการตั้งค่า ตามที่ได้เลือกไว้
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}เปลี่ยนแปลง NewGRF parameters
@@ -3090,9 +3090,9 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}จุ�
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}เปลี่ยนชื่อสถานี
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}แสดงขบวนรถไฟที่มีรายการเข้าจอดที่สถานีนี้
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :แสดงยานพาหนะทางบกที่มีรายการเข้าจอดที่สถานีนี้
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :แสดงอากาศยานที่มีรายการลงจอดจอดที่สถานีนี้
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :แสดงเรือที่มีรายการเข้าเทียบท่าที่ท่านี้
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}แสดงยานพาหนะทางบกที่มีรายการเข้าจอดที่สถานีนี้
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}แสดงอากาศยานที่มีรายการลงจอดจอดที่สถานีนี้
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}แสดงเรือที่มีรายการเข้าเทียบท่าที่ท่านี้
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :เปลี่ยนชื่อสถานี/พื้นที่รับส่งสินค้า
 
@@ -3347,7 +3347,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}เป�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}เปลี่ยนชื่อชนิดของเรือ
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}เปลี่ยนชื่อชนิดของเครื่องบิน
 
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :ซ่อน
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}ซ่อน
 
 STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}การแสดงผล
 STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}การแสดงผล
@@ -3388,7 +3388,7 @@ STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}ขา�
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}ขายอากาศยานทั้งหมดในโรงซ่อมบำรุง
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}แทนที่อัตโนมัติสำหรับรถไฟทั้งหมดในโรงซ่อมบำรุง
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :แทนที่อัตโนมัติสำหรับยานพาหนะทางบกทั้งหมดในโรงซ่อมบำรุง
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}แทนที่อัตโนมัติสำหรับยานพาหนะทางบกทั้งหมดในโรงซ่อมบำรุง
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}แทนที่อัตโนมัติสำหรับยานพาหนะทางน้ำทั้งหมดในอู่
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}แทนที่อัตโนมัติสำหรับอากาศยานทั้งหมดในโรงซ่อมบำรุง
 

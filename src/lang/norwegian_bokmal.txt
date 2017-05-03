@@ -1003,7 +1003,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg mus
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ødelagt{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislytes med å hente en liste over støttede oppløsninger
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislyktes med å hente en liste over støttede oppløsninger
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermmodus mislyktes
 
 # Custom currency window
@@ -2611,23 +2611,23 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Jernbanespor me
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Jernbanespor med utgangssignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Jernbanespor med kombinasjonssignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Jernbanespor med avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Jernbane spor med enveis avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Jernbane spor med blokk- og forsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Jernbanespor med enveis avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Jernbanespor med blokk- og forsignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Jernbane spor med blokk- og utgangssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Jernbane spor med blokk- og kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Jernbanespor med blokk- og kombinasjonssignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Jernbane spor med blokk- og avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Jernbane spor med blokk- og enveis avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Jernbane spor med for- og utgangssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Jernbane spor med for- og kombinasjonssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Jernbane spor med for- og avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Jernbane spor med for- og enveis avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Jernbane spor med utgangs- og kombinasjonssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Jernbane spor med utgangs- og avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Jernbane spor med utgangs- og enveis avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Jernbane spor med kombinasjon- og avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Jernbane spor med kombinasjon- og enveis avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Jernbane spor med avanserte- og enveis avanserte signaler
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Jernbane togstall
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Jernbanespor med blokk- og enveis avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Jernbanespor med for- og utgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Jernbanespor med for- og kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Jernbane spor med forsignaler og avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Jernbanespor med for- og enveis avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Jernbanespor med utgangs- og kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Jernbanespor med utgangs- og avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Jernbanespor med utgangs- og enveis avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Jernbanespor med kombinasjon- og avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Jernbanespor med kombinasjon- og enveis avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Jernbanespor med avanserte- og enveis avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Jernbane-togstall
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Vei
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Vei med gatelykter

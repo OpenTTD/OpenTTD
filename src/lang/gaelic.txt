@@ -1566,8 +1566,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Briogadh dùbai
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Aon bhriogadh (le fòcas)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Aon bhriogadh (sa bhad)
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulation a' bhriogaidh dheis: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Tagh an dòigh sa thèid emulation a dhèanamh airson briogadh le putan deas na luchaige
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Riochdachadh a' bhriogaidh dheis: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Tagh an dòigh sa thèid briogadh le putan deas na luchaige a riochdachadh
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Briogadh
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Briogadh
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Dheth
@@ -1998,7 +1998,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldoz
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Faodaidh tunailean dol tarsainn càch a chèile: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Cha tachair tubaist (gu tric) le steall-phlèan air port-adhair beag: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Deasaich àirde as motha a’ mhapa: {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{BLACK}Deasaich an àirde as motha dhe bheanntan air a’ mhapa
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Deasaich an àirde as motha dhe bheanntan air a’ mhapa
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Cruth-tìre measarra
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Cruth-tìre fo-artach
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Cruth-tìre fo-thropaigeach
@@ -2812,29 +2812,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Achaidhean
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tìr sneachdach
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Fàsach
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Slighe Rathad-iarainn
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Slighe Rathad-iarainn le comharran bacaidh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Slighe Rathad-iarainn le ro-chomharran
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Slighe Rathad-iarainn le comharran a-mach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Slighe Rathad-iarainn le comharran aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Slighe Rathad-iarainn le comharran slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Slighe Rathad-iarainn le comharran aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Slighe Rathad-iarainn le comharran bacaidh is ro-chomharran
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Slighe Rathad-iarainn le comharran-bacaidh is a-mach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Slighe Rathad-iarainn le comharran-bacaidh is aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Slighe Rathad-iarainn le comharran-bacaidh is slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Slighe Rathad-iarainn le comharran-bacaidh is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Slighe Rathad-iarainn le ro-chomharran is comharran a-mach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Slighe Rathad-iarainn le ro-chomharran is comharran aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Slighe Rathad-iarainn le ro-chomharran is comharran slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Slighe Rathad-iarainn le ro-chomharran is comharran aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Slighe Rathad-iarainn le comharran a-mach is aonaichte
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Slighe Rathad-iarainn le comharran a-mach is slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Slighe Rathad-iarainn le comharran a-mach is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Slighe Rathad-iarainn le comharran aonaichte is slighe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Slighe Rathad-iarainn le comharran aonaichte is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Slighe Rathad-iarainn le comharran slighe is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trèan-lann Rathad-iarainn
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Slighe rathaid-iarainn
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Slighe rathaid-iarainn le comharran bacaidh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Slighe rathaid-iarainn le ro-chomharran
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Slighe rathaid-iarainn le comharran a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Slighe rathaid-iarainn le comharran aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Slighe rathaid-iarainn le comharran slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Slighe rathaid-iarainn le comharran aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Slighe rathaid-iarainn le comharran bacaidh is ro-chomharran
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Slighe rathaid-iarainn le comharran-bacaidh is a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Slighe rathaid-iarainn le comharran-bacaidh is aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Slighe rathaid-iarainn le comharran-bacaidh is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Slighe rathaid-iarainn le comharran-bacaidh is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Slighe rathaid-iarainn le ro-chomharran is comharran a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Slighe rathaid-iarainn le ro-chomharran is comharran aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Slighe rathaid-iarainn le ro-chomharran is comharran slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Slighe rathaid-iarainn le ro-chomharran is comharran aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Slighe rathaid-iarainn le comharran a-mach is aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Slighe rathaid-iarainn le comharran a-mach is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Slighe rathaid-iarainn le comharran a-mach is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Slighe rathaid-iarainn le comharran aonaichte is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Slighe rathaid-iarainn le comharran aonaichte is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Slighe rathaid-iarainn le comharran slighe is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trèan-lann rathaid-iarainn
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Rathad
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Rathad le solasan-rathaid

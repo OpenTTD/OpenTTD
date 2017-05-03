@@ -2776,7 +2776,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Не�
 # NewGRF save preset window
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Въведи име за шаблона
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Текущо избраното име за именуване на шаблона
-STR_SAVE_PRESET_CANCEL                                          :Отказ
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Отказ
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Не променяй шаблона
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Запис
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Запази шаблона за текущо избраното име

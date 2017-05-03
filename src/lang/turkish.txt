@@ -1797,7 +1797,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetler küçük havalimanlarında (sıklıkla) düşmesin: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Azami harita yüksekliğini değiştir: {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{BLACK}Haritadaki azami dağ yüksekliğini düzenle
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Haritadaki azami dağ yüksekliğini düzenle
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Ilıman iklim
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Soğuk iklim
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropik iklim
