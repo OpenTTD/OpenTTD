@@ -48,7 +48,7 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 					break;
 
 				case BM_BLACK_REMAP:
-					colour = 0;
+					if (*src != 0) *dst = 0;
 					break;
 
 				default:

@@ -35,7 +35,8 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 {
 	const byte * const remap = bp->remap;
 	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
-	uint16 *anim_line = this->anim_buf + ((uint32 *)bp->dst - (uint32 *)_screen.dst_ptr) + bp->top * this->anim_buf_width + bp->left;
+	assert(_screen.pitch == this->anim_buf_pitch); // precondition for translating 'bp->dst' into an 'anim_buf' offset below.
+	uint16 *anim_line = this->anim_buf + ((uint32 *)bp->dst - (uint32 *)_screen.dst_ptr) + bp->top * this->anim_buf_pitch + bp->left;
 	int effective_width = bp->width;
 
 	/* Find where to start reading in the source sprite. */
@@ -353,7 +354,7 @@ next_line:
 		if (mode != BM_TRANSPARENT) src_mv_line += si->sprite_width;
 		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
-		anim_line += this->anim_buf_width;
+		anim_line += this->anim_buf_pitch;
 	}
 }
 IGNORE_UNINITIALIZED_WARNING_STOP
