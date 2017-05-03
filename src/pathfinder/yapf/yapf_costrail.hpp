@@ -403,6 +403,8 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				/* Penalty for reversing in a depot. */
 				assert(IsRailDepot(cur.tile));
 				segment_cost += Yapf().PfGetSettings().rail_depot_reverse_penalty;
+
+			} else if (IsRailDepotTile(cur.tile)) {
 				/* We will end in this pass (depot is possible target) */
 				end_segment_reason |= ESRB_DEPOT;
 
@@ -416,9 +418,16 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 					CFollowTrackRail ft(v);
 					TileIndex t = cur.tile;
 					Trackdir td = cur.td;
+					/* Arbitrary maximum tiles to follow to avoid infinite loops. */
+					uint max_tiles = 20;
 					while (ft.Follow(t, td)) {
 						assert(t != ft.m_new_tile);
 						t = ft.m_new_tile;
+						if (t == cur.tile || --max_tiles == 0) {
+							/* We looped back on ourself or found another loop, bail out. */
+							td = INVALID_TRACKDIR;
+							break;
+						}
 						if (KillFirstBit(ft.m_new_td_bits) != TRACKDIR_BIT_NONE) {
 							/* We encountered a junction; it's going to be too complex to
 							 * handle this perfectly, so just bail out. There is no simple
