@@ -1436,6 +1436,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kikapcsolva
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Bal gombos térképmozgatás: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Bal egérgombbal történő térképmozgatás engedélyezése. Különösen hasznos érintőképernyős mozgatás használata esetén
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Ablakok bezárása jobb gombbal: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatikus mentés: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Az automatikus mentések között eltelő idő
@@ -2653,6 +2654,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Repülő
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Elfogad: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Vasút típusa: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Vasúti pályasebesség: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Közúti sebességkorlátozás: {LTBLUE}{VELOCITY}
 
@@ -3356,6 +3358,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Felhaszn
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}
@@ -3424,6 +3427,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
 
+STR_GROUP_PROFIT_LAST_YEAR                                      :Tavalyi nyereség:
+STR_GROUP_OCCUPANCY                                             :Jelenlegi kihasználtság:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Új vasúti járművek
