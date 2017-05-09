@@ -1437,6 +1437,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kikapcsolva
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Bal gombos térképmozgatás: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Bal egérgombbal történő térképmozgatás engedélyezése. Különösen hasznos érintőképernyős mozgatás használata esetén
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Ablakok bezárása jobb gombbal: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :A jobb gombbal való kattintás az ablak területén bezárja az ablakot. Ez a beállítás kikapcsolja a segédletek jobb gombbal való megjelenítését!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatikus mentés: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Az automatikus mentések között eltelő idő
@@ -1826,6 +1827,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és 
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}MI és játékszkript beállítások megjelenítése
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépés az OpenTTD-ből
 
+STR_INTRO_BASESET                                               :{BLACK}A jelenleg kiválasztott grafikus alapcsomagból {NUM} sprite hiányzik. Frissítsd a grafikus alapcsomagot!
 STR_INTRO_TRANSLATION                                           :{BLACK}Ebből a fordításból {NUM} sor hiányzik. Segíts Te is jobbá tenni az OpenTTD-t és jelentkezz fordítónak! További részletekért lásd a readme.txt-t.
 
 # Quit window
@@ -2667,29 +2669,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Szántóföld
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Havas föld
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Sivatag
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vasút vasúti pálya
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vasút vasúti pálya normál jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vasút vasúti pálya előjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vasút vasúti pálya kijárati jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vasút vasúti pálya kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vasút vasúti pálya irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vasút vasúti pálya egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vasút vasúti pálya normál- és előjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vasút vasúti pálya normál- és kijárati jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vasút vasúti pálya normál- és kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vasút vasúti pálya normál- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vasút vasúti pálya normál- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vasút vasúti pálya elő- és kijárati jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vasút vasúti pálya elő- és kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vasút vasúti pálya elő- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vasút vasúti pálya elő- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vasút vasúti pálya kijárati- és kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vasút vasúti pálya kijárati- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vasút vasúti pálya kijárati- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vasút vasúti pálya kombinált- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vasút vasúti pálya kombinált- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vasút vasúti pálya irány- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Vasút járműtelep
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vasúti pálya
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vasúti pálya normál jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vasúti pálya előjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vasúti pálya kijárati jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vasúti pálya kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vasúti pálya irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vasúti pálya egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vasúti pálya normál- és előjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vasúti pálya normál- és kijárati jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vasúti pálya normál- és kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vasúti pálya normál- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vasúti pálya normál- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vasúti pálya elő- és kijárati jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vasúti pálya elő- és kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vasúti pálya elő- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vasúti pálya elő- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vasúti pálya kijárati- és kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vasúti pálya kijárati- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vasúti pálya kijárati- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vasúti pálya kombinált- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vasúti pálya kombinált- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vasúti pálya irány- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Vasúti járműtelep
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Út
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Út közvilágítással
@@ -3358,7 +3360,11 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Felhaszn
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Elfogad:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}várakozik
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}
@@ -3427,6 +3433,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Idei nyereség:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Tavalyi nyereség:
 STR_GROUP_OCCUPANCY                                             :Jelenlegi kihasználtság:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
@@ -3462,6 +3469,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Minden rakomán
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Hatótávolság: {GOLD}{COMMA} mező
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Típus: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Vasúti jármű kiválasztása - kattints egy járműre az adataihoz. Ctrl+kattintással a járműtípus elrejthető/felfedhető
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz. Ctrl+kattintással a járműtípus elrejthető/felfedhető
@@ -3596,6 +3604,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Maglev mozdony
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER}{}Üzemeltetés: {CURRENCY_LONG}/év{}Kapacitás: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER} Maximális vonóerő: {6:FORCE}{}Üzemeltetés: {4:CURRENCY_LONG}/év{}Kapacitás: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Ár: {CURRENCY_LONG} Sebesség: {VELOCITY}{}Típus: {STRING}{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Ár: {CURRENCY_LONG} Sebesség: {VELOCITY}{}Típus: {STRING}{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Ár: {CURRENCY_LONG} Sebesség: {VELOCITY}{}Típus: {STRING} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Ár: {CURRENCY_LONG} Sebesség: {VELOCITY}{}Típus: {STRING} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} lecserélése - {STRING}
@@ -3625,6 +3637,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nyomd me
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Váltás a mozdony és a vagoncserélő ablak között
 STR_REPLACE_ENGINES                                             :Mozdonyok
 STR_REPLACE_WAGONS                                              :Vagonok
+STR_REPLACE_ALL_RAILTYPE                                        :Minden vasúti jármű
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Cserélendő egységek vasúttípusának kiválasztása
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali egységet akarod kicserélni
@@ -3717,6 +3730,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} év ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Sebesség: {LTBLUE}{VELOCITY} {BLACK}Típus: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Sebesség: {LTBLUE}{VELOCITY} {BLACK}Típus: {LTBLUE}{STRING} {BLACK}Hatótávolság: {LTBLUE}{COMMA} mező
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
 
