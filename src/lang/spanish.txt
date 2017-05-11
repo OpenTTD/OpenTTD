@@ -1373,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desplazamiento con botón izquierdo: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activa el deslizamiento del mapa al arrastrarlo con el botón izquierdo. Esto es especialmente útil al usar pantallas táctiles
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Cerrar ventana con click derecho: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Cierra una ventana al hacer click derecho dentro. ¡Quita la información al hacer click derecho!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autoguardado: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecciona el intervalo entre guardados automáticos del juego
