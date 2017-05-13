@@ -679,7 +679,7 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Töm
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Töm aktuell spellista (enbart Personlig1 eller Personlig2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicka på ett musikstycke för att lägga till det i spellistan (enbart Personlig1 eller Personlig2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på ett musikstycket för att ta bort det från spellistan (endast Personlig1 och Personlig2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på ett musikstycke för att ta bort det från spellistan (endast Personlig1 och Personlig2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}De bästa företagen som nådde {NUM}
@@ -1237,7 +1237,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tillåt att fö
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillåt skicka pengar till andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillåt överföring av pengar mellan företag i flerspelarläge
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Godsfaktor för att simulera tunga tåg: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ställ in påverkan av att frakta gods i tåg. Ett högre värde gör att frakt-gods är mer krävande för tågen, speciellt vid lutningar
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ställ in påverkan av att frakta gods i tåg. Ett högre värde gör att fraktgods är mer krävande för tågen, speciellt vid lutningar
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Hastighetsfaktor för flygplan: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ställ in relativ hastighet för flygplan relativt övriga fordonstyper. Detta reducerar inkomsterna för flygtransporter.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
@@ -1246,10 +1246,10 @@ STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ställ in hur s
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Inga
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducerad
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfarts-stopp på stadsägda vägar: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfarts-stopp på stadsägda vägar
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfartshållplatser på stadsägda vägar: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfartshållplatser på stadsägda vägar
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillåt dina fordon att köra genom motståndarens hållplatser: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillåt konstruktion av genomfarts-stopp på vägar som ägs av andra företag
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillåt konstruktion av genomfartshållplatser på vägar som ägs av andra företag
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Underhåll av infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är aktiverat så kostar underhåll av infrastruktur. Kostnaden ökar mer än proportionellt mot nätverkets storlek, vilket innebär att större företag drabbas hårdare än små företag av underhållskostnader.
@@ -1816,8 +1816,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Visa fä
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Visa färgscheman för vägfordon
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Visa färgscheman för skepp
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Visa färgschema för flygplan
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Välj huvudfärg för det aktuella schemat. Ctrl+Click kommer att välja färgen för alla scheman
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Välj andravalsfärgen för det aktuella schemat. Ctrl+Click kommer att välja färgen för alla scheman
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Välj huvudfärg för det aktuella schemat. Ctrl+klick kommer att välja färgen för alla scheman
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Välj andravalsfärgen för det aktuella schemat. Ctrl+klick kommer att välja färgen för alla scheman
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Välj ett färgschema att ändra eller välj flera genom CTRL+klick. Bocka för rutan för att använda scheman
 
 STR_LIVERY_DEFAULT                                              :Normalt färgschema
@@ -3207,7 +3207,7 @@ STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENC
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låna {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Öka lånets storlek. Ctrl + Klick lånar så mycket som möjligt
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Återbetala {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Återbetala en del av lånet. Ctrl+Klick återbetalar så mycket som möjligt
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Återbetala en del av lånet. Ctrl+klick återbetalar så mycket som är möjligt
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktur
 
 # Company view
@@ -3583,7 +3583,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail-fordon
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevfordon
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnborttagning: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbytning behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbyte behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3727,7 +3727,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapac
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Inkomstens vinst: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad för anpassning: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}. {GOLD}{CARGO_LONG}{}{BLACK}Inkomstens vinst: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Välj vilka fordon som ska anpassas. Genom att dra med musen kan flera fordon väljas. Klicka på en tom yta för att välja hela fordonet. Ctrl+Klick på ett fordon kommer att välja hela resterande kedjan
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Välj vilka fordon som ska anpassas. Genom att dra med musen kan flera fordon väljas. Klicka på en tom yta för att välja hela fordonet. Ctrl+klick på ett fordon kommer att välja det och hela den resterande kedjan
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Välj godstyp för tåget att bära
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Välj lasttyp för fordon
@@ -4126,7 +4126,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Meddela
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Utanför kanten
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}För nära kanten av kartan
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Inte tillräckligt med pengar - krävs {CURRENCY_LONG}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Inte tillräckligt med pengar - kräver {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Platt mark krävs
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Marken lutar åt fel håll
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan inte utföra detta...
@@ -4146,7 +4146,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Inte til
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte detta
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte att ytterligare en flygplats byggs i staden
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}'s lokala myndigheter vägrar ge tillåtelse att bygga en flygplats på grund av ljudproblem
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}De lokala myndigheterna i {TOWN} vägrar ge tillåtelse att bygga en flygplats på grund av ljudproblem
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ditt mutningsförsök upptäcktes av en regional granskare
 
 # Levelling errors
@@ -4165,7 +4165,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan inte
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximal storlek på lånet är {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan inte låna mer pengar...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... lånet redan återbetalt
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... lånet är redan återbetalt
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} krävs
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan inte återbetala lånet...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan inte ge bort pengar som är lånade från banken...
@@ -4221,19 +4221,19 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan inte bygga flygplats här...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Angränsar till mer än en station/hållplats
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station för utspridd
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen för utspridd
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}För många stationer/hållplatser
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}För många delar på järnvägsstationen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}För många busshållplatser
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För många lastbryggor
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}För nära en annan stationer/hållplatser
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}För nära en annan station/hållplats
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}För nära en annan hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}För nära en annan flygplats
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan inte byta namn på station...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... detta är en stadsägd väg
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vägen pekar i fel riktning
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive through stopp kan inte ha gatuhörn
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... drive through stopp kan inte ha korsningar
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... genomfartshållplatser kan inte ha gatuhörn
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... genomfartshållplatser kan inte ha korsningar
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ej ta bort del av station...
@@ -4279,7 +4279,7 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mås
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... måste stoppas i en depå
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... måste stoppas i en hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tåg kan bara ändras när det står still inuti en depå
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tåg kan bara ändras när det står stilla inuti en depå
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tåg för långt
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan inte byta fordonets riktning...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... består av flera delar
@@ -4374,7 +4374,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du �
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan inte skapa grupp...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kan inte ta bort denna grupp...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kan inte döpa om grupp...
-STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan inte ställa föräldragrupp ...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan inte ställa in föräldragrupp ...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kan inte ta bort alla fordon i denna grupp...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kan inte lägga till fordon i denna grupp...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kan inte lägga till delade fordon i denna grupp...
