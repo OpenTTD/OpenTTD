@@ -2455,12 +2455,12 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Välj st
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Flygplatsklass
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
 
-STR_AIRPORT_SMALL                                               :Liten
+STR_AIRPORT_SMALL                                               :Liten flygplats
 STR_AIRPORT_CITY                                                :Stad
 STR_AIRPORT_METRO                                               :Storstads-flygplats
 STR_AIRPORT_INTERNATIONAL                                       :Internationell flygplats
 STR_AIRPORT_COMMUTER                                            :Pendlare
-STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental flygplats
 STR_AIRPORT_HELIPORT                                            :Helikopterplatta
 STR_AIRPORT_HELIDEPOT                                           :Helikopterhangar
 STR_AIRPORT_HELISTATION                                         :Helikopterstation
@@ -2689,7 +2689,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Mark som ägs a
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ursprunglig äganderätt {COPYRIGHT} 1995 Chris Sawyer, Alla rättigheter hävdas
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ursprunglig upphovsrätt {COPYRIGHT} 1995 Chris Sawyer, Alla rättigheter hävdas
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2017 OpenTTD-teamet
 
