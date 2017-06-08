@@ -286,7 +286,7 @@ STR_SORT_BY_TYPE                                                :Tür
 STR_SORT_BY_TRANSPORTED                                         :Taşınan
 STR_SORT_BY_NUMBER                                              :Numara
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Geçen seneki kar
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Bu seneki kar
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Bu yılki kar
 STR_SORT_BY_AGE                                                 :Yaş
 STR_SORT_BY_RELIABILITY                                         :Güvenilirlik
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Her kargo için toplam kapasite
@@ -1373,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kapalı
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sol tık ile ekran kaydır: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Sol fare tuşuyla sürükleyerek harita kaydırma özelliğini etkinleştir. Özellikle dokunmatik-ekran kullanırken kaydırma yapmak için kullanılabilir.
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Sağ tıklama ile pencereyi kapat: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :İçerisinde sağ tıklandığında pencereyi kapatır. Sağ tıklandığında ipuçları gösterimini devre dışı bırakır!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Otomatik kaydet: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Otomatik oyun kaydetme sıklığını seçin
@@ -1762,6 +1764,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndiril
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}YZ ve Oyun betik ayarlarını göster
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
 
+STR_INTRO_BASESET                                               :{BLACK}Geçerli seçimdeki temel grafik setinin {NUM} örneği eksik. Lütfen temel setin güncellemelerini kontrol edin.
 STR_INTRO_TRANSLATION                                           :{BLACK}Bu çeviride {NUM} eksik metin var. Çevirmen olarak kaydolarak OpenTTD'nin iyileştirilmesine yardım edin. Ayrıntılar için readme.txt'ye bakın.
 
 # Quit window
@@ -2497,7 +2500,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Haritaya
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Arazi Yapımı
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Haritaya kayalik koy
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Haritaya kayalık koy
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Çöl alanı tanımla.{}Kaldırmak için CTRL'yi basılı tut
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}yükseltme/alçaltma alanını arttır
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Yükseltme/alçaltma alanını arttır
@@ -2782,7 +2785,7 @@ STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Harita �
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Nehir oluşturma
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nesne oluşturma
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalik alan oluştur
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalık alan oluştur
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Oyun ayarlanıyor
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}tile-loop çalıştırılıyor
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Betik çalıştırılıyor
@@ -3171,7 +3174,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uçağı
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ana görünümü güzegaha ortala. Ctrl ile tıklama güzegahın konumunu gösteren yeni bir pencere açar
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ana görünümü güzergaha ortala. Ctrl ile tıklama güzegahın konumunu gösteren yeni bir pencere açar
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ara nokta adını değiştir
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görünümü şamandıra konumuna ortala. Ctrl ile tıklama şamandıranın konumunu gösteren yeni bir pencere açar
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Şamandıra adını değiştir
@@ -3294,6 +3297,11 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}İstenen
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}İstenenler: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Gereken
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}bekliyor
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Üretir: {YELLOW}{STRING}{STRING}
@@ -3362,6 +3370,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçla
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Grubun ismini değiştir
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Bu yılki kar:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Geçen yılki kar:
+STR_GROUP_OCCUPANCY                                             :Şu anki kullanım:
+STR_GROUP_OCCUPANCY_VALUE                                       :%{NUM}
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Yeni Tren
@@ -3394,6 +3406,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo tür
 STR_PURCHASE_INFO_ALL_BUT                                       :Şunlar hariç tümü: {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Aza. Çekim Gücü: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Menzil: {GOLD}{COMMA} kare
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Uçak türü: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Tren seçim listesi. Bilgi için araç tıklayın. Ctrl+Tıklama araç türünün gizlenmesini açar/kapatır
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Karayolu araçları seçim listesi. Bilgi için araca tıklayın. Ctrl+Tıklama araç türünün gizlenmesini açar/kapatır
@@ -3494,7 +3507,7 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Geminin 
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. Ctrl-tıklama talimatları paylaştırır. Shift ile tıklama satın almadan tahmini maliyeti gösterir
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Tren garını göster. Ctrl ile tıklama garın konumunu gösteren yeni bir pencere açar
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Kara taşıtı garajını göster. Ctrl+Tıklama garajın konumunu gösteren yeni bir pencere açar
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Kara taşıtı garajını göster. Ctrl ile tıklama garajın konumunu gösteren yeni bir pencere açar
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Tersaneyi göster. Ctrl ile tıklama tershanenin konumunu gösteren yeni bir pencere açar
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Hangarı göster. Ctrl ile tıklama hangarın konumunu gösteren yeni bir pencere açar
 
@@ -3525,9 +3538,13 @@ STR_ENGINE_PREVIEW_SHIP                                         :gemi
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoray lokomotifi
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotifi
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Fiyat: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}{}Bakım: {CURRENCY_LONG}/sene{}Kapasite: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Maliyet: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}  Azami Tork: {6:FORCE}{}Çalışma Gideri: {4:CURRENCY_LONG}/yıl{}Kapasite: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Fiyat: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}{}İşletme Gideri: {CURRENCY_LONG}/yıl{}Kapasite: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Maliyet: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}  Azami Tork: {6:FORCE}{}İşletme Gideri: {4:CURRENCY_LONG}/yıl{}Kapasite: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Kapasite: {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}/yıl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Uçak türü: {STRING}{}Kapasite: {CARGO_LONG}, {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}/yıl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Uçak türü: {STRING}{}Kapasite: {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}//yıl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Uçak türü: {STRING} Menzil: {COMMA} kare{}Kapasite: {CARGO_LONG}, {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}/yıl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Uçak türü: {STRING} Menzil: {COMMA} kare{}Kapasite: {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}/yıl
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Değiştir {STRING} - {STRING}
@@ -3650,6 +3667,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} sene ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} sene ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Azami Hız: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Azami hız: {LTBLUE}{VELOCITY} {BLACK}Uçak türü: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Azami hız: {LTBLUE}{VELOCITY} {BLACK}Uçak türü: {LTBLUE}{STRING} {BLACK}Menzil: {LTBLUE}{COMMA} kare
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 
@@ -4240,7 +4259,7 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Birden f
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Diğer yerimine çok yakın
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Buraya tren yerimi yapılamaz...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Şamandıra yerlestirilemez...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Buraya şamandıra yerleştirilemez...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Yerimi adı değiştirilemedi...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tren yerimi kaldırılamaz...
@@ -4452,7 +4471,7 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Araç bu
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... çok fazla tabela var
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Buraya tabela konulamiyor...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Buraya tabela konulamıyor...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Tabela adı değiştirilemiyor...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Tabelayı silemezsiniz...
 
