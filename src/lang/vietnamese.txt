@@ -1372,6 +1372,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Cuộn chuột trái: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cho phép cuộn bản đồ bằng cách kéo với nút trái chuột. Tùy chọn này sẽ hữu ích khi dùng màn hình cảm ứng
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Đóng cửa số khi click chuột phải: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Tự động save: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Chọn chu kỳ giữa mỗi lần tự động save
@@ -2589,6 +2590,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Tên sâ
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Hàng hoá chấp nhận: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Kiểu đường ray: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Giới hạn tốc độ đường ray: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Hạn chế tốc độ đường bộ: {LTBLUE}{VELOCITY}
 
@@ -3292,6 +3294,8 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Yêu c�
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Yêu cầu: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Sản xuất: {YELLOW}{STRING}{STRING}
@@ -3360,6 +3364,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Xoá tất cả
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Đổi tên nhóm
 
+STR_GROUP_PROFIT_LAST_YEAR                                      :Lợi nhuận năm trước:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Tàu Hỏa Mới
@@ -3392,6 +3397,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Tất cả ki�
 STR_PURCHASE_INFO_ALL_BUT                                       :Tất cả trừ {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Lực kéo tối đa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Tầm xa: {GOLD}{COMMA} ô
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Kiểu máy bay: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Danh sách tàu hỏa có thể chọn. Click vào tàu hỏa để xem thông tin. Ctrl+Click để ẩn/hiện loại được chọn
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Danh sách xe có thể chọn. Click vào xe để xem thông tin. Ctrl+Click để ẩn/hiện loại được chọn
@@ -3526,6 +3532,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :đầu máy đ�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Giá thành: {CURRENCY_LONG} Tải trọng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}{}Chi phí hoạt động: {CURRENCY_LONG}/năm{}Sức chứa: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {CURRENCY_LONG} Nặng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY_LONG}/yr{}Năng suất: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Giá thành: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Giá: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Kiểu máy bay: {STRING} Tầm xa: {COMMA} ô{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING} - {STRING}
