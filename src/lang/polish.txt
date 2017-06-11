@@ -705,7 +705,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Pokaż okno opowieści
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Pokaż listę celów
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl tabele firm
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl ranking firm
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ufunduj budowę nowego przedsiębiorstwa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy. Ctrl+klik otwiera listę grup/pojazdów
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Wyświetl listę pojazdów firmy. Ctrl+klik otwiera listę grup/pojazdów
@@ -799,7 +799,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki za ładu
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Wykres Ligi Firm
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ranking Firm
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegółowa tabela efektywności
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela wyników
 ############ range ends here
@@ -971,7 +971,7 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda 
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij tutaj aby wł./wył. wyświetlanie danych firmy na wykresie
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabela Ligi Firm
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking Firm
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inżynier
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Administrator Ruchu
@@ -1062,7 +1062,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij 
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Ranking firm, które osiągnęły rok {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabela Ligi Firm w {NUM}
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Ranking Firm w {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Biznesmen
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Przedsiębiorca
@@ -1752,6 +1752,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Wyłączona
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Przewijanie lewym przyciskiem myszy: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Włącz przewijanie mapy przeciąganiem lewym przyciskiem myszki. Jest to przydatne podczas używania ekranu dotykowego do przewijania
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zamknij okno prawym przyciskiem: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zamyka okno poprzez kliknięcie prawym przyciskiem. Wyłącza pomoc kontekstową!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autozapis: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Częstotliwość automatycznego zapisu stanu gry
@@ -3677,6 +3679,8 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Wymaga: 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Potrzebuje
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}oczekuje
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}
@@ -3745,6 +3749,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Zmień nazwę grupy
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Zysk w tym roku:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Zysk w zeszłym roku:
+STR_GROUP_OCCUPANCY                                             :Aktualne wykorzystanie:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nowe pociągi
@@ -3777,6 +3785,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :wszystkie typy 
 STR_PURCHASE_INFO_ALL_BUT                                       :wszystko oprócz {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. siła pociągowa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Typ samolotu: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów - kliknij na pojeździe, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu pojazdu
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych - kliknij na pojeździe, aby uzyskać więcej informacji. Ctrl+klik przełącza ukrywanie typu pojazdu
@@ -3917,6 +3926,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :lokomotywę Mag
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Koszt utrzymania: {CURRENCY_LONG}/rok{}Ładowność: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszt utrzymania: {4:CURRENCY_LONG}/rok{}Ładowność: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING}{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING} Zasięg: {COMMA}{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING} Zasięg: {COMMA}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING} - {STRING}
@@ -4039,6 +4052,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Prędkość maksymalna: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max. prędkość: {LTBLUE}{VELOCITY} {BLACK}Typ samolotu: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. prędkość: {LTBLUE}{VELOCITY} {BLACK}Typ samolotu: {LTBLUE}{STRING} {BLACK}Zasięg: {LTBLUE}{COMMA}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
 
