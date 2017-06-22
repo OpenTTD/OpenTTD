@@ -473,7 +473,7 @@ void IConsoleCmdExec(const char *cmdstr)
 		}
 	}
 
-	for (uint i = 0; tokens[i] != NULL; i++) {
+	for (uint i = 0; i < lengthof(tokens) && tokens[i] != NULL; i++) {
 		DEBUG(console, 8, "Token %d is: '%s'", i, tokens[i]);
 	}
 
