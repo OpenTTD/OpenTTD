@@ -19,7 +19,6 @@ enum EndSegmentReason {
 	ESR_RAIL_TYPE,         ///< the next tile has a different rail type than our tiles
 	ESR_INFINITE_LOOP,     ///< infinite loop detected
 	ESR_SEGMENT_TOO_LONG,  ///< the segment is too long (possible infinite loop)
-	ESR_MAX_COST_EXCEEDED, ///< maximum cost is exceeded
 	ESR_CHOICE_FOLLOWS,    ///< the next tile contains a choice (the track splits to more than one segments)
 	ESR_DEPOT,             ///< stop in the depot (could be a target next time)
 	ESR_WAYPOINT,          ///< waypoint encountered (could be a target next time)
@@ -44,7 +43,6 @@ enum EndSegmentReasonBits {
 	ESRB_RAIL_TYPE         = 1 << ESR_RAIL_TYPE,
 	ESRB_INFINITE_LOOP     = 1 << ESR_INFINITE_LOOP,
 	ESRB_SEGMENT_TOO_LONG  = 1 << ESR_SEGMENT_TOO_LONG,
-	ESRB_MAX_COST_EXCEEDED = 1 << ESR_MAX_COST_EXCEEDED,
 	ESRB_CHOICE_FOLLOWS    = 1 << ESR_CHOICE_FOLLOWS,
 	ESRB_DEPOT             = 1 << ESR_DEPOT,
 	ESRB_WAYPOINT          = 1 << ESR_WAYPOINT,
@@ -65,7 +63,7 @@ enum EndSegmentReasonBits {
 	ESRB_CACHED_MASK = ESRB_DEAD_END | ESRB_RAIL_TYPE | ESRB_INFINITE_LOOP | ESRB_SEGMENT_TOO_LONG | ESRB_CHOICE_FOLLOWS | ESRB_DEPOT | ESRB_WAYPOINT | ESRB_STATION | ESRB_SAFE_TILE,
 
 	/* Reasons to abort pathfinding in this direction. */
-	ESRB_ABORT_PF_MASK = ESRB_DEAD_END | ESRB_PATH_TOO_LONG | ESRB_MAX_COST_EXCEEDED | ESRB_INFINITE_LOOP | ESRB_FIRST_TWO_WAY_RED,
+	ESRB_ABORT_PF_MASK = ESRB_DEAD_END | ESRB_PATH_TOO_LONG | ESRB_INFINITE_LOOP | ESRB_FIRST_TWO_WAY_RED,
 };
 
 DECLARE_ENUM_AS_BIT_SET(EndSegmentReasonBits)
@@ -73,7 +71,7 @@ DECLARE_ENUM_AS_BIT_SET(EndSegmentReasonBits)
 inline CStrA ValueStr(EndSegmentReasonBits bits)
 {
 	static const char * const end_segment_reason_names[] = {
-		"DEAD_END", "RAIL_TYPE", "INFINITE_LOOP", "SEGMENT_TOO_LONG", "MAX_COST_EXCEEDED", "CHOICE_FOLLOWS",
+		"DEAD_END", "RAIL_TYPE", "INFINITE_LOOP", "SEGMENT_TOO_LONG", "CHOICE_FOLLOWS",
 		"DEPOT", "WAYPOINT", "STATION", "SAFE_TILE",
 		"PATH_TOO_LONG", "FIRST_TWO_WAY_RED", "LOOK_AHEAD_END", "TARGET_REACHED"
 	};
