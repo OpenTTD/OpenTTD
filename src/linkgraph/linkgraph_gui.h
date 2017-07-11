@@ -77,7 +77,6 @@ protected:
 
 	Point GetStationMiddle(const Station *st) const;
 
-	void DrawForwBackLinks(Point pta, StationID sta, Point ptb, StationID stb) const;
 	void AddLinks(const Station *sta, const Station *stb);
 	void DrawLinks(const DrawPixelInfo *dpi) const;
 	void DrawStationDots(const DrawPixelInfo *dpi) const;
