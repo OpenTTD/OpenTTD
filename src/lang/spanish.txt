@@ -62,7 +62,7 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=m}Refrescos
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Pasajeros
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Pasajero
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Carbón
 STR_CARGO_SINGULAR_MAIL                                         :{G=m}Correo
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petróleo
@@ -1577,7 +1577,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Posición de la
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posición horizontal de la barra de estado en la parte inferior de la pantalla
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radio de fijación de ventana: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distancia máxima entre ventanas antes de que la ventana que se está moviendo sea alineada automáticamente con las ventanas cercanas
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" es}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :deshabilitado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Máximo número de ventanas sin anclar: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número máximo de ventanas sin anclar que pueden estar abiertas antes de que las más antiguas se cierren automáticamente para dejar paso a las nuevas
@@ -2939,7 +2939,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Es proba
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha cambiado el estado 'vagón motorizado' para '{1:ENGINE}' cuando no estaba dentro de un depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha cambiado la longitud del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ha cambiado la capacidad del vehículo para '{1:ENGINE}' fuera de un depósito o mientras no se estaba remodelando
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Esto puede ser debido a problemas con los NewGRF. El juego puede desincronizarse o, incluso, fallar por completo
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga/reforma para '{1:ENGINE}' difiere de la de lista de compra después de la construcción. Esto puede causar que la renovación/reemplazo automático no haga la reforma correcta
