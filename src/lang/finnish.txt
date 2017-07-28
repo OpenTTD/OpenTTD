@@ -989,7 +989,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Nelinkertainen
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuttuva/korruptoitunut tiedosto{P "" ja}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuttuva{P "" a}/korruptoitunut{P "" ta} tiedosto{P "" a}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusgrafiikoista
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Perusäänet
@@ -1148,7 +1148,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määritä kulk
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rakennusnopeus: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Rajoita tekoälyn rakennustoimien määrää
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Ajoneuvojen hajoaminen: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Määritä kuinka usein puutteellisesti huolletut ajoneuvot voivat hajota
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Määritä, kuinka usein puutteellisesti huolletut ajoneuvot voivat hajota
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tukikerroin: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määritä kuinka paljon tuetuista yhteyksistä maksetaan
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Rakennuskustannukset: {STRING}
@@ -1265,7 +1265,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, mutta ei pysäytetyille
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Kaikille ajoneuvoille
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mikäli käytössä, uutisviesti lähetetään jos kulkuneuvo ei ole tuottanut rahaa viimeisen kalenterivuoden aikana
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mikäli käytössä, uutisviesti lähetetään, jos kulkuneuvo ei ole tuottanut rahaa viimeisen kalenterivuoden aikana
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ajoneuvot eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Mikäli käytössä, kaikki kulkuneuvot ovat saatavilla ikuisesti niiden julkistamisen jälkeen
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uudista ajoneuvo automaattisesti, kun se vanhenee: {STRING}
@@ -1372,6 +1372,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vasemmalla hiiren painikkeella liikkuminen: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Salli näkymän siirtäminen vetämällä hiiren vasemmalla näppäimellä. Hyödyllinen erityisesti kosketusnäyttöä käytettäessä
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Sulje ikkuna hiiren oikealla painikkeella napsauttamalla: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Ikkunat sulkeutuvat, kun niitä napsautetaan hiiren oikealla painikkeella. Tämä korvaa tavallisesti näkyvän työkaluvihjeen!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automaattitallennus: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Valitse aikaväli automaattisille pelitallennuksille
@@ -1462,18 +1464,18 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Suurin sallittu
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Huoltovälit ovat prosentteina: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Määritä, aiheuttaako edellisestä huollosta kulunut aika vai luotettavuuden laskeminen kulkuneuvon huoltamisen
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Junien huoltoväli oletuksena: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määritä oletushuoltoväli uusille junille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Junien oletushuoltoväli: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määritä oletushuoltoväli uusille junille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}päivä{P 0 "" ä}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Pois käytöstä
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Ajoneuvojen huoltoväli oletuksena: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Määritä oletushuoltoväli uusille ajoneuvoille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lentokoneiden huoltoväli oletuksena: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määritä oletushuoltoväli uusille lentokoneille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivojen huoltoväli oletuksena: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määritä oletushuoltoväli uusille laivoille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Ajoneuvojen oletushuoltoväli: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Määritä oletushuoltoväli uusille ajoneuvoille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lentokoneiden oletushuoltoväli: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määritä oletushuoltoväli uusille lentokoneille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivojen oletushuoltoväli: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määritä oletushuoltoväli uusille laivoille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
 STR_CONFIG_SETTING_NOSERVICE                                    :Poista huollot käytöstä kun ajoneuvojen rikkoutuminen on poistettu käytöstä: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Mikäli käytössä, kulkuneuvoja ei huolleta jos ne eivät voi rikkoutua
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Mikäli käytössä, kulkuneuvoja ei huolleta, jos ne eivät voi rikkoutua
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön vaunujen nopeusrajoitukset: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Mikäli käytössä, vaunujen nopeusrajoitusta käytetään junan maksiminopeuden määrittämisessä
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Poista sähköradat käytöstä: {STRING}
@@ -1761,6 +1763,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Näytä tekoäly/peliskriptiasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje OpenTTD.
 
+STR_INTRO_BASESET                                               :{BLACK}Valitusta perusgrafiikkapaketista puuttuu {NUM} sprite{P "" ä}. Tarkista, onko sille päivityksiä.
 STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi rekisteröitymällä kääntäjäksi. Lisätietoja tiedostossa readme.txt.
 
 # Quit window
@@ -2589,6 +2592,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lentoken
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastaanottaa rahtia: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Raidetyyppi: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Radan nopeusrajoitus: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Tien nopeusrajoitus: {LTBLUE}{VELOCITY}
 
@@ -2877,8 +2881,8 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Valitun 
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liikuta spriteä ympäriinsä, muuttaen X- ja Y-sijainteja. Ctrl+Klik siirtää spriteä kahdeksan yksikköä kerralla
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Nollaa suhteelliset
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nollaa suhteelliset erotukset
-STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-erotus: {NUM}, Y-erotus: {NUM} (Absoluuttinen)
-STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X-erotus: {NUM}, Y-erotus: {NUM} (Suhteellinen)
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-erotus: {NUM}, Y-erotus: {NUM} (absoluuttinen)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X-erotus: {NUM}, Y-erotus: {NUM} (suhteellinen)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Valitse sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Valitse sprite ruudulta
 
@@ -2897,7 +2901,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Virheellinen pa
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} tulee ladata ennen kuin {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} tulee ladata {STRING} jälkeen
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vaatii OpenTTD:n version {STRING} tai uudemman
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto jonka se muuntaa
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto, jonka se muuntaa
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liian monta NewGRF:ää on ladattu
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :NewGRF:n {1:STRING} lataaminen staattisena NewGRF:nä {STRING}:n kanssa saattaa aiheuttaa nykimistä
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Odottamaton sprite (sprite {3:NUM})
@@ -2919,7 +2923,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tiedostoa ei voida lisätä: NewGRF-tiedostojen raja saavutettu
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivat GRF:t ladattu puuttuvien tiedostojen korvaamiseksi
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF tiedostot ovat poistettu käytöstä
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF-tiedostot on poistettu käytöstä
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuttuva(t) GRF-tiedosto(t)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Taukotilasta poistuminen saattaa kaataa OpenTTD:n. Älä lähetä virheraportteja tämänjälkeisistä kaatumisista.{}Haluatko todella poistua taukotilasta?
 
@@ -3029,7 +3033,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Rahoita
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Rakenna patsas yhtiösi kunniaksi.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}Kulu: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}Kustannus: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Tavoitteet
@@ -3292,6 +3296,9 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Tarvitse
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Tarvitsee
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}odottamassa
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}
@@ -3312,7 +3319,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Ajoneuvo
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Laivat - napsauta laivaa saadaksesi tietoja.
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Voittoa tänä vuonna: {CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Tuotto tänä vuonna: {CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Käytettävissä olevat junat
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Käytettävissä olevat ajoneuvot
@@ -3360,6 +3367,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki a
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Tuotto tänä vuonna:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Tuotto viime vuonna:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM} %
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uusi juna
@@ -3392,6 +3402,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityy
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vetovoima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Lentokonetyyppi: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Junien valintaluettelo. Lisää tietoja junaa napsauttamalla. Ctrl+Klik näyttää tai piilottaa kulkuneuvon tyypin
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Ajoneuvojen valintaluettelo. Napsauta ajoneuvoa saadaksesi lisää tietoja. Ctrl+Klik näyttää tai piilottaa ajoneuvon tyypin
@@ -3524,8 +3535,12 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen v
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-veturin
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi{}Kapasiteetti: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. Vetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY_LONG}/v{}Kapasiteetti: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Hinta: {CURRENCY_LONG} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. vetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY_LONG}/v{}Kapasiteetti: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Hinta: {CURRENCY_LONG} Maks. nopeus: {VELOCITY}{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Hinta: {CURRENCY_LONG} Maks. nopeus: {VELOCITY}{}Lentokonetyyppi: {STRING}{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Hinta: {CURRENCY_LONG} Maks. nopeus: {VELOCITY}{}Lentokonetyyppi: {STRING}{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Hinta: {CURRENCY_LONG} Maks. nopeus: {VELOCITY}{}Lentokonetyyppi: {STRING} Toimintamatka: {COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Hinta: {CURRENCY_LONG} Maks. nopeus: {VELOCITY}{}Lentokonetyyppi: {STRING} Toimintamatka: {COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING} - {STRING}
@@ -3555,6 +3570,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Napsauta
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaihda toiseen korvausikkunaan
 STR_REPLACE_ENGINES                                             :Veturit
 STR_REPLACE_WAGONS                                              :Vaunut
+STR_REPLACE_ALL_RAILTYPE                                        :Kaikki junat
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
@@ -3647,6 +3663,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P s
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Lentokonetyyppi: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Lentokonetyyppi: {LTBLUE}{STRING} {BLACK}Toimintamatka: {LTBLUE}{COMMA} ruutua
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
@@ -3955,12 +3973,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Asetukse
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Muuta skriptin asetuksia
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Pysäytetäänkö tekoäly kun tekoälyn lokiviesti on sama kuin pysäytysmerkkijono
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Pysäytetäänkö tekoäly, kun tekoälyn lokiviesti on sama kuin pysäytysmerkkijono
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pysäytä kun:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pysäytä kun
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pysäytä, kun
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kun tekoälyn lokiviesti täsmää tämän merkkijonon kanssa, peli pysäytetään
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Kirjainkoon täsmäys
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kytke kirjainkoon täsmäys kun verrataan tekoälyn viestejä pysäytysmerkkijonoon
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kytke kirjainkoon täsmäys, kun verrataan tekoälyn viestejä pysäytysmerkkijonoon
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jatka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jatka tekoälyn suorittamista
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Näytä tämän tekoälyn virheenkorjaustiedot
