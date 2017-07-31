@@ -749,7 +749,7 @@ int GetAircraftFlightLevel(T *v, bool takeoff)
 	GetAircraftFlightLevelBounds(v, &aircraft_min_altitude, &aircraft_max_altitude);
 	int aircraft_middle_altitude = (aircraft_min_altitude + aircraft_max_altitude) / 2;
 
-	/* If those assumptions would be violated, aircrafts would behave fairly strange. */
+	/* If those assumptions would be violated, aircraft would behave fairly strange. */
 	assert(aircraft_min_altitude < aircraft_middle_altitude);
 	assert(aircraft_middle_altitude < aircraft_max_altitude);
 

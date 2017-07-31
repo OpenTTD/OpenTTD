@@ -137,7 +137,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 };
 
 /**
- * Macro for iterating over all aircrafts.
+ * Macro for iterating over all aircraft.
  */
 #define FOR_ALL_AIRCRAFT(var) FOR_ALL_VEHICLES_OF_TYPE(Aircraft, var)
 

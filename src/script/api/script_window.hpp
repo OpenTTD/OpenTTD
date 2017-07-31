@@ -2384,7 +2384,7 @@ public:
 		WID_TN_TRAINS                                = ::WID_TN_TRAINS,                                ///< Train menu.
 		WID_TN_ROADVEHS                              = ::WID_TN_ROADVEHS,                              ///< Road vehicle menu.
 		WID_TN_SHIPS                                 = ::WID_TN_SHIPS,                                 ///< Ship menu.
-		WID_TN_AIRCRAFTS                             = ::WID_TN_AIRCRAFTS,                             ///< Aircraft menu.
+		WID_TN_AIRCRAFT                              = ::WID_TN_AIRCRAFT,                              ///< Aircraft menu.
 		WID_TN_ZOOM_IN                               = ::WID_TN_ZOOM_IN,                               ///< Zoom in the main viewport.
 		WID_TN_ZOOM_OUT                              = ::WID_TN_ZOOM_OUT,                              ///< Zoom out the main viewport.
 		WID_TN_BUILDING_TOOLS_START                  = ::WID_TN_BUILDING_TOOLS_START,                  ///< Helper for the offset of the building tools

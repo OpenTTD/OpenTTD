@@ -2370,7 +2370,7 @@ static const uint32 _vehicle_command_translation_table[][4] = {
 		CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN),
 		CMD_TURN_ROADVEH            | CMD_MSG(STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN),
 		0xffffffff, // invalid for ships
-		0xffffffff  // invalid for aircrafts
+		0xffffffff  // invalid for aircraft
 	},
 };
 
