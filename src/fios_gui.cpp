@@ -702,7 +702,8 @@ public:
 				this->vscroll->SetCount(this->fios_items.Length());
 				this->selected = NULL;
 				_load_check_data.Clear();
-				/* FALL THROUGH */
+				FALLTHROUGH;
+
 			case 1:
 				/* Selection changes */
 				if (!gui_scope) break;

@@ -445,7 +445,8 @@ struct DepotWindow : Window {
 			switch (this->type) {
 				case VEH_TRAIN:
 					if (wagon) return MODE_ERROR;
-					/* FALL THROUGH */
+					FALLTHROUGH;
+
 				case VEH_ROAD:
 					if (xm <= this->flag_width) return MODE_START_STOP;
 					break;

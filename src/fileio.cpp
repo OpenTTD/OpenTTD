@@ -522,7 +522,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 			case BASESET_DIR:
 				f = FioFOpenFile(filename, mode, OLD_GM_DIR, filesize);
 				if (f != NULL) break;
-				/* FALL THROUGH */
+				FALLTHROUGH;
 			case NEWGRF_DIR:
 				f = FioFOpenFile(filename, mode, OLD_DATA_DIR, filesize);
 				break;
@@ -1477,7 +1477,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 	switch (sd) {
 		case BASESET_DIR:
 			num += this->Scan(extension, OLD_GM_DIR, tars, recursive);
-			/* FALL THROUGH */
+			FALLTHROUGH;
 		case NEWGRF_DIR:
 			num += this->Scan(extension, OLD_DATA_DIR, tars, recursive);
 			break;

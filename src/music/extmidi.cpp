@@ -124,7 +124,7 @@ void MusicDriver_ExtMidi::DoPlay()
 
 		case -1:
 			DEBUG(driver, 0, "extmidi: couldn't fork: %s", strerror(errno));
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		default:
 			this->song[0] = '\0';

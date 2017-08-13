@@ -242,7 +242,7 @@ void MusicDriver_QtMidi::Stop()
 
 		case QT_STATE_PLAY:
 			StopSong();
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		case QT_STATE_STOP:
 			DisposeMovie(_quicktime_movie);
@@ -267,13 +267,13 @@ void MusicDriver_QtMidi::PlaySong(const char *filename)
 		case QT_STATE_PLAY:
 			StopSong();
 			DEBUG(driver, 3, "qtmidi: previous tune stopped");
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		case QT_STATE_STOP:
 			DisposeMovie(_quicktime_movie);
 			DEBUG(driver, 3, "qtmidi: previous tune disposed");
 			_quicktime_state = QT_STATE_IDLE;
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		case QT_STATE_IDLE:
 			LoadMovieForMIDIFile(filename, &_quicktime_movie);
@@ -294,7 +294,7 @@ void MusicDriver_QtMidi::StopSong()
 
 	switch (_quicktime_state) {
 		case QT_STATE_IDLE:
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		case QT_STATE_STOP:
 			DEBUG(driver, 3, "qtmidi: stop requested, but already idle");

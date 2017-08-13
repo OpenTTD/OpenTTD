@@ -156,7 +156,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 				}
 				break;
 			}
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		case VL_STANDARD:
 			FOR_ALL_VEHICLES(v) {

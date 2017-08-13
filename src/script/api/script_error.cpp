@@ -40,7 +40,8 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 
 		case TEXT_TAB_SPECIAL:
 			if (index < 0xE4) break; // Player name
-			/* FALL THROUGH */
+			FALLTHROUGH;
+
 		case TEXT_TAB_TOWN:
 			if (index < 0xC0) break; // Town name
 			/* These strings are 'random' and have no meaning.

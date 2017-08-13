@@ -128,7 +128,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 
 		case 0xFFFFFFFF: // current grf
 			GrfID = GetIndustrySpec(current->type)->grf_prop.grffile->grfid;
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		default: // use the grfid specified in register 100h
 			SetBit(param_setID, 7); // bit 7 means it is not an old type

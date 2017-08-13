@@ -610,7 +610,7 @@ static bool QZ_PollEvent()
 			 * the mouse position programmatically, which would trigger OS X to show
 			 * the default arrow cursor if the events are propagated. */
 			if (_cursor.fix_at) break;
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		default:
 			[ NSApp sendEvent:event ];

@@ -126,7 +126,7 @@ void SpriteFontCache::InitializeUnicodeGlyphMap()
 	SpriteID base;
 	switch (this->fs) {
 		default: NOT_REACHED();
-		case FS_MONO:   // Use normal as default for mono spaced font, i.e. FALL THROUGH
+		case FS_MONO:   // Use normal as default for mono spaced font
 		case FS_NORMAL: base = SPR_ASCII_SPACE;       break;
 		case FS_SMALL:  base = SPR_ASCII_SPACE_SMALL; break;
 		case FS_LARGE:  base = SPR_ASCII_SPACE_BIG;   break;

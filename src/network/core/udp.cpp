@@ -252,17 +252,20 @@ void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo 
 				*dst = c;
 				dst = &c->next;
 			}
-			/* FALL THROUGH */
 		}
+		FALLTHROUGH;
+
 		case 3:
 			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
 			info->start_date     = Clamp(p->Recv_uint32(), 0, MAX_DATE);
-			/* FALL THROUGH */
+			FALLTHROUGH;
+
 		case 2:
 			info->companies_max  = p->Recv_uint8 ();
 			info->companies_on   = p->Recv_uint8 ();
 			info->spectators_max = p->Recv_uint8 ();
-			/* FALL THROUGH */
+			FALLTHROUGH;
+
 		case 1:
 			p->Recv_string(info->server_name,     sizeof(info->server_name));
 			p->Recv_string(info->server_revision, sizeof(info->server_revision));

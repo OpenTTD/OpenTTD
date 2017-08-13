@@ -785,7 +785,7 @@ public:
 						DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT);
 						break;
 					}
-					/* FALL THROUGH */
+					FALLTHROUGH;
 
 				case CSD_CARGO:
 					SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);

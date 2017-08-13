@@ -2053,7 +2053,8 @@ struct NetworkJoinStatusWindow : Window {
 					progress = 15; // We don't have the final size yet; the server is still compressing!
 					break;
 				}
-				/* FALL THROUGH */
+				FALLTHROUGH;
+
 			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
 				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
 		}
@@ -2182,7 +2183,7 @@ struct NetworkCompanyPasswordWindow : public Window {
 		switch (widget) {
 			case WID_NCP_OK:
 				this->OnOk();
-				/* FALL THROUGH */
+				FALLTHROUGH;
 
 			case WID_NCP_CANCEL:
 				delete this;

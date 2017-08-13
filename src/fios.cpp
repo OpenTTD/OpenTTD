@@ -158,7 +158,8 @@ const char *FiosBrowseTo(const FiosItem *item)
 #elif defined(WIN32) || defined(__OS2__)
 			seprintf(_fios_path, _fios_path_last, "%c:" PATHSEP, item->title[0]);
 #endif
-			/* FALL THROUGH */
+			break;
+
 		case FIOS_TYPE_INVALID:
 			break;
 

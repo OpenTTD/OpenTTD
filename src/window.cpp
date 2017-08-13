@@ -1277,26 +1277,33 @@ static uint GetWindowZPriority(const Window *w)
 	switch (w->window_class) {
 		case WC_ENDSCREEN:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_HIGHSCORE:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_TOOLTIPS:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_DROPDOWN_MENU:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_MAIN_TOOLBAR:
 		case WC_STATUS_BAR:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_OSK:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_QUERY_STRING:
 		case WC_SEND_NETWORK_MSG:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_ERRMSG:
 		case WC_CONFIRM_POPUP_QUERY:
@@ -1304,6 +1311,7 @@ static uint GetWindowZPriority(const Window *w)
 		case WC_NETWORK_STATUS_WINDOW:
 		case WC_SAVE_PRESET:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_GENERATE_LANDSCAPE:
 		case WC_SAVELOAD:
@@ -1315,15 +1323,19 @@ static uint GetWindowZPriority(const Window *w)
 		case WC_AI_SETTINGS:
 		case WC_TEXTFILE:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_CONSOLE:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_NEWS_WINDOW:
 			++z_priority;
+			FALLTHROUGH;
 
 		default:
 			++z_priority;
+			FALLTHROUGH;
 
 		case WC_MAIN_WINDOW:
 			return z_priority;
@@ -2867,7 +2879,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
 				/* We try to use the scrollwheel to scroll since we didn't touch any of the buttons.
 				 * Simulate a right button click so we can get started. */
-				/* FALL THROUGH */
+				FALLTHROUGH;
 
 			case MC_RIGHT: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
 

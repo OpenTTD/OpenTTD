@@ -1244,7 +1244,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 				case TL_3X3_GRID: // Use 2x2 grid afterwards!
 					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
-					/* FALL THROUGH */
+					FALLTHROUGH;
 
 				case TL_2X2_GRID:
 					rcmd = GetTownRoadGridElement(t1, tile, target_dir);
@@ -1253,7 +1253,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 				case TL_BETTER_ROADS: // Use original afterwards!
 					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
-					/* FALL THROUGH */
+					FALLTHROUGH;
 
 				case TL_ORIGINAL:
 					/* Allow a house at the edge. 60% chance or
@@ -3259,7 +3259,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 
 				return town;
 			}
-			/* FALL THROUGH */
+			FALLTHROUGH;
 
 		case MP_HOUSE:
 			return Town::GetByTile(tile);
