@@ -2636,8 +2636,8 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			byte style_t = (byte)(TileX(end_tile) > TileX(start_tile));
 			start_tile = TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
 			end_tile   = TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
+			FALLTHROUGH;
 		}
-		FALLTHROUGH;
 
 		case HT_POINT:
 			h0 = TileHeight(start_tile);

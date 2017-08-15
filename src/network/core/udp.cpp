@@ -252,8 +252,8 @@ void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo 
 				*dst = c;
 				dst = &c->next;
 			}
+			FALLTHROUGH;
 		}
-		FALLTHROUGH;
 
 		case 3:
 			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
