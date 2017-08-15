@@ -68,8 +68,8 @@ struct StationResolverObject : public ResolverObject {
 			case VSG_SCOPE_PARENT: {
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != NULL) return tsr;
+				FALLTHROUGH;
 			}
-			FALLTHROUGH;
 
 			default:
 				return ResolverObject::GetScope(scope, relative);
