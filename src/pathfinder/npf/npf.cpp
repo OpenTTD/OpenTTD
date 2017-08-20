@@ -1236,6 +1236,7 @@ bool NPFTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir trackd
 	/* We set this in case the target is also the start tile, we will just
 	 * return a not found then */
 	start1.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
+	start1.user_data[NPF_NODE_FLAGS] = 0;
 	start1.direction = trackdir;
 	NPFSetFlag(&start1, NPF_FLAG_IGNORE_RESERVED, true);
 

@@ -77,7 +77,7 @@ void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperati
 {
 	this->Clear();
 
-	assert(fop == SLO_LOAD || SLO_SAVE);
+	assert(fop == SLO_LOAD || fop == SLO_SAVE);
 	switch (abstract_filetype) {
 		case FT_NONE:
 			break;
