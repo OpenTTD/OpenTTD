@@ -3117,8 +3117,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Angenomm
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zeige Liste der angenommenen Frachtarten
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Nimmt an: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Diese Station hat in der zugehörigen Stadt exklusive Transportrechte .
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} hat die exklusiven Transportrechte in dieser Stadt erworben.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Diese Station hat in der zugehörigen Stadt exklusive Transportrechte .
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} hat die exklusiven Transportrechte in dieser Stadt erworben.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertung
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stationsbewertung anzeigen

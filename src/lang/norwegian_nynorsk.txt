@@ -3029,8 +3029,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aksepter
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Syne liste over godtekne varer
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtek: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Eigaren av stasjonen har eksklusive transportrettar i den her byen.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} har kjøp eksklusive transportrettar i byen.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Eigaren av stasjonen har eksklusive transportrettar i den her byen.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} har kjøp eksklusive transportrettar i byen.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Syne stasjonsvurdering

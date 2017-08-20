@@ -3113,8 +3113,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aanvaar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Wys lys van aanvaarde vrag
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aanvaar: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Die stasie het eksklusiewe vervoer regte vir die dorp
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} het eksklusiewe vervoer regte in die dorp gekoop.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Die stasie het eksklusiewe vervoer regte vir die dorp
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} het eksklusiewe vervoer regte in die dorp gekoop.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Graderings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Toon stasie graderings

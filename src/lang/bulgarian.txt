@@ -3035,8 +3035,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прие
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Покажи списък с приетите товари
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приема: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Тази станция има специални транспортни привилегии за града
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} закупи специални транспортни привилегии за града.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Тази станция има специални транспортни привилегии за града
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} закупи специални транспортни привилегии за града.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване

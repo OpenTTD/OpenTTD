@@ -3113,8 +3113,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}受入�
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}受入れる貨物のリストを表示します
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}この停留施設は街の独占輸送契約の恩恵下にあります
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK}はこの街と独占輸送契約を締結しています
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}この停留施設は街の独占輸送契約の恩恵下にあります
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK}はこの街と独占輸送契約を締結しています
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}停留施設の評価を表示します

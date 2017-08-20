@@ -3116,8 +3116,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ottaa va
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näytä luettelo vastaanotettavasta rahdista.
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Vastaanottaa: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tällä asemalla on kuljetusyksinoikeus tässä kaupungissa.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} osti tämän kaupungin kuljetusyksinoikeuden.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tällä asemalla on kuljetusyksinoikeus tässä kaupungissa.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} osti tämän kaupungin kuljetusyksinoikeuden.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.

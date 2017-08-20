@@ -3117,8 +3117,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Recibe
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de cargamento recibido
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Recibe: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene los derechos exclusivos de transporte en este pueblo.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró los derechos exclusivos de transporte en este pueblo.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene los derechos exclusivos de transporte en este pueblo.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró los derechos exclusivos de transporte en este pueblo.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluación
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver evaluación de la estación

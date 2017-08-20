@@ -3044,8 +3044,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}ปิ�
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}ปิดหน้าต่างความนิยมลงและแสดงเฉพาะรายการสินค้าที่สถานีรองรับและรอการขนส่ง
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำลังต้องการ: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}สถานนีนี้มีสัมปทานขนส่งจากเมืองนี้
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ซื้อสัมปทานขนส่งที่เมืองนี้
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}สถานนีนี้มีสัมปทานขนส่งจากเมืองนี้
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ซื้อสัมปทานขนส่งที่เมืองนี้
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}ความพึงพอใจ
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}แสดงความพึงพอใจของสถานี

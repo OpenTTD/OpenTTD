@@ -3071,8 +3071,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptă
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afişează lista de încărcături acceptate
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptă: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Această staţie are drepturi exclusive de transport în acest oraş.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} a cumpărat drepturi exclusive de transport în acest oraş.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Această staţie are drepturi exclusive de transport în acest oraş.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} a cumpărat drepturi exclusive de transport în acest oraş.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluări
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afişează evaluările staţiei

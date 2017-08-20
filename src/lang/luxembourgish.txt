@@ -3116,8 +3116,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akzepté
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Weis d'Lëscht vun den akzptéierten Wueren
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akzeptéiert: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Des Statioun huet exklusiv Transportrechter an deser Stad
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} huet exklusiv Transportrechter an deser Stad kaf.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Des Statioun huet exklusiv Transportrechter an deser Stad
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} huet exklusiv Transportrechter an deser Stad kaf.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewäertungen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewäertungen

@@ -3331,8 +3331,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Priima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rodyti priimamų krovinių sąrašą
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Priima: {WHITE}{CARGO_LIST.ka}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Šiai stotelei priklauso išskirtinės šio miesto pervežimo teisės
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} įsigijo išskirtines pervežimo teises šiame mieste.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Šiai stotelei priklauso išskirtinės šio miesto pervežimo teisės
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} įsigijo išskirtines pervežimo teises šiame mieste.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitingai
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rodyti stoties reitingus

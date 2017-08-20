@@ -3117,8 +3117,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}받음
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}받는 화물의 목록 표시
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}이 역은 도시의 수송권을 독점하고 있는 역입니다.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 이(가) 이 도시의 수송 독점권을 구매하였습니다.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}이 역은 도시의 수송권을 독점하고 있는 역입니다.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 이(가) 이 도시의 수송 독점권을 구매하였습니다.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}등급
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}역의 등급 표시

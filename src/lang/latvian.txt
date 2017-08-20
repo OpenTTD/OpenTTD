@@ -3046,8 +3046,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Pieņem
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rādīt pieņemamo kravu sarakstu
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Pieņem: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Šai stacijai pieder izņēmuma pārvadājumu tiesības šajā pilsētā.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ir nopirktas izņēmuma pārvadājumu tiesības šajā pilsētā.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Šai stacijai pieder izņēmuma pārvadājumu tiesības šajā pilsētā.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ir nopirktas izņēmuma pārvadājumu tiesības šajā pilsētā.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vērtējumi
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumus

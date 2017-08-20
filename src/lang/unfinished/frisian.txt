@@ -2877,8 +2877,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Akseptearre fracht sjen litte
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aksepteart: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit stasjon hat eksklusyfe transportrjochten in dizze plak.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} Hat eksklusyfe transportrjochten in dizze plak kocht.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit stasjon hat eksklusyfe transportrjochten in dizze plak.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} Hat eksklusyfe transportrjochten in dizze plak kocht.
 
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stasjonwurdearing sjen litte
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Moanlikse foarried en wurdearring:

@@ -3120,8 +3120,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Godtar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Vis liste over godtatte varer
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtar: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Denne stasjonen har eksklusive transportrettigheter i denne byen.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kjøpte eksklusive transportrettigheter i denne byen.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Denne stasjonen har eksklusive transportrettigheter i denne byen.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kjøpte eksklusive transportrettigheter i denne byen.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderinger
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stasjonsvurdering

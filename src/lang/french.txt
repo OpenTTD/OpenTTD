@@ -3115,8 +3115,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepte
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afficher les marchandises acceptées
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepte{NBSP}: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Cette station a les droits de transport exclusifs dans cette ville.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} a acheté les droits de transport exclusifs dans cette ville.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Cette station a les droits de transport exclusifs dans cette ville.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} a acheté les droits de transport exclusifs dans cette ville.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Qualité
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afficher la qualité de service de la station

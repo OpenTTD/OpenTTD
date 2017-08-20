@@ -3126,8 +3126,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}מקבל
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}הצג רשימת סוגי המטען שהתחנה מקבלת
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}מקבלת: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}לתחנה זו זכויות תעבורה בלעדיות בעיירה זו.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} רכשה זכויות תעבורה בלעדיות בעיירה זו.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}לתחנה זו זכויות תעבורה בלעדיות בעיירה זו.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} רכשה זכויות תעבורה בלעדיות בעיירה זו.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}דירוג
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}הצג את דירוג השירות

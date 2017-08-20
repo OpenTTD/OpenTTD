@@ -3209,8 +3209,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijím
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Ukázat seznam přijímaného nákladu
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Přijímá: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tato stanice má v tomto městě výhradní přepravní práva.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Společnost {YELLOW}{COMPANY}{BLACK} koupila v tomto městě výhradní přepravní práva.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tato stanice má v tomto městě výhradní přepravní práva.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Společnost {YELLOW}{COMPANY}{BLACK} koupila v tomto městě výhradní přepravní práva.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnocení
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ukázat hodnocení společností

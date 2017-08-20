@@ -3222,8 +3222,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Δέχε
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Εμφάνιση λίστας αποδεκτών φορτίων
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Δέχεται: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Αυτός ο σταθμός έχει αποκλειστικά δικαιώματα μεταφοράς σε αυτήν την πόλη.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Η {YELLOW}{COMPANY}{BLACK} αγόρασε αποκλειστικά δικαιώματα για αυτήν την πόλη.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Αυτός ο σταθμός έχει αποκλειστικά δικαιώματα μεταφοράς σε αυτήν την πόλη.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Η {YELLOW}{COMPANY}{BLACK} αγόρασε αποκλειστικά δικαιώματα για αυτήν την πόλη.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού

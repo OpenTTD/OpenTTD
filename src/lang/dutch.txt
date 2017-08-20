@@ -3114,8 +3114,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptee
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Laat lijst van gevraagde goederen zien
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepteert: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit station heeft exclusieve transportrechten in deze gemeente.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kocht exclusieve transportrechten in deze gemeente
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit station heeft exclusieve transportrechten in deze gemeente.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kocht exclusieve transportrechten in deze gemeente
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk stationsreputaties

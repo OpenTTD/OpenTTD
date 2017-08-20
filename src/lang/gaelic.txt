@@ -3357,8 +3357,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Na ghabh
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Seall liosta a' charago a thèid a ghabhail ris
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Gabhar ri: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tha còirichean giùlain às-dùnach aig an stèisean seo sa bhaile seo.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{BLACK}Cheannaich {YELLOW}{COMPANY}{BLACK} còirichean giùlain às-dùnach sa bhaile seo.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tha còirichean giùlain às-dùnach aig an stèisean seo sa bhaile seo.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{BLACK}Cheannaich {YELLOW}{COMPANY}{BLACK} còirichean giùlain às-dùnach sa bhaile seo.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangachaidhean
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Seall rangachaidhean nan stèiseanan
